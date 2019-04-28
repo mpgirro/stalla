@@ -7,7 +7,11 @@
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin on the JVM.
     id("org.jetbrains.kotlin.jvm").version("1.3.21")
+    id("org.jetbrains.dokka") version "0.9.18"
 }
+
+group = "io.hemin"
+version = "0.0.1"
 
 repositories {
     // Use jcenter for resolving your dependencies.
