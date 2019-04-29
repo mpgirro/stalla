@@ -13,6 +13,8 @@ class DomParser {
     val factory: DocumentBuilderFactory
     val builder: DocumentBuilder
 
+    val rssParser: RssParser = RssParser()
+
     init {
         factory = DocumentBuilderFactory.newInstance()
         factory.isNamespaceAware = true
@@ -54,8 +56,6 @@ class DomParser {
             }
         }
 
-        //println("n :: uri=${n.namespaceURI} , localName=${n.localName} , nodeName=${n.nodeName} , textContent=${n.textContent.trim()}")
-        //walkChildren(n.childNodes)
     }
 
     private fun walkChildren(nodes: NodeList) = walkChildren(NodeListWrapper.asList(nodes))
@@ -71,12 +71,9 @@ class DomParser {
     private fun podcastFromChannel(node: Node): Podcast {
         val p: Podcast.Builder = Podcast.Builder()
 
-        // TODO
         for (n in children(node)) {
-            when (Pair(n.namespaceURI, n.localName)) {
-                Pair(null, "title") -> p.title(titleFromNode(n))
-                Pair(null, "link") -> p.link(linkFromNode(n))
-                Pair(null, "item") -> p.addEpisode(episodeFromItem(n))
+            when (n.namespaceURI) {
+                rssParser.namespace -> rssParser.parse(p, n, ::episodeFromItem)
             }
         }
 
@@ -86,19 +83,13 @@ class DomParser {
     private fun episodeFromItem(node: Node): Episode {
         val e: Episode.Builder = Episode.Builder()
 
-        // TODO
         for (n in children(node)) {
-            when (Pair(n.namespaceURI, n.localName)) {
-                Pair(null, "title") -> e.title(titleFromNode(n))
-                Pair(null, "link") -> e.link(linkFromNode(n))
+            when (n.namespaceURI) {
+                rssParser.namespace -> rssParser.parse(e, n)
             }
         }
 
         return e.build()
     }
-
-    private fun titleFromNode(n: Node): String? = n.textContent
-
-    private fun linkFromNode(n: Node): String? = n.textContent
 
 }
