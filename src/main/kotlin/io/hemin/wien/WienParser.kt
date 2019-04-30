@@ -1,12 +1,12 @@
 package io.hemin.wien
 
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Model
-import io.hemin.wien.model.ModelBuilder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.builder.EpisodeBuilder
+import io.hemin.wien.model.builder.PodcastBuilder
 import io.hemin.wien.parser.NamespaceParser
-import io.hemin.wien.util.NodeListWrapper
 import io.hemin.wien.parser.RssParser
+import io.hemin.wien.util.NodeListWrapper
 import org.w3c.dom.Document
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
@@ -20,7 +20,7 @@ class WienParser {
         private val parsers: List<NamespaceParser> = listOf(RssParser())
 
         fun toPodcast(node: Node): Podcast {
-            val builder: Podcast.Builder = Podcast.Builder()
+            val builder = PodcastBuilder()
 
             for (child in NodeListWrapper.asList(node.childNodes)) {
                 for (parser in parsers) {
@@ -34,7 +34,7 @@ class WienParser {
         }
 
         fun toEpisode(node: Node): Episode {
-            val builder: Episode.Builder = Episode.Builder()
+            val builder = EpisodeBuilder()
 
             for (child in NodeListWrapper.asList(node.childNodes)) {
                 for (parser in parsers) {

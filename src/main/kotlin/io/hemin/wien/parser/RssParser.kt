@@ -2,7 +2,9 @@ package io.hemin.wien.parser
 
 import io.hemin.wien.WienParser.Companion.toEpisode
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.builder.EnclosureBuilder
+import io.hemin.wien.model.builder.EpisodeBuilder
+import io.hemin.wien.model.builder.PodcastBuilder
 import org.w3c.dom.Node
 
 class RssParser : NamespaceParser {
@@ -13,7 +15,7 @@ class RssParser : NamespaceParser {
 
     override val namespace: String? = NAMESPACE
 
-    override fun parse(podcast: Podcast.Builder, node: Node) {
+    override fun parse(podcast: PodcastBuilder, node: Node) {
         when (node.localName) {
             "title"          -> podcast.title(toText(node))
             "link"           -> podcast.link(toText(node))
@@ -30,7 +32,7 @@ class RssParser : NamespaceParser {
         }
     }
 
-    override fun parse(episode: Episode.Builder, node: Node) {
+    override fun parse(episode: EpisodeBuilder, node: Node) {
         when (node.localName) {
             "title"       -> episode.title(toText(node))
             "link"        -> episode.link(toText(node))
@@ -49,11 +51,11 @@ class RssParser : NamespaceParser {
 
         fun value(name: String): String? = node.attributes.getNamedItem(name).textContent
 
-        val url: String? = value("url")
-        val length: Long? = value("length")?.toLongOrNull()
-        val type: String? = value("type")
-
-        return Episode.Enclosure.Builder(url, length , type).build()
+        return EnclosureBuilder(
+            url    = value("url"),
+            length = value("length")?.toLongOrNull(),
+            type   = value("type"))
+            .build()
     }
 
 }

@@ -1,14 +1,14 @@
 package io.hemin.wien.parser
 
-import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.builder.EpisodeBuilder
+import io.hemin.wien.model.builder.PodcastBuilder
 import org.w3c.dom.Node
 import java.time.ZonedDateTime
 
 interface NamespaceParser {
     val namespace: String?
-    fun parse(podcast: Podcast.Builder, node: Node)
-    fun parse(episode: Episode.Builder, node: Node)
+    fun parse(podcast: PodcastBuilder, node: Node)
+    fun parse(episode: EpisodeBuilder, node: Node)
 
     /**
      * Extracts the text content of a DOM node
