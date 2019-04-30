@@ -4,16 +4,16 @@ import io.hemin.wien.model.Episode
 import java.time.ZonedDateTime
 
 data class EpisodeBuilder(
-    var title: String? = null,
-    var link: String? = null,
-    var description: String? = null,
-    var author: String? = null,
-    val categories: MutableList<String> = mutableListOf<String>(),
-    var comments: String? = null,
-    var enclosure: Episode.Enclosure? = null,
-    var guid: String? = null,
-    var pubDate: ZonedDateTime? = null,
-    var source: String? = null
+    var title: String?                  = null,
+    var link: String?                   = null,
+    var description: String?            = null,
+    var author: String?                 = null,
+    val categories: MutableList<String> = mutableListOf(),
+    var comments: String?               = null,
+    var enclosure: Episode.Enclosure?   = null,
+    var guid: String?                   = null,
+    var pubDate: ZonedDateTime?         = null,
+    var source: String?                 = null
 
 ) : Builder<Episode> {
     fun title(title: String?) = apply { this.title = title }

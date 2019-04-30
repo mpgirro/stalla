@@ -6,18 +6,18 @@ import io.hemin.wien.model.Podcast
 import java.time.ZonedDateTime
 
 data class PodcastBuilder(
-    var title: String? = null,
-    var link: String? = null,
-    var description: String? = null,
-    var pubDate: ZonedDateTime? = null,
-    var lastBuildDate: ZonedDateTime? = null,
-    var language: String? = null,
-    var generator: String? = null,
-    var copyright: String? = null,
-    var docs: String? = null,
-    var managingEditor: String? = null,
-    var webMaster: String? = null,
-    val episodes: MutableList<Episode> = mutableListOf<Episode>()
+    var title: String?                 = null,
+    var link: String?                  = null,
+    var description: String?           = null,
+    var pubDate: ZonedDateTime?        = null,
+    var lastBuildDate: ZonedDateTime?  = null,
+    var language: String?              = null,
+    var generator: String?             = null,
+    var copyright: String?             = null,
+    var docs: String?                  = null,
+    var managingEditor: String?        = null,
+    var webMaster: String?             = null,
+    val episodes: MutableList<Episode> = mutableListOf()
 ) : Builder<Podcast> {
     fun title(title: String?) = apply { this.title = title }
     fun link(link: String?) = apply { this.link = link }

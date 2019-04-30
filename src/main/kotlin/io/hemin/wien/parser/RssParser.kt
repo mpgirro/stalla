@@ -54,8 +54,8 @@ class RssParser : NamespaceParser {
         return EnclosureBuilder(
             url    = value("url"),
             length = value("length")?.toLongOrNull(),
-            type   = value("type"))
-            .build()
+            type   = value("type")
+        ).build()
     }
 
 }

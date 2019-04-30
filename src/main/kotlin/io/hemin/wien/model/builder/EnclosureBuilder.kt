@@ -3,7 +3,7 @@ package io.hemin.wien.model.builder
 import io.hemin.wien.model.Episode
 
 data class EnclosureBuilder(
-    var url: String? = null,
+    var url: String?  = null,
     var length: Long? = null,
     var type: String? = null
 ) : Builder<Episode.Enclosure> {
