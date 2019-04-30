@@ -3,20 +3,20 @@ package io.hemin.wien.model.builder
 import io.hemin.wien.model.Episode
 import java.time.ZonedDateTime
 
-data class EpisodeBuilder(
-    var title: String?                  = null,
-    var link: String?                   = null,
-    var description: String?            = null,
-    var author: String?                 = null,
-    val categories: MutableList<String> = mutableListOf(),
-    var comments: String?               = null,
-    var enclosure: Episode.Enclosure?   = null,
-    var guid: String?                   = null,
-    var pubDate: ZonedDateTime?         = null,
-    var source: String?                 = null,
-    var contentEncoded: String?         = null
+class EpisodeBuilder : Builder<Episode> {
 
-) : Builder<Episode> {
+    private var title: String?                  = null
+    private var link: String?                   = null
+    private var description: String?            = null
+    private var author: String?                 = null
+    private val categories: MutableList<String> = mutableListOf()
+    private var comments: String?               = null
+    private var enclosure: Episode.Enclosure?   = null
+    private var guid: String?                   = null
+    private var pubDate: ZonedDateTime?         = null
+    private var source: String?                 = null
+    private var contentEncoded: String?         = null
+
     fun title(title: String?) = apply { this.title = title }
     fun link(link: String?) = apply { this.link = link }
     fun description(description: String?) = apply { this.description = description }

@@ -9,11 +9,7 @@ import org.w3c.dom.Node
 
 class RssParser : NamespaceParser {
 
-    companion object {
-        val NAMESPACE: String? = null
-    }
-
-    override val namespace: String? = NAMESPACE
+    override val namespace: String? = null
 
     override fun parse(podcast: PodcastBuilder, node: Node) {
         when (node.localName) {
@@ -51,11 +47,11 @@ class RssParser : NamespaceParser {
 
         fun value(name: String): String? = node.attributes.getNamedItem(name).textContent
 
-        return EnclosureBuilder(
-            url    = value("url"),
-            length = value("length")?.toLongOrNull(),
-            type   = value("type")
-        ).build()
+        return EnclosureBuilder()
+            .url(value("url"))
+            .length(value("length")?.toLongOrNull())
+            .type(value("type"))
+            .build()
     }
 
 }

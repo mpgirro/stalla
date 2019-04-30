@@ -27,7 +27,7 @@ class Episode(
     }
 
     override fun toString(): String {
-        return "Episode(title=$title, link=$link, description=$description, author=$author, categories=$categories, comments=$comments, enclosure=$enclosure, guid=$guid, pubDate=$pubDate, source=$source, contentEncoded=$contentEncoded)"
+        return "Episode(title=$title, link=$link, description=$description, author=$author, categories=$categories, comments=$comments, enclosure=$enclosure, guid=$guid, pubDate=$pubDate, source=$source, contentEncoded=<truncated>)"
     }
 
 }
