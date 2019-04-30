@@ -13,7 +13,7 @@ class Episode(
     val guid: String?,
     val pubDate: ZonedDateTime?,
     val source: String?
-) {
+) : Model {
 
     data class Builder(
         var title: String? = null,
@@ -27,7 +27,7 @@ class Episode(
         var pubDate: ZonedDateTime? = null,
         var source: String? = null
 
-    ) {
+    ) : ModelBuilder<Episode> {
         fun title(title: String?) = apply { this.title = title }
         fun link(link: String?) = apply { this.link = link }
         fun description(description: String?) = apply { this.description = description }
@@ -43,7 +43,7 @@ class Episode(
         fun guid(guid: String?) = apply { this.guid = guid }
         fun pubDate(pubDate: ZonedDateTime?) = apply { this.pubDate = pubDate }
         fun source(source: String?) = apply { this.source = source }
-        fun build() = Episode(
+        override fun build() = Episode(
             title       = title,
             link        = link,
             description = description,
@@ -61,17 +61,17 @@ class Episode(
         val url: String?,
         val length: Long?,
         val type: String?
-    ) {
+    ) : Model {
 
         data class Builder(
             var url: String? = null,
             var length: Long? = null,
             var type: String? = null
-        ) {
+        ) : ModelBuilder<Enclosure> {
             fun url(url: String?) = apply { this.url = url }
             fun length(length: Long?) = apply { this.length = length }
             fun type(type: String?) = apply { this.type = type }
-            fun build() = Episode.Enclosure(
+            override fun build() = Episode.Enclosure(
                 url    = url,
                 length = length,
                 type   = type

@@ -16,7 +16,7 @@ class Podcast(
     val managingEditor: String?,
     val webMaster: String?,
     val episodes: List<Episode>
-) {
+) : Model {
 
     data class Builder(
         var title: String? = null,
@@ -31,7 +31,7 @@ class Podcast(
         var managingEditor: String? = null,
         var webMaster: String? = null,
         val episodes: MutableList<Episode> = mutableListOf<Episode>()
-    ) {
+    ) : ModelBuilder<Podcast> {
         fun title(title: String?) = apply { this.title = title }
         fun link(link: String?) = apply { this.link = link }
         fun description(description: String?) = apply { this.description = description }
@@ -44,7 +44,7 @@ class Podcast(
         fun managingEditor(managingEditor: String?) = apply { this.managingEditor = managingEditor }
         fun webMaster(webMaster: String?) = apply { this.webMaster = webMaster }
         fun addEpisode(episode: Episode) = apply { this.episodes.add(episode) }
-        fun build() = Podcast(
+        override fun build() = Podcast(
             title          = title,
             link           = link,
             description    = description,

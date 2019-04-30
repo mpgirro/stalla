@@ -1,7 +1,10 @@
 package io.hemin.wien
 
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Model
+import io.hemin.wien.model.ModelBuilder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.NodeListWrapper
 import io.hemin.wien.parser.RssParser
 import org.w3c.dom.Document
@@ -12,10 +15,41 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 class WienParser {
 
+    companion object {
+
+        private val parsers: List<NamespaceParser> = listOf(RssParser())
+
+        fun toPodcast(node: Node): Podcast {
+            val builder: Podcast.Builder = Podcast.Builder()
+
+            for (child in NodeListWrapper.asList(node.childNodes)) {
+                for (parser in parsers) {
+                    if (parser.namespace.equals(child.namespaceURI)) {
+                        parser.parse(builder, child)
+                    }
+                }
+            }
+
+            return builder.build()
+        }
+
+        fun toEpisode(node: Node): Episode {
+            val builder: Episode.Builder = Episode.Builder()
+
+            for (child in NodeListWrapper.asList(node.childNodes)) {
+                for (parser in parsers) {
+                    if (parser.namespace.equals(child.namespaceURI)) {
+                        parser.parse(builder, child)
+                    }
+                }
+            }
+
+            return builder.build()
+        }
+    }
+
     val factory: DocumentBuilderFactory
     val builder: DocumentBuilder
-
-    val rssParser: RssParser = RssParser()
 
     init {
         factory = DocumentBuilderFactory.newInstance()
@@ -66,32 +100,6 @@ class WienParser {
         for (n in nodes) {
             walk(n)
         }
-    }
-
-    private fun children(node: Node): List<Node> = NodeListWrapper.asList(node.childNodes)
-
-    fun toPodcast(node: Node): Podcast {
-        val p: Podcast.Builder = Podcast.Builder()
-
-        for (n in children(node)) {
-            when (n.namespaceURI) {
-                rssParser.namespace -> rssParser.parse(p, n, ::toEpisode)
-            }
-        }
-
-        return p.build()
-    }
-
-   fun toEpisode(node: Node): Episode {
-        val e: Episode.Builder = Episode.Builder()
-
-        for (n in children(node)) {
-            when (n.namespaceURI) {
-                rssParser.namespace -> rssParser.parse(e, n)
-            }
-        }
-
-        return e.build()
     }
 
 }
