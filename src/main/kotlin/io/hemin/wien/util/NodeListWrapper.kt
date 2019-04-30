@@ -1,4 +1,4 @@
-package io.hemin.wien.dom
+package io.hemin.wien.util
 
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
@@ -18,8 +18,6 @@ class NodeListWrapper (private val list: NodeList) : AbstractList<Node>(), Rando
     override val size: Int
         get() = list.length
 
-    override fun get(index: Int): Node {
-        return list.item(index)
-    }
+    override fun get(index: Int): Node = list.item(index)
 
 }
