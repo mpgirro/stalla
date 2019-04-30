@@ -4,6 +4,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.model.builder.EpisodeBuilder
 import io.hemin.wien.model.builder.PodcastBuilder
+import io.hemin.wien.parser.ContentParser
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.RssParser
 import io.hemin.wien.util.NodeListWrapper
@@ -17,7 +18,10 @@ class WienParser {
 
     companion object {
 
-        private val parsers: List<NamespaceParser> = listOf(RssParser())
+        private val parsers: List<NamespaceParser> = listOf(
+            RssParser(),
+            ContentParser()
+        )
 
         fun toPodcast(node: Node): Podcast {
             val builder = PodcastBuilder()
