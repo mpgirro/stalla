@@ -6,7 +6,7 @@ import java.util.*
 
 class NodeListWrapper (private val list: NodeList) : AbstractList<Node>(), RandomAccess {
 
-    companion object Factory {
+    companion object {
         fun asList(nodeList: NodeList): List<Node> {
             return if (nodeList.length == 0)
                 Collections.emptyList()

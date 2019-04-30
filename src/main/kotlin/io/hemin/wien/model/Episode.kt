@@ -12,7 +12,8 @@ class Episode(
     val enclosure: Episode.Enclosure?,
     val guid: String?,
     val pubDate: ZonedDateTime?,
-    val source: String?
+    val source: String?,
+    val contentEncoded: String?
 ) {
 
     class Enclosure(
@@ -26,7 +27,7 @@ class Episode(
     }
 
     override fun toString(): String {
-        return "Episode(title=$title, link=$link, description=$description, author=$author, categories=$categories, comments=$comments, enclosure=$enclosure, guid=$guid, pubDate=$pubDate, source=$source)"
+        return "Episode(title=$title, link=$link, description=$description, author=$author, categories=$categories, comments=$comments, enclosure=$enclosure, guid=$guid, pubDate=$pubDate, source=$source, contentEncoded=$contentEncoded)"
     }
 
 }

@@ -13,7 +13,8 @@ data class EpisodeBuilder(
     var enclosure: Episode.Enclosure?   = null,
     var guid: String?                   = null,
     var pubDate: ZonedDateTime?         = null,
-    var source: String?                 = null
+    var source: String?                 = null,
+    var contentEncoded: String?         = null
 
 ) : Builder<Episode> {
     fun title(title: String?) = apply { this.title = title }
@@ -28,16 +29,18 @@ data class EpisodeBuilder(
     fun guid(guid: String?) = apply { this.guid = guid }
     fun pubDate(pubDate: ZonedDateTime?) = apply { this.pubDate = pubDate }
     fun source(source: String?) = apply { this.source = source }
+    fun contentEncoded(contentEncoded: String?) = apply { this.contentEncoded = contentEncoded }
     override fun build() = Episode(
-        title       = title,
-        link        = link,
-        description = description,
-        author      = author,
-        categories  = categories,
-        comments    = comments,
-        enclosure   = enclosure,
-        guid        = guid,
-        pubDate     = pubDate,
-        source      = source
+        title          = title,
+        link           = link,
+        description    = description,
+        author         = author,
+        categories     = categories,
+        comments       = comments,
+        enclosure      = enclosure,
+        guid           = guid,
+        pubDate        = pubDate,
+        source         = source,
+        contentEncoded = contentEncoded
     )
 }
