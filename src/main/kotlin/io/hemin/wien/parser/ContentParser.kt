@@ -6,8 +6,9 @@ import org.w3c.dom.Node
 
 class ContentParser : NamespaceParser {
 
-    override val namespace: String? = "http://purl.org/rss/1.0/modules/content/"
+    override val namespaceURI: String? = "http://purl.org/rss/1.0/modules/content/"
 
+    /** This module does not contribute any data to the [PodcastBuilder]. */
     override fun parse(podcast: PodcastBuilder, node: Node) { }
 
     override fun parse(episode: EpisodeBuilder, node: Node) {

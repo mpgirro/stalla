@@ -2,6 +2,20 @@ package io.hemin.wien.model
 
 import java.time.ZonedDateTime
 
+/**
+ * @property title The RSS `<title>` field value.
+ * @property link The RSS `<link>` field value.
+ * @property description The RSS `<description>` field value.
+ * @property pubDate The RSS `<pubDate>` field value.
+ * @property lastBuildDate The RSS `<lastBuildDate>` field value.
+ * @property language The RSS `<language>` field value.
+ * @property generator The RSS `<generator>` field value.
+ * @property copyright The RSS `<copyright>` field value.
+ * @property docs The RSS `<docs>` field value.
+ * @property managingEditor The RSS `<managingEditor>` field value.
+ * @property webMaster The RSS `<webMaster>` field value.
+ * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
+ */
 class Podcast(
     val title: String?,
     val link: String?,

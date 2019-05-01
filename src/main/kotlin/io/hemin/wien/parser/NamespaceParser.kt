@@ -6,24 +6,28 @@ import org.w3c.dom.Node
 import java.time.ZonedDateTime
 
 interface NamespaceParser {
-    val namespace: String?
+
+    /** The URI of the namespace processed by this parser. */
+    val namespaceURI: String?
+
+    /** Extracts data from the XML namespace defined by [namespaceURI]
+     * and applies the values to properties of the [PodcastBuilder]. */
     fun parse(podcast: PodcastBuilder, node: Node)
+
+    /** Extracts data from the XML namespace defined by [namespaceURI]
+     * and applies the values to properties of the [EpisodeBuilder]. */
     fun parse(episode: EpisodeBuilder, node: Node)
 
-    /**
-     * Extracts the text content of a DOM node
-     */
+    /** Extracts the text content of a DOM node */
     fun toText(node: Node): String? = node.textContent.trim()
 
-    /**
-     * Extracts the text content of a DOM node, and transforms it to a Date object
-     */
+    /** Extracts the text content of a DOM node, and transforms it to a Date object. */
     fun toDate(node: Node): ZonedDateTime? {
-        try {
-            return ZonedDateTime.parse(toText(node))
+        return try {
+            ZonedDateTime.parse(toText(node))
         }
         catch (e: Exception) {
-            return null
+            null
         }
     }
 }

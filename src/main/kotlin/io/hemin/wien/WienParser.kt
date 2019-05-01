@@ -14,6 +14,9 @@ import org.w3c.dom.NodeList
 import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
 
+/**
+ * TODO Lorem Ipsum
+ */
 class WienParser {
 
     companion object {
@@ -23,12 +26,13 @@ class WienParser {
             ContentParser()
         )
 
+        /** Transforms a DOM node into a [Podcast] instance. */
         fun toPodcast(node: Node): Podcast {
             val builder = PodcastBuilder()
 
             for (child in NodeListWrapper.asList(node.childNodes)) {
                 for (parser in parsers) {
-                    if (parser.namespace.equals(child.namespaceURI)) {
+                    if (parser.namespaceURI.equals(child.namespaceURI)) {
                         parser.parse(builder, child)
                     }
                 }
@@ -37,12 +41,13 @@ class WienParser {
             return builder.build()
         }
 
+        /** Transforms a DOM node into a [Episode] instance. */
         fun toEpisode(node: Node): Episode {
             val builder = EpisodeBuilder()
 
             for (child in NodeListWrapper.asList(node.childNodes)) {
                 for (parser in parsers) {
-                    if (parser.namespace.equals(child.namespaceURI)) {
+                    if (parser.namespaceURI.equals(child.namespaceURI)) {
                         parser.parse(builder, child)
                     }
                 }
@@ -52,8 +57,8 @@ class WienParser {
         }
     }
 
-    val factory: DocumentBuilderFactory
-    val builder: DocumentBuilder
+    private val factory: DocumentBuilderFactory
+    private val builder: DocumentBuilder
 
     init {
         factory = DocumentBuilderFactory.newInstance()

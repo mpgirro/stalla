@@ -9,7 +9,7 @@ import org.w3c.dom.Node
 
 class RssParser : NamespaceParser {
 
-    override val namespace: String? = null
+    override val namespaceURI: String? = null
 
     override fun parse(podcast: PodcastBuilder, node: Node) {
         when (node.localName) {
@@ -43,6 +43,8 @@ class RssParser : NamespaceParser {
         }
     }
 
+    /** Extracts the data from RSS `<enclosure>` element and
+     * applies the values to the [EpisodeBuilder.enclosure] property. */
     fun toEnclosure(node: Node): Episode.Enclosure {
 
         fun value(name: String): String? = node.attributes.getNamedItem(name).textContent
