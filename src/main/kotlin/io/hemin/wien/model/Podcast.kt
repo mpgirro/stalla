@@ -1,6 +1,5 @@
 package io.hemin.wien.model
 
-import java.lang.UnsupportedOperationException
 import java.time.ZonedDateTime
 
 /**
@@ -19,7 +18,7 @@ import java.time.ZonedDateTime
  * @property webMaster The RSS `<webMaster>` field value.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
  */
-class Podcast(
+data class Podcast(
     val title: String?,
     val link: String?,
     val description: String?,
@@ -33,9 +32,4 @@ class Podcast(
     val webMaster: String?,
     //val image: Image?, // TODO
     val episodes: List<Episode>
-) {
-    /** Return a string representation of the instance */
-    override fun toString(): String {
-        return "Podcast(title=$title, link=$link, description=$description, pubDate=$pubDate, lastBuildDate=$lastBuildDate, language=$language, generator=$generator, copyright=$copyright, docs=$docs, managingEditor=$managingEditor, webMaster=$webMaster, episodes=$episodes)"
-    }
-}
+)

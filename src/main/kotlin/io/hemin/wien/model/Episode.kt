@@ -1,6 +1,5 @@
 package io.hemin.wien.model
 
-import java.lang.UnsupportedOperationException
 import java.time.ZonedDateTime
 
 /**
@@ -18,7 +17,7 @@ import java.time.ZonedDateTime
  * @property source The RSS `<source>` field value.
  * @property contentEncoded The `<content:enclosure>` element value of the Content namespace.
  */
-class Episode(
+data class Episode(
     val title: String?,
     val link: String?,
     val description: String?,
@@ -37,20 +36,10 @@ class Episode(
      * @property length The `length` attribute value of the RSS `<enclosure>` element.
      * @property type The `type` attribute value of the RSS `<enclosure>` element.
      */
-    class Enclosure(
+    data class Enclosure(
         val url: String?,
         val length: Long?,
         val type: String?
-    ) {
-        /** Return a string representation of the instance */
-        override fun toString(): String {
-            return "Enclosure(url=$url, length=$length, type=$type)"
-        }
-    }
-
-    /** Return a string representation of the instance */
-    override fun toString(): String {
-        return "Episode(title=$title, link=$link, description=$description, author=$author, categories=$categories, comments=$comments, enclosure=$enclosure, guid=$guid, pubDate=$pubDate, source=$source, contentEncoded=<truncated>)"
-    }
+    )
 
 }
