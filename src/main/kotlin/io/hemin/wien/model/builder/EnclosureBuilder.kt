@@ -2,6 +2,7 @@ package io.hemin.wien.model.builder
 
 import io.hemin.wien.model.Episode
 
+/** Builder class for [Episode.Enclosure] instances. */
 class EnclosureBuilder : Builder<Episode.Enclosure> {
 
     private var url: String?  = null
@@ -17,8 +18,11 @@ class EnclosureBuilder : Builder<Episode.Enclosure> {
     /** Set the type. */
     fun type(type: String?) = apply { this.type = type }
 
-    /** Returns an instance of [Episode.Enclosure]
-     * created from the fields set on this builder. */
+    /**
+     * Creates an instance of [Episode.Enclosure] with the properties set in this builder.
+     *
+     * @return The create instance.
+     */
     override fun build() = Episode.Enclosure(
         url    = url,
         length = length,

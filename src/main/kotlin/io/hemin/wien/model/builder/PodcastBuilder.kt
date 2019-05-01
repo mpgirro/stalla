@@ -5,6 +5,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import java.time.ZonedDateTime
 
+/** Builder class for [Podcast] instances. */
 class PodcastBuilder : Builder<Podcast> {
 
     private var title: String?                 = null
@@ -56,7 +57,11 @@ class PodcastBuilder : Builder<Podcast> {
     /** Adds an [io.hemin.wien.model.Episode] to the list of Episodes. */
     fun addEpisode(episode: Episode) = apply { this.episodes.add(episode) }
 
-    /** Returns an instance of [Podcast] created from the fields set on this builder. */
+    /**
+     * Creates an instance of [Podcast] with the properties set in this builder.
+     *
+     * @return The create instance.
+     */
     override fun build() = Podcast(
         title          = title,
         link           = link,

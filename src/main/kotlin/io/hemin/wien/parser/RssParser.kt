@@ -7,6 +7,7 @@ import io.hemin.wien.model.builder.EpisodeBuilder
 import io.hemin.wien.model.builder.PodcastBuilder
 import org.w3c.dom.Node
 
+/** Parser implementation for the RSS namespace. */
 class RssParser : NamespaceParser {
 
     override val namespaceURI: String? = null
@@ -43,12 +44,15 @@ class RssParser : NamespaceParser {
         }
     }
 
-    /** Extracts the data from RSS `<enclosure>` element and
-     * applies the values to the [EpisodeBuilder.enclosure] property. */
+    /**
+     * Extracts the data from an RSS `<enclosure>` element. All expected
+     * attributes are contained within an [Episode.Enclosure] instance.
+     *
+     * @param node The DOM node representing the `<enclosure>` element.
+     * @return The [Episode.Enclosure] instance with the `<enclosure>` elements data.
+     */
     fun toEnclosure(node: Node): Episode.Enclosure {
-
         fun value(name: String): String? = node.attributes.getNamedItem(name).textContent
-
         return EnclosureBuilder()
             .url(value("url"))
             .length(value("length")?.toLongOrNull())

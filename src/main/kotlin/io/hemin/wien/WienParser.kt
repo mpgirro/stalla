@@ -14,9 +14,6 @@ import org.w3c.dom.NodeList
 import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
 
-/**
- * TODO Lorem Ipsum
- */
 class WienParser {
 
     companion object {

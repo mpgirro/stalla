@@ -3,6 +3,7 @@ package io.hemin.wien.model.builder
 import io.hemin.wien.model.Episode
 import java.time.ZonedDateTime
 
+/** Builder class for [Episode] instances. */
 class EpisodeBuilder : Builder<Episode> {
 
     private var title: String?                  = null
@@ -49,7 +50,11 @@ class EpisodeBuilder : Builder<Episode> {
 
     fun contentEncoded(contentEncoded: String?) = apply { this.contentEncoded = contentEncoded }
 
-    /** Returns an instance of [Episode] created from the fields set on this builder. */
+    /**
+     * Creates an instance of [Episode] with the properties set in this builder.
+     *
+     * @return The create instance.
+     */
     override fun build() = Episode(
         title          = title,
         link           = link,
