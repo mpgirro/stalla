@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<item xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <title>Lorem Ipsum</title>
+    <link>http://example.org/episode1</link>
+    <description><![CDATA[Lorem Ipsum]]></description>
+    <guid isPermaLink="false">1fa609024fdf097</guid>
+    <pubDate>Fri, 16 Mar 2018 22:49:08 +0000</pubDate>
+    <enclosure url="http://example.org/episode1.m4a" length="78589133" type="audio/mp4" />
+</item>

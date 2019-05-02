@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel>
+    <title>Lorem Ipsum</title>
+    <link>http://example.org</link>
+    <description>Lorem Ipsum</description>
+    <pubDate>Fri, 16 Mar 2018 22:49:08 +0000</pubDate>
+    <lastBuildDate>Fri, 16 Mar 2018 22:49:08 +0000</lastBuildDate>
+    <image>
+        <url>http://example.org/podcast-cover.jpg</url>
+        <title>Lorem Ipsum</title>
+        <link>Lorem Ipsum</link>
+    </image>
+    <language>de-DE</language>
+    <generator>Lorem Ipsum</generator>
+    <copyright>Lorem Ipsum</copyright>
+    <docs>Lorem Ipsum</docs>
+    <managingEditor>editor@example.com</managingEditor>
+    <webMaster>webmaster@example.com</webMaster>
+</channel>
