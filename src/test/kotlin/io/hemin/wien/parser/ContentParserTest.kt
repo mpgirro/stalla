@@ -2,10 +2,10 @@ package io.hemin.wien.parser
 
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.builder.EpisodeBuilder
+import org.junit.Assert.assertEquals
+import org.junit.Assert.fail
 import org.junit.Test
 import org.w3c.dom.Node
-import kotlin.test.assertEquals
-import kotlin.test.fail
 
 class ContentParserTest : NamespaceParserTest() {
 
@@ -20,7 +20,7 @@ class ContentParserTest : NamespaceParserTest() {
             parse(builder, it)
             val e: Episode = builder.build()
 
-            assertEquals("Lorem Ipsum", e.contentEncoded, "content:encoded was not as expected")
+            assertEquals("Lorem Ipsum", e.contentEncoded)
         } ?: run {
             fail("item not found")
         }

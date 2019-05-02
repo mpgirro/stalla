@@ -1,9 +1,9 @@
 package io.hemin.wien.parser
 
+import org.junit.Assert.assertEquals
+import org.junit.Test
 import java.time.Instant
 import java.util.*
-import kotlin.test.Test
-import kotlin.test.assertEquals
 
 // TODO test: 2019-05-01T21:04:13.958+02:00[Europe/Vienna]
 

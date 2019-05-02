@@ -5,12 +5,10 @@ import io.hemin.wien.model.Image
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.model.builder.EpisodeBuilder
 import io.hemin.wien.model.builder.PodcastBuilder
+import org.junit.Assert.*
+import org.junit.Test
 import org.w3c.dom.Node
 import java.util.*
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNull
-import kotlin.test.fail
 
 class RssParserTest : NamespaceParserTest() {
 
@@ -44,18 +42,18 @@ class RssParserTest : NamespaceParserTest() {
             parse(builder, it)
             val p: Podcast = builder.build()
 
-            assertEquals("Lorem Ipsum", p.title, "title was not as expected")
-            assertEquals("http://example.org", p.link, "link was not as expected")
-            assertEquals("Lorem Ipsum", p.description, "description was not as expected")
-            assertEquals(expactedDate, p.pubDate, "pubDate was not as expected")
-            assertEquals(expactedDate, p.lastBuildDate, "lastBuildDate was not as expected")
-            assertEquals("de-DE", p.language, "language was not as expected")
-            assertEquals("Lorem Ipsum", p.generator, "generator was not as expected")
-            assertEquals("Lorem Ipsum", p.copyright, "copyright was not as expected")
-            assertEquals("Lorem Ipsum", p.docs, "docs was not as expected")
-            assertEquals("editor@example.org", p.managingEditor, "managingEditor was not as expected")
-            assertEquals("webmaster@example.org", p.webMaster, "webMaster was not as expected")
-            assertEquals(expectedImage, p.image, "image was not as expected")
+            assertEquals("Lorem Ipsum", p.title)
+            assertEquals("http://example.org", p.link)
+            assertEquals("Lorem Ipsum", p.description)
+            assertEquals(expactedDate, p.pubDate)
+            assertEquals(expactedDate, p.lastBuildDate)
+            assertEquals("de-DE", p.language)
+            assertEquals("Lorem Ipsum", p.generator)
+            assertEquals("Lorem Ipsum", p.copyright)
+            assertEquals("Lorem Ipsum", p.docs)
+            assertEquals("editor@example.org", p.managingEditor)
+            assertEquals("webmaster@example.org", p.webMaster)
+            assertEquals(expectedImage, p.image)
         } ?: run {
             fail("channel not found")
         }
@@ -69,7 +67,7 @@ class RssParserTest : NamespaceParserTest() {
             parse(builder, it)
             val p: Podcast = builder.build()
 
-            assertNull(p.image, "image was expacted to be null")
+            assertNull(p.image)
         } ?: run {
             fail("channel not found")
         }
@@ -82,16 +80,16 @@ class RssParserTest : NamespaceParserTest() {
             parse(builder, it)
             val e: Episode = builder.build()
 
-            assertEquals("Lorem Ipsum", e.title, "title was not as expected")
-            assertEquals("http://example.org/episode1", e.link, "link was not as expected")
-            assertEquals("Lorem Ipsum", e.description, "description was not as expected")
-            assertEquals("author@example.org", e.author, "author was not as expected")
-            assertEquals(listOf("category1","category2"), e.categories, "categories was not as expected")
-            assertEquals("http://example.org/episode1/comments", e.comments, "comments was not as expected")
-            assertEquals(expactedEnclosure, e.enclosure, "expactedEnclosure was not as expected")
-            assertEquals(expectedGuid, e.guid, "guid was not as expected")
-            assertEquals(expactedDate, e.pubDate, "pubDate was not as expected")
-            assertEquals("http://example.org/rss", e.source, "source was not as expected")
+            assertEquals("Lorem Ipsum", e.title)
+            assertEquals("http://example.org/episode1", e.link)
+            assertEquals("Lorem Ipsum", e.description)
+            assertEquals("author@example.org", e.author)
+            assertEquals(listOf("category1","category2"), e.categories)
+            assertEquals("http://example.org/episode1/comments", e.comments)
+            assertEquals(expactedEnclosure, e.enclosure)
+            assertEquals(expectedGuid, e.guid)
+            assertEquals(expactedDate, e.pubDate)
+            assertEquals("http://example.org/rss", e.source)
         } ?: run {
             fail("item not found")
         }
@@ -105,8 +103,8 @@ class RssParserTest : NamespaceParserTest() {
             parse(builder, it)
             val e: Episode = builder.build()
 
-            assertNull(e.enclosure, "enclosure was expacted to be null")
-            assertNull(e.guid, "guid was expacted to be null")
+            assertNull(e.enclosure)
+            assertNull(e.guid)
         } ?: run {
             fail("item not found")
         }

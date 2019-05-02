@@ -1,7 +1,7 @@
 package io.hemin.wien
 
-import kotlin.test.Test
-import kotlin.test.assertTrue
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
 class WienParserTest {
 
@@ -9,7 +9,7 @@ class WienParserTest {
     fun tesParse() {
         val parser = WienParser()
         parser.parse("file:///Users/max/Desktop/feeds/ukw.xml")
-        assertTrue(true, "parse(uri) should parse the XML")
+        assertTrue(true) // TODO
 
     }
 
