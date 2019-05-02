@@ -1,6 +1,6 @@
 package io.hemin.wien.model
 
-import java.time.ZonedDateTime
+import java.util.*
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<item>` elements.
@@ -26,7 +26,7 @@ data class Episode(
     val comments: String?,
     val enclosure: Episode.Enclosure?,
     val guid: String?,
-    val pubDate: ZonedDateTime?,
+    val pubDate: Date?,
     val source: String?,
     val contentEncoded: String?
 ) {

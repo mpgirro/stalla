@@ -1,7 +1,7 @@
 package io.hemin.wien.model.builder
 
 import io.hemin.wien.model.Episode
-import java.time.ZonedDateTime
+import java.util.*
 
 /** Builder class for [Episode] instances. */
 class EpisodeBuilder : Builder<Episode> {
@@ -14,7 +14,7 @@ class EpisodeBuilder : Builder<Episode> {
     private var comments: String?               = null
     private var enclosure: Episode.Enclosure?   = null
     private var guid: String?                   = null
-    private var pubDate: ZonedDateTime?         = null
+    private var pubDate: Date?         = null
     private var source: String?                 = null
     private var contentEncoded: String?         = null
 
@@ -30,6 +30,11 @@ class EpisodeBuilder : Builder<Episode> {
     /** Set the author. */
     fun author(author: String?) = apply { this.author = author }
 
+    /**
+     * Adds a comment to the list of comments.
+     *
+     * @param comment The comment to add.
+     */
     fun addCategory(category: String?) = apply {
         category?.let { this.categories.add(it) }
     }
@@ -37,13 +42,18 @@ class EpisodeBuilder : Builder<Episode> {
     /** Set the comments. */
     fun comments(comments: String?) = apply { this.comments = comments }
 
+    /**
+     * Set the enclosure data.
+     *
+     * @param enclosure The data of an `<enclosure>` element held in a [Episode.Enclosure].
+     */
     fun enclosure(enclosure: Episode.Enclosure) = apply { this.enclosure = enclosure }
 
     /** Set the GUID. */
     fun guid(guid: String?) = apply { this.guid = guid }
 
     /** Set the pubDate. */
-    fun pubDate(pubDate: ZonedDateTime?) = apply { this.pubDate = pubDate }
+    fun pubDate(pubDate: Date?) = apply { this.pubDate = pubDate }
 
     /** Set the source. */
     fun source(source: String?) = apply { this.source = source }

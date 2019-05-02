@@ -3,7 +3,7 @@ package io.hemin.wien.model.builder
 import com.google.common.collect.ImmutableList
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
-import java.time.ZonedDateTime
+import java.util.*
 
 /** Builder class for [Podcast] instances. */
 class PodcastBuilder : Builder<Podcast> {
@@ -11,8 +11,8 @@ class PodcastBuilder : Builder<Podcast> {
     private var title: String?                 = null
     private var link: String?                  = null
     private var description: String?           = null
-    private var pubDate: ZonedDateTime?        = null
-    private var lastBuildDate: ZonedDateTime?  = null
+    private var pubDate: Date?        = null
+    private var lastBuildDate: Date?  = null
     private var language: String?              = null
     private var generator: String?             = null
     private var copyright: String?             = null
@@ -31,10 +31,10 @@ class PodcastBuilder : Builder<Podcast> {
     fun description(description: String?) = apply { this.description = description }
 
     /** Set the pubDate. */
-    fun pubDate(pubDate: ZonedDateTime?) = apply { this.pubDate = pubDate }
+    fun pubDate(pubDate: Date?) = apply { this.pubDate = pubDate }
 
     /** Set the lastBuildDate. */
-    fun lastBuildDate(lastBuildDate: ZonedDateTime?) = apply { this.lastBuildDate = lastBuildDate }
+    fun lastBuildDate(lastBuildDate: Date?) = apply { this.lastBuildDate = lastBuildDate }
 
     /** Set the language. */
     fun language(language: String?) = apply { this.language = language }
@@ -54,7 +54,11 @@ class PodcastBuilder : Builder<Podcast> {
     /** Set the webMaster. */
     fun webMaster(webMaster: String?) = apply { this.webMaster = webMaster }
 
-    /** Adds an [io.hemin.wien.model.Episode] to the list of Episodes. */
+    /**
+     * Adds an [Episode] to the list of episodes.
+     *
+     * @param episode The [Episode] to add.
+     */
     fun addEpisode(episode: Episode) = apply { this.episodes.add(episode) }
 
     /**

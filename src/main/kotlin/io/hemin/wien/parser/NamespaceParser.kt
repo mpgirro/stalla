@@ -3,7 +3,7 @@ package io.hemin.wien.parser
 import io.hemin.wien.model.builder.EpisodeBuilder
 import io.hemin.wien.model.builder.PodcastBuilder
 import org.w3c.dom.Node
-import java.time.ZonedDateTime
+import java.util.*
 
 /** Interface for XML namespace parser classes. */
 interface NamespaceParser {
@@ -41,9 +41,9 @@ interface NamespaceParser {
      *
      * @return The DOM nodes content as a date object, or null if date parsing failed.
      */
-    fun toDate(node: Node): ZonedDateTime? {
+    fun toDate(node: Node): Date? {
         return try {
-            ZonedDateTime.parse(toText(node))
+            DateParser.parse(toText(node))
         }
         catch (e: Exception) {
             null
