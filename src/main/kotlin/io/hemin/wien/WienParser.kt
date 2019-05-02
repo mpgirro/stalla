@@ -7,6 +7,7 @@ import io.hemin.wien.model.builder.PodcastBuilder
 import io.hemin.wien.parser.ContentParser
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.RssParser
+import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.NodeListWrapper
 import org.w3c.dom.Document
 import org.w3c.dom.Node
@@ -54,14 +55,8 @@ class WienParser {
         }
     }
 
-    private val factory: DocumentBuilderFactory
-    private val builder: DocumentBuilder
 
-    init {
-        factory = DocumentBuilderFactory.newInstance()
-        factory.isNamespaceAware = true
-        builder = factory.newDocumentBuilder()
-    }
+    private val builder: DocumentBuilder = DomBuilderFactory.newBuilder()
 
     fun parse(uri: String) {
         val doc: Document = builder.parse(uri)
