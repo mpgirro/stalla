@@ -3,9 +3,7 @@ package io.hemin.wien.parser
 import io.hemin.wien.WienParser.Companion.toEpisode
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
-import io.hemin.wien.model.builder.EpisodeBuilder
-import io.hemin.wien.model.builder.ImageBuilder
-import io.hemin.wien.model.builder.PodcastBuilder
+import io.hemin.wien.model.builder.*
 import io.hemin.wien.util.NodeListWrapper
 import org.w3c.dom.Node
 
@@ -54,18 +52,20 @@ class RssParser : NamespaceParser {
      * @param node The DOM node representing the `<enclosure>` element.
      * @return The [Episode.Enclosure] instance with the `<enclosure>` elements data.
      */
-    fun toEnclosure(node: Node): Episode.Enclosure = Episode.Enclosure(
-        url    = attrValueByName(node, "url"),
-        length = attrValueByName(node, "length")?.toLongOrNull(),
-        type   = attrValueByName(node, "type")
-    )
+    fun toEnclosure(node: Node): Episode.Enclosure? =
+        EpisodeEnclosureBuilder()
+            .url(attributeValueByName(node, "url"))
+            .length(attributeValueByName(node, "length")?.toLongOrNull())
+            .type(attributeValueByName(node, "type"))
+            .build()
 
-    fun toGuid(node: Node): Episode.Guid = Episode.Guid(
-        value       = node.textContent,
-        isPermalink = toBoolean(attrValueByName(node, "isPermaLink"))
-    )
+    fun toGuid(node: Node): Episode.Guid? =
+      EpisodeGuidBuilder()
+          .value(node.textContent)
+          .permalink(toBoolean(attributeValueByName(node, "isPermaLink")))
+          .build()
 
-    fun toImage(node: Node): Image {
+    fun toImage(node: Node): Image? {
         val builder = ImageBuilder()
         for (child in NodeListWrapper.asList(node.childNodes)) {
             val value: String? = child.textContent

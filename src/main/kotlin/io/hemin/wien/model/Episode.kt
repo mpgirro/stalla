@@ -22,7 +22,7 @@ data class Episode(
     val link: String?,
     val description: String?,
     val author: String?, // TODO turn to Person?
-    val categories: List<String>, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
+    val categories: List<String>?, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
     val comments: String?,
     val enclosure: Episode.Enclosure?,
     val guid: Episode.Guid?,
@@ -44,7 +44,7 @@ data class Episode(
 
     data class Guid(
         val value: String?,
-        val isPermalink: Boolean?
+        val permalink: Boolean?
     )
 
 }

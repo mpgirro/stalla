@@ -58,6 +58,6 @@ interface NamespaceParser {
         else    -> null
     }
 
-    fun attrValueByName(node: Node, attrName: String): String? = node.attributes.getNamedItem(attrName).textContent
+    fun attributeValueByName(node: Node, attrName: String): String? = node.attributes.getNamedItem(attrName).textContent
 
 }

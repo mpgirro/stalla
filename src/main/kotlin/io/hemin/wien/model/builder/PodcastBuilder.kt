@@ -7,7 +7,7 @@ import io.hemin.wien.model.Podcast
 import java.util.*
 
 /** Builder class for [Podcast] instances. */
-class PodcastBuilder : Builder<Podcast> {
+class PodcastBuilder : Builder<Podcast>() {
 
     private var title: String?                 = null
     private var link: String?                  = null

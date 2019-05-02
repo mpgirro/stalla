@@ -25,7 +25,7 @@ class RssParserTest : NamespaceParserTest() {
         type   = "audio/mp4")
     val expectedGuid = Episode.Guid(
         value       = "1fa609024fdf097",
-        isPermalink = true
+        permalink = true
     )
     val expectedImage = Image(
         url         = "http://example.org/podcast-cover.jpg",

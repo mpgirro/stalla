@@ -5,7 +5,7 @@ import io.hemin.wien.model.Episode
 import java.util.*
 
 /** Builder class for [Episode] instances. */
-class EpisodeBuilder : Builder<Episode> {
+class EpisodeBuilder : Builder<Episode>() {
 
     private var title: String?                  = null
     private var link: String?                   = null
@@ -48,10 +48,10 @@ class EpisodeBuilder : Builder<Episode> {
      *
      * @param enclosure The data of an `<enclosure>` element held in a [Episode.Enclosure].
      */
-    fun enclosure(enclosure: Episode.Enclosure) = apply { this.enclosure = enclosure }
+    fun enclosure(enclosure: Episode.Enclosure?) = apply { this.enclosure = enclosure }
 
     /** Set the GUID. */
-    fun guid(guid: Episode.Guid) = apply { this.guid = guid }
+    fun guid(guid: Episode.Guid?) = apply { this.guid = guid }
 
     /** Set the pubDate. */
     fun pubDate(pubDate: Date?) = apply { this.pubDate = pubDate }
@@ -79,4 +79,5 @@ class EpisodeBuilder : Builder<Episode> {
         source         = source,
         contentEncoded = contentEncoded
     )
+
 }

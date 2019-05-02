@@ -1,14 +1,20 @@
 package io.hemin.wien.model.builder
 
 /**
- * Interface for builder classes.
+ * Base for builder implementations.
  *
  * @param T The type that a builder implementation creates instances for.
  */
-interface Builder<out T> {
+abstract class Builder<out T> {
 
-    /** Returns an instance of the type parameter created from the fields set on this builder. */
-    fun build(): T
+    /**
+     * Creates an instance of [T] with the properties set in this builder.
+     *
+     * @return The create instance.
+     */
+    abstract fun build(): T?
+
+    protected fun somePresent(vararg elements: Any?): Boolean = elements.any { p -> p != null }
 
 }
 

@@ -2,7 +2,7 @@ package io.hemin.wien.model.builder
 
 import io.hemin.wien.model.Image
 
-class ImageBuilder : Builder<Image> {
+class ImageBuilder : Builder<Image>() {
 
     private var url: String?         = null
     private var title: String?       = null
@@ -23,13 +23,18 @@ class ImageBuilder : Builder<Image> {
 
     fun description(description: String?) = apply { this.description = description }
 
-    override fun build(): Image = Image(
-        url         = url,
-        title       = title,
-        link        = link,
-        width       = width,
-        height      = height,
-        description = description
-    )
+    override fun build(): Image? {
+        return if (somePresent(url, title, link, width, height, description))
+            Image(
+                url         = url,
+                title       = title,
+                link        = link,
+                width       = width,
+                height      = height,
+                description = description
+            )
+        else
+            null
+    }
 
 }
