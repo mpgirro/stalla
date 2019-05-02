@@ -11,4 +11,5 @@
     <guid isPermaLink="true">1fa609024fdf097</guid>
     <pubDate>Fri, 16 Mar 2018 22:49:08 +0000</pubDate>
     <source>http://example.org/rss</source>
+    <content:encoded><![CDATA[Lorem Ipsum]]></content:encoded>
 </item>
