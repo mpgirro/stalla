@@ -9,6 +9,7 @@ import org.w3c.dom.Node
 import java.util.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 import kotlin.test.fail
 
 class RssParserTest : NamespaceParserTest() {
@@ -61,6 +62,20 @@ class RssParserTest : NamespaceParserTest() {
     }
 
     @Test
+    fun testChannelMissingElements() {
+        val incompleteChannel: Node? = nodeFromResource("channel", "/xml/channel-incomplete.xml")
+        incompleteChannel?.let {
+            val builder = PodcastBuilder()
+            parse(builder, it)
+            val p: Podcast = builder.build()
+
+            assertNull(p.image, "image was expacted to be null")
+        } ?: run {
+            fail("channel not found")
+        }
+    }
+
+    @Test
     fun testParseItem() {
         item?.let {
             val builder = EpisodeBuilder()
@@ -77,6 +92,21 @@ class RssParserTest : NamespaceParserTest() {
             assertEquals(expectedGuid, e.guid, "guid was not as expected")
             assertEquals(expactedDate, e.pubDate, "pubDate was not as expected")
             assertEquals("http://example.org/rss", e.source, "source was not as expected")
+        } ?: run {
+            fail("item not found")
+        }
+    }
+
+    @Test
+    fun testItemMissingElements() {
+        val incompleteItem: Node? = nodeFromResource("item", "/xml/item-incomplete.xml")
+        incompleteItem?.let {
+            val builder = EpisodeBuilder()
+            parse(builder, it)
+            val e: Episode = builder.build()
+
+            assertNull(e.enclosure, "enclosure was expacted to be null")
+            assertNull(e.guid, "guid was expacted to be null")
         } ?: run {
             fail("item not found")
         }
