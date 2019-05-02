@@ -25,7 +25,7 @@ data class Episode(
     val categories: List<String>, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
     val comments: String?,
     val enclosure: Episode.Enclosure?,
-    val guid: String?,
+    val guid: Episode.Guid?,
     val pubDate: Date?,
     val source: String?,
     val contentEncoded: String?
@@ -40,6 +40,11 @@ data class Episode(
         val url: String?,
         val length: Long?,
         val type: String?
+    )
+
+    data class Guid(
+        val value: String?,
+        val isPermalink: Boolean?
     )
 
 }

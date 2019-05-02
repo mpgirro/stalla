@@ -49,4 +49,15 @@ interface NamespaceParser {
             null
         }
     }
+
+    fun toBoolean(sBool: String?) = when(sBool) {
+        "true"  -> true
+        "yes"   -> true
+        "false" -> false
+        "no"    -> false
+        else    -> null
+    }
+
+    fun attrValueByName(node: Node, attrName: String): String? = node.attributes.getNamedItem(attrName).textContent
+
 }

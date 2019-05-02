@@ -18,10 +18,14 @@ class RssParserTest : NamespaceParserTest() {
     val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
     val expactedDate: Date? = DateParser.parse("Fri, 16 Mar 2018 22:49:08 +0000")
-    val expactedEnclosure: Episode.Enclosure = Episode.Enclosure(
+    val expactedEnclosure = Episode.Enclosure(
         url    = "http://example.org/episode1.m4a",
         length = 78589133,
         type   = "audio/mp4")
+    val expectedGuid = Episode.Guid(
+        value       = "1fa609024fdf097",
+        isPermalink = true
+    )
 
     @Test
     fun testParseChannel() {
@@ -60,7 +64,7 @@ class RssParserTest : NamespaceParserTest() {
             assertEquals(listOf("category1","category2"), e.categories, "categories was not as expected")
             assertEquals("http://example.org/episode1/comments", e.comments, "comments was not as expected")
             assertEquals(expactedEnclosure, e.enclosure, "expactedEnclosure was not as expected")
-            assertEquals("1fa609024fdf097", e.guid, "guid was not as expected")
+            assertEquals(expectedGuid, e.guid, "guid was not as expected")
             assertEquals(expactedDate, e.pubDate, "pubDate was not as expected")
             assertEquals("http://example.org/rss", e.source, "source was not as expected")
         } ?: run {

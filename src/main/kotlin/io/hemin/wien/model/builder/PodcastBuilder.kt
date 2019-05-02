@@ -11,8 +11,8 @@ class PodcastBuilder : Builder<Podcast> {
     private var title: String?                 = null
     private var link: String?                  = null
     private var description: String?           = null
-    private var pubDate: Date?        = null
-    private var lastBuildDate: Date?  = null
+    private var pubDate: Date?                 = null
+    private var lastBuildDate: Date?           = null
     private var language: String?              = null
     private var generator: String?             = null
     private var copyright: String?             = null

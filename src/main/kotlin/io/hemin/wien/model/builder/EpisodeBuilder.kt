@@ -1,5 +1,6 @@
 package io.hemin.wien.model.builder
 
+import com.google.common.collect.ImmutableList
 import io.hemin.wien.model.Episode
 import java.util.*
 
@@ -13,8 +14,8 @@ class EpisodeBuilder : Builder<Episode> {
     private val categories: MutableList<String> = mutableListOf()
     private var comments: String?               = null
     private var enclosure: Episode.Enclosure?   = null
-    private var guid: String?                   = null
-    private var pubDate: Date?         = null
+    private var guid: Episode.Guid?             = null
+    private var pubDate: Date?                  = null
     private var source: String?                 = null
     private var contentEncoded: String?         = null
 
@@ -50,7 +51,7 @@ class EpisodeBuilder : Builder<Episode> {
     fun enclosure(enclosure: Episode.Enclosure) = apply { this.enclosure = enclosure }
 
     /** Set the GUID. */
-    fun guid(guid: String?) = apply { this.guid = guid }
+    fun guid(guid: Episode.Guid) = apply { this.guid = guid }
 
     /** Set the pubDate. */
     fun pubDate(pubDate: Date?) = apply { this.pubDate = pubDate }
@@ -70,7 +71,7 @@ class EpisodeBuilder : Builder<Episode> {
         link           = link,
         description    = description,
         author         = author,
-        categories     = categories,
+        categories     = ImmutableList.copyOf(categories),
         comments       = comments,
         enclosure      = enclosure,
         guid           = guid,

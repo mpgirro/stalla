@@ -2,7 +2,6 @@ package io.hemin.wien.parser
 
 import io.hemin.wien.WienParser.Companion.toEpisode
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.builder.EnclosureBuilder
 import io.hemin.wien.model.builder.EpisodeBuilder
 import io.hemin.wien.model.builder.PodcastBuilder
 import org.w3c.dom.Node
@@ -38,7 +37,7 @@ class RssParser : NamespaceParser {
             "category"    -> episode.addCategory(toText(node))
             "comments"    -> episode.comments(toText(node))
             "enclosure"   -> episode.enclosure(toEnclosure(node))
-            "guid"        -> episode.guid(toText(node))
+            "guid"        -> episode.guid(toGuid(node))             // TODO <guid> can have a isPermanent attribute -> parse also!
             "pubDate"     -> episode.pubDate(toDate(node))
             "source"      -> episode.source(toText(node))
         }
@@ -51,13 +50,15 @@ class RssParser : NamespaceParser {
      * @param node The DOM node representing the `<enclosure>` element.
      * @return The [Episode.Enclosure] instance with the `<enclosure>` elements data.
      */
-    fun toEnclosure(node: Node): Episode.Enclosure {
-        fun value(name: String): String? = node.attributes.getNamedItem(name).textContent
-        return EnclosureBuilder()
-            .url(value("url"))
-            .length(value("length")?.toLongOrNull())
-            .type(value("type"))
-            .build()
-    }
+    fun toEnclosure(node: Node): Episode.Enclosure = Episode.Enclosure(
+        url    = attrValueByName(node, "url"),
+        length = attrValueByName(node, "length")?.toLongOrNull(),
+        type   = attrValueByName(node, "type")
+    )
+
+    fun toGuid(node: Node): Episode.Guid = Episode.Guid(
+        value       = node.textContent,
+        isPermalink = toBoolean(attrValueByName(node, "isPermaLink"))
+    )
 
 }
