@@ -39,8 +39,8 @@ class RssParserTest : NamespaceParserTest() {
             assertEquals("Lorem Ipsum", p.generator, "generator was not as expected")
             assertEquals("Lorem Ipsum", p.copyright, "copyright was not as expected")
             assertEquals("Lorem Ipsum", p.docs, "docs was not as expected")
-            assertEquals("editor@example.com", p.managingEditor, "managingEditor was not as expected")
-            assertEquals("webmaster@example.com", p.webMaster, "webMaster was not as expected")
+            assertEquals("editor@example.org", p.managingEditor, "managingEditor was not as expected")
+            assertEquals("webmaster@example.org", p.webMaster, "webMaster was not as expected")
         } ?: run {
             fail("channel not found")
         }
@@ -56,10 +56,13 @@ class RssParserTest : NamespaceParserTest() {
             assertEquals("Lorem Ipsum", e.title, "title was not as expected")
             assertEquals("http://example.org/episode1", e.link, "link was not as expected")
             assertEquals("Lorem Ipsum", e.description, "description was not as expected")
-            assertEquals(expactedDate, e.pubDate, "pubDate was not as expected")
-            assertEquals("1fa609024fdf097", e.guid, "guid was not as expected")
+            assertEquals("author@example.org", e.author, "author was not as expected")
+            assertEquals(listOf("category1","category2"), e.categories, "categories was not as expected")
+            assertEquals("http://example.org/episode1/comments", e.comments, "comments was not as expected")
             assertEquals(expactedEnclosure, e.enclosure, "expactedEnclosure was not as expected")
-            // TODO more fields
+            assertEquals("1fa609024fdf097", e.guid, "guid was not as expected")
+            assertEquals(expactedDate, e.pubDate, "pubDate was not as expected")
+            assertEquals("http://example.org/rss", e.source, "source was not as expected")
         } ?: run {
             fail("item not found")
         }
