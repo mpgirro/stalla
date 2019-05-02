@@ -5,14 +5,19 @@ import io.hemin.wien.model.Image
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.model.builder.EpisodeBuilder
 import io.hemin.wien.model.builder.PodcastBuilder
-import org.junit.Assert.*
-import org.junit.Test
+import io.hemin.wien.util.DomBuilderFactory
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 import java.util.*
+import javax.xml.parsers.DocumentBuilder
 
-class RssParserTest : NamespaceParserTest() {
+class RssParserTest : NamespaceParserTest {
 
     override val parser = RssParser()
+    override val domBuilder: DocumentBuilder = DomBuilderFactory.newBuilder()
 
     val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
     val item: Node? = nodeFromResource("item", "/xml/item.xml")

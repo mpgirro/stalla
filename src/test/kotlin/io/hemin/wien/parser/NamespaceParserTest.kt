@@ -2,15 +2,16 @@ package io.hemin.wien.parser
 
 import io.hemin.wien.model.builder.EpisodeBuilder
 import io.hemin.wien.model.builder.PodcastBuilder
-import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.NodeListWrapper
 import org.w3c.dom.Document
 import org.w3c.dom.Node
 import javax.xml.parsers.DocumentBuilder
 
-abstract class NamespaceParserTest {
+interface NamespaceParserTest {
 
-    abstract val parser: NamespaceParser
+    val parser: NamespaceParser
+
+    val domBuilder: DocumentBuilder
 
     fun parse(builder: PodcastBuilder, channel: Node) {
         for (element in NodeListWrapper.asList(channel.childNodes)) {
@@ -24,9 +25,7 @@ abstract class NamespaceParserTest {
         }
     }
 
-    protected val domBuilder: DocumentBuilder = DomBuilderFactory.newBuilder()
-
-    protected fun nodeFromResource(elementName: String, filePath: String): Node? {
+    fun nodeFromResource(elementName: String, filePath: String): Node? {
         val xml = this.javaClass.getResource(filePath)
         val doc: Document = domBuilder.parse(xml.openStream())
 

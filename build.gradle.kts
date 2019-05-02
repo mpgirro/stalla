@@ -13,10 +13,16 @@ plugins {
 group = "io.hemin"
 version = "0.0.1"
 
+val junitVersion = "5.4.2"
+
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 
 dependencies {
@@ -25,9 +31,8 @@ dependencies {
 
     compile("com.google.guava:guava:27.1-jre")
 
-    // Use the Kotlin test library.
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
-
-    // Use the Kotlin JUnit integration.
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    // Use JUnit 5.
+    testCompile("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testCompile("org.junit.jupiter:junit-jupiter-params:$junitVersion")
+    runtime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }

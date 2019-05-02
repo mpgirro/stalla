@@ -1,7 +1,7 @@
 package io.hemin.wien
 
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
 
 class WienParserTest {
 
@@ -10,7 +10,6 @@ class WienParserTest {
         val parser = WienParser()
         parser.parse("file:///Users/max/Desktop/feeds/ukw.xml")
         assertTrue(true) // TODO
-
     }
 
 }
