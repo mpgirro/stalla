@@ -4,7 +4,7 @@ import io.hemin.wien.model.Episode
 
 class EpisodeGuidBuilder : Builder<Episode.Guid>() {
 
-    private var value: String? = null
+    private var value: String?      = null
     private var permalink: Boolean? = null
 
     fun value(value: String?) = apply { this.value = value }
@@ -12,7 +12,7 @@ class EpisodeGuidBuilder : Builder<Episode.Guid>() {
     fun permalink(permalink: Boolean?) = apply { this.permalink = permalink }
 
     override fun build(): Episode.Guid? {
-        return if (somePresent(value, permalink))
+        return if (anyNotNull(value, permalink))
             Episode.Guid(
                 value     = value,
                 permalink = permalink

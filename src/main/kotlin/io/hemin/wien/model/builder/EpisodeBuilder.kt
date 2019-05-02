@@ -44,13 +44,13 @@ class EpisodeBuilder : Builder<Episode>() {
     fun comments(comments: String?) = apply { this.comments = comments }
 
     /**
-     * Set the enclosure data.
+     * Set the Enclosure.
      *
      * @param enclosure The data of an `<enclosure>` element held in a [Episode.Enclosure].
      */
     fun enclosure(enclosure: Episode.Enclosure?) = apply { this.enclosure = enclosure }
 
-    /** Set the GUID. */
+    /** Set the Guid. */
     fun guid(guid: Episode.Guid?) = apply { this.guid = guid }
 
     /** Set the pubDate. */

@@ -14,7 +14,9 @@ abstract class Builder<out T> {
      */
     abstract fun build(): T?
 
-    protected fun somePresent(vararg elements: Any?): Boolean = elements.any { p -> p != null }
+    protected fun allNotNull(vararg elements: Any?): Boolean = elements.all { p -> p != null }
+
+    protected fun anyNotNull(vararg elements: Any?): Boolean = elements.any { p -> p != null }
 
 }
 

@@ -24,7 +24,7 @@ class ImageBuilder : Builder<Image>() {
     fun description(description: String?) = apply { this.description = description }
 
     override fun build(): Image? {
-        return if (somePresent(url, title, link, width, height, description))
+        return if (anyNotNull(url, title, link, width, height, description))
             Image(
                 url         = url,
                 title       = title,
