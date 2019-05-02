@@ -14,6 +14,9 @@
     <image>
         <url>http://example.org/podcast-cover.jpg</url>
         <title>Lorem Ipsum</title>
-        <link>Lorem Ipsum</link>
+        <link>http://example.org</link>
+        <width>600</width>
+        <height>600</height>
+        <description>Lorem Ipsum</description>
     </image>
 </channel>

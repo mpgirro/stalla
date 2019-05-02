@@ -1,6 +1,7 @@
 package io.hemin.wien.parser
 
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Image
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.model.builder.EpisodeBuilder
 import io.hemin.wien.model.builder.PodcastBuilder
@@ -26,6 +27,14 @@ class RssParserTest : NamespaceParserTest() {
         value       = "1fa609024fdf097",
         isPermalink = true
     )
+    val expectedImage = Image(
+        url         = "http://example.org/podcast-cover.jpg",
+        title       = "Lorem Ipsum",
+        link        = "http://example.org",
+        width       = 600,
+        height      = 600,
+        description = "Lorem Ipsum"
+    )
 
     @Test
     fun testParseChannel() {
@@ -45,6 +54,7 @@ class RssParserTest : NamespaceParserTest() {
             assertEquals("Lorem Ipsum", p.docs, "docs was not as expected")
             assertEquals("editor@example.org", p.managingEditor, "managingEditor was not as expected")
             assertEquals("webmaster@example.org", p.webMaster, "webMaster was not as expected")
+            assertEquals(expectedImage, p.image, "image was not as expected")
         } ?: run {
             fail("channel not found")
         }

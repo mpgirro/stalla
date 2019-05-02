@@ -2,8 +2,11 @@ package io.hemin.wien.parser
 
 import io.hemin.wien.WienParser.Companion.toEpisode
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Image
 import io.hemin.wien.model.builder.EpisodeBuilder
+import io.hemin.wien.model.builder.ImageBuilder
 import io.hemin.wien.model.builder.PodcastBuilder
+import io.hemin.wien.util.NodeListWrapper
 import org.w3c.dom.Node
 
 /** Parser implementation for the RSS namespace. */
@@ -24,6 +27,7 @@ class RssParser : NamespaceParser {
             "docs"           -> podcast.docs(toText(node))
             "managingEditor" -> podcast.managingEditor(toText(node))
             "webMaster"      -> podcast.webMaster(toText(node))
+            "image"          -> podcast.image(toImage(node))
             "item"           -> podcast.addEpisode(toEpisode(node))
         }
     }
@@ -60,5 +64,22 @@ class RssParser : NamespaceParser {
         value       = node.textContent,
         isPermalink = toBoolean(attrValueByName(node, "isPermaLink"))
     )
+
+    fun toImage(node: Node): Image {
+        val builder = ImageBuilder()
+        for (child in NodeListWrapper.asList(node.childNodes)) {
+            val value: String? = child.textContent
+            when(child.localName) {
+                "url"         -> builder.url(value)
+                "title"       -> builder.title(value)
+                "link"        -> builder.link(value)
+                "width"       -> builder.width(value?.toInt())
+                "height"      -> builder.height(value?.toInt())
+                "description" -> builder.description(value)
+
+            }
+        }
+        return builder.build()
+    }
 
 }

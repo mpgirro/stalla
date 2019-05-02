@@ -2,6 +2,7 @@ package io.hemin.wien.model.builder
 
 import com.google.common.collect.ImmutableList
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Image
 import io.hemin.wien.model.Podcast
 import java.util.*
 
@@ -19,6 +20,7 @@ class PodcastBuilder : Builder<Podcast> {
     private var docs: String?                  = null
     private var managingEditor: String?        = null
     private var webMaster: String?             = null
+    private var image: Image?                  = null
     private val episodes: MutableList<Episode> = mutableListOf()
 
     /** Set the title. */
@@ -54,6 +56,8 @@ class PodcastBuilder : Builder<Podcast> {
     /** Set the webMaster. */
     fun webMaster(webMaster: String?) = apply { this.webMaster = webMaster }
 
+    fun image(image: Image?) = apply { this.image = image }
+
     /**
      * Adds an [Episode] to the list of episodes.
      *
@@ -78,6 +82,7 @@ class PodcastBuilder : Builder<Podcast> {
         docs           = docs,
         managingEditor = managingEditor,
         webMaster      = webMaster,
+        image          = image,
         episodes       = ImmutableList.copyOf(episodes)
     )
 }

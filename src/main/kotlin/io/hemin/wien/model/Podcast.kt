@@ -30,6 +30,6 @@ data class Podcast(
     val docs: String?,
     val managingEditor: String?,
     val webMaster: String?,
-    //val image: Image?, // TODO
+    val image: Image?,
     val episodes: List<Episode>
 )
