@@ -1,7 +1,7 @@
 package io.hemin.wien.parser
 
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.builder.EpisodeBuilder
+import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.util.DomBuilderFactory
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test

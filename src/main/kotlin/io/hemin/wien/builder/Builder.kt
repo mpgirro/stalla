@@ -1,4 +1,4 @@
-package io.hemin.wien.model.builder
+package io.hemin.wien.builder
 
 /**
  * Interface for builder implementations.

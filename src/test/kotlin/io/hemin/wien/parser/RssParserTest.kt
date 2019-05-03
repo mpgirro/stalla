@@ -3,8 +3,8 @@ package io.hemin.wien.parser
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
 import io.hemin.wien.model.Podcast
-import io.hemin.wien.model.builder.EpisodeBuilder
-import io.hemin.wien.model.builder.PodcastBuilder
+import io.hemin.wien.builder.EpisodeBuilder
+import io.hemin.wien.builder.PodcastBuilder
 import io.hemin.wien.util.DomBuilderFactory
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull

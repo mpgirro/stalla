@@ -1,7 +1,7 @@
 package io.hemin.wien.parser
 
-import io.hemin.wien.model.builder.EpisodeBuilder
-import io.hemin.wien.model.builder.PodcastBuilder
+import io.hemin.wien.builder.EpisodeBuilder
+import io.hemin.wien.builder.PodcastBuilder
 import org.w3c.dom.Node
 
 /**

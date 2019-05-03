@@ -1,4 +1,4 @@
-package io.hemin.wien.model.builder
+package io.hemin.wien.builder
 
 import com.google.common.collect.ImmutableList
 import io.hemin.wien.model.Episode

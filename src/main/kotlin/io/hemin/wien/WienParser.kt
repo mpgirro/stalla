@@ -2,8 +2,8 @@ package io.hemin.wien
 
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
-import io.hemin.wien.model.builder.EpisodeBuilder
-import io.hemin.wien.model.builder.PodcastBuilder
+import io.hemin.wien.builder.EpisodeBuilder
+import io.hemin.wien.builder.PodcastBuilder
 import io.hemin.wien.parser.ContentParser
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.RssParser
@@ -13,7 +13,6 @@ import org.w3c.dom.Document
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import javax.xml.parsers.DocumentBuilder
-import javax.xml.parsers.DocumentBuilderFactory
 
 class WienParser {
 
