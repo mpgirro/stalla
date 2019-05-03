@@ -28,7 +28,8 @@ data class Episode(
     val guid: Episode.Guid?,
     val pubDate: Date?,
     val source: String?,
-    val contentEncoded: String?
+    val contentEncoded: String?,
+    val itunes: Episode.Itunes?
 ) {
 
     /**
@@ -53,6 +54,18 @@ data class Episode(
     data class Guid(
         val textContent: String?,
         val isPermalink: Boolean?
+    )
+
+
+    data class Itunes(
+        val title: String?,
+        val duration: String?,
+        val image: Image?,
+        val explicit: Boolean?,
+        val block: Boolean?,
+        val season: Int?,
+        val episode: Int?,
+        val episodeType: String?
     )
 
 }

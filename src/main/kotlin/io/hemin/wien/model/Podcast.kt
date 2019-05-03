@@ -32,5 +32,22 @@ data class Podcast(
     val managingEditor: String?,
     val webMaster: String?,
     val image: Image?,
-    val episodes: List<Episode>
-)
+    val episodes: List<Episode>,
+    val itunes: Podcast.Itunes?
+) {
+
+    data class Itunes(
+        val subtitle: String?,
+        val summary: String?,
+        val image: Image?,
+        val keywords: String?,
+        val author: String?, // TODO can this be a list? is this a Person() ?
+        val categories: List<String?>, // TODO can be nested, Category() required?
+        val explicit: Boolean?,
+        val block: Boolean?,
+        val complete: Boolean?,
+        val type: String?,
+        val owner: Person?
+    )
+
+}

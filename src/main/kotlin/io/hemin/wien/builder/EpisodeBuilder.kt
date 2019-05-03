@@ -19,6 +19,8 @@ class EpisodeBuilder : Builder<Episode> {
     private var source: String?                 = null
     private var contentEncoded: String?         = null
 
+    val itunes: EpisodeItunesBuilder = EpisodeItunesBuilder()
+
     /** Set the title. */
     fun title(title: String?) = apply { this.title = title }
 
@@ -78,7 +80,8 @@ class EpisodeBuilder : Builder<Episode> {
         guid           = guid,
         pubDate        = pubDate,
         source         = source,
-        contentEncoded = contentEncoded
+        contentEncoded = contentEncoded,
+        itunes         = itunes.build()
     )
 
 }

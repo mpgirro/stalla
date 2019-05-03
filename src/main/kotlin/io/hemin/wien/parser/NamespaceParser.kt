@@ -1,15 +1,18 @@
 package io.hemin.wien.parser
 
 import io.hemin.wien.builder.EpisodeBuilder
+import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.PodcastBuilder
+import io.hemin.wien.model.Image
+import io.hemin.wien.util.NodeListWrapper
 import org.w3c.dom.Node
 import java.util.*
 
-/** Interface for XML namespace parser classes. */
-interface NamespaceParser {
+/** Base class for XML namespace parser implementations. */
+abstract class NamespaceParser {
 
     /** The URI of the namespace processed by this parser. */
-    val namespaceURI: String?
+    abstract val namespaceURI: String?
 
     /**
      * Extracts data from the XML namespace defined by [namespaceURI]
@@ -18,7 +21,13 @@ interface NamespaceParser {
      * @param podcast The builder  where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    fun parse(podcast: PodcastBuilder, node: Node)
+    fun parse(podcast: PodcastBuilder, node: Node) {
+        if (node.namespaceURI == namespaceURI) {
+            parseImpl(podcast, node)
+        }
+    }
+
+    protected abstract fun parseImpl(podcast: PodcastBuilder, node: Node)
 
     /**
      * Extracts data from the XML namespace defined by [namespaceURI]
@@ -27,7 +36,13 @@ interface NamespaceParser {
      * @param episode The builder  where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    fun parse(episode: EpisodeBuilder, node: Node)
+    fun parse(episode: EpisodeBuilder, node: Node) {
+        if (node.namespaceURI == namespaceURI) {
+            parseImpl(episode, node)
+        }
+    }
+
+    protected abstract fun parseImpl(episode: EpisodeBuilder, node: Node)
 
     /**
      * Extracts the text content of a DOM node. Trims whitespace at the beginning and the end.
@@ -37,9 +52,9 @@ interface NamespaceParser {
     fun toText(node: Node): String? = node.textContent.trim()
 
     /**
-     * Extracts the text content of a DOM node, and transforms it to a Date object.
+     * Extracts the text content of a DOM node, and transforms it to a Date instance.
      *
-     * @return The DOM nodes content as a date object, or null if date parsing failed.
+     * @return The DOM nodes content as a Date, or null if date parsing failed.
      */
     fun toDate(node: Node): Date? {
         return try {
@@ -65,6 +80,21 @@ interface NamespaceParser {
     }
 
     /**
+     * Interprets a DOM node's stringcontent as a boolean.
+     * If the textContent cannot be recognizes, null is returned.
+     *
+     * @return The logical interpretation of the DOM node's text content.
+     */
+    fun toBoolean(node: Node): Boolean? = toBoolean(toText(node))
+
+    /**
+     * Extracts the text content of a DOM node, and transforms it to an Int instance.
+     *
+     * @return The DOM nodes content as an Int, or null if conversion failed.
+     */
+    fun toInt(node: Node): Int? = toText(node)?.toIntOrNull()
+
+    /**
      * Extract the textContent of a DOM node attribute identified by name.
      *
      * @param node The DOM node with the attribute.
@@ -72,6 +102,6 @@ interface NamespaceParser {
      * @return The textContent of the node's attribute.
      */
     fun attributeValueByName(node: Node, attrName: String): String? =
-        node.attributes.getNamedItem(attrName).textContent.trim()
+        node?.attributes?.getNamedItem(attrName)?.textContent?.trim()
 
 }

@@ -5,6 +5,7 @@ import io.hemin.wien.model.Podcast
 import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.builder.PodcastBuilder
 import io.hemin.wien.parser.ContentParser
+import io.hemin.wien.parser.ItunesParser
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.RssParser
 import io.hemin.wien.util.DomBuilderFactory
@@ -20,7 +21,8 @@ class WienParser {
 
         private val parsers: List<NamespaceParser> = listOf(
             RssParser(),
-            ContentParser()
+            ContentParser(),
+            ItunesParser()
         )
 
         /** Transforms a DOM node into a [Podcast] instance. */

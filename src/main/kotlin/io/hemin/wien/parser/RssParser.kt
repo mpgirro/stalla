@@ -8,12 +8,12 @@ import io.hemin.wien.util.NodeListWrapper
 import org.w3c.dom.Node
 
 /** Parser implementation for the RSS namespace. */
-class RssParser : NamespaceParser {
+class RssParser : NamespaceParser() {
 
     /** Standard RSS elements do not have a namespace. This value is therefore null. */
     override val namespaceURI: String? = null
 
-    override fun parse(podcast: PodcastBuilder, node: Node) {
+    override fun parseImpl(podcast: PodcastBuilder, node: Node) {
         when (node.localName) {
             "title"          -> podcast.title(toText(node))
             "link"           -> podcast.link(toText(node))
@@ -31,7 +31,7 @@ class RssParser : NamespaceParser {
         }
     }
 
-    override fun parse(episode: EpisodeBuilder, node: Node) {
+    override fun parseImpl(episode: EpisodeBuilder, node: Node) {
         when (node.localName) {
             "title"       -> episode.title(toText(node))
             "link"        -> episode.link(toText(node))
@@ -72,25 +72,26 @@ class RssParser : NamespaceParser {
             .build()
 
     /**
-     * Transforms an RSS `<image>` element into an instance of its model class.
+     * Transforms an RSS `<image>` element into an instance of the [Image] model class.
      *
-     * @param node The DOM node representing the `<enclosure>` element.
+     * @param node The DOM node representing the `<image>` element.
      * @return The [Image] instance with the `<image>` elements data, or null if all data was empty.
      */
     fun toImage(node: Node): Image? {
         val builder = ImageBuilder()
         for (child in NodeListWrapper.asList(node.childNodes)) {
-            val value: String? = toText(child)
             when(child.localName) {
-                "url"         -> builder.url(value)
-                "title"       -> builder.title(value)
-                "link"        -> builder.link(value)
-                "width"       -> builder.width(value?.toInt())
-                "height"      -> builder.height(value?.toInt())
-                "description" -> builder.description(value)
+                "url"         -> builder.url(toText(child))
+                "title"       -> builder.title(toText(child))
+                "link"        -> builder.link(toText(child))
+                "width"       -> builder.width(toInt(child))
+                "height"      -> builder.height(toInt(child))
+                "description" -> builder.description(toText(child))
             }
         }
-        return builder.build()
+        val result = builder.build()
+        return result
+   //     return builder.build()
     }
 
 }

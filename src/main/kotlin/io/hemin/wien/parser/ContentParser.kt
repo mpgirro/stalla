@@ -9,7 +9,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://purl.org/rss/1.0/modules/content/`
  */
-class ContentParser : NamespaceParser {
+class ContentParser : NamespaceParser() {
 
     /**
      * The URI of the namespace processed by this parser.
@@ -19,9 +19,9 @@ class ContentParser : NamespaceParser {
     override val namespaceURI: String? = "http://purl.org/rss/1.0/modules/content/"
 
     /** This module does not set any data in the [PodcastBuilder]. */
-    override fun parse(podcast: PodcastBuilder, node: Node) { }
+    override fun parseImpl(podcast: PodcastBuilder, node: Node) { }
 
-    override fun parse(episode: EpisodeBuilder, node: Node) {
+    override fun parseImpl(episode: EpisodeBuilder, node: Node) {
         when (node.localName) {
             "encoded" -> episode.contentEncoded(toText(node))
         }

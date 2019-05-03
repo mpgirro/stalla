@@ -23,6 +23,8 @@ class PodcastBuilder : Builder<Podcast> {
     private var image: Image?                  = null
     private val episodes: MutableList<Episode> = mutableListOf()
 
+    val itunes: PodcastItunesBuilder   = PodcastItunesBuilder()
+
     /** Set the title. */
     fun title(title: String?) = apply { this.title = title }
 
@@ -84,6 +86,7 @@ class PodcastBuilder : Builder<Podcast> {
         managingEditor = managingEditor,
         webMaster      = webMaster,
         image          = image,
-        episodes       = ImmutableList.copyOf(episodes)
+        episodes       = ImmutableList.copyOf(episodes),
+        itunes         = itunes.build()
     )
 }
