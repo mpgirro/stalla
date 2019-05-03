@@ -56,6 +56,7 @@ class PodcastBuilder : Builder<Podcast> {
     /** Set the webMaster. */
     fun webMaster(webMaster: String?) = apply { this.webMaster = webMaster }
 
+    /** Set the Image. */
     fun image(image: Image?) = apply { this.image = image }
 
     /**

@@ -11,8 +11,8 @@ import java.util.*
  * @property author The RSS `<author>` field textContent
  * @property categories List of RSS `<category>` field textContent.
  * @property comments The RSS `<comments>` field textContent.
- * @property enclosure The RSS `<enclosure>` element attributes wrapped in a [Episode.Enclosure] instance.
- * @property guid The RSS `<guid>` field textContent.
+ * @property enclosure The RSS `<enclosure>` element attributes wrapped in an [Episode.Enclosure] instance.
+ * @property guid The RSS `<guid>` element wrapped in an [Episode.Guid] instance.
  * @property pubDate The RSS `<pubDate>` field textContent.
  * @property source The RSS `<source>` field textContent.
  * @property contentEncoded The `<content:enclosure>` element textContent of the Content namespace.

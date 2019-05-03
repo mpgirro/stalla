@@ -16,6 +16,7 @@ import java.util.*
  * @property docs The RSS `<docs>` field textContent.
  * @property managingEditor The RSS `<managingEditor>` field textContent.
  * @property webMaster The RSS `<webMaster>` field textContent.
+ * @property image The RSS `<image>` element wrapped in an [Image] instance.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
  */
 data class Podcast(
