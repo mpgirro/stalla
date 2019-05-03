@@ -50,6 +50,12 @@ interface NamespaceParser {
         }
     }
 
+    /**
+     * Interprets a string's content as a boolean. If the textContent cannot be recognizes, null is returned.
+     *
+     * @param sBool The string representation of a boolean.
+     * @return The logical interpretation of the string parameter.
+     */
     fun toBoolean(sBool: String?) = when(sBool) {
         "true"  -> true
         "yes"   -> true
@@ -58,6 +64,14 @@ interface NamespaceParser {
         else    -> null
     }
 
-    fun attributeValueByName(node: Node, attrName: String): String? = node.attributes.getNamedItem(attrName).textContent
+    /**
+     * Extract the textContent of a DOM node attribute identified by name.
+     *
+     * @param node The DOM node with the attribute.
+     * @param attrName The name of the node's attribute.
+     * @return The textContent of the node's attribute.
+     */
+    fun attributeValueByName(node: Node, attrName: String): String? =
+        node.attributes.getNamedItem(attrName).textContent.trim()
 
 }

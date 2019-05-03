@@ -5,7 +5,7 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 class DomBuilderFactory {
 
-    companion object {
+    companion object Factory {
         private val factory = DomBuilderFactory()
         fun newBuilder(): DocumentBuilder = factory.newBuilder()
     }

@@ -10,6 +10,7 @@ import org.w3c.dom.Node
 /** Parser implementation for the RSS namespace. */
 class RssParser : NamespaceParser {
 
+    /** Standard RSS elements do not have a namespace. This value is therefore null. */
     override val namespaceURI: String? = null
 
     override fun parse(podcast: PodcastBuilder, node: Node) {
@@ -39,18 +40,17 @@ class RssParser : NamespaceParser {
             "category"    -> episode.addCategory(toText(node))
             "comments"    -> episode.comments(toText(node))
             "enclosure"   -> episode.enclosure(toEnclosure(node))
-            "guid"        -> episode.guid(toGuid(node))             // TODO <guid> can have a isPermanent attribute -> parse also!
+            "guid"        -> episode.guid(toGuid(node))
             "pubDate"     -> episode.pubDate(toDate(node))
             "source"      -> episode.source(toText(node))
         }
     }
 
     /**
-     * Extracts the data from an RSS `<enclosure>` element. All expected
-     * attributes are contained within an [Episode.Enclosure] instance.
+     * Transforms an RSS `<enclosure>` element into an instance of its model class.
      *
      * @param node The DOM node representing the `<enclosure>` element.
-     * @return The [Episode.Enclosure] instance with the `<enclosure>` elements data.
+     * @return The [Episode.Enclosure] instance with the `<enclosure>` elements data, or null if all data was empty.
      */
     fun toEnclosure(node: Node): Episode.Enclosure? =
         EpisodeEnclosureBuilder()
@@ -59,16 +59,28 @@ class RssParser : NamespaceParser {
             .type(attributeValueByName(node, "type"))
             .build()
 
+    /**
+     * Transforms an RSS `<guid>` element into an instance of its model class.
+     *
+     * @param node The DOM node representing the `<guid>` element.
+     * @return The [Episode.Guid] instance with the `<guid>` elements data, or null if all data was empty.
+     */
     fun toGuid(node: Node): Episode.Guid? =
-      EpisodeGuidBuilder()
-          .value(node.textContent)
-          .permalink(toBoolean(attributeValueByName(node, "isPermaLink")))
-          .build()
+        EpisodeGuidBuilder()
+            .textContent(toText(node))
+            .isPermalink(toBoolean(attributeValueByName(node, "isPermaLink")))
+            .build()
 
+    /**
+     * Transforms an RSS `<image>` element into an instance of its model class.
+     *
+     * @param node The DOM node representing the `<enclosure>` element.
+     * @return The [Image] instance with the `<image>` elements data, or null if all data was empty.
+     */
     fun toImage(node: Node): Image? {
         val builder = ImageBuilder()
         for (child in NodeListWrapper.asList(node.childNodes)) {
-            val value: String? = child.textContent
+            val value: String? = toText(child)
             when(child.localName) {
                 "url"         -> builder.url(value)
                 "title"       -> builder.title(value)
@@ -76,7 +88,6 @@ class RssParser : NamespaceParser {
                 "width"       -> builder.width(value?.toInt())
                 "height"      -> builder.height(value?.toInt())
                 "description" -> builder.description(value)
-
             }
         }
         return builder.build()

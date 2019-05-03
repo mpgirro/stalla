@@ -4,6 +4,11 @@ import java.text.ParsePosition
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * Parser implementation for transforming date strings to date objects.
+ * Various formats are supported. This class attempts to find the correct
+ * format to produce the intended date object.
+ */
 class DateParser {
 
     companion object {
