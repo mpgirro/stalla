@@ -5,17 +5,17 @@ import java.util.*
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<channel>` elements.
  *
- * @property title The RSS `<title>` field value.
- * @property link The RSS `<link>` field value.
- * @property description The RSS `<description>` field value.
- * @property pubDate The RSS `<pubDate>` field value.
- * @property lastBuildDate The RSS `<lastBuildDate>` field value.
- * @property language The RSS `<language>` field value.
- * @property generator The RSS `<generator>` field value.
- * @property copyright The RSS `<copyright>` field value.
- * @property docs The RSS `<docs>` field value.
- * @property managingEditor The RSS `<managingEditor>` field value.
- * @property webMaster The RSS `<webMaster>` field value.
+ * @property title The RSS `<title>` field textContent.
+ * @property link The RSS `<link>` field textContent.
+ * @property description The RSS `<description>` field textContent.
+ * @property pubDate The RSS `<pubDate>` field textContent.
+ * @property lastBuildDate The RSS `<lastBuildDate>` field textContent.
+ * @property language The RSS `<language>` field textContent.
+ * @property generator The RSS `<generator>` field textContent.
+ * @property copyright The RSS `<copyright>` field textContent.
+ * @property docs The RSS `<docs>` field textContent.
+ * @property managingEditor The RSS `<managingEditor>` field textContent.
+ * @property webMaster The RSS `<webMaster>` field textContent.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
  */
 data class Podcast(
