@@ -5,7 +5,7 @@ import io.hemin.wien.model.Episode
 import java.util.*
 
 /** Builder class for [Episode] instances. */
-class EpisodeBuilder : Builder<Episode>() {
+class EpisodeBuilder : Builder<Episode> {
 
     private var title: String?                  = null
     private var link: String?                   = null
@@ -59,6 +59,7 @@ class EpisodeBuilder : Builder<Episode>() {
     /** Set the source. */
     fun source(source: String?) = apply { this.source = source }
 
+    /** Set the encoded textContent of the Content namespace. */
     fun contentEncoded(contentEncoded: String?) = apply { this.contentEncoded = contentEncoded }
 
     /**

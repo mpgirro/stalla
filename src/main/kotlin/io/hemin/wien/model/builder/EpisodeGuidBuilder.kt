@@ -1,21 +1,25 @@
 package io.hemin.wien.model.builder
 
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.builder.Builder.Companion.anyNotNull
 
-class EpisodeGuidBuilder : Builder<Episode.Guid>() {
+/** Builder class for [Episode.Guid] instances. */
+class EpisodeGuidBuilder : Builder<Episode.Guid> {
 
-    private var value: String?      = null
-    private var permalink: Boolean? = null
+    private var textContent: String?      = null
+    private var isPermalink: Boolean? = null
 
-    fun value(value: String?) = apply { this.value = value }
+    /** Set the textContent. */
+    fun textContent(textContent: String?) = apply { this.textContent = textContent }
 
-    fun permalink(permalink: Boolean?) = apply { this.permalink = permalink }
+    /** Set the isPermalink. */
+    fun isPermalink(isPermalink: Boolean?) = apply { this.isPermalink = isPermalink }
 
     override fun build(): Episode.Guid? {
-        return if (anyNotNull(value, permalink))
+        return if (anyNotNull(textContent, isPermalink))
             Episode.Guid(
-                value     = value,
-                permalink = permalink
+                textContent = textContent,
+                isPermalink = isPermalink
             )
         else null
     }
