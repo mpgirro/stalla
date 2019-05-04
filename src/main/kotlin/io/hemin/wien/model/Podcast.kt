@@ -18,6 +18,7 @@ import java.util.*
  * @property webMaster The RSS `<webMaster>` field textContent.
  * @property image The RSS `<image>` element wrapped in an [Image] instance.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
+ * @property itunes The data from elements from the iTunes namespace.
  */
 data class Podcast(
     val title: String?,
@@ -36,6 +37,21 @@ data class Podcast(
     val itunes: Podcast.Itunes?
 ) {
 
+    /**
+     * Model class for data from the iTunes namespace valid within an RSS `<channel>`.
+     *
+     * @property subtitle The `<itunes:subtitle>` field text content.
+     * @property summary The `<itunes:summary>` field text content.
+     * @property image The data from the `<itunes:image>` element as an [Image].
+     * @property keywords The `<itunes:keywords>` field text content.
+     * @property author The `<itunes:author>` field text content.
+     * @property categories The list of `<itunes:category>` element's field text contents.
+     * @property explicit The logical value of the `<itunes:explicit>` field's text content.
+     * @property block The logical value of the `<itunes:block>` field's text content.
+     * @property complete The logical value of the `<itunes:complete>` field's text content.
+     * @property type The `<itunes:type>` field text content.
+     * @property owner The `<itunes:owner>` elements data as a [Person].
+     */
     data class Itunes(
         val subtitle: String?,
         val summary: String?,

@@ -10,8 +10,18 @@ import io.hemin.wien.util.NodeListWrapper
 import io.hemin.wien.util.NodeListWrapper.Companion.asList
 import org.w3c.dom.Node
 
+/**
+ * Parser implementation for the iTunes namespace.
+ *
+ * The namespace URI is: `http://www.itunes.com/dtds/podcast-1.0.dtd`
+ */
 class ItunesParser : NamespaceParser() {
 
+    /**
+     * The URI of the namespace processed by this parser.
+     *
+     * URI: `http://www.itunes.com/dtds/podcast-1.0.dtd`
+     */
     override val namespaceURI: String? = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 
     override fun parseImpl(builder: PodcastBuilder, node: Node) {
@@ -61,6 +71,12 @@ class ItunesParser : NamespaceParser() {
         }
     }
 
+    /**
+     * Transforms an <itunes:owner>` element into an instance of the [Image] model class.
+     *
+     * @param node The DOM node representing the `<itunes:owner>` element.
+     * @return The [Image] instance with the `<itunes:owner>` elements data, or null if all data was empty.
+     */
     fun toPerson(node: Node): Person? {
         val builder = PersonBuilder()
         for (child in asList(node.childNodes)) {

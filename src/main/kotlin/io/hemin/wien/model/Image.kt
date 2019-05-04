@@ -1,14 +1,14 @@
 package io.hemin.wien.model
 
 /**
- * Model class for Image.
+ * Model class for elements describing images.
  *
- * @property url The url of an RSS `<image>`.
- * @property title The url of an RSS `<image>`.
- * @property link The url of an RSS `<image>`.
- * @property width The url of an RSS `<image>`.
- * @property height The url of an RSS `<image>`.
- * @property description The url of an RSS `<image>`.
+ * @property url The value of an RSS `<url>` element inside an `<image>`.
+ * @property title The value of an RSS `<title>` element inside an `<image>`.
+ * @property link The value of an RSS `<link>` element inside an `<image>`.
+ * @property width The numeric value of an RSS `<width>` element inside an `<image>` element.
+ * @property height The numeric value of an RSS `<height>` element inside an `<image>` element.
+ * @property description The value of an RSS `<description>` element inside an `<image>`.
  */
 data class Image(
     val url: String?,

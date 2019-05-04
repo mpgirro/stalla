@@ -3,6 +3,7 @@ package io.hemin.wien.builder
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
 
+/** Builder class for [Episode.Itunes] instances. */
 class EpisodeItunesBuilder : Builder<Episode.Itunes> {
 
     private var title: String?       = null
@@ -14,20 +15,28 @@ class EpisodeItunesBuilder : Builder<Episode.Itunes> {
     private var episode: Int?        = null
     private var episodeType: String? = null
 
+    /** Set the title. */
     fun title(title: String?) = apply { this.title = title }
 
+    /** Set the duration. */
     fun duration(duration: String?) = apply { this.duration = duration }
 
+    /** Set the Image. */
     fun image(image: Image?) = apply { this.image = image }
 
+    /** Set the explicit flag. */
     fun explicit(explicit: Boolean?) = apply { this.explicit = explicit }
 
+    /** Set the block flag. */
     fun block(block: Boolean?) = apply { this.block = block }
 
+    /** Set the season. */
     fun season(season: Int?) = apply { this.season = season }
 
+    /** Set the episode. */
     fun episode(episode: Int?) = apply { this.episode = episode }
 
+    /** Set the episodeType. */
     fun episodeType(episodeType: String?) = apply { this.episodeType = episodeType }
 
     override fun build(): Episode.Itunes? {

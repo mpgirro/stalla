@@ -16,6 +16,7 @@ import java.util.*
  * @property pubDate The RSS `<pubDate>` field textContent.
  * @property source The RSS `<source>` field textContent.
  * @property contentEncoded The `<content:enclosure>` element textContent of the Content namespace.
+ * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
  */
 data class Episode(
     val title: String?,
@@ -56,7 +57,18 @@ data class Episode(
         val isPermalink: Boolean?
     )
 
-
+    /**
+     * Model class for data from elements the iTunes namespace that are valid within `<item>` elements.
+     *
+     * @property title The `<itunes:title>` field text content.
+     * @property duration The `<itunes:duration>` field text content.
+     * @property image The data from the `<itunes:image>` element as an [Image].
+     * @property explicit The logical value of the `<itunes:explicit>` field's text content.
+     * @property block The logical value of the `<itunes:block>` field's text content.
+     * @property season The numeric value of the `<itunes:season>` field's text content.
+     * @property episode The numeric value of the `<itunes:episode>` field's text content.
+     * @property episodeType The `<itunes:episodeType>` field text content.
+     */
     data class Itunes(
         val title: String?,
         val duration: String?,

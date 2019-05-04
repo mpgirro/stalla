@@ -23,7 +23,8 @@ class PodcastBuilder : Builder<Podcast> {
     private var image: Image?                  = null
     private val episodes: MutableList<Episode> = mutableListOf()
 
-    val itunes: PodcastItunesBuilder   = PodcastItunesBuilder()
+    /** The builder for data from the iTunes namespace. */
+    val itunes: PodcastItunesBuilder = PodcastItunesBuilder()
 
     /** Set the title. */
     fun title(title: String?) = apply { this.title = title }
