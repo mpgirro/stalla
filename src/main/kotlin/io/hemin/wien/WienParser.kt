@@ -14,6 +14,9 @@ import io.hemin.wien.util.NodeListWrapper.Companion.asList
 import org.w3c.dom.Document
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
+import org.xml.sax.InputSource
+import java.io.File
+import java.io.InputStream
 import javax.xml.parsers.DocumentBuilder
 
 class WienParser {
@@ -29,45 +32,49 @@ class WienParser {
         /** Transforms a DOM node into a [Podcast] instance. */
         fun toPodcast(node: Node): Podcast {
             val builder = PodcastBuilder()
-
-            for (child in asList(node.childNodes)) {
+            for (element in asList(node.childNodes)) {
                 for (parser in parsers) {
-                    if (parser.namespaceURI.equals(child.namespaceURI)) {
-                        parser.parse(builder, child)
+                    if (parser.namespaceURI.equals(element.namespaceURI)) {
+                        parser.parse(builder, element)
                     }
                 }
             }
-
             return builder.build()
         }
 
         /** Transforms a DOM node into a [Episode] instance. */
         fun toEpisode(node: Node): Episode {
             val builder = EpisodeBuilder()
-
-            for (child in asList(node.childNodes)) {
+            for (element in asList(node.childNodes)) {
                 for (parser in parsers) {
-                    if (parser.namespaceURI.equals(child.namespaceURI)) {
-                        parser.parse(builder, child)
+                    if (parser.namespaceURI.equals(element.namespaceURI)) {
+                        parser.parse(builder, element)
                     }
                 }
             }
-
             return builder.build()
         }
     }
 
-
     private val builder: DocumentBuilder = DomBuilderFactory.newBuilder()
 
-    fun parse(uri: String) {
-        val doc: Document = builder.parse(uri)
-        walk(doc)
-    }
+    fun parse(uri: String) = parse(builder.parse(uri))
 
-    private fun walk(doc: Document) {
-        walkChildren(doc.childNodes)
-    }
+    fun parse(inputStream: InputStream) = parse(builder.parse(inputStream))
+
+    /**
+     * TODO
+     *
+     * @param inputStream InputStream containing the content to be parsed.
+     * @param systemId Provide a base for resolving relative URIs.
+     */
+    fun parse(inputStream: InputStream, systemId: String) = parse(builder.parse(inputStream, systemId))
+
+    fun parse(file: File) = parse(builder.parse(file))
+
+    fun parse(inputSource: InputSource) = parse(builder.parse(inputSource))
+
+    fun parse(doc: Document) = walkChildren(doc.childNodes)
 
     private fun walk(n: Node) {
 
