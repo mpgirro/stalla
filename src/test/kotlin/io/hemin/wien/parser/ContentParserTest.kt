@@ -17,7 +17,7 @@ class ContentParserTest : NamespaceParserTest {
     val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
     @Test
-    fun testParseContent() {
+    fun testParseItemContent() {
         item?.let {
             val builder = EpisodeBuilder()
             parse(builder, it)

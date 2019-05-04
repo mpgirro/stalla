@@ -13,36 +13,36 @@ class RssParser : NamespaceParser() {
     /** Standard RSS elements do not have a namespace. This value is therefore null. */
     override val namespaceURI: String? = null
 
-    override fun parseImpl(podcast: PodcastBuilder, node: Node) {
+    override fun parseImpl(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "title"          -> podcast.title(toText(node))
-            "link"           -> podcast.link(toText(node))
-            "description"    -> podcast.description(toText(node))
-            "pubDate"        -> podcast.pubDate(toDate(node))
-            "lastBuildDate"  -> podcast.lastBuildDate(toDate(node))
-            "language"       -> podcast.language(toText(node))
-            "generator"      -> podcast.generator(toText(node))
-            "copyright"      -> podcast.copyright(toText(node))
-            "docs"           -> podcast.docs(toText(node))
-            "managingEditor" -> podcast.managingEditor(toText(node))
-            "webMaster"      -> podcast.webMaster(toText(node))
-            "image"          -> podcast.image(toImage(node))
-            "item"           -> podcast.addEpisode(toEpisode(node))
+            "title"          -> builder.title(toText(node))
+            "link"           -> builder.link(toText(node))
+            "description"    -> builder.description(toText(node))
+            "pubDate"        -> builder.pubDate(toDate(node))
+            "lastBuildDate"  -> builder.lastBuildDate(toDate(node))
+            "language"       -> builder.language(toText(node))
+            "generator"      -> builder.generator(toText(node))
+            "copyright"      -> builder.copyright(toText(node))
+            "docs"           -> builder.docs(toText(node))
+            "managingEditor" -> builder.managingEditor(toText(node))
+            "webMaster"      -> builder.webMaster(toText(node))
+            "image"          -> builder.image(toImage(node))
+            "item"           -> builder.addEpisode(toEpisode(node))
         }
     }
 
-    override fun parseImpl(episode: EpisodeBuilder, node: Node) {
+    override fun parseImpl(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
-            "title"       -> episode.title(toText(node))
-            "link"        -> episode.link(toText(node))
-            "description" -> episode.description(toText(node))
-            "author"      -> episode.author(toText(node))
-            "category"    -> episode.addCategory(toText(node))
-            "comments"    -> episode.comments(toText(node))
-            "enclosure"   -> episode.enclosure(toEnclosure(node))
-            "guid"        -> episode.guid(toGuid(node))
-            "pubDate"     -> episode.pubDate(toDate(node))
-            "source"      -> episode.source(toText(node))
+            "title"       -> builder.title(toText(node))
+            "link"        -> builder.link(toText(node))
+            "description" -> builder.description(toText(node))
+            "author"      -> builder.author(toText(node))
+            "category"    -> builder.addCategory(toText(node))
+            "comments"    -> builder.comments(toText(node))
+            "enclosure"   -> builder.enclosure(toEnclosure(node))
+            "guid"        -> builder.guid(toGuid(node))
+            "pubDate"     -> builder.pubDate(toDate(node))
+            "source"      -> builder.source(toText(node))
         }
     }
 
@@ -89,9 +89,7 @@ class RssParser : NamespaceParser() {
                 "description" -> builder.description(toText(child))
             }
         }
-        val result = builder.build()
-        return result
-   //     return builder.build()
+        return builder.build()
     }
 
 }

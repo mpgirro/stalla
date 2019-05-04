@@ -13,32 +13,32 @@ class ItunesParser : NamespaceParser() {
 
     override val namespaceURI: String? = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 
-    override fun parseImpl(podcast: PodcastBuilder, node: Node) {
+    override fun parseImpl(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "subtitle"   -> podcast.itunes.subtitle(toText(node))
-            "summary"    -> podcast.itunes.summary(toText(node))
-            "image"      -> podcast.itunes.image(toImage(node))
-            "keywords"   -> podcast.itunes.keywords(toText(node))
-            "author"     -> podcast.itunes.author(toText(node))
-            "categories" -> podcast.itunes.addCategory(toText(node))
-            "explicit"   -> podcast.itunes.explicit(toBoolean(node))
-            "block"      -> podcast.itunes.block(toBoolean(node))
-            "complete"   -> podcast.itunes.complete(toBoolean(node))
-            "type"       -> podcast.itunes.type(toText(node))
-            "owner"      -> podcast.itunes.owner(toPerson(node))
+            "subtitle"   -> builder.itunes.subtitle(toText(node))
+            "summary"    -> builder.itunes.summary(toText(node))
+            "image"      -> builder.itunes.image(toImage(node))
+            "keywords"   -> builder.itunes.keywords(toText(node))
+            "author"     -> builder.itunes.author(toText(node))
+            "categories" -> builder.itunes.addCategory(toText(node))
+            "explicit"   -> builder.itunes.explicit(toBoolean(node))
+            "block"      -> builder.itunes.block(toBoolean(node))
+            "complete"   -> builder.itunes.complete(toBoolean(node))
+            "type"       -> builder.itunes.type(toText(node))
+            "owner"      -> builder.itunes.owner(toPerson(node))
         }
     }
 
-    override fun parseImpl(episode: EpisodeBuilder, node: Node) {
+    override fun parseImpl(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
-            "title"       -> episode.itunes.title(toText(node))
-            "duration"    -> episode.itunes.duration(toText(node))
-            "image"       -> episode.itunes.image(toImage(node))
-            "explicit"    -> episode.itunes.explicit(toBoolean(node))
-            "block"       -> episode.itunes.block(toBoolean(node))
-            "season"      -> episode.itunes.season(toInt(node))
-            "episode"     -> episode.itunes.episode(toInt(node))
-            "episodeType" -> episode.itunes.episodeType(toText(node))
+            "title"       -> builder.itunes.title(toText(node))
+            "duration"    -> builder.itunes.duration(toText(node))
+            "image"       -> builder.itunes.image(toImage(node))
+            "explicit"    -> builder.itunes.explicit(toBoolean(node))
+            "block"       -> builder.itunes.block(toBoolean(node))
+            "season"      -> builder.itunes.season(toInt(node))
+            "builder"     -> builder.itunes.episode(toInt(node))
+            "episodeType" -> builder.itunes.episodeType(toText(node))
         }
     }
 

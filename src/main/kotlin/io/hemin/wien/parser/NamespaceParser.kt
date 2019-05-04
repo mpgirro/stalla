@@ -1,10 +1,7 @@
 package io.hemin.wien.parser
 
 import io.hemin.wien.builder.EpisodeBuilder
-import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.PodcastBuilder
-import io.hemin.wien.model.Image
-import io.hemin.wien.util.NodeListWrapper
 import org.w3c.dom.Node
 import java.util.*
 
@@ -18,31 +15,32 @@ abstract class NamespaceParser {
      * Extracts data from the XML namespace defined by [namespaceURI]
      * and applies the values to properties of the [PodcastBuilder].
      *
-     * @param podcast The builder  where all parsed data is added to.
+     * @param builder The builder  where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    fun parse(podcast: PodcastBuilder, node: Node) {
+    fun parse(builder: PodcastBuilder, node: Node) {
         if (node.namespaceURI == namespaceURI) {
-            parseImpl(podcast, node)
+            parseImpl(builder, node)
         }
     }
-
-    protected abstract fun parseImpl(podcast: PodcastBuilder, node: Node)
 
     /**
      * Extracts data from the XML namespace defined by [namespaceURI]
      * and applies the values to properties of the [EpisodeBuilder].
      *
-     * @param episode The builder  where all parsed data is added to.
+     * @param builder The builder  where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    fun parse(episode: EpisodeBuilder, node: Node) {
+    fun parse(builder: EpisodeBuilder, node: Node) {
         if (node.namespaceURI == namespaceURI) {
-            parseImpl(episode, node)
+            parseImpl(builder, node)
         }
     }
 
-    protected abstract fun parseImpl(episode: EpisodeBuilder, node: Node)
+    // These are the actual parsing implementations; the public
+    // versions are for namespace safeguarding only
+    protected abstract fun parseImpl(builder: PodcastBuilder, node: Node)
+    protected abstract fun parseImpl(builder: EpisodeBuilder, node: Node)
 
     /**
      * Extracts the text content of a DOM node. Trims whitespace at the beginning and the end.
