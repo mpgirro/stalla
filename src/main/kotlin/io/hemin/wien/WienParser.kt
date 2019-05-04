@@ -29,6 +29,13 @@ class WienParser {
             ItunesParser()
         )
 
+        /** Set of all XML namespaces supported when parsing documents. */
+        val supportedNamespaces: Set<String> =
+            parsers
+                .map { p -> p.namespaceURI }
+                .mapNotNull { n -> n }
+                .toSet()
+
         /** Transforms a DOM node into a [Podcast] instance. */
         fun toPodcast(node: Node): Podcast {
             val builder = PodcastBuilder()
