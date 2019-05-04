@@ -100,6 +100,6 @@ abstract class NamespaceParser {
      * @return The textContent of the node's attribute.
      */
     fun attributeValueByName(node: Node, attrName: String): String? =
-        node?.attributes?.getNamedItem(attrName)?.textContent?.trim()
+        node.attributes?.getNamedItem(attrName)?.textContent?.trim()
 
 }

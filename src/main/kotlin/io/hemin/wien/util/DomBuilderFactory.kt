@@ -22,10 +22,10 @@ class DomBuilderFactory {
         fun newBuilder(): DocumentBuilder = factory.newBuilder()
     }
 
-    private val factory: DocumentBuilderFactory
+    private val factory: DocumentBuilderFactory = DocumentBuilderFactory.newInstance()
 
     init {
-        factory = DocumentBuilderFactory.newInstance()
+        // Apply the required configuration
         factory.isNamespaceAware = true
     }
 

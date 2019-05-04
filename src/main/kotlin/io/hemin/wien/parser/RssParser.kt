@@ -5,6 +5,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
 import io.hemin.wien.builder.*
 import io.hemin.wien.util.NodeListWrapper
+import io.hemin.wien.util.NodeListWrapper.Companion.asList
 import org.w3c.dom.Node
 
 /** Parser implementation for the RSS namespace. */
@@ -79,7 +80,7 @@ class RssParser : NamespaceParser() {
      */
     fun toImage(node: Node): Image? {
         val builder = ImageBuilder()
-        for (child in NodeListWrapper.asList(node.childNodes)) {
+        for (child in asList(node.childNodes)) {
             when(child.localName) {
                 "url"         -> builder.url(toText(child))
                 "title"       -> builder.title(toText(child))

@@ -21,7 +21,8 @@ class EpisodeGuidBuilder : Builder<Episode.Guid> {
                 textContent = textContent,
                 isPermalink = isPermalink
             )
-        else null
+        else
+            null
     }
 
 

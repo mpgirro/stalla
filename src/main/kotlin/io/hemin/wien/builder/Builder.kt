@@ -18,9 +18,9 @@ interface Builder<out T> {
     }
 
     /**
-     * Creates an instance of [T] with the properties set in this builder.
+     * Creates a model instance with the properties set in this builder.
      *
-     * @return The create instance.
+     * @return The created model instance.
      */
     fun build(): T?
 
