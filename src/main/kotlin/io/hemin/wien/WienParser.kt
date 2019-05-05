@@ -95,42 +95,35 @@ class WienParser {
 
     fun parse(inputSource: InputSource) = parse(builder.parse(inputSource))
 
-    fun parse(doc: Document) = walkChildren(doc.childNodes)
+    fun parse(doc: Document): Podcast? = findRssChannel(doc)?.let { toPodcast(it) }
 
-    private fun walk(n: Node) {
+    private fun findRssChannel(doc: Document): Node? = findRssChannel(doc.childNodes)
 
-        when (Pair(n.namespaceURI, n.localName)) {
-            Pair(null, "rss") -> {
-                // we expect a <channel> next
-                when (n.childNodes.length) {
-                    0 ->
-                        println("<rss> has no child nodes")
-                    1 ->
-                        walk(n.firstChild)
-                    else ->
-                        //println("<rss> has multiple (as in unexpected) child nodes")
-                        walkChildren(n.childNodes)
+    private fun findRssChannel(node: Node): Node? {
+        return if (node.namespaceURI == null) {
+            when (node.localName) {
+                "rss" -> {
+                    if (node.childNodes.length <= 0) {
+                        null
+                    } else {
+                        findRssChannel(node.childNodes)
+                    }
                 }
+                "channel" ->
+                    node
+                else ->
+                    null
             }
-
-            Pair(null, "channel") -> {
-                val p: Podcast? = toPodcast(n)
-                println("Parsing produces Podcast: $p")
-            }
-
-            else -> {
-                //println("Unexpected n :: uri=${n.namespaceURI} , localName=${n.localName} , nodeName=${n.nodeName} , textContent=${n.textContent.trim()}")
-            }
-        }
-
-    }
-
-    private fun walkChildren(nodes: NodeList) = walkChildren(NodeListWrapper.asList(nodes))
-
-    private fun walkChildren(nodes: List<Node>) {
-        for (n in nodes) {
-            walk(n)
+        } else {
+            null
         }
     }
 
+    private fun findRssChannel(nodes: NodeList): Node? {
+        return asList(nodes)
+            .map { n -> findRssChannel(n) }
+            .filter { n -> n != null }
+            .first()
+    }
+    
 }

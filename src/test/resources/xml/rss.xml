@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~files/feed-premium.xsl"?>
+<rss version="2.0">
+    <channel>
+        <title>Lorem Ipsum</title>
+        <link>http://example.org</link>
+        <description>Lorem Ipsum</description>
+        <item>
+            <title>Lorem Ipsum</title>
+            <link>http://example.org/episode1</link>
+            <description><![CDATA[Lorem Ipsum]]></description>
+            <enclosure url="http://example.org/episode1.m4a" length="78589133" type="audio/mp4" />
+        </item>
+        <item>
+            <title>Lorem Ipsum</title>
+            <link>http://example.org/episode2</link>
+            <description><![CDATA[Lorem Ipsum]]></description>
+            <enclosure url="http://example.org/episode2.m4a" length="78589133" type="audio/mp4" />
+        </item>
+    </channel>
+</rss>

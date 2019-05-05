@@ -1,24 +1,27 @@
 package io.hemin.wien
 
+import io.hemin.wien.util.DomBuilderFactory
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.w3c.dom.Document
 import org.w3c.dom.Node
 import javax.xml.parsers.DocumentBuilderFactory
 
 class WienParserTest {
 
-    val dbf = DocumentBuilderFactory.newInstance()
-    val builder = dbf.newDocumentBuilder()
-    val doc = builder.newDocument()
+    val rss: Document
 
-    fun createRssNode(localName: String): Node = doc.createElementNS(null, localName)
-
-    @Test
-    fun tesParse() {
-        val parser = WienParser()
-        parser.parse("file:///Users/max/Desktop/feeds/ukw.xml")
-        assertTrue(true) // TODO
+    init {
+        val domBuilder = DomBuilderFactory.newBuilder()
+        val xml = this.javaClass.getResource("/xml/rss.xml")
+        rss = domBuilder.parse(xml.openStream())
     }
+
+    fun createRssNode(localName: String): Node = DocumentBuilderFactory
+        .newInstance()
+        .newDocumentBuilder()
+        .newDocument()
+        .createElementNS(null, localName)
 
     @Test
     fun testRssChannelNodeCheck() {
@@ -30,6 +33,12 @@ class WienParserTest {
     fun testRssItemNodeCheck() {
         assertNotNull(WienParser.toEpisode(createRssNode("item")))
         assertNull(WienParser.toEpisode(createRssNode("foo")))
+    }
+
+    @Test
+    fun testParse() {
+        val parser = WienParser()
+        assertNotNull(parser.parse(rss))
     }
 
 }
