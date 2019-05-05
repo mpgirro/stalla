@@ -41,7 +41,7 @@ class WienParser {
          * if the node is an RSS `<rss>`.
          */
         fun toPodcast(node: Node): Podcast? {
-            return if (node.namespaceURI == null && node.localName == "rss") {
+            return if (node.namespaceURI == null && node.localName == "channel") {
                 val builder = PodcastBuilder()
                 for (element in asList(node.childNodes)) {
                     for (parser in parsers) {
