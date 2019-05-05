@@ -20,11 +20,12 @@ abstract class NamespaceParser {
      * @param builder The builder  where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    fun parse(builder: PodcastBuilder, node: Node) {
-        if (node.namespaceURI == namespaceURI) {
-            parseImpl(builder, node)
-        }
+    fun parse(builder: PodcastBuilder, node: Node) = ensure(node) {
+        parseChannel(builder, node)
     }
+
+    /** The actual namespace parsing implementation for an RSS `<channel>`. */
+    protected abstract fun parseChannel(builder: PodcastBuilder, node: Node)
 
     /**
      * Extracts data from the XML namespace defined by [namespaceURI]
@@ -35,17 +36,12 @@ abstract class NamespaceParser {
      * @param builder The builder  where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    fun parse(builder: EpisodeBuilder, node: Node) {
-        if (node.namespaceURI == namespaceURI) {
-            parseImpl(builder, node)
-        }
+    fun parse(builder: EpisodeBuilder, node: Node) = ensure(node) {
+        parseItem(builder, node)
     }
 
-    /** The actual namespace parsing implementation. */
-    protected abstract fun parseImpl(builder: PodcastBuilder, node: Node)
-
-    /** The actual namespace parsing implementation. */
-    protected abstract fun parseImpl(builder: EpisodeBuilder, node: Node)
+    /** The actual namespace parsing implementation for an RSS `<item>`. */
+    protected abstract fun parseItem(builder: EpisodeBuilder, node: Node)
 
     /**
      * Extracts the text content of a DOM node. Trims whitespace at the beginning and the end.
@@ -106,5 +102,11 @@ abstract class NamespaceParser {
      */
     fun attributeValueByName(node: Node, attrName: String): String? =
         node.attributes?.getNamedItem(attrName)?.textContent?.trim()
+
+    private fun ensure(node: Node, block: () -> Unit) {
+        if (node.namespaceURI == this.namespaceURI) {
+            block()
+        }
+    }
 
 }

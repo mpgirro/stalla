@@ -18,7 +18,7 @@ import java.util.*
  * @property webMaster The RSS `<webMaster>` field textContent.
  * @property image The RSS `<image>` element wrapped in an [Image] instance.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
- * @property itunes The data from elements from the iTunes namespace.
+ * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
  */
 data class Podcast(
     val title: String?,

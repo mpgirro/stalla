@@ -20,7 +20,7 @@ class RssParser : NamespaceParser() {
     /** Standard RSS 2.0 elements do not have a namespace. This value is therefore null. */
     override val namespaceURI: String? = null
 
-    override fun parseImpl(builder: PodcastBuilder, node: Node) {
+    override fun parseChannel(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
             "title"          -> builder.title(toText(node))
             "link"           -> builder.link(toText(node))
@@ -38,7 +38,7 @@ class RssParser : NamespaceParser() {
         }
     }
 
-    override fun parseImpl(builder: EpisodeBuilder, node: Node) {
+    override fun parseItem(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
             "title"       -> builder.title(toText(node))
             "link"        -> builder.link(toText(node))

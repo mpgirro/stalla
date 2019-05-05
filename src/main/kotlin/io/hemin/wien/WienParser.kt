@@ -41,20 +41,14 @@ class WienParser {
          * @param node The RSS element that must be an `<channel>`.
          * @return The [Episode] if the node is an `<channel>`, otherwise null.
          */
-        fun toPodcast(node: Node): Podcast? {
-            return if (node.namespaceURI == null && node.localName == "channel") {
-                val builder = PodcastBuilder()
-                for (element in asList(node.childNodes)) {
-                    for (parser in parsers) {
-                        if (parser.namespaceURI.equals(element.namespaceURI)) {
-                            parser.parse(builder, element)
-                        }
-                    }
+        fun toPodcast(node: Node): Podcast? = ensure("channel", node) {
+            val builder = PodcastBuilder()
+            for (element in asList(node.childNodes)) {
+                for (parser in parsers) {
+                    parser.parse(builder, element)
                 }
-                builder.build()
-            } else {
-                null
             }
+            builder.build()
         }
 
         /**
@@ -63,17 +57,19 @@ class WienParser {
          * @param node The RSS element that must be an `<item>`.
          * @return The [Episode] if the node is an `<item>`, otherwise null.
          */
-        fun toEpisode(node: Node): Episode? {
-            return if (node.namespaceURI == null && node.localName == "item") {
-                val builder = EpisodeBuilder()
-                for (element in asList(node.childNodes)) {
-                    for (parser in parsers) {
-                        if (parser.namespaceURI.equals(element.namespaceURI)) {
-                            parser.parse(builder, element)
-                        }
-                    }
+        fun toEpisode(node: Node): Episode? = ensure("item", node) {
+            val builder = EpisodeBuilder()
+            for (element in asList(node.childNodes)) {
+                for (parser in parsers) {
+                    parser.parse(builder, element)
                 }
-                builder.build()
+            }
+            builder.build()
+        }
+
+        private fun <T> ensure(elementName: String?, node: Node, block: () -> T): T? {
+            return if (node.namespaceURI == null && node.namespaceURI == elementName) {
+                block()
             } else {
                 null
             }
@@ -138,6 +134,12 @@ class WienParser {
 
     private fun findRssChannel(doc: Document): Node? = findRssChannel(doc.childNodes)
 
+    private fun findRssChannel(nodes: NodeList): Node? {
+        return asList(nodes)
+            .map { n -> findRssChannel(n) }
+            .first { n -> n != null }
+    }
+
     private fun findRssChannel(node: Node): Node? {
         return if (node.namespaceURI == null) {
             when (node.localName) {
@@ -158,10 +160,4 @@ class WienParser {
         }
     }
 
-    private fun findRssChannel(nodes: NodeList): Node? {
-        return asList(nodes)
-            .map { n -> findRssChannel(n) }
-            .first { n -> n != null }
-    }
-    
 }
