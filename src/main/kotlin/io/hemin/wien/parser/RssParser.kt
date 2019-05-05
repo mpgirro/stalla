@@ -22,34 +22,35 @@ class RssParser : NamespaceParser() {
 
     override fun parseChannel(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "title"          -> builder.title(toText(node))
-            "link"           -> builder.link(toText(node))
-            "description"    -> builder.description(toText(node))
-            "pubDate"        -> builder.pubDate(toDate(node))
-            "lastBuildDate"  -> builder.lastBuildDate(toDate(node))
-            "language"       -> builder.language(toText(node))
-            "generator"      -> builder.generator(toText(node))
             "copyright"      -> builder.copyright(toText(node))
+            "description"    -> builder.description(toText(node))
             "docs"           -> builder.docs(toText(node))
-            "managingEditor" -> builder.managingEditor(toText(node))
-            "webMaster"      -> builder.webMaster(toText(node))
+            "generator"      -> builder.generator(toText(node))
             "image"          -> builder.image(toImage(node))
             "item"           -> builder.addEpisode(toEpisode(node))
+            "language"       -> builder.language(toText(node))
+            "lastBuildDate"  -> builder.lastBuildDate(toDate(node))
+            "link"           -> builder.link(toText(node))
+            "managingEditor" -> builder.managingEditor(toText(node))
+            "pubDate"        -> builder.pubDate(toDate(node))
+            "title"          -> builder.title(toText(node))
+            "webMaster"      -> builder.webMaster(toText(node))
+
         }
     }
 
     override fun parseItem(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
-            "title"       -> builder.title(toText(node))
-            "link"        -> builder.link(toText(node))
-            "description" -> builder.description(toText(node))
             "author"      -> builder.author(toText(node))
             "category"    -> builder.addCategory(toText(node))
             "comments"    -> builder.comments(toText(node))
+            "description" -> builder.description(toText(node))
             "enclosure"   -> builder.enclosure(toEnclosure(node))
             "guid"        -> builder.guid(toGuid(node))
+            "link"        -> builder.link(toText(node))
             "pubDate"     -> builder.pubDate(toDate(node))
             "source"      -> builder.source(toText(node))
+            "title"       -> builder.title(toText(node))
         }
     }
 
@@ -88,12 +89,12 @@ class RssParser : NamespaceParser() {
         val builder = ImageBuilder()
         for (child in asList(node.childNodes)) {
             when(child.localName) {
-                "url"         -> builder.url(toText(child))
-                "title"       -> builder.title(toText(child))
-                "link"        -> builder.link(toText(child))
-                "width"       -> builder.width(toInt(child))
-                "height"      -> builder.height(toInt(child))
                 "description" -> builder.description(toText(child))
+                "height"      -> builder.height(toInt(child))
+                "link"        -> builder.link(toText(child))
+                "title"       -> builder.title(toText(child))
+                "url"         -> builder.url(toText(child))
+                "width"       -> builder.width(toInt(child))
             }
         }
         return builder.build()

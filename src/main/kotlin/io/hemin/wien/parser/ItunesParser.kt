@@ -26,30 +26,30 @@ class ItunesParser : NamespaceParser() {
 
     override fun parseChannel(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "subtitle"   -> builder.itunes.subtitle(toText(node))
-            "summary"    -> builder.itunes.summary(toText(node))
+            "author"     -> builder.itunes.author(toText(node))
+            "block"      -> builder.itunes.block(toBoolean(node))
+            "categories" -> builder.itunes.addCategory(toText(node))
+            "complete"   -> builder.itunes.complete(toBoolean(node))
+            "explicit"   -> builder.itunes.explicit(toBoolean(node))
             "image"      -> builder.itunes.image(toImage(node))
             "keywords"   -> builder.itunes.keywords(toText(node))
-            "author"     -> builder.itunes.author(toText(node))
-            "categories" -> builder.itunes.addCategory(toText(node))
-            "explicit"   -> builder.itunes.explicit(toBoolean(node))
-            "block"      -> builder.itunes.block(toBoolean(node))
-            "complete"   -> builder.itunes.complete(toBoolean(node))
-            "type"       -> builder.itunes.type(toText(node))
             "owner"      -> builder.itunes.owner(toPerson(node))
+            "subtitle"   -> builder.itunes.subtitle(toText(node))
+            "summary"    -> builder.itunes.summary(toText(node))
+            "type"       -> builder.itunes.type(toText(node))
         }
     }
 
     override fun parseItem(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
-            "title"       -> builder.itunes.title(toText(node))
-            "duration"    -> builder.itunes.duration(toText(node))
-            "image"       -> builder.itunes.image(toImage(node))
-            "explicit"    -> builder.itunes.explicit(toBoolean(node))
             "block"       -> builder.itunes.block(toBoolean(node))
-            "season"      -> builder.itunes.season(toInt(node))
+            "duration"    -> builder.itunes.duration(toText(node))
             "episode"     -> builder.itunes.episode(toInt(node))
             "episodeType" -> builder.itunes.episodeType(toText(node))
+            "explicit"    -> builder.itunes.explicit(toBoolean(node))
+            "image"       -> builder.itunes.image(toImage(node))
+            "season"      -> builder.itunes.season(toInt(node))
+            "title"       -> builder.itunes.title(toText(node))
         }
     }
 
