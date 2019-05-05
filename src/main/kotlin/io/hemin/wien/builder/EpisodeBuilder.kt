@@ -19,6 +19,7 @@ class EpisodeBuilder : Builder<Episode> {
     private var source: String?                 = null
     private var contentEncoded: String?         = null
 
+    /** The builder for data from the iTunes namespace. */
     val itunes: EpisodeItunesBuilder = EpisodeItunesBuilder()
 
     /** Set the title. */

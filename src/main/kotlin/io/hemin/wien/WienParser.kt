@@ -9,7 +9,6 @@ import io.hemin.wien.parser.ItunesParser
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.RssParser
 import io.hemin.wien.util.DomBuilderFactory
-import io.hemin.wien.util.NodeListWrapper
 import io.hemin.wien.util.NodeListWrapper.Companion.asList
 import org.w3c.dom.Document
 import org.w3c.dom.Node
@@ -37,8 +36,10 @@ class WienParser {
                 .toSet()
 
         /**
-         * Transforms a DOM node into a [Podcast] instance,
-         * if the node is an RSS `<rss>`.
+         * Transforms a DOM node into a [Podcast] instance, if the node is an RSS `<channel>` element.
+         *
+         * @param node The RSS element that must be an `<channel>`.
+         * @return The [Episode] if the node is an `<channel>`, otherwise null.
          */
         fun toPodcast(node: Node): Podcast? {
             return if (node.namespaceURI == null && node.localName == "channel") {
@@ -57,8 +58,10 @@ class WienParser {
         }
 
         /**
-         * Transforms a DOM node into a [Episode] instance,
-         * if the node is an RSS `<item>`.
+         * Transforms a DOM node into a [Episode] instance, if the node is an RSS `<item>` element.
+         *
+         * @param node The RSS element that must be an `<item>`.
+         * @return The [Episode] if the node is an `<item>`, otherwise null.
          */
         fun toEpisode(node: Node): Episode? {
             return if (node.namespaceURI == null && node.localName == "item") {
@@ -79,23 +82,59 @@ class WienParser {
 
     private val builder: DocumentBuilder = DomBuilderFactory.newBuilder()
 
-    fun parse(uri: String) = parse(builder.parse(uri))
-
-    fun parse(inputStream: InputStream) = parse(builder.parse(inputStream))
+    /**
+     * Parse the content of the given URI as an XML document
+     * and return a [Podcast] if the XML document is an RSS feed.
+     *
+     * @param uri The location of the content to be parsed.
+     * @return A [Podcast] if the XML document behind the URI is an RSS document, otherwise null.
+     */
+    fun parse(uri: String): Podcast? = parse(builder.parse(uri))
 
     /**
-     * TODO
+     * Parse the content of the given input stream as an XML document
+     * and return a [Podcast] if the XML document is an RSS feed.
+     *
+     * @param inputStream InputStream containing the content to be parsed.
+     * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise null.
+     */
+    fun parse(inputStream: InputStream): Podcast? = parse(builder.parse(inputStream))
+
+    /**
+     * Parse the content of the given input stream as an XML document
+     * and return a [Podcast] if the XML document is an RSS feed.
      *
      * @param inputStream InputStream containing the content to be parsed.
      * @param systemId Provide a base for resolving relative URIs.
+     * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise null.
      */
-    fun parse(inputStream: InputStream, systemId: String) = parse(builder.parse(inputStream, systemId))
+    fun parse(inputStream: InputStream, systemId: String): Podcast? = parse(builder.parse(inputStream, systemId))
 
-    fun parse(file: File) = parse(builder.parse(file))
+    /**
+     * Parse the content of the given file as an XML document
+     * and return a [Podcast] if the XML document is an RSS feed.
+     *
+     * @param file File containing the content to be parsed.
+     * @return A [Podcast] if the XML document behind the file is an RSS document, otherwise null.
+     */
+    fun parse(file: File): Podcast? = parse(builder.parse(file))
 
-    fun parse(inputSource: InputSource) = parse(builder.parse(inputSource))
+    /**
+     * Parse the content of the given input source as an XML document
+     * and return a [Podcast] if the XML document is an RSS feed.
+     *
+     * @param inputSource InputSource containing the content to be parsed.
+     * @return A [Podcast] if the XML document behind the input source is an RSS document, otherwise null.
+     */
+    fun parse(inputSource: InputSource): Podcast? = parse(builder.parse(inputSource))
 
-    fun parse(doc: Document): Podcast? = findRssChannel(doc)?.let { toPodcast(it) }
+    /**
+     * Parse the content of the given XML document and return a [Podcast] if the XML document is an RSS feed.
+     *
+     * @param document Document containing the content to be parsed.
+     * @return A [Podcast] if the XML document is an RSS document, otherwise null.
+     */
+    fun parse(document: Document): Podcast? = findRssChannel(document)?.let { toPodcast(it) }
 
     private fun findRssChannel(doc: Document): Node? = findRssChannel(doc.childNodes)
 
@@ -122,8 +161,7 @@ class WienParser {
     private fun findRssChannel(nodes: NodeList): Node? {
         return asList(nodes)
             .map { n -> findRssChannel(n) }
-            .filter { n -> n != null }
-            .first()
+            .first { n -> n != null }
     }
     
 }
