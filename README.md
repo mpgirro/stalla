@@ -1,7 +1,7 @@
 # WIEN
 
 
-An RSS/Atom feed parser for extracting maximum Podcast metadata on the JVM
+An RSS 2.0 feed parser for extracting maximum Podcast metadata on the JVM
 
 
 ### ⚠️ Early development status warning
@@ -10,13 +10,13 @@ An RSS/Atom feed parser for extracting maximum Podcast metadata on the JVM
 WIEN is at a very early stage and may change entirely. You __should not use it in production__.
 
 
-## Supported XML namespaces
+## Supported standards
 
-* RSS
-* Atom
-* iTunes
-* Content
-* Podlove Simple Chapters (planned)
+* [RSS 2.0](http://www.rssboard.org/rss-2-0)
+* [Atom](https://tools.ietf.org/html/rfc4287)
+* [iTunes](https://help.apple.com/itc/podcasts_connect/#/itcb54353390)
+* [Content](http://web.resource.org/rss/1.0/modules/content/) (RDF Site Summary 1.0 Module)
+* [Podlove Simple Chapters](https://podlove.org/simple-chapters/) (planned)
 * Bitlove (planned)
 * Fyyd (planned)
 * Feedpress (planned)

@@ -8,10 +8,16 @@ import io.hemin.wien.util.NodeListWrapper
 import io.hemin.wien.util.NodeListWrapper.Companion.asList
 import org.w3c.dom.Node
 
-/** Parser implementation for the RSS namespace. */
+/**
+ * Parser implementation for the RSS namespace.
+ *
+ * Note that RSS 2.0 feeds do not have a namespace URI specified. The document specification is described here:
+ *
+ * `http://www.rssboard.org/rss-2-0`
+ */
 class RssParser : NamespaceParser() {
 
-    /** Standard RSS elements do not have a namespace. This value is therefore null. */
+    /** Standard RSS 2.0 elements do not have a namespace. This value is therefore null. */
     override val namespaceURI: String? = null
 
     override fun parseImpl(builder: PodcastBuilder, node: Node) {
