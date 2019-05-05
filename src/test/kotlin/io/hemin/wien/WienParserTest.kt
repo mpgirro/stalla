@@ -12,4 +12,6 @@ class WienParserTest {
         assertTrue(true) // TODO
     }
 
+    // TODO check if WienParser.toPodcast and WienParser.toEpisode check for <channel> and <item> nodes
+
 }

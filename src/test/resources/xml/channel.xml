@@ -37,6 +37,6 @@
     <itunes:type>episodic</itunes:type>
     <itunes:owner>
         <itunes:name>Lorem Ipsum</itunes:name>
-        <itunes:email>test@example.org</itunes:email>
+        <itunes:email>owner@example.org</itunes:email>
     </itunes:owner>
 </channel>

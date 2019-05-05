@@ -48,7 +48,7 @@ class ItunesParser : NamespaceParser() {
             "explicit"    -> builder.itunes.explicit(toBoolean(node))
             "block"       -> builder.itunes.block(toBoolean(node))
             "season"      -> builder.itunes.season(toInt(node))
-            "builder"     -> builder.itunes.episode(toInt(node))
+            "episode"     -> builder.itunes.episode(toInt(node))
             "episodeType" -> builder.itunes.episodeType(toText(node))
         }
     }
