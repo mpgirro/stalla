@@ -67,7 +67,11 @@ class PodcastBuilder : Builder<Podcast> {
      *
      * @param episode The [Episode] to add.
      */
-    fun addEpisode(episode: Episode) = apply { this.episodes.add(episode) }
+    fun addEpisode(episode: Episode?) = apply {
+        episode?.let {
+            this.episodes.add(it)
+        }
+    }
 
     /**
      * Creates an instance of [Podcast] with the properties set in this builder.

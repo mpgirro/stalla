@@ -36,30 +36,44 @@ class WienParser {
                 .mapNotNull { n -> n }
                 .toSet()
 
-        /** Transforms a DOM node into a [Podcast] instance. */
-        fun toPodcast(node: Node): Podcast {
-            val builder = PodcastBuilder()
-            for (element in asList(node.childNodes)) {
-                for (parser in parsers) {
-                    if (parser.namespaceURI.equals(element.namespaceURI)) {
-                        parser.parse(builder, element)
+        /**
+         * Transforms a DOM node into a [Podcast] instance,
+         * if the node is an RSS `<rss>`.
+         */
+        fun toPodcast(node: Node): Podcast? {
+            return if (node.namespaceURI == null && node.localName == "rss") {
+                val builder = PodcastBuilder()
+                for (element in asList(node.childNodes)) {
+                    for (parser in parsers) {
+                        if (parser.namespaceURI.equals(element.namespaceURI)) {
+                            parser.parse(builder, element)
+                        }
                     }
                 }
+                builder.build()
+            } else {
+                null
             }
-            return builder.build()
         }
 
-        /** Transforms a DOM node into a [Episode] instance. */
-        fun toEpisode(node: Node): Episode {
-            val builder = EpisodeBuilder()
-            for (element in asList(node.childNodes)) {
-                for (parser in parsers) {
-                    if (parser.namespaceURI.equals(element.namespaceURI)) {
-                        parser.parse(builder, element)
+        /**
+         * Transforms a DOM node into a [Episode] instance,
+         * if the node is an RSS `<item>`.
+         */
+        fun toEpisode(node: Node): Episode? {
+            return if (node.namespaceURI == null && node.localName == "item") {
+                val builder = EpisodeBuilder()
+                for (element in asList(node.childNodes)) {
+                    for (parser in parsers) {
+                        if (parser.namespaceURI.equals(element.namespaceURI)) {
+                            parser.parse(builder, element)
+                        }
                     }
                 }
+                builder.build()
+            } else {
+                null
             }
-            return builder.build()
         }
     }
 
@@ -100,7 +114,7 @@ class WienParser {
             }
 
             Pair(null, "channel") -> {
-                val p: Podcast = toPodcast(n)
+                val p: Podcast? = toPodcast(n)
                 println("Parsing produces Podcast: $p")
             }
 
