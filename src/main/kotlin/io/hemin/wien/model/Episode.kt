@@ -15,7 +15,7 @@ import java.util.*
  * @property guid The RSS `<guid>` element wrapped in an [Episode.Guid] instance.
  * @property pubDate The RSS `<pubDate>` field textContent.
  * @property source The RSS `<source>` field textContent.
- * @property contentEncoded The `<content:enclosure>` element textContent of the Content namespace.
+ * @property content The data from the Content namespace, or null if no data from this namespace was found.
  * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
  */
 data class Episode(
@@ -29,7 +29,7 @@ data class Episode(
     val guid: Episode.Guid?,
     val pubDate: Date?,
     val source: String?,
-    val contentEncoded: String?,
+    val content: Episode.Content?,
     val itunes: Episode.Itunes?
 ) {
 
@@ -58,7 +58,16 @@ data class Episode(
     )
 
     /**
-     * Model class for data from elements the iTunes namespace that are valid within `<item>` elements.
+     * Model class for data from elements of the Content namespace that are valid within `<item>` elements.
+     *
+     * @property encoded The text content of the `<content:encoded>` element.
+     */
+    data class Content(
+        val encoded: String?
+    )
+
+    /**
+     * Model class for data from elements of the iTunes namespace that are valid within `<item>` elements.
      *
      * @property title The `<itunes:title>` field text content.
      * @property duration The `<itunes:duration>` field text content.

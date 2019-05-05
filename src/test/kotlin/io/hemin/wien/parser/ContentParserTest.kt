@@ -23,7 +23,7 @@ class ContentParserTest : NamespaceParserTest {
             parse(builder, it)
             val e: Episode = builder.build()
 
-            Assertions.assertEquals("Lorem Ipsum", e.contentEncoded)
+            Assertions.assertEquals("Lorem Ipsum", e.content?.encoded)
         } ?: run {
             fail("item not found")
         }

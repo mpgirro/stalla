@@ -17,7 +17,9 @@ class EpisodeBuilder : Builder<Episode> {
     private var guid: Episode.Guid?             = null
     private var pubDate: Date?                  = null
     private var source: String?                 = null
-    private var contentEncoded: String?         = null
+
+    /** The builder for data from the Content namespace. */
+    val content: EpisodeContentBuilder = EpisodeContentBuilder()
 
     /** The builder for data from the iTunes namespace. */
     val itunes: EpisodeItunesBuilder = EpisodeItunesBuilder()
@@ -62,27 +64,24 @@ class EpisodeBuilder : Builder<Episode> {
     /** Set the source. */
     fun source(source: String?) = apply { this.source = source }
 
-    /** Set the encoded textContent of the Content namespace. */
-    fun contentEncoded(contentEncoded: String?) = apply { this.contentEncoded = contentEncoded }
-
     /**
      * Creates an instance of [Episode] with the properties set in this builder.
      *
      * @return The create instance.
      */
     override fun build() = Episode(
-        title          = title,
-        link           = link,
-        description    = description,
-        author         = author,
-        categories     = ImmutableList.copyOf(categories),
-        comments       = comments,
-        enclosure      = enclosure,
-        guid           = guid,
-        pubDate        = pubDate,
-        source         = source,
-        contentEncoded = contentEncoded,
-        itunes         = itunes.build()
+        title       = title,
+        link        = link,
+        description = description,
+        author      = author,
+        categories  = ImmutableList.copyOf(categories),
+        comments    = comments,
+        enclosure   = enclosure,
+        guid        = guid,
+        pubDate     = pubDate,
+        source      = source,
+        content     = content.build(),
+        itunes      = itunes.build()
     )
 
 }

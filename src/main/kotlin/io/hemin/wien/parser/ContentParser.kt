@@ -23,7 +23,7 @@ class ContentParser : NamespaceParser() {
 
     override fun parseImpl(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
-            "encoded" -> builder.contentEncoded(toText(node))
+            "encoded" -> builder.content.encoded(toText(node))
         }
     }
 
