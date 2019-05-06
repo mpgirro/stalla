@@ -1,19 +1,20 @@
 package io.hemin.wien.builder
 
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Episode.Itunes.EpisodeType
 import io.hemin.wien.model.Image
 
 /** Builder class for [Episode.Itunes] instances. */
 class EpisodeItunesBuilder : Builder<Episode.Itunes> {
 
-    private var title: String?       = null
-    private var duration: String?    = null
-    private var image: Image?        = null
-    private var explicit: Boolean?   = null
-    private var block: Boolean?      = null
-    private var season: Int?         = null
-    private var episode: Int?        = null
-    private var episodeType: String? = null
+    private var title: String?            = null
+    private var duration: String?         = null
+    private var image: Image?             = null
+    private var explicit: Boolean?        = null
+    private var block: Boolean?           = null
+    private var season: Int?              = null
+    private var episode: Int?             = null
+    private var episodeType: EpisodeType? = null
 
     /** Set the title. */
     fun title(title: String?) = apply { this.title = title }
@@ -37,10 +38,10 @@ class EpisodeItunesBuilder : Builder<Episode.Itunes> {
     fun episode(episode: Int?) = apply { this.episode = episode }
 
     /** Set the episodeType. */
-    fun episodeType(episodeType: String?) = apply { this.episodeType = episodeType }
+    fun episodeType(episodeType: String?) = apply { this.episodeType = EpisodeType.of(episodeType) }
 
     override fun build(): Episode.Itunes? {
-        return if (Builder.anyNotNull(title, duration, image, explicit, block, season, episode, episodeType))
+        return if (anyNotNull(title, duration, image, explicit, block, season, episode, episodeType))
             Episode.Itunes(
                 title       = title,
                 duration    = duration,

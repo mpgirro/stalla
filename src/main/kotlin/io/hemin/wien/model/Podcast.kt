@@ -64,9 +64,36 @@ data class Podcast(
         val explicit: Boolean?,
         val block: Boolean?,
         val complete: Boolean?,
-        val type: String?,
+        val type: ShowType?,
         val owner: Person?
-    )
+    ) {
+        /**
+         * Enum model for the defined values encountered within the
+         * `<itunes:type>` element within a `<channel>` element.
+         *
+         * @property type The string representation of the Enum instance.
+         */
+        enum class ShowType (val type: String) {
+
+            /** Type describing an episodic show. */
+            EPISODIC("episodic"),
+
+            /** Type describing a serial show. */
+            SERIAL("serial");
+
+            companion object {
+                /**
+                 * Factory method for the instance of the Enum matching the [type] parameter.
+                 *
+                 * @param type The string representation of the Enum instance.
+                 * @return The Enum instance matching [type], or null if not matching instance exists.
+                 */
+                fun of(type: String?): ShowType? = type?.let {
+                    ShowType.values().find { t -> t.type == it.toLowerCase() }
+                }
+            }
+        }
+    }
 
     /**
      * Model class for data from elements of the Atom namespace that are valid within `<channel>` elements.

@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList
 import io.hemin.wien.model.Image
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.Podcast.Itunes.ShowType
 
 /** Builder class for [Podcast.Itunes] instances. */
 class PodcastItunesBuilder : Builder<Podcast.Itunes> {
@@ -17,7 +18,7 @@ class PodcastItunesBuilder : Builder<Podcast.Itunes> {
     private var explicit: Boolean?              = null
     private var block: Boolean?                 = null
     private var complete: Boolean?              = null
-    private var type: String?                   = null
+    private var type: ShowType?                 = null
     private var owner: Person?                  = null
 
     /** Set the subtitle. */
@@ -54,14 +55,14 @@ class PodcastItunesBuilder : Builder<Podcast.Itunes> {
     fun complete(complete: Boolean?) = apply { this.complete = complete }
 
     /** Set the type. */
-    fun type(type: String?) = apply { this.type = type }
+    fun type(type: String?) = apply { this.type = ShowType.of(type) }
 
     /** Set the Person representing the owner. */
     fun owner(owner: Person?) = apply { this.owner = owner }
 
     override fun build(): Podcast.Itunes? {
         val cats = if (categories.isEmpty()) null else Object()
-        return if (Builder.anyNotNull(subtitle, summary, image, keywords, author, cats, explicit, block, complete, type, owner))
+        return if (anyNotNull(subtitle, summary, image, keywords, author, cats, explicit, block, complete, type, owner))
             Podcast.Itunes(
                 subtitle   = subtitle,
                 summary    = summary,

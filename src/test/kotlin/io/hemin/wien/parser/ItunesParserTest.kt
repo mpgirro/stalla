@@ -4,6 +4,8 @@ import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.PodcastBuilder
+import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Podcast
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
@@ -43,7 +45,7 @@ class ItunesParserTest : NamespaceParserTest() {
                 assertEquals(false, it.explicit)
                 assertEquals(false, it.block)
                 assertEquals(false, it.complete)
-                assertEquals("episodic", it.type)
+                assertEquals(Podcast.Itunes.ShowType.EPISODIC, it.type)
                 assertEquals(expectedOwner, it.owner)
             }
         } ?: run {
@@ -65,7 +67,7 @@ class ItunesParserTest : NamespaceParserTest() {
                 assertEquals(false, it.block)
                 assertEquals(1, it.season)
                 assertEquals(1, it.episode)
-                assertEquals("full", it.episodeType)
+                assertEquals(Episode.Itunes.EpisodeType.FULL, it.episodeType)
                 // TODO test more fields
             }
         } ?: run {

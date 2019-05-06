@@ -88,8 +88,38 @@ data class Episode(
         val block: Boolean?,
         val season: Int?,
         val episode: Int?,
-        val episodeType: String?
-    )
+        val episodeType: EpisodeType?
+    ) {
+        /**
+         * Enum model for the defined values encountered within the
+         * `<itunes:episodeType>` element within a `<item>` element.
+         *
+         * @property type The string representation of the enum instance.
+         */
+        enum class EpisodeType (val type: String) {
+
+            /** Type describing a full episode. */
+            FULL("full"),
+
+            /** Type describing a trailer episode. */
+            TRAILER("trailer"),
+
+            /** Type describing a bonus episode. */
+            BONUS("bonus");
+
+            companion object {
+                /**
+                 * Factory method for the instance of the Enum matching the [type] parameter.
+                 *
+                 * @param type The string representation of the Enum instance.
+                 * @return The Enum instance matching [type], or null if not matching instance exists.
+                 */
+                fun of(type: String?): EpisodeType? = type?.let {
+                    EpisodeType.values().find { t -> t.type == it.toLowerCase() }
+                }
+            }
+        }
+    }
 
     /**
      * Model class for data from elements of the Atom namespace that are valid within `<item>` elements.
