@@ -1,9 +1,9 @@
 package io.hemin.wien.parser
 
-import io.hemin.wien.model.Episode
 import io.hemin.wien.builder.EpisodeBuilder
+import io.hemin.wien.model.Episode
 import io.hemin.wien.util.DomBuilderFactory
-import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
@@ -23,7 +23,7 @@ class ContentParserTest : NamespaceParserTest {
             parse(builder, it)
             val e: Episode = builder.build()
 
-            Assertions.assertEquals("Lorem Ipsum", e.content?.encoded)
+            assertEquals("Lorem Ipsum", e.content?.encoded)
         } ?: run {
             fail("item not found")
         }

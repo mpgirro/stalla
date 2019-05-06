@@ -22,13 +22,13 @@ class RssParserTest : NamespaceParserTest {
     val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
     val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    val expactedDate: Date? = DateParser.parse("Fri, 16 Mar 2018 22:49:08 +0000")
-    val expactedEnclosure = Episode.Enclosure(
+    val expectedDate: Date? = DateParser.parse("Fri, 16 Mar 2018 22:49:08 +0000")
+    val expectedEnclosure = Episode.Enclosure(
         url    = "http://example.org/episode1.m4a",
         length = 78589133,
         type   = "audio/mp4")
     val expectedGuid = Episode.Guid(
-        textContent       = "1fa609024fdf097",
+        textContent = "1fa609024fdf097",
         isPermalink = true
     )
     val expectedImage = Image(
@@ -50,8 +50,8 @@ class RssParserTest : NamespaceParserTest {
             assertEquals("Lorem Ipsum", p.title)
             assertEquals("http://example.org", p.link)
             assertEquals("Lorem Ipsum", p.description)
-            assertEquals(expactedDate, p.pubDate)
-            assertEquals(expactedDate, p.lastBuildDate)
+            assertEquals(expectedDate, p.pubDate)
+            assertEquals(expectedDate, p.lastBuildDate)
             assertEquals("de-DE", p.language)
             assertEquals("Lorem Ipsum", p.generator)
             assertEquals("Lorem Ipsum", p.copyright)
@@ -91,9 +91,9 @@ class RssParserTest : NamespaceParserTest {
             assertEquals("author@example.org", e.author)
             assertEquals(listOf("category1","category2"), e.categories)
             assertEquals("http://example.org/episode1/comments", e.comments)
-            assertEquals(expactedEnclosure, e.enclosure)
+            assertEquals(expectedEnclosure, e.enclosure)
             assertEquals(expectedGuid, e.guid)
-            assertEquals(expactedDate, e.pubDate)
+            assertEquals(expectedDate, e.pubDate)
             assertEquals("http://example.org/rss", e.source)
         } ?: run {
             fail("item not found")
