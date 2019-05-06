@@ -24,6 +24,7 @@ class EpisodeBuilder : Builder<Episode> {
     /** The builder for data from the iTunes namespace. */
     val itunes: EpisodeItunesBuilder = EpisodeItunesBuilder()
 
+    /** The builder for data from the Atom namespace. */
     val atom: EpisodeAtomBuilder = EpisodeAtomBuilder()
 
     /** Set the title. */

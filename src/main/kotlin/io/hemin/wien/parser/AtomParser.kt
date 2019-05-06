@@ -9,6 +9,11 @@ import io.hemin.wien.model.Person
 import io.hemin.wien.util.NodeListWrapper.Companion.asList
 import org.w3c.dom.Node
 
+/**
+ * Parser implementation for the Atom namespace.
+ *
+ * The namespace URI is: `http://www.w3.org/2005/Atom`
+ */
 class AtomParser : NamespaceParser() {
 
     override val namespaceURI: String? = "http://www.w3.org/2005/Atom"
@@ -29,7 +34,13 @@ class AtomParser : NamespaceParser() {
         }
     }
 
-    fun toLink(node: Node): Link? =
+    /**
+     * Transforms an <atom:link>` element into an instance of the [Link] model class.
+     *
+     * @param node The DOM node representing the `<itunes:link>` element.
+     * @return The [Link] instance with the `<itunes:link>` elements data, or null if all data was empty.
+     */
+    fun toLink(node: Node): Link? = valid(node) {
         LinkBuilder()
             .href(attributeValueByName(node, "href"))
             .hrefLang(attributeValueByName(node, "hrefLang"))
@@ -39,8 +50,15 @@ class AtomParser : NamespaceParser() {
             .title(attributeValueByName(node, "title"))
             .type(attributeValueByName(node, "type"))
             .build()
+    }
 
-    fun toPerson(node: Node): Person? {
+    /**
+     * Transforms an <atom:link>` element into an instance of the [Person] model class.
+     *
+     * @param node The DOM node representing the `<itunes:link>` element.
+     * @return The [Link] instance with the `<itunes:link>` elements data, or null if all data was empty.
+     */
+    fun toPerson(node: Node): Person? = valid(node) {
         val builder = PersonBuilder()
         for (child in asList(node.childNodes)) {
             when(child.localName) {
@@ -49,7 +67,7 @@ class AtomParser : NamespaceParser() {
                 "uri"   -> builder.uri(toText(child))
             }
         }
-        return builder.build()
+        builder.build()
     }
 
 }

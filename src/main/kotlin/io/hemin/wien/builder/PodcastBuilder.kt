@@ -26,6 +26,7 @@ class PodcastBuilder : Builder<Podcast> {
     /** The builder for data from the iTunes namespace. */
     val itunes: PodcastItunesBuilder = PodcastItunesBuilder()
 
+    /** The builder for data from the Atom namespace. */
     val atom: PodcastAtomBuilder = PodcastAtomBuilder()
 
     /** Set the title. */

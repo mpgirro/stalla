@@ -19,6 +19,7 @@ import java.util.*
  * @property image The RSS `<image>` element wrapped in an [Image] instance.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
  * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
+ * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
  */
 data class Podcast(
     val title: String?,
@@ -67,7 +68,13 @@ data class Podcast(
         val owner: Person?
     )
 
-
+    /**
+     * Model class for data from elements of the Atom namespace that are valid within `<channel>` elements.
+     *
+     * @property authors List of data from the `<atom:author>` elements as [Person] instances.
+     * @property contributors List of data from the `<atom:contributor>` elements as [Person] instances.
+     * @property links List of data from the `<atom:link>` elements as [Link] instances.
+     */
     data class Atom(
         val authors: List<Person>, // TODO is this found in <channel>'s?, or merely in <item>'s
         val contributors: List<Person>,

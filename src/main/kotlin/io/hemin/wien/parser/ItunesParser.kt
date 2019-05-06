@@ -6,7 +6,6 @@ import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.PodcastBuilder
 import io.hemin.wien.model.Image
 import io.hemin.wien.model.Person
-import io.hemin.wien.util.NodeListWrapper
 import io.hemin.wien.util.NodeListWrapper.Companion.asList
 import org.w3c.dom.Node
 
@@ -59,9 +58,9 @@ class ItunesParser : NamespaceParser() {
      * @param node The DOM node representing the `<itunes:image>` element.
      * @return The [Image] instance with the `<itunes:image>` elements data, or null if all data was empty.
      */
-    fun toImage(node: Node): Image? {
+    fun toImage(node: Node): Image? = valid(node) {
         val url: String? = attributeValueByName(node, "href")
-        return if (url.isNullOrBlank()) {
+        if (url.isNullOrBlank()) {
             null
         }
         else {
@@ -77,7 +76,7 @@ class ItunesParser : NamespaceParser() {
      * @param node The DOM node representing the `<itunes:owner>` element.
      * @return The [Image] instance with the `<itunes:owner>` elements data, or null if all data was empty.
      */
-    fun toPerson(node: Node): Person? {
+    fun toPerson(node: Node): Person? = valid(node) {
         val builder = PersonBuilder()
         for (child in asList(node.childNodes)) {
             val value: String? = toText(child)
@@ -87,7 +86,7 @@ class ItunesParser : NamespaceParser() {
                 "uri"   -> builder.uri(value)
             }
         }
-        return builder.build()
+        builder.build()
     }
 
 }

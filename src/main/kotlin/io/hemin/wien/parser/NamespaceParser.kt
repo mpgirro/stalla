@@ -20,7 +20,7 @@ abstract class NamespaceParser {
      * @param builder The builder  where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    fun parse(builder: PodcastBuilder, node: Node) = ensure(node) {
+    fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         parseChannel(builder, node)
     }
 
@@ -36,7 +36,7 @@ abstract class NamespaceParser {
      * @param builder The builder  where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    fun parse(builder: EpisodeBuilder, node: Node) = ensure(node) {
+    fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         parseItem(builder, node)
     }
 
@@ -103,9 +103,17 @@ abstract class NamespaceParser {
     fun attributeValueByName(node: Node, attributeName: String): String? =
         node.attributes?.getNamedItem(attributeName)?.textContent?.trim()
 
-    private fun ensure(node: Node, block: () -> Unit) {
-        if (node.namespaceURI == this.namespaceURI) {
-            block()
+    /**
+     * Executes a block of code on a DOME node if the node has the same [namespaceURI] as this parser.
+     *
+     * @param node The DOM node to execute the [block]of code on.
+     * @param block The block of code to execute on the [node].
+     */
+    protected fun <T> valid(node: Node, block: (Node) -> T?): T? {
+        return if (node.namespaceURI == this.namespaceURI) {
+            block(node)
+        } else {
+            null
         }
     }
 
