@@ -1,7 +1,6 @@
 package io.hemin.wien.builder
 
 import io.hemin.wien.model.Episode
-import io.hemin.wien.builder.Builder.Companion.anyNotNull
 
 /** Builder class for [Episode.Enclosure] instances. */
 class EpisodeEnclosureBuilder : Builder<Episode.Enclosure> {

@@ -35,7 +35,7 @@ class LinkBuilder : Builder<Link> {
     fun type(type: String?) = apply { this.type = type }
 
     override fun build(): Link? {
-        return if (Builder.anyNotNull(href, hrefLang, hrefResolved, length, rel, title, type)) {
+        return if (anyNotNull(href, hrefLang, hrefResolved, length, rel, title, type)) {
             Link(
                 href         = href,
                 hrefLang     = hrefLang,

@@ -1,7 +1,6 @@
 package io.hemin.wien.builder
 
 import io.hemin.wien.model.Episode
-import io.hemin.wien.builder.Builder.Companion.anyNotNull
 
 /** Builder class for [Episode.Guid] instances. */
 class EpisodeGuidBuilder : Builder<Episode.Guid> {

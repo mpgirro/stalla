@@ -43,7 +43,7 @@ class EpisodeAtomBuilder : Builder<Episode.Atom> {
         val ats = if (authors.isEmpty()) null else Object()
         val cs = if (contributors.isEmpty()) null else Object()
         val ls = if (links.isEmpty()) null else Object()
-        return if (Builder.anyNotNull(ats, cs, ls)) {
+        return if (anyNotNull(ats, cs, ls)) {
             Episode.Atom(
                 authors      = ImmutableList.copyOf(authors),
                 contributors = ImmutableList.copyOf(contributors),

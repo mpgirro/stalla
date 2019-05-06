@@ -1,7 +1,6 @@
 package io.hemin.wien.builder
 
 import io.hemin.wien.model.Image
-import io.hemin.wien.builder.Builder.Companion.anyNotNull
 
 /** Builder class for [Image] instances. */
 class ImageBuilder : Builder<Image> {
