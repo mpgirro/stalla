@@ -2,17 +2,17 @@ package io.hemin.wien.parser
 
 import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.builder.PodcastBuilder
-import io.hemin.wien.util.NodeListWrapper
+import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.NodeListWrapper.Companion.asList
 import org.w3c.dom.Document
 import org.w3c.dom.Node
 import javax.xml.parsers.DocumentBuilder
 
-interface NamespaceParserTest {
+abstract class NamespaceParserTest {
 
-    val parser: NamespaceParser
+    abstract val parser: NamespaceParser
 
-    val domBuilder: DocumentBuilder
+    val domBuilder: DocumentBuilder = DomBuilderFactory.newBuilder()
 
     fun parse(builder: PodcastBuilder, channel: Node) {
         for (element in asList(channel.childNodes)) {
