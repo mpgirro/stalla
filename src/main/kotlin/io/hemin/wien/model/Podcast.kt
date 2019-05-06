@@ -34,7 +34,8 @@ data class Podcast(
     val webMaster: String?,
     val image: Image?,
     val episodes: List<Episode>,
-    val itunes: Podcast.Itunes?
+    val itunes: Podcast.Itunes?,
+    val atom: Podcast.Atom?
 ) {
 
     /**
@@ -64,6 +65,13 @@ data class Podcast(
         val complete: Boolean?,
         val type: String?,
         val owner: Person?
+    )
+
+
+    data class Atom(
+        val authors: List<Person>, // TODO is this found in <channel>'s?, or merely in <item>'s
+        val contributors: List<Person>,
+        val links: List<Link>
     )
 
 }

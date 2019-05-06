@@ -97,11 +97,11 @@ abstract class NamespaceParser {
      * Extract the textContent of a DOM node attribute identified by name.
      *
      * @param node The DOM node with the attribute.
-     * @param attrName The name of the node's attribute.
+     * @param attributeName The name of the node's attribute.
      * @return The textContent of the node's attribute.
      */
-    fun attributeValueByName(node: Node, attrName: String): String? =
-        node.attributes?.getNamedItem(attrName)?.textContent?.trim()
+    fun attributeValueByName(node: Node, attributeName: String): String? =
+        node.attributes?.getNamedItem(attributeName)?.textContent?.trim()
 
     private fun ensure(node: Node, block: () -> Unit) {
         if (node.namespaceURI == this.namespaceURI) {

@@ -26,17 +26,17 @@ class ItunesParser : NamespaceParser() {
 
     override fun parseChannel(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "author"     -> builder.itunes.author(toText(node))
-            "block"      -> builder.itunes.block(toBoolean(node))
-            "categories" -> builder.itunes.addCategory(toText(node))
-            "complete"   -> builder.itunes.complete(toBoolean(node))
-            "explicit"   -> builder.itunes.explicit(toBoolean(node))
-            "image"      -> builder.itunes.image(toImage(node))
-            "keywords"   -> builder.itunes.keywords(toText(node))
-            "owner"      -> builder.itunes.owner(toPerson(node))
-            "subtitle"   -> builder.itunes.subtitle(toText(node))
-            "summary"    -> builder.itunes.summary(toText(node))
-            "type"       -> builder.itunes.type(toText(node))
+            "author"   -> builder.itunes.author(toText(node))
+            "block"    -> builder.itunes.block(toBoolean(node))
+            "category" -> builder.itunes.addCategory(toText(node))
+            "complete" -> builder.itunes.complete(toBoolean(node))
+            "explicit" -> builder.itunes.explicit(toBoolean(node))
+            "image"    -> builder.itunes.image(toImage(node))
+            "keywords" -> builder.itunes.keywords(toText(node))
+            "owner"    -> builder.itunes.owner(toPerson(node))
+            "subtitle" -> builder.itunes.subtitle(toText(node))
+            "summary"  -> builder.itunes.summary(toText(node))
+            "type"     -> builder.itunes.type(toText(node))
         }
     }
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<channel xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+<channel
+    xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+    xmlns:atom="http://www.w3.org/2005/Atom">
     <title>Lorem Ipsum</title>
     <link>http://example.org</link>
     <description>Lorem Ipsum</description>
@@ -39,4 +41,15 @@
         <itunes:name>Lorem Ipsum</itunes:name>
         <itunes:email>owner@example.org</itunes:email>
     </itunes:owner>
+    <atom:link rel="self" type="application/rss+xml" title="Lorem Ipsum" href="http://example.org/feed/m4a"/>
+    <atom:author>
+        <atom:name>Lorem Ipsum</atom:name>
+        <atom:email>person@example.org</atom:email>
+        <atom:uri>http://example.org</atom:uri>
+    </atom:author>
+    <atom:contributor>
+        <atom:name>Lorem Ipsum</atom:name>
+        <atom:email>person@example.org</atom:email>
+        <atom:uri>http://example.org</atom:uri>
+    </atom:contributor>
 </channel>

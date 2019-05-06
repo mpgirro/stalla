@@ -26,6 +26,8 @@ class PodcastBuilder : Builder<Podcast> {
     /** The builder for data from the iTunes namespace. */
     val itunes: PodcastItunesBuilder = PodcastItunesBuilder()
 
+    val atom: PodcastAtomBuilder = PodcastAtomBuilder()
+
     /** Set the title. */
     fun title(title: String?) = apply { this.title = title }
 
@@ -92,6 +94,7 @@ class PodcastBuilder : Builder<Podcast> {
         webMaster      = webMaster,
         image          = image,
         episodes       = ImmutableList.copyOf(episodes),
-        itunes         = itunes.build()
+        itunes         = itunes.build(),
+        atom           = atom.build()
     )
 }

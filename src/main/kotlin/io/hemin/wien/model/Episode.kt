@@ -30,7 +30,8 @@ data class Episode(
     val pubDate: Date?,
     val source: String?,
     val content: Episode.Content?,
-    val itunes: Episode.Itunes?
+    val itunes: Episode.Itunes?,
+    val atom: Episode.Atom?
 ) {
 
     /**
@@ -87,6 +88,13 @@ data class Episode(
         val season: Int?,
         val episode: Int?,
         val episodeType: String?
+    )
+
+
+    data class Atom(
+        val authors: List<Person>,
+        val contributors: List<Person>,
+        val links: List<Link>
     )
 
 }

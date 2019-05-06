@@ -24,6 +24,8 @@ class EpisodeBuilder : Builder<Episode> {
     /** The builder for data from the iTunes namespace. */
     val itunes: EpisodeItunesBuilder = EpisodeItunesBuilder()
 
+    val atom: EpisodeAtomBuilder = EpisodeAtomBuilder()
+
     /** Set the title. */
     fun title(title: String?) = apply { this.title = title }
 
@@ -81,7 +83,8 @@ class EpisodeBuilder : Builder<Episode> {
         pubDate     = pubDate,
         source      = source,
         content     = content.build(),
-        itunes      = itunes.build()
+        itunes      = itunes.build(),
+        atom        = atom.build()
     )
 
 }

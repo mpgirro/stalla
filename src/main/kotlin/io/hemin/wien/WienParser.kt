@@ -4,10 +4,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.builder.PodcastBuilder
-import io.hemin.wien.parser.ContentParser
-import io.hemin.wien.parser.ItunesParser
-import io.hemin.wien.parser.NamespaceParser
-import io.hemin.wien.parser.RssParser
+import io.hemin.wien.parser.*
 import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.NodeListWrapper.Companion.asList
 import org.w3c.dom.Document
@@ -25,7 +22,8 @@ class WienParser {
         private val parsers: List<NamespaceParser> = listOf(
             RssParser(),
             ContentParser(),
-            ItunesParser()
+            ItunesParser(),
+            AtomParser()
         )
 
         /** Set of all XML namespaces supported when parsing documents. */
@@ -68,7 +66,7 @@ class WienParser {
         }
 
         private fun <T> ensure(elementName: String?, node: Node, block: () -> T): T? {
-            return if (node.namespaceURI == null && node.namespaceURI == elementName) {
+            return if (node.namespaceURI == null && node.localName == elementName) {
                 block()
             } else {
                 null
