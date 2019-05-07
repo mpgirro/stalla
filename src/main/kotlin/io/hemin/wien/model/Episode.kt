@@ -98,14 +98,14 @@ data class Episode(
          */
         enum class EpisodeType (val type: String) {
 
+            /** Type describing a bonus episode. */
+            BONUS("bonus"),
+
             /** Type describing a full episode. */
             FULL("full"),
 
             /** Type describing a trailer episode. */
-            TRAILER("trailer"),
-
-            /** Type describing a bonus episode. */
-            BONUS("bonus");
+            TRAILER("trailer");
 
             companion object {
                 /**

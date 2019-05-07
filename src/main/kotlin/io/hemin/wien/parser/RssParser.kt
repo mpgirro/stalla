@@ -60,12 +60,14 @@ class RssParser : NamespaceParser() {
      * @param node The DOM node representing the `<enclosure>` element.
      * @return The [Episode.Enclosure] instance with the `<enclosure>` elements data, or null if all data was empty.
      */
-    fun toEnclosure(node: Node): Episode.Enclosure? =
+    fun toEnclosure(node: Node): Episode.Enclosure? = valid(node) {
         EpisodeEnclosureBuilder()
-            .url(attributeValueByName(node, "url"))
-            .length(attributeValueByName(node, "length")?.toLongOrNull())
-            .type(attributeValueByName(node, "type"))
+            .url(attributeValueByName(it, "url"))
+            .length(attributeValueByName(it, "length")?.toLongOrNull())
+            .type(attributeValueByName(it, "type"))
             .build()
+    }
+
 
     /**
      * Transforms an RSS `<guid>` element into an instance of its model class.
@@ -73,11 +75,12 @@ class RssParser : NamespaceParser() {
      * @param node The DOM node representing the `<guid>` element.
      * @return The [Episode.Guid] instance with the `<guid>` elements data, or null if all data was empty.
      */
-    fun toGuid(node: Node): Episode.Guid? =
+    fun toGuid(node: Node): Episode.Guid? = valid(node) {
         EpisodeGuidBuilder()
-            .textContent(toText(node))
-            .isPermalink(toBoolean(attributeValueByName(node, "isPermaLink")))
+            .textContent(toText(it))
+            .isPermalink(toBoolean(attributeValueByName(it, "isPermaLink")))
             .build()
+    }
 
     /**
      * Transforms an RSS `<image>` element into an instance of the [Image] model class.
@@ -85,7 +88,7 @@ class RssParser : NamespaceParser() {
      * @param node The DOM node representing the `<image>` element.
      * @return The [Image] instance with the `<image>` elements data, or null if all data was empty.
      */
-    fun toImage(node: Node): Image? {
+    fun toImage(node: Node): Image? = valid(node) {
         val builder = ImageBuilder()
         for (child in asList(node.childNodes)) {
             when(child.localName) {
@@ -97,7 +100,7 @@ class RssParser : NamespaceParser() {
                 "width"       -> builder.width(toInt(child))
             }
         }
-        return builder.build()
+        builder.build()
     }
 
 }

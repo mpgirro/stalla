@@ -42,13 +42,13 @@ class AtomParser : NamespaceParser() {
      */
     fun toLink(node: Node): Link? = valid(node) {
         LinkBuilder()
-            .href(attributeValueByName(node, "href"))
-            .hrefLang(attributeValueByName(node, "hrefLang"))
-            .hrefResolved(attributeValueByName(node, "hrefResolved"))
-            .length(attributeValueByName(node, "length"))
-            .rel(attributeValueByName(node, "rel"))
-            .title(attributeValueByName(node, "title"))
-            .type(attributeValueByName(node, "type"))
+            .href(attributeValueByName(it, "href"))
+            .hrefLang(attributeValueByName(it, "hrefLang"))
+            .hrefResolved(attributeValueByName(it, "hrefResolved"))
+            .length(attributeValueByName(it, "length"))
+            .rel(attributeValueByName(it, "rel"))
+            .title(attributeValueByName(it, "title"))
+            .type(attributeValueByName(it, "type"))
             .build()
     }
 

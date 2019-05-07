@@ -48,16 +48,18 @@ abstract class NamespaceParser {
      *
      * @return The content of the DOM node in string representation.
      */
-    fun toText(node: Node): String? = node.textContent.trim()
+    fun toText(node: Node): String? = valid(node) {
+        it.textContent.trim()
+    }
 
     /**
      * Extracts the text content of a DOM node, and transforms it to a Date instance.
      *
      * @return The DOM nodes content as a Date, or null if date parsing failed.
      */
-    fun toDate(node: Node): Date? {
-        return try {
-            DateParser.parse(toText(node))
+    fun toDate(node: Node): Date? = valid(node) {
+        try {
+            DateParser.parse(toText(it))
         }
         catch (e: Exception) {
             null
@@ -84,14 +86,18 @@ abstract class NamespaceParser {
      *
      * @return The logical interpretation of the DOM node's text content.
      */
-    fun toBoolean(node: Node): Boolean? = toBoolean(toText(node))
+    fun toBoolean(node: Node): Boolean? = valid(node) {
+        toBoolean(toText(it))
+    }
 
     /**
      * Extracts the text content of a DOM node, and transforms it to an Int instance.
      *
      * @return The DOM nodes content as an Int, or null if conversion failed.
      */
-    fun toInt(node: Node): Int? = toText(node)?.toIntOrNull()
+    fun toInt(node: Node): Int? = valid(node) {
+        toText(it)?.toIntOrNull()
+    }
 
     /**
      * Extract the textContent of a DOM node attribute identified by name.
@@ -104,7 +110,7 @@ abstract class NamespaceParser {
         node.attributes?.getNamedItem(attributeName)?.textContent?.trim()
 
     /**
-     * Executes a block of code on a DOME node if the node has the same [namespaceURI] as this parser.
+     * Executes a block of code on a DOME node if the node has the same [namespaceURI] of this parser.
      *
      * @param node The DOM node to execute the [block]of code on.
      * @param block The block of code to execute on the [node].
