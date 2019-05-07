@@ -1,13 +1,15 @@
-# WIEN
+# WIEN : Podcast Metadata Parser
 
 
-An RSS 2.0 feed parser for extracting maximum Podcast metadata on the JVM
+An RSS 2.0 feed parser for extracting Podcast metadata on the JVM.
+
+WIEN is written in Kotlin.
 
 
 ### ⚠️ Early development status warning
 
 
-WIEN is at a very early stage and may change entirely. You __should not use it in production__.
+WIEN is at a very early stage and may change entirely. You __should not use it in production yet__.
 
 
 ## Supported standards
@@ -21,7 +23,7 @@ WIEN is at a very early stage and may change entirely. You __should not use it i
 * Fyyd (planned)
 * Feedpress (planned)
 
-Feel free to open an issue WIEN is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant to the Podcast ecosystem.
+Feel free to open an issue if WIEN is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.
 
 
 ## Looking for Atom feed support?
