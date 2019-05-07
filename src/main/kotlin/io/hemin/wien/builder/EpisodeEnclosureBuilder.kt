@@ -19,14 +19,15 @@ class EpisodeEnclosureBuilder : Builder<Episode.Enclosure> {
     fun type(type: String?) = apply { this.type = type }
 
     override fun build(): Episode.Enclosure? {
-        return if (anyNotNull(url, length, type))
+        return if (anyNotNull(url, length, type)) {
             Episode.Enclosure(
                 url    = url,
                 length = length,
                 type   = type
             )
-        else
+        } else {
             null
+        }
     }
 
 }

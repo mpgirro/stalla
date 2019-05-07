@@ -94,7 +94,7 @@ class PodcastBuilder : Builder<Podcast> {
         managingEditor = managingEditor,
         webMaster      = webMaster,
         image          = image,
-        episodes       = ImmutableList.copyOf(episodes),
+        episodes       = immutableCopyOf(episodes),
         itunes         = itunes.build(),
         atom           = atom.build()
     )

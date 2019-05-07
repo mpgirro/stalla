@@ -61,23 +61,26 @@ class PodcastItunesBuilder : Builder<Podcast.Itunes> {
     fun owner(owner: Person?) = apply { this.owner = owner }
 
     override fun build(): Podcast.Itunes? {
-        val cats = if (categories.isEmpty()) null else Object()
-        return if (anyNotNull(subtitle, summary, image, keywords, author, cats, explicit, block, complete, type, owner))
+        val immutableCategories = immutableCopyOf(categories)
+        val oCategories = if (immutableCategories.isEmpty()) null else Object()
+
+        return if (anyNotNull(subtitle, summary, image, keywords, author, oCategories, explicit, block, complete, type, owner)) {
             Podcast.Itunes(
                 subtitle   = subtitle,
                 summary    = summary,
                 image      = image,
                 keywords   = keywords,
                 author     = author,
-                categories = ImmutableList.copyOf(categories),
+                categories = immutableCopyOf(categories),
                 explicit   = explicit,
                 block      = block,
                 complete   = complete,
                 type       = type,
                 owner      = owner
             )
-        else
+        } else {
             null
+        }
     }
 
 }

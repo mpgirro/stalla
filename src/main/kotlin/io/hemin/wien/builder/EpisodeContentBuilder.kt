@@ -11,12 +11,14 @@ class EpisodeContentBuilder : Builder<Episode.Content> {
     fun encoded(encoded: String?) = apply { this.encoded = encoded }
 
     override fun build(): Episode.Content? {
-        return if (anyNotNull(encoded))
+        return if (anyNotNull(encoded)) {
             Episode.Content(
                 encoded = encoded
             )
-        else
+        } else {
             null
+        }
+
     }
 
 }

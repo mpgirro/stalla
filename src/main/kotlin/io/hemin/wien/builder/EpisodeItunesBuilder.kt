@@ -41,7 +41,7 @@ class EpisodeItunesBuilder : Builder<Episode.Itunes> {
     fun episodeType(episodeType: String?) = apply { this.episodeType = EpisodeType.of(episodeType) }
 
     override fun build(): Episode.Itunes? {
-        return if (anyNotNull(title, duration, image, explicit, block, season, episode, episodeType))
+        return if (anyNotNull(title, duration, image, explicit, block, season, episode, episodeType)) {
             Episode.Itunes(
                 title       = title,
                 duration    = duration,
@@ -52,8 +52,9 @@ class EpisodeItunesBuilder : Builder<Episode.Itunes> {
                 episode     = episode,
                 episodeType = episodeType
             )
-        else
+        } else {
             null
+        }
     }
 
 }

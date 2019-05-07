@@ -15,13 +15,14 @@ class EpisodeGuidBuilder : Builder<Episode.Guid> {
     fun isPermalink(isPermalink: Boolean?) = apply { this.isPermalink = isPermalink }
 
     override fun build(): Episode.Guid? {
-        return if (anyNotNull(textContent, isPermalink))
+        return if (anyNotNull(textContent, isPermalink)) {
             Episode.Guid(
                 textContent = textContent,
                 isPermalink = isPermalink
             )
-        else
+        } else {
             null
+        }
     }
 
 

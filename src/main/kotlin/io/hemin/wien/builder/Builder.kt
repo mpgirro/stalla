@@ -1,6 +1,8 @@
 package io.hemin.wien.builder
 
+import com.google.common.collect.ImmutableList
 import org.w3c.dom.Node
+import java.util.stream.Collectors
 
 /**
  * Interface for builder implementations.
@@ -21,6 +23,13 @@ interface Builder<T> {
 
     /** Check if at least one argument element is not null */
     fun anyNotNull(vararg elements: Any?): Boolean = elements.any { p -> p != null }
+
+    fun <T> immutableCopyOf(collection: Collection<T>): ImmutableList<T> {
+        val nonNulls: List<T> = collection.stream()
+            .filter { e -> e != null }
+            .collect(Collectors.toList())
+        return ImmutableList.copyOf(nonNulls)
+    }
 
 }
 

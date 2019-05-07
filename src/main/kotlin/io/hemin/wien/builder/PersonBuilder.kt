@@ -19,14 +19,15 @@ class PersonBuilder : Builder<Person> {
     fun uri(uri: String?) = apply { this.uri = uri }
 
     override fun build(): Person? {
-        return if (anyNotNull(name, email, uri))
+        return if (anyNotNull(name, email, uri)) {
             Person(
                 name  = name,
                 email = email,
                 uri   = uri
             )
-        else
+        } else {
             null
+        }
     }
 
 }

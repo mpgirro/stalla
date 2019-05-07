@@ -40,14 +40,19 @@ class PodcastAtomBuilder : Builder<Podcast.Atom> {
     }
 
     override fun build(): Podcast.Atom? {
-        val ats = if (authors.isEmpty()) null else Object()
-        val cs = if (contributors.isEmpty()) null else Object()
-        val ls = if (links.isEmpty()) null else Object()
-        return if (anyNotNull(ats, cs, ls)) {
+        val immutableAuthors = immutableCopyOf(authors)
+        val immutableContributors = immutableCopyOf(contributors)
+        val immutableLinks = immutableCopyOf(links)
+
+        val oAuthors = if (immutableAuthors.isEmpty()) null else Object()
+        val oContributors = if (immutableContributors.isEmpty()) null else Object()
+        val oLinks = if (immutableLinks.isEmpty()) null else Object()
+
+        return if (anyNotNull(oAuthors, oContributors, oLinks)) {
             Podcast.Atom(
-                authors      = ImmutableList.copyOf(authors),
-                contributors = ImmutableList.copyOf(contributors),
-                links        = ImmutableList.copyOf(links)
+                authors      = immutableAuthors,
+                contributors = immutableContributors,
+                links        = immutableLinks
             )
         } else {
             null

@@ -31,7 +31,7 @@ class ImageBuilder : Builder<Image> {
     fun description(description: String?) = apply { this.description = description }
 
     override fun build(): Image? {
-        return if (anyNotNull(url, title, link, width, height, description))
+        return if (anyNotNull(url, title, link, width, height, description)) {
             Image(
                 url         = url,
                 title       = title,
@@ -40,8 +40,9 @@ class ImageBuilder : Builder<Image> {
                 height      = height,
                 description = description
             )
-        else
+        } else {
             null
+        }
     }
 
 }

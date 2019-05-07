@@ -77,7 +77,7 @@ class EpisodeBuilder : Builder<Episode> {
         link        = link,
         description = description,
         author      = author,
-        categories  = ImmutableList.copyOf(categories),
+        categories  = immutableCopyOf(categories),
         comments    = comments,
         enclosure   = enclosure,
         guid        = guid,
