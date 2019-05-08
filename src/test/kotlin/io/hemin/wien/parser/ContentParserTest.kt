@@ -18,9 +18,12 @@ class ContentParserTest : NamespaceParserTest() {
         item?.let {
             val builder = EpisodeBuilder()
             parse(builder, it)
-            val e: Episode = builder.build()
 
-            assertEquals("Lorem Ipsum", e.content?.encoded)
+            builder.build().content?.let {
+                assertEquals("Lorem Ipsum", it.encoded)
+            } ?: run {
+                fail("Episode Content data not extracted")
+            }
         } ?: run {
             fail("item not found")
         }

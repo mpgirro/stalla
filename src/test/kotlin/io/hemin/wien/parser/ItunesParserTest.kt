@@ -47,6 +47,8 @@ class ItunesParserTest : NamespaceParserTest() {
                 assertEquals(false, it.complete)
                 assertEquals(Podcast.Itunes.ShowType.EPISODIC, it.type)
                 assertEquals(expectedOwner, it.owner)
+            } ?: run {
+                fail("Podcast iTunes data not extracted")
             }
         } ?: run {
             fail("channel not found")
@@ -69,6 +71,8 @@ class ItunesParserTest : NamespaceParserTest() {
                 assertEquals(1, it.episode)
                 assertEquals(Episode.Itunes.EpisodeType.FULL, it.episodeType)
                 // TODO test more fields
+            } ?: run {
+                fail("Episode iTunes data not extracted")
             }
         } ?: run {
             fail("item not found")

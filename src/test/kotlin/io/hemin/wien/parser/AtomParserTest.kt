@@ -4,6 +4,7 @@ import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.PodcastBuilder
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
@@ -38,6 +39,8 @@ class AtomParserTest : NamespaceParserTest() {
                 assertTrue(it.authors.contains(expectedPerson))
                 assertTrue(it.contributors.contains(expectedPerson))
                 assertTrue(it.links.contains(expectedLink))
+            } ?: run {
+                fail("Podcast Atom data not extracted")
             }
         } ?: run {
             fail("channel not found")
@@ -51,9 +54,16 @@ class AtomParserTest : NamespaceParserTest() {
             parse(builder, it)
 
             builder.build().atom?.let {
+                assertEquals(1, it.authors.size)
                 assertTrue(it.authors.contains(expectedPerson))
+
+                assertEquals(1, it.contributors.size)
                 assertTrue(it.contributors.contains(expectedPerson))
+
+                assertEquals(1, it.links.size)
                 assertTrue(it.links.contains(expectedLink))
+            } ?: run {
+                fail("Episode Atom data not extracted")
             }
         } ?: run {
             fail("item not found")
