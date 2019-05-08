@@ -32,7 +32,8 @@ data class Episode(
     val source: String?,
     val content: Episode.Content?,
     val itunes: Episode.Itunes?,
-    val atom: Episode.Atom?
+    val atom: Episode.Atom?,
+    val podlove: Episode.Podlove?
 ) {
 
     /**
@@ -133,5 +134,21 @@ data class Episode(
         val contributors: List<Person>,
         val links: List<Link>
     )
+
+
+    data class Podlove(
+        val simpleChapters: List<SimpleChapter>
+    ) {
+
+        data class SimpleChapter(
+            val start: String?,
+            val title: String?,
+            val href: String?,
+            val image: String?
+        )
+
+    }
+
+
 
 }

@@ -1,6 +1,5 @@
 package io.hemin.wien.builder
 
-import com.google.common.collect.ImmutableList
 import io.hemin.wien.model.Image
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
@@ -61,9 +60,7 @@ class PodcastItunesBuilder : Builder<Podcast.Itunes> {
     fun owner(owner: Person?) = apply { this.owner = owner }
 
     override fun build(): Podcast.Itunes? {
-        val immutableCategories = immutableCopyOf(categories)
-        val oCategories = if (immutableCategories.isEmpty()) null else Object()
-
+        val oCategories = if (categories.isEmpty()) null else Object()
         return if (anyNotNull(subtitle, summary, image, keywords, author, oCategories, explicit, block, complete, type, owner)) {
             Podcast.Itunes(
                 subtitle   = subtitle,

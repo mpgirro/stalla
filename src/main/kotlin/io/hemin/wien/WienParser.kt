@@ -23,7 +23,8 @@ class WienParser {
             RssParser(),
             ContentParser(),
             ItunesParser(),
-            AtomParser()
+            AtomParser(),
+            PodloveSimpleChapterParser()
         )
 
         /** Set of all XML namespaces supported when parsing documents. */

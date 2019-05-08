@@ -24,10 +24,10 @@ interface Builder<T> {
     /** Check if at least one argument element is not null */
     fun anyNotNull(vararg elements: Any?): Boolean = elements.any { p -> p != null }
 
-    fun <T> immutableCopyOf(collection: Collection<T>): ImmutableList<T> {
-        val nonNulls: List<T> = collection.stream()
-            .filter { e -> e != null }
-            .collect(Collectors.toList())
+    fun <T : Any> immutableCopyOf(collection: Collection<T?>): ImmutableList<T> {
+        val nonNulls: List<T> = collection
+            .filterNotNull()
+            .toList()
         return ImmutableList.copyOf(nonNulls)
     }
 

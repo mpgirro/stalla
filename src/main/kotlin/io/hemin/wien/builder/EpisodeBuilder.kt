@@ -1,6 +1,5 @@
 package io.hemin.wien.builder
 
-import com.google.common.collect.ImmutableList
 import io.hemin.wien.model.Episode
 import java.util.*
 
@@ -26,6 +25,8 @@ class EpisodeBuilder : Builder<Episode> {
 
     /** The builder for data from the Atom namespace. */
     val atom: EpisodeAtomBuilder = EpisodeAtomBuilder()
+
+    val podlove: EpisodePodloveBuilder = EpisodePodloveBuilder()
 
     /** Set the title. */
     fun title(title: String?) = apply { this.title = title }
@@ -85,7 +86,8 @@ class EpisodeBuilder : Builder<Episode> {
         source      = source,
         content     = content.build(),
         itunes      = itunes.build(),
-        atom        = atom.build()
+        atom        = atom.build(),
+        podlove     = podlove.build()
     )
 
 }

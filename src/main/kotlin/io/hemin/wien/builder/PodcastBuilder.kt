@@ -1,6 +1,5 @@
 package io.hemin.wien.builder
 
-import com.google.common.collect.ImmutableList
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
 import io.hemin.wien.model.Podcast
@@ -71,9 +70,7 @@ class PodcastBuilder : Builder<Podcast> {
      * @param episode The [Episode] to add.
      */
     fun addEpisode(episode: Episode?) = apply {
-        episode?.let {
-            this.episodes.add(it)
-        }
+        episode?.let { this.episodes.add(it) }
     }
 
     /**

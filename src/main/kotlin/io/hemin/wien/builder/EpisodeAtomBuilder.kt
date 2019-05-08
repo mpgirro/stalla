@@ -1,6 +1,5 @@
 package io.hemin.wien.builder
 
-import com.google.common.collect.ImmutableList
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
@@ -40,19 +39,15 @@ class EpisodeAtomBuilder : Builder<Episode.Atom> {
     }
 
     override fun build(): Episode.Atom? {
-        val immutableAuthors = immutableCopyOf(authors)
-        val immutableContributors = immutableCopyOf(contributors)
-        val immutableLinks = immutableCopyOf(links)
-
-        val oAuthors = if (immutableAuthors.isEmpty()) null else Object()
-        val oContributors = if (immutableContributors.isEmpty()) null else Object()
-        val oLinks = if (immutableLinks.isEmpty()) null else Object()
+        val oAuthors = if (authors.isEmpty()) null else Object()
+        val oContributors = if (contributors.isEmpty()) null else Object()
+        val oLinks = if (links.isEmpty()) null else Object()
 
         return if (anyNotNull(oAuthors, oContributors, oLinks)) {
             Episode.Atom(
-                authors      = immutableAuthors,
-                contributors = immutableContributors,
-                links        = immutableLinks
+                authors      = immutableCopyOf(authors),
+                contributors = immutableCopyOf(contributors),
+                links        = immutableCopyOf(links)
             )
         } else {
             null
