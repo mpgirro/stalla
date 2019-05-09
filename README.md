@@ -1,5 +1,7 @@
 # WIEN : Podcast Metadata Parser
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d3c5df2fbf4c9aaabe66e52a847cdd)](https://www.codacy.com/app/mpgirro/wien?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mpgirro/wien&amp;utm_campaign=Badge_Grade)
+
 
 An RSS 2.0 feed parser for extracting Podcast metadata on the JVM. WIEN is written in Kotlin, but fully Java compatible.
 
