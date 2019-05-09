@@ -11,18 +11,18 @@ plugins {
 }
 
 group = "io.hemin"
-version = "0.0.1"
+version = "0.5.0"
 
 val junitVersion = "5.4.2"
+val logbackVersion = "1.2.3"
+val slf4jVersion = "1.7.25"
 
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
+    mavenLocal()
+    mavenCentral()
 }
 
 dependencies {
@@ -31,8 +31,26 @@ dependencies {
 
     compile("com.google.guava:guava:27.1-jre")
 
+    compile("org.slf4j:slf4j-api:${slf4jVersion}")
+    compile("ch.qos.logback:logback-classic:${logbackVersion}")
+    compile("ch.qos.logback:logback-core:${logbackVersion}")
+
     // Use JUnit 5.
+    testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
+    /*
     testCompile("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testCompile("org.junit.jupiter:junit-jupiter-params:$junitVersion")
     runtime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+    */
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+}
+
+tasks.withType<Wrapper> {
+    gradleVersion = "5.4.1"
 }

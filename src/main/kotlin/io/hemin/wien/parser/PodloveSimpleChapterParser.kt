@@ -10,7 +10,7 @@ import kotlin.streams.toList
 
 class PodloveSimpleChapterParser : NamespaceParser() {
 
-    override val namespaceURI: String? = "http://podlove.org/simple-chapters/"
+    override val namespaceURI: String? = "http://podlove.org/simple-chapters"
 
     override fun parseChannel(builder: PodcastBuilder, node: Node) { }
 
@@ -24,7 +24,6 @@ class PodloveSimpleChapterParser : NamespaceParser() {
         asList(node.childNodes).stream()
             .filter { c -> c.localName == "chapter" }
             .map(::toPodloveSimpleChapter)
-            .filter { c -> c != null }
             .toList()
             .filterNotNull()
     }

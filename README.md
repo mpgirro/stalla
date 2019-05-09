@@ -1,9 +1,7 @@
 # WIEN : Podcast Metadata Parser
 
 
-An RSS 2.0 feed parser for extracting Podcast metadata on the JVM.
-
-WIEN is written in Kotlin.
+An RSS 2.0 feed parser for extracting Podcast metadata on the JVM. WIEN is written in Kotlin, but fully Java compatible.
 
 
 ### ⚠️ Early development status warning

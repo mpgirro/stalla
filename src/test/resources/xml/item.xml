@@ -2,7 +2,8 @@
 <item
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-    xmlns:atom="http://www.w3.org/2005/Atom">
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:psc="http://podlove.org/simple-chapters">
     <title>Lorem Ipsum</title>
     <link>http://example.org/episode1</link>
     <description><![CDATA[Lorem Ipsum]]></description>
@@ -34,4 +35,9 @@
         <atom:email>person@example.org</atom:email>
         <atom:uri>http://example.org</atom:uri>
     </atom:contributor>
+    <psc:chapters version="1.2">
+        <psc:chapter start="00:00:00.000" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
+        <psc:chapter start="00:01:03.856" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
+        <psc:chapter start="00:02:12.641" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
+    </psc:chapters>
 </item>
