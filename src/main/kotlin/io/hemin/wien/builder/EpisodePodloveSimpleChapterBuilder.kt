@@ -2,6 +2,7 @@ package io.hemin.wien.builder
 
 import io.hemin.wien.model.Episode
 
+/** Builder class for [Episode.Podlove.SimpleChapter] instances. */
 class EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter> {
 
     private var start: String? = null

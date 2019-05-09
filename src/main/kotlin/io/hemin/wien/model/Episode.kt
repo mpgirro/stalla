@@ -18,6 +18,7 @@ import java.util.*
  * @property content The data from the Content namespace, or null if no data from this namespace was found.
  * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
+ * @property podlove The data from the Podlove standards namespaces, or null if no data from these namespaces were found.
  */
 data class Episode(
     val title: String?,
@@ -135,11 +136,25 @@ data class Episode(
         val links: List<Link>
     )
 
-
+    /**
+     * Model class for data from elements of namespaces from the Podlove
+     * standards family that are valid within `<item>` elements.
+     *
+     * @property simpleChapters List of data from the `<psc:chapter>` elements as [SimpleChapter] instances.
+     */
     data class Podlove(
         val simpleChapters: List<SimpleChapter>
     ) {
 
+        /**
+         * Model class for data from `<psc:chapter>` elements of the Podlove
+         * Simple Chapter namespace that are valid within `<item>` elements.
+         *
+         * @property start The value of the chapter's `start` attribute.
+         * @property title The value of the chapter's `title` attribute.
+         * @property href The value of the chapter's `href` attribute.
+         * @property image The value of the chapter's `image` attribute.
+         */
         data class SimpleChapter(
             val start: String?,
             val title: String?,

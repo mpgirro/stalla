@@ -26,6 +26,7 @@ class EpisodeBuilder : Builder<Episode> {
     /** The builder for data from the Atom namespace. */
     val atom: EpisodeAtomBuilder = EpisodeAtomBuilder()
 
+    /** The builder for data from namespaces of the Podlove standards. */
     val podlove: EpisodePodloveBuilder = EpisodePodloveBuilder()
 
     /** Set the title. */
