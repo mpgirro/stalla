@@ -8,6 +8,7 @@ plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin on the JVM.
     id("org.jetbrains.kotlin.jvm").version("1.3.21")
     id("org.jetbrains.dokka") version "0.9.18"
+    id("jacoco")
 }
 
 group = "io.hemin"
@@ -47,4 +48,12 @@ tasks.withType<Test> {
 
 tasks.withType<Wrapper> {
     gradleVersion = "5.4.1"
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.isEnabled = false
+        csv.isEnabled = false
+        html.destination = file("${buildDir}/jacocoHtml")
+    }
 }
