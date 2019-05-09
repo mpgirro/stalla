@@ -4,6 +4,9 @@ jdk:
     - oraclejdk8
     - openjdk8
 
+env:
+    - CODECOV_TOKEN="e598bb94-cd7c-4d66-86a1-223f9989b460"
+
 before_script:
     - chmod +x gradlew
 
