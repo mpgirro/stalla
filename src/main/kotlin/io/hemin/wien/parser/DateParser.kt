@@ -39,6 +39,11 @@ class DateParser {
             "yyyy"
         )
 
+        /**
+         * Parses a string into a date object, if the string holds a valid date format.
+         * Uses `en-US` as the locale.
+         *
+         */
         fun parse(value: String?): Date? = parse(value, Locale.forLanguageTag("en-US"))
 
         fun parse(value: String?, locale: Locale): Date? {

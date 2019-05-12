@@ -12,14 +12,14 @@ WIEN is at a very early stage and may change entirely. You __should not use it i
 
 ## Supported standards
 
-  - [x] [RSS 2.0](http://www.rssboard.org/rss-2-0)
-  - [x] [Atom](https://tools.ietf.org/html/rfc4287)
-  - [x] [iTunes](https://help.apple.com/itc/podcasts_connect/#/itcb54353390)
-  - [x] [Content](http://web.resource.org/rss/1.0/modules/content/) (RDF Site Summary 1.0 Module)
-  - [x] [Podlove Simple Chapters](https://podlove.org/simple-chapters/) (planned)
-  - [ ] Bitlove (planned)
-  - [ ] Fyyd (planned)
-  - [ ] Feedpress (planned)
+- [x] [RSS 2.0](http://www.rssboard.org/rss-2-0)
+- [x] [Atom](https://tools.ietf.org/html/rfc4287)
+- [x] [iTunes](https://help.apple.com/itc/podcasts_connect/#/itcb54353390)
+- [x] [Content](http://web.resource.org/rss/1.0/modules/content/) (RDF Site Summary 1.0 Module)
+- [x] [Podlove Simple Chapters](https://podlove.org/simple-chapters/) (planned)
+- [ ] Bitlove (planned)
+- [ ] Fyyd (planned)
+- [ ] Feedpress (planned)
 
 Feel free to open an issue if WIEN is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.
 
