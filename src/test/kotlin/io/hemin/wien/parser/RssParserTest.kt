@@ -12,23 +12,24 @@ import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 import java.util.*
 
+/** Provides unit tests for [RssParser]. */
 class RssParserTest : NamespaceParserTest() {
 
     override val parser = RssParser()
 
-    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
+    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    val expectedDate: Date? = DateParser.parse("Fri, 16 Mar 2018 22:49:08 +0000")
-    val expectedEnclosure = Episode.Enclosure(
+    private val expectedDate: Date? = DateParser.parse("Fri, 16 Mar 2018 22:49:08 +0000")
+    private val expectedEnclosure = Episode.Enclosure(
         url    = "http://example.org/episode1.m4a",
         length = 78589133,
         type   = "audio/mp4")
-    val expectedGuid = Episode.Guid(
+    private val expectedGuid = Episode.Guid(
         textContent = "1fa609024fdf097",
         isPermalink = true
     )
-    val expectedImage = Image(
+    private val expectedImage = Image(
         url         = "http://example.org/podcast-cover.jpg",
         title       = "Lorem Ipsum",
         link        = "http://example.org",

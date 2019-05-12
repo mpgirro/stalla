@@ -11,20 +11,21 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
+/** Provides unit tests for [ItunesParser]. */
 class ItunesParserTest : NamespaceParserTest() {
 
     override val parser = ItunesParser()
 
-    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
+    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    val expectedPodcastImage = ImageBuilder()
+    private val expectedPodcastImage = ImageBuilder()
         .url("http://example.org/podcast-cover.jpg")
         .build()
-    val expectedEpisodeImage = ImageBuilder()
+    private val expectedEpisodeImage = ImageBuilder()
         .url("http://example.org/episode-cover.jpg")
         .build()
-    val expectedOwner = PersonBuilder()
+    private val expectedOwner = PersonBuilder()
         .name("Lorem Ipsum")
         .email("owner@example.org")
         .build()

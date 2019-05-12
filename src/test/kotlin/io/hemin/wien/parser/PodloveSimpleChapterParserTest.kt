@@ -8,13 +8,14 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
+/** Provides unit tests for [PodloveSimpleChapterParser]. */
 class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
     override val parser = PodloveSimpleChapterParser()
 
-    val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    val expectedSimpleChapter = EpisodePodloveSimpleChapterBuilder()
+    private val expectedSimpleChapter = EpisodePodloveSimpleChapterBuilder()
         .start("00:00:00.000")
         .title("Lorem Ipsum")
         .href("http://example.org")

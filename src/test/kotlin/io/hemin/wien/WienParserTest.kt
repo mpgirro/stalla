@@ -7,9 +7,10 @@ import org.w3c.dom.Document
 import org.w3c.dom.Node
 import javax.xml.parsers.DocumentBuilderFactory
 
+/** Provides unit tests for [WienParser]. */
 class WienParserTest {
 
-    val rss: Document
+    private val rss: Document
 
     init {
         val domBuilder = DomBuilderFactory.newBuilder()

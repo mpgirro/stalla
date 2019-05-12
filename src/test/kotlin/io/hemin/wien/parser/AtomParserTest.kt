@@ -10,20 +10,21 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
+/** Provides unit tests for [AtomParser]. */
 class AtomParserTest : NamespaceParserTest() {
 
     override val parser = AtomParser()
 
-    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
+    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    val expectedLink = LinkBuilder()
+    private val expectedLink = LinkBuilder()
         .href("http://example.org/feed/m4a")
         .rel("self")
         .title("Lorem Ipsum")
         .type("application/rss+xml")
         .build()
-    val expectedPerson = PersonBuilder()
+    private val expectedPerson = PersonBuilder()
         .name("Lorem Ipsum")
         .email("person@example.org")
         .uri("http://example.org")

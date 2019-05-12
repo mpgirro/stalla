@@ -56,7 +56,9 @@ class DateParser {
                         if (pp.index != sDate.length) {
                             d = null
                         }
-                    } catch (ex: Exception) { }
+                    } catch (ex: NullPointerException) {
+                        d = null
+                    }
 
                     i++
                 }

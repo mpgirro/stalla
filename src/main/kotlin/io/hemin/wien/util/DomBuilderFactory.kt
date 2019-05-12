@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory
  */
 class DomBuilderFactory {
 
+    /** Static factory object for [DomBuilderFactory] instances DOM document builder instances */
     companion object Factory {
         private val factory = DomBuilderFactory()
 

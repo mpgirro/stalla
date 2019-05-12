@@ -13,3 +13,6 @@ indent_size = 2
 
 [gradlew.bat]
 end_of_line = crlf
+
+[*.md]
+indent_size = 2

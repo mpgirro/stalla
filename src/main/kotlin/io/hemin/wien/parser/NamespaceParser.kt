@@ -61,7 +61,7 @@ abstract class NamespaceParser {
         try {
             DateParser.parse(toText(it))
         }
-        catch (e: Exception) {
+        catch (e: NullPointerException) {
             null
         }
     }
