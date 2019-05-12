@@ -6,7 +6,7 @@
 [![codecov](https://codecov.io/gh/mpgirro/wien/branch/master/graph/badge.svg)](https://codecov.io/gh/mpgirro/wien)
 
 
-An RSS 2.0 feed parser for extracting Podcast metadata on the JVM. WIEN is written in Kotlin, but fully Java compatible.
+An RSS 2.0 feed parser for extracting Podcast metadata on the JVM. This library is written in Kotlin, but fully Java compatible.
 
 
 ### ⚠️ Early development status warning
@@ -17,14 +17,14 @@ WIEN is at a very early stage and may change entirely. You __should not use it i
 
 ## Supported standards
 
-* [RSS 2.0](http://www.rssboard.org/rss-2-0)
-* [Atom](https://tools.ietf.org/html/rfc4287)
-* [iTunes](https://help.apple.com/itc/podcasts_connect/#/itcb54353390)
-* [Content](http://web.resource.org/rss/1.0/modules/content/) (RDF Site Summary 1.0 Module)
-* [Podlove Simple Chapters](https://podlove.org/simple-chapters/) (planned)
-* Bitlove (planned)
-* Fyyd (planned)
-* Feedpress (planned)
+- [x] [RSS 2.0](http://www.rssboard.org/rss-2-0)
+- [x] [Atom](https://tools.ietf.org/html/rfc4287)
+- [x] [iTunes](https://help.apple.com/itc/podcasts_connect/#/itcb54353390)
+- [x] [Content](http://web.resource.org/rss/1.0/modules/content/) (RDF Site Summary 1.0 Module)
+- [x] [Podlove Simple Chapters](https://podlove.org/simple-chapters/) (planned)
+- [ ] Bitlove (planned)
+- [ ] Fyyd (planned)
+- [ ] Feedpress (planned)
 
 Feel free to open an issue if WIEN is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.
 

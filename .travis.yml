@@ -7,12 +7,13 @@ jdk:
 env:
     - CODECOV_TOKEN="e598bb94-cd7c-4d66-86a1-223f9989b460"
 
-before_script:
+before_install:
     - chmod +x gradlew
+    - chmod +x gradle/wrapper/gradle-wrapper.jar
 
 script:
-    - ./gradlew check
-    - ./gradlew jacocoTestReport
+    - ./gradlew check build
+    - ./gradlew codeCoverageReport
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
