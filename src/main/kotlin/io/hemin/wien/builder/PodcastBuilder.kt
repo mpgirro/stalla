@@ -28,6 +28,9 @@ class PodcastBuilder : Builder<Podcast> {
     /** The builder for data from the Atom namespace. */
     val atom: PodcastAtomBuilder = PodcastAtomBuilder()
 
+    /** The builder for data from the Fyyd namespace. */
+    val fyyd: PodcastFyydBuilder = PodcastFyydBuilder()
+
     /** Set the title. */
     fun title(title: String?) = apply { this.title = title }
 
@@ -93,6 +96,7 @@ class PodcastBuilder : Builder<Podcast> {
         image          = image,
         episodes       = immutableCopyOf(episodes),
         itunes         = itunes.build(),
-        atom           = atom.build()
+        atom           = atom.build(),
+        fyyd           = fyyd.build()
     )
 }

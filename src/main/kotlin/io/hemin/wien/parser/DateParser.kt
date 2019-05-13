@@ -40,12 +40,20 @@ class DateParser {
         )
 
         /**
-         * Parses a string into a date object, if the string holds a valid date format.
+         * Parses a string into a date object, if the string represents a valid date format.
          * Uses `en-US` as the locale.
          *
+         * @param value The string representation of a date.
+         * @return The date object defined by the string, or null of parsing was unsuccessful.
          */
         fun parse(value: String?): Date? = parse(value, Locale.forLanguageTag("en-US"))
 
+        /**
+         * Parses a string into a date object, if the string represents a valid date format.
+         *
+         * @param value The string representation of a date.
+         * @return The date object defined by the string, or null of parsing was unsuccessful.
+         */
         fun parse(value: String?, locale: Locale): Date? {
             var d: Date? = null
             value?.let {
