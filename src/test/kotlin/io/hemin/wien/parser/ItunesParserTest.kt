@@ -16,16 +16,16 @@ class ItunesParserTest : NamespaceParserTest() {
 
     override val parser = ItunesParser()
 
-    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
+    val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    private val expectedPodcastImage = ImageBuilder()
+    val expectedPodcastImage = ImageBuilder()
         .url("http://example.org/podcast-cover.jpg")
         .build()
-    private val expectedEpisodeImage = ImageBuilder()
+    val expectedEpisodeImage = ImageBuilder()
         .url("http://example.org/episode-cover.jpg")
         .build()
-    private val expectedOwner = PersonBuilder()
+    val expectedOwner = PersonBuilder()
         .name("Lorem Ipsum")
         .email("owner@example.org")
         .build()

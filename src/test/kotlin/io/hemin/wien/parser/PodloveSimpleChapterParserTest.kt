@@ -13,9 +13,9 @@ class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
     override val parser = PodloveSimpleChapterParser()
 
-    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    private val expectedSimpleChapter = EpisodePodloveSimpleChapterBuilder()
+    val expectedSimpleChapter = EpisodePodloveSimpleChapterBuilder()
         .start("00:00:00.000")
         .title("Lorem Ipsum")
         .href("http://example.org")

@@ -11,7 +11,7 @@ class ContentParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = ContentParser()
 
-    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
     @Test
     fun testParseItemContent() {

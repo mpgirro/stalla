@@ -12,11 +12,7 @@ class FyydParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = FyydParser()
 
-    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-
-    private val expectedFyyd = PodcastFyydBuilder()
-        .verify("abcdefg")
-        .build()
+    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
 
     @Test
     fun testParseChannelFyyd() {

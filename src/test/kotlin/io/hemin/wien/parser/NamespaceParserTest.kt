@@ -12,9 +12,9 @@ import javax.xml.parsers.DocumentBuilder
 abstract class NamespaceParserTest {
 
     /** The [NamespaceParser] implementation that the test class tests. */
-    protected abstract val parser: NamespaceParser
+    abstract val parser: NamespaceParser
 
-    private val domBuilder: DocumentBuilder = DomBuilderFactory.newBuilder()
+    val domBuilder: DocumentBuilder = DomBuilderFactory.newBuilder()
 
     /** Parse [channel] and add result to [builder]. */
     fun parse(builder: PodcastBuilder, channel: Node) {

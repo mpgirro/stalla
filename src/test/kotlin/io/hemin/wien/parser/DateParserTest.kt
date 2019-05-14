@@ -11,7 +11,7 @@ import java.util.*
 class DateParserTest {
 
     // millis calculated from: "Fri, 16 Mar 2018 22:49:08 +0000"
-    private val expected: Date = Date.from(Instant.ofEpochMilli(1521240548000))
+    val expected: Date = Date.from(Instant.ofEpochMilli(1521240548000))
 
     @Test
     fun testParseDateFormats() {

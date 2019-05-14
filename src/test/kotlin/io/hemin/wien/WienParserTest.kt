@@ -10,7 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory
 /** Provides unit tests for [WienParser]. */
 class WienParserTest {
 
-    private val rss: Document
+    val rss: Document
 
     init {
         val domBuilder = DomBuilderFactory.newBuilder()

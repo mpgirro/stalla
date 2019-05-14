@@ -17,19 +17,19 @@ class RssParserTest : NamespaceParserTest() {
 
     override val parser = RssParser()
 
-    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
+    val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    private val expectedDate: Date? = DateParser.parse("Fri, 16 Mar 2018 22:49:08 +0000")
-    private val expectedEnclosure = Episode.Enclosure(
+    val expectedDate: Date? = DateParser.parse("Fri, 16 Mar 2018 22:49:08 +0000")
+    val expectedEnclosure = Episode.Enclosure(
         url    = "http://example.org/episode1.m4a",
         length = 78589133,
         type   = "audio/mp4")
-    private val expectedGuid = Episode.Guid(
+    val expectedGuid = Episode.Guid(
         textContent = "1fa609024fdf097",
         isPermalink = true
     )
-    private val expectedImage = Image(
+    val expectedImage = Image(
         url         = "http://example.org/podcast-cover.jpg",
         title       = "Lorem Ipsum",
         link        = "http://example.org",
