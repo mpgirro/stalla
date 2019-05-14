@@ -2,7 +2,8 @@
 <channel
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
     xmlns:atom="http://www.w3.org/2005/Atom"
-    xmlns:fyyd="https://fyyd.de/fyyd-ns/">
+    xmlns:fyyd="https://fyyd.de/fyyd-ns/"
+    xmlns:feedpress="https://feed.press/xmlns">
     <title>Lorem Ipsum</title>
     <link>http://example.org</link>
     <description>Lorem Ipsum</description>
@@ -54,4 +55,8 @@
         <atom:uri>http://example.org</atom:uri>
     </atom:contributor>
     <fyyd:verify>abcdefg</fyyd:verify>
+    <feedpress:newsletterId>abc123</feedpress:newsletterId>
+    <feedpress:locale>en</feedpress:locale>
+    <feedpress:podcastId>xyz123</feedpress:podcastId>
+    <feedpress:cssFile>http://example.org/style.css</feedpress:cssFile>
 </channel>

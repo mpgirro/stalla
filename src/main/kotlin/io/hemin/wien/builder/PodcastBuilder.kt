@@ -31,6 +31,8 @@ class PodcastBuilder : Builder<Podcast> {
     /** The builder for data from the Fyyd namespace. */
     val fyyd: PodcastFyydBuilder = PodcastFyydBuilder()
 
+    val feedpress: PodcastFeedpressBuilder = PodcastFeedpressBuilder()
+
     /** Set the title. */
     fun title(title: String?) = apply { this.title = title }
 
@@ -97,6 +99,7 @@ class PodcastBuilder : Builder<Podcast> {
         episodes       = immutableCopyOf(episodes),
         itunes         = itunes.build(),
         atom           = atom.build(),
-        fyyd           = fyyd.build()
+        fyyd           = fyyd.build(),
+        feedpress      = feedpress.build()
     )
 }

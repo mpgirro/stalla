@@ -21,6 +21,7 @@ import java.util.*
  * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
  * @property fyyd The data from the Fyyd namespace, or null if no data from this namespace was found.
+ * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
  */
 data class Podcast(
     val title: String?,
@@ -38,7 +39,8 @@ data class Podcast(
     val episodes: List<Episode>,
     val itunes: Podcast.Itunes?,
     val atom: Podcast.Atom?,
-    val fyyd: Podcast.Fyyd?
+    val fyyd: Podcast.Fyyd?,
+    val feedpress: Podcast.Feedpress?
 ) {
 
     /**
@@ -117,6 +119,13 @@ data class Podcast(
      */
     data class Fyyd(
         val verify: String?
+    )
+
+    data class Feedpress(
+        val newsletterId: String?,
+        val locale: String?,
+        val podcastId: String?,
+        val cssFile: String?
     )
 
 }
