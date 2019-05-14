@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.6.0
+
+* Adds support for the Fyyd namespace
+
 ## v0.5.1
 
 * Fixes the URI for the Podlove Simple Chapter namespace.
