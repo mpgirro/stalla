@@ -31,6 +31,7 @@ class PodcastBuilder : Builder<Podcast> {
     /** The builder for data from the Fyyd namespace. */
     val fyyd: PodcastFyydBuilder = PodcastFyydBuilder()
 
+    /** The builder for data from the Feedpress namespace. */
     val feedpress: PodcastFeedpressBuilder = PodcastFeedpressBuilder()
 
     /** Set the title. */

@@ -121,6 +121,14 @@ data class Podcast(
         val verify: String?
     )
 
+    /**
+     * Model class for data from elements of the Feedpress namespace that are valid within `<channel>` elements.
+     *
+     * @property newsletterId The ID of the FeedPress newsletter.
+     * @property locale The feed template language.
+     * @property podcastId The iTunes Podcast ID.
+     * @property cssFile The feed's custom CSS file.
+     */
     data class Feedpress(
         val newsletterId: String?,
         val locale: String?,

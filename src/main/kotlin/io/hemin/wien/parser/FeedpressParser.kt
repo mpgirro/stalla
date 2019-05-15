@@ -4,6 +4,11 @@ import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.builder.PodcastBuilder
 import org.w3c.dom.Node
 
+/**
+ * Parser implementation for the Feedpress namespace.
+ *
+ * The namespace URI is: `https://feed.press/xmlns`
+ */
 class FeedpressParser : NamespaceParser() {
 
     override val namespaceURI: String? = "https://feed.press/xmlns"

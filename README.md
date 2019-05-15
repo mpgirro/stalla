@@ -19,7 +19,7 @@ WIEN is at a very early stage and may change entirely. You __should not use it i
 - [x] [Podlove Simple Chapters](https://podlove.org/simple-chapters/)
 - [ ] Bitlove
 - [x] Fyyd
-- [ ] Feedpress
+- [x] [Feedpress](https://feed.press/xmlns)
 
 Feel free to open an issue if WIEN is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.
 
