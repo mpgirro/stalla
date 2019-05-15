@@ -1,7 +1,6 @@
 package io.hemin.wien.parser
 
 import io.hemin.wien.builder.PodcastBuilder
-import io.hemin.wien.builder.PodcastFyydBuilder
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail

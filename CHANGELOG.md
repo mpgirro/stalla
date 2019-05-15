@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.7.0
+
+* Adds support for the Feedpress namespace
+
 ## v0.6.0
 
 * Adds support for the Fyyd namespace
