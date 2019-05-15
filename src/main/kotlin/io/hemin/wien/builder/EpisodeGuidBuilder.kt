@@ -8,10 +8,10 @@ class EpisodeGuidBuilder : Builder<Episode.Guid> {
     private var textContent: String?      = null
     private var isPermalink: Boolean? = null
 
-    /** Set the textContent. */
+    /** Set the textContent value. */
     fun textContent(textContent: String?) = apply { this.textContent = textContent }
 
-    /** Set the isPermalink. */
+    /** Set the isPermalink value. */
     fun isPermalink(isPermalink: Boolean?) = apply { this.isPermalink = isPermalink }
 
     override fun build(): Episode.Guid? {

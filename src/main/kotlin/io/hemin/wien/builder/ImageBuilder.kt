@@ -12,22 +12,22 @@ class ImageBuilder : Builder<Image> {
     private var height: Int?         = null
     private var description: String? = null
 
-    /** Set the url. */
+    /** Set the url value. */
     fun url(url: String?) = apply { this.url = url }
 
-    /** Set the title. */
+    /** Set the title value. */
     fun title(title: String?) = apply { this.title = title }
 
-    /** Set the link. */
+    /** Set the link value. */
     fun link(link: String?) = apply { this.link = link }
 
-    /** Set the width. */
+    /** Set the width value. */
     fun width(width: Int?) = apply { this.width = width }
 
-    /** Set the height. */
+    /** Set the height value. */
     fun height(height: Int?) = apply { this.height = height }
 
-    /** Set the description. */
+    /** Set the description value. */
     fun description(description: String?) = apply { this.description = description }
 
     override fun build(): Image? {

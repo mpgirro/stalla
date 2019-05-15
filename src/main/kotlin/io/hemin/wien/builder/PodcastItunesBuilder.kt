@@ -20,19 +20,19 @@ class PodcastItunesBuilder : Builder<Podcast.Itunes> {
     private var type: ShowType?                 = null
     private var owner: Person?                  = null
 
-    /** Set the subtitle. */
+    /** Set the subtitle value. */
     fun subtitle(subtitle: String?) = apply { this.subtitle = subtitle }
 
-    /** Set the summary. */
+    /** Set the summary value. */
     fun summary(summary: String?) = apply { this.summary = summary }
 
     /** Set the Image. */
     fun image(image: Image?) = apply { this.image = image }
 
-    /** Set the keywords. */
+    /** Set the keywords value. */
     fun keywords(keywords: String?) = apply { this.keywords = keywords }
 
-    /** Set the author. */
+    /** Set the author value. */
     fun author(author: String?) = apply { this.author = author }
 
     /**
@@ -44,16 +44,16 @@ class PodcastItunesBuilder : Builder<Podcast.Itunes> {
         category?.let { this.categories.add(it) }
     }
 
-    /** Set the explicit flag. */
+    /** Set the explicit flag value. */
     fun explicit(explicit: Boolean?) = apply { this.explicit = explicit }
 
-    /** Set the block flag. */
+    /** Set the block flag value. */
     fun block(block: Boolean?) = apply { this.block = block }
 
-    /** Set the complete flag. */
+    /** Set the complete flag value. */
     fun complete(complete: Boolean?) = apply { this.complete = complete }
 
-    /** Set the type. */
+    /** Set the type value. */
     fun type(type: String?) = apply { this.type = ShowType.of(type) }
 
     /** Set the Person representing the owner. */

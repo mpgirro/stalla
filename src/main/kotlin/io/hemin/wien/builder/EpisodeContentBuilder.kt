@@ -7,7 +7,7 @@ class EpisodeContentBuilder : Builder<Episode.Content> {
 
     private var encoded: String? = null
 
-    /** Set the encoded. */
+    /** Set the encoded value. */
     fun encoded(encoded: String?) = apply { this.encoded = encoded }
 
     override fun build(): Episode.Content? {

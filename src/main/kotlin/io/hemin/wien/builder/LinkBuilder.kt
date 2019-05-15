@@ -13,25 +13,25 @@ class LinkBuilder : Builder<Link> {
     private var title: String?   = null
     private var type: String?   = null
 
-    /** Set the href. */
+    /** Set the href value. */
     fun href(href: String?) = apply { this.href = href }
 
-    /** Set the hrefLang. */
+    /** Set the hrefLang value. */
     fun hrefLang(hrefLang: String?) = apply { this.hrefLang = hrefLang }
 
-    /** Set the hrefResolved. */
+    /** Set the hrefResolved value. */
     fun hrefResolved(hrefResolved: String?) = apply { this.hrefResolved = hrefResolved }
 
-    /** Set the length. */
+    /** Set the length value. */
     fun length(length: String?) = apply { this.length = length }
 
-    /** Set the rel. */
+    /** Set the rel value. */
     fun rel(rel: String?) = apply { this.rel = rel }
 
-    /** Set the title. */
+    /** Set the title value. */
     fun title(title: String?) = apply { this.title = title }
 
-    /** Set the type. */
+    /** Set the type value. */
     fun type(type: String?) = apply { this.type = type }
 
     override fun build(): Link? {

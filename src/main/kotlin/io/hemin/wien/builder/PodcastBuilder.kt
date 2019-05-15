@@ -34,37 +34,37 @@ class PodcastBuilder : Builder<Podcast> {
     /** The builder for data from the Feedpress namespace. */
     val feedpress: PodcastFeedpressBuilder = PodcastFeedpressBuilder()
 
-    /** Set the title. */
+    /** Set the title value. */
     fun title(title: String?) = apply { this.title = title }
 
-    /** Set the link. */
+    /** Set the link value. */
     fun link(link: String?) = apply { this.link = link }
 
-    /** Set the description. */
+    /** Set the description value. */
     fun description(description: String?) = apply { this.description = description }
 
-    /** Set the pubDate. */
+    /** Set the pubDate value. */
     fun pubDate(pubDate: Date?) = apply { this.pubDate = pubDate }
 
-    /** Set the lastBuildDate. */
+    /** Set the lastBuildDate value. */
     fun lastBuildDate(lastBuildDate: Date?) = apply { this.lastBuildDate = lastBuildDate }
 
-    /** Set the language. */
+    /** Set the language value. */
     fun language(language: String?) = apply { this.language = language }
 
-    /** Set the generator. */
+    /** Set the generator value. */
     fun generator(generator: String?) = apply { this.generator = generator }
 
-    /** Set the copyright. */
+    /** Set the copyright value. */
     fun copyright(copyright: String?) = apply { this.copyright = copyright }
 
-    /** Set the docs. */
+    /** Set the docs value. */
     fun docs(docs: String?) = apply { this.docs = docs }
 
-    /** Set the managingEditor. */
+    /** Set the managingEditor value. */
     fun managingEditor(managingEditor: String?) = apply { this.managingEditor = managingEditor }
 
-    /** Set the webMaster. */
+    /** Set the webMaster value. */
     fun webMaster(webMaster: String?) = apply { this.webMaster = webMaster }
 
     /** Set the Image. */

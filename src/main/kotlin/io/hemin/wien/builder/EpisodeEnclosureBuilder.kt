@@ -9,13 +9,13 @@ class EpisodeEnclosureBuilder : Builder<Episode.Enclosure> {
     private var length: Long? = null
     private var type: String? = null
 
-    /** Set the url. */
+    /** Set the url value. */
     fun url(url: String?) = apply { this.url = url }
 
-    /** Set the length. */
+    /** Set the length value. */
     fun length(length: Long?) = apply { this.length = length }
 
-    /** Set the type. */
+    /** Set the type value. */
     fun type(type: String?) = apply { this.type = type }
 
     override fun build(): Episode.Enclosure? {

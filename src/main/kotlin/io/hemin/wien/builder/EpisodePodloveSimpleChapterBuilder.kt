@@ -10,16 +10,16 @@ class EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter
     private var href: String?  = null
     private var image: String? = null
 
-    /** Set the start. */
+    /** Set the start value. */
     fun start(start: String?) = apply { this.start = start }
 
-    /** Set the title. */
+    /** Set the title value. */
     fun title(title: String?) = apply { this.title = title }
 
-    /** Set the href. */
+    /** Set the href value. */
     fun href(href: String?) = apply { this.href = href }
 
-    /** Set the image. */
+    /** Set the image value. */
     fun image(image: String?) = apply { this.image = image }
 
     override fun build(): Episode.Podlove.SimpleChapter? {

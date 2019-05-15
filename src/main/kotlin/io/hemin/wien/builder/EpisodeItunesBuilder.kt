@@ -16,28 +16,28 @@ class EpisodeItunesBuilder : Builder<Episode.Itunes> {
     private var episode: Int?             = null
     private var episodeType: EpisodeType? = null
 
-    /** Set the title. */
+    /** Set the title value. */
     fun title(title: String?) = apply { this.title = title }
 
-    /** Set the duration. */
+    /** Set the duration value. */
     fun duration(duration: String?) = apply { this.duration = duration }
 
     /** Set the Image. */
     fun image(image: Image?) = apply { this.image = image }
 
-    /** Set the explicit flag. */
+    /** Set the explicit flag value. */
     fun explicit(explicit: Boolean?) = apply { this.explicit = explicit }
 
-    /** Set the block flag. */
+    /** Set the block flag value. */
     fun block(block: Boolean?) = apply { this.block = block }
 
-    /** Set the season. */
+    /** Set the season value. */
     fun season(season: Int?) = apply { this.season = season }
 
-    /** Set the episode. */
+    /** Set the episode value. */
     fun episode(episode: Int?) = apply { this.episode = episode }
 
-    /** Set the episodeType. */
+    /** Set the episodeType value. */
     fun episodeType(episodeType: String?) = apply { this.episodeType = EpisodeType.of(episodeType) }
 
     override fun build(): Episode.Itunes? {

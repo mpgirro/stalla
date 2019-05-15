@@ -9,13 +9,13 @@ class PersonBuilder : Builder<Person> {
     private var email: String? = null
     private var uri: String?   = null
 
-    /** Set the name. */
+    /** Set the name value. */
     fun name(name: String?) = apply { this.name = name }
 
-    /** Set the email. */
+    /** Set the email value. */
     fun email(email: String?) = apply { this.email = email }
 
-    /** Set the uri. */
+    /** Set the uri value. */
     fun uri(uri: String?) = apply { this.uri = uri }
 
     override fun build(): Person? {

@@ -29,16 +29,16 @@ class EpisodeBuilder : Builder<Episode> {
     /** The builder for data from namespaces of the Podlove standards. */
     val podlove: EpisodePodloveBuilder = EpisodePodloveBuilder()
 
-    /** Set the title. */
+    /** Set the title value. */
     fun title(title: String?) = apply { this.title = title }
 
-    /** Set the link. */
+    /** Set the link value. */
     fun link(link: String?) = apply { this.link = link }
 
-    /** Set the description. */
+    /** Set the description value. */
     fun description(description: String?) = apply { this.description = description }
 
-    /** Set the author. */
+    /** Set the author value. */
     fun author(author: String?) = apply { this.author = author }
 
     /**
@@ -50,7 +50,7 @@ class EpisodeBuilder : Builder<Episode> {
         category?.let { this.categories.add(it) }
     }
 
-    /** Set the comments. */
+    /** Set the comments value. */
     fun comments(comments: String?) = apply { this.comments = comments }
 
     /**
@@ -63,10 +63,10 @@ class EpisodeBuilder : Builder<Episode> {
     /** Set the Guid. */
     fun guid(guid: Episode.Guid?) = apply { this.guid = guid }
 
-    /** Set the pubDate. */
+    /** Set the pubDate value. */
     fun pubDate(pubDate: Date?) = apply { this.pubDate = pubDate }
 
-    /** Set the source. */
+    /** Set the source value. */
     fun source(source: String?) = apply { this.source = source }
 
     /**
