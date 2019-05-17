@@ -1,6 +1,7 @@
 # WIEN : Podcast Metadata Parser
 
 [![Build Status](https://travis-ci.org/mpgirro/wien.svg?branch=master)](https://travis-ci.org/mpgirro/wien)
+[![Coverage Status](https://coveralls.io/repos/github/mpgirro/wien/badge.svg?branch=master)](https://coveralls.io/github/mpgirro/wien?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d3c5df2fbf4c9aaabe66e52a847cdd)](https://www.codacy.com/app/mpgirro/wien?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mpgirro/wien&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/mpgirro/wien/branch/master/graph/badge.svg)](https://codecov.io/gh/mpgirro/wien)
 
