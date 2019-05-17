@@ -12,6 +12,8 @@ plugins {
     id("org.jetbrains.dokka") version "0.9.18"
     id("jacoco")
     id("java")
+    // Upload jacoco coverage reports to coveralls
+    id("com.github.kt3k.coveralls").version("2.8.2")
 }
 
 group = "io.hemin"
@@ -75,6 +77,11 @@ tasks {
 
         dependsOn("test")
     }
+}
+
+coveralls {
+    //sourceDirs += ["src/main/kotlin"]
+    jacocoReportPath = "build/reports/jacoco/test/jacocoTestReport.xml"
 }
 
 
