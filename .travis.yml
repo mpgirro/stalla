@@ -13,7 +13,7 @@ before_install:
 
 script:
     - ./gradlew check build
-    - ./gradlew codeCoverageReport
+    - ./gradlew coveralls
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
