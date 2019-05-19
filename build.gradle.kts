@@ -59,29 +59,26 @@ tasks {
         gradleVersion = "5.4.1"
     }
 
-    val codeCoverageReport by creating(JacocoReport::class) {
-        executionData(fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec"))
-
-        subprojects.onEach {
-            sourceSets(it.sourceSets["main"])
-        }
-
+    withType<JacocoReport>().configureEach {
         reports {
-            //sourceDirectories =  files(sourceSets["main"].allSource.srcDirs)
-            //classDirectories =  files(sourceSets["main"].output)
+            html.isEnabled = true
             xml.isEnabled = true
-            xml.destination = File("$buildDir/reports/jacoco/report.xml")
-            html.isEnabled = false
-            csv.isEnabled = false
         }
-
-        dependsOn("test")
     }
+
 }
 
 coveralls {
-    //sourceDirs += ["src/main/kotlin"]
-    jacocoReportPath = "build/reports/jacoco/test/jacocoTestReport.xml"
+    sourceDirs = sourceDirs + "src/main/kotlin"
 }
+
+/*
+coveralls {
+    //sourceDirs += ["src/main/kotlin"]
+    //jacocoReportPath = "build/reports/jacoco/test/jacocoTestReport.xml"
+    jacocoReportPath 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
+
+}
+*/
 
 
