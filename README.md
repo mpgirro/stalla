@@ -22,6 +22,8 @@ WIEN is at a very early stage and may change entirely. You __should not use it i
 - [ ] Bitlove
 - [x] Fyyd
 - [x] [Feedpress](https://feed.press/xmlns)
+- [ ] Dublin Core
+- [ ] Google Play
 
 Feel free to open an issue if WIEN is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.
 
