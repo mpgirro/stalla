@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.8.0
+
+* Adds support for the Google Play namespace
+
 ## v0.7.0
 
 * Adds support for the Feedpress namespace
