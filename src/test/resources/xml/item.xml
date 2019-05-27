@@ -28,6 +28,8 @@
     <googleplay:description>Lorem Ipsum</googleplay:description>
     <googleplay:duration>03:24:27</googleplay:duration>
     <googleplay:explicit>no</googleplay:explicit>
+    <googleplay:block>no</googleplay:block>
+    <googleplay:image href="http://example.org/episode-cover.jpg"/>
     <atom:link rel="self" type="application/rss+xml" title="Lorem Ipsum" href="http://example.org/feed/m4a"/>
     <atom:author>
         <atom:name>Lorem Ipsum</atom:name>

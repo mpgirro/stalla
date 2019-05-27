@@ -131,11 +131,15 @@ data class Episode(
      * @property description The `<googleplay:description>` field text content.
      * @property duration The `<googleplay:duration>` field text content.
      * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
+     * @property block The logical value of the `<googleplay:block>` field's text content.
+     * @property image The data from the `<googleplay:image>` element as an [Image].
      */
     data class Googleplay(
         val description: String?,
         val duration: String?,
-        val explicit: Boolean?
+        val explicit: Boolean?,
+        val block: Boolean?,
+        val image: Image?
     )
 
     /**

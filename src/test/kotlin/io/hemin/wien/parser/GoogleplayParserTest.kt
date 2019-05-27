@@ -19,6 +19,10 @@ class GoogleplayParserTest : NamespaceParserTest() {
         .url("http://example.org/podcast-cover.jpg")
         .build()
 
+    val expectedEpisodeImage = ImageBuilder()
+        .url("http://example.org/episode-cover.jpg")
+        .build()
+
     @Test
     fun testParseChannelItunes() {
         channel?.let {
@@ -27,6 +31,7 @@ class GoogleplayParserTest : NamespaceParserTest() {
 
             builder.build().googleplay?.let {
                 assertEquals("Lorem Ipsum", it.author)
+                assertEquals("email@example.org", it.email)
                 //assertEquals(emptyList<String>(), it.categories) // TODO this will fail --> see XML
                 assertEquals("Lorem Ipsum", it.description)
                 assertEquals(false, it.explicit)
@@ -49,6 +54,8 @@ class GoogleplayParserTest : NamespaceParserTest() {
                 assertEquals("Lorem Ipsum", it.description)
                 assertEquals("03:24:27", it.duration)
                 assertEquals(false, it.explicit)
+                assertEquals(false, it.block)
+                assertEquals(expectedEpisodeImage, it.image)
                 // TODO test more fields
             } ?: run {
                 fail("Episode Googleplay data not extracted")

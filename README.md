@@ -23,7 +23,7 @@ WIEN is at a very early stage and may change entirely. You __should not use it i
 - [x] Fyyd
 - [x] [Feedpress](https://feed.press/xmlns)
 - [ ] [Dublin Core](http://purl.org/dc/elements/1.1/) (properties in the `/elements/1.1/` namespace)
-- [ ] [Google Play](https://developers.google.com/search/reference/podcast/rss-feed)
+- [x] [Google Play](https://developers.google.com/search/reference/podcast/rss-feed)
 - [ ] [Media RSS](http://www.rssboard.org/media-rss) ([example feed](https://gist.github.com/misener/7dd9b587b468aea1ae5a))
 
 Feel free to open an issue if WIEN is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.

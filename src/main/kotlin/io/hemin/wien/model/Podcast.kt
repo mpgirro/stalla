@@ -105,6 +105,7 @@ data class Podcast(
      * Model class for data from the Google Play namespace valid within an RSS `<channel>`.
      *
      * @property author The `<googleplay:author>` field text content.
+     * @property email The `<googleplay:email>` field text content.
      * @property categories The list of `<googleplay:category>` element's field text contents.
      * @property description The `<googleplay:description>` field text content.
      * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
@@ -112,6 +113,7 @@ data class Podcast(
      */
     data class Googleplay(
         val author: String?, // TODO can this be a list? is this a Person() ?
+        val email: String?,  // TODO merge with author to a person?
         val categories: List<String?>, // TODO can be nested, Category() required?
         val description: String?,
         val explicit: Boolean?,
