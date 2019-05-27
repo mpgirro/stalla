@@ -3,7 +3,8 @@
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
     xmlns:atom="http://www.w3.org/2005/Atom"
-    xmlns:psc="http://podlove.org/simple-chapters">
+    xmlns:psc="http://podlove.org/simple-chapters"
+    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0">
     <title>Lorem Ipsum</title>
     <link>http://example.org/episode1</link>
     <description><![CDATA[Lorem Ipsum]]></description>
@@ -24,6 +25,9 @@
     <itunes:season>1</itunes:season>
     <itunes:episode>1</itunes:episode>
     <itunes:episodeType>full</itunes:episodeType>
+    <googleplay:description>Lorem Ipsum</googleplay:description>
+    <googleplay:duration>03:24:27</googleplay:duration>
+    <googleplay:explicit>no</googleplay:explicit>
     <atom:link rel="self" type="application/rss+xml" title="Lorem Ipsum" href="http://example.org/feed/m4a"/>
     <atom:author>
         <atom:name>Lorem Ipsum</atom:name>

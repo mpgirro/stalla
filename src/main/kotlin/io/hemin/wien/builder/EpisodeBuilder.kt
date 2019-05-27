@@ -29,6 +29,9 @@ class EpisodeBuilder : Builder<Episode> {
     /** The builder for data from namespaces of the Podlove standards. */
     val podlove: EpisodePodloveBuilder = EpisodePodloveBuilder()
 
+    /** The builder for data from the Google Play namespace. */
+    val googleplay: EpisodeGoogleplayBuilder = EpisodeGoogleplayBuilder()
+
     /** Set the title value. */
     fun title(title: String?) = apply { this.title = title }
 
@@ -88,7 +91,8 @@ class EpisodeBuilder : Builder<Episode> {
         content     = content.build(),
         itunes      = itunes.build(),
         atom        = atom.build(),
-        podlove     = podlove.build()
+        podlove     = podlove.build(),
+        googleplay  = googleplay.build()
     )
 
 }

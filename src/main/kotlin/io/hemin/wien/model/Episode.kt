@@ -19,6 +19,7 @@ import java.util.*
  * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
  * @property podlove The data from the Podlove standards namespaces, or null if no data from these namespaces were found.
+ * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  */
 data class Episode(
     val title: String?,
@@ -34,7 +35,8 @@ data class Episode(
     val content: Episode.Content?,
     val itunes: Episode.Itunes?,
     val atom: Episode.Atom?,
-    val podlove: Episode.Podlove?
+    val podlove: Episode.Podlove?,
+    val googleplay: Episode.Googleplay?
 ) {
 
     /**
@@ -124,6 +126,19 @@ data class Episode(
     }
 
     /**
+     * Model class for data from elements of the Google Play namespace that are valid within `<item>` elements.
+     *
+     * @property description The `<googleplay:description>` field text content.
+     * @property duration The `<googleplay:duration>` field text content.
+     * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
+     */
+    data class Googleplay(
+        val description: String?,
+        val duration: String?,
+        val explicit: Boolean?
+    )
+
+    /**
      * Model class for data from elements of the Atom namespace that are valid within `<item>` elements.
      *
      * @property authors List of data from the `<atom:author>` elements as [Person] instances.
@@ -163,7 +178,5 @@ data class Episode(
         )
 
     }
-
-
 
 }

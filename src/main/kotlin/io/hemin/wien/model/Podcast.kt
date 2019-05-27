@@ -22,6 +22,7 @@ import java.util.*
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
  * @property fyyd The data from the Fyyd namespace, or null if no data from this namespace was found.
  * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
+ * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  */
 data class Podcast(
     val title: String?,
@@ -40,7 +41,8 @@ data class Podcast(
     val itunes: Podcast.Itunes?,
     val atom: Podcast.Atom?,
     val fyyd: Podcast.Fyyd?,
-    val feedpress: Podcast.Feedpress?
+    val feedpress: Podcast.Feedpress?,
+    val googleplay: Podcast.Googleplay?
 ) {
 
     /**
@@ -98,6 +100,23 @@ data class Podcast(
             }
         }
     }
+
+    /**
+     * Model class for data from the Google Play namespace valid within an RSS `<channel>`.
+     *
+     * @property author The `<googleplay:author>` field text content.
+     * @property categories The list of `<googleplay:category>` element's field text contents.
+     * @property description The `<googleplay:description>` field text content.
+     * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
+     * @property image The data from the `<googleplay:image>` element as an [Image].
+     */
+    data class Googleplay(
+        val author: String?, // TODO can this be a list? is this a Person() ?
+        val categories: List<String?>, // TODO can be nested, Category() required?
+        val description: String?,
+        val explicit: Boolean?,
+        val image: Image?
+    )
 
     /**
      * Model class for data from elements of the Atom namespace that are valid within `<channel>` elements.

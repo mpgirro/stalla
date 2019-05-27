@@ -34,6 +34,9 @@ class PodcastBuilder : Builder<Podcast> {
     /** The builder for data from the Feedpress namespace. */
     val feedpress: PodcastFeedpressBuilder = PodcastFeedpressBuilder()
 
+    /** The builder for data from the Google Play namespace. */
+    val googleplay: PodcastGoogleplayBuilder = PodcastGoogleplayBuilder()
+
     /** Set the title value. */
     fun title(title: String?) = apply { this.title = title }
 
@@ -101,6 +104,7 @@ class PodcastBuilder : Builder<Podcast> {
         itunes         = itunes.build(),
         atom           = atom.build(),
         fyyd           = fyyd.build(),
-        feedpress      = feedpress.build()
+        feedpress      = feedpress.build(),
+        googleplay     = googleplay.build()
     )
 }
