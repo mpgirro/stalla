@@ -23,7 +23,7 @@ class ItunesParser : NamespaceParser() {
      */
     override val namespaceURI: String? = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 
-    override fun parseChannel(builder: PodcastBuilder, node: Node) {
+    override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "author"   -> builder.itunes.author(toText(node))
             "block"    -> builder.itunes.block(toBoolean(node))
@@ -36,10 +36,11 @@ class ItunesParser : NamespaceParser() {
             "subtitle" -> builder.itunes.subtitle(toText(node))
             "summary"  -> builder.itunes.summary(toText(node))
             "type"     -> builder.itunes.type(toText(node))
+            else       -> pass
         }
     }
 
-    override fun parseItem(builder: EpisodeBuilder, node: Node) {
+    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "block"       -> builder.itunes.block(toBoolean(node))
             "duration"    -> builder.itunes.duration(toText(node))
@@ -49,6 +50,7 @@ class ItunesParser : NamespaceParser() {
             "image"       -> builder.itunes.image(toImage(node))
             "season"      -> builder.itunes.season(toInt(node))
             "title"       -> builder.itunes.title(toText(node))
+            else          -> pass
         }
     }
 

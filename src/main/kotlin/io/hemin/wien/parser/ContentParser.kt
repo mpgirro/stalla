@@ -19,11 +19,12 @@ class ContentParser : NamespaceParser() {
     override val namespaceURI: String? = "http://purl.org/rss/1.0/modules/content/"
 
     /** This module does not set any data in the [PodcastBuilder]. */
-    override fun parseChannel(builder: PodcastBuilder, node: Node) { }
+    override fun parse(builder: PodcastBuilder, node: Node) { }
 
-    override fun parseItem(builder: EpisodeBuilder, node: Node) {
+    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "encoded" -> builder.content.encoded(toText(node))
+            else      -> pass
         }
     }
 

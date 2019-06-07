@@ -20,7 +20,7 @@ class GoogleplayParser : NamespaceParser() {
      */
     override val namespaceURI: String? = "http://www.google.com/schemas/play-podcasts/1.0"
 
-    override fun parseChannel(builder: PodcastBuilder, node: Node) {
+    override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "author"      -> builder.googleplay.author(toText(node))
             "email"       -> builder.googleplay.email(toText(node))
@@ -28,16 +28,18 @@ class GoogleplayParser : NamespaceParser() {
             "description" -> builder.googleplay.description(toText(node))
             "explicit"    -> builder.googleplay.explicit(toBoolean(node))
             "image"       -> builder.googleplay.image(toImage(node))
+            else          -> pass
         }
     }
 
-    override fun parseItem(builder: EpisodeBuilder, node: Node) {
+    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "description" -> builder.googleplay.description(toText(node))
             "duration"    -> builder.googleplay.duration(toText(node))
             "explicit"    -> builder.googleplay.explicit(toBoolean(node))
             "block"       -> builder.googleplay.block(toBoolean(node))
             "image"       -> builder.googleplay.image(toImage(node))
+            else          -> pass
         }
     }
 

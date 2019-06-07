@@ -13,13 +13,14 @@ class FyydParser : NamespaceParser() {
 
     override val namespaceURI: String? = "https://fyyd.de/fyyd-ns/"
 
-    override fun parseChannel(builder: PodcastBuilder, node: Node) {
+    override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "verify" -> builder.fyyd.verify(toText(node))
+            else     -> pass
         }
     }
 
     /** This module does not set any data in the [EpisodeBuilder]. */
-    override fun parseItem(builder: EpisodeBuilder, node: Node) { }
+    override fun parse(builder: EpisodeBuilder, node: Node) { }
 
 }

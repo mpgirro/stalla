@@ -18,11 +18,12 @@ class PodloveSimpleChapterParser : NamespaceParser() {
     override val namespaceURI: String? = "http://podlove.org/simple-chapters"
 
     /** This module does not set any data in the [PodcastBuilder]. */
-    override fun parseChannel(builder: PodcastBuilder, node: Node) { }
+    override fun parse(builder: PodcastBuilder, node: Node) { }
 
-    override fun parseItem(builder: EpisodeBuilder, node: Node) {
+    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "chapters" -> builder.podlove.addSimpleChapters(toPodloveSimpleChapters(node))
+            else       -> pass
         }
     }
 

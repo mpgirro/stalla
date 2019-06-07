@@ -18,19 +18,21 @@ class AtomParser : NamespaceParser() {
 
     override val namespaceURI: String? = "http://www.w3.org/2005/Atom"
 
-    override fun parseChannel(builder: PodcastBuilder, node: Node) {
+    override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "contributor" -> builder.atom.addContributor(toPerson(node))
             "author"      -> builder.atom.addAuthor(toPerson(node))
             "link"        -> builder.atom.addLink(toLink(node))
+            else          -> pass
         }
     }
 
-    override fun parseItem(builder: EpisodeBuilder, node: Node) {
+    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "contributor" -> builder.atom.addContributor(toPerson(node))
             "author"      -> builder.atom.addAuthor(toPerson(node))
             "link"        -> builder.atom.addLink(toLink(node))
+            else          -> pass
         }
     }
 

@@ -20,12 +20,7 @@ abstract class NamespaceParser {
      * @param builder The builder  where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
-        parseChannel(builder, node)
-    }
-
-    /** The actual namespace parsing implementation for an RSS `<channel>`. */
-    protected abstract fun parseChannel(builder: PodcastBuilder, node: Node)
+    abstract fun parse(builder: PodcastBuilder, node: Node): Any?
 
     /**
      * Extracts data from the XML namespace defined by [namespaceURI]
@@ -36,12 +31,7 @@ abstract class NamespaceParser {
      * @param builder The builder  where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
-        parseItem(builder, node)
-    }
-
-    /** The actual namespace parsing implementation for an RSS `<item>`. */
-    protected abstract fun parseItem(builder: EpisodeBuilder, node: Node)
+    abstract fun parse(builder: EpisodeBuilder, node: Node): Any?
 
     /**
      * Extracts the text content of a DOM node. Trims whitespace at the beginning and the end.
@@ -122,5 +112,8 @@ abstract class NamespaceParser {
             null
         }
     }
+
+    /** Explicitly do nothing. Used for exhaustive when blocks. */
+    protected val pass: Unit = Unit
 
 }
