@@ -32,6 +32,9 @@ class EpisodeBuilder : Builder<Episode> {
     /** The builder for data from the Google Play namespace. */
     val googleplay: EpisodeGoogleplayBuilder = EpisodeGoogleplayBuilder()
 
+    /** The builder for data from the Bitlove namespace. */
+    val bitlove: EpisodeBitloveBuilder = EpisodeBitloveBuilder()
+
     /** Set the title value. */
     fun title(title: String?) = apply { this.title = title }
 
@@ -92,7 +95,8 @@ class EpisodeBuilder : Builder<Episode> {
         itunes      = itunes.build(),
         atom        = atom.build(),
         podlove     = podlove.build(),
-        googleplay  = googleplay.build()
+        googleplay  = googleplay.build(),
+        bitlove     = bitlove.build()
     )
 
 }

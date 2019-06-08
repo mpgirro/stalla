@@ -4,7 +4,8 @@
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
     xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:psc="http://podlove.org/simple-chapters"
-    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0">
+    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+    xmlns:bitlove="http://bitlove.org">
     <title>Lorem Ipsum</title>
     <link>http://example.org/episode1</link>
     <description><![CDATA[Lorem Ipsum]]></description>
@@ -12,7 +13,11 @@
     <category>category1</category>
     <category>category2</category>
     <comments>http://example.org/episode1/comments</comments>
-    <enclosure url="http://example.org/episode1.m4a" length="78589133" type="audio/mp4" />
+    <enclosure
+        url="http://example.org/episode1.m4a"
+        length="78589133"
+        type="audio/mp4"
+        bitlove:guid="abcdefg" />
     <guid isPermaLink="true">1fa609024fdf097</guid>
     <pubDate>Fri, 16 Mar 2018 22:49:08 +0000</pubDate>
     <source>http://example.org/rss</source>

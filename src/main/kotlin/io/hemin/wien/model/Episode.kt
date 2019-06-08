@@ -20,6 +20,7 @@ import java.util.*
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
  * @property podlove The data from the Podlove standards namespaces, or null if no data from these namespaces were found.
  * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
+ * @property bitlove The data from the Bitlove namespace, or null if no data from this namespace was found.
  */
 data class Episode(
     val title: String?,
@@ -36,7 +37,8 @@ data class Episode(
     val itunes: Episode.Itunes?,
     val atom: Episode.Atom?,
     val podlove: Episode.Podlove?,
-    val googleplay: Episode.Googleplay?
+    val googleplay: Episode.Googleplay?,
+    val bitlove: Episode.Bitlove?
 ) {
 
     /**
@@ -182,5 +184,14 @@ data class Episode(
         )
 
     }
+
+    /**
+     * Model class for data from elements of the Bitlove namespace that are valid within `<item>` elements.
+     *
+     * @property guid The GUID attribute for the RSS enclosure element.
+     */
+    data class Bitlove(
+        val guid: String?
+    )
 
 }
