@@ -17,7 +17,7 @@ plugins {
 }
 
 group = "io.hemin"
-version = "0.8.0"
+version = "0.9.0"
 
 val junit5Version = "5.4.2"
 val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPluginVersion

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.9.0
+
+* Adds support for the Bitlove namespace
+
 ## v0.8.0
 
 * Adds support for the Google Play namespace
