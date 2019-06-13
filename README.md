@@ -19,7 +19,7 @@ WIEN is at a very early stage and may change entirely. You __should not use it i
 - [x] [iTunes](https://help.apple.com/itc/podcasts_connect/#/itcb54353390)
 - [x] [Content](http://web.resource.org/rss/1.0/modules/content/) (RDF Site Summary 1.0 Module)
 - [x] [Podlove Simple Chapters](https://podlove.org/simple-chapters/)
-- [ ] Bitlove
+- [x] Bitlove
 - [x] Fyyd
 - [x] [Feedpress](https://feed.press/xmlns)
 - [ ] [Dublin Core](http://purl.org/dc/elements/1.1/) (properties in the `/elements/1.1/` namespace)
