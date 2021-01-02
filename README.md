@@ -22,8 +22,8 @@ WIEN is at a very early stage and may change entirely. You __should not use it i
 - [x] Bitlove
 - [x] Fyyd
 - [x] [Feedpress](https://feed.press/xmlns)
-- [ ] [Dublin Core](http://purl.org/dc/elements/1.1/) (properties in the `/elements/1.1/` namespace)
 - [x] [Google Play](https://developers.google.com/search/reference/podcast/rss-feed)
+- [ ] [Dublin Core](http://purl.org/dc/elements/1.1/) (properties in the `/elements/1.1/` namespace)
 - [ ] [Media RSS](http://www.rssboard.org/media-rss) ([example feed](https://gist.github.com/misener/7dd9b587b468aea1ae5a))
 
 Feel free to open an issue if WIEN is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.
@@ -34,18 +34,18 @@ __TODO__
 
 ## Looking for Atom feed support?
 
-Use [ROME](https://github.com/rometools/rome) instead. It supports both RSS and Atom feed parsing, and provides a unified result interface for the extracted informations. 
+Use [ROME](https://github.com/rometools/rome) instead. It supports both RSS and Atom feed parsing, and provides a unified result interface for the extracted information.
 
-We've provided several modules to extend ROME for additional XML namespaces relevant for Podcast feeds. However, the ROME developers unfortunatelly have not merged the pull requests. Therefore this library does not support the same range of information extraction as WIEN does. 
+We've provided several modules to extend ROME for additional XML namespaces relevant for Podcast feeds. However, the ROME developers unfortunatelly have not merged the pull requests. Therefore, this library does not support the same range of information extraction as WIEN does.
 
-Also note that certain standard informations are only supported by either RSS 2.0 or Atom 1.0 feeds, but not available in both feed types.
+Also note that certain standard information are only supported by either RSS 2.0 or Atom 1.0 feeds, but not available in both feed types.
 
 ## Development
 
 Compile:
 
     gradle compileKotlin
-    
+
 Generate docs with Dokka:
 
     gradle dokka
