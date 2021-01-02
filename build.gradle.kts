@@ -24,7 +24,7 @@ val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPlu
 
 // This might not be needed in the future, but as of present the default version bundled with the latest version of gradle does not work with Java 11
 jacoco {
-    toolVersion = "0.8.2"
+    toolVersion = "0.8.6"
 }
 
 repositories {
