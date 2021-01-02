@@ -38,7 +38,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
-    compile("com.google.guava:guava:27.1-jre")
+    api("com.google.guava:guava:30.1-jre")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
