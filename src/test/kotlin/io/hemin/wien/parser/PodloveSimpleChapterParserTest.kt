@@ -26,7 +26,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
     fun testParseItemPodloveSimpleChapters() {
         item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, node)
+            parseItemNode(builder, node)
 
             builder.build().podlove?.let { podlove ->
                 assertEquals(3, podlove.simpleChapters.size)

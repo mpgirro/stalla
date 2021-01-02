@@ -17,7 +17,7 @@ internal class BitloveParserTest : NamespaceParserTest() {
     fun testParseItemBitlove() {
         item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, node)
+            parseItemNode(builder, node)
 
             builder.build().bitlove?.let { bitlove ->
                 assertEquals("abcdefg", bitlove.guid)

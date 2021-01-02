@@ -17,7 +17,7 @@ internal class ContentParserTest : NamespaceParserTest() {
     fun testParseItemContent() {
         item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, node)
+            parseItemNode(builder, node)
 
             builder.build().content?.let { content ->
                 assertEquals("Lorem Ipsum", content.encoded)

@@ -17,7 +17,7 @@ internal class FyydParserTest : NamespaceParserTest() {
     fun testParseChannelFyyd() {
         channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, node)
+            parseChannelNode(builder, node)
 
             builder.build().fyyd?.let { fyyd ->
                 assertEquals("abcdefg", fyyd.verify)

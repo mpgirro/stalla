@@ -34,7 +34,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
     fun testParseChannelItunes() {
         channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, node)
+            parseChannelNode(builder, node)
 
             builder.build().itunes?.let { itunes ->
                 assertEquals("Lorem Ipsum", itunes.subtitle)
@@ -60,7 +60,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
     fun testParseItemItunes() {
         item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, node)
+            parseItemNode(builder, node)
 
             builder.build().itunes?.let { itunes ->
                 assertEquals("Lorem Ipsum", itunes.title)

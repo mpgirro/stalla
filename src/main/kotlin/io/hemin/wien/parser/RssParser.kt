@@ -8,7 +8,7 @@ import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.PodcastBuilder
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
-import io.hemin.wien.util.NodeListWrapper.Companion.asList
+import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Node
 
 /**
@@ -93,7 +93,7 @@ class RssParser : NamespaceParser() {
      */
     private fun toImage(node: Node): Image? = valid(node) {
         val builder = ImageBuilder()
-        for (child in asList(node.childNodes)) {
+        for (child in node.childNodes.asListOfNodes()) {
             when (child.localName) {
                 "description" -> builder.description(toText(child))
                 "height" -> builder.height(toInt(child))

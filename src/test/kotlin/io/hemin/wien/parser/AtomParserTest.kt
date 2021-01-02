@@ -34,7 +34,7 @@ internal class AtomParserTest : NamespaceParserTest() {
     fun testParseChannelAtom() {
         channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, node)
+            parseChannelNode(builder, node)
 
             builder.build().atom?.let { atom ->
                 assertTrue(atom.authors.contains(expectedPerson))
@@ -52,7 +52,7 @@ internal class AtomParserTest : NamespaceParserTest() {
     fun testParseItemAtom() {
         item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, node)
+            parseItemNode(builder, node)
 
             builder.build().atom?.let { atom ->
                 assertEquals(1, atom.authors.size)

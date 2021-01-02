@@ -13,10 +13,10 @@ internal class FeedpressParserTest : NamespaceParserTest() {
     private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
 
     @Test
-    fun testParseChannelItunes() {
+    fun testParseChannelFeedpress() {
         channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, node)
+            parseChannelNode(builder, node)
 
             builder.build().feedpress?.let { feedpress ->
                 assertEquals("abc123", feedpress.newsletterId)

@@ -27,7 +27,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
     fun testParseChannelItunes() {
         channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, node)
+            parseChannelNode(builder, node)
 
             builder.build().googleplay?.let { googleplay ->
                 assertEquals("Lorem Ipsum", googleplay.author)
@@ -48,7 +48,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
     fun testParseItemItunes() {
         item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, node)
+            parseItemNode(builder, node)
 
             builder.build().googleplay?.let { googleplay ->
                 assertEquals("Lorem Ipsum", googleplay.description)

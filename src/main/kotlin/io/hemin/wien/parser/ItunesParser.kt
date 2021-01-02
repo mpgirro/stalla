@@ -6,7 +6,7 @@ import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.PodcastBuilder
 import io.hemin.wien.model.Image
 import io.hemin.wien.model.Person
-import io.hemin.wien.util.NodeListWrapper.Companion.asList
+import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Node
 
 /**
@@ -79,7 +79,7 @@ class ItunesParser : NamespaceParser() {
      */
     fun toPerson(node: Node): Person? = valid(node) {
         val builder = PersonBuilder()
-        for (child in asList(node.childNodes)) {
+        for (child in node.childNodes.asListOfNodes()) {
             val value: String? = toText(child)
             when (child.localName) {
                 "name" -> builder.name(value)

@@ -15,14 +15,14 @@ class NodeListWrapper(private val nodes: NodeList) : AbstractList<Node>(), Rando
         /**
          * Returns a [List] API for the argument.
          *
-         * @param nodeList The instance holding the DOM node elements.
+         * @param this@asList The instance holding the DOM node elements.
          * @retunr The [List] API of the argument.
          */
-        fun asList(nodeList: NodeList): List<Node> {
-            return if (nodeList.length == 0)
+        fun NodeList.asListOfNodes(): List<Node> {
+            return if (length == 0)
                 emptyList()
             else
-                NodeListWrapper(nodeList)
+                NodeListWrapper(this)
         }
     }
 

@@ -42,7 +42,7 @@ internal class RssParserTest : NamespaceParserTest() {
     fun testParseChannel() {
         channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, node)
+            parseChannelNode(builder, node)
             val podcast: Podcast = builder.build()
 
             assertEquals("Lorem Ipsum", podcast.title)
@@ -67,7 +67,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val incompleteChannel: Node? = nodeFromResource("channel", "/xml/channel-incomplete.xml")
         incompleteChannel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, node)
+            parseChannelNode(builder, node)
             val podcast: Podcast = builder.build()
 
             assertNull(podcast.image)
@@ -80,7 +80,7 @@ internal class RssParserTest : NamespaceParserTest() {
     fun testParseItem() {
         item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, node)
+            parseItemNode(builder, node)
             val episode: Episode = builder.build()
 
             assertEquals("Lorem Ipsum", episode.title)
@@ -103,7 +103,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val incompleteItem: Node? = nodeFromResource("item", "/xml/item-incomplete.xml")
         incompleteItem?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, node)
+            parseItemNode(builder, node)
             val episode: Episode = builder.build()
 
             assertNull(episode.enclosure)
