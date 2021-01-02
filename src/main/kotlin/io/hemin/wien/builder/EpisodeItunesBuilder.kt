@@ -7,13 +7,13 @@ import io.hemin.wien.model.Image
 /** Builder class for [Episode.Itunes] instances. */
 class EpisodeItunesBuilder : Builder<Episode.Itunes> {
 
-    private var title: String?            = null
-    private var duration: String?         = null
-    private var image: Image?             = null
-    private var explicit: Boolean?        = null
-    private var block: Boolean?           = null
-    private var season: Int?              = null
-    private var episode: Int?             = null
+    private var title: String? = null
+    private var duration: String? = null
+    private var image: Image? = null
+    private var explicit: Boolean? = null
+    private var block: Boolean? = null
+    private var season: Int? = null
+    private var episode: Int? = null
     private var episodeType: EpisodeType? = null
 
     /** Set the title value. */
@@ -43,18 +43,17 @@ class EpisodeItunesBuilder : Builder<Episode.Itunes> {
     override fun build(): Episode.Itunes? {
         return if (anyNotNull(title, duration, image, explicit, block, season, episode, episodeType)) {
             Episode.Itunes(
-                title       = title,
-                duration    = duration,
-                image       = image,
-                explicit    = explicit,
-                block       = block,
-                season      = season,
-                episode     = episode,
+                title = title,
+                duration = duration,
+                image = image,
+                explicit = explicit,
+                block = block,
+                season = season,
+                episode = episode,
                 episodeType = episodeType
             )
         } else {
             null
         }
     }
-
 }

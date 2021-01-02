@@ -25,32 +25,32 @@ class ItunesParser : NamespaceParser() {
 
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
-            "author"   -> builder.itunes.author(toText(node))
-            "block"    -> builder.itunes.block(toBoolean(node))
+            "author" -> builder.itunes.author(toText(node))
+            "block" -> builder.itunes.block(toBoolean(node))
             "category" -> builder.itunes.addCategory(toText(node))
             "complete" -> builder.itunes.complete(toBoolean(node))
             "explicit" -> builder.itunes.explicit(toBoolean(node))
-            "image"    -> builder.itunes.image(toImage(node))
+            "image" -> builder.itunes.image(toImage(node))
             "keywords" -> builder.itunes.keywords(toText(node))
-            "owner"    -> builder.itunes.owner(toPerson(node))
+            "owner" -> builder.itunes.owner(toPerson(node))
             "subtitle" -> builder.itunes.subtitle(toText(node))
-            "summary"  -> builder.itunes.summary(toText(node))
-            "type"     -> builder.itunes.type(toText(node))
-            else       -> pass
+            "summary" -> builder.itunes.summary(toText(node))
+            "type" -> builder.itunes.type(toText(node))
+            else -> pass
         }
     }
 
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
-            "block"       -> builder.itunes.block(toBoolean(node))
-            "duration"    -> builder.itunes.duration(toText(node))
-            "episode"     -> builder.itunes.episode(toInt(node))
+            "block" -> builder.itunes.block(toBoolean(node))
+            "duration" -> builder.itunes.duration(toText(node))
+            "episode" -> builder.itunes.episode(toInt(node))
             "episodeType" -> builder.itunes.episodeType(toText(node))
-            "explicit"    -> builder.itunes.explicit(toBoolean(node))
-            "image"       -> builder.itunes.image(toImage(node))
-            "season"      -> builder.itunes.season(toInt(node))
-            "title"       -> builder.itunes.title(toText(node))
-            else          -> pass
+            "explicit" -> builder.itunes.explicit(toBoolean(node))
+            "image" -> builder.itunes.image(toImage(node))
+            "season" -> builder.itunes.season(toInt(node))
+            "title" -> builder.itunes.title(toText(node))
+            else -> pass
         }
     }
 
@@ -64,8 +64,7 @@ class ItunesParser : NamespaceParser() {
         val url: String? = attributeValueByName(node, "href")
         if (url.isNullOrBlank()) {
             null
-        }
-        else {
+        } else {
             ImageBuilder()
                 .url(url)
                 .build()
@@ -82,13 +81,12 @@ class ItunesParser : NamespaceParser() {
         val builder = PersonBuilder()
         for (child in asList(node.childNodes)) {
             val value: String? = toText(child)
-            when(child.localName) {
-                "name"  -> builder.name(value)
+            when (child.localName) {
+                "name" -> builder.name(value)
                 "email" -> builder.email(value)
-                "uri"   -> builder.uri(value)
+                "uri" -> builder.uri(value)
             }
         }
         builder.build()
     }
-
 }

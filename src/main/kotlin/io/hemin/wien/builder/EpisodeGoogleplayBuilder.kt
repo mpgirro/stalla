@@ -7,10 +7,10 @@ import io.hemin.wien.model.Image
 class EpisodeGoogleplayBuilder : Builder<Episode.Googleplay> {
 
     private var description: String? = null
-    private var duration: String?    = null
-    private var explicit: Boolean?   = null
-    private var block: Boolean?      = null
-    private var image: Image?        = null
+    private var duration: String? = null
+    private var explicit: Boolean? = null
+    private var block: Boolean? = null
+    private var image: Image? = null
 
     /** Set the description value. */
     fun description(description: String?) = apply { this.description = description }
@@ -31,14 +31,13 @@ class EpisodeGoogleplayBuilder : Builder<Episode.Googleplay> {
         return if (anyNotNull(description, duration, explicit, block, image)) {
             return Episode.Googleplay(
                 description = description,
-                duration    = duration,
-                explicit    = explicit,
-                block       = block,
-                image       = image
+                duration = duration,
+                explicit = explicit,
+                block = block,
+                image = image
             )
         } else {
             null
         }
     }
-
 }

@@ -14,17 +14,17 @@ abstract class NamespaceParserTest {
     /** The [NamespaceParser] implementation that the test class tests. */
     abstract val parser: NamespaceParser
 
-    val domBuilder: DocumentBuilder = DomBuilderFactory.newBuilder()
+    private val domBuilder: DocumentBuilder = DomBuilderFactory.newBuilder()
 
     /** Parse [channel] and add result to [builder]. */
-    fun parse(builder: PodcastBuilder, channel: Node) {
+    protected fun parse(builder: PodcastBuilder, channel: Node) {
         for (element in asList(channel.childNodes)) {
             parser.parse(builder, element)
         }
     }
 
-    /** Parse [channel] and add result to [item]. */
-    fun parse(builder: EpisodeBuilder, item: Node) {
+    /** Parse [item] and add result to [builder]. */
+    protected fun parse(builder: EpisodeBuilder, item: Node) {
         for (element in asList(item.childNodes)) {
             parser.parse(builder, element)
         }
@@ -37,11 +37,10 @@ abstract class NamespaceParserTest {
 
         var result: Node? = null
         for (node in asList(doc.childNodes)) {
-            if (elementName.equals(node.localName)) {
+            if (elementName == node.localName) {
                 result = node
             }
         }
         return result
     }
-
 }

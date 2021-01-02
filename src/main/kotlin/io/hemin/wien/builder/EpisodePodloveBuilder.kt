@@ -35,5 +35,4 @@ class EpisodePodloveBuilder : Builder<Episode.Podlove> {
             null
         }
     }
-
 }

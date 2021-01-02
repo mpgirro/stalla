@@ -50,8 +50,7 @@ abstract class NamespaceParser {
     fun toDate(node: Node): Date? = valid(node) {
         try {
             DateParser.parse(toText(it))
-        }
-        catch (e: NullPointerException) {
+        } catch (e: NullPointerException) {
             null
         }
     }
@@ -62,12 +61,12 @@ abstract class NamespaceParser {
      * @param sBool The string representation of a boolean.
      * @return The logical interpretation of the string parameter.
      */
-    fun toBoolean(sBool: String?) = when(sBool) {
-        "true"  -> true
-        "yes"   -> true
+    fun toBoolean(sBool: String?) = when (sBool) {
+        "true" -> true
+        "yes" -> true
         "false" -> false
-        "no"    -> false
-        else    -> null
+        "no" -> false
+        else -> null
     }
 
     /**
@@ -115,5 +114,4 @@ abstract class NamespaceParser {
 
     /** Explicitly do nothing. Used for exhaustive when blocks. */
     protected val pass: Unit = Unit
-
 }

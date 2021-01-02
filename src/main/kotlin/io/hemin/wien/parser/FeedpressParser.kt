@@ -16,14 +16,13 @@ class FeedpressParser : NamespaceParser() {
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "newsletterId" -> builder.feedpress.newsletterId(toText(node))
-            "locale"       -> builder.feedpress.locale(toText(node))
-            "podcastId"    -> builder.feedpress.podcastId(toText(node))
-            "cssFile"      -> builder.feedpress.cssFile(toText(node))
-            else           -> pass
+            "locale" -> builder.feedpress.locale(toText(node))
+            "podcastId" -> builder.feedpress.podcastId(toText(node))
+            "cssFile" -> builder.feedpress.cssFile(toText(node))
+            else -> pass
         }
     }
 
     /** This module does not set any data in the [EpisodeBuilder]. */
     override fun parse(builder: EpisodeBuilder, node: Node) { }
-
 }

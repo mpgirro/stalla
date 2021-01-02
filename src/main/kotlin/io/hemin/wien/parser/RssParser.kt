@@ -21,36 +21,36 @@ class RssParser : NamespaceParser() {
 
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
-            "copyright"      -> builder.copyright(toText(node))
-            "description"    -> builder.description(toText(node))
-            "docs"           -> builder.docs(toText(node))
-            "generator"      -> builder.generator(toText(node))
-            "image"          -> builder.image(toImage(node))
-            "item"           -> builder.addEpisode(toEpisode(node))
-            "language"       -> builder.language(toText(node))
-            "lastBuildDate"  -> builder.lastBuildDate(toDate(node))
-            "link"           -> builder.link(toText(node))
+            "copyright" -> builder.copyright(toText(node))
+            "description" -> builder.description(toText(node))
+            "docs" -> builder.docs(toText(node))
+            "generator" -> builder.generator(toText(node))
+            "image" -> builder.image(toImage(node))
+            "item" -> builder.addEpisode(toEpisode(node))
+            "language" -> builder.language(toText(node))
+            "lastBuildDate" -> builder.lastBuildDate(toDate(node))
+            "link" -> builder.link(toText(node))
             "managingEditor" -> builder.managingEditor(toText(node))
-            "pubDate"        -> builder.pubDate(toDate(node))
-            "title"          -> builder.title(toText(node))
-            "webMaster"      -> builder.webMaster(toText(node))
-            else             -> pass
+            "pubDate" -> builder.pubDate(toDate(node))
+            "title" -> builder.title(toText(node))
+            "webMaster" -> builder.webMaster(toText(node))
+            else -> pass
         }
     }
 
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
-            "author"      -> builder.author(toText(node))
-            "category"    -> builder.addCategory(toText(node))
-            "comments"    -> builder.comments(toText(node))
+            "author" -> builder.author(toText(node))
+            "category" -> builder.addCategory(toText(node))
+            "comments" -> builder.comments(toText(node))
             "description" -> builder.description(toText(node))
-            "enclosure"   -> builder.enclosure(toEnclosure(node))
-            "guid"        -> builder.guid(toGuid(node))
-            "link"        -> builder.link(toText(node))
-            "pubDate"     -> builder.pubDate(toDate(node))
-            "source"      -> builder.source(toText(node))
-            "title"       -> builder.title(toText(node))
-            else          -> pass
+            "enclosure" -> builder.enclosure(toEnclosure(node))
+            "guid" -> builder.guid(toGuid(node))
+            "link" -> builder.link(toText(node))
+            "pubDate" -> builder.pubDate(toDate(node))
+            "source" -> builder.source(toText(node))
+            "title" -> builder.title(toText(node))
+            else -> pass
         }
     }
 
@@ -67,7 +67,6 @@ class RssParser : NamespaceParser() {
             .type(attributeValueByName(it, "type"))
             .build()
     }
-
 
     /**
      * Transforms an RSS `<guid>` element into an instance of its model class.
@@ -91,16 +90,15 @@ class RssParser : NamespaceParser() {
     fun toImage(node: Node): Image? = valid(node) {
         val builder = ImageBuilder()
         for (child in asList(node.childNodes)) {
-            when(child.localName) {
+            when (child.localName) {
                 "description" -> builder.description(toText(child))
-                "height"      -> builder.height(toInt(child))
-                "link"        -> builder.link(toText(child))
-                "title"       -> builder.title(toText(child))
-                "url"         -> builder.url(toText(child))
-                "width"       -> builder.width(toInt(child))
+                "height" -> builder.height(toInt(child))
+                "link" -> builder.link(toText(child))
+                "title" -> builder.title(toText(child))
+                "url" -> builder.url(toText(child))
+                "width" -> builder.width(toInt(child))
             }
         }
         builder.build()
     }
-
 }

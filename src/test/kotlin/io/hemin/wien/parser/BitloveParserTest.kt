@@ -7,20 +7,20 @@ import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
 /** Provides unit tests for [BitloveParser]. */
-class BitloveParserTest : NamespaceParserTest() {
+internal class BitloveParserTest : NamespaceParserTest() {
 
     override val parser = BitloveParser()
 
-    val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
     @Test
     fun testParseItemBitlove() {
-        item?.let {
+        item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, it)
+            parse(builder, node)
 
-            builder.build().bitlove?.let {
-                assertEquals("abcdefg", it.guid)
+            builder.build().bitlove?.let { bitlove ->
+                assertEquals("abcdefg", bitlove.guid)
             } ?: run {
                 fail("Episode Bitlove data not extracted")
             }
@@ -28,5 +28,4 @@ class BitloveParserTest : NamespaceParserTest() {
             fail("item not found")
         }
     }
-
 }

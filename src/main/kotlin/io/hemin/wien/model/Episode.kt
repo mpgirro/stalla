@@ -102,7 +102,7 @@ data class Episode(
          *
          * @property type The string representation of the enum instance.
          */
-        enum class EpisodeType (val type: String) {
+        enum class EpisodeType(val type: String) {
 
             /** Type describing a bonus episode. */
             BONUS("bonus"),
@@ -182,7 +182,6 @@ data class Episode(
             val href: String?,
             val image: String?
         )
-
     }
 
     /**
@@ -193,5 +192,4 @@ data class Episode(
     data class Bitlove(
         val guid: String?
     )
-
 }

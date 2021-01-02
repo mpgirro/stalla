@@ -28,5 +28,4 @@ class BitloveParser : NamespaceParser() {
      */
     fun toGuid(node: Node): String? =
         node.attributes?.getNamedItemNS(namespaceURI, "guid")?.textContent?.trim()
-
 }

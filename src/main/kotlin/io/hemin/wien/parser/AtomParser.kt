@@ -21,18 +21,18 @@ class AtomParser : NamespaceParser() {
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "contributor" -> builder.atom.addContributor(toPerson(node))
-            "author"      -> builder.atom.addAuthor(toPerson(node))
-            "link"        -> builder.atom.addLink(toLink(node))
-            else          -> pass
+            "author" -> builder.atom.addAuthor(toPerson(node))
+            "link" -> builder.atom.addLink(toLink(node))
+            else -> pass
         }
     }
 
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "contributor" -> builder.atom.addContributor(toPerson(node))
-            "author"      -> builder.atom.addAuthor(toPerson(node))
-            "link"        -> builder.atom.addLink(toLink(node))
-            else          -> pass
+            "author" -> builder.atom.addAuthor(toPerson(node))
+            "link" -> builder.atom.addLink(toLink(node))
+            else -> pass
         }
     }
 
@@ -63,13 +63,12 @@ class AtomParser : NamespaceParser() {
     fun toPerson(node: Node): Person? = valid(node) {
         val builder = PersonBuilder()
         for (child in asList(node.childNodes)) {
-            when(child.localName) {
-                "name"  -> builder.name(toText(child))
+            when (child.localName) {
+                "name" -> builder.name(toText(child))
                 "email" -> builder.email(toText(child))
-                "uri"   -> builder.uri(toText(child))
+                "uri" -> builder.uri(toText(child))
             }
         }
         builder.build()
     }
-
 }

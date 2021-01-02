@@ -6,12 +6,12 @@ import io.hemin.wien.model.Podcast
 /** Builder class for [Podcast.Googleplay] instances. */
 class PodcastGoogleplayBuilder : Builder<Podcast.Googleplay> {
 
-    private var author: String?                 = null
-    private var email: String?                  = null
+    private var author: String? = null
+    private var email: String? = null
     private var categories: MutableList<String> = mutableListOf()
-    private var description: String?            = null
-    private var explicit: Boolean?              = null
-    private var image: Image?                   = null
+    private var description: String? = null
+    private var explicit: Boolean? = null
+    private var image: Image? = null
 
     /** Set the author value. */
     fun author(author: String?) = apply { this.author = author }
@@ -41,16 +41,15 @@ class PodcastGoogleplayBuilder : Builder<Podcast.Googleplay> {
         val oCategories = if (categories.isEmpty()) null else Object()
         return if (anyNotNull(author, email, oCategories, description, explicit, image)) {
             Podcast.Googleplay(
-                author      = author,
-                email       = email,
-                categories  = immutableCopyOf(categories),
+                author = author,
+                email = email,
+                categories = immutableCopyOf(categories),
                 description = description,
-                explicit    = explicit,
-                image       = image
+                explicit = explicit,
+                image = image
             )
         } else {
             null
         }
     }
-
 }

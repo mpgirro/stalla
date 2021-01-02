@@ -18,7 +18,5 @@ class EpisodeContentBuilder : Builder<Episode.Content> {
         } else {
             null
         }
-
     }
-
 }

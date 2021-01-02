@@ -6,16 +6,16 @@ import java.util.*
 /** Builder class for [Episode] instances. */
 class EpisodeBuilder : Builder<Episode> {
 
-    private var title: String?                  = null
-    private var link: String?                   = null
-    private var description: String?            = null
-    private var author: String?                 = null
+    private var title: String? = null
+    private var link: String? = null
+    private var description: String? = null
+    private var author: String? = null
     private val categories: MutableList<String> = mutableListOf()
-    private var comments: String?               = null
-    private var enclosure: Episode.Enclosure?   = null
-    private var guid: Episode.Guid?             = null
-    private var pubDate: Date?                  = null
-    private var source: String?                 = null
+    private var comments: String? = null
+    private var enclosure: Episode.Enclosure? = null
+    private var guid: Episode.Guid? = null
+    private var pubDate: Date? = null
+    private var source: String? = null
 
     /** The builder for data from the Content namespace. */
     val content: EpisodeContentBuilder = EpisodeContentBuilder()
@@ -81,22 +81,21 @@ class EpisodeBuilder : Builder<Episode> {
      * @return The create instance.
      */
     override fun build() = Episode(
-        title       = title,
-        link        = link,
+        title = title,
+        link = link,
         description = description,
-        author      = author,
-        categories  = immutableCopyOf(categories),
-        comments    = comments,
-        enclosure   = enclosure,
-        guid        = guid,
-        pubDate     = pubDate,
-        source      = source,
-        content     = content.build(),
-        itunes      = itunes.build(),
-        atom        = atom.build(),
-        podlove     = podlove.build(),
-        googleplay  = googleplay.build(),
-        bitlove     = bitlove.build()
+        author = author,
+        categories = immutableCopyOf(categories),
+        comments = comments,
+        enclosure = enclosure,
+        guid = guid,
+        pubDate = pubDate,
+        source = source,
+        content = content.build(),
+        itunes = itunes.build(),
+        atom = atom.build(),
+        podlove = podlove.build(),
+        googleplay = googleplay.build(),
+        bitlove = bitlove.build()
     )
-
 }

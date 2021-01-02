@@ -8,18 +8,18 @@ import java.util.*
 /** Builder class for [Podcast] instances. */
 class PodcastBuilder : Builder<Podcast> {
 
-    private var title: String?                 = null
-    private var link: String?                  = null
-    private var description: String?           = null
-    private var pubDate: Date?                 = null
-    private var lastBuildDate: Date?           = null
-    private var language: String?              = null
-    private var generator: String?             = null
-    private var copyright: String?             = null
-    private var docs: String?                  = null
-    private var managingEditor: String?        = null
-    private var webMaster: String?             = null
-    private var image: Image?                  = null
+    private var title: String? = null
+    private var link: String? = null
+    private var description: String? = null
+    private var pubDate: Date? = null
+    private var lastBuildDate: Date? = null
+    private var language: String? = null
+    private var generator: String? = null
+    private var copyright: String? = null
+    private var docs: String? = null
+    private var managingEditor: String? = null
+    private var webMaster: String? = null
+    private var image: Image? = null
     private val episodes: MutableList<Episode> = mutableListOf()
 
     /** The builder for data from the iTunes namespace. */
@@ -88,23 +88,23 @@ class PodcastBuilder : Builder<Podcast> {
      * @return The create instance.
      */
     override fun build() = Podcast(
-        title          = title,
-        link           = link,
-        description    = description,
-        pubDate        = pubDate,
-        lastBuildDate  = lastBuildDate,
-        language       = language,
-        generator      = generator,
-        copyright      = copyright,
-        docs           = docs,
+        title = title,
+        link = link,
+        description = description,
+        pubDate = pubDate,
+        lastBuildDate = lastBuildDate,
+        language = language,
+        generator = generator,
+        copyright = copyright,
+        docs = docs,
         managingEditor = managingEditor,
-        webMaster      = webMaster,
-        image          = image,
-        episodes       = immutableCopyOf(episodes),
-        itunes         = itunes.build(),
-        atom           = atom.build(),
-        fyyd           = fyyd.build(),
-        feedpress      = feedpress.build(),
-        googleplay     = googleplay.build()
+        webMaster = webMaster,
+        image = image,
+        episodes = immutableCopyOf(episodes),
+        itunes = itunes.build(),
+        atom = atom.build(),
+        fyyd = fyyd.build(),
+        feedpress = feedpress.build(),
+        googleplay = googleplay.build()
     )
 }

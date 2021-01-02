@@ -7,9 +7,9 @@ import io.hemin.wien.model.Podcast
 /** Builder class for [Podcast.Atom] instances. */
 class PodcastAtomBuilder : Builder<Podcast.Atom> {
 
-    private var authors: MutableList<Person>      = mutableListOf()
+    private var authors: MutableList<Person> = mutableListOf()
     private var contributors: MutableList<Person> = mutableListOf()
-    private var links: MutableList<Link>          = mutableListOf()
+    private var links: MutableList<Link> = mutableListOf()
 
     /**
      * Adds a person to the list of authors.
@@ -45,13 +45,12 @@ class PodcastAtomBuilder : Builder<Podcast.Atom> {
 
         return if (anyNotNull(oAuthors, oContributors, oLinks)) {
             Podcast.Atom(
-                authors      = immutableCopyOf(authors),
+                authors = immutableCopyOf(authors),
                 contributors = immutableCopyOf(contributors),
-                links        = immutableCopyOf(links)
+                links = immutableCopyOf(links)
             )
         } else {
             null
         }
     }
-
 }

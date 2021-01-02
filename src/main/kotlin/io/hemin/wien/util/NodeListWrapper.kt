@@ -9,7 +9,7 @@ import java.util.*
  *
  * @property nodes The [NodeList] to provide a [List] API for.
  */
-class NodeListWrapper (private val nodes: NodeList) : AbstractList<Node>(), RandomAccess {
+class NodeListWrapper(private val nodes: NodeList) : AbstractList<Node>(), RandomAccess {
 
     companion object {
 
@@ -36,5 +36,4 @@ class NodeListWrapper (private val nodes: NodeList) : AbstractList<Node>(), Rand
      * @return The element at the index.
      */
     override fun get(index: Int): Node = nodes.item(index)
-
 }

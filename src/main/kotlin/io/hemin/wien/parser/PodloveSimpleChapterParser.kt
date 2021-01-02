@@ -23,7 +23,7 @@ class PodloveSimpleChapterParser : NamespaceParser() {
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "chapters" -> builder.podlove.addSimpleChapters(toPodloveSimpleChapters(node))
-            else       -> pass
+            else -> pass
         }
     }
 
@@ -55,5 +55,4 @@ class PodloveSimpleChapterParser : NamespaceParser() {
             .image(attributeValueByName(node, "image"))
             .build()
     }
-
 }

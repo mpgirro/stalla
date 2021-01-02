@@ -19,5 +19,4 @@ class PodcastFyydBuilder : Builder<Podcast.Fyyd> {
             null
         }
     }
-
 }

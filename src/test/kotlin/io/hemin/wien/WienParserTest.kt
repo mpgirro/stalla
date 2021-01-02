@@ -8,9 +8,9 @@ import org.w3c.dom.Node
 import javax.xml.parsers.DocumentBuilderFactory
 
 /** Provides unit tests for [WienParser]. */
-class WienParserTest {
+internal class WienParserTest {
 
-    val rss: Document
+    private val rss: Document
 
     init {
         val domBuilder = DomBuilderFactory.newBuilder()
@@ -18,7 +18,7 @@ class WienParserTest {
         rss = domBuilder.parse(xml.openStream())
     }
 
-    fun createRssNode(localName: String): Node = DocumentBuilderFactory
+    private fun createRssNode(localName: String): Node = DocumentBuilderFactory
         .newInstance()
         .newDocumentBuilder()
         .newDocument()
@@ -41,5 +41,4 @@ class WienParserTest {
         val parser = WienParser()
         assertNotNull(parser.parse(rss))
     }
-
 }

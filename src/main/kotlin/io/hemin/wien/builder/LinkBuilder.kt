@@ -5,13 +5,13 @@ import io.hemin.wien.model.Link
 /** Builder class for [Link] instances. */
 class LinkBuilder : Builder<Link> {
 
-    private var href: String?  = null
+    private var href: String? = null
     private var hrefLang: String? = null
-    private var hrefResolved: String?   = null
-    private var length: String?   = null
-    private var rel: String?   = null
-    private var title: String?   = null
-    private var type: String?   = null
+    private var hrefResolved: String? = null
+    private var length: String? = null
+    private var rel: String? = null
+    private var title: String? = null
+    private var type: String? = null
 
     /** Set the href value. */
     fun href(href: String?) = apply { this.href = href }
@@ -37,17 +37,16 @@ class LinkBuilder : Builder<Link> {
     override fun build(): Link? {
         return if (anyNotNull(href, hrefLang, hrefResolved, length, rel, title, type)) {
             Link(
-                href         = href,
-                hrefLang     = hrefLang,
+                href = href,
+                hrefLang = hrefLang,
                 hrefResolved = hrefResolved,
-                length       = length,
-                rel          = rel,
-                title        = title,
-                type         = type
+                length = length,
+                rel = rel,
+                title = title,
+                type = type
             )
         } else {
             null
         }
     }
-
 }

@@ -31,5 +31,4 @@ class DomBuilderFactory {
     }
 
     private fun newBuilder(): DocumentBuilder = factory.newDocumentBuilder()
-
 }

@@ -7,7 +7,7 @@ class EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter
 
     private var start: String? = null
     private var title: String? = null
-    private var href: String?  = null
+    private var href: String? = null
     private var image: String? = null
 
     /** Set the start value. */
@@ -27,12 +27,11 @@ class EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter
             Episode.Podlove.SimpleChapter(
                 start = start,
                 title = title,
-                href  = href,
+                href = href,
                 image = image
             )
         } else {
             null
         }
     }
-
 }

@@ -11,20 +11,20 @@ import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
 /** Provides unit tests for [AtomParser]. */
-class AtomParserTest : NamespaceParserTest() {
+internal class AtomParserTest : NamespaceParserTest() {
 
     override val parser = AtomParser()
 
-    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
+    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    val expectedLink = LinkBuilder()
+    private val expectedLink = LinkBuilder()
         .href("http://example.org/feed/m4a")
         .rel("self")
         .title("Lorem Ipsum")
         .type("application/rss+xml")
         .build()
-    val expectedPerson = PersonBuilder()
+    private val expectedPerson = PersonBuilder()
         .name("Lorem Ipsum")
         .email("person@example.org")
         .uri("http://example.org")
@@ -32,14 +32,14 @@ class AtomParserTest : NamespaceParserTest() {
 
     @Test
     fun testParseChannelAtom() {
-        channel?.let {
+        channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, it)
+            parse(builder, node)
 
-            builder.build().atom?.let {
-                assertTrue(it.authors.contains(expectedPerson))
-                assertTrue(it.contributors.contains(expectedPerson))
-                assertTrue(it.links.contains(expectedLink))
+            builder.build().atom?.let { atom ->
+                assertTrue(atom.authors.contains(expectedPerson))
+                assertTrue(atom.contributors.contains(expectedPerson))
+                assertTrue(atom.links.contains(expectedLink))
             } ?: run {
                 fail("Podcast Atom data not extracted")
             }
@@ -50,19 +50,19 @@ class AtomParserTest : NamespaceParserTest() {
 
     @Test
     fun testParseItemAtom() {
-        item?.let {
+        item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, it)
+            parse(builder, node)
 
-            builder.build().atom?.let {
-                assertEquals(1, it.authors.size)
-                assertTrue(it.authors.contains(expectedPerson))
+            builder.build().atom?.let { atom ->
+                assertEquals(1, atom.authors.size)
+                assertTrue(atom.authors.contains(expectedPerson))
 
-                assertEquals(1, it.contributors.size)
-                assertTrue(it.contributors.contains(expectedPerson))
+                assertEquals(1, atom.contributors.size)
+                assertTrue(atom.contributors.contains(expectedPerson))
 
-                assertEquals(1, it.links.size)
-                assertTrue(it.links.contains(expectedLink))
+                assertEquals(1, atom.links.size)
+                assertTrue(atom.links.contains(expectedLink))
             } ?: run {
                 fail("Episode Atom data not extracted")
             }
@@ -70,5 +70,4 @@ class AtomParserTest : NamespaceParserTest() {
             fail("item not found")
         }
     }
-
 }

@@ -1,10 +1,16 @@
 package io.hemin.wien
 
-import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Podcast
 import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.builder.PodcastBuilder
-import io.hemin.wien.parser.*
+import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Podcast
+import io.hemin.wien.parser.AtomParser
+import io.hemin.wien.parser.ContentParser
+import io.hemin.wien.parser.GoogleplayParser
+import io.hemin.wien.parser.ItunesParser
+import io.hemin.wien.parser.NamespaceParser
+import io.hemin.wien.parser.PodloveSimpleChapterParser
+import io.hemin.wien.parser.RssParser
 import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.NodeListWrapper.Companion.asList
 import org.w3c.dom.Document
@@ -159,5 +165,4 @@ class WienParser {
             null
         }
     }
-
 }

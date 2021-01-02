@@ -5,11 +5,11 @@ import io.hemin.wien.model.Image
 /** Builder class for [Image] instances. */
 class ImageBuilder : Builder<Image> {
 
-    private var url: String?         = null
-    private var title: String?       = null
-    private var link: String?        = null
-    private var width: Int?          = null
-    private var height: Int?         = null
+    private var url: String? = null
+    private var title: String? = null
+    private var link: String? = null
+    private var width: Int? = null
+    private var height: Int? = null
     private var description: String? = null
 
     /** Set the url value. */
@@ -33,16 +33,15 @@ class ImageBuilder : Builder<Image> {
     override fun build(): Image? {
         return if (anyNotNull(url, title, link, width, height, description)) {
             Image(
-                url         = url,
-                title       = title,
-                link        = link,
-                width       = width,
-                height      = height,
+                url = url,
+                title = title,
+                link = link,
+                width = width,
+                height = height,
                 description = description
             )
         } else {
             null
         }
     }
-
 }
