@@ -6,13 +6,14 @@ import java.util.Date
 /** Builder class for [Episode] instances. */
 class EpisodeBuilder : Builder<Episode> {
 
-    private var title: String? = null
+    private lateinit var titleValue: String
+    private lateinit var enclosureValue: Episode.Enclosure
+
     private var link: String? = null
     private var description: String? = null
     private var author: String? = null
     private val categories: MutableList<String> = mutableListOf()
     private var comments: String? = null
-    private var enclosure: Episode.Enclosure? = null
     private var guid: Episode.Guid? = null
     private var pubDate: Date? = null
     private var source: String? = null
@@ -30,13 +31,13 @@ class EpisodeBuilder : Builder<Episode> {
     val podlove: EpisodePodloveBuilder = EpisodePodloveBuilder()
 
     /** The builder for data from the Google Play namespace. */
-    val googleplay: EpisodeGoogleplayBuilder = EpisodeGoogleplayBuilder()
+    val googlePlay: EpisodeGooglePlayBuilder = EpisodeGooglePlayBuilder()
 
     /** The builder for data from the Bitlove namespace. */
     val bitlove: EpisodeBitloveBuilder = EpisodeBitloveBuilder()
 
     /** Set the title value. */
-    fun title(title: String?) = apply { this.title = title }
+    fun title(title: String) = apply { this.titleValue = title }
 
     /** Set the link value. */
     fun link(link: String?) = apply { this.link = link }
@@ -64,7 +65,7 @@ class EpisodeBuilder : Builder<Episode> {
      *
      * @param enclosure The data of an `<enclosure>` element held in a [Episode.Enclosure].
      */
-    fun enclosure(enclosure: Episode.Enclosure?) = apply { this.enclosure = enclosure }
+    fun enclosure(enclosure: Episode.Enclosure) = apply { this.enclosureValue = enclosure }
 
     /** Set the Guid. */
     fun guid(guid: Episode.Guid?) = apply { this.guid = guid }
@@ -80,22 +81,27 @@ class EpisodeBuilder : Builder<Episode> {
      *
      * @return The create instance.
      */
-    override fun build() = Episode(
-        title = title,
-        link = link,
-        description = description,
-        author = author,
-        categories = immutableCopyOf(categories),
-        comments = comments,
-        enclosure = enclosure,
-        guid = guid,
-        pubDate = pubDate,
-        source = source,
-        content = content.build(),
-        itunes = itunes.build(),
-        atom = atom.build(),
-        podlove = podlove.build(),
-        googleplay = googleplay.build(),
-        bitlove = bitlove.build()
-    )
+    override fun build(): Episode {
+        require(::titleValue.isInitialized) { "The episode title is mandatory" }
+        require(::enclosureValue.isInitialized) { "The episode enclosure is mandatory" }
+
+        return Episode(
+            title = titleValue,
+            link = link,
+            description = description,
+            author = author,
+            categories = immutableCopyOf(categories),
+            comments = comments,
+            enclosure = enclosureValue,
+            guid = guid,
+            pubDate = pubDate,
+            source = source,
+            content = content.build(),
+            itunes = itunes.build(),
+            atom = atom.build(),
+            podlove = podlove.build(),
+            googlePlay = googlePlay.build(),
+            bitlove = bitlove.build()
+        )
+    }
 }

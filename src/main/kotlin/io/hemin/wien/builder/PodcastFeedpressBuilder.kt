@@ -9,6 +9,7 @@ class PodcastFeedpressBuilder : Builder<Podcast.Feedpress> {
     private var locale: String? = null
     private var podcastId: String? = null
     private var cssFile: String? = null
+    private var link: String? = null
 
     /** Set the newsletterId value. */
     fun newsletterId(newsletterId: String?) = apply { this.newsletterId = newsletterId }
@@ -22,13 +23,17 @@ class PodcastFeedpressBuilder : Builder<Podcast.Feedpress> {
     /** Set the cssFile value. */
     fun cssFile(cssFile: String?) = apply { this.cssFile = cssFile }
 
+    /** Set the link value. */
+    fun link(link: String?) = apply { this.link = link }
+
     override fun build(): Podcast.Feedpress? {
-        return if (anyNotNull(newsletterId, locale, podcastId, cssFile)) {
+        return if (anyNotNull(newsletterId, locale, podcastId, cssFile, link)) {
             Podcast.Feedpress(
                 newsletterId = newsletterId,
                 locale = locale,
                 podcastId = podcastId,
-                cssFile = cssFile
+                cssFile = cssFile,
+                link = link
             )
         } else {
             null

@@ -5,7 +5,7 @@ import io.hemin.wien.model.Link
 /** Builder class for [Link] instances. */
 class LinkBuilder : Builder<Link> {
 
-    private var href: String? = null
+    private lateinit var hrefValue: String
     private var hrefLang: String? = null
     private var hrefResolved: String? = null
     private var length: String? = null
@@ -14,7 +14,7 @@ class LinkBuilder : Builder<Link> {
     private var type: String? = null
 
     /** Set the href value. */
-    fun href(href: String?) = apply { this.href = href }
+    fun href(href: String) = apply { this.hrefValue = href }
 
     /** Set the hrefLang value. */
     fun hrefLang(hrefLang: String?) = apply { this.hrefLang = hrefLang }
@@ -34,19 +34,17 @@ class LinkBuilder : Builder<Link> {
     /** Set the type value. */
     fun type(type: String?) = apply { this.type = type }
 
-    override fun build(): Link? {
-        return if (anyNotNull(href, hrefLang, hrefResolved, length, rel, title, type)) {
-            Link(
-                href = href,
-                hrefLang = hrefLang,
-                hrefResolved = hrefResolved,
-                length = length,
-                rel = rel,
-                title = title,
-                type = type
-            )
-        } else {
-            null
-        }
+    override fun build(): Link {
+        require(::hrefValue.isInitialized) { "The link href is mandatory" }
+
+        return Link(
+            href = hrefValue,
+            hrefLang = hrefLang,
+            hrefResolved = hrefResolved,
+            length = length,
+            rel = rel,
+            title = title,
+            type = type
+        )
     }
 }

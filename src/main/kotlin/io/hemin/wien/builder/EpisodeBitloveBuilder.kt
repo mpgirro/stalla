@@ -5,18 +5,13 @@ import io.hemin.wien.model.Episode
 /** Builder class for [Episode.Bitlove] instances. */
 class EpisodeBitloveBuilder : Builder<Episode.Bitlove> {
 
-    private var guid: String? = null
+    private lateinit var guidValue: String
 
     /** Set the guid value. */
-    fun guid(guid: String?) = apply { this.guid = guid }
+    fun guid(guid: String) = apply { this.guidValue = guid }
 
-    override fun build(): Episode.Bitlove? {
-        return if (anyNotNull(guid)) {
-            Episode.Bitlove(
-                guid = guid
-            )
-        } else {
-            null
-        }
+    override fun build(): Episode.Bitlove {
+        require(::guidValue.isInitialized) { "The episode bitlove guid is mandatory" }
+        return Episode.Bitlove(guidValue)
     }
 }

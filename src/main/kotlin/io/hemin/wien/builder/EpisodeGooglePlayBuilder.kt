@@ -3,8 +3,8 @@ package io.hemin.wien.builder
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
 
-/** Builder class for [Episode.Googleplay] instances. */
-class EpisodeGoogleplayBuilder : Builder<Episode.Googleplay> {
+/** Builder class for [Episode.GooglePlay] instances. */
+class EpisodeGooglePlayBuilder : Builder<Episode.GooglePlay> {
 
     private var description: String? = null
     private var duration: String? = null
@@ -27,9 +27,9 @@ class EpisodeGoogleplayBuilder : Builder<Episode.Googleplay> {
     /** Set the Image. */
     fun image(image: Image?) = apply { this.image = image }
 
-    override fun build(): Episode.Googleplay? {
+    override fun build(): Episode.GooglePlay? {
         return if (anyNotNull(description, duration, explicit, block, image)) {
-            return Episode.Googleplay(
+            return Episode.GooglePlay(
                 description = description,
                 duration = duration,
                 explicit = explicit,

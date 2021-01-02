@@ -5,16 +5,17 @@ import io.hemin.wien.model.Episode
 /** Builder class for [Episode.Podlove.SimpleChapter] instances. */
 class EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter> {
 
-    private var start: String? = null
-    private var title: String? = null
+    private lateinit var startValue: String
+    private lateinit var titleValue: String
+
     private var href: String? = null
     private var image: String? = null
 
     /** Set the start value. */
-    fun start(start: String?) = apply { this.start = start }
+    fun start(start: String) = apply { this.startValue = start }
 
     /** Set the title value. */
-    fun title(title: String?) = apply { this.title = title }
+    fun title(title: String) = apply { this.titleValue = title }
 
     /** Set the href value. */
     fun href(href: String?) = apply { this.href = href }
@@ -22,16 +23,15 @@ class EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter
     /** Set the image value. */
     fun image(image: String?) = apply { this.image = image }
 
-    override fun build(): Episode.Podlove.SimpleChapter? {
-        return if (anyNotNull(start, title, href, image)) {
-            Episode.Podlove.SimpleChapter(
-                start = start,
-                title = title,
-                href = href,
-                image = image
-            )
-        } else {
-            null
-        }
+    override fun build(): Episode.Podlove.SimpleChapter {
+        require(::startValue.isInitialized) { "The chapter start value is mandatory" }
+        require(::titleValue.isInitialized) { "The chapter title is mandatory" }
+
+        return Episode.Podlove.SimpleChapter(
+            start = startValue,
+            title = titleValue,
+            href = href,
+            image = image
+        )
     }
 }

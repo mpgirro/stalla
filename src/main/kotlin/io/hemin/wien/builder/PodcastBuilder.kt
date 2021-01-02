@@ -8,22 +8,24 @@ import java.util.Date
 /** Builder class for [Podcast] instances. */
 class PodcastBuilder : Builder<Podcast> {
 
-    private var title: String? = null
-    private var link: String? = null
-    private var description: String? = null
+    private lateinit var titleValue: String
+    private lateinit var linkValue: String
+    private lateinit var descriptionValue: String
+    private lateinit var languageValue: String
+
     private var pubDate: Date? = null
     private var lastBuildDate: Date? = null
-    private var language: String? = null
     private var generator: String? = null
     private var copyright: String? = null
     private var docs: String? = null
     private var managingEditor: String? = null
     private var webMaster: String? = null
     private var image: Image? = null
+
     private val episodes: MutableList<Episode> = mutableListOf()
 
     /** The builder for data from the iTunes namespace. */
-    val itunes: PodcastItunesBuilder = PodcastItunesBuilder()
+    val iTunes: PodcastITunesBuilder = PodcastITunesBuilder()
 
     /** The builder for data from the Atom namespace. */
     val atom: PodcastAtomBuilder = PodcastAtomBuilder()
@@ -35,16 +37,16 @@ class PodcastBuilder : Builder<Podcast> {
     val feedpress: PodcastFeedpressBuilder = PodcastFeedpressBuilder()
 
     /** The builder for data from the Google Play namespace. */
-    val googleplay: PodcastGoogleplayBuilder = PodcastGoogleplayBuilder()
+    val googlePlay: PodcastGooglePlayBuilder = PodcastGooglePlayBuilder()
 
     /** Set the title value. */
-    fun title(title: String?) = apply { this.title = title }
+    fun title(title: String) = apply { this.titleValue = title }
 
     /** Set the link value. */
-    fun link(link: String?) = apply { this.link = link }
+    fun link(link: String) = apply { this.linkValue = link }
 
     /** Set the description value. */
-    fun description(description: String?) = apply { this.description = description }
+    fun description(description: String) = apply { this.descriptionValue = description }
 
     /** Set the pubDate value. */
     fun pubDate(pubDate: Date?) = apply { this.pubDate = pubDate }
@@ -53,7 +55,7 @@ class PodcastBuilder : Builder<Podcast> {
     fun lastBuildDate(lastBuildDate: Date?) = apply { this.lastBuildDate = lastBuildDate }
 
     /** Set the language value. */
-    fun language(language: String?) = apply { this.language = language }
+    fun language(language: String) = apply { this.languageValue = language }
 
     /** Set the generator value. */
     fun generator(generator: String?) = apply { this.generator = generator }
@@ -87,24 +89,31 @@ class PodcastBuilder : Builder<Podcast> {
      *
      * @return The create instance.
      */
-    override fun build() = Podcast(
-        title = title,
-        link = link,
-        description = description,
-        pubDate = pubDate,
-        lastBuildDate = lastBuildDate,
-        language = language,
-        generator = generator,
-        copyright = copyright,
-        docs = docs,
-        managingEditor = managingEditor,
-        webMaster = webMaster,
-        image = image,
-        episodes = immutableCopyOf(episodes),
-        itunes = itunes.build(),
-        atom = atom.build(),
-        fyyd = fyyd.build(),
-        feedpress = feedpress.build(),
-        googleplay = googleplay.build()
-    )
+    override fun build(): Podcast {
+        require(::titleValue.isInitialized) { "The podcast title is mandatory" }
+        require(::descriptionValue.isInitialized) { "The podcast description is mandatory" }
+        require(::linkValue.isInitialized) { "The podcast link is mandatory" }
+        require(::languageValue.isInitialized) { "The podcast language is mandatory" }
+
+        return Podcast(
+            title = titleValue,
+            link = linkValue,
+            description = descriptionValue,
+            pubDate = pubDate,
+            lastBuildDate = lastBuildDate,
+            language = languageValue,
+            generator = generator,
+            copyright = copyright,
+            docs = docs,
+            managingEditor = managingEditor,
+            webMaster = webMaster,
+            image = image,
+            episodes = immutableCopyOf(episodes),
+            iTunes = iTunes.build(),
+            atom = atom.build(),
+            fyyd = fyyd.build(),
+            feedpress = feedpress.build(),
+            googlePlay = googlePlay.build()
+        )
+    }
 }

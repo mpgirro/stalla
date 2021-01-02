@@ -24,8 +24,7 @@ interface Builder<T> {
 
     /** Creates an immutable copy of a given collection as a list. */
     fun <T : Any> immutableCopyOf(collection: Collection<T?>): ImmutableList<T> {
-        val nonNulls: List<T> = collection
-            .filterNotNull()
+        val nonNulls: List<T> = collection.filterNotNull()
             .toList()
         return ImmutableList.copyOf(nonNulls)
     }
