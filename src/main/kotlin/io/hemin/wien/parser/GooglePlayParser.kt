@@ -11,34 +11,38 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://www.google.com/schemas/play-podcasts/1.0`
  */
-class GoogleplayParser : NamespaceParser() {
+class GooglePlayParser : NamespaceParser() {
 
     /**
      * The URI of the namespace processed by this parser.
      *
      * URI: `http://www.google.com/schemas/play-podcasts/1.0`
      */
-    override val namespaceURI: String? = "http://www.google.com/schemas/play-podcasts/1.0"
+    override val namespaceURI: String = "http://www.google.com/schemas/play-podcasts/1.0"
 
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
-            "author" -> builder.googleplay.author(toText(node))
-            "email" -> builder.googleplay.email(toText(node))
-            "category" -> builder.googleplay.addCategory(toText(node))
-            "description" -> builder.googleplay.description(toText(node))
-            "explicit" -> builder.googleplay.explicit(toBoolean(node))
-            "image" -> builder.googleplay.image(toImage(node))
+            "author" -> builder.googlePlay.author(toText(node))
+            "owner" -> builder.googlePlay.owner(toText(node))
+            "category" -> {
+                val category = toText(node) ?: return@valid
+                builder.googlePlay.addCategory(category)
+            }
+            "description" -> builder.googlePlay.description(toText(node))
+            "explicit" -> builder.googlePlay.explicit(toBoolean(node))
+            "block" -> builder.googlePlay.block(toBoolean(node))
+            "image" -> builder.googlePlay.image(toImage(node))
             else -> pass
         }
     }
 
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
-            "description" -> builder.googleplay.description(toText(node))
-            "duration" -> builder.googleplay.duration(toText(node))
-            "explicit" -> builder.googleplay.explicit(toBoolean(node))
-            "block" -> builder.googleplay.block(toBoolean(node))
-            "image" -> builder.googleplay.image(toImage(node))
+            "description" -> builder.googlePlay.description(toText(node))
+            "duration" -> builder.googlePlay.duration(toText(node))
+            "explicit" -> builder.googlePlay.explicit(toBoolean(node))
+            "block" -> builder.googlePlay.block(toBoolean(node))
+            "image" -> builder.googlePlay.image(toImage(node))
             else -> pass
         }
     }
@@ -49,7 +53,7 @@ class GoogleplayParser : NamespaceParser() {
      * @param node The DOM node representing the `<googleplay:image>` element.
      * @return The [Image] instance with the `<googleplay:image>` elements data, or null if all data was empty.
      */
-    fun toImage(node: Node): Image? = valid(node) {
+    private fun toImage(node: Node): Image? = valid(node) {
         val url: String? = attributeValueByName(node, "href")
         if (url.isNullOrBlank()) {
             null

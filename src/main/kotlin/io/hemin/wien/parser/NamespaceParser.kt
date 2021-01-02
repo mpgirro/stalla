@@ -15,9 +15,9 @@ abstract class NamespaceParser {
      * Extracts data from the XML namespace defined by [namespaceURI]
      * and applies the values to properties of the [PodcastBuilder].
      * Parsing is only executed when the node's namespaceURI property
-     * matches this parsers [namespaceURI].
+     * matches this parser's [namespaceURI].
      *
-     * @param builder The builder  where all parsed data is added to.
+     * @param builder The builder where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
     abstract fun parse(builder: PodcastBuilder, node: Node): Any?
@@ -26,9 +26,9 @@ abstract class NamespaceParser {
      * Extracts data from the XML namespace defined by [namespaceURI]
      * and applies the values to properties of the [EpisodeBuilder].
      * Parsing is only executed when the node's namespaceURI property
-     * matches this parsers [namespaceURI].
+     * matches this parser's [namespaceURI].
      *
-     * @param builder The builder  where all parsed data is added to.
+     * @param builder The builder where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
     abstract fun parse(builder: EpisodeBuilder, node: Node): Any?

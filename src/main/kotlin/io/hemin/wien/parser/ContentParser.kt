@@ -16,14 +16,17 @@ class ContentParser : NamespaceParser() {
      *
      * URI: `http://purl.org/rss/1.0/modules/content/`
      */
-    override val namespaceURI: String? = "http://purl.org/rss/1.0/modules/content/"
+    override val namespaceURI: String = "http://purl.org/rss/1.0/modules/content/"
 
     /** This module does not set any data in the [PodcastBuilder]. */
-    override fun parse(builder: PodcastBuilder, node: Node) { }
+    override fun parse(builder: PodcastBuilder, node: Node) {}
 
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
-            "encoded" -> builder.content.encoded(toText(node))
+            "encoded" -> {
+                val encoded = toText(node)
+                if (encoded != null) builder.content.encoded(encoded)
+            }
             else -> pass
         }
     }

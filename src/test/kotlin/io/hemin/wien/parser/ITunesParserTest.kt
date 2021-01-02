@@ -12,7 +12,7 @@ import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
 /** Provides unit tests for [ItunesParser]. */
-internal class ItunesParserTest : NamespaceParserTest() {
+internal class ITunesParserTest : NamespaceParserTest() {
 
     override val parser = ItunesParser()
 
@@ -36,7 +36,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
             val builder = PodcastBuilder()
             parseChannelNode(builder, node)
 
-            builder.build().itunes?.let { itunes ->
+            builder.build().iTunes?.let { itunes ->
                 assertEquals("Lorem Ipsum", itunes.subtitle)
                 assertEquals("Lorem Ipsum", itunes.summary)
                 assertEquals(expectedPodcastImage, itunes.image)
@@ -46,7 +46,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
                 assertEquals(false, itunes.explicit)
                 assertEquals(false, itunes.block)
                 assertEquals(false, itunes.complete)
-                assertEquals(Podcast.Itunes.ShowType.EPISODIC, itunes.type)
+                assertEquals(Podcast.ITunes.ShowType.EPISODIC, itunes.type)
                 assertEquals(expectedOwner, itunes.owner)
             } ?: run {
                 fail("Podcast iTunes data not extracted")

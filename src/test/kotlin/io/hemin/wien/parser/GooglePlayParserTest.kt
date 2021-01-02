@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
-internal class GoogleplayParserTest : NamespaceParserTest() {
+internal class GooglePlayParserTest : NamespaceParserTest() {
 
-    override val parser: NamespaceParser = GoogleplayParser()
+    override val parser: NamespaceParser = GooglePlayParser()
 
     private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
     private val item: Node? = nodeFromResource("item", "/xml/item.xml")
@@ -29,9 +29,9 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             val builder = PodcastBuilder()
             parseChannelNode(builder, node)
 
-            builder.build().googleplay?.let { googleplay ->
+            builder.build().googlePlay?.let { googleplay ->
                 assertEquals("Lorem Ipsum", googleplay.author)
-                assertEquals("email@example.org", googleplay.email)
+                assertEquals("email@example.org", googleplay.owner)
                 // assertEquals(emptyList<String>(), googleplay.categories) // TODO this will fail --> see XML
                 assertEquals("Lorem Ipsum", googleplay.description)
                 assertEquals(false, googleplay.explicit)
@@ -50,7 +50,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             val builder = EpisodeBuilder()
             parseItemNode(builder, node)
 
-            builder.build().googleplay?.let { googleplay ->
+            builder.build().googlePlay?.let { googleplay ->
                 assertEquals("Lorem Ipsum", googleplay.description)
                 assertEquals("03:24:27", googleplay.duration)
                 assertEquals(false, googleplay.explicit)

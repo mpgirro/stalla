@@ -6,7 +6,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.parser.AtomParser
 import io.hemin.wien.parser.ContentParser
-import io.hemin.wien.parser.GoogleplayParser
+import io.hemin.wien.parser.GooglePlayParser
 import io.hemin.wien.parser.ItunesParser
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.PodloveSimpleChapterParser
@@ -31,14 +31,12 @@ class WienParser {
             ItunesParser(),
             AtomParser(),
             PodloveSimpleChapterParser(),
-            GoogleplayParser()
+            GooglePlayParser()
         )
 
         /** Set of all XML namespaces supported when parsing documents. */
         val supportedNamespaces: Set<String> =
-            parsers
-                .map { p -> p.namespaceURI }
-                .mapNotNull { n -> n }
+            parsers.mapNotNull { parser -> parser.namespaceURI }
                 .toSet()
 
         /**

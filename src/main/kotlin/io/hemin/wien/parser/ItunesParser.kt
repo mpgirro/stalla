@@ -21,21 +21,32 @@ class ItunesParser : NamespaceParser() {
      *
      * URI: `http://www.itunes.com/dtds/podcast-1.0.dtd`
      */
-    override val namespaceURI: String? = "http://www.itunes.com/dtds/podcast-1.0.dtd"
+    override val namespaceURI: String = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
-            "author" -> builder.itunes.author(toText(node))
-            "block" -> builder.itunes.block(toBoolean(node))
-            "category" -> builder.itunes.addCategory(toText(node))
-            "complete" -> builder.itunes.complete(toBoolean(node))
-            "explicit" -> builder.itunes.explicit(toBoolean(node))
-            "image" -> builder.itunes.image(toImage(node))
-            "keywords" -> builder.itunes.keywords(toText(node))
-            "owner" -> builder.itunes.owner(toPerson(node))
-            "subtitle" -> builder.itunes.subtitle(toText(node))
-            "summary" -> builder.itunes.summary(toText(node))
-            "type" -> builder.itunes.type(toText(node))
+            "author" -> builder.iTunes.author(toText(node))
+            "block" -> builder.iTunes.block(toBoolean(node))
+            "category" -> {
+                val category = toText(node) ?: return@valid
+                builder.iTunes.addCategory(category)
+            }
+            "complete" -> builder.iTunes.complete(toBoolean(node))
+            "explicit" -> {
+                val explicit = toBoolean(node) ?: return@valid
+                builder.iTunes.explicit(explicit)
+            }
+            "image" -> {
+                val image = toImage(node) ?: return@valid
+                builder.iTunes.image(image)
+            }
+            "keywords" -> builder.iTunes.keywords(toText(node))
+            "owner" -> builder.iTunes.owner(toPerson(node))
+            "subtitle" -> builder.iTunes.subtitle(toText(node))
+            "summary" -> builder.iTunes.summary(toText(node))
+            "type" -> builder.iTunes.type(toText(node))
+            "title" -> builder.iTunes.title(toText(node))
+            "new-feed-url" -> builder.iTunes.newFeedUrl(toText(node))
             else -> pass
         }
     }
@@ -60,7 +71,7 @@ class ItunesParser : NamespaceParser() {
      * @param node The DOM node representing the `<itunes:image>` element.
      * @return The [Image] instance with the `<itunes:image>` elements data, or null if all data was empty.
      */
-    fun toImage(node: Node): Image? = valid(node) {
+    private fun toImage(node: Node): Image? = valid(node) {
         val url: String? = attributeValueByName(node, "href")
         if (url.isNullOrBlank()) {
             null
@@ -77,14 +88,13 @@ class ItunesParser : NamespaceParser() {
      * @param node The DOM node representing the `<itunes:owner>` element.
      * @return The [Image] instance with the `<itunes:owner>` elements data, or null if all data was empty.
      */
-    fun toPerson(node: Node): Person? = valid(node) {
+    private fun toPerson(node: Node): Person? = valid(node) {
         val builder = PersonBuilder()
         for (child in node.childNodes.asListOfNodes()) {
             val value: String? = toText(child)
             when (child.localName) {
-                "name" -> builder.name(value)
+                "name" -> if (value != null) builder.name(value)
                 "email" -> builder.email(value)
-                "uri" -> builder.uri(value)
             }
         }
         builder.build()

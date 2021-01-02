@@ -26,17 +26,29 @@ class RssParser : NamespaceParser() {
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "copyright" -> builder.copyright(toText(node))
-            "description" -> builder.description(toText(node))
+            "description" -> {
+                val description = toText(node) ?: return@valid
+                builder.description(description)
+            }
             "docs" -> builder.docs(toText(node))
             "generator" -> builder.generator(toText(node))
             "image" -> builder.image(toImage(node))
             "item" -> builder.addEpisode(toEpisode(node))
-            "language" -> builder.language(toText(node))
+            "language" -> {
+                val language = toText(node) ?: return@valid
+                builder.language(language)
+            }
             "lastBuildDate" -> builder.lastBuildDate(toDate(node))
-            "link" -> builder.link(toText(node))
+            "link" -> {
+                val link = toText(node) ?: return@valid
+                builder.link(link)
+            }
             "managingEditor" -> builder.managingEditor(toText(node))
             "pubDate" -> builder.pubDate(toDate(node))
-            "title" -> builder.title(toText(node))
+            "title" -> {
+                val title = toText(node) ?: return@valid
+                builder.title(title)
+            }
             "webMaster" -> builder.webMaster(toText(node))
             else -> pass
         }
@@ -48,12 +60,18 @@ class RssParser : NamespaceParser() {
             "category" -> builder.addCategory(toText(node))
             "comments" -> builder.comments(toText(node))
             "description" -> builder.description(toText(node))
-            "enclosure" -> builder.enclosure(toEnclosure(node))
+            "enclosure" -> {
+                val enclosure = toEnclosure(node) ?: return@valid
+                builder.enclosure(enclosure)
+            }
             "guid" -> builder.guid(toGuid(node))
             "link" -> builder.link(toText(node))
             "pubDate" -> builder.pubDate(toDate(node))
             "source" -> builder.source(toText(node))
-            "title" -> builder.title(toText(node))
+            "title" -> {
+                val title = toText(node) ?: return@valid
+                builder.title(title)
+            }
             else -> pass
         }
     }
@@ -65,10 +83,16 @@ class RssParser : NamespaceParser() {
      * @return The [Episode.Enclosure] instance with the `<enclosure>` elements data, or null if all data was empty.
      */
     private fun toEnclosure(node: Node): Episode.Enclosure? = valid(node) {
+        val url = attributeValueByName(it, "url")
+        val length = attributeValueByName(it, "length")?.toLongOrNull()
+        val type = attributeValueByName(it, "type")
+
+        if (url == null || length == null || type == null) return@valid null
+
         EpisodeEnclosureBuilder()
-            .url(attributeValueByName(it, "url"))
-            .length(attributeValueByName(it, "length")?.toLongOrNull())
-            .type(attributeValueByName(it, "type"))
+            .url(url)
+            .length(length)
+            .type(type)
             .build()
     }
 
@@ -99,7 +123,10 @@ class RssParser : NamespaceParser() {
                 "height" -> builder.height(toInt(child))
                 "link" -> builder.link(toText(child))
                 "title" -> builder.title(toText(child))
-                "url" -> builder.url(toText(child))
+                "url" -> {
+                    val url = toText(child) ?: continue
+                    builder.url(url)
+                }
                 "width" -> builder.width(toInt(child))
             }
         }

@@ -16,7 +16,7 @@ import org.w3c.dom.Node
  */
 class AtomParser : NamespaceParser() {
 
-    override val namespaceURI: String? = "http://www.w3.org/2005/Atom"
+    override val namespaceURI: String = "http://www.w3.org/2005/Atom"
 
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
@@ -42,9 +42,11 @@ class AtomParser : NamespaceParser() {
      * @param node The DOM node representing the `<itunes:link>` element.
      * @return The [Link] instance with the `<itunes:link>` elements data, or null if all data was empty.
      */
-    fun toLink(node: Node): Link? = valid(node) {
+    private fun toLink(node: Node): Link? = valid(node) {
+        val href = attributeValueByName(it, "href") ?: return@valid null
+
         LinkBuilder()
-            .href(attributeValueByName(it, "href"))
+            .href(href)
             .hrefLang(attributeValueByName(it, "hrefLang"))
             .hrefResolved(attributeValueByName(it, "hrefResolved"))
             .length(attributeValueByName(it, "length"))
@@ -60,11 +62,14 @@ class AtomParser : NamespaceParser() {
      * @param node The DOM node representing the `<itunes:link>` element.
      * @return The [Link] instance with the `<itunes:link>` elements data, or null if all data was empty.
      */
-    fun toPerson(node: Node): Person? = valid(node) {
+    private fun toPerson(node: Node): Person? = valid(node) {
         val builder = PersonBuilder()
         for (child in node.childNodes.asListOfNodes()) {
             when (child.localName) {
-                "name" -> builder.name(toText(child))
+                "name" -> {
+                    val name = toText(child)
+                    if (name != null) builder.name(name)
+                }
                 "email" -> builder.email(toText(child))
                 "uri" -> builder.uri(toText(child))
             }

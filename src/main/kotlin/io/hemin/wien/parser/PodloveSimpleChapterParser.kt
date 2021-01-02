@@ -15,10 +15,10 @@ import kotlin.streams.toList
  */
 class PodloveSimpleChapterParser : NamespaceParser() {
 
-    override val namespaceURI: String? = "http://podlove.org/simple-chapters"
+    override val namespaceURI: String = "http://podlove.org/simple-chapters"
 
     /** This module does not set any data in the [PodcastBuilder]. */
-    override fun parse(builder: PodcastBuilder, node: Node) { }
+    override fun parse(builder: PodcastBuilder, node: Node) {}
 
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
@@ -33,7 +33,7 @@ class PodloveSimpleChapterParser : NamespaceParser() {
      * @param node The DOM node representing the `<psc:chapters>` element.
      * @return The list of extracted [Episode.Podlove.SimpleChapter] instances.
      */
-    fun toPodloveSimpleChapters(node: Node): List<Episode.Podlove.SimpleChapter>? = valid(node) {
+    private fun toPodloveSimpleChapters(node: Node): List<Episode.Podlove.SimpleChapter>? = valid(node) {
         node.childNodes.asListOfNodes().stream()
             .filter { c -> c.localName == "chapter" }
             .map(::toPodloveSimpleChapter)
@@ -47,10 +47,14 @@ class PodloveSimpleChapterParser : NamespaceParser() {
      * @param node The DOM node representing the `<psc:chapter>` element.
      * @return The [Episode.Podlove.SimpleChapter] instance with the `<psc:chapter>` elements data, or null if all data was empty.
      */
-    fun toPodloveSimpleChapter(node: Node): Episode.Podlove.SimpleChapter? = valid(node) {
+    private fun toPodloveSimpleChapter(node: Node): Episode.Podlove.SimpleChapter? = valid(node) {
+        val start = attributeValueByName(node, "start")
+        val title = attributeValueByName(node, "title")
+        if (start == null || title == null) return@valid null
+
         EpisodePodloveSimpleChapterBuilder()
-            .start(attributeValueByName(node, "start"))
-            .title(attributeValueByName(node, "title"))
+            .start(start)
+            .title(title)
             .href(attributeValueByName(node, "href"))
             .image(attributeValueByName(node, "image"))
             .build()

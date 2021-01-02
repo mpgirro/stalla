@@ -11,11 +11,14 @@ import org.w3c.dom.Node
  */
 class FyydParser : NamespaceParser() {
 
-    override val namespaceURI: String? = "https://fyyd.de/fyyd-ns/"
+    override val namespaceURI: String = "https://fyyd.de/fyyd-ns/"
 
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
-            "verify" -> builder.fyyd.verify(toText(node))
+            "verify" -> {
+                val verify = toText(node) ?: return@valid
+                builder.fyyd.verify(verify)
+            }
             else -> pass
         }
     }

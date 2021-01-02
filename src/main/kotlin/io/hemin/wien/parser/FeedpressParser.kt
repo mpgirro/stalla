@@ -19,6 +19,7 @@ class FeedpressParser : NamespaceParser() {
             "locale" -> builder.feedpress.locale(toText(node))
             "podcastId" -> builder.feedpress.podcastId(toText(node))
             "cssFile" -> builder.feedpress.cssFile(toText(node))
+            "link" -> builder.feedpress.link(toText(node))
             else -> pass
         }
     }

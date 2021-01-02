@@ -11,13 +11,14 @@ import org.w3c.dom.Node
  */
 class BitloveParser : NamespaceParser() {
 
-    override val namespaceURI: String? = "http://bitlove.org"
+    override val namespaceURI: String = "http://bitlove.org"
 
     override fun parse(builder: PodcastBuilder, node: Node) { }
 
     override fun parse(builder: EpisodeBuilder, node: Node) {
         if (node.namespaceURI == null && node.localName == "enclosure") {
-            builder.bitlove.guid(toGuid(node))
+            val guid = toGuid(node) ?: return
+            builder.bitlove.guid(guid)
         }
     }
 
@@ -26,6 +27,6 @@ class BitloveParser : NamespaceParser() {
      *
      * @return The DOM nodes GUID attribute value from the Bitlove namespace, if present.
      */
-    fun toGuid(node: Node): String? =
+    private fun toGuid(node: Node): String? =
         node.attributes?.getNamedItemNS(namespaceURI, "guid")?.textContent?.trim()
 }
