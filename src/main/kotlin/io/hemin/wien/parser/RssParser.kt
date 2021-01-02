@@ -1,7 +1,11 @@
 package io.hemin.wien.parser
 
 import io.hemin.wien.WienParser.Companion.toEpisode
-import io.hemin.wien.builder.*
+import io.hemin.wien.builder.EpisodeBuilder
+import io.hemin.wien.builder.EpisodeEnclosureBuilder
+import io.hemin.wien.builder.EpisodeGuidBuilder
+import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.PodcastBuilder
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
 import io.hemin.wien.util.NodeListWrapper.Companion.asList
@@ -60,7 +64,7 @@ class RssParser : NamespaceParser() {
      * @param node The DOM node representing the `<enclosure>` element.
      * @return The [Episode.Enclosure] instance with the `<enclosure>` elements data, or null if all data was empty.
      */
-    fun toEnclosure(node: Node): Episode.Enclosure? = valid(node) {
+    private fun toEnclosure(node: Node): Episode.Enclosure? = valid(node) {
         EpisodeEnclosureBuilder()
             .url(attributeValueByName(it, "url"))
             .length(attributeValueByName(it, "length")?.toLongOrNull())
@@ -74,7 +78,7 @@ class RssParser : NamespaceParser() {
      * @param node The DOM node representing the `<guid>` element.
      * @return The [Episode.Guid] instance with the `<guid>` elements data, or null if all data was empty.
      */
-    fun toGuid(node: Node): Episode.Guid? = valid(node) {
+    private fun toGuid(node: Node): Episode.Guid? = valid(node) {
         EpisodeGuidBuilder()
             .textContent(toText(it))
             .isPermalink(toBoolean(attributeValueByName(it, "isPermaLink")))
@@ -87,7 +91,7 @@ class RssParser : NamespaceParser() {
      * @param node The DOM node representing the `<image>` element.
      * @return The [Image] instance with the `<image>` elements data, or null if all data was empty.
      */
-    fun toImage(node: Node): Image? = valid(node) {
+    private fun toImage(node: Node): Image? = valid(node) {
         val builder = ImageBuilder()
         for (child in asList(node.childNodes)) {
             when (child.localName) {

@@ -1,7 +1,7 @@
 package io.hemin.wien.builder
 
 import io.hemin.wien.model.Episode
-import java.util.*
+import java.util.Date
 
 /** Builder class for [Episode] instances. */
 class EpisodeBuilder : Builder<Episode> {
@@ -48,9 +48,9 @@ class EpisodeBuilder : Builder<Episode> {
     fun author(author: String?) = apply { this.author = author }
 
     /**
-     * Adds a comment to the list of comments.
+     * Adds a category to the list of categories.
      *
-     * @param comment The comment to add.
+     * @param category The comment to add.
      */
     fun addCategory(category: String?) = apply {
         category?.let { this.categories.add(it) }

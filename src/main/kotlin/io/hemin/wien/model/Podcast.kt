@@ -1,6 +1,6 @@
 package io.hemin.wien.model
 
-import java.util.*
+import java.util.Date
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<channel>` elements.

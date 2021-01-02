@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
-import java.util.*
+import java.util.Date
 
 /** Provides unit tests for [RssParser]. */
 internal class RssParserTest : NamespaceParserTest() {

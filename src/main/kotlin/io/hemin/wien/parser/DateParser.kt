@@ -2,7 +2,8 @@ package io.hemin.wien.parser
 
 import java.text.ParsePosition
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 /**
  * Parser implementation for transforming date strings to date objects.

@@ -3,7 +3,7 @@ package io.hemin.wien.builder
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
 import io.hemin.wien.model.Podcast
-import java.util.*
+import java.util.Date
 
 /** Builder class for [Podcast] instances. */
 class PodcastBuilder : Builder<Podcast> {

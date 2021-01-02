@@ -3,7 +3,7 @@ package io.hemin.wien.parser
 import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.builder.PodcastBuilder
 import org.w3c.dom.Node
-import java.util.*
+import java.util.Date
 
 /** Base class for XML namespace parser implementations. */
 abstract class NamespaceParser {

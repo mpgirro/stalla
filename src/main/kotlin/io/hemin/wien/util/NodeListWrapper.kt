@@ -2,7 +2,6 @@ package io.hemin.wien.util
 
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
-import java.util.*
 
 /**
  * This class provides a [List] API for a [NodeList].
@@ -21,7 +20,7 @@ class NodeListWrapper(private val nodes: NodeList) : AbstractList<Node>(), Rando
          */
         fun asList(nodeList: NodeList): List<Node> {
             return if (nodeList.length == 0)
-                Collections.emptyList()
+                emptyList()
             else
                 NodeListWrapper(nodeList)
         }

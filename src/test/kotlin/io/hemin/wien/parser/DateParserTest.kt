@@ -3,7 +3,7 @@ package io.hemin.wien.parser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.time.Instant
-import java.util.*
+import java.util.Date
 
 // TODO test: 2019-05-01T21:04:13.958+02:00[Europe/Vienna]
 

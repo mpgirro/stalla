@@ -1,7 +1,8 @@
 package io.hemin.wien
 
 import io.hemin.wien.util.DomBuilderFactory
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Document
 import org.w3c.dom.Node
