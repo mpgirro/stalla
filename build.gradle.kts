@@ -8,8 +8,8 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin on the JVM.
-    id("org.jetbrains.kotlin.jvm").version("1.3.21")
-    id("org.jetbrains.dokka") version "0.9.18"
+    id("org.jetbrains.kotlin.jvm").version("1.4.21")
+    id("org.jetbrains.dokka") version "1.4.20"
     id("jacoco")
     id("java")
     // Upload jacoco coverage reports to coveralls
@@ -36,12 +36,10 @@ repositories {
 }
 
 dependencies {
-    // Use the Kotlin JDK 8 standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation(kotlin("stdlib-jdk8"))
 
     compile("com.google.guava:guava:27.1-jre")
 
-    // Use JUnit 5.
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
 }
@@ -53,10 +51,6 @@ tasks {
         testLogging {
             events("passed", "skipped", "failed")
         }
-    }
-
-    withType<Wrapper> {
-        gradleVersion = "5.4.1"
     }
 
     withType<JacocoReport>().configureEach {
@@ -71,14 +65,3 @@ tasks {
 coveralls {
     sourceDirs = sourceDirs + "src/main/kotlin"
 }
-
-/*
-coveralls {
-    //sourceDirs += ["src/main/kotlin"]
-    //jacocoReportPath = "build/reports/jacoco/test/jacocoTestReport.xml"
-    jacocoReportPath 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
-
-}
-*/
-
-
