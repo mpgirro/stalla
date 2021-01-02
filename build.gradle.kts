@@ -45,6 +45,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("com.willowtreeapps.assertk:assertk:0.23")
+    testImplementation("org.xmlunit:xmlunit-core:2.8.2")
 }
 
 tasks {

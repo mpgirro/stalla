@@ -4,27 +4,11 @@ import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 
 /**
- * This class provides a [List] API for a [NodeList].
+ * Provides a [List] API for a [NodeList] by wrapping it.
  *
  * @property nodes The [NodeList] to provide a [List] API for.
  */
-class NodeListWrapper(private val nodes: NodeList) : AbstractList<Node>(), RandomAccess {
-
-    companion object {
-
-        /**
-         * Returns a [List] API for the argument.
-         *
-         * @param this@asList The instance holding the DOM node elements.
-         * @retunr The [List] API of the argument.
-         */
-        fun NodeList.asListOfNodes(): List<Node> {
-            return if (length == 0)
-                emptyList()
-            else
-                NodeListWrapper(this)
-        }
-    }
+internal class NodeListWrapper(private val nodes: NodeList) : AbstractList<Node>(), RandomAccess {
 
     /** Returns the number of elements in this nodes. */
     override val size: Int = nodes.length

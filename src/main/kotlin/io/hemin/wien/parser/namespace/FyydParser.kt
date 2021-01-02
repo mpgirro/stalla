@@ -2,7 +2,9 @@ package io.hemin.wien.parser.namespace
 
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.builder.textOrNull
 import io.hemin.wien.parser.NamespaceParser
+import io.hemin.wien.util.FeedNamespace
 import org.w3c.dom.Node
 
 /**
@@ -12,12 +14,12 @@ import org.w3c.dom.Node
  */
 internal class FyydParser : NamespaceParser() {
 
-    override val namespaceURI: String = "https://fyyd.de/fyyd-ns/"
+    override val namespace = FeedNamespace.FYYD
 
     override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
             "verify" -> {
-                val verify = node.textOrNull() ?: return
+                val verify = node.ifCanBeParsed { textOrNull() } ?: return
                 builder.fyyd.verify(verify)
             }
             else -> pass

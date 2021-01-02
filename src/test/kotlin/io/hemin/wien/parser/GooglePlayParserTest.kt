@@ -22,15 +22,15 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = GooglePlayParser()
 
-    private val expectedPodcastImage = FakeImageBuilder().url("http://example.org/podcast-cover.jpg")
+    private val expectedPodcastImageBuilder = FakeImageBuilder().url("http://example.org/podcast-cover.jpg")
 
-    private val expectedEpisodeImage = FakeImageBuilder().url("http://example.org/episode-cover.jpg")
+    private val expectedEpisodeImageBuilder = FakeImageBuilder().url("http://example.org/episode-cover.jpg")
 
     @Test
     fun `should extract all google play fields from channel when present`() {
         val node = nodeFromResource("channel", "/xml/channel.xml")
         val builder = FakePodcastBuilder()
-        parseChannelChildNodes(builder, node)
+        node.parseChannelChildNodes(builder)
 
         assertThat(builder.googlePlay, "channel.googleplay").all {
             prop(FakePodcastGooglePlayBuilder::author).isEqualTo("Lorem Ipsum")
@@ -39,7 +39,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
             prop(FakePodcastGooglePlayBuilder::description).isEqualTo("Lorem Ipsum")
             prop(FakePodcastGooglePlayBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastGooglePlayBuilder::block).isNotNull().isFalse()
-            prop(FakePodcastGooglePlayBuilder::imageBuilder).isEqualTo(expectedPodcastImage)
+            prop(FakePodcastGooglePlayBuilder::imageBuilder).isEqualTo(expectedPodcastImageBuilder)
         }
     }
 
@@ -47,7 +47,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
     fun `should not extract google play fields from channel when absent`() {
         val node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
         val builder = FakePodcastBuilder()
-        parseChannelChildNodes(builder, node)
+        node.parseChannelChildNodes(builder)
 
         assertThat(builder.googlePlay, "channel.googleplay").all {
             prop(FakePodcastGooglePlayBuilder::author).isNull()
@@ -64,13 +64,13 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
     fun `should extract all google play fields from item when present`() {
         val node = nodeFromResource("item", "/xml/item.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemChildNodes(builder, node)
+        node.parseItemChildNodes(builder)
 
         assertThat(builder.googlePlay, "item.googleplay").all {
             prop(FakeEpisodeGooglePlayBuilder::description).isEqualTo("Lorem Ipsum")
             prop(FakeEpisodeGooglePlayBuilder::explicit).isNotNull().isFalse()
             prop(FakeEpisodeGooglePlayBuilder::block).isNotNull().isFalse()
-            prop(FakeEpisodeGooglePlayBuilder::imageBuilder).isEqualTo(expectedEpisodeImage)
+            prop(FakeEpisodeGooglePlayBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
         }
     }
 
@@ -78,7 +78,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
     fun `should not extract google play fields from item when absent`() {
         val node = nodeFromResource("item", "/xml/item-incomplete.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemChildNodes(builder, node)
+        node.parseItemChildNodes(builder)
 
         assertThat(builder.googlePlay, "item.googleplay").all {
             prop(FakeEpisodeGooglePlayBuilder::description).isNull()
