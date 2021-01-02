@@ -18,19 +18,19 @@ import java.util.Date
  * @property webMaster The RSS `<webMaster>` field textContent.
  * @property image The RSS `<image>` element wrapped in an [Image] instance.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
- * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
+ * @property iTunes The data from the iTunes namespace, or null if no data from this namespace was found.
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
  * @property fyyd The data from the Fyyd namespace, or null if no data from this namespace was found.
  * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
- * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
+ * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
  */
 data class Podcast(
-    val title: String?,
-    val link: String?,
-    val description: String?,
+    val title: String,
+    val link: String,
+    val description: String,
     val pubDate: Date?,
     val lastBuildDate: Date?,
-    val language: String?,
+    val language: String,
     val generator: String?,
     val copyright: String?,
     val docs: String?,
@@ -38,11 +38,11 @@ data class Podcast(
     val webMaster: String?,
     val image: Image?,
     val episodes: List<Episode>,
-    val itunes: Itunes?,
+    val iTunes: ITunes?,
     val atom: Atom?,
     val fyyd: Fyyd?,
     val feedpress: Feedpress?,
-    val googleplay: Googleplay?
+    val googlePlay: GooglePlay?
 ) {
 
     /**
@@ -59,20 +59,25 @@ data class Podcast(
      * @property complete The logical value of the `<itunes:complete>` field's text content.
      * @property type The `<itunes:type>` field text content.
      * @property owner The `<itunes:owner>` elements data as a [Person].
+     * @property owner The `<itunes:title>` field text content.
+     * @property owner The `<itunes:new-feed-url>` field text content.
      */
-    data class Itunes(
+    data class ITunes(
         val subtitle: String?,
         val summary: String?,
-        val image: Image?,
+        override val image: Image,
         val keywords: String?,
         val author: String?, // TODO can this be a list? is this a Person() ?
-        val categories: List<String?>, // TODO can be nested, Category() required?
-        val explicit: Boolean?,
-        val block: Boolean?,
+        val categories: List<String>, // TODO can be nested, Category() required?
+        override val explicit: Boolean,
+        override val block: Boolean?,
         val complete: Boolean?,
         val type: ShowType?,
-        val owner: Person?
-    ) {
+        val owner: Person?,
+        override val title: String?,
+        val newFeedUrl: String?
+    ) : ITunesBase {
+
         /**
          * Enum model for the defined values encountered within the
          * `<itunes:type>` element within a `<channel>` element.
@@ -105,20 +110,22 @@ data class Podcast(
      * Model class for data from the Google Play namespace valid within an RSS `<channel>`.
      *
      * @property author The `<googleplay:author>` field text content.
-     * @property email The `<googleplay:email>` field text content.
+     * @property owner The `<googleplay:email>` field text content.
      * @property categories The list of `<googleplay:category>` element's field text contents.
      * @property description The `<googleplay:description>` field text content.
      * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
+     * @property block The logical value of the `<googleplay:block>` field's text content.
      * @property image The data from the `<googleplay:image>` element as an [Image].
      */
-    data class Googleplay(
+    data class GooglePlay(
         val author: String?, // TODO can this be a list? is this a Person() ?
-        val email: String?, // TODO merge with author to a person?
-        val categories: List<String?>, // TODO can be nested, Category() required?
-        val description: String?,
-        val explicit: Boolean?,
-        val image: Image?
-    )
+        val owner: String?, // TODO merge with author to a person?
+        val categories: List<String>, // TODO can be nested, Category() required?
+        override val description: String?,
+        override val explicit: Boolean?,
+        override val block: Boolean?,
+        override val image: Image?
+    ) : GooglePlayBase
 
     /**
      * Model class for data from elements of the Atom namespace that are valid within `<channel>` elements.
@@ -149,11 +156,13 @@ data class Podcast(
      * @property locale The feed template language.
      * @property podcastId The iTunes Podcast ID.
      * @property cssFile The feed's custom CSS file.
+     * @property link An alternative link to podcast or RSS clients.
      */
     data class Feedpress(
         val newsletterId: String?,
         val locale: String?,
         val podcastId: String?,
-        val cssFile: String?
+        val cssFile: String?,
+        val link: String?
     )
 }

@@ -12,7 +12,7 @@ package io.hemin.wien.model
  * @property type The type of the link.
  */
 data class Link(
-    val href: String?,
+    val href: String,
     val hrefLang: String?,
     val hrefResolved: String?,
     val length: String?,

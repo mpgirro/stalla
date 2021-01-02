@@ -45,10 +45,11 @@
         <itunes:email>owner@example.org</itunes:email>
     </itunes:owner>
     <googleplay:author>Lorem Ipsum</googleplay:author>
-    <googleplay:email>email@example.org</googleplay:email>
+    <googleplay:owner>email@example.org</googleplay:owner>
     <googleplay:category text="Technology" />
     <googleplay:description>Lorem Ipsum</googleplay:description>
     <googleplay:explicit>no</googleplay:explicit>
+    <googleplay:block>no</googleplay:block>
     <googleplay:image href="http://example.org/podcast-cover.jpg"/>
     <atom:link rel="self" type="application/rss+xml" title="Lorem Ipsum" href="http://example.org/feed/m4a"/>
     <atom:author>

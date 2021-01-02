@@ -19,17 +19,17 @@ import java.util.Date
  * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
  * @property podlove The data from the Podlove standards namespaces, or null if no data from these namespaces were found.
- * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
+ * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property bitlove The data from the Bitlove namespace, or null if no data from this namespace was found.
  */
 data class Episode(
-    val title: String?,
+    val title: String,
     val link: String?,
     val description: String?,
     val author: String?, // TODO turn to Person?
     val categories: List<String>?, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
     val comments: String?,
-    val enclosure: Enclosure?,
+    val enclosure: Enclosure,
     val guid: Guid?,
     val pubDate: Date?,
     val source: String?,
@@ -37,7 +37,7 @@ data class Episode(
     val itunes: Itunes?,
     val atom: Atom?,
     val podlove: Podlove?,
-    val googleplay: Googleplay?,
+    val googlePlay: GooglePlay?,
     val bitlove: Bitlove?
 ) {
 
@@ -45,13 +45,13 @@ data class Episode(
      * Model class for `<enclosure>` elements within RSS `<item>` elements.
      *
      * @property url The `url` attribute textContent of the RSS `<enclosure>` element.
-     * @property length The `length` attribute textContent of the RSS `<enclosure>` element.
+     * @property length The `length` attribute textContent of the RSS `<enclosure>` element. The media length in seconds.
      * @property type The `type` attribute textContent of the RSS `<enclosure>` element.
      */
     data class Enclosure(
-        val url: String?,
-        val length: Long?,
-        val type: String?
+        val url: String,
+        val length: Long,
+        val type: String
     )
 
     /**
@@ -71,7 +71,7 @@ data class Episode(
      * @property encoded The text content of the `<content:encoded>` element.
      */
     data class Content(
-        val encoded: String?
+        val encoded: String
     )
 
     /**
@@ -87,15 +87,15 @@ data class Episode(
      * @property episodeType The `<itunes:episodeType>` field text content.
      */
     data class Itunes(
-        val title: String?,
+        override val title: String?,
         val duration: String?,
-        val image: Image?,
-        val explicit: Boolean?,
-        val block: Boolean?,
+        override val image: Image?,
+        override val explicit: Boolean?,
+        override val block: Boolean?,
         val season: Int?,
         val episode: Int?,
         val episodeType: EpisodeType?
-    ) {
+    ) : ITunesBase {
         /**
          * Enum model for the defined values encountered within the
          * `<itunes:episodeType>` element within a `<item>` element.
@@ -136,13 +136,13 @@ data class Episode(
      * @property block The logical value of the `<googleplay:block>` field's text content.
      * @property image The data from the `<googleplay:image>` element as an [Image].
      */
-    data class Googleplay(
-        val description: String?,
+    data class GooglePlay(
+        override val description: String?,
         val duration: String?,
-        val explicit: Boolean?,
-        val block: Boolean?,
-        val image: Image?
-    )
+        override val explicit: Boolean?,
+        override val block: Boolean?,
+        override val image: Image?
+    ) : GooglePlayBase
 
     /**
      * Model class for data from elements of the Atom namespace that are valid within `<item>` elements.
@@ -177,8 +177,8 @@ data class Episode(
          * @property image The value of the chapter's `image` attribute.
          */
         data class SimpleChapter(
-            val start: String?,
-            val title: String?,
+            val start: String,
+            val title: String,
             val href: String?,
             val image: String?
         )
@@ -190,6 +190,6 @@ data class Episode(
      * @property guid The GUID attribute for the RSS enclosure element.
      */
     data class Bitlove(
-        val guid: String?
+        val guid: String
     )
 }
