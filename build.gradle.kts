@@ -59,7 +59,6 @@ tasks {
             xml.isEnabled = true
         }
     }
-
 }
 
 coveralls {
