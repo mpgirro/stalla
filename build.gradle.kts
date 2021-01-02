@@ -19,7 +19,7 @@ plugins {
 group = "io.hemin"
 version = "0.9.0"
 
-val junit5Version = "5.4.2"
+val junit5Version = "5.7.0"
 val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPluginVersion
 
 // This might not be needed in the future, but as of present the default version bundled with the latest version of gradle does not work with Java 11
