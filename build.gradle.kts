@@ -37,8 +37,9 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("reflect"))
 
-    api("com.google.guava:guava:30.1-jre")
+    api("com.google.guava:guava:30.1-jre") // TODO replace with Kotlin immutable collections when available
 
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")

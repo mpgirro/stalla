@@ -1,0 +1,122 @@
+package io.hemin.wien.parser.namespace
+
+import io.hemin.wien.WienParser
+import io.hemin.wien.builder.episode.EpisodeBuilder
+import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
+import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.builder.validating.ValidatingImageBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeGuidBuilder
+import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Image
+import io.hemin.wien.parser.NamespaceParser
+import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
+import org.w3c.dom.Node
+
+/**
+ * Parser implementation for the RSS namespace.
+ *
+ * Note that RSS 2.0 feeds do not have a namespace URI specified. The document specification is described here:
+ *
+ * `http://www.rssboard.org/rss-2-0`
+ */
+internal class RssParser : NamespaceParser() {
+
+    /** Standard RSS 2.0 elements do not have a namespace. This value is therefore null. */
+    override val namespaceURI: String? = null
+
+    override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
+        when (node.localName) {
+            "copyright" -> builder.copyright(toText(node))
+            "description" -> {
+                val description = toText(node) ?: return@valid
+                builder.description(description)
+            }
+            "docs" -> builder.docs(toText(node))
+            "generator" -> builder.generator(toText(node))
+            "image" -> builder.image(toImage(node))
+            "item" -> {
+                val episode = WienParser.toEpisode(node) ?: return@valid
+                builder.addEpisode(episode)
+            }
+            "language" -> {
+                val language = toText(node) ?: return@valid
+                builder.language(language)
+            }
+            "lastBuildDate" -> builder.lastBuildDate(toDate(node))
+            "link" -> {
+                val link = toText(node) ?: return@valid
+                builder.link(link)
+            }
+            "managingEditor" -> builder.managingEditor(toText(node))
+            "pubDate" -> builder.pubDate(toDate(node))
+            "title" -> {
+                val title = toText(node) ?: return@valid
+                builder.title(title)
+            }
+            "webMaster" -> builder.webMaster(toText(node))
+            else -> pass
+        }
+    }
+
+    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
+        when (node.localName) {
+            "author" -> builder.author(toText(node))
+            "category" -> {
+                val category = toText(node) ?: return@valid
+                builder.addCategory(category)
+            }
+            "comments" -> builder.comments(toText(node))
+            "description" -> builder.description(toText(node))
+            "enclosure" -> {
+                val enclosure = toEnclosureBuilder(node, builder.createEnclosureBuilder()) ?: return@valid
+                builder.enclosure(enclosure)
+            }
+            "guid" -> builder.guid(toGuid(node))
+            "link" -> builder.link(toText(node))
+            "pubDate" -> builder.pubDate(toDate(node))
+            "source" -> builder.source(toText(node))
+            "title" -> {
+                val title = toText(node) ?: return@valid
+                builder.title(title)
+            }
+            else -> pass
+        }
+    }
+
+    private fun toEnclosureBuilder(node: Node, enclosureBuilder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = valid(node) {
+        val url = attributeValueByName(it, "url")
+        val length = attributeValueByName(it, "length")?.toLongOrNull()
+        val type = attributeValueByName(it, "type")
+
+        if (url == null || length == null || type == null) return@valid null
+
+        enclosureBuilder.url(url)
+            .length(length)
+            .type(type)
+    }
+
+    private fun toGuid(node: Node): Episode.Guid? = valid(node) {
+        ValidatingEpisodeGuidBuilder()
+            .textContent(toText(it))
+            .isPermalink(toBoolean(attributeValueByName(it, "isPermaLink")))
+            .build()
+    }
+
+    private fun toImage(node: Node): Image? = valid(node) {
+        val builder = ValidatingImageBuilder()
+        for (child in node.childNodes.asListOfNodes()) {
+            when (child.localName) {
+                "description" -> builder.description(toText(child))
+                "height" -> builder.height(toInt(child))
+                "link" -> builder.link(toText(child))
+                "title" -> builder.title(toText(child))
+                "url" -> {
+                    val url = toText(child) ?: continue
+                    builder.url(url)
+                }
+                "width" -> builder.width(toInt(child))
+            }
+        }
+        builder.build()
+    }
+}

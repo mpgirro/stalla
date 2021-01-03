@@ -12,11 +12,11 @@ package io.hemin.wien.model
  */
 data class Image(
     val url: String,
-    val title: String?,
-    val link: String?,
-    val width: Int?,
-    val height: Int?,
-    val description: String?
+    val title: String? = null,
+    val link: String? = null,
+    val width: Int? = null,
+    val height: Int? = null,
+    val description: String? = null
 )
 
 // TODO turn into sealed class to make compile-safe the difference between RSS and non-RSS images (see appendImageElement)

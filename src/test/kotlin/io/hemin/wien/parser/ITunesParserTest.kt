@@ -1,82 +1,115 @@
 package io.hemin.wien.parser
 
-import io.hemin.wien.builder.EpisodeBuilder
-import io.hemin.wien.builder.ImageBuilder
-import io.hemin.wien.builder.PersonBuilder
-import io.hemin.wien.builder.PodcastBuilder
+import assertk.all
+import assertk.assertThat
+import assertk.assertions.containsExactly
+import assertk.assertions.isEmpty
+import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
+import assertk.assertions.isNotNull
+import assertk.assertions.isNull
+import assertk.assertions.prop
+import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
+import io.hemin.wien.builder.fake.episode.FakeEpisodeITunesBuilder
+import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
+import io.hemin.wien.builder.fake.podcast.FakePodcastITunesBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Image
+import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.parser.namespace.ITunesParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.fail
-import org.w3c.dom.Node
 
-/** Provides unit tests for [ItunesParser]. */
+/** Provides unit tests for [ITunesParser]. */
 internal class ITunesParserTest : NamespaceParserTest() {
 
-    override val parser = ItunesParser()
+    override val parser = ITunesParser()
 
-    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val expectedPodcastImage = Image(url = "http://example.org/podcast-cover.jpg")
 
-    private val expectedPodcastImage = ImageBuilder()
-        .url("http://example.org/podcast-cover.jpg")
-        .build()
-    private val expectedEpisodeImage = ImageBuilder()
-        .url("http://example.org/episode-cover.jpg")
-        .build()
-    private val expectedOwner = PersonBuilder()
-        .name("Lorem Ipsum")
-        .email("owner@example.org")
-        .build()
+    private val expectedEpisodeImage = Image(url = "http://example.org/episode-cover.jpg")
+
+    private val expectedOwner = Person(
+        name = "Lorem Ipsum",
+        email = "owner@example.org"
+    )
 
     @Test
-    fun testParseChannelItunes() {
-        channel?.let { node ->
-            val builder = PodcastBuilder()
-            parseChannelNode(builder, node)
+    fun `should extract all itunes fields from channel when present`() {
+        val node = nodeFromResource("channel", "/xml/channel.xml")
+        val builder = FakePodcastBuilder()
+        parseChannelNode(builder, node)
 
-            builder.build().iTunes?.let { itunes ->
-                assertEquals("Lorem Ipsum", itunes.subtitle)
-                assertEquals("Lorem Ipsum", itunes.summary)
-                assertEquals(expectedPodcastImage, itunes.image)
-                assertEquals("Lorem Ipsum", itunes.keywords)
-                assertEquals("Lorem Ipsum", itunes.author)
-                // assertEquals(emptyList<String>(), itunes.categories) // TODO this will fail --> see XML
-                assertEquals(false, itunes.explicit)
-                assertEquals(false, itunes.block)
-                assertEquals(false, itunes.complete)
-                assertEquals(Podcast.ITunes.ShowType.EPISODIC, itunes.type)
-                assertEquals(expectedOwner, itunes.owner)
-            } ?: run {
-                fail("Podcast iTunes data not extracted")
-            }
-        } ?: run {
-            fail("channel not found")
+        assertThat(builder.iTunes, "channel.itunes").all {
+            prop(FakePodcastITunesBuilder::author).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastITunesBuilder::owner).isEqualTo(expectedOwner)
+            prop(FakePodcastITunesBuilder::categories).containsExactly("Technology", "Society & Culture", "Technology")
+            prop(FakePodcastITunesBuilder::subtitle).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastITunesBuilder::summary).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastITunesBuilder::keywords).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastITunesBuilder::explicit).isNotNull().isFalse()
+            prop(FakePodcastITunesBuilder::block).isNotNull().isFalse()
+            prop(FakePodcastITunesBuilder::complete).isNotNull().isFalse()
+            prop(FakePodcastITunesBuilder::imageValue).isEqualTo(expectedPodcastImage)
+            prop(FakePodcastITunesBuilder::type).isEqualTo(Podcast.ITunes.ShowType.EPISODIC)
         }
     }
 
     @Test
-    fun testParseItemItunes() {
-        item?.let { node ->
-            val builder = EpisodeBuilder()
-            parseItemNode(builder, node)
+    fun `should not extract itunes fields from channel when absent`() {
+        val node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
+        val builder = FakePodcastBuilder()
+        parseChannelNode(builder, node)
 
-            builder.build().itunes?.let { itunes ->
-                assertEquals("Lorem Ipsum", itunes.title)
-                assertEquals("03:24:27", itunes.duration)
-                assertEquals(expectedEpisodeImage, itunes.image)
-                assertEquals(false, itunes.explicit)
-                assertEquals(false, itunes.block)
-                assertEquals(1, itunes.season)
-                assertEquals(1, itunes.episode)
-                assertEquals(Episode.Itunes.EpisodeType.FULL, itunes.episodeType)
-                // TODO test more fields
-            } ?: run {
-                fail("Episode iTunes data not extracted")
-            }
-        } ?: run {
-            fail("item not found")
+        assertThat(builder.iTunes, "channel.itunes").all {
+            prop(FakePodcastITunesBuilder::author).isNull()
+            prop(FakePodcastITunesBuilder::owner).isNull()
+            prop(FakePodcastITunesBuilder::categories).isEmpty()
+            prop(FakePodcastITunesBuilder::subtitle).isNull()
+            prop(FakePodcastITunesBuilder::summary).isNull()
+            prop(FakePodcastITunesBuilder::keywords).isNull()
+            prop(FakePodcastITunesBuilder::explicit).isNull()
+            prop(FakePodcastITunesBuilder::block).isNull()
+            prop(FakePodcastITunesBuilder::complete).isNull()
+            prop(FakePodcastITunesBuilder::imageValue).isNull()
+            prop(FakePodcastITunesBuilder::type).isNull()
+        }
+    }
+
+    @Test
+    fun `should extract all itunes fields from item when present`() {
+        val node = nodeFromResource("item", "/xml/item.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, node)
+
+        assertThat(builder.iTunes, "item.itunes").all {
+            prop(FakeEpisodeITunesBuilder::title).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeITunesBuilder::duration).isEqualTo("03:24:27")
+            prop(FakeEpisodeITunesBuilder::season).isEqualTo(1)
+            prop(FakeEpisodeITunesBuilder::episode).isEqualTo(1)
+            prop(FakeEpisodeITunesBuilder::explicit).isNotNull().isFalse()
+            prop(FakeEpisodeITunesBuilder::block).isNotNull().isFalse()
+            prop(FakeEpisodeITunesBuilder::image).isEqualTo(expectedEpisodeImage)
+            prop(FakeEpisodeITunesBuilder::episodeType).isEqualTo(Episode.ITunes.EpisodeType.FULL)
+        }
+    }
+
+    @Test
+    fun `should not extract itunes fields from item when absent`() {
+        val node = nodeFromResource("item", "/xml/item-incomplete.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, node)
+
+        assertThat(builder.iTunes, "item.itunes").all {
+            prop(FakeEpisodeITunesBuilder::title).isNull()
+            prop(FakeEpisodeITunesBuilder::duration).isNull()
+            prop(FakeEpisodeITunesBuilder::season).isNull()
+            prop(FakeEpisodeITunesBuilder::episode).isNull()
+            prop(FakeEpisodeITunesBuilder::explicit).isNull()
+            prop(FakeEpisodeITunesBuilder::block).isNull()
+            prop(FakeEpisodeITunesBuilder::image).isNull()
+            prop(FakeEpisodeITunesBuilder::episodeType).isNull()
         }
     }
 }

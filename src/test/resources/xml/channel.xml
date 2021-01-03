@@ -67,4 +67,5 @@
     <feedpress:locale>en</feedpress:locale>
     <feedpress:podcastId>xyz123</feedpress:podcastId>
     <feedpress:cssFile>http://example.org/style.css</feedpress:cssFile>
+    <feedpress:link>http://example.org/my-link</feedpress:link>
 </channel>

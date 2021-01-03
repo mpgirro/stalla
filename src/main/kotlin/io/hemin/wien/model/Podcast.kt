@@ -28,21 +28,21 @@ data class Podcast(
     val title: String,
     val link: String,
     val description: String,
-    val pubDate: Date?,
-    val lastBuildDate: Date?,
+    val pubDate: Date? = null,
+    val lastBuildDate: Date? = null,
     val language: String,
-    val generator: String?,
-    val copyright: String?,
-    val docs: String?,
-    val managingEditor: String?,
-    val webMaster: String?,
-    val image: Image?,
+    val generator: String? = null,
+    val copyright: String? = null,
+    val docs: String? = null,
+    val managingEditor: String? = null,
+    val webMaster: String? = null,
+    val image: Image? = null,
     val episodes: List<Episode>,
-    val iTunes: ITunes?,
-    val atom: Atom?,
-    val fyyd: Fyyd?,
-    val feedpress: Feedpress?,
-    val googlePlay: GooglePlay?
+    val iTunes: ITunes? = null,
+    val atom: Atom? = null,
+    val fyyd: Fyyd? = null,
+    val feedpress: Feedpress? = null,
+    val googlePlay: GooglePlay? = null
 ) {
 
     /**
@@ -63,19 +63,19 @@ data class Podcast(
      * @property owner The `<itunes:new-feed-url>` field text content.
      */
     data class ITunes(
-        val subtitle: String?,
-        val summary: String?,
+        val subtitle: String? = null,
+        val summary: String? = null,
         override val image: Image,
-        val keywords: String?,
-        val author: String?, // TODO can this be a list? is this a Person() ?
+        val keywords: String? = null,
+        val author: String? = null, // TODO can this be a list? is this a Person() ?
         val categories: List<String>, // TODO can be nested, Category() required?
         override val explicit: Boolean,
-        override val block: Boolean?,
-        val complete: Boolean?,
-        val type: ShowType?,
-        val owner: Person?,
-        override val title: String?,
-        val newFeedUrl: String?
+        override val block: Boolean? = null,
+        val complete: Boolean? = null,
+        val type: ShowType? = null,
+        val owner: Person? = null,
+        override val title: String? = null,
+        val newFeedUrl: String? = null
     ) : ITunesBase {
 
         /**
@@ -118,13 +118,13 @@ data class Podcast(
      * @property image The data from the `<googleplay:image>` element as an [Image].
      */
     data class GooglePlay(
-        val author: String?, // TODO can this be a list? is this a Person() ?
-        val owner: String?, // TODO merge with author to a person?
+        val author: String? = null, // TODO can this be a list? is this a Person() ?
+        val owner: String? = null, // TODO merge with author to a person?
         val categories: List<String>, // TODO can be nested, Category() required?
-        override val description: String?,
-        override val explicit: Boolean?,
-        override val block: Boolean?,
-        override val image: Image?
+        override val description: String? = null,
+        override val explicit: Boolean? = null,
+        override val block: Boolean? = null,
+        override val image: Image? = null
     ) : GooglePlayBase
 
     /**
@@ -135,7 +135,7 @@ data class Podcast(
      * @property links List of data from the `<atom:link>` elements as [Link] instances.
      */
     data class Atom(
-        val authors: List<Person>, // TODO is this found in <channel>'s?, or merely in <item>'s
+        val authors: List<Person>, // TODO is this found in <channel>'s? = null, or merely in <item>'s
         val contributors: List<Person>,
         val links: List<Link>
     )
@@ -146,7 +146,7 @@ data class Podcast(
      * @property verify The Podcast's verification token.
      */
     data class Fyyd(
-        val verify: String?
+        val verify: String
     )
 
     /**
@@ -159,10 +159,10 @@ data class Podcast(
      * @property link An alternative link to podcast or RSS clients.
      */
     data class Feedpress(
-        val newsletterId: String?,
-        val locale: String?,
-        val podcastId: String?,
-        val cssFile: String?,
-        val link: String?
+        val newsletterId: String? = null,
+        val locale: String? = null,
+        val podcastId: String? = null,
+        val cssFile: String? = null,
+        val link: String? = null
     )
 }

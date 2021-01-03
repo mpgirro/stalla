@@ -24,21 +24,21 @@ import java.util.Date
  */
 data class Episode(
     val title: String,
-    val link: String?,
-    val description: String?,
-    val author: String?, // TODO turn to Person?
-    val categories: List<String>?, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
-    val comments: String?,
+    val link: String? = null,
+    val description: String? = null,
+    val author: String? = null, // TODO turn to Person?
+    val categories: List<String>? = null, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
+    val comments: String? = null,
     val enclosure: Enclosure,
-    val guid: Guid?,
-    val pubDate: Date?,
-    val source: String?,
-    val content: Content?,
-    val itunes: Itunes?,
-    val atom: Atom?,
-    val podlove: Podlove?,
-    val googlePlay: GooglePlay?,
-    val bitlove: Bitlove?
+    val guid: Guid? = null,
+    val pubDate: Date? = null,
+    val source: String? = null,
+    val content: Content? = null,
+    val itunes: ITunes? = null,
+    val atom: Atom? = null,
+    val podlove: Podlove? = null,
+    val googlePlay: GooglePlay? = null,
+    val bitlove: Bitlove? = null
 ) {
 
     /**
@@ -61,8 +61,8 @@ data class Episode(
      * @property isPermalink The boolean interpretation of the `isPermalink` attribute.
      */
     data class Guid(
-        val textContent: String?,
-        val isPermalink: Boolean?
+        val textContent: String? = null,
+        val isPermalink: Boolean? = null
     )
 
     /**
@@ -86,15 +86,15 @@ data class Episode(
      * @property episode The numeric value of the `<itunes:episode>` field's text content.
      * @property episodeType The `<itunes:episodeType>` field text content.
      */
-    data class Itunes(
-        override val title: String?,
-        val duration: String?,
-        override val image: Image?,
-        override val explicit: Boolean?,
-        override val block: Boolean?,
-        val season: Int?,
-        val episode: Int?,
-        val episodeType: EpisodeType?
+    data class ITunes(
+        override val title: String? = null,
+        val duration: String? = null,
+        override val image: Image? = null,
+        override val explicit: Boolean? = null,
+        override val block: Boolean? = null,
+        val season: Int? = null,
+        val episode: Int? = null,
+        val episodeType: EpisodeType? = null
     ) : ITunesBase {
         /**
          * Enum model for the defined values encountered within the
@@ -131,17 +131,15 @@ data class Episode(
      * Model class for data from elements of the Google Play namespace that are valid within `<item>` elements.
      *
      * @property description The `<googleplay:description>` field text content.
-     * @property duration The `<googleplay:duration>` field text content.
      * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
      * @property block The logical value of the `<googleplay:block>` field's text content.
      * @property image The data from the `<googleplay:image>` element as an [Image].
      */
     data class GooglePlay(
-        override val description: String?,
-        val duration: String?,
-        override val explicit: Boolean?,
-        override val block: Boolean?,
-        override val image: Image?
+        override val description: String? = null,
+        override val explicit: Boolean? = null,
+        override val block: Boolean? = null,
+        override val image: Image? = null
     ) : GooglePlayBase
 
     /**
@@ -179,8 +177,8 @@ data class Episode(
         data class SimpleChapter(
             val start: String,
             val title: String,
-            val href: String?,
-            val image: String?
+            val href: String? = null,
+            val image: String? = null
         )
     }
 

@@ -1,16 +1,17 @@
 package io.hemin.wien
 
-import io.hemin.wien.builder.EpisodeBuilder
-import io.hemin.wien.builder.PodcastBuilder
+import io.hemin.wien.builder.episode.EpisodeBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
-import io.hemin.wien.parser.AtomParser
-import io.hemin.wien.parser.ContentParser
-import io.hemin.wien.parser.GooglePlayParser
-import io.hemin.wien.parser.ItunesParser
+import io.hemin.wien.parser.namespace.AtomParser
+import io.hemin.wien.parser.namespace.ContentParser
+import io.hemin.wien.parser.namespace.GooglePlayParser
+import io.hemin.wien.parser.namespace.ITunesParser
 import io.hemin.wien.parser.NamespaceParser
-import io.hemin.wien.parser.PodloveSimpleChapterParser
-import io.hemin.wien.parser.RssParser
+import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
+import io.hemin.wien.parser.namespace.RssParser
 import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Document
@@ -28,7 +29,7 @@ class WienParser {
         private val parsers: List<NamespaceParser> = listOf(
             RssParser(),
             ContentParser(),
-            ItunesParser(),
+            ITunesParser(),
             AtomParser(),
             PodloveSimpleChapterParser(),
             GooglePlayParser()
@@ -46,7 +47,7 @@ class WienParser {
          * @return The [Episode] if the node is an `<channel>`, otherwise null.
          */
         fun toPodcast(node: Node): Podcast? = ensure("channel", node) {
-            val builder = PodcastBuilder()
+            val builder = ValidatingPodcastBuilder()
             for (element in node.childNodes.asListOfNodes()) {
                 for (parser in parsers) {
                     parser.parse(builder, element)
@@ -62,7 +63,7 @@ class WienParser {
          * @return The [Episode] if the node is an `<item>`, otherwise null.
          */
         fun toEpisode(node: Node): Episode? = ensure("item", node) {
-            val builder = EpisodeBuilder()
+            val builder: EpisodeBuilder = ValidatingEpisodeBuilder()
             for (element in node.childNodes.asListOfNodes()) {
                 for (parser in parsers) {
                     parser.parse(builder, element)

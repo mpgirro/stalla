@@ -1,6 +1,14 @@
 package io.hemin.wien.parser
 
-import io.hemin.wien.builder.EpisodeBuilder
+import assertk.assertThat
+import assertk.assertions.isEqualTo
+import assertk.assertions.isNotNull
+import assertk.assertions.isNull
+import assertk.assertions.prop
+import io.hemin.wien.builder.episode.EpisodeContentBuilder
+import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
+import io.hemin.wien.builder.fake.episode.FakeEpisodeContentBuilder
+import io.hemin.wien.parser.namespace.ContentParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
@@ -11,21 +19,23 @@ internal class ContentParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = ContentParser()
 
-    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    @Test
+    fun `should not extract content data from item when absent`() {
+        val node: Node = nodeFromResource("item", "/xml/item-incomplete.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, node)
+
+        assertThat(builder.content, "item content data")
+            .prop(FakeEpisodeContentBuilder::encoded).isNull()
+    }
 
     @Test
-    fun testParseItemContent() {
-        item?.let { node ->
-            val builder = EpisodeBuilder()
-            parseItemNode(builder, node)
+    fun `should extract content data from item when present`() {
+        val node: Node = nodeFromResource("item", "/xml/item.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, node)
 
-            builder.build().content?.let { content ->
-                assertEquals("Lorem Ipsum", content.encoded)
-            } ?: run {
-                fail("Episode Content data not extracted")
-            }
-        } ?: run {
-            fail("item not found")
-        }
+        assertThat(builder.content, "item content data")
+            .prop(FakeEpisodeContentBuilder::encoded).isEqualTo("Lorem Ipsum")
     }
 }

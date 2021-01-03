@@ -1,19 +1,20 @@
 package io.hemin.wien.parser
 
-import io.hemin.wien.builder.EpisodeBuilder
-import io.hemin.wien.builder.PodcastBuilder
+import io.hemin.wien.builder.episode.EpisodeBuilder
+import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
 import org.w3c.dom.Node
 import java.util.Date
 
 /** Base class for XML namespace parser implementations. */
-abstract class NamespaceParser {
+internal abstract class NamespaceParser {
 
     /** The URI of the namespace processed by this parser. */
     abstract val namespaceURI: String?
 
     /**
      * Extracts data from the XML namespace defined by [namespaceURI]
-     * and applies the values to properties of the [PodcastBuilder].
+     * and applies the values to properties of the [ValidatingPodcastBuilder].
      * Parsing is only executed when the node's namespaceURI property
      * matches this parser's [namespaceURI].
      *

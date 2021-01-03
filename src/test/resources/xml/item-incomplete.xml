@@ -3,10 +3,4 @@
     <title>Lorem Ipsum</title>
     <link>http://example.org/episode1</link>
     <description><![CDATA[Lorem Ipsum]]></description>
-    <author>author@example.org</author>
-    <category>category1</category>
-    <category>category2</category>
-    <comments>http://example.org/episode1/comments</comments>
-    <pubDate>Fri, 16 Mar 2018 22:49:08 +0000</pubDate>
-    <source>http://example.org/rss</source>
 </item>

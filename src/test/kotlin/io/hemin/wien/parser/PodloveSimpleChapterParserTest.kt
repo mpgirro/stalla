@@ -1,41 +1,54 @@
 package io.hemin.wien.parser
 
-import io.hemin.wien.builder.EpisodeBuilder
-import io.hemin.wien.builder.EpisodePodloveSimpleChapterBuilder
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import assertk.assertThat
+import assertk.assertions.containsExactly
+import assertk.assertions.isEmpty
+import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
+import io.hemin.wien.builder.fake.episode.FakeEpisodePodloveSimpleChapterBuilder
+import io.hemin.wien.model.Episode
+import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.fail
-import org.w3c.dom.Node
 
 /** Provides unit tests for [PodloveSimpleChapterParser]. */
 internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
     override val parser = PodloveSimpleChapterParser()
 
-    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    @Test
+    fun `should extract podlove chapter data from item when present`() {
+        val node = nodeFromResource("item", "/xml/item.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, node)
 
-    private val expectedSimpleChapter = EpisodePodloveSimpleChapterBuilder()
-        .start("00:00:00.000")
-        .title("Lorem Ipsum")
-        .href("http://example.org")
-        .image("http://example.org/cover")
-        .build()
+        assertThat(builder.podlove.simpleChapters, "item.podlove_simple_chapters")
+            .containsExactly(
+                Episode.Podlove.SimpleChapter(
+                    start = "00:00:00.000",
+                    title = "Lorem Ipsum",
+                    href = "http://example.org",
+                    image = "http://example.org/cover"
+                ),
+                Episode.Podlove.SimpleChapter(
+                    start = "00:01:03.856",
+                    title = "Lorem Ipsum",
+                    href = "http://example.org",
+                    image = "http://example.org/cover"
+                ),
+                Episode.Podlove.SimpleChapter(
+                    start = "00:02:12.641",
+                    title = "Lorem Ipsum",
+                    href = "http://example.org",
+                    image = "http://example.org/cover"
+                )
+            )
+    }
 
     @Test
-    fun testParseItemPodloveSimpleChapters() {
-        item?.let { node ->
-            val builder = EpisodeBuilder()
-            parseItemNode(builder, node)
+    fun `should not extract podlove chapter data from item when absent`() {
+        val node = nodeFromResource("item", "/xml/item-incomplete.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, node)
 
-            builder.build().podlove?.let { podlove ->
-                assertEquals(3, podlove.simpleChapters.size)
-                assertTrue(podlove.simpleChapters.contains(expectedSimpleChapter))
-            } ?: run {
-                fail("Episode Podlove Simple Chapter data not extracted")
-            }
-        } ?: run {
-            fail("item not found")
-        }
+        assertThat(builder.podlove.simpleChapters, "item.podlove_simple_chapters").isEmpty()
     }
 }

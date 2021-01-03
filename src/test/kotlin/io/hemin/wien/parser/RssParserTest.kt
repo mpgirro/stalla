@@ -1,34 +1,48 @@
 package io.hemin.wien.parser
 
-import io.hemin.wien.builder.EpisodeBuilder
-import io.hemin.wien.builder.PodcastBuilder
+import assertk.all
+import assertk.assertThat
+import assertk.assertions.containsExactly
+import assertk.assertions.isEmpty
+import assertk.assertions.isEqualTo
+import assertk.assertions.isNull
+import assertk.assertions.prop
+import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
+import io.hemin.wien.builder.fake.episode.FakeEpisodeEnclosureBuilder
+import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
-import io.hemin.wien.model.Podcast
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNull
+import io.hemin.wien.parser.namespace.RssParser
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.fail
-import org.w3c.dom.Node
+import java.util.Calendar
 import java.util.Date
+import java.util.Locale
+import java.util.TimeZone
 
 /** Provides unit tests for [RssParser]. */
 internal class RssParserTest : NamespaceParserTest() {
 
     override val parser = RssParser()
 
-    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val expectedDate: Date = Calendar.Builder()
+        .setLocale(Locale.ENGLISH)
+        .setTimeZone(TimeZone.getTimeZone("UTC"))
+        .setDate(2018, Calendar.MARCH, 16) // "Fri, 16 Mar 2018 22:49:08 +0000"
+        .setTimeOfDay(22, 49, 8)
+        .build()
+        .time
 
-    private val expectedDate: Date? = DateParser.parse("Fri, 16 Mar 2018 22:49:08 +0000")
-    private val expectedEnclosure = Episode.Enclosure(
-        url = "http://example.org/episode1.m4a",
-        length = 78589133,
-        type = "audio/mp4")
+    private val expectedEnclosureBuilder = FakeEpisodeEnclosureBuilder().apply {
+        urlValue = "http://example.org/episode1.m4a"
+        lengthValue = 78589133
+        typeValue = "audio/mp4"
+    }
+
     private val expectedGuid = Episode.Guid(
         textContent = "1fa609024fdf097",
         isPermalink = true
     )
+
     private val expectedImage = Image(
         url = "http://example.org/podcast-cover.jpg",
         title = "Lorem Ipsum",
@@ -39,77 +53,86 @@ internal class RssParserTest : NamespaceParserTest() {
     )
 
     @Test
-    fun testParseChannel() {
-        channel?.let { node ->
-            val builder = PodcastBuilder()
-            parseChannelNode(builder, node)
-            val podcast: Podcast = builder.build()
+    fun `should extract all RSS fields from channel when present`() {
+        val node = nodeFromResource("channel", "/xml/channel.xml")
+        val builder = FakePodcastBuilder()
+        parseChannelNode(builder, node)
 
-            assertEquals("Lorem Ipsum", podcast.title)
-            assertEquals("http://example.org", podcast.link)
-            assertEquals("Lorem Ipsum", podcast.description)
-            assertEquals(expectedDate, podcast.pubDate)
-            assertEquals(expectedDate, podcast.lastBuildDate)
-            assertEquals("de-DE", podcast.language)
-            assertEquals("Lorem Ipsum", podcast.generator)
-            assertEquals("Lorem Ipsum", podcast.copyright)
-            assertEquals("Lorem Ipsum", podcast.docs)
-            assertEquals("editor@example.org", podcast.managingEditor)
-            assertEquals("webmaster@example.org", podcast.webMaster)
-            assertEquals(expectedImage, podcast.image)
-        } ?: run {
-            fail("channel not found")
+        assertThat(builder, "channel").all {
+            prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastBuilder::linkValue).isEqualTo("http://example.org")
+            prop(FakePodcastBuilder::descriptionValue).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastBuilder::pubDate).isEqualTo(expectedDate)
+            prop(FakePodcastBuilder::lastBuildDate).isEqualTo(expectedDate)
+            prop(FakePodcastBuilder::languageValue).isEqualTo("de-DE")
+            prop(FakePodcastBuilder::generator).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastBuilder::copyright).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastBuilder::docs).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastBuilder::managingEditor).isEqualTo("editor@example.org")
+            prop(FakePodcastBuilder::webMaster).isEqualTo("webmaster@example.org")
+            prop(FakePodcastBuilder::image).isEqualTo(expectedImage)
         }
     }
 
     @Test
-    fun testChannelMissingElements() {
-        val incompleteChannel: Node? = nodeFromResource("channel", "/xml/channel-incomplete.xml")
-        incompleteChannel?.let { node ->
-            val builder = PodcastBuilder()
-            parseChannelNode(builder, node)
-            val podcast: Podcast = builder.build()
+    fun `should not extract RSS fields from channel when absent`() {
+        val node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
+        val builder = FakePodcastBuilder()
+        parseChannelNode(builder, node)
 
-            assertNull(podcast.image)
-        } ?: run {
-            fail("channel not found")
+        assertThat(builder, "channel").all {
+            prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastBuilder::linkValue).isEqualTo("http://example.org")
+            prop(FakePodcastBuilder::descriptionValue).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastBuilder::pubDate).isNull()
+            prop(FakePodcastBuilder::lastBuildDate).isNull()
+            prop(FakePodcastBuilder::languageValue).isNull()
+            prop(FakePodcastBuilder::generator).isNull()
+            prop(FakePodcastBuilder::copyright).isNull()
+            prop(FakePodcastBuilder::docs).isNull()
+            prop(FakePodcastBuilder::managingEditor).isNull()
+            prop(FakePodcastBuilder::webMaster).isNull()
+            prop(FakePodcastBuilder::image).isNull()
         }
     }
 
     @Test
-    fun testParseItem() {
-        item?.let { node ->
-            val builder = EpisodeBuilder()
-            parseItemNode(builder, node)
-            val episode: Episode = builder.build()
+    fun `should extract all RSS fields from item when present`() {
+        val node = nodeFromResource("item", "/xml/item.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, node)
 
-            assertEquals("Lorem Ipsum", episode.title)
-            assertEquals("http://example.org/episode1", episode.link)
-            assertEquals("Lorem Ipsum", episode.description)
-            assertEquals("author@example.org", episode.author)
-            assertEquals(listOf("category1", "category2"), episode.categories)
-            assertEquals("http://example.org/episode1/comments", episode.comments)
-            assertEquals(expectedEnclosure, episode.enclosure)
-            assertEquals(expectedGuid, episode.guid)
-            assertEquals(expectedDate, episode.pubDate)
-            assertEquals("http://example.org/rss", episode.source)
-        } ?: run {
-            fail("item not found")
+        assertThat(builder, "item").all {
+            prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeBuilder::link).isEqualTo("http://example.org/episode1")
+            prop(FakeEpisodeBuilder::description).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeBuilder::pubDate).isEqualTo(expectedDate)
+            prop(FakeEpisodeBuilder::author).isEqualTo("author@example.org")
+            prop(FakeEpisodeBuilder::comments).isEqualTo("http://example.org/episode1/comments")
+            prop(FakeEpisodeBuilder::categories).containsExactly("category1", "category2")
+            prop(FakeEpisodeBuilder::enclosureValue).isEqualTo(expectedEnclosureBuilder)
+            prop(FakeEpisodeBuilder::guid).isEqualTo(expectedGuid)
+            prop(FakeEpisodeBuilder::source).isEqualTo("http://example.org/rss")
         }
     }
 
     @Test
-    fun testItemMissingElements() {
-        val incompleteItem: Node? = nodeFromResource("item", "/xml/item-incomplete.xml")
-        incompleteItem?.let { node ->
-            val builder = EpisodeBuilder()
-            parseItemNode(builder, node)
-            val episode: Episode = builder.build()
+    fun `should not extract RSS fields from item when absent`() {
+        val node = nodeFromResource("item", "/xml/item-incomplete.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, node)
 
-            assertNull(episode.enclosure)
-            assertNull(episode.guid)
-        } ?: run {
-            fail("item not found")
+        assertThat(builder, "item").all {
+            prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeBuilder::link).isEqualTo("http://example.org/episode1")
+            prop(FakeEpisodeBuilder::description).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeBuilder::pubDate).isNull()
+            prop(FakeEpisodeBuilder::author).isNull()
+            prop(FakeEpisodeBuilder::comments).isNull()
+            prop(FakeEpisodeBuilder::categories).isEmpty()
+            prop(FakeEpisodeBuilder::enclosureValue).isNull()
+            prop(FakeEpisodeBuilder::guid).isNull()
+            prop(FakeEpisodeBuilder::source).isNull()
         }
     }
 }
