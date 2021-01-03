@@ -14,22 +14,16 @@ internal class FakeImageBuilder : FakeBuilder<Image>(), ImageBuilder {
     var height: Int? = null
     var description: String? = null
 
-    /** Set the url value. */
     override fun url(url: String): ImageBuilder = apply { this.urlValue = url }
 
-    /** Set the title value. */
     override fun title(title: String?): ImageBuilder = apply { this.title = title }
 
-    /** Set the link value. */
     override fun link(link: String?): ImageBuilder = apply { this.link = link }
 
-    /** Set the width value. */
     override fun width(width: Int?): ImageBuilder = apply { this.width = width }
 
-    /** Set the height value. */
     override fun height(height: Int?): ImageBuilder = apply { this.height = height }
 
-    /** Set the description value. */
     override fun description(description: String?): ImageBuilder = apply { this.description = description }
 
     override fun equals(other: Any?): Boolean {

@@ -2,7 +2,7 @@ package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.ImageBuilder
-import io.hemin.wien.model.Person
+import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Podcast
 
 internal interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
@@ -42,7 +42,7 @@ internal interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
     fun type(type: String?): PodcastITunesBuilder
 
     /** Set the Person representing the owner. */
-    fun owner(owner: Person?): PodcastITunesBuilder
+    fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastITunesBuilder
 
     /** Set the episode title. */
     fun title(title: String?): PodcastITunesBuilder

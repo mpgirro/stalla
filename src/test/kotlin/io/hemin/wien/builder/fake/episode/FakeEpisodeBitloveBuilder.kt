@@ -9,6 +9,5 @@ internal class FakeEpisodeBitloveBuilder : FakeBuilder<Episode.Bitlove>(), Episo
 
     var guid: String? = null
 
-    /** Set the guid value. */
     override fun guid(guid: String): EpisodeBitloveBuilder = apply { this.guid = guid }
 }

@@ -9,6 +9,5 @@ internal class FakePodcastFyydBuilder : FakeBuilder<Podcast.Fyyd>(), PodcastFyyd
 
     var verifyValue: String? = null
 
-    /** Set the verify value. */
     override fun verify(verify: String): PodcastFyydBuilder = apply { this.verifyValue = verify }
 }

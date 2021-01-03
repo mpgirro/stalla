@@ -13,15 +13,11 @@ internal class FakeEpisodePodloveSimpleChapterBuilder : FakeBuilder<Episode.Podl
     var href: String? = null
     var image: String? = null
 
-    /** Set the start value. */
     override fun start(start: String): EpisodePodloveSimpleChapterBuilder = apply { this.startValue = start }
 
-    /** Set the title value. */
     override fun title(title: String): EpisodePodloveSimpleChapterBuilder = apply { this.titleValue = title }
 
-    /** Set the href value. */
     override fun href(href: String?): EpisodePodloveSimpleChapterBuilder = apply { this.href = href }
 
-    /** Set the image value. */
     override fun image(image: String?): EpisodePodloveSimpleChapterBuilder = apply { this.image = image }
 }
