@@ -8,23 +8,23 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin on the JVM.
-    id("org.jetbrains.kotlin.jvm").version("1.3.21")
-    id("org.jetbrains.dokka") version "0.9.18"
+    id("org.jetbrains.kotlin.jvm").version("1.4.21")
+    id("org.jetbrains.dokka") version "1.4.20"
     id("jacoco")
     id("java")
     // Upload jacoco coverage reports to coveralls
-    id("com.github.kt3k.coveralls").version("2.8.2")
+    id("com.github.kt3k.coveralls").version("2.10.2")
 }
 
 group = "io.hemin"
 version = "0.9.0"
 
-val junit5Version = "5.4.2"
+val junit5Version = "5.7.0"
 val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPluginVersion
 
 // This might not be needed in the future, but as of present the default version bundled with the latest version of gradle does not work with Java 11
 jacoco {
-    toolVersion = "0.8.2"
+    toolVersion = "0.8.6"
 }
 
 repositories {
@@ -36,12 +36,10 @@ repositories {
 }
 
 dependencies {
-    // Use the Kotlin JDK 8 standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation(kotlin("stdlib-jdk8"))
 
-    compile("com.google.guava:guava:27.1-jre")
+    api("com.google.guava:guava:30.1-jre")
 
-    // Use JUnit 5.
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
 }
@@ -55,30 +53,14 @@ tasks {
         }
     }
 
-    withType<Wrapper> {
-        gradleVersion = "5.4.1"
-    }
-
     withType<JacocoReport>().configureEach {
         reports {
             html.isEnabled = true
             xml.isEnabled = true
         }
     }
-
 }
 
 coveralls {
     sourceDirs = sourceDirs + "src/main/kotlin"
 }
-
-/*
-coveralls {
-    //sourceDirs += ["src/main/kotlin"]
-    //jacocoReportPath = "build/reports/jacoco/test/jacocoTestReport.xml"
-    jacocoReportPath 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
-
-}
-*/
-
-
