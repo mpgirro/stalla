@@ -1,5 +1,6 @@
 package io.hemin.wien.parser
 
+import assertk.fail
 import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.builder.PodcastBuilder
 import io.hemin.wien.util.DomBuilderFactory
@@ -31,9 +32,10 @@ abstract class NamespaceParserTest {
     }
 
     /** Finds a DOM node matching [elementName] in a resource loaded from given [filePath]. */
-    protected fun nodeFromResource(elementName: String, filePath: String): Node? {
-        val xml = this.javaClass.getResource(filePath)
-        val doc: Document = domBuilder.parse(xml.openStream())
+    protected fun nodeFromResource(elementName: String, filePath: String): Node {
+        val resourceUrl = this.javaClass.getResource(filePath)
+            ?: fail("The resource '$filePath' does not exist")
+        val doc: Document = domBuilder.parse(resourceUrl.openStream())
 
         var result: Node? = null
         for (node in doc.childNodes.asListOfNodes()) {
@@ -41,6 +43,6 @@ abstract class NamespaceParserTest {
                 result = node
             }
         }
-        return result
+        return result ?: fail("Unable to find the element '$elementName' in resource '$filePath'")
     }
 }
