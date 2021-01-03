@@ -13,7 +13,7 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeGooglePlayBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastGooglePlayBuilder
-import io.hemin.wien.model.Image
+import io.hemin.wien.builder.validating.ValidatingImageBuilder
 import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.GooglePlayParser
 import org.junit.jupiter.api.Test
@@ -22,9 +22,9 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = GooglePlayParser()
 
-    private val expectedPodcastImage = Image(url = "http://example.org/podcast-cover.jpg")
+    private val expectedPodcastImage = ValidatingImageBuilder().url("http://example.org/podcast-cover.jpg")
 
-    private val expectedEpisodeImage = Image(url = "http://example.org/episode-cover.jpg")
+    private val expectedEpisodeImage = ValidatingImageBuilder().url("http://example.org/episode-cover.jpg")
 
     @Test
     fun `should extract all google play fields from channel when present`() {
@@ -39,7 +39,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
             prop(FakePodcastGooglePlayBuilder::description).isEqualTo("Lorem Ipsum")
             prop(FakePodcastGooglePlayBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastGooglePlayBuilder::block).isNotNull().isFalse()
-            prop(FakePodcastGooglePlayBuilder::image).isEqualTo(expectedPodcastImage)
+            prop(FakePodcastGooglePlayBuilder::imageBuilder).isEqualTo(expectedPodcastImage)
         }
     }
 
@@ -56,7 +56,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
             prop(FakePodcastGooglePlayBuilder::description).isNull()
             prop(FakePodcastGooglePlayBuilder::explicit).isNull()
             prop(FakePodcastGooglePlayBuilder::block).isNull()
-            prop(FakePodcastGooglePlayBuilder::image).isNull()
+            prop(FakePodcastGooglePlayBuilder::imageBuilder).isNull()
         }
     }
 
@@ -70,7 +70,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
             prop(FakeEpisodeGooglePlayBuilder::description).isEqualTo("Lorem Ipsum")
             prop(FakeEpisodeGooglePlayBuilder::explicit).isNotNull().isFalse()
             prop(FakeEpisodeGooglePlayBuilder::block).isNotNull().isFalse()
-            prop(FakeEpisodeGooglePlayBuilder::image).isEqualTo(expectedEpisodeImage)
+            prop(FakeEpisodeGooglePlayBuilder::imageBuilder).isEqualTo(expectedEpisodeImage)
         }
     }
 
@@ -84,7 +84,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
             prop(FakeEpisodeGooglePlayBuilder::description).isNull()
             prop(FakeEpisodeGooglePlayBuilder::explicit).isNull()
             prop(FakeEpisodeGooglePlayBuilder::block).isNull()
-            prop(FakeEpisodeGooglePlayBuilder::image).isNull()
+            prop(FakeEpisodeGooglePlayBuilder::imageBuilder).isNull()
         }
     }
 }

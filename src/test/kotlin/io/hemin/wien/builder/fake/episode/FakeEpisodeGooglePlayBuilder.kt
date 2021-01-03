@@ -4,7 +4,6 @@ import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.episode.EpisodeGooglePlayBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
 
 @Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeEpisodeGooglePlayBuilder : FakeBuilder<Episode.GooglePlay>(), EpisodeGooglePlayBuilder {

@@ -14,8 +14,8 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeITunesBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastITunesBuilder
 import io.hemin.wien.builder.validating.ValidatingImageBuilder
+import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.ITunesParser
@@ -30,10 +30,9 @@ internal class ITunesParserTest : NamespaceParserTest() {
 
     private val expectedEpisodeImageBuilder = ValidatingImageBuilder().url("http://example.org/episode-cover.jpg")
 
-    private val expectedOwner = Person(
-        name = "Lorem Ipsum",
-        email = "owner@example.org"
-    )
+    private val expectedOwnerBuilder = ValidatingPersonBuilder()
+        .name("Lorem Ipsum")
+        .email("owner@example.org")
 
     @Test
     fun `should extract all itunes fields from channel when present`() {
@@ -43,7 +42,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
 
         assertThat(builder.iTunes, "channel.itunes").all {
             prop(FakePodcastITunesBuilder::author).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastITunesBuilder::owner).isEqualTo(expectedOwner)
+            prop(FakePodcastITunesBuilder::ownerBuilder).isEqualTo(expectedOwnerBuilder)
             prop(FakePodcastITunesBuilder::categories).containsExactly("Technology", "Society & Culture", "Technology")
             prop(FakePodcastITunesBuilder::subtitle).isEqualTo("Lorem Ipsum")
             prop(FakePodcastITunesBuilder::summary).isEqualTo("Lorem Ipsum")
@@ -64,7 +63,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
 
         assertThat(builder.iTunes, "channel.itunes").all {
             prop(FakePodcastITunesBuilder::author).isNull()
-            prop(FakePodcastITunesBuilder::owner).isNull()
+            prop(FakePodcastITunesBuilder::ownerBuilder).isNull()
             prop(FakePodcastITunesBuilder::categories).isEmpty()
             prop(FakePodcastITunesBuilder::subtitle).isNull()
             prop(FakePodcastITunesBuilder::summary).isNull()

@@ -1,30 +1,30 @@
 package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
-import io.hemin.wien.model.Link
-import io.hemin.wien.model.Person
+import io.hemin.wien.builder.LinkBuilder
+import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Podcast
 
 internal interface PodcastAtomBuilder : Builder<Podcast.Atom> {
 
     /**
-     * Adds a person to the list of authors.
+     * Adds a person builder to the list of authors.
      *
-     * @param author The author to add.
+     * @param authorBuilder The author builder to add.
      */
-    fun addAuthor(author: Person): PodcastAtomBuilder
+    fun addAuthorBuilder(authorBuilder: PersonBuilder): PodcastAtomBuilder
 
     /**
-     * Adds a person to the list of contributors.
+     * Adds a person builder to the list of contributors.
      *
-     * @param contributor The contributor to add.
+     * @param contributorBuilder The contributor builder to add.
      */
-    fun addContributor(contributor: Person): PodcastAtomBuilder
+    fun addContributorBuilder(contributorBuilder: PersonBuilder): PodcastAtomBuilder
 
     /**
-     * Adds a link to the list of links.
+     * Adds a link builder to the list of links.
      *
-     * @param link The link to add.
+     * @param linkBuilder The link builder to add.
      */
-    fun addLink(link: Link): PodcastAtomBuilder
+    fun addLinkBuilder(linkBuilder: LinkBuilder): PodcastAtomBuilder
 }

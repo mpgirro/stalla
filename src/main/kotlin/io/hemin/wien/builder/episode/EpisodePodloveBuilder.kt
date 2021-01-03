@@ -6,16 +6,16 @@ import io.hemin.wien.model.Episode
 internal interface EpisodePodloveBuilder : Builder<Episode.Podlove> {
 
     /**
-     * Adds a chapter to the list of chapters.
+     * Adds a chapter builder to the list of chapters.
      *
-     * @param chapter The chapter to add.
+     * @param chapterBuilder The chapter builder to add.
      */
-    fun addSimpleChapter(chapter: Episode.Podlove.SimpleChapter): EpisodePodloveBuilder
+    fun addSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveBuilder
 
     /**
-     * Adds chapters to the list of chapters.
+     * Adds chapter builders to the list of chapters.
      *
-     * @param chapters The chapters to add.
+     * @param chapterBuilders The chapter builders to add.
      */
-    fun addSimpleChapters(chapters: List<Episode.Podlove.SimpleChapter>): EpisodePodloveBuilder
+    fun addSimpleChapterBuilders(chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>): EpisodePodloveBuilder
 }

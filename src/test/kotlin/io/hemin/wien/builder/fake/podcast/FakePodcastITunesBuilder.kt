@@ -34,11 +34,6 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
 
     override fun author(author: String?): PodcastITunesBuilder = apply { this.author = author }
 
-    /**
-     * Adds a category to the list of categories.
-     *
-     * @param category The category to add.
-     */
     override fun addCategory(category: String): PodcastITunesBuilder = apply {
         categories.add(category)
     }

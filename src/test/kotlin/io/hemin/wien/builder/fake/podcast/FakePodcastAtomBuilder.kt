@@ -1,5 +1,7 @@
 package io.hemin.wien.builder.fake.podcast
 
+import io.hemin.wien.builder.LinkBuilder
+import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.podcast.PodcastAtomBuilder
 import io.hemin.wien.model.Link
@@ -9,34 +11,19 @@ import io.hemin.wien.model.Podcast
 @Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakePodcastAtomBuilder : FakeBuilder<Podcast.Atom>(), PodcastAtomBuilder {
 
-    var authors: MutableList<Person> = mutableListOf()
-    var contributors: MutableList<Person> = mutableListOf()
-    var links: MutableList<Link> = mutableListOf()
+    var authorBuilders: MutableList<PersonBuilder> = mutableListOf()
+    var contributorBuilders: MutableList<PersonBuilder> = mutableListOf()
+    var linkBuilders: MutableList<LinkBuilder> = mutableListOf()
 
-    /**
-     * Adds a person to the list of authors.
-     *
-     * @param author The author to add.
-     */
-    override fun addAuthor(author: Person): PodcastAtomBuilder = apply {
-        authors.add(author)
+    override fun addAuthorBuilder(authorBuilder: PersonBuilder): PodcastAtomBuilder = apply {
+        authorBuilders.add(authorBuilder)
     }
 
-    /**
-     * Adds a person to the list of contributors.
-     *
-     * @param contributor The contributor to add.
-     */
-    override fun addContributor(contributor: Person): PodcastAtomBuilder = apply {
-        contributors.add(contributor)
+    override fun addContributorBuilder(contributorBuilder: PersonBuilder): PodcastAtomBuilder = apply {
+        contributorBuilders.add(contributorBuilder)
     }
 
-    /**
-     * Adds a link to the list of links.
-     *
-     * @param link The link to add.
-     */
-    override fun addLink(link: Link): PodcastAtomBuilder = apply {
-        links.add(link)
+    override fun addLinkBuilder(linkBuilder: LinkBuilder): PodcastAtomBuilder = apply {
+        linkBuilders.add(linkBuilder)
     }
 }

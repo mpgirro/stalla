@@ -8,8 +8,8 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Person
 import org.junit.jupiter.api.Test
 import java.util.Calendar
 import java.util.Date
@@ -26,17 +26,16 @@ internal class ValidatingEpisodeBuilderTest {
         .build()
         .time
 
-    private val expectedEnclosure = Episode.Enclosure(
-        url = "enclosure url",
-        length = 123,
-        type = "enclosure type"
-    )
+    private val expectedEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
+        .url("enclosure url")
+        .length(123)
+        .type("enclosure type")
 
-    private val dummyEnclosureBuilder = DummyEpisodeEnclosureBuilder(expectedEnclosure)
+    private val expectedAtomAuthorBuilder = ValidatingPersonBuilder().name("atom author")
 
-    private val expectedAtomAuthor = Person("atom author")
-
-    private val expectedChapter = Episode.Podlove.SimpleChapter(start = "start", title = "chapter title")
+    private val expectedChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
+        .start("start")
+        .title("chapter title")
 
     @Test
     internal fun `should not build a episode when the mandatory fields are missing`() {
@@ -48,7 +47,7 @@ internal class ValidatingEpisodeBuilderTest {
     @Test
     internal fun `should not build a episode when the mandatory title is missing`() {
         val episodeBuilder = ValidatingEpisodeBuilder()
-            .enclosureBuilder(dummyEnclosureBuilder)
+            .enclosureBuilder(expectedEnclosureBuilder)
 
         assertThat(episodeBuilder.build()).isNull()
     }
@@ -65,7 +64,7 @@ internal class ValidatingEpisodeBuilderTest {
     internal fun `should build a episode with all the mandatory fields`() {
         val episodeBuilder = ValidatingEpisodeBuilder()
             .title("title")
-            .enclosureBuilder(dummyEnclosureBuilder)
+            .enclosureBuilder(expectedEnclosureBuilder)
 
         assertThat(episodeBuilder.build()).isNotNull().all {
             prop(Episode::title).isEqualTo("title")
@@ -74,7 +73,7 @@ internal class ValidatingEpisodeBuilderTest {
             prop(Episode::author).isNull()
             prop(Episode::categories).isEmpty()
             prop(Episode::comments).isNull()
-            prop(Episode::enclosure).isEqualTo(expectedEnclosure)
+            prop(Episode::enclosure).isEqualTo(expectedEnclosureBuilder.build())
             prop(Episode::guid).isNull()
             prop(Episode::pubDate).isNull()
             prop(Episode::source).isNull()
@@ -97,15 +96,15 @@ internal class ValidatingEpisodeBuilderTest {
             .addCategory("category 1")
             .addCategory("category 2")
             .comments("comments")
-            .enclosureBuilder(dummyEnclosureBuilder)
+            .enclosureBuilder(expectedEnclosureBuilder)
             .guidBuilder(ValidatingEpisodeGuidBuilder().textContent("guid"))
             .pubDate(expectedDate)
             .source("source")
             .apply {
                 content.encoded("encoded")
                 iTunes.title("iTunes title")
-                atom.addAuthor(expectedAtomAuthor)
-                podlove.addSimpleChapter(expectedChapter)
+                atom.addAuthorBuilder(expectedAtomAuthorBuilder)
+                podlove.addSimpleChapterBuilder(expectedChapterBuilder)
                 googlePlay.description("play description")
                 bitlove.guid("bitlove guid")
             }
@@ -117,14 +116,14 @@ internal class ValidatingEpisodeBuilderTest {
             prop(Episode::author).isEqualTo("author")
             prop(Episode::categories).containsExactly("category 1", "category 2")
             prop(Episode::comments).isEqualTo("comments")
-            prop(Episode::enclosure).isEqualTo(expectedEnclosure)
+            prop(Episode::enclosure).isEqualTo(expectedEnclosureBuilder.build())
             prop(Episode::guid).isEqualTo(Episode.Guid("guid"))
             prop(Episode::pubDate).isEqualTo(expectedDate)
             prop(Episode::source).isEqualTo("source")
             prop(Episode::content).isNotNull().prop(Episode.Content::encoded).isEqualTo("encoded")
             prop(Episode::itunes).isNotNull().prop(Episode.ITunes::title).isEqualTo("iTunes title")
-            prop(Episode::atom).isNotNull().prop(Episode.Atom::authors).containsExactly(expectedAtomAuthor)
-            prop(Episode::podlove).isNotNull().prop(Episode.Podlove::simpleChapters).containsExactly(expectedChapter)
+            prop(Episode::atom).isNotNull().prop(Episode.Atom::authors).containsExactly(expectedAtomAuthorBuilder.build())
+            prop(Episode::podlove).isNotNull().prop(Episode.Podlove::simpleChapters).containsExactly(expectedChapterBuilder.build())
             prop(Episode::googlePlay).isNotNull().prop(Episode.GooglePlay::description).isEqualTo("play description")
             prop(Episode::bitlove).isNotNull().prop(Episode.Bitlove::guid).isEqualTo("bitlove guid")
         }

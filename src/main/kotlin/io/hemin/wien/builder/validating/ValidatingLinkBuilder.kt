@@ -43,4 +43,30 @@ internal class ValidatingLinkBuilder : LinkBuilder {
             type = type
         )
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingLinkBuilder) return false
+
+        if (hrefValue != other.hrefValue) return false
+        if (hrefLang != other.hrefLang) return false
+        if (hrefResolved != other.hrefResolved) return false
+        if (length != other.length) return false
+        if (rel != other.rel) return false
+        if (title != other.title) return false
+        if (type != other.type) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = hrefValue.hashCode()
+        result = 31 * result + (hrefLang?.hashCode() ?: 0)
+        result = 31 * result + (hrefResolved?.hashCode() ?: 0)
+        result = 31 * result + (length?.hashCode() ?: 0)
+        result = 31 * result + (rel?.hashCode() ?: 0)
+        result = 31 * result + (title?.hashCode() ?: 0)
+        result = 31 * result + (type?.hashCode() ?: 0)
+        return result
+    }
 }

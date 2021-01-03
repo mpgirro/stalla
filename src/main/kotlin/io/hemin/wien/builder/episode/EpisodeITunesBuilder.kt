@@ -12,7 +12,7 @@ internal interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
     /** Set the duration value. */
     fun duration(duration: String?): EpisodeITunesBuilder
 
-    /** Set the Image. */
+    /** Set the Image builder. */
     fun imageBuilder(imageBuilder: ImageBuilder?): EpisodeITunesBuilder
 
     /** Set the explicit flag value. */

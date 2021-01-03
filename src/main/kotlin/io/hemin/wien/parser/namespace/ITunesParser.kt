@@ -1,6 +1,7 @@
 package io.hemin.wien.parser.namespace
 
 import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.validating.ValidatingImageBuilder
@@ -43,7 +44,7 @@ internal class ITunesParser : NamespaceParser() {
                 builder.iTunes.imageBuilder(image)
             }
             "keywords" -> builder.iTunes.keywords(toText(node))
-            "owner" -> builder.iTunes.owner(toPerson(node))
+            "owner" -> builder.iTunes.ownerBuilder(toPersonBuilder(node))
             "subtitle" -> builder.iTunes.subtitle(toText(node))
             "summary" -> builder.iTunes.summary(toText(node))
             "type" -> builder.iTunes.type(toText(node))
@@ -89,7 +90,7 @@ internal class ITunesParser : NamespaceParser() {
      * @param node The DOM node representing the `<itunes:owner>` element.
      * @return The [Image] instance with the `<itunes:owner>` elements data, or null if all data was empty.
      */
-    private fun toPerson(node: Node): Person? = valid(node) {
+    private fun toPersonBuilder(node: Node): PersonBuilder? = valid(node) {
         val builder = ValidatingPersonBuilder()
         for (child in node.childNodes.asListOfNodes()) {
             val value: String? = toText(child)
@@ -98,6 +99,6 @@ internal class ITunesParser : NamespaceParser() {
                 "email" -> builder.email(value)
             }
         }
-        builder.build()
+        builder
     }
 }

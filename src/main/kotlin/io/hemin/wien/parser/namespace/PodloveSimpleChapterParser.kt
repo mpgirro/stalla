@@ -1,9 +1,9 @@
 package io.hemin.wien.parser.namespace
 
 import io.hemin.wien.builder.episode.EpisodeBuilder
+import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
-import io.hemin.wien.model.Episode
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Node
@@ -18,40 +18,28 @@ internal class PodloveSimpleChapterParser : NamespaceParser() {
 
     override val namespaceURI: String = "http://podlove.org/simple-chapters"
 
-    /** This module does not set any data in the [ValidatingPodcastBuilder]. */
+    /** This module does not set any data in the [PodcastBuilder]. */
     override fun parse(builder: PodcastBuilder, node: Node) {}
 
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "chapters" -> {
-                val chapters = toPodloveSimpleChapters(node) ?: return@valid
-                builder.podlove.addSimpleChapters(chapters)
+                val chapters = toPodloveSimpleChapterBuilders(node) ?: return@valid
+                builder.podlove.addSimpleChapterBuilders(chapters)
             }
             else -> pass
         }
     }
 
-    /**
-     * Transforms a `<psc:chapters>` element into a list of [Episode.Podlove.SimpleChapter] model class instances.
-     *
-     * @param node The DOM node representing the `<psc:chapters>` element.
-     * @return The list of extracted [Episode.Podlove.SimpleChapter] instances.
-     */
-    private fun toPodloveSimpleChapters(node: Node): List<Episode.Podlove.SimpleChapter>? = valid(node) {
+    private fun toPodloveSimpleChapterBuilders(node: Node): List<EpisodePodloveSimpleChapterBuilder>? = valid(node) {
         node.childNodes.asListOfNodes().stream()
             .filter { c -> c.localName == "chapter" }
-            .map(::toPodloveSimpleChapter)
+            .map(::toPodloveSimpleChapterBuilder)
             .toList()
             .filterNotNull()
     }
 
-    /**
-     * Transforms a `<psc:chapter>` element into an instance of the [Episode.Podlove.SimpleChapter] model class.
-     *
-     * @param node The DOM node representing the `<psc:chapter>` element.
-     * @return The [Episode.Podlove.SimpleChapter] instance with the `<psc:chapter>` elements data, or null if all data was empty.
-     */
-    private fun toPodloveSimpleChapter(node: Node): Episode.Podlove.SimpleChapter? = valid(node) {
+    private fun toPodloveSimpleChapterBuilder(node: Node): EpisodePodloveSimpleChapterBuilder? = valid(node) {
         val start = attributeValueByName(node, "start")
         val title = attributeValueByName(node, "title")
         if (start == null || title == null) return@valid null
@@ -61,6 +49,5 @@ internal class PodloveSimpleChapterParser : NamespaceParser() {
             .title(title)
             .href(attributeValueByName(node, "href"))
             .image(attributeValueByName(node, "image"))
-            .build()
     }
 }

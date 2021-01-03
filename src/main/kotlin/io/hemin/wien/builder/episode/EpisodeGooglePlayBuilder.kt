@@ -15,6 +15,6 @@ internal interface EpisodeGooglePlayBuilder : Builder<Episode.GooglePlay> {
     /** Set the block value. */
     fun block(block: Boolean?): EpisodeGooglePlayBuilder
 
-    /** Set the Image. */
+    /** Set the Image builder. */
     fun imageBuilder(imageBuilder: ImageBuilder?): EpisodeGooglePlayBuilder
 }
