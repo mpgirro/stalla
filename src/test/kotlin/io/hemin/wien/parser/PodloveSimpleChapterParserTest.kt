@@ -4,7 +4,7 @@ import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEmpty
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
-import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
+import io.hemin.wien.builder.fake.episode.FakeEpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
 import org.junit.jupiter.api.Test
@@ -31,17 +31,17 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
         assertThat(builder.podlove.chapterBuilders, "item.podlove_simple_chapters")
             .containsExactly(
-                ValidatingEpisodePodloveSimpleChapterBuilder()
+                FakeEpisodePodloveSimpleChapterBuilder()
                     .start("00:00:00.000")
                     .title("Lorem Ipsum")
                     .href("http://example.org")
                     .image("http://example.org/cover"),
-                ValidatingEpisodePodloveSimpleChapterBuilder()
+                FakeEpisodePodloveSimpleChapterBuilder()
                     .start("00:01:03.856")
                     .title("Lorem Ipsum")
                     .href("http://example.org")
                     .image("http://example.org/cover"),
-                ValidatingEpisodePodloveSimpleChapterBuilder()
+                FakeEpisodePodloveSimpleChapterBuilder()
                     .start("00:02:12.641")
                     .title("Lorem Ipsum")
                     .href("http://example.org")

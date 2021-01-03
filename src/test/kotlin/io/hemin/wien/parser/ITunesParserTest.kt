@@ -9,12 +9,12 @@ import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import io.hemin.wien.builder.fake.FakeImageBuilder
+import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeITunesBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastITunesBuilder
-import io.hemin.wien.builder.validating.ValidatingImageBuilder
-import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.nodeFromResource
@@ -26,11 +26,11 @@ internal class ITunesParserTest : NamespaceParserTest() {
 
     override val parser = ITunesParser()
 
-    private val expectedPodcastImageBuilder = ValidatingImageBuilder().url("http://example.org/podcast-cover.jpg")
+    private val expectedPodcastImageBuilder = FakeImageBuilder().url("http://example.org/podcast-cover.jpg")
 
-    private val expectedEpisodeImageBuilder = ValidatingImageBuilder().url("http://example.org/episode-cover.jpg")
+    private val expectedEpisodeImageBuilder = FakeImageBuilder().url("http://example.org/episode-cover.jpg")
 
-    private val expectedOwnerBuilder = ValidatingPersonBuilder()
+    private val expectedOwnerBuilder = FakePersonBuilder()
         .name("Lorem Ipsum")
         .email("owner@example.org")
 

@@ -9,11 +9,11 @@ import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import io.hemin.wien.builder.fake.FakeImageBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeGooglePlayBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastGooglePlayBuilder
-import io.hemin.wien.builder.validating.ValidatingImageBuilder
 import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.GooglePlayParser
 import org.junit.jupiter.api.Test
@@ -22,9 +22,9 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = GooglePlayParser()
 
-    private val expectedPodcastImage = ValidatingImageBuilder().url("http://example.org/podcast-cover.jpg")
+    private val expectedPodcastImage = FakeImageBuilder().url("http://example.org/podcast-cover.jpg")
 
-    private val expectedEpisodeImage = ValidatingImageBuilder().url("http://example.org/episode-cover.jpg")
+    private val expectedEpisodeImage = FakeImageBuilder().url("http://example.org/episode-cover.jpg")
 
     @Test
     fun `should extract all google play fields from channel when present`() {
