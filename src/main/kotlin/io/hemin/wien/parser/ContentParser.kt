@@ -24,8 +24,7 @@ class ContentParser : NamespaceParser() {
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "encoded" -> builder.content.encoded(toText(node))
-            else      -> pass
+            else -> pass
         }
     }
-
 }

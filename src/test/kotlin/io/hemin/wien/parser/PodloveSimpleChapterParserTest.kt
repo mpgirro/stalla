@@ -9,13 +9,13 @@ import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
 /** Provides unit tests for [PodloveSimpleChapterParser]. */
-class PodloveSimpleChapterParserTest : NamespaceParserTest() {
+internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
     override val parser = PodloveSimpleChapterParser()
 
-    val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    val expectedSimpleChapter = EpisodePodloveSimpleChapterBuilder()
+    private val expectedSimpleChapter = EpisodePodloveSimpleChapterBuilder()
         .start("00:00:00.000")
         .title("Lorem Ipsum")
         .href("http://example.org")
@@ -24,13 +24,13 @@ class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
     @Test
     fun testParseItemPodloveSimpleChapters() {
-        item?.let {
+        item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, it)
+            parseItemNode(builder, node)
 
-            builder.build().podlove?.let {
-                assertEquals(3, it.simpleChapters.size)
-                assertTrue(it.simpleChapters.contains(expectedSimpleChapter))
+            builder.build().podlove?.let { podlove ->
+                assertEquals(3, podlove.simpleChapters.size)
+                assertTrue(podlove.simpleChapters.contains(expectedSimpleChapter))
             } ?: run {
                 fail("Episode Podlove Simple Chapter data not extracted")
             }
@@ -38,5 +38,4 @@ class PodloveSimpleChapterParserTest : NamespaceParserTest() {
             fail("item not found")
         }
     }
-
 }

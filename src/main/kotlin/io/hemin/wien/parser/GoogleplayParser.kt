@@ -22,24 +22,24 @@ class GoogleplayParser : NamespaceParser() {
 
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
-            "author"      -> builder.googleplay.author(toText(node))
-            "email"       -> builder.googleplay.email(toText(node))
-            "category"    -> builder.googleplay.addCategory(toText(node))
+            "author" -> builder.googleplay.author(toText(node))
+            "email" -> builder.googleplay.email(toText(node))
+            "category" -> builder.googleplay.addCategory(toText(node))
             "description" -> builder.googleplay.description(toText(node))
-            "explicit"    -> builder.googleplay.explicit(toBoolean(node))
-            "image"       -> builder.googleplay.image(toImage(node))
-            else          -> pass
+            "explicit" -> builder.googleplay.explicit(toBoolean(node))
+            "image" -> builder.googleplay.image(toImage(node))
+            else -> pass
         }
     }
 
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "description" -> builder.googleplay.description(toText(node))
-            "duration"    -> builder.googleplay.duration(toText(node))
-            "explicit"    -> builder.googleplay.explicit(toBoolean(node))
-            "block"       -> builder.googleplay.block(toBoolean(node))
-            "image"       -> builder.googleplay.image(toImage(node))
-            else          -> pass
+            "duration" -> builder.googleplay.duration(toText(node))
+            "explicit" -> builder.googleplay.explicit(toBoolean(node))
+            "block" -> builder.googleplay.block(toBoolean(node))
+            "image" -> builder.googleplay.image(toImage(node))
+            else -> pass
         }
     }
 
@@ -53,12 +53,10 @@ class GoogleplayParser : NamespaceParser() {
         val url: String? = attributeValueByName(node, "href")
         if (url.isNullOrBlank()) {
             null
-        }
-        else {
+        } else {
             ImageBuilder()
                 .url(url)
                 .build()
         }
     }
-
 }

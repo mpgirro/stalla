@@ -6,23 +6,23 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
-class FeedpressParserTest : NamespaceParserTest() {
+internal class FeedpressParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = FeedpressParser()
 
-    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
+    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
 
     @Test
-    fun testParseChannelItunes() {
-        channel?.let {
+    fun testParseChannelFeedpress() {
+        channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, it)
+            parseChannelNode(builder, node)
 
-            builder.build().feedpress?.let {
-                assertEquals("abc123", it.newsletterId)
-                assertEquals("en", it.locale)
-                assertEquals("xyz123", it.podcastId)
-                assertEquals("http://example.org/style.css", it.cssFile)
+            builder.build().feedpress?.let { feedpress ->
+                assertEquals("abc123", feedpress.newsletterId)
+                assertEquals("en", feedpress.locale)
+                assertEquals("xyz123", feedpress.podcastId)
+                assertEquals("http://example.org/style.css", feedpress.cssFile)
             } ?: run {
                 fail("Podcast Feedpress data not extracted")
             }
@@ -30,5 +30,4 @@ class FeedpressParserTest : NamespaceParserTest() {
             fail("channel not found")
         }
     }
-
 }

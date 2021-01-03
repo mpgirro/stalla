@@ -7,20 +7,20 @@ import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
 /** Provides unit tests for [ContentParser]. */
-class ContentParserTest : NamespaceParserTest() {
+internal class ContentParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = ContentParser()
 
-    val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
     @Test
     fun testParseItemContent() {
-        item?.let {
+        item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, it)
+            parseItemNode(builder, node)
 
-            builder.build().content?.let {
-                assertEquals("Lorem Ipsum", it.encoded)
+            builder.build().content?.let { content ->
+                assertEquals("Lorem Ipsum", content.encoded)
             } ?: run {
                 fail("Episode Content data not extracted")
             }
@@ -28,5 +28,4 @@ class ContentParserTest : NamespaceParserTest() {
             fail("item not found")
         }
     }
-
 }

@@ -7,20 +7,20 @@ import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
 /** Provides unit tests for [FyydParser]. */
-class FyydParserTest : NamespaceParserTest() {
+internal class FyydParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = FyydParser()
 
-    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
+    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
 
     @Test
     fun testParseChannelFyyd() {
-        channel?.let {
+        channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, it)
+            parseChannelNode(builder, node)
 
-            builder.build().fyyd?.let {
-                assertEquals("abcdefg", it.verify)
+            builder.build().fyyd?.let { fyyd ->
+                assertEquals("abcdefg", fyyd.verify)
             } ?: run {
                 fail("Podcast Fyyd data not extracted")
             }
@@ -28,5 +28,4 @@ class FyydParserTest : NamespaceParserTest() {
             fail("channel not found")
         }
     }
-
 }

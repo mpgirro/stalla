@@ -29,6 +29,4 @@ interface Builder<T> {
             .toList()
         return ImmutableList.copyOf(nonNulls)
     }
-
 }
-

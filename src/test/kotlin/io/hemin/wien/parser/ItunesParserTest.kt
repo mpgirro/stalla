@@ -12,42 +12,42 @@ import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
 /** Provides unit tests for [ItunesParser]. */
-class ItunesParserTest : NamespaceParserTest() {
+internal class ItunesParserTest : NamespaceParserTest() {
 
     override val parser = ItunesParser()
 
-    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
+    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    val expectedPodcastImage = ImageBuilder()
+    private val expectedPodcastImage = ImageBuilder()
         .url("http://example.org/podcast-cover.jpg")
         .build()
-    val expectedEpisodeImage = ImageBuilder()
+    private val expectedEpisodeImage = ImageBuilder()
         .url("http://example.org/episode-cover.jpg")
         .build()
-    val expectedOwner = PersonBuilder()
+    private val expectedOwner = PersonBuilder()
         .name("Lorem Ipsum")
         .email("owner@example.org")
         .build()
 
     @Test
     fun testParseChannelItunes() {
-        channel?.let {
+        channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, it)
+            parseChannelNode(builder, node)
 
-            builder.build().itunes?.let {
-                assertEquals("Lorem Ipsum", it.subtitle)
-                assertEquals("Lorem Ipsum", it.summary)
-                assertEquals(expectedPodcastImage, it.image)
-                assertEquals("Lorem Ipsum", it.keywords)
-                assertEquals("Lorem Ipsum", it.author)
-                //assertEquals(emptyList<String>(), it.categories) // TODO this will fail --> see XML
-                assertEquals(false, it.explicit)
-                assertEquals(false, it.block)
-                assertEquals(false, it.complete)
-                assertEquals(Podcast.Itunes.ShowType.EPISODIC, it.type)
-                assertEquals(expectedOwner, it.owner)
+            builder.build().itunes?.let { itunes ->
+                assertEquals("Lorem Ipsum", itunes.subtitle)
+                assertEquals("Lorem Ipsum", itunes.summary)
+                assertEquals(expectedPodcastImage, itunes.image)
+                assertEquals("Lorem Ipsum", itunes.keywords)
+                assertEquals("Lorem Ipsum", itunes.author)
+                // assertEquals(emptyList<String>(), itunes.categories) // TODO this will fail --> see XML
+                assertEquals(false, itunes.explicit)
+                assertEquals(false, itunes.block)
+                assertEquals(false, itunes.complete)
+                assertEquals(Podcast.Itunes.ShowType.EPISODIC, itunes.type)
+                assertEquals(expectedOwner, itunes.owner)
             } ?: run {
                 fail("Podcast iTunes data not extracted")
             }
@@ -58,19 +58,19 @@ class ItunesParserTest : NamespaceParserTest() {
 
     @Test
     fun testParseItemItunes() {
-        item?.let {
+        item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, it)
+            parseItemNode(builder, node)
 
-            builder.build().itunes?.let {
-                assertEquals("Lorem Ipsum", it.title)
-                assertEquals("03:24:27", it.duration)
-                assertEquals(expectedEpisodeImage, it.image)
-                assertEquals(false, it.explicit)
-                assertEquals(false, it.block)
-                assertEquals(1, it.season)
-                assertEquals(1, it.episode)
-                assertEquals(Episode.Itunes.EpisodeType.FULL, it.episodeType)
+            builder.build().itunes?.let { itunes ->
+                assertEquals("Lorem Ipsum", itunes.title)
+                assertEquals("03:24:27", itunes.duration)
+                assertEquals(expectedEpisodeImage, itunes.image)
+                assertEquals(false, itunes.explicit)
+                assertEquals(false, itunes.block)
+                assertEquals(1, itunes.season)
+                assertEquals(1, itunes.episode)
+                assertEquals(Episode.Itunes.EpisodeType.FULL, itunes.episodeType)
                 // TODO test more fields
             } ?: run {
                 fail("Episode iTunes data not extracted")
@@ -79,5 +79,4 @@ class ItunesParserTest : NamespaceParserTest() {
             fail("item not found")
         }
     }
-
 }

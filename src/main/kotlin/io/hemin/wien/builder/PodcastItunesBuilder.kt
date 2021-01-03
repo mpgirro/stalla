@@ -8,17 +8,17 @@ import io.hemin.wien.model.Podcast.Itunes.ShowType
 /** Builder class for [Podcast.Itunes] instances. */
 class PodcastItunesBuilder : Builder<Podcast.Itunes> {
 
-    private var subtitle: String?               = null
-    private var summary: String?                = null
-    private var image: Image?                   = null
-    private var keywords: String?               = null
-    private var author: String?                 = null
+    private var subtitle: String? = null
+    private var summary: String? = null
+    private var image: Image? = null
+    private var keywords: String? = null
+    private var author: String? = null
     private var categories: MutableList<String> = mutableListOf()
-    private var explicit: Boolean?              = null
-    private var block: Boolean?                 = null
-    private var complete: Boolean?              = null
-    private var type: ShowType?                 = null
-    private var owner: Person?                  = null
+    private var explicit: Boolean? = null
+    private var block: Boolean? = null
+    private var complete: Boolean? = null
+    private var type: ShowType? = null
+    private var owner: Person? = null
 
     /** Set the subtitle value. */
     fun subtitle(subtitle: String?) = apply { this.subtitle = subtitle }
@@ -63,21 +63,20 @@ class PodcastItunesBuilder : Builder<Podcast.Itunes> {
         val oCategories = if (categories.isEmpty()) null else Object()
         return if (anyNotNull(subtitle, summary, image, keywords, author, oCategories, explicit, block, complete, type, owner)) {
             Podcast.Itunes(
-                subtitle   = subtitle,
-                summary    = summary,
-                image      = image,
-                keywords   = keywords,
-                author     = author,
+                subtitle = subtitle,
+                summary = summary,
+                image = image,
+                keywords = keywords,
+                author = author,
                 categories = immutableCopyOf(categories),
-                explicit   = explicit,
-                block      = block,
-                complete   = complete,
-                type       = type,
-                owner      = owner
+                explicit = explicit,
+                block = block,
+                complete = complete,
+                type = type,
+                owner = owner
             )
         } else {
             null
         }
     }
-
 }

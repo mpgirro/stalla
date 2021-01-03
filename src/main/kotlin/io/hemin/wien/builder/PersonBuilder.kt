@@ -5,9 +5,9 @@ import io.hemin.wien.model.Person
 /** Builder class for [Person] instances. */
 class PersonBuilder : Builder<Person> {
 
-    private var name: String?  = null
+    private var name: String? = null
     private var email: String? = null
-    private var uri: String?   = null
+    private var uri: String? = null
 
     /** Set the name value. */
     fun name(name: String?) = apply { this.name = name }
@@ -21,13 +21,12 @@ class PersonBuilder : Builder<Person> {
     override fun build(): Person? {
         return if (anyNotNull(name, email, uri)) {
             Person(
-                name  = name,
+                name = name,
                 email = email,
-                uri   = uri
+                uri = uri
             )
         } else {
             null
         }
     }
-
 }

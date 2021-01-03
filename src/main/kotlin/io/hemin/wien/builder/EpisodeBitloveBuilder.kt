@@ -19,5 +19,4 @@ class EpisodeBitloveBuilder : Builder<Episode.Bitlove> {
             null
         }
     }
-
 }

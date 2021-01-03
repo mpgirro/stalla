@@ -1,21 +1,21 @@
 package io.hemin.wien.builder
 
 import io.hemin.wien.model.Episode
-import java.util.*
+import java.util.Date
 
 /** Builder class for [Episode] instances. */
 class EpisodeBuilder : Builder<Episode> {
 
-    private var title: String?                  = null
-    private var link: String?                   = null
-    private var description: String?            = null
-    private var author: String?                 = null
+    private var title: String? = null
+    private var link: String? = null
+    private var description: String? = null
+    private var author: String? = null
     private val categories: MutableList<String> = mutableListOf()
-    private var comments: String?               = null
-    private var enclosure: Episode.Enclosure?   = null
-    private var guid: Episode.Guid?             = null
-    private var pubDate: Date?                  = null
-    private var source: String?                 = null
+    private var comments: String? = null
+    private var enclosure: Episode.Enclosure? = null
+    private var guid: Episode.Guid? = null
+    private var pubDate: Date? = null
+    private var source: String? = null
 
     /** The builder for data from the Content namespace. */
     val content: EpisodeContentBuilder = EpisodeContentBuilder()
@@ -48,9 +48,9 @@ class EpisodeBuilder : Builder<Episode> {
     fun author(author: String?) = apply { this.author = author }
 
     /**
-     * Adds a comment to the list of comments.
+     * Adds a category to the list of categories.
      *
-     * @param comment The comment to add.
+     * @param category The comment to add.
      */
     fun addCategory(category: String?) = apply {
         category?.let { this.categories.add(it) }
@@ -81,22 +81,21 @@ class EpisodeBuilder : Builder<Episode> {
      * @return The create instance.
      */
     override fun build() = Episode(
-        title       = title,
-        link        = link,
+        title = title,
+        link = link,
         description = description,
-        author      = author,
-        categories  = immutableCopyOf(categories),
-        comments    = comments,
-        enclosure   = enclosure,
-        guid        = guid,
-        pubDate     = pubDate,
-        source      = source,
-        content     = content.build(),
-        itunes      = itunes.build(),
-        atom        = atom.build(),
-        podlove     = podlove.build(),
-        googleplay  = googleplay.build(),
-        bitlove     = bitlove.build()
+        author = author,
+        categories = immutableCopyOf(categories),
+        comments = comments,
+        enclosure = enclosure,
+        guid = guid,
+        pubDate = pubDate,
+        source = source,
+        content = content.build(),
+        itunes = itunes.build(),
+        atom = atom.build(),
+        podlove = podlove.build(),
+        googleplay = googleplay.build(),
+        bitlove = bitlove.build()
     )
-
 }

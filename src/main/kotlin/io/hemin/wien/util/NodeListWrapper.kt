@@ -2,28 +2,27 @@ package io.hemin.wien.util
 
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
-import java.util.*
 
 /**
  * This class provides a [List] API for a [NodeList].
  *
  * @property nodes The [NodeList] to provide a [List] API for.
  */
-class NodeListWrapper (private val nodes: NodeList) : AbstractList<Node>(), RandomAccess {
+class NodeListWrapper(private val nodes: NodeList) : AbstractList<Node>(), RandomAccess {
 
     companion object {
 
         /**
          * Returns a [List] API for the argument.
          *
-         * @param nodeList The instance holding the DOM node elements.
+         * @param this@asList The instance holding the DOM node elements.
          * @retunr The [List] API of the argument.
          */
-        fun asList(nodeList: NodeList): List<Node> {
-            return if (nodeList.length == 0)
-                Collections.emptyList()
+        fun NodeList.asListOfNodes(): List<Node> {
+            return if (length == 0)
+                emptyList()
             else
-                NodeListWrapper(nodeList)
+                NodeListWrapper(this)
         }
     }
 
@@ -36,5 +35,4 @@ class NodeListWrapper (private val nodes: NodeList) : AbstractList<Node>(), Rand
      * @return The element at the index.
      */
     override fun get(index: Int): Node = nodes.item(index)
-
 }

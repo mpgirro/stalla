@@ -8,34 +8,34 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
-class GoogleplayParserTest : NamespaceParserTest() {
+internal class GoogleplayParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = GoogleplayParser()
 
-    val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
+    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
 
-    val expectedPodcastImage = ImageBuilder()
+    private val expectedPodcastImage = ImageBuilder()
         .url("http://example.org/podcast-cover.jpg")
         .build()
 
-    val expectedEpisodeImage = ImageBuilder()
+    private val expectedEpisodeImage = ImageBuilder()
         .url("http://example.org/episode-cover.jpg")
         .build()
 
     @Test
     fun testParseChannelItunes() {
-        channel?.let {
+        channel?.let { node ->
             val builder = PodcastBuilder()
-            parse(builder, it)
+            parseChannelNode(builder, node)
 
-            builder.build().googleplay?.let {
-                assertEquals("Lorem Ipsum", it.author)
-                assertEquals("email@example.org", it.email)
-                //assertEquals(emptyList<String>(), it.categories) // TODO this will fail --> see XML
-                assertEquals("Lorem Ipsum", it.description)
-                assertEquals(false, it.explicit)
-                assertEquals(expectedPodcastImage, it.image)
+            builder.build().googleplay?.let { googleplay ->
+                assertEquals("Lorem Ipsum", googleplay.author)
+                assertEquals("email@example.org", googleplay.email)
+                // assertEquals(emptyList<String>(), googleplay.categories) // TODO this will fail --> see XML
+                assertEquals("Lorem Ipsum", googleplay.description)
+                assertEquals(false, googleplay.explicit)
+                assertEquals(expectedPodcastImage, googleplay.image)
             } ?: run {
                 fail("Podcast Googleplay data not extracted")
             }
@@ -46,16 +46,16 @@ class GoogleplayParserTest : NamespaceParserTest() {
 
     @Test
     fun testParseItemItunes() {
-        item?.let {
+        item?.let { node ->
             val builder = EpisodeBuilder()
-            parse(builder, it)
+            parseItemNode(builder, node)
 
-            builder.build().googleplay?.let {
-                assertEquals("Lorem Ipsum", it.description)
-                assertEquals("03:24:27", it.duration)
-                assertEquals(false, it.explicit)
-                assertEquals(false, it.block)
-                assertEquals(expectedEpisodeImage, it.image)
+            builder.build().googleplay?.let { googleplay ->
+                assertEquals("Lorem Ipsum", googleplay.description)
+                assertEquals("03:24:27", googleplay.duration)
+                assertEquals(false, googleplay.explicit)
+                assertEquals(false, googleplay.block)
+                assertEquals(expectedEpisodeImage, googleplay.image)
                 // TODO test more fields
             } ?: run {
                 fail("Episode Googleplay data not extracted")
@@ -64,5 +64,4 @@ class GoogleplayParserTest : NamespaceParserTest() {
             fail("item not found")
         }
     }
-
 }

@@ -1,6 +1,6 @@
 package io.hemin.wien.model
 
-import java.util.*
+import java.util.Date
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<channel>` elements.
@@ -38,11 +38,11 @@ data class Podcast(
     val webMaster: String?,
     val image: Image?,
     val episodes: List<Episode>,
-    val itunes: Podcast.Itunes?,
-    val atom: Podcast.Atom?,
-    val fyyd: Podcast.Fyyd?,
-    val feedpress: Podcast.Feedpress?,
-    val googleplay: Podcast.Googleplay?
+    val itunes: Itunes?,
+    val atom: Atom?,
+    val fyyd: Fyyd?,
+    val feedpress: Feedpress?,
+    val googleplay: Googleplay?
 ) {
 
     /**
@@ -79,7 +79,7 @@ data class Podcast(
          *
          * @property type The string representation of the Enum instance.
          */
-        enum class ShowType (val type: String) {
+        enum class ShowType(val type: String) {
 
             /** Type describing an episodic show. */
             EPISODIC("episodic"),
@@ -95,7 +95,7 @@ data class Podcast(
                  * @return The Enum instance matching [type], or null if not matching instance exists.
                  */
                 fun of(type: String?): ShowType? = type?.let {
-                    ShowType.values().find { t -> t.type == it.toLowerCase() }
+                    values().find { t -> t.type == it.toLowerCase() }
                 }
             }
         }
@@ -113,7 +113,7 @@ data class Podcast(
      */
     data class Googleplay(
         val author: String?, // TODO can this be a list? is this a Person() ?
-        val email: String?,  // TODO merge with author to a person?
+        val email: String?, // TODO merge with author to a person?
         val categories: List<String?>, // TODO can be nested, Category() required?
         val description: String?,
         val explicit: Boolean?,
@@ -156,5 +156,4 @@ data class Podcast(
         val podcastId: String?,
         val cssFile: String?
     )
-
 }

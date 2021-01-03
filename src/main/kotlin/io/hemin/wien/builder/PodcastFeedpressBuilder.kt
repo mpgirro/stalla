@@ -26,13 +26,12 @@ class PodcastFeedpressBuilder : Builder<Podcast.Feedpress> {
         return if (anyNotNull(newsletterId, locale, podcastId, cssFile)) {
             Podcast.Feedpress(
                 newsletterId = newsletterId,
-                locale       = locale,
-                podcastId    = podcastId,
-                cssFile      = cssFile
+                locale = locale,
+                podcastId = podcastId,
+                cssFile = cssFile
             )
         } else {
             null
         }
     }
-
 }

@@ -1,16 +1,17 @@
 package io.hemin.wien
 
 import io.hemin.wien.util.DomBuilderFactory
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Document
 import org.w3c.dom.Node
 import javax.xml.parsers.DocumentBuilderFactory
 
 /** Provides unit tests for [WienParser]. */
-class WienParserTest {
+internal class WienParserTest {
 
-    val rss: Document
+    private val rss: Document
 
     init {
         val domBuilder = DomBuilderFactory.newBuilder()
@@ -18,7 +19,7 @@ class WienParserTest {
         rss = domBuilder.parse(xml.openStream())
     }
 
-    fun createRssNode(localName: String): Node = DocumentBuilderFactory
+    private fun createRssNode(localName: String): Node = DocumentBuilderFactory
         .newInstance()
         .newDocumentBuilder()
         .newDocument()
@@ -41,5 +42,4 @@ class WienParserTest {
         val parser = WienParser()
         assertNotNull(parser.parse(rss))
     }
-
 }

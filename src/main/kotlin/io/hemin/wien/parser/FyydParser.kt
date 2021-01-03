@@ -16,11 +16,10 @@ class FyydParser : NamespaceParser() {
     override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "verify" -> builder.fyyd.verify(toText(node))
-            else     -> pass
+            else -> pass
         }
     }
 
     /** This module does not set any data in the [EpisodeBuilder]. */
     override fun parse(builder: EpisodeBuilder, node: Node) { }
-
 }

@@ -5,7 +5,7 @@ import io.hemin.wien.model.Episode
 /** Builder class for [Episode.Guid] instances. */
 class EpisodeGuidBuilder : Builder<Episode.Guid> {
 
-    private var textContent: String?      = null
+    private var textContent: String? = null
     private var isPermalink: Boolean? = null
 
     /** Set the textContent value. */
@@ -24,6 +24,4 @@ class EpisodeGuidBuilder : Builder<Episode.Guid> {
             null
         }
     }
-
-
 }

@@ -1,6 +1,6 @@
 package io.hemin.wien.model
 
-import java.util.*
+import java.util.Date
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<item>` elements.
@@ -29,16 +29,16 @@ data class Episode(
     val author: String?, // TODO turn to Person?
     val categories: List<String>?, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
     val comments: String?,
-    val enclosure: Episode.Enclosure?,
-    val guid: Episode.Guid?,
+    val enclosure: Enclosure?,
+    val guid: Guid?,
     val pubDate: Date?,
     val source: String?,
-    val content: Episode.Content?,
-    val itunes: Episode.Itunes?,
-    val atom: Episode.Atom?,
-    val podlove: Episode.Podlove?,
-    val googleplay: Episode.Googleplay?,
-    val bitlove: Episode.Bitlove?
+    val content: Content?,
+    val itunes: Itunes?,
+    val atom: Atom?,
+    val podlove: Podlove?,
+    val googleplay: Googleplay?,
+    val bitlove: Bitlove?
 ) {
 
     /**
@@ -102,7 +102,7 @@ data class Episode(
          *
          * @property type The string representation of the enum instance.
          */
-        enum class EpisodeType (val type: String) {
+        enum class EpisodeType(val type: String) {
 
             /** Type describing a bonus episode. */
             BONUS("bonus"),
@@ -121,7 +121,7 @@ data class Episode(
                  * @return The Enum instance matching [type], or null if not matching instance exists.
                  */
                 fun of(type: String?): EpisodeType? = type?.let {
-                    EpisodeType.values().find { t -> t.type == it.toLowerCase() }
+                    values().find { t -> t.type == it.toLowerCase() }
                 }
             }
         }
@@ -182,7 +182,6 @@ data class Episode(
             val href: String?,
             val image: String?
         )
-
     }
 
     /**
@@ -193,5 +192,4 @@ data class Episode(
     data class Bitlove(
         val guid: String?
     )
-
 }

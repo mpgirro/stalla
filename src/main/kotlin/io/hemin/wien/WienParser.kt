@@ -1,12 +1,18 @@
 package io.hemin.wien
 
-import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Podcast
 import io.hemin.wien.builder.EpisodeBuilder
 import io.hemin.wien.builder.PodcastBuilder
-import io.hemin.wien.parser.*
+import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Podcast
+import io.hemin.wien.parser.AtomParser
+import io.hemin.wien.parser.ContentParser
+import io.hemin.wien.parser.GoogleplayParser
+import io.hemin.wien.parser.ItunesParser
+import io.hemin.wien.parser.NamespaceParser
+import io.hemin.wien.parser.PodloveSimpleChapterParser
+import io.hemin.wien.parser.RssParser
 import io.hemin.wien.util.DomBuilderFactory
-import io.hemin.wien.util.NodeListWrapper.Companion.asList
+import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Document
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
@@ -43,7 +49,7 @@ class WienParser {
          */
         fun toPodcast(node: Node): Podcast? = ensure("channel", node) {
             val builder = PodcastBuilder()
-            for (element in asList(node.childNodes)) {
+            for (element in node.childNodes.asListOfNodes()) {
                 for (parser in parsers) {
                     parser.parse(builder, element)
                 }
@@ -59,7 +65,7 @@ class WienParser {
          */
         fun toEpisode(node: Node): Episode? = ensure("item", node) {
             val builder = EpisodeBuilder()
-            for (element in asList(node.childNodes)) {
+            for (element in node.childNodes.asListOfNodes()) {
                 for (parser in parsers) {
                     parser.parse(builder, element)
                 }
@@ -135,7 +141,7 @@ class WienParser {
     private fun findRssChannel(doc: Document): Node? = findRssChannel(doc.childNodes)
 
     private fun findRssChannel(nodes: NodeList): Node? {
-        return asList(nodes)
+        return nodes.asListOfNodes()
             .map { n -> findRssChannel(n) }
             .first { n -> n != null }
     }
@@ -159,5 +165,4 @@ class WienParser {
             null
         }
     }
-
 }
