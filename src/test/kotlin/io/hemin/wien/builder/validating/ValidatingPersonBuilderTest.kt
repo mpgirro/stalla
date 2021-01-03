@@ -43,5 +43,4 @@ internal class ValidatingPersonBuilderTest {
             prop(Person::uri).isEqualTo("uri")
         }
     }
-
 }

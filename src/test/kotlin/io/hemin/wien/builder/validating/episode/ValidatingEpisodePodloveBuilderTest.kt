@@ -4,7 +4,6 @@ import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
-import io.hemin.wien.model.Episode
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodePodloveBuilderTest {

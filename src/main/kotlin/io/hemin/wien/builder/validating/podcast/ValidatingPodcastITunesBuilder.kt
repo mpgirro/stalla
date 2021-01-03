@@ -3,7 +3,6 @@ package io.hemin.wien.builder.validating.podcast
 import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
-import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
 
 internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {

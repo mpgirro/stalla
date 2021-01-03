@@ -4,8 +4,6 @@ import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.podcast.PodcastAtomBuilder
-import io.hemin.wien.model.Link
-import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
 
 @Suppress("MemberVisibilityCanBePrivate", "Unused")

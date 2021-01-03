@@ -7,7 +7,6 @@ import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.validating.ValidatingImageBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Image
-import io.hemin.wien.model.Person
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Node

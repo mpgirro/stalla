@@ -34,6 +34,4 @@ internal class FakeEpisodeEnclosureBuilder : FakeBuilder<Episode.Enclosure>(), E
         result = 31 * result + (typeValue?.hashCode() ?: 0)
         return result
     }
-
-
 }
