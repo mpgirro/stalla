@@ -1,6 +1,9 @@
 package io.hemin.wien.builder.episode
 
 import io.hemin.wien.builder.Builder
+import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.LinkBuilder
+import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Episode
 import java.util.Date
 
@@ -73,4 +76,16 @@ internal interface EpisodeBuilder : Builder<Episode> {
 
     /** Creates an instance of [EpisodeGuidBuilder] to use with this builder. */
     fun createGuidBuilder(): EpisodeGuidBuilder
+
+    /** Creates an instance of [LinkBuilder] to use with this builder. */
+    fun createLinkBuilder(): LinkBuilder
+
+    /** Creates an instance of [PersonBuilder] to use with this builder. */
+    fun createPersonBuilder(): PersonBuilder
+
+    /** Creates an instance of [ImageBuilder] to use with this builder. */
+    fun createImageBuilder(): ImageBuilder
+
+    /** Creates an instance of [EpisodePodloveSimpleChapterBuilder] to use with this builder. */
+    fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder
 }

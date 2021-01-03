@@ -3,8 +3,6 @@ package io.hemin.wien.parser.namespace
 import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
-import io.hemin.wien.builder.validating.ValidatingImageBuilder
-import io.hemin.wien.model.Image
 import io.hemin.wien.parser.NamespaceParser
 import org.w3c.dom.Node
 
@@ -33,7 +31,7 @@ internal class GooglePlayParser : NamespaceParser() {
             "description" -> builder.googlePlay.description(toText(node))
             "explicit" -> builder.googlePlay.explicit(toBoolean(node))
             "block" -> builder.googlePlay.block(toBoolean(node))
-            "image" -> builder.googlePlay.imageBuilder(toImageBuilder(node))
+            "image" -> builder.googlePlay.imageBuilder(toImageBuilder(node, builder.createImageBuilder()))
             else -> pass
         }
     }
@@ -43,24 +41,17 @@ internal class GooglePlayParser : NamespaceParser() {
             "description" -> builder.googlePlay.description(toText(node))
             "explicit" -> builder.googlePlay.explicit(toBoolean(node))
             "block" -> builder.googlePlay.block(toBoolean(node))
-            "image" -> builder.googlePlay.imageBuilder(toImageBuilder(node))
+            "image" -> builder.googlePlay.imageBuilder(toImageBuilder(node, builder.createImageBuilder()))
             else -> pass
         }
     }
 
-    /**
-     * Transforms an <googleplay:image>` element into an instance of the [Image] model class.
-     *
-     * @param node The DOM node representing the `<googleplay:image>` element.
-     * @return The [Image] instance with the `<googleplay:image>` elements data, or null if all data was empty.
-     */
-    private fun toImageBuilder(node: Node): ImageBuilder? = valid(node) {
+    private fun toImageBuilder(node: Node, imageBuilder: ImageBuilder): ImageBuilder? = valid(node) {
         val url: String? = attributeValueByName(node, "href")
         if (url.isNullOrBlank()) {
             null
         } else {
-            ValidatingImageBuilder()
-                .url(url)
+            imageBuilder.url(url)
         }
     }
 }

@@ -24,6 +24,6 @@ internal class FyydParser : NamespaceParser() {
         }
     }
 
-    /** This module does not set any data in the [ValidatingEpisodeBuilder]. */
+    /** This module does not set any data in the [EpisodeBuilder]. */
     override fun parse(builder: EpisodeBuilder, node: Node) {}
 }

@@ -1,9 +1,17 @@
 package io.hemin.wien.builder.fake.episode
 
+import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.LinkBuilder
+import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
+import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
+import io.hemin.wien.builder.fake.FakeImageBuilder
+import io.hemin.wien.builder.fake.FakeLinkBuilder
+import io.hemin.wien.builder.fake.FakePersonBuilder
+import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Episode
 import java.util.Date
 
@@ -61,4 +69,12 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
     override fun createEnclosureBuilder(): EpisodeEnclosureBuilder = FakeEpisodeEnclosureBuilder()
 
     override fun createGuidBuilder(): EpisodeGuidBuilder = FakeEpisodeGuidBuilder()
+
+    override fun createLinkBuilder(): LinkBuilder = FakeLinkBuilder()
+
+    override fun createPersonBuilder(): PersonBuilder = FakePersonBuilder()
+
+    override fun createImageBuilder(): ImageBuilder = FakeImageBuilder()
+
+    override fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder = FakeEpisodePodloveSimpleChapterBuilder()
 }

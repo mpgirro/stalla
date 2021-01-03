@@ -1,6 +1,8 @@
 package io.hemin.wien.builder.validating.podcast
 
 import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.LinkBuilder
+import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastAtomBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
@@ -9,6 +11,8 @@ import io.hemin.wien.builder.podcast.PodcastFyydBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
 import io.hemin.wien.builder.validating.ValidatingImageBuilder
+import io.hemin.wien.builder.validating.ValidatingLinkBuilder
+import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Podcast
 import java.util.Date
 
@@ -69,6 +73,10 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
     }
 
     override fun createImageBuilder(): ImageBuilder = ValidatingImageBuilder()
+
+    override fun createLinkBuilder(): LinkBuilder = ValidatingLinkBuilder()
+
+    override fun createPersonBuilder(): PersonBuilder = ValidatingPersonBuilder()
 
     override fun build(): Podcast? {
         val builtEpisodes = episodeBuilders.mapNotNull { it.build() }

@@ -1,5 +1,8 @@
 package io.hemin.wien.builder.validating.episode
 
+import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.LinkBuilder
+import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.episode.EpisodeAtomBuilder
 import io.hemin.wien.builder.episode.EpisodeBitloveBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
@@ -9,6 +12,10 @@ import io.hemin.wien.builder.episode.EpisodeGooglePlayBuilder
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.builder.episode.EpisodeITunesBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveBuilder
+import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
+import io.hemin.wien.builder.validating.ValidatingImageBuilder
+import io.hemin.wien.builder.validating.ValidatingLinkBuilder
+import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Episode
 import java.util.Date
 
@@ -65,6 +72,14 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
     override fun createEnclosureBuilder(): EpisodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
 
     override fun createGuidBuilder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
+
+    override fun createLinkBuilder(): LinkBuilder = ValidatingLinkBuilder()
+
+    override fun createPersonBuilder(): PersonBuilder = ValidatingPersonBuilder()
+
+    override fun createImageBuilder(): ImageBuilder = ValidatingImageBuilder()
+
+    override fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
 
     override fun build(): Episode? {
         if (!::titleValue.isInitialized || !::enclosureBuilderValue.isInitialized) {

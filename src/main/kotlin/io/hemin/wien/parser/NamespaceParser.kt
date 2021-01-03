@@ -2,7 +2,6 @@ package io.hemin.wien.parser
 
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
-import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
 import org.w3c.dom.Node
 import java.util.Date
 
@@ -14,7 +13,7 @@ internal abstract class NamespaceParser {
 
     /**
      * Extracts data from the XML namespace defined by [namespaceURI]
-     * and applies the values to properties of the [ValidatingPodcastBuilder].
+     * and applies the values to properties of the [PodcastBuilder].
      * Parsing is only executed when the node's namespaceURI property
      * matches this parser's [namespaceURI].
      *

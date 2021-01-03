@@ -3,7 +3,6 @@ package io.hemin.wien.parser.namespace
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
-import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Node
@@ -24,30 +23,30 @@ internal class PodloveSimpleChapterParser : NamespaceParser() {
     override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
         when (node.localName) {
             "chapters" -> {
-                val chapters = toPodloveSimpleChapterBuilders(node) ?: return@valid
+                val chapters = toPodloveSimpleChapterBuilders(node, builder) ?: return@valid
                 builder.podlove.addSimpleChapterBuilders(chapters)
             }
             else -> pass
         }
     }
 
-    private fun toPodloveSimpleChapterBuilders(node: Node): List<EpisodePodloveSimpleChapterBuilder>? = valid(node) {
+    private fun toPodloveSimpleChapterBuilders(node: Node, builder: EpisodeBuilder): List<EpisodePodloveSimpleChapterBuilder>? = valid(node) {
         node.childNodes.asListOfNodes().stream()
             .filter { c -> c.localName == "chapter" }
-            .map(::toPodloveSimpleChapterBuilder)
+            .map { it.toPodloveSimpleChapterBuilder(builder.createPodloveSimpleChapterBuilder()) }
             .toList()
             .filterNotNull()
     }
 
-    private fun toPodloveSimpleChapterBuilder(node: Node): EpisodePodloveSimpleChapterBuilder? = valid(node) {
-        val start = attributeValueByName(node, "start")
-        val title = attributeValueByName(node, "title")
-        if (start == null || title == null) return@valid null
+    private fun Node.toPodloveSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveSimpleChapterBuilder? =
+        valid(this) {
+            val start = attributeValueByName(this, "start")
+            val title = attributeValueByName(this, "title")
+            if (start == null || title == null) return@valid null
 
-        ValidatingEpisodePodloveSimpleChapterBuilder()
-            .start(start)
-            .title(title)
-            .href(attributeValueByName(node, "href"))
-            .image(attributeValueByName(node, "image"))
-    }
+            chapterBuilder.start(start)
+                .title(title)
+                .href(attributeValueByName(this, "href"))
+                .image(attributeValueByName(this, "image"))
+        }
 }
