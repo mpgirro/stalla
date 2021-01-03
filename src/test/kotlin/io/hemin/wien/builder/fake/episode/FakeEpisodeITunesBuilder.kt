@@ -1,16 +1,16 @@
 package io.hemin.wien.builder.fake.episode
 
+import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.episode.EpisodeITunesBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
 
 @Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeEpisodeITunesBuilder : FakeBuilder<Episode.ITunes>(), EpisodeITunesBuilder {
 
     var title: String? = null
     var duration: String? = null
-    var image: Image? = null
+    var imageBuilder: ImageBuilder? = null
     var explicit: Boolean? = null
     var block: Boolean? = null
     var season: Int? = null
@@ -24,7 +24,7 @@ internal class FakeEpisodeITunesBuilder : FakeBuilder<Episode.ITunes>(), Episode
     override fun duration(duration: String?): EpisodeITunesBuilder = apply { this.duration = duration }
 
     /** Set the Image. */
-    override fun image(image: Image?): EpisodeITunesBuilder = apply { this.image = image }
+    override fun imageBuilder(imageBuilder: ImageBuilder?): EpisodeITunesBuilder = apply { this.imageBuilder = imageBuilder }
 
     /** Set the explicit flag value. */
     override fun explicit(explicit: Boolean?): EpisodeITunesBuilder = apply { this.explicit = explicit }

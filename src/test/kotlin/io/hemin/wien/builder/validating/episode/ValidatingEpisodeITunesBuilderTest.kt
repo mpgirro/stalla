@@ -7,13 +7,13 @@ import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import io.hemin.wien.builder.validating.ValidatingImageBuilder
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeITunesBuilderTest {
 
-    private val expectedImage = Image("image url")
+    private val expectedImageBuilder = ValidatingImageBuilder().url("image url")
 
     @Test
     internal fun `should not build an Episode ITunes when all fields are missing`() {
@@ -144,7 +144,7 @@ internal class ValidatingEpisodeITunesBuilderTest {
     @Test
     internal fun `should build an Episode ITunes with only an image`() {
         val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
-            .image(expectedImage)
+            .imageBuilder(expectedImageBuilder)
 
         assertThat(episodeITunesBuilder.build()).isNotNull().all {
             prop(Episode.ITunes::title).isNull()
@@ -154,7 +154,7 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::episodeType).isNull()
             prop(Episode.ITunes::explicit).isNull()
             prop(Episode.ITunes::block).isNull()
-            prop(Episode.ITunes::image).isEqualTo(expectedImage)
+            prop(Episode.ITunes::image).isEqualTo(expectedImageBuilder.build())
         }
     }
 
@@ -168,7 +168,7 @@ internal class ValidatingEpisodeITunesBuilderTest {
             .episodeType(Episode.ITunes.EpisodeType.BONUS.type)
             .explicit(false)
             .block(false)
-            .image(expectedImage)
+            .imageBuilder(expectedImageBuilder)
 
         assertThat(episodeITunesBuilder.build()).isNotNull().all {
             prop(Episode.ITunes::title).isEqualTo("title")
@@ -178,7 +178,7 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::episodeType).isEqualTo(Episode.ITunes.EpisodeType.BONUS)
             prop(Episode.ITunes::explicit).isNotNull().isFalse()
             prop(Episode.ITunes::block).isNotNull().isFalse()
-            prop(Episode.ITunes::image).isEqualTo(expectedImage)
+            prop(Episode.ITunes::image).isEqualTo(expectedImageBuilder.build())
         }
     }
 }

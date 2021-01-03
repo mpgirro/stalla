@@ -6,6 +6,7 @@ import assertk.assertions.isEmpty
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
 import org.junit.jupiter.api.Test
 

@@ -1,5 +1,6 @@
 package io.hemin.wien.parser.namespace
 
+import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.validating.ValidatingImageBuilder
@@ -38,8 +39,8 @@ internal class ITunesParser : NamespaceParser() {
                 builder.iTunes.explicit(explicit)
             }
             "image" -> {
-                val image = toImage(node) ?: return@valid
-                builder.iTunes.image(image)
+                val image = toImageBuilder(node, ValidatingImageBuilder()) ?: return@valid
+                builder.iTunes.imageBuilder(image)
             }
             "keywords" -> builder.iTunes.keywords(toText(node))
             "owner" -> builder.iTunes.owner(toPerson(node))
@@ -59,7 +60,7 @@ internal class ITunesParser : NamespaceParser() {
             "episode" -> builder.iTunes.episode(toInt(node))
             "episodeType" -> builder.iTunes.episodeType(toText(node))
             "explicit" -> builder.iTunes.explicit(toBoolean(node))
-            "image" -> builder.iTunes.image(toImage(node))
+            "image" -> builder.iTunes.imageBuilder(toImageBuilder(node, ValidatingImageBuilder()))
             "season" -> builder.iTunes.season(toInt(node))
             "title" -> builder.iTunes.title(toText(node))
             else -> pass
@@ -72,14 +73,13 @@ internal class ITunesParser : NamespaceParser() {
      * @param node The DOM node representing the `<itunes:image>` element.
      * @return The [Image] instance with the `<itunes:image>` elements data, or null if all data was empty.
      */
-    private fun toImage(node: Node): Image? = valid(node) {
+    private fun toImageBuilder(node: Node, imageBuilder: ValidatingImageBuilder): ImageBuilder? = valid(node) {
         val url: String? = attributeValueByName(node, "href")
         if (url.isNullOrBlank()) {
             null
         } else {
-            ValidatingImageBuilder()
+            imageBuilder
                 .url(url)
-                .build()
         }
     }
 

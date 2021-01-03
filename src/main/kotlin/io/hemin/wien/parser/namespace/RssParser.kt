@@ -6,6 +6,8 @@ import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
+import io.hemin.wien.model.Episode
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Node
@@ -32,10 +34,6 @@ internal class RssParser : NamespaceParser() {
             "docs" -> builder.docs(toText(node))
             "generator" -> builder.generator(toText(node))
             "image" -> builder.imageBuilder(toImage(node, builder.createImageBuilder()))
-            "item" -> {
-                val episode = WienParser.toEpisode(node) ?: return@valid
-                builder.addEpisode(episode)
-            }
             "language" -> {
                 val language = toText(node) ?: return@valid
                 builder.language(language)
@@ -52,6 +50,7 @@ internal class RssParser : NamespaceParser() {
                 builder.title(title)
             }
             "webMaster" -> builder.webMaster(toText(node))
+            "item" -> pass // Items are parsed by WienParser direcly
             else -> pass
         }
     }

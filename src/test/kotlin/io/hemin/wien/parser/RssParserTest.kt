@@ -12,6 +12,7 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeEnclosureBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeGuidBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
+import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.RssParser
 import org.junit.jupiter.api.Test
 import java.util.Calendar

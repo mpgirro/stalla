@@ -8,6 +8,7 @@ import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodeContentBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeContentBuilder
+import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.ContentParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

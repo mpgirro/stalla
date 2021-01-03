@@ -11,6 +11,7 @@ import io.hemin.wien.builder.fake.podcast.FakePodcastAtomBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
+import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.AtomParser
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node

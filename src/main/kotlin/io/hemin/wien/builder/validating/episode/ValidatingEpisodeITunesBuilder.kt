@@ -1,15 +1,15 @@
 package io.hemin.wien.builder.validating.episode
 
+import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.episode.EpisodeITunesBuilder
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
 
 /** Builder class for [Episode.ITunes] instances. */
 internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
 
     private var title: String? = null
     private var duration: String? = null
-    private var image: Image? = null
+    private var imageBuilder: ImageBuilder? = null
     private var explicit: Boolean? = null
     private var block: Boolean? = null
     private var season: Int? = null
@@ -23,7 +23,7 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
     override fun duration(duration: String?): EpisodeITunesBuilder = apply { this.duration = duration }
 
     /** Set the Image. */
-    override fun image(image: Image?): EpisodeITunesBuilder = apply { this.image = image }
+    override fun imageBuilder(imageBuilder: ImageBuilder?): EpisodeITunesBuilder = apply { this.imageBuilder = imageBuilder }
 
     /** Set the explicit flag value. */
     override fun explicit(explicit: Boolean?): EpisodeITunesBuilder = apply { this.explicit = explicit }
@@ -44,6 +44,7 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
     }
 
     override fun build(): Episode.ITunes? {
+        val image = imageBuilder?.build()
         if (allNull(title, duration, image, explicit, block, season, episode, episodeType)) {
             return null
         }

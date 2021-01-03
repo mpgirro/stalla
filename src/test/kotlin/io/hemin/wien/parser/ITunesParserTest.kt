@@ -13,12 +13,12 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeITunesBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastITunesBuilder
+import io.hemin.wien.builder.validating.ValidatingImageBuilder
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.ITunesParser
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 /** Provides unit tests for [ITunesParser]. */
@@ -26,9 +26,9 @@ internal class ITunesParserTest : NamespaceParserTest() {
 
     override val parser = ITunesParser()
 
-    private val expectedPodcastImage = Image(url = "http://example.org/podcast-cover.jpg")
+    private val expectedPodcastImageBuilder = ValidatingImageBuilder().url("http://example.org/podcast-cover.jpg")
 
-    private val expectedEpisodeImage = Image(url = "http://example.org/episode-cover.jpg")
+    private val expectedEpisodeImageBuilder = ValidatingImageBuilder().url("http://example.org/episode-cover.jpg")
 
     private val expectedOwner = Person(
         name = "Lorem Ipsum",
@@ -51,7 +51,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakePodcastITunesBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastITunesBuilder::block).isNotNull().isFalse()
             prop(FakePodcastITunesBuilder::complete).isNotNull().isFalse()
-            prop(FakePodcastITunesBuilder::imageValue).isEqualTo(expectedPodcastImage)
+            prop(FakePodcastITunesBuilder::imageBuilderValue).isEqualTo(expectedPodcastImageBuilder)
             prop(FakePodcastITunesBuilder::type).isEqualTo(Podcast.ITunes.ShowType.EPISODIC)
         }
     }
@@ -72,7 +72,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakePodcastITunesBuilder::explicit).isNull()
             prop(FakePodcastITunesBuilder::block).isNull()
             prop(FakePodcastITunesBuilder::complete).isNull()
-            prop(FakePodcastITunesBuilder::imageValue).isNull()
+            prop(FakePodcastITunesBuilder::imageBuilderValue).isNull()
             prop(FakePodcastITunesBuilder::type).isNull()
         }
     }
@@ -90,7 +90,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakeEpisodeITunesBuilder::episode).isEqualTo(1)
             prop(FakeEpisodeITunesBuilder::explicit).isNotNull().isFalse()
             prop(FakeEpisodeITunesBuilder::block).isNotNull().isFalse()
-            prop(FakeEpisodeITunesBuilder::image).isEqualTo(expectedEpisodeImage)
+            prop(FakeEpisodeITunesBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
             prop(FakeEpisodeITunesBuilder::episodeType).isEqualTo(Episode.ITunes.EpisodeType.FULL)
         }
     }
@@ -108,7 +108,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakeEpisodeITunesBuilder::episode).isNull()
             prop(FakeEpisodeITunesBuilder::explicit).isNull()
             prop(FakeEpisodeITunesBuilder::block).isNull()
-            prop(FakeEpisodeITunesBuilder::image).isNull()
+            prop(FakeEpisodeITunesBuilder::imageBuilder).isNull()
             prop(FakeEpisodeITunesBuilder::episodeType).isNull()
         }
     }

@@ -7,6 +7,7 @@ import assertk.assertions.isNull
 import assertk.assertions.prop
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastFeedpressBuilder
+import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.FeedpressParser
 import org.junit.jupiter.api.Test
 

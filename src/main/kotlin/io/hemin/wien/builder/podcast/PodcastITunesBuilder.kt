@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
-import io.hemin.wien.model.Image
+import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
 
@@ -13,8 +13,8 @@ internal interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
     /** Set the summary value. */
     fun summary(summary: String?): PodcastITunesBuilder
 
-    /** Set the Image. */
-    fun image(image: Image): PodcastITunesBuilder
+    /** Set the ImageBuilder. */
+    fun imageBuilder(imageBuilder: ImageBuilder): PodcastITunesBuilder
 
     /** Set the keywords value. */
     fun keywords(keywords: String?): PodcastITunesBuilder

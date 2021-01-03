@@ -1,5 +1,6 @@
 package io.hemin.wien.builder.fake.podcast
 
+import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
 import io.hemin.wien.model.Image
@@ -9,7 +10,7 @@ import io.hemin.wien.model.Podcast
 @Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), PodcastITunesBuilder {
 
-    var imageValue: Image? = null
+    var imageBuilderValue: ImageBuilder? = null
     var explicit: Boolean? = null
 
     var subtitle: String? = null
@@ -31,7 +32,7 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
     override fun summary(summary: String?): PodcastITunesBuilder = apply { this.summary = summary }
 
     /** Set the Image. */
-    override fun image(image: Image): PodcastITunesBuilder = apply { this.imageValue = image }
+    override fun imageBuilder(imageBuilder: ImageBuilder): PodcastITunesBuilder = apply { this.imageBuilderValue = imageBuilder }
 
     /** Set the keywords value. */
     override fun keywords(keywords: String?): PodcastITunesBuilder = apply { this.keywords = keywords }

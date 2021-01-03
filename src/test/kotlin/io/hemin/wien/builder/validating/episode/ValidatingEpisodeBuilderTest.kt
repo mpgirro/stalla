@@ -8,7 +8,6 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Person
 import org.junit.jupiter.api.Test
@@ -26,6 +25,7 @@ internal class ValidatingEpisodeBuilderTest {
         .setTimeOfDay(22, 49, 8)
         .build()
         .time
+
     private val expectedEnclosure = Episode.Enclosure(
         url = "enclosure url",
         length = 123,
@@ -129,15 +129,4 @@ internal class ValidatingEpisodeBuilderTest {
             prop(Episode::bitlove).isNotNull().prop(Episode.Bitlove::guid).isEqualTo("bitlove guid")
         }
     }
-}
-
-private class DummyEpisodeEnclosureBuilder(private val enclosure: Episode.Enclosure) : EpisodeEnclosureBuilder {
-
-    override fun url(url: String): EpisodeEnclosureBuilder = this
-
-    override fun length(length: Long): EpisodeEnclosureBuilder = this
-
-    override fun type(type: String): EpisodeEnclosureBuilder = this
-
-    override fun build() = enclosure
 }

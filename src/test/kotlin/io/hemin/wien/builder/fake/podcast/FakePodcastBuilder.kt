@@ -1,10 +1,10 @@
 package io.hemin.wien.builder.fake.podcast
 
 import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.fake.FakeImageBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
-import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import java.util.Date
 
@@ -25,7 +25,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     var webMaster: String? = null
     var imageBuilder: ImageBuilder? = null
 
-    val episodes: MutableList<Episode> = mutableListOf()
+    val episodeBuilders: MutableList<EpisodeBuilder> = mutableListOf()
 
     override val iTunes: FakePodcastITunesBuilder = FakePodcastITunesBuilder()
 
@@ -61,8 +61,8 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override fun imageBuilder(imageBuilder: ImageBuilder?): PodcastBuilder = apply { this.imageBuilder = imageBuilder }
 
-    override fun addEpisode(episode: Episode): PodcastBuilder = apply {
-        episodes.add(episode)
+    override fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder = apply {
+        episodeBuilders.add(episodeBuilder)
     }
 
     override fun createImageBuilder(): ImageBuilder = FakeImageBuilder()

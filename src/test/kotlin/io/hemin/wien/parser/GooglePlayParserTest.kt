@@ -14,6 +14,7 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeGooglePlayBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastGooglePlayBuilder
 import io.hemin.wien.model.Image
+import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.GooglePlayParser
 import org.junit.jupiter.api.Test
 

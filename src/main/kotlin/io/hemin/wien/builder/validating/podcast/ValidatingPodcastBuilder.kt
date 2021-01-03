@@ -1,6 +1,7 @@
 package io.hemin.wien.builder.validating.podcast
 
 import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastAtomBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.podcast.PodcastFeedpressBuilder
@@ -8,7 +9,6 @@ import io.hemin.wien.builder.podcast.PodcastFyydBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
 import io.hemin.wien.builder.validating.ValidatingImageBuilder
-import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import java.util.Date
 
@@ -28,7 +28,7 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
     private var webMaster: String? = null
     private var imageBuilder: ImageBuilder? = null
 
-    private val episodes: MutableList<Episode> = mutableListOf()
+    private val episodeBuilders: MutableList<EpisodeBuilder> = mutableListOf()
 
     override val iTunes: PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
 
@@ -64,15 +64,17 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
 
     override fun imageBuilder(imageBuilder: ImageBuilder?): PodcastBuilder = apply { this.imageBuilder = imageBuilder }
 
-    override fun addEpisode(episode: Episode): PodcastBuilder = apply {
-        episodes.add(episode)
+    override fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder = apply {
+        episodeBuilders.add(episodeBuilder)
     }
 
     override fun createImageBuilder(): ImageBuilder = ValidatingImageBuilder()
 
     override fun build(): Podcast? {
+        val builtEpisodes = episodeBuilders.mapNotNull { it.build() }
         if (
-            episodes.isEmpty() || !::titleValue.isInitialized || !::descriptionValue.isInitialized ||
+            builtEpisodes.isEmpty() ||
+            !::titleValue.isInitialized || !::descriptionValue.isInitialized ||
             !::linkValue.isInitialized || !::languageValue.isInitialized
         ) {
             return null
@@ -91,7 +93,7 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
             managingEditor = managingEditor,
             webMaster = webMaster,
             image = imageBuilder?.build(),
-            episodes = immutableCopyOf(episodes),
+            episodes = builtEpisodes,
             iTunes = iTunes.build(),
             atom = atom.build(),
             fyyd = fyyd.build(),

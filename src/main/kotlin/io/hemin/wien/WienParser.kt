@@ -3,30 +3,30 @@ package io.hemin.wien
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
-import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.namespace.AtomParser
 import io.hemin.wien.parser.namespace.ContentParser
 import io.hemin.wien.parser.namespace.GooglePlayParser
 import io.hemin.wien.parser.namespace.ITunesParser
-import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
 import io.hemin.wien.parser.namespace.RssParser
 import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
+import io.hemin.wien.util.findElementByTagName
+import io.hemin.wien.util.isNotEmpty
 import org.w3c.dom.Document
+import org.w3c.dom.Element
 import org.w3c.dom.Node
-import org.w3c.dom.NodeList
+import org.w3c.dom.Text
 import org.xml.sax.InputSource
 import java.io.File
 import java.io.InputStream
 import javax.xml.parsers.DocumentBuilder
 
-class WienParser {
+object WienParser {
 
-    companion object {
-
-        private val parsers: List<NamespaceParser> = listOf(
+    private val parsers: List<NamespaceParser> = listOf(
             RssParser(),
             ContentParser(),
             ITunesParser(),
@@ -35,51 +35,10 @@ class WienParser {
             GooglePlayParser()
         )
 
-        /** Set of all XML namespaces supported when parsing documents. */
-        val supportedNamespaces: Set<String> =
-            parsers.mapNotNull { parser -> parser.namespaceURI }
-                .toSet()
-
-        /**
-         * Transforms a DOM node into a [Podcast] instance, if the node is an RSS `<channel>` element.
-         *
-         * @param node The RSS element that must be an `<channel>`.
-         * @return The [Episode] if the node is an `<channel>`, otherwise null.
-         */
-        fun toPodcast(node: Node): Podcast? = ensure("channel", node) {
-            val builder = ValidatingPodcastBuilder()
-            for (element in node.childNodes.asListOfNodes()) {
-                for (parser in parsers) {
-                    parser.parse(builder, element)
-                }
-            }
-            builder.build()
-        }
-
-        /**
-         * Transforms a DOM node into a [Episode] instance, if the node is an RSS `<item>` element.
-         *
-         * @param node The RSS element that must be an `<item>`.
-         * @return The [Episode] if the node is an `<item>`, otherwise null.
-         */
-        fun toEpisode(node: Node): Episode? = ensure("item", node) {
-            val builder: EpisodeBuilder = ValidatingEpisodeBuilder()
-            for (element in node.childNodes.asListOfNodes()) {
-                for (parser in parsers) {
-                    parser.parse(builder, element)
-                }
-            }
-            builder.build()
-        }
-
-        private fun <T> ensure(elementName: String?, node: Node, block: () -> T): T? {
-            return if (node.namespaceURI == null && node.localName == elementName) {
-                block()
-            } else {
-                null
-            }
-        }
-    }
+    /** Set of all XML namespaces supported when parsing documents. */
+    val supportedNamespaces: Set<String> =
+        parsers.mapNotNull { parser -> parser.namespaceURI }
+            .toSet()
 
     private val builder: DocumentBuilder = DomBuilderFactory.newBuilder()
 
@@ -135,33 +94,48 @@ class WienParser {
      * @param document Document containing the content to be parsed.
      * @return A [Podcast] if the XML document is an RSS document, otherwise null.
      */
-    fun parse(document: Document): Podcast? = findRssChannel(document)?.let { toPodcast(it) }
-
-    private fun findRssChannel(doc: Document): Node? = findRssChannel(doc.childNodes)
-
-    private fun findRssChannel(nodes: NodeList): Node? {
-        return nodes.asListOfNodes()
-            .map { n -> findRssChannel(n) }
-            .first { n -> n != null }
+    fun parse(document: Document): Podcast? {
+        val channel = document.findRssChannelElement() ?: return null
+        return channel.parseChannelElement()
     }
 
-    private fun findRssChannel(node: Node): Node? {
-        return if (node.namespaceURI == null) {
-            when (node.localName) {
-                "rss" -> {
-                    if (node.childNodes.length <= 0) {
-                        null
-                    } else {
-                        findRssChannel(node.childNodes)
+    private fun Document.findRssChannelElement() =
+        findElementByTagName("rss") { rss -> rss.childNodes.isNotEmpty() }
+            ?.findElementByTagName("channel") { channel -> channel.childNodes.isNotEmpty() }
+
+    private fun Element.parseChannelElement(): Podcast? = ifTagNameIs("channel") {
+        val builder = ValidatingPodcastBuilder()
+        for (element in childNodes.asListOfNodes()) {
+            when {
+                element is Text -> Unit
+                element.nodeName == "item" -> {
+                    val episodeBuilder = element.parseEpisodeNode() ?: continue
+                    builder.addEpisodeBuilder(episodeBuilder)
+                }
+                else -> {
+                    for (parser in parsers) {
+                        parser.parse(builder, element)
                     }
                 }
-                "channel" ->
-                    node
-                else ->
-                    null
             }
+        }
+        builder.build()
+    }
+
+    private fun Node.parseEpisodeNode(): EpisodeBuilder? = ifTagNameIs("item") {
+        val builder: EpisodeBuilder = ValidatingEpisodeBuilder()
+        for (element in childNodes.asListOfNodes()) {
+            for (parser in parsers) {
+                parser.parse(builder, element)
+            }
+        }
+        builder
+    }
+
+    private fun <T> Node.ifTagNameIs(tagName: String, block: () -> T): T? =
+        if (namespaceURI == null && nodeName == tagName) {
+            block()
         } else {
             null
         }
-    }
 }
