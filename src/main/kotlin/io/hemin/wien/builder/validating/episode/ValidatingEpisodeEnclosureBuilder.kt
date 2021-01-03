@@ -20,7 +20,7 @@ internal class ValidatingEpisodeEnclosureBuilder : EpisodeEnclosureBuilder {
     override fun type(type: String): EpisodeEnclosureBuilder = apply { this.typeValue = type }
 
     override fun build(): Episode.Enclosure? {
-        if (!::urlValue.isInitialized || lengthValue <= 0 || ::typeValue.isInitialized) {
+        if (!::urlValue.isInitialized || lengthValue <= 0 || !::typeValue.isInitialized) {
             return null
         }
 

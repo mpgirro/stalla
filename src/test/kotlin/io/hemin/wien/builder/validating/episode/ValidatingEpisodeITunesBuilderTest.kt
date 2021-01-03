@@ -1,0 +1,184 @@
+package io.hemin.wien.builder.validating.episode
+
+import assertk.all
+import assertk.assertThat
+import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
+import assertk.assertions.isNotNull
+import assertk.assertions.isNull
+import assertk.assertions.prop
+import io.hemin.wien.model.Episode
+import io.hemin.wien.model.Image
+import org.junit.jupiter.api.Test
+
+internal class ValidatingEpisodeITunesBuilderTest {
+
+    private val expectedImage = Image("image url")
+
+    @Test
+    internal fun `should not build an Episode ITunes when all fields are missing`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+
+        assertThat(episodeITunesBuilder.build()).isNull()
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only a title`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .title("title")
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isEqualTo("title")
+            prop(Episode.ITunes::duration).isNull()
+            prop(Episode.ITunes::season).isNull()
+            prop(Episode.ITunes::episode).isNull()
+            prop(Episode.ITunes::episodeType).isNull()
+            prop(Episode.ITunes::explicit).isNull()
+            prop(Episode.ITunes::block).isNull()
+            prop(Episode.ITunes::image).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only a duration`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .duration("duration")
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isNull()
+            prop(Episode.ITunes::duration).isEqualTo("duration")
+            prop(Episode.ITunes::season).isNull()
+            prop(Episode.ITunes::episode).isNull()
+            prop(Episode.ITunes::episodeType).isNull()
+            prop(Episode.ITunes::explicit).isNull()
+            prop(Episode.ITunes::block).isNull()
+            prop(Episode.ITunes::image).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only a season number`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .season(2)
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isNull()
+            prop(Episode.ITunes::duration).isNull()
+            prop(Episode.ITunes::season).isEqualTo(2)
+            prop(Episode.ITunes::episode).isNull()
+            prop(Episode.ITunes::episodeType).isNull()
+            prop(Episode.ITunes::explicit).isNull()
+            prop(Episode.ITunes::block).isNull()
+            prop(Episode.ITunes::image).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only an episode number`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .episode(3)
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isNull()
+            prop(Episode.ITunes::duration).isNull()
+            prop(Episode.ITunes::season).isNull()
+            prop(Episode.ITunes::episode).isEqualTo(3)
+            prop(Episode.ITunes::episodeType).isNull()
+            prop(Episode.ITunes::explicit).isNull()
+            prop(Episode.ITunes::block).isNull()
+            prop(Episode.ITunes::image).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only an episodeType`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .episodeType(Episode.ITunes.EpisodeType.BONUS.type)
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isNull()
+            prop(Episode.ITunes::duration).isNull()
+            prop(Episode.ITunes::season).isNull()
+            prop(Episode.ITunes::episode).isNull()
+            prop(Episode.ITunes::episodeType).isEqualTo(Episode.ITunes.EpisodeType.BONUS)
+            prop(Episode.ITunes::explicit).isNull()
+            prop(Episode.ITunes::block).isNull()
+            prop(Episode.ITunes::image).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only explicit`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .explicit(false)
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isNull()
+            prop(Episode.ITunes::duration).isNull()
+            prop(Episode.ITunes::season).isNull()
+            prop(Episode.ITunes::episode).isNull()
+            prop(Episode.ITunes::episodeType).isNull()
+            prop(Episode.ITunes::explicit).isNotNull().isFalse()
+            prop(Episode.ITunes::block).isNull()
+            prop(Episode.ITunes::image).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only block`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .block(false)
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isNull()
+            prop(Episode.ITunes::duration).isNull()
+            prop(Episode.ITunes::season).isNull()
+            prop(Episode.ITunes::episode).isNull()
+            prop(Episode.ITunes::episodeType).isNull()
+            prop(Episode.ITunes::explicit).isNull()
+            prop(Episode.ITunes::block).isNotNull().isFalse()
+            prop(Episode.ITunes::image).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only an image`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .image(expectedImage)
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isNull()
+            prop(Episode.ITunes::duration).isNull()
+            prop(Episode.ITunes::season).isNull()
+            prop(Episode.ITunes::episode).isNull()
+            prop(Episode.ITunes::episodeType).isNull()
+            prop(Episode.ITunes::explicit).isNull()
+            prop(Episode.ITunes::block).isNull()
+            prop(Episode.ITunes::image).isEqualTo(expectedImage)
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with all the optional fields`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .title("title")
+            .duration("duration")
+            .season(2)
+            .episode(3)
+            .episodeType(Episode.ITunes.EpisodeType.BONUS.type)
+            .explicit(false)
+            .block(false)
+            .image(expectedImage)
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isEqualTo("title")
+            prop(Episode.ITunes::duration).isEqualTo("duration")
+            prop(Episode.ITunes::season).isEqualTo(2)
+            prop(Episode.ITunes::episode).isEqualTo(3)
+            prop(Episode.ITunes::episodeType).isEqualTo(Episode.ITunes.EpisodeType.BONUS)
+            prop(Episode.ITunes::explicit).isNotNull().isFalse()
+            prop(Episode.ITunes::block).isNotNull().isFalse()
+            prop(Episode.ITunes::image).isEqualTo(expectedImage)
+        }
+    }
+}
