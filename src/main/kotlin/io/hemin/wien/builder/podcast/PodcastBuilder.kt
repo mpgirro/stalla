@@ -1,8 +1,8 @@
 package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
+import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
 import io.hemin.wien.model.Podcast
 import java.util.Date
 
@@ -56,8 +56,8 @@ internal interface PodcastBuilder : Builder<Podcast> {
     /** Set the webMaster value. */
     fun webMaster(webMaster: String?): PodcastBuilder
 
-    /** Set the Image. */
-    fun image(image: Image?): PodcastBuilder
+    /** Set the Image builder. */
+    fun imageBuilder(imageBuilder: ImageBuilder?): PodcastBuilder
 
     /**
      * Adds an [Episode] to the list of episodes.
@@ -65,4 +65,7 @@ internal interface PodcastBuilder : Builder<Podcast> {
      * @param episode The [Episode] to add.
      */
     fun addEpisode(episode: Episode): PodcastBuilder
+
+    /** Creates an instance of [ImageBuilder] to use with this builder. */
+    fun createImageBuilder(): ImageBuilder
 }

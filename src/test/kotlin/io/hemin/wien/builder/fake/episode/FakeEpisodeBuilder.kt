@@ -2,6 +2,7 @@ package io.hemin.wien.builder.fake.episode
 
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
+import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.model.Episode
 import java.util.Date
@@ -10,14 +11,14 @@ import java.util.Date
 internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     var titleValue: String? = null
-    var enclosureValue: EpisodeEnclosureBuilder? = null
+    var enclosureBuilderValue: EpisodeEnclosureBuilder? = null
 
     var link: String? = null
     var description: String? = null
     var author: String? = null
     val categories: MutableList<String> = mutableListOf()
     var comments: String? = null
-    var guid: Episode.Guid? = null
+    var guidBuilder: EpisodeGuidBuilder? = null
     var pubDate: Date? = null
     var source: String? = null
 
@@ -47,13 +48,17 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override fun comments(comments: String?): EpisodeBuilder = apply { this.comments = comments }
 
-    override fun enclosure(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder = apply { this.enclosureValue = enclosureBuilder }
+    override fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder = apply {
+        this.enclosureBuilderValue = enclosureBuilder
+    }
 
-    override fun guid(guid: Episode.Guid?): EpisodeBuilder = apply { this.guid = guid }
+    override fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder = apply { this.guidBuilder = guidBuilder }
 
     override fun pubDate(pubDate: Date?): EpisodeBuilder = apply { this.pubDate = pubDate }
 
     override fun source(source: String?): EpisodeBuilder = apply { this.source = source }
 
     override fun createEnclosureBuilder(): EpisodeEnclosureBuilder = FakeEpisodeEnclosureBuilder()
+
+    override fun createGuidBuilder(): EpisodeGuidBuilder = FakeEpisodeGuidBuilder()
 }

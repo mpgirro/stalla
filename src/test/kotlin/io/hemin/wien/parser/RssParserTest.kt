@@ -7,11 +7,11 @@ import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import io.hemin.wien.builder.fake.FakeImageBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeEnclosureBuilder
+import io.hemin.wien.builder.fake.episode.FakeEpisodeGuidBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
-import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
 import io.hemin.wien.parser.namespace.RssParser
 import org.junit.jupiter.api.Test
 import java.util.Calendar
@@ -38,19 +38,19 @@ internal class RssParserTest : NamespaceParserTest() {
         typeValue = "audio/mp4"
     }
 
-    private val expectedGuid = Episode.Guid(
-        textContent = "1fa609024fdf097",
+    private val expectedGuidBuilder = FakeEpisodeGuidBuilder().apply {
+        textContent = "1fa609024fdf097"
         isPermalink = true
-    )
+    }
 
-    private val expectedImage = Image(
-        url = "http://example.org/podcast-cover.jpg",
-        title = "Lorem Ipsum",
-        link = "http://example.org",
-        width = 600,
-        height = 600,
+    private val expectedImageBuilder = FakeImageBuilder().apply {
+        urlValue = "http://example.org/podcast-cover.jpg"
+        title = "Lorem Ipsum"
+        link = "http://example.org"
+        width = 600
+        height = 600
         description = "Lorem Ipsum"
-    )
+    }
 
     @Test
     fun `should extract all RSS fields from channel when present`() {
@@ -70,7 +70,7 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakePodcastBuilder::docs).isEqualTo("Lorem Ipsum")
             prop(FakePodcastBuilder::managingEditor).isEqualTo("editor@example.org")
             prop(FakePodcastBuilder::webMaster).isEqualTo("webmaster@example.org")
-            prop(FakePodcastBuilder::image).isEqualTo(expectedImage)
+            prop(FakePodcastBuilder::imageBuilder).isEqualTo(expectedImageBuilder)
         }
     }
 
@@ -92,7 +92,7 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakePodcastBuilder::docs).isNull()
             prop(FakePodcastBuilder::managingEditor).isNull()
             prop(FakePodcastBuilder::webMaster).isNull()
-            prop(FakePodcastBuilder::image).isNull()
+            prop(FakePodcastBuilder::imageBuilder).isNull()
         }
     }
 
@@ -110,8 +110,8 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakeEpisodeBuilder::author).isEqualTo("author@example.org")
             prop(FakeEpisodeBuilder::comments).isEqualTo("http://example.org/episode1/comments")
             prop(FakeEpisodeBuilder::categories).containsExactly("category1", "category2")
-            prop(FakeEpisodeBuilder::enclosureValue).isEqualTo(expectedEnclosureBuilder)
-            prop(FakeEpisodeBuilder::guid).isEqualTo(expectedGuid)
+            prop(FakeEpisodeBuilder::enclosureBuilderValue).isEqualTo(expectedEnclosureBuilder)
+            prop(FakeEpisodeBuilder::guidBuilder).isEqualTo(expectedGuidBuilder)
             prop(FakeEpisodeBuilder::source).isEqualTo("http://example.org/rss")
         }
     }
@@ -130,8 +130,8 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakeEpisodeBuilder::author).isNull()
             prop(FakeEpisodeBuilder::comments).isNull()
             prop(FakeEpisodeBuilder::categories).isEmpty()
-            prop(FakeEpisodeBuilder::enclosureValue).isNull()
-            prop(FakeEpisodeBuilder::guid).isNull()
+            prop(FakeEpisodeBuilder::enclosureBuilderValue).isNull()
+            prop(FakeEpisodeBuilder::guidBuilder).isNull()
             prop(FakeEpisodeBuilder::source).isNull()
         }
     }

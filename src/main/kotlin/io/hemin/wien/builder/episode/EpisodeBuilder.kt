@@ -52,10 +52,15 @@ internal interface EpisodeBuilder : Builder<Episode> {
      * @param enclosureBuilder The [EpisodeEnclosureBuilder] used to initialize the
      * [Episode.enclosure] when [build] is called.
      */
-    fun enclosure(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder
+    fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder
 
-    /** Set the Guid. */
-    fun guid(guid: Episode.Guid?): EpisodeBuilder
+    /**
+     * Set the [EpisodeGuidBuilder].
+     *
+     * @param guidBuilder The [EpisodeGuidBuilder] used to initialize the
+     * [Episode.guid] when [build] is called.
+     */
+    fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder
 
     /** Set the pubDate value. */
     fun pubDate(pubDate: Date?): EpisodeBuilder
@@ -65,4 +70,7 @@ internal interface EpisodeBuilder : Builder<Episode> {
 
     /** Creates an instance of [EpisodeEnclosureBuilder] to use with this builder. */
     fun createEnclosureBuilder(): EpisodeEnclosureBuilder
+
+    /** Creates an instance of [EpisodeGuidBuilder] to use with this builder. */
+    fun createGuidBuilder(): EpisodeGuidBuilder
 }
