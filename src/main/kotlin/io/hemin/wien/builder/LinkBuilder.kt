@@ -2,51 +2,26 @@ package io.hemin.wien.builder
 
 import io.hemin.wien.model.Link
 
-/** Builder class for [Link] instances. */
-class LinkBuilder : Builder<Link> {
-
-    private var href: String? = null
-    private var hrefLang: String? = null
-    private var hrefResolved: String? = null
-    private var length: String? = null
-    private var rel: String? = null
-    private var title: String? = null
-    private var type: String? = null
+internal interface LinkBuilder : Builder<Link> {
 
     /** Set the href value. */
-    fun href(href: String?) = apply { this.href = href }
+    fun href(href: String): LinkBuilder
 
     /** Set the hrefLang value. */
-    fun hrefLang(hrefLang: String?) = apply { this.hrefLang = hrefLang }
+    fun hrefLang(hrefLang: String?): LinkBuilder
 
     /** Set the hrefResolved value. */
-    fun hrefResolved(hrefResolved: String?) = apply { this.hrefResolved = hrefResolved }
+    fun hrefResolved(hrefResolved: String?): LinkBuilder
 
     /** Set the length value. */
-    fun length(length: String?) = apply { this.length = length }
+    fun length(length: String?): LinkBuilder
 
     /** Set the rel value. */
-    fun rel(rel: String?) = apply { this.rel = rel }
+    fun rel(rel: String?): LinkBuilder
 
     /** Set the title value. */
-    fun title(title: String?) = apply { this.title = title }
+    fun title(title: String?): LinkBuilder
 
     /** Set the type value. */
-    fun type(type: String?) = apply { this.type = type }
-
-    override fun build(): Link? {
-        return if (anyNotNull(href, hrefLang, hrefResolved, length, rel, title, type)) {
-            Link(
-                href = href,
-                hrefLang = hrefLang,
-                hrefResolved = hrefResolved,
-                length = length,
-                rel = rel,
-                title = title,
-                type = type
-            )
-        } else {
-            null
-        }
-    }
+    fun type(type: String?): LinkBuilder
 }

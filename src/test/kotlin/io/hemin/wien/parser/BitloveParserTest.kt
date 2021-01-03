@@ -1,9 +1,13 @@
 package io.hemin.wien.parser
 
-import io.hemin.wien.builder.EpisodeBuilder
-import org.junit.jupiter.api.Assertions.assertEquals
+import assertk.assertThat
+import assertk.assertions.isEqualTo
+import assertk.assertions.isNull
+import assertk.assertions.prop
+import io.hemin.wien.builder.fake.episode.FakeEpisodeBitloveBuilder
+import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
+import io.hemin.wien.parser.namespace.BitloveParser
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
 /** Provides unit tests for [BitloveParser]. */
@@ -11,21 +15,23 @@ internal class BitloveParserTest : NamespaceParserTest() {
 
     override val parser = BitloveParser()
 
-    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    @Test
+    fun `should not extract the Bitlove guid attribute from enclosure nodes when it's absent`() {
+        val node: Node = nodeFromResource("item", "/xml/item-incomplete.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, node)
+
+        assertThat(builder.bitlove, "item bitlove data")
+            .prop(FakeEpisodeBitloveBuilder::guid).isNull()
+    }
 
     @Test
-    fun testParseItemBitlove() {
-        item?.let { node ->
-            val builder = EpisodeBuilder()
-            parseItemNode(builder, node)
+    fun `should extract the Bitlove guid attribute from enclosure nodes when it's present`() {
+        val node: Node = nodeFromResource("item", "/xml/item.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, node)
 
-            builder.build().bitlove?.let { bitlove ->
-                assertEquals("abcdefg", bitlove.guid)
-            } ?: run {
-                fail("Episode Bitlove data not extracted")
-            }
-        } ?: run {
-            fail("item not found")
-        }
+        assertThat(builder.bitlove, "item bitlove data")
+            .prop(FakeEpisodeBitloveBuilder::guid).isEqualTo("abcdefg")
     }
 }

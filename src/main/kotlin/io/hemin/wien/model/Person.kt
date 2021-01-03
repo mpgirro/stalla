@@ -8,7 +8,7 @@ package io.hemin.wien.model
  * @property uri The uri of the person.
  */
 data class Person(
-    val name: String?,
-    val email: String?,
-    val uri: String?
+    val name: String,
+    val email: String? = null,
+    val uri: String? = null
 )

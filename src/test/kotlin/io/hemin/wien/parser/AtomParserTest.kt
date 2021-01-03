@@ -1,13 +1,18 @@
 package io.hemin.wien.parser
 
-import io.hemin.wien.builder.EpisodeBuilder
-import io.hemin.wien.builder.LinkBuilder
-import io.hemin.wien.builder.PersonBuilder
-import io.hemin.wien.builder.PodcastBuilder
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import assertk.all
+import assertk.assertThat
+import assertk.assertions.containsExactly
+import assertk.assertions.isEmpty
+import assertk.assertions.prop
+import io.hemin.wien.builder.fake.episode.FakeEpisodeAtomBuilder
+import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
+import io.hemin.wien.builder.fake.podcast.FakePodcastAtomBuilder
+import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
+import io.hemin.wien.model.Link
+import io.hemin.wien.model.Person
+import io.hemin.wien.parser.namespace.AtomParser
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.fail
 import org.w3c.dom.Node
 
 /** Provides unit tests for [AtomParser]. */
@@ -15,59 +20,68 @@ internal class AtomParserTest : NamespaceParserTest() {
 
     override val parser = AtomParser()
 
-    private val channel: Node? = nodeFromResource("channel", "/xml/channel.xml")
-    private val item: Node? = nodeFromResource("item", "/xml/item.xml")
+    private val expectedLink = Link(
+        href = "http://example.org/feed/m4a",
+        rel = "self",
+        title = "Lorem Ipsum",
+        type = "application/rss+xml"
+    )
 
-    private val expectedLink = LinkBuilder()
-        .href("http://example.org/feed/m4a")
-        .rel("self")
-        .title("Lorem Ipsum")
-        .type("application/rss+xml")
-        .build()
-    private val expectedPerson = PersonBuilder()
-        .name("Lorem Ipsum")
-        .email("person@example.org")
-        .uri("http://example.org")
-        .build()
+    private val expectedPerson = Person(
+        name = "Lorem Ipsum",
+        email = "person@example.org",
+        uri = "http://example.org"
+    )
 
     @Test
-    fun testParseChannelAtom() {
-        channel?.let { node ->
-            val builder = PodcastBuilder()
-            parseChannelNode(builder, node)
+    fun `should extract all atom fields from channel when present`() {
+        val channel: Node = nodeFromResource("channel", "/xml/channel.xml")
+        val builder = FakePodcastBuilder()
+        parseChannelNode(builder, channel)
 
-            builder.build().atom?.let { atom ->
-                assertTrue(atom.authors.contains(expectedPerson))
-                assertTrue(atom.contributors.contains(expectedPerson))
-                assertTrue(atom.links.contains(expectedLink))
-            } ?: run {
-                fail("Podcast Atom data not extracted")
-            }
-        } ?: run {
-            fail("channel not found")
+        assertThat(builder.atom, "atom podcast data").all {
+            prop(FakePodcastAtomBuilder::authors).containsExactly(expectedPerson)
+            prop(FakePodcastAtomBuilder::contributors).containsExactly(expectedPerson)
+            prop(FakePodcastAtomBuilder::links).containsExactly(expectedLink)
         }
     }
 
     @Test
-    fun testParseItemAtom() {
-        item?.let { node ->
-            val builder = EpisodeBuilder()
-            parseItemNode(builder, node)
+    fun `should extract nothing from channel when no atom data is present`() {
+        val channel: Node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
+        val builder = FakePodcastBuilder()
+        parseChannelNode(builder, channel)
 
-            builder.build().atom?.let { atom ->
-                assertEquals(1, atom.authors.size)
-                assertTrue(atom.authors.contains(expectedPerson))
+        assertThat(builder.atom, "atom episode data").all {
+            prop(FakePodcastAtomBuilder::authors).isEmpty()
+            prop(FakePodcastAtomBuilder::contributors).isEmpty()
+            prop(FakePodcastAtomBuilder::links).isEmpty()
+        }
+    }
 
-                assertEquals(1, atom.contributors.size)
-                assertTrue(atom.contributors.contains(expectedPerson))
+    @Test
+    fun `should extract all atom fields from item when present`() {
+        val item: Node = nodeFromResource("item", "/xml/item.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, item)
 
-                assertEquals(1, atom.links.size)
-                assertTrue(atom.links.contains(expectedLink))
-            } ?: run {
-                fail("Episode Atom data not extracted")
-            }
-        } ?: run {
-            fail("item not found")
+        assertThat(builder.atom, "atom item data").all {
+            prop(FakeEpisodeAtomBuilder::authors).containsExactly(expectedPerson)
+            prop(FakeEpisodeAtomBuilder::contributors).containsExactly(expectedPerson)
+            prop(FakeEpisodeAtomBuilder::links).containsExactly(expectedLink)
+        }
+    }
+
+    @Test
+    fun `should extract nothing from item when no atom data is present`() {
+        val item: Node = nodeFromResource("item", "/xml/item-incomplete.xml")
+        val builder = FakeEpisodeBuilder()
+        parseItemNode(builder, item)
+
+        assertThat(builder.atom, "atom item data").all {
+            prop(FakeEpisodeAtomBuilder::authors).isEmpty()
+            prop(FakeEpisodeAtomBuilder::contributors).isEmpty()
+            prop(FakeEpisodeAtomBuilder::links).isEmpty()
         }
     }
 }

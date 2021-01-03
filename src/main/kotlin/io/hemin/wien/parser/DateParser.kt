@@ -10,7 +10,7 @@ import java.util.Locale
  * Various formats are supported. This class attempts to find the correct
  * format to produce the intended date object.
  */
-class DateParser {
+internal class DateParser {
 
     companion object {
 
