@@ -12,25 +12,19 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeEnclosureBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeGuidBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
+import io.hemin.wien.dateTime
 import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.RssParser
 import org.junit.jupiter.api.Test
 import java.util.Calendar
 import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
 
 internal class RssParserTest : NamespaceParserTest() {
 
     override val parser = RssParser()
 
-    private val expectedDate: Date = Calendar.Builder()
-        .setLocale(Locale.ENGLISH)
-        .setTimeZone(TimeZone.getTimeZone("UTC"))
-        .setDate(2018, Calendar.MARCH, 16) // "Fri, 16 Mar 2018 22:49:08 +0000"
-        .setTimeOfDay(22, 49, 8)
-        .build()
-        .time
+    // "Fri, 16 Mar 2018 22:49:08 +0000"
+    private val expectedDate: Date = dateTime(year = 2018, monthZeroBased = Calendar.MARCH, day = 16, hour = 22, minute = 49, second = 8)
 
     private val expectedEnclosureBuilder = FakeEpisodeEnclosureBuilder().apply {
         urlValue = "http://example.org/episode1.m4a"

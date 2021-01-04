@@ -11,30 +11,20 @@ import io.hemin.wien.builder.validating.ValidatingImageBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
+import io.hemin.wien.dateTime
 import io.hemin.wien.model.Podcast
 import org.junit.jupiter.api.Test
 import java.util.Calendar
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
 
 internal class ValidatingPodcastBuilderTest {
 
-    private val aPubDate: Date = Calendar.Builder()
-        .setLocale(Locale.ENGLISH)
-        .setTimeZone(TimeZone.getTimeZone("UTC"))
-        .setDate(2018, Calendar.MARCH, 16) // "Fri, 16 Mar 2018 22:49:08 +0000"
-        .setTimeOfDay(22, 49, 8)
-        .build()
-        .time
+    // "Fri, 16 Mar 2018 22:49:08 +0000"
+    private val aPubDate =
+        dateTime(year = 2018, monthZeroBased = Calendar.MARCH, day = 16, hour = 22, minute = 49, second = 8)
 
-    private val aLastBuildDate: Date = Calendar.Builder()
-        .setLocale(Locale.ENGLISH)
-        .setTimeZone(TimeZone.getTimeZone("UTC"))
-        .setDate(2020, Calendar.MAY, 1) // "Fri, 16 Mar 2018 22:49:08 +0000"
-        .setTimeOfDay(12, 55, 22)
-        .build()
-        .time
+    // "Fri, 1 May 2020 12:55:22 +0000"
+    private val aLastBuildDate =
+        dateTime(year = 2020, monthZeroBased = Calendar.MAY, day = 1, hour = 12, minute = 55, second = 22)
 
     private val expectedImageBuilder = ValidatingImageBuilder()
         .url("image url")
@@ -186,8 +176,10 @@ internal class ValidatingPodcastBuilderTest {
             prop(Podcast::image).isEqualTo(expectedImageBuilder.build())
             prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
             prop(Podcast::iTunes).isNotNull().prop(Podcast.ITunes::categories).containsExactly("test")
-            prop(Podcast::atom).isNotNull().prop(Podcast.Atom::authors).containsExactly(expectedAtomAuthorBuilder.build())
-            prop(Podcast::feedpress).isNotNull().prop(Podcast.Feedpress::newsletterId).isEqualTo("feedpress newsletterId")
+            prop(Podcast::atom).isNotNull().prop(Podcast.Atom::authors)
+                .containsExactly(expectedAtomAuthorBuilder.build())
+            prop(Podcast::feedpress).isNotNull().prop(Podcast.Feedpress::newsletterId)
+                .isEqualTo("feedpress newsletterId")
             prop(Podcast::fyyd).isNotNull().prop(Podcast.Fyyd::verify).isEqualTo("fyyd verify")
             prop(Podcast::googlePlay).isNotNull().prop(Podcast.GooglePlay::description).isEqualTo("play description")
         }

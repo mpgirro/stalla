@@ -5,6 +5,9 @@ import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Document
 import org.w3c.dom.Node
+import java.util.Calendar
+import java.util.Locale
+import java.util.TimeZone
 import javax.xml.parsers.DocumentBuilder
 
 private val domBuilder: DocumentBuilder = DomBuilderFactory.newBuilder()
@@ -30,3 +33,20 @@ internal fun documentFromResource(filePath: String): Document {
     return resourceUrl.openStream()
         .use { domBuilder.parse(it) }
 }
+
+/** Creates a [java.util.Date] as specified. Defaults to UTC timezone, and midnight. */
+internal fun dateTime(
+    year: Int,
+    monthZeroBased: Int,
+    day: Int,
+    hour: Int = 0,
+    minute: Int = 0,
+    second: Int = 0,
+    timeZone: TimeZone = TimeZone.getTimeZone("UTC")
+) = Calendar.Builder()
+    .setLocale(Locale.ENGLISH)
+    .setTimeZone(timeZone)
+    .setDate(year, monthZeroBased, day)
+    .setTimeOfDay(hour, minute, second)
+    .build()
+    .time

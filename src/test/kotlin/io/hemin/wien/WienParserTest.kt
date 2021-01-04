@@ -17,9 +17,6 @@ import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.findElementByTagName
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
-import java.util.Calendar
-import java.util.Locale
-import java.util.TimeZone
 import javax.xml.parsers.DocumentBuilderFactory
 
 internal class WienParserTest {
@@ -275,20 +272,4 @@ internal class WienParserTest {
     private fun createDocument() = documentBuilder.newDocument()
 
     private fun validRssDocument(path: String = "/xml/rss.xml") = documentFromResource(path)
-
-    private fun dateTime(
-        year: Int,
-        monthZeroBased: Int,
-        day: Int,
-        hour: Int = 0,
-        minute: Int = 0,
-        second: Int = 0,
-        timeZone: TimeZone = TimeZone.getTimeZone("UTC")
-    ) = Calendar.Builder()
-        .setLocale(Locale.ENGLISH)
-        .setTimeZone(timeZone)
-        .setDate(year, monthZeroBased, day)
-        .setTimeOfDay(hour, minute, second)
-        .build()
-        .time
 }
