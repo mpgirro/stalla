@@ -46,9 +46,11 @@ internal fun dateTime(
     minute: Int = 0,
     second: Int = 0,
     nanosecond: Int = 0,
-    zoneId: ZoneId = ZoneId.of("UTC")
-): TemporalAccessor = ZonedDateTime.of(
-    LocalDate.of(year, month, day),
-    LocalTime.of(hour, minute, second, nanosecond),
-    zoneId
-)
+    overrideZoneId: ZoneId? = null
+): TemporalAccessor {
+    val localDate = LocalDate.of(year, month, day)
+    val localTime = LocalTime.of(hour, minute, second, nanosecond)
+
+    val zoneId = overrideZoneId ?: ZoneId.of("Z")
+    return ZonedDateTime.of(localDate, localTime, zoneId)
+}

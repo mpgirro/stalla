@@ -80,7 +80,7 @@ internal object DateParser {
             .optionalEnd() // End [ [x]]
             .toFormatter(),
 
-        DateTimeFormatter.ISO_DATE_TIME // ISO-8601: 2011-12-03T10:15{:30{.100}}{+01:00{[Europe/Paris]}}
+        DateTimeFormatter.ISO_DATE_TIME // ISO-8601: 2011-12-03T10:15[:30[.100]][+01:00'['Europe/Paris']']
     )
 
     /**
@@ -95,9 +95,8 @@ internal object DateParser {
 
         for (formatter in formatters) {
             return try {
-                val parsed = formatter.withLocale(locale)
+                formatter.withLocale(locale)
                     .parseBest(trimmedValue, ZonedDateTime::from, LocalDateTime::from)
-                parsed
             } catch (ignored: DateTimeParseException) {
                 continue
             }

@@ -10,6 +10,7 @@ import java.time.LocalTime
 import java.time.Month
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.util.concurrent.TimeUnit
 
 internal class DateParserTest {
 
@@ -43,28 +44,19 @@ internal class DateParserTest {
     @Test
     fun `should parse ISO-8601 timestamps correctly`() {
         assertAll {
-            assertThat(DateParser.parse("20111203T101530Z"), "20111203T101530Z")
-                .isEqualTo(zonedDateTime(hour = 10, minute = 15, second = 30))
-            assertThat(DateParser.parse("2011-12-03T10:15:30Z"), "2011-12-03T10:15:30Z")
-                .isEqualTo(zonedDateTime(hour = 10, minute = 15, second = 30))
-            assertThat(DateParser.parse("2011-W48-6T09:15:30Z"), "2011-W48-6T09:15:30Z")
-                .isEqualTo(zonedDateTime(hour = 10, minute = 15, second = 30))
-            assertThat(DateParser.parse("2011-337T10:15:30Z"), "2011-337T10:15:30Z")
-                .isEqualTo(zonedDateTime(hour = 10, minute = 15, second = 30))
-
             assertThat(DateParser.parse("2011-12-03T10:15Z"), "2011-12-03T10:15Z")
                 .isEqualTo(zonedDateTime(hour = 10, minute = 15))
             assertThat(DateParser.parse("2011-12-03T10:15:30Z"), "2011-12-03T10:15:30Z")
                 .isEqualTo(zonedDateTime(hour = 10, minute = 15, second = 30))
             assertThat(DateParser.parse("2011-12-03T10:15:30.123Z"), "2011-12-03T10:15:30.123Z")
-                .isEqualTo(zonedDateTime(hour = 10, minute = 15, second = 30, nanosecond = 123))
+                .isEqualTo(zonedDateTime(hour = 10, minute = 15, second = 30, millisecond = 123))
 
             assertThat(DateParser.parse("2011-12-03T10:15+01:00"), "2011-12-03T10:15+01:00")
                 .isEqualTo(zonedDateTime(hour = 10, minute = 15, timeZoneId = ZoneId.of("+01:00")))
             assertThat(DateParser.parse("2011-12-03T10:15:30+01:00"), "2011-12-03T10:15:30+01:00")
                 .isEqualTo(zonedDateTime(hour = 10, minute = 15, second = 30, timeZoneId = ZoneId.of("+01:00")))
             assertThat(DateParser.parse("2011-12-03T10:15:30.123+01:00"), "2011-12-03T10:15:30.123+01:00")
-                .isEqualTo(zonedDateTime(hour = 10, minute = 15, second = 30, nanosecond = 123, timeZoneId = ZoneId.of("+01:00")))
+                .isEqualTo(zonedDateTime(hour = 10, minute = 15, second = 30, millisecond = 123, timeZoneId = ZoneId.of("+01:00")))
         }
     }
 
@@ -85,11 +77,11 @@ internal class DateParserTest {
         hour: Int = 0,
         minute: Int = 0,
         second: Int = 0,
-        nanosecond: Int = 0,
-        timeZoneId: ZoneId = ZoneId.of("GMT")
+        millisecond: Int = 0,
+        timeZoneId: ZoneId = ZoneId.of("Z")
     ) = ZonedDateTime.of(
         LocalDate.of(year, month, day),
-        LocalTime.of(hour, minute, second, nanosecond),
+        LocalTime.of(hour, minute, second, TimeUnit.MILLISECONDS.toNanos(millisecond.toLong()).toInt()),
         timeZoneId
     )
 }
