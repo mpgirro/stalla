@@ -9,6 +9,5 @@ internal class FakeEpisodeContentBuilder : FakeBuilder<Episode.Content>(), Episo
 
     var encoded: String? = null
 
-    /** Set the encoded value. */
     override fun encoded(encoded: String): EpisodeContentBuilder = apply { this.encoded = encoded }
 }

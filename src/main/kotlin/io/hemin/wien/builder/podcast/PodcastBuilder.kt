@@ -1,8 +1,10 @@
 package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
-import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
+import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.LinkBuilder
+import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.model.Podcast
 import java.util.Date
 
@@ -56,13 +58,22 @@ internal interface PodcastBuilder : Builder<Podcast> {
     /** Set the webMaster value. */
     fun webMaster(webMaster: String?): PodcastBuilder
 
-    /** Set the Image. */
-    fun image(image: Image?): PodcastBuilder
+    /** Set the Image builder. */
+    fun imageBuilder(imageBuilder: ImageBuilder?): PodcastBuilder
 
     /**
-     * Adds an [Episode] to the list of episodes.
+     * Adds an [EpisodeBuilder] to the list of episodes.
      *
-     * @param episode The [Episode] to add.
+     * @param episodeBuilder The [EpisodeBuilder] to add.
      */
-    fun addEpisode(episode: Episode): PodcastBuilder
+    fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder
+
+    /** Creates an instance of [ImageBuilder] to use with this builder. */
+    fun createImageBuilder(): ImageBuilder
+
+    /** Creates an instance of [LinkBuilder] to use with this builder. */
+    fun createLinkBuilder(): LinkBuilder
+
+    /** Creates an instance of [PersonBuilder] to use with this builder. */
+    fun createPersonBuilder(): PersonBuilder
 }

@@ -2,20 +2,21 @@
 <?xml-stylesheet type="text/xsl" media="screen" href="/~files/feed-premium.xsl"?>
 <rss version="2.0">
     <channel>
-        <title>Lorem Ipsum</title>
+        <title>Lorem Ipsum title</title>
         <link>http://example.org</link>
-        <description>Lorem Ipsum</description>
+        <description>Lorem Ipsum description</description>
+        <language>en-US</language>
         <item>
             <title>Lorem Ipsum</title>
             <link>http://example.org/episode1</link>
-            <description><![CDATA[Lorem Ipsum]]></description>
+            <description><![CDATA[Lorem Ipsum episode 1 description]]></description>
             <enclosure url="http://example.org/episode1.m4a" length="78589133" type="audio/mp4" />
         </item>
         <item>
-            <title>Lorem Ipsum</title>
+            <title>Lorem Ipsum 2</title>
             <link>http://example.org/episode2</link>
-            <description><![CDATA[Lorem Ipsum]]></description>
-            <enclosure url="http://example.org/episode2.m4a" length="78589133" type="audio/mp4" />
+            <description><![CDATA[Lorem Ipsum episode 2 description]]></description>
+            <enclosure url="http://example.org/episode2.mp3" length="78133" type="audio/mp3" />
         </item>
     </channel>
 </rss>

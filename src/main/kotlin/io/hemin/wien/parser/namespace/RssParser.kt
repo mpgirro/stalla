@@ -1,13 +1,10 @@
 package io.hemin.wien.parser.namespace
 
-import io.hemin.wien.WienParser
+import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
+import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
-import io.hemin.wien.builder.validating.ValidatingImageBuilder
-import io.hemin.wien.builder.validating.episode.ValidatingEpisodeGuidBuilder
-import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Node
@@ -33,11 +30,7 @@ internal class RssParser : NamespaceParser() {
             }
             "docs" -> builder.docs(toText(node))
             "generator" -> builder.generator(toText(node))
-            "image" -> builder.image(toImage(node))
-            "item" -> {
-                val episode = WienParser.toEpisode(node) ?: return@valid
-                builder.addEpisode(episode)
-            }
+            "image" -> builder.imageBuilder(toImage(node, builder.createImageBuilder()))
             "language" -> {
                 val language = toText(node) ?: return@valid
                 builder.language(language)
@@ -54,6 +47,7 @@ internal class RssParser : NamespaceParser() {
                 builder.title(title)
             }
             "webMaster" -> builder.webMaster(toText(node))
+            "item" -> pass // Items are parsed by WienParser direcly
             else -> pass
         }
     }
@@ -69,9 +63,9 @@ internal class RssParser : NamespaceParser() {
             "description" -> builder.description(toText(node))
             "enclosure" -> {
                 val enclosure = toEnclosureBuilder(node, builder.createEnclosureBuilder()) ?: return@valid
-                builder.enclosure(enclosure)
+                builder.enclosureBuilder(enclosure)
             }
-            "guid" -> builder.guid(toGuid(node))
+            "guid" -> builder.guidBuilder(toGuidBuilder(node, builder.createGuidBuilder()))
             "link" -> builder.link(toText(node))
             "pubDate" -> builder.pubDate(toDate(node))
             "source" -> builder.source(toText(node))
@@ -95,15 +89,14 @@ internal class RssParser : NamespaceParser() {
             .type(type)
     }
 
-    private fun toGuid(node: Node): Episode.Guid? = valid(node) {
-        ValidatingEpisodeGuidBuilder()
-            .textContent(toText(it))
+    private fun toGuidBuilder(node: Node, builder: EpisodeGuidBuilder): EpisodeGuidBuilder? = valid(node) {
+        val guid = toText(it) ?: return@valid null
+
+        builder.textContent(guid)
             .isPermalink(toBoolean(attributeValueByName(it, "isPermaLink")))
-            .build()
     }
 
-    private fun toImage(node: Node): Image? = valid(node) {
-        val builder = ValidatingImageBuilder()
+    private fun toImage(node: Node, builder: ImageBuilder): ImageBuilder? = valid(node) {
         for (child in node.childNodes.asListOfNodes()) {
             when (child.localName) {
                 "description" -> builder.description(toText(child))
@@ -117,6 +110,6 @@ internal class RssParser : NamespaceParser() {
                 "width" -> builder.width(toInt(child))
             }
         }
-        builder.build()
+        builder
     }
 }

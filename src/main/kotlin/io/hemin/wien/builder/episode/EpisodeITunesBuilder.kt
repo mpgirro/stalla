@@ -1,8 +1,8 @@
 package io.hemin.wien.builder.episode
 
 import io.hemin.wien.builder.Builder
+import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
 
 internal interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
 
@@ -12,8 +12,8 @@ internal interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
     /** Set the duration value. */
     fun duration(duration: String?): EpisodeITunesBuilder
 
-    /** Set the Image. */
-    fun image(image: Image?): EpisodeITunesBuilder
+    /** Set the Image builder. */
+    fun imageBuilder(imageBuilder: ImageBuilder?): EpisodeITunesBuilder
 
     /** Set the explicit flag value. */
     fun explicit(explicit: Boolean?): EpisodeITunesBuilder

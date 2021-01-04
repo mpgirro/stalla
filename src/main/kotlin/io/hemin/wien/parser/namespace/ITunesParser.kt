@@ -1,11 +1,9 @@
 package io.hemin.wien.parser.namespace
 
+import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
-import io.hemin.wien.builder.validating.ValidatingImageBuilder
-import io.hemin.wien.builder.validating.ValidatingPersonBuilder
-import io.hemin.wien.model.Image
-import io.hemin.wien.model.Person
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
 import org.w3c.dom.Node
@@ -38,11 +36,11 @@ internal class ITunesParser : NamespaceParser() {
                 builder.iTunes.explicit(explicit)
             }
             "image" -> {
-                val image = toImage(node) ?: return@valid
-                builder.iTunes.image(image)
+                val image = toImageBuilder(node, builder.createImageBuilder()) ?: return@valid
+                builder.iTunes.imageBuilder(image)
             }
             "keywords" -> builder.iTunes.keywords(toText(node))
-            "owner" -> builder.iTunes.owner(toPerson(node))
+            "owner" -> builder.iTunes.ownerBuilder(toPersonBuilder(node, builder.createPersonBuilder()))
             "subtitle" -> builder.iTunes.subtitle(toText(node))
             "summary" -> builder.iTunes.summary(toText(node))
             "type" -> builder.iTunes.type(toText(node))
@@ -59,45 +57,31 @@ internal class ITunesParser : NamespaceParser() {
             "episode" -> builder.iTunes.episode(toInt(node))
             "episodeType" -> builder.iTunes.episodeType(toText(node))
             "explicit" -> builder.iTunes.explicit(toBoolean(node))
-            "image" -> builder.iTunes.image(toImage(node))
+            "image" -> builder.iTunes.imageBuilder(toImageBuilder(node, builder.createImageBuilder()))
             "season" -> builder.iTunes.season(toInt(node))
             "title" -> builder.iTunes.title(toText(node))
             else -> pass
         }
     }
 
-    /**
-     * Transforms an <itunes:image>` element into an instance of the [Image] model class.
-     *
-     * @param node The DOM node representing the `<itunes:image>` element.
-     * @return The [Image] instance with the `<itunes:image>` elements data, or null if all data was empty.
-     */
-    private fun toImage(node: Node): Image? = valid(node) {
+    private fun toImageBuilder(node: Node, imageBuilder: ImageBuilder): ImageBuilder? = valid(node) {
         val url: String? = attributeValueByName(node, "href")
         if (url.isNullOrBlank()) {
             null
         } else {
-            ValidatingImageBuilder()
+            imageBuilder
                 .url(url)
-                .build()
         }
     }
 
-    /**
-     * Transforms an <itunes:owner>` element into an instance of the [Image] model class.
-     *
-     * @param node The DOM node representing the `<itunes:owner>` element.
-     * @return The [Image] instance with the `<itunes:owner>` elements data, or null if all data was empty.
-     */
-    private fun toPerson(node: Node): Person? = valid(node) {
-        val builder = ValidatingPersonBuilder()
+    private fun toPersonBuilder(node: Node, personBuilder: PersonBuilder): PersonBuilder? = valid(node) {
         for (child in node.childNodes.asListOfNodes()) {
             val value: String? = toText(child)
             when (child.localName) {
-                "name" -> if (value != null) builder.name(value)
-                "email" -> builder.email(value)
+                "name" -> if (value != null) personBuilder.name(value)
+                "email" -> personBuilder.email(value)
             }
         }
-        builder.build()
+        personBuilder
     }
 }

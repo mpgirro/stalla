@@ -27,7 +27,7 @@ data class Episode(
     val link: String? = null,
     val description: String? = null,
     val author: String? = null, // TODO turn to Person?
-    val categories: List<String>? = null, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
+    val categories: List<String>, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
     val comments: String? = null,
     val enclosure: Enclosure,
     val guid: Guid? = null,
@@ -61,7 +61,7 @@ data class Episode(
      * @property isPermalink The boolean interpretation of the `isPermalink` attribute.
      */
     data class Guid(
-        val textContent: String? = null,
+        val textContent: String,
         val isPermalink: Boolean? = null
     )
 

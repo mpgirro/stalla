@@ -10,9 +10,23 @@ internal class FakeEpisodeGuidBuilder : FakeBuilder<Episode.Guid>(), EpisodeGuid
     var textContent: String? = null
     var isPermalink: Boolean? = null
 
-    /** Set the textContent value. */
-    override fun textContent(textContent: String?): EpisodeGuidBuilder = apply { this.textContent = textContent }
+    override fun textContent(textContent: String): EpisodeGuidBuilder = apply { this.textContent = textContent }
 
-    /** Set the isPermalink value. */
     override fun isPermalink(isPermalink: Boolean?): EpisodeGuidBuilder = apply { this.isPermalink = isPermalink }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is FakeEpisodeGuidBuilder) return false
+
+        if (textContent != other.textContent) return false
+        if (isPermalink != other.isPermalink) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = textContent?.hashCode() ?: 0
+        result = 31 * result + (isPermalink?.hashCode() ?: 0)
+        return result
+    }
 }

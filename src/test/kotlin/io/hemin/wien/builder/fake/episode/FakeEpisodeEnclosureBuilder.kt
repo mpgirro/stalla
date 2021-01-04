@@ -11,13 +11,10 @@ internal class FakeEpisodeEnclosureBuilder : FakeBuilder<Episode.Enclosure>(), E
     var lengthValue: Long = -1
     var typeValue: String? = null
 
-    /** Set the url value. */
     override fun url(url: String): EpisodeEnclosureBuilder = apply { this.urlValue = url }
 
-    /** Set the length value. */
     override fun length(length: Long): EpisodeEnclosureBuilder = apply { this.lengthValue = length }
 
-    /** Set the type value. */
     override fun type(type: String): EpisodeEnclosureBuilder = apply { this.typeValue = type }
 
     override fun equals(other: Any?): Boolean {
@@ -37,6 +34,4 @@ internal class FakeEpisodeEnclosureBuilder : FakeBuilder<Episode.Enclosure>(), E
         result = 31 * result + (typeValue?.hashCode() ?: 0)
         return result
     }
-
-
 }

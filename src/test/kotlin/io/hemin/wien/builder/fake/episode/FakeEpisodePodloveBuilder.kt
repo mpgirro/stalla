@@ -1,29 +1,20 @@
 package io.hemin.wien.builder.fake.episode
 
 import io.hemin.wien.builder.episode.EpisodePodloveBuilder
+import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.model.Episode
 
 @Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeEpisodePodloveBuilder : FakeBuilder<Episode.Podlove>(), EpisodePodloveBuilder {
 
-    var simpleChapters: MutableList<Episode.Podlove.SimpleChapter> = mutableListOf()
+    var chapterBuilders: MutableList<EpisodePodloveSimpleChapterBuilder> = mutableListOf()
 
-    /**
-     * Adds a chapter to the list of chapters.
-     *
-     * @param chapter The chapter to add.
-     */
-    override fun addSimpleChapter(chapter: Episode.Podlove.SimpleChapter): EpisodePodloveBuilder = apply {
-        simpleChapters.add(chapter)
+    override fun addSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveBuilder = apply {
+        chapterBuilders.add(chapterBuilder)
     }
 
-    /**
-     * Adds chapters to the list of chapters.
-     *
-     * @param chapters The chapters to add.
-     */
-    override fun addSimpleChapters(chapters: List<Episode.Podlove.SimpleChapter>): EpisodePodloveBuilder = apply {
-        simpleChapters.addAll(chapters)
+    override fun addSimpleChapterBuilders(chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>): EpisodePodloveBuilder = apply {
+        this.chapterBuilders.addAll(chapterBuilders)
     }
 }

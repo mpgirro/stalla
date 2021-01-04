@@ -5,12 +5,13 @@ import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEmpty
 import assertk.assertions.prop
+import io.hemin.wien.builder.fake.FakeLinkBuilder
+import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeAtomBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastAtomBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
-import io.hemin.wien.model.Link
-import io.hemin.wien.model.Person
+import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.AtomParser
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
@@ -20,18 +21,16 @@ internal class AtomParserTest : NamespaceParserTest() {
 
     override val parser = AtomParser()
 
-    private val expectedLink = Link(
-        href = "http://example.org/feed/m4a",
-        rel = "self",
-        title = "Lorem Ipsum",
-        type = "application/rss+xml"
-    )
+    private val expectedLinkBuilder = FakeLinkBuilder()
+        .href("http://example.org/feed/m4a")
+        .rel("self")
+        .title("Lorem Ipsum")
+        .type("application/rss+xml")
 
-    private val expectedPerson = Person(
-        name = "Lorem Ipsum",
-        email = "person@example.org",
-        uri = "http://example.org"
-    )
+    private val expectedPersonBuilder = FakePersonBuilder()
+        .name("Lorem Ipsum")
+        .email("person@example.org")
+        .uri("http://example.org")
 
     @Test
     fun `should extract all atom fields from channel when present`() {
@@ -40,9 +39,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         parseChannelNode(builder, channel)
 
         assertThat(builder.atom, "atom podcast data").all {
-            prop(FakePodcastAtomBuilder::authors).containsExactly(expectedPerson)
-            prop(FakePodcastAtomBuilder::contributors).containsExactly(expectedPerson)
-            prop(FakePodcastAtomBuilder::links).containsExactly(expectedLink)
+            prop(FakePodcastAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
+            prop(FakePodcastAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
+            prop(FakePodcastAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
         }
     }
 
@@ -53,9 +52,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         parseChannelNode(builder, channel)
 
         assertThat(builder.atom, "atom episode data").all {
-            prop(FakePodcastAtomBuilder::authors).isEmpty()
-            prop(FakePodcastAtomBuilder::contributors).isEmpty()
-            prop(FakePodcastAtomBuilder::links).isEmpty()
+            prop(FakePodcastAtomBuilder::authorBuilders).isEmpty()
+            prop(FakePodcastAtomBuilder::contributorBuilders).isEmpty()
+            prop(FakePodcastAtomBuilder::linkBuilders).isEmpty()
         }
     }
 
@@ -66,9 +65,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         parseItemNode(builder, item)
 
         assertThat(builder.atom, "atom item data").all {
-            prop(FakeEpisodeAtomBuilder::authors).containsExactly(expectedPerson)
-            prop(FakeEpisodeAtomBuilder::contributors).containsExactly(expectedPerson)
-            prop(FakeEpisodeAtomBuilder::links).containsExactly(expectedLink)
+            prop(FakeEpisodeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
+            prop(FakeEpisodeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
+            prop(FakeEpisodeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
         }
     }
 
@@ -79,9 +78,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         parseItemNode(builder, item)
 
         assertThat(builder.atom, "atom item data").all {
-            prop(FakeEpisodeAtomBuilder::authors).isEmpty()
-            prop(FakeEpisodeAtomBuilder::contributors).isEmpty()
-            prop(FakeEpisodeAtomBuilder::links).isEmpty()
+            prop(FakeEpisodeAtomBuilder::authorBuilders).isEmpty()
+            prop(FakeEpisodeAtomBuilder::contributorBuilders).isEmpty()
+            prop(FakeEpisodeAtomBuilder::linkBuilders).isEmpty()
         }
     }
 }

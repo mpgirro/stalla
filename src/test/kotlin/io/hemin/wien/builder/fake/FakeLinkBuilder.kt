@@ -14,24 +14,43 @@ internal class FakeLinkBuilder : FakeBuilder<Link>(), LinkBuilder {
     var title: String? = null
     var type: String? = null
 
-    /** Set the href value. */
     override fun href(href: String): LinkBuilder = apply { this.hrefValue = href }
 
-    /** Set the hrefLang value. */
     override fun hrefLang(hrefLang: String?): LinkBuilder = apply { this.hrefLang = hrefLang }
 
-    /** Set the hrefResolved value. */
     override fun hrefResolved(hrefResolved: String?): LinkBuilder = apply { this.hrefResolved = hrefResolved }
 
-    /** Set the length value. */
     override fun length(length: String?): LinkBuilder = apply { this.length = length }
 
-    /** Set the rel value. */
     override fun rel(rel: String?): LinkBuilder = apply { this.rel = rel }
 
-    /** Set the title value. */
     override fun title(title: String?): LinkBuilder = apply { this.title = title }
 
-    /** Set the type value. */
     override fun type(type: String?): LinkBuilder = apply { this.type = type }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is FakeLinkBuilder) return false
+
+        if (hrefValue != other.hrefValue) return false
+        if (hrefLang != other.hrefLang) return false
+        if (hrefResolved != other.hrefResolved) return false
+        if (length != other.length) return false
+        if (rel != other.rel) return false
+        if (title != other.title) return false
+        if (type != other.type) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = hrefValue.hashCode()
+        result = 31 * result + (hrefLang?.hashCode() ?: 0)
+        result = 31 * result + (hrefResolved?.hashCode() ?: 0)
+        result = 31 * result + (length?.hashCode() ?: 0)
+        result = 31 * result + (rel?.hashCode() ?: 0)
+        result = 31 * result + (title?.hashCode() ?: 0)
+        result = 31 * result + (type?.hashCode() ?: 0)
+        return result
+    }
 }
