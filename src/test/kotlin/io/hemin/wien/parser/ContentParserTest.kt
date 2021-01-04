@@ -11,7 +11,6 @@ import io.hemin.wien.parser.namespace.ContentParser
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
-/** Provides unit tests for [ContentParser]. */
 internal class ContentParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = ContentParser()

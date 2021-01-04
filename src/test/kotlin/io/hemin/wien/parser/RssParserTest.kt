@@ -20,7 +20,6 @@ import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 
-/** Provides unit tests for [RssParser]. */
 internal class RssParserTest : NamespaceParserTest() {
 
     override val parser = RssParser()

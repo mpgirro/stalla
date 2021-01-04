@@ -21,7 +21,6 @@ import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.ITunesParser
 import org.junit.jupiter.api.Test
 
-/** Provides unit tests for [ITunesParser]. */
 internal class ITunesParserTest : NamespaceParserTest() {
 
     override val parser = ITunesParser()

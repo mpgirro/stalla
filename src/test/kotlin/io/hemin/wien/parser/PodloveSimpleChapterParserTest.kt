@@ -9,7 +9,6 @@ import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
 import org.junit.jupiter.api.Test
 
-/** Provides unit tests for [PodloveSimpleChapterParser]. */
 internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
     override val parser = PodloveSimpleChapterParser()
