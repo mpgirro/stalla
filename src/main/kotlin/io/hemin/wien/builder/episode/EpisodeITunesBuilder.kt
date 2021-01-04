@@ -29,4 +29,13 @@ internal interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
 
     /** Set the episodeType value. */
     fun episodeType(episodeType: String?): EpisodeITunesBuilder
+
+    /** Set the author value. */
+    fun author(author: String?): EpisodeITunesBuilder
+
+    /** Set the subtitle value. */
+    fun subtitle(subtitle: String?): EpisodeITunesBuilder
+
+    /** Set the summary value. */
+    fun summary(summary: String?): EpisodeITunesBuilder
 }

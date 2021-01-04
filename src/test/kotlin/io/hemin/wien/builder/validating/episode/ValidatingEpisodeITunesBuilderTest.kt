@@ -36,6 +36,9 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::explicit).isNull()
             prop(Episode.ITunes::block).isNull()
             prop(Episode.ITunes::image).isNull()
+            prop(Episode.ITunes::author).isNull()
+            prop(Episode.ITunes::subtitle).isNull()
+            prop(Episode.ITunes::summary).isNull()
         }
     }
 
@@ -53,6 +56,9 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::explicit).isNull()
             prop(Episode.ITunes::block).isNull()
             prop(Episode.ITunes::image).isNull()
+            prop(Episode.ITunes::author).isNull()
+            prop(Episode.ITunes::subtitle).isNull()
+            prop(Episode.ITunes::summary).isNull()
         }
     }
 
@@ -70,6 +76,9 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::explicit).isNull()
             prop(Episode.ITunes::block).isNull()
             prop(Episode.ITunes::image).isNull()
+            prop(Episode.ITunes::author).isNull()
+            prop(Episode.ITunes::subtitle).isNull()
+            prop(Episode.ITunes::summary).isNull()
         }
     }
 
@@ -87,6 +96,9 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::explicit).isNull()
             prop(Episode.ITunes::block).isNull()
             prop(Episode.ITunes::image).isNull()
+            prop(Episode.ITunes::author).isNull()
+            prop(Episode.ITunes::subtitle).isNull()
+            prop(Episode.ITunes::summary).isNull()
         }
     }
 
@@ -104,6 +116,9 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::explicit).isNull()
             prop(Episode.ITunes::block).isNull()
             prop(Episode.ITunes::image).isNull()
+            prop(Episode.ITunes::author).isNull()
+            prop(Episode.ITunes::subtitle).isNull()
+            prop(Episode.ITunes::summary).isNull()
         }
     }
 
@@ -121,6 +136,9 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::explicit).isNotNull().isFalse()
             prop(Episode.ITunes::block).isNull()
             prop(Episode.ITunes::image).isNull()
+            prop(Episode.ITunes::author).isNull()
+            prop(Episode.ITunes::subtitle).isNull()
+            prop(Episode.ITunes::summary).isNull()
         }
     }
 
@@ -138,6 +156,9 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::explicit).isNull()
             prop(Episode.ITunes::block).isNotNull().isFalse()
             prop(Episode.ITunes::image).isNull()
+            prop(Episode.ITunes::author).isNull()
+            prop(Episode.ITunes::subtitle).isNull()
+            prop(Episode.ITunes::summary).isNull()
         }
     }
 
@@ -155,6 +176,69 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::explicit).isNull()
             prop(Episode.ITunes::block).isNull()
             prop(Episode.ITunes::image).isEqualTo(expectedImageBuilder.build())
+            prop(Episode.ITunes::author).isNull()
+            prop(Episode.ITunes::subtitle).isNull()
+            prop(Episode.ITunes::summary).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only an author`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .author("author")
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isNull()
+            prop(Episode.ITunes::duration).isNull()
+            prop(Episode.ITunes::season).isNull()
+            prop(Episode.ITunes::episode).isNull()
+            prop(Episode.ITunes::episodeType).isNull()
+            prop(Episode.ITunes::explicit).isNull()
+            prop(Episode.ITunes::block).isNull()
+            prop(Episode.ITunes::image).isNull()
+            prop(Episode.ITunes::author).isEqualTo("author")
+            prop(Episode.ITunes::subtitle).isNull()
+            prop(Episode.ITunes::summary).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only a subtitle`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .subtitle("subtitle")
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isNull()
+            prop(Episode.ITunes::duration).isNull()
+            prop(Episode.ITunes::season).isNull()
+            prop(Episode.ITunes::episode).isNull()
+            prop(Episode.ITunes::episodeType).isNull()
+            prop(Episode.ITunes::explicit).isNull()
+            prop(Episode.ITunes::block).isNull()
+            prop(Episode.ITunes::image).isNull()
+            prop(Episode.ITunes::author).isNull()
+            prop(Episode.ITunes::subtitle).isEqualTo("subtitle")
+            prop(Episode.ITunes::summary).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode ITunes with only a summary`() {
+        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            .summary("summary")
+
+        assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            prop(Episode.ITunes::title).isNull()
+            prop(Episode.ITunes::duration).isNull()
+            prop(Episode.ITunes::season).isNull()
+            prop(Episode.ITunes::episode).isNull()
+            prop(Episode.ITunes::episodeType).isNull()
+            prop(Episode.ITunes::explicit).isNull()
+            prop(Episode.ITunes::block).isNull()
+            prop(Episode.ITunes::image).isNull()
+            prop(Episode.ITunes::author).isNull()
+            prop(Episode.ITunes::subtitle).isNull()
+            prop(Episode.ITunes::summary).isEqualTo("summary")
         }
     }
 
@@ -169,6 +253,9 @@ internal class ValidatingEpisodeITunesBuilderTest {
             .explicit(false)
             .block(false)
             .imageBuilder(expectedImageBuilder)
+            .author("author")
+            .subtitle("subtitle")
+            .summary("summary")
 
         assertThat(episodeITunesBuilder.build()).isNotNull().all {
             prop(Episode.ITunes::title).isEqualTo("title")
@@ -179,6 +266,9 @@ internal class ValidatingEpisodeITunesBuilderTest {
             prop(Episode.ITunes::explicit).isNotNull().isFalse()
             prop(Episode.ITunes::block).isNotNull().isFalse()
             prop(Episode.ITunes::image).isEqualTo(expectedImageBuilder.build())
+            prop(Episode.ITunes::author).isEqualTo("author")
+            prop(Episode.ITunes::subtitle).isEqualTo("subtitle")
+            prop(Episode.ITunes::summary).isEqualTo("summary")
         }
     }
 }

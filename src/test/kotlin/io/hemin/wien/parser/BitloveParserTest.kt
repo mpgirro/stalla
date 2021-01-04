@@ -11,7 +11,6 @@ import io.hemin.wien.parser.namespace.BitloveParser
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
-/** Provides unit tests for [BitloveParser]. */
 internal class BitloveParserTest : NamespaceParserTest() {
 
     override val parser = BitloveParser()

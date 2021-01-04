@@ -16,7 +16,6 @@ import io.hemin.wien.parser.namespace.AtomParser
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
-/** Provides unit tests for [AtomParser]. */
 internal class AtomParserTest : NamespaceParserTest() {
 
     override val parser = AtomParser()

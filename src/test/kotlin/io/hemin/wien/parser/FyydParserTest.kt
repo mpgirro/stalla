@@ -10,7 +10,6 @@ import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.FyydParser
 import org.junit.jupiter.api.Test
 
-/** Provides unit tests for [FyydParser]. */
 internal class FyydParserTest : NamespaceParserTest() {
 
     override val parser: NamespaceParser = FyydParser()

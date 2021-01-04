@@ -63,11 +63,11 @@ data class Podcast(
      * @property owner The `<itunes:new-feed-url>` field text content.
      */
     data class ITunes(
-        val subtitle: String? = null,
-        val summary: String? = null,
+        override val subtitle: String? = null,
+        override val summary: String? = null,
         override val image: Image,
         val keywords: String? = null,
-        val author: String? = null, // TODO can this be a list? is this a Person() ?
+        override val author: String? = null,
         val categories: List<String>, // TODO can be nested, Category() required?
         override val explicit: Boolean,
         override val block: Boolean? = null,
@@ -118,8 +118,8 @@ data class Podcast(
      * @property image The data from the `<googleplay:image>` element as an [Image].
      */
     data class GooglePlay(
-        val author: String? = null, // TODO can this be a list? is this a Person() ?
-        val owner: String? = null, // TODO merge with author to a person?
+        val author: String? = null,
+        val owner: String? = null,
         val categories: List<String>, // TODO can be nested, Category() required?
         override val description: String? = null,
         override val explicit: Boolean? = null,
@@ -135,7 +135,7 @@ data class Podcast(
      * @property links List of data from the `<atom:link>` elements as [Link] instances.
      */
     data class Atom(
-        val authors: List<Person>, // TODO is this found in <channel>'s? = null, or merely in <item>'s
+        val authors: List<Person>,
         val contributors: List<Person>,
         val links: List<Link>
     )

@@ -60,6 +60,9 @@ internal class ITunesParser : NamespaceParser() {
             "image" -> builder.iTunes.imageBuilder(toImageBuilder(node, builder.createImageBuilder()))
             "season" -> builder.iTunes.season(toInt(node))
             "title" -> builder.iTunes.title(toText(node))
+            "author" -> builder.iTunes.author(toText(node))
+            "subtitle" -> builder.iTunes.subtitle(toText(node))
+            "summary" -> builder.iTunes.summary(toText(node))
             else -> pass
         }
     }

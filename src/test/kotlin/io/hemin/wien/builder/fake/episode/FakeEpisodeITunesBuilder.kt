@@ -16,6 +16,9 @@ internal class FakeEpisodeITunesBuilder : FakeBuilder<Episode.ITunes>(), Episode
     var season: Int? = null
     var episode: Int? = null
     var episodeType: Episode.ITunes.EpisodeType? = null
+    var author: String? = null
+    var subtitle: String? = null
+    var summary: String? = null
 
     override fun title(title: String?): EpisodeITunesBuilder = apply { this.title = title }
 
@@ -32,4 +35,10 @@ internal class FakeEpisodeITunesBuilder : FakeBuilder<Episode.ITunes>(), Episode
     override fun episode(episode: Int?): EpisodeITunesBuilder = apply { this.episode = episode }
 
     override fun episodeType(episodeType: String?): EpisodeITunesBuilder = apply { this.episodeType = Episode.ITunes.EpisodeType.of(episodeType) }
+
+    override fun author(author: String?): EpisodeITunesBuilder = apply { this.author = author }
+
+    override fun subtitle(subtitle: String?): EpisodeITunesBuilder = apply { this.subtitle = subtitle }
+
+    override fun summary(summary: String?): EpisodeITunesBuilder = apply { this.summary = summary }
 }
