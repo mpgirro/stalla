@@ -63,11 +63,11 @@ data class Podcast(
      * @property owner The `<itunes:new-feed-url>` field text content.
      */
     data class ITunes(
-        val subtitle: String? = null,
-        val summary: String? = null,
+        override val subtitle: String? = null,
+        override val summary: String? = null,
         override val image: Image,
         val keywords: String? = null,
-        val author: String? = null, // TODO can this be a list? is this a Person() ?
+        override val author: String? = null,
         val categories: List<String>, // TODO can be nested, Category() required?
         override val explicit: Boolean,
         override val block: Boolean? = null,

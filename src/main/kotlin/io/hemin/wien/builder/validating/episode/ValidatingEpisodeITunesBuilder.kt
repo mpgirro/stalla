@@ -14,6 +14,9 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
     private var season: Int? = null
     private var episode: Int? = null
     private var episodeType: Episode.ITunes.EpisodeType? = null
+    private var author: String? = null
+    private var subtitle: String? = null
+    private var summary: String? = null
 
     override fun title(title: String?): EpisodeITunesBuilder = apply { this.title = title }
 
@@ -34,9 +37,15 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
             Episode.ITunes.EpisodeType.of(episodeType)
     }
 
+    override fun author(author: String?): EpisodeITunesBuilder = apply { this.author = author }
+
+    override fun subtitle(subtitle: String?): EpisodeITunesBuilder = apply { this.subtitle = subtitle }
+
+    override fun summary(summary: String?): EpisodeITunesBuilder = apply { this.summary = summary }
+
     override fun build(): Episode.ITunes? {
         val image = imageBuilder?.build()
-        if (allNull(title, duration, image, explicit, block, season, episode, episodeType)) {
+        if (allNull(title, duration, image, explicit, block, season, episode, episodeType, author, summary, subtitle)) {
             return null
         }
 
@@ -48,7 +57,10 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
             block = block,
             season = season,
             episode = episode,
-            episodeType = episodeType
+            episodeType = episodeType,
+            author = author,
+            subtitle = subtitle,
+            summary = summary
         )
     }
 }

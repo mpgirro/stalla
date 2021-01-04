@@ -99,7 +99,7 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
             pubDate = pubDate,
             source = source,
             content = content.build(),
-            itunes = iTunes.build(),
+            iTunes = iTunes.build(),
             atom = atom.build(),
             podlove = podlove.build(),
             googlePlay = googlePlay.build(),

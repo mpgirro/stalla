@@ -1,5 +1,6 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.model.Episode.Podlove.SimpleChapter
 import java.util.Date
 
 /**
@@ -16,7 +17,7 @@ import java.util.Date
  * @property pubDate The RSS `<pubDate>` field textContent.
  * @property source The RSS `<source>` field textContent.
  * @property content The data from the Content namespace, or null if no data from this namespace was found.
- * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
+ * @property iTunes The data from the iTunes namespace, or null if no data from this namespace was found.
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
  * @property podlove The data from the Podlove standards namespaces, or null if no data from these namespaces were found.
  * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
@@ -34,7 +35,7 @@ data class Episode(
     val pubDate: Date? = null,
     val source: String? = null,
     val content: Content? = null,
-    val itunes: ITunes? = null,
+    val iTunes: ITunes? = null,
     val atom: Atom? = null,
     val podlove: Podlove? = null,
     val googlePlay: GooglePlay? = null,
@@ -94,7 +95,10 @@ data class Episode(
         override val block: Boolean? = null,
         val season: Int? = null,
         val episode: Int? = null,
-        val episodeType: EpisodeType? = null
+        val episodeType: EpisodeType? = null,
+        override val author: String? = null,
+        override val subtitle: String? = null,
+        override val summary: String? = null
     ) : ITunesBase {
         /**
          * Enum model for the defined values encountered within the

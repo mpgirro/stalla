@@ -91,6 +91,9 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakeEpisodeITunesBuilder::block).isNotNull().isFalse()
             prop(FakeEpisodeITunesBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
             prop(FakeEpisodeITunesBuilder::episodeType).isEqualTo(Episode.ITunes.EpisodeType.FULL)
+            prop(FakeEpisodeITunesBuilder::author).isEqualTo("author")
+            prop(FakeEpisodeITunesBuilder::subtitle).isEqualTo("subtitle")
+            prop(FakeEpisodeITunesBuilder::summary).isEqualTo("summary")
         }
     }
 
@@ -109,6 +112,9 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakeEpisodeITunesBuilder::block).isNull()
             prop(FakeEpisodeITunesBuilder::imageBuilder).isNull()
             prop(FakeEpisodeITunesBuilder::episodeType).isNull()
+            prop(FakeEpisodeITunesBuilder::author).isNull()
+            prop(FakeEpisodeITunesBuilder::subtitle).isNull()
+            prop(FakeEpisodeITunesBuilder::summary).isNull()
         }
     }
 }
