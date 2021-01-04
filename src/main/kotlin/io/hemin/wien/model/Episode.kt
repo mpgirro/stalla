@@ -27,7 +27,7 @@ data class Episode(
     val title: String,
     val link: String? = null,
     val description: String? = null,
-    val author: String? = null, // TODO turn to Person?
+    val author: String? = null,
     val categories: List<String>, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
     val comments: String? = null,
     val enclosure: Enclosure,
