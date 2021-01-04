@@ -53,28 +53,28 @@ internal class AtomParser : NamespaceParser() {
         }
     }
 
-    private fun toLinkBuilder(node: Node, linkBuilder: LinkBuilder): LinkBuilder? = ifMatchesNamespace(node) {
-        val href = attributeValueByName(it, "href") ?: return@ifMatchesNamespace null
+    private fun toLinkBuilder(node: Node, linkBuilder: LinkBuilder): LinkBuilder? = node.ifMatchesNamespace() {
+        val href = it.attributeValueByName("href") ?: return@ifMatchesNamespace null
 
         linkBuilder
             .href(href)
-            .hrefLang(attributeValueByName(it, "hrefLang"))
-            .hrefResolved(attributeValueByName(it, "hrefResolved"))
-            .length(attributeValueByName(it, "length"))
-            .rel(attributeValueByName(it, "rel"))
-            .title(attributeValueByName(it, "title"))
-            .type(attributeValueByName(it, "type"))
+            .hrefLang(it.attributeValueByName("hrefLang"))
+            .hrefResolved(it.attributeValueByName("hrefResolved"))
+            .length(it.attributeValueByName("length"))
+            .rel(it.attributeValueByName("rel"))
+            .title(it.attributeValueByName("title"))
+            .type(it.attributeValueByName("type"))
     }
 
-    private fun toPersonBuilder(node: Node, personBuilder: PersonBuilder): PersonBuilder? = ifMatchesNamespace(node) {
+    private fun toPersonBuilder(node: Node, personBuilder: PersonBuilder): PersonBuilder? = node.ifMatchesNamespace() {
         for (child in node.childNodes.asListOfNodes()) {
             when (child.localName) {
                 "name" -> {
-                    val name = textOrNull(child)
+                    val name = child.textOrNull()
                     if (name != null) personBuilder.name(name)
                 }
-                "email" -> personBuilder.email(textOrNull(child))
-                "uri" -> personBuilder.uri(textOrNull(child))
+                "email" -> personBuilder.email(child.textOrNull())
+                "uri" -> personBuilder.uri(child.textOrNull())
             }
         }
         personBuilder

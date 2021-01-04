@@ -78,7 +78,7 @@ internal abstract class NamespaceParser {
      *
      * @return The content of the DOM node in string representation, or null.
      */
-    protected fun textOrNull(node: Node): String? = ifMatchesNamespace(node) {
+    protected fun Node.textOrNull(): String? = this.ifMatchesNamespace() {
         it.textContent.trimmedOrNullIfBlank()
     }
 
@@ -89,8 +89,8 @@ internal abstract class NamespaceParser {
      * @see parseAsBooleanOrNull
      * @return The logical interpretation of the DOM node's text content as boolean, or `null`.
      */
-    protected fun textAsBooleanOrNull(node: Node): Boolean? = ifMatchesNamespace(node) {
-        textOrNull(it).parseAsBooleanOrNull()
+    protected fun Node.textAsBooleanOrNull(): Boolean? = this.ifMatchesNamespace() {
+        it.textOrNull().parseAsBooleanOrNull()
     }
 
     /**
@@ -110,8 +110,8 @@ internal abstract class NamespaceParser {
      *
      * @return The DOM nodes content as an Int, or null if conversion failed.
      */
-    protected fun toInt(node: Node): Int? = ifMatchesNamespace(node) {
-        textOrNull(it)?.toIntOrNull()
+    protected fun Node.toInt(): Int? = this.ifMatchesNamespace() {
+        it.textOrNull()?.toIntOrNull()
     }
 
     /**
@@ -120,29 +120,28 @@ internal abstract class NamespaceParser {
      *
      * @return The DOM nodes content as an Int, or null if parsing failed.
      */
-    protected fun toDate(node: Node): TemporalAccessor? = ifMatchesNamespace(node) {
-        DateParser.parse(textOrNull(it))
+    protected fun Node.toDate(): TemporalAccessor? = this.ifMatchesNamespace() {
+        DateParser.parse(it.textOrNull())
     }
 
     /**
      * Extract the textContent of a DOM node attribute identified by name.
      *
-     * @param node The DOM node with the attribute.
      * @param attributeName The name of the node's attribute.
      * @return The textContent of the node's attribute.
      */
-    protected fun attributeValueByName(node: Node, attributeName: String): String? =
-        node.attributes?.getNamedItem(attributeName)?.textContent?.trim()
+    protected fun Node.attributeValueByName(attributeName: String): String? =
+        attributes?.getNamedItem(attributeName)?.textContent?.trim()
 
     /**
      * Executes a block of code on a DOM node if the node has the same [namespaceURI] of this parser.
      *
-     * @param node The DOM node to execute the [block] of code on.
-     * @param block The block of code to execute on the [node] when the namespace matches the parser's.
+     * @param this@ifMatchesNamespace The DOM node to execute the [block] of code on.
+     * @param block The block of code to execute on the [this@ifMatchesNamespace] when the namespace matches the parser's.
      */
-    protected fun <T> ifMatchesNamespace(node: Node, block: (Node) -> T?) =
-        if (node.canParseNode()) {
-            block(node)
+    protected fun <T> Node.ifMatchesNamespace(block: (Node) -> T?) =
+        if (canParseNode()) {
+            block(this)
         } else {
             null
         }

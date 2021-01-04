@@ -17,7 +17,7 @@ internal class FyydParser : NamespaceParser() {
     override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
             "verify" -> {
-                val verify = textOrNull(node) ?: return
+                val verify = node.textOrNull() ?: return
                 builder.fyyd.verify(verify)
             }
             else -> pass

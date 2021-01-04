@@ -17,15 +17,15 @@ internal class GooglePlayParser : NamespaceParser() {
 
     override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "author" -> builder.googlePlay.author(textOrNull(node))
-            "owner" -> builder.googlePlay.owner(textOrNull(node))
+            "author" -> builder.googlePlay.author(node.textOrNull())
+            "owner" -> builder.googlePlay.owner(node.textOrNull())
             "category" -> {
                 val category = node.attributes.getNamedItem("text").textContent ?: return
                 builder.googlePlay.addCategory(category)
             }
-            "description" -> builder.googlePlay.description(textOrNull(node))
-            "explicit" -> builder.googlePlay.explicit(textAsBooleanOrNull(node))
-            "block" -> builder.googlePlay.block(textAsBooleanOrNull(node))
+            "description" -> builder.googlePlay.description(node.textOrNull())
+            "explicit" -> builder.googlePlay.explicit(node.textAsBooleanOrNull())
+            "block" -> builder.googlePlay.block(node.textAsBooleanOrNull())
             "image" -> builder.googlePlay.imageBuilder(toImageBuilder(node, builder.createImageBuilder()))
             else -> pass
         }
@@ -33,16 +33,16 @@ internal class GooglePlayParser : NamespaceParser() {
 
     override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
-            "description" -> builder.googlePlay.description(textOrNull(node))
-            "explicit" -> builder.googlePlay.explicit(textAsBooleanOrNull(node))
-            "block" -> builder.googlePlay.block(textAsBooleanOrNull(node))
+            "description" -> builder.googlePlay.description(node.textOrNull())
+            "explicit" -> builder.googlePlay.explicit(node.textAsBooleanOrNull())
+            "block" -> builder.googlePlay.block(node.textAsBooleanOrNull())
             "image" -> builder.googlePlay.imageBuilder(toImageBuilder(node, builder.createImageBuilder()))
             else -> pass
         }
     }
 
-    private fun toImageBuilder(node: Node, imageBuilder: ImageBuilder): ImageBuilder? = ifMatchesNamespace(node) {
-        val url: String? = attributeValueByName(node, "href")
+    private fun toImageBuilder(node: Node, imageBuilder: ImageBuilder): ImageBuilder? = node.ifMatchesNamespace() {
+        val url: String? = node.attributeValueByName("href")
         if (url.isNullOrBlank()) {
             null
         } else {

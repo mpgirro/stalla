@@ -31,7 +31,7 @@ internal class PodloveSimpleChapterParser : NamespaceParser() {
         }
     }
 
-    private fun toPodloveSimpleChapterBuilders(node: Node, builder: EpisodeBuilder): List<EpisodePodloveSimpleChapterBuilder>? = ifMatchesNamespace(node) {
+    private fun toPodloveSimpleChapterBuilders(node: Node, builder: EpisodeBuilder): List<EpisodePodloveSimpleChapterBuilder>? = node.ifMatchesNamespace() {
         node.childNodes.asListOfNodes().stream()
             .filter { c -> c.localName == "chapter" }
             .map { it.toPodloveSimpleChapterBuilder(builder.createPodloveSimpleChapterBuilder()) }
@@ -40,14 +40,14 @@ internal class PodloveSimpleChapterParser : NamespaceParser() {
     }
 
     private fun Node.toPodloveSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveSimpleChapterBuilder? =
-        ifMatchesNamespace(this) {
-            val start = attributeValueByName(this, "start")
-            val title = attributeValueByName(this, "title")
+        this.ifMatchesNamespace() {
+            val start = this.attributeValueByName("start")
+            val title = this.attributeValueByName("title")
             if (start == null || title == null) return@ifMatchesNamespace null
 
             chapterBuilder.start(start)
                 .title(title)
-                .href(attributeValueByName(this, "href"))
-                .image(attributeValueByName(this, "image"))
+                .href(this.attributeValueByName("href"))
+                .image(this.attributeValueByName("image"))
         }
 }

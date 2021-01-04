@@ -21,7 +21,7 @@ internal class ContentParser : NamespaceParser() {
     override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
             "encoded" -> {
-                val encoded = textOrNull(node)
+                val encoded = node.textOrNull()
                 if (encoded != null) builder.content.encoded(encoded)
             }
             else -> pass

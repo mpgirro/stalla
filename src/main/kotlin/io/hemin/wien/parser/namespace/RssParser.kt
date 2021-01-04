@@ -22,30 +22,30 @@ internal class RssParser : NamespaceParser() {
 
     override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "copyright" -> builder.copyright(textOrNull(node))
+            "copyright" -> builder.copyright(node.textOrNull())
             "description" -> {
-                val description = textOrNull(node) ?: return
+                val description = node.textOrNull() ?: return
                 builder.description(description)
             }
-            "docs" -> builder.docs(textOrNull(node))
-            "generator" -> builder.generator(textOrNull(node))
+            "docs" -> builder.docs(node.textOrNull())
+            "generator" -> builder.generator(node.textOrNull())
             "image" -> builder.imageBuilder(toImage(node, builder.createImageBuilder()))
             "language" -> {
-                val language = textOrNull(node) ?: return
+                val language = node.textOrNull() ?: return
                 builder.language(language)
             }
-            "lastBuildDate" -> builder.lastBuildDate(toDate(node))
+            "lastBuildDate" -> builder.lastBuildDate(node.toDate())
             "link" -> {
-                val link = textOrNull(node) ?: return
+                val link = node.textOrNull() ?: return
                 builder.link(link)
             }
-            "managingEditor" -> builder.managingEditor(textOrNull(node))
-            "pubDate" -> builder.pubDate(toDate(node))
+            "managingEditor" -> builder.managingEditor(node.textOrNull())
+            "pubDate" -> builder.pubDate(node.toDate())
             "title" -> {
-                val title = textOrNull(node) ?: return
+                val title = node.textOrNull() ?: return
                 builder.title(title)
             }
-            "webMaster" -> builder.webMaster(textOrNull(node))
+            "webMaster" -> builder.webMaster(node.textOrNull())
             "item" -> pass // Items are parsed by WienParser direcly
             else -> pass
         }
@@ -53,33 +53,33 @@ internal class RssParser : NamespaceParser() {
 
     override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
-            "author" -> builder.author(textOrNull(node))
+            "author" -> builder.author(node.textOrNull())
             "category" -> {
-                val category = textOrNull(node) ?: return
+                val category = node.textOrNull() ?: return
                 builder.addCategory(category)
             }
-            "comments" -> builder.comments(textOrNull(node))
-            "description" -> builder.description(textOrNull(node))
+            "comments" -> builder.comments(node.textOrNull())
+            "description" -> builder.description(node.textOrNull())
             "enclosure" -> {
                 val enclosure = toEnclosureBuilder(node, builder.createEnclosureBuilder()) ?: return
                 builder.enclosureBuilder(enclosure)
             }
             "guid" -> builder.guidBuilder(toGuidBuilder(node, builder.createGuidBuilder()))
-            "link" -> builder.link(textOrNull(node))
-            "pubDate" -> builder.pubDate(toDate(node))
-            "source" -> builder.source(textOrNull(node))
+            "link" -> builder.link(node.textOrNull())
+            "pubDate" -> builder.pubDate(node.toDate())
+            "source" -> builder.source(node.textOrNull())
             "title" -> {
-                val title = textOrNull(node) ?: return
+                val title = node.textOrNull() ?: return
                 builder.title(title)
             }
             else -> pass
         }
     }
 
-    private fun toEnclosureBuilder(node: Node, enclosureBuilder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = ifMatchesNamespace(node) {
-        val url = attributeValueByName(it, "url")
-        val length = attributeValueByName(it, "length")?.toLongOrNull()
-        val type = attributeValueByName(it, "type")
+    private fun toEnclosureBuilder(node: Node, enclosureBuilder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = node.ifMatchesNamespace() {
+        val url = it.attributeValueByName("url")
+        val length = it.attributeValueByName("length")?.toLongOrNull()
+        val type = it.attributeValueByName("type")
 
         if (url == null || length == null || type == null) return@ifMatchesNamespace null
 
@@ -88,25 +88,25 @@ internal class RssParser : NamespaceParser() {
             .type(type)
     }
 
-    private fun toGuidBuilder(node: Node, builder: EpisodeGuidBuilder): EpisodeGuidBuilder? = ifMatchesNamespace(node) {
-        val guid = textOrNull(it) ?: return@ifMatchesNamespace null
+    private fun toGuidBuilder(node: Node, builder: EpisodeGuidBuilder): EpisodeGuidBuilder? = node.ifMatchesNamespace() {
+        val guid = it.textOrNull() ?: return@ifMatchesNamespace null
 
         builder.textContent(guid)
-            .isPermalink(attributeValueByName(it, "isPermaLink").parseAsBooleanOrNull())
+            .isPermalink(it.attributeValueByName("isPermaLink").parseAsBooleanOrNull())
     }
 
-    private fun toImage(node: Node, builder: ImageBuilder): ImageBuilder? = ifMatchesNamespace(node) {
+    private fun toImage(node: Node, builder: ImageBuilder): ImageBuilder? = node.ifMatchesNamespace() {
         for (child in node.childNodes.asListOfNodes()) {
             when (child.localName) {
-                "description" -> builder.description(textOrNull(child))
-                "height" -> builder.height(toInt(child))
-                "link" -> builder.link(textOrNull(child))
-                "title" -> builder.title(textOrNull(child))
+                "description" -> builder.description(child.textOrNull())
+                "height" -> builder.height(child.toInt())
+                "link" -> builder.link(child.textOrNull())
+                "title" -> builder.title(child.textOrNull())
                 "url" -> {
-                    val url = textOrNull(child) ?: continue
+                    val url = child.textOrNull() ?: continue
                     builder.url(url)
                 }
-                "width" -> builder.width(toInt(child))
+                "width" -> builder.width(child.toInt())
             }
         }
         builder

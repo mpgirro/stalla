@@ -16,11 +16,11 @@ internal class FeedpressParser : NamespaceParser() {
 
     override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "newsletterId" -> builder.feedpress.newsletterId(textOrNull(node))
-            "locale" -> builder.feedpress.locale(textOrNull(node))
-            "podcastId" -> builder.feedpress.podcastId(textOrNull(node))
-            "cssFile" -> builder.feedpress.cssFile(textOrNull(node))
-            "link" -> builder.feedpress.link(textOrNull(node))
+            "newsletterId" -> builder.feedpress.newsletterId(node.textOrNull())
+            "locale" -> builder.feedpress.locale(node.textOrNull())
+            "podcastId" -> builder.feedpress.podcastId(node.textOrNull())
+            "cssFile" -> builder.feedpress.cssFile(node.textOrNull())
+            "link" -> builder.feedpress.link(node.textOrNull())
             else -> pass
         }
     }
