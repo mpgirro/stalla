@@ -13,41 +13,36 @@ import org.w3c.dom.Node
  */
 internal class GooglePlayParser : NamespaceParser() {
 
-    /**
-     * The URI of the namespace processed by this parser.
-     *
-     * URI: `http://www.google.com/schemas/play-podcasts/1.0`
-     */
     override val namespaceURI: String = "http://www.google.com/schemas/play-podcasts/1.0"
 
-    override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
+    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "author" -> builder.googlePlay.author(toText(node))
-            "owner" -> builder.googlePlay.owner(toText(node))
+            "author" -> builder.googlePlay.author(node.textOrNull())
+            "owner" -> builder.googlePlay.owner(node.textOrNull())
             "category" -> {
-                val category = node.attributes.getNamedItem("text").textContent ?: return@valid
+                val category = node.attributes.getNamedItem("text").textContent ?: return
                 builder.googlePlay.addCategory(category)
             }
-            "description" -> builder.googlePlay.description(toText(node))
-            "explicit" -> builder.googlePlay.explicit(toBoolean(node))
-            "block" -> builder.googlePlay.block(toBoolean(node))
+            "description" -> builder.googlePlay.description(node.textOrNull())
+            "explicit" -> builder.googlePlay.explicit(node.textAsBooleanOrNull())
+            "block" -> builder.googlePlay.block(node.textAsBooleanOrNull())
             "image" -> builder.googlePlay.imageBuilder(toImageBuilder(node, builder.createImageBuilder()))
             else -> pass
         }
     }
 
-    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
+    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
-            "description" -> builder.googlePlay.description(toText(node))
-            "explicit" -> builder.googlePlay.explicit(toBoolean(node))
-            "block" -> builder.googlePlay.block(toBoolean(node))
+            "description" -> builder.googlePlay.description(node.textOrNull())
+            "explicit" -> builder.googlePlay.explicit(node.textAsBooleanOrNull())
+            "block" -> builder.googlePlay.block(node.textAsBooleanOrNull())
             "image" -> builder.googlePlay.imageBuilder(toImageBuilder(node, builder.createImageBuilder()))
             else -> pass
         }
     }
 
-    private fun toImageBuilder(node: Node, imageBuilder: ImageBuilder): ImageBuilder? = valid(node) {
-        val url: String? = attributeValueByName(node, "href")
+    private fun toImageBuilder(node: Node, imageBuilder: ImageBuilder): ImageBuilder? = node.ifMatchesNamespace() {
+        val url: String? = node.attributeValueByName("href")
         if (url.isNullOrBlank()) {
             null
         } else {

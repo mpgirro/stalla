@@ -114,7 +114,7 @@ object WienParser {
                 }
                 else -> {
                     for (parser in parsers) {
-                        parser.parse(builder, element)
+                        parser.tryParsingChannelChildNode(builder, element)
                     }
                 }
             }
@@ -126,7 +126,7 @@ object WienParser {
         val builder: EpisodeBuilder = ValidatingEpisodeBuilder()
         for (element in childNodes.asListOfNodes()) {
             for (parser in parsers) {
-                parser.parse(builder, element)
+                parser.tryParsingItemChildNode(builder, element)
             }
         }
         builder

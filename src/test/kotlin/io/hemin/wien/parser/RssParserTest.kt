@@ -16,15 +16,14 @@ import io.hemin.wien.dateTime
 import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.RssParser
 import org.junit.jupiter.api.Test
-import java.util.Calendar
-import java.util.Date
+import java.time.Month
 
 internal class RssParserTest : NamespaceParserTest() {
 
     override val parser = RssParser()
 
     // "Fri, 16 Mar 2018 22:49:08 +0000"
-    private val expectedDate: Date = dateTime(year = 2018, monthZeroBased = Calendar.MARCH, day = 16, hour = 22, minute = 49, second = 8)
+    private val expectedDate = dateTime(year = 2018, month = Month.MARCH, day = 16, hour = 22, minute = 49, second = 8)
 
     private val expectedEnclosureBuilder = FakeEpisodeEnclosureBuilder().apply {
         urlValue = "http://example.org/episode1.m4a"
@@ -50,7 +49,7 @@ internal class RssParserTest : NamespaceParserTest() {
     fun `should extract all RSS fields from channel when present`() {
         val node = nodeFromResource("channel", "/xml/channel.xml")
         val builder = FakePodcastBuilder()
-        parseChannelNode(builder, node)
+        parseChannelChildNodes(builder, node)
 
         assertThat(builder, "channel").all {
             prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
@@ -72,7 +71,7 @@ internal class RssParserTest : NamespaceParserTest() {
     fun `should not extract RSS fields from channel when absent`() {
         val node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
         val builder = FakePodcastBuilder()
-        parseChannelNode(builder, node)
+        parseChannelChildNodes(builder, node)
 
         assertThat(builder, "channel").all {
             prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
@@ -94,7 +93,7 @@ internal class RssParserTest : NamespaceParserTest() {
     fun `should extract all RSS fields from item when present`() {
         val node = nodeFromResource("item", "/xml/item.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemNode(builder, node)
+        parseItemChildNodes(builder, node)
 
         assertThat(builder, "item").all {
             prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")
@@ -114,7 +113,7 @@ internal class RssParserTest : NamespaceParserTest() {
     fun `should not extract RSS fields from item when absent`() {
         val node = nodeFromResource("item", "/xml/item-incomplete.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemNode(builder, node)
+        parseItemChildNodes(builder, node)
 
         assertThat(builder, "item").all {
             prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")

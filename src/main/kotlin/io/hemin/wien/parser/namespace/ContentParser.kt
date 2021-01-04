@@ -12,20 +12,16 @@ import org.w3c.dom.Node
  */
 internal class ContentParser : NamespaceParser() {
 
-    /**
-     * The URI of the namespace processed by this parser.
-     *
-     * URI: `http://purl.org/rss/1.0/modules/content/`
-     */
     override val namespaceURI: String = "http://purl.org/rss/1.0/modules/content/"
 
-    /** This module does not set any data in the [PodcastBuilder]. */
-    override fun parse(builder: PodcastBuilder, node: Node) {}
+    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
+        // No-op
+    }
 
-    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
+    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
             "encoded" -> {
-                val encoded = toText(node)
+                val encoded = node.textOrNull()
                 if (encoded != null) builder.content.encoded(encoded)
             }
             else -> pass

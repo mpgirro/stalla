@@ -15,71 +15,65 @@ import org.w3c.dom.Node
  */
 internal class ITunesParser : NamespaceParser() {
 
-    /**
-     * The URI of the namespace processed by this parser.
-     *
-     * URI: `http://www.itunes.com/dtds/podcast-1.0.dtd`
-     */
     override val namespaceURI: String = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 
-    override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
+    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "author" -> builder.iTunes.author(toText(node))
-            "block" -> builder.iTunes.block(toBoolean(node))
+            "author" -> builder.iTunes.author(node.textOrNull())
+            "block" -> builder.iTunes.block(node.textAsBooleanOrNull())
             "category" -> {
-                val category = node.attributes.getNamedItem("text").textContent ?: return@valid
+                val category = node.attributes.getNamedItem("text").textContent ?: return
                 builder.iTunes.addCategory(category)
             }
-            "complete" -> builder.iTunes.complete(toBoolean(node))
+            "complete" -> builder.iTunes.complete(node.textAsBooleanOrNull())
             "explicit" -> {
-                val explicit = toBoolean(node) ?: return@valid
+                val explicit = node.textAsBooleanOrNull() ?: return
                 builder.iTunes.explicit(explicit)
             }
             "image" -> {
-                val image = toImageBuilder(node, builder.createImageBuilder()) ?: return@valid
+                val image = toImageBuilder(node, builder.createImageBuilder()) ?: return
                 builder.iTunes.imageBuilder(image)
             }
-            "keywords" -> builder.iTunes.keywords(toText(node))
+            "keywords" -> builder.iTunes.keywords(node.textOrNull())
             "owner" -> builder.iTunes.ownerBuilder(toPersonBuilder(node, builder.createPersonBuilder()))
-            "subtitle" -> builder.iTunes.subtitle(toText(node))
-            "summary" -> builder.iTunes.summary(toText(node))
-            "type" -> builder.iTunes.type(toText(node))
-            "title" -> builder.iTunes.title(toText(node))
-            "new-feed-url" -> builder.iTunes.newFeedUrl(toText(node))
+            "subtitle" -> builder.iTunes.subtitle(node.textOrNull())
+            "summary" -> builder.iTunes.summary(node.textOrNull())
+            "type" -> builder.iTunes.type(node.textOrNull())
+            "title" -> builder.iTunes.title(node.textOrNull())
+            "new-feed-url" -> builder.iTunes.newFeedUrl(node.textOrNull())
             else -> pass
         }
     }
 
-    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
+    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
-            "block" -> builder.iTunes.block(toBoolean(node))
-            "duration" -> builder.iTunes.duration(toText(node))
-            "episode" -> builder.iTunes.episode(toInt(node))
-            "episodeType" -> builder.iTunes.episodeType(toText(node))
-            "explicit" -> builder.iTunes.explicit(toBoolean(node))
+            "block" -> builder.iTunes.block(node.textAsBooleanOrNull())
+            "duration" -> builder.iTunes.duration(node.textOrNull())
+            "episode" -> builder.iTunes.episode(node.toInt())
+            "episodeType" -> builder.iTunes.episodeType(node.textOrNull())
+            "explicit" -> builder.iTunes.explicit(node.textAsBooleanOrNull())
             "image" -> builder.iTunes.imageBuilder(toImageBuilder(node, builder.createImageBuilder()))
-            "season" -> builder.iTunes.season(toInt(node))
-            "title" -> builder.iTunes.title(toText(node))
-            "author" -> builder.iTunes.author(toText(node))
-            "subtitle" -> builder.iTunes.subtitle(toText(node))
-            "summary" -> builder.iTunes.summary(toText(node))
+            "season" -> builder.iTunes.season(node.toInt())
+            "title" -> builder.iTunes.title(node.textOrNull())
+            "author" -> builder.iTunes.author(node.textOrNull())
+            "subtitle" -> builder.iTunes.subtitle(node.textOrNull())
+            "summary" -> builder.iTunes.summary(node.textOrNull())
             else -> pass
         }
     }
 
-    private fun toImageBuilder(node: Node, imageBuilder: ImageBuilder): ImageBuilder? = valid(node) {
-        val url: String? = attributeValueByName(node, "href")
+    private fun toImageBuilder(node: Node, imageBuilder: ImageBuilder): ImageBuilder? = node.ifMatchesNamespace() {
+        val url: String? = node.attributeValueByName("href")
         if (url.isNullOrBlank()) {
             null
         } else {
-            imageBuilder
-                .url(url)
+            imageBuilder.url(url)
         }
     }
 
-    private fun toPersonBuilder(node: Node, personBuilder: PersonBuilder): PersonBuilder? = valid(node) {
+    private fun toPersonBuilder(node: Node, personBuilder: PersonBuilder): PersonBuilder? = node.ifMatchesNamespace() {
         for (child in node.childNodes.asListOfNodes()) {
-            val value: String? = toText(child)
+            val value: String? = child.textOrNull()
             when (child.localName) {
                 "name" -> if (value != null) personBuilder.name(value)
                 "email" -> personBuilder.email(value)

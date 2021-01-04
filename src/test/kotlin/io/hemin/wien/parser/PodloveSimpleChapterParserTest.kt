@@ -17,7 +17,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
     fun `should not extract podlove chapter data from item when absent`() {
         val node = nodeFromResource("item", "/xml/item-incomplete.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemNode(builder, node)
+        parseItemChildNodes(builder, node)
 
         assertThat(builder.podlove.chapterBuilders, "item.podlove_simple_chapters").isEmpty()
     }
@@ -26,7 +26,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
     fun `should extract podlove chapter data from item when present`() {
         val node = nodeFromResource("item", "/xml/item.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemNode(builder, node)
+        parseItemChildNodes(builder, node)
 
         assertThat(builder.podlove.chapterBuilders, "item.podlove_simple_chapters")
             .containsExactly(

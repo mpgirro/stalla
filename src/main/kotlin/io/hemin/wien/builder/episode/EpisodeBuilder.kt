@@ -5,7 +5,7 @@ import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Episode
-import java.util.Date
+import java.time.temporal.TemporalAccessor
 
 internal interface EpisodeBuilder : Builder<Episode> {
 
@@ -66,7 +66,7 @@ internal interface EpisodeBuilder : Builder<Episode> {
     fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder
 
     /** Set the pubDate value. */
-    fun pubDate(pubDate: Date?): EpisodeBuilder
+    fun pubDate(pubDate: TemporalAccessor?): EpisodeBuilder
 
     /** Set the source value. */
     fun source(source: String?): EpisodeBuilder

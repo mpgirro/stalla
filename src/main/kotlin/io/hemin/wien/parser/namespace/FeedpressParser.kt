@@ -14,17 +14,18 @@ internal class FeedpressParser : NamespaceParser() {
 
     override val namespaceURI: String = "https://feed.press/xmlns"
 
-    override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
+    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "newsletterId" -> builder.feedpress.newsletterId(toText(node))
-            "locale" -> builder.feedpress.locale(toText(node))
-            "podcastId" -> builder.feedpress.podcastId(toText(node))
-            "cssFile" -> builder.feedpress.cssFile(toText(node))
-            "link" -> builder.feedpress.link(toText(node))
+            "newsletterId" -> builder.feedpress.newsletterId(node.textOrNull())
+            "locale" -> builder.feedpress.locale(node.textOrNull())
+            "podcastId" -> builder.feedpress.podcastId(node.textOrNull())
+            "cssFile" -> builder.feedpress.cssFile(node.textOrNull())
+            "link" -> builder.feedpress.link(node.textOrNull())
             else -> pass
         }
     }
 
-    /** This module does not set any data in the [EpisodeBuilder]. */
-    override fun parse(builder: EpisodeBuilder, node: Node) {}
+    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
+        // No-op
+    }
 }

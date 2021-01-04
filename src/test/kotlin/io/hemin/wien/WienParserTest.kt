@@ -17,6 +17,7 @@ import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.findElementByTagName
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
+import java.time.Month
 import javax.xml.parsers.DocumentBuilderFactory
 
 internal class WienParserTest {
@@ -131,7 +132,7 @@ internal class WienParserTest {
             prop(Podcast::generator).isEqualTo("Fireside (https://fireside.fm)")
             prop(Podcast::title).isEqualTo("Smashing Security")
             prop(Podcast::link).isEqualTo("http://www.smashingsecurity.com")
-            prop(Podcast::pubDate).isEqualTo(dateTime(year = 2020, monthZeroBased = 11, day = 17, hour = 0, minute = 45, second = 6))
+            prop(Podcast::pubDate).isEqualTo(dateTime(year = 2020, month = Month.DECEMBER, day = 17, hour = 0, minute = 45, second = 6))
             prop(Podcast::description).isEqualTo(
                 "A helpful and hilarious take on the week's tech SNAFUs. Computer security industry veterans <a href=\"https://www.smashingsecurity.com/hosts/graham-cluley\">Graham Cluley</a> and <a href=\"https://www.smashingsecurity.com/hosts/carole-theriault\">Carole Theriault</a> chat with <a href=\"https://www.smashingsecurity.com/guests\">guests</a> about cybercrime, hacking, and online privacy.   It's not your typical cybersecurity podcast...\n" +
                         "Winner of the \"Best Security Podcast 2018\" and \"Best Security Podcast 2019\", Smashing Security has had over four million downloads. Past guests include Garry Kasparov, Mikko Hyppönen, and Rory Cellan-Jones.\n" +
@@ -178,7 +179,7 @@ internal class WienParserTest {
                         prop(Episode.Guid::textContent).isEqualTo("2ed98bdd-ea95-4129-98cf-ee23dd2ab478")
                         prop(Episode.Guid::isPermalink).isNotNull().isFalse()
                     }
-                    prop(Episode::pubDate).isEqualTo(dateTime(year = 2020, monthZeroBased = 10, day = 12))
+                    prop(Episode::pubDate).isEqualTo(dateTime(year = 2020, month = Month.NOVEMBER, day = 12))
                     prop(Episode::author).isEqualTo("Graham Cluley, Carole Theriault")
                     prop(Episode::enclosure).all {
                         prop(Episode.Enclosure::url).isEqualTo("https://aphid.fireside.fm/d/1437767933/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/2ed98bdd-ea95-4129-98cf-ee23dd2ab478.mp3")

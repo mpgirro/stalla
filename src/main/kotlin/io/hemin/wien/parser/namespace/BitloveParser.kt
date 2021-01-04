@@ -14,20 +14,17 @@ internal class BitloveParser : NamespaceParser() {
 
     override val namespaceURI: String = "http://bitlove.org"
 
-    override fun parse(builder: PodcastBuilder, node: Node) {}
-
-    override fun parse(builder: EpisodeBuilder, node: Node) {
-        if (node.namespaceURI == null && node.localName == "enclosure") {
-            val guid = toGuid(node) ?: return
-            builder.bitlove.guid(guid)
-        }
+    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
+        // No-op
     }
 
-    /**
-     * Extracts the Bitlove GUID attribute from the DOM node.
-     *
-     * @return The DOM nodes GUID attribute value from the Bitlove namespace, if present.
-     */
+    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
+        val guid = toGuid(node) ?: return
+        builder.bitlove.guid(guid)
+    }
+
+    override fun Node.canParseNode() = namespaceURI == null && localName == "enclosure" && isDirectChildOf("item")
+
     private fun toGuid(node: Node): String? =
         node.attributes?.getNamedItemNS(namespaceURI, "guid")?.textContent?.trim()
 }

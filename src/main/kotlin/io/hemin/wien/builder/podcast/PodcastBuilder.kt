@@ -6,7 +6,7 @@ import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.model.Podcast
-import java.util.Date
+import java.time.temporal.TemporalAccessor
 
 internal interface PodcastBuilder : Builder<Podcast> {
 
@@ -35,10 +35,10 @@ internal interface PodcastBuilder : Builder<Podcast> {
     fun description(description: String): PodcastBuilder
 
     /** Set the pubDate value. */
-    fun pubDate(pubDate: Date?): PodcastBuilder
+    fun pubDate(pubDate: TemporalAccessor?): PodcastBuilder
 
     /** Set the lastBuildDate value. */
-    fun lastBuildDate(lastBuildDate: Date?): PodcastBuilder
+    fun lastBuildDate(lastBuildDate: TemporalAccessor?): PodcastBuilder
 
     /** Set the language value. */
     fun language(language: String): PodcastBuilder

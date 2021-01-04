@@ -9,15 +9,15 @@ internal abstract class NamespaceParserTest {
 
     abstract val parser: NamespaceParser
 
-    protected fun parseChannelNode(builder: FakePodcastBuilder, channel: Node) {
+    protected fun parseChannelChildNodes(builder: FakePodcastBuilder, channel: Node) {
         for (element in channel.childNodes.asListOfNodes()) {
-            parser.parse(builder, element)
+            parser.tryParsingChannelChildNode(builder, element)
         }
     }
 
-    protected fun parseItemNode(builder: FakeEpisodeBuilder, item: Node) {
+    protected fun parseItemChildNodes(builder: FakeEpisodeBuilder, item: Node) {
         for (element in item.childNodes.asListOfNodes()) {
-            parser.parse(builder, element)
+            parser.tryParsingItemChildNode(builder, element)
         }
     }
 }

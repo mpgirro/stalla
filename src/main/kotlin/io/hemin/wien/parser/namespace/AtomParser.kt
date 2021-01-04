@@ -17,64 +17,64 @@ internal class AtomParser : NamespaceParser() {
 
     override val namespaceURI: String = "http://www.w3.org/2005/Atom"
 
-    override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
+    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
             "contributor" -> {
-                val personBuilder = toPersonBuilder(node, builder.createPersonBuilder()) ?: return@valid
+                val personBuilder = toPersonBuilder(node, builder.createPersonBuilder()) ?: return
                 builder.atom.addContributorBuilder(personBuilder)
             }
             "author" -> {
-                val personBuilder = toPersonBuilder(node, builder.createPersonBuilder()) ?: return@valid
+                val personBuilder = toPersonBuilder(node, builder.createPersonBuilder()) ?: return
                 builder.atom.addAuthorBuilder(personBuilder)
             }
             "link" -> {
-                val linkBuilder = toLinkBuilder(node, builder.createLinkBuilder()) ?: return@valid
+                val linkBuilder = toLinkBuilder(node, builder.createLinkBuilder()) ?: return
                 builder.atom.addLinkBuilder(linkBuilder)
             }
             else -> pass
         }
     }
 
-    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
+    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
             "contributor" -> {
-                val person = toPersonBuilder(node, builder.createPersonBuilder()) ?: return@valid
+                val person = toPersonBuilder(node, builder.createPersonBuilder()) ?: return
                 builder.atom.addContributorBuilder(person)
             }
             "author" -> {
-                val person = toPersonBuilder(node, builder.createPersonBuilder()) ?: return@valid
+                val person = toPersonBuilder(node, builder.createPersonBuilder()) ?: return
                 builder.atom.addAuthorBuilder(person)
             }
             "link" -> {
-                val link = toLinkBuilder(node, builder.createLinkBuilder()) ?: return@valid
+                val link = toLinkBuilder(node, builder.createLinkBuilder()) ?: return
                 builder.atom.addLinkBuilder(link)
             }
             else -> pass
         }
     }
 
-    private fun toLinkBuilder(node: Node, linkBuilder: LinkBuilder): LinkBuilder? = valid(node) {
-        val href = attributeValueByName(it, "href") ?: return@valid null
+    private fun toLinkBuilder(node: Node, linkBuilder: LinkBuilder): LinkBuilder? = node.ifMatchesNamespace() {
+        val href = it.attributeValueByName("href") ?: return@ifMatchesNamespace null
 
         linkBuilder
             .href(href)
-            .hrefLang(attributeValueByName(it, "hrefLang"))
-            .hrefResolved(attributeValueByName(it, "hrefResolved"))
-            .length(attributeValueByName(it, "length"))
-            .rel(attributeValueByName(it, "rel"))
-            .title(attributeValueByName(it, "title"))
-            .type(attributeValueByName(it, "type"))
+            .hrefLang(it.attributeValueByName("hrefLang"))
+            .hrefResolved(it.attributeValueByName("hrefResolved"))
+            .length(it.attributeValueByName("length"))
+            .rel(it.attributeValueByName("rel"))
+            .title(it.attributeValueByName("title"))
+            .type(it.attributeValueByName("type"))
     }
 
-    private fun toPersonBuilder(node: Node, personBuilder: PersonBuilder): PersonBuilder? = valid(node) {
+    private fun toPersonBuilder(node: Node, personBuilder: PersonBuilder): PersonBuilder? = node.ifMatchesNamespace() {
         for (child in node.childNodes.asListOfNodes()) {
             when (child.localName) {
                 "name" -> {
-                    val name = toText(child)
+                    val name = child.textOrNull()
                     if (name != null) personBuilder.name(name)
                 }
-                "email" -> personBuilder.email(toText(child))
-                "uri" -> personBuilder.uri(toText(child))
+                "email" -> personBuilder.email(child.textOrNull())
+                "uri" -> personBuilder.uri(child.textOrNull())
             }
         }
         personBuilder
