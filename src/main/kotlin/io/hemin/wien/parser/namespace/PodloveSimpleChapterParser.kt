@@ -17,20 +17,21 @@ internal class PodloveSimpleChapterParser : NamespaceParser() {
 
     override val namespaceURI: String = "http://podlove.org/simple-chapters"
 
-    /** This module does not set any data in the [PodcastBuilder]. */
-    override fun parse(builder: PodcastBuilder, node: Node) {}
+    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
+        // No-op
+    }
 
-    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
+    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
             "chapters" -> {
-                val chapters = toPodloveSimpleChapterBuilders(node, builder) ?: return@valid
+                val chapters = toPodloveSimpleChapterBuilders(node, builder) ?: return
                 builder.podlove.addSimpleChapterBuilders(chapters)
             }
             else -> pass
         }
     }
 
-    private fun toPodloveSimpleChapterBuilders(node: Node, builder: EpisodeBuilder): List<EpisodePodloveSimpleChapterBuilder>? = valid(node) {
+    private fun toPodloveSimpleChapterBuilders(node: Node, builder: EpisodeBuilder): List<EpisodePodloveSimpleChapterBuilder>? = ifMatchesNamespace(node) {
         node.childNodes.asListOfNodes().stream()
             .filter { c -> c.localName == "chapter" }
             .map { it.toPodloveSimpleChapterBuilder(builder.createPodloveSimpleChapterBuilder()) }
@@ -39,10 +40,10 @@ internal class PodloveSimpleChapterParser : NamespaceParser() {
     }
 
     private fun Node.toPodloveSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveSimpleChapterBuilder? =
-        valid(this) {
+        ifMatchesNamespace(this) {
             val start = attributeValueByName(this, "start")
             val title = attributeValueByName(this, "title")
-            if (start == null || title == null) return@valid null
+            if (start == null || title == null) return@ifMatchesNamespace null
 
             chapterBuilder.start(start)
                 .title(title)

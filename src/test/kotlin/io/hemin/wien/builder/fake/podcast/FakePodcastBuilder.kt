@@ -10,7 +10,7 @@ import io.hemin.wien.builder.fake.FakeLinkBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.model.Podcast
-import java.util.Date
+import java.time.temporal.TemporalAccessor
 
 @Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
@@ -20,8 +20,8 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     var descriptionValue: String? = null
     var languageValue: String? = null
 
-    var pubDate: Date? = null
-    var lastBuildDate: Date? = null
+    var pubDate: TemporalAccessor? = null
+    var lastBuildDate: TemporalAccessor? = null
     var generator: String? = null
     var copyright: String? = null
     var docs: String? = null
@@ -47,9 +47,9 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override fun description(description: String): PodcastBuilder = apply { this.descriptionValue = description }
 
-    override fun pubDate(pubDate: Date?): PodcastBuilder = apply { this.pubDate = pubDate }
+    override fun pubDate(pubDate: TemporalAccessor?): PodcastBuilder = apply { this.pubDate = pubDate }
 
-    override fun lastBuildDate(lastBuildDate: Date?): PodcastBuilder = apply { this.lastBuildDate = lastBuildDate }
+    override fun lastBuildDate(lastBuildDate: TemporalAccessor?): PodcastBuilder = apply { this.lastBuildDate = lastBuildDate }
 
     override fun language(language: String): PodcastBuilder = apply { this.languageValue = language }
 

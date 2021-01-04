@@ -1,7 +1,7 @@
 package io.hemin.wien.model
 
 import io.hemin.wien.model.Episode.Podlove.SimpleChapter
-import java.util.Date
+import java.time.temporal.TemporalAccessor
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<item>` elements.
@@ -23,6 +23,7 @@ import java.util.Date
  * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property bitlove The data from the Bitlove namespace, or null if no data from this namespace was found.
  */
+@Suppress("unused")
 data class Episode(
     val title: String,
     val link: String? = null,
@@ -32,7 +33,7 @@ data class Episode(
     val comments: String? = null,
     val enclosure: Enclosure,
     val guid: Guid? = null,
-    val pubDate: Date? = null,
+    val pubDate: TemporalAccessor? = null,
     val source: String? = null,
     val content: Content? = null,
     val iTunes: ITunes? = null,
@@ -100,6 +101,7 @@ data class Episode(
         override val subtitle: String? = null,
         override val summary: String? = null
     ) : ITunesBase {
+
         /**
          * Enum model for the defined values encountered within the
          * `<itunes:episodeType>` element within a `<item>` element.

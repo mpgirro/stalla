@@ -1,6 +1,6 @@
 package io.hemin.wien.model
 
-import java.util.Date
+import java.time.temporal.TemporalAccessor
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<channel>` elements.
@@ -28,8 +28,8 @@ data class Podcast(
     val title: String,
     val link: String,
     val description: String,
-    val pubDate: Date? = null,
-    val lastBuildDate: Date? = null,
+    val pubDate: TemporalAccessor? = null,
+    val lastBuildDate: TemporalAccessor? = null,
     val language: String,
     val generator: String? = null,
     val copyright: String? = null,

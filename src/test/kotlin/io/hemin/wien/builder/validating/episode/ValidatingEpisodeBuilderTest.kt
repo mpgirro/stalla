@@ -9,22 +9,14 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
+import io.hemin.wien.dateTime
 import io.hemin.wien.model.Episode
 import org.junit.jupiter.api.Test
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
+import java.time.Month
 
 internal class ValidatingEpisodeBuilderTest {
 
-    private val expectedDate: Date = Calendar.Builder()
-        .setLocale(Locale.ENGLISH)
-        .setTimeZone(TimeZone.getTimeZone("UTC"))
-        .setDate(2018, Calendar.MARCH, 16) // "Fri, 16 Mar 2018 22:49:08 +0000"
-        .setTimeOfDay(22, 49, 8)
-        .build()
-        .time
+    private val expectedDate = dateTime(year = 2018, month = Month.MARCH, day = 16, hour = 22, minute = 49, second = 8)
 
     private val expectedEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
         .url("enclosure url")

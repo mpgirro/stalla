@@ -2,8 +2,10 @@ package io.hemin.wien.parser
 
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.util.trimmedOrNullIfBlank
 import org.w3c.dom.Node
-import java.util.Date
+import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 /** Base class for XML namespace parser implementations. */
 internal abstract class NamespaceParser {
@@ -12,71 +14,95 @@ internal abstract class NamespaceParser {
     abstract val namespaceURI: String?
 
     /**
+     * Parses a child [Node] that lives inside a `<channel>` node.
      * Extracts data from the XML namespace defined by [namespaceURI]
      * and applies the values to properties of the [PodcastBuilder].
-     * Parsing is only executed when the node's namespaceURI property
+     * Parsing is only executed when the node's [Node.getNamespaceURI]
      * matches this parser's [namespaceURI].
+     *
+     * @see canParseNode
+     * @param builder The builder where all parsed data is added to.
+     * @param node The DOM node from which all data is extracted from.
+     */
+    fun tryParsingChannelChildNode(builder: PodcastBuilder, node: Node) {
+        if (!node.canParseNode()) return
+        require(node.isDirectChildOf("channel")) { "This function can only parse nodes that are direct children of <channel>" }
+        parseChannelNode(builder, node)
+    }
+
+    /**
+     * Extract all the data from a `<channel>` child node for the [namespaceURI],
+     * adding it to the provided builder as it goes.
+     * **Note:** this method is only ever called when the node
      *
      * @param builder The builder where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    abstract fun parse(builder: PodcastBuilder, node: Node): Any?
+    protected abstract fun parseChannelNode(builder: PodcastBuilder, node: Node)
 
     /**
      * Extracts data from the XML namespace defined by [namespaceURI]
      * and applies the values to properties of the [EpisodeBuilder].
-     * Parsing is only executed when the node's namespaceURI property
-     * matches this parser's [namespaceURI].
      *
+     * Parsing is only executed when the parser supports the node, which
+     * by default means that the node's namespaceURI property matches
+     * the parser's [namespaceURI]. Some parsers may change this behavior,
+     * such as [io.hemin.wien.parser.namespace.BitloveParser].
+     *
+     * @see canParseNode
      * @param builder The builder where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
      */
-    abstract fun parse(builder: EpisodeBuilder, node: Node): Any?
-
-    /**
-     * Extracts the text content of a DOM node. Trims whitespace at the beginning and the end.
-     *
-     * @return The content of the DOM node in string representation.
-     */
-    fun toText(node: Node): String? = valid(node) {
-        it.textContent.trim()
+    fun tryParsingItemChildNode(builder: EpisodeBuilder, node: Node) {
+        if (!node.canParseNode()) return
+        require(node.isDirectChildOf("item")) { "This function can only parse nodes that are direct children of <item>" }
+        parseItemNode(builder, node)
     }
 
     /**
-     * Extracts the text content of a DOM node, and transforms it to a Date instance.
+     * Extract all the data from a `<channel>` node for the [namespaceURI],
+     * adding it to the provided builder as it goes.
+     * **Note:** this method is only ever called when the node has the correct
+     * namespace, and it is indeed a direct child of `<item>`.
      *
-     * @return The DOM nodes content as a Date, or null if date parsing failed.
+     * @param builder The builder where all parsed data is added to.
+     *
+     * @param node The DOM node from which all data is extracted from.
+     *
      */
-    fun toDate(node: Node): Date? = valid(node) {
-        try {
-            DateParser.parse(toText(it))
-        } catch (e: NullPointerException) {
-            null
-        }
+    protected abstract fun parseItemNode(builder: EpisodeBuilder, node: Node)
+
+    /**
+     * Extracts the [Node.getTextContent] of a DOM node. Trims whitespace at the beginning and the end.
+     * Returns `null` if the text is blank.
+     *
+     * @return The content of the DOM node in string representation, or null.
+     */
+    protected fun textOrNull(node: Node): String? = ifMatchesNamespace(node) {
+        it.textContent.trimmedOrNullIfBlank()
     }
 
     /**
-     * Interprets a string's content as a boolean. If the textContent cannot be recognizes, null is returned.
+     * Extracts the [Node.getTextContent] of a DOM node, and tries to parse it as a boolean.
+     * If the textContent cannot be parsed, returns `null`.
      *
-     * @param sBool The string representation of a boolean.
-     * @return The logical interpretation of the string parameter.
+     * @see parseAsBooleanOrNull
+     * @return The logical interpretation of the DOM node's text content as boolean, or `null`.
      */
-    fun toBoolean(sBool: String?) = when (sBool) {
-        "true" -> true
-        "yes" -> true
-        "false" -> false
-        "no" -> false
+    protected fun textAsBooleanOrNull(node: Node): Boolean? = ifMatchesNamespace(node) {
+        textOrNull(it).parseAsBooleanOrNull()
+    }
+
+    /**
+     * Interprets a string content as a boolean. If the string value cannot be parsed, returns `null`.
+     * Supports values of `yes`/`no`, or `true`/`false`, case insensitive.
+     *
+     * @return The logical interpretation of the string parameter, or `null`.
+     */
+    protected fun String?.parseAsBooleanOrNull() = when (this?.toLowerCase(Locale.ROOT)) {
+        "true", "yes" -> true
+        "false", "no" -> false
         else -> null
-    }
-
-    /**
-     * Interprets a DOM node's stringcontent as a boolean.
-     * If the textContent cannot be recognizes, null is returned.
-     *
-     * @return The logical interpretation of the DOM node's text content.
-     */
-    fun toBoolean(node: Node): Boolean? = valid(node) {
-        toBoolean(toText(it))
     }
 
     /**
@@ -84,8 +110,18 @@ internal abstract class NamespaceParser {
      *
      * @return The DOM nodes content as an Int, or null if conversion failed.
      */
-    fun toInt(node: Node): Int? = valid(node) {
-        toText(it)?.toIntOrNull()
+    protected fun toInt(node: Node): Int? = ifMatchesNamespace(node) {
+        textOrNull(it)?.toIntOrNull()
+    }
+
+    /**
+     * Extracts the text content of a DOM node, and parses it as a [TemporalAccessor] instance
+     * if possible.
+     *
+     * @return The DOM nodes content as an Int, or null if parsing failed.
+     */
+    protected fun toDate(node: Node): TemporalAccessor? = ifMatchesNamespace(node) {
+        DateParser.parse(textOrNull(it))
     }
 
     /**
@@ -95,22 +131,25 @@ internal abstract class NamespaceParser {
      * @param attributeName The name of the node's attribute.
      * @return The textContent of the node's attribute.
      */
-    fun attributeValueByName(node: Node, attributeName: String): String? =
+    protected fun attributeValueByName(node: Node, attributeName: String): String? =
         node.attributes?.getNamedItem(attributeName)?.textContent?.trim()
 
     /**
-     * Executes a block of code on a DOME node if the node has the same [namespaceURI] of this parser.
+     * Executes a block of code on a DOM node if the node has the same [namespaceURI] of this parser.
      *
-     * @param node The DOM node to execute the [block]of code on.
-     * @param block The block of code to execute on the [node].
+     * @param node The DOM node to execute the [block] of code on.
+     * @param block The block of code to execute on the [node] when the namespace matches the parser's.
      */
-    protected fun <T> valid(node: Node, block: (Node) -> T?): T? {
-        return if (node.namespaceURI == this.namespaceURI) {
+    protected fun <T> ifMatchesNamespace(node: Node, block: (Node) -> T?) =
+        if (node.canParseNode()) {
             block(node)
         } else {
             null
         }
-    }
+
+    protected open fun Node.canParseNode() = namespaceURI == this@NamespaceParser.namespaceURI
+
+    protected fun Node.isDirectChildOf(tagName: String) = parentNode.nodeName == tagName && parentNode.namespaceURI == null
 
     /** Explicitly do nothing. Used for exhaustive when blocks. */
     protected val pass: Unit = Unit

@@ -12,7 +12,7 @@ import io.hemin.wien.builder.fake.FakeImageBuilder
 import io.hemin.wien.builder.fake.FakeLinkBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.model.Episode
-import java.util.Date
+import java.time.temporal.TemporalAccessor
 
 @Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
@@ -26,7 +26,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
     val categories: MutableList<String> = mutableListOf()
     var comments: String? = null
     var guidBuilder: EpisodeGuidBuilder? = null
-    var pubDate: Date? = null
+    var pubDate: TemporalAccessor? = null
     var source: String? = null
 
     override val content: FakeEpisodeContentBuilder = FakeEpisodeContentBuilder()
@@ -61,7 +61,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder = apply { this.guidBuilder = guidBuilder }
 
-    override fun pubDate(pubDate: Date?): EpisodeBuilder = apply { this.pubDate = pubDate }
+    override fun pubDate(pubDate: TemporalAccessor?): EpisodeBuilder = apply { this.pubDate = pubDate }
 
     override fun source(source: String?): EpisodeBuilder = apply { this.source = source }
 

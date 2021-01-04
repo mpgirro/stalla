@@ -12,99 +12,98 @@ import org.w3c.dom.Node
 /**
  * Parser implementation for the RSS namespace.
  *
- * Note that RSS 2.0 feeds do not have a namespace URI specified. The document specification is described here:
+ * Note that RSS 2.0 feeds do not have a namespace URI, and thus [namespaceURI] is null.
  *
- * `http://www.rssboard.org/rss-2-0`
+ * The RSS specification is described []here][http://www.rssboard.org/rss-2-0].
  */
 internal class RssParser : NamespaceParser() {
 
-    /** Standard RSS 2.0 elements do not have a namespace. This value is therefore null. */
     override val namespaceURI: String? = null
 
-    override fun parse(builder: PodcastBuilder, node: Node) = valid(node) {
+    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
         when (node.localName) {
-            "copyright" -> builder.copyright(toText(node))
+            "copyright" -> builder.copyright(textOrNull(node))
             "description" -> {
-                val description = toText(node) ?: return@valid
+                val description = textOrNull(node) ?: return
                 builder.description(description)
             }
-            "docs" -> builder.docs(toText(node))
-            "generator" -> builder.generator(toText(node))
+            "docs" -> builder.docs(textOrNull(node))
+            "generator" -> builder.generator(textOrNull(node))
             "image" -> builder.imageBuilder(toImage(node, builder.createImageBuilder()))
             "language" -> {
-                val language = toText(node) ?: return@valid
+                val language = textOrNull(node) ?: return
                 builder.language(language)
             }
             "lastBuildDate" -> builder.lastBuildDate(toDate(node))
             "link" -> {
-                val link = toText(node) ?: return@valid
+                val link = textOrNull(node) ?: return
                 builder.link(link)
             }
-            "managingEditor" -> builder.managingEditor(toText(node))
+            "managingEditor" -> builder.managingEditor(textOrNull(node))
             "pubDate" -> builder.pubDate(toDate(node))
             "title" -> {
-                val title = toText(node) ?: return@valid
+                val title = textOrNull(node) ?: return
                 builder.title(title)
             }
-            "webMaster" -> builder.webMaster(toText(node))
+            "webMaster" -> builder.webMaster(textOrNull(node))
             "item" -> pass // Items are parsed by WienParser direcly
             else -> pass
         }
     }
 
-    override fun parse(builder: EpisodeBuilder, node: Node) = valid(node) {
+    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
         when (node.localName) {
-            "author" -> builder.author(toText(node))
+            "author" -> builder.author(textOrNull(node))
             "category" -> {
-                val category = toText(node) ?: return@valid
+                val category = textOrNull(node) ?: return
                 builder.addCategory(category)
             }
-            "comments" -> builder.comments(toText(node))
-            "description" -> builder.description(toText(node))
+            "comments" -> builder.comments(textOrNull(node))
+            "description" -> builder.description(textOrNull(node))
             "enclosure" -> {
-                val enclosure = toEnclosureBuilder(node, builder.createEnclosureBuilder()) ?: return@valid
+                val enclosure = toEnclosureBuilder(node, builder.createEnclosureBuilder()) ?: return
                 builder.enclosureBuilder(enclosure)
             }
             "guid" -> builder.guidBuilder(toGuidBuilder(node, builder.createGuidBuilder()))
-            "link" -> builder.link(toText(node))
+            "link" -> builder.link(textOrNull(node))
             "pubDate" -> builder.pubDate(toDate(node))
-            "source" -> builder.source(toText(node))
+            "source" -> builder.source(textOrNull(node))
             "title" -> {
-                val title = toText(node) ?: return@valid
+                val title = textOrNull(node) ?: return
                 builder.title(title)
             }
             else -> pass
         }
     }
 
-    private fun toEnclosureBuilder(node: Node, enclosureBuilder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = valid(node) {
+    private fun toEnclosureBuilder(node: Node, enclosureBuilder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = ifMatchesNamespace(node) {
         val url = attributeValueByName(it, "url")
         val length = attributeValueByName(it, "length")?.toLongOrNull()
         val type = attributeValueByName(it, "type")
 
-        if (url == null || length == null || type == null) return@valid null
+        if (url == null || length == null || type == null) return@ifMatchesNamespace null
 
         enclosureBuilder.url(url)
             .length(length)
             .type(type)
     }
 
-    private fun toGuidBuilder(node: Node, builder: EpisodeGuidBuilder): EpisodeGuidBuilder? = valid(node) {
-        val guid = toText(it) ?: return@valid null
+    private fun toGuidBuilder(node: Node, builder: EpisodeGuidBuilder): EpisodeGuidBuilder? = ifMatchesNamespace(node) {
+        val guid = textOrNull(it) ?: return@ifMatchesNamespace null
 
         builder.textContent(guid)
-            .isPermalink(toBoolean(attributeValueByName(it, "isPermaLink")))
+            .isPermalink(attributeValueByName(it, "isPermaLink").parseAsBooleanOrNull())
     }
 
-    private fun toImage(node: Node, builder: ImageBuilder): ImageBuilder? = valid(node) {
+    private fun toImage(node: Node, builder: ImageBuilder): ImageBuilder? = ifMatchesNamespace(node) {
         for (child in node.childNodes.asListOfNodes()) {
             when (child.localName) {
-                "description" -> builder.description(toText(child))
+                "description" -> builder.description(textOrNull(child))
                 "height" -> builder.height(toInt(child))
-                "link" -> builder.link(toText(child))
-                "title" -> builder.title(toText(child))
+                "link" -> builder.link(textOrNull(child))
+                "title" -> builder.title(textOrNull(child))
                 "url" -> {
-                    val url = toText(child) ?: continue
+                    val url = textOrNull(child) ?: continue
                     builder.url(url)
                 }
                 "width" -> builder.width(toInt(child))

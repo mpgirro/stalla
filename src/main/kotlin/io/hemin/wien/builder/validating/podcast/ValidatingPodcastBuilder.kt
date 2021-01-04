@@ -14,7 +14,7 @@ import io.hemin.wien.builder.validating.ValidatingImageBuilder
 import io.hemin.wien.builder.validating.ValidatingLinkBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Podcast
-import java.util.Date
+import java.time.temporal.TemporalAccessor
 
 internal class ValidatingPodcastBuilder : PodcastBuilder {
 
@@ -23,8 +23,8 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
     private lateinit var descriptionValue: String
     private lateinit var languageValue: String
 
-    private var pubDate: Date? = null
-    private var lastBuildDate: Date? = null
+    private var pubDate: TemporalAccessor? = null
+    private var lastBuildDate: TemporalAccessor? = null
     private var generator: String? = null
     private var copyright: String? = null
     private var docs: String? = null
@@ -50,9 +50,9 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
 
     override fun description(description: String): PodcastBuilder = apply { this.descriptionValue = description }
 
-    override fun pubDate(pubDate: Date?): PodcastBuilder = apply { this.pubDate = pubDate }
+    override fun pubDate(pubDate: TemporalAccessor?): PodcastBuilder = apply { this.pubDate = pubDate }
 
-    override fun lastBuildDate(lastBuildDate: Date?): PodcastBuilder = apply { this.lastBuildDate = lastBuildDate }
+    override fun lastBuildDate(lastBuildDate: TemporalAccessor?): PodcastBuilder = apply { this.lastBuildDate = lastBuildDate }
 
     override fun language(language: String): PodcastBuilder = apply { this.languageValue = language }
 

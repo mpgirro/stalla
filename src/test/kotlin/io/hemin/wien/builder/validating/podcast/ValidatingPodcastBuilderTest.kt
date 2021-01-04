@@ -14,17 +14,15 @@ import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilde
 import io.hemin.wien.dateTime
 import io.hemin.wien.model.Podcast
 import org.junit.jupiter.api.Test
-import java.util.Calendar
+import java.time.Month
 
 internal class ValidatingPodcastBuilderTest {
 
     // "Fri, 16 Mar 2018 22:49:08 +0000"
-    private val aPubDate =
-        dateTime(year = 2018, monthZeroBased = Calendar.MARCH, day = 16, hour = 22, minute = 49, second = 8)
+    private val aPubDate = dateTime(year = 2018, month = Month.MARCH, day = 16, hour = 22, minute = 49, second = 8)
 
     // "Fri, 1 May 2020 12:55:22 +0000"
-    private val aLastBuildDate =
-        dateTime(year = 2020, monthZeroBased = Calendar.MAY, day = 1, hour = 12, minute = 55, second = 22)
+    private val aLastBuildDate = dateTime(year = 2020, month = Month.MAY, day = 1, hour = 12, minute = 55, second = 22)
 
     private val expectedImageBuilder = ValidatingImageBuilder()
         .url("image url")

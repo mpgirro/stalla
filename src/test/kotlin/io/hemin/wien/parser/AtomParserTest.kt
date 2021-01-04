@@ -35,7 +35,7 @@ internal class AtomParserTest : NamespaceParserTest() {
     fun `should extract all atom fields from channel when present`() {
         val channel: Node = nodeFromResource("channel", "/xml/channel.xml")
         val builder = FakePodcastBuilder()
-        parseChannelNode(builder, channel)
+        parseChannelChildNodes(builder, channel)
 
         assertThat(builder.atom, "atom podcast data").all {
             prop(FakePodcastAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
@@ -48,7 +48,7 @@ internal class AtomParserTest : NamespaceParserTest() {
     fun `should extract nothing from channel when no atom data is present`() {
         val channel: Node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
         val builder = FakePodcastBuilder()
-        parseChannelNode(builder, channel)
+        parseChannelChildNodes(builder, channel)
 
         assertThat(builder.atom, "atom episode data").all {
             prop(FakePodcastAtomBuilder::authorBuilders).isEmpty()
@@ -61,7 +61,7 @@ internal class AtomParserTest : NamespaceParserTest() {
     fun `should extract all atom fields from item when present`() {
         val item: Node = nodeFromResource("item", "/xml/item.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemNode(builder, item)
+        parseItemChildNodes(builder, item)
 
         assertThat(builder.atom, "atom item data").all {
             prop(FakeEpisodeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
@@ -74,7 +74,7 @@ internal class AtomParserTest : NamespaceParserTest() {
     fun `should extract nothing from item when no atom data is present`() {
         val item: Node = nodeFromResource("item", "/xml/item-incomplete.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemNode(builder, item)
+        parseItemChildNodes(builder, item)
 
         assertThat(builder.atom, "atom item data").all {
             prop(FakeEpisodeAtomBuilder::authorBuilders).isEmpty()

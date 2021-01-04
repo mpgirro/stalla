@@ -19,7 +19,7 @@ internal class BitloveParserTest : NamespaceParserTest() {
     fun `should not extract the Bitlove guid attribute from enclosure nodes when it's absent`() {
         val node: Node = nodeFromResource("item", "/xml/item-incomplete.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemNode(builder, node)
+        parseItemChildNodes(builder, node)
 
         assertThat(builder.bitlove, "item bitlove data")
             .prop(FakeEpisodeBitloveBuilder::guid).isNull()
@@ -29,7 +29,7 @@ internal class BitloveParserTest : NamespaceParserTest() {
     fun `should extract the Bitlove guid attribute from enclosure nodes when it's present`() {
         val node: Node = nodeFromResource("item", "/xml/item.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemNode(builder, node)
+        parseItemChildNodes(builder, node)
 
         assertThat(builder.bitlove, "item bitlove data")
             .prop(FakeEpisodeBitloveBuilder::guid).isEqualTo("abcdefg")

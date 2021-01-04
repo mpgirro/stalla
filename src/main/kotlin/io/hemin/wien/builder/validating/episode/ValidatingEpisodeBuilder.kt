@@ -17,7 +17,7 @@ import io.hemin.wien.builder.validating.ValidatingImageBuilder
 import io.hemin.wien.builder.validating.ValidatingLinkBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Episode
-import java.util.Date
+import java.time.temporal.TemporalAccessor
 
 internal class ValidatingEpisodeBuilder : EpisodeBuilder {
 
@@ -30,7 +30,7 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
     private val categories: MutableList<String> = mutableListOf()
     private var comments: String? = null
     private var guidBuilder: EpisodeGuidBuilder? = null
-    private var pubDate: Date? = null
+    private var pubDate: TemporalAccessor? = null
     private var source: String? = null
 
     override val content: EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
@@ -65,7 +65,7 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
 
     override fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder = apply { this.guidBuilder = guidBuilder }
 
-    override fun pubDate(pubDate: Date?): EpisodeBuilder = apply { this.pubDate = pubDate }
+    override fun pubDate(pubDate: TemporalAccessor?): EpisodeBuilder = apply { this.pubDate = pubDate }
 
     override fun source(source: String?): EpisodeBuilder = apply { this.source = source }
 
