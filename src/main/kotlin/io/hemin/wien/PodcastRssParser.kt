@@ -1,19 +1,23 @@
 package io.hemin.wien
 
 import io.hemin.wien.builder.episode.EpisodeBuilder
+import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.namespace.AtomParser
+import io.hemin.wien.parser.namespace.BitloveParser
 import io.hemin.wien.parser.namespace.ContentParser
+import io.hemin.wien.parser.namespace.FeedpressParser
+import io.hemin.wien.parser.namespace.FyydParser
 import io.hemin.wien.parser.namespace.GooglePlayParser
 import io.hemin.wien.parser.namespace.ITunesParser
 import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
 import io.hemin.wien.parser.namespace.RssParser
 import io.hemin.wien.util.DomBuilderFactory
-import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
-import io.hemin.wien.util.findElementByTagName
+import io.hemin.wien.util.asListOfNodes
+import io.hemin.wien.util.findElementByName
 import io.hemin.wien.util.isNotEmpty
 import org.w3c.dom.Document
 import org.w3c.dom.Element
@@ -24,21 +28,24 @@ import java.io.File
 import java.io.InputStream
 import javax.xml.parsers.DocumentBuilder
 
-object WienParser {
+@Suppress("unused")
+object PodcastRssParser {
 
     private val parsers: List<NamespaceParser> = listOf(
-            RssParser(),
-            ContentParser(),
-            ITunesParser(),
-            AtomParser(),
-            PodloveSimpleChapterParser(),
-            GooglePlayParser()
-        )
+        AtomParser(),
+        BitloveParser(),
+        ContentParser(),
+        FeedpressParser(),
+        FyydParser(),
+        GooglePlayParser(),
+        ITunesParser(),
+        PodloveSimpleChapterParser(),
+        RssParser()
+    )
 
     /** Set of all XML namespaces supported when parsing documents. */
-    val supportedNamespaces: Set<String> =
-        parsers.mapNotNull { parser -> parser.namespaceURI }
-            .toSet()
+    val supportedNamespaces: Set<String> = parsers.mapNotNull { parser -> parser.namespace?.uri }
+        .toSet()
 
     private val builder: DocumentBuilder = DomBuilderFactory.newBuilder()
 
@@ -100,8 +107,8 @@ object WienParser {
     }
 
     private fun Document.findRssChannelElement() =
-        findElementByTagName("rss") { rss -> rss.childNodes.isNotEmpty() }
-            ?.findElementByTagName("channel") { channel -> channel.childNodes.isNotEmpty() }
+        findElementByName("rss") { rss -> rss.childNodes.isNotEmpty() }
+            ?.findElementByName("channel") { channel -> channel.childNodes.isNotEmpty() }
 
     private fun Element.parseChannelElement(): Podcast? = ifTagNameIs("channel") {
         val builder = ValidatingPodcastBuilder()

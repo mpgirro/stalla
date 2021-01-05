@@ -49,7 +49,7 @@ internal class RssParserTest : NamespaceParserTest() {
     fun `should extract all RSS fields from channel when present`() {
         val node = nodeFromResource("channel", "/xml/channel.xml")
         val builder = FakePodcastBuilder()
-        parseChannelChildNodes(builder, node)
+        node.parseChannelChildNodes(builder)
 
         assertThat(builder, "channel").all {
             prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
@@ -71,7 +71,7 @@ internal class RssParserTest : NamespaceParserTest() {
     fun `should not extract RSS fields from channel when absent`() {
         val node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
         val builder = FakePodcastBuilder()
-        parseChannelChildNodes(builder, node)
+        node.parseChannelChildNodes(builder)
 
         assertThat(builder, "channel").all {
             prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
@@ -93,7 +93,7 @@ internal class RssParserTest : NamespaceParserTest() {
     fun `should extract all RSS fields from item when present`() {
         val node = nodeFromResource("item", "/xml/item.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemChildNodes(builder, node)
+        node.parseItemChildNodes(builder)
 
         assertThat(builder, "item").all {
             prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")
@@ -113,7 +113,7 @@ internal class RssParserTest : NamespaceParserTest() {
     fun `should not extract RSS fields from item when absent`() {
         val node = nodeFromResource("item", "/xml/item-incomplete.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemChildNodes(builder, node)
+        node.parseItemChildNodes(builder)
 
         assertThat(builder, "item").all {
             prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")

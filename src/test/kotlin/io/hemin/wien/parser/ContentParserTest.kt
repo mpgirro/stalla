@@ -19,7 +19,7 @@ internal class ContentParserTest : NamespaceParserTest() {
     fun `should not extract content data from item when absent`() {
         val node: Node = nodeFromResource("item", "/xml/item-incomplete.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemChildNodes(builder, node)
+        node.parseItemChildNodes(builder)
 
         assertThat(builder.content, "item content data")
             .prop(FakeEpisodeContentBuilder::encoded).isNull()
@@ -29,7 +29,7 @@ internal class ContentParserTest : NamespaceParserTest() {
     fun `should extract content data from item when present`() {
         val node: Node = nodeFromResource("item", "/xml/item.xml")
         val builder = FakeEpisodeBuilder()
-        parseItemChildNodes(builder, node)
+        node.parseItemChildNodes(builder)
 
         assertThat(builder.content, "item content data")
             .prop(FakeEpisodeContentBuilder::encoded).isEqualTo("Lorem Ipsum")

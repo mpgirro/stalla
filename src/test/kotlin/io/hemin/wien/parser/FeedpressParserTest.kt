@@ -19,7 +19,7 @@ internal class FeedpressParserTest : NamespaceParserTest() {
     fun `should extract feedpress data from channel when present`() {
         val node = nodeFromResource("channel", "/xml/channel.xml")
         val builder = FakePodcastBuilder()
-        parseChannelChildNodes(builder, node)
+        node.parseChannelChildNodes(builder)
 
         assertThat(builder.feedpress, "channel feedpress data").all {
             prop(FakePodcastFeedpressBuilder::newsletterIdValue).isEqualTo("abc123")
@@ -34,7 +34,7 @@ internal class FeedpressParserTest : NamespaceParserTest() {
     fun `should not extract feedpress data from channel when present`() {
         val node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
         val builder = FakePodcastBuilder()
-        parseChannelChildNodes(builder, node)
+        node.parseChannelChildNodes(builder)
 
         assertThat(builder.feedpress, "channel feedpress data").all {
             prop(FakePodcastFeedpressBuilder::newsletterIdValue).isNull()

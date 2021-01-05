@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" encoding="UTF-8"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:bitlove="http://bitlove.org"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:feedpress="https://feed.press/xmlns"
+     xmlns:fyyd="https://fyyd.de/fyyd-ns/"
+     xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:psc="http://podlove.org/simple-chapters">
+    <channel>
+        <title>podcast title</title>
+        <link>podcast link</link>
+        <description>podcast description</description>
+        <pubDate>Sat, 26 Dec 2020 15:32:22</pubDate>
+        <lastBuildDate>Tue, 22 Dec 2020 08:11:04</lastBuildDate>
+        <language>language</language>
+        <generator>generator</generator>
+        <copyright>copyright</copyright>
+        <docs>docs</docs>
+        <managingEditor>managingEditor</managingEditor>
+        <webMaster>webMaster</webMaster>
+        <image href="podcast image url" title="image title" link="image link" width="123" height="456" description="image description"/>
+        <itunes:subtitle>podcast itunes subtitle</itunes:subtitle>
+        <itunes:summary>podcast itunes summary</itunes:summary>
+        <itunes:image href="podcast itunes image url"/>
+        <itunes:keywords>podcast itunes keywords</itunes:keywords>
+        <itunes:author>podcast itunes author</itunes:author>
+        <itunes:category text="podcast itunes category"/>
+        <itunes:explicit>true</itunes:explicit>
+        <itunes:block>yes</itunes:block>
+        <itunes:complete>yes</itunes:complete>
+        <itunes:type>episodic</itunes:type>
+        <itunes:owner>
+            <itunes:name>podcast itunes owner name</itunes:name>
+            <itunes:email>person email</itunes:email>
+        </itunes:owner>
+        <itunes:title>podcast itunes title</itunes:title>
+        <itunes:new-feed-url>podcast itunes newFeedUrl</itunes:new-feed-url>
+        <atom:author>
+            <atom:name>podcast atom author name</atom:name>
+            <atom:email>person email</atom:email>
+            <atom:uri>person uri</atom:uri>
+        </atom:author>
+        <atom:contributor>
+            <atom:name>podcast atom contributor name</atom:name>
+            <atom:email>person email</atom:email>
+            <atom:uri>person uri</atom:uri>
+        </atom:contributor>
+        <atom:link href="podcast atom link href" hrefLang="link hrefLang" hrefResolved="link hrefResolved" length="link length" rel="link rel" title="link title" type="link type"/>
+        <fyyd:verify>podcast fyyd verify</fyyd:verify>
+        <feedpress:newsletterId>podcast feedpress newsletterId</feedpress:newsletterId>
+        <feedpress:locale>podcast feedpress locale</feedpress:locale>
+        <feedpress:podcastId>podcast feedpress podcastId</feedpress:podcastId>
+        <feedpress:cssFile>podcast feedpress cssFile</feedpress:cssFile>
+        <feedpress:link>podcast feedpress link</feedpress:link>
+        <googleplay:author>podcast googleplay author</googleplay:author>
+        <googleplay:owner>podcast googleplay owner</googleplay:owner>
+        <googleplay:category text="podcast googleplay category"/>
+        <googleplay:description>podcast googleplay description</googleplay:description>
+        <googleplay:explicit>yes</googleplay:explicit>
+        <googleplay:block>yes</googleplay:block>
+        <googleplay:image href="podcast googleplay image url"/>
+        <item>
+            <title>episode title</title>
+            <link>episode link</link>
+            <description>episode description</description>
+            <author>episode author</author>
+            <category text="episode category" />
+            <comments>episode comments</comments>
+            <enclosure url="episode enclosure url" length="777" type="episode enclosure type" bitlove:guid="episode bitlove guid"/>
+            <guid isPermaLink="false">episode guid textContent</guid>
+            <pubDate>Sun, 20 Dec 2020 12:11:10</pubDate>
+            <source>episode source</source>
+            <content:encoded>episode content encoded</content:encoded>
+            <itunes:title>episode itunes title</itunes:title>
+            <itunes:duration>episode itunes duration</itunes:duration>
+            <itunes:image href="episode itunes image url"/>
+            <itunes:explicit>true</itunes:explicit>
+            <itunes:block>yes</itunes:block>
+            <itunes:duration>episode itunes duration</itunes:duration>
+            <itunes:season>2</itunes:season>
+            <itunes:episode>3</itunes:episode>
+            <itunes:episodeType>full</itunes:episodeType>
+            <itunes:author>episode itunes author</itunes:author>
+            <itunes:subtitle>episode itunes subtitle</itunes:subtitle>
+            <itunes:summary>episode itunes summary</itunes:summary>
+            <atom:author>
+                <atom:name>episode atom author name</atom:name>
+                <atom:email>person email</atom:email>
+                <atom:uri>person uri</atom:uri>
+            </atom:author>
+            <atom:contributor>
+                <atom:name>episode atom contributor name</atom:name>
+                <atom:email>person email</atom:email>
+                <atom:uri>person uri</atom:uri>
+            </atom:contributor>
+            <atom:link href="episode atom link href" hrefLang="link hrefLang" hrefResolved="link hrefResolved" length="link length" rel="link rel" title="link title" type="link type" />
+            <psc:chapters>
+                <psc:chapter start="episode podlove simple chapter start" title="episode podlove simple chapter title" href="episode podlove simple chapter href" image="episode podlove simple chapter image"/>
+            </psc:chapters>
+            <googleplay:description>episode googleplay description</googleplay:description>
+            <googleplay:image href="episode googleplay image url"/>
+            <googleplay:explicit>yes</googleplay:explicit>
+            <googleplay:block>yes</googleplay:block>
+        </item>
+    </channel>
+</rss>

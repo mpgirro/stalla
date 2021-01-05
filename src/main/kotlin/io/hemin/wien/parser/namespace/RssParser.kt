@@ -1,114 +1,107 @@
 package io.hemin.wien.parser.namespace
 
-import io.hemin.wien.builder.ImageBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
+import io.hemin.wien.builder.parseAsBooleanOrNull
+import io.hemin.wien.builder.parseAsTemporalAccessor
 import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.builder.textOrNull
+import io.hemin.wien.builder.toRssImageBuilder
 import io.hemin.wien.parser.NamespaceParser
-import io.hemin.wien.util.NodeListWrapper.Companion.asListOfNodes
+import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.getAttributeValueByName
+import org.w3c.dom.Element
 import org.w3c.dom.Node
 
 /**
  * Parser implementation for the RSS namespace.
  *
- * Note that RSS 2.0 feeds do not have a namespace URI, and thus [namespaceURI] is null.
+ * Note that RSS 2.0 feeds do not have a namespace URI, and thus [namespace] is null.
  *
  * The RSS specification is described []here][http://www.rssboard.org/rss-2-0].
  */
 internal class RssParser : NamespaceParser() {
 
-    override val namespaceURI: String? = null
+    override val namespace: FeedNamespace? = null
 
     override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
+        if (node !is Element) return
+
         when (node.localName) {
-            "copyright" -> builder.copyright(node.textOrNull())
+            "copyright" -> builder.copyright(node.ifCanBeParsed { textOrNull() })
             "description" -> {
-                val description = node.textOrNull() ?: return
+                val description = node.ifCanBeParsed { textOrNull() } ?: return
                 builder.description(description)
             }
-            "docs" -> builder.docs(node.textOrNull())
-            "generator" -> builder.generator(node.textOrNull())
-            "image" -> builder.imageBuilder(toImage(node, builder.createImageBuilder()))
+            "docs" -> builder.docs(node.ifCanBeParsed { textOrNull() })
+            "generator" -> builder.generator(node.ifCanBeParsed { textOrNull() })
+            "image" -> builder.imageBuilder(node.ifCanBeParsed { toRssImageBuilder(builder.createImageBuilder()) })
             "language" -> {
-                val language = node.textOrNull() ?: return
+                val language = node.ifCanBeParsed { textOrNull() } ?: return
                 builder.language(language)
             }
-            "lastBuildDate" -> builder.lastBuildDate(node.toDate())
+            "lastBuildDate" -> builder.lastBuildDate(node.ifCanBeParsed { parseAsTemporalAccessor() })
             "link" -> {
-                val link = node.textOrNull() ?: return
+                val link = node.ifCanBeParsed { textOrNull() } ?: return
                 builder.link(link)
             }
-            "managingEditor" -> builder.managingEditor(node.textOrNull())
-            "pubDate" -> builder.pubDate(node.toDate())
+            "managingEditor" -> builder.managingEditor(node.ifCanBeParsed { textOrNull() })
+            "pubDate" -> builder.pubDate(node.ifCanBeParsed { parseAsTemporalAccessor() })
             "title" -> {
-                val title = node.textOrNull() ?: return
+                val title = node.ifCanBeParsed { textOrNull() } ?: return
                 builder.title(title)
             }
-            "webMaster" -> builder.webMaster(node.textOrNull())
-            "item" -> pass // Items are parsed by WienParser direcly
-            else -> pass
+            "webMaster" -> builder.webMaster(node.ifCanBeParsed { textOrNull() })
+            "item" -> pass // Items are parsed by the root parser direcly
         }
     }
 
     override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
+        if (node !is Element) return
+
         when (node.localName) {
-            "author" -> builder.author(node.textOrNull())
+            "author" -> builder.author(node.ifCanBeParsed { textOrNull() })
             "category" -> {
-                val category = node.textOrNull() ?: return
+                val category = node.ifCanBeParsed { textOrNull() } ?: return
                 builder.addCategory(category)
             }
-            "comments" -> builder.comments(node.textOrNull())
-            "description" -> builder.description(node.textOrNull())
+            "comments" -> builder.comments(node.ifCanBeParsed { textOrNull() })
+            "description" -> builder.description(node.ifCanBeParsed { textOrNull() })
             "enclosure" -> {
-                val enclosure = toEnclosureBuilder(node, builder.createEnclosureBuilder()) ?: return
+                val enclosure = node.ifCanBeParsed { toEnclosureBuilder(builder.createEnclosureBuilder()) } ?: return
                 builder.enclosureBuilder(enclosure)
             }
-            "guid" -> builder.guidBuilder(toGuidBuilder(node, builder.createGuidBuilder()))
-            "link" -> builder.link(node.textOrNull())
-            "pubDate" -> builder.pubDate(node.toDate())
-            "source" -> builder.source(node.textOrNull())
+            "guid" -> builder.guidBuilder(node.ifCanBeParsed { toGuidBuilder(builder.createGuidBuilder()) })
+            "link" -> builder.link(node.ifCanBeParsed { textOrNull() })
+            "pubDate" -> builder.pubDate(node.ifCanBeParsed { parseAsTemporalAccessor() })
+            "source" -> builder.source(node.ifCanBeParsed { textOrNull() })
             "title" -> {
-                val title = node.textOrNull() ?: return
+                val title = node.ifCanBeParsed { textOrNull() } ?: return
                 builder.title(title)
             }
-            else -> pass
         }
     }
 
-    private fun toEnclosureBuilder(node: Node, enclosureBuilder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = node.ifMatchesNamespace() {
-        val url = it.attributeValueByName("url")
-        val length = it.attributeValueByName("length")?.toLongOrNull()
-        val type = it.attributeValueByName("type")
+    private fun Node.toEnclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = ifCanBeParsed {
+        val url = getAttributeValueByName("url")
+        val length = getAttributeValueByName("length")?.toLongOrNull()
+        val type = getAttributeValueByName("type")
 
-        if (url == null || length == null || type == null) return@ifMatchesNamespace null
+        if (url == null || length == null || type == null) return@ifCanBeParsed null
 
         enclosureBuilder.url(url)
             .length(length)
             .type(type)
     }
 
-    private fun toGuidBuilder(node: Node, builder: EpisodeGuidBuilder): EpisodeGuidBuilder? = node.ifMatchesNamespace() {
-        val guid = it.textOrNull() ?: return@ifMatchesNamespace null
+    private fun Node.toGuidBuilder(builder: EpisodeGuidBuilder): EpisodeGuidBuilder? = ifCanBeParsed {
+        val guid = ifCanBeParsed { textOrNull() } ?: return@ifCanBeParsed null
+
+        val isPermalink = getAttributeValueByName("isPermalink")
+            ?: getAttributeValueByName("isPermaLink")
 
         builder.textContent(guid)
-            .isPermalink(it.attributeValueByName("isPermaLink").parseAsBooleanOrNull())
-    }
-
-    private fun toImage(node: Node, builder: ImageBuilder): ImageBuilder? = node.ifMatchesNamespace() {
-        for (child in node.childNodes.asListOfNodes()) {
-            when (child.localName) {
-                "description" -> builder.description(child.textOrNull())
-                "height" -> builder.height(child.toInt())
-                "link" -> builder.link(child.textOrNull())
-                "title" -> builder.title(child.textOrNull())
-                "url" -> {
-                    val url = child.textOrNull() ?: continue
-                    builder.url(url)
-                }
-                "width" -> builder.width(child.toInt())
-            }
-        }
-        builder
+            .isPermalink(isPermalink.parseAsBooleanOrNull())
     }
 }

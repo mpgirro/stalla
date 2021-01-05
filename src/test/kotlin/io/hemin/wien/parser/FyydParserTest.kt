@@ -18,7 +18,7 @@ internal class FyydParserTest : NamespaceParserTest() {
     fun `should extract fyyd data from channel when present`() {
         val node = nodeFromResource("channel", "/xml/channel.xml")
         val builder = FakePodcastBuilder()
-        parseChannelChildNodes(builder, node)
+        node.parseChannelChildNodes(builder)
 
         assertThat(builder.fyyd, "channel.fyyd")
             .prop(FakePodcastFyydBuilder::verifyValue).isEqualTo("abcdefg")
@@ -28,7 +28,7 @@ internal class FyydParserTest : NamespaceParserTest() {
     fun `should not extract fyyd data from channel when absent`() {
         val node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
         val builder = FakePodcastBuilder()
-        parseChannelChildNodes(builder, node)
+        node.parseChannelChildNodes(builder)
 
         assertThat(builder.fyyd, "channel.fyyd")
             .prop(FakePodcastFyydBuilder::verifyValue).isNull()
