@@ -39,5 +39,5 @@ internal object DomBuilderFactory {
         // We tried setting a feature that isn't supported by the current parser
     }
 
-    fun newBuilder(): DocumentBuilder = factory.newDocumentBuilder()
+    fun newDocumentBuilder(): DocumentBuilder = factory.newDocumentBuilder()
 }

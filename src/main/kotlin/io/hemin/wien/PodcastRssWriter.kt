@@ -1,6 +1,7 @@
 package io.hemin.wien
 
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.writer.namespace.AtomWriter
 import io.hemin.wien.writer.namespace.BitloveWriter
 import io.hemin.wien.writer.namespace.ContentWriter
@@ -17,7 +18,6 @@ import org.w3c.dom.Document
 import org.w3c.dom.Element
 import java.io.File
 import java.io.OutputStream
-import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.transform.OutputKeys
 import javax.xml.transform.TransformerFactory
 import javax.xml.transform.dom.DOMSource
@@ -40,9 +40,7 @@ object PodcastRssWriter {
 
     private val supportedNamespaces = writers.mapNotNull { it.namespace }
 
-    private val documentBuilder = DocumentBuilderFactory.newInstance()
-        .apply { isNamespaceAware = true }
-        .newDocumentBuilder()
+    private val documentBuilder = DomBuilderFactory.newDocumentBuilder()
 
     private val transformer = TransformerFactory.newInstance()
         .newTransformer()

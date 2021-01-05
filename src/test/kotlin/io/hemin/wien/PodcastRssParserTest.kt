@@ -14,6 +14,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Image
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.findElementByName
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
@@ -22,8 +23,7 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 internal class PodcastRssParserTest {
 
-    private val documentBuilder = DocumentBuilderFactory.newInstance()
-        .newDocumentBuilder()
+    private val documentBuilder = DomBuilderFactory.newDocumentBuilder()
 
     @Test
     internal fun `should return null when parsing an empty document`() {
