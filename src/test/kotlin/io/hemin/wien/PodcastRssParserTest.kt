@@ -10,6 +10,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
+import io.hemin.wien.model.Category
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.Person
@@ -155,7 +156,11 @@ internal class PodcastRssParserTest {
                     prop(Person::name).isEqualTo("Graham Cluley, Carole Theriault")
                     prop(Person::email).isEqualTo("studio@smashingsecurity.com")
                 }
-                prop(Podcast.ITunes::categories).containsExactly("Technology", "News", "Comedy")
+                prop(Podcast.ITunes::categories).containsExactly(
+                    Category.ITunes.Simple(category = "Technology"),
+                    Category.ITunes.Nested(category = "News", nested = Category.ITunes.Simple(category = "Tech News")),
+                    Category.ITunes.Simple(category = "Comedy")
+                )
             }
             prop(Podcast::atom).isNull()
             prop(Podcast::copyright).isNull()

@@ -2,6 +2,7 @@ package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.ITunesCategoryBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Podcast
 
@@ -23,11 +24,12 @@ internal interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
     fun author(author: String?): PodcastITunesBuilder
 
     /**
-     * Adds a category to the list of categories.
+     * Adds a category builder to the list of category builders.
      *
-     * @param category The category to add.
+     * @param categoryBuilder The [ITunesCategoryBuilder] used to initialize the
+     * [Podcast.ITunes.categories] list when [build] is called.
      */
-    fun addCategory(category: String): PodcastITunesBuilder
+    fun addCategoryBuilder(categoryBuilder: ITunesCategoryBuilder): PodcastITunesBuilder
 
     /** Set the explicit flag value. */
     fun explicit(explicit: Boolean): PodcastITunesBuilder

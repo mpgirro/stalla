@@ -1,15 +1,19 @@
 package io.hemin.wien.builder.fake.podcast
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.ITunesCategoryBuilder
 import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.fake.FakeHrefOnlyImageBuilder
+import io.hemin.wien.builder.fake.FakeITunesCategoryBuilder
 import io.hemin.wien.builder.fake.FakeRssImageBuilder
 import io.hemin.wien.builder.fake.FakeLinkBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
+import io.hemin.wien.builder.fake.FakeRssCategoryBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.model.Podcast
 import java.time.temporal.TemporalAccessor
@@ -78,6 +82,10 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override fun createPersonBuilder(): PersonBuilder = FakePersonBuilder()
 
+    override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
+
+    override fun createITunesCategoryBuilder(): ITunesCategoryBuilder = FakeITunesCategoryBuilder()
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is FakePodcastBuilder) return false
@@ -129,7 +137,6 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     override fun toString() =
         "FakePodcastBuilder(titleValue=$titleValue, linkValue=$linkValue, descriptionValue=$descriptionValue, languageValue=$languageValue, " +
                 "pubDate=$pubDate, lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, docs=$docs, " +
-                "managingEditor=$managingEditor, webMaster=$webMaster, imageBuilder=$imageBuilder, " +
-                "episodeBuilders=$episodeBuilders, iTunes=$iTunes, atom=$atom, fyyd=$fyyd, feedpress=$feedpress, googlePlay=$googlePlay)"
-
+                "managingEditor=$managingEditor, webMaster=$webMaster, imageBuilder=$imageBuilder, episodeBuilders=$episodeBuilders, " +
+                "iTunes=$iTunes, atom=$atom, fyyd=$fyyd, feedpress=$feedpress, googlePlay=$googlePlay)"
 }

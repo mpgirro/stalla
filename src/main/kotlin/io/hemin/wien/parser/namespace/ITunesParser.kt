@@ -7,10 +7,10 @@ import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.textAsBooleanOrNull
 import io.hemin.wien.builder.textOrNull
 import io.hemin.wien.builder.toHrefOnlyImageBuilder
+import io.hemin.wien.builder.toITunesCategoryBuilder
 import io.hemin.wien.builder.toPersonBuilder
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.util.getAttributeValueByName
 import org.w3c.dom.Node
 
 /**
@@ -27,8 +27,10 @@ internal class ITunesParser : NamespaceParser() {
             "author" -> builder.iTunes.author(node.ifCanBeParsed { textOrNull() })
             "block" -> builder.iTunes.block(node.ifCanBeParsed { textAsBooleanOrNull() })
             "category" -> {
-                val category = node.ifCanBeParsed { getAttributeValueByName("text") }?: return
-                builder.iTunes.addCategory(category)
+                val categoryBuilder = node.ifCanBeParsed {
+                    toITunesCategoryBuilder(builder.createITunesCategoryBuilder(), namespace)
+                } ?: return
+                builder.iTunes.addCategoryBuilder(categoryBuilder)
             }
             "complete" -> builder.iTunes.complete(node.ifCanBeParsed { textAsBooleanOrNull() })
             "explicit" -> {
@@ -36,7 +38,7 @@ internal class ITunesParser : NamespaceParser() {
                 builder.iTunes.explicit(explicit)
             }
             "image" -> {
-                val image = node.ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }?: return
+                val image = node.ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) } ?: return
                 builder.iTunes.imageBuilder(image)
             }
             "keywords" -> builder.iTunes.keywords(node.ifCanBeParsed { textOrNull() })

@@ -3,6 +3,7 @@ package io.hemin.wien.builder
 import io.hemin.wien.parser.DateParser
 import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.util.asListOfNodes
+import io.hemin.wien.util.findElementByName
 import io.hemin.wien.util.getAttributeValueByName
 import io.hemin.wien.util.trimmedOrNullIfBlank
 import org.w3c.dom.Element
@@ -100,12 +101,11 @@ internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: Fe
  *
  * @param imageBuilder An empty [HrefOnlyImageBuilder] instance to initialise with the node's
  * contents.
- * @param namespace The [FeedNamespace] to ensure the `href` attribute has.
  *
  * @return The [imageBuilder] populated with the DOM node contents.
  */
-internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder, namespace: FeedNamespace? = null): HrefOnlyImageBuilder {
-    val href: String? = getAttributeValueByName("href", namespace)
+internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): HrefOnlyImageBuilder {
+    val href: String? = getAttributeValueByName("href")
     if (!href.isNullOrBlank()) imageBuilder.href(href)
     return imageBuilder
 }
@@ -133,4 +133,38 @@ internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedN
         }
     }
     return personBuilder
+}
+
+/**
+ * Parses the node contents into a [RssCategoryBuilder] if possible, then populates the
+ * [categoryBuilder] with the parsed data.
+ *
+ * @param categoryBuilder An empty [RssCategoryBuilder] instance to initialise with the node's
+ * contents.
+ *
+ * @return The [categoryBuilder] populated with the DOM node contents.
+ */
+internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): RssCategoryBuilder =
+    categoryBuilder.category(textContent.trim())
+        .domain(getAttributeValueByName("domain"))
+
+/**
+ * Parses the node contents into a [ITunesCategoryBuilder] if possible, ensuring the child nodes
+ * have the specified [namespace], then populates the [categoryBuilder] with the parsed data.
+ *
+ * @param categoryBuilder An empty [ITunesCategoryBuilder] instance to initialise with the node's
+ * contents.
+ * @param namespace The [FeedNamespace] to ensure the child nodes have.
+ *
+ * @return The [categoryBuilder] populated with the DOM node contents.
+ */
+internal fun Node.toITunesCategoryBuilder(categoryBuilder: ITunesCategoryBuilder, namespace: FeedNamespace? = null): ITunesCategoryBuilder {
+    val category = getAttributeValueByName("text")?.trim() ?: return categoryBuilder
+    categoryBuilder.category(category)
+
+    val subcategoryElement = findElementByName("category", namespace) ?: return categoryBuilder
+    val subcategory = subcategoryElement.getAttributeValueByName("text")?.trim() ?: return categoryBuilder
+    categoryBuilder.subcategory(subcategory)
+
+    return categoryBuilder
 }

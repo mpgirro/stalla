@@ -10,8 +10,8 @@
     <link>http://example.org/episode1</link>
     <description><![CDATA[Lorem Ipsum]]></description>
     <author>author@example.org</author>
-    <category>category1</category>
-    <category>category2</category>
+    <category domain="banana">category 1</category>
+    <category>category 2</category>
     <comments>http://example.org/episode1/comments</comments>
     <enclosure
         url="http://example.org/episode1.m4a"

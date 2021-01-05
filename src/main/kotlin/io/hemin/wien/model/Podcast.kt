@@ -68,7 +68,7 @@ data class Podcast(
         override val image: HrefOnlyImage?,
         val keywords: String? = null,
         override val author: String? = null,
-        val categories: List<String>, // TODO can be nested, Category() required?
+        val categories: List<Category.ITunes>,
         override val explicit: Boolean,
         override val block: Boolean? = null,
         val complete: Boolean? = null,
@@ -120,7 +120,7 @@ data class Podcast(
     data class GooglePlay(
         val author: String? = null,
         val owner: String? = null,
-        val categories: List<String>, // TODO can be nested, Category() required?
+        val categories: List<Category.ITunes>,
         override val description: String? = null,
         override val explicit: Boolean? = null,
         override val block: Boolean? = null,

@@ -2,8 +2,10 @@ package io.hemin.wien.builder.episode
 
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.ITunesCategoryBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.model.Episode
 import java.time.temporal.TemporalAccessor
 
@@ -42,9 +44,10 @@ internal interface EpisodeBuilder : Builder<Episode> {
     /**
      * Adds a category to the list of categories.
      *
-     * @param category The comment to add.
+     * @param categoryBuilder The The [RssCategoryBuilder] used to initialize the
+     * [Episode.categories] items when [build] is called.
      */
-    fun addCategory(category: String): EpisodeBuilder
+    fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder
 
     /** Set the comments value. */
     fun comments(comments: String?): EpisodeBuilder
@@ -88,4 +91,10 @@ internal interface EpisodeBuilder : Builder<Episode> {
 
     /** Creates an instance of [EpisodePodloveSimpleChapterBuilder] to use with this builder. */
     fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder
+
+    /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
+    fun createRssCategoryBuilder(): RssCategoryBuilder
+
+    /** Creates an instance of [ITunesCategoryBuilder] to use with this builder. */
+    fun createITunesCategoryBuilder(): ITunesCategoryBuilder
 }

@@ -4,12 +4,13 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.ITunesBase
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.writer.NamespaceWriter
+import io.hemin.wien.util.appendITunesCategoryElements
 import io.hemin.wien.util.appendElement
-import io.hemin.wien.util.appendImageElement
+import io.hemin.wien.util.appendHrefOnlyImageElement
 import io.hemin.wien.util.appendPersonElement
 import io.hemin.wien.util.appendTrueFalseElement
 import io.hemin.wien.util.appendYesElementIfTrue
+import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 
 /**
@@ -24,7 +25,7 @@ internal class ITunesWriter : NamespaceWriter() {
     override fun writeChannelData(channel: Podcast, element: Element) {
         val iTunes = channel.iTunes ?: return
 
-        element.appendCategoryElements(iTunes.categories)
+        element.appendITunesCategoryElements(iTunes.categories, namespace)
 
         if (iTunes.complete != null) {
             element.appendYesElementIfTrue("complete", iTunes.complete, namespace)
@@ -47,14 +48,6 @@ internal class ITunesWriter : NamespaceWriter() {
         }
 
         element.appendCommonElements(channel.iTunes)
-    }
-
-    private fun Element.appendCategoryElements(categories: List<String>) {
-        for (category in categories) {
-            appendElement("category", namespace) {
-                setAttribute("text", category)
-            }
-        }
     }
 
     override fun writeItemData(episode: Episode, element: Element) {
@@ -81,7 +74,7 @@ internal class ITunesWriter : NamespaceWriter() {
 
     private fun Element.appendCommonElements(iTunes: ITunesBase) {
         val image = iTunes.image
-        if (image != null) appendImageElement(image, namespace)
+        if (image != null) appendHrefOnlyImageElement(image, namespace)
 
         val explicit = iTunes.explicit
         if (explicit != null) appendTrueFalseElement("explicit", explicit, namespace)

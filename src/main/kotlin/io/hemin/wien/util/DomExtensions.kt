@@ -1,5 +1,6 @@
 package io.hemin.wien.util
 
+import io.hemin.wien.model.Category
 import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.RssImage
@@ -68,7 +69,7 @@ internal fun Node.asElement() = this as Element
  * @param image The image to represent with the new element.
  * @param namespace The namespace to use for the new element.
  */
-internal fun Node.appendImageElement(image: HrefOnlyImage, namespace: FeedNamespace): Element {
+internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: FeedNamespace): Element {
     require(namespace == FeedNamespace.ITUNES || namespace == FeedNamespace.GOOGLE_PLAY) {
         "Only 'itunes:image' and 'googleplay:image' tags are supported, but the desired prefix was '${namespace.prefix}:'"
     }
@@ -82,7 +83,7 @@ internal fun Node.appendImageElement(image: HrefOnlyImage, namespace: FeedNamesp
  *
  * @param image The image to represent with the new element.
  */
-internal fun Node.appendImageElement(image: RssImage): Element = appendElement("image") {
+internal fun Node.appendRssImageElement(image: RssImage): Element = appendElement("image") {
     appendElement("title") { textContent = image.title }
     appendElement("link") { textContent = image.link }
     appendElement("url") { textContent = image.url }
@@ -177,6 +178,41 @@ internal fun Element.appendPersonElement(tagName: String, person: Person, namesp
 
         if (person.uri != null) {
             appendElement("uri", namespace) { textContent = person.uri }
+        }
+    }
+}
+
+/**
+ * Appends iTunes-Style <ns:category> tags with the data from the provided [categories].
+ *
+ * @param categories The [categories][Category.ITunes] to append.
+ * @param namespace The namespace to use, if any.
+ */
+internal fun Element.appendITunesCategoryElements(categories: List<Category.ITunes>, namespace: FeedNamespace? = null) {
+    for (category in categories) {
+        appendElement("category", namespace) {
+            setAttribute("text", category.category)
+
+            if (category is Category.ITunes.Nested) {
+                appendElement("category", namespace) {
+                    setAttribute("text", category.nested.category)
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Appends RSS <category> tags with the data from the provided [categories].
+ *
+ * @param categories The [categories][Category.Rss] to append.
+ * @param namespace The namespace to use, if any.
+ */
+internal fun Element.appendRssCategoryElements(categories: List<Category.Rss>, namespace: FeedNamespace? = null) {
+    for (category in categories) {
+        appendElement("category", namespace) {
+            textContent = category.category
+            setAttribute("domain", category.domain)
         }
     }
 }

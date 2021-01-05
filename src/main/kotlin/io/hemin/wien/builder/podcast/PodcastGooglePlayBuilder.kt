@@ -2,6 +2,7 @@ package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.ITunesCategoryBuilder
 import io.hemin.wien.model.Podcast
 
 internal interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
@@ -13,11 +14,12 @@ internal interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
     fun owner(email: String?): PodcastGooglePlayBuilder
 
     /**
-     * Adds a category to the list of categories.
+     * Adds a category builder to the list of category builders.
      *
-     * @param category The category to add.
+     * @param categoryBuilder The [ITunesCategoryBuilder] used to initialize the
+     * [Podcast.GooglePlay.categories] list when [build] is called.
      */
-    fun addCategory(category: String): PodcastGooglePlayBuilder
+    fun addCategoryBuilder(categoryBuilder: ITunesCategoryBuilder): PodcastGooglePlayBuilder
 
     /** Set the description value. */
     fun description(description: String?): PodcastGooglePlayBuilder

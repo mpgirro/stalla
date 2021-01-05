@@ -8,6 +8,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
+import io.hemin.wien.builder.validating.ValidatingITunesCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
@@ -40,6 +41,10 @@ internal class ValidatingPodcastBuilderTest {
     private val expectedAtomAuthorBuilder = ValidatingPersonBuilder().name("atom author")
 
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
+
+    private val expectedITunesCategoryBuilder = ValidatingITunesCategoryBuilder()
+        .category("itunes category")
+        .subcategory("itunes subcategory")
 
     @Test
     internal fun `should not build a Podcast when the mandatory fields are missing`() {
@@ -152,7 +157,7 @@ internal class ValidatingPodcastBuilderTest {
             .addEpisodeBuilder(expectedEpisodeBuilder)
             .apply {
                 iTunes.imageBuilder(expectedITunesImageBuilder)
-                    .addCategory("test")
+                    .addCategoryBuilder(expectedITunesCategoryBuilder)
                     .explicit(false)
                 atom.addAuthorBuilder(expectedAtomAuthorBuilder)
                 feedpress.newsletterId("feedpress newsletterId")
@@ -174,7 +179,7 @@ internal class ValidatingPodcastBuilderTest {
             prop(Podcast::webMaster).isEqualTo("webMaster")
             prop(Podcast::image).isEqualTo(expectedImageBuilder.build())
             prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
-            prop(Podcast::iTunes).isNotNull().prop(Podcast.ITunes::categories).containsExactly("test")
+            prop(Podcast::iTunes).isNotNull().prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
             prop(Podcast::atom).isNotNull().prop(Podcast.Atom::authors)
                 .containsExactly(expectedAtomAuthorBuilder.build())
             prop(Podcast::feedpress).isNotNull().prop(Podcast.Feedpress::newsletterId)
