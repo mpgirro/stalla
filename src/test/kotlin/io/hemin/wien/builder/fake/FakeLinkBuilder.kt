@@ -6,7 +6,7 @@ import io.hemin.wien.model.Link
 @Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeLinkBuilder : FakeBuilder<Link>(), LinkBuilder {
 
-    lateinit var hrefValue: String
+    var hrefValue: String? = null
     var hrefLang: String? = null
     var hrefResolved: String? = null
     var length: String? = null

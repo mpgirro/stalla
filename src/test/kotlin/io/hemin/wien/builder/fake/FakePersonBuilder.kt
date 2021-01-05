@@ -6,7 +6,7 @@ import io.hemin.wien.model.Person
 @Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakePersonBuilder : FakeBuilder<Person>(), PersonBuilder {
 
-    lateinit var nameValue: String
+    var nameValue: String? = null
     var email: String? = null
     var uri: String? = null
 

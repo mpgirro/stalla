@@ -6,8 +6,7 @@ import io.hemin.wien.model.Image
 @Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeImageBuilder : FakeBuilder<Image>(), ImageBuilder {
 
-    lateinit var urlValue: String
-
+    var urlValue: String? = null
     var title: String? = null
     var link: String? = null
     var width: Int? = null
