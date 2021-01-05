@@ -2,13 +2,13 @@ package io.hemin.wien.parser.namespace
 
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
-import io.hemin.wien.builder.parseAsInt
 import io.hemin.wien.builder.podcast.PodcastBuilder
-import io.hemin.wien.builder.textAsBooleanOrNull
-import io.hemin.wien.builder.textOrNull
-import io.hemin.wien.builder.toHrefOnlyImageBuilder
-import io.hemin.wien.builder.toITunesCategoryBuilder
-import io.hemin.wien.builder.toPersonBuilder
+import io.hemin.wien.dom.parseAsInt
+import io.hemin.wien.dom.textAsBooleanOrNull
+import io.hemin.wien.dom.textOrNull
+import io.hemin.wien.dom.toHrefOnlyImageBuilder
+import io.hemin.wien.dom.toITunesCategoryBuilder
+import io.hemin.wien.dom.toPersonBuilder
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
 import org.w3c.dom.Node

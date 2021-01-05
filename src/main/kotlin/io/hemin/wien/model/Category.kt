@@ -23,7 +23,7 @@ sealed class Category(open val category: String) {
      * An [iTunes-style `<category>` tag][https://help.apple.com/itc/podcasts_connect/#/itcb54353390].
      * The same format is also used for Google Play <category> tags, just with a different namespace.
      */
-    sealed class ITunes(override val category: String): Category(category) {
+    sealed class ITunes(override val category: String) : Category(category) {
 
         /**
          * A simple iTunes-style category, without a nested subcategory:

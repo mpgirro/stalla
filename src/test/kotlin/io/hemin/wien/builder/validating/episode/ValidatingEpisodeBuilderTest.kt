@@ -8,7 +8,6 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
 import io.hemin.wien.dateTime

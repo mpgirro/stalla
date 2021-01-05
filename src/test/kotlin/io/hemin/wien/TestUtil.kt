@@ -1,8 +1,8 @@
 package io.hemin.wien
 
 import assertk.fail
-import io.hemin.wien.util.DomBuilderFactory
-import io.hemin.wien.util.asListOfNodes
+import io.hemin.wien.dom.DomBuilderFactory
+import io.hemin.wien.dom.asListOfNodes
 import org.w3c.dom.Document
 import org.w3c.dom.Node
 import java.io.StringWriter

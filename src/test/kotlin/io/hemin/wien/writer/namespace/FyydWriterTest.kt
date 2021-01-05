@@ -2,7 +2,6 @@ package io.hemin.wien.writer.namespace
 
 import assertk.assertThat
 import io.hemin.wien.hasNoDifferences
-import io.hemin.wien.model.episode.anEpisode
 import io.hemin.wien.model.podcast.aPodcast
 import org.junit.jupiter.api.Test
 

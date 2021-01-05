@@ -2,10 +2,10 @@ package io.hemin.wien.parser.namespace
 
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.dom.getAttributeValueByName
+import io.hemin.wien.dom.isDirectChildOf
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.util.getAttributeValueByName
-import io.hemin.wien.util.isDirectChildOf
 import org.w3c.dom.Node
 
 /**

@@ -1,9 +1,9 @@
 package io.hemin.wien.writer.namespace
 
+import io.hemin.wien.dom.appendElement
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.util.appendElement
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 

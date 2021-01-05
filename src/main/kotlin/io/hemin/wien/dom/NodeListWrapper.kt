@@ -1,4 +1,4 @@
-package io.hemin.wien.util
+package io.hemin.wien.dom
 
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList

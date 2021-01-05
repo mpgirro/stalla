@@ -1,17 +1,13 @@
 package io.hemin.wien.writer.namespace
 
-import assertk.Assert
 import assertk.assertAll
 import assertk.assertThat
-import assertk.fail
+import io.hemin.wien.dom.appendElement
+import io.hemin.wien.dom.findElementByName
 import io.hemin.wien.hasNoAttribute
 import io.hemin.wien.hasNoDifferences
 import io.hemin.wien.model.episode.anEpisode
-import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.util.appendElement
-import io.hemin.wien.util.findElementByName
 import org.junit.jupiter.api.Test
-import org.w3c.dom.Node
 
 internal class BitloveWriterTest : NamespaceWriterTest() {
 

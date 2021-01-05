@@ -7,7 +7,7 @@ import io.hemin.wien.model.episode.anEpisode
 import io.hemin.wien.model.podcast.aPodcast
 import org.junit.jupiter.api.Test
 
-internal class GooglePlayWriterTest: NamespaceWriterTest() {
+internal class GooglePlayWriterTest : NamespaceWriterTest() {
 
     override val writer = GooglePlayWriter()
 

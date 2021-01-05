@@ -7,7 +7,7 @@ import io.hemin.wien.model.episode.anEpisode
 import io.hemin.wien.model.podcast.aPodcast
 import org.junit.jupiter.api.Test
 
-internal class ITunesWriterTest: NamespaceWriterTest() {
+internal class ITunesWriterTest : NamespaceWriterTest() {
 
     override val writer = ITunesWriter()
 

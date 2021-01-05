@@ -3,10 +3,10 @@ package io.hemin.wien.parser.namespace
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
-import io.hemin.wien.builder.toPersonBuilder
+import io.hemin.wien.dom.getAttributeValueByName
+import io.hemin.wien.dom.toPersonBuilder
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.util.getAttributeValueByName
 import org.w3c.dom.Node
 
 /**

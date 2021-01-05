@@ -1,4 +1,4 @@
-package io.hemin.wien.util
+package io.hemin.wien.dom
 
 import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory

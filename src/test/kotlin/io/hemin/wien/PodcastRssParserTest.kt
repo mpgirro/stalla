@@ -10,13 +10,13 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
+import io.hemin.wien.dom.DomBuilderFactory
+import io.hemin.wien.dom.findElementByName
 import io.hemin.wien.model.Category
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
-import io.hemin.wien.util.DomBuilderFactory
-import io.hemin.wien.util.findElementByName
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
 import java.time.Month

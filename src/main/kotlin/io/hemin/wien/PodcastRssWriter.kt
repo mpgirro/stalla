@@ -1,19 +1,19 @@
 package io.hemin.wien
 
+import io.hemin.wien.dom.DomBuilderFactory
+import io.hemin.wien.dom.asElement
 import io.hemin.wien.model.Podcast
-import io.hemin.wien.util.DomBuilderFactory
+import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.writer.NamespaceWriter
 import io.hemin.wien.writer.namespace.AtomWriter
 import io.hemin.wien.writer.namespace.BitloveWriter
 import io.hemin.wien.writer.namespace.ContentWriter
-import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.writer.namespace.FeedpressWriter
 import io.hemin.wien.writer.namespace.FyydWriter
 import io.hemin.wien.writer.namespace.GooglePlayWriter
 import io.hemin.wien.writer.namespace.ITunesWriter
-import io.hemin.wien.writer.NamespaceWriter
 import io.hemin.wien.writer.namespace.PodloveSimpleChapterWriter
 import io.hemin.wien.writer.namespace.RssWriter
-import io.hemin.wien.util.asElement
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import java.io.File

@@ -1,18 +1,17 @@
 package io.hemin.wien.parser.namespace
 
-import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
-import io.hemin.wien.builder.parseAsBooleanOrNull
-import io.hemin.wien.builder.parseAsTemporalAccessor
 import io.hemin.wien.builder.podcast.PodcastBuilder
-import io.hemin.wien.builder.textOrNull
-import io.hemin.wien.builder.toRssCategoryBuilder
-import io.hemin.wien.builder.toRssImageBuilder
+import io.hemin.wien.dom.getAttributeValueByName
+import io.hemin.wien.dom.parseAsBooleanOrNull
+import io.hemin.wien.dom.parseAsTemporalAccessor
+import io.hemin.wien.dom.textOrNull
+import io.hemin.wien.dom.toRssCategoryBuilder
+import io.hemin.wien.dom.toRssImageBuilder
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.util.getAttributeValueByName
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
