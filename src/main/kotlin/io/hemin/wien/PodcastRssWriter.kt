@@ -51,11 +51,23 @@ object PodcastRssWriter {
             setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2")
         }
 
+    /**
+     * Writes a [Podcast] to a [File] as an RSS feed.
+     *
+     * @param podcast The [Podcast] to write out.
+     * @param file The [File] to write to. Any contents will be overwritten.
+     */
     fun writeRssFeed(podcast: Podcast, file: File) {
         file.outputStream()
             .use { outputStream -> writeRssFeed(podcast, outputStream) }
     }
 
+    /**
+     * Writes a [Podcast] to a [OutputStream] as an RSS feed.
+     *
+     * @param podcast The [Podcast] to write out.
+     * @param stream The [OutputStream] to write to.
+     */
     fun writeRssFeed(podcast: Podcast, stream: OutputStream) {
         val document = writeToDocument(podcast)
         val source = DOMSource(document)
