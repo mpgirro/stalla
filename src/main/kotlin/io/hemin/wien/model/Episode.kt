@@ -81,7 +81,7 @@ data class Episode(
      *
      * @property title The `<itunes:title>` field text content.
      * @property duration The `<itunes:duration>` field text content.
-     * @property image The data from the `<itunes:image>` element as an [Image].
+     * @property image The data from the `<itunes:image>` element as an [HrefOnlyImage].
      * @property explicit The logical value of the `<itunes:explicit>` field's text content.
      * @property block The logical value of the `<itunes:block>` field's text content.
      * @property season The numeric value of the `<itunes:season>` field's text content.
@@ -91,7 +91,7 @@ data class Episode(
     data class ITunes(
         override val title: String? = null,
         val duration: String? = null,
-        override val image: Image.HrefOnlyImage? = null,
+        override val image: HrefOnlyImage? = null,
         override val explicit: Boolean? = null,
         override val block: Boolean? = null,
         val season: Int? = null,
@@ -139,13 +139,13 @@ data class Episode(
      * @property description The `<googleplay:description>` field text content.
      * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
      * @property block The logical value of the `<googleplay:block>` field's text content.
-     * @property image The data from the `<googleplay:image>` element as an [Image].
+     * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
      */
     data class GooglePlay(
         override val description: String? = null,
         override val explicit: Boolean? = null,
         override val block: Boolean? = null,
-        override val image: Image.HrefOnlyImage? = null
+        override val image: HrefOnlyImage? = null
     ) : GooglePlayBase
 
     /**

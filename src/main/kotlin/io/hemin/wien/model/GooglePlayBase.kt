@@ -5,5 +5,5 @@ interface GooglePlayBase {
     val description: String?
     val explicit: Boolean?
     val block: Boolean?
-    val image: Image.HrefOnlyImage?
+    val image: HrefOnlyImage?
 }

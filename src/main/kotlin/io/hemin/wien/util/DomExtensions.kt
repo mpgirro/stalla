@@ -1,7 +1,8 @@
 package io.hemin.wien.util
 
-import io.hemin.wien.model.Image
+import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.Person
+import io.hemin.wien.model.RssImage
 import org.w3c.dom.Attr
 import org.w3c.dom.Document
 import org.w3c.dom.Element
@@ -64,13 +65,10 @@ internal fun Node.asElement() = this as Element
  *  * [FeedNamespace.ITUNES]
  *  * [FeedNamespace.GOOGLE_PLAY]
  *
- * Note that only the [Image.url] is written (as an `href="..."` attribute). Other
- * [Image] properties are ignored.
- *
  * @param image The image to represent with the new element.
  * @param namespace The namespace to use for the new element.
  */
-internal fun Node.appendImageElement(image: Image.HrefOnlyImage, namespace: FeedNamespace): Element {
+internal fun Node.appendImageElement(image: HrefOnlyImage, namespace: FeedNamespace): Element {
     require(namespace == FeedNamespace.ITUNES || namespace == FeedNamespace.GOOGLE_PLAY) {
         "Only 'itunes:image' and 'googleplay:image' tags are supported, but the desired prefix was '${namespace.prefix}:'"
     }
@@ -84,7 +82,7 @@ internal fun Node.appendImageElement(image: Image.HrefOnlyImage, namespace: Feed
  *
  * @param image The image to represent with the new element.
  */
-internal fun Node.appendImageElement(image: Image.RssImage): Element = appendElement("image") {
+internal fun Node.appendImageElement(image: RssImage): Element = appendElement("image") {
     appendElement("title") { textContent = image.title }
     appendElement("link") { textContent = image.link }
     appendElement("url") { textContent = image.url }

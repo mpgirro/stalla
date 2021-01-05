@@ -7,11 +7,11 @@ internal fun anRssImage(
     width: Int? = 123,
     height: Int? = 456,
     description: String? = "image description"
-) = Image.RssImage(url, title, link, width, height, description)
+) = RssImage(url, title, link, width, height, description)
 
 internal fun anHrefOnlyImage(
     href: String = "image href"
-) = Image.HrefOnlyImage(href)
+) = HrefOnlyImage(href)
 
 internal fun aPerson(
     name: String = "person name",

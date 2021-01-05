@@ -11,7 +11,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
+import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.DomBuilderFactory
@@ -148,7 +148,7 @@ internal class PodcastRssParserTest {
                             "Follow the podcast on Twitter at <a href=\"https://twitter.com/SmashinSecurity\">@SmashinSecurity</a>, and subscribe for free in your favourite podcast app. New episodes released at 7pm EST every Wednesday (midnight UK)."
                 )
                 prop(Podcast.ITunes::image).isNotNull()
-                    .prop(Image.HrefOnlyImage::href).isEqualTo("https://assets.fireside.fm/file/fireside-images/podcasts/images/d/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/cover.jpg?v=1")
+                    .prop(HrefOnlyImage::href).isEqualTo("https://assets.fireside.fm/file/fireside-images/podcasts/images/d/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/cover.jpg?v=1")
                 prop(Podcast.ITunes::explicit).isNotNull().isTrue()
                 prop(Podcast.ITunes::keywords).isEqualTo("computer security, cybersecurity, hacking, privacy, cybercrime, cyber, cyberwarfare, infosec")
                 prop(Podcast.ITunes::owner).isNotNull().all {
@@ -202,7 +202,7 @@ internal class PodcastRssParserTest {
                         prop(Episode.ITunes::duration).isEqualTo("1:12:57")
                         prop(Episode.ITunes::explicit).isNotNull().isTrue()
                         prop(Episode.ITunes::image).isNotNull()
-                            .prop(Image.HrefOnlyImage::href)
+                            .prop(HrefOnlyImage::href)
                             .isEqualTo("https://assets.fireside.fm/file/fireside-images/podcasts/images/d/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/cover.jpg?v=1")
                         prop(Episode.ITunes::summary).isEqualTo(
                             "<p>Darknet Diaries host Jack Rhysider joins us to discuss a cybersecurity goof in the wake of the US presidential elections, the US finally fingering the hackers responsible for disrupting the Winter Olympics in South Korea, and to take a long hard look at long hard legal mumbojumbo...</p>\n" +

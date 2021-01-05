@@ -1,8 +1,7 @@
 package io.hemin.wien.builder.validating
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.RssImageBuilder
-import io.hemin.wien.model.Image
+import io.hemin.wien.model.HrefOnlyImage
 
 internal class ValidatingHrefOnlyImageBuilder : HrefOnlyImageBuilder {
 
@@ -10,11 +9,11 @@ internal class ValidatingHrefOnlyImageBuilder : HrefOnlyImageBuilder {
 
     override fun href(href: String): HrefOnlyImageBuilder = apply { this.hrefValue = href }
 
-    override fun build(): Image.HrefOnlyImage? {
+    override fun build(): HrefOnlyImage? {
         if (!::hrefValue.isInitialized) {
             return null
         }
 
-        return Image.HrefOnlyImage(hrefValue)
+        return HrefOnlyImage(hrefValue)
     }
 }

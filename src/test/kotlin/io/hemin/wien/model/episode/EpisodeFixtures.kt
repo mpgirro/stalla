@@ -2,13 +2,12 @@ package io.hemin.wien.model.episode
 
 import io.hemin.wien.dateTime
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
+import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.aLink
 import io.hemin.wien.model.aPerson
 import io.hemin.wien.model.anHrefOnlyImage
-import io.hemin.wien.model.anRssImage
 import java.time.Month
 import java.time.temporal.TemporalAccessor
 
@@ -66,7 +65,7 @@ internal fun anEpisodeContent(
 internal fun anEpisodeITunes(
     title: String? = "episode itunes title",
     duration: String? = "episode itunes duration",
-    image: Image.HrefOnlyImage? = anHrefOnlyImage(href = "episode itunes image url"),
+    image: HrefOnlyImage? = anHrefOnlyImage(href = "episode itunes image url"),
     explicit: Boolean? = true,
     block: Boolean? = true,
     season: Int? = 2,
@@ -98,7 +97,7 @@ internal fun anEpisodeGooglePlay(
     description: String? = "episode googleplay description",
     explicit: Boolean? = true,
     block: Boolean? = true,
-    image: Image.HrefOnlyImage? = anHrefOnlyImage(href = "episode googleplay image url")
+    image: HrefOnlyImage? = anHrefOnlyImage(href = "episode googleplay image url")
 ) = Episode.GooglePlay(description, explicit, block, image)
 
 internal fun anEpisodeBitlove(

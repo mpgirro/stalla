@@ -1,10 +1,9 @@
 package io.hemin.wien.builder.fake
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.RssImageBuilder
-import io.hemin.wien.model.Image
+import io.hemin.wien.model.HrefOnlyImage
 
-internal class FakeHrefOnlyImageBuilder : FakeBuilder<Image.HrefOnlyImage>(), HrefOnlyImageBuilder {
+internal class FakeHrefOnlyImageBuilder : FakeBuilder<HrefOnlyImage>(), HrefOnlyImageBuilder {
 
     var href: String? = null
 

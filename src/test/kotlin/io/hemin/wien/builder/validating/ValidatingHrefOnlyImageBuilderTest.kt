@@ -6,8 +6,7 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.model.Image
+import io.hemin.wien.model.HrefOnlyImage
 import org.junit.jupiter.api.Test
 
 internal class ValidatingHrefOnlyImageBuilderTest {
@@ -25,7 +24,7 @@ internal class ValidatingHrefOnlyImageBuilderTest {
             .href("href")
 
         assertThat(imageBuilder.build()).isNotNull().all {
-            prop(Image.HrefOnlyImage::href).isEqualTo("href")
+            prop(HrefOnlyImage::href).isEqualTo("href")
         }
     }
 }

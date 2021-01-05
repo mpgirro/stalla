@@ -16,7 +16,7 @@ import java.time.temporal.TemporalAccessor
  * @property docs The RSS `<docs>` field textContent.
  * @property managingEditor The RSS `<managingEditor>` field textContent.
  * @property webMaster The RSS `<webMaster>` field textContent.
- * @property image The RSS `<image>` element wrapped in an [Image] instance.
+ * @property image The RSS `<image>` element wrapped in an [RssImage] instance.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
  * @property iTunes The data from the iTunes namespace, or null if no data from this namespace was found.
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
@@ -36,7 +36,7 @@ data class Podcast(
     val docs: String? = null,
     val managingEditor: String? = null,
     val webMaster: String? = null,
-    val image: Image.RssImage? = null,
+    val image: RssImage? = null,
     val episodes: List<Episode>,
     val iTunes: ITunes? = null,
     val atom: Atom? = null,
@@ -50,7 +50,7 @@ data class Podcast(
      *
      * @property subtitle The `<itunes:subtitle>` field text content.
      * @property summary The `<itunes:summary>` field text content.
-     * @property image The data from the `<itunes:image>` element as an [Image.HrefOnlyImage].
+     * @property image The data from the `<itunes:image>` element as an [HrefOnlyImage].
      * @property keywords The `<itunes:keywords>` field text content.
      * @property author The `<itunes:author>` field text content.
      * @property categories The list of `<itunes:category>` element's field text contents.
@@ -65,7 +65,7 @@ data class Podcast(
     data class ITunes(
         override val subtitle: String? = null,
         override val summary: String? = null,
-        override val image: Image.HrefOnlyImage?,
+        override val image: HrefOnlyImage?,
         val keywords: String? = null,
         override val author: String? = null,
         val categories: List<String>, // TODO can be nested, Category() required?
@@ -115,7 +115,7 @@ data class Podcast(
      * @property description The `<googleplay:description>` field text content.
      * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
      * @property block The logical value of the `<googleplay:block>` field's text content.
-     * @property image The data from the `<googleplay:image>` element as an [Image.HrefOnlyImage].
+     * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
      */
     data class GooglePlay(
         val author: String? = null,
@@ -124,7 +124,7 @@ data class Podcast(
         override val description: String? = null,
         override val explicit: Boolean? = null,
         override val block: Boolean? = null,
-        override val image: Image.HrefOnlyImage? = null
+        override val image: HrefOnlyImage? = null
     ) : GooglePlayBase
 
     /**

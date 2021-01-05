@@ -6,7 +6,7 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import io.hemin.wien.model.Image
+import io.hemin.wien.model.RssImage
 import org.junit.jupiter.api.Test
 
 internal class ValidatingRssImageBuilderTest {
@@ -50,12 +50,12 @@ internal class ValidatingRssImageBuilderTest {
             .link("link")
 
         assertThat(imageBuilder.build()).isNotNull().all {
-            prop(Image.RssImage::url).isEqualTo("url")
-            prop(Image.RssImage::title).isEqualTo("title")
-            prop(Image.RssImage::link).isEqualTo("link")
-            prop(Image.RssImage::width).isNull()
-            prop(Image.RssImage::height).isNull()
-            prop(Image.RssImage::description).isNull()
+            prop(RssImage::url).isEqualTo("url")
+            prop(RssImage::title).isEqualTo("title")
+            prop(RssImage::link).isEqualTo("link")
+            prop(RssImage::width).isNull()
+            prop(RssImage::height).isNull()
+            prop(RssImage::description).isNull()
         }
     }
 
@@ -70,12 +70,12 @@ internal class ValidatingRssImageBuilderTest {
             .description("description")
 
         assertThat(imageBuilder.build()).isNotNull().all {
-            prop(Image.RssImage::url).isEqualTo("url")
-            prop(Image.RssImage::title).isEqualTo("title")
-            prop(Image.RssImage::link).isEqualTo("link")
-            prop(Image.RssImage::width).isEqualTo(123)
-            prop(Image.RssImage::height).isEqualTo(456)
-            prop(Image.RssImage::description).isEqualTo("description")
+            prop(RssImage::url).isEqualTo("url")
+            prop(RssImage::title).isEqualTo("title")
+            prop(RssImage::link).isEqualTo("link")
+            prop(RssImage::width).isEqualTo(123)
+            prop(RssImage::height).isEqualTo(456)
+            prop(RssImage::description).isEqualTo("description")
         }
     }
 }

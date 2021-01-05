@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.validating
 
 import io.hemin.wien.builder.RssImageBuilder
-import io.hemin.wien.model.Image
+import io.hemin.wien.model.RssImage
 
 internal class ValidatingRssImageBuilder : RssImageBuilder {
 
@@ -25,12 +25,12 @@ internal class ValidatingRssImageBuilder : RssImageBuilder {
 
     override fun description(description: String?): RssImageBuilder = apply { this.description = description }
 
-    override fun build(): Image.RssImage? {
+    override fun build(): RssImage? {
         if (!::urlValue.isInitialized || !::titleValue.isInitialized || !::linkValue.isInitialized) {
             return null
         }
 
-        return Image.RssImage(
+        return RssImage(
             url = urlValue,
             title = titleValue,
             link = linkValue,

@@ -1,9 +1,9 @@
 package io.hemin.wien.builder.fake
 
 import io.hemin.wien.builder.RssImageBuilder
-import io.hemin.wien.model.Image
+import io.hemin.wien.model.RssImage
 
-internal class FakeRssImageBuilder : FakeBuilder<Image.RssImage>(), RssImageBuilder {
+internal class FakeRssImageBuilder : FakeBuilder<RssImage>(), RssImageBuilder {
 
     var url: String? = null
     var title: String? = null
