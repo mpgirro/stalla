@@ -49,4 +49,7 @@ internal class FakeImageBuilder : FakeBuilder<Image>(), ImageBuilder {
         result = 31 * result + (description?.hashCode() ?: 0)
         return result
     }
+
+    override fun toString() =
+        "FakeImageBuilder(urlValue='$urlValue', title=$title, link=$link, width=$width, height=$height, description=$description)"
 }

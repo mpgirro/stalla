@@ -10,4 +10,19 @@ internal class FakeEpisodeContentBuilder : FakeBuilder<Episode.Content>(), Episo
     var encoded: String? = null
 
     override fun encoded(encoded: String): EpisodeContentBuilder = apply { this.encoded = encoded }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is FakeEpisodeContentBuilder) return false
+
+        if (encoded != other.encoded) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return encoded?.hashCode() ?: 0
+    }
+
+    override fun toString() = "FakeEpisodeContentBuilder(encoded=$encoded)"
 }

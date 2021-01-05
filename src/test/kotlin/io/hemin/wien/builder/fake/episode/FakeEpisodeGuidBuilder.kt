@@ -29,4 +29,6 @@ internal class FakeEpisodeGuidBuilder : FakeBuilder<Episode.Guid>(), EpisodeGuid
         result = 31 * result + (isPermalink?.hashCode() ?: 0)
         return result
     }
+
+    override fun toString() = "FakeEpisodeGuidBuilder(textContent=$textContent, isPermalink=$isPermalink)"
 }
