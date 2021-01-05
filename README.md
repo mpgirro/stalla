@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/mpgirro/wien.svg?branch=master)](https://travis-ci.org/mpgirro/wien)
 [![Coverage Status](https://coveralls.io/repos/github/mpgirro/wien/badge.svg?branch=master)](https://coveralls.io/github/mpgirro/wien?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d3c5df2fbf4c9aaabe66e52a847cdd)](https://www.codacy.com/app/mpgirro/wien?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mpgirro/wien&amp;utm_campaign=Badge_Grade)
-[![codecov](https://codecov.io/gh/mpgirro/wien/branch/master/graph/badge.svg)](https://codecov.io/gh/mpgirro/wien)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmpgirro%2Fwien.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmpgirro%2Fwien?ref=badge_shield)
 
 An RSS 2.0 feed parser for extracting Podcast metadata on the JVM. This library is written in Kotlin, but fully Java compatible.
