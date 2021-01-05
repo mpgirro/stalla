@@ -74,4 +74,59 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     override fun createLinkBuilder(): LinkBuilder = FakeLinkBuilder()
 
     override fun createPersonBuilder(): PersonBuilder = FakePersonBuilder()
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is FakePodcastBuilder) return false
+
+        if (titleValue != other.titleValue) return false
+        if (linkValue != other.linkValue) return false
+        if (descriptionValue != other.descriptionValue) return false
+        if (languageValue != other.languageValue) return false
+        if (pubDate != other.pubDate) return false
+        if (lastBuildDate != other.lastBuildDate) return false
+        if (generator != other.generator) return false
+        if (copyright != other.copyright) return false
+        if (docs != other.docs) return false
+        if (managingEditor != other.managingEditor) return false
+        if (webMaster != other.webMaster) return false
+        if (imageBuilder != other.imageBuilder) return false
+        if (episodeBuilders != other.episodeBuilders) return false
+        if (iTunes != other.iTunes) return false
+        if (atom != other.atom) return false
+        if (fyyd != other.fyyd) return false
+        if (feedpress != other.feedpress) return false
+        if (googlePlay != other.googlePlay) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = titleValue?.hashCode() ?: 0
+        result = 31 * result + (linkValue?.hashCode() ?: 0)
+        result = 31 * result + (descriptionValue?.hashCode() ?: 0)
+        result = 31 * result + (languageValue?.hashCode() ?: 0)
+        result = 31 * result + (pubDate?.hashCode() ?: 0)
+        result = 31 * result + (lastBuildDate?.hashCode() ?: 0)
+        result = 31 * result + (generator?.hashCode() ?: 0)
+        result = 31 * result + (copyright?.hashCode() ?: 0)
+        result = 31 * result + (docs?.hashCode() ?: 0)
+        result = 31 * result + (managingEditor?.hashCode() ?: 0)
+        result = 31 * result + (webMaster?.hashCode() ?: 0)
+        result = 31 * result + (imageBuilder?.hashCode() ?: 0)
+        result = 31 * result + episodeBuilders.hashCode()
+        result = 31 * result + iTunes.hashCode()
+        result = 31 * result + atom.hashCode()
+        result = 31 * result + fyyd.hashCode()
+        result = 31 * result + feedpress.hashCode()
+        result = 31 * result + googlePlay.hashCode()
+        return result
+    }
+
+    override fun toString() =
+        "FakePodcastBuilder(titleValue=$titleValue, linkValue=$linkValue, descriptionValue=$descriptionValue, languageValue=$languageValue, " +
+                "pubDate=$pubDate, lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, docs=$docs, " +
+                "managingEditor=$managingEditor, webMaster=$webMaster, imageBuilder=$imageBuilder, " +
+                "episodeBuilders=$episodeBuilders, iTunes=$iTunes, atom=$atom, fyyd=$fyyd, feedpress=$feedpress, googlePlay=$googlePlay)"
+
 }

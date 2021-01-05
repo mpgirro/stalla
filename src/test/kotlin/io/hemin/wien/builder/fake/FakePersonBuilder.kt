@@ -33,4 +33,6 @@ internal class FakePersonBuilder : FakeBuilder<Person>(), PersonBuilder {
         result = 31 * result + (uri?.hashCode() ?: 0)
         return result
     }
+
+    override fun toString() = "FakePersonBuilder(nameValue='$nameValue', email=$email, uri=$uri)"
 }

@@ -34,4 +34,6 @@ internal class FakeEpisodeEnclosureBuilder : FakeBuilder<Episode.Enclosure>(), E
         result = 31 * result + (typeValue?.hashCode() ?: 0)
         return result
     }
+
+    override fun toString() = "FakeEpisodeEnclosureBuilder(urlValue=$urlValue, lengthValue=$lengthValue, typeValue=$typeValue)"
 }

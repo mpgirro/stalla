@@ -55,4 +55,47 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
     override fun newFeedUrl(newFeedUrl: String?): PodcastITunesBuilder = apply {
         this.newFeedUrl = newFeedUrl
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is FakePodcastITunesBuilder) return false
+
+        if (imageBuilderValue != other.imageBuilderValue) return false
+        if (explicit != other.explicit) return false
+        if (subtitle != other.subtitle) return false
+        if (summary != other.summary) return false
+        if (keywords != other.keywords) return false
+        if (author != other.author) return false
+        if (categories != other.categories) return false
+        if (block != other.block) return false
+        if (complete != other.complete) return false
+        if (type != other.type) return false
+        if (ownerBuilder != other.ownerBuilder) return false
+        if (title != other.title) return false
+        if (newFeedUrl != other.newFeedUrl) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = imageBuilderValue?.hashCode() ?: 0
+        result = 31 * result + (explicit?.hashCode() ?: 0)
+        result = 31 * result + (subtitle?.hashCode() ?: 0)
+        result = 31 * result + (summary?.hashCode() ?: 0)
+        result = 31 * result + (keywords?.hashCode() ?: 0)
+        result = 31 * result + (author?.hashCode() ?: 0)
+        result = 31 * result + categories.hashCode()
+        result = 31 * result + (block?.hashCode() ?: 0)
+        result = 31 * result + (complete?.hashCode() ?: 0)
+        result = 31 * result + (type?.hashCode() ?: 0)
+        result = 31 * result + (ownerBuilder?.hashCode() ?: 0)
+        result = 31 * result + (title?.hashCode() ?: 0)
+        result = 31 * result + (newFeedUrl?.hashCode() ?: 0)
+        return result
+    }
+
+    override fun toString() =
+        "FakePodcastITunesBuilder(imageBuilderValue=$imageBuilderValue, explicit=$explicit, subtitle=$subtitle, summary=$summary, " +
+                "keywords=$keywords, author=$author, categories=$categories, block=$block, complete=$complete, type=$type, " +
+                "ownerBuilder=$ownerBuilder, title=$title, newFeedUrl=$newFeedUrl)"
 }

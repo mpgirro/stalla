@@ -53,4 +53,7 @@ internal class FakeLinkBuilder : FakeBuilder<Link>(), LinkBuilder {
         result = 31 * result + (type?.hashCode() ?: 0)
         return result
     }
+
+    override fun toString() =
+        "FakeLinkBuilder(hrefValue='$hrefValue', hrefLang=$hrefLang, hrefResolved=$hrefResolved, length=$length, rel=$rel, title=$title, type=$type)"
 }

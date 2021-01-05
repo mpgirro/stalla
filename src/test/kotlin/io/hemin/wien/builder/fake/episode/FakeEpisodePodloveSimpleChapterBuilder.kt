@@ -40,4 +40,7 @@ internal class FakeEpisodePodloveSimpleChapterBuilder : FakeBuilder<Episode.Podl
         result = 31 * result + (image?.hashCode() ?: 0)
         return result
     }
+
+    override fun toString() =
+        "FakeEpisodePodloveSimpleChapterBuilder(startValue='$startValue', titleValue='$titleValue', href=$href, image=$image)"
 }
