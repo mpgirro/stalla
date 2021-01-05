@@ -1,11 +1,10 @@
 package io.hemin.wien.builder.fake.podcast
 
-import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.model.Podcast
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakePodcastGooglePlayBuilder : FakeBuilder<Podcast.GooglePlay>(), PodcastGooglePlayBuilder {
 
     var author: String? = null
@@ -14,7 +13,7 @@ internal class FakePodcastGooglePlayBuilder : FakeBuilder<Podcast.GooglePlay>(),
     var description: String? = null
     var explicit: Boolean? = null
     var block: Boolean? = null
-    var imageBuilder: ImageBuilder? = null
+    var imageBuilder: HrefOnlyImageBuilder? = null
 
     override fun author(author: String?): PodcastGooglePlayBuilder = apply { this.author = author }
 
@@ -30,7 +29,7 @@ internal class FakePodcastGooglePlayBuilder : FakeBuilder<Podcast.GooglePlay>(),
 
     override fun block(block: Boolean?): PodcastGooglePlayBuilder = apply { this.block = block }
 
-    override fun imageBuilder(imageBuilder: ImageBuilder?): PodcastGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -61,5 +60,4 @@ internal class FakePodcastGooglePlayBuilder : FakeBuilder<Podcast.GooglePlay>(),
     override fun toString() =
         "FakePodcastGooglePlayBuilder(author=$author, owner=$owner, categories=$categories, description=$description, " +
                 "explicit=$explicit, block=$block, imageBuilder=$imageBuilder)"
-
 }

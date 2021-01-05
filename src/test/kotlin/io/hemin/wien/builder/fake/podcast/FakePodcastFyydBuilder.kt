@@ -4,7 +4,6 @@ import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.podcast.PodcastFyydBuilder
 import io.hemin.wien.model.Podcast
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakePodcastFyydBuilder : FakeBuilder<Podcast.Fyyd>(), PodcastFyydBuilder {
 
     var verifyValue: String? = null

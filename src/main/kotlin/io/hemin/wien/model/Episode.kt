@@ -91,7 +91,7 @@ data class Episode(
     data class ITunes(
         override val title: String? = null,
         val duration: String? = null,
-        override val image: Image? = null,
+        override val image: Image.HrefOnlyImage? = null,
         override val explicit: Boolean? = null,
         override val block: Boolean? = null,
         val season: Int? = null,
@@ -145,7 +145,7 @@ data class Episode(
         override val description: String? = null,
         override val explicit: Boolean? = null,
         override val block: Boolean? = null,
-        override val image: Image? = null
+        override val image: Image.HrefOnlyImage? = null
     ) : GooglePlayBase
 
     /**

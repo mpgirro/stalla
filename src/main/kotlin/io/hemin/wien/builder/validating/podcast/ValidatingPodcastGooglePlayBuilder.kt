@@ -1,6 +1,7 @@
 package io.hemin.wien.builder.validating.podcast
 
-import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.model.Podcast
 
@@ -12,7 +13,7 @@ internal class ValidatingPodcastGooglePlayBuilder : PodcastGooglePlayBuilder {
     private var description: String? = null
     private var explicit: Boolean? = null
     private var block: Boolean? = null
-    private var imageBuilder: ImageBuilder? = null
+    private var imageBuilder: HrefOnlyImageBuilder? = null
 
     override fun author(author: String?): PodcastGooglePlayBuilder = apply { this.author = author }
 
@@ -28,7 +29,7 @@ internal class ValidatingPodcastGooglePlayBuilder : PodcastGooglePlayBuilder {
 
     override fun block(block: Boolean?): PodcastGooglePlayBuilder = apply { this.block = block }
 
-    override fun imageBuilder(imageBuilder: ImageBuilder?): PodcastGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
 
     override fun build(): Podcast.GooglePlay? {
         if (categories.isEmpty() && allNull(author, owner, description, explicit, block, imageBuilder)) {

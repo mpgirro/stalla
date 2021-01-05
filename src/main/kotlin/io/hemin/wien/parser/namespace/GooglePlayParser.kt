@@ -31,7 +31,7 @@ internal class GooglePlayParser : NamespaceParser() {
             "explicit" -> builder.googlePlay.explicit(node.ifCanBeParsed { textAsBooleanOrNull() })
             "block" -> builder.googlePlay.block(node.ifCanBeParsed { textAsBooleanOrNull() })
             "image" -> {
-                val imageBuilder = node.ifCanBeParsed { toHrefOnlyImageBuilder(builder.createImageBuilder()) }
+                val imageBuilder = node.ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
                 builder.googlePlay.imageBuilder(imageBuilder)
             }
             else -> pass
@@ -44,7 +44,7 @@ internal class GooglePlayParser : NamespaceParser() {
             "explicit" -> builder.googlePlay.explicit(node.ifCanBeParsed { textAsBooleanOrNull() })
             "block" -> builder.googlePlay.block(node.ifCanBeParsed { textAsBooleanOrNull() })
             "image" -> {
-                val imageBuilder = node.ifCanBeParsed { toHrefOnlyImageBuilder(builder.createImageBuilder()) }
+                val imageBuilder = node.ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
                 builder.googlePlay.imageBuilder(imageBuilder)
             }
             else -> pass

@@ -1,17 +1,16 @@
 package io.hemin.wien.builder.fake.episode
 
-import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.episode.EpisodeGooglePlayBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.model.Episode
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeEpisodeGooglePlayBuilder : FakeBuilder<Episode.GooglePlay>(), EpisodeGooglePlayBuilder {
 
     var description: String? = null
     var explicit: Boolean? = null
     var block: Boolean? = null
-    var imageBuilder: ImageBuilder? = null
+    var imageBuilder: HrefOnlyImageBuilder? = null
 
     override fun description(description: String?): EpisodeGooglePlayBuilder = apply { this.description = description }
 
@@ -19,7 +18,7 @@ internal class FakeEpisodeGooglePlayBuilder : FakeBuilder<Episode.GooglePlay>(),
 
     override fun block(block: Boolean?): EpisodeGooglePlayBuilder = apply { this.block = block }
 
-    override fun imageBuilder(imageBuilder: ImageBuilder?): EpisodeGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

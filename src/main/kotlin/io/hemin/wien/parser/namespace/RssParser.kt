@@ -36,7 +36,7 @@ internal class RssParser : NamespaceParser() {
             }
             "docs" -> builder.docs(node.ifCanBeParsed { textOrNull() })
             "generator" -> builder.generator(node.ifCanBeParsed { textOrNull() })
-            "image" -> builder.imageBuilder(node.ifCanBeParsed { toRssImageBuilder(builder.createImageBuilder()) })
+            "image" -> builder.imageBuilder(node.ifCanBeParsed { toRssImageBuilder(builder.createRssImageBuilder()) })
             "language" -> {
                 val language = node.ifCanBeParsed { textOrNull() } ?: return
                 builder.language(language)

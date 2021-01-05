@@ -40,6 +40,8 @@
     <itunes:block>no</itunes:block>
     <itunes:complete>no</itunes:complete>
     <itunes:type>episodic</itunes:type>
+    <itunes:title>podcast itunes title</itunes:title>
+    <itunes:new-feed-url>podcast itunes new-feed-url</itunes:new-feed-url>
     <itunes:owner>
         <itunes:name>Lorem Ipsum</itunes:name>
         <itunes:email>owner@example.org</itunes:email>

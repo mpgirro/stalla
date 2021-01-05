@@ -70,12 +70,12 @@ internal fun Node.asElement() = this as Element
  * @param image The image to represent with the new element.
  * @param namespace The namespace to use for the new element.
  */
-internal fun Node.appendImageWithHrefElement(image: Image, namespace: FeedNamespace): Element {
+internal fun Node.appendImageElement(image: Image.HrefOnlyImage, namespace: FeedNamespace): Element {
     require(namespace == FeedNamespace.ITUNES || namespace == FeedNamespace.GOOGLE_PLAY) {
-        "Only 'itunes:', or 'googleplay:' image tags are supported, but it was '${namespace.prefix}:'"
+        "Only 'itunes:image' and 'googleplay:image' tags are supported, but the desired prefix was '${namespace.prefix}:'"
     }
     return appendElement("image", namespace) {
-        setAttribute("href", image.url)
+        setAttribute("href", image.href)
     }
 }
 
@@ -84,9 +84,7 @@ internal fun Node.appendImageWithHrefElement(image: Image, namespace: FeedNamesp
  *
  * @param image The image to represent with the new element.
  */
-internal fun Node.appendRssImageElement(image: Image): Element = appendElement("image") {
-    require(image.title != null) { "The image title is mandatory for RSS images" }
-    require(image.link != null) { "The image link is mandatory for RSS images" }
+internal fun Node.appendImageElement(image: Image.RssImage): Element = appendElement("image") {
     appendElement("title") { textContent = image.title }
     appendElement("link") { textContent = image.link }
     appendElement("url") { textContent = image.url }

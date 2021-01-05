@@ -4,7 +4,6 @@ import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.model.Episode
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeEpisodeEnclosureBuilder : FakeBuilder<Episode.Enclosure>(), EpisodeEnclosureBuilder {
 
     var urlValue: String? = null

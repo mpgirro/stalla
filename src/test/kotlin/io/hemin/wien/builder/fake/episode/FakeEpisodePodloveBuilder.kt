@@ -5,7 +5,6 @@ import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.model.Episode
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeEpisodePodloveBuilder : FakeBuilder<Episode.Podlove>(), EpisodePodloveBuilder {
 
     var chapterBuilders: MutableList<EpisodePodloveSimpleChapterBuilder> = mutableListOf()

@@ -6,7 +6,7 @@ import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.writer.NamespaceWriter
 import io.hemin.wien.util.appendElement
-import io.hemin.wien.util.appendImageWithHrefElement
+import io.hemin.wien.util.appendImageElement
 import io.hemin.wien.util.appendPersonElement
 import io.hemin.wien.util.appendTrueFalseElement
 import io.hemin.wien.util.appendYesElementIfTrue
@@ -81,7 +81,7 @@ internal class ITunesWriter : NamespaceWriter() {
 
     private fun Element.appendCommonElements(iTunes: ITunesBase) {
         val image = iTunes.image
-        if (image != null) appendImageWithHrefElement(image, namespace)
+        if (image != null) appendImageElement(image, namespace)
 
         val explicit = iTunes.explicit
         if (explicit != null) appendTrueFalseElement("explicit", explicit, namespace)

@@ -6,7 +6,6 @@ import io.hemin.wien.builder.episode.EpisodeAtomBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.model.Episode
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeEpisodeAtomBuilder : FakeBuilder<Episode.Atom>(), EpisodeAtomBuilder {
 
     var authorBuilders: MutableList<PersonBuilder> = mutableListOf()

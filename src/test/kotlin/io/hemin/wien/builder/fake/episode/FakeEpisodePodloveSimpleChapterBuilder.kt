@@ -4,7 +4,6 @@ import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.model.Episode
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeEpisodePodloveSimpleChapterBuilder : FakeBuilder<Episode.Podlove.SimpleChapter>(), EpisodePodloveSimpleChapterBuilder {
 
     var startValue: String? = null

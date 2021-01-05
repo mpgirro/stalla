@@ -3,7 +3,6 @@ package io.hemin.wien.builder.fake
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.model.Link
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakeLinkBuilder : FakeBuilder<Link>(), LinkBuilder {
 
     var hrefValue: String? = null

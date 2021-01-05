@@ -1,35 +1,34 @@
 package io.hemin.wien.builder.fake
 
-import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.model.Image
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
-internal class FakeImageBuilder : FakeBuilder<Image>(), ImageBuilder {
+internal class FakeRssImageBuilder : FakeBuilder<Image.RssImage>(), RssImageBuilder {
 
-    var urlValue: String? = null
+    var url: String? = null
     var title: String? = null
     var link: String? = null
     var width: Int? = null
     var height: Int? = null
     var description: String? = null
 
-    override fun url(url: String): ImageBuilder = apply { this.urlValue = url }
+    override fun url(url: String): RssImageBuilder = apply { this.url = url }
 
-    override fun title(title: String?): ImageBuilder = apply { this.title = title }
+    override fun title(title: String): RssImageBuilder = apply { this.title = title }
 
-    override fun link(link: String?): ImageBuilder = apply { this.link = link }
+    override fun link(link: String): RssImageBuilder = apply { this.link = link }
 
-    override fun width(width: Int?): ImageBuilder = apply { this.width = width }
+    override fun width(width: Int?): RssImageBuilder = apply { this.width = width }
 
-    override fun height(height: Int?): ImageBuilder = apply { this.height = height }
+    override fun height(height: Int?): RssImageBuilder = apply { this.height = height }
 
-    override fun description(description: String?): ImageBuilder = apply { this.description = description }
+    override fun description(description: String?): RssImageBuilder = apply { this.description = description }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakeImageBuilder) return false
+        if (other !is FakeRssImageBuilder) return false
 
-        if (urlValue != other.urlValue) return false
+        if (url != other.url) return false
         if (title != other.title) return false
         if (link != other.link) return false
         if (width != other.width) return false
@@ -40,7 +39,7 @@ internal class FakeImageBuilder : FakeBuilder<Image>(), ImageBuilder {
     }
 
     override fun hashCode(): Int {
-        var result = urlValue.hashCode()
+        var result = url?.hashCode() ?: 0
         result = 31 * result + (title?.hashCode() ?: 0)
         result = 31 * result + (link?.hashCode() ?: 0)
         result = 31 * result + (width ?: 0)
@@ -50,5 +49,5 @@ internal class FakeImageBuilder : FakeBuilder<Image>(), ImageBuilder {
     }
 
     override fun toString() =
-        "FakeImageBuilder(urlValue='$urlValue', title=$title, link=$link, width=$width, height=$height, description=$description)"
+        "FakeRssImageBuilder(url=$url, title=$title, link=$link, width=$width, height=$height, description=$description)"
 }

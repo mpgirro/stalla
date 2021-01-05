@@ -3,7 +3,6 @@ package io.hemin.wien.builder.fake
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Person
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakePersonBuilder : FakeBuilder<Person>(), PersonBuilder {
 
     var nameValue: String? = null

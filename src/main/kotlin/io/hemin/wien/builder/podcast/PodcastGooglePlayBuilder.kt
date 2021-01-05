@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
-import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.model.Podcast
 
 internal interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
@@ -29,5 +29,5 @@ internal interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
     fun block(block: Boolean?): PodcastGooglePlayBuilder
 
     /** Set the ImageBuilder. */
-    fun imageBuilder(imageBuilder: ImageBuilder?): PodcastGooglePlayBuilder
+    fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGooglePlayBuilder
 }
