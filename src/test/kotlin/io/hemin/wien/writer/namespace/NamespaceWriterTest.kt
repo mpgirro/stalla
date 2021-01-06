@@ -8,6 +8,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.model.episode.anEpisode
 import io.hemin.wien.model.podcast.aPodcast
+import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.util.appendElement
 import io.hemin.wien.util.findElementByName
@@ -27,9 +28,7 @@ internal abstract class NamespaceWriterTest {
     private val xpath = XPathFactory.newDefaultInstance().newXPath()
         .apply { namespaceContext = FeedNamespaceContext }
 
-    private val documentBuilder = DocumentBuilderFactory.newInstance()
-        .apply { isNamespaceAware = true }
-        .newDocumentBuilder()
+    private val documentBuilder = DomBuilderFactory.newDocumentBuilder()
 
     protected abstract val writer: NamespaceWriter
 

@@ -1,7 +1,6 @@
 package io.hemin.wien
 
 import io.hemin.wien.builder.episode.EpisodeBuilder
-import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
 import io.hemin.wien.model.Podcast
@@ -47,7 +46,7 @@ object PodcastRssParser {
     val supportedNamespaces: Set<String> = parsers.mapNotNull { parser -> parser.namespace?.uri }
         .toSet()
 
-    private val builder: DocumentBuilder = DomBuilderFactory.newBuilder()
+    private val builder: DocumentBuilder = DomBuilderFactory.newDocumentBuilder()
 
     /**
      * Parse the content of the given URI as an XML document

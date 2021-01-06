@@ -20,7 +20,7 @@ import javax.xml.transform.TransformerFactory
 import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 
-private val domBuilder: DocumentBuilder = DomBuilderFactory.newBuilder()
+private val domBuilder: DocumentBuilder = DomBuilderFactory.newDocumentBuilder()
 
 private val transformerFactory = TransformerFactory.newInstance()
 
