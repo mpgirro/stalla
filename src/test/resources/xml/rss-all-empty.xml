@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" encoding="UTF-8"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:bitlove="http://bitlove.org"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:feedpress="https://feed.press/xmlns"
+     xmlns:fyyd="https://fyyd.de/fyyd-ns/"
+     xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:psc="http://podlove.org/simple-chapters">
+    <channel>
+        <title></title>
+        <link></link>
+        <description></description>
+        <pubDate></pubDate>
+        <lastBuildDate></lastBuildDate>
+        <language></language>
+        <generator></generator>
+        <copyright></copyright>
+        <docs></docs>
+        <managingEditor></managingEditor>
+        <webMaster></webMaster>
+        <image href="" title="" link="" width="" height="" description=""/>
+        <itunes:subtitle></itunes:subtitle>
+        <itunes:summary></itunes:summary>
+        <itunes:image href=""/>
+        <itunes:keywords></itunes:keywords>
+        <itunes:author></itunes:author>
+        <itunes:category text="">
+            <itunes:category text=""/>
+        </itunes:category>
+        <itunes:explicit></itunes:explicit>
+        <itunes:block></itunes:block>
+        <itunes:complete></itunes:complete>
+        <itunes:type></itunes:type>
+        <itunes:owner>
+            <itunes:name></itunes:name>
+            <itunes:email></itunes:email>
+        </itunes:owner>
+        <itunes:title></itunes:title>
+        <itunes:new-feed-url></itunes:new-feed-url>
+        <atom:author>
+            <atom:name></atom:name>
+            <atom:email></atom:email>
+            <atom:uri></atom:uri>
+        </atom:author>
+        <atom:contributor>
+            <atom:name></atom:name>
+            <atom:email></atom:email>
+            <atom:uri></atom:uri>
+        </atom:contributor>
+        <atom:link href="" hrefLang="" hrefResolved="" length="" rel=""
+                   title="" type=""/>
+        <fyyd:verify></fyyd:verify>
+        <feedpress:newsletterId></feedpress:newsletterId>
+        <feedpress:locale></feedpress:locale>
+        <feedpress:podcastId></feedpress:podcastId>
+        <feedpress:cssFile></feedpress:cssFile>
+        <feedpress:link></feedpress:link>
+        <googleplay:author></googleplay:author>
+        <googleplay:owner></googleplay:owner>
+        <googleplay:category text="">
+            <googleplay:category text=""/>
+        </googleplay:category>
+        <googleplay:description></googleplay:description>
+        <googleplay:explicit></googleplay:explicit>
+        <googleplay:block></googleplay:block>
+        <googleplay:image href=""/>
+        <item>
+            <title></title>
+            <link></link>
+            <description></description>
+            <author></author>
+            <category text=""/>
+            <comments></comments>
+            <enclosure url="" length="" type="" bitlove:guid=""/>
+            <guid isPermaLink="false"></guid>
+            <pubDate></pubDate>
+            <source></source>
+            <content:encoded></content:encoded>
+            <itunes:title></itunes:title>
+            <itunes:duration></itunes:duration>
+            <itunes:image href=""/>
+            <itunes:explicit></itunes:explicit>
+            <itunes:block></itunes:block>
+            <itunes:duration></itunes:duration>
+            <itunes:season></itunes:season>
+            <itunes:episode></itunes:episode>
+            <itunes:episodeType></itunes:episodeType>
+            <itunes:author></itunes:author>
+            <itunes:subtitle></itunes:subtitle>
+            <itunes:summary></itunes:summary>
+            <atom:author>
+                <atom:name></atom:name>
+                <atom:email></atom:email>
+                <atom:uri></atom:uri>
+            </atom:author>
+            <atom:contributor>
+                <atom:name></atom:name>
+                <atom:email></atom:email>
+                <atom:uri></atom:uri>
+            </atom:contributor>
+            <atom:link href="" hrefLang="" hrefResolved="" length="" rel=""
+                       title="" type=""/>
+            <psc:chapters>
+                <psc:chapter start="" title=""
+                             href="" image=""/>
+            </psc:chapters>
+            <googleplay:description></googleplay:description>
+            <googleplay:image href=""/>
+            <googleplay:explicit></googleplay:explicit>
+            <googleplay:block></googleplay:block>
+        </item>
+    </channel>
+</rss>
