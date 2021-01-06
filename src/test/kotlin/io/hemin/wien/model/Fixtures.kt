@@ -32,13 +32,13 @@ internal fun aLink(
 internal fun anRssCategory(
     category: String = "rss category",
     domain: String? = "rss category domain"
-) = Category.Rss(category, domain)
+) = RssCategory(category, domain)
 
 internal fun anITunesCategory(
     category: String = "itunes category",
     subcategory: String? = "itunes category subcategory"
 ) = if (subcategory == null) {
-    Category.ITunes.Simple(category)
+    ITunesStyleCategory.Simple(category)
 } else {
-    Category.ITunes.Nested(category, Category.ITunes.Simple(subcategory))
+    ITunesStyleCategory.Nested(category, ITunesStyleCategory.Simple(subcategory))
 }

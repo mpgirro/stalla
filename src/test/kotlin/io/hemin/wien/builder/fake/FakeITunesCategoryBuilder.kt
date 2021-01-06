@@ -1,9 +1,9 @@
 package io.hemin.wien.builder.fake
 
 import io.hemin.wien.builder.ITunesCategoryBuilder
-import io.hemin.wien.model.Category
+import io.hemin.wien.model.ITunesStyleCategory
 
-internal class FakeITunesCategoryBuilder : FakeBuilder<Category.ITunes>(), ITunesCategoryBuilder {
+internal class FakeITunesCategoryBuilder : FakeBuilder<ITunesStyleCategory>(), ITunesCategoryBuilder {
 
     var category: String? = null
     var subcategory: String? = null

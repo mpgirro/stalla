@@ -1,9 +1,9 @@
 package io.hemin.wien.model.podcast
 
 import io.hemin.wien.dateTime
-import io.hemin.wien.model.Category
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.HrefOnlyImage
+import io.hemin.wien.model.ITunesStyleCategory
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
@@ -63,7 +63,7 @@ internal fun aPodcastItunes(
     image: HrefOnlyImage = anHrefOnlyImage(href = "podcast itunes image url"),
     keywords: String? = "podcast itunes keywords",
     author: String? = "podcast itunes author",
-    categories: List<Category.ITunes> = listOf(anITunesCategory("podcast itunes category", "podcast itunes subcategory")),
+    categories: List<ITunesStyleCategory> = listOf(anITunesCategory("podcast itunes category", "podcast itunes subcategory")),
     explicit: Boolean = true,
     block: Boolean? = true,
     complete: Boolean? = true,
@@ -94,7 +94,7 @@ internal fun aPodcastFeedpress(
 internal fun aPodcastGooglePlay(
     author: String? = "podcast googleplay author",
     owner: String? = "podcast googleplay owner",
-    categories: List<Category.ITunes> = listOf(anITunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
+    categories: List<ITunesStyleCategory> = listOf(anITunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean? = true,

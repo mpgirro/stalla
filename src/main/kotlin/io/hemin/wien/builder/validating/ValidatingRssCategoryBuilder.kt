@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.validating
 
 import io.hemin.wien.builder.RssCategoryBuilder
-import io.hemin.wien.model.Category
+import io.hemin.wien.model.RssCategory
 
 internal class ValidatingRssCategoryBuilder : RssCategoryBuilder {
 
@@ -13,11 +13,11 @@ internal class ValidatingRssCategoryBuilder : RssCategoryBuilder {
 
     override fun domain(domain: String?): RssCategoryBuilder = apply { this.domain = domain }
 
-    override fun build(): Category.Rss? {
+    override fun build(): RssCategory? {
         if (!::categoryValue.isInitialized) {
             return null
         }
 
-        return Category.Rss(categoryValue, domain)
+        return RssCategory(categoryValue, domain)
     }
 }

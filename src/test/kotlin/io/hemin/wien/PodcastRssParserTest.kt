@@ -12,9 +12,9 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.dom.DomBuilderFactory
 import io.hemin.wien.dom.findElementByName
-import io.hemin.wien.model.Category
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.HrefOnlyImage
+import io.hemin.wien.model.ITunesStyleCategory
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
 import org.junit.jupiter.api.Assertions.fail
@@ -157,9 +157,9 @@ internal class PodcastRssParserTest {
                     prop(Person::email).isEqualTo("studio@smashingsecurity.com")
                 }
                 prop(Podcast.ITunes::categories).containsExactly(
-                    Category.ITunes.Simple(category = "Technology"),
-                    Category.ITunes.Nested(category = "News", nested = Category.ITunes.Simple(category = "Tech News")),
-                    Category.ITunes.Simple(category = "Comedy")
+                    ITunesStyleCategory.Simple(name = "Technology"),
+                    ITunesStyleCategory.Nested(name = "News", subcategory = ITunesStyleCategory.Simple(name = "Tech News")),
+                    ITunesStyleCategory.Simple(name = "Comedy")
                 )
             }
             prop(Podcast::atom).isNull()

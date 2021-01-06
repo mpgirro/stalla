@@ -1,9 +1,9 @@
 package io.hemin.wien.builder.fake
 
 import io.hemin.wien.builder.RssCategoryBuilder
-import io.hemin.wien.model.Category
+import io.hemin.wien.model.RssCategory
 
-internal class FakeRssCategoryBuilder : FakeBuilder<Category.Rss>(), RssCategoryBuilder {
+internal class FakeRssCategoryBuilder : FakeBuilder<RssCategory>(), RssCategoryBuilder {
 
     var category: String? = null
     var domain: String? = null

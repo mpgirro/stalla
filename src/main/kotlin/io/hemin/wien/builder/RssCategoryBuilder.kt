@@ -1,8 +1,8 @@
 package io.hemin.wien.builder
 
-import io.hemin.wien.model.Category
+import io.hemin.wien.model.RssCategory
 
-internal interface RssCategoryBuilder : Builder<Category.Rss> {
+internal interface RssCategoryBuilder : Builder<RssCategory> {
 
     /** Set the category value. */
     fun category(category: String): RssCategoryBuilder

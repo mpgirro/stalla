@@ -1,11 +1,11 @@
 package io.hemin.wien.model.episode
 
 import io.hemin.wien.dateTime
-import io.hemin.wien.model.Category
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
+import io.hemin.wien.model.RssCategory
 import io.hemin.wien.model.aLink
 import io.hemin.wien.model.aPerson
 import io.hemin.wien.model.anHrefOnlyImage
@@ -18,7 +18,7 @@ internal fun anEpisode(
     link: String? = "episode link",
     description: String? = "episode description",
     author: String? = "episode author",
-    categories: List<Category.Rss> = listOf(anRssCategory("episode category")),
+    categories: List<RssCategory> = listOf(anRssCategory("episode category")),
     comments: String? = "episode comments",
     enclosure: Episode.Enclosure = anEpisodeEnclosure(),
     guid: Episode.Guid? = anEpisodeGuid(),

@@ -1,8 +1,9 @@
 package io.hemin.wien.dom
 
-import io.hemin.wien.model.Category
 import io.hemin.wien.model.HrefOnlyImage
+import io.hemin.wien.model.ITunesStyleCategory
 import io.hemin.wien.model.Person
+import io.hemin.wien.model.RssCategory
 import io.hemin.wien.model.RssImage
 import io.hemin.wien.util.BooleanStringStyle
 import io.hemin.wien.util.FeedNamespace
@@ -137,17 +138,17 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
 /**
  * Appends iTunes-Style <ns:category> tags with the data from the provided [categories].
  *
- * @param categories The [categories][Category.ITunes] to append.
+ * @param categories The [categories][ITunesStyleCategory] to append.
  * @param namespace The namespace to use, if any.
  */
-internal fun Node.appendITunesCategoryElements(categories: List<Category.ITunes>, namespace: FeedNamespace? = null) {
+internal fun Node.appendITunesCategoryElements(categories: List<ITunesStyleCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
         appendElement("category", namespace) {
-            setAttribute("text", category.category)
+            setAttribute("text", category.name)
 
-            if (category is Category.ITunes.Nested) {
+            if (category is ITunesStyleCategory.Nested) {
                 appendElement("category", namespace) {
-                    setAttribute("text", category.nested.category)
+                    setAttribute("text", category.subcategory.name)
                 }
             }
         }
@@ -157,13 +158,13 @@ internal fun Node.appendITunesCategoryElements(categories: List<Category.ITunes>
 /**
  * Appends RSS <category> tags with the data from the provided [categories].
  *
- * @param categories The [categories][Category.Rss] to append.
+ * @param categories The [categories][RssCategory] to append.
  * @param namespace The namespace to use, if any.
  */
-internal fun Node.appendRssCategoryElements(categories: List<Category.Rss>, namespace: FeedNamespace? = null) {
+internal fun Node.appendRssCategoryElements(categories: List<RssCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
         appendElement("category", namespace) {
-            textContent = category.category
+            textContent = category.name
             setAttribute("domain", category.domain)
         }
     }

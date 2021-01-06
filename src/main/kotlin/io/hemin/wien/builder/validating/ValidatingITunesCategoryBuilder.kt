@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.validating
 
 import io.hemin.wien.builder.ITunesCategoryBuilder
-import io.hemin.wien.model.Category
+import io.hemin.wien.model.ITunesStyleCategory
 
 internal class ValidatingITunesCategoryBuilder : ITunesCategoryBuilder {
 
@@ -13,16 +13,16 @@ internal class ValidatingITunesCategoryBuilder : ITunesCategoryBuilder {
 
     override fun subcategory(subcategory: String?): ITunesCategoryBuilder = apply { this.subcategoryValue = subcategory }
 
-    override fun build(): Category.ITunes? {
+    override fun build(): ITunesStyleCategory? {
         if (!::categoryValue.isInitialized) {
             return null
         }
 
         val subcategory = subcategoryValue
         return if (subcategory == null) {
-            Category.ITunes.Simple(categoryValue)
+            ITunesStyleCategory.Simple(categoryValue)
         } else {
-            Category.ITunes.Nested(categoryValue, Category.ITunes.Simple(subcategory))
+            ITunesStyleCategory.Nested(categoryValue, ITunesStyleCategory.Simple(subcategory))
         }
     }
 }

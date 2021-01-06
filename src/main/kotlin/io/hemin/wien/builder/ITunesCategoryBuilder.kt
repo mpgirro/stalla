@@ -1,8 +1,8 @@
 package io.hemin.wien.builder
 
-import io.hemin.wien.model.Category
+import io.hemin.wien.model.ITunesStyleCategory
 
-internal interface ITunesCategoryBuilder : Builder<Category.ITunes> {
+internal interface ITunesCategoryBuilder : Builder<ITunesStyleCategory> {
 
     /** Set the category value. */
     fun category(category: String): ITunesCategoryBuilder
