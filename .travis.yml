@@ -1,7 +1,7 @@
 language: java
 
 jdk:
-    - openjdk8
+    - openjdk11
 
 before_install:
     - chmod -R +x src
@@ -10,6 +10,9 @@ before_install:
 script:
     - ./gradlew clean build check jacocoTestReport coveralls
 
+before_cache:
+    - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+    - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
     bundler: true
     directories:
