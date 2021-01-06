@@ -30,7 +30,41 @@ Feel free to open an issue if WIEN is missing support for a relevant namespace. 
 
 ## Usage
 
-__TODO__
+### Parsing an RSS feed
+
+To parse an RSS feed, you need to use the [`PodcastRssParser`](src/main/kotlin/io/hemin/wien/PodcastRssParser.kt) object.
+Parsing an RSS feed is as easy as picking the overload of `parse()` that fits your needs:
+
+```kotlin
+val rssFeedFile = File("/my/path/rss.xml")
+val podcast = PodcastRssParser.parse(rssFeedFile)
+```
+
+The `parse()` function will return a parsed `Podcast?`, which may be `null` if the parsing fails for whatever reason.
+
+### Writing an RSS feed
+
+To write an RSS feed, you need to use the [`PodcastRssWriter`](src/main/kotlin/io/hemin/wien/PodcastRssWriter.kt) object.
+Parsing an RSS feed is as easy as picking the overload of `parse()` that fits your needs:
+
+```kotlin
+val rssFeedFile = File("/my/path/rss.xml")
+val podcast: Podcast = // ...
+PodcastRssWriter.writeRssFeed(podcast, rssFeedFile)
+```
+
+The `writeRssFeed()` function will throw an exception if the parsing fails for whatever reason.
+
+### Documentation
+
+The project uses [Dokka](https://github.com/Kotlin/dokka) to generate its documentation from the KDoc comments in the code. If you want to generate a fresh version of the documentation, use one of the Dokka Gradle tasks:
+
+```bash
+$ ./gradlew dokkaHtml
+$ ./gradlew dokkaJavadoc
+$ ./gradlew dokkaGfm
+$ ./gradlew dokkaJekyll
+```
 
 ## Looking for Atom feed support?
 
@@ -40,12 +74,6 @@ We've provided several modules to extend ROME for additional XML namespaces rele
 
 Also note that certain standard information are only supported by either RSS 2.0 or Atom 1.0 feeds, but not available in both feed types.
 
-## Development
+## License
 
-Compile:
-
-    gradle compileKotlin
-
-Generate docs with Dokka:
-
-    gradle dokka
+Wien is released under the [BSD 3-clause license](LICENSE).
