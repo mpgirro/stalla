@@ -16,9 +16,9 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeITunesBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastITunesBuilder
+import io.hemin.wien.dom.XmlRes
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
-import io.hemin.wien.nodeFromResource
 import io.hemin.wien.parser.namespace.ITunesParser
 import org.junit.jupiter.api.Test
 
@@ -36,7 +36,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
 
     @Test
     fun `should extract all itunes fields from channel when present`() {
-        val node = nodeFromResource("channel", "/xml/channel.xml")
+        val node = XmlRes("/xml/channel.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
@@ -63,7 +63,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
 
     @Test
     fun `should not extract itunes fields from channel when absent`() {
-        val node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
+        val node = XmlRes("/xml/channel-incomplete.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
@@ -86,7 +86,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
 
     @Test
     fun `should extract all itunes fields from item when present`() {
-        val node = nodeFromResource("item", "/xml/item.xml")
+        val node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
@@ -107,7 +107,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
 
     @Test
     fun `should not extract itunes fields from item when absent`() {
-        val node = nodeFromResource("item", "/xml/item-incomplete.xml")
+        val node = XmlRes("/xml/item-incomplete.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 

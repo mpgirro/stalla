@@ -11,7 +11,7 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeAtomBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastAtomBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
-import io.hemin.wien.nodeFromResource
+import io.hemin.wien.dom.XmlRes
 import io.hemin.wien.parser.namespace.AtomParser
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
@@ -33,7 +33,7 @@ internal class AtomParserTest : NamespaceParserTest() {
 
     @Test
     fun `should extract all atom fields from channel when present`() {
-        val channel: Node = nodeFromResource("channel", "/xml/channel.xml")
+        val channel: Node = XmlRes("/xml/channel.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
@@ -45,8 +45,21 @@ internal class AtomParserTest : NamespaceParserTest() {
     }
 
     @Test
+    fun `should extract nothing from channel when atom data is all empty`() {
+        val channel: Node = XmlRes("/xml/rss-all-empty.xml").rootNodeByName("channel")
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.atom, "atom episode data").all {
+            prop(FakePodcastAtomBuilder::authorBuilders).isEmpty()
+            prop(FakePodcastAtomBuilder::contributorBuilders).isEmpty()
+            prop(FakePodcastAtomBuilder::linkBuilders).isEmpty()
+        }
+    }
+
+    @Test
     fun `should extract nothing from channel when no atom data is present`() {
-        val channel: Node = nodeFromResource("channel", "/xml/channel-incomplete.xml")
+        val channel: Node = XmlRes("/xml/channel-incomplete.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
@@ -59,7 +72,7 @@ internal class AtomParserTest : NamespaceParserTest() {
 
     @Test
     fun `should extract all atom fields from item when present`() {
-        val item: Node = nodeFromResource("item", "/xml/item.xml")
+        val item: Node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
@@ -72,7 +85,7 @@ internal class AtomParserTest : NamespaceParserTest() {
 
     @Test
     fun `should extract nothing from item when no atom data is present`() {
-        val item: Node = nodeFromResource("item", "/xml/item-incomplete.xml")
+        val item: Node = XmlRes("/xml/item-incomplete.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 

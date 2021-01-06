@@ -5,7 +5,7 @@ import assertk.assertions.containsExactly
 import assertk.assertions.isEmpty
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodePodloveSimpleChapterBuilder
-import io.hemin.wien.nodeFromResource
+import io.hemin.wien.dom.XmlRes
 import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
 import org.junit.jupiter.api.Test
 
@@ -15,7 +15,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
     @Test
     fun `should not extract podlove chapter data from item when absent`() {
-        val node = nodeFromResource("item", "/xml/item-incomplete.xml")
+        val node = XmlRes("/xml/item-incomplete.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
@@ -24,7 +24,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
     @Test
     fun `should extract podlove chapter data from item when present`() {
-        val node = nodeFromResource("item", "/xml/item.xml")
+        val node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
