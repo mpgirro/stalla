@@ -18,36 +18,36 @@ internal class AtomParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.ATOM
 
-    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
-        when (node.localName) {
+    override fun Node.parseChannelData(builder: PodcastBuilder) {
+        when (localName) {
             "contributor" -> {
-                val personBuilder = node.ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
+                val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
                 builder.atom.addContributorBuilder(personBuilder)
             }
             "author" -> {
-                val personBuilder = node.ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
+                val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
                 builder.atom.addAuthorBuilder(personBuilder)
             }
             "link" -> {
-                val linkBuilder = node.ifCanBeParsed { toLinkBuilder(builder.createLinkBuilder()) } ?: return
+                val linkBuilder = ifCanBeParsed { toLinkBuilder(builder.createLinkBuilder()) } ?: return
                 builder.atom.addLinkBuilder(linkBuilder)
             }
             else -> pass
         }
     }
 
-    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
-        when (node.localName) {
+    override fun Node.parseItemData(builder: EpisodeBuilder) {
+        when (localName) {
             "contributor" -> {
-                val personBuilder = node.ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
+                val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
                 builder.atom.addContributorBuilder(personBuilder)
             }
             "author" -> {
-                val personBuilder = node.ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
+                val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
                 builder.atom.addAuthorBuilder(personBuilder)
             }
             "link" -> {
-                val linkBuilder = node.ifCanBeParsed { toLinkBuilder(builder.createLinkBuilder()) } ?: return
+                val linkBuilder = ifCanBeParsed { toLinkBuilder(builder.createLinkBuilder()) } ?: return
                 builder.atom.addLinkBuilder(linkBuilder)
             }
             else -> pass

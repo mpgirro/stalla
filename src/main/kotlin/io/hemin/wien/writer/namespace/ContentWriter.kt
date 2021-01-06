@@ -16,13 +16,13 @@ internal class ContentWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.CONTENT
 
-    override fun writeChannelData(channel: Podcast, element: Element) {
+    override fun Element.appendPodcastData(podcast: Podcast) {
         // Nothing to do here
     }
 
-    override fun writeItemData(episode: Episode, element: Element) {
+    override fun Element.appendEpisodeData(episode: Episode) {
         if (episode.content?.encoded == null) return
 
-        element.appendElement("encoded", namespace) { textContent = episode.content.encoded }
+        appendElement("encoded", namespace) { textContent = episode.content.encoded }
     }
 }

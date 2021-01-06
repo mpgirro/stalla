@@ -19,20 +19,20 @@ internal class AtomWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.ATOM
 
-    override fun writeChannelData(channel: Podcast, element: Element) {
-        val atom = channel.atom ?: return
+    override fun Element.appendPodcastData(podcast: Podcast) {
+        val atom = podcast.atom ?: return
 
-        element.appendPersonElements("contributor", atom.contributors)
-        element.appendPersonElements("author", atom.authors)
-        element.appendLinkElements(atom.links)
+        appendPersonElements("contributor", atom.contributors)
+        appendPersonElements("author", atom.authors)
+        appendLinkElements(atom.links)
     }
 
-    override fun writeItemData(episode: Episode, element: Element) {
+    override fun Element.appendEpisodeData(episode: Episode) {
         val atom = episode.atom ?: return
 
-        element.appendPersonElements("contributor", atom.contributors)
-        element.appendPersonElements("author", atom.authors)
-        element.appendLinkElements(atom.links)
+        appendPersonElements("contributor", atom.contributors)
+        appendPersonElements("author", atom.authors)
+        appendLinkElements(atom.links)
     }
 
     private fun Element.appendPersonElements(tagName: String, persons: List<Person>) {

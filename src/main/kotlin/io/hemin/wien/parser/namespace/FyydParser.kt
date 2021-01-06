@@ -16,17 +16,17 @@ internal class FyydParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.FYYD
 
-    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
-        when (node.localName) {
+    override fun Node.parseChannelData(builder: PodcastBuilder) {
+        when (localName) {
             "verify" -> {
-                val verify = node.ifCanBeParsed { textOrNull() } ?: return
+                val verify = ifCanBeParsed { textOrNull() } ?: return
                 builder.fyyd.verify(verify)
             }
             else -> pass
         }
     }
 
-    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
+    override fun Node.parseItemData(builder: EpisodeBuilder) {
         // No-op
     }
 }

@@ -20,26 +20,26 @@ internal class GooglePlayWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.GOOGLE_PLAY
 
-    override fun writeChannelData(channel: Podcast, element: Element) {
-        val play = channel.googlePlay ?: return
+    override fun Element.appendPodcastData(podcast: Podcast) {
+        val play = podcast.googlePlay ?: return
 
         if (play.author != null) {
-            element.appendElement("author", namespace) { textContent = play.author }
+            appendElement("author", namespace) { textContent = play.author }
         }
 
         if (play.owner != null) {
-            element.appendElement("owner", namespace) { textContent = play.owner }
+            appendElement("owner", namespace) { textContent = play.owner }
         }
 
-        element.appendITunesCategoryElements(play.categories, namespace)
+        appendITunesCategoryElements(play.categories, namespace)
 
-        element.appendCommonElements(play)
+        appendCommonElements(play)
     }
 
-    override fun writeItemData(episode: Episode, element: Element) {
+    override fun Element.appendEpisodeData(episode: Episode) {
         val play = episode.googlePlay ?: return
 
-        element.appendCommonElements(play)
+        appendCommonElements(play)
     }
 
     private fun Element.appendCommonElements(play: GooglePlayBase) {

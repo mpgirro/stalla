@@ -17,12 +17,12 @@ internal class BitloveParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.BITLOVE
 
-    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
+    override fun Node.parseChannelData(builder: PodcastBuilder) {
         // No-op
     }
 
-    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
-        val guid = node.findGuid() ?: return
+    override fun Node.parseItemData(builder: EpisodeBuilder) {
+        val guid = findGuid() ?: return
         builder.bitlove.guid(guid)
     }
 

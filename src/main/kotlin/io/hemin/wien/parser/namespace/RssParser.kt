@@ -26,59 +26,59 @@ internal class RssParser : NamespaceParser() {
 
     override val namespace: FeedNamespace? = null
 
-    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
-        if (node !is Element) return
+    override fun Node.parseChannelData(builder: PodcastBuilder) {
+        if (this !is Element) return
 
-        when (node.localName) {
-            "copyright" -> builder.copyright(node.ifCanBeParsed { textOrNull() })
+        when (localName) {
+            "copyright" -> builder.copyright(ifCanBeParsed { textOrNull() })
             "description" -> {
-                val description = node.ifCanBeParsed { textOrNull() } ?: return
+                val description = ifCanBeParsed { textOrNull() } ?: return
                 builder.description(description)
             }
-            "docs" -> builder.docs(node.ifCanBeParsed { textOrNull() })
-            "generator" -> builder.generator(node.ifCanBeParsed { textOrNull() })
-            "image" -> builder.imageBuilder(node.ifCanBeParsed { toRssImageBuilder(builder.createRssImageBuilder()) })
+            "docs" -> builder.docs(ifCanBeParsed { textOrNull() })
+            "generator" -> builder.generator(ifCanBeParsed { textOrNull() })
+            "image" -> builder.imageBuilder(ifCanBeParsed { toRssImageBuilder(builder.createRssImageBuilder()) })
             "language" -> {
-                val language = node.ifCanBeParsed { textOrNull() } ?: return
+                val language = ifCanBeParsed { textOrNull() } ?: return
                 builder.language(language)
             }
-            "lastBuildDate" -> builder.lastBuildDate(node.ifCanBeParsed { parseAsTemporalAccessor() })
+            "lastBuildDate" -> builder.lastBuildDate(ifCanBeParsed { parseAsTemporalAccessor() })
             "link" -> {
-                val link = node.ifCanBeParsed { textOrNull() } ?: return
+                val link = ifCanBeParsed { textOrNull() } ?: return
                 builder.link(link)
             }
-            "managingEditor" -> builder.managingEditor(node.ifCanBeParsed { textOrNull() })
-            "pubDate" -> builder.pubDate(node.ifCanBeParsed { parseAsTemporalAccessor() })
+            "managingEditor" -> builder.managingEditor(ifCanBeParsed { textOrNull() })
+            "pubDate" -> builder.pubDate(ifCanBeParsed { parseAsTemporalAccessor() })
             "title" -> {
-                val title = node.ifCanBeParsed { textOrNull() } ?: return
+                val title = ifCanBeParsed { textOrNull() } ?: return
                 builder.title(title)
             }
-            "webMaster" -> builder.webMaster(node.ifCanBeParsed { textOrNull() })
+            "webMaster" -> builder.webMaster(ifCanBeParsed { textOrNull() })
             "item" -> pass // Items are parsed by the root parser direcly
         }
     }
 
-    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
-        if (node !is Element) return
+    override fun Node.parseItemData(builder: EpisodeBuilder) {
+        if (this !is Element) return
 
-        when (node.localName) {
-            "author" -> builder.author(node.ifCanBeParsed { textOrNull() })
+        when (localName) {
+            "author" -> builder.author(ifCanBeParsed { textOrNull() })
             "category" -> {
-                val categoryBuilder = node.ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) } ?: return
+                val categoryBuilder = ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) } ?: return
                 builder.addCategoryBuilder(categoryBuilder)
             }
-            "comments" -> builder.comments(node.ifCanBeParsed { textOrNull() })
-            "description" -> builder.description(node.ifCanBeParsed { textOrNull() })
+            "comments" -> builder.comments(ifCanBeParsed { textOrNull() })
+            "description" -> builder.description(ifCanBeParsed { textOrNull() })
             "enclosure" -> {
-                val enclosure = node.ifCanBeParsed { toEnclosureBuilder(builder.createEnclosureBuilder()) } ?: return
+                val enclosure = ifCanBeParsed { toEnclosureBuilder(builder.createEnclosureBuilder()) } ?: return
                 builder.enclosureBuilder(enclosure)
             }
-            "guid" -> builder.guidBuilder(node.ifCanBeParsed { toGuidBuilder(builder.createGuidBuilder()) })
-            "link" -> builder.link(node.ifCanBeParsed { textOrNull() })
-            "pubDate" -> builder.pubDate(node.ifCanBeParsed { parseAsTemporalAccessor() })
-            "source" -> builder.source(node.ifCanBeParsed { textOrNull() })
+            "guid" -> builder.guidBuilder(ifCanBeParsed { toGuidBuilder(builder.createGuidBuilder()) })
+            "link" -> builder.link(ifCanBeParsed { textOrNull() })
+            "pubDate" -> builder.pubDate(ifCanBeParsed { parseAsTemporalAccessor() })
+            "source" -> builder.source(ifCanBeParsed { textOrNull() })
             "title" -> {
-                val title = node.ifCanBeParsed { textOrNull() } ?: return
+                val title = ifCanBeParsed { textOrNull() } ?: return
                 builder.title(title)
             }
         }

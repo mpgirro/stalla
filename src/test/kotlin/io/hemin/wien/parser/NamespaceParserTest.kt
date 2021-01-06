@@ -11,13 +11,13 @@ internal abstract class NamespaceParserTest {
 
     protected fun Node.parseChannelChildNodes(builder: FakePodcastBuilder) {
         for (element in childNodes.asListOfNodes()) {
-            parser.tryParsingChannelChildNode(builder, element)
+            parser.tryParsingChannelChildNode(element, builder)
         }
     }
 
     protected fun Node.parseItemChildNodes(builder: FakeEpisodeBuilder) {
         for (element in childNodes.asListOfNodes()) {
-            parser.tryParsingItemChildNode(builder, element)
+            parser.tryParsingItemChildNode(element, builder)
         }
     }
 }

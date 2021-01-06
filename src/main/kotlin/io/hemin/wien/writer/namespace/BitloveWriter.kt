@@ -17,14 +17,14 @@ internal class BitloveWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.BITLOVE
 
-    override fun writeChannelData(channel: Podcast, element: Element) {
+    override fun Element.appendPodcastData(podcast: Podcast) {
         // Nothing to do here
     }
 
-    override fun writeItemData(episode: Episode, element: Element) {
+    override fun Element.appendEpisodeData(episode: Episode) {
         val guid = episode.bitlove?.guid ?: return
 
-        val enclosureElement = element.findElementByName("enclosure")
+        val enclosureElement = findElementByName("enclosure")
         requireNotNull(enclosureElement) { "This writer must execute after the episode <enclosure> has been written" }
 
         enclosureElement.setAttributeWithNS("guid", namespace) { value = guid }

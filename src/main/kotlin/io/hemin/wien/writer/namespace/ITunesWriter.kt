@@ -22,54 +22,54 @@ internal class ITunesWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.ITUNES
 
-    override fun writeChannelData(channel: Podcast, element: Element) {
-        val iTunes = channel.iTunes ?: return
+    override fun Element.appendPodcastData(podcast: Podcast) {
+        val iTunes = podcast.iTunes ?: return
 
-        element.appendITunesCategoryElements(iTunes.categories, namespace)
+        appendITunesCategoryElements(iTunes.categories, namespace)
 
         if (iTunes.complete != null) {
-            element.appendYesElementIfTrue("complete", iTunes.complete, namespace)
+            appendYesElementIfTrue("complete", iTunes.complete, namespace)
         }
 
         if (iTunes.keywords != null) {
-            element.appendElement("keywords", namespace) { textContent = iTunes.keywords }
+            appendElement("keywords", namespace) { textContent = iTunes.keywords }
         }
 
         if (iTunes.owner != null) {
-            element.appendPersonElement("owner", iTunes.owner, namespace)
+            appendPersonElement("owner", iTunes.owner, namespace)
         }
 
         if (iTunes.type != null) {
-            element.appendElement("type", namespace) { textContent = iTunes.type.type }
+            appendElement("type", namespace) { textContent = iTunes.type.type }
         }
 
         if (iTunes.type != null) {
-            element.appendElement("new-feed-url", namespace) { textContent = iTunes.newFeedUrl }
+            appendElement("new-feed-url", namespace) { textContent = iTunes.newFeedUrl }
         }
 
-        element.appendCommonElements(channel.iTunes)
+        appendCommonElements(podcast.iTunes)
     }
 
-    override fun writeItemData(episode: Episode, element: Element) {
+    override fun Element.appendEpisodeData(episode: Episode) {
         val iTunes = episode.iTunes ?: return
 
         if (iTunes.duration != null) {
-            element.appendElement("duration", namespace) { textContent = iTunes.duration }
+            appendElement("duration", namespace) { textContent = iTunes.duration }
         }
 
         if (iTunes.season != null) {
-            element.appendElement("season", namespace) { textContent = iTunes.season.toString() }
+            appendElement("season", namespace) { textContent = iTunes.season.toString() }
         }
 
         if (iTunes.episode != null) {
-            element.appendElement("episode", namespace) { textContent = iTunes.episode.toString() }
+            appendElement("episode", namespace) { textContent = iTunes.episode.toString() }
         }
 
         if (iTunes.episodeType != null) {
-            element.appendElement("episodeType", namespace) { textContent = iTunes.episodeType.type }
+            appendElement("episodeType", namespace) { textContent = iTunes.episodeType.type }
         }
 
-        element.appendCommonElements(episode.iTunes)
+        appendCommonElements(episode.iTunes)
     }
 
     private fun Element.appendCommonElements(iTunes: ITunesBase) {
