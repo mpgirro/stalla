@@ -1,12 +1,20 @@
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+}
+
 plugins {
     id("org.jetbrains.kotlin.jvm").version("1.4.21")
     id("org.jetbrains.dokka") version "1.4.20"
     id("jacoco")
     id("java")
-    id("com.github.kt3k.coveralls").version("2.10.2")
+    id("com.github.nbaztec.coveralls-jacoco").version("1.2.5")
 }
 
 group = "io.hemin"
@@ -49,8 +57,4 @@ tasks {
             xml.isEnabled = true
         }
     }
-}
-
-coveralls {
-    sourceDirs = sourceDirs + "src/main/kotlin"
 }

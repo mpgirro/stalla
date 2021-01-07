@@ -110,6 +110,10 @@ ij_editorconfig_spaces_around_assignment_operators = true
 [{*.html,*.js,*.css}]
 indent_size = 2
 
+[*.yml]
+indent_size = 2
+ij_continuation_indent_size = 2
+
 [gradlew.bat]
 end_of_line = crlf
 
