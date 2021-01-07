@@ -1,13 +1,14 @@
 package io.hemin.wien.writer.namespace
 
+import io.hemin.wien.dom.appendElement
+import io.hemin.wien.dom.appendHrefOnlyImageElement
+import io.hemin.wien.dom.appendITunesCategoryElements
+import io.hemin.wien.dom.appendYesElementIfTrue
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.GooglePlayBase
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.writer.NamespaceWriter
-import io.hemin.wien.util.appendElement
-import io.hemin.wien.util.appendImageElement
-import io.hemin.wien.util.appendYesElementIfTrue
 import org.w3c.dom.Element
 
 /**
@@ -30,17 +31,9 @@ internal class GooglePlayWriter : NamespaceWriter() {
             element.appendElement("owner", namespace) { textContent = play.owner }
         }
 
-        element.appendCategoryElements(play.categories)
+        element.appendITunesCategoryElements(play.categories, namespace)
 
         element.appendCommonElements(play)
-    }
-
-    private fun Element.appendCategoryElements(categories: List<String>) {
-        for (category in categories) {
-            appendElement("category", namespace) {
-                setAttribute("text", category)
-            }
-        }
     }
 
     override fun writeItemData(episode: Episode, element: Element) {
@@ -67,7 +60,7 @@ internal class GooglePlayWriter : NamespaceWriter() {
 
         val image = play.image
         if (image != null) {
-            appendImageElement(image, namespace)
+            appendHrefOnlyImageElement(image, namespace)
         }
     }
 }

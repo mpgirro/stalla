@@ -2,8 +2,8 @@ package io.hemin.wien.parser
 
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.dom.isDirectChildOf
 import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.util.isDirectChildOf
 import org.w3c.dom.Node
 
 /** Base class for XML namespace parser implementations. */

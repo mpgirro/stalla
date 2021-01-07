@@ -1,6 +1,7 @@
 package io.hemin.wien.builder.validating.podcast
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.ITunesCategoryBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
 import io.hemin.wien.model.Podcast
@@ -14,7 +15,7 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
     private var summary: String? = null
     private var keywords: String? = null
     private var author: String? = null
-    private var categories: MutableList<String> = mutableListOf()
+    private var categoryBuilders: MutableList<ITunesCategoryBuilder> = mutableListOf()
     private var block: Boolean? = null
     private var complete: Boolean? = null
     private var type: Podcast.ITunes.ShowType? = null
@@ -32,8 +33,8 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
 
     override fun author(author: String?): PodcastITunesBuilder = apply { this.author = author }
 
-    override fun addCategory(category: String): PodcastITunesBuilder = apply {
-        categories.add(category)
+    override fun addCategoryBuilder(categoryBuilder: ITunesCategoryBuilder): PodcastITunesBuilder = apply {
+        categoryBuilders.add(categoryBuilder)
     }
 
     override fun explicit(explicit: Boolean): PodcastITunesBuilder = apply { this.explicit = explicit }
@@ -56,6 +57,7 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
 
     override fun build(): Podcast.ITunes? {
         val explicitValue = explicit
+        val categories = categoryBuilders.mapNotNull { it.build() }
         if (!::imageBuilderValue.isInitialized || categories.isEmpty() || explicitValue == null) {
             return null
         }
@@ -68,7 +70,7 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
             image = image,
             keywords = keywords,
             author = author,
-            categories = immutableCopyOf(categories),
+            categories = categories,
             explicit = explicitValue,
             block = block,
             complete = complete,

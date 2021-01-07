@@ -3,6 +3,7 @@ package io.hemin.wien.model.podcast
 import io.hemin.wien.dateTime
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.HrefOnlyImage
+import io.hemin.wien.model.ITunesStyleCategory
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
@@ -10,6 +11,7 @@ import io.hemin.wien.model.RssImage
 import io.hemin.wien.model.aLink
 import io.hemin.wien.model.aPerson
 import io.hemin.wien.model.anHrefOnlyImage
+import io.hemin.wien.model.anITunesCategory
 import io.hemin.wien.model.anRssImage
 import io.hemin.wien.model.episode.anEpisode
 import java.time.Month
@@ -61,7 +63,7 @@ internal fun aPodcastItunes(
     image: HrefOnlyImage = anHrefOnlyImage(href = "podcast itunes image url"),
     keywords: String? = "podcast itunes keywords",
     author: String? = "podcast itunes author",
-    categories: List<String> = listOf("podcast itunes category"),
+    categories: List<ITunesStyleCategory> = listOf(anITunesCategory("podcast itunes category", "podcast itunes subcategory")),
     explicit: Boolean = true,
     block: Boolean? = true,
     complete: Boolean? = true,
@@ -92,7 +94,7 @@ internal fun aPodcastFeedpress(
 internal fun aPodcastGooglePlay(
     author: String? = "podcast googleplay author",
     owner: String? = "podcast googleplay owner",
-    categories: List<String> = listOf("podcast googleplay category"),
+    categories: List<ITunesStyleCategory> = listOf(anITunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean? = true,

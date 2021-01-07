@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.fake.podcast
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.RssImageBuilder
+import io.hemin.wien.builder.ITunesCategoryBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
@@ -16,7 +16,7 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
     var summary: String? = null
     var keywords: String? = null
     var author: String? = null
-    var categories: MutableList<String> = mutableListOf()
+    var categoryBuilders: MutableList<ITunesCategoryBuilder> = mutableListOf()
     var block: Boolean? = null
     var complete: Boolean? = null
     var type: Podcast.ITunes.ShowType? = null
@@ -34,8 +34,8 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
 
     override fun author(author: String?): PodcastITunesBuilder = apply { this.author = author }
 
-    override fun addCategory(category: String): PodcastITunesBuilder = apply {
-        categories.add(category)
+    override fun addCategoryBuilder(categoryBuilder: ITunesCategoryBuilder): PodcastITunesBuilder = apply {
+        categoryBuilders.add(categoryBuilder)
     }
 
     override fun explicit(explicit: Boolean): PodcastITunesBuilder = apply { this.explicit = explicit }
@@ -66,7 +66,7 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
         if (summary != other.summary) return false
         if (keywords != other.keywords) return false
         if (author != other.author) return false
-        if (categories != other.categories) return false
+        if (categoryBuilders != other.categoryBuilders) return false
         if (block != other.block) return false
         if (complete != other.complete) return false
         if (type != other.type) return false
@@ -84,7 +84,7 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
         result = 31 * result + (summary?.hashCode() ?: 0)
         result = 31 * result + (keywords?.hashCode() ?: 0)
         result = 31 * result + (author?.hashCode() ?: 0)
-        result = 31 * result + categories.hashCode()
+        result = 31 * result + categoryBuilders.hashCode()
         result = 31 * result + (block?.hashCode() ?: 0)
         result = 31 * result + (complete?.hashCode() ?: 0)
         result = 31 * result + (type?.hashCode() ?: 0)
@@ -96,6 +96,6 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
 
     override fun toString() =
         "FakePodcastITunesBuilder(imageBuilderValue=$imageBuilderValue, explicit=$explicit, subtitle=$subtitle, summary=$summary, " +
-                "keywords=$keywords, author=$author, categories=$categories, block=$block, complete=$complete, type=$type, " +
+                "keywords=$keywords, author=$author, categories=$categoryBuilders, block=$block, complete=$complete, type=$type, " +
                 "ownerBuilder=$ownerBuilder, title=$title, newFeedUrl=$newFeedUrl)"
 }

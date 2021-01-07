@@ -7,6 +7,7 @@ import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import io.hemin.wien.builder.fake.FakeRssCategoryBuilder
 import io.hemin.wien.builder.fake.FakeRssImageBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeEnclosureBuilder
@@ -102,7 +103,10 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakeEpisodeBuilder::pubDate).isEqualTo(expectedDate)
             prop(FakeEpisodeBuilder::author).isEqualTo("author@example.org")
             prop(FakeEpisodeBuilder::comments).isEqualTo("http://example.org/episode1/comments")
-            prop(FakeEpisodeBuilder::categories).containsExactly("category1", "category2")
+            prop(FakeEpisodeBuilder::categoryBuilders).containsExactly(
+                FakeRssCategoryBuilder().category("category 1").domain("banana"),
+                FakeRssCategoryBuilder().category("category 2")
+            )
             prop(FakeEpisodeBuilder::enclosureBuilderValue).isEqualTo(expectedEnclosureBuilder)
             prop(FakeEpisodeBuilder::guidBuilder).isEqualTo(expectedGuidBuilder)
             prop(FakeEpisodeBuilder::source).isEqualTo("http://example.org/rss")
@@ -122,7 +126,7 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakeEpisodeBuilder::pubDate).isNull()
             prop(FakeEpisodeBuilder::author).isNull()
             prop(FakeEpisodeBuilder::comments).isNull()
-            prop(FakeEpisodeBuilder::categories).isEmpty()
+            prop(FakeEpisodeBuilder::categoryBuilders).isEmpty()
             prop(FakeEpisodeBuilder::enclosureBuilderValue).isNull()
             prop(FakeEpisodeBuilder::guidBuilder).isNull()
             prop(FakeEpisodeBuilder::source).isNull()

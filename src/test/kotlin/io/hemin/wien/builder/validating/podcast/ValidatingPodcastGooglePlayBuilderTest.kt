@@ -11,13 +11,20 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
-import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
+import io.hemin.wien.builder.validating.ValidatingITunesCategoryBuilder
 import io.hemin.wien.model.Podcast
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastGooglePlayBuilderTest {
 
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
+
+    private val expectedITunesCategoryBuilder = ValidatingITunesCategoryBuilder()
+        .category("googleplay category")
+        .subcategory("googleplay subcategory")
+
+    private val otherExpectedITunesCategoryBuilder = ValidatingITunesCategoryBuilder()
+        .category("googleplay category 2")
 
     @Test
     internal fun `should not build a Podcast GooglePlay when all fields are missing`() {
@@ -61,12 +68,12 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
     @Test
     internal fun `should build a valid Podcast GooglePlay when there is only a category`() {
         val podcastBuilder = ValidatingPodcastGooglePlayBuilder()
-            .addCategory("category 1")
+            .addCategoryBuilder(expectedITunesCategoryBuilder)
 
         assertThat(podcastBuilder.build()).isNotNull().all {
             prop(Podcast.GooglePlay::author).isNull()
             prop(Podcast.GooglePlay::owner).isNull()
-            prop(Podcast.GooglePlay::categories).containsExactly("category 1")
+            prop(Podcast.GooglePlay::categories).containsExactly(expectedITunesCategoryBuilder.build())
             prop(Podcast.GooglePlay::description).isNull()
             prop(Podcast.GooglePlay::explicit).isNull()
             prop(Podcast.GooglePlay::block).isNull()
@@ -143,8 +150,8 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
         val podcastBuilder = ValidatingPodcastGooglePlayBuilder()
             .author("author")
             .owner("owner")
-            .addCategory("category 1")
-            .addCategory("category 2")
+            .addCategoryBuilder(expectedITunesCategoryBuilder)
+            .addCategoryBuilder(otherExpectedITunesCategoryBuilder)
             .description("description")
             .explicit(true)
             .block(false)
@@ -153,7 +160,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
         assertThat(podcastBuilder.build()).isNotNull().all {
             prop(Podcast.GooglePlay::author).isEqualTo("author")
             prop(Podcast.GooglePlay::owner).isEqualTo("owner")
-            prop(Podcast.GooglePlay::categories).containsExactly("category 1", "category 2")
+            prop(Podcast.GooglePlay::categories).containsExactly(expectedITunesCategoryBuilder.build(), otherExpectedITunesCategoryBuilder.build())
             prop(Podcast.GooglePlay::description).isEqualTo("description")
             prop(Podcast.GooglePlay::explicit).isNotNull().isTrue()
             prop(Podcast.GooglePlay::block).isNotNull().isFalse()

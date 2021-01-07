@@ -28,3 +28,17 @@ internal fun aLink(
     title: String? = "link title",
     type: String? = "link type"
 ) = Link(href, hrefLang, hrefResolved, length, rel, title, type)
+
+internal fun anRssCategory(
+    category: String = "rss category",
+    domain: String? = "rss category domain"
+) = RssCategory(category, domain)
+
+internal fun anITunesCategory(
+    category: String = "itunes category",
+    subcategory: String? = "itunes category subcategory"
+) = if (subcategory == null) {
+    ITunesStyleCategory.Simple(category)
+} else {
+    ITunesStyleCategory.Nested(category, ITunesStyleCategory.Simple(subcategory))
+}

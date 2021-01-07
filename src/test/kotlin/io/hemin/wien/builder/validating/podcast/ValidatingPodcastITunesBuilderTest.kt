@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
-import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
+import io.hemin.wien.builder.validating.ValidatingITunesCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Podcast
 import org.junit.jupiter.api.Test
@@ -20,6 +20,13 @@ internal class ValidatingPodcastITunesBuilderTest {
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
     private val expectedPersonBuilder = ValidatingPersonBuilder().name("name")
+
+    private val expectedITunesCategoryBuilder = ValidatingITunesCategoryBuilder()
+        .category("itunes category 1")
+        .subcategory("itunes subcategory")
+
+    private val otherExpectedITunesCategoryBuilder = ValidatingITunesCategoryBuilder()
+        .category("itunes category 2")
 
     @Test
     internal fun `should not build a Podcast ITunes when all fields are missing`() {
@@ -33,7 +40,7 @@ internal class ValidatingPodcastITunesBuilderTest {
         val podcastBuilder = ValidatingPodcastITunesBuilder()
             .imageBuilder(expectedImageBuilder)
             .explicit(false)
-            .addCategory("category")
+            .addCategoryBuilder(expectedITunesCategoryBuilder)
 
         assertThat(podcastBuilder.build()).isNotNull().all {
             prop(Podcast.ITunes::explicit).isNotNull().isFalse()
@@ -41,7 +48,7 @@ internal class ValidatingPodcastITunesBuilderTest {
             prop(Podcast.ITunes::summary).isNull()
             prop(Podcast.ITunes::keywords).isNull()
             prop(Podcast.ITunes::author).isNull()
-            prop(Podcast.ITunes::categories).containsExactly("category")
+            prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
             prop(Podcast.ITunes::block).isNull()
             prop(Podcast.ITunes::complete).isNull()
             prop(Podcast.ITunes::type).isNull()
@@ -60,8 +67,8 @@ internal class ValidatingPodcastITunesBuilderTest {
             .summary("summary")
             .keywords("keywords")
             .author("author")
-            .addCategory("category 1")
-            .addCategory("category 2")
+            .addCategoryBuilder(expectedITunesCategoryBuilder)
+            .addCategoryBuilder(otherExpectedITunesCategoryBuilder)
             .block(false)
             .complete(false)
             .type(Podcast.ITunes.ShowType.SERIAL.type)
@@ -76,7 +83,7 @@ internal class ValidatingPodcastITunesBuilderTest {
             prop(Podcast.ITunes::summary).isEqualTo("summary")
             prop(Podcast.ITunes::keywords).isEqualTo("keywords")
             prop(Podcast.ITunes::author).isEqualTo("author")
-            prop(Podcast.ITunes::categories).containsExactly("category 1", "category 2")
+            prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build(), otherExpectedITunesCategoryBuilder.build())
             prop(Podcast.ITunes::block).isNotNull().isFalse()
             prop(Podcast.ITunes::complete).isNotNull().isFalse()
             prop(Podcast.ITunes::type).isEqualTo(Podcast.ITunes.ShowType.SERIAL)

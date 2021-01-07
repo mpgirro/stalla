@@ -1,18 +1,20 @@
 package io.hemin.wien.builder.fake.episode
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.RssImageBuilder
+import io.hemin.wien.builder.ITunesCategoryBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.fake.FakeHrefOnlyImageBuilder
-import io.hemin.wien.builder.fake.FakeRssImageBuilder
+import io.hemin.wien.builder.fake.FakeITunesCategoryBuilder
 import io.hemin.wien.builder.fake.FakeLinkBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
+import io.hemin.wien.builder.fake.FakeRssCategoryBuilder
 import io.hemin.wien.model.Episode
 import java.time.temporal.TemporalAccessor
 
@@ -24,7 +26,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
     var link: String? = null
     var description: String? = null
     var author: String? = null
-    val categories: MutableList<String> = mutableListOf()
+    val categoryBuilders: MutableList<RssCategoryBuilder> = mutableListOf()
     var comments: String? = null
     var guidBuilder: EpisodeGuidBuilder? = null
     var pubDate: TemporalAccessor? = null
@@ -50,8 +52,8 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override fun author(author: String?): EpisodeBuilder = apply { this.author = author }
 
-    override fun addCategory(category: String): EpisodeBuilder = apply {
-        categories.add(category)
+    override fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder = apply {
+        categoryBuilders.add(categoryBuilder)
     }
 
     override fun comments(comments: String?): EpisodeBuilder = apply { this.comments = comments }
@@ -78,6 +80,10 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder = FakeEpisodePodloveSimpleChapterBuilder()
 
+    override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
+
+    override fun createITunesCategoryBuilder(): ITunesCategoryBuilder = FakeITunesCategoryBuilder()
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is FakeEpisodeBuilder) return false
@@ -87,7 +93,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         if (link != other.link) return false
         if (description != other.description) return false
         if (author != other.author) return false
-        if (categories != other.categories) return false
+        if (categoryBuilders != other.categoryBuilders) return false
         if (comments != other.comments) return false
         if (guidBuilder != other.guidBuilder) return false
         if (pubDate != other.pubDate) return false
@@ -108,7 +114,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         result = 31 * result + (link?.hashCode() ?: 0)
         result = 31 * result + (description?.hashCode() ?: 0)
         result = 31 * result + (author?.hashCode() ?: 0)
-        result = 31 * result + categories.hashCode()
+        result = 31 * result + categoryBuilders.hashCode()
         result = 31 * result + (comments?.hashCode() ?: 0)
         result = 31 * result + (guidBuilder?.hashCode() ?: 0)
         result = 31 * result + (pubDate?.hashCode() ?: 0)
@@ -122,8 +128,8 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         return result
     }
 
-    override fun toString(): String =
+    override fun toString() =
         "FakeEpisodeBuilder(titleValue=$titleValue, enclosureBuilderValue=$enclosureBuilderValue, link=$link, description=$description, " +
-                "author=$author, categories=$categories, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
+                "author=$author, categories=$categoryBuilders, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
                 "content=$content, iTunes=$iTunes, atom=$atom, podlove=$podlove, googlePlay=$googlePlay, bitlove=$bitlove)"
 }

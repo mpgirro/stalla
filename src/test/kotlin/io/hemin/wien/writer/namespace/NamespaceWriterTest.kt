@@ -4,14 +4,14 @@ import assertk.assertThat
 import assertk.assertions.isNull
 import assertk.fail
 import io.hemin.wien.documentFromResource
+import io.hemin.wien.dom.DomBuilderFactory
+import io.hemin.wien.dom.appendElement
+import io.hemin.wien.dom.findElementByName
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.model.episode.anEpisode
 import io.hemin.wien.model.podcast.aPodcast
-import io.hemin.wien.util.DomBuilderFactory
 import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.util.appendElement
-import io.hemin.wien.util.findElementByName
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 import org.w3c.dom.Node
@@ -19,7 +19,6 @@ import org.xmlunit.builder.DiffBuilder
 import org.xmlunit.builder.Input
 import org.xmlunit.diff.Diff
 import javax.xml.namespace.NamespaceContext
-import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathFactory
 

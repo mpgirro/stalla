@@ -1,7 +1,6 @@
 package io.hemin.wien.builder.validating.episode
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.episode.EpisodeGooglePlayBuilder
 import io.hemin.wien.model.Episode
 

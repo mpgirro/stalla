@@ -10,7 +10,7 @@ import java.time.temporal.TemporalAccessor
  * @property link The RSS `<link>` field textContent.
  * @property description The RSS `<description>` field textContent.
  * @property author The RSS `<author>` field textContent
- * @property categories List of RSS `<category>` field textContent.
+ * @property categories List of RSS `<category>` field contents.
  * @property comments The RSS `<comments>` field textContent.
  * @property enclosure The RSS `<enclosure>` element attributes wrapped in an [Episode.Enclosure] instance.
  * @property guid The RSS `<guid>` element wrapped in an [Episode.Guid] instance.
@@ -29,7 +29,7 @@ data class Episode(
     val link: String? = null,
     val description: String? = null,
     val author: String? = null,
-    val categories: List<String>, // TODO make Category class? can look like: <category domain="http://www.fool.com/cusips">MSFT</category>
+    val categories: List<RssCategory>,
     val comments: String? = null,
     val enclosure: Enclosure,
     val guid: Guid? = null,

@@ -9,6 +9,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
+import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
 import io.hemin.wien.dateTime
 import io.hemin.wien.model.Episode
 import org.junit.jupiter.api.Test
@@ -28,6 +29,11 @@ internal class ValidatingEpisodeBuilderTest {
     private val expectedChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
         .start("start")
         .title("chapter title")
+
+    private val expectedCategoryBuilders = listOf(
+        ValidatingRssCategoryBuilder().category("category 1").domain("domain"),
+        ValidatingRssCategoryBuilder().category("category 2")
+    )
 
     @Test
     internal fun `should not build a episode when the mandatory fields are missing`() {
@@ -85,8 +91,8 @@ internal class ValidatingEpisodeBuilderTest {
             .link("link")
             .description("description")
             .author("author")
-            .addCategory("category 1")
-            .addCategory("category 2")
+            .addCategoryBuilder(expectedCategoryBuilders[0])
+            .addCategoryBuilder(expectedCategoryBuilders[1])
             .comments("comments")
             .enclosureBuilder(expectedEnclosureBuilder)
             .guidBuilder(ValidatingEpisodeGuidBuilder().textContent("guid"))
@@ -106,7 +112,7 @@ internal class ValidatingEpisodeBuilderTest {
             prop(Episode::link).isEqualTo("link")
             prop(Episode::description).isEqualTo("description")
             prop(Episode::author).isEqualTo("author")
-            prop(Episode::categories).containsExactly("category 1", "category 2")
+            prop(Episode::categories).containsExactly(expectedCategoryBuilders[0].build(), expectedCategoryBuilders[1].build())
             prop(Episode::comments).isEqualTo("comments")
             prop(Episode::enclosure).isEqualTo(expectedEnclosureBuilder.build())
             prop(Episode::guid).isEqualTo(Episode.Guid("guid"))

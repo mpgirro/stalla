@@ -2,9 +2,11 @@ package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.ITunesCategoryBuilder
 import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.model.Podcast
 import java.time.temporal.TemporalAccessor
@@ -80,4 +82,10 @@ internal interface PodcastBuilder : Builder<Podcast> {
 
     /** Creates an instance of [PersonBuilder] to use with this builder. */
     fun createPersonBuilder(): PersonBuilder
+
+    /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
+    fun createRssCategoryBuilder(): RssCategoryBuilder
+
+    /** Creates an instance of [ITunesCategoryBuilder] to use with this builder. */
+    fun createITunesCategoryBuilder(): ITunesCategoryBuilder
 }

@@ -1,9 +1,10 @@
 package io.hemin.wien.builder.validating.episode
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.RssImageBuilder
+import io.hemin.wien.builder.ITunesCategoryBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.episode.EpisodeAtomBuilder
 import io.hemin.wien.builder.episode.EpisodeBitloveBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
@@ -15,9 +16,10 @@ import io.hemin.wien.builder.episode.EpisodeITunesBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
-import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
+import io.hemin.wien.builder.validating.ValidatingITunesCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingLinkBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
+import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
 import io.hemin.wien.model.Episode
 import java.time.temporal.TemporalAccessor
 
@@ -29,7 +31,7 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
     private var link: String? = null
     private var description: String? = null
     private var author: String? = null
-    private val categories: MutableList<String> = mutableListOf()
+    private val categoryBuilders: MutableList<RssCategoryBuilder> = mutableListOf()
     private var comments: String? = null
     private var guidBuilder: EpisodeGuidBuilder? = null
     private var pubDate: TemporalAccessor? = null
@@ -55,8 +57,8 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
 
     override fun author(author: String?): EpisodeBuilder = apply { this.author = author }
 
-    override fun addCategory(category: String): EpisodeBuilder = apply {
-        categories.add(category)
+    override fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder = apply {
+        categoryBuilders.add(categoryBuilder)
     }
 
     override fun comments(comments: String?): EpisodeBuilder = apply { this.comments = comments }
@@ -83,6 +85,10 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
 
     override fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
 
+    override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
+
+    override fun createITunesCategoryBuilder(): ITunesCategoryBuilder = ValidatingITunesCategoryBuilder()
+
     override fun build(): Episode? {
         if (!::titleValue.isInitialized || !::enclosureBuilderValue.isInitialized) {
             return null
@@ -94,7 +100,7 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
             link = link,
             description = description,
             author = author,
-            categories = immutableCopyOf(categories),
+            categories = categoryBuilders.mapNotNull { it.build() },
             comments = comments,
             enclosure = enclosure,
             guid = guidBuilder?.build(),

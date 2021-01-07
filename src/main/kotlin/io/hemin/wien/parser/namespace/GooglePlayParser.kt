@@ -2,12 +2,12 @@ package io.hemin.wien.parser.namespace
 
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
-import io.hemin.wien.builder.textAsBooleanOrNull
-import io.hemin.wien.builder.textOrNull
-import io.hemin.wien.builder.toHrefOnlyImageBuilder
+import io.hemin.wien.dom.textAsBooleanOrNull
+import io.hemin.wien.dom.textOrNull
+import io.hemin.wien.dom.toHrefOnlyImageBuilder
+import io.hemin.wien.dom.toITunesCategoryBuilder
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.util.getAttributeValueByName
 import org.w3c.dom.Node
 
 /**
@@ -24,8 +24,9 @@ internal class GooglePlayParser : NamespaceParser() {
             "author" -> builder.googlePlay.author(node.ifCanBeParsed { textOrNull() })
             "owner" -> builder.googlePlay.owner(node.ifCanBeParsed { textOrNull() })
             "category" -> {
-                val category = node.ifCanBeParsed { getAttributeValueByName("text") } ?: return
-                builder.googlePlay.addCategory(category)
+                val categoryBuilder = builder.createITunesCategoryBuilder()
+                val category = node.ifCanBeParsed { toITunesCategoryBuilder(categoryBuilder, namespace) } ?: return
+                builder.googlePlay.addCategoryBuilder(category)
             }
             "description" -> builder.googlePlay.description(node.ifCanBeParsed { textOrNull() })
             "explicit" -> builder.googlePlay.explicit(node.ifCanBeParsed { textAsBooleanOrNull() })

@@ -3,6 +3,10 @@ package io.hemin.wien
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
+import io.hemin.wien.dom.DomBuilderFactory
+import io.hemin.wien.dom.asListOfNodes
+import io.hemin.wien.dom.findElementByName
+import io.hemin.wien.dom.isNotEmpty
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.namespace.AtomParser
@@ -14,10 +18,6 @@ import io.hemin.wien.parser.namespace.GooglePlayParser
 import io.hemin.wien.parser.namespace.ITunesParser
 import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
 import io.hemin.wien.parser.namespace.RssParser
-import io.hemin.wien.util.DomBuilderFactory
-import io.hemin.wien.util.asListOfNodes
-import io.hemin.wien.util.findElementByName
-import io.hemin.wien.util.isNotEmpty
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node

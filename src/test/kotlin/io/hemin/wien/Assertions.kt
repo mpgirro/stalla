@@ -2,7 +2,6 @@ package io.hemin.wien
 
 import assertk.Assert
 import assertk.assertions.support.expected
-import assertk.fail
 import io.hemin.wien.util.FeedNamespace
 import org.w3c.dom.Node
 import org.xmlunit.diff.Diff
