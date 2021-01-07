@@ -20,13 +20,13 @@ internal abstract class NamespaceParser {
      * matches this parser's [namespace].
      *
      * @see canParse
-     * @param builder The builder where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
+     * @param builder The builder where all parsed data is added to.
      */
-    fun tryParsingChannelChildNode(builder: PodcastBuilder, node: Node) {
+    fun tryParsingChannelChildNode(node: Node, builder: PodcastBuilder) {
         if (!canParse(node)) return
         require(node.isDirectChildOf("channel")) { "This function can only parse nodes that are direct children of <channel>" }
-        parseChannelNode(builder, node)
+        node.parseChannelData(builder)
     }
 
     /**
@@ -35,9 +35,9 @@ internal abstract class NamespaceParser {
      * **Note:** this method is only ever called when the node
      *
      * @param builder The builder where all parsed data is added to.
-     * @param node The DOM node from which all data is extracted from.
+     * @param this@parseChannelNode The DOM node from which all data is extracted from.
      */
-    protected abstract fun parseChannelNode(builder: PodcastBuilder, node: Node)
+    protected abstract fun Node.parseChannelData(builder: PodcastBuilder)
 
     /**
      * Extracts data from the XML namespace defined by [namespace]
@@ -49,27 +49,24 @@ internal abstract class NamespaceParser {
      * such as [io.hemin.wien.parser.namespace.BitloveParser].
      *
      * @see canParse
-     * @param builder The builder where all parsed data is added to.
      * @param node The DOM node from which all data is extracted from.
+     * @param builder The builder where all parsed data is added to.
      */
-    fun tryParsingItemChildNode(builder: EpisodeBuilder, node: Node) {
+    fun tryParsingItemChildNode(node: Node, builder: EpisodeBuilder) {
         if (!canParse(node)) return
         require(node.isDirectChildOf("item")) { "This function can only parse nodes that are direct children of <item>" }
-        parseItemNode(builder, node)
+        node.parseItemData(builder)
     }
 
     /**
      * Extract all the data from a `<channel>` node for the [namespace],
      * adding it to the provided builder as it goes.
-     * **Note:** this method is only ever called when the node has the correct
-     * namespace, and it is indeed a direct child of `<item>`.
+     * **Note:** this method is only ever called when the [Node] receiver has
+     * the correct namespace, and it is indeed a direct child of `<item>`.
      *
      * @param builder The builder where all parsed data is added to.
-     *
-     * @param node The DOM node from which all data is extracted from.
-     *
      */
-    protected abstract fun parseItemNode(builder: EpisodeBuilder, node: Node)
+    protected abstract fun Node.parseItemData(builder: EpisodeBuilder)
 
     /**
      * Executes a block of code on the DOM node if the node has the same [namespace] of this parser.

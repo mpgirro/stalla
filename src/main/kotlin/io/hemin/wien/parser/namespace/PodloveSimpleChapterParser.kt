@@ -18,14 +18,14 @@ internal class PodloveSimpleChapterParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.PODLOVE_SIMPLE_CHAPTER
 
-    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
+    override fun Node.parseChannelData(builder: PodcastBuilder) {
         // No-op
     }
 
-    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
-        when (node.localName) {
+    override fun Node.parseItemData(builder: EpisodeBuilder) {
+        when (localName) {
             "chapters" -> {
-                val chapters = node.ifCanBeParsed { toPodloveSimpleChapterBuilders(builder) } ?: return
+                val chapters = ifCanBeParsed { toPodloveSimpleChapterBuilders(builder) } ?: return
                 builder.podlove.addSimpleChapterBuilders(chapters)
             }
             else -> pass

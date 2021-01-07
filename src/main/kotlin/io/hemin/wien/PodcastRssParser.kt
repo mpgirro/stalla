@@ -120,7 +120,7 @@ object PodcastRssParser {
                 }
                 else -> {
                     for (parser in parsers) {
-                        parser.tryParsingChannelChildNode(builder, element)
+                        parser.tryParsingChannelChildNode(element, builder)
                     }
                 }
             }
@@ -132,7 +132,7 @@ object PodcastRssParser {
         val builder: EpisodeBuilder = ValidatingEpisodeBuilder()
         for (element in childNodes.asListOfNodes()) {
             for (parser in parsers) {
-                parser.tryParsingItemChildNode(builder, element)
+                parser.tryParsingItemChildNode(element, builder)
             }
         }
         builder

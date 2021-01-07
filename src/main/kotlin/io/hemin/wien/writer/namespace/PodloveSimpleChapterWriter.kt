@@ -16,14 +16,14 @@ internal class PodloveSimpleChapterWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.PODLOVE_SIMPLE_CHAPTER
 
-    override fun writeChannelData(channel: Podcast, element: Element) {
+    override fun Element.appendPodcastData(podcast: Podcast) {
         // Nothing to do here
     }
 
-    override fun writeItemData(episode: Episode, element: Element) {
+    override fun Element.appendEpisodeData(episode: Episode) {
         val chapters = episode.podlove?.simpleChapters ?: return
 
-        element.appendElement("chapters", namespace) {
+        appendElement("chapters", namespace) {
             for (chapter in chapters) {
                 appendChapterElement(chapter)
             }

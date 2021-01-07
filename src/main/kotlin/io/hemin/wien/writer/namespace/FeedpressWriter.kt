@@ -16,31 +16,31 @@ internal class FeedpressWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.FEEDPRESS
 
-    override fun writeChannelData(channel: Podcast, element: Element) {
-        val feedpress = channel.feedpress ?: return
+    override fun Element.appendPodcastData(podcast: Podcast) {
+        val feedpress = podcast.feedpress ?: return
 
         if (feedpress.newsletterId != null) {
-            element.appendElement("newsletterId", namespace) { textContent = feedpress.newsletterId }
+            appendElement("newsletterId", namespace) { textContent = feedpress.newsletterId }
         }
 
         if (feedpress.locale != null) {
-            element.appendElement("locale", namespace) { textContent = feedpress.locale }
+            appendElement("locale", namespace) { textContent = feedpress.locale }
         }
 
         if (feedpress.podcastId != null) {
-            element.appendElement("podcastId", namespace) { textContent = feedpress.podcastId }
+            appendElement("podcastId", namespace) { textContent = feedpress.podcastId }
         }
 
         if (feedpress.cssFile != null) {
-            element.appendElement("cssFile", namespace) { textContent = feedpress.cssFile }
+            appendElement("cssFile", namespace) { textContent = feedpress.cssFile }
         }
 
         if (feedpress.link != null) {
-            element.appendElement("link", namespace) { textContent = feedpress.link }
+            appendElement("link", namespace) { textContent = feedpress.link }
         }
     }
 
-    override fun writeItemData(episode: Episode, element: Element) {
+    override fun Element.appendEpisodeData(episode: Episode) {
         // Nothing to do here
     }
 }

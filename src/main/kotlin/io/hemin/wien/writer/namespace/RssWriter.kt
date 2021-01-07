@@ -23,77 +23,77 @@ internal class RssWriter : NamespaceWriter() {
     /** Standard RSS 2.0 elements do not have a namespace. This value is therefore null. */
     override val namespace: FeedNamespace? = null
 
-    override fun writeChannelData(channel: Podcast, element: Element) {
-        element.appendElement("title") { textContent = channel.title }
-        element.appendElement("link") { textContent = channel.link }
-        element.appendElement("description") { textContent = channel.description }
+    override fun Element.appendPodcastData(podcast: Podcast) {
+        appendElement("title") { textContent = podcast.title }
+        appendElement("link") { textContent = podcast.link }
+        appendElement("description") { textContent = podcast.description }
 
-        if (channel.pubDate != null) {
-            element.appendElement("pubDate") { textContent = channel.pubDate.asDateString() }
+        if (podcast.pubDate != null) {
+            appendElement("pubDate") { textContent = podcast.pubDate.asDateString() }
         }
 
-        if (channel.lastBuildDate != null) {
-            element.appendElement("lastBuildDate") { textContent = channel.lastBuildDate.asDateString() }
+        if (podcast.lastBuildDate != null) {
+            appendElement("lastBuildDate") { textContent = podcast.lastBuildDate.asDateString() }
         }
 
-        if (channel.generator != null) {
-            element.appendElement("generator") { textContent = channel.generator }
+        if (podcast.generator != null) {
+            appendElement("generator") { textContent = podcast.generator }
         }
 
-        element.appendElement("language") { textContent = channel.language }
+        appendElement("language") { textContent = podcast.language }
 
-        if (channel.copyright != null) {
-            element.appendElement("copyright") { textContent = channel.copyright }
+        if (podcast.copyright != null) {
+            appendElement("copyright") { textContent = podcast.copyright }
         }
 
-        if (channel.docs != null) {
-            element.appendElement("docs") { textContent = channel.docs }
+        if (podcast.docs != null) {
+            appendElement("docs") { textContent = podcast.docs }
         }
 
-        if (channel.managingEditor != null) {
-            element.appendElement("managingEditor") { textContent = channel.managingEditor }
+        if (podcast.managingEditor != null) {
+            appendElement("managingEditor") { textContent = podcast.managingEditor }
         }
 
-        if (channel.webMaster != null) {
-            element.appendElement("webMaster") { textContent = channel.webMaster }
+        if (podcast.webMaster != null) {
+            appendElement("webMaster") { textContent = podcast.webMaster }
         }
 
-        if (channel.image != null) element.appendRssImageElement(channel.image)
+        if (podcast.image != null) appendRssImageElement(podcast.image)
     }
 
-    override fun writeItemData(episode: Episode, element: Element) {
-        element.appendElement("title") { textContent = episode.title }
+    override fun Element.appendEpisodeData(episode: Episode) {
+        appendElement("title") { textContent = episode.title }
 
         if (episode.link != null) {
-            element.appendElement("link") { textContent = episode.link }
+            appendElement("link") { textContent = episode.link }
         }
 
         if (episode.description != null) {
-            element.appendElement("description") { textContent = episode.description }
+            appendElement("description") { textContent = episode.description }
         }
 
         if (episode.author != null) {
-            element.appendElement("author") { textContent = episode.author }
+            appendElement("author") { textContent = episode.author }
         }
 
-        element.appendRssCategoryElements(episode.categories)
+        appendRssCategoryElements(episode.categories)
 
         if (episode.comments != null) {
-            element.appendElement("comments") { textContent = episode.comments }
+            appendElement("comments") { textContent = episode.comments }
         }
 
-        element.appendEnclosureElement(episode.enclosure)
+        appendEnclosureElement(episode.enclosure)
 
         if (episode.guid != null) {
-            element.appendGuidElement(episode.guid)
+            appendGuidElement(episode.guid)
         }
 
         if (episode.pubDate != null) {
-            element.appendElement("pubDate") { textContent = episode.pubDate.asDateString() }
+            appendElement("pubDate") { textContent = episode.pubDate.asDateString() }
         }
 
         if (episode.source != null) {
-            element.appendElement("source") { textContent = episode.source }
+            appendElement("source") { textContent = episode.source }
         }
     }
 

@@ -14,7 +14,7 @@ internal abstract class NamespaceWriter {
     abstract val namespace: FeedNamespace?
 
     /**
-     * Writes data from the channel data model into the tags for the
+     * Writes data from the [Podcast] data model into the tags for the
      * XML namespace defined by [namespace].
      * This function will throw if the [element] does not satisfy
      * the writer's [canWriteToNode], which checks if the element is
@@ -25,20 +25,20 @@ internal abstract class NamespaceWriter {
      */
     fun tryWritingPodcastData(podcast: Podcast, element: Element) {
         require(element.canWriteToNode("channel")) { "This function can only write data to <channel> nodes" }
-        writeChannelData(podcast, element)
+        element.appendPodcastData(podcast)
     }
 
     /**
-     * Writes data from the channel data model into the tags for the
+     * Appends data from the [Podcast] data model into the tags for the
      * XML namespace defined by [namespace].
-     * Note: the [element] has already been validated to be a `<channel>`.
+     * Note: the [this@appendPodcastData] has already been validated to be a `<channel>`.
      *
-     * @param channel The podcast data to write.
+     * @param podcast The podcast data to write.
      */
-    protected abstract fun writeChannelData(channel: Podcast, element: Element)
+    protected abstract fun Element.appendPodcastData(podcast: Podcast)
 
     /**
-     * Writes data from the item data model into the tags for the
+     * Writes data from the [Episode] data model into the tags for the
      * XML namespace defined by [namespace].
      * This function will throw if the [element] does not satisfy
      * the writer's [canWriteToNode], which checks if the element is
@@ -49,18 +49,18 @@ internal abstract class NamespaceWriter {
      */
     fun tryWritingEpisodeData(episode: Episode, element: Element) {
         require(element.canWriteToNode("item")) { "This function can only write data to <item> nodes" }
-        writeItemData(episode, element)
+        element.appendEpisodeData(episode)
     }
 
     /**
-     * Writes data from the item data model into the tags for the
+     * Appends data from the [Episode] data model into the tags for the
      * XML namespace defined by [namespace].
-     * Note: the [element] has already been validated to be a `<item>`.
+     * Note: the [this@appendEpisodeData] has already been validated to be a `<item>`.
      *
      * @param episode The episode data to write.
-     * @param element The element to append the data to.
+     * @param this@appendEpisodeData The element to append the data to.
      */
-    protected abstract fun writeItemData(episode: Episode, element: Element)
+    protected abstract fun Element.appendEpisodeData(episode: Episode)
 
     /**
      * Converts a [TemporalAccessor] value to a RFC2822 [String] representation.

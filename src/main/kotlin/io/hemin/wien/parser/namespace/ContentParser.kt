@@ -16,14 +16,14 @@ internal class ContentParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.CONTENT
 
-    override fun parseChannelNode(builder: PodcastBuilder, node: Node) {
+    override fun Node.parseChannelData(builder: PodcastBuilder) {
         // No-op
     }
 
-    override fun parseItemNode(builder: EpisodeBuilder, node: Node) {
-        when (node.localName) {
+    override fun Node.parseItemData(builder: EpisodeBuilder) {
+        when (localName) {
             "encoded" -> {
-                val encoded = node.ifCanBeParsed { textOrNull() } ?: return
+                val encoded = ifCanBeParsed { textOrNull() } ?: return
                 builder.content.encoded(encoded)
             }
             else -> pass
