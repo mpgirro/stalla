@@ -45,7 +45,7 @@ The `parse()` function will return a parsed `Podcast?`, which may be `null` if t
 ### Writing an RSS feed
 
 To write an RSS feed, you need to use the [`PodcastRssWriter`](src/main/kotlin/io/hemin/wien/PodcastRssWriter.kt) object.
-Parsing an RSS feed is as easy as picking the overload of `parse()` that fits your needs:
+Writing an RSS feed is as easy as picking the overload of `writeRssFeed()` that fits your needs:
 
 ```kotlin
 val rssFeedFile = File("/my/path/rss.xml")
