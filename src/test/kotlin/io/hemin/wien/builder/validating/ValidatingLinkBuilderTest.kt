@@ -10,7 +10,6 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.LinkBuilder
-import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Link
 import org.junit.jupiter.api.Test
 

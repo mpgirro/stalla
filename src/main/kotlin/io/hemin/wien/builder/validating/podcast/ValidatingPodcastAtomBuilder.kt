@@ -34,7 +34,6 @@ internal class ValidatingPodcastAtomBuilder : PodcastAtomBuilder {
         val contributors = contributorBuilders.mapNotNull { it.build() }
         val links = linkBuilders.mapNotNull { it.build() }
 
-
         return Podcast.Atom(authors, contributors, links)
     }
 }

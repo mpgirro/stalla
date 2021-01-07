@@ -1,6 +1,5 @@
 package io.hemin.wien.parser
 
-import assertk.all
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
@@ -8,7 +7,6 @@ import assertk.assertions.prop
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeContentBuilder
 import io.hemin.wien.dom.XmlRes
-import io.hemin.wien.noneHasEnoughDataToBuild
 import io.hemin.wien.parser.namespace.ContentParser
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node

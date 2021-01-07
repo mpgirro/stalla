@@ -10,7 +10,6 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.model.HrefOnlyImage
 import org.junit.jupiter.api.Test
 

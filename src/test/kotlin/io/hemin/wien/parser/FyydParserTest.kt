@@ -1,15 +1,12 @@
 package io.hemin.wien.parser
 
-import assertk.all
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import io.hemin.wien.builder.fake.podcast.FakePodcastAtomBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastFyydBuilder
 import io.hemin.wien.dom.XmlRes
-import io.hemin.wien.noneHasEnoughDataToBuild
 import io.hemin.wien.parser.namespace.FyydParser
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node

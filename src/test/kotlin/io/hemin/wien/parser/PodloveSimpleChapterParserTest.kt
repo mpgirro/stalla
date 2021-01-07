@@ -1,16 +1,12 @@
 package io.hemin.wien.parser
 
-import assertk.all
 import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEmpty
-import assertk.assertions.isNull
 import assertk.assertions.prop
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodePodloveBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodePodloveSimpleChapterBuilder
-import io.hemin.wien.builder.fake.podcast.FakePodcastAtomBuilder
-import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.dom.XmlRes
 import io.hemin.wien.noneHasEnoughDataToBuild
 import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
