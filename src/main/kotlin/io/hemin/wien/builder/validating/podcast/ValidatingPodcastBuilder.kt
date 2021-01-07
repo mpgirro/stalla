@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.validating.podcast
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.RssCategoryBuilder
@@ -14,7 +14,7 @@ import io.hemin.wien.builder.podcast.PodcastFyydBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
-import io.hemin.wien.builder.validating.ValidatingITunesCategoryBuilder
+import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingLinkBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
@@ -88,15 +88,16 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createITunesCategoryBuilder(): ITunesCategoryBuilder = ValidatingITunesCategoryBuilder()
+    override fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+
+    override val hasEnoughDataToBuild: Boolean
+        get() = episodeBuilders.any { it.hasEnoughDataToBuild } &&
+                ::titleValue.isInitialized && ::descriptionValue.isInitialized &&
+                ::linkValue.isInitialized && ::languageValue.isInitialized
 
     override fun build(): Podcast? {
         val builtEpisodes = episodeBuilders.mapNotNull { it.build() }
-        if (
-            builtEpisodes.isEmpty() ||
-            !::titleValue.isInitialized || !::descriptionValue.isInitialized ||
-            !::linkValue.isInitialized || !::languageValue.isInitialized
-        ) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 

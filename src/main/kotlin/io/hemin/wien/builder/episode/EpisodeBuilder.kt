@@ -2,7 +2,7 @@ package io.hemin.wien.builder.episode
 
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.RssCategoryBuilder
@@ -95,6 +95,6 @@ internal interface EpisodeBuilder : Builder<Episode> {
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
     fun createRssCategoryBuilder(): RssCategoryBuilder
 
-    /** Creates an instance of [ITunesCategoryBuilder] to use with this builder. */
-    fun createITunesCategoryBuilder(): ITunesCategoryBuilder
+    /** Creates an instance of [ITunesStyleCategoryBuilder] to use with this builder. */
+    fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder
 }

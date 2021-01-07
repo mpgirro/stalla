@@ -1,10 +1,13 @@
 package io.hemin.wien.parser
 
+import assertk.Assert
 import assertk.all
 import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEmpty
 import assertk.assertions.prop
+import assertk.assertions.support.expected
+import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.fake.FakeLinkBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeAtomBuilder
@@ -12,6 +15,7 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastAtomBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.dom.XmlRes
+import io.hemin.wien.noneHasEnoughDataToBuild
 import io.hemin.wien.parser.namespace.AtomParser
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
@@ -41,19 +45,6 @@ internal class AtomParserTest : NamespaceParserTest() {
             prop(FakePodcastAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
             prop(FakePodcastAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
             prop(FakePodcastAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
-        }
-    }
-
-    @Test
-    fun `should extract nothing from channel when atom data is all empty`() {
-        val channel: Node = XmlRes("/xml/rss-all-empty.xml").rootNodeByName("channel")
-        val builder = FakePodcastBuilder()
-        channel.parseChannelChildNodes(builder)
-
-        assertThat(builder.atom, "atom episode data").all {
-            prop(FakePodcastAtomBuilder::authorBuilders).isEmpty()
-            prop(FakePodcastAtomBuilder::contributorBuilders).isEmpty()
-            prop(FakePodcastAtomBuilder::linkBuilders).isEmpty()
         }
     }
 

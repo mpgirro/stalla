@@ -19,16 +19,15 @@ internal class ValidatingEpisodeGooglePlayBuilder : EpisodeGooglePlayBuilder {
 
     override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = anyNotNull(description, explicit, block) || imageBuilder?.hasEnoughDataToBuild == true
+
     override fun build(): Episode.GooglePlay? {
-        if (allNull(description, explicit, block, imageBuilder)) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Episode.GooglePlay(
-            description = description,
-            explicit = explicit,
-            block = block,
-            image = imageBuilder?.build()
-        )
+        val image = imageBuilder?.build()
+        return Episode.GooglePlay(description, explicit, block, image)
     }
 }

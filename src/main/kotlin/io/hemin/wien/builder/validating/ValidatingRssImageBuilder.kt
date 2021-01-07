@@ -25,8 +25,11 @@ internal class ValidatingRssImageBuilder : RssImageBuilder {
 
     override fun description(description: String?): RssImageBuilder = apply { this.description = description }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = ::urlValue.isInitialized && ::titleValue.isInitialized && ::linkValue.isInitialized
+
     override fun build(): RssImage? {
-        if (!::urlValue.isInitialized || !::titleValue.isInitialized || !::linkValue.isInitialized) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 

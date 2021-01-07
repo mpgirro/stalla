@@ -1,11 +1,16 @@
 package io.hemin.wien.builder.validating.episode
 
 import assertk.all
+import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
 import assertk.assertions.prop
+import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
+import io.hemin.wien.builder.episode.EpisodeGooglePlayBuilder
 import io.hemin.wien.model.Episode
 import org.junit.jupiter.api.Test
 
@@ -15,7 +20,11 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
     internal fun `should not build an Episode Enclosure when the mandatory fields are missing`() {
         val episodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
 
-        assertThat(episodeEnclosureBuilder.build()).isNull()
+        assertAll {
+            assertThat(episodeEnclosureBuilder).prop(EpisodeEnclosureBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodeEnclosureBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -24,7 +33,11 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
             .type("type")
             .length(123)
 
-        assertThat(episodeEnclosureBuilder.build()).isNull()
+        assertAll {
+            assertThat(episodeEnclosureBuilder).prop(EpisodeEnclosureBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodeEnclosureBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -33,7 +46,11 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
             .url("url")
             .length(123)
 
-        assertThat(episodeEnclosureBuilder.build()).isNull()
+        assertAll {
+            assertThat(episodeEnclosureBuilder).prop(EpisodeEnclosureBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodeEnclosureBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -42,7 +59,11 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
             .url("url")
             .type("type")
 
-        assertThat(episodeEnclosureBuilder.build()).isNull()
+        assertAll {
+            assertThat(episodeEnclosureBuilder).prop(EpisodeEnclosureBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodeEnclosureBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -52,10 +73,14 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
             .type("type")
             .length(123)
 
-        assertThat(episodeEnclosureBuilder.build()).isNotNull().all {
-            prop(Episode.Enclosure::url).isEqualTo("url")
-            prop(Episode.Enclosure::type).isEqualTo("type")
-            prop(Episode.Enclosure::length).isEqualTo(123)
+        assertAll {
+            assertThat(episodeEnclosureBuilder).prop(EpisodeEnclosureBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeEnclosureBuilder.build()).isNotNull().all {
+                prop(Episode.Enclosure::url).isEqualTo("url")
+                prop(Episode.Enclosure::type).isEqualTo("type")
+                prop(Episode.Enclosure::length).isEqualTo(123)
+            }
         }
     }
 }

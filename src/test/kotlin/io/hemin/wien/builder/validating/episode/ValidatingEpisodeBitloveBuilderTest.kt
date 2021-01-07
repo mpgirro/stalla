@@ -1,11 +1,14 @@
 package io.hemin.wien.builder.validating.episode
 
-import assertk.all
+import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
 import assertk.assertions.prop
+import io.hemin.wien.builder.episode.EpisodeBitloveBuilder
 import io.hemin.wien.model.Episode
 import org.junit.jupiter.api.Test
 
@@ -15,7 +18,11 @@ internal class ValidatingEpisodeBitloveBuilderTest {
     internal fun `should not build an Episode Bitlove when the mandatory fields are missing`() {
         val episodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
 
-        assertThat(episodeBitloveBuilder.build()).isNull()
+        assertAll {
+            assertThat(episodeBitloveBuilder).prop(EpisodeBitloveBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodeBitloveBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -23,8 +30,10 @@ internal class ValidatingEpisodeBitloveBuilderTest {
         val episodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
             .guid("guid")
 
-        assertThat(episodeBitloveBuilder.build()).isNotNull().all {
-            prop(Episode.Bitlove::guid).isEqualTo("guid")
+        assertAll {
+            assertThat(episodeBitloveBuilder).prop(EpisodeBitloveBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeBitloveBuilder.build()).isNotNull().prop(Episode.Bitlove::guid).isEqualTo("guid")
         }
     }
 }

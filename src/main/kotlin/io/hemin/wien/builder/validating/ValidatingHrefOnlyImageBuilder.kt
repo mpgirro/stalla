@@ -9,8 +9,11 @@ internal class ValidatingHrefOnlyImageBuilder : HrefOnlyImageBuilder {
 
     override fun href(href: String): HrefOnlyImageBuilder = apply { this.hrefValue = href }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = ::hrefValue.isInitialized
+
     override fun build(): HrefOnlyImage? {
-        if (!::hrefValue.isInitialized) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 

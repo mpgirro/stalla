@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.validating.podcast
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
 import io.hemin.wien.model.Podcast
@@ -15,7 +15,7 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
     private var summary: String? = null
     private var keywords: String? = null
     private var author: String? = null
-    private var categoryBuilders: MutableList<ITunesCategoryBuilder> = mutableListOf()
+    private var categoryBuilders: MutableList<ITunesStyleCategoryBuilder> = mutableListOf()
     private var block: Boolean? = null
     private var complete: Boolean? = null
     private var type: Podcast.ITunes.ShowType? = null
@@ -33,7 +33,7 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
 
     override fun author(author: String?): PodcastITunesBuilder = apply { this.author = author }
 
-    override fun addCategoryBuilder(categoryBuilder: ITunesCategoryBuilder): PodcastITunesBuilder = apply {
+    override fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastITunesBuilder = apply {
         categoryBuilders.add(categoryBuilder)
     }
 
@@ -55,23 +55,23 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
         this.newFeedUrl = newFeedUrl
     }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = explicit != null && categoryBuilders.any { it.hasEnoughDataToBuild } &&
+                (::imageBuilderValue.isInitialized && imageBuilderValue.hasEnoughDataToBuild)
+
     override fun build(): Podcast.ITunes? {
-        val explicitValue = explicit
-        val categories = categoryBuilders.mapNotNull { it.build() }
-        if (!::imageBuilderValue.isInitialized || categories.isEmpty() || explicitValue == null) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
-
-        val image = imageBuilderValue.build() ?: return null
 
         return Podcast.ITunes(
             subtitle = subtitle,
             summary = summary,
-            image = image,
+            image = imageBuilderValue.build() ?: return null,
             keywords = keywords,
             author = author,
-            categories = categories,
-            explicit = explicitValue,
+            categories = categoryBuilders.mapNotNull { it.build() },
+            explicit = explicit ?: throw IllegalStateException("The explicit flag is not set, while hasEnoughDataToBuild == true"),
             block = block,
             complete = complete,
             type = type,

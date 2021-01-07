@@ -13,8 +13,11 @@ internal class ValidatingEpisodeGuidBuilder : EpisodeGuidBuilder {
 
     override fun isPermalink(isPermalink: Boolean?): EpisodeGuidBuilder = apply { this.isPermalink = isPermalink }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = ::text.isInitialized
+
     override fun build(): Episode.Guid? {
-        if (!::text.isInitialized) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 

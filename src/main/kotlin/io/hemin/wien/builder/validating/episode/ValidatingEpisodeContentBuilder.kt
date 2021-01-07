@@ -9,8 +9,11 @@ internal class ValidatingEpisodeContentBuilder : EpisodeContentBuilder {
 
     override fun encoded(encoded: String): EpisodeContentBuilder = apply { this.encodedValue = encoded }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = ::encodedValue.isInitialized
+
     override fun build(): Episode.Content? {
-        if (!::encodedValue.isInitialized) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 

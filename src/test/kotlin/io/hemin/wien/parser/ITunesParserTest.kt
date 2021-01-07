@@ -10,7 +10,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import io.hemin.wien.builder.fake.FakeHrefOnlyImageBuilder
-import io.hemin.wien.builder.fake.FakeITunesCategoryBuilder
+import io.hemin.wien.builder.fake.FakeITunesStyleCategoryBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeITunesBuilder
@@ -44,9 +44,9 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakePodcastITunesBuilder::author).isEqualTo("Lorem Ipsum")
             prop(FakePodcastITunesBuilder::ownerBuilder).isEqualTo(expectedOwnerBuilder)
             prop(FakePodcastITunesBuilder::categoryBuilders).containsExactly(
-                FakeITunesCategoryBuilder().category("Technology").subcategory("Tech News"),
-                FakeITunesCategoryBuilder().category("Society & Culture"),
-                FakeITunesCategoryBuilder().category("Technology").subcategory("Gadgets")
+                FakeITunesStyleCategoryBuilder().category("Technology").subcategory("Tech News"),
+                FakeITunesStyleCategoryBuilder().category("Society & Culture"),
+                FakeITunesStyleCategoryBuilder().category("Technology").subcategory("Gadgets")
             )
             prop(FakePodcastITunesBuilder::subtitle).isEqualTo("Lorem Ipsum")
             prop(FakePodcastITunesBuilder::summary).isEqualTo("Lorem Ipsum")

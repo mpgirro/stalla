@@ -1,7 +1,7 @@
 package io.hemin.wien.dom
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.RssImageBuilder
@@ -151,16 +151,16 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
         .domain(getAttributeValueByName("domain"))
 
 /**
- * Parses the node contents into a [ITunesCategoryBuilder] if possible, ensuring the child nodes
+ * Parses the node contents into a [ITunesStyleCategoryBuilder] if possible, ensuring the child nodes
  * have the specified [namespace], then populates the [categoryBuilder] with the parsed data.
  *
- * @param categoryBuilder An empty [ITunesCategoryBuilder] instance to initialise with the node's
+ * @param categoryBuilder An empty [ITunesStyleCategoryBuilder] instance to initialise with the node's
  * contents.
  * @param namespace The [FeedNamespace] to ensure the child nodes have.
  *
  * @return The [categoryBuilder] populated with the DOM node contents.
  */
-internal fun Node.toITunesCategoryBuilder(categoryBuilder: ITunesCategoryBuilder, namespace: FeedNamespace? = null): ITunesCategoryBuilder {
+internal fun Node.toITunesCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder, namespace: FeedNamespace? = null): ITunesStyleCategoryBuilder {
     val category = getAttributeValueByName("text")?.trim() ?: return categoryBuilder
     categoryBuilder.category(category)
 

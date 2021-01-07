@@ -1,11 +1,15 @@
 package io.hemin.wien.builder.validating
 
 import assertk.all
+import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
 import assertk.assertions.prop
+import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.model.RssImage
 import org.junit.jupiter.api.Test
 
@@ -15,7 +19,11 @@ internal class ValidatingRssImageBuilderTest {
     internal fun `should not build an Image when the mandatory fields are missing`() {
         val imageBuilder = ValidatingRssImageBuilder()
 
-        assertThat(imageBuilder.build()).isNull()
+        assertAll {
+            assertThat(imageBuilder).prop(RssImageBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(imageBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -23,7 +31,11 @@ internal class ValidatingRssImageBuilderTest {
         val imageBuilder = ValidatingRssImageBuilder()
             .url("url")
 
-        assertThat(imageBuilder.build()).isNull()
+        assertAll {
+            assertThat(imageBuilder).prop(RssImageBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(imageBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -31,7 +43,11 @@ internal class ValidatingRssImageBuilderTest {
         val imageBuilder = ValidatingRssImageBuilder()
             .title("title")
 
-        assertThat(imageBuilder.build()).isNull()
+        assertAll {
+            assertThat(imageBuilder).prop(RssImageBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(imageBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -39,7 +55,11 @@ internal class ValidatingRssImageBuilderTest {
         val imageBuilder = ValidatingRssImageBuilder()
             .link("link")
 
-        assertThat(imageBuilder.build()).isNull()
+        assertAll {
+            assertThat(imageBuilder).prop(RssImageBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(imageBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -49,13 +69,17 @@ internal class ValidatingRssImageBuilderTest {
             .title("title")
             .link("link")
 
-        assertThat(imageBuilder.build()).isNotNull().all {
-            prop(RssImage::url).isEqualTo("url")
-            prop(RssImage::title).isEqualTo("title")
-            prop(RssImage::link).isEqualTo("link")
-            prop(RssImage::width).isNull()
-            prop(RssImage::height).isNull()
-            prop(RssImage::description).isNull()
+        assertAll {
+            assertThat(imageBuilder).prop(RssImageBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(imageBuilder.build()).isNotNull().all {
+                prop(RssImage::url).isEqualTo("url")
+                prop(RssImage::title).isEqualTo("title")
+                prop(RssImage::link).isEqualTo("link")
+                prop(RssImage::width).isNull()
+                prop(RssImage::height).isNull()
+                prop(RssImage::description).isNull()
+            }
         }
     }
 
@@ -69,13 +93,17 @@ internal class ValidatingRssImageBuilderTest {
             .height(456)
             .description("description")
 
-        assertThat(imageBuilder.build()).isNotNull().all {
-            prop(RssImage::url).isEqualTo("url")
-            prop(RssImage::title).isEqualTo("title")
-            prop(RssImage::link).isEqualTo("link")
-            prop(RssImage::width).isEqualTo(123)
-            prop(RssImage::height).isEqualTo(456)
-            prop(RssImage::description).isEqualTo("description")
+        assertAll {
+            assertThat(imageBuilder).prop(RssImageBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(imageBuilder.build()).isNotNull().all {
+                prop(RssImage::url).isEqualTo("url")
+                prop(RssImage::title).isEqualTo("title")
+                prop(RssImage::link).isEqualTo("link")
+                prop(RssImage::width).isEqualTo(123)
+                prop(RssImage::height).isEqualTo(456)
+                prop(RssImage::description).isEqualTo("description")
+            }
         }
     }
 }

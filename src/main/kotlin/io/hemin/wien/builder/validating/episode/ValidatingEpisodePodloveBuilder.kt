@@ -16,12 +16,15 @@ internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
         this.chapterBuilders.addAll(chapterBuilders)
     }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = chapterBuilders.any { it.hasEnoughDataToBuild }
+
     override fun build(): Episode.Podlove? {
-        val chapters = chapterBuilders.mapNotNull { it.build() }
-        if (chapters.isEmpty()) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 
+        val chapters = chapterBuilders.mapNotNull { it.build() }
         return Episode.Podlove(chapters)
     }
 }

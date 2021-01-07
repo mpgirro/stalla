@@ -1,11 +1,16 @@
 package io.hemin.wien.builder.validating
 
 import assertk.all
+import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
 import assertk.assertions.prop
+import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.model.HrefOnlyImage
 import org.junit.jupiter.api.Test
 
@@ -15,7 +20,11 @@ internal class ValidatingHrefOnlyImageBuilderTest {
     internal fun `should not build an Image when the mandatory fields are missing`() {
         val imageBuilder = ValidatingHrefOnlyImageBuilder()
 
-        assertThat(imageBuilder.build()).isNull()
+        assertAll {
+            assertThat(imageBuilder).prop(HrefOnlyImageBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(imageBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -23,8 +32,12 @@ internal class ValidatingHrefOnlyImageBuilderTest {
         val imageBuilder = ValidatingHrefOnlyImageBuilder()
             .href("href")
 
-        assertThat(imageBuilder.build()).isNotNull().all {
-            prop(HrefOnlyImage::href).isEqualTo("href")
+        assertAll {
+            assertThat(imageBuilder).prop(HrefOnlyImageBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(imageBuilder.build()).isNotNull().all {
+                prop(HrefOnlyImage::href).isEqualTo("href")
+            }
         }
     }
 }

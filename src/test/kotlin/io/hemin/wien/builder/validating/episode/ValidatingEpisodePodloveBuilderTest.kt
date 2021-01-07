@@ -1,9 +1,14 @@
 package io.hemin.wien.builder.validating.episode
 
+import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.containsExactly
+import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
+import assertk.assertions.prop
+import io.hemin.wien.builder.episode.EpisodePodloveBuilder
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodePodloveBuilderTest {
@@ -16,7 +21,11 @@ internal class ValidatingEpisodePodloveBuilderTest {
     internal fun `should not build an Episode Podlover Simple Chapters when there is no chapter`() {
         val podloveBuilder = ValidatingEpisodePodloveBuilder()
 
-        assertThat(podloveBuilder.build()).isNull()
+        assertAll {
+            assertThat(podloveBuilder).prop(EpisodePodloveBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(podloveBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -24,8 +33,12 @@ internal class ValidatingEpisodePodloveBuilderTest {
         val podloveBuilder = ValidatingEpisodePodloveBuilder()
             .addSimpleChapterBuilder(expectedChapterBuilder)
 
-        assertThat(podloveBuilder.build()?.simpleChapters).isNotNull()
-            .containsExactly(expectedChapterBuilder.build())
+        assertAll {
+            assertThat(podloveBuilder).prop(EpisodePodloveBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podloveBuilder.build()?.simpleChapters).isNotNull()
+                .containsExactly(expectedChapterBuilder.build())
+        }
     }
 
     @Test
@@ -36,7 +49,11 @@ internal class ValidatingEpisodePodloveBuilderTest {
         val podloveBuilder = ValidatingEpisodePodloveBuilder()
             .addSimpleChapterBuilders(listOf(expectedChapterBuilder, anotherChapterBuilder))
 
-        assertThat(podloveBuilder.build()?.simpleChapters).isNotNull()
-            .containsExactly(expectedChapterBuilder.build(), anotherChapterBuilder.build())
+        assertAll {
+            assertThat(podloveBuilder).prop(EpisodePodloveBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podloveBuilder.build()?.simpleChapters).isNotNull()
+                .containsExactly(expectedChapterBuilder.build(), anotherChapterBuilder.build())
+        }
     }
 }

@@ -1,11 +1,14 @@
 package io.hemin.wien.builder.validating.episode
 
-import assertk.all
+import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
 import assertk.assertions.prop
+import io.hemin.wien.builder.episode.EpisodeContentBuilder
 import io.hemin.wien.model.Episode
 import org.junit.jupiter.api.Test
 
@@ -15,7 +18,11 @@ internal class ValidatingEpisodeContentBuilderTest {
     internal fun `should not build an Episode Content when the mandatory fields are missing`() {
         val episodeContentBuilder = ValidatingEpisodeContentBuilder()
 
-        assertThat(episodeContentBuilder.build()).isNull()
+        assertAll {
+            assertThat(episodeContentBuilder).prop(EpisodeContentBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodeContentBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -23,8 +30,10 @@ internal class ValidatingEpisodeContentBuilderTest {
         val episodeContentBuilder = ValidatingEpisodeContentBuilder()
             .encoded("encoded")
 
-        assertThat(episodeContentBuilder.build()).isNotNull().all {
-            prop(Episode.Content::encoded).isEqualTo("encoded")
+        assertAll {
+            assertThat(episodeContentBuilder).prop(EpisodeContentBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeContentBuilder.build()).isNotNull().prop(Episode.Content::encoded).isEqualTo("encoded")
         }
     }
 }

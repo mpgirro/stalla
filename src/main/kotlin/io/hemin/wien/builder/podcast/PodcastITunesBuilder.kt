@@ -2,7 +2,7 @@ package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Podcast
 
@@ -26,10 +26,10 @@ internal interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
     /**
      * Adds a category builder to the list of category builders.
      *
-     * @param categoryBuilder The [ITunesCategoryBuilder] used to initialize the
+     * @param categoryBuilder The [ITunesStyleCategoryBuilder] used to initialize the
      * [Podcast.ITunes.categories] list when [build] is called.
      */
-    fun addCategoryBuilder(categoryBuilder: ITunesCategoryBuilder): PodcastITunesBuilder
+    fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastITunesBuilder
 
     /** Set the explicit flag value. */
     fun explicit(explicit: Boolean): PodcastITunesBuilder

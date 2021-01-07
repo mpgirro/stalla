@@ -9,8 +9,11 @@ internal class ValidatingPodcastFyydBuilder : PodcastFyydBuilder {
 
     override fun verify(verify: String): PodcastFyydBuilder = apply { this.verifyValue = verify }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = ::verifyValue.isInitialized
+
     override fun build(): Podcast.Fyyd? {
-        if (!::verifyValue.isInitialized) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
         return Podcast.Fyyd(verifyValue)

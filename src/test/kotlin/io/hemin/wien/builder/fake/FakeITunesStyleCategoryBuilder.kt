@@ -1,20 +1,20 @@
 package io.hemin.wien.builder.fake
 
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.model.ITunesStyleCategory
 
-internal class FakeITunesCategoryBuilder : FakeBuilder<ITunesStyleCategory>(), ITunesCategoryBuilder {
+internal class FakeITunesStyleCategoryBuilder : FakeBuilder<ITunesStyleCategory>(), ITunesStyleCategoryBuilder {
 
     var category: String? = null
     var subcategory: String? = null
 
-    override fun category(category: String): ITunesCategoryBuilder = apply { this.category = category }
+    override fun category(category: String): ITunesStyleCategoryBuilder = apply { this.category = category }
 
-    override fun subcategory(subcategory: String?): ITunesCategoryBuilder = apply { this.subcategory = subcategory }
+    override fun subcategory(subcategory: String?): ITunesStyleCategoryBuilder = apply { this.subcategory = subcategory }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakeITunesCategoryBuilder) return false
+        if (other !is FakeITunesStyleCategoryBuilder) return false
 
         if (category != other.category) return false
         if (subcategory != other.subcategory) return false
