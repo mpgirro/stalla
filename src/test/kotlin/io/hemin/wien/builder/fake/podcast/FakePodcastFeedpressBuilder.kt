@@ -4,7 +4,6 @@ import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.podcast.PodcastFeedpressBuilder
 import io.hemin.wien.model.Podcast
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakePodcastFeedpressBuilder : FakeBuilder<Podcast.Feedpress>(), PodcastFeedpressBuilder {
 
     var newsletterIdValue: String? = null

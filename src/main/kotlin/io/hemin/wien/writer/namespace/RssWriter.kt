@@ -5,8 +5,7 @@ import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.BooleanStringStyle
 import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.util.appendElement
-import io.hemin.wien.util.appendImageWithHrefElement
-import io.hemin.wien.util.appendRssImageElement
+import io.hemin.wien.util.appendImageElement
 import io.hemin.wien.util.asBooleanString
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -58,7 +57,7 @@ internal class RssWriter : NamespaceWriter() {
             element.appendElement("webMaster") { textContent = channel.webMaster }
         }
 
-        if (channel.image != null) element.appendRssImageElement(channel.image)
+        if (channel.image != null) element.appendImageElement(channel.image)
     }
 
     override fun writeItemData(episode: Episode, element: Element) {

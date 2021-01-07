@@ -2,13 +2,15 @@ package io.hemin.wien.model.podcast
 
 import io.hemin.wien.dateTime
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.Image
+import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.RssImage
 import io.hemin.wien.model.aLink
 import io.hemin.wien.model.aPerson
-import io.hemin.wien.model.anImage
+import io.hemin.wien.model.anHrefOnlyImage
+import io.hemin.wien.model.anRssImage
 import io.hemin.wien.model.episode.anEpisode
 import java.time.Month
 import java.time.temporal.TemporalAccessor
@@ -25,7 +27,7 @@ internal fun aPodcast(
     docs: String? = "docs",
     managingEditor: String? = "managing editor",
     webMaster: String? = "web master",
-    image: Image? = anImage(url = "podcast image url"),
+    image: RssImage? = anRssImage(url = "podcast image url"),
     episodes: List<Episode> = listOf(anEpisode()),
     iTunes: Podcast.ITunes? = aPodcastItunes(),
     atom: Podcast.Atom? = aPodcastAtom(),
@@ -56,7 +58,7 @@ internal fun aPodcast(
 internal fun aPodcastItunes(
     subtitle: String? = "podcast itunes subtitle",
     summary: String? = "podcast itunes summary",
-    image: Image = anImage(url = "podcast itunes image url", title = null, link = null, width = null, height = null, description = null),
+    image: HrefOnlyImage = anHrefOnlyImage(href = "podcast itunes image url"),
     keywords: String? = "podcast itunes keywords",
     author: String? = "podcast itunes author",
     categories: List<String> = listOf("podcast itunes category"),
@@ -94,5 +96,5 @@ internal fun aPodcastGooglePlay(
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean? = true,
-    image: Image? = anImage(url = "podcast googleplay image url", title = null, link = null, width = null, height = null, description = null)
+    image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url")
 ) = Podcast.GooglePlay(author, owner, categories, description, explicit, block, image)

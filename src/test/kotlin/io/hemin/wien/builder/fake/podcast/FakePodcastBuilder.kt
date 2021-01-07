@@ -1,18 +1,19 @@
 package io.hemin.wien.builder.fake.podcast
 
-import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
-import io.hemin.wien.builder.fake.FakeImageBuilder
+import io.hemin.wien.builder.fake.FakeHrefOnlyImageBuilder
+import io.hemin.wien.builder.fake.FakeRssImageBuilder
 import io.hemin.wien.builder.fake.FakeLinkBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.model.Podcast
 import java.time.temporal.TemporalAccessor
 
-@Suppress("MemberVisibilityCanBePrivate", "Unused")
 internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     var titleValue: String? = null
@@ -27,7 +28,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     var docs: String? = null
     var managingEditor: String? = null
     var webMaster: String? = null
-    var imageBuilder: ImageBuilder? = null
+    var imageBuilder: RssImageBuilder? = null
 
     val episodeBuilders: MutableList<EpisodeBuilder> = mutableListOf()
 
@@ -63,13 +64,15 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override fun webMaster(webMaster: String?): PodcastBuilder = apply { this.webMaster = webMaster }
 
-    override fun imageBuilder(imageBuilder: ImageBuilder?): PodcastBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: RssImageBuilder?): PodcastBuilder = apply { this.imageBuilder = imageBuilder }
 
     override fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder = apply {
         episodeBuilders.add(episodeBuilder)
     }
 
-    override fun createImageBuilder(): ImageBuilder = FakeImageBuilder()
+    override fun createRssImageBuilder(): RssImageBuilder = FakeRssImageBuilder()
+
+    override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = FakeHrefOnlyImageBuilder()
 
     override fun createLinkBuilder(): LinkBuilder = FakeLinkBuilder()
 

@@ -1,6 +1,7 @@
 package io.hemin.wien.builder.validating.podcast
 
-import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
@@ -10,7 +11,8 @@ import io.hemin.wien.builder.podcast.PodcastFeedpressBuilder
 import io.hemin.wien.builder.podcast.PodcastFyydBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
-import io.hemin.wien.builder.validating.ValidatingImageBuilder
+import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
+import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
 import io.hemin.wien.builder.validating.ValidatingLinkBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Podcast
@@ -30,7 +32,7 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
     private var docs: String? = null
     private var managingEditor: String? = null
     private var webMaster: String? = null
-    private var imageBuilder: ImageBuilder? = null
+    private var imageBuilder: RssImageBuilder? = null
 
     private val episodeBuilders: MutableList<EpisodeBuilder> = mutableListOf()
 
@@ -66,13 +68,15 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
 
     override fun webMaster(webMaster: String?): PodcastBuilder = apply { this.webMaster = webMaster }
 
-    override fun imageBuilder(imageBuilder: ImageBuilder?): PodcastBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: RssImageBuilder?): PodcastBuilder = apply { this.imageBuilder = imageBuilder }
 
     override fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder = apply {
         episodeBuilders.add(episodeBuilder)
     }
 
-    override fun createImageBuilder(): ImageBuilder = ValidatingImageBuilder()
+    override fun createRssImageBuilder(): RssImageBuilder = ValidatingRssImageBuilder()
+
+    override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = ValidatingHrefOnlyImageBuilder()
 
     override fun createLinkBuilder(): LinkBuilder = ValidatingLinkBuilder()
 

@@ -1,13 +1,13 @@
 package io.hemin.wien.builder.validating.podcast
 
-import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
 import io.hemin.wien.model.Podcast
 
 internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
 
-    private lateinit var imageValue: ImageBuilder
+    private lateinit var imageBuilderValue: HrefOnlyImageBuilder
     private var explicit: Boolean? = null
 
     private var subtitle: String? = null
@@ -26,7 +26,7 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
 
     override fun summary(summary: String?): PodcastITunesBuilder = apply { this.summary = summary }
 
-    override fun imageBuilder(imageBuilder: ImageBuilder): PodcastITunesBuilder = apply { this.imageValue = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder): PodcastITunesBuilder = apply { this.imageBuilderValue = imageBuilder }
 
     override fun keywords(keywords: String?): PodcastITunesBuilder = apply { this.keywords = keywords }
 
@@ -56,11 +56,11 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
 
     override fun build(): Podcast.ITunes? {
         val explicitValue = explicit
-        if (!::imageValue.isInitialized || categories.isEmpty() || explicitValue == null) {
+        if (!::imageBuilderValue.isInitialized || categories.isEmpty() || explicitValue == null) {
             return null
         }
 
-        val image = imageValue.build() ?: return null
+        val image = imageBuilderValue.build() ?: return null
 
         return Podcast.ITunes(
             subtitle = subtitle,

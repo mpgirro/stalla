@@ -7,13 +7,14 @@ import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import io.hemin.wien.builder.validating.ValidatingImageBuilder
+import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
+import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
 import io.hemin.wien.model.Episode
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeITunesBuilderTest {
 
-    private val expectedImageBuilder = ValidatingImageBuilder().url("image url")
+    private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
     @Test
     internal fun `should not build an Episode ITunes when all fields are missing`() {

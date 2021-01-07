@@ -6,7 +6,7 @@ import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.writer.NamespaceWriter
 import io.hemin.wien.util.appendElement
-import io.hemin.wien.util.appendImageWithHrefElement
+import io.hemin.wien.util.appendImageElement
 import io.hemin.wien.util.appendYesElementIfTrue
 import org.w3c.dom.Element
 
@@ -67,7 +67,7 @@ internal class GooglePlayWriter : NamespaceWriter() {
 
         val image = play.image
         if (image != null) {
-            appendImageWithHrefElement(image, namespace)
+            appendImageElement(image, namespace)
         }
     }
 }

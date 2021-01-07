@@ -1,7 +1,7 @@
 package io.hemin.wien.model
 
 interface ITunesBase {
-    val image: Image?
+    val image: HrefOnlyImage?
     val explicit: Boolean?
     val block: Boolean?
     val title: String?

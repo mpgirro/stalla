@@ -1,7 +1,8 @@
 package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
-import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.HrefOnlyImageBuilder
+import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
@@ -59,7 +60,7 @@ internal interface PodcastBuilder : Builder<Podcast> {
     fun webMaster(webMaster: String?): PodcastBuilder
 
     /** Set the Image builder. */
-    fun imageBuilder(imageBuilder: ImageBuilder?): PodcastBuilder
+    fun imageBuilder(imageBuilder: RssImageBuilder?): PodcastBuilder
 
     /**
      * Adds an [EpisodeBuilder] to the list of episodes.
@@ -68,8 +69,11 @@ internal interface PodcastBuilder : Builder<Podcast> {
      */
     fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder
 
-    /** Creates an instance of [ImageBuilder] to use with this builder. */
-    fun createImageBuilder(): ImageBuilder
+    /** Creates an instance of [RssImageBuilder] to use with this builder. */
+    fun createRssImageBuilder(): RssImageBuilder
+
+    /** Creates an instance of [HrefOnlyImageBuilder] to use with this builder. */
+    fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
 
     /** Creates an instance of [LinkBuilder] to use with this builder. */
     fun createLinkBuilder(): LinkBuilder

@@ -1,13 +1,17 @@
 package io.hemin.wien.model
 
-internal fun anImage(
+internal fun anRssImage(
     url: String = "image url",
-    title: String? = "image title",
-    link: String? = "image link",
+    title: String = "image title",
+    link: String = "image link",
     width: Int? = 123,
     height: Int? = 456,
     description: String? = "image description"
-) = Image(url, title, link, width, height, description)
+) = RssImage(url, title, link, width, height, description)
+
+internal fun anHrefOnlyImage(
+    href: String = "image href"
+) = HrefOnlyImage(href)
 
 internal fun aPerson(
     name: String = "person name",

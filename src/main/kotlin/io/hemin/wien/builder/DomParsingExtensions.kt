@@ -2,7 +2,6 @@ package io.hemin.wien.builder
 
 import io.hemin.wien.parser.DateParser
 import io.hemin.wien.util.FeedNamespace
-import io.hemin.wien.util.asListOfAttrs
 import io.hemin.wien.util.asListOfNodes
 import io.hemin.wien.util.getAttributeValueByName
 import io.hemin.wien.util.trimmedOrNullIfBlank
@@ -34,11 +33,12 @@ internal fun Node.textAsBooleanOrNull(): Boolean? = textOrNull().parseAsBooleanO
  *
  * @return The logical interpretation of the string parameter, or `null`.
  */
-internal fun String?.parseAsBooleanOrNull() = when (this?.toLowerCase(Locale.ROOT)) {
-    "true", "yes" -> true
-    "false", "no" -> false
-    else -> null
-}
+internal fun String?.parseAsBooleanOrNull(): Boolean? =
+    when (this?.toLowerCase(Locale.ROOT)) {
+        "true", "yes" -> true
+        "false", "no" -> false
+        else -> null
+    }
 
 /**
  * Extracts the text content of a DOM node, and transforms it to an Int instance.
@@ -56,26 +56,32 @@ internal fun Node.parseAsInt(): Int? = textOrNull()?.toIntOrNull()
 internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.parse(textOrNull())
 
 /**
- * Parses the node contents as an [ImageBuilder] if possible, interpreting it as an RSS
- * `<image>` tag.
+ * Parses the node contents as an [RssImageBuilder] if possible, interpreting it as an RSS
+ * `<image>` tag, then populates the [imageBuilder] with the parsed data.
  *
  * @see toHrefOnlyImageBuilder
  *
- * @param imageBuilder An empty [ImageBuilder] instance to initialise with the node's
+ * @param imageBuilder An empty [RssImageBuilder] instance to initialise with the node's
  * contents.
  * @param namespace The [FeedNamespace] to ensure the child nodes have.
  *
- * @return The DOM node content as an [ImageBuilder], or `null` if parsing failed.
+ * @return The [imageBuilder] populated with the DOM node contents.
  */
-internal fun Node.toRssImageBuilder(imageBuilder: ImageBuilder, namespace: FeedNamespace? = null): ImageBuilder {
+internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: FeedNamespace? = null): RssImageBuilder {
     for (node in childNodes.asListOfNodes()) {
         if (node.namespaceURI != namespace?.uri) continue
 
         when (node.localName) {
             "description" -> imageBuilder.description(node.textOrNull())
             "height" -> imageBuilder.height(node.parseAsInt())
-            "link" -> imageBuilder.link(node.textOrNull())
-            "title" -> imageBuilder.title(node.textOrNull())
+            "link" -> {
+                val link = node.textOrNull() ?: continue
+                imageBuilder.link(link)
+            }
+            "title" -> {
+                val title = node.textOrNull() ?: continue
+                imageBuilder.title(title)
+            }
             "url" -> {
                 val url = node.textOrNull() ?: continue
                 imageBuilder.url(url)
@@ -87,32 +93,32 @@ internal fun Node.toRssImageBuilder(imageBuilder: ImageBuilder, namespace: FeedN
 }
 
 /**
- * Parses the node contents as an [ImageBuilder] if possible, interpreting it as a
- * `<namespace:image href="..."/>` tag.
+ * Parses the node contents as an [HrefOnlyImageBuilder] if possible, interpreting it as a
+ * `<namespace:image href="..."/>` tag then populates the [imageBuilder] with the parsed data.
  *
  * @see toRssImageBuilder
  *
- * @param imageBuilder An empty [ImageBuilder] instance to initialise with the node's
+ * @param imageBuilder An empty [HrefOnlyImageBuilder] instance to initialise with the node's
  * contents.
  * @param namespace The [FeedNamespace] to ensure the `href` attribute has.
  *
- * @return The DOM node content as an [ImageBuilder], or `null` if parsing failed.
+ * @return The [imageBuilder] populated with the DOM node contents.
  */
-internal fun Node.toHrefOnlyImageBuilder(imageBuilder: ImageBuilder, namespace: FeedNamespace? = null): ImageBuilder {
-    val url: String? = getAttributeValueByName("href", namespace)
-    if (!url.isNullOrBlank()) imageBuilder.url(url)
+internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder, namespace: FeedNamespace? = null): HrefOnlyImageBuilder {
+    val href: String? = getAttributeValueByName("href", namespace)
+    if (!href.isNullOrBlank()) imageBuilder.href(href)
     return imageBuilder
 }
 
 /**
  * Parses the node contents into a [PersonBuilder] if possible, ensuring the child nodes
- * have the specified [namespace].
+ * have the specified [namespace], then populates the [personBuilder] with the parsed data.
  *
  * @param personBuilder An empty [PersonBuilder] instance to initialise with the node's
  * contents.
  * @param namespace The [FeedNamespace] to ensure the child nodes have.
  *
- * @return The DOM node content as a [PersonBuilder], or `null` if parsing failed.
+ * @return The [personBuilder] populated with the DOM node contents.
  */
 internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedNamespace? = null): PersonBuilder {
     for (child in childNodes.asListOfNodes()) {

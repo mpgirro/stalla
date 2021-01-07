@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.episode
 
 import io.hemin.wien.builder.Builder
-import io.hemin.wien.builder.ImageBuilder
+import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Episode
@@ -83,8 +83,8 @@ internal interface EpisodeBuilder : Builder<Episode> {
     /** Creates an instance of [PersonBuilder] to use with this builder. */
     fun createPersonBuilder(): PersonBuilder
 
-    /** Creates an instance of [ImageBuilder] to use with this builder. */
-    fun createImageBuilder(): ImageBuilder
+    /** Creates an instance of [HrefOnlyImageBuilder] to use with this builder. */
+    fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
 
     /** Creates an instance of [EpisodePodloveSimpleChapterBuilder] to use with this builder. */
     fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder

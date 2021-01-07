@@ -9,7 +9,7 @@ import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import io.hemin.wien.builder.fake.FakeImageBuilder
+import io.hemin.wien.builder.fake.FakeHrefOnlyImageBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeITunesBuilder
@@ -25,9 +25,9 @@ internal class ITunesParserTest : NamespaceParserTest() {
 
     override val parser = ITunesParser()
 
-    private val expectedPodcastImageBuilder = FakeImageBuilder().url("http://example.org/podcast-cover.jpg")
+    private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/podcast-cover.jpg")
 
-    private val expectedEpisodeImageBuilder = FakeImageBuilder().url("http://example.org/episode-cover.jpg")
+    private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/episode-cover.jpg")
 
     private val expectedOwnerBuilder = FakePersonBuilder()
         .name("Lorem Ipsum")
@@ -51,6 +51,8 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakePodcastITunesBuilder::complete).isNotNull().isFalse()
             prop(FakePodcastITunesBuilder::imageBuilderValue).isEqualTo(expectedPodcastImageBuilder)
             prop(FakePodcastITunesBuilder::type).isEqualTo(Podcast.ITunes.ShowType.EPISODIC)
+            prop(FakePodcastITunesBuilder::title).isEqualTo("podcast itunes title")
+            prop(FakePodcastITunesBuilder::newFeedUrl).isEqualTo("podcast itunes new-feed-url")
         }
     }
 
@@ -72,6 +74,8 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakePodcastITunesBuilder::complete).isNull()
             prop(FakePodcastITunesBuilder::imageBuilderValue).isNull()
             prop(FakePodcastITunesBuilder::type).isNull()
+            prop(FakePodcastITunesBuilder::title).isNull()
+            prop(FakePodcastITunesBuilder::newFeedUrl).isNull()
         }
     }
 

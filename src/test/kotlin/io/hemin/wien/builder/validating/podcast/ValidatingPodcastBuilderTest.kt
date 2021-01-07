@@ -7,7 +7,8 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import io.hemin.wien.builder.validating.ValidatingImageBuilder
+import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
+import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
@@ -24,7 +25,7 @@ internal class ValidatingPodcastBuilderTest {
     // "Fri, 1 May 2020 12:55:22 +0000"
     private val aLastBuildDate = dateTime(year = 2020, month = Month.MAY, day = 1, hour = 12, minute = 55, second = 22)
 
-    private val expectedImageBuilder = ValidatingImageBuilder()
+    private val expectedImageBuilder = ValidatingRssImageBuilder()
         .url("image url")
 
     private val expectedEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
@@ -38,7 +39,7 @@ internal class ValidatingPodcastBuilderTest {
 
     private val expectedAtomAuthorBuilder = ValidatingPersonBuilder().name("atom author")
 
-    private val expectedITunesImageBuilder = ValidatingImageBuilder().url("itunes image url")
+    private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 
     @Test
     internal fun `should not build a Podcast when the mandatory fields are missing`() {

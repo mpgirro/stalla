@@ -7,7 +7,7 @@ import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import io.hemin.wien.builder.fake.FakeImageBuilder
+import io.hemin.wien.builder.fake.FakeRssImageBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeEnclosureBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeGuidBuilder
@@ -36,8 +36,8 @@ internal class RssParserTest : NamespaceParserTest() {
         isPermalink = true
     }
 
-    private val expectedImageBuilder = FakeImageBuilder().apply {
-        urlValue = "http://example.org/podcast-cover.jpg"
+    private val expectedImageBuilder = FakeRssImageBuilder().apply {
+        url = "http://example.org/podcast-cover.jpg"
         title = "Lorem Ipsum"
         link = "http://example.org"
         width = 600
