@@ -84,20 +84,20 @@ internal class RssParser : NamespaceParser() {
         }
     }
 
-    private fun Node.toEnclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = ifCanBeParsed {
+    private fun Node.toEnclosureBuilder(builder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = ifCanBeParsed {
         val url = getAttributeValueByName("url")
         val length = getAttributeValueByName("length")?.toLongOrNull()
         val type = getAttributeValueByName("type")
 
-        if (url == null || length == null || type == null) return@ifCanBeParsed null
+        if (url == null || length == null || type == null) return@ifCanBeParsed builder
 
-        enclosureBuilder.url(url)
+        builder.url(url)
             .length(length)
             .type(type)
     }
 
     private fun Node.toGuidBuilder(builder: EpisodeGuidBuilder): EpisodeGuidBuilder? = ifCanBeParsed {
-        val guid = ifCanBeParsed { textOrNull() } ?: return@ifCanBeParsed null
+        val guid = ifCanBeParsed { textOrNull() } ?: return@ifCanBeParsed builder
 
         val isPermalink = getAttributeValueByName("isPermalink")
             ?: getAttributeValueByName("isPermaLink")

@@ -5,6 +5,7 @@ import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
+import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import io.hemin.wien.builder.fake.FakeRssCategoryBuilder
@@ -15,8 +16,11 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeGuidBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.dateTime
 import io.hemin.wien.dom.XmlRes
+import io.hemin.wien.hasNotEnoughDataToBuild
+import io.hemin.wien.noneHasEnoughDataToBuild
 import io.hemin.wien.parser.namespace.RssParser
 import org.junit.jupiter.api.Test
+import org.w3c.dom.Node
 import java.time.Month
 
 internal class RssParserTest : NamespaceParserTest() {
@@ -52,7 +56,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder, "channel").all {
+        assertThat(builder, "channel RSS data").all {
             prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
             prop(FakePodcastBuilder::linkValue).isEqualTo("http://example.org")
             prop(FakePodcastBuilder::descriptionValue).isEqualTo("Lorem Ipsum")
@@ -74,7 +78,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder, "channel").all {
+        assertThat(builder, "channel RSS data").all {
             prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
             prop(FakePodcastBuilder::linkValue).isEqualTo("http://example.org")
             prop(FakePodcastBuilder::descriptionValue).isEqualTo("Lorem Ipsum")
@@ -91,12 +95,34 @@ internal class RssParserTest : NamespaceParserTest() {
     }
 
     @Test
+    fun `should extract nothing from channel when RSS data is all empty`() {
+        val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel")
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder, "channel RSS data").all {
+            prop(FakePodcastBuilder::titleValue).isNull()
+            prop(FakePodcastBuilder::linkValue).isNull()
+            prop(FakePodcastBuilder::descriptionValue).isNull()
+            prop(FakePodcastBuilder::pubDate).isNull()
+            prop(FakePodcastBuilder::lastBuildDate).isNull()
+            prop(FakePodcastBuilder::languageValue).isNull()
+            prop(FakePodcastBuilder::generator).isNull()
+            prop(FakePodcastBuilder::copyright).isNull()
+            prop(FakePodcastBuilder::docs).isNull()
+            prop(FakePodcastBuilder::managingEditor).isNull()
+            prop(FakePodcastBuilder::webMaster).isNull()
+            prop(FakePodcastBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
+        }
+    }
+
+    @Test
     fun `should extract all RSS fields from item when present`() {
         val node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder, "item").all {
+        assertThat(builder, "item RSS data").all {
             prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")
             prop(FakeEpisodeBuilder::link).isEqualTo("http://example.org/episode1")
             prop(FakeEpisodeBuilder::description).isEqualTo("Lorem Ipsum")
@@ -119,7 +145,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder, "item").all {
+        assertThat(builder, "item RSS data").all {
             prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")
             prop(FakeEpisodeBuilder::link).isEqualTo("http://example.org/episode1")
             prop(FakeEpisodeBuilder::description).isEqualTo("Lorem Ipsum")
@@ -129,6 +155,26 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakeEpisodeBuilder::categoryBuilders).isEmpty()
             prop(FakeEpisodeBuilder::enclosureBuilderValue).isNull()
             prop(FakeEpisodeBuilder::guidBuilder).isNull()
+            prop(FakeEpisodeBuilder::source).isNull()
+        }
+    }
+
+    @Test
+    fun `should extract nothing from item when RSS data is all empty`() {
+        val node: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel/item")
+        val builder = FakeEpisodeBuilder()
+        node.parseItemChildNodes(builder)
+
+        assertThat(builder, "item RSS data").all {
+            prop(FakeEpisodeBuilder::titleValue).isNull()
+            prop(FakeEpisodeBuilder::link).isNull()
+            prop(FakeEpisodeBuilder::description).isNull()
+            prop(FakeEpisodeBuilder::pubDate).isNull()
+            prop(FakeEpisodeBuilder::author).isNull()
+            prop(FakeEpisodeBuilder::comments).isNull()
+            prop(FakeEpisodeBuilder::categoryBuilders).noneHasEnoughDataToBuild()
+            prop(FakeEpisodeBuilder::enclosureBuilderValue).isNotNull().hasNotEnoughDataToBuild()
+            prop(FakeEpisodeBuilder::guidBuilder).isNotNull().hasNotEnoughDataToBuild()
             prop(FakeEpisodeBuilder::source).isNull()
         }
     }

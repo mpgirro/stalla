@@ -14,13 +14,17 @@ import io.hemin.wien.builder.fake.FakeITunesStyleCategoryBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeITunesBuilder
+import io.hemin.wien.builder.fake.podcast.FakePodcastAtomBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastITunesBuilder
 import io.hemin.wien.dom.XmlRes
+import io.hemin.wien.hasNotEnoughDataToBuild
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.noneHasEnoughDataToBuild
 import io.hemin.wien.parser.namespace.ITunesParser
 import org.junit.jupiter.api.Test
+import org.w3c.dom.Node
 
 internal class ITunesParserTest : NamespaceParserTest() {
 
@@ -85,6 +89,29 @@ internal class ITunesParserTest : NamespaceParserTest() {
     }
 
     @Test
+    fun `should extract nothing from channel when itunes data is all empty`() {
+        val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel")
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.iTunes, "channel.itunes").all {
+            prop(FakePodcastITunesBuilder::author).isNull()
+            prop(FakePodcastITunesBuilder::ownerBuilder).isNotNull().hasNotEnoughDataToBuild()
+            prop(FakePodcastITunesBuilder::categoryBuilders).noneHasEnoughDataToBuild()
+            prop(FakePodcastITunesBuilder::subtitle).isNull()
+            prop(FakePodcastITunesBuilder::summary).isNull()
+            prop(FakePodcastITunesBuilder::keywords).isNull()
+            prop(FakePodcastITunesBuilder::explicit).isNull()
+            prop(FakePodcastITunesBuilder::block).isNull()
+            prop(FakePodcastITunesBuilder::complete).isNull()
+            prop(FakePodcastITunesBuilder::imageBuilderValue).isNotNull().hasNotEnoughDataToBuild()
+            prop(FakePodcastITunesBuilder::type).isNull()
+            prop(FakePodcastITunesBuilder::title).isNull()
+            prop(FakePodcastITunesBuilder::newFeedUrl).isNull()
+        }
+    }
+
+    @Test
     fun `should extract all itunes fields from item when present`() {
         val node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
@@ -119,6 +146,27 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakeEpisodeITunesBuilder::explicit).isNull()
             prop(FakeEpisodeITunesBuilder::block).isNull()
             prop(FakeEpisodeITunesBuilder::imageBuilder).isNull()
+            prop(FakeEpisodeITunesBuilder::episodeType).isNull()
+            prop(FakeEpisodeITunesBuilder::author).isNull()
+            prop(FakeEpisodeITunesBuilder::subtitle).isNull()
+            prop(FakeEpisodeITunesBuilder::summary).isNull()
+        }
+    }
+
+    @Test
+    fun `should extract nothing from item when itunes data is all empty`() {
+        val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel/item")
+        val builder = FakeEpisodeBuilder()
+        channel.parseItemChildNodes(builder)
+
+        assertThat(builder.iTunes, "item.itunes").all {
+            prop(FakeEpisodeITunesBuilder::title).isNull()
+            prop(FakeEpisodeITunesBuilder::duration).isNull()
+            prop(FakeEpisodeITunesBuilder::season).isNull()
+            prop(FakeEpisodeITunesBuilder::episode).isNull()
+            prop(FakeEpisodeITunesBuilder::explicit).isNull()
+            prop(FakeEpisodeITunesBuilder::block).isNull()
+            prop(FakeEpisodeITunesBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
             prop(FakeEpisodeITunesBuilder::episodeType).isNull()
             prop(FakeEpisodeITunesBuilder::author).isNull()
             prop(FakeEpisodeITunesBuilder::subtitle).isNull()

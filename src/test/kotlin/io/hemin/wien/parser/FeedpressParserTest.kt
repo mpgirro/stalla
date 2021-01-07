@@ -5,11 +5,14 @@ import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import io.hemin.wien.builder.fake.podcast.FakePodcastAtomBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastFeedpressBuilder
 import io.hemin.wien.dom.XmlRes
+import io.hemin.wien.noneHasEnoughDataToBuild
 import io.hemin.wien.parser.namespace.FeedpressParser
 import org.junit.jupiter.api.Test
+import org.w3c.dom.Node
 
 internal class FeedpressParserTest : NamespaceParserTest() {
 
@@ -35,6 +38,21 @@ internal class FeedpressParserTest : NamespaceParserTest() {
         val node = XmlRes("/xml/channel-incomplete.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
+
+        assertThat(builder.feedpress, "channel feedpress data").all {
+            prop(FakePodcastFeedpressBuilder::newsletterIdValue).isNull()
+            prop(FakePodcastFeedpressBuilder::localeValue).isNull()
+            prop(FakePodcastFeedpressBuilder::podcastIdValue).isNull()
+            prop(FakePodcastFeedpressBuilder::cssFileValue).isNull()
+            prop(FakePodcastFeedpressBuilder::linkValue).isNull()
+        }
+    }
+
+    @Test
+    fun `should extract nothing from channel when feedpress data is all empty`() {
+        val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel")
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
 
         assertThat(builder.feedpress, "channel feedpress data").all {
             prop(FakePodcastFeedpressBuilder::newsletterIdValue).isNull()
