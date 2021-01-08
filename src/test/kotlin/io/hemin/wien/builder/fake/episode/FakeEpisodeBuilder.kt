@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.fake.episode
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.RssCategoryBuilder
@@ -11,7 +11,7 @@ import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.fake.FakeHrefOnlyImageBuilder
-import io.hemin.wien.builder.fake.FakeITunesCategoryBuilder
+import io.hemin.wien.builder.fake.FakeITunesStyleCategoryBuilder
 import io.hemin.wien.builder.fake.FakeLinkBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.builder.fake.FakeRssCategoryBuilder
@@ -82,7 +82,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createITunesCategoryBuilder(): ITunesCategoryBuilder = FakeITunesCategoryBuilder()
+    override fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder = FakeITunesStyleCategoryBuilder()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

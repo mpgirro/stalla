@@ -1,11 +1,15 @@
 package io.hemin.wien.builder.validating.episode
 
 import assertk.all
+import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.containsExactly
+import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
 import assertk.assertions.prop
+import io.hemin.wien.builder.episode.EpisodeAtomBuilder
 import io.hemin.wien.builder.validating.ValidatingLinkBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Episode
@@ -23,7 +27,11 @@ internal class ValidatingEpisodeAtomBuilderTest {
     internal fun `should not build an Episode Atom with when all the fields are empty`() {
         val episodeAtomBuilder = ValidatingEpisodeAtomBuilder()
 
-        assertThat(episodeAtomBuilder.build()).isNull()
+        assertAll {
+            assertThat(episodeAtomBuilder).prop(EpisodeAtomBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodeAtomBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -31,8 +39,10 @@ internal class ValidatingEpisodeAtomBuilderTest {
         val episodeAtomBuilder = ValidatingEpisodeAtomBuilder()
             .addAuthorBuilder(expectedPersonBuilder)
 
-        assertThat(episodeAtomBuilder.build()).isNotNull().all {
-            prop(Episode.Atom::authors).containsExactly(expectedPersonBuilder.build())
+        assertAll {
+            assertThat(episodeAtomBuilder).prop(EpisodeAtomBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeAtomBuilder.build()).isNotNull().prop(Episode.Atom::authors).containsExactly(expectedPersonBuilder.build())
         }
     }
 
@@ -41,8 +51,10 @@ internal class ValidatingEpisodeAtomBuilderTest {
         val episodeAtomBuilder = ValidatingEpisodeAtomBuilder()
             .addContributorBuilder(expectedPersonBuilder)
 
-        assertThat(episodeAtomBuilder.build()).isNotNull().all {
-            prop(Episode.Atom::contributors).containsExactly(expectedPersonBuilder.build())
+        assertAll {
+            assertThat(episodeAtomBuilder).prop(EpisodeAtomBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeAtomBuilder.build()).isNotNull().prop(Episode.Atom::contributors).containsExactly(expectedPersonBuilder.build())
         }
     }
 
@@ -51,8 +63,10 @@ internal class ValidatingEpisodeAtomBuilderTest {
         val episodeAtomBuilder = ValidatingEpisodeAtomBuilder()
             .addLinkBuilder(expectedLinkBuilder)
 
-        assertThat(episodeAtomBuilder.build()).isNotNull().all {
-            prop(Episode.Atom::links).containsExactly(expectedLinkBuilder.build())
+        assertAll {
+            assertThat(episodeAtomBuilder).prop(EpisodeAtomBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeAtomBuilder.build()).isNotNull().prop(Episode.Atom::links).containsExactly(expectedLinkBuilder.build())
         }
     }
 
@@ -67,10 +81,14 @@ internal class ValidatingEpisodeAtomBuilderTest {
             .addLinkBuilder(ValidatingLinkBuilder().href("link 1"))
             .addLinkBuilder(ValidatingLinkBuilder().href("link 2"))
 
-        assertThat(episodeAtomBuilder.build()).isNotNull().all {
-            prop(Episode.Atom::authors).containsExactly(Person("author 1"), Person("author 2"))
-            prop(Episode.Atom::contributors).containsExactly(Person("contributor 1"), Person("contributor 2"), Person("contributor 3"))
-            prop(Episode.Atom::links).containsExactly(Link("link 1"), Link("link 2"))
+        assertAll {
+            assertThat(episodeAtomBuilder).prop(EpisodeAtomBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeAtomBuilder.build()).isNotNull().all {
+                prop(Episode.Atom::authors).containsExactly(Person("author 1"), Person("author 2"))
+                prop(Episode.Atom::contributors).containsExactly(Person("contributor 1"), Person("contributor 2"), Person("contributor 3"))
+                prop(Episode.Atom::links).containsExactly(Link("link 1"), Link("link 2"))
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package io.hemin.wien.dom
 
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.trimmedOrNullIfBlank
 import org.w3c.dom.Attr
 import org.w3c.dom.Element
 import org.w3c.dom.NamedNodeMap
@@ -35,7 +36,7 @@ internal fun Node.isDirectChildOf(tagName: String) =
  * @return The textContent of the node's attribute.
  */
 internal fun Node.getAttributeValueByName(attributeName: String, namespace: FeedNamespace? = null): String? =
-    attributes?.getNamedItemNS(namespace?.uri, attributeName)?.textContent?.trim()
+    attributes?.getNamedItemNS(namespace?.uri, attributeName)?.textContent?.trimmedOrNullIfBlank()
 
 /** Returns true if the [NodeList] contains at least one node. */
 internal fun NodeList.isNotEmpty() = length > 0

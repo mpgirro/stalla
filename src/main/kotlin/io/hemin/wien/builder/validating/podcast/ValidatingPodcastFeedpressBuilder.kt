@@ -21,17 +21,14 @@ internal class ValidatingPodcastFeedpressBuilder : PodcastFeedpressBuilder {
 
     override fun link(link: String?): PodcastFeedpressBuilder = apply { this.link = link }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = anyNotNull(newsletterId, locale, podcastId, cssFile, link)
+
     override fun build(): Podcast.Feedpress? {
-        if (allNull(newsletterId, locale, podcastId, cssFile, link)) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Podcast.Feedpress(
-            newsletterId = newsletterId,
-            locale = locale,
-            podcastId = podcastId,
-            cssFile = cssFile,
-            link = link
-        )
+        return Podcast.Feedpress(newsletterId, locale, podcastId, cssFile, link)
     }
 }

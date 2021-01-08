@@ -1,16 +1,20 @@
 package io.hemin.wien.builder.validating.podcast
 
 import assertk.all
+import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
 import assertk.assertions.prop
+import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
-import io.hemin.wien.builder.validating.ValidatingITunesCategoryBuilder
-import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
+import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
+import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import io.hemin.wien.dateTime
@@ -42,7 +46,7 @@ internal class ValidatingPodcastBuilderTest {
 
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 
-    private val expectedITunesCategoryBuilder = ValidatingITunesCategoryBuilder()
+    private val expectedITunesCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
         .category("itunes category")
         .subcategory("itunes subcategory")
 
@@ -50,7 +54,11 @@ internal class ValidatingPodcastBuilderTest {
     internal fun `should not build a Podcast when the mandatory fields are missing`() {
         val podcastBuilder = ValidatingPodcastBuilder()
 
-        assertThat(podcastBuilder.build()).isNull()
+        assertAll {
+            assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(podcastBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -61,7 +69,11 @@ internal class ValidatingPodcastBuilderTest {
             .language("language")
             .addEpisodeBuilder(expectedEpisodeBuilder)
 
-        assertThat(podcastBuilder.build()).isNull()
+        assertAll {
+            assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(podcastBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -72,7 +84,11 @@ internal class ValidatingPodcastBuilderTest {
             .language("language")
             .addEpisodeBuilder(expectedEpisodeBuilder)
 
-        assertThat(podcastBuilder.build()).isNull()
+        assertAll {
+            assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(podcastBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -83,7 +99,11 @@ internal class ValidatingPodcastBuilderTest {
             .language("language")
             .addEpisodeBuilder(expectedEpisodeBuilder)
 
-        assertThat(podcastBuilder.build()).isNull()
+        assertAll {
+            assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(podcastBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -94,7 +114,11 @@ internal class ValidatingPodcastBuilderTest {
             .description("description")
             .addEpisodeBuilder(expectedEpisodeBuilder)
 
-        assertThat(podcastBuilder.build()).isNull()
+        assertAll {
+            assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(podcastBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -105,7 +129,11 @@ internal class ValidatingPodcastBuilderTest {
             .description("description")
             .language("language")
 
-        assertThat(podcastBuilder.build()).isNull()
+        assertAll {
+            assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(podcastBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -117,25 +145,29 @@ internal class ValidatingPodcastBuilderTest {
             .language("language")
             .addEpisodeBuilder(expectedEpisodeBuilder)
 
-        assertThat(podcastBuilder.build()).isNotNull().all {
-            prop(Podcast::title).isEqualTo("title")
-            prop(Podcast::link).isEqualTo("link")
-            prop(Podcast::description).isEqualTo("description")
-            prop(Podcast::pubDate).isNull()
-            prop(Podcast::lastBuildDate).isNull()
-            prop(Podcast::language).isEqualTo("language")
-            prop(Podcast::generator).isNull()
-            prop(Podcast::copyright).isNull()
-            prop(Podcast::docs).isNull()
-            prop(Podcast::managingEditor).isNull()
-            prop(Podcast::webMaster).isNull()
-            prop(Podcast::image).isNull()
-            prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
-            prop(Podcast::iTunes).isNull()
-            prop(Podcast::atom).isNull()
-            prop(Podcast::feedpress).isNull()
-            prop(Podcast::fyyd).isNull()
-            prop(Podcast::googlePlay).isNull()
+        assertAll {
+            assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastBuilder.build()).isNotNull().all {
+                prop(Podcast::title).isEqualTo("title")
+                prop(Podcast::link).isEqualTo("link")
+                prop(Podcast::description).isEqualTo("description")
+                prop(Podcast::pubDate).isNull()
+                prop(Podcast::lastBuildDate).isNull()
+                prop(Podcast::language).isEqualTo("language")
+                prop(Podcast::generator).isNull()
+                prop(Podcast::copyright).isNull()
+                prop(Podcast::docs).isNull()
+                prop(Podcast::managingEditor).isNull()
+                prop(Podcast::webMaster).isNull()
+                prop(Podcast::image).isNull()
+                prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
+                prop(Podcast::iTunes).isNull()
+                prop(Podcast::atom).isNull()
+                prop(Podcast::feedpress).isNull()
+                prop(Podcast::fyyd).isNull()
+                prop(Podcast::googlePlay).isNull()
+            }
         }
     }
 
@@ -165,27 +197,31 @@ internal class ValidatingPodcastBuilderTest {
                 googlePlay.description("play description")
             }
 
-        assertThat(podcastBuilder.build()).isNotNull().all {
-            prop(Podcast::title).isEqualTo("title")
-            prop(Podcast::link).isEqualTo("link")
-            prop(Podcast::description).isEqualTo("description")
-            prop(Podcast::pubDate).isEqualTo(aPubDate)
-            prop(Podcast::lastBuildDate).isEqualTo(aLastBuildDate)
-            prop(Podcast::language).isEqualTo("language")
-            prop(Podcast::generator).isEqualTo("generator")
-            prop(Podcast::copyright).isEqualTo("copyright")
-            prop(Podcast::docs).isEqualTo("docs")
-            prop(Podcast::managingEditor).isEqualTo("managingEditor")
-            prop(Podcast::webMaster).isEqualTo("webMaster")
-            prop(Podcast::image).isEqualTo(expectedImageBuilder.build())
-            prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
-            prop(Podcast::iTunes).isNotNull().prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
-            prop(Podcast::atom).isNotNull().prop(Podcast.Atom::authors)
-                .containsExactly(expectedAtomAuthorBuilder.build())
-            prop(Podcast::feedpress).isNotNull().prop(Podcast.Feedpress::newsletterId)
-                .isEqualTo("feedpress newsletterId")
-            prop(Podcast::fyyd).isNotNull().prop(Podcast.Fyyd::verify).isEqualTo("fyyd verify")
-            prop(Podcast::googlePlay).isNotNull().prop(Podcast.GooglePlay::description).isEqualTo("play description")
+        assertAll {
+            assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastBuilder.build()).isNotNull().all {
+                prop(Podcast::title).isEqualTo("title")
+                prop(Podcast::link).isEqualTo("link")
+                prop(Podcast::description).isEqualTo("description")
+                prop(Podcast::pubDate).isEqualTo(aPubDate)
+                prop(Podcast::lastBuildDate).isEqualTo(aLastBuildDate)
+                prop(Podcast::language).isEqualTo("language")
+                prop(Podcast::generator).isEqualTo("generator")
+                prop(Podcast::copyright).isEqualTo("copyright")
+                prop(Podcast::docs).isEqualTo("docs")
+                prop(Podcast::managingEditor).isEqualTo("managingEditor")
+                prop(Podcast::webMaster).isEqualTo("webMaster")
+                prop(Podcast::image).isEqualTo(expectedImageBuilder.build())
+                prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
+                prop(Podcast::iTunes).isNotNull().prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
+                prop(Podcast::atom).isNotNull().prop(Podcast.Atom::authors)
+                    .containsExactly(expectedAtomAuthorBuilder.build())
+                prop(Podcast::feedpress).isNotNull().prop(Podcast.Feedpress::newsletterId)
+                    .isEqualTo("feedpress newsletterId")
+                prop(Podcast::fyyd).isNotNull().prop(Podcast.Fyyd::verify).isEqualTo("fyyd verify")
+                prop(Podcast::googlePlay).isNotNull().prop(Podcast.GooglePlay::description).isEqualTo("play description")
+            }
         }
     }
 }

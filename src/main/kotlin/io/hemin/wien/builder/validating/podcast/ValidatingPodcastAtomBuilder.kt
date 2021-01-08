@@ -23,14 +23,16 @@ internal class ValidatingPodcastAtomBuilder : PodcastAtomBuilder {
         linkBuilders.add(linkBuilder)
     }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = (authorBuilders + contributorBuilders + linkBuilders).any { it.hasEnoughDataToBuild }
+
     override fun build(): Podcast.Atom? {
+        if (!hasEnoughDataToBuild) {
+            return null
+        }
         val authors = authorBuilders.mapNotNull { it.build() }
         val contributors = contributorBuilders.mapNotNull { it.build() }
         val links = linkBuilders.mapNotNull { it.build() }
-
-        if (authors.isEmpty() && contributors.isEmpty() && links.isEmpty()) {
-            return null
-        }
 
         return Podcast.Atom(authors, contributors, links)
     }

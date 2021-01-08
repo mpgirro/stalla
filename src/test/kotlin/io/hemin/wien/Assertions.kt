@@ -2,6 +2,8 @@ package io.hemin.wien
 
 import assertk.Assert
 import assertk.assertions.support.expected
+import io.hemin.wien.builder.Builder
+import io.hemin.wien.dom.asString
 import io.hemin.wien.util.FeedNamespace
 import org.w3c.dom.Node
 import org.xmlunit.diff.Diff
@@ -53,4 +55,25 @@ internal fun Assert<File>.isNotEmpty() = given { file ->
         expected = "file.length() == 0 byte(s)",
         actual = "file.length() == ${file.length()} byte(s)"
     )
+}
+
+/** Asserts none of the [Builder]s [`hasEnoughDataToBuild`][Builder.hasEnoughDataToBuild] is `true`. */
+internal fun Assert<List<Builder<*>>>.noneHasEnoughDataToBuild() = given { builders ->
+    if (builders.any { it.hasEnoughDataToBuild }) {
+        expected(
+            message = "none of the builders to have hasEnoughDataToBuild == true",
+            expected = emptyList<Builder<*>>(),
+            actual = builders.filter { it.hasEnoughDataToBuild }
+        )
+    }
+}
+
+/** Asserts the [Builder]s [`hasEnoughDataToBuild`][Builder.hasEnoughDataToBuild] is `false`. */
+internal fun Assert<Builder<*>>.hasNotEnoughDataToBuild() = given { builder ->
+    if (builder.hasEnoughDataToBuild) {
+        expected(
+            message = "to have hasEnoughDataToBuild == false",
+            actual = builder
+        )
+    }
 }

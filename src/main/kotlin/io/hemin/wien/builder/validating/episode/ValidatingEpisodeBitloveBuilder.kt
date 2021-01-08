@@ -5,12 +5,18 @@ import io.hemin.wien.model.Episode
 
 internal class ValidatingEpisodeBitloveBuilder : EpisodeBitloveBuilder {
 
-    private var guid: String? = null
+    private lateinit var guidValue: String
 
-    override fun guid(guid: String): EpisodeBitloveBuilder = apply { this.guid = guid }
+    override fun guid(guid: String): EpisodeBitloveBuilder = apply { this.guidValue = guid }
+
+    override val hasEnoughDataToBuild: Boolean
+        get() = ::guidValue.isInitialized
 
     override fun build(): Episode.Bitlove? {
-        val guidValue = guid ?: return null
+        if (!hasEnoughDataToBuild) {
+            return null
+        }
+
         return Episode.Bitlove(guidValue)
     }
 }

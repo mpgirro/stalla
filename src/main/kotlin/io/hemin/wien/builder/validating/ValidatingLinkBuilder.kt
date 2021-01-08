@@ -28,8 +28,11 @@ internal class ValidatingLinkBuilder : LinkBuilder {
 
     override fun type(type: String?): LinkBuilder = apply { this.type = type }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = ::hrefValue.isInitialized
+
     override fun build(): Link? {
-        if (!::hrefValue.isInitialized) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 

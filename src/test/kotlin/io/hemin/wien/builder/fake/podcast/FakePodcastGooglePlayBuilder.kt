@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.fake.podcast
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.model.Podcast
@@ -10,7 +10,7 @@ internal class FakePodcastGooglePlayBuilder : FakeBuilder<Podcast.GooglePlay>(),
 
     var author: String? = null
     var owner: String? = null
-    var categoryBuilders: MutableList<ITunesCategoryBuilder> = mutableListOf()
+    var categoryBuilders: MutableList<ITunesStyleCategoryBuilder> = mutableListOf()
     var description: String? = null
     var explicit: Boolean? = null
     var block: Boolean? = null
@@ -20,7 +20,7 @@ internal class FakePodcastGooglePlayBuilder : FakeBuilder<Podcast.GooglePlay>(),
 
     override fun owner(email: String?): PodcastGooglePlayBuilder = apply { this.owner = email }
 
-    override fun addCategoryBuilder(categoryBuilder: ITunesCategoryBuilder): PodcastGooglePlayBuilder = apply {
+    override fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastGooglePlayBuilder = apply {
         categoryBuilders.add(categoryBuilder)
     }
 

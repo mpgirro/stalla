@@ -16,8 +16,11 @@ internal class ValidatingPersonBuilder : PersonBuilder {
 
     override fun uri(uri: String?): PersonBuilder = apply { this.uri = uri }
 
+    override val hasEnoughDataToBuild: Boolean
+        get() = ::nameValue.isInitialized
+
     override fun build(): Person? {
-        if (!::nameValue.isInitialized) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 

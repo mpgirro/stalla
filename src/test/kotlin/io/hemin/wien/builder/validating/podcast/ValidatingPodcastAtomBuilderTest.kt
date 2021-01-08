@@ -1,11 +1,15 @@
 package io.hemin.wien.builder.validating.podcast
 
 import assertk.all
+import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.containsExactly
+import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
 import assertk.assertions.prop
+import io.hemin.wien.builder.podcast.PodcastAtomBuilder
 import io.hemin.wien.builder.validating.ValidatingLinkBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Link
@@ -23,7 +27,11 @@ internal class ValidatingPodcastAtomBuilderTest {
     internal fun `should not build a Podcast Atom with when all the fields are empty`() {
         val podcastAtomBuilder = ValidatingPodcastAtomBuilder()
 
-        assertThat(podcastAtomBuilder.build()).isNull()
+        assertAll {
+            assertThat(podcastAtomBuilder).prop(PodcastAtomBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(podcastAtomBuilder.build()).isNull()
+        }
     }
 
     @Test
@@ -31,8 +39,12 @@ internal class ValidatingPodcastAtomBuilderTest {
         val podcastAtomBuilder = ValidatingPodcastAtomBuilder()
             .addAuthorBuilder(expectedPersonBuilder)
 
-        assertThat(podcastAtomBuilder.build()).isNotNull().all {
-            prop(Podcast.Atom::authors).containsExactly(expectedPersonBuilder.build())
+        assertAll {
+            assertThat(podcastAtomBuilder).prop(PodcastAtomBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastAtomBuilder.build()).isNotNull().all {
+                prop(Podcast.Atom::authors).containsExactly(expectedPersonBuilder.build())
+            }
         }
     }
 
@@ -41,8 +53,12 @@ internal class ValidatingPodcastAtomBuilderTest {
         val podcastAtomBuilder = ValidatingPodcastAtomBuilder()
             .addContributorBuilder(expectedPersonBuilder)
 
-        assertThat(podcastAtomBuilder.build()).isNotNull().all {
-            prop(Podcast.Atom::contributors).containsExactly(expectedPersonBuilder.build())
+        assertAll {
+            assertThat(podcastAtomBuilder).prop(PodcastAtomBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastAtomBuilder.build()).isNotNull().all {
+                prop(Podcast.Atom::contributors).containsExactly(expectedPersonBuilder.build())
+            }
         }
     }
 
@@ -51,8 +67,12 @@ internal class ValidatingPodcastAtomBuilderTest {
         val podcastAtomBuilder = ValidatingPodcastAtomBuilder()
             .addLinkBuilder(expectedLinkBuilder)
 
-        assertThat(podcastAtomBuilder.build()).isNotNull().all {
-            prop(Podcast.Atom::links).containsExactly(expectedLinkBuilder.build())
+        assertAll {
+            assertThat(podcastAtomBuilder).prop(PodcastAtomBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastAtomBuilder.build()).isNotNull().all {
+                prop(Podcast.Atom::links).containsExactly(expectedLinkBuilder.build())
+            }
         }
     }
 
@@ -67,10 +87,14 @@ internal class ValidatingPodcastAtomBuilderTest {
             .addLinkBuilder(ValidatingLinkBuilder().href("link 1"))
             .addLinkBuilder(ValidatingLinkBuilder().href("link 2"))
 
-        assertThat(podcastAtomBuilder.build()).isNotNull().all {
-            prop(Podcast.Atom::authors).containsExactly(Person("author 1"), Person("author 2"))
-            prop(Podcast.Atom::contributors).containsExactly(Person("contributor 1"), Person("contributor 2"), Person("contributor 3"))
-            prop(Podcast.Atom::links).containsExactly(Link("link 1"), Link("link 2"))
+        assertAll {
+            assertThat(podcastAtomBuilder).prop(PodcastAtomBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastAtomBuilder.build()).isNotNull().all {
+                prop(Podcast.Atom::authors).containsExactly(Person("author 1"), Person("author 2"))
+                prop(Podcast.Atom::contributors).containsExactly(Person("contributor 1"), Person("contributor 2"), Person("contributor 3"))
+                prop(Podcast.Atom::links).containsExactly(Link("link 1"), Link("link 2"))
+            }
         }
     }
 }

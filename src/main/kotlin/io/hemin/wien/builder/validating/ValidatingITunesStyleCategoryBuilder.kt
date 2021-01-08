@@ -1,20 +1,23 @@
 package io.hemin.wien.builder.validating
 
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.model.ITunesStyleCategory
 
-internal class ValidatingITunesCategoryBuilder : ITunesCategoryBuilder {
+internal class ValidatingITunesStyleCategoryBuilder : ITunesStyleCategoryBuilder {
 
     private lateinit var categoryValue: String
 
     private var subcategoryValue: String? = null
 
-    override fun category(category: String): ITunesCategoryBuilder = apply { this.categoryValue = category }
+    override fun category(category: String): ITunesStyleCategoryBuilder = apply { this.categoryValue = category }
 
-    override fun subcategory(subcategory: String?): ITunesCategoryBuilder = apply { this.subcategoryValue = subcategory }
+    override fun subcategory(subcategory: String?): ITunesStyleCategoryBuilder = apply { this.subcategoryValue = subcategory }
+
+    override val hasEnoughDataToBuild: Boolean
+        get() = ::categoryValue.isInitialized
 
     override fun build(): ITunesStyleCategory? {
-        if (!::categoryValue.isInitialized) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
 

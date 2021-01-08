@@ -9,6 +9,8 @@ import io.hemin.wien.builder.Builder
  */
 internal abstract class FakeBuilder<T> : Builder<T> {
 
+    override val hasEnoughDataToBuild = false
+
     /**
      * Calling this method will always make the test fail. Inspect the
      * property values directly, instead

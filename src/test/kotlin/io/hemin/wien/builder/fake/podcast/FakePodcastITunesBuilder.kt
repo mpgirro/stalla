@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.fake.podcast
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
@@ -16,7 +16,7 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
     var summary: String? = null
     var keywords: String? = null
     var author: String? = null
-    var categoryBuilders: MutableList<ITunesCategoryBuilder> = mutableListOf()
+    var categoryBuilders: MutableList<ITunesStyleCategoryBuilder> = mutableListOf()
     var block: Boolean? = null
     var complete: Boolean? = null
     var type: Podcast.ITunes.ShowType? = null
@@ -34,7 +34,7 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
 
     override fun author(author: String?): PodcastITunesBuilder = apply { this.author = author }
 
-    override fun addCategoryBuilder(categoryBuilder: ITunesCategoryBuilder): PodcastITunesBuilder = apply {
+    override fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastITunesBuilder = apply {
         categoryBuilders.add(categoryBuilder)
     }
 

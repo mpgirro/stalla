@@ -3,11 +3,15 @@ package io.hemin.wien.parser
 import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEmpty
+import assertk.assertions.prop
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
+import io.hemin.wien.builder.fake.episode.FakeEpisodePodloveBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodePodloveSimpleChapterBuilder
-import io.hemin.wien.nodeFromResource
+import io.hemin.wien.dom.XmlRes
+import io.hemin.wien.noneHasEnoughDataToBuild
 import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
 import org.junit.jupiter.api.Test
+import org.w3c.dom.Node
 
 internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
@@ -15,7 +19,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
     @Test
     fun `should not extract podlove chapter data from item when absent`() {
-        val node = nodeFromResource("item", "/xml/item-incomplete.xml")
+        val node = XmlRes("/xml/item-incomplete.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
@@ -23,8 +27,18 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
     }
 
     @Test
+    fun `should extract nothing from item when podlove chapter data is all empty`() {
+        val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel/item")
+        val builder = FakeEpisodeBuilder()
+        channel.parseItemChildNodes(builder)
+
+        assertThat(builder.podlove, "item.podlove_simple_chapters")
+            .prop(FakeEpisodePodloveBuilder::chapterBuilders).noneHasEnoughDataToBuild()
+    }
+
+    @Test
     fun `should extract podlove chapter data from item when present`() {
-        val node = nodeFromResource("item", "/xml/item.xml")
+        val node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 

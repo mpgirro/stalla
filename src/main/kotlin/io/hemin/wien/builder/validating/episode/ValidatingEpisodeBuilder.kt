@@ -1,7 +1,7 @@
 package io.hemin.wien.builder.validating.episode
 
 import io.hemin.wien.builder.HrefOnlyImageBuilder
-import io.hemin.wien.builder.ITunesCategoryBuilder
+import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.RssCategoryBuilder
@@ -16,7 +16,7 @@ import io.hemin.wien.builder.episode.EpisodeITunesBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
-import io.hemin.wien.builder.validating.ValidatingITunesCategoryBuilder
+import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingLinkBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
@@ -87,13 +87,18 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createITunesCategoryBuilder(): ITunesCategoryBuilder = ValidatingITunesCategoryBuilder()
+    override fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+
+    override val hasEnoughDataToBuild: Boolean
+        get() = ::titleValue.isInitialized && (::enclosureBuilderValue.isInitialized && enclosureBuilderValue.hasEnoughDataToBuild)
 
     override fun build(): Episode? {
-        if (!::titleValue.isInitialized || !::enclosureBuilderValue.isInitialized) {
+        if (!hasEnoughDataToBuild) {
             return null
         }
-        val enclosure = enclosureBuilderValue.build() ?: return null
+
+        val enclosure = enclosureBuilderValue.build()
+            ?: throw IllegalStateException("Cannot build the enclosure, while hasEnoughDataToBuild == true")
 
         return Episode(
             title = titleValue,
