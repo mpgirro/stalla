@@ -15,6 +15,7 @@ plugins {
     id("jacoco")
     id("java")
     id("com.github.nbaztec.coveralls-jacoco").version("1.2.5")
+    id("org.jmailen.kotlinter") version "3.3.0"
 }
 
 group = "io.hemin"
