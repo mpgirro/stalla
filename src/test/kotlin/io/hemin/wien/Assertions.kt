@@ -5,6 +5,8 @@ import assertk.assertions.support.expected
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.dom.asString
 import io.hemin.wien.util.FeedNamespace
+import org.w3c.dom.Node
+import org.xmlunit.diff.Diff
 import java.io.File
 import javax.xml.transform.Source
 import javax.xml.transform.dom.DOMSource
