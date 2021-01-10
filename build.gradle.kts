@@ -74,6 +74,3 @@ tasks {
         }
     }
 }
-
-kotlinter {
-}
