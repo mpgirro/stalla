@@ -5,8 +5,6 @@ import assertk.assertions.support.expected
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.dom.asString
 import io.hemin.wien.util.FeedNamespace
-import org.w3c.dom.Node
-import org.xmlunit.diff.Diff
 import java.io.File
 import javax.xml.transform.Source
 import javax.xml.transform.dom.DOMSource
@@ -42,7 +40,7 @@ internal fun Assert<Node>.hasNoAttribute(localName: String, namespace: FeedNames
             message = "not to have an attribute with localName='$localName' and namespace='$namespace'",
             expected = null,
             actual = "Attr[name='${matchingAttribute.nodeName}', namespaceURI='${matchingAttribute.namespaceURI}', " +
-                    "value='${matchingAttribute.nodeValue}']"
+                "value='${matchingAttribute.nodeValue}']"
         )
     }
 }
