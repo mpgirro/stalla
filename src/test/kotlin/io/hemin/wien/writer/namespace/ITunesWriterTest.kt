@@ -2,9 +2,16 @@ package io.hemin.wien.writer.namespace
 
 import assertk.assertAll
 import assertk.assertThat
+import io.hemin.wien.hasNoChildren
 import io.hemin.wien.hasNoDifferences
+import io.hemin.wien.hasTextContent
+import io.hemin.wien.hasValue
+import io.hemin.wien.model.ITunesStyleCategory
+import io.hemin.wien.model.anHrefOnlyImage
 import io.hemin.wien.model.episode.anEpisode
+import io.hemin.wien.model.episode.anEpisodeITunes
 import io.hemin.wien.model.podcast.aPodcast
+import io.hemin.wien.model.podcast.aPodcastITunes
 import org.junit.jupiter.api.Test
 
 internal class ITunesWriterTest : NamespaceWriterTest() {
@@ -67,19 +74,110 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write itunes tags to the channel when there is no data to write`() {
+        val podcast = aPodcast(iTunes = null)
         assertAll {
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "author")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "category")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "complete")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "keywords")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "owner")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "subtitle")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "summary")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "type")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "image")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "explicit")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "title")
-            assertTagIsNotWrittenToPodcast(aPodcast(iTunes = null), "block")
+            assertTagIsNotWrittenToPodcast(podcast, "author")
+            assertTagIsNotWrittenToPodcast(podcast, "category")
+            assertTagIsNotWrittenToPodcast(podcast, "complete")
+            assertTagIsNotWrittenToPodcast(podcast, "keywords")
+            assertTagIsNotWrittenToPodcast(podcast, "owner")
+            assertTagIsNotWrittenToPodcast(podcast, "subtitle")
+            assertTagIsNotWrittenToPodcast(podcast, "summary")
+            assertTagIsNotWrittenToPodcast(podcast, "type")
+            assertTagIsNotWrittenToPodcast(podcast, "image")
+            assertTagIsNotWrittenToPodcast(podcast, "explicit")
+            assertTagIsNotWrittenToPodcast(podcast, "title")
+            assertTagIsNotWrittenToPodcast(podcast, "block")
+        }
+    }
+
+    @Test
+    internal fun `should not write itunes tags to the channel when the data is blank`() {
+        val categories = listOf(
+            ITunesStyleCategory.Simple(" "),
+            ITunesStyleCategory.Nested(" ", ITunesStyleCategory.Simple("subcategory")),
+            ITunesStyleCategory.Nested("nested", ITunesStyleCategory.Simple(" "))
+        )
+        val podcast = aPodcast(
+            iTunes = aPodcastITunes(
+                subtitle = " ",
+                summary = " ",
+                image = anHrefOnlyImage(" "),
+                keywords = " ",
+                author = " ",
+                categories = categories,
+                explicit = false,
+                block = null,
+                complete = null,
+                type = null,
+                owner = null,
+                title = " ",
+                newFeedUrl = " "
+            )
+        )
+        assertAll {
+            assertTagIsNotWrittenToPodcast(podcast, "author")
+            writePodcastData("category", podcast = podcast) { element ->
+                assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("nested")
+                assertThat(element, "category element children").hasNoChildren()
+            }
+            assertTagIsNotWrittenToPodcast(podcast, "complete")
+            assertTagIsNotWrittenToPodcast(podcast, "keywords")
+            assertTagIsNotWrittenToPodcast(podcast, "owner")
+            assertTagIsNotWrittenToPodcast(podcast, "subtitle")
+            assertTagIsNotWrittenToPodcast(podcast, "summary")
+            assertTagIsNotWrittenToPodcast(podcast, "type")
+            assertTagIsNotWrittenToPodcast(podcast, "image")
+            writePodcastData("explicit", podcast = podcast) { element ->
+                assertThat(element, "explicit element").hasTextContent("false")
+            }
+            assertTagIsNotWrittenToPodcast(podcast, "title")
+            assertTagIsNotWrittenToPodcast(podcast, "block")
+        }
+    }
+
+    @Test
+    internal fun `should not write itunes tags to the channel when the data is empty`() {
+        val categories = listOf(
+            ITunesStyleCategory.Simple(""),
+            ITunesStyleCategory.Nested("", ITunesStyleCategory.Simple("subcategory")),
+            ITunesStyleCategory.Nested("nested", ITunesStyleCategory.Simple(""))
+        )
+        val podcast = aPodcast(
+            iTunes = aPodcastITunes(
+                subtitle = "",
+                summary = "",
+                image = anHrefOnlyImage(""),
+                keywords = "",
+                author = "",
+                categories = categories,
+                explicit = false,
+                block = null,
+                complete = null,
+                type = null,
+                owner = null,
+                title = "",
+                newFeedUrl = ""
+            )
+        )
+        assertAll {
+            assertTagIsNotWrittenToPodcast(podcast, "author")
+            writePodcastData("category", podcast = podcast) { element ->
+                assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("nested")
+                assertThat(element, "category element children").hasNoChildren()
+            }
+            assertTagIsNotWrittenToPodcast(podcast, "complete")
+            assertTagIsNotWrittenToPodcast(podcast, "keywords")
+            assertTagIsNotWrittenToPodcast(podcast, "owner")
+            assertTagIsNotWrittenToPodcast(podcast, "subtitle")
+            assertTagIsNotWrittenToPodcast(podcast, "summary")
+            assertTagIsNotWrittenToPodcast(podcast, "type")
+            assertTagIsNotWrittenToPodcast(podcast, "image")
+            writePodcastData("explicit", podcast = podcast) { element ->
+                assertThat(element, "explicit element").hasTextContent("false")
+            }
+            assertTagIsNotWrittenToPodcast(podcast, "title")
+            assertTagIsNotWrittenToPodcast(podcast, "block")
         }
     }
 
@@ -123,15 +221,70 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write itunes tags to the item when there is no data to write`() {
+        val episode = anEpisode(iTunes = null)
         assertAll {
-            assertTagIsNotWrittenToEpisode(anEpisode(iTunes = null), "duration")
-            assertTagIsNotWrittenToEpisode(anEpisode(iTunes = null), "season")
-            assertTagIsNotWrittenToEpisode(anEpisode(iTunes = null), "episode")
-            assertTagIsNotWrittenToEpisode(anEpisode(iTunes = null), "episodeType")
-            assertTagIsNotWrittenToEpisode(anEpisode(iTunes = null), "image")
-            assertTagIsNotWrittenToEpisode(anEpisode(iTunes = null), "explicit")
-            assertTagIsNotWrittenToEpisode(anEpisode(iTunes = null), "title")
-            assertTagIsNotWrittenToEpisode(anEpisode(iTunes = null), "block")
+            assertTagIsNotWrittenToEpisode(episode, "duration")
+            assertTagIsNotWrittenToEpisode(episode, "season")
+            assertTagIsNotWrittenToEpisode(episode, "episode")
+            assertTagIsNotWrittenToEpisode(episode, "episodeType")
+            assertTagIsNotWrittenToEpisode(episode, "image")
+            assertTagIsNotWrittenToEpisode(episode, "explicit")
+            assertTagIsNotWrittenToEpisode(episode, "title")
+            assertTagIsNotWrittenToEpisode(episode, "block")
+        }
+    }
+
+    @Test
+    internal fun `should not write itunes tags to the item when the data is blank`() {
+        val episode = anEpisode(iTunes = anEpisodeITunes(
+            title = " ",
+            duration = " ",
+            image = anHrefOnlyImage(" "),
+            explicit = null,
+            block = null,
+            season = null,
+            episode = null,
+            episodeType = null,
+            author = " ",
+            subtitle = " ",
+            summary = " "
+        ))
+        assertAll {
+            assertTagIsNotWrittenToEpisode(episode, "duration")
+            assertTagIsNotWrittenToEpisode(episode, "season")
+            assertTagIsNotWrittenToEpisode(episode, "episode")
+            assertTagIsNotWrittenToEpisode(episode, "episodeType")
+            assertTagIsNotWrittenToEpisode(episode, "image")
+            assertTagIsNotWrittenToEpisode(episode, "explicit")
+            assertTagIsNotWrittenToEpisode(episode, "title")
+            assertTagIsNotWrittenToEpisode(episode, "block")
+        }
+    }
+
+    @Test
+    internal fun `should not write itunes tags to the item when the data is empty`() {
+        val episode = anEpisode(iTunes = anEpisodeITunes(
+            title = "",
+            duration = "",
+            image = anHrefOnlyImage(""),
+            explicit = null,
+            block = null,
+            season = null,
+            episode = null,
+            episodeType = null,
+            author = "",
+            subtitle = "",
+            summary = ""
+        ))
+        assertAll {
+            assertTagIsNotWrittenToEpisode(episode, "duration")
+            assertTagIsNotWrittenToEpisode(episode, "season")
+            assertTagIsNotWrittenToEpisode(episode, "episode")
+            assertTagIsNotWrittenToEpisode(episode, "episodeType")
+            assertTagIsNotWrittenToEpisode(episode, "image")
+            assertTagIsNotWrittenToEpisode(episode, "explicit")
+            assertTagIsNotWrittenToEpisode(episode, "title")
+            assertTagIsNotWrittenToEpisode(episode, "block")
         }
     }
 }

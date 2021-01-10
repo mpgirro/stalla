@@ -17,9 +17,10 @@ internal class FyydWriter : NamespaceWriter() {
     override val namespace = FeedNamespace.FYYD
 
     override fun Element.appendPodcastData(podcast: Podcast) {
-        val fyyd = podcast.fyyd ?: return
+        val verify = podcast.fyyd?.verify ?: return
+        if (verify.isBlank()) return
 
-        appendElement("verify", namespace) { textContent = fyyd.verify }
+        appendElement("verify", namespace) { textContent = verify }
     }
 
     override fun Element.appendEpisodeData(episode: Episode) {

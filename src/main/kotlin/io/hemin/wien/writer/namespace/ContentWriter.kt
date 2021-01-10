@@ -21,8 +21,9 @@ internal class ContentWriter : NamespaceWriter() {
     }
 
     override fun Element.appendEpisodeData(episode: Episode) {
-        if (episode.content?.encoded == null) return
+        val encoded = episode.content?.encoded
+        if (encoded.isNullOrBlank()) return
 
-        appendElement("encoded", namespace) { textContent = episode.content.encoded }
+        appendElement("encoded", namespace) { textContent = encoded }
     }
 }

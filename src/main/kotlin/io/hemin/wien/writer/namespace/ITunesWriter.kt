@@ -10,6 +10,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.ITunesBase
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.isNeitherNullNorBlank
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 
@@ -31,7 +32,7 @@ internal class ITunesWriter : NamespaceWriter() {
             appendYesElementIfTrue("complete", iTunes.complete, namespace)
         }
 
-        if (iTunes.keywords != null) {
+        if (iTunes.keywords.isNeitherNullNorBlank()) {
             appendElement("keywords", namespace) { textContent = iTunes.keywords }
         }
 
@@ -43,7 +44,7 @@ internal class ITunesWriter : NamespaceWriter() {
             appendElement("type", namespace) { textContent = iTunes.type.type }
         }
 
-        if (iTunes.type != null) {
+        if (iTunes.newFeedUrl.isNeitherNullNorBlank()) {
             appendElement("new-feed-url", namespace) { textContent = iTunes.newFeedUrl }
         }
 
@@ -53,7 +54,7 @@ internal class ITunesWriter : NamespaceWriter() {
     override fun Element.appendEpisodeData(episode: Episode) {
         val iTunes = episode.iTunes ?: return
 
-        if (iTunes.duration != null) {
+        if (iTunes.duration.isNeitherNullNorBlank()) {
             appendElement("duration", namespace) { textContent = iTunes.duration }
         }
 
@@ -80,7 +81,7 @@ internal class ITunesWriter : NamespaceWriter() {
         if (explicit != null) appendTrueFalseElement("explicit", explicit, namespace)
 
         val title = iTunes.title
-        if (title != null) {
+        if (title.isNeitherNullNorBlank()) {
             appendElement("title", namespace) { textContent = title }
         }
 
@@ -88,17 +89,17 @@ internal class ITunesWriter : NamespaceWriter() {
         if (block != null) appendYesElementIfTrue("block", block, namespace)
 
         val author = iTunes.author
-        if (author != null) {
+        if (author.isNeitherNullNorBlank()) {
             appendElement("author", namespace) { textContent = author }
         }
 
         val subtitle = iTunes.subtitle
-        if (subtitle != null) {
+        if (subtitle.isNeitherNullNorBlank()) {
             appendElement("subtitle", namespace) { textContent = subtitle }
         }
 
         val summary = iTunes.summary
-        if (summary != null) {
+        if (summary.isNeitherNullNorBlank()) {
             appendElement("summary", namespace) { textContent = summary }
         }
     }

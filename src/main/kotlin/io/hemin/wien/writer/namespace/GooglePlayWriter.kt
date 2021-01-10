@@ -8,6 +8,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.GooglePlayBase
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.isNeitherNullNorBlank
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 
@@ -23,11 +24,11 @@ internal class GooglePlayWriter : NamespaceWriter() {
     override fun Element.appendPodcastData(podcast: Podcast) {
         val play = podcast.googlePlay ?: return
 
-        if (play.author != null) {
+        if (play.author.isNeitherNullNorBlank()) {
             appendElement("author", namespace) { textContent = play.author }
         }
 
-        if (play.owner != null) {
+        if (play.owner.isNeitherNullNorBlank()) {
             appendElement("owner", namespace) { textContent = play.owner }
         }
 
@@ -44,7 +45,7 @@ internal class GooglePlayWriter : NamespaceWriter() {
 
     private fun Element.appendCommonElements(play: GooglePlayBase) {
         val description = play.description
-        if (description != null) {
+        if (description.isNeitherNullNorBlank()) {
             appendElement("description", namespace) { textContent = description }
         }
 

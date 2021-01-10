@@ -31,7 +31,7 @@ internal fun aPodcast(
     webMaster: String? = "web master",
     image: RssImage? = anRssImage(url = "podcast image url"),
     episodes: List<Episode> = listOf(anEpisode()),
-    iTunes: Podcast.ITunes? = aPodcastItunes(),
+    iTunes: Podcast.ITunes? = aPodcastITunes(),
     atom: Podcast.Atom? = aPodcastAtom(),
     fyyd: Podcast.Fyyd? = aPodcastFyyd(),
     feedpress: Podcast.Feedpress? = aPodcastFeedpress(),
@@ -57,7 +57,7 @@ internal fun aPodcast(
     googlePlay
 )
 
-internal fun aPodcastItunes(
+internal fun aPodcastITunes(
     subtitle: String? = "podcast itunes subtitle",
     summary: String? = "podcast itunes summary",
     image: HrefOnlyImage = anHrefOnlyImage(href = "podcast itunes image url"),

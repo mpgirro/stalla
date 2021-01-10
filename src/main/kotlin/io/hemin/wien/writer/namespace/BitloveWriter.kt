@@ -23,6 +23,7 @@ internal class BitloveWriter : NamespaceWriter() {
 
     override fun Element.appendEpisodeData(episode: Episode) {
         val guid = episode.bitlove?.guid ?: return
+        if (guid.isBlank()) return
 
         val enclosureElement = findElementByName("enclosure")
         requireNotNull(enclosureElement) { "This writer must execute after the episode <enclosure> has been written" }

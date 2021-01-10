@@ -58,16 +58,8 @@ internal abstract class NamespaceWriter {
      * Note: the [this@appendEpisodeData] has already been validated to be a `<item>`.
      *
      * @param episode The episode data to write.
-     * @param this@appendEpisodeData The element to append the data to.
      */
     protected abstract fun Element.appendEpisodeData(episode: Episode)
-
-    /**
-     * Converts a [TemporalAccessor] value to a RFC2822 [String] representation.
-     *
-     * @return The string representing the value in the chosen style.
-     */
-    protected fun TemporalAccessor.asDateString() = DateFormatter.formatAsRfc2822(this)
 
     /**
      * Should return `true` when this writer can write to a given node. Returns true when the node

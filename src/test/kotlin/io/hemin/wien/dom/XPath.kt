@@ -11,7 +11,7 @@ private val xPath = XPathFactory.newDefaultInstance()
     .newXPath()
     .apply { namespaceContext = FeedNamespaceContext }
 
-internal fun Document.findNodeByXPath(nodePath: String) =
+internal fun Node.findNodeByXPath(nodePath: String) =
     xPath.evaluate(nodePath, this, XPathConstants.NODE) as? Node
 
 private object FeedNamespaceContext : NamespaceContext {

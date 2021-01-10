@@ -36,7 +36,17 @@ internal fun Node.isDirectChildOf(tagName: String) =
  * @return The textContent of the node's attribute.
  */
 internal fun Node.getAttributeValueByName(attributeName: String, namespace: FeedNamespace? = null): String? =
-    attributes?.getNamedItemNS(namespace?.uri, attributeName)?.textContent?.trimmedOrNullIfBlank()
+    getAttributeByName(attributeName, namespace)?.value?.trimmedOrNullIfBlank()
+
+/**
+ * Extract the [`textContent`][Node.getTextContent] of a DOM node attribute identified by name.
+ *
+ * @param attributeName The name of the node's attribute.
+ * @param namespace The namespace to use, if any.
+ * @return The textContent of the node's attribute.
+ */
+internal fun Node.getAttributeByName(attributeName: String, namespace: FeedNamespace? = null): Attr? =
+    attributes?.getNamedItemNS(namespace?.uri, attributeName) as? Attr
 
 /** Returns true if the [NodeList] contains at least one node. */
 internal fun NodeList.isNotEmpty() = length > 0

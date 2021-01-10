@@ -8,6 +8,7 @@ import io.hemin.wien.model.RssImage
 import io.hemin.wien.util.BooleanStringStyle
 import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.util.asBooleanString
+import io.hemin.wien.util.isNeitherNullNorBlank
 import org.w3c.dom.Attr
 import org.w3c.dom.Document
 import org.w3c.dom.Element
@@ -22,10 +23,11 @@ import org.w3c.dom.Node
  * @param image The image to represent with the new element.
  * @param namespace The namespace to use for the new element.
  */
-internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: FeedNamespace): Element {
+internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: FeedNamespace): Element? {
     require(namespace == FeedNamespace.ITUNES || namespace == FeedNamespace.GOOGLE_PLAY) {
         "Only 'itunes:image' and 'googleplay:image' tags are supported, but the desired prefix was '${namespace.prefix}:'"
     }
+    if (image.href.isBlank()) return null
     return appendElement("image", namespace) {
         setAttribute("href", image.href)
     }
@@ -122,14 +124,16 @@ internal fun Node.appendTrueFalseElement(tagName: String, value: Boolean, namesp
  * @param namespace The namespace to use, if any
  */
 internal fun Node.appendPersonElement(tagName: String, person: Person, namespace: FeedNamespace? = null) {
+    if (person.name.isBlank()) return
+
     appendElement(tagName, namespace) {
         appendElement("name", namespace) { textContent = person.name }
 
-        if (person.email != null) {
+        if (person.email.isNeitherNullNorBlank()) {
             appendElement("email", namespace) { textContent = person.email }
         }
 
-        if (person.uri != null) {
+        if (person.uri.isNeitherNullNorBlank()) {
             appendElement("uri", namespace) { textContent = person.uri }
         }
     }
@@ -143,10 +147,11 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
  */
 internal fun Node.appendITunesCategoryElements(categories: List<ITunesStyleCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
+        if (category.name.isBlank()) continue
         appendElement("category", namespace) {
             setAttribute("text", category.name)
 
-            if (category is ITunesStyleCategory.Nested) {
+            if (category is ITunesStyleCategory.Nested && category.subcategory.name.isNotBlank()) {
                 appendElement("category", namespace) {
                     setAttribute("text", category.subcategory.name)
                 }

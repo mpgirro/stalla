@@ -1,8 +1,10 @@
 package io.hemin.wien.writer.namespace
 
+import assertk.assertAll
 import assertk.assertThat
 import io.hemin.wien.hasNoDifferences
 import io.hemin.wien.model.podcast.aPodcast
+import io.hemin.wien.model.podcast.aPodcastFeedpress
 import org.junit.jupiter.api.Test
 
 internal class FeedpressWriterTest : NamespaceWriterTest() {
@@ -11,7 +13,7 @@ internal class FeedpressWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should write the correct feedpress tags to the channel when there is data to write`() {
-        assertk.assertAll {
+        assertAll {
             writePodcastData("newsletterId") { element ->
                 val diff = element.diffFromExpected("/rss/channel/feedpress:newsletterId")
                 assertThat(diff).hasNoDifferences()
@@ -37,12 +39,37 @@ internal class FeedpressWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write feedpress tags to the channel when there is no data to write`() {
-        assertk.assertAll {
-            assertTagIsNotWrittenToPodcast(aPodcast(feedpress = null), "newsletterId")
-            assertTagIsNotWrittenToPodcast(aPodcast(feedpress = null), "locale")
-            assertTagIsNotWrittenToPodcast(aPodcast(feedpress = null), "podcastId")
-            assertTagIsNotWrittenToPodcast(aPodcast(feedpress = null), "cssFile")
-            assertTagIsNotWrittenToPodcast(aPodcast(feedpress = null), "link")
+        val podcast = aPodcast(feedpress = null)
+        assertAll {
+            assertTagIsNotWrittenToPodcast(podcast, "newsletterId")
+            assertTagIsNotWrittenToPodcast(podcast, "locale")
+            assertTagIsNotWrittenToPodcast(podcast, "podcastId")
+            assertTagIsNotWrittenToPodcast(podcast, "cssFile")
+            assertTagIsNotWrittenToPodcast(podcast, "link")
+        }
+    }
+
+    @Test
+    internal fun `should not write feedpress tags to the channel when the data is blank`() {
+        val podcast = aPodcast(feedpress = aPodcastFeedpress(" "," "," "," "," "))
+        assertAll {
+            assertTagIsNotWrittenToPodcast(podcast, "newsletterId")
+            assertTagIsNotWrittenToPodcast(podcast, "locale")
+            assertTagIsNotWrittenToPodcast(podcast, "podcastId")
+            assertTagIsNotWrittenToPodcast(podcast, "cssFile")
+            assertTagIsNotWrittenToPodcast(podcast, "link")
+        }
+    }
+
+    @Test
+    internal fun `should not write feedpress tags to the channel when the data is empty`() {
+        val podcast = aPodcast(feedpress = aPodcastFeedpress("","","","",""))
+        assertAll {
+            assertTagIsNotWrittenToPodcast(podcast, "newsletterId")
+            assertTagIsNotWrittenToPodcast(podcast, "locale")
+            assertTagIsNotWrittenToPodcast(podcast, "podcastId")
+            assertTagIsNotWrittenToPodcast(podcast, "cssFile")
+            assertTagIsNotWrittenToPodcast(podcast, "link")
         }
     }
 }

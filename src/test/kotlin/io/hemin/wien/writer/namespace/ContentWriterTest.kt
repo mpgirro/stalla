@@ -3,6 +3,7 @@ package io.hemin.wien.writer.namespace
 import assertk.assertThat
 import io.hemin.wien.hasNoDifferences
 import io.hemin.wien.model.episode.anEpisode
+import io.hemin.wien.model.episode.anEpisodeContent
 import org.junit.jupiter.api.Test
 
 internal class ContentWriterTest : NamespaceWriterTest() {
@@ -20,5 +21,15 @@ internal class ContentWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write a content_encoded tag to the item when there is no data to write`() {
         assertTagIsNotWrittenToEpisode(anEpisode(content = null), "encoded")
+    }
+
+    @Test
+    internal fun `should not write a content_encoded tag to the item when the data is blank`() {
+        assertTagIsNotWrittenToEpisode(anEpisode(content = anEpisodeContent(" ")), "encoded")
+    }
+
+    @Test
+    internal fun `should not write a content_encoded tag to the item when the data is empty`() {
+        assertTagIsNotWrittenToEpisode(anEpisode(content = anEpisodeContent("")), "encoded")
     }
 }
