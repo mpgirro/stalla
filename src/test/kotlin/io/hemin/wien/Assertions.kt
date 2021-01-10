@@ -5,7 +5,6 @@ import assertk.assertions.support.expected
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.dom.asListOfNodes
 import io.hemin.wien.dom.asString
-import io.hemin.wien.dom.isNotEmpty
 import io.hemin.wien.util.FeedNamespace
 import org.w3c.dom.Attr
 import org.w3c.dom.Element
@@ -131,3 +130,13 @@ internal fun Assert<Attr>.hasValue(expected: String) = given { element ->
         actual = element.value
     )
 }
+
+/**
+ * Transforms the current assertion to the list of [`childNodes`][Node.getChildNodes] that have
+ * the given [localName] and [namespace].
+ */
+internal fun Assert<Node>.childNodesNamed(localName: String, namespace: FeedNamespace? = null) =
+    transform { node ->
+        node.childNodes.asListOfNodes()
+            .filter { it.localName == localName && it.namespaceURI == namespace?.uri }
+    }

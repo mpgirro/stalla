@@ -2,6 +2,8 @@ package io.hemin.wien.writer.namespace
 
 import assertk.assertAll
 import assertk.assertThat
+import assertk.assertions.hasSize
+import io.hemin.wien.childNodesNamed
 import io.hemin.wien.hasNoChildren
 import io.hemin.wien.hasNoDifferences
 import io.hemin.wien.hasTextContent
@@ -117,6 +119,9 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
         )
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
+            writePodcastDataXPathMultiple("//itunes:category", podcast) { elements ->
+                assertThat(elements).hasSize(1)
+            }
             writePodcastData("category", podcast = podcast) { element ->
                 assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("nested")
                 assertThat(element, "category element children").hasNoChildren()
@@ -162,6 +167,9 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
         )
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
+            writePodcastDataXPathMultiple("//itunes:category", podcast) { elements ->
+                assertThat(elements).hasSize(1)
+            }
             writePodcastData("category", podcast = podcast) { element ->
                 assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("nested")
                 assertThat(element, "category element children").hasNoChildren()

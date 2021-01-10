@@ -29,7 +29,7 @@ internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: Fe
     }
     if (image.href.isBlank()) return null
     return appendElement("image", namespace) {
-        setAttribute("href", image.href)
+        setAttribute("href", image.href.trim())
     }
 }
 
@@ -38,13 +38,26 @@ internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: Fe
  *
  * @param image The image to represent with the new element.
  */
-internal fun Node.appendRssImageElement(image: RssImage): Element = appendElement("image") {
-    appendElement("title") { textContent = image.title }
-    appendElement("link") { textContent = image.link }
-    appendElement("url") { textContent = image.url }
-    if (image.description != null) appendElement("description") { textContent = image.description }
-    if (image.height != null) appendElement("height") { textContent = image.height.toString() }
-    if (image.width != null) appendElement("width") { textContent = image.width.toString() }
+internal fun Node.appendRssImageElement(image: RssImage): Element? {
+    if (image.url.isBlank()) return null
+    return appendElement("image") {
+        appendElement("url") { textContent = image.url.trim() }
+        if (image.title.isNotBlank()) {
+            appendElement("title") { textContent = image.title.trim() }
+        }
+        if (image.link.isNotBlank()) {
+            appendElement("link") { textContent = image.link.trim() }
+        }
+        if (image.description.isNeitherNullNorBlank()) {
+            appendElement("description") { textContent = image.description?.trim() }
+        }
+        if (image.height != null) {
+            appendElement("height") { textContent = image.height.toString() }
+        }
+        if (image.width != null) {
+            appendElement("width") { textContent = image.width.toString() }
+        }
+    }
 }
 
 /**
@@ -127,14 +140,14 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
     if (person.name.isBlank()) return
 
     appendElement(tagName, namespace) {
-        appendElement("name", namespace) { textContent = person.name }
+        appendElement("name", namespace) { textContent = person.name.trim() }
 
         if (person.email.isNeitherNullNorBlank()) {
-            appendElement("email", namespace) { textContent = person.email }
+            appendElement("email", namespace) { textContent = person.email?.trim() }
         }
 
         if (person.uri.isNeitherNullNorBlank()) {
-            appendElement("uri", namespace) { textContent = person.uri }
+            appendElement("uri", namespace) { textContent = person.uri?.trim() }
         }
     }
 }
@@ -149,11 +162,11 @@ internal fun Node.appendITunesCategoryElements(categories: List<ITunesStyleCateg
     for (category in categories) {
         if (category.name.isBlank()) continue
         appendElement("category", namespace) {
-            setAttribute("text", category.name)
+            setAttribute("text", category.name.trim())
 
             if (category is ITunesStyleCategory.Nested && category.subcategory.name.isNotBlank()) {
                 appendElement("category", namespace) {
-                    setAttribute("text", category.subcategory.name)
+                    setAttribute("text", category.subcategory.name.trim())
                 }
             }
         }
@@ -168,9 +181,12 @@ internal fun Node.appendITunesCategoryElements(categories: List<ITunesStyleCateg
  */
 internal fun Node.appendRssCategoryElements(categories: List<RssCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
+        if (category.name.isBlank()) continue
         appendElement("category", namespace) {
-            textContent = category.name
-            setAttribute("domain", category.domain)
+            textContent = category.name.trim()
+            if (category.domain.isNeitherNullNorBlank()) {
+                setAttribute("domain", category.domain?.trim())
+            }
         }
     }
 }

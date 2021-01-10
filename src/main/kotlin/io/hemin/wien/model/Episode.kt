@@ -59,11 +59,11 @@ data class Episode(
     /**
      * Model class for `<guid>` elements within RSS `<item>` elements.
      *
-     * @property textContent The text content of the element.
+     * @property guid The text content of the element.
      * @property isPermalink The boolean interpretation of the `isPermalink` attribute.
      */
     data class Guid(
-        val textContent: String,
+        val guid: String,
         val isPermalink: Boolean? = null
     )
 

@@ -2,6 +2,8 @@ package io.hemin.wien.writer.namespace
 
 import assertk.assertAll
 import assertk.assertThat
+import assertk.assertions.hasSize
+import io.hemin.wien.childNodesNamed
 import io.hemin.wien.hasNoChildren
 import io.hemin.wien.hasNoDifferences
 import io.hemin.wien.hasValue
@@ -86,6 +88,9 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
             assertTagIsNotWrittenToPodcast(podcast, "owner")
+            writePodcastDataXPathMultiple("//googleplay:category", podcast) { elements ->
+                assertThat(elements).hasSize(1)
+            }
             writePodcastData("category", podcast = podcast) { element ->
                 assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("nested")
                 assertThat(element, "category element children").hasNoChildren()
@@ -118,6 +123,9 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
             assertTagIsNotWrittenToPodcast(podcast, "owner")
+            writePodcastDataXPathMultiple("//googleplay:category", podcast) { elements ->
+                assertThat(elements).hasSize(1)
+            }
             writePodcastData("category", podcast = podcast) { element ->
                 assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("nested")
                 assertThat(element, "category element children").hasNoChildren()

@@ -9,6 +9,7 @@ import io.hemin.wien.util.BooleanStringStyle
 import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.util.asBooleanString
 import io.hemin.wien.util.asDateString
+import io.hemin.wien.util.isNeitherNullNorBlank
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 
@@ -25,9 +26,17 @@ internal class RssWriter : NamespaceWriter() {
     override val namespace: FeedNamespace? = null
 
     override fun Element.appendPodcastData(podcast: Podcast) {
-        appendElement("title") { textContent = podcast.title }
-        appendElement("link") { textContent = podcast.link }
-        appendElement("description") { textContent = podcast.description }
+        if (podcast.title.isNotBlank()) {
+            appendElement("title") { textContent = podcast.title }
+        }
+
+        if (podcast.link.isNotBlank()) {
+            appendElement("link") { textContent = podcast.link }
+        }
+
+        if (podcast.description.isNotBlank()) {
+            appendElement("description") { textContent = podcast.description }
+        }
 
         if (podcast.pubDate != null) {
             appendElement("pubDate") { textContent = podcast.pubDate.asDateString() }
@@ -37,25 +46,27 @@ internal class RssWriter : NamespaceWriter() {
             appendElement("lastBuildDate") { textContent = podcast.lastBuildDate.asDateString() }
         }
 
-        if (podcast.generator != null) {
+        if (podcast.generator.isNeitherNullNorBlank()) {
             appendElement("generator") { textContent = podcast.generator }
         }
 
-        appendElement("language") { textContent = podcast.language }
+        if (podcast.language.isNotBlank()) {
+            appendElement("language") { textContent = podcast.language }
+        }
 
-        if (podcast.copyright != null) {
+        if (podcast.copyright.isNeitherNullNorBlank()) {
             appendElement("copyright") { textContent = podcast.copyright }
         }
 
-        if (podcast.docs != null) {
+        if (podcast.docs.isNeitherNullNorBlank()) {
             appendElement("docs") { textContent = podcast.docs }
         }
 
-        if (podcast.managingEditor != null) {
+        if (podcast.managingEditor.isNeitherNullNorBlank()) {
             appendElement("managingEditor") { textContent = podcast.managingEditor }
         }
 
-        if (podcast.webMaster != null) {
+        if (podcast.webMaster.isNeitherNullNorBlank()) {
             appendElement("webMaster") { textContent = podcast.webMaster }
         }
 
@@ -63,23 +74,25 @@ internal class RssWriter : NamespaceWriter() {
     }
 
     override fun Element.appendEpisodeData(episode: Episode) {
-        appendElement("title") { textContent = episode.title }
+        if (episode.title.isNotBlank()) {
+            appendElement("title") { textContent = episode.title }
+        }
 
-        if (episode.link != null) {
+        if (episode.link.isNeitherNullNorBlank()) {
             appendElement("link") { textContent = episode.link }
         }
 
-        if (episode.description != null) {
+        if (episode.description.isNeitherNullNorBlank()) {
             appendElement("description") { textContent = episode.description }
         }
 
-        if (episode.author != null) {
+        if (episode.author.isNeitherNullNorBlank()) {
             appendElement("author") { textContent = episode.author }
         }
 
         appendRssCategoryElements(episode.categories)
 
-        if (episode.comments != null) {
+        if (episode.comments.isNeitherNullNorBlank()) {
             appendElement("comments") { textContent = episode.comments }
         }
 
@@ -93,25 +106,27 @@ internal class RssWriter : NamespaceWriter() {
             appendElement("pubDate") { textContent = episode.pubDate.asDateString() }
         }
 
-        if (episode.source != null) {
+        if (episode.source.isNeitherNullNorBlank()) {
             appendElement("source") { textContent = episode.source }
         }
     }
 
     private fun Element.appendEnclosureElement(enclosure: Episode.Enclosure) {
+        if (enclosure.url.isBlank() || enclosure.type.isBlank()) return
         appendElement("enclosure") {
-            setAttribute("url", enclosure.url)
+            setAttribute("url", enclosure.url.trim())
             setAttribute("length", enclosure.length.toString())
-            setAttribute("type", enclosure.type)
+            setAttribute("type", enclosure.type.trim())
         }
     }
 
     private fun Element.appendGuidElement(guid: Episode.Guid) {
+        if (guid.guid.isBlank()) return
         appendElement("guid") {
             if (guid.isPermalink != null) {
                 setAttribute("isPermalink", guid.isPermalink.asBooleanString(BooleanStringStyle.TRUE_FALSE))
             }
-            textContent = guid.textContent
+            textContent = guid.guid.trim()
         }
     }
 }

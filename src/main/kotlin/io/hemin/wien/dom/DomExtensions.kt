@@ -48,6 +48,9 @@ internal fun Node.getAttributeValueByName(attributeName: String, namespace: Feed
 internal fun Node.getAttributeByName(attributeName: String, namespace: FeedNamespace? = null): Attr? =
     attributes?.getNamedItemNS(namespace?.uri, attributeName) as? Attr
 
+/** Returns true if the [NodeList] is empty. */
+internal fun NodeList.isEmpty() = length == 0
+
 /** Returns true if the [NodeList] contains at least one node. */
 internal fun NodeList.isNotEmpty() = length > 0
 

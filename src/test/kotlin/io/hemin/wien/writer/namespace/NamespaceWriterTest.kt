@@ -9,10 +9,13 @@ import io.hemin.wien.documentFromResource
 import io.hemin.wien.doesNotExist
 import io.hemin.wien.dom.DomBuilderFactory
 import io.hemin.wien.dom.appendElement
+import io.hemin.wien.dom.asListOfNodes
 import io.hemin.wien.dom.asString
 import io.hemin.wien.dom.findElementByName
 import io.hemin.wien.dom.findNodeByXPath
+import io.hemin.wien.dom.findNodesByXPath
 import io.hemin.wien.dom.getAttributeByName
+import io.hemin.wien.dom.isEmpty
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.model.episode.anEpisode
@@ -75,6 +78,23 @@ internal abstract class NamespaceWriterTest {
         assertions(actual)
     }
 
+    protected fun writePodcastDataXPathMultiple(
+        xPath: String,
+        podcast: Podcast = aPodcast(),
+        assertions: (elements: List<Element>) -> Unit
+    ) {
+        val itemElement = createChannelElement()
+        writer.tryWritingPodcastData(podcast, itemElement)
+
+        val actual = itemElement.findNodesByXPath(xPath)
+            ?: fail("No tags matching `$xPath` found")
+        if (actual.isEmpty()) fail("No tag matching `$xPath` was written")
+        val actualElements = actual.asListOfNodes().filterIsInstance(Element::class.java)
+        if (actual.length != actualElements.size) fail("Not all nodes matched by the `$xPath` are Elements")
+
+        assertions(actualElements)
+    }
+
     protected fun assertTagIsNotWrittenToPodcast(
         podcast: Podcast,
         localName: String,
@@ -114,6 +134,22 @@ internal abstract class NamespaceWriterTest {
         if (actual !is Element) fail("The XPath `$xPath` does not match an element")
 
         assertions(actual)
+    }
+
+    protected fun writeEpisodeDataXPathMultiple(
+        xPath: String,
+        episode: Episode = anEpisode(),
+        assertions: (elements: List<Element>) -> Unit
+    ) {
+        val itemElement = createChannelElement().createItemElement()
+        writer.tryWritingEpisodeData(episode, itemElement)
+
+        val actual = itemElement.findNodesByXPath(xPath)
+            ?: fail("No tag matching `$xPath` was written")
+        val actualElements = actual.asListOfNodes().filterIsInstance(Element::class.java)
+        if (actual.length != actualElements.size) fail("Not all nodes matched by the `$xPath` are Elements")
+
+        assertions(actualElements)
     }
 
     protected fun assertTagIsNotWrittenToEpisode(

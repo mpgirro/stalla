@@ -179,7 +179,7 @@ internal class PodcastRssParserTest {
                     prop(Episode::title).isEqualTo("204: Green buttons, Olympic attacks, and... an apology")
                     prop(Episode::link).isEqualTo("http://www.smashingsecurity.com/204")
                     prop(Episode::guid).isNotNull().all {
-                        prop(Episode.Guid::textContent).isEqualTo("2ed98bdd-ea95-4129-98cf-ee23dd2ab478")
+                        prop(Episode.Guid::guid).isEqualTo("2ed98bdd-ea95-4129-98cf-ee23dd2ab478")
                         prop(Episode.Guid::isPermalink).isNotNull().isFalse()
                     }
                     prop(Episode::pubDate).isEqualTo(dateTime(year = 2020, month = Month.NOVEMBER, day = 12))

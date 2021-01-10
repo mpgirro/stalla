@@ -2,6 +2,7 @@ package io.hemin.wien.writer.namespace
 
 import assertk.assertAll
 import assertk.assertThat
+import assertk.assertions.hasSize
 import io.hemin.wien.hasNoAttribute
 import io.hemin.wien.hasNoDifferences
 import io.hemin.wien.hasTextContent
@@ -80,6 +81,9 @@ internal class AtomWriterTest : NamespaceWriterTest() {
             )
         )
         assertAll {
+            writePodcastDataXPathMultiple("//atom:author", podcast) { elements ->
+                assertThat(elements).hasSize(2)
+            }
             writePodcastDataXPath("//atom:author[1]", podcast = podcast) { element ->
                 assertThat(element).containsElement("name").hasTextContent("author 1")
                 assertThat(element).doesNotContainElement("email")
@@ -90,6 +94,9 @@ internal class AtomWriterTest : NamespaceWriterTest() {
                 assertThat(element).doesNotContainElement("email")
                 assertThat(element).doesNotContainElement("uri")
             }
+            writePodcastDataXPathMultiple("//atom:contributor", podcast) { elements ->
+                assertThat(elements).hasSize(2)
+            }
             writePodcastDataXPath("//atom:contributor[1]", podcast = podcast) { element ->
                 assertThat(element).containsElement("name").hasTextContent("contrib 1")
                 assertThat(element).doesNotContainElement("email")
@@ -99,6 +106,9 @@ internal class AtomWriterTest : NamespaceWriterTest() {
                 assertThat(element).containsElement("name").hasTextContent("contrib 2")
                 assertThat(element).doesNotContainElement("email")
                 assertThat(element).doesNotContainElement("uri")
+            }
+            writePodcastDataXPathMultiple("//atom:link", podcast) { elements ->
+                assertThat(elements).hasSize(2)
             }
             writePodcastDataXPath("//atom:link[1]", podcast = podcast) { element ->
                 assertThat(element).hasAttribute("href", namespace = null).hasValue("link 1")
@@ -185,6 +195,9 @@ internal class AtomWriterTest : NamespaceWriterTest() {
             )
         )
         assertAll {
+            writeEpisodeDataXPathMultiple("//atom:author", episode) { elements ->
+                assertThat(elements).hasSize(2)
+            }
             writeEpisodeDataXPath("//atom:author[1]", episode = episode) { element ->
                 assertThat(element).containsElement("name").hasTextContent("author 1")
                 assertThat(element).doesNotContainElement("email")
@@ -195,6 +208,9 @@ internal class AtomWriterTest : NamespaceWriterTest() {
                 assertThat(element).doesNotContainElement("email")
                 assertThat(element).doesNotContainElement("uri")
             }
+            writeEpisodeDataXPathMultiple("//atom:contributor", episode) { elements ->
+                assertThat(elements).hasSize(2)
+            }
             writeEpisodeDataXPath("//atom:contributor[1]", episode = episode) { element ->
                 assertThat(element).containsElement("name").hasTextContent("contrib 1")
                 assertThat(element).doesNotContainElement("email")
@@ -204,6 +220,9 @@ internal class AtomWriterTest : NamespaceWriterTest() {
                 assertThat(element).containsElement("name").hasTextContent("contrib 2")
                 assertThat(element).doesNotContainElement("email")
                 assertThat(element).doesNotContainElement("uri")
+            }
+            writeEpisodeDataXPathMultiple("//atom:link", episode) { elements ->
+                assertThat(elements).hasSize(2)
             }
             writeEpisodeDataXPath("//atom:link[1]", episode = episode) { element ->
                 assertThat(element).hasAttribute("href", namespace = null).hasValue("link 1")
