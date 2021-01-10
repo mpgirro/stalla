@@ -35,14 +35,14 @@ internal class PodloveSimpleChapterWriter : NamespaceWriter() {
 
     private fun Element.appendChapterElement(chapter: Episode.Podlove.SimpleChapter) {
         appendElement("chapter", namespace) {
-            setAttribute("start", chapter.start)
-            setAttribute("title", chapter.title)
+            setAttribute("start", chapter.start.trim())
+            setAttribute("title", chapter.title.trim())
 
             if (chapter.href.isNeitherNullNorBlank()) {
-                setAttribute("href", chapter.href)
+                setAttribute("href", chapter.href?.trim())
             }
             if (chapter.image.isNeitherNullNorBlank()) {
-                setAttribute("image", chapter.image)
+                setAttribute("image", chapter.image?.trim())
             }
         }
     }

@@ -24,6 +24,6 @@ internal class ContentWriter : NamespaceWriter() {
         val encoded = episode.content?.encoded
         if (encoded.isNullOrBlank()) return
 
-        appendElement("encoded", namespace) { textContent = encoded }
+        appendElement("encoded", namespace) { textContent = encoded.trim() }
     }
 }

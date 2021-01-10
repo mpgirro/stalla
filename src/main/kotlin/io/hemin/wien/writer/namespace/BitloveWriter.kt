@@ -28,6 +28,6 @@ internal class BitloveWriter : NamespaceWriter() {
         val enclosureElement = findElementByName("enclosure")
         requireNotNull(enclosureElement) { "This writer must execute after the episode <enclosure> has been written" }
 
-        enclosureElement.setAttributeWithNS("guid", namespace) { value = guid }
+        enclosureElement.setAttributeWithNS("guid", namespace) { value = guid.trim() }
     }
 }

@@ -20,7 +20,7 @@ internal class FyydWriter : NamespaceWriter() {
         val verify = podcast.fyyd?.verify ?: return
         if (verify.isBlank()) return
 
-        appendElement("verify", namespace) { textContent = verify }
+        appendElement("verify", namespace) { textContent = verify.trim() }
     }
 
     override fun Element.appendEpisodeData(episode: Episode) {

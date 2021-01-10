@@ -25,11 +25,11 @@ internal class GooglePlayWriter : NamespaceWriter() {
         val play = podcast.googlePlay ?: return
 
         if (play.author.isNeitherNullNorBlank()) {
-            appendElement("author", namespace) { textContent = play.author }
+            appendElement("author", namespace) { textContent = play.author?.trim() }
         }
 
         if (play.owner.isNeitherNullNorBlank()) {
-            appendElement("owner", namespace) { textContent = play.owner }
+            appendElement("owner", namespace) { textContent = play.owner?.trim() }
         }
 
         appendITunesCategoryElements(play.categories, namespace)
@@ -46,7 +46,7 @@ internal class GooglePlayWriter : NamespaceWriter() {
     private fun Element.appendCommonElements(play: GooglePlayBase) {
         val description = play.description
         if (description.isNeitherNullNorBlank()) {
-            appendElement("description", namespace) { textContent = description }
+            appendElement("description", namespace) { textContent = description?.trim() }
         }
 
         val explicit = play.explicit

@@ -47,30 +47,30 @@ internal class AtomWriter : NamespaceWriter() {
             if (link.href.isBlank()) continue
 
             appendElement("link", namespace) {
-                setAttribute("href", link.href)
+                setAttribute("href", link.href.trim())
 
                 if (link.hrefLang.isNeitherNullNorBlank()) {
-                    setAttribute("hrefLang", link.hrefLang)
+                    setAttribute("hrefLang", link.hrefLang?.trim())
                 }
 
                 if (link.hrefResolved.isNeitherNullNorBlank()) {
-                    setAttribute("hrefResolved", link.hrefResolved)
+                    setAttribute("hrefResolved", link.hrefResolved?.trim())
                 }
 
                 if (link.length.isNeitherNullNorBlank()) {
-                    setAttribute("length", link.length)
+                    setAttribute("length", link.length?.trim())
                 }
 
                 if (link.rel.isNeitherNullNorBlank()) {
-                    setAttribute("rel", link.rel)
+                    setAttribute("rel", link.rel?.trim())
                 }
 
                 if (link.title.isNeitherNullNorBlank()) {
-                    setAttribute("title", link.title)
+                    setAttribute("title", link.title?.trim())
                 }
 
                 if (link.type.isNeitherNullNorBlank()) {
-                    setAttribute("type", link.type)
+                    setAttribute("type", link.type?.trim())
                 }
             }
         }
