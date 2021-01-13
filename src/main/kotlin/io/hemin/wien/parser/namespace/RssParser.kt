@@ -54,6 +54,10 @@ internal class RssParser : NamespaceParser() {
                 builder.title(title)
             }
             "webMaster" -> builder.webMaster(ifCanBeParsed { textOrNull() })
+            "category" -> {
+                val categoryBuilder = ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) } ?: return
+                builder.addCategoryBuilder(categoryBuilder)
+            }
             "item" -> pass // Items are parsed by the root parser direcly
         }
     }

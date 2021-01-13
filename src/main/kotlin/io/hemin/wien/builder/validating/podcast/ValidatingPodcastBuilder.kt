@@ -37,6 +37,7 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
     private var managingEditor: String? = null
     private var webMaster: String? = null
     private var imageBuilder: RssImageBuilder? = null
+    private val categoryBuilders: MutableList<RssCategoryBuilder> = mutableListOf()
 
     private val episodeBuilders: MutableList<EpisodeBuilder> = mutableListOf()
 
@@ -78,6 +79,10 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
         episodeBuilders.add(episodeBuilder)
     }
 
+    override fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): PodcastBuilder = apply {
+        categoryBuilders.add(categoryBuilder)
+    }
+
     override fun createRssImageBuilder(): RssImageBuilder = ValidatingRssImageBuilder()
 
     override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = ValidatingHrefOnlyImageBuilder()
@@ -96,11 +101,11 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
             ::linkValue.isInitialized && ::languageValue.isInitialized
 
     override fun build(): Podcast? {
-        val builtEpisodes = episodeBuilders.mapNotNull { it.build() }
         if (!hasEnoughDataToBuild) {
             return null
         }
 
+        val builtEpisodes = episodeBuilders.mapNotNull { it.build() }
         return Podcast(
             title = titleValue,
             link = linkValue,
@@ -119,7 +124,8 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
             atom = atom.build(),
             fyyd = fyyd.build(),
             feedpress = feedpress.build(),
-            googlePlay = googlePlay.build()
+            googlePlay = googlePlay.build(),
+            categories = categoryBuilders.mapNotNull { it.build() }
         )
     }
 }

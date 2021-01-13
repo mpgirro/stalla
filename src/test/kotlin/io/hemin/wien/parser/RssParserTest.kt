@@ -69,6 +69,10 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakePodcastBuilder::managingEditor).isEqualTo("editor@example.org")
             prop(FakePodcastBuilder::webMaster).isEqualTo("webmaster@example.org")
             prop(FakePodcastBuilder::imageBuilder).isEqualTo(expectedImageBuilder)
+            prop(FakePodcastBuilder::categoryBuilders).containsExactly(
+                FakeRssCategoryBuilder().category("category 1").domain("banana"),
+                FakeRssCategoryBuilder().category("category 2")
+            )
         }
     }
 
@@ -91,6 +95,7 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakePodcastBuilder::managingEditor).isNull()
             prop(FakePodcastBuilder::webMaster).isNull()
             prop(FakePodcastBuilder::imageBuilder).isNull()
+            prop(FakePodcastBuilder::categoryBuilders).isEmpty()
         }
     }
 
@@ -113,6 +118,7 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakePodcastBuilder::managingEditor).isNull()
             prop(FakePodcastBuilder::webMaster).isNull()
             prop(FakePodcastBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
+            prop(FakePodcastBuilder::categoryBuilders).isEmpty()
         }
     }
 

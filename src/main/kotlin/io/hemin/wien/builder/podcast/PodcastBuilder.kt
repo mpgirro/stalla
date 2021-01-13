@@ -8,6 +8,7 @@ import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
+import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import java.time.temporal.TemporalAccessor
 
@@ -70,6 +71,14 @@ internal interface PodcastBuilder : Builder<Podcast> {
      * @param episodeBuilder The [EpisodeBuilder] to add.
      */
     fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder
+
+    /**
+     * Adds a category to the list of categories.
+     *
+     * @param categoryBuilder The The [RssCategoryBuilder] used to initialize the
+     * [Episode.categories] items when [build] is called.
+     */
+    fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): PodcastBuilder
 
     /** Creates an instance of [RssImageBuilder] to use with this builder. */
     fun createRssImageBuilder(): RssImageBuilder

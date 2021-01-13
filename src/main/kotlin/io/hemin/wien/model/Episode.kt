@@ -29,7 +29,7 @@ data class Episode(
     val link: String? = null,
     val description: String? = null,
     val author: String? = null,
-    val categories: List<RssCategory>,
+    val categories: List<RssCategory> = emptyList(),
     val comments: String? = null,
     val enclosure: Enclosure,
     val guid: Guid? = null,
