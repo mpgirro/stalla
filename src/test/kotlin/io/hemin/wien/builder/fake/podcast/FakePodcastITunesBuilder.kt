@@ -96,6 +96,6 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
 
     override fun toString() =
         "FakePodcastITunesBuilder(imageBuilderValue=$imageBuilderValue, explicit=$explicit, subtitle=$subtitle, summary=$summary, " +
-                "keywords=$keywords, author=$author, categories=$categoryBuilders, block=$block, complete=$complete, type=$type, " +
-                "ownerBuilder=$ownerBuilder, title=$title, newFeedUrl=$newFeedUrl)"
+            "keywords=$keywords, author=$author, categories=$categoryBuilders, block=$block, complete=$complete, type=$type, " +
+            "ownerBuilder=$ownerBuilder, title=$title, newFeedUrl=$newFeedUrl)"
 }

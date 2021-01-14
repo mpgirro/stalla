@@ -60,5 +60,5 @@ internal class FakePodcastGooglePlayBuilder : FakeBuilder<Podcast.GooglePlay>(),
 
     override fun toString() =
         "FakePodcastGooglePlayBuilder(author=$author, owner=$owner, categories=$categoryBuilders, description=$description, explicit=$explicit, " +
-                "block=$block, imageBuilder=$imageBuilder)"
+            "block=$block, imageBuilder=$imageBuilder)"
 }

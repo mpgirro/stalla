@@ -45,7 +45,7 @@ internal fun Assert<Node>.hasNoAttribute(localName: String, namespace: FeedNames
             message = "not to have an attribute with localName='$localName' and namespace='$namespace'",
             expected = null,
             actual = "Attr[name='${matchingAttribute.nodeName}', namespaceURI='${matchingAttribute.namespaceURI}', " +
-                    "value='${matchingAttribute.nodeValue}']"
+                "value='${matchingAttribute.nodeValue}']"
         )
     }
 }

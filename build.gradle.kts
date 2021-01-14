@@ -7,6 +7,21 @@ buildscript {
         mavenCentral()
         jcenter()
     }
+
+    val ktlintVersion = "0.40.0"
+    configurations.classpath {
+        resolutionStrategy {
+            force(
+                "com.pinterest.ktlint:ktlint-core:$ktlintVersion",
+                "com.pinterest.ktlint:ktlint-reporter-checkstyle:$ktlintVersion",
+                "com.pinterest.ktlint:ktlint-reporter-json:$ktlintVersion",
+                "com.pinterest.ktlint:ktlint-reporter-html:$ktlintVersion",
+                "com.pinterest.ktlint:ktlint-reporter-plain:$ktlintVersion",
+                "com.pinterest.ktlint:ktlint-ruleset-experimental:$ktlintVersion",
+                "com.pinterest.ktlint:ktlint-ruleset-standard:$ktlintVersion"
+            )
+        }
+    }
 }
 
 plugins {
@@ -15,6 +30,7 @@ plugins {
     id("jacoco")
     id("java")
     id("com.github.nbaztec.coveralls-jacoco").version("1.2.5")
+    id("org.jmailen.kotlinter") version "3.3.0"
 }
 
 group = "io.hemin"

@@ -92,8 +92,8 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
 
     override val hasEnoughDataToBuild: Boolean
         get() = episodeBuilders.any { it.hasEnoughDataToBuild } &&
-                ::titleValue.isInitialized && ::descriptionValue.isInitialized &&
-                ::linkValue.isInitialized && ::languageValue.isInitialized
+            ::titleValue.isInitialized && ::descriptionValue.isInitialized &&
+            ::linkValue.isInitialized && ::languageValue.isInitialized
 
     override fun build(): Podcast? {
         val builtEpisodes = episodeBuilders.mapNotNull { it.build() }

@@ -46,5 +46,5 @@ internal class FakePodcastFeedpressBuilder : FakeBuilder<Podcast.Feedpress>(), P
 
     override fun toString() =
         "FakePodcastFeedpressBuilder(newsletterIdValue=$newsletterIdValue, localeValue=$localeValue, podcastIdValue=$podcastIdValue, " +
-                "cssFileValue=$cssFileValue, linkValue=$linkValue)"
+            "cssFileValue=$cssFileValue, linkValue=$linkValue)"
 }

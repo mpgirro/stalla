@@ -77,5 +77,5 @@ internal class FakeEpisodeITunesBuilder : FakeBuilder<Episode.ITunes>(), Episode
 
     override fun toString() =
         "FakeEpisodeITunesBuilder(title=$title, duration=$duration, imageBuilder=$imageBuilder, explicit=$explicit, block=$block, " +
-                "season=$season, episode=$episode, episodeType=$episodeType, author=$author, subtitle=$subtitle, summary=$summary)"
+            "season=$season, episode=$episode, episodeType=$episodeType, author=$author, subtitle=$subtitle, summary=$summary)"
 }

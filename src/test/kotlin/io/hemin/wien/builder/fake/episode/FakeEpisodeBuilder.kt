@@ -130,6 +130,6 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override fun toString() =
         "FakeEpisodeBuilder(titleValue=$titleValue, enclosureBuilderValue=$enclosureBuilderValue, link=$link, description=$description, " +
-                "author=$author, categories=$categoryBuilders, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
-                "content=$content, iTunes=$iTunes, atom=$atom, podlove=$podlove, googlePlay=$googlePlay, bitlove=$bitlove)"
+            "author=$author, categories=$categoryBuilders, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
+            "content=$content, iTunes=$iTunes, atom=$atom, podlove=$podlove, googlePlay=$googlePlay, bitlove=$bitlove)"
 }

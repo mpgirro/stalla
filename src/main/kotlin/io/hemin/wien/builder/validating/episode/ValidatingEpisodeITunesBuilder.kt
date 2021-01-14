@@ -45,7 +45,7 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
 
     override val hasEnoughDataToBuild: Boolean
         get() = anyNotNull(title, duration, explicit, block, season, episode, episodeType, author, summary, subtitle) ||
-                imageBuilder?.hasEnoughDataToBuild == true
+            imageBuilder?.hasEnoughDataToBuild == true
 
     override fun build(): Episode.ITunes? {
         if (!hasEnoughDataToBuild) {
