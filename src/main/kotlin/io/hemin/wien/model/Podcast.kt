@@ -58,7 +58,7 @@ data class Podcast(
 ) {
 
     companion object Factory : BuilderFactory<Podcast, PodcastBuilder> {
-        override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
+        @JvmStatic override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
     }
 
     /**
@@ -95,7 +95,7 @@ data class Podcast(
     ) : ITunesBase {
 
         companion object Factory : BuilderFactory<ITunes, PodcastITunesBuilder> {
-            override fun builder(): PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
+            @JvmStatic override fun builder(): PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
         }
 
         /**
@@ -147,7 +147,7 @@ data class Podcast(
         override val image: HrefOnlyImage? = null
     ) : GooglePlayBase {
         companion object Factory : BuilderFactory<GooglePlay, PodcastGooglePlayBuilder> {
-            override fun builder(): PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+            @JvmStatic override fun builder(): PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
         }
     }
 
@@ -164,7 +164,7 @@ data class Podcast(
         val links: List<Link>
     ) {
         companion object Factory : BuilderFactory<Atom, PodcastAtomBuilder> {
-            override fun builder(): PodcastAtomBuilder = ValidatingPodcastAtomBuilder()
+            @JvmStatic override fun builder(): PodcastAtomBuilder = ValidatingPodcastAtomBuilder()
         }
     }
 
@@ -177,7 +177,7 @@ data class Podcast(
         val verify: String
     ) {
         companion object Factory : BuilderFactory<Fyyd, PodcastFyydBuilder> {
-            override fun builder(): PodcastFyydBuilder = ValidatingPodcastFyydBuilder()
+            @JvmStatic override fun builder(): PodcastFyydBuilder = ValidatingPodcastFyydBuilder()
         }
     }
 
@@ -198,7 +198,7 @@ data class Podcast(
         val link: String? = null
     ) {
         companion object Factory : BuilderFactory<Feedpress, PodcastFeedpressBuilder> {
-            override fun builder(): PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
+            @JvmStatic override fun builder(): PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
         }
     }
 }

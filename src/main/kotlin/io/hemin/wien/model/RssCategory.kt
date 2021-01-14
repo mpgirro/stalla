@@ -15,6 +15,6 @@ import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
  */
 data class RssCategory(val name: String, val domain: String? = null) {
     companion object Factory : BuilderFactory<RssCategory, RssCategoryBuilder> {
-        override fun builder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
+        @JvmStatic override fun builder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
     }
 }

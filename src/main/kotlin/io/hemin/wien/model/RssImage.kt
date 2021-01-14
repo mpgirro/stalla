@@ -36,6 +36,6 @@ data class RssImage(
     val description: String? = null
 ) {
     companion object Factory : BuilderFactory<RssImage, RssImageBuilder> {
-        override fun builder(): RssImageBuilder = ValidatingRssImageBuilder()
+        @JvmStatic override fun builder(): RssImageBuilder = ValidatingRssImageBuilder()
     }
 }

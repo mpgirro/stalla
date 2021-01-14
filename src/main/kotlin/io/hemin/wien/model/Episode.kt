@@ -64,7 +64,7 @@ data class Episode(
 ) {
 
     companion object Factory : BuilderFactory<Episode, EpisodeBuilder> {
-        override fun builder(): EpisodeBuilder = ValidatingEpisodeBuilder()
+        @JvmStatic override fun builder(): EpisodeBuilder = ValidatingEpisodeBuilder()
     }
 
     /**
@@ -80,7 +80,7 @@ data class Episode(
         val type: String
     ) {
         companion object Factory : BuilderFactory<Enclosure, EpisodeEnclosureBuilder> {
-            override fun builder(): EpisodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
+            @JvmStatic override fun builder(): EpisodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
         }
     }
 
@@ -95,7 +95,7 @@ data class Episode(
         val isPermalink: Boolean? = null
     ) {
         companion object Factory : BuilderFactory<Guid, EpisodeGuidBuilder> {
-            override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
+            @JvmStatic override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
         }
     }
 
@@ -108,7 +108,7 @@ data class Episode(
         val encoded: String
     ) {
         companion object Factory : BuilderFactory<Content, EpisodeContentBuilder> {
-            override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
+            @JvmStatic override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
         }
     }
 
@@ -139,7 +139,7 @@ data class Episode(
     ) : ITunesBase {
 
         companion object Factory : BuilderFactory<ITunes, EpisodeITunesBuilder> {
-            override fun builder(): EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            @JvmStatic override fun builder(): EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
         }
 
         /**
@@ -188,7 +188,7 @@ data class Episode(
         override val image: HrefOnlyImage? = null
     ) : GooglePlayBase {
         companion object Factory : BuilderFactory<GooglePlay, EpisodeGooglePlayBuilder> {
-            override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+            @JvmStatic override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
         }
     }
 
@@ -205,7 +205,7 @@ data class Episode(
         val links: List<Link>
     ) {
         companion object Factory : BuilderFactory<Atom, EpisodeAtomBuilder> {
-            override fun builder(): EpisodeAtomBuilder = ValidatingEpisodeAtomBuilder()
+            @JvmStatic override fun builder(): EpisodeAtomBuilder = ValidatingEpisodeAtomBuilder()
         }
     }
 
@@ -220,7 +220,7 @@ data class Episode(
     ) {
 
         companion object Factory : BuilderFactory<Podlove, EpisodePodloveBuilder> {
-            override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
+            @JvmStatic override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
         }
 
         /**
@@ -239,7 +239,7 @@ data class Episode(
             val image: String? = null
         ) {
             companion object Factory : BuilderFactory<SimpleChapter, EpisodePodloveSimpleChapterBuilder> {
-                override fun builder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
+                @JvmStatic override fun builder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
             }
         }
     }
@@ -253,7 +253,7 @@ data class Episode(
         val guid: String
     ) {
         companion object Factory : BuilderFactory<Bitlove, EpisodeBitloveBuilder> {
-            override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
+            @JvmStatic override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
         }
     }
 }
