@@ -1,7 +1,6 @@
 package io.hemin.wien.dom
 
 import io.hemin.wien.util.FeedNamespace
-import org.w3c.dom.Document
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import javax.xml.namespace.NamespaceContext

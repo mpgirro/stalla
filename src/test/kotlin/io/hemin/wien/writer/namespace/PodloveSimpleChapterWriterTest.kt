@@ -5,8 +5,8 @@ import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.isInstanceOf
 import io.hemin.wien.hasNoAttribute
-import io.hemin.wien.hasOneChild
 import io.hemin.wien.hasNoDifferences
+import io.hemin.wien.hasOneChild
 import io.hemin.wien.hasValue
 import io.hemin.wien.model.episode.aPodloveSimpleChapter
 import io.hemin.wien.model.episode.anEpisode

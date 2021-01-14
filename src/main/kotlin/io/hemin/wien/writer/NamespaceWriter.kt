@@ -5,7 +5,6 @@ import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
 import org.w3c.dom.Element
 import org.w3c.dom.Node
-import java.time.temporal.TemporalAccessor
 
 /** Base class for XML namespace writer implementations. */
 internal abstract class NamespaceWriter {

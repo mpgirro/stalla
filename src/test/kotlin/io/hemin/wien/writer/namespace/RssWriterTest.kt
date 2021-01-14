@@ -343,5 +343,4 @@ internal class RssWriterTest : NamespaceWriterTest() {
             assertTagIsNotWrittenToEpisode(episode, "source")
         }
     }
-
 }

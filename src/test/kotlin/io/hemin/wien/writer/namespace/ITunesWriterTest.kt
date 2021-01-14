@@ -3,7 +3,6 @@ package io.hemin.wien.writer.namespace
 import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.hasSize
-import io.hemin.wien.childNodesNamed
 import io.hemin.wien.hasNoChildren
 import io.hemin.wien.hasNoDifferences
 import io.hemin.wien.hasTextContent
@@ -244,19 +243,21 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write itunes tags to the item when the data is blank`() {
-        val episode = anEpisode(iTunes = anEpisodeITunes(
-            title = " ",
-            duration = " ",
-            image = anHrefOnlyImage(" "),
-            explicit = null,
-            block = null,
-            season = null,
-            episode = null,
-            episodeType = null,
-            author = " ",
-            subtitle = " ",
-            summary = " "
-        ))
+        val episode = anEpisode(
+            iTunes = anEpisodeITunes(
+                title = " ",
+                duration = " ",
+                image = anHrefOnlyImage(" "),
+                explicit = null,
+                block = null,
+                season = null,
+                episode = null,
+                episodeType = null,
+                author = " ",
+                subtitle = " ",
+                summary = " "
+            )
+        )
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "duration")
             assertTagIsNotWrittenToEpisode(episode, "season")
@@ -271,19 +272,21 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write itunes tags to the item when the data is empty`() {
-        val episode = anEpisode(iTunes = anEpisodeITunes(
-            title = "",
-            duration = "",
-            image = anHrefOnlyImage(""),
-            explicit = null,
-            block = null,
-            season = null,
-            episode = null,
-            episodeType = null,
-            author = "",
-            subtitle = "",
-            summary = ""
-        ))
+        val episode = anEpisode(
+            iTunes = anEpisodeITunes(
+                title = "",
+                duration = "",
+                image = anHrefOnlyImage(""),
+                explicit = null,
+                block = null,
+                season = null,
+                episode = null,
+                episodeType = null,
+                author = "",
+                subtitle = "",
+                summary = ""
+            )
+        )
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "duration")
             assertTagIsNotWrittenToEpisode(episode, "season")
