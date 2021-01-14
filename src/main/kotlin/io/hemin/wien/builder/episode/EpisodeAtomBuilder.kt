@@ -5,7 +5,7 @@ import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Episode
 
-internal interface EpisodeAtomBuilder : Builder<Episode.Atom> {
+interface EpisodeAtomBuilder : Builder<Episode.Atom> {
 
     /**
      * Adds a person builder to the list of authors.

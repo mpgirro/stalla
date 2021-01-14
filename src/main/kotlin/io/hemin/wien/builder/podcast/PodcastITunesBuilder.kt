@@ -6,7 +6,7 @@ import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Podcast
 
-internal interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
+interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
 
     /** Set the subtitle value. */
     fun subtitle(subtitle: String?): PodcastITunesBuilder

@@ -7,7 +7,7 @@ import com.google.common.collect.ImmutableList
  *
  * @param T The type that a builder implementation creates instances for.
  */
-internal interface Builder<T> {
+interface Builder<T> {
 
     /**
      * Creates a model instance with the properties set in this builder.

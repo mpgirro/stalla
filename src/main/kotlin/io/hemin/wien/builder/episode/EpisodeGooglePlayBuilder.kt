@@ -4,7 +4,7 @@ import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.model.Episode
 
-internal interface EpisodeGooglePlayBuilder : Builder<Episode.GooglePlay> {
+interface EpisodeGooglePlayBuilder : Builder<Episode.GooglePlay> {
 
     /** Set the description value. */
     fun description(description: String?): EpisodeGooglePlayBuilder

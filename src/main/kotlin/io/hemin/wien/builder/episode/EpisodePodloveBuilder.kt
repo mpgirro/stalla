@@ -3,7 +3,7 @@ package io.hemin.wien.builder.episode
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Episode
 
-internal interface EpisodePodloveBuilder : Builder<Episode.Podlove> {
+interface EpisodePodloveBuilder : Builder<Episode.Podlove> {
 
     /**
      * Adds a chapter builder to the list of chapters.

@@ -1,5 +1,17 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.builder.podcast.PodcastAtomBuilder
+import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.builder.podcast.PodcastFeedpressBuilder
+import io.hemin.wien.builder.podcast.PodcastFyydBuilder
+import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
+import io.hemin.wien.builder.podcast.PodcastITunesBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastAtomBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastFeedpressBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastFyydBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastGooglePlayBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastITunesBuilder
 import java.time.temporal.TemporalAccessor
 
 /**
@@ -45,6 +57,10 @@ data class Podcast(
     val googlePlay: GooglePlay? = null
 ) {
 
+    companion object Factory : BuilderFactory<Podcast, PodcastBuilder> {
+        override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
+    }
+
     /**
      * Model class for data from the iTunes namespace valid within an RSS `<channel>`.
      *
@@ -77,6 +93,10 @@ data class Podcast(
         override val title: String? = null,
         val newFeedUrl: String? = null
     ) : ITunesBase {
+
+        companion object Factory : BuilderFactory<ITunes, PodcastITunesBuilder> {
+            override fun builder(): PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
+        }
 
         /**
          * Enum model for the defined values encountered within the
@@ -125,7 +145,11 @@ data class Podcast(
         override val explicit: Boolean? = null,
         override val block: Boolean? = null,
         override val image: HrefOnlyImage? = null
-    ) : GooglePlayBase
+    ) : GooglePlayBase {
+        companion object Factory : BuilderFactory<GooglePlay, PodcastGooglePlayBuilder> {
+            override fun builder(): PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the Atom namespace that are valid within `<channel>` elements.
@@ -138,7 +162,11 @@ data class Podcast(
         val authors: List<Person>,
         val contributors: List<Person>,
         val links: List<Link>
-    )
+    ) {
+        companion object Factory : BuilderFactory<Atom, PodcastAtomBuilder> {
+            override fun builder(): PodcastAtomBuilder = ValidatingPodcastAtomBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the Fyyd namespace that are valid within `<channel>` elements.
@@ -147,7 +175,11 @@ data class Podcast(
      */
     data class Fyyd(
         val verify: String
-    )
+    ) {
+        companion object Factory : BuilderFactory<Fyyd, PodcastFyydBuilder> {
+            override fun builder(): PodcastFyydBuilder = ValidatingPodcastFyydBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the Feedpress namespace that are valid within `<channel>` elements.
@@ -164,5 +196,9 @@ data class Podcast(
         val podcastId: String? = null,
         val cssFile: String? = null,
         val link: String? = null
-    )
+    ) {
+        companion object Factory : BuilderFactory<Feedpress, PodcastFeedpressBuilder> {
+            override fun builder(): PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
+        }
+    }
 }

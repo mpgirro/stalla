@@ -11,7 +11,7 @@ import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.model.Podcast
 import java.time.temporal.TemporalAccessor
 
-internal interface PodcastBuilder : Builder<Podcast> {
+interface PodcastBuilder : Builder<Podcast> {
 
     /** The builder for data from the iTunes namespace. */
     val iTunes: PodcastITunesBuilder

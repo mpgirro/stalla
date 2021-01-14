@@ -5,7 +5,7 @@ import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Podcast
 
-internal interface PodcastAtomBuilder : Builder<Podcast.Atom> {
+interface PodcastAtomBuilder : Builder<Podcast.Atom> {
 
     /**
      * Adds a person builder to the list of authors.

@@ -1,5 +1,25 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.builder.episode.EpisodeAtomBuilder
+import io.hemin.wien.builder.episode.EpisodeBitloveBuilder
+import io.hemin.wien.builder.episode.EpisodeBuilder
+import io.hemin.wien.builder.episode.EpisodeContentBuilder
+import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
+import io.hemin.wien.builder.episode.EpisodeGooglePlayBuilder
+import io.hemin.wien.builder.episode.EpisodeGuidBuilder
+import io.hemin.wien.builder.episode.EpisodeITunesBuilder
+import io.hemin.wien.builder.episode.EpisodePodloveBuilder
+import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeAtomBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBitloveBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeContentBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeGooglePlayBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeGuidBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeITunesBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.model.Episode.Podlove.SimpleChapter
 import java.time.temporal.TemporalAccessor
 
@@ -43,6 +63,10 @@ data class Episode(
     val bitlove: Bitlove? = null
 ) {
 
+    companion object Factory : BuilderFactory<Episode, EpisodeBuilder> {
+        override fun builder(): EpisodeBuilder = ValidatingEpisodeBuilder()
+    }
+
     /**
      * Model class for `<enclosure>` elements within RSS `<item>` elements.
      *
@@ -54,7 +78,11 @@ data class Episode(
         val url: String,
         val length: Long,
         val type: String
-    )
+    ) {
+        companion object Factory : BuilderFactory<Enclosure, EpisodeEnclosureBuilder> {
+            override fun builder(): EpisodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
+        }
+    }
 
     /**
      * Model class for `<guid>` elements within RSS `<item>` elements.
@@ -65,7 +93,11 @@ data class Episode(
     data class Guid(
         val guid: String,
         val isPermalink: Boolean? = null
-    )
+    ) {
+        companion object Factory : BuilderFactory<Guid, EpisodeGuidBuilder> {
+            override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the Content namespace that are valid within `<item>` elements.
@@ -74,7 +106,11 @@ data class Episode(
      */
     data class Content(
         val encoded: String
-    )
+    ) {
+        companion object Factory : BuilderFactory<Content, EpisodeContentBuilder> {
+            override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the iTunes namespace that are valid within `<item>` elements.
@@ -101,6 +137,10 @@ data class Episode(
         override val subtitle: String? = null,
         override val summary: String? = null
     ) : ITunesBase {
+
+        companion object Factory : BuilderFactory<ITunes, EpisodeITunesBuilder> {
+            override fun builder(): EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        }
 
         /**
          * Enum model for the defined values encountered within the
@@ -146,7 +186,11 @@ data class Episode(
         override val explicit: Boolean? = null,
         override val block: Boolean? = null,
         override val image: HrefOnlyImage? = null
-    ) : GooglePlayBase
+    ) : GooglePlayBase {
+        companion object Factory : BuilderFactory<GooglePlay, EpisodeGooglePlayBuilder> {
+            override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the Atom namespace that are valid within `<item>` elements.
@@ -159,7 +203,11 @@ data class Episode(
         val authors: List<Person>,
         val contributors: List<Person>,
         val links: List<Link>
-    )
+    ) {
+        companion object Factory : BuilderFactory<Atom, EpisodeAtomBuilder> {
+            override fun builder(): EpisodeAtomBuilder = ValidatingEpisodeAtomBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of namespaces from the Podlove
@@ -170,6 +218,10 @@ data class Episode(
     data class Podlove(
         val simpleChapters: List<SimpleChapter>
     ) {
+
+        companion object Factory : BuilderFactory<Podlove, EpisodePodloveBuilder> {
+            override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
+        }
 
         /**
          * Model class for data from `<psc:chapter>` elements of the Podlove
@@ -185,7 +237,11 @@ data class Episode(
             val title: String,
             val href: String? = null,
             val image: String? = null
-        )
+        ) {
+            companion object Factory : BuilderFactory<SimpleChapter, EpisodePodloveSimpleChapterBuilder> {
+                override fun builder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
+            }
+        }
     }
 
     /**
@@ -195,5 +251,9 @@ data class Episode(
      */
     data class Bitlove(
         val guid: String
-    )
+    ) {
+        companion object Factory : BuilderFactory<Bitlove, EpisodeBitloveBuilder> {
+            override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
+        }
+    }
 }

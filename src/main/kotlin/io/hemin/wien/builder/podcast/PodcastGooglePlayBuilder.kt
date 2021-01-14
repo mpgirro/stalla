@@ -5,7 +5,7 @@ import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.model.Podcast
 
-internal interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
+interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
 
     /** Set the author value. */
     fun author(author: String?): PodcastGooglePlayBuilder

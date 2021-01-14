@@ -1,5 +1,8 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.builder.LinkBuilder
+import io.hemin.wien.builder.validating.ValidatingLinkBuilder
+
 /**
  * Model class for elements describing hyperlinks.
  *
@@ -19,4 +22,8 @@ data class Link(
     val rel: String? = null,
     val title: String? = null,
     val type: String? = null
-)
+) {
+    companion object Factory : BuilderFactory<Link, LinkBuilder> {
+        override fun builder(): LinkBuilder = ValidatingLinkBuilder()
+    }
+}
