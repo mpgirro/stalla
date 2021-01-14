@@ -10,6 +10,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.ITunesBase
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.isNeitherNullNorBlank
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 
@@ -31,8 +32,8 @@ internal class ITunesWriter : NamespaceWriter() {
             appendYesElementIfTrue("complete", iTunes.complete, namespace)
         }
 
-        if (iTunes.keywords != null) {
-            appendElement("keywords", namespace) { textContent = iTunes.keywords }
+        if (iTunes.keywords.isNeitherNullNorBlank()) {
+            appendElement("keywords", namespace) { textContent = iTunes.keywords?.trim() }
         }
 
         if (iTunes.owner != null) {
@@ -40,11 +41,11 @@ internal class ITunesWriter : NamespaceWriter() {
         }
 
         if (iTunes.type != null) {
-            appendElement("type", namespace) { textContent = iTunes.type.type }
+            appendElement("type", namespace) { textContent = iTunes.type.type.trim() }
         }
 
-        if (iTunes.type != null) {
-            appendElement("new-feed-url", namespace) { textContent = iTunes.newFeedUrl }
+        if (iTunes.newFeedUrl.isNeitherNullNorBlank()) {
+            appendElement("new-feed-url", namespace) { textContent = iTunes.newFeedUrl?.trim() }
         }
 
         appendCommonElements(podcast.iTunes)
@@ -53,8 +54,8 @@ internal class ITunesWriter : NamespaceWriter() {
     override fun Element.appendEpisodeData(episode: Episode) {
         val iTunes = episode.iTunes ?: return
 
-        if (iTunes.duration != null) {
-            appendElement("duration", namespace) { textContent = iTunes.duration }
+        if (iTunes.duration.isNeitherNullNorBlank()) {
+            appendElement("duration", namespace) { textContent = iTunes.duration?.trim() }
         }
 
         if (iTunes.season != null) {
@@ -66,7 +67,7 @@ internal class ITunesWriter : NamespaceWriter() {
         }
 
         if (iTunes.episodeType != null) {
-            appendElement("episodeType", namespace) { textContent = iTunes.episodeType.type }
+            appendElement("episodeType", namespace) { textContent = iTunes.episodeType.type.trim() }
         }
 
         appendCommonElements(episode.iTunes)
@@ -80,26 +81,26 @@ internal class ITunesWriter : NamespaceWriter() {
         if (explicit != null) appendTrueFalseElement("explicit", explicit, namespace)
 
         val title = iTunes.title
-        if (title != null) {
-            appendElement("title", namespace) { textContent = title }
+        if (title.isNeitherNullNorBlank()) {
+            appendElement("title", namespace) { textContent = title?.trim() }
         }
 
         val block = iTunes.block
         if (block != null) appendYesElementIfTrue("block", block, namespace)
 
         val author = iTunes.author
-        if (author != null) {
-            appendElement("author", namespace) { textContent = author }
+        if (author.isNeitherNullNorBlank()) {
+            appendElement("author", namespace) { textContent = author?.trim() }
         }
 
         val subtitle = iTunes.subtitle
-        if (subtitle != null) {
-            appendElement("subtitle", namespace) { textContent = subtitle }
+        if (subtitle.isNeitherNullNorBlank()) {
+            appendElement("subtitle", namespace) { textContent = subtitle?.trim() }
         }
 
         val summary = iTunes.summary
-        if (summary != null) {
-            appendElement("summary", namespace) { textContent = summary }
+        if (summary.isNeitherNullNorBlank()) {
+            appendElement("summary", namespace) { textContent = summary?.trim() }
         }
     }
 }

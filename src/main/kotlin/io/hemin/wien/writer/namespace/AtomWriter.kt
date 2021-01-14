@@ -7,6 +7,7 @@ import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.isNeitherNullNorBlank
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 
@@ -43,31 +44,33 @@ internal class AtomWriter : NamespaceWriter() {
 
     private fun Element.appendLinkElements(links: List<Link>) {
         for (link in links) {
+            if (link.href.isBlank()) continue
+
             appendElement("link", namespace) {
-                setAttribute("href", link.href)
+                setAttribute("href", link.href.trim())
 
-                if (link.hrefLang != null) {
-                    setAttribute("hrefLang", link.hrefLang)
+                if (link.hrefLang.isNeitherNullNorBlank()) {
+                    setAttribute("hrefLang", link.hrefLang?.trim())
                 }
 
-                if (link.hrefResolved != null) {
-                    setAttribute("hrefResolved", link.hrefResolved)
+                if (link.hrefResolved.isNeitherNullNorBlank()) {
+                    setAttribute("hrefResolved", link.hrefResolved?.trim())
                 }
 
-                if (link.length != null) {
-                    setAttribute("length", link.length)
+                if (link.length.isNeitherNullNorBlank()) {
+                    setAttribute("length", link.length?.trim())
                 }
 
-                if (link.rel != null) {
-                    setAttribute("rel", link.rel)
+                if (link.rel.isNeitherNullNorBlank()) {
+                    setAttribute("rel", link.rel?.trim())
                 }
 
-                if (link.title != null) {
-                    setAttribute("title", link.title)
+                if (link.title.isNeitherNullNorBlank()) {
+                    setAttribute("title", link.title?.trim())
                 }
 
-                if (link.type != null) {
-                    setAttribute("type", link.type)
+                if (link.type.isNeitherNullNorBlank()) {
+                    setAttribute("type", link.type?.trim())
                 }
             }
         }

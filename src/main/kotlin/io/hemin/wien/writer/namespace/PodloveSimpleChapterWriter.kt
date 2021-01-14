@@ -4,6 +4,7 @@ import io.hemin.wien.dom.appendElement
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.isNeitherNullNorBlank
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 
@@ -22,9 +23,11 @@ internal class PodloveSimpleChapterWriter : NamespaceWriter() {
 
     override fun Element.appendEpisodeData(episode: Episode) {
         val chapters = episode.podlove?.simpleChapters ?: return
+        val validChapters = chapters.filter { it.isValid() }
+        if (validChapters.isEmpty()) return
 
         appendElement("chapters", namespace) {
-            for (chapter in chapters) {
+            for (chapter in validChapters) {
                 appendChapterElement(chapter)
             }
         }
@@ -32,11 +35,17 @@ internal class PodloveSimpleChapterWriter : NamespaceWriter() {
 
     private fun Element.appendChapterElement(chapter: Episode.Podlove.SimpleChapter) {
         appendElement("chapter", namespace) {
-            setAttribute("start", chapter.start)
-            setAttribute("title", chapter.title)
+            setAttribute("start", chapter.start.trim())
+            setAttribute("title", chapter.title.trim())
 
-            if (chapter.href != null) setAttribute("href", chapter.href)
-            if (chapter.image != null) setAttribute("image", chapter.image)
+            if (chapter.href.isNeitherNullNorBlank()) {
+                setAttribute("href", chapter.href?.trim())
+            }
+            if (chapter.image.isNeitherNullNorBlank()) {
+                setAttribute("image", chapter.image?.trim())
+            }
         }
     }
+
+    private fun Episode.Podlove.SimpleChapter.isValid() = start.isNotBlank() && title.isNotBlank()
 }

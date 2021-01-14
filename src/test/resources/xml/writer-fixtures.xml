@@ -12,15 +12,22 @@
         <title>podcast title</title>
         <link>podcast link</link>
         <description>podcast description</description>
-        <pubDate>Sat, 26 Dec 2020 15:32:22</pubDate>
-        <lastBuildDate>Tue, 22 Dec 2020 08:11:04</lastBuildDate>
+        <pubDate>Sat, 26 Dec 2020 15:32:22 GMT</pubDate>
+        <lastBuildDate>Tue, 22 Dec 2020 08:11:04 GMT</lastBuildDate>
         <language>language</language>
         <generator>generator</generator>
         <copyright>copyright</copyright>
         <docs>docs</docs>
-        <managingEditor>managingEditor</managingEditor>
-        <webMaster>webMaster</webMaster>
-        <image href="podcast image url" title="image title" link="image link" width="123" height="456" description="image description"/>
+        <managingEditor>managing editor</managingEditor>
+        <webMaster>web master</webMaster>
+        <image>
+            <url>podcast image url</url>
+            <title>image title</title>
+            <link>image link</link>
+            <description>image description</description>
+            <height>456</height>
+            <width>123</width>
+        </image>
         <itunes:subtitle>podcast itunes subtitle</itunes:subtitle>
         <itunes:summary>podcast itunes summary</itunes:summary>
         <itunes:image href="podcast itunes image url"/>
@@ -71,11 +78,11 @@
             <link>episode link</link>
             <description>episode description</description>
             <author>episode author</author>
-            <category text="episode category"/>
+            <category domain="rss category domain">episode category</category>
             <comments>episode comments</comments>
             <enclosure url="episode enclosure url" length="777" type="episode enclosure type" bitlove:guid="episode bitlove guid"/>
-            <guid isPermaLink="false">episode guid textContent</guid>
-            <pubDate>Sun, 20 Dec 2020 12:11:10</pubDate>
+            <guid isPermalink="false">episode guid textContent</guid>
+            <pubDate>Sun, 20 Dec 2020 12:11:10 GMT</pubDate>
             <source>episode source</source>
             <content:encoded>episode content encoded</content:encoded>
             <itunes:title>episode itunes title</itunes:title>

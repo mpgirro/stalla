@@ -4,6 +4,7 @@ import io.hemin.wien.dom.appendElement
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.isNeitherNullNorBlank
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 
@@ -19,24 +20,24 @@ internal class FeedpressWriter : NamespaceWriter() {
     override fun Element.appendPodcastData(podcast: Podcast) {
         val feedpress = podcast.feedpress ?: return
 
-        if (feedpress.newsletterId != null) {
-            appendElement("newsletterId", namespace) { textContent = feedpress.newsletterId }
+        if (feedpress.newsletterId.isNeitherNullNorBlank()) {
+            appendElement("newsletterId", namespace) { textContent = feedpress.newsletterId?.trim() }
         }
 
-        if (feedpress.locale != null) {
-            appendElement("locale", namespace) { textContent = feedpress.locale }
+        if (feedpress.locale.isNeitherNullNorBlank()) {
+            appendElement("locale", namespace) { textContent = feedpress.locale?.trim() }
         }
 
-        if (feedpress.podcastId != null) {
-            appendElement("podcastId", namespace) { textContent = feedpress.podcastId }
+        if (feedpress.podcastId.isNeitherNullNorBlank()) {
+            appendElement("podcastId", namespace) { textContent = feedpress.podcastId?.trim() }
         }
 
-        if (feedpress.cssFile != null) {
-            appendElement("cssFile", namespace) { textContent = feedpress.cssFile }
+        if (feedpress.cssFile.isNeitherNullNorBlank()) {
+            appendElement("cssFile", namespace) { textContent = feedpress.cssFile?.trim() }
         }
 
-        if (feedpress.link != null) {
-            appendElement("link", namespace) { textContent = feedpress.link }
+        if (feedpress.link.isNeitherNullNorBlank()) {
+            appendElement("link", namespace) { textContent = feedpress.link?.trim() }
         }
     }
 

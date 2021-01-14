@@ -3,6 +3,7 @@ package io.hemin.wien.dom
 import io.hemin.wien.util.FeedNamespace
 import org.w3c.dom.Document
 import org.w3c.dom.Node
+import org.w3c.dom.NodeList
 import javax.xml.namespace.NamespaceContext
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathFactory
@@ -11,8 +12,11 @@ private val xPath = XPathFactory.newDefaultInstance()
     .newXPath()
     .apply { namespaceContext = FeedNamespaceContext }
 
-internal fun Document.findNodeByXPath(nodePath: String) =
+internal fun Node.findNodeByXPath(nodePath: String) =
     xPath.evaluate(nodePath, this, XPathConstants.NODE) as? Node
+
+internal fun Node.findNodesByXPath(nodePath: String) =
+    xPath.evaluate(nodePath, this, XPathConstants.NODESET) as? NodeList
 
 private object FeedNamespaceContext : NamespaceContext {
 

@@ -7,6 +7,7 @@ import io.hemin.wien.dom.findElementByName
 import io.hemin.wien.hasNoAttribute
 import io.hemin.wien.hasNoDifferences
 import io.hemin.wien.model.episode.anEpisode
+import io.hemin.wien.model.episode.anEpisodeBitlove
 import org.junit.jupiter.api.Test
 
 internal class BitloveWriterTest : NamespaceWriterTest() {
@@ -33,6 +34,30 @@ internal class BitloveWriterTest : NamespaceWriterTest() {
         assertAll {
             val episodeWithoutBitlove = anEpisode(bitlove = null)
             assertTagIsNotWrittenToEpisode(episodeWithoutBitlove, "encoded")
+
+            val itemElement = createChannelElement().createItemElement()
+            val enclosureItem = itemElement.appendElement("enclosure")
+            writer.tryWritingEpisodeData(episodeWithoutBitlove, itemElement)
+            assertThat(enclosureItem).hasNoAttribute("guid", writer.namespace)
+        }
+    }
+
+    @Test
+    internal fun `should not write a bitlove_guid attribute to the item enclosure tag when the data is blank`() {
+        assertAll {
+            val episodeWithoutBitlove = anEpisode(bitlove = anEpisodeBitlove(" "))
+
+            val itemElement = createChannelElement().createItemElement()
+            val enclosureItem = itemElement.appendElement("enclosure")
+            writer.tryWritingEpisodeData(episodeWithoutBitlove, itemElement)
+            assertThat(enclosureItem).hasNoAttribute("guid", writer.namespace)
+        }
+    }
+
+    @Test
+    internal fun `should not write a bitlove_guid attribute to the item enclosure tag when the data is empty`() {
+        assertAll {
+            val episodeWithoutBitlove = anEpisode(bitlove = anEpisodeBitlove(""))
 
             val itemElement = createChannelElement().createItemElement()
             val enclosureItem = itemElement.appendElement("enclosure")

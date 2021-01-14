@@ -3,8 +3,11 @@ package io.hemin.wien
 import assertk.Assert
 import assertk.assertions.support.expected
 import io.hemin.wien.builder.Builder
+import io.hemin.wien.dom.asListOfNodes
 import io.hemin.wien.dom.asString
 import io.hemin.wien.util.FeedNamespace
+import org.w3c.dom.Attr
+import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.xmlunit.diff.Diff
 import java.io.File
@@ -77,3 +80,63 @@ internal fun Assert<Builder<*>>.hasNotEnoughDataToBuild() = given { builder ->
         )
     }
 }
+
+/** Asserts the [Element] does not exist (is null). */
+internal fun Assert<Element?>.doesNotExist() = given { element ->
+    if (element == null) return@given
+    expected(
+        "to not exist",
+        expected = "null",
+        actual = element.asString()
+    )
+}
+
+/** Asserts the [Element] has the expected text content. */
+internal fun Assert<Element>.hasTextContent(expected: String) = given { element ->
+    if (element.textContent == expected) return@given
+    expected(
+        "to have the text content '$expected'",
+        expected = expected,
+        actual = element.textContent
+    )
+}
+
+/** Asserts the [Node] has no child nodes. */
+internal fun Assert<Node>.hasNoChildren() = given { element ->
+    if (element.childNodes.length == 0) return@given
+    expected(
+        "to have no children",
+        expected = emptyList<Node>(),
+        actual = element.childNodes.asListOfNodes().map { it.asString() }
+    )
+}
+
+/** Asserts the [Node] has only one child. */
+internal fun Assert<Node>.hasOneChild() = given { element ->
+    if (element.childNodes.length == 1) return@given
+    expected(
+        "to have exactly one child",
+        expected = listOf(element.firstChild.asString()),
+        actual = element.childNodes.asListOfNodes().map { it.asString() }
+    )
+}
+
+/** Asserts the [Attr] has the expected value. */
+internal fun Assert<Attr>.hasValue(expected: String) = given { element ->
+    if (element.value == expected) return@given
+    expected(
+        "to have the value '$expected'",
+        expected = expected,
+        actual = element.value
+    )
+}
+
+/**
+ * Transforms the current assertion to the list of [`childNodes`][Node.getChildNodes] that have
+ * the given [localName] and [namespace].
+ */
+internal fun Assert<Node>.childNodesNamed(localName: String, namespace: FeedNamespace? = null) =
+    transform { node ->
+        node.childNodes.asListOfNodes()
+            .filter { it.localName == localName && it.namespaceURI == namespace?.uri }
+    }

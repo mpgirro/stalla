@@ -35,7 +35,7 @@ internal class ValidatingEpisodeGuidBuilderTest {
             assertThat(episodeGuidBuilder).prop(EpisodeGuidBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGuidBuilder.build()).isNotNull().all {
-                prop(Episode.Guid::textContent).isEqualTo("textContent")
+                prop(Episode.Guid::guid).isEqualTo("textContent")
                 prop(Episode.Guid::isPermalink).isNull()
             }
         }
@@ -51,7 +51,7 @@ internal class ValidatingEpisodeGuidBuilderTest {
             assertThat(episodeGuidBuilder).prop(EpisodeGuidBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGuidBuilder.build()).isNotNull().all {
-                prop(Episode.Guid::textContent).isEqualTo("textContent")
+                prop(Episode.Guid::guid).isEqualTo("textContent")
                 prop(Episode.Guid::isPermalink).isNotNull().isTrue()
             }
         }
