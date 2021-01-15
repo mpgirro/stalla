@@ -24,6 +24,7 @@ import java.time.temporal.TemporalAccessor
  * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
  * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property categories The RSS feed categories, if any.
+ * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
  */
 data class Podcast(
     val title: String,
@@ -44,7 +45,8 @@ data class Podcast(
     val fyyd: Fyyd? = null,
     val feedpress: Feedpress? = null,
     val googlePlay: GooglePlay? = null,
-    val categories: List<RssCategory>
+    val categories: List<RssCategory> = emptyList(),
+    val podcast: Podcast? = null
 ) {
 
     /**
@@ -167,4 +169,39 @@ data class Podcast(
         val cssFile: String? = null,
         val link: String? = null
     )
+
+    /**
+     * Model class for data from elements of the Podcast 1.0 namespace that are valid within `<channel>` elements.
+     *
+     * @property locked The lock status of the podcast.
+     * @property funding The funding information for the podcast.
+     */
+    data class Podcast(
+        val locked: Locked? = null,
+        val funding: Funding? = null
+    ) {
+
+        /**
+         * The lock status of the podcast. Tells other podcast platforms whether they are allowed to
+         * import this feed into their systems.
+         *
+         * @param owner An email address that can be used to verify ownership when moving hosting platforms.
+         * @param locked When `true`, the podcast cannot be transferred to a new hosting platform.
+         */
+        data class Locked(
+            val owner: String,
+            val locked: Boolean
+        )
+
+        /**
+         * The funding information for the podcast.
+         *
+         * @param url The URL where listeners can find funding information for the podcast.
+         * @param message The recommended CTA text to show users for the funding link.
+         */
+        data class Funding(
+            val url: String,
+            val message: String
+        )
+    }
 }
