@@ -1,4 +1,4 @@
-package io.hemin.wien.parser
+package io.hemin.wien.parser.namespace
 
 import assertk.all
 import assertk.assertThat
@@ -21,7 +21,7 @@ import io.hemin.wien.hasNotEnoughDataToBuild
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.noneHasEnoughDataToBuild
-import io.hemin.wien.parser.namespace.ITunesParser
+import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
