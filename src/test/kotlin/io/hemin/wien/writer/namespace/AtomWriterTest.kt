@@ -49,14 +49,16 @@ internal class AtomWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write atom tags to the channel when the data is all blank`() {
-        val podcast = aPodcast(atom = aPodcastAtom(
-            authors = listOf(aPerson(" ", " ", " "), aPerson("", "", "")),
-            contributors = listOf(aPerson(" ", " ", " "), aPerson("", "", "")),
-            links = listOf(
-                aLink(" ", " ", " "," ", " ", " ", " "),
-                aLink("", "", "","", "", "", "")
+        val podcast = aPodcast(
+            atom = aPodcastAtom(
+                authors = listOf(aPerson(" ", " ", " "), aPerson("", "", "")),
+                contributors = listOf(aPerson(" ", " ", " "), aPerson("", "", "")),
+                links = listOf(
+                    aLink(" ", " ", " ", " ", " ", " ", " "),
+                    aLink("", "", "", "", "", "", "")
+                )
             )
-        ))
+        )
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
             assertTagIsNotWrittenToPodcast(podcast, "contributor")
@@ -131,7 +133,6 @@ internal class AtomWriterTest : NamespaceWriterTest() {
         }
     }
 
-
     @Test
     internal fun `should write the correct atom tags to the item when there is data to write`() {
         assertAll {
@@ -164,9 +165,11 @@ internal class AtomWriterTest : NamespaceWriterTest() {
         val episode = anEpisode(
             atom = anEpisodeAtom(
                 authors = listOf(
-                    aPerson(" ", " ", " "), aPerson("", "", "")),
+                    aPerson(" ", " ", " "), aPerson("", "", "")
+                ),
                 contributors = listOf(
-                    aPerson(" ", " ", " "), aPerson("", "", "")),
+                    aPerson(" ", " ", " "), aPerson("", "", "")
+                ),
                 links = listOf(
                     aLink(" ", " ", " ", " ", " ", " ", " "),
                     aLink("", "", "", "", "", "", "")
@@ -185,9 +188,11 @@ internal class AtomWriterTest : NamespaceWriterTest() {
         val episode = anEpisode(
             atom = anEpisodeAtom(
                 authors = listOf(
-                    aPerson("author 1", " ", " "), aPerson("author 2", "", "")),
+                    aPerson("author 1", " ", " "), aPerson("author 2", "", "")
+                ),
                 contributors = listOf(
-                    aPerson("contrib 1", " ", " "), aPerson("contrib 2", "", "")),
+                    aPerson("contrib 1", " ", " "), aPerson("contrib 2", "", "")
+                ),
                 links = listOf(
                     aLink("link 1", " ", " ", " ", " ", " ", " "),
                     aLink("link 2", "", "", "", "", "", "")

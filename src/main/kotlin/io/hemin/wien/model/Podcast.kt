@@ -23,6 +23,7 @@ import java.time.temporal.TemporalAccessor
  * @property fyyd The data from the Fyyd namespace, or null if no data from this namespace was found.
  * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
  * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
+ * @property categories The RSS feed categories, if any.
  */
 data class Podcast(
     val title: String,
@@ -42,7 +43,8 @@ data class Podcast(
     val atom: Atom? = null,
     val fyyd: Fyyd? = null,
     val feedpress: Feedpress? = null,
-    val googlePlay: GooglePlay? = null
+    val googlePlay: GooglePlay? = null,
+    val categories: List<RssCategory>
 ) {
 
     /**

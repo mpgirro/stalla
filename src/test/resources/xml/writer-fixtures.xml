@@ -28,6 +28,7 @@
             <height>456</height>
             <width>123</width>
         </image>
+        <category domain="rss category domain">podcast category</category>
         <itunes:subtitle>podcast itunes subtitle</itunes:subtitle>
         <itunes:summary>podcast itunes summary</itunes:summary>
         <itunes:image href="podcast itunes image url"/>

@@ -3,7 +3,6 @@ package io.hemin.wien.writer.namespace
 import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.hasSize
-import io.hemin.wien.childNodesNamed
 import io.hemin.wien.hasNoChildren
 import io.hemin.wien.hasNoDifferences
 import io.hemin.wien.hasValue

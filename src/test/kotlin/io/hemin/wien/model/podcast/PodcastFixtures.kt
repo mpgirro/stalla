@@ -7,11 +7,13 @@ import io.hemin.wien.model.ITunesStyleCategory
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.RssCategory
 import io.hemin.wien.model.RssImage
 import io.hemin.wien.model.aLink
 import io.hemin.wien.model.aPerson
 import io.hemin.wien.model.anHrefOnlyImage
 import io.hemin.wien.model.anITunesCategory
+import io.hemin.wien.model.anRssCategory
 import io.hemin.wien.model.anRssImage
 import io.hemin.wien.model.episode.anEpisode
 import java.time.Month
@@ -35,7 +37,8 @@ internal fun aPodcast(
     atom: Podcast.Atom? = aPodcastAtom(),
     fyyd: Podcast.Fyyd? = aPodcastFyyd(),
     feedpress: Podcast.Feedpress? = aPodcastFeedpress(),
-    googlePlay: Podcast.GooglePlay? = aPodcastGooglePlay()
+    googlePlay: Podcast.GooglePlay? = aPodcastGooglePlay(),
+    categories: List<RssCategory> = listOf(anRssCategory("podcast category"))
 ) = Podcast(
     title,
     link,
@@ -54,7 +57,8 @@ internal fun aPodcast(
     atom,
     fyyd,
     feedpress,
-    googlePlay
+    googlePlay,
+    categories
 )
 
 internal fun aPodcastITunes(

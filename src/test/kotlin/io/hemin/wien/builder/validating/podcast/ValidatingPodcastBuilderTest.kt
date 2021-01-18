@@ -14,6 +14,7 @@ import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
 import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
+import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
@@ -49,6 +50,11 @@ internal class ValidatingPodcastBuilderTest {
     private val expectedITunesCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
         .category("itunes category")
         .subcategory("itunes subcategory")
+
+    private val expectedCategoryBuilders = listOf(
+        ValidatingRssCategoryBuilder().category("category 1").domain("domain"),
+        ValidatingRssCategoryBuilder().category("category 2")
+    )
 
     @Test
     internal fun `should not build a Podcast when the mandatory fields are missing`() {
@@ -187,6 +193,8 @@ internal class ValidatingPodcastBuilderTest {
             .webMaster("webMaster")
             .imageBuilder(expectedImageBuilder)
             .addEpisodeBuilder(expectedEpisodeBuilder)
+            .addCategoryBuilder(expectedCategoryBuilders[0])
+            .addCategoryBuilder(expectedCategoryBuilders[1])
             .apply {
                 iTunes.imageBuilder(expectedITunesImageBuilder)
                     .addCategoryBuilder(expectedITunesCategoryBuilder)
@@ -213,6 +221,7 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::managingEditor).isEqualTo("managingEditor")
                 prop(Podcast::webMaster).isEqualTo("webMaster")
                 prop(Podcast::image).isEqualTo(expectedImageBuilder.build())
+                prop(Podcast::categories).containsExactly(expectedCategoryBuilders[0].build(), expectedCategoryBuilders[1].build())
                 prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
                 prop(Podcast::iTunes).isNotNull().prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
                 prop(Podcast::atom).isNotNull().prop(Podcast.Atom::authors)

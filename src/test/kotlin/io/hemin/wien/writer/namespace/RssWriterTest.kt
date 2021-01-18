@@ -42,6 +42,10 @@ internal class RssWriterTest : NamespaceWriterTest() {
                 val diff = element.diffFromExpected("/rss/channel/description")
                 assertThat(diff).hasNoDifferences()
             }
+            writePodcastData("category") { element ->
+                val diff = element.diffFromExpected("/rss/channel/category")
+                assertThat(diff).hasNoDifferences()
+            }
             writePodcastData("pubDate") { element ->
                 val diff = element.diffFromExpected("/rss/channel/pubDate")
                 assertThat(diff).hasNoDifferences()
@@ -339,5 +343,4 @@ internal class RssWriterTest : NamespaceWriterTest() {
             assertTagIsNotWrittenToEpisode(episode, "source")
         }
     }
-
 }

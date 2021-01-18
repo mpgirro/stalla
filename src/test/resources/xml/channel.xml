@@ -24,6 +24,8 @@
         <height>600</height>
         <description>Lorem Ipsum</description>
     </image>
+    <category domain="banana">category 1</category>
+    <category>category 2</category>
     <itunes:subtitle>Lorem Ipsum</itunes:subtitle>
     <itunes:summary>Lorem Ipsum</itunes:summary>
     <itunes:image href="http://example.org/podcast-cover.jpg"/>

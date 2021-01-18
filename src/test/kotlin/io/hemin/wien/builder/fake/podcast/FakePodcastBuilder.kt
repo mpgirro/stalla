@@ -35,6 +35,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     var imageBuilder: RssImageBuilder? = null
 
     val episodeBuilders: MutableList<EpisodeBuilder> = mutableListOf()
+    val categoryBuilders: MutableList<RssCategoryBuilder> = mutableListOf()
 
     override val iTunes: FakePodcastITunesBuilder = FakePodcastITunesBuilder()
 
@@ -74,6 +75,10 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         episodeBuilders.add(episodeBuilder)
     }
 
+    override fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): PodcastBuilder = apply {
+        categoryBuilders.add(categoryBuilder)
+    }
+
     override fun createRssImageBuilder(): RssImageBuilder = FakeRssImageBuilder()
 
     override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = FakeHrefOnlyImageBuilder()
@@ -103,6 +108,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         if (webMaster != other.webMaster) return false
         if (imageBuilder != other.imageBuilder) return false
         if (episodeBuilders != other.episodeBuilders) return false
+        if (categoryBuilders != other.categoryBuilders) return false
         if (iTunes != other.iTunes) return false
         if (atom != other.atom) return false
         if (fyyd != other.fyyd) return false
@@ -126,6 +132,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         result = 31 * result + (webMaster?.hashCode() ?: 0)
         result = 31 * result + (imageBuilder?.hashCode() ?: 0)
         result = 31 * result + episodeBuilders.hashCode()
+        result = 31 * result + categoryBuilders.hashCode()
         result = 31 * result + iTunes.hashCode()
         result = 31 * result + atom.hashCode()
         result = 31 * result + fyyd.hashCode()
@@ -138,5 +145,5 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         "FakePodcastBuilder(titleValue=$titleValue, linkValue=$linkValue, descriptionValue=$descriptionValue, languageValue=$languageValue, " +
             "pubDate=$pubDate, lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, docs=$docs, " +
             "managingEditor=$managingEditor, webMaster=$webMaster, imageBuilder=$imageBuilder, episodeBuilders=$episodeBuilders, " +
-            "iTunes=$iTunes, atom=$atom, fyyd=$fyyd, feedpress=$feedpress, googlePlay=$googlePlay)"
+            "categoryBuilders=$categoryBuilders, iTunes=$iTunes, atom=$atom, fyyd=$fyyd, feedpress=$feedpress, googlePlay=$googlePlay)"
 }

@@ -51,7 +51,7 @@ internal class FeedpressWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write feedpress tags to the channel when the data is blank`() {
-        val podcast = aPodcast(feedpress = aPodcastFeedpress(" "," "," "," "," "))
+        val podcast = aPodcast(feedpress = aPodcastFeedpress(" ", " ", " ", " ", " "))
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "newsletterId")
             assertTagIsNotWrittenToPodcast(podcast, "locale")
@@ -63,7 +63,7 @@ internal class FeedpressWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write feedpress tags to the channel when the data is empty`() {
-        val podcast = aPodcast(feedpress = aPodcastFeedpress("","","","",""))
+        val podcast = aPodcast(feedpress = aPodcastFeedpress("", "", "", "", ""))
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "newsletterId")
             assertTagIsNotWrittenToPodcast(podcast, "locale")
