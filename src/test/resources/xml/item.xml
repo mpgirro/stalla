@@ -55,6 +55,6 @@
         <psc:chapter start="00:02:12.641" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
     </psc:chapters>
     <podcast:chapters url="https://example.com/ep3_chapters.json" type="application/json"/>
-    <podcast:soundbite startTime="33.833" duration="60.0"/>
-    <podcast:transcript url="https://example.com/ep3/transcript.txt" type="text/plain"/>
+    <podcast:soundbite startTime="33.833" duration="60.0">I'm a soundbite</podcast:soundbite>
+    <podcast:transcript url="https://example.com/ep3/transcript.txt" type="text/plain" language="it-IT" rel="captions"/>
 </item>

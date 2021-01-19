@@ -24,6 +24,7 @@ import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 import java.time.Duration
+import java.util.Locale
 
 internal class PodcastNamespaceParserTest : NamespaceParserTest() {
 
@@ -44,10 +45,13 @@ internal class PodcastNamespaceParserTest : NamespaceParserTest() {
     private val expectedSoundbiteBuilder = FakeEpisodePodcastSoundbiteBuilder()
         .startTime(Duration.ofMillis(33833))
         .duration(Duration.ofSeconds(60))
+        .title("I'm a soundbite")
 
     private val expectedTranscriptBuilder = FakeEpisodePodcastTranscriptBuilder()
         .url("https://example.com/ep3/transcript.txt")
         .type(Episode.Podcast.Transcript.Type.PLAIN_TEXT)
+        .language(Locale.ITALY)
+        .rel("captions")
 
     @Test
     fun `should extract all podcast fields from channel when present`() {

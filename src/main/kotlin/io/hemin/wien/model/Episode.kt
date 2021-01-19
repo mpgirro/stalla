@@ -234,7 +234,7 @@ data class Episode(
              * Supported transcript types. See the
              * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/transcripts/transcripts.md).
              */
-            enum class Type(val type: String) {
+            enum class Type(val rawType: String) {
                 /** Plain text, with no timing information. */
                 PLAIN_TEXT("text/plain"),
 
@@ -249,7 +249,7 @@ data class Episode(
 
                 companion object {
 
-                    fun from(rawType: String): Type? = values().find { it.type == rawType }
+                    fun from(rawType: String): Type? = values().find { it.rawType == rawType }
                 }
             }
         }

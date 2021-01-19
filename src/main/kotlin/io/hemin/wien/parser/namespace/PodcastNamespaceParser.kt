@@ -16,6 +16,7 @@ import io.hemin.wien.util.trimmedOrNullIfBlank
 import org.w3c.dom.Node
 import java.time.Duration
 import java.time.format.DateTimeParseException
+import java.util.Locale
 
 internal class PodcastNamespaceParser : NamespaceParser() {
 
@@ -106,9 +107,15 @@ internal class PodcastNamespaceParser : NamespaceParser() {
         val type = getAttributeByName("type")?.value.trimmedOrNullIfBlank()?.let { rawType ->
             Episode.Podcast.Transcript.Type.from(rawType)
         }
+        val language = getAttributeByName("language")?.value.trimmedOrNullIfBlank()?.let { rawLocale ->
+            Locale.forLanguageTag(rawLocale)
+        }
+        val rel = getAttributeByName("rel")?.value.trimmedOrNullIfBlank()
 
         if (url == null || type == null) return null
         return transcriptBuilder.url(url)
             .type(type)
+            .language(language)
+            .rel(rel)
     }
 }
