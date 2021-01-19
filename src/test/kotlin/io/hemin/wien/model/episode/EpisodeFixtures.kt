@@ -132,4 +132,4 @@ fun anEpisodePodcastSoundbite(
 internal fun anEpisodePodcastChapters(
     url: String = "episode podcast: chapters url",
     type: String = "episode podcast: chapters type"
-)= Episode.Podcast.Chapters(url, type)
+) = Episode.Podcast.Chapters(url, type)

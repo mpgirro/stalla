@@ -102,8 +102,8 @@ internal class PodcastNamespaceWriterTest : NamespaceWriterTest() {
     internal fun `should not write podcast tags to the item when the data is blank`() {
         val episode = anEpisode(
             podcast = anEpisodePodcast(
-                  transcripts = listOf(anEpisodePodcastTranscript(" ")),
-                  chapters = anEpisodePodcastChapters(" ")
+                transcripts = listOf(anEpisodePodcastTranscript(" ")),
+                chapters = anEpisodePodcastChapters(" ")
             )
         )
         assertAll {

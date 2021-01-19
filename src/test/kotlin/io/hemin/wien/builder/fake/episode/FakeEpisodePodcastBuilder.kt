@@ -45,5 +45,6 @@ internal class FakeEpisodePodcastBuilder : FakeBuilder<Episode.Podcast>(), Episo
     }
 
     override fun toString() =
-        "FakeEpisodePodcastBuilder(chaptersBuilder=$chaptersBuilderValue, transcriptBuilders=$transcriptBuilders, soundbiteBuilders=$soundbiteBuilders)"
+        "FakeEpisodePodcastBuilder(chaptersBuilder=$chaptersBuilderValue, transcriptBuilders=$transcriptBuilders, " +
+            "soundbiteBuilders=$soundbiteBuilders)"
 }

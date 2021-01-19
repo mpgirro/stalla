@@ -8,7 +8,6 @@ import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
-import io.hemin.wien.builder.episode.EpisodePodcastBuilder
 import io.hemin.wien.builder.episode.EpisodePodcastChaptersBuilder
 import io.hemin.wien.builder.episode.EpisodePodcastSoundbiteBuilder
 import io.hemin.wien.builder.episode.EpisodePodcastTranscriptBuilder
@@ -116,6 +115,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         if (podloveBuilder != other.podloveBuilder) return false
         if (googlePlayBuilder != other.googlePlayBuilder) return false
         if (bitloveBuilder != other.bitloveBuilder) return false
+        if (podcastBuilder != other.podcastBuilder) return false
 
         return true
     }
@@ -137,11 +137,13 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         result = 31 * result + podloveBuilder.hashCode()
         result = 31 * result + googlePlayBuilder.hashCode()
         result = 31 * result + bitloveBuilder.hashCode()
+        result = 31 * result + podcastBuilder.hashCode()
         return result
     }
 
     override fun toString() =
         "FakeEpisodeBuilder(titleValue=$titleValue, enclosureBuilderValue=$enclosureBuilderValue, link=$link, description=$description, " +
-            "author=$author, categories=$categoryBuilders, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
-            "content=$contentBuilder, iTunes=$iTunesBuilder, atom=$atomBuilder, podlove=$podloveBuilder, googlePlay=$googlePlayBuilder, bitlove=$bitloveBuilder)"
+            "author=$author, categoryBuilders=$categoryBuilders, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
+            "contentBuilder=$contentBuilder, iTunesBuilder=$iTunesBuilder, atomBuilder=$atomBuilder, podloveBuilder=$podloveBuilder, " +
+            "googlePlayBuilder=$googlePlayBuilder, bitloveBuilder=$bitloveBuilder, podcastBuilder=$podcastBuilder)"
 }

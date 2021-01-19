@@ -81,6 +81,6 @@ internal class PodcastNamespaceWriter : NamespaceWriter() {
         if (toMillisPart() == 0) {
             seconds.toString()
         } else {
-            "${seconds}.${toMillisPart().toString().padStart(3, '0')}"
+            "$seconds.${toMillisPart().toString().padStart(3, '0')}"
         }
 }
