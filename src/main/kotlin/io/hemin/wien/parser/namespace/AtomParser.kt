@@ -22,15 +22,15 @@ internal class AtomParser : NamespaceParser() {
         when (localName) {
             "contributor" -> {
                 val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
-                builder.atom.addContributorBuilder(personBuilder)
+                builder.atomBuilder.addContributorBuilder(personBuilder)
             }
             "author" -> {
                 val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
-                builder.atom.addAuthorBuilder(personBuilder)
+                builder.atomBuilder.addAuthorBuilder(personBuilder)
             }
             "link" -> {
                 val linkBuilder = ifCanBeParsed { toLinkBuilder(builder.createLinkBuilder()) } ?: return
-                builder.atom.addLinkBuilder(linkBuilder)
+                builder.atomBuilder.addLinkBuilder(linkBuilder)
             }
             else -> pass
         }
@@ -40,15 +40,15 @@ internal class AtomParser : NamespaceParser() {
         when (localName) {
             "contributor" -> {
                 val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
-                builder.atom.addContributorBuilder(personBuilder)
+                builder.atomBuilder.addContributorBuilder(personBuilder)
             }
             "author" -> {
                 val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
-                builder.atom.addAuthorBuilder(personBuilder)
+                builder.atomBuilder.addAuthorBuilder(personBuilder)
             }
             "link" -> {
-                val linkBuilder = ifCanBeParsed { toLinkBuilder(builder.createLinkBuilder()) } ?: return
-                builder.atom.addLinkBuilder(linkBuilder)
+                val linkBuilder = toLinkBuilder(builder.createLinkBuilder()) ?: return
+                builder.atomBuilder.addLinkBuilder(linkBuilder)
             }
             else -> pass
         }
@@ -57,8 +57,7 @@ internal class AtomParser : NamespaceParser() {
     private fun Node.toLinkBuilder(linkBuilder: LinkBuilder): LinkBuilder? = ifCanBeParsed {
         val href = getAttributeValueByName("href") ?: return@ifCanBeParsed null
 
-        linkBuilder
-            .href(href)
+        linkBuilder.href(href)
             .hrefLang(getAttributeValueByName("hrefLang"))
             .hrefResolved(getAttributeValueByName("hrefResolved"))
             .length(getAttributeValueByName("length"))

@@ -23,7 +23,7 @@ internal class FeedpressParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.feedpress, "channel feedpress data").all {
+        assertThat(builder.feedpressBuilder, "channel feedpress data").all {
             prop(FakePodcastFeedpressBuilder::newsletterIdValue).isEqualTo("abc123")
             prop(FakePodcastFeedpressBuilder::localeValue).isEqualTo("en")
             prop(FakePodcastFeedpressBuilder::podcastIdValue).isEqualTo("xyz123")
@@ -38,7 +38,7 @@ internal class FeedpressParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.feedpress, "channel feedpress data").all {
+        assertThat(builder.feedpressBuilder, "channel feedpress data").all {
             prop(FakePodcastFeedpressBuilder::newsletterIdValue).isNull()
             prop(FakePodcastFeedpressBuilder::localeValue).isNull()
             prop(FakePodcastFeedpressBuilder::podcastIdValue).isNull()
@@ -53,7 +53,7 @@ internal class FeedpressParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.feedpress, "channel feedpress data").all {
+        assertThat(builder.feedpressBuilder, "channel feedpress data").all {
             prop(FakePodcastFeedpressBuilder::newsletterIdValue).isNull()
             prop(FakePodcastFeedpressBuilder::localeValue).isNull()
             prop(FakePodcastFeedpressBuilder::podcastIdValue).isNull()

@@ -23,7 +23,7 @@ internal class BitloveParser : NamespaceParser() {
 
     override fun Node.parseItemData(builder: EpisodeBuilder) {
         val guid = findGuid() ?: return
-        builder.bitlove.guid(guid)
+        builder.bitloveBuilder.guid(guid)
     }
 
     private fun Node.findGuid(): String? = getAttributeValueByName("guid", namespace)

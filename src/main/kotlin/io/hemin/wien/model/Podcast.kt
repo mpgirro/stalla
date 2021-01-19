@@ -178,7 +178,7 @@ data class Podcast(
      */
     data class Podcast(
         val locked: Locked? = null,
-        val funding: Funding? = null
+        val funding: List<Funding> = emptyList()
     ) {
 
         /**

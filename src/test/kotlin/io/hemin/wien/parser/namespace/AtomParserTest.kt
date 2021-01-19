@@ -38,7 +38,7 @@ internal class AtomParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.atom, "atom podcast data").all {
+        assertThat(builder.atomBuilder, "atom podcast data").all {
             prop(FakePodcastAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
             prop(FakePodcastAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
             prop(FakePodcastAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
@@ -51,10 +51,10 @@ internal class AtomParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.atom, "atom episode data").all {
+        assertThat(builder.atomBuilder, "atom episode data").all {
             prop(FakePodcastAtomBuilder::authorBuilders).noneHasEnoughDataToBuild()
             prop(FakePodcastAtomBuilder::contributorBuilders).noneHasEnoughDataToBuild()
-            prop(FakePodcastAtomBuilder::linkBuilders).noneHasEnoughDataToBuild()
+            prop(FakePodcastAtomBuilder::linkBuilders).isEmpty()
         }
     }
 
@@ -64,7 +64,7 @@ internal class AtomParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.atom, "atom episode data").all {
+        assertThat(builder.atomBuilder, "atom episode data").all {
             prop(FakePodcastAtomBuilder::authorBuilders).isEmpty()
             prop(FakePodcastAtomBuilder::contributorBuilders).isEmpty()
             prop(FakePodcastAtomBuilder::linkBuilders).isEmpty()
@@ -77,7 +77,7 @@ internal class AtomParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.atom, "atom item data").all {
+        assertThat(builder.atomBuilder, "atom item data").all {
             prop(FakeEpisodeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
             prop(FakeEpisodeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
             prop(FakeEpisodeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
@@ -90,7 +90,7 @@ internal class AtomParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.atom, "atom item data").all {
+        assertThat(builder.atomBuilder, "atom item data").all {
             prop(FakeEpisodeAtomBuilder::authorBuilders).isEmpty()
             prop(FakeEpisodeAtomBuilder::contributorBuilders).isEmpty()
             prop(FakeEpisodeAtomBuilder::linkBuilders).isEmpty()
@@ -103,10 +103,10 @@ internal class AtomParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.atom, "atom item data").all {
+        assertThat(builder.atomBuilder, "atom item data").all {
             prop(FakeEpisodeAtomBuilder::authorBuilders).noneHasEnoughDataToBuild()
             prop(FakeEpisodeAtomBuilder::contributorBuilders).noneHasEnoughDataToBuild()
-            prop(FakeEpisodeAtomBuilder::linkBuilders).noneHasEnoughDataToBuild()
+            prop(FakeEpisodeAtomBuilder::linkBuilders).isEmpty()
         }
     }
 }

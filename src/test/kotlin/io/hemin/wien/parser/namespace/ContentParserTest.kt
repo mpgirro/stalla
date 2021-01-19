@@ -22,7 +22,7 @@ internal class ContentParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.content, "item content data")
+        assertThat(builder.contentBuilder, "item content data")
             .prop(FakeEpisodeContentBuilder::encoded).isEqualTo("Lorem Ipsum")
     }
 
@@ -32,7 +32,7 @@ internal class ContentParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.content, "item content data")
+        assertThat(builder.contentBuilder, "item content data")
             .prop(FakeEpisodeContentBuilder::encoded).isNull()
     }
 
@@ -42,7 +42,7 @@ internal class ContentParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)
 
-        assertThat(builder.content, "item content data")
+        assertThat(builder.contentBuilder, "item content data")
             .prop(FakeEpisodeContentBuilder::encoded).isNull()
     }
 }

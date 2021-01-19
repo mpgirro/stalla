@@ -1,6 +1,7 @@
 package io.hemin.wien
 
 import assertk.Assert
+import assertk.assertions.isNotEmpty
 import assertk.assertions.support.expected
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.dom.asListOfNodes
@@ -62,6 +63,7 @@ internal fun Assert<File>.isNotEmpty() = given { file ->
 
 /** Asserts none of the [Builder]s [`hasEnoughDataToBuild`][Builder.hasEnoughDataToBuild] is `true`. */
 internal fun Assert<List<Builder<*>>>.noneHasEnoughDataToBuild() = given { builders ->
+    assertThat(builders, this.name).isNotEmpty()
     if (builders.any { it.hasEnoughDataToBuild }) {
         expected(
             message = "none of the builders to have hasEnoughDataToBuild == true",

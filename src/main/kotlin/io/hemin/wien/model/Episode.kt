@@ -1,5 +1,6 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.model.Episode.Podcast.Transcript.Type
 import io.hemin.wien.model.Episode.Podlove.SimpleChapter
 import java.time.Duration
 import java.time.temporal.TemporalAccessor
@@ -205,6 +206,7 @@ data class Episode(
      * Model class for data from elements of the Podcast 1.0 namespace that are valid within `<item>` elements.
      *
      * @property transcripts The transcript information for the episode.
+     * @property soundbites The soundbites information for the episode.
      * @property chapters The chapters information for the episode.
      */
     data class Podcast(
@@ -226,7 +228,7 @@ data class Episode(
             val type: Type,
             val language: Locale? = null,
             val rel: String? = null
-        )  {
+        ) {
 
             /**
              * Supported transcript types. See the
@@ -235,12 +237,20 @@ data class Episode(
             enum class Type(val type: String) {
                 /** Plain text, with no timing information. */
                 PLAIN_TEXT("text/plain"),
+
                 /** HTML, potentially with some timing information. */
                 HTML("text/html"),
+
                 /** JSON ,with full timing information. */
                 JSON("application/json"),
+
                 /** SRT, with full timing information. */
-                SRT("application/srt")
+                SRT("application/srt");
+
+                companion object {
+
+                    fun from(rawType: String): Type? = values().find { it.type == rawType }
+                }
             }
         }
 
@@ -259,12 +269,12 @@ data class Episode(
         /**
          * The soundbite information for the episode. Used to automatically extract soundbites from the [Episode.enclosure].
          *
-         * @param start The timestamp at which the soundbite starts.
+         * @param startTime The timestamp at which the soundbite starts.
          * @param duration The duration of the timestamp (recommended between 15 and 120 seconds).
          * @param title A custom title for the soundbite. When null, the [Episode.title] is used.
          */
         data class Soundbite(
-            val start: Duration,
+            val startTime: Duration,
             val duration: Duration,
             val title: String? = null
         )

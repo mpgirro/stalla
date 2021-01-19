@@ -32,10 +32,10 @@ internal abstract class NamespaceParser {
     /**
      * Extract all the data from a `<channel>` child node for the [namespace],
      * adding it to the provided builder as it goes.
-     * **Note:** this method is only ever called when the node
+     * **Note:** this method is only ever called when the [Node] receiver has
+     * the correct namespace, and it is indeed a direct child of `<channel>`.
      *
      * @param builder The builder where all parsed data is added to.
-     * @param this@parseChannelNode The DOM node from which all data is extracted from.
      */
     protected abstract fun Node.parseChannelData(builder: PodcastBuilder)
 

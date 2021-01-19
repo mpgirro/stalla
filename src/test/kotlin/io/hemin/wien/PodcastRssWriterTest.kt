@@ -1,5 +1,6 @@
 package io.hemin.wien
 
+import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.exists
 import assertk.assertions.isEqualTo
@@ -16,7 +17,7 @@ internal class PodcastRssWriterTest {
         val podcast = aPodcast()
         PodcastRssWriter.writeRssFeed(podcast, file)
 
-        assertk.assertAll {
+        assertAll {
             assertThat(file, "written file").exists()
             assertThat(file, "written file").isNotEmpty()
 

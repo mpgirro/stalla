@@ -11,5 +11,6 @@ internal enum class FeedNamespace(
     FYYD("fyyd", "https://fyyd.de/fyyd-ns/"),
     GOOGLE_PLAY("googleplay", "http://www.google.com/schemas/play-podcasts/1.0"),
     ITUNES("itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd"),
-    PODLOVE_SIMPLE_CHAPTER("psc", "http://podlove.org/simple-chapters")
+    PODLOVE_SIMPLE_CHAPTER("psc", "http://podlove.org/simple-chapters"),
+    PODCAST("podcast", "https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md")
 }

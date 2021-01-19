@@ -22,7 +22,7 @@ internal class FyydParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.fyyd, "channel.fyyd")
+        assertThat(builder.fyydBuilder, "channel.fyyd")
             .prop(FakePodcastFyydBuilder::verifyValue).isEqualTo("abcdefg")
     }
 
@@ -32,7 +32,7 @@ internal class FyydParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.fyyd, "channel.fyyd")
+        assertThat(builder.fyydBuilder, "channel.fyyd")
             .prop(FakePodcastFyydBuilder::verifyValue).isNull()
     }
 
@@ -42,7 +42,7 @@ internal class FyydParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.fyyd, "channel.fyyd")
+        assertThat(builder.fyydBuilder, "channel.fyyd")
             .prop(FakePodcastFyydBuilder::verifyValue).isNull()
     }
 }

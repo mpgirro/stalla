@@ -37,7 +37,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.googlePlay, "channel.googleplay").all {
+        assertThat(builder.googlePlayBuilder, "channel.googleplay").all {
             prop(FakePodcastGooglePlayBuilder::author).isEqualTo("Lorem Ipsum")
             prop(FakePodcastGooglePlayBuilder::owner).isEqualTo("email@example.org")
             prop(FakePodcastGooglePlayBuilder::categoryBuilders).containsExactly(FakeITunesStyleCategoryBuilder().category("Technology"))
@@ -54,7 +54,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.googlePlay, "channel.googleplay").all {
+        assertThat(builder.googlePlayBuilder, "channel.googleplay").all {
             prop(FakePodcastGooglePlayBuilder::author).isNull()
             prop(FakePodcastGooglePlayBuilder::owner).isNull()
             prop(FakePodcastGooglePlayBuilder::categoryBuilders).isEmpty()
@@ -71,7 +71,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.googlePlay, "channel.googleplay").all {
+        assertThat(builder.googlePlayBuilder, "channel.googleplay").all {
             prop(FakePodcastGooglePlayBuilder::author).isNull()
             prop(FakePodcastGooglePlayBuilder::owner).isNull()
             prop(FakePodcastGooglePlayBuilder::categoryBuilders).noneHasEnoughDataToBuild()
@@ -88,7 +88,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.googlePlay, "item.googleplay").all {
+        assertThat(builder.googlePlayBuilder, "item.googleplay").all {
             prop(FakeEpisodeGooglePlayBuilder::description).isEqualTo("Lorem Ipsum")
             prop(FakeEpisodeGooglePlayBuilder::explicit).isNotNull().isFalse()
             prop(FakeEpisodeGooglePlayBuilder::block).isNotNull().isFalse()
@@ -102,7 +102,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.googlePlay, "item.googleplay").all {
+        assertThat(builder.googlePlayBuilder, "item.googleplay").all {
             prop(FakeEpisodeGooglePlayBuilder::description).isNull()
             prop(FakeEpisodeGooglePlayBuilder::explicit).isNull()
             prop(FakeEpisodeGooglePlayBuilder::block).isNull()
@@ -116,7 +116,7 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)
 
-        assertThat(builder.googlePlay, "item.googleplay").all {
+        assertThat(builder.googlePlayBuilder, "item.googleplay").all {
             prop(FakeEpisodeGooglePlayBuilder::description).isNull()
             prop(FakeEpisodeGooglePlayBuilder::explicit).isNull()
             prop(FakeEpisodeGooglePlayBuilder::block).isNull()
