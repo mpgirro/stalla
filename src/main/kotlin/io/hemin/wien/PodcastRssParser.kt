@@ -44,10 +44,6 @@ object PodcastRssParser {
         PodcastNamespaceParser()
     )
 
-    /** Set of all XML namespaces supported when parsing documents. */
-    val supportedNamespaces: Set<String> = parsers.mapNotNull { parser -> parser.namespace?.uri }
-        .toSet()
-
     private val builder: DocumentBuilder = DomBuilderFactory.newDocumentBuilder()
 
     /**

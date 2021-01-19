@@ -4,6 +4,7 @@ import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.dom.isDirectChildOf
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.FeedNamespace.Companion.matches
 import org.w3c.dom.Node
 
 /** Base class for XML namespace parser implementations. */
@@ -82,9 +83,9 @@ internal abstract class NamespaceParser {
 
     /**
      * Should return `true` when this parser can parse a given [Node]. By default true when the node namespace
-     * matches the parser's [namespace], checking its [`uri`][FeedNamespace.uri].
+     * matches the parser's [namespace], checking its `uri`s with [FeedNamespace.Companion.matches].
      */
-    protected open fun canParse(node: Node) = node.namespaceURI == this.namespace?.uri
+    protected open fun canParse(node: Node) = this.namespace.matches(node.namespaceURI)
 
     /** Explicitly do nothing. Used for exhaustive when blocks. */
     protected val pass: Unit = Unit
