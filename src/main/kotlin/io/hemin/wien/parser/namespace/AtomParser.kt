@@ -1,6 +1,9 @@
 package io.hemin.wien.parser.namespace
 
+import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.builder.LinkBuilder
+import io.hemin.wien.builder.LinkBuilderProvider
+import io.hemin.wien.builder.PersonBuilderProvider
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.dom.getAttributeValueByName
@@ -19,36 +22,32 @@ internal class AtomParser : NamespaceParser() {
     override val namespace = FeedNamespace.ATOM
 
     override fun Node.parseChannelData(builder: PodcastBuilder) {
-        when (localName) {
-            "contributor" -> {
-                val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
-                builder.atomBuilder.addContributorBuilder(personBuilder)
-            }
-            "author" -> {
-                val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
-                builder.atomBuilder.addAuthorBuilder(personBuilder)
-            }
-            "link" -> {
-                val linkBuilder = ifCanBeParsed { toLinkBuilder(builder.createLinkBuilder()) } ?: return
-                builder.atomBuilder.addLinkBuilder(linkBuilder)
-            }
-            else -> pass
-        }
+        val atomBuilder = builder.atomBuilder
+        parseCommonAtomData(personBuilderProvider = builder, linkBuilderProvider = builder, atomBuilder = atomBuilder)
     }
 
     override fun Node.parseItemData(builder: EpisodeBuilder) {
+        val atomBuilder = builder.atomBuilder
+        parseCommonAtomData(personBuilderProvider = builder, linkBuilderProvider = builder, atomBuilder = atomBuilder)
+    }
+
+    private fun Node.parseCommonAtomData(
+        personBuilderProvider: PersonBuilderProvider,
+        linkBuilderProvider: LinkBuilderProvider,
+        atomBuilder: AtomBuilder
+    ) {
         when (localName) {
             "contributor" -> {
-                val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
-                builder.atomBuilder.addContributorBuilder(personBuilder)
+                val personBuilder = ifCanBeParsed { toPersonBuilder(personBuilderProvider.createPersonBuilder(), namespace) } ?: return
+                atomBuilder.addContributorBuilder(personBuilder)
             }
             "author" -> {
-                val personBuilder = ifCanBeParsed { toPersonBuilder(builder.createPersonBuilder(), namespace) } ?: return
-                builder.atomBuilder.addAuthorBuilder(personBuilder)
+                val personBuilder = ifCanBeParsed { toPersonBuilder(personBuilderProvider.createPersonBuilder(), namespace) } ?: return
+                atomBuilder.addAuthorBuilder(personBuilder)
             }
             "link" -> {
-                val linkBuilder = toLinkBuilder(builder.createLinkBuilder()) ?: return
-                builder.atomBuilder.addLinkBuilder(linkBuilder)
+                val linkBuilder = ifCanBeParsed { toLinkBuilder(linkBuilderProvider.createLinkBuilder()) } ?: return
+                atomBuilder.addLinkBuilder(linkBuilder)
             }
             else -> pass
         }
