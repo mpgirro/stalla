@@ -1,5 +1,6 @@
 package io.hemin.wien.builder.episode
 
+import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
@@ -18,7 +19,7 @@ internal interface EpisodeBuilder : Builder<Episode> {
     val iTunesBuilder: EpisodeITunesBuilder
 
     /** The builder for data from the Atom namespace. */
-    val atomBuilder: EpisodeAtomBuilder
+    val atomBuilder: AtomBuilder
 
     /** The builder for data from namespaces of the Podlove standards. */
     val podloveBuilder: EpisodePodloveBuilder

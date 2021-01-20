@@ -15,6 +15,7 @@ import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
 import io.hemin.wien.dateTime
+import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Episode
 import org.junit.jupiter.api.Test
 import java.time.Month
@@ -149,7 +150,7 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::source).isEqualTo("source")
                 prop(Episode::content).isNotNull().prop(Episode.Content::encoded).isEqualTo("encoded")
                 prop(Episode::iTunes).isNotNull().prop(Episode.ITunes::title).isEqualTo("iTunes title")
-                prop(Episode::atom).isNotNull().prop(Episode.Atom::authors).containsExactly(expectedAtomAuthorBuilder.build())
+                prop(Episode::atom).isNotNull().prop(Atom::authors).containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Episode::podlove).isNotNull().prop(Episode.Podlove::simpleChapters).containsExactly(expectedSimpleChapterBuilder.build())
                 prop(Episode::googlePlay).isNotNull().prop(Episode.GooglePlay::description).isEqualTo("play description")
                 prop(Episode::bitlove).isNotNull().prop(Episode.Bitlove::guid).isEqualTo("bitlove guid")

@@ -1,32 +1,31 @@
-package io.hemin.wien.builder.fake.episode
+package io.hemin.wien.builder.fake
 
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
-import io.hemin.wien.builder.episode.EpisodeAtomBuilder
-import io.hemin.wien.builder.fake.FakeBuilder
-import io.hemin.wien.model.Episode
+import io.hemin.wien.builder.AtomBuilder
+import io.hemin.wien.model.Atom
 
-internal class FakeEpisodeAtomBuilder : FakeBuilder<Episode.Atom>(), EpisodeAtomBuilder {
+internal class FakeAtomBuilder : FakeBuilder<Atom>(), AtomBuilder {
 
     var authorBuilders: MutableList<PersonBuilder> = mutableListOf()
     var contributorBuilders: MutableList<PersonBuilder> = mutableListOf()
     var linkBuilders: MutableList<LinkBuilder> = mutableListOf()
 
-    override fun addAuthorBuilder(authorBuilder: PersonBuilder): EpisodeAtomBuilder = apply {
+    override fun addAuthorBuilder(authorBuilder: PersonBuilder): AtomBuilder = apply {
         authorBuilders.add(authorBuilder)
     }
 
-    override fun addContributorBuilder(contributorBuilder: PersonBuilder): EpisodeAtomBuilder = apply {
+    override fun addContributorBuilder(contributorBuilder: PersonBuilder): AtomBuilder = apply {
         contributorBuilders.add(contributorBuilder)
     }
 
-    override fun addLinkBuilder(linkBuilder: LinkBuilder): EpisodeAtomBuilder = apply {
+    override fun addLinkBuilder(linkBuilder: LinkBuilder): AtomBuilder = apply {
         linkBuilders.add(linkBuilder)
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakeEpisodeAtomBuilder) return false
+        if (other !is FakeAtomBuilder) return false
 
         if (authorBuilders != other.authorBuilders) return false
         if (contributorBuilders != other.contributorBuilders) return false
@@ -43,5 +42,5 @@ internal class FakeEpisodeAtomBuilder : FakeBuilder<Episode.Atom>(), EpisodeAtom
     }
 
     override fun toString() =
-        "FakeEpisodeAtomBuilder(authorBuilders=$authorBuilders, contributorBuilders=$contributorBuilders, linkBuilders=$linkBuilders)"
+        "FakeAtomBuilder(authorBuilders=$authorBuilders, contributorBuilders=$contributorBuilders, linkBuilders=$linkBuilders)"
 }

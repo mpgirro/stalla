@@ -7,9 +7,8 @@ import assertk.assertions.isEmpty
 import assertk.assertions.prop
 import io.hemin.wien.builder.fake.FakeLinkBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
-import io.hemin.wien.builder.fake.episode.FakeEpisodeAtomBuilder
+import io.hemin.wien.builder.fake.FakeAtomBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
-import io.hemin.wien.builder.fake.podcast.FakePodcastAtomBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.dom.XmlRes
 import io.hemin.wien.noneHasEnoughDataToBuild
@@ -39,9 +38,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         channel.parseChannelChildNodes(builder)
 
         assertThat(builder.atomBuilder, "atom podcast data").all {
-            prop(FakePodcastAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakePodcastAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakePodcastAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
+            prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
+            prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
+            prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
         }
     }
 
@@ -52,9 +51,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         channel.parseChannelChildNodes(builder)
 
         assertThat(builder.atomBuilder, "atom episode data").all {
-            prop(FakePodcastAtomBuilder::authorBuilders).noneHasEnoughDataToBuild()
-            prop(FakePodcastAtomBuilder::contributorBuilders).noneHasEnoughDataToBuild()
-            prop(FakePodcastAtomBuilder::linkBuilders).isEmpty()
+            prop(FakeAtomBuilder::authorBuilders).noneHasEnoughDataToBuild()
+            prop(FakeAtomBuilder::contributorBuilders).noneHasEnoughDataToBuild()
+            prop(FakeAtomBuilder::linkBuilders).isEmpty()
         }
     }
 
@@ -65,9 +64,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         channel.parseChannelChildNodes(builder)
 
         assertThat(builder.atomBuilder, "atom episode data").all {
-            prop(FakePodcastAtomBuilder::authorBuilders).isEmpty()
-            prop(FakePodcastAtomBuilder::contributorBuilders).isEmpty()
-            prop(FakePodcastAtomBuilder::linkBuilders).isEmpty()
+            prop(FakeAtomBuilder::authorBuilders).isEmpty()
+            prop(FakeAtomBuilder::contributorBuilders).isEmpty()
+            prop(FakeAtomBuilder::linkBuilders).isEmpty()
         }
     }
 
@@ -78,9 +77,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         item.parseItemChildNodes(builder)
 
         assertThat(builder.atomBuilder, "atom item data").all {
-            prop(FakeEpisodeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakeEpisodeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakeEpisodeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
+            prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
+            prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
+            prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
         }
     }
 
@@ -91,9 +90,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         item.parseItemChildNodes(builder)
 
         assertThat(builder.atomBuilder, "atom item data").all {
-            prop(FakeEpisodeAtomBuilder::authorBuilders).isEmpty()
-            prop(FakeEpisodeAtomBuilder::contributorBuilders).isEmpty()
-            prop(FakeEpisodeAtomBuilder::linkBuilders).isEmpty()
+            prop(FakeAtomBuilder::authorBuilders).isEmpty()
+            prop(FakeAtomBuilder::contributorBuilders).isEmpty()
+            prop(FakeAtomBuilder::linkBuilders).isEmpty()
         }
     }
 
@@ -104,9 +103,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         item.parseItemChildNodes(builder)
 
         assertThat(builder.atomBuilder, "atom item data").all {
-            prop(FakeEpisodeAtomBuilder::authorBuilders).noneHasEnoughDataToBuild()
-            prop(FakeEpisodeAtomBuilder::contributorBuilders).noneHasEnoughDataToBuild()
-            prop(FakeEpisodeAtomBuilder::linkBuilders).isEmpty()
+            prop(FakeAtomBuilder::authorBuilders).noneHasEnoughDataToBuild()
+            prop(FakeAtomBuilder::contributorBuilders).noneHasEnoughDataToBuild()
+            prop(FakeAtomBuilder::linkBuilders).isEmpty()
         }
     }
 }

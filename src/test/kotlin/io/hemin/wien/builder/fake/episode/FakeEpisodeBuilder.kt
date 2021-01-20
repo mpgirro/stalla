@@ -12,6 +12,7 @@ import io.hemin.wien.builder.episode.EpisodePodcastChaptersBuilder
 import io.hemin.wien.builder.episode.EpisodePodcastSoundbiteBuilder
 import io.hemin.wien.builder.episode.EpisodePodcastTranscriptBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
+import io.hemin.wien.builder.fake.FakeAtomBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.fake.FakeHrefOnlyImageBuilder
 import io.hemin.wien.builder.fake.FakeITunesStyleCategoryBuilder
@@ -39,7 +40,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override val iTunesBuilder: FakeEpisodeITunesBuilder = FakeEpisodeITunesBuilder()
 
-    override val atomBuilder: FakeEpisodeAtomBuilder = FakeEpisodeAtomBuilder()
+    override val atomBuilder: FakeAtomBuilder = FakeAtomBuilder()
 
     override val podloveBuilder: FakeEpisodePodloveBuilder = FakeEpisodePodloveBuilder()
 

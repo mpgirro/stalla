@@ -1,6 +1,7 @@
 package io.hemin.wien.model.episode
 
 import io.hemin.wien.dateTime
+import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.Link
@@ -28,7 +29,7 @@ internal fun anEpisode(
     source: String? = "episode source",
     content: Episode.Content? = anEpisodeContent(),
     iTunes: Episode.ITunes? = anEpisodeITunes(),
-    atom: Episode.Atom? = anEpisodeAtom(),
+    atom: Atom? = anEpisodeAtom(),
     podlove: Episode.Podlove? = anEpisodePodlove(),
     googlePlay: Episode.GooglePlay? = anEpisodeGooglePlay(),
     bitlove: Episode.Bitlove? = anEpisodeBitlove(),
@@ -86,7 +87,7 @@ internal fun anEpisodeAtom(
     authors: List<Person> = listOf(aPerson("episode atom author name")),
     contributors: List<Person> = listOf(aPerson("episode atom contributor name")),
     links: List<Link> = listOf(aLink("episode atom link href"))
-) = Episode.Atom(authors, contributors, links)
+) = Atom(authors, contributors, links)
 
 internal fun anEpisodePodlove(
     simpleChapters: List<Episode.Podlove.SimpleChapter> = listOf(aPodloveSimpleChapter())
