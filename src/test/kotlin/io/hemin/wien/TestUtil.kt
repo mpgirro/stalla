@@ -3,6 +3,7 @@ package io.hemin.wien
 import assertk.fail
 import io.hemin.wien.dom.DomBuilderFactory
 import org.w3c.dom.Document
+import java.io.File
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.Month
@@ -38,4 +39,25 @@ internal fun dateTime(
 
     val zoneId = overrideZoneId ?: ZoneId.of("Z")
     return ZonedDateTime.of(localDate, localTime, zoneId)
+}
+
+/** Gets a list of all the resource files in the given resources path */
+internal fun allResourceFilesIn(path: String): List<File> {
+    val files = DomBuilderFactory::class.java.getResourceAsStream(path)!!
+        .bufferedReader()
+        .readLines()
+        .map {
+            val testFile = File(path, it)
+            val fileUrl = DomBuilderFactory::class.java.getResource(testFile.path)
+            File(fileUrl.toURI())
+        }
+
+    val invalidFiles = files.filter { !it.isFile }
+
+    require(invalidFiles.isEmpty()) {
+        val invalidFilePaths = invalidFiles.joinToString("\n") { it.path }
+        "At least one resource in '$path' is not a file or doesn't exist:\n$invalidFilePaths"
+    }
+
+    return files
 }
