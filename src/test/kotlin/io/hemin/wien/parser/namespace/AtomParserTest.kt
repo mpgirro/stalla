@@ -5,9 +5,9 @@ import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEmpty
 import assertk.assertions.prop
+import io.hemin.wien.builder.fake.FakeAtomBuilder
 import io.hemin.wien.builder.fake.FakeLinkBuilder
 import io.hemin.wien.builder.fake.FakePersonBuilder
-import io.hemin.wien.builder.fake.FakeAtomBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.dom.XmlRes

@@ -1,8 +1,8 @@
 package io.hemin.wien.builder.validating
 
+import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
-import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.model.Atom
 
 internal class ValidatingAtomBuilder : AtomBuilder {

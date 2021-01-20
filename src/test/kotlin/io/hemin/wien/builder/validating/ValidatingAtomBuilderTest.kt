@@ -10,9 +10,6 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.AtomBuilder
-import io.hemin.wien.builder.validating.ValidatingAtomBuilder
-import io.hemin.wien.builder.validating.ValidatingLinkBuilder
-import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person

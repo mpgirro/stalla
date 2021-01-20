@@ -4,9 +4,7 @@ import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
-import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.LinkBuilderProvider
-import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.PersonBuilderProvider
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.RssImageBuilder
