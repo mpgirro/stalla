@@ -109,13 +109,15 @@ internal fun Element.setAttributeWithNS(attributeName: String, namespace: FeedNa
  * @param value The value to use
  * @param namespace The namespace to use, if any
  */
-internal fun Node.appendYesElementIfTrue(tagName: String, value: Boolean, namespace: FeedNamespace? = null) =
-    appendElement(tagName, namespace) {
-        val stringValue = value.asBooleanString(BooleanStringStyle.YES_NULL)
-            ?: return@appendElement
+internal fun Node.appendYesElementIfTrue(tagName: String, value: Boolean, namespace: FeedNamespace? = null): Element? {
+    val stringValue = value.asBooleanString(BooleanStringStyle.YES_NULL)
+        ?: return null
+
+    return appendElement(tagName, namespace) {
 
         textContent = stringValue
     }
+}
 
 /**
  * Appends a [tagName] element with text `true` if the [value] is true, `false` otherwise.
@@ -127,6 +129,18 @@ internal fun Node.appendYesElementIfTrue(tagName: String, value: Boolean, namesp
 internal fun Node.appendTrueFalseElement(tagName: String, value: Boolean, namespace: FeedNamespace? = null) =
     appendElement(tagName, namespace) {
         textContent = value.asBooleanString(BooleanStringStyle.TRUE_FALSE)
+    }
+
+/**
+ * Appends a [tagName] element with text `yes` if the [value] is true, `no` otherwise.
+ *
+ * @param tagName The local name of the tag to append
+ * @param value The value to use
+ * @param namespace The namespace to use, if any
+ */
+internal fun Node.appendYesNoElement(tagName: String, value: Boolean, namespace: FeedNamespace? = null) =
+    appendElement(tagName, namespace) {
+        textContent = value.asBooleanString(BooleanStringStyle.YES_NO)
     }
 
 /**
@@ -158,7 +172,7 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
  * @param categories The [categories][ITunesStyleCategory] to append.
  * @param namespace The namespace to use, if any.
  */
-internal fun Node.appendITunesCategoryElements(categories: List<ITunesStyleCategory>, namespace: FeedNamespace? = null) {
+internal fun Node.appendITunesStyleCategoryElements(categories: List<ITunesStyleCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
         if (category.name.isBlank()) continue
         appendElement("category", namespace) {

@@ -2,8 +2,9 @@ package io.hemin.wien.writer.namespace
 
 import io.hemin.wien.dom.appendElement
 import io.hemin.wien.dom.appendHrefOnlyImageElement
-import io.hemin.wien.dom.appendITunesCategoryElements
+import io.hemin.wien.dom.appendITunesStyleCategoryElements
 import io.hemin.wien.dom.appendYesElementIfTrue
+import io.hemin.wien.dom.appendYesNoElement
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.GooglePlayBase
 import io.hemin.wien.model.Podcast
@@ -32,7 +33,7 @@ internal class GooglePlayWriter : NamespaceWriter() {
             appendElement("owner", namespace) { textContent = play.owner?.trim() }
         }
 
-        appendITunesCategoryElements(play.categories, namespace)
+        appendITunesStyleCategoryElements(play.categories, namespace)
 
         appendCommonElements(play)
     }
@@ -49,7 +50,10 @@ internal class GooglePlayWriter : NamespaceWriter() {
             appendElement("description", namespace) { textContent = description?.trim() }
         }
 
-        appendYesElementIfTrue("explicit", play.explicit, namespace)
+        val explicit = play.explicit
+        if (explicit != null) {
+            appendYesNoElement("explicit", explicit, namespace)
+        }
 
         appendYesElementIfTrue("block", play.block, namespace)
 

@@ -7,7 +7,7 @@ import io.hemin.wien.model.Episode
 internal class ValidatingEpisodeGooglePlayBuilder : EpisodeGooglePlayBuilder {
 
     private var description: String? = null
-    private var explicit: Boolean = false
+    private var explicit: Boolean? = null
     private var block: Boolean = false
     private var imageBuilder: HrefOnlyImageBuilder? = null
 
@@ -20,7 +20,7 @@ internal class ValidatingEpisodeGooglePlayBuilder : EpisodeGooglePlayBuilder {
     override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = anyNotNull(description, explicit, block) || imageBuilder?.hasEnoughDataToBuild == true
+        get() = block || anyNotNull(description, explicit) || imageBuilder?.hasEnoughDataToBuild == true
 
     override fun build(): Episode.GooglePlay? {
         if (!hasEnoughDataToBuild) {

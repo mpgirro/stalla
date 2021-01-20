@@ -7,7 +7,7 @@ internal enum class FeedNamespace(
 ) {
     ATOM("atom", "http://www.w3.org/2005/Atom"),
     BITLOVE("bitlove", "http://bitlove.org"),
-    CONTENT("content", "http://purl.org/rss/1.0/modules/content"),
+    CONTENT("content", "http://purl.org/rss/1.0/modules/content/"),
     FEEDPRESS("feedpress", "https://feed.press/xmlns"),
     FYYD("fyyd", "https://fyyd.de/fyyd-ns/"),
     GOOGLE_PLAY("googleplay", "http://www.google.com/schemas/play-podcasts/1.0"),
@@ -24,13 +24,15 @@ internal enum class FeedNamespace(
     companion object {
 
         fun FeedNamespace?.matches(uri: String?): Boolean {
-            val normalizedUri = uri?.removeSuffix("/")
+            val normalizedUri = uri?.normalizeUri()
             return when {
                 this == null -> normalizedUri == null
-                this.uri == normalizedUri -> true
+                this.uri.normalizeUri() == normalizedUri -> true
                 otherUris.isEmpty() -> false
-                else -> otherUris.any { it == normalizedUri }
+                else -> otherUris.any { it.normalizeUri() == normalizedUri }
             }
         }
+
+        private fun String.normalizeUri() = substringAfter("://").removeSuffix("/")
     }
 }

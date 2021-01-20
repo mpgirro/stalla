@@ -11,7 +11,7 @@ internal class ValidatingPodcastGooglePlayBuilder : PodcastGooglePlayBuilder {
     private var owner: String? = null
     private var categoryBuilders: MutableList<ITunesStyleCategoryBuilder> = mutableListOf()
     private var description: String? = null
-    private var explicit: Boolean = false
+    private var explicit: Boolean? = null
     private var block: Boolean = false
     private var imageBuilder: HrefOnlyImageBuilder? = null
 
@@ -25,7 +25,7 @@ internal class ValidatingPodcastGooglePlayBuilder : PodcastGooglePlayBuilder {
 
     override fun description(description: String?): PodcastGooglePlayBuilder = apply { this.description = description }
 
-    override fun explicit(explicit: Boolean): PodcastGooglePlayBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: Boolean?): PodcastGooglePlayBuilder = apply { this.explicit = explicit }
 
     override fun block(block: Boolean): PodcastGooglePlayBuilder = apply { this.block = block }
 
@@ -33,7 +33,8 @@ internal class ValidatingPodcastGooglePlayBuilder : PodcastGooglePlayBuilder {
 
     override val hasEnoughDataToBuild: Boolean
         get() {
-            if (anyNotNull(author, owner, description, explicit, block)) return true
+            if (block) return true
+            if (anyNotNull(author, owner, description, explicit)) return true
             if (imageBuilder?.hasEnoughDataToBuild == true) return true
             return categoryBuilders.any { it.hasEnoughDataToBuild }
         }

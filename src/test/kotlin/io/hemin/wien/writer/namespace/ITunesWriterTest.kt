@@ -110,7 +110,10 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
                 type = null,
                 owner = null,
                 title = " ",
-                newFeedUrl = " "
+                newFeedUrl = " ",
+                block = false,
+                complete = false,
+                explicit = false
             )
         )
         assertAll {
@@ -155,7 +158,10 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
                 type = null,
                 owner = null,
                 title = "",
-                newFeedUrl = ""
+                newFeedUrl = "",
+                block = false,
+                complete = false,
+                explicit = false
             )
         )
         assertAll {
@@ -247,7 +253,9 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
                 episodeType = null,
                 author = " ",
                 subtitle = " ",
-                summary = " "
+                summary = " ",
+                explicit = null,
+                block = false
             )
         )
         assertAll {
@@ -256,8 +264,8 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
             assertTagIsNotWrittenToEpisode(episode, "episode")
             assertTagIsNotWrittenToEpisode(episode, "episodeType")
             assertTagIsNotWrittenToEpisode(episode, "image")
-            assertTagIsNotWrittenToEpisode(episode, "explicit")
             assertTagIsNotWrittenToEpisode(episode, "title")
+            assertTagIsNotWrittenToEpisode(episode, "explicit")
             assertTagIsNotWrittenToEpisode(episode, "block")
         }
     }
@@ -274,7 +282,9 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
                 episodeType = null,
                 author = "",
                 subtitle = "",
-                summary = ""
+                summary = "",
+                explicit = null,
+                block = false
             )
         )
         assertAll {

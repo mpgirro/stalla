@@ -53,7 +53,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
                 prop(Podcast.GooglePlay::categories).isEmpty()
                 prop(Podcast.GooglePlay::description).isNull()
                 prop(Podcast.GooglePlay::explicit).isNull()
-                prop(Podcast.GooglePlay::block).isNull()
+                prop(Podcast.GooglePlay::block).isFalse()
                 prop(Podcast.GooglePlay::image).isNull()
             }
         }
@@ -73,7 +73,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
                 prop(Podcast.GooglePlay::categories).isEmpty()
                 prop(Podcast.GooglePlay::description).isNull()
                 prop(Podcast.GooglePlay::explicit).isNull()
-                prop(Podcast.GooglePlay::block).isNull()
+                prop(Podcast.GooglePlay::block).isFalse()
                 prop(Podcast.GooglePlay::image).isNull()
             }
         }
@@ -93,7 +93,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
                 prop(Podcast.GooglePlay::categories).containsExactly(expectedITunesCategoryBuilder.build())
                 prop(Podcast.GooglePlay::description).isNull()
                 prop(Podcast.GooglePlay::explicit).isNull()
-                prop(Podcast.GooglePlay::block).isNull()
+                prop(Podcast.GooglePlay::block).isFalse()
                 prop(Podcast.GooglePlay::image).isNull()
             }
         }
@@ -113,7 +113,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
                 prop(Podcast.GooglePlay::categories).isEmpty()
                 prop(Podcast.GooglePlay::description).isEqualTo("description")
                 prop(Podcast.GooglePlay::explicit).isNull()
-                prop(Podcast.GooglePlay::block).isNull()
+                prop(Podcast.GooglePlay::block).isFalse()
                 prop(Podcast.GooglePlay::image).isNull()
             }
         }
@@ -133,7 +133,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
                 prop(Podcast.GooglePlay::categories).isEmpty()
                 prop(Podcast.GooglePlay::description).isNull()
                 prop(Podcast.GooglePlay::explicit).isNotNull().isTrue()
-                prop(Podcast.GooglePlay::block).isNull()
+                prop(Podcast.GooglePlay::block).isFalse()
                 prop(Podcast.GooglePlay::image).isNull()
             }
         }
@@ -142,7 +142,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
     @Test
     internal fun `should build a valid Podcast GooglePlay when there is only a block`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
-            .block(false)
+            .block(true)
 
         assertAll {
             assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
@@ -153,7 +153,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
                 prop(Podcast.GooglePlay::categories).isEmpty()
                 prop(Podcast.GooglePlay::description).isNull()
                 prop(Podcast.GooglePlay::explicit).isNull()
-                prop(Podcast.GooglePlay::block).isNotNull().isFalse()
+                prop(Podcast.GooglePlay::block).isTrue()
                 prop(Podcast.GooglePlay::image).isNull()
             }
         }
@@ -173,7 +173,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
                 prop(Podcast.GooglePlay::categories).isEmpty()
                 prop(Podcast.GooglePlay::description).isNull()
                 prop(Podcast.GooglePlay::explicit).isNull()
-                prop(Podcast.GooglePlay::block).isNull()
+                prop(Podcast.GooglePlay::block).isFalse()
                 prop(Podcast.GooglePlay::image).isEqualTo(expectedImageBuilder.build())
             }
         }
@@ -203,7 +203,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
                 )
                 prop(Podcast.GooglePlay::description).isEqualTo("description")
                 prop(Podcast.GooglePlay::explicit).isNotNull().isTrue()
-                prop(Podcast.GooglePlay::block).isNotNull().isFalse()
+                prop(Podcast.GooglePlay::block).isFalse()
                 prop(Podcast.GooglePlay::image).isEqualTo(expectedImageBuilder.build())
             }
         }

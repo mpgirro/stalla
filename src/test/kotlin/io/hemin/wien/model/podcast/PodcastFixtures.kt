@@ -103,7 +103,7 @@ internal fun aPodcastGooglePlay(
     owner: String? = "podcast googleplay owner",
     categories: List<ITunesStyleCategory> = listOf(anITunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
     description: String? = "podcast googleplay description",
-    explicit: Boolean = true,
+    explicit: Boolean? = true,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url")
 ) = Podcast.GooglePlay(author, owner, categories, description, explicit, block, image)

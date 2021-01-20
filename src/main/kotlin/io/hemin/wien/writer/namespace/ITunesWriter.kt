@@ -2,7 +2,7 @@ package io.hemin.wien.writer.namespace
 
 import io.hemin.wien.dom.appendElement
 import io.hemin.wien.dom.appendHrefOnlyImageElement
-import io.hemin.wien.dom.appendITunesCategoryElements
+import io.hemin.wien.dom.appendITunesStyleCategoryElements
 import io.hemin.wien.dom.appendPersonElement
 import io.hemin.wien.dom.appendTrueFalseElement
 import io.hemin.wien.dom.appendYesElementIfTrue
@@ -26,9 +26,11 @@ internal class ITunesWriter : NamespaceWriter() {
     override fun Element.appendPodcastData(podcast: Podcast) {
         val iTunes = podcast.iTunes ?: return
 
-        appendITunesCategoryElements(iTunes.categories, namespace)
+        appendITunesStyleCategoryElements(iTunes.categories, namespace)
 
         appendYesElementIfTrue("complete", iTunes.complete, namespace)
+
+        appendTrueFalseElement("explicit", iTunes.explicit, namespace)
 
         if (iTunes.keywords.isNeitherNullNorBlank()) {
             appendElement("keywords", namespace) { textContent = iTunes.keywords?.trim() }
@@ -68,14 +70,16 @@ internal class ITunesWriter : NamespaceWriter() {
             appendElement("episodeType", namespace) { textContent = iTunes.episodeType.type.trim() }
         }
 
+        if (iTunes.explicit != null) {
+            appendTrueFalseElement("explicit", iTunes.explicit, namespace)
+        }
+
         appendCommonElements(episode.iTunes)
     }
 
     private fun Element.appendCommonElements(iTunes: ITunesBase) {
         val image = iTunes.image
         if (image != null) appendHrefOnlyImageElement(image, namespace)
-
-        appendTrueFalseElement("explicit", iTunes.explicit, namespace)
 
         val title = iTunes.title
         if (title.isNeitherNullNorBlank()) {

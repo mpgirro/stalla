@@ -79,7 +79,9 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
                 owner = " ",
                 description = " ",
                 categories = categories,
-                image = HrefOnlyImage(" ")
+                image = HrefOnlyImage(" "),
+                block = false,
+                explicit = null
             )
         )
         assertAll {
@@ -112,7 +114,9 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
                 owner = "",
                 description = "",
                 categories = categories,
-                image = HrefOnlyImage("")
+                image = HrefOnlyImage(""),
+                block = false,
+                explicit = null
             )
         )
         assertAll {
@@ -167,7 +171,7 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write googleplay tags to the item when the data is blank`() {
-        val episode = anEpisode(googlePlay = anEpisodeGooglePlay(description = " ", image = anHrefOnlyImage(" ")))
+        val episode = anEpisode(googlePlay = anEpisodeGooglePlay(description = " ", image = anHrefOnlyImage(" "), block = false, explicit = null))
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "description")
             assertTagIsNotWrittenToEpisode(episode, "explicit")
@@ -178,7 +182,7 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write googleplay tags to the item when the data is empty`() {
-        val episode = anEpisode(googlePlay = anEpisodeGooglePlay(description = "", image = anHrefOnlyImage("")))
+        val episode = anEpisode(googlePlay = anEpisodeGooglePlay(description = "", image = anHrefOnlyImage(""), block = false, explicit = null))
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "description")
             assertTagIsNotWrittenToEpisode(episode, "explicit")

@@ -26,7 +26,7 @@ internal class FakePodcastGooglePlayBuilder : FakeBuilder<Podcast.GooglePlay>(),
 
     override fun description(description: String?): PodcastGooglePlayBuilder = apply { this.description = description }
 
-    override fun explicit(explicit: Boolean): PodcastGooglePlayBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: Boolean?): PodcastGooglePlayBuilder = apply { this.explicit = explicit }
 
     override fun block(block: Boolean): PodcastGooglePlayBuilder = apply { this.block = block }
 

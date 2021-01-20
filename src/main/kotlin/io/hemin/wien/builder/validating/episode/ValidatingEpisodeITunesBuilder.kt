@@ -9,7 +9,7 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
     private var title: String? = null
     private var duration: String? = null
     private var imageBuilder: HrefOnlyImageBuilder? = null
-    private var explicit: Boolean = false
+    private var explicit: Boolean? = null
     private var block: Boolean = false
     private var season: Int? = null
     private var episode: Int? = null
@@ -24,7 +24,7 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
 
     override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeITunesBuilder = apply { this.imageBuilder = imageBuilder }
 
-    override fun explicit(explicit: Boolean): EpisodeITunesBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: Boolean?): EpisodeITunesBuilder = apply { this.explicit = explicit }
 
     override fun block(block: Boolean): EpisodeITunesBuilder = apply { this.block = block }
 
@@ -33,8 +33,7 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
     override fun episode(episode: Int?): EpisodeITunesBuilder = apply { this.episode = episode }
 
     override fun episodeType(episodeType: String?): EpisodeITunesBuilder = apply {
-        this.episodeType =
-            Episode.ITunes.EpisodeType.of(episodeType)
+        this.episodeType = Episode.ITunes.EpisodeType.of(episodeType)
     }
 
     override fun author(author: String?): EpisodeITunesBuilder = apply { this.author = author }
@@ -44,8 +43,9 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
     override fun summary(summary: String?): EpisodeITunesBuilder = apply { this.summary = summary }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = anyNotNull(title, duration, explicit, block, season, episode, episodeType, author, summary, subtitle) ||
-            imageBuilder?.hasEnoughDataToBuild == true
+        get() = anyNotNull(title, duration, explicit, season, episode, episodeType, author, summary, subtitle) ||
+            imageBuilder?.hasEnoughDataToBuild == true ||
+            block
 
     override fun build(): Episode.ITunes? {
         if (!hasEnoughDataToBuild) {
