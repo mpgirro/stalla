@@ -7,15 +7,15 @@ import io.hemin.wien.model.Episode
 internal class ValidatingEpisodeGooglePlayBuilder : EpisodeGooglePlayBuilder {
 
     private var description: String? = null
-    private var explicit: Boolean? = null
-    private var block: Boolean? = null
+    private var explicit: Boolean = false
+    private var block: Boolean = false
     private var imageBuilder: HrefOnlyImageBuilder? = null
 
     override fun description(description: String?): EpisodeGooglePlayBuilder = apply { this.description = description }
 
-    override fun explicit(explicit: Boolean?): EpisodeGooglePlayBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: Boolean): EpisodeGooglePlayBuilder = apply { this.explicit = explicit }
 
-    override fun block(block: Boolean?): EpisodeGooglePlayBuilder = apply { this.block = block }
+    override fun block(block: Boolean): EpisodeGooglePlayBuilder = apply { this.block = block }
 
     override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
 

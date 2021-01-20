@@ -28,9 +28,7 @@ internal class ITunesWriter : NamespaceWriter() {
 
         appendITunesCategoryElements(iTunes.categories, namespace)
 
-        if (iTunes.complete != null) {
-            appendYesElementIfTrue("complete", iTunes.complete, namespace)
-        }
+        appendYesElementIfTrue("complete", iTunes.complete, namespace)
 
         if (iTunes.keywords.isNeitherNullNorBlank()) {
             appendElement("keywords", namespace) { textContent = iTunes.keywords?.trim() }
@@ -77,16 +75,14 @@ internal class ITunesWriter : NamespaceWriter() {
         val image = iTunes.image
         if (image != null) appendHrefOnlyImageElement(image, namespace)
 
-        val explicit = iTunes.explicit
-        if (explicit != null) appendTrueFalseElement("explicit", explicit, namespace)
+        appendTrueFalseElement("explicit", iTunes.explicit, namespace)
 
         val title = iTunes.title
         if (title.isNeitherNullNorBlank()) {
             appendElement("title", namespace) { textContent = title?.trim() }
         }
 
-        val block = iTunes.block
-        if (block != null) appendYesElementIfTrue("block", block, namespace)
+        appendYesElementIfTrue("block", iTunes.block, namespace)
 
         val author = iTunes.author
         if (author.isNeitherNullNorBlank()) {

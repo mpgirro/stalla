@@ -29,8 +29,14 @@ internal class GooglePlayParser : NamespaceParser() {
                 builder.googlePlayBuilder.addCategoryBuilder(category)
             }
             "description" -> builder.googlePlayBuilder.description(ifCanBeParsed { textOrNull() })
-            "explicit" -> builder.googlePlayBuilder.explicit(ifCanBeParsed { textAsBooleanOrNull() })
-            "block" -> builder.googlePlayBuilder.block(ifCanBeParsed { textAsBooleanOrNull() })
+            "explicit" -> {
+                val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googlePlayBuilder.explicit(explicit)
+            }
+            "block" -> {
+                val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googlePlayBuilder.block(block)
+            }
             "image" -> {
                 val imageBuilder = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
                 builder.googlePlayBuilder.imageBuilder(imageBuilder)
@@ -42,8 +48,14 @@ internal class GooglePlayParser : NamespaceParser() {
     override fun Node.parseItemData(builder: EpisodeBuilder) {
         when (localName) {
             "description" -> builder.googlePlayBuilder.description(ifCanBeParsed { textOrNull() })
-            "explicit" -> builder.googlePlayBuilder.explicit(ifCanBeParsed { textAsBooleanOrNull() })
-            "block" -> builder.googlePlayBuilder.block(ifCanBeParsed { textAsBooleanOrNull() })
+            "explicit" -> {
+                val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googlePlayBuilder.explicit(explicit)
+            }
+            "block" -> {
+                val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googlePlayBuilder.block(block)
+            }
             "image" -> {
                 val imageBuilder = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
                 builder.googlePlayBuilder.imageBuilder(imageBuilder)

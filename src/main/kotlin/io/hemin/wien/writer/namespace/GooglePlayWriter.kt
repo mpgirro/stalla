@@ -49,15 +49,9 @@ internal class GooglePlayWriter : NamespaceWriter() {
             appendElement("description", namespace) { textContent = description?.trim() }
         }
 
-        val explicit = play.explicit
-        if (explicit != null) {
-            appendYesElementIfTrue("explicit", explicit, namespace)
-        }
+        appendYesElementIfTrue("explicit", play.explicit, namespace)
 
-        val block = play.block
-        if (block != null) {
-            appendYesElementIfTrue("block", block, namespace)
-        }
+        appendYesElementIfTrue("block", play.block, namespace)
 
         val image = play.image
         if (image != null) {

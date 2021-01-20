@@ -97,8 +97,8 @@ data class Episode(
         override val title: String? = null,
         val duration: String? = null,
         override val image: HrefOnlyImage? = null,
-        override val explicit: Boolean? = null,
-        override val block: Boolean? = null,
+        override val explicit: Boolean,
+        override val block: Boolean,
         val season: Int? = null,
         val episode: Int? = null,
         val episodeType: EpisodeType? = null,
@@ -148,8 +148,8 @@ data class Episode(
      */
     data class GooglePlay(
         override val description: String? = null,
-        override val explicit: Boolean? = null,
-        override val block: Boolean? = null,
+        override val explicit: Boolean,
+        override val block: Boolean,
         override val image: HrefOnlyImage? = null
     ) : GooglePlayBase
 

@@ -27,7 +27,7 @@ internal class RealLifeFeedsTest {
     private fun testRealLifeFeed(file: File) {
         assertAll {
             val parsedPodcast = PodcastRssParser.parse(file)
-            assertThat(parsedPodcast).isNotNull()
+            assertThat(parsedPodcast, "parsed podcast").isNotNull()
 
             val tmpFile = File.createTempFile("wien_test", "writer_output")
             PodcastRssWriter.writeRssFeed(parsedPodcast!!, tmpFile)

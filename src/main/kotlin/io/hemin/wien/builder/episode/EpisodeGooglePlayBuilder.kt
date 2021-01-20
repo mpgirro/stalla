@@ -10,10 +10,10 @@ internal interface EpisodeGooglePlayBuilder : Builder<Episode.GooglePlay> {
     fun description(description: String?): EpisodeGooglePlayBuilder
 
     /** Set the explicit value. */
-    fun explicit(explicit: Boolean?): EpisodeGooglePlayBuilder
+    fun explicit(explicit: Boolean): EpisodeGooglePlayBuilder
 
     /** Set the block value. */
-    fun block(block: Boolean?): EpisodeGooglePlayBuilder
+    fun block(block: Boolean): EpisodeGooglePlayBuilder
 
     /** Set the Image builder. */
     fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder

@@ -73,8 +73,8 @@ internal fun anEpisodeITunes(
     title: String? = "episode itunes title",
     duration: String? = "episode itunes duration",
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode itunes image url"),
-    explicit: Boolean? = true,
-    block: Boolean? = true,
+    explicit: Boolean = true,
+    block: Boolean = true,
     season: Int? = 2,
     episode: Int? = 3,
     episodeType: Episode.ITunes.EpisodeType? = Episode.ITunes.EpisodeType.FULL,
@@ -102,8 +102,8 @@ internal fun aPodloveSimpleChapter(
 
 internal fun anEpisodeGooglePlay(
     description: String? = "episode googleplay description",
-    explicit: Boolean? = true,
-    block: Boolean? = true,
+    explicit: Boolean = true,
+    block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode googleplay image url")
 ) = Episode.GooglePlay(description, explicit, block, image)
 

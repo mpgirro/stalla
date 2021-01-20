@@ -9,8 +9,8 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
     private var title: String? = null
     private var duration: String? = null
     private var imageBuilder: HrefOnlyImageBuilder? = null
-    private var explicit: Boolean? = null
-    private var block: Boolean? = null
+    private var explicit: Boolean = false
+    private var block: Boolean = false
     private var season: Int? = null
     private var episode: Int? = null
     private var episodeType: Episode.ITunes.EpisodeType? = null
@@ -24,9 +24,9 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
 
     override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeITunesBuilder = apply { this.imageBuilder = imageBuilder }
 
-    override fun explicit(explicit: Boolean?): EpisodeITunesBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: Boolean): EpisodeITunesBuilder = apply { this.explicit = explicit }
 
-    override fun block(block: Boolean?): EpisodeITunesBuilder = apply { this.block = block }
+    override fun block(block: Boolean): EpisodeITunesBuilder = apply { this.block = block }
 
     override fun season(season: Int?): EpisodeITunesBuilder = apply { this.season = season }
 

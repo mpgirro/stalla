@@ -25,10 +25,10 @@ internal interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
     fun description(description: String?): PodcastGooglePlayBuilder
 
     /** Set the explicit flag value. */
-    fun explicit(explicit: Boolean?): PodcastGooglePlayBuilder
+    fun explicit(explicit: Boolean): PodcastGooglePlayBuilder
 
     /** Set the block flag value. */
-    fun block(block: Boolean?): PodcastGooglePlayBuilder
+    fun block(block: Boolean): PodcastGooglePlayBuilder
 
     /** Set the ImageBuilder. */
     fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGooglePlayBuilder

@@ -38,7 +38,7 @@ internal fun Node.textAsBooleanOrNull(): Boolean? = textOrNull().parseAsBooleanO
  * @return The logical interpretation of the string parameter, or `null`.
  */
 internal fun String?.parseAsBooleanOrNull(): Boolean? =
-    when (this?.toLowerCase(Locale.ROOT)) {
+    when (this.trimmedOrNullIfBlank()?.toLowerCase(Locale.ROOT)) {
         "true", "yes" -> true
         "false", "no" -> false
         else -> null

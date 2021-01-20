@@ -16,10 +16,10 @@ internal interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
     fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeITunesBuilder
 
     /** Set the explicit flag value. */
-    fun explicit(explicit: Boolean?): EpisodeITunesBuilder
+    fun explicit(explicit: Boolean): EpisodeITunesBuilder
 
     /** Set the block flag value. */
-    fun block(block: Boolean?): EpisodeITunesBuilder
+    fun block(block: Boolean): EpisodeITunesBuilder
 
     /** Set the season value. */
     fun season(season: Int?): EpisodeITunesBuilder
