@@ -30,7 +30,7 @@ internal class ValidatingEpisodeBuilderTest {
 
     private val expectedAtomAuthorBuilder = ValidatingPersonBuilder().name("atom author")
 
-    private val expectedChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
+    private val expectedSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
         .start("start")
         .title("chapter title")
 
@@ -38,6 +38,10 @@ internal class ValidatingEpisodeBuilderTest {
         ValidatingRssCategoryBuilder().category("category 1").domain("domain"),
         ValidatingRssCategoryBuilder().category("category 2")
     )
+
+    private val expectedPodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
+        .url("https://example.com/episode/chapters.json")
+        .type("application/json+chapters")
 
     @Test
     internal fun `should not build a episode when the mandatory fields are missing`() {
@@ -100,6 +104,7 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::podlove).isNull()
                 prop(Episode::googlePlay).isNull()
                 prop(Episode::bitlove).isNull()
+                prop(Episode::podcast).isNull()
             }
         }
     }
@@ -119,12 +124,13 @@ internal class ValidatingEpisodeBuilderTest {
             .pubDate(expectedDate)
             .source("source")
             .apply {
-                content.encoded("encoded")
-                iTunes.title("iTunes title")
-                atom.addAuthorBuilder(expectedAtomAuthorBuilder)
-                podlove.addSimpleChapterBuilder(expectedChapterBuilder)
-                googlePlay.description("play description")
-                bitlove.guid("bitlove guid")
+                contentBuilder.encoded("encoded")
+                iTunesBuilder.title("iTunes title")
+                atomBuilder.addAuthorBuilder(expectedAtomAuthorBuilder)
+                podloveBuilder.addSimpleChapterBuilder(expectedSimpleChapterBuilder)
+                googlePlayBuilder.description("play description")
+                bitloveBuilder.guid("bitlove guid")
+                podcastBuilder.chaptersBuilder(expectedPodcastChaptersBuilder)
             }
 
         assertAll {
@@ -144,9 +150,10 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::content).isNotNull().prop(Episode.Content::encoded).isEqualTo("encoded")
                 prop(Episode::iTunes).isNotNull().prop(Episode.ITunes::title).isEqualTo("iTunes title")
                 prop(Episode::atom).isNotNull().prop(Episode.Atom::authors).containsExactly(expectedAtomAuthorBuilder.build())
-                prop(Episode::podlove).isNotNull().prop(Episode.Podlove::simpleChapters).containsExactly(expectedChapterBuilder.build())
+                prop(Episode::podlove).isNotNull().prop(Episode.Podlove::simpleChapters).containsExactly(expectedSimpleChapterBuilder.build())
                 prop(Episode::googlePlay).isNotNull().prop(Episode.GooglePlay::description).isEqualTo("play description")
                 prop(Episode::bitlove).isNotNull().prop(Episode.Bitlove::guid).isEqualTo("bitlove guid")
+                prop(Episode::podcast).isNotNull().prop(Episode.Podcast::chapters).isEqualTo(expectedPodcastChaptersBuilder.build())
             }
         }
     }

@@ -15,19 +15,22 @@ import java.time.temporal.TemporalAccessor
 internal interface PodcastBuilder : Builder<Podcast> {
 
     /** The builder for data from the iTunes namespace. */
-    val iTunes: PodcastITunesBuilder
+    val iTunesBuilder: PodcastITunesBuilder
 
     /** The builder for data from the Atom namespace. */
-    val atom: PodcastAtomBuilder
+    val atomBuilder: PodcastAtomBuilder
 
     /** The builder for data from the Fyyd namespace. */
-    val fyyd: PodcastFyydBuilder
+    val fyydBuilder: PodcastFyydBuilder
 
     /** The builder for data from the Feedpress namespace. */
-    val feedpress: PodcastFeedpressBuilder
+    val feedpressBuilder: PodcastFeedpressBuilder
 
     /** The builder for data from the Google Play namespace. */
-    val googlePlay: PodcastGooglePlayBuilder
+    val googlePlayBuilder: PodcastGooglePlayBuilder
+
+    /** Set the Podcast namespace builder. */
+    val podcastBuilder: PodcastPodcastBuilder
 
     /** Set the title value. */
     fun title(title: String): PodcastBuilder
@@ -96,5 +99,11 @@ internal interface PodcastBuilder : Builder<Podcast> {
     fun createRssCategoryBuilder(): RssCategoryBuilder
 
     /** Creates an instance of [ITunesStyleCategoryBuilder] to use with this builder. */
-    fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder
+    fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder
+
+    /** Creates an instance of [PodcastPodcastLockedBuilder] to use with this builder. */
+    fun createPodcastPodcastLockedBuilder(): PodcastPodcastLockedBuilder
+
+    /** Creates an instance of [PodcastPodcastFundingBuilder] to use with this builder. */
+    fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder
 }

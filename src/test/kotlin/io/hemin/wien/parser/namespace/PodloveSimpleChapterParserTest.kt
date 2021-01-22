@@ -1,4 +1,4 @@
-package io.hemin.wien.parser
+package io.hemin.wien.parser.namespace
 
 import assertk.assertThat
 import assertk.assertions.containsExactly
@@ -8,8 +8,7 @@ import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodePodloveBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.dom.XmlRes
-import io.hemin.wien.noneHasEnoughDataToBuild
-import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
+import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
@@ -23,7 +22,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.podlove.chapterBuilders, "item.podlove_simple_chapters").isEmpty()
+        assertThat(builder.podloveBuilder.chapterBuilders, "item.podlove_simple_chapters").isEmpty()
     }
 
     @Test
@@ -32,8 +31,8 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)
 
-        assertThat(builder.podlove, "item.podlove_simple_chapters")
-            .prop(FakeEpisodePodloveBuilder::chapterBuilders).noneHasEnoughDataToBuild()
+        assertThat(builder.podloveBuilder, "item.podlove_simple_chapters")
+            .prop(FakeEpisodePodloveBuilder::chapterBuilders).isEmpty()
     }
 
     @Test
@@ -42,7 +41,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.podlove.chapterBuilders, "item.podlove_simple_chapters")
+        assertThat(builder.podloveBuilder.chapterBuilders, "item.podlove_simple_chapters")
             .containsExactly(
                 FakeEpisodePodloveSimpleChapterBuilder()
                     .start("00:00:00.000")

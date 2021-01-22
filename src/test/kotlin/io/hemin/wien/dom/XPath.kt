@@ -1,6 +1,7 @@
 package io.hemin.wien.dom
 
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.FeedNamespace.Companion.matches
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import javax.xml.namespace.NamespaceContext
@@ -26,7 +27,7 @@ private object FeedNamespaceContext : NamespaceContext {
 
     override fun getPrefix(namespaceURI: String?): String? {
         if (namespaceURI == null) return null
-        return FeedNamespace.values().find { it.uri == namespaceURI }?.prefix
+        return FeedNamespace.values().find { it.matches(namespaceURI) }?.prefix
     }
 
     override fun getPrefixes(namespaceURI: String?): Iterator<String> {

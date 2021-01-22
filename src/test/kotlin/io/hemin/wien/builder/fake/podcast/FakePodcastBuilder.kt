@@ -15,6 +15,8 @@ import io.hemin.wien.builder.fake.FakePersonBuilder
 import io.hemin.wien.builder.fake.FakeRssCategoryBuilder
 import io.hemin.wien.builder.fake.FakeRssImageBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastFundingBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastLockedBuilder
 import io.hemin.wien.model.Podcast
 import java.time.temporal.TemporalAccessor
 
@@ -37,15 +39,17 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     val episodeBuilders: MutableList<EpisodeBuilder> = mutableListOf()
     val categoryBuilders: MutableList<RssCategoryBuilder> = mutableListOf()
 
-    override val iTunes: FakePodcastITunesBuilder = FakePodcastITunesBuilder()
+    override val iTunesBuilder: FakePodcastITunesBuilder = FakePodcastITunesBuilder()
 
-    override val atom: FakePodcastAtomBuilder = FakePodcastAtomBuilder()
+    override val atomBuilder: FakePodcastAtomBuilder = FakePodcastAtomBuilder()
 
-    override val fyyd: FakePodcastFyydBuilder = FakePodcastFyydBuilder()
+    override val fyydBuilder: FakePodcastFyydBuilder = FakePodcastFyydBuilder()
 
-    override val feedpress: FakePodcastFeedpressBuilder = FakePodcastFeedpressBuilder()
+    override val feedpressBuilder: FakePodcastFeedpressBuilder = FakePodcastFeedpressBuilder()
 
-    override val googlePlay: FakePodcastGooglePlayBuilder = FakePodcastGooglePlayBuilder()
+    override val googlePlayBuilder: FakePodcastGooglePlayBuilder = FakePodcastGooglePlayBuilder()
+
+    override val podcastBuilder: FakePodcastPodcastBuilder = FakePodcastPodcastBuilder()
 
     override fun title(title: String): PodcastBuilder = apply { this.titleValue = title }
 
@@ -89,7 +93,11 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder = FakeITunesStyleCategoryBuilder()
+    override fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder = FakeITunesStyleCategoryBuilder()
+
+    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastLockedBuilder = FakePodcastPodcastLockedBuilder()
+
+    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder = FakePodcastPodcastFundingBuilder()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -109,11 +117,12 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         if (imageBuilder != other.imageBuilder) return false
         if (episodeBuilders != other.episodeBuilders) return false
         if (categoryBuilders != other.categoryBuilders) return false
-        if (iTunes != other.iTunes) return false
-        if (atom != other.atom) return false
-        if (fyyd != other.fyyd) return false
-        if (feedpress != other.feedpress) return false
-        if (googlePlay != other.googlePlay) return false
+        if (iTunesBuilder != other.iTunesBuilder) return false
+        if (atomBuilder != other.atomBuilder) return false
+        if (fyydBuilder != other.fyydBuilder) return false
+        if (feedpressBuilder != other.feedpressBuilder) return false
+        if (googlePlayBuilder != other.googlePlayBuilder) return false
+        if (podcastBuilder != other.podcastBuilder) return false
 
         return true
     }
@@ -133,11 +142,12 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         result = 31 * result + (imageBuilder?.hashCode() ?: 0)
         result = 31 * result + episodeBuilders.hashCode()
         result = 31 * result + categoryBuilders.hashCode()
-        result = 31 * result + iTunes.hashCode()
-        result = 31 * result + atom.hashCode()
-        result = 31 * result + fyyd.hashCode()
-        result = 31 * result + feedpress.hashCode()
-        result = 31 * result + googlePlay.hashCode()
+        result = 31 * result + iTunesBuilder.hashCode()
+        result = 31 * result + atomBuilder.hashCode()
+        result = 31 * result + fyydBuilder.hashCode()
+        result = 31 * result + feedpressBuilder.hashCode()
+        result = 31 * result + googlePlayBuilder.hashCode()
+        result = 31 * result + podcastBuilder.hashCode()
         return result
     }
 
@@ -145,5 +155,6 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         "FakePodcastBuilder(titleValue=$titleValue, linkValue=$linkValue, descriptionValue=$descriptionValue, languageValue=$languageValue, " +
             "pubDate=$pubDate, lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, docs=$docs, " +
             "managingEditor=$managingEditor, webMaster=$webMaster, imageBuilder=$imageBuilder, episodeBuilders=$episodeBuilders, " +
-            "categoryBuilders=$categoryBuilders, iTunes=$iTunes, atom=$atom, fyyd=$fyyd, feedpress=$feedpress, googlePlay=$googlePlay)"
+            "categoryBuilders=$categoryBuilders, iTunesBuilder=$iTunesBuilder, atomBuilder=$atomBuilder, fyydBuilder=$fyydBuilder, " +
+            "feedpressBuilder=$feedpressBuilder, googlePlayBuilder=$googlePlayBuilder, podcastBuilder=$podcastBuilder)"
 }

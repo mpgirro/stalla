@@ -38,6 +38,7 @@ internal fun aPodcast(
     fyyd: Podcast.Fyyd? = aPodcastFyyd(),
     feedpress: Podcast.Feedpress? = aPodcastFeedpress(),
     googlePlay: Podcast.GooglePlay? = aPodcastGooglePlay(),
+    podcast: Podcast.Podcast? = aPodcastPodcast(),
     categories: List<RssCategory> = listOf(anRssCategory("podcast category"))
 ) = Podcast(
     title,
@@ -58,7 +59,8 @@ internal fun aPodcast(
     fyyd,
     feedpress,
     googlePlay,
-    categories
+    categories,
+    podcast
 )
 
 internal fun aPodcastITunes(
@@ -104,3 +106,18 @@ internal fun aPodcastGooglePlay(
     block: Boolean? = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url")
 ) = Podcast.GooglePlay(author, owner, categories, description, explicit, block, image)
+
+internal fun aPodcastPodcast(
+    locked: Podcast.Podcast.Locked? = aPodcastPodcastLocked(),
+    funding: List<Podcast.Podcast.Funding> = listOf(aPodcastPodcastFunding())
+) = Podcast.Podcast(locked, funding)
+
+internal fun aPodcastPodcastLocked(
+    owner: String = "podcast podcast: locked owner",
+    locked: Boolean = true
+) = Podcast.Podcast.Locked(owner, locked)
+
+internal fun aPodcastPodcastFunding(
+    url: String = "podcast podcast: funding url",
+    message: String = "podcast podcast: funding message"
+) = Podcast.Podcast.Funding(url, message)

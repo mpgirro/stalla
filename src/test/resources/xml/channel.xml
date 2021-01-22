@@ -4,7 +4,8 @@
     xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:fyyd="https://fyyd.de/fyyd-ns/"
     xmlns:feedpress="https://feed.press/xmlns"
-    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0">
+    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+    xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md">
     <title>Lorem Ipsum</title>
     <link>http://example.org</link>
     <description>Lorem Ipsum</description>
@@ -72,4 +73,6 @@
     <feedpress:podcastId>xyz123</feedpress:podcastId>
     <feedpress:cssFile>http://example.org/style.css</feedpress:cssFile>
     <feedpress:link>http://example.org/my-link</feedpress:link>
+    <podcast:locked owner="podcastowner@example.com">yes</podcast:locked>
+    <podcast:funding url="https://example.com/donate">Support the show!</podcast:funding>
 </channel>

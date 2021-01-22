@@ -1,7 +1,10 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.model.Episode.Podcast.Transcript.Type
 import io.hemin.wien.model.Episode.Podlove.SimpleChapter
+import java.time.Duration
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<item>` elements.
@@ -22,6 +25,7 @@ import java.time.temporal.TemporalAccessor
  * @property podlove The data from the Podlove standards namespaces, or null if no data from these namespaces were found.
  * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property bitlove The data from the Bitlove namespace, or null if no data from this namespace was found.
+ * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
  */
 @Suppress("unused")
 data class Episode(
@@ -40,7 +44,8 @@ data class Episode(
     val atom: Atom? = null,
     val podlove: Podlove? = null,
     val googlePlay: GooglePlay? = null,
-    val bitlove: Bitlove? = null
+    val bitlove: Bitlove? = null,
+    val podcast: Podcast? = null
 ) {
 
     /**
@@ -196,4 +201,82 @@ data class Episode(
     data class Bitlove(
         val guid: String
     )
+
+    /**
+     * Model class for data from elements of the Podcast 1.0 namespace that are valid within `<item>` elements.
+     *
+     * @property transcripts The transcript information for the episode.
+     * @property soundbites The soundbites information for the episode.
+     * @property chapters The chapters information for the episode.
+     */
+    data class Podcast(
+        val transcripts: List<Transcript> = emptyList(),
+        val soundbites: List<Soundbite> = emptyList(),
+        val chapters: Chapters? = null
+    ) {
+
+        /**
+         * The transcript for the episode.
+         *
+         * @param url The URL of the episode transcript.
+         * @param type The type of transcript. One of the supported [Type]s.
+         * @param language The transcript language.
+         * @param rel When present and equals to `captions`, the transcript is considered to be a CC, regardless of its [type].
+         */
+        data class Transcript(
+            val url: String,
+            val type: Type,
+            val language: Locale? = null,
+            val rel: String? = null
+        ) {
+
+            /**
+             * Supported transcript types. See the
+             * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/transcripts/transcripts.md).
+             */
+            enum class Type(val rawType: String) {
+                /** Plain text, with no timing information. */
+                PLAIN_TEXT("text/plain"),
+
+                /** HTML, potentially with some timing information. */
+                HTML("text/html"),
+
+                /** JSON ,with full timing information. */
+                JSON("application/json"),
+
+                /** SRT, with full timing information. */
+                SRT("application/srt");
+
+                companion object {
+
+                    fun from(rawType: String): Type? = values().find { it.rawType == rawType }
+                }
+            }
+        }
+
+        /**
+         * The chapters information for the episode. See the
+         * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#chapters).
+         *
+         * @param url The URL for the chapters information.
+         * @param type The MIME type of the chapters file. JSON (`application/json+chapters`) is the preferred format.
+         */
+        data class Chapters(
+            val url: String,
+            val type: String
+        )
+
+        /**
+         * The soundbite information for the episode. Used to automatically extract soundbites from the [Episode.enclosure].
+         *
+         * @param startTime The timestamp at which the soundbite starts.
+         * @param duration The duration of the timestamp (recommended between 15 and 120 seconds).
+         * @param title A custom title for the soundbite. When null, the [Episode.title] is used.
+         */
+        data class Soundbite(
+            val startTime: Duration,
+            val duration: Duration,
+            val title: String? = null
+        )
+    }
 }

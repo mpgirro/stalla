@@ -1,4 +1,4 @@
-package io.hemin.wien.parser
+package io.hemin.wien.parser.namespace
 
 import assertk.all
 import assertk.assertThat
@@ -21,7 +21,7 @@ import io.hemin.wien.hasNotEnoughDataToBuild
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.noneHasEnoughDataToBuild
-import io.hemin.wien.parser.namespace.ITunesParser
+import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
@@ -43,7 +43,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.iTunes, "channel.itunes").all {
+        assertThat(builder.iTunesBuilder, "channel.itunes").all {
             prop(FakePodcastITunesBuilder::author).isEqualTo("Lorem Ipsum")
             prop(FakePodcastITunesBuilder::ownerBuilder).isEqualTo(expectedOwnerBuilder)
             prop(FakePodcastITunesBuilder::categoryBuilders).containsExactly(
@@ -70,7 +70,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.iTunes, "channel.itunes").all {
+        assertThat(builder.iTunesBuilder, "channel.itunes").all {
             prop(FakePodcastITunesBuilder::author).isNull()
             prop(FakePodcastITunesBuilder::ownerBuilder).isNull()
             prop(FakePodcastITunesBuilder::categoryBuilders).isEmpty()
@@ -93,7 +93,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.iTunes, "channel.itunes").all {
+        assertThat(builder.iTunesBuilder, "channel.itunes").all {
             prop(FakePodcastITunesBuilder::author).isNull()
             prop(FakePodcastITunesBuilder::ownerBuilder).isNotNull().hasNotEnoughDataToBuild()
             prop(FakePodcastITunesBuilder::categoryBuilders).noneHasEnoughDataToBuild()
@@ -116,7 +116,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.iTunes, "item.itunes").all {
+        assertThat(builder.iTunesBuilder, "item.itunes").all {
             prop(FakeEpisodeITunesBuilder::title).isEqualTo("Lorem Ipsum")
             prop(FakeEpisodeITunesBuilder::duration).isEqualTo("03:24:27")
             prop(FakeEpisodeITunesBuilder::season).isEqualTo(1)
@@ -137,7 +137,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.iTunes, "item.itunes").all {
+        assertThat(builder.iTunesBuilder, "item.itunes").all {
             prop(FakeEpisodeITunesBuilder::title).isNull()
             prop(FakeEpisodeITunesBuilder::duration).isNull()
             prop(FakeEpisodeITunesBuilder::season).isNull()
@@ -158,7 +158,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)
 
-        assertThat(builder.iTunes, "item.itunes").all {
+        assertThat(builder.iTunesBuilder, "item.itunes").all {
             prop(FakeEpisodeITunesBuilder::title).isNull()
             prop(FakeEpisodeITunesBuilder::duration).isNull()
             prop(FakeEpisodeITunesBuilder::season).isNull()

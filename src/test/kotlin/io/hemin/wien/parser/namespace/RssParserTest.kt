@@ -1,4 +1,4 @@
-package io.hemin.wien.parser
+package io.hemin.wien.parser.namespace
 
 import assertk.all
 import assertk.assertThat
@@ -18,7 +18,7 @@ import io.hemin.wien.dateTime
 import io.hemin.wien.dom.XmlRes
 import io.hemin.wien.hasNotEnoughDataToBuild
 import io.hemin.wien.noneHasEnoughDataToBuild
-import io.hemin.wien.parser.namespace.RssParser
+import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 import java.time.Month

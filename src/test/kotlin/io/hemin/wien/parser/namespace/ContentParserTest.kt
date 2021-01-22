@@ -1,4 +1,4 @@
-package io.hemin.wien.parser
+package io.hemin.wien.parser.namespace
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
@@ -7,7 +7,8 @@ import assertk.assertions.prop
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeContentBuilder
 import io.hemin.wien.dom.XmlRes
-import io.hemin.wien.parser.namespace.ContentParser
+import io.hemin.wien.parser.NamespaceParser
+import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
@@ -21,7 +22,7 @@ internal class ContentParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.content, "item content data")
+        assertThat(builder.contentBuilder, "item content data")
             .prop(FakeEpisodeContentBuilder::encoded).isEqualTo("Lorem Ipsum")
     }
 
@@ -31,7 +32,7 @@ internal class ContentParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.content, "item content data")
+        assertThat(builder.contentBuilder, "item content data")
             .prop(FakeEpisodeContentBuilder::encoded).isNull()
     }
 
@@ -41,7 +42,7 @@ internal class ContentParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)
 
-        assertThat(builder.content, "item content data")
+        assertThat(builder.contentBuilder, "item content data")
             .prop(FakeEpisodeContentBuilder::encoded).isNull()
     }
 }

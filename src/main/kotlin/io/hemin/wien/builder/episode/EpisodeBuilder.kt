@@ -12,22 +12,25 @@ import java.time.temporal.TemporalAccessor
 internal interface EpisodeBuilder : Builder<Episode> {
 
     /** The builder for data from the Content namespace. */
-    val content: EpisodeContentBuilder
+    val contentBuilder: EpisodeContentBuilder
 
     /** The builder for data from the iTunes namespace. */
-    val iTunes: EpisodeITunesBuilder
+    val iTunesBuilder: EpisodeITunesBuilder
 
     /** The builder for data from the Atom namespace. */
-    val atom: EpisodeAtomBuilder
+    val atomBuilder: EpisodeAtomBuilder
 
     /** The builder for data from namespaces of the Podlove standards. */
-    val podlove: EpisodePodloveBuilder
+    val podloveBuilder: EpisodePodloveBuilder
 
     /** The builder for data from the Google Play namespace. */
-    val googlePlay: EpisodeGooglePlayBuilder
+    val googlePlayBuilder: EpisodeGooglePlayBuilder
 
     /** The builder for data from the Bitlove namespace. */
-    val bitlove: EpisodeBitloveBuilder
+    val bitloveBuilder: EpisodeBitloveBuilder
+
+    /** The builder for data from the Podcast namespace. */
+    val podcastBuilder: EpisodePodcastBuilder
 
     /** Set the title value. */
     fun title(title: String): EpisodeBuilder
@@ -96,5 +99,14 @@ internal interface EpisodeBuilder : Builder<Episode> {
     fun createRssCategoryBuilder(): RssCategoryBuilder
 
     /** Creates an instance of [ITunesStyleCategoryBuilder] to use with this builder. */
-    fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder
+    fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder
+
+    /** Creates an instance of [EpisodePodcastTranscriptBuilder] to use with this builder. */
+    fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder
+
+    /** Creates an instance of [EpisodePodcastChaptersBuilder] to use with this builder. */
+    fun createEpisodePodcastChaptersBuilder(): EpisodePodcastChaptersBuilder
+
+    /** Creates an instance of [EpisodePodcastSoundbiteBuilder] to use with this builder. */
+    fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastSoundbiteBuilder
 }

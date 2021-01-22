@@ -20,7 +20,7 @@ internal class FyydParser : NamespaceParser() {
         when (localName) {
             "verify" -> {
                 val verify = ifCanBeParsed { textOrNull() } ?: return
-                builder.fyyd.verify(verify)
+                builder.fyydBuilder.verify(verify)
             }
             else -> pass
         }

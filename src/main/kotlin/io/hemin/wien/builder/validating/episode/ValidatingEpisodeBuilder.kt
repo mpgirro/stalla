@@ -13,6 +13,10 @@ import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.builder.episode.EpisodeGooglePlayBuilder
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.builder.episode.EpisodeITunesBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastChaptersBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastSoundbiteBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastTranscriptBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
@@ -37,17 +41,19 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
     private var pubDate: TemporalAccessor? = null
     private var source: String? = null
 
-    override val content: EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
+    override val contentBuilder: EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
 
-    override val iTunes: EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+    override val iTunesBuilder: EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
 
-    override val atom: EpisodeAtomBuilder = ValidatingEpisodeAtomBuilder()
+    override val atomBuilder: EpisodeAtomBuilder = ValidatingEpisodeAtomBuilder()
 
-    override val podlove: EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
+    override val podloveBuilder: EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
 
-    override val googlePlay: EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+    override val googlePlayBuilder: EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
 
-    override val bitlove: EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
+    override val bitloveBuilder: EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
+
+    override val podcastBuilder: EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
 
     override fun title(title: String): EpisodeBuilder = apply { this.titleValue = title }
 
@@ -87,7 +93,13 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+    override fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+
+    override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
+
+    override fun createEpisodePodcastChaptersBuilder(): EpisodePodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
+
+    override fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastSoundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::titleValue.isInitialized && (::enclosureBuilderValue.isInitialized && enclosureBuilderValue.hasEnoughDataToBuild)
@@ -111,12 +123,13 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
             guid = guidBuilder?.build(),
             pubDate = pubDate,
             source = source,
-            content = content.build(),
-            iTunes = iTunes.build(),
-            atom = atom.build(),
-            podlove = podlove.build(),
-            googlePlay = googlePlay.build(),
-            bitlove = bitlove.build()
+            content = contentBuilder.build(),
+            iTunes = iTunesBuilder.build(),
+            atom = atomBuilder.build(),
+            podlove = podloveBuilder.build(),
+            googlePlay = googlePlayBuilder.build(),
+            bitlove = bitloveBuilder.build(),
+            podcast = podcastBuilder.build()
         )
     }
 }
