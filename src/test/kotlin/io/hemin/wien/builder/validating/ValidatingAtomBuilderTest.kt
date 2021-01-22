@@ -1,4 +1,4 @@
-package io.hemin.wien.builder.validating.episode
+package io.hemin.wien.builder.validating
 
 import assertk.all
 import assertk.assertAll
@@ -9,15 +9,13 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import io.hemin.wien.builder.episode.EpisodeAtomBuilder
-import io.hemin.wien.builder.validating.ValidatingLinkBuilder
-import io.hemin.wien.builder.validating.ValidatingPersonBuilder
-import io.hemin.wien.model.Episode
+import io.hemin.wien.builder.AtomBuilder
+import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
 import org.junit.jupiter.api.Test
 
-internal class ValidatingEpisodeAtomBuilderTest {
+internal class ValidatingAtomBuilderTest {
 
     private val expectedPersonBuilder = ValidatingPersonBuilder().name("name")
 
@@ -25,10 +23,10 @@ internal class ValidatingEpisodeAtomBuilderTest {
 
     @Test
     internal fun `should not build an Episode Atom with when all the fields are empty`() {
-        val episodeAtomBuilder = ValidatingEpisodeAtomBuilder()
+        val episodeAtomBuilder = ValidatingAtomBuilder()
 
         assertAll {
-            assertThat(episodeAtomBuilder).prop(EpisodeAtomBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(episodeAtomBuilder).prop(AtomBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(episodeAtomBuilder.build()).isNull()
         }
@@ -36,43 +34,43 @@ internal class ValidatingEpisodeAtomBuilderTest {
 
     @Test
     internal fun `should build an Episode Atom with at least an author`() {
-        val episodeAtomBuilder = ValidatingEpisodeAtomBuilder()
+        val episodeAtomBuilder = ValidatingAtomBuilder()
             .addAuthorBuilder(expectedPersonBuilder)
 
         assertAll {
-            assertThat(episodeAtomBuilder).prop(EpisodeAtomBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeAtomBuilder).prop(AtomBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodeAtomBuilder.build()).isNotNull().prop(Episode.Atom::authors).containsExactly(expectedPersonBuilder.build())
+            assertThat(episodeAtomBuilder.build()).isNotNull().prop(Atom::authors).containsExactly(expectedPersonBuilder.build())
         }
     }
 
     @Test
     internal fun `should build an Episode Atom with at least a contributor`() {
-        val episodeAtomBuilder = ValidatingEpisodeAtomBuilder()
+        val episodeAtomBuilder = ValidatingAtomBuilder()
             .addContributorBuilder(expectedPersonBuilder)
 
         assertAll {
-            assertThat(episodeAtomBuilder).prop(EpisodeAtomBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeAtomBuilder).prop(AtomBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodeAtomBuilder.build()).isNotNull().prop(Episode.Atom::contributors).containsExactly(expectedPersonBuilder.build())
+            assertThat(episodeAtomBuilder.build()).isNotNull().prop(Atom::contributors).containsExactly(expectedPersonBuilder.build())
         }
     }
 
     @Test
     internal fun `should build an Episode Atom with at least a link`() {
-        val episodeAtomBuilder = ValidatingEpisodeAtomBuilder()
+        val episodeAtomBuilder = ValidatingAtomBuilder()
             .addLinkBuilder(expectedLinkBuilder)
 
         assertAll {
-            assertThat(episodeAtomBuilder).prop(EpisodeAtomBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeAtomBuilder).prop(AtomBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodeAtomBuilder.build()).isNotNull().prop(Episode.Atom::links).containsExactly(expectedLinkBuilder.build())
+            assertThat(episodeAtomBuilder.build()).isNotNull().prop(Atom::links).containsExactly(expectedLinkBuilder.build())
         }
     }
 
     @Test
     internal fun `should build an Episode Atom with with all the added entries to its fields`() {
-        val episodeAtomBuilder = ValidatingEpisodeAtomBuilder()
+        val episodeAtomBuilder = ValidatingAtomBuilder()
             .addAuthorBuilder(ValidatingPersonBuilder().name("author 1"))
             .addAuthorBuilder(ValidatingPersonBuilder().name("author 2"))
             .addContributorBuilder(ValidatingPersonBuilder().name("contributor 1"))
@@ -82,12 +80,12 @@ internal class ValidatingEpisodeAtomBuilderTest {
             .addLinkBuilder(ValidatingLinkBuilder().href("link 2"))
 
         assertAll {
-            assertThat(episodeAtomBuilder).prop(EpisodeAtomBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeAtomBuilder).prop(AtomBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeAtomBuilder.build()).isNotNull().all {
-                prop(Episode.Atom::authors).containsExactly(Person("author 1"), Person("author 2"))
-                prop(Episode.Atom::contributors).containsExactly(Person("contributor 1"), Person("contributor 2"), Person("contributor 3"))
-                prop(Episode.Atom::links).containsExactly(Link("link 1"), Link("link 2"))
+                prop(Atom::authors).containsExactly(Person("author 1"), Person("author 2"))
+                prop(Atom::contributors).containsExactly(Person("contributor 1"), Person("contributor 2"), Person("contributor 3"))
+                prop(Atom::links).containsExactly(Link("link 1"), Link("link 2"))
             }
         }
     }

@@ -19,6 +19,7 @@ import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import io.hemin.wien.dateTime
+import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Podcast
 import org.junit.jupiter.api.Test
 import java.time.Month
@@ -230,7 +231,7 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::categories).containsExactly(expectedCategoryBuilders[0].build(), expectedCategoryBuilders[1].build())
                 prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
                 prop(Podcast::iTunes).isNotNull().prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
-                prop(Podcast::atom).isNotNull().prop(Podcast.Atom::authors)
+                prop(Podcast::atom).isNotNull().prop(Atom::authors)
                     .containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Podcast::feedpress).isNotNull().prop(Podcast.Feedpress::newsletterId)
                     .isEqualTo("feedpress newsletterId")

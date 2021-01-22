@@ -1,15 +1,16 @@
 package io.hemin.wien.builder.episode
 
+import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
-import io.hemin.wien.builder.LinkBuilder
-import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.LinkBuilderProvider
+import io.hemin.wien.builder.PersonBuilderProvider
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.model.Episode
 import java.time.temporal.TemporalAccessor
 
-internal interface EpisodeBuilder : Builder<Episode> {
+internal interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderProvider {
 
     /** The builder for data from the Content namespace. */
     val contentBuilder: EpisodeContentBuilder
@@ -18,7 +19,7 @@ internal interface EpisodeBuilder : Builder<Episode> {
     val iTunesBuilder: EpisodeITunesBuilder
 
     /** The builder for data from the Atom namespace. */
-    val atomBuilder: EpisodeAtomBuilder
+    val atomBuilder: AtomBuilder
 
     /** The builder for data from namespaces of the Podlove standards. */
     val podloveBuilder: EpisodePodloveBuilder
@@ -82,12 +83,6 @@ internal interface EpisodeBuilder : Builder<Episode> {
 
     /** Creates an instance of [EpisodeGuidBuilder] to use with this builder. */
     fun createGuidBuilder(): EpisodeGuidBuilder
-
-    /** Creates an instance of [LinkBuilder] to use with this builder. */
-    fun createLinkBuilder(): LinkBuilder
-
-    /** Creates an instance of [PersonBuilder] to use with this builder. */
-    fun createPersonBuilder(): PersonBuilder
 
     /** Creates an instance of [HrefOnlyImageBuilder] to use with this builder. */
     fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder

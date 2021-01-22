@@ -1,11 +1,11 @@
 package io.hemin.wien.builder.validating.episode
 
+import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.RssCategoryBuilder
-import io.hemin.wien.builder.episode.EpisodeAtomBuilder
 import io.hemin.wien.builder.episode.EpisodeBitloveBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeContentBuilder
@@ -19,6 +19,7 @@ import io.hemin.wien.builder.episode.EpisodePodcastSoundbiteBuilder
 import io.hemin.wien.builder.episode.EpisodePodcastTranscriptBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
+import io.hemin.wien.builder.validating.ValidatingAtomBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
 import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingLinkBuilder
@@ -45,7 +46,7 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
 
     override val iTunesBuilder: EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
 
-    override val atomBuilder: EpisodeAtomBuilder = ValidatingEpisodeAtomBuilder()
+    override val atomBuilder: AtomBuilder = ValidatingAtomBuilder()
 
     override val podloveBuilder: EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
 

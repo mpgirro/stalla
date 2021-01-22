@@ -1,10 +1,11 @@
 package io.hemin.wien.builder.podcast
 
+import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
-import io.hemin.wien.builder.LinkBuilder
-import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.LinkBuilderProvider
+import io.hemin.wien.builder.PersonBuilderProvider
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
@@ -12,13 +13,13 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import java.time.temporal.TemporalAccessor
 
-internal interface PodcastBuilder : Builder<Podcast> {
+internal interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderProvider {
 
     /** The builder for data from the iTunes namespace. */
     val iTunesBuilder: PodcastITunesBuilder
 
     /** The builder for data from the Atom namespace. */
-    val atomBuilder: PodcastAtomBuilder
+    val atomBuilder: AtomBuilder
 
     /** The builder for data from the Fyyd namespace. */
     val fyydBuilder: PodcastFyydBuilder
@@ -88,12 +89,6 @@ internal interface PodcastBuilder : Builder<Podcast> {
 
     /** Creates an instance of [HrefOnlyImageBuilder] to use with this builder. */
     fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
-
-    /** Creates an instance of [LinkBuilder] to use with this builder. */
-    fun createLinkBuilder(): LinkBuilder
-
-    /** Creates an instance of [PersonBuilder] to use with this builder. */
-    fun createPersonBuilder(): PersonBuilder
 
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
     fun createRssCategoryBuilder(): RssCategoryBuilder

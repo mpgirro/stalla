@@ -1,6 +1,7 @@
 package io.hemin.wien.model.podcast
 
 import io.hemin.wien.dateTime
+import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.ITunesStyleCategory
@@ -34,7 +35,7 @@ internal fun aPodcast(
     image: RssImage? = anRssImage(url = "podcast image url"),
     episodes: List<Episode> = listOf(anEpisode()),
     iTunes: Podcast.ITunes? = aPodcastITunes(),
-    atom: Podcast.Atom? = aPodcastAtom(),
+    atom: Atom? = aPodcastAtom(),
     fyyd: Podcast.Fyyd? = aPodcastFyyd(),
     feedpress: Podcast.Feedpress? = aPodcastFeedpress(),
     googlePlay: Podcast.GooglePlay? = aPodcastGooglePlay(),
@@ -83,7 +84,7 @@ internal fun aPodcastAtom(
     authors: List<Person> = listOf(aPerson("podcast atom author name")),
     contributors: List<Person> = listOf(aPerson("podcast atom contributor name")),
     links: List<Link> = listOf(aLink("podcast atom link href"))
-) = Podcast.Atom(authors, contributors, links)
+) = Atom(authors, contributors, links)
 
 internal fun aPodcastFyyd(
     verify: String = "podcast fyyd verify"
