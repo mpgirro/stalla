@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" xmlns:acast="https://schema.acast.com/1.0/" xmlns:podaccess="https://schema-access.acast.com/1.0/" xmlns:pingback="https://podping.info/specification/1">
+    <channel>
+        <title>Mythes et Légendes</title>
+        <description><![CDATA[<p>Ulysse, Athena, Thor, Anubis, le roi Arthur, et bien d'autres... Quelle Histoire te fait découvrir les mythes et légendes du monde entier, comme tu ne les as jamais entendues.</p>]]></description>
+        <acast:showId>ecc4ef0f-1ca8-4ca0-90f2-cce7084aff43</acast:showId>
+        <acast:showUrl>mythes-et-legendes</acast:showUrl>
+        <link>https://quellehistoire.com/</link>
+        <atom:link rel="self" type="application/rss+xml" href="https://rss.acast.com/mythes-et-legendes" />
+        
+        <pingback:receiver>https://interaction.acast.com/pingback</pingback:receiver>
+        <lastBuildDate>Sat, 16 Jan 2021 16:11:09 GMT</lastBuildDate>
+        <pubDate>Tue, 28 Apr 2020 08:00:00 GMT</pubDate>
+        <ttl>30</ttl>
+        <language>fr</language>
+        <copyright><![CDATA[Quelle Histoire]]></copyright>
+        <docs>https://www.acast.com/mythes-et-legendes</docs>
+    <acast:signature key="EXAMPLE" algorithm="aes-256-cbc"><![CDATA[fcmKLI8zC7kvA5kOXSJBiA==]]></acast:signature>
+		<acast:network id="c274bf6b-49cf-dfa2-4952-c826b692f1fb" slug="quelle-histoire"><![CDATA[Unice Heritage Media / Quelle Histoire]]></acast:network>
+		<acast:settings><![CDATA[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]]></acast:settings>
+		
+        <image>
+            <url>https://thumborcdn.acast.com/yEzphDBFdNZVe94EGQ52ybeFrKE=/1500x1500/https://mediacdn.acast.com/assets/ecc4ef0f-1ca8-4ca0-90f2-cce7084aff43/-k44f8qph-generique.jpg</url>
+            <title>Mythes et Légendes</title>
+            <link>https://quellehistoire.com/</link>
+        </image>
+        
+        <itunes:image href="https://thumborcdn.acast.com/yEzphDBFdNZVe94EGQ52ybeFrKE=/1500x1500/https://mediacdn.acast.com/assets/ecc4ef0f-1ca8-4ca0-90f2-cce7084aff43/-k44f8qph-generique.jpg" />
+        <itunes:subtitle><![CDATA[Ulysse, Athena, Thor, Anubis, le roi Arthur, et bien d&apos;autres... Quelle Histoire te fait découvrir les mythes et légendes du monde entier, comme tu ne les as jamais entendues.]]></itunes:subtitle>
+        <itunes:type>serial</itunes:type>
+        <itunes:author>Quelle Histoire</itunes:author>
+        <itunes:summary>Ulysse, Athena, Thor, Anubis, le roi Arthur, et bien d&#x27;autres... Quelle Histoire te fait découvrir les mythes et légendes du monde entier, comme tu ne les as jamais entendues.</itunes:summary>
+        
+        
+        <itunes:owner>
+	        <itunes:name><![CDATA[]]></itunes:name>
+	        <itunes:email>noemiegmur@gmail.com</itunes:email>
+        </itunes:owner>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:keywords></itunes:keywords>
+                <itunes:category text="Education" />
+                <itunes:category text="Fiction" />
+                <itunes:category text="Kids &amp; Family">
+                        <itunes:category text="Education for Kids"/>
+                        <itunes:category text="Stories for Kids"/>
+                </itunes:category>
+        <media:credit role="author">Quelle Histoire</media:credit>
+	    <media:description type="html"><![CDATA[<p>Ulysse, Athena, Thor, Anubis, le roi Arthur, et bien d'autres... Quelle Histoire te fait découvrir les mythes et légendes du monde entier, comme tu ne les as jamais entendues.</p>]]></media:description>
+            <item>
+                <title>Hercule, les douze travaux</title>
+                <acast:episodeId>dc4b1c4b-c767-49cd-8814-d104a1110d47</acast:episodeId>
+                <acast:episodeUrl>hercule-lesdouzetravaux</acast:episodeUrl>
+                <itunes:subtitle>Découvre le héros Hercule et l’histoire des travaux qu’il a du accomplir pour regagner la faveur des dieux grecs, à travers douze terribles épreuves. Du lion de Nérée au Cerbère des Enfers, en passant par la terrifiante hydre de Lerne, retrace les aven...</itunes:subtitle>
+                <itunes:summary><![CDATA[Découvre le héros Hercule et l’histoire des travaux qu’il a du accomplir pour regagner la faveur des dieux grecs, à travers douze terribles épreuves. Du lion de Nérée au Cerbère des Enfers, en passant par la terrifiante hydre de Lerne, retrace les aventures épiques d’Hercule dans un monde peuplé de dieux et de fabuleuses créatures… Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/hercule-douze-travaux/
+Texte : Patricia Crété
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[dc4b1c4b-c767-49cd-8814-d104a1110d47]]></guid>
+                <pubDate>Tue, 28 Apr 2020 08:00:00 GMT</pubDate>
+                <itunes:duration>00:13:58</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>23</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/MAcWsqNnsgW5jZjwR1OHKPg6X2A=/3000x3000/https://mediacdn.acast.com/assets/dc4b1c4b-c767-49cd-8814-d104a1110d47/cover-image-k92klb6r-hercule.png" />
+                
+                <description><![CDATA[<p>Découvre le héros Hercule et l’histoire des travaux qu’il a du accomplir pour regagner la faveur des dieux grecs, à travers douze terribles épreuves. Du lion de Nérée au Cerbère des Enfers, en passant par la terrifiante hydre de Lerne, retrace les aventures épiques d’Hercule dans un monde peuplé de dieux et de fabuleuses créatures… Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/hercule-douze-travaux/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/hercule-douze-travaux/</a></p><p>Texte : Patricia Crété</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjOezrDpzexKBE08JIl/BHvP9VOlZ/4nSc/DHyMauMje8yZs/25SBwnMJ1ai+9TSMGGflEkONWjXPBYRQf4wW1i9L3Fvc6UgYe5Kv/N8YI3c8POlDLXTZkJbZ5GKOKac1R7V/q8GTdrfafwQHCKMs469Mpff8mSBpV5gGN0F4GQ+0l5J+JpIBplOBbz1zkTNzaCWhzIdpJeF5yCCI/Hvp9t4EsZlIhj+ef2It5S9Zd/Unit59DKt+ryVn8zOFz6nMvaSck32K1D5UgxUl/2OMQek18Dh2LbAaeu85Bb04li4rWhVaaRCyYSgAmLXpP2hgowh3y/1SpgsQdcNmeB0bi5sR4u7FM1mFfu/xs5JxUX3Ku6BAO7jYbghDvCJ7c3r8oJ9YeD7/7qYYLF00csrF2QwGLoKglpIskDub9/UKPiRhwtF3ncQOfpbH48viqebjDoS7GIDwQ8oE95gpMROtUxLW84hk0pxXDwRU0mnJ4A6MQ==]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/hercule-lesdouzetravaux</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/hercule-lesdouzetravaux/media.mp3" length="26826393" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Ulysse, l’Odyssée</title>
+                <acast:episodeId>fc06fbf7-787a-4378-8232-92e08110bf4f</acast:episodeId>
+                <acast:episodeUrl>ulysse-l-odyssee</acast:episodeUrl>
+                <itunes:subtitle>Découvre l’Odyssée, la fabuleuse épopée d’Ulysse, roi d’Ithaque, lors de son trajet pour retourner chez lui, auprès de sa femme et de son fils ! De la petite île d’Ithaque à la grotte du Cyclope en passant par la guerre de Troie, le voyage d’Ulysse te ...</itunes:subtitle>
+                <itunes:summary><![CDATA[Découvre l’Odyssée, la fabuleuse épopée d’Ulysse, roi d’Ithaque, lors de son trajet pour retourner chez lui, auprès de sa femme et de son fils ! De la petite île d’Ithaque à la grotte du Cyclope en passant par la guerre de Troie, le voyage d’Ulysse te permet d’aller à la rencontre des dieux, des monstres et des héros de la mythologie grecque. Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/ulysse-odyssee/
+Texte : Patricia Crété
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[fc06fbf7-787a-4378-8232-92e08110bf4f]]></guid>
+                <pubDate>Tue, 28 Apr 2020 08:00:00 GMT</pubDate>
+                <itunes:duration>00:13:21</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>25</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/2Z02R8Rjn1_USFlUDXoczp6P48I=/3000x3000/https://mediacdn.acast.com/assets/fc06fbf7-787a-4378-8232-92e08110bf4f/cover-image-k92ip0tg-ulysse.png" />
+                
+                <description><![CDATA[<p>Découvre l’Odyssée, la fabuleuse épopée d’Ulysse, roi d’Ithaque, lors de son trajet pour retourner chez lui, auprès de sa femme et de son fils ! De la petite île d’Ithaque à la grotte du Cyclope en passant par la guerre de Troie, le voyage d’Ulysse te permet d’aller à la rencontre des dieux, des monstres et des héros de la mythologie grecque. Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/ulysse-odyssee/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/ulysse-odyssee/</a></p><p>Texte : Patricia Crété</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjNqxHl6FApLqSzb5pnsQWqyJow694nj5TQpGJFunbRM3HrYqYjazWx52mVddERVvON3bRrgkNlGsmffK1ZYEmoHitzA5K6xxm/EZPoz1uFxOzUze1mnNDy1/7r2Y/tGhBETZfxey18RirPGPA8dwzHaY3vOkTaIKbOUyop2/rqKaW0JK1lVKf2Cex+ImcBpL4e1b/IBbGJo+k7R+0R+kPxY+GWExoYU4e/XA1vG+0+zNXfh7bP1VOeK5JKP130WLoArH3hVuovHRgS+JB/qvPL+uMLDrb+UfQHpTpjGhVP64ks6Y8UZFn5etSNrJQAM7eYmtOW8uwMdoJ5LHG3fVcUGn2lg4TR8zypc6+7Dd9nm+fWmp79zY+68xiMBgjojeYpDJiyn6gBAjwBHSEAA5xvO/Dg+h60hFqpCvrZURX/A+k7E9iSUfEANA3gsTFTljKKJH83yoNKxzlxfjitOfYgb+85XoClz0HcN6BQQ+ZYf0A==]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/ulysse-l-odyssee</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/ulysse-l-odyssee/media.mp3" length="25660287" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Hélène, la guerre de Troie</title>
+                <acast:episodeId>39626abb-3f5c-41c2-a44a-940516aa922e</acast:episodeId>
+                <acast:episodeUrl>helene-laguerredetroie</acast:episodeUrl>
+                <itunes:subtitle>Découvre l’histoire incroyable de la belle Hélène, dont le destin est intimement lié avec la célèbre guerre de Troie. De son palais familial à Sparte au champ de bataille de Troie, où s’affrontent pour ses beaux yeux les plus valeureux guerriers, retra...</itunes:subtitle>
+                <itunes:summary><![CDATA[Découvre l’histoire incroyable de la belle Hélène, dont le destin est intimement lié avec la célèbre guerre de Troie. De son palais familial à Sparte au champ de bataille de Troie, où s’affrontent pour ses beaux yeux les plus valeureux guerriers, retrace ce destin fascinant mais jonché de tant d’imprévus… Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/helene-guerre-troie/
+Texte : Patricia Crété
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[39626abb-3f5c-41c2-a44a-940516aa922e]]></guid>
+                <pubDate>Tue, 28 Apr 2020 08:00:00 GMT</pubDate>
+                <itunes:duration>00:12:57</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>22</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/09PYIJAEau1_63eY4lfHZoambVw=/3000x3000/https://mediacdn.acast.com/assets/39626abb-3f5c-41c2-a44a-940516aa922e/cover-image-k92iokns-helene.png" />
+                
+                <description><![CDATA[<p>Découvre l’histoire incroyable de la belle Hélène, dont le destin est intimement lié avec la célèbre guerre de Troie. De son palais familial à Sparte au champ de bataille de Troie, où s’affrontent pour ses beaux yeux les plus valeureux guerriers, retrace ce destin fascinant mais jonché de tant d’imprévus… Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/helene-guerre-troie/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/helene-guerre-troie/</a></p><p>Texte : Patricia Crété</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjOfIKI62vjnxEW12CGEQwQtT4OPloOZ47oNGpPS2IAyuFlaQtlwJ3Hd9CMelkuhy3McECxTOYietRZv2tfBPBLCqtZhhxQyL1TP+U6//wew4GqNoYRKIm9QlBmtjRsILrd84R4HCnpooCnVUII2k8K9fPhrhIcNoLh/ZzDAghr2wB2iR3FXO96etFDVnWUCrUBR2x9y1RvID+R06FBbIs2o50psG20eeQdImQ0hh1xLn9yX2Igf/cnI6B/kX6b7lFQLaALDBDBF8BTJwRMl5rg1L4U9mBfzlWcXkLkmzUSxQqFZmYfkVPNprUheoCN/+9i568Dki7yCpke1J75jnLZ1wkfG9ufRZ9aWy6hI8d9WC8Je/n2nvl3d+E4lsTETFn9bQtJ5PEqXZZmw5DjD3OghNNi0M5qVoSbX0q1rqZmXGw/X2QLMuM/w8HzjWU/n0+98NML2ACWlfzMjzndPxNErklyFPSFM6btqlz8SIkMhww==]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/helene-laguerredetroie</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/helene-laguerredetroie/media.mp3" length="24869508" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Thésée et le Minotaure</title>
+                <acast:episodeId>bfee8d4e-152c-45e0-91eb-59d977bfcb86</acast:episodeId>
+                <acast:episodeUrl>theseeetleminotaure</acast:episodeUrl>
+                <itunes:subtitle>Découvre le héros Thésée et son combat contre le terrifiant Minotaure de Crète, qu’il doit affronter pour sauver ses amis. Retrace la vie du fils du roi d’Athènes et ses aventures dans le labyrinthe, dont&amp;nbsp;seuls la ruse, l’intelligence et le co...</itunes:subtitle>
+                <itunes:summary><![CDATA[Découvre le héros Thésée et son combat contre le terrifiant Minotaure de Crète, qu’il doit affronter pour sauver ses amis. Retrace la vie du fils du roi d’Athènes et ses aventures dans le labyrinthe, dont&nbsp;seuls la ruse, l’intelligence et le courage pourront venir à bout… Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/thesee-minotaure/
+Texte : Patricia Crété
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[bfee8d4e-152c-45e0-91eb-59d977bfcb86]]></guid>
+                <pubDate>Tue, 28 Apr 2020 08:00:00 GMT</pubDate>
+                <itunes:duration>00:12:31</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>24</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/iw5jurQ_cExW4S2aWEjhORnyiVA=/3000x3000/https://mediacdn.acast.com/assets/bfee8d4e-152c-45e0-91eb-59d977bfcb86/cover-image-k92ipb9a-thesee.png" />
+                
+                <description><![CDATA[<p>Découvre le héros Thésée et son combat contre le terrifiant Minotaure de Crète, qu’il doit affronter pour sauver ses amis. Retrace la vie du fils du roi d’Athènes et ses aventures dans le labyrinthe, dont&nbsp;seuls la ruse, l’intelligence et le courage pourront venir à bout… Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/thesee-minotaure/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/thesee-minotaure/</a></p><p>Texte : Patricia Crété</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjPDpLZh89/NPamW7mrqJkGr2r7wclgV9/QSQyaEprYAt8qEPxOaK4vC2a10iitfr9xkY1rPKcUiInmRnpsrB15BE7q3BagSnP83LfmeB+P6W/+vRLVC9BJg5Bzp8hZO0xJIjgjwZ1Db027upeBhPO1e8K5M5BHDCQ8fzBPvkaMQMe01PDSgERxPFHvJO8jyuRL5QNdwTYmWiuvJy/m2xRBozRSfm5U2R7JOkaNe+NmS+kD4F0zHma88CHxtgikU8MRYLp9B9LBilmttuzmHOv+HQCfvKAnrzIm0a0Jfnf4vpoDHKHouAvZU4VG6WXO/PovkqZ6/ApEBL0/2STEVs5H2KZu4ANM6uA3dkgrf1AtRHt3bdsQUiHi7DygiTkFUOe+dQHDz0W8i1MPsfw+vUQm+clwxv2172jtJMjQs+M/S2FnAR9JWdMCtLOlAztV1EXaigUEhkSYYyKOpTRFhYk3j0vdW6L6T3rVCz42QUUT1MA==]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/theseeetleminotaure</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/theseeetleminotaure/media.mp3" length="24044457" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Mythologie aztèque </title>
+                <acast:episodeId>ac04477a-b028-46be-8eb5-01d32b1a7c80</acast:episodeId>
+                <acast:episodeUrl>mythologieazteque</acast:episodeUrl>
+                <itunes:subtitle>Savais-tu que, dans la mythologie aztèque, plusieurs mondes se sont succédés ? Que, lorsqu’un de ces mondes a été détruit, les habitants ont été changés en dindons ? Savais-tu que les hommes mangeaient du maïs grâce à une petite fourmi ? Tu vas découvr...</itunes:subtitle>
+                <itunes:summary><![CDATA[Savais-tu que, dans la mythologie aztèque, plusieurs mondes se sont succédés ? Que, lorsqu’un de ces mondes a été détruit, les habitants ont été changés en dindons ? Savais-tu que les hommes mangeaient du maïs grâce à une petite fourmi ? Tu vas découvrir des histoires incroyables... Et si tu veux découvrir le livre, c'est ici :
+Texte : Clémentine V. Baron
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[ac04477a-b028-46be-8eb5-01d32b1a7c80]]></guid>
+                <pubDate>Tue, 07 Apr 2020 08:00:00 GMT</pubDate>
+                <itunes:duration>00:08:52</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>18</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/xoGU7OlxIR1uCR2_BTPZpqHT-EY=/3000x3000/https://mediacdn.acast.com/assets/ac04477a-b028-46be-8eb5-01d32b1a7c80/cover-image-k7vy82tv-mythologie_azteque.jpg" />
+                
+                <description><![CDATA[<p>Savais-tu que, dans la mythologie aztèque, plusieurs mondes se sont succédés ? Que, lorsqu’un de ces mondes a été détruit, les habitants ont été changés en dindons ? Savais-tu que les hommes mangeaient du maïs grâce à une petite fourmi ? Tu vas découvrir des histoires incroyables... Et si tu veux découvrir le livre, c'est ici :</p><p>Texte : Clémentine V. Baron</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjMbn2dtkxUe2idnceyuT7vYIahM96Yf3En7kHJxlbZUdZb0qa2LUnIcV0T9BC5FSD3xQzjAp8N3/NeesU6BJOk6Dg1O3r05X4+PD/jIhwlWByWrQWz5zBkn7knqF2lClDqlIaWceKLA0rrSSAbqhiiTbXs068Oomx0FMr3bXsnbFkom+7lWV5X0MT3P9DDBlR4Uo0jyB7zCy0pQqiiL4UjmGR060CmpIV7B88Yl45XQrk8aG9jVJoigad9Sc2C8TkUb1WgmHt+CXeiwsg+nWF1ZOAfq/4ISUIj04WdY/UAeZdTnn/XrncmAlcIBckEGdSwfunRS+ns5JigqPb1GfH7VAgmzhGq0+0FlTpztNU+s2iZouhhLoGGqyssuY13z9xcMQydotcKGyo8zDEyDKAxVelAzj43jT46ZrH2CBFS+MBooBr9/85jEV5f5ksNtakMY98jYEi9ipRWI+2p0W1/TXaIjvuj+YBUYChZdJOrPlA2WJ3NsmpFhod2Cx9FMSjA=]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/mythologieazteque</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/mythologieazteque/media.mp3" length="21316019" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Mythologie égyptienne</title>
+                <acast:episodeId>3279768a-9cf1-4dac-ba69-678b8c243d99</acast:episodeId>
+                <acast:episodeUrl>mythologieegyptienne</acast:episodeUrl>
+                <itunes:subtitle>Sais-tu comment Rê, le Soleil, créa le monde ? De quelle manière Seth, fou de jalousie, piégea son propre frère Osiris ? Ou encore, comment Anubis, le dieu à tête de chacal, devint le protecteur des embaumeurs ? Ces fascinantes divinités égyptiennes, c...</itunes:subtitle>
+                <itunes:summary><![CDATA[Sais-tu comment Rê, le Soleil, créa le monde ? De quelle manière Seth, fou de jalousie, piégea son propre frère Osiris ? Ou encore, comment Anubis, le dieu à tête de chacal, devint le protecteur des embaumeurs ? Ces fascinantes divinités égyptiennes, capables
+à leur guise de prendre l’apparence d’animaux ou d’humains, ont plein d’histoires fabuleuses à te raconter ! Et si tu veux découvrir le livre, c'est ici :
+Texte : Clémentine V. Baron
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[3279768a-9cf1-4dac-ba69-678b8c243d99]]></guid>
+                <pubDate>Tue, 07 Apr 2020 08:00:00 GMT</pubDate>
+                <itunes:duration>00:08:36</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>21</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/_GLK4Z263ee_XtePcxpTGz_YLhw=/3000x3000/https://mediacdn.acast.com/assets/3279768a-9cf1-4dac-ba69-678b8c243d99/cover-image-k7vydxys-mythologie_egyptienne.jpg" />
+                
+                <description><![CDATA[<p>Sais-tu comment Rê, le Soleil, créa le monde ? De quelle manière Seth, fou de jalousie, piégea son propre frère Osiris ? Ou encore, comment Anubis, le dieu à tête de chacal, devint le protecteur des embaumeurs ? Ces fascinantes divinités égyptiennes, capables</p><p>à leur guise de prendre l’apparence d’animaux ou d’humains, ont plein d’histoires fabuleuses à te raconter ! Et si tu veux découvrir le livre, c'est ici :</p><p>Texte : Clémentine V. Baron</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjNCjGOyqxBK4rq3IA7Lc1Ziau+OIYZVxym05s2HARNxr3nwnWYxzeftYWCPQ+UyThGrv4vnsftjcjEzvBjXoUyX/Gqqkgchckel5z07a85ep4EvinFPXwuN6TsH0gvCDFxHWJUf5aSTuhz00+6YwcFsHlSAiVdO2BqH2JJu0PS12OBbkf8nP2+KB7zR79bE+NUyHs/Np7uff1J7HFVXHwfe1PaQ5cS06k2mrSwFkJ6/0oNy7u0zAivt6gfhlamUCzoAxtQvWzhHj+LnxmGqrdUyliqfvHomGO3vfR/GThuTI/ZNF0kFcVKoGl82JQA+ZYTYJVzHfOqWhfwOdIL1VlzEkk/0mC+la+PVnd3eiGhU9xfJpH2nPShd0IHxknEicvNmPIIsUJiRrkVzNeu7U8wGVk+5avnPazSVlsKXFRg0pqEbsbQymSNRx/r2+3Ojnzv+DB49Z9jsHGLhU6Ry+8EIZshVRh0J1wFcj/LseNoipYq9CXL+Nw6BndQd/H4UjDA=]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/mythologieegyptienne</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/mythologieegyptienne/media.mp3" length="20650419" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Mythologie japonaise</title>
+                <acast:episodeId>c9a02114-7ed3-427a-a8dc-0bb52150cb60</acast:episodeId>
+                <acast:episodeUrl>mythologiejaponaise</acast:episodeUrl>
+                <itunes:subtitle>Connais-tu la légende de la création du monde avec une lance magique ? Celle du Soleil, qui se cache dans une grotte pour bouder ? As-tu entendu parler du kitsune, le mystérieux renard à neuf queues ? Il y a tant d’histoires et de créatures incroyables...</itunes:subtitle>
+                <itunes:summary><![CDATA[Connais-tu la légende de la création du monde avec une lance magique ? Celle du Soleil, qui se cache dans une grotte pour bouder ? As-tu entendu parler du kitsune, le mystérieux renard à neuf queues ? Il y a tant d’histoires et de créatures incroyables dans la mythologie japonaise... Tu vas vite les découvrir ! Et si tu veux découvrir le livre, c'est ici :
+Texte : Clémentine V. Baron
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[c9a02114-7ed3-427a-a8dc-0bb52150cb60]]></guid>
+                <pubDate>Tue, 07 Apr 2020 08:00:00 GMT</pubDate>
+                <itunes:duration>00:08:45</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>19</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/wl0wQ_-Ux-XGazJr4Fk8kkL-M4w=/3000x3000/https://mediacdn.acast.com/assets/c9a02114-7ed3-427a-a8dc-0bb52150cb60/cover-image-k7vyaftm-mythologie_japonaise.jpg" />
+                
+                <description><![CDATA[<p>Connais-tu la légende de la création du monde avec une lance magique ? Celle du Soleil, qui se cache dans une grotte pour bouder ? As-tu entendu parler du kitsune, le mystérieux renard à neuf queues ? Il y a tant d’histoires et de créatures incroyables dans la mythologie japonaise... Tu vas vite les découvrir ! Et si tu veux découvrir le livre, c'est ici :</p><p>Texte : Clémentine V. Baron</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjNASlvc1TtnKPeRWczqoCsOg8wLfpb4/0EyAcXw8Rtw2ChoqRrSOA0A+nZBH0wMarjERRrszdmcc1qANq9k3ykGz6aw2UOvqKxoiJtbCLBvoVlZGUOTJ2vBlmgFwbKtp2q6dJCkVXaiIDa/fENoPIlnTwFD7kaxib3OAmz90NaWP3UzgU30M/lxytwADeP46uJ4/chBAx3UXd8SxE7BpKDW+/3ZlByNQ4yhl6XJZyW0mPCx8sTU//4nIj8ynkb2Qx2am87A6XXtBCC/dgBHOP2RjVkPY/AR4NATxWM0NOLtyClK5mW+CnIZoX3vLRwKEn/FntVz2yFGsL/f9kuHTVtzNAT1UaiCB/sjQRGzBQ5+LhLaRMtH8cE55P6dWgOtmSx1X0FQ/pLqZhQmccHbSpPFQyxL6OrAMWHEAQ0Eg6zenvJ8LnKuu2/XQak0SaSepf0eCszXArvDeiIrSw2n5zVDyk7uygRW6ocTD4DKcXTFzCvTuw953baPu58LoVz3QGE=]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/mythologiejaponaise</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/mythologiejaponaise/media.mp3" length="21035986" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Mythologie hindoue</title>
+                <acast:episodeId>02321312-a2f2-427e-b35b-25679315cb51</acast:episodeId>
+                <acast:episodeUrl>mythologiehindoue</acast:episodeUrl>
+                <itunes:subtitle>Sais-tu que, d’après la mythologie hindoue, le monde s’est créé à partir du contenu d’un œuf doré ? Qu’il existe trois dieux qui veillent ensemble à l’équilibre du monde ? Que les dieux hindous étaient mortels à l’origine ? Découvre les légendes qui co...</itunes:subtitle>
+                <itunes:summary><![CDATA[Sais-tu que, d’après la mythologie hindoue, le monde s’est créé à partir du contenu d’un œuf doré ? Qu’il existe trois dieux qui veillent ensemble à l’équilibre du monde ? Que les dieux hindous étaient mortels à l’origine ? Découvre les légendes qui constituent la mythologie hindoue et la religion hindouiste. Et si tu veux découvrir le livre, c'est ici :
+Texte : Clémentine V. Baron
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[02321312-a2f2-427e-b35b-25679315cb51]]></guid>
+                <pubDate>Tue, 07 Apr 2020 08:00:00 GMT</pubDate>
+                <itunes:duration>00:08:45</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>17</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/idqRD34pbtgwpMRLCOmUZ4lOmm8=/3000x3000/https://mediacdn.acast.com/assets/02321312-a2f2-427e-b35b-25679315cb51/cover-image-k7vy2jxx-mythologie_hindoue.jpg" />
+                
+                <description><![CDATA[<p>Sais-tu que, d’après la mythologie hindoue, le monde s’est créé à partir du contenu d’un œuf doré ? Qu’il existe trois dieux qui veillent ensemble à l’équilibre du monde ? Que les dieux hindous étaient mortels à l’origine ? Découvre les légendes qui constituent la mythologie hindoue et la religion hindouiste. Et si tu veux découvrir le livre, c'est ici :</p><p>Texte : Clémentine V. Baron</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjOH00AmR7BP+MvoCIbY6vxf5y4tz9+geeApH7UR3zJCYWU7iVRTOaGsF/Xfbi9W3fD+1GfawaBcM8kIbCUSiiDE5RNeMEWVDFhAprbUbkMYGiLHtR5PpXgfsg64H0L/YjnvuLHG3xkcjiu19DBGjW5AVW6SaHyGwjkjTs88IwbXeJcN9SIv0rHMxp4M5AEL1wHPPFG47ZqEnh0I00Q9hiEI9BRtCHD8G5Q0j8Q3AbcgUEoIrmlFh//z0bW6QGSXZAlsLuP1iTcjW+54fMox2aTzdjOoHIIdkXfkJXZqyPS4x5NiPRz73H5lFrqls5iQujoJMXavgeJjSKXWrxwGCislIvSmH2GGgNeiVJO+I7eTiKsCgeMSJxAKSFJapMNFA2CBpzkWRfMvBlfuadeBmCBZMJFoEz4V/DFMdunlk5MsflkfhbfHNfPv8FUpowiUKkim1G0/2MfGMXZyHhkcjvKiwT30H3Qm0z/iRR57SxlEG//tlDcdvKpXPF6FkeCxsUs=]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/mythologiehindoue</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/mythologiehindoue/media.mp3" length="21007774" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Mythologie nordique</title>
+                <acast:episodeId>be1e1048-aa71-481e-a549-65b932328b68</acast:episodeId>
+                <acast:episodeUrl>mythologienordique</acast:episodeUrl>
+                <itunes:subtitle>Tu as peut-être déjà entendu parler d’Odin ou de Thor, mais que sais-tu vraiment de la mythologie nordique&amp;nbsp;? Ce sont des mythes et légendes incroyables qui racontent la création de l’Univers, des hommes et des dieux. Leurs vies sont loin d’êtr...</itunes:subtitle>
+                <itunes:summary><![CDATA[Tu as peut-être déjà entendu parler d’Odin ou de Thor, mais que sais-tu vraiment de la mythologie nordique&nbsp;? Ce sont des mythes et légendes incroyables qui racontent la création de l’Univers, des hommes et des dieux. Leurs vies sont loin d’être simples car une terrible menace pèse sur leurs têtes…&nbsp;Et si tu veux découvrir le livre, c'est ici :
+Texte : Julie Gouazé
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[be1e1048-aa71-481e-a549-65b932328b68]]></guid>
+                <pubDate>Tue, 07 Apr 2020 08:00:00 GMT</pubDate>
+                <itunes:duration>00:09:00</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>20</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/EV4UeaKBa7nTFdKulvKVBzeersw=/3000x3000/https://mediacdn.acast.com/assets/be1e1048-aa71-481e-a549-65b932328b68/cover-image-k7vycna4-mythologie_nordique.jpg" />
+                
+                <description><![CDATA[<p>Tu as peut-être déjà entendu parler d’Odin ou de Thor, mais que sais-tu vraiment de la mythologie nordique&nbsp;? Ce sont des mythes et légendes incroyables qui racontent la création de l’Univers, des hommes et des dieux. Leurs vies sont loin d’être simples car une terrible menace pèse sur leurs têtes…&nbsp;Et si tu veux découvrir le livre, c'est ici :</p><p>Texte : Julie Gouazé</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjN1sFzzJzsWJZkoZl6eY00Ni3Xo4yUmr4YiFcZjB7oWXLSaYfOH+on620c1OoX2pk8qDD/5hpwiLjL+vQCuXqX8cjuaABYb6ITtqpWG3cAgbTcGUdIIsJ83T1ds9rt0OGRIOf3Zj3Ft4Y1sGEk7xv6Ctt1oWYDX5BWxcJKrdKFKwxXMyP2FwC7Txr1yAPofLZa9qZuOk2hbcA3lXlLc7KR0ZHrSzfs1Yg3Ui3UKMSRScZPEcEKVilLL4p/zicdOI81Lr7Ok0ABCgi6H2cnSfwHy5/FtMZNRXcv06Zvp9N+j1YQlLhu40WmRWd8VY5tbevvi4Jc6whHaX/J5L3ep1RkqcOvC5ZnTMkMSDy9DNbn1t1SGsK/aEUrrTVLAymuZ9jN6K7GLqCatnveWly6HHdR73p7z1Car8jD+1bHtfp0Re0XwsqX1nT1Rjvb25H1RMdk7gJ3MCkrH+DA+HfdXKOdXDRb/atFohvoMSruQQOYvxyedYiuxHX6Z9Wbg0b/S+BI=]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/mythologienordique</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/mythologienordique/media.mp3" length="21614860" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Zeus, le maître de l&apos;Olympe</title>
+                <acast:episodeId>4346d29c-f2f4-4644-9368-38a565db9fee</acast:episodeId>
+                <acast:episodeUrl>zeus-lemaitredelolympe</acast:episodeUrl>
+                <itunes:subtitle>Depuis le mont Olympe, Cronos règne en tyran et, pour qu’ils ne puissent pas le détrôner, le Titan a dévoré tous ses enfants. Mais Zeus, son fils cadet, est parvenu à s’échapper ! Aidé de la nymphe Métis, le jeune dieu va libérer ses frères et sœurs et...</itunes:subtitle>
+                <itunes:summary><![CDATA[Depuis le mont Olympe, Cronos règne en tyran et, pour qu’ils ne puissent pas le détrôner, le Titan a dévoré tous ses enfants. Mais Zeus, son fils cadet, est parvenu à s’échapper ! Aidé de la nymphe Métis, le jeune dieu va libérer ses frères et sœurs et se battre aux côtés des Géants pour affronter son père…&nbsp;Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/zeus-le-ma%C3%AEtre-de-lolympe
+Texte : Julie Gouazé
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[4346d29c-f2f4-4644-9368-38a565db9fee]]></guid>
+                <pubDate>Tue, 17 Mar 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:12:43</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>16</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/Z3kDEatk2K6EY64u1I31yHt_jvI=/3000x3000/https://mediacdn.acast.com/assets/4346d29c-f2f4-4644-9368-38a565db9fee/cover-image-k7k9ozgb-zeus.jpg" />
+                
+                <description><![CDATA[<p>Depuis le mont Olympe, Cronos règne en tyran et, pour qu’ils ne puissent pas le détrôner, le Titan a dévoré tous ses enfants. Mais Zeus, son fils cadet, est parvenu à s’échapper ! Aidé de la nymphe Métis, le jeune dieu va libérer ses frères et sœurs et se battre aux côtés des Géants pour affronter son père…&nbsp;Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/zeus-le-ma%C3%AEtre-de-lolympe" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/zeus-le-ma%C3%AEtre-de-lolympe</a></p><p>Texte : Julie Gouazé</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjPndWUL9Ae+zF4KE70NLixUPu5TN7Sbu7/UrmvfxA3G91+0dZSW8oW3KsmNj3mO3ngmXUvmIsz77GeGecmeLPpW6rEvsiTL0KD5zYYgxgfBJtjS+DmkZqNMGJrjaguJkg577miGvQrTv8xG5CwHYvjqilDmG2m0uqGTDtlw0aHpD5d8ucgUSqN8n/ClS0xinOTEBVOyOmiY6+BWNQIixwSgdx/bKxCkd611XJL+7V+bn4k2X+yjk7TU9LFMnwpJGSOrUbU7Gsa6Oz2ub38h+umUoQUwIsw5HcHvyiXvnGRlruVueig1OiZ8bKRjUwfbMRnjXSZFQsCOMOt754TS5HzOrR0rhhdtuZccCbnno8q+Oxo1kz19agDyZ2dOShjrzOMLBPrUzyMPezkRe764yBc3qKKXkV47xC8rwFm/YcGtE341gw7+Nqa1QG/adSQdvr1Y1GxdBgv8yEMvgXK4LjhUizB19ZJCS/vDbvec+mp40v6RYWBsGIzOeWdrYBVoHKxZ5SLbp8cpRkF0IPtLmPt4]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/zeus-lemaitredelolympe</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/zeus-lemaitredelolympe/media.mp3" length="30542468" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Hermès, le messager des dieux</title>
+                <acast:episodeId>1bc89e18-b325-44de-a89d-afa827e54b12</acast:episodeId>
+                <acast:episodeUrl>hermes-lemessagerdesdieux</acast:episodeUrl>
+                <itunes:subtitle>Hermès, le messager des dieux, est un farceur qui adore jouer de mauvais tours aux autres divinités… Mais, malgré tout, le dieu des Voleurs, du Commerce et des Voyageurs ne rate jamais une occasion de rendre service. Voyage avec lui entre le mont Olymp...</itunes:subtitle>
+                <itunes:summary><![CDATA[Hermès, le messager des dieux, est un farceur qui adore jouer de mauvais tours aux autres divinités… Mais, malgré tout, le dieu des Voleurs, du Commerce et des Voyageurs ne rate jamais une occasion de rendre service. Voyage avec lui entre le mont Olympe et les Enfers pour découvrir toutes ses aventures. Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/hermes-le-messager-des-dieux
+Texte : Patricia Crété
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[1bc89e18-b325-44de-a89d-afa827e54b12]]></guid>
+                <pubDate>Tue, 17 Mar 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:11:56</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>14</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/eipUi--O_Ie972BP2SeUcBOAoXU=/3000x3000/https://mediacdn.acast.com/assets/1bc89e18-b325-44de-a89d-afa827e54b12/cover-image-k7k9i4pb-hermes.jpg" />
+                
+                <description><![CDATA[<p>Hermès, le messager des dieux, est un farceur qui adore jouer de mauvais tours aux autres divinités… Mais, malgré tout, le dieu des Voleurs, du Commerce et des Voyageurs ne rate jamais une occasion de rendre service. Voyage avec lui entre le mont Olympe et les Enfers pour découvrir toutes ses aventures. Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/hermes-le-messager-des-dieux" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/hermes-le-messager-des-dieux</a></p><p>Texte : Patricia Crété</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjP66+tyXnDDtktjIAvxSaEEH5OQfbBwMZ5UiZ/lKxWNthpNP44VgAZUvthO+8l4V3612tgqDPbLBS1G/SwH2HAEd9/AwHRrde0VPbfO1EYoE9yIiO3uv9bFTtj2KAzvOWWr1PtcRxUWzqrWFZQrJIjO/SUHoPFY+OIRbHQsK5lSxwRQpA1Xnw5ToqdEE6FxPROW+sJYW7z1BiOVPYX6FPIVNH4WXrPLXk2Z8kvwLjaDI1WyxlaW6efD9cYGROtvf7a3Bw775U1sJA8k4d0+lmEvHwB5aZcULMCDu90g/O/Zn8taehznCZBNaGY18EqGwHzm0XRITUd9sK7Mo+D08JjDR6TyMhGUUdBYhu6GbNR5QyIUHBfZ9B0gTDPbrzqXJeERituptC59dxrRpx1GqCl/0zPV2sbefSkUE8aECdFW8d7KEXJ1rqKe3Ozp+6OunDcde6zbHgjIdGjIzwOtGFB7TEyGlD1XlEfHCFwBMYPwicDGVsX2GP4ieH3mRntCRODAhYVT6P+CSVdFWI3igcjL]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/hermes-lemessagerdesdieux</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/hermes-lemessagerdesdieux/media.mp3" length="28679415" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Athena, la sagesse guerrière</title>
+                <acast:episodeId>ed7bb281-52af-4500-89ea-a72b42682c43</acast:episodeId>
+                <acast:episodeUrl>athena-lasagesseguerriere</acast:episodeUrl>
+                <itunes:subtitle>Dès sa naissance, Athéna prouve qu’elle n’est pas une déesse comme les autres. À la fois guerrière redoutable et conseillère bienveillante, elle apporte son aide aux humains, surtout aux héros&amp;nbsp;! Découvre vite ce personnage de la mythologie gre...</itunes:subtitle>
+                <itunes:summary><![CDATA[Dès sa naissance, Athéna prouve qu’elle n’est pas une déesse comme les autres. À la fois guerrière redoutable et conseillère bienveillante, elle apporte son aide aux humains, surtout aux héros&nbsp;! Découvre vite ce personnage de la mythologie grecque qui donne son nom à la capitale de la Grèce : Athènes.&nbsp;&nbsp;Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/athena-la-sagesse-guerri%C3%A8re
+Texte : Julie Gouazé
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[ed7bb281-52af-4500-89ea-a72b42682c43]]></guid>
+                <pubDate>Tue, 17 Mar 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:12:06</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>13</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/wiYf77yBqKyvquH4G-yAFvj1ev0=/3000x3000/https://mediacdn.acast.com/assets/ed7bb281-52af-4500-89ea-a72b42682c43/cover-image-k7k9coiz-athena.jpg" />
+                
+                <description><![CDATA[<p>Dès sa naissance, Athéna prouve qu’elle n’est pas une déesse comme les autres. À la fois guerrière redoutable et conseillère bienveillante, elle apporte son aide aux humains, surtout aux héros&nbsp;! Découvre vite ce personnage de la mythologie grecque qui donne son nom à la capitale de la Grèce : Athènes.&nbsp;&nbsp;Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/athena-la-sagesse-guerri%C3%A8re" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/athena-la-sagesse-guerri%C3%A8re</a></p><p>Texte : Julie Gouazé</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjPINcVurGl4HBw0xybZuyMrJ7kGY+SoUyEXjgmWO0+/3bVvav5M8RcEdTVUvmBcqaK1X/Y7WPNQQ30GaL4OpAPrlExGckQWV1BbhptIgj/eiWatOrj0nsnIjjIewXUCPmCjdRhqQi097U8pEyFEdipsw1rVtKwq99GkDzvWKRXhMzwObFMddKkC9jg7oWM06rwee8Usqwuc/jvW9q1f/veGCthSN5fvJQtG4nVcuD4RukKZrQgPq6kgRk9T8aO7xGZc5EuTV2u0wcIfxZ+9hi8+Z2nZ69XuAh8XqOIJSz3T9oOxi+/5SlOyxWgamGy3bPZCmuWBGtN9brteD7Pj9CdZQBdenm1YFUJudo/EpoXirr0BQKBdRG8CfXStM2HOoQ4XthwHCDkOEIJMr1PVfQ6luNxpsYdlokC3wT82AT4ItDr9/Gwp4J31Hs0u1bWfhRH2p9Usnc19wHEgJBLXSgMQwsRY1Jn4Xj9L17j2DgjU37nFF4eXqXo6FXVB6s4ss4ZGuqxPLOPEz/qLDqLNpjr5]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/athena-lasagesseguerriere</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/athena-lasagesseguerriere/media.mp3" length="29076476" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Perséphone, la naissance du printemps</title>
+                <acast:episodeId>dacfe975-24db-4706-9b6b-b408d60db746</acast:episodeId>
+                <acast:episodeUrl>persephone-lanaissanceduprintemps</acast:episodeUrl>
+                <itunes:subtitle>Alors qu’elle cueille des fleurs sauvages, Perséphone est enlevée par Hadès, le dieu des Enfers, qui désire l’épouser. Lorsque Déméter le découvre, la déesse de l’Agriculture laisse les champs et les cultures mourir… Pour sauver les hommes, Zeus doit v...</itunes:subtitle>
+                <itunes:summary><![CDATA[Alors qu’elle cueille des fleurs sauvages, Perséphone est enlevée par Hadès, le dieu des Enfers, qui désire l’épouser. Lorsque Déméter le découvre, la déesse de l’Agriculture laisse les champs et les cultures mourir… Pour sauver les hommes, Zeus doit vite trouver une solution ! Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/persephone-la-naissance-du-printemps
+Texte : Patricia Crété
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[dacfe975-24db-4706-9b6b-b408d60db746]]></guid>
+                <pubDate>Tue, 17 Mar 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:12:09</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>15</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/EVTO7QqaOJ0T4fM31or45t_FUck=/3000x3000/https://mediacdn.acast.com/assets/dacfe975-24db-4706-9b6b-b408d60db746/cover-image-k7k9k3xz-persephone.jpg" />
+                
+                <description><![CDATA[<p>Alors qu’elle cueille des fleurs sauvages, Perséphone est enlevée par Hadès, le dieu des Enfers, qui désire l’épouser. Lorsque Déméter le découvre, la déesse de l’Agriculture laisse les champs et les cultures mourir… Pour sauver les hommes, Zeus doit vite trouver une solution ! Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/persephone-la-naissance-du-printemps" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/persephone-la-naissance-du-printemps</a></p><p>Texte : Patricia Crété</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjMAforCSyE0e3XMCSRTuVUYrRONkCk5rYPYq6BrVR0kErN/a3BrSef3o6COAjhJ8Q1DvqXujIfxZL++O6+bEtXp1tobw6Q/mv47CsgQ6HihHcqk7UWoXqoI8zFC3Q66xfIQt85oDzM/ceLGQYh40SMSPZX9i0FtOsfLdksC4mCn9XuWnz9KIGCShqUDv4osCuJkFoHK2iuRRTmjlGV4oPBKSFX9MBG27CWSQTJOfep/O4K7OepECiXDZBcm/SWP7w1Xk56pWXESLEW5YKMyKlWjcbifbM+aGCOVUg/GCEPXUFijMoue+l1OymVrTsGnA/fvQ6R1EP+M4KrP62xxYCveNYnTytmahkuNOw6LQaIlDX/J4s9+Ivl7erNJDoZjiZzm8a7YJfxvq+GkZO1qzXxSJ/PDYZIx9c5TGdUOUclRG9t1ZEQuMKA67QfMYWOrCHoTxocr+jpo03sbIQsv+y1fineuRvIEt16F+quZutj2M/r5iY8FNfx+1/x92IwpubYPTccZxJyq0YrUGlGPZICq]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/persephone-lanaissanceduprintemps</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/persephone-lanaissanceduprintemps/media.mp3" length="29167382" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Beowulf, le chasseur de monstres</title>
+                <acast:episodeId>6ee16a07-54f7-415d-9af3-f446323e53e2</acast:episodeId>
+                <acast:episodeUrl>beowulf-lechasseurdemonstres</acast:episodeUrl>
+                <itunes:subtitle>Célèbre héros de la mythologie nordique, Beowulf est un redoutable chasseur de monstres. Découvrez le destin de ce guerrier hors du commun !&amp;nbsp;&amp;nbsp;Et si tu veux découvrir le livre, c&apos;est ici : https://quellehistoire.com/produit/beowul...</itunes:subtitle>
+                <itunes:summary><![CDATA[Célèbre héros de la mythologie nordique, Beowulf est un redoutable chasseur de monstres. Découvrez le destin de ce guerrier hors du commun !&nbsp;&nbsp;Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/beowulf-chasseur-monstres/?utm_source=acast&utm_medium=podcast&utm_campaign=beowulf
+Texte : Julie Gouazé
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[6ee16a07-54f7-415d-9af3-f446323e53e2]]></guid>
+                <pubDate>Tue, 18 Feb 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:11:30</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>12</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/B_mYvF4YGky2As4YFiEABwBobiQ=/3000x3000/https://mediacdn.acast.com/assets/6ee16a07-54f7-415d-9af3-f446323e53e2/cover-image-k6kn9x33-beowulf.png" />
+                
+                <description><![CDATA[<p>Célèbre héros de la mythologie nordique, Beowulf est un redoutable chasseur de monstres. Découvrez le destin de ce guerrier hors du commun !&nbsp;&nbsp;Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/beowulf-chasseur-monstres/?utm_source=acast&amp;utm_medium=podcast&amp;utm_campaign=beowulf</p><p>Texte : Julie Gouazé</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjONon3qN7fAiSX6IKal55pg8HmQin9+RrlXZP7cgT2mmw+5fp7BZWCKIwRq2Ut8DAaAUXOGgFmGlWC4Ik5dDJ4mHDQy7J1VdSgPKuG6xI+f8KOfdZ1GT3CPsz9mt1DqZVOABLIHYsAI2qccarJCxdAOjoebcKdXFLwldQ83ThZPpRU9oWO/HM2vnJQylPkorIz/cJK/GNdc3L5qPTBq++aUYRJOFF9ro6tHF/dU7XYk538alSFsNLm/iz3kIzCNhk532nYrIBrFX8OLFLS2KqQsghE34t7OqIu5T6uRjVsHir8Ghj/wykzZNWn8RpzZ8T5YtTFFIIeuPMwT838wp8/Kxa5ZKpWHBSUt6DoqEBxpm8n8lKZDQwpi7KxTWgREulX5J4wLuwRLnQwXbYJEvJ14oHhjzX0TGdniQ8W7jWuPFmDTsGBR5F4GgdydU05XkJ6VABNToON+lPeJTYRdWxPRsdtBFFH1r6sxNys4g5MdDTZm/CNMzGFGBUL27rtmznU=]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/beowulf-lechasseurdemonstres</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/beowulf-lechasseurdemonstres/media.mp3" length="27609439" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Sigurd, l&apos;anneau maudit</title>
+                <acast:episodeId>b9b4c9be-7569-4f04-9e3a-46e2256f6f9b</acast:episodeId>
+                <acast:episodeUrl>sigurd-lanneaumaudit</acast:episodeUrl>
+                <itunes:subtitle>Le destin de Sigurd est intimement lié à celui d’Andvarinaut, l’anneau maudit. Pour l’acquerir, Sigurd devra faire face à de nombreux obstacles et affronter un terrible dragon !&amp;nbsp;&amp;nbsp;Et si tu veux découvrir le livre, c&apos;est ici : http...</itunes:subtitle>
+                <itunes:summary><![CDATA[Le destin de Sigurd est intimement lié à celui d’Andvarinaut, l’anneau maudit. Pour l’acquerir, Sigurd devra faire face à de nombreux obstacles et affronter un terrible dragon !&nbsp;&nbsp;Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/sigurd-anneau-maudit/?utm_source=acast&utm_medium=podcast&utm_campaign=sigurd
+Texte : Julie Gouazé
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[b9b4c9be-7569-4f04-9e3a-46e2256f6f9b]]></guid>
+                <pubDate>Tue, 18 Feb 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:11:16</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>10</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/mvqhn_D6S6ps9QmI4Bwdx_qogoQ=/3000x3000/https://mediacdn.acast.com/assets/b9b4c9be-7569-4f04-9e3a-46e2256f6f9b/cover-image-k6kn01za-sigurd.png" />
+                
+                <description><![CDATA[<p>Le destin de Sigurd est intimement lié à celui d’Andvarinaut, l’anneau maudit. Pour l’acquerir, Sigurd devra faire face à de nombreux obstacles et affronter un terrible dragon !&nbsp;&nbsp;Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/sigurd-anneau-maudit/?utm_source=acast&amp;utm_medium=podcast&amp;utm_campaign=sigurd</p><p>Texte : Julie Gouazé</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjOy8D3NahlJ/I5HR74Jv9PZqT8WA/dgxTmiLiwP+HqhtcEfDLpi4foL+vBROPsC2U7UH/og7oTmr8W1OaizTrQ0z8ia71HR6o9I0eqA0dmQcrl4nzENmZUXWFokV8TjgK5G2pn/fuVxahijqh+WZb9w8CHmkvg0msctQhs6LSl6xPHi4fT+7okzYFFLqmWhEbuw5fmdFCTKVB1fMLov6mcCZTxyZla3L+8USpS1sg3a/d1oaTBtmV4ZGkR0CBBvW2Dw6Y8/mY3MyxtWtS7yjvqNt39b97mzfZL61d8UWVvzgsGfYi5S16aa4rHXj954cr63NjW2NK4ZhcUvzk2fQGtSrZIP/JIFUhQM+yhd9EJ24sDWQlyyBJSLS/dnbkKj8brQWpiSQlGk44WDySi464W0eyruPcaENL9TnZebK3dut1ibJgZL61crL+tNKztVSE6OKvEzKfH3tGvru/N/Z0PfGa3JJj+j0heyKxvloNi5PYhELg8bYyChb6uulgujcFjJKnm48aoDnQ5NCkDKmp70]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/sigurd-lanneaumaudit</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/sigurd-lanneaumaudit/media.mp3" length="27067137" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Thor, l&apos;ennemi des géants</title>
+                <acast:episodeId>edc24f56-2026-452e-a728-9fe72210ebd4</acast:episodeId>
+                <acast:episodeUrl>thor-lennemidesgeants</acast:episodeUrl>
+                <itunes:subtitle>Thor, dieu du tonnerre, est une figure incontournable de la mythologie nordique. Armé de son célèbre marteau, c’est un&amp;nbsp;adversaire redoutable des géants qui sont les ennemis des dieux ! Et si tu veux découvrir le livre, c&apos;est ici : https:/...</itunes:subtitle>
+                <itunes:summary><![CDATA[Thor, dieu du tonnerre, est une figure incontournable de la mythologie nordique. Armé de son célèbre marteau, c’est un&nbsp;adversaire redoutable des géants qui sont les ennemis des dieux ! Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/thor-ennemi-geants/
+Texte : Julie Gouazé
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[edc24f56-2026-452e-a728-9fe72210ebd4]]></guid>
+                <pubDate>Tue, 18 Feb 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:11:24</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>9</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/lX56arpOp3DwgyZybwW3hFar_RY=/3000x3000/https://mediacdn.acast.com/assets/edc24f56-2026-452e-a728-9fe72210ebd4/cover-image-k6kmv4u5-thor.png" />
+                
+                <description><![CDATA[<p>Thor, dieu du tonnerre, est une figure incontournable de la mythologie nordique. Armé de son célèbre marteau, c’est un&nbsp;adversaire redoutable des géants qui sont les ennemis des dieux ! Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/thor-ennemi-geants/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/thor-ennemi-geants/</a></p><p>Texte : Julie Gouazé</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjOfchGgIYU9jMwJ8DmMGAG7Y+smwYUS0IlnTe0kyuh2galYd3RLAyzwKjDeJFI1vVikq2/QE0wLYqAFRsfVuZH0jo4iK5F74XBPf8m5pZf0NUlpIniixpBc5oDHQwT1ZoGeQe5f86LPx0BiVcibsCwhkaltJxd0d0dyWLn8Rg4/2AVsc/zvACrlY2HGz9wcOvhJrPkU9IjMFNthgaWhgjw0ru4ERWi0RpgduMWBcMXWArESRZX5GLFwM3dX3fw8RwDP8/HeAScxd/Mf044dUBj6+O2h4FTaqhN5aS3J6uvNnE04etnt6/tmMCJtvqtphwWvvizHtRt87XB0ahaVM6Bl8fz79fT/dX+ys1dHc12L1gWSU2tSp9Afop2Kyo3b2XKRDlbWEcNdkIxCiZsD1W5W5thOtb4A9wzvo4fXPqECo72wZqOWRexUMQiNG9M8DH5SiA/ahIdojmFn37RX+8ErPD0U9+vivR8hB2vmlFqoSDpQ6T7zWz0I1EPDJ115xg4ZT49ck9kh6oq64YTndniP]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/thor-lennemidesgeants</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/thor-lennemidesgeants/media.mp3" length="27387921" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Odin, la menace du Ragnarök</title>
+                <acast:episodeId>1fca6162-0c57-4e40-b965-173bca319e8b</acast:episodeId>
+                <acast:episodeUrl>odin-lamenaceduragnarok</acast:episodeUrl>
+                <itunes:subtitle>À la fois dieu de la guerre et de la sagesse, Odin est le plus connu des dieux nordiques. Dans son palais à Asgard, il se prépare à Ragnarok, la bataille finale entre les dieux et leurs ennemis…&amp;nbsp;&amp;nbsp;Et si tu veux découvrir le livre, c...</itunes:subtitle>
+                <itunes:summary><![CDATA[À la fois dieu de la guerre et de la sagesse, Odin est le plus connu des dieux nordiques. Dans son palais à Asgard, il se prépare à Ragnarok, la bataille finale entre les dieux et leurs ennemis…&nbsp;&nbsp;Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/odin-menace-ragnarok/?utm_source=acast&utm_medium=podcast&utm_campaign=Odin
+Texte : Julie Gouazé
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[1fca6162-0c57-4e40-b965-173bca319e8b]]></guid>
+                <pubDate>Tue, 18 Feb 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:11:34</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>11</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/_GvuL8Q6GP7EuGtzPAu8lgf7o64=/3000x3000/https://mediacdn.acast.com/assets/1fca6162-0c57-4e40-b965-173bca319e8b/cover-image-k6kn3mkl-odin.png" />
+                
+                <description><![CDATA[<p>À la fois dieu de la guerre et de la sagesse, Odin est le plus connu des dieux nordiques. Dans son palais à Asgard, il se prépare à Ragnarok, la bataille finale entre les dieux et leurs ennemis…&nbsp;&nbsp;Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/odin-menace-ragnarok/?utm_source=acast&amp;utm_medium=podcast&amp;utm_campaign=Odin</p><p>Texte : Julie Gouazé</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjNzhwiaaY6YmCTur982sdRc2g+xDQfTMpna4F5HTBv2nB7uCtyto49N+F4AmJcVwHCDexvTauN1E+IAouteioXaoHh0ooe+MhVvtKuJ4KBM/VO/5W7wLdDMr5aNjwqzp/I/hDyGOUOkRUk2f7bNDI05n2+jJe3BwAY8Xg4StPbWatRQB4x/T778ObZn66Tc4aNMADkuaGQbW9BtolXDBDKfFBFd2VWkmodPnr6S9W+kp72xekltlBj4OcxRWCkqrbx70RDzW1tga0HOYdli18vG5HXcs/fw16TDrLzvHvig/G02L/PS8fEHB4hYOc9no0308B1kFM8KnvW8DGJ6ed6CA7KAjFMvcrEHcSMBev34n7wf7VT/iklGxHVcq+qb+5GEOwieWekRWi3eEiMsScWOfif6MVNHJwpd5pZxhCayEUmovWW++QYXjZK2oj6hLtw4oAzfSQRElLvZfMNmJP3Yf9+AeOkDwWGvxsaeV7qb0k2VXdFZuGzSmszhl8A94eZNL4eMPj2nVcUY5WHhsnTq]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/odin-lamenaceduragnarok</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/odin-lamenaceduragnarok/media.mp3" length="27763039" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Tristan &amp; Iseult, les amants maudits</title>
+                <acast:episodeId>c442d2be-2050-4d6e-b6b5-dc90f5579f78</acast:episodeId>
+                <acast:episodeUrl>tristan-iseult-lesamantsmaudits</acast:episodeUrl>
+                <itunes:subtitle>Le jour où Tristan et Iseult se voient pour la première fois, aucun des deux ne se doute qu’ils viennent de rencontrer l’amour de leur vie. Un philtre magique, un terrible dragon, des combats… Les deux amoureux parviendront-ils à surmonter tous les obs...</itunes:subtitle>
+                <itunes:summary><![CDATA[Le jour où Tristan et Iseult se voient pour la première fois, aucun des deux ne se doute qu’ils viennent de rencontrer l’amour de leur vie. Un philtre magique, un terrible dragon, des combats… Les deux amoureux parviendront-ils à surmonter tous les obstacles qui se dressent sur leur chemin ?&nbsp;Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/tristan-iseult-les-amants-maudits/
+Texte : Claire Dozoir
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[c442d2be-2050-4d6e-b6b5-dc90f5579f78]]></guid>
+                <pubDate>Tue, 21 Jan 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:11:11</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>8</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/9S_Y7bRMptrRWgBFGUrDas_ga0g=/3000x3000/https://mediacdn.acast.com/assets/c442d2be-2050-4d6e-b6b5-dc90f5579f78/cover-image-k5mkd6uf-tristan-iseult.png" />
+                
+                <description><![CDATA[<p>Le jour où Tristan et Iseult se voient pour la première fois, aucun des deux ne se doute qu’ils viennent de rencontrer l’amour de leur vie. Un philtre magique, un terrible dragon, des combats… Les deux amoureux parviendront-ils à surmonter tous les obstacles qui se dressent sur leur chemin ?&nbsp;Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/tristan-iseult-les-amants-maudits/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/tristan-iseult-les-amants-maudits/</a></p><p>Texte : Claire Dozoir</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjODTUusVB3r9mGnwpwt2nBy9MSMU2A4keTVToG0oCUKsZnzVnpq4jpD6rO+td6Tx0zEhunun0Gp8BDEo/251tynU5Opm+K1RmapyRfbbpgMZIwsoe/resk0EWZl3Fal2YhH7gwbF5EJsRrSjAbuU2g7g32YN7aIkaeL65D1KUZYhNsgLmwi9MiGcMUD5z+5WOaoY4yTYi1pUmle1Isg6p1KyPANtOHwyDJno5UElwbyA5nY4OKf38f8jw9kOjDrAmjA3yaE+tznzD7g9IPs+Lqf2OZXYS2uvLwFD+0MCZue9Xri1z/uqmxapwY/Jn+MMO8xuwZQNzy66GVireeQ+PmLeboi+Cr/+iXBuM8jvqn3I/BMXykKwc0mapilO6mpeS35IynxUGHsZDio8UdqvVj/1Ep+vjAWFGplmoSsJFDJv80L2tGOGNCBTn5/5f8fTt0CPnSlxdFGxeG8bqKIA9b0kHmpaw7HA/hxzPusvUic5rn6zu1+FA3feCqGpWd3sqU=]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/tristan-iseult-lesamantsmaudits</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/tristan-iseult-lesamantsmaudits/media.mp3" length="26867562" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Perceval, la quête du Graal</title>
+                <acast:episodeId>a27658e0-c615-49dd-8972-af14fd6be043</acast:episodeId>
+                <acast:episodeUrl>perceval-laquetedugraal</acast:episodeUrl>
+                <itunes:subtitle>Tu vas découvrir l’histoire de Perceval, cet homme au destin étonnant. Il passe son enfance dans une forêt sauvage et découvre par hasard le monde de la chevalerie. Puis tout s’enchaîne… Il devient chevalier, combat les méchants et court la campagne à ...</itunes:subtitle>
+                <itunes:summary><![CDATA[Tu vas découvrir l’histoire de Perceval, cet homme au destin étonnant. Il passe son enfance dans une forêt sauvage et découvre par hasard le monde de la chevalerie. Puis tout s’enchaîne… Il devient chevalier, combat les méchants et court la campagne à la recherche du Graal, cette mystérieuse coupe aux pouvoirs extraordinaires. Va-t-il la trouver ? Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/perceval-la-quete-du-graal/
+Texte : Patricia Crété
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[a27658e0-c615-49dd-8972-af14fd6be043]]></guid>
+                <pubDate>Tue, 21 Jan 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:10:41</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>7</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/6dD8w9gHa8PMhCLK1PrLUDii1hw=/3000x3000/https://mediacdn.acast.com/assets/a27658e0-c615-49dd-8972-af14fd6be043/cover-image-k5mkaqbh-perceval.png" />
+                
+                <description><![CDATA[<p>Tu vas découvrir l’histoire de Perceval, cet homme au destin étonnant. Il passe son enfance dans une forêt sauvage et découvre par hasard le monde de la chevalerie. Puis tout s’enchaîne… Il devient chevalier, combat les méchants et court la campagne à la recherche du Graal, cette mystérieuse coupe aux pouvoirs extraordinaires. Va-t-il la trouver ? Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/perceval-la-quete-du-graal/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/perceval-la-quete-du-graal/</a></p><p>Texte : Patricia Crété</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjNVq0nv1DW93apNNZHSgxYDCqYLUS3yr1r/Ag1XlBE9Aihg7X+FvMEN8vnyGq6OcPxshcpUHx29mc09ze4LDYuYoY+6HqQ896+DhqY00uE4F2WMwjQK0YJc9lJO2uiGTYFbEk2P9oojbmcuRKEqAYNhP1p5+SoGoGYb4r3kEyh3IoStrYdPMgnp6k0wJJibJOXAdxat+WtKfyYonOgjRqVMqSe/BIBgGgtDG5OXuTNGxFleW8I3CCet5KjrCGcalH3P+7xCagloJJvPFJnHo9spwzufX8hQylqcApRC994orO1vufYBv1RMvg6Dy6C+mRrJn3WW+Eawg5At9ecaElAu5T1BUq5hd7a+BeGJyWxuxYOqIKxSp0IUlU7/mP9msQOGNv4zjgE3eUdBOPOcRD8rUPJyB60+BtTanrq4XhKZpv8V4VNxyIeVCPk7ixyO5LmKvy31Dv4MkgMVEnqvxmcrqnqhWi2VN1DR4XPzo2uLNixnqupNEkaENXL5pR1voT4=]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/perceval-laquetedugraal</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/perceval-laquetedugraal/media.mp3" length="25673244" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Mélusine, la femme serpent</title>
+                <acast:episodeId>46d09b18-ee92-4271-9051-d8cd46557c79</acast:episodeId>
+                <acast:episodeUrl>melusine-lafemmeserpent</acast:episodeUrl>
+                <itunes:subtitle>L’histoire de la fée Mélusine est intimement liée à une bien étrange malédiction : chaque samedi, ses jambes se transforment en une queue de serpent, et si son bien-aimé l’aperçoit un jour dans cette apparence, elle sera perdue à jamais. Découvre l’his...</itunes:subtitle>
+                <itunes:summary><![CDATA[L’histoire de la fée Mélusine est intimement liée à une bien étrange malédiction : chaque samedi, ses jambes se transforment en une queue de serpent, et si son bien-aimé l’aperçoit un jour dans cette apparence, elle sera perdue à jamais. Découvre l’histoire de cette mystérieuse fée dont la magie lui permet de bâtir d’immenses palais. Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/melusine-la-femme-serpent/
+Texte : Claire Dozoir
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[46d09b18-ee92-4271-9051-d8cd46557c79]]></guid>
+                <pubDate>Tue, 21 Jan 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:10:36</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>6</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/_Sg8PgKOcbz7GMt9AO_q3PsuT0Q=/3000x3000/https://mediacdn.acast.com/assets/46d09b18-ee92-4271-9051-d8cd46557c79/cover-image-k5mk7q04-melusine.png" />
+                
+                <description><![CDATA[<p>L’histoire de la fée Mélusine est intimement liée à une bien étrange malédiction : chaque samedi, ses jambes se transforment en une queue de serpent, et si son bien-aimé l’aperçoit un jour dans cette apparence, elle sera perdue à jamais. Découvre l’histoire de cette mystérieuse fée dont la magie lui permet de bâtir d’immenses palais. Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/melusine-la-femme-serpent/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/melusine-la-femme-serpent/</a></p><p>Texte : Claire Dozoir</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjNUijpukB3vFqW7iste2wAPJKOMqmBjvwWIlAIYVF3/mecvc59Nr2jAZV6bwY9D5sfIw9W95+Jh1PSLe9EENmtxC8DWQJQ98buip/Qe1noXFEqXO1ZagiWDhnurIxZtgRgyS4cp1RKNyU3lZFvgifGXCpfjYIZAmVWC/Pfx31v7IL/stgVZzqoZq0092L9ga+wve5ApFYnghsjae5aAfoilEIVFIRvKl8/uRySrM0g9zeF7Io+Hiq/Qej9ydXqEi+VKiV+WgwgMYwsxUiyl1t2ChxXuPVRr4vQP/d/gzmNkBnAlSc7pPbXB+l0dvZMuqWdj+Lu8WYE8yMUwK2Zsw91BEdZyg6kkIF6AaI/gf+YuszKyqUL1oPOD0nc00zthoh59QABTj07JzomXQn3Et9p61r7QGw5+Onk64t2eljj6RvX+o9mHLgaWdyNf9F/rgtbbDgCOzOmpiC2kxEcRNYHpIrRUEvOd69z1a1K+cp/KokobeelkicUy3FR0kEnZ0nI=]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/melusine-lafemmeserpent</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/melusine-lafemmeserpent/media.mp3" length="25450680" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Arthur, la légende de la Table ronde</title>
+                <acast:episodeId>e668448a-4cb8-4909-9b2d-1abe75e327fc</acast:episodeId>
+                <acast:episodeUrl>arthur-lalegendedelatableronde</acast:episodeUrl>
+                <itunes:subtitle>Élevé sous la protection de Merlin, Arthur devient un fier combattant. Armé d’Excalibur, son épée magique, il règne sur un grand royaume où vivent des fées, des magiciens, des géants… Avec tous ses chevaliers, il siège autour de la Table ronde. Il va e...</itunes:subtitle>
+                <itunes:summary><![CDATA[Élevé sous la protection de Merlin, Arthur devient un fier combattant. Armé d’Excalibur, son épée magique, il règne sur un grand royaume où vivent des fées, des magiciens, des géants… Avec tous ses chevaliers, il siège autour de la Table ronde. Il va en vivre des aventures&nbsp;! Suis-le, tu ne seras pas déçu&nbsp;!&nbsp;&nbsp;Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/arthur-la-legende-de-la-table-ronde/
+Texte : Patricia Crété
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[e668448a-4cb8-4909-9b2d-1abe75e327fc]]></guid>
+                <pubDate>Tue, 21 Jan 2020 09:00:00 GMT</pubDate>
+                <itunes:duration>00:10:47</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>5</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/QYdopYfsupeNHAXwEUPuOLxHL54=/3000x3000/https://mediacdn.acast.com/assets/e668448a-4cb8-4909-9b2d-1abe75e327fc/cover-image-k5mk6pft-arthur.png" />
+                
+                <description><![CDATA[<p>Élevé sous la protection de Merlin, Arthur devient un fier combattant. Armé d’Excalibur, son épée magique, il règne sur un grand royaume où vivent des fées, des magiciens, des géants… Avec tous ses chevaliers, il siège autour de la Table ronde. Il va en vivre des aventures&nbsp;! Suis-le, tu ne seras pas déçu&nbsp;!&nbsp;&nbsp;Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/arthur-la-legende-de-la-table-ronde/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/arthur-la-legende-de-la-table-ronde/</a></p><p>Texte : Patricia Crété</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjM1c1odrg2LJIoJt5tAx9HvHxA7przneoquc95pDFngn/mVheLb/3rhTr10d90z81nmwFvFbZbIXKM5T7A1hucq9ngFFbPjquUgrbrBz/NprRc/8egb5KL1rBM2YgC/D92Au+DblpA6wKrh4BTPo9OGhus8a6Q7zZfpNeHhtF6QnU++U5L33w0nJlP+Ztq3Fmwt4Gatj7Nlfee/gYPjoxWMxZUDOjVsOsrI1tb3oWF7whLf//fWQehy0ZBQN+LAEEdFVpbxRFj9ykD4Xp8gOGBNO0qzOmq48NQF3P/e2s6ZM3yR5FEGfoMgphNKZuQKCeXA+wrm0MHKmjFTjXMVEaCh0QZ3blvNmQ152KnPpFbqd4Cr0CHXJRRAnQw3/M3LX3LSbstMk9f8vZA/pl+DjR4m1BMGIL5eGDHTFCwgWkZnHdrHdoteYs0oaAHQqcZCNCeNvt7qrDO5wh1/v88CsfE5m2z9Alw2fyTqxh8WAqfQIW1zamv6iu+W/8GTmceZmxI=]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/arthur-lalegendedelatableronde</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/arthur-lalegendedelatableronde/media.mp3" length="25883268" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Anubis, le royaume des morts</title>
+                <acast:episodeId>00c6eba2-1aea-4f0a-b6ae-d2efe89632fd</acast:episodeId>
+                <acast:episodeUrl>anubis-leroyaumedesmorts</acast:episodeUrl>
+                <itunes:subtitle>Il ressemble à un chien sauvage, mais c’est en fait le museau d’un chacal qui pointe au-dessus de son corps d’humain. Anubis est le dieu des Embaumeurs et de la Momification et le guide des âmes dans le chemin qui les conduit vers l’au-delà. Tu vas voi...</itunes:subtitle>
+                <itunes:summary><![CDATA[Il ressemble à un chien sauvage, mais c’est en fait le museau d’un chacal qui pointe au-dessus de son corps d’humain. Anubis est le dieu des Embaumeurs et de la Momification et le guide des âmes dans le chemin qui les conduit vers l’au-delà. Tu vas voir, c’est un personnage aussi mystérieux qu’important !
+Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/anubis-le-royaume-des-morts/
+
+
+Texte : Clémentine V.Baron
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[00c6eba2-1aea-4f0a-b6ae-d2efe89632fd]]></guid>
+                <pubDate>Sun, 15 Dec 2019 17:38:50 GMT</pubDate>
+                <itunes:duration>00:11:22</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>4</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/XLzXrvVZz9wt9HujW9oilK85zqE=/3000x3000/https://mediacdn.acast.com/assets/00c6eba2-1aea-4f0a-b6ae-d2efe89632fd/cover-image-k47ak1z9-anubis.png" />
+                
+                <description><![CDATA[<p>Il ressemble à un chien sauvage, mais c’est en fait le museau d’un chacal qui pointe au-dessus de son corps d’humain. Anubis est le dieu des Embaumeurs et de la Momification et le guide des âmes dans le chemin qui les conduit vers l’au-delà. Tu vas voir, c’est un personnage aussi mystérieux qu’important !</p><p>Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/anubis-le-royaume-des-morts/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/anubis-le-royaume-des-morts/</a></p><p><br></p><p>Texte : Clémentine V.Baron</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjNgR0INQoyu8WCOCwj52uOS4nxXzH5REUGloe1+WvZV9vJge799vqVOX5URBekv1LpVdRNLT9Zxswj7q7ADrvJoCeuXOVRaTFsjmVS2q9u+ciqToKhi96yyDdHoi4jUABSYcYt2ZrmrMrr7ogPVpk2UcXthFbinA2rb+xTnuuzLcYmr0uIaodahdMSV31RIMHRnBlMQa15iNJp+n0CZxnZzi6Z43mBRrjBH47g5mw0rtvXhW70QI6qKp/LeaG2N6CZe9NnjfXm38czeBcHHhrCXZ8FTiNzVMHqZtBzDeTTZ99eF6ib4OnImxrdoaHtpVwWGSnEC3Rc0NzrL19tcBJoE7oqfmDIOzOOMLTXqoKYnzMef5gDQ4uK2/iqUgIkT431ifqPVPskArGivwyaNZXRZc9myRprXvg8YQcb1OtSPR9cthgARgI2e+DhLkHAwb4TyQLrR1Lm6K3ejvilQCgLQvuV0MK7BjiTxLiL0SiE+d2ODU06wyPNBkvO48a1Knrsjg2A2zE6YQfaebc7OJqvA]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/anubis-leroyaumedesmorts</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/anubis-leroyaumedesmorts/media.mp3" length="27310599" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Horus, le prince d’Égypte</title>
+                <acast:episodeId>fd88061f-74f2-43bd-b484-c989529ae7c5</acast:episodeId>
+                <acast:episodeUrl>horus-leprinced-egypte</acast:episodeUrl>
+                <itunes:subtitle>Le fils chéri d’Isis et Osiris grandit caché dans les marais, loin du regard malfaisant de son oncle Seth. Bien décidé à récupérer la place qui lui revient sur le trône d’Égypte, il prépare sa vengeance… Découvre l’histoire du dieu à tête de faucon et ...</itunes:subtitle>
+                <itunes:summary><![CDATA[Le fils chéri d’Isis et Osiris grandit caché dans les marais, loin du regard malfaisant de son oncle Seth. Bien décidé à récupérer la place qui lui revient sur le trône d’Égypte, il prépare sa vengeance… Découvre l’histoire du dieu à tête de faucon et accompagne-le dans ses multiples batailles, tu ne vas pas t’ennuyer !
+Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/horus-le-prince-degypte/
+Texte : Clémentine V.Baron
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[fd88061f-74f2-43bd-b484-c989529ae7c5]]></guid>
+                <pubDate>Sun, 15 Dec 2019 17:35:40 GMT</pubDate>
+                <itunes:duration>00:12:00</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>2</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/4y_iD9L6XosEq-0fTD848tCLtxw=/3000x3000/https://mediacdn.acast.com/assets/fd88061f-74f2-43bd-b484-c989529ae7c5/cover-image-k47a9q01-horus.png" />
+                
+                <description><![CDATA[<p>Le fils chéri d’Isis et Osiris grandit caché dans les marais, loin du regard malfaisant de son oncle Seth. Bien décidé à récupérer la place qui lui revient sur le trône d’Égypte, il prépare sa vengeance… Découvre l’histoire du dieu à tête de faucon et accompagne-le dans ses multiples batailles, tu ne vas pas t’ennuyer !</p><p>Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/horus-le-prince-degypte/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/horus-le-prince-degypte/</a></p><p>Texte : Clémentine V.Baron</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjNIqp31zask0YX/x/8bqan3d19rxlt9vkxfGkq7xJwlgXgCUj3EUs3kqDyF+rzq5X29vxDDwpIPY/OFmckpN3DPkQW0ouUXL66Dq5oAIaDpYH3zK8X/5LwFCR+QJrh/B7MgKNljtzKs/hoQ2mEBEJi8f0ec1wyE0hGaFOfzZX9nL5nhBtQHMKDlDRx5lTFCRh/0k58QYagrZcetKmNkut6Ni9sdE00WEH1yXC2YlLXXVXq0r2ajLO4qikO9x1THLuH/EJlxf31pyT5ocX22Fni7ijAkhLkyGEDP5NVV36niYGjgBxYPr2jwefc+Uji8l0uygN1jNNXN2uho22I3JjrGl4teU0YMe0z9jA7+wwV2gMdEGSxQtdc8UMAWtnZ8nIdgMLeoKzafl2ekoM2j1f+gzpMLunGrvvNDgKFsM1lCmqrM8I4vNZOsLeJROpnbE1qqH6VkuTECMY7l2gRvzn4dGRQjGbKaLvw2JI6S1Y+fC4j0X3+P7nMQQwH/xDPSDUyUY1qDTOwkOWEBsXWry58l]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/horus-leprinced-egypte</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/horus-leprinced-egypte/media.mp3" length="28821521" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Isis &amp; Osiris, souverains des deux royaumes</title>
+                <acast:episodeId>06791740-c739-44b1-b594-1be8004cee20</acast:episodeId>
+                <acast:episodeUrl>isis-osiris-souverainsdesdeuxroyaumes</acast:episodeUrl>
+                <itunes:subtitle>Tu as sans doute déjà entendu parler d’Isis et d’Osiris, le couple divin le plus connu du panthéon égyptien ! Ils sont respectés par tous, mais entre le règne complexe du royaume et la jalousie implacable de leur frère Seth, leur histoire n’est pas un ...</itunes:subtitle>
+                <itunes:summary><![CDATA[Tu as sans doute déjà entendu parler d’Isis et d’Osiris, le couple divin le plus connu du panthéon égyptien ! Ils sont respectés par tous, mais entre le règne complexe du royaume et la jalousie implacable de leur frère Seth, leur histoire n’est pas un long fleuve tranquille. Tu vas tout savoir…
+Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/isis-osiris-souverains-des-deux-royaumes/
+Texte : Clémentine V.Baron
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[06791740-c739-44b1-b594-1be8004cee20]]></guid>
+                <pubDate>Sun, 15 Dec 2019 17:33:21 GMT</pubDate>
+                <itunes:duration>00:11:31</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>2</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/sr0tAFD9pBRASKMJ_OSCwliMM70=/3000x3000/https://mediacdn.acast.com/assets/06791740-c739-44b1-b594-1be8004cee20/cover-image-k47aawaa-isis-osiris.png" />
+                
+                <description><![CDATA[<p>Tu as sans doute déjà entendu parler d’Isis et d’Osiris, le couple divin le plus connu du panthéon égyptien ! Ils sont respectés par tous, mais entre le règne complexe du royaume et la jalousie implacable de leur frère Seth, leur histoire n’est pas un long fleuve tranquille. Tu vas tout savoir…</p><p>Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/isis-osiris-souverains-des-deux-royaumes/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/isis-osiris-souverains-des-deux-royaumes/</a></p><p>Texte : Clémentine V.Baron</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjNvwHop3/N63SFvU2gkMMaD+wdvDckglljtVw5MIQQnAAciHrfIaP4/jvspMnCJH0/THuL3+CHQtReUBjuei/+L0/YTtwtFgYxU1P8IrgT45mJbNGmthmZsAOZW8LuHzOiwe1yyasY/yYXELPa9Ulj6rhLM8mvxcvLeJuIOm0n7emsTBW7MkrBuwxW6zgCrRaGtI0TXrB9dUKQmq7CzMoxK9Tm6p3HZNZTQuIuC3noqhucwmXpnOsg5m3EYYVaGMLvveJO8xjAGRLvtbdeRMHI+MoeijngePgFGemPyXR853hQBvoQYziPv0lBbdRkshjTLDnZAQiVqP13oTJ1tSIjAznpxpuoRheJ8brMQnIJuo69l96c+rrD1bIDsORJbFuz7UhBCZARk5CAgGTKnc7EuCllhIIl7RPOq2MxdpyytxW4FeUFD62zDs/q3lhvTeEeeotc8rPeOjRu06nsJSMNyRXBC1/057Nomddk+R6lwdsErSJYiR3O3NMbTHwDuKasgWbQ/tnTZ0R8yw8u5mF9M]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/isis-osiris-souverainsdesdeuxroyaumes</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/isis-osiris-souverainsdesdeuxroyaumes/media.mp3" length="27651235" type="audio/mpeg"/>
+            </item>
+            <item>
+                <title>Sekhmet, la déesse aux trois visages</title>
+                <acast:episodeId>48421ce0-a7a6-4ab5-bb45-55183171cf36</acast:episodeId>
+                <acast:episodeUrl>sekhmet-ladeesseauxtroisvisages</acast:episodeUrl>
+                <itunes:subtitle>La furieuse déesse à tête de lionne est l’une des facettes de deux autres divinités : la douce Bastet et Hathor la joyeuse. Elles forment une trinité magique très puissante et sont les alliées les plus fidèles du roi des dieux, Rê. Embarque-toi dans le...</itunes:subtitle>
+                <itunes:summary><![CDATA[La furieuse déesse à tête de lionne est l’une des facettes de deux autres divinités : la douce Bastet et Hathor la joyeuse. Elles forment une trinité magique très puissante et sont les alliées les plus fidèles du roi des dieux, Rê. Embarque-toi dans leurs aventures rocambolesques, tu vas apprendre plein de choses ! Et si tu veux découvrir le livre, c'est ici : https://quellehistoire.com/produit/sekhmet-la-deesse-aux-trois-visages/
+Texte : Clémentine V.Baron
+Illustration : Bruno Wennagel
+Audio : Sylvain Hellio
+Voix : Léopold Roy&nbsp; &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></itunes:summary>
+                
+                <guid isPermaLink="false"><![CDATA[48421ce0-a7a6-4ab5-bb45-55183171cf36]]></guid>
+                <pubDate>Sun, 15 Dec 2019 17:27:04 GMT</pubDate>
+                <itunes:duration>00:11:16</itunes:duration>
+                <itunes:keywords></itunes:keywords>
+                <itunes:explicit>no</itunes:explicit>
+                <itunes:episodeType>full</itunes:episodeType>
+                
+                
+                <itunes:season>1</itunes:season>
+                <itunes:episode>1</itunes:episode>
+                <itunes:image href="https://thumborcdn.acast.com/-W0pnVwxKqcM6oPuRyQ0wWNPQEM=/3000x3000/https://mediacdn.acast.com/assets/48421ce0-a7a6-4ab5-bb45-55183171cf36/cover-image-k479pxrm-sekhmet.png" />
+                
+                <description><![CDATA[<p>La furieuse déesse à tête de lionne est l’une des facettes de deux autres divinités : la douce Bastet et Hathor la joyeuse. Elles forment une trinité magique très puissante et sont les alliées les plus fidèles du roi des dieux, Rê. Embarque-toi dans leurs aventures rocambolesques, tu vas apprendre plein de choses ! Et si tu veux découvrir le livre, c'est ici : <a href="https://quellehistoire.com/produit/sekhmet-la-deesse-aux-trois-visages/" rel="noopener noreferrer" target="_blank">https://quellehistoire.com/produit/sekhmet-la-deesse-aux-trois-visages/</a></p><p>Texte : Clémentine V.Baron</p><p>Illustration : Bruno Wennagel</p><p>Audio : Sylvain Hellio</p><p>Voix : Léopold Roy&nbsp;</p> &#10;&nbsp;<br /><hr><p style='color: grey; font - size: 0.75em; '>See <a style='color: grey; ' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for privacy and opt-out information.</p>]]></description>
+               <acast:settings><![CDATA[6lXYnzrnkZJzlhpW84zLimf0ysRilU4bhQjUtoOUyE6M951az+f+1wEEXIzq0rCE56SjljPpTZzTG4IqXOoXAWXWCcwLpTXSxsXr3NUKDjOzwlvqCAXJcy339+k+3UYgZC6QVxc8mN1OXsT5koWNAUE7ucunrg0tkImZuskZJLT/NR6udSbCXuDslDqH1hppA30wC3Auh2FE2RSWvciqy2J5gRMJBnHReJ+OobLx2GuK8Nzh7kVki/O/rZz6JV2G5yLk+s/Y0oQI1PQ74doOdS8yt9qv/c8RSStmaO3r9viUgaeVaTQhDBj4c+50WD68ZKH0muERpW5imb5N+S+FKZkbT84lsveuZF/7kn+jek+eamX1KQ4DUJthnAFrxAeDC1jKpjNs0QRSOSdsmy1FATDuUJgjZsD26fb0sni98i0X8rCf4mrlqf2f+DkJCGwLFTNn99FuGH8mQekjjezluqHfD/8nfteLDceVD/UOifuND1N93Yf6AOilyM99NbcOwOoxntWF/PCJG8yFgKLk2AjX4kK5aD/oC9ceaaSQRNV6MbqD9K4lxDP2L4hM01UIQumdxahAf30uPvvM+lNst0Bvc8QTi7/jZdo307gXPBifzzqRc/TGU11yZ/qPxd0b]]></acast:settings>
+                <link>https://play.acast.com/s/mythes-et-legendes/sekhmet-ladeesseauxtroisvisages</link>
+
+                <enclosure url="https://sphinx.acast.com/mythes-et-legendes/sekhmet-ladeesseauxtroisvisages/media.mp3" length="27044150" type="audio/mpeg"/>
+            </item>
+    </channel>
+</rss>

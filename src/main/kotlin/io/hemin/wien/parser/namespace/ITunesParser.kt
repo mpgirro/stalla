@@ -25,14 +25,20 @@ internal class ITunesParser : NamespaceParser() {
     override fun Node.parseChannelData(builder: PodcastBuilder) {
         when (localName) {
             "author" -> builder.iTunesBuilder.author(ifCanBeParsed { textOrNull() })
-            "block" -> builder.iTunesBuilder.block(ifCanBeParsed { textAsBooleanOrNull() })
+            "block" -> {
+                val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.iTunesBuilder.block(block)
+            }
             "category" -> {
                 val categoryBuilder = ifCanBeParsed {
                     toITunesCategoryBuilder(builder.createITunesStyleCategoryBuilder(), namespace)
                 } ?: return
                 builder.iTunesBuilder.addCategoryBuilder(categoryBuilder)
             }
-            "complete" -> builder.iTunesBuilder.complete(ifCanBeParsed { textAsBooleanOrNull() })
+            "complete" -> {
+                val complete = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.iTunesBuilder.complete(complete)
+            }
             "explicit" -> {
                 val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
                 builder.iTunesBuilder.explicit(explicit)
@@ -63,11 +69,17 @@ internal class ITunesParser : NamespaceParser() {
 
     override fun Node.parseItemData(builder: EpisodeBuilder) {
         when (localName) {
-            "block" -> builder.iTunesBuilder.block(ifCanBeParsed { textAsBooleanOrNull() })
+            "block" -> {
+                val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.iTunesBuilder.block(block)
+            }
             "duration" -> builder.iTunesBuilder.duration(ifCanBeParsed { textOrNull() })
             "episode" -> builder.iTunesBuilder.episode(ifCanBeParsed { parseAsInt() })
             "episodeType" -> builder.iTunesBuilder.episodeType(ifCanBeParsed { textOrNull() })
-            "explicit" -> builder.iTunesBuilder.explicit(ifCanBeParsed { textAsBooleanOrNull() })
+            "explicit" -> {
+                val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.iTunesBuilder.explicit(explicit)
+            }
             "image" -> {
                 val imageBuilder = toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder())
                 builder.iTunesBuilder.imageBuilder(imageBuilder)

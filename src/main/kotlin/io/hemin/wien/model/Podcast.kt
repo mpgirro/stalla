@@ -73,9 +73,9 @@ data class Podcast(
         val keywords: String? = null,
         override val author: String? = null,
         val categories: List<ITunesStyleCategory>,
-        override val explicit: Boolean,
-        override val block: Boolean? = null,
-        val complete: Boolean? = null,
+        val explicit: Boolean,
+        override val block: Boolean,
+        val complete: Boolean,
         val type: ShowType? = null,
         val owner: Person? = null,
         override val title: String? = null,
@@ -127,7 +127,7 @@ data class Podcast(
         val categories: List<ITunesStyleCategory>,
         override val description: String? = null,
         override val explicit: Boolean? = null,
-        override val block: Boolean? = null,
+        override val block: Boolean,
         override val image: HrefOnlyImage? = null
     ) : GooglePlayBase
 

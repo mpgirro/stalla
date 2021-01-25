@@ -8,7 +8,7 @@ import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.podcast.PodcastPodcastFundingBuilder
 import io.hemin.wien.builder.podcast.PodcastPodcastLockedBuilder
 import io.hemin.wien.dom.getAttributeByName
-import io.hemin.wien.dom.parseAsBooleanOrNull
+import io.hemin.wien.dom.textAsBooleanOrNull
 import io.hemin.wien.model.Episode
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
@@ -38,7 +38,7 @@ internal class PodcastNamespaceParser : NamespaceParser() {
 
     private fun Node.toLockedBuilder(lockedBuilder: PodcastPodcastLockedBuilder): PodcastPodcastLockedBuilder? {
         val owner = getAttributeByName("owner")?.value.trimmedOrNullIfBlank()
-        val locked = textContent.parseAsBooleanOrNull()
+        val locked = textAsBooleanOrNull()
 
         if (owner == null || locked == null) return null
         return lockedBuilder.owner(owner)

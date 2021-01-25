@@ -16,7 +16,7 @@ internal class ValidatingEpisodeEnclosureBuilder : EpisodeEnclosureBuilder {
     override fun type(type: String): EpisodeEnclosureBuilder = apply { this.typeValue = type }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = ::urlValue.isInitialized && lengthValue > 0 && ::typeValue.isInitialized
+        get() = ::urlValue.isInitialized && lengthValue >= 0 && ::typeValue.isInitialized
 
     override fun build(): Episode.Enclosure? {
         if (!hasEnoughDataToBuild) {

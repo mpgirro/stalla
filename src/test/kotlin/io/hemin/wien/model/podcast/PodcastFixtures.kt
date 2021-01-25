@@ -72,8 +72,8 @@ internal fun aPodcastITunes(
     author: String? = "podcast itunes author",
     categories: List<ITunesStyleCategory> = listOf(anITunesCategory("podcast itunes category", "podcast itunes subcategory")),
     explicit: Boolean = true,
-    block: Boolean? = true,
-    complete: Boolean? = true,
+    block: Boolean = true,
+    complete: Boolean = true,
     type: Podcast.ITunes.ShowType? = Podcast.ITunes.ShowType.EPISODIC,
     owner: Person? = aPerson("podcast itunes owner name", uri = null),
     title: String? = "podcast itunes title",
@@ -104,7 +104,7 @@ internal fun aPodcastGooglePlay(
     categories: List<ITunesStyleCategory> = listOf(anITunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
-    block: Boolean? = true,
+    block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url")
 ) = Podcast.GooglePlay(author, owner, categories, description, explicit, block, image)
 

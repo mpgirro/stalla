@@ -40,7 +40,7 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(Episode.GooglePlay::description).isEqualTo("description")
                 prop(Episode.GooglePlay::explicit).isNull()
-                prop(Episode.GooglePlay::block).isNull()
+                prop(Episode.GooglePlay::block).isFalse()
                 prop(Episode.GooglePlay::image).isNull()
             }
         }
@@ -57,7 +57,7 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(Episode.GooglePlay::description).isNull()
                 prop(Episode.GooglePlay::explicit).isNotNull().isFalse()
-                prop(Episode.GooglePlay::block).isNull()
+                prop(Episode.GooglePlay::block).isFalse()
                 prop(Episode.GooglePlay::image).isNull()
             }
         }
@@ -66,7 +66,7 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
     @Test
     internal fun `should build an Episode GooglePlay with only block`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
-            .block(false)
+            .block(true)
 
         assertAll {
             assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
@@ -74,7 +74,7 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(Episode.GooglePlay::description).isNull()
                 prop(Episode.GooglePlay::explicit).isNull()
-                prop(Episode.GooglePlay::block).isNotNull().isFalse()
+                prop(Episode.GooglePlay::block).isNotNull().isTrue()
                 prop(Episode.GooglePlay::image).isNull()
             }
         }
@@ -91,7 +91,7 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(Episode.GooglePlay::description).isNull()
                 prop(Episode.GooglePlay::explicit).isNull()
-                prop(Episode.GooglePlay::block).isNull()
+                prop(Episode.GooglePlay::block).isFalse()
                 prop(Episode.GooglePlay::image).isEqualTo(expectedImageBuilder.build())
             }
         }

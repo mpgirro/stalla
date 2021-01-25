@@ -23,12 +23,16 @@ internal enum class FeedNamespace(
 
     companion object {
 
-        fun FeedNamespace?.matches(uri: String?): Boolean =
-            when {
-                this == null -> uri == null
-                this.uri == uri -> true
+        fun FeedNamespace?.matches(uri: String?): Boolean {
+            val normalizedUri = uri?.normalizeUri()
+            return when {
+                this == null -> normalizedUri == null
+                this.uri.normalizeUri() == normalizedUri -> true
                 otherUris.isEmpty() -> false
-                else -> otherUris.any { it == uri }
+                else -> otherUris.any { it.normalizeUri() == normalizedUri }
             }
+        }
+
+        private fun String.normalizeUri() = substringAfter("://").removeSuffix("/")
     }
 }
