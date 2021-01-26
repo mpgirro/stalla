@@ -153,7 +153,6 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
         .domain(getAttributeValueByName("domain"))
 }
 
-
 /**
  * Parses the node contents into a [ITunesStyleCategoryBuilder] if possible, ensuring the child nodes
  * have the specified [namespace], then populates the [categoryBuilder] with the parsed data.

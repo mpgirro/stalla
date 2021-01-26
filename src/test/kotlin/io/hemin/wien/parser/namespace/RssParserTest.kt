@@ -17,7 +17,6 @@ import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.dateTime
 import io.hemin.wien.dom.XmlRes
 import io.hemin.wien.hasNotEnoughDataToBuild
-import io.hemin.wien.noneHasEnoughDataToBuild
 import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
