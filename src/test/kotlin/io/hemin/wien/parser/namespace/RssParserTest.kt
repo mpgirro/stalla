@@ -178,7 +178,7 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakeEpisodeBuilder::pubDate).isNull()
             prop(FakeEpisodeBuilder::author).isNull()
             prop(FakeEpisodeBuilder::comments).isNull()
-            prop(FakeEpisodeBuilder::categoryBuilders).noneHasEnoughDataToBuild()
+            prop(FakeEpisodeBuilder::categoryBuilders).isEmpty()
             prop(FakeEpisodeBuilder::enclosureBuilderValue).isNotNull().hasNotEnoughDataToBuild()
             prop(FakeEpisodeBuilder::guidBuilder).isNotNull().hasNotEnoughDataToBuild()
             prop(FakeEpisodeBuilder::source).isNull()

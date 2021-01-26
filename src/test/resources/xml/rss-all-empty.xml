@@ -20,6 +20,7 @@
         <docs></docs>
         <managingEditor></managingEditor>
         <webMaster></webMaster>
+        <category></category>
         <image href="" title="" link="" width="" height="" description=""/>
         <itunes:subtitle></itunes:subtitle>
         <itunes:summary></itunes:summary>
@@ -77,6 +78,7 @@
             <guid isPermaLink="false"></guid>
             <pubDate></pubDate>
             <source></source>
+            <category></category>
             <content:encoded></content:encoded>
             <itunes:title></itunes:title>
             <itunes:duration></itunes:duration>

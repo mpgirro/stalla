@@ -147,9 +147,12 @@ internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedN
  *
  * @return The [categoryBuilder] populated with the DOM node contents.
  */
-internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): RssCategoryBuilder =
-    categoryBuilder.category(textContent.trim())
+internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): RssCategoryBuilder? {
+    val categoryValue = textOrNull() ?: return null
+    return categoryBuilder.category(categoryValue)
         .domain(getAttributeValueByName("domain"))
+}
+
 
 /**
  * Parses the node contents into a [ITunesStyleCategoryBuilder] if possible, ensuring the child nodes
