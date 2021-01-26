@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<channel>
+
+<title>Alternativlos</title>
+<link>http://www.alternativlos.org/</link>
+<language>de</language>
+<copyright>&#x2117; &amp; &#xA9; 2010-2020 Frank Rieger und Felix von Leitner</copyright>
+<atom:link href="http://alternativlos.org/alternativlos.rss" rel="self" type="application/rss+xml" />
+<itunes:subtitle>Der Podcast von Frank Rieger und Felix von Leitner</itunes:subtitle>
+<itunes:author>Felix von Leitner, Frank Rieger</itunes:author>
+<itunes:summary>Alternativlos ist der Boulevard-Podcast von Frank und Fefe, über Politik, Technik, Verschwörungstheorien und worauf wir sonst noch so Lust haben</itunes:summary>
+<itunes:explicit>no</itunes:explicit>
+<description>Alternativlos ist der Boulevard-Podcast von Frank und Fefe, über Politik, Technik, Verschwörungstheorien und worauf wir sonst noch so Lust haben.  Der Name orientiert sich an der Lieblingsbegründung von Politikern für ihre Vorhaben (in Begründungen von Gesetzen heißt es praktisch immer den Absatz „Alternativen: keine“).</description>
+
+<itunes:owner>
+<itunes:name>Frank+Fefe</itunes:name>
+<itunes:email>itunes@alternativlos.org</itunes:email>
+</itunes:owner>
+
+<itunes:image href="http://alternativlos.org/squarelogo.png" />
+<itunes:category text="News &amp; Politics" />
+
+<item>
+<title>ALT048: über Cyberpunk, Vertrauen in den Staat und die MegaCorps</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Cyberpunk, die neuen Crypto Wars, Vertrauen in Staat und MegaCorps</itunes:subtitle>
+<itunes:summary>Cyberpunk, die neuen Crypto Wars, Vertrauen in Staat und MegaCorps</itunes:summary>
+<description>Cyberpunk, die neuen Crypto Wars, Vertrauen in Staat und MegaCorps</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-48.mp3" length="63276287" type="audio/mp3" />
+<link>http://alternativlos.org/48/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-48.mp3</guid>
+<pubDate>Mon, 28 Dec 2020 20:00:00 GMT</pubDate>
+<itunes:duration>2:19:00</itunes:duration>
+<itunes:keywords>alternativlos, cyberpunk, megacorps, crypto wars, vertrauen</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F48%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT047: über Covid-19-Verschwörungstheorien</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Verschwörungstheorien, wissenschaftliche Studien interpretieren</itunes:subtitle>
+<itunes:summary>Verschwörungstheorien, wissenschaftliche Studien interpretieren</itunes:summary>
+<description>Verschwörungstheorien, wissenschaftliche Studien interpretieren</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-47.mp3" length="48145217" type="audio/mp3" />
+<link>http://alternativlos.org/47/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-47.mp3</guid>
+<pubDate>Sun, 24 May 2020 20:00:00 GMT</pubDate>
+<itunes:duration>1:49:00</itunes:duration>
+<itunes:keywords>alternativlos, covid-19, coronavirus, verschwörungstheorien, wissenschaftliche studien</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F47%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT046: mit Christiane Hütter und Rop Gonggrijp über Covid-19 und Quarantäne-Bewältigung</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Wie man in der Covid-Quarantäne nicht den Verstand verliert</itunes:subtitle>
+<itunes:summary>Wie man in der Covid-Quarantäne nicht den Verstand verliert</itunes:summary>
+<description>Wie man in der Covid-Quarantäne nicht den Verstand verliert</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-46.mp3" length="73537566" type="audio/mp3" />
+<link>http://alternativlos.org/46/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-46.mp3</guid>
+<pubDate>Tue, 14 Apr 2020 09:40:00 GMT</pubDate>
+<itunes:duration>1:39:18</itunes:duration>
+<itunes:keywords>alternativlos, covid-19, coronavirus, quarantäne</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F46%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT045: Krisen und ihre Bewältung</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Krisen und ihre Bewältigung, Digitalisierung, Coronavirus</itunes:subtitle>
+<itunes:summary>Krisen und ihre Bewältigung, Digitalisierung, Coronavirus</itunes:summary>
+<description>Krisen und ihre Bewältigung, Digitalisierung, Coronavirus</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-45.mp3" length="74045875" type="audio/mp3" />
+<link>http://alternativlos.org/45/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-45.mp3</guid>
+<pubDate>Sat, 29 Feb 2020 23:59:59 GMT</pubDate>
+<itunes:duration>2:21:02</itunes:duration>
+<itunes:keywords>alternativlos, krisen, digitalisierung, prepping, coronavirus, telemetrie, defensive security</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F45%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT044: Was der freie Zugang zum Weltwissen mit uns anstellt</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Was der freie Zugang zum Weltwissen mit uns anstellt</itunes:subtitle>
+<itunes:summary>Was der freie Zugang zum Weltwissen mit uns anstellt</itunes:summary>
+<description>Was der freie Zugang zum Weltwissen mit uns anstellt</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-44.mp3" length="69969315" type="audio/mp3" />
+<link>http://alternativlos.org/44/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-44.mp3</guid>
+<pubDate>Sat, 21 Dec 2019 17:00:00 GMT</pubDate>
+<itunes:duration>2:13:19</itunes:duration>
+<itunes:keywords>alternativlos, Weltwissen, Zugang, Scifi, Polyplot, Brexit</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F44%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT043: entspannte Sommersendung</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Entspannte Sommersendung</itunes:subtitle>
+<itunes:summary>Entspannte Sommersendung</itunes:summary>
+<description>Entspannte Sommersendung</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-43.mp3" length="79353123" type="audio/mp3" />
+<link>http://alternativlos.org/43/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-43.mp3</guid>
+<pubDate>Wed, 07 Aug 2019 10:00:00 GMT</pubDate>
+<itunes:duration>2:31:07</itunes:duration>
+<itunes:keywords>alternativlos, Iran, Israel, China</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F43%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT042: mit Joscha Bach über life, the universe and everything</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>mit Joscha Bach über life, the universe and everything</itunes:subtitle>
+<itunes:summary>mit Joscha Bach über life, the universe and everything</itunes:summary>
+<description>mit Joscha Bach über life, the universe and everything</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-42.mp3" length="91355913" type="audio/mp3" />
+<link>http://alternativlos.org/42/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-42.mp3</guid>
+<pubDate>Mon, 10 Sep 2018 18:00:00 GMT</pubDate>
+<itunes:duration>2:50:00</itunes:duration>
+<itunes:keywords>alternativlos, Joscha Bach, Bewusstsein, Computational Universe, künstliche Intelligenz, KI</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F42%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT041: über Kryptowährungen, künstliche Intelligenz, Verantwortung und die Weltlage</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über Kryptowährungen, künstliche Intelligenz, Verantwortung und die Weltlage</itunes:subtitle>
+<itunes:summary>über Kryptowährungen, künstliche Intelligenz, Verantwortung und die Weltlage</itunes:summary>
+<description>über Kryptowährungen, künstliche Intelligenz, Verantwortung und die Weltlage</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-41.mp3" length="91469069" type="audio/mp3" />
+<link>http://alternativlos.org/41/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-41.mp3</guid>
+<pubDate>Wed, 20 Dec 2017 08:00:00 GMT</pubDate>
+<itunes:duration>2:56:08</itunes:duration>
+<itunes:keywords>alternativlos, Kryptowährungen, Bitcoin, künstliche Intelligenz, KI</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F41%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT040: mit Andrej Holm über Stadtentwicklung und Gentrifizierung</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>mit Andrej Holm über Stadtentwicklung und Gentrifizierung</itunes:subtitle>
+<itunes:summary>mit Andrej Holm über Stadtentwicklung und Gentrifizierung</itunes:summary>
+<description>mit Andrej Holm über Stadtentwicklung und Gentrifizierung</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-40.mp3" length="84009969" type="audio/mp3" />
+<link>http://alternativlos.org/40/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-40.mp3</guid>
+<pubDate>Mon, 29 May 2017 08:00:00 GMT</pubDate>
+<itunes:duration>2:32:50</itunes:duration>
+<itunes:keywords>alternativlos, Andrej Holm, Stadtentwicklung, Gentrifizierung</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F40%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT039: über Wannacry, Ransomware und Patches</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über Wannacry, Ransomware und Patches</itunes:subtitle>
+<itunes:summary>über Wannacry, Ransomware und Patches</itunes:summary>
+<description>über Wannacry, Ransomware und Patches</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-39.mp3" length="60091293" type="audio/mp3" />
+<link>http://alternativlos.org/39/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-39.mp3</guid>
+<pubDate>Wed, 17 May 2017 08:00:00 GMT</pubDate>
+<itunes:duration>1:35:14</itunes:duration>
+<itunes:keywords>alternativlos, Wannacry, Ransomware, Bitcoin, Patches, Microsoft</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F39%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT038: über das Leben mit und nach der Trump-Apokalypse</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über das Leben mit und nach der Trump-Apokalypse</itunes:subtitle>
+<itunes:summary>über das Leben mit und nach der Trump-Apokalypse</itunes:summary>
+<description>über das Leben mit und nach der Trump-Apokalypse</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-38.mp3" length="105379569" type="audio/mp3" />
+<link>http://alternativlos.org/38/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-38.mp3</guid>
+<pubDate>Sun, 04 Dec 2016 14:39:48 GMT</pubDate>
+<itunes:duration>2:23:00</itunes:duration>
+<itunes:keywords>alternativlos, Trump, Brexit, Fake News, Digitale Charta, OPEC</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F38%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT037: über die unrealistischer werdende Realität</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über die unrealistischer werdende Realität</itunes:subtitle>
+<itunes:summary>über die unrealistischer werdende Realität</itunes:summary>
+<description>über die unrealistischer werdende Realität</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-37.mp3" length="88865681" type="audio/mp3" />
+<link>http://alternativlos.org/37/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-37.mp3</guid>
+<pubDate>Sat, 22 Oct 2016 10:00:00 GMT</pubDate>
+<itunes:duration>2:19:00</itunes:duration>
+<itunes:keywords>alternativlos, Realität, Trump, Hillary, AfD, Lügenpresse</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F37%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT036: zu Besuch beim Wendelstein 7-X</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>zu Besuch beim Wendelstein 7-X, über Kernfusion und Plasmaphysik</itunes:subtitle>
+<itunes:summary>zu Besuch beim Wendelstein 7-X, über Kernfusion und Plasmaphysik</itunes:summary>
+<description>zu Besuch beim Wendelstein 7-X, über Kernfusion und Plasmaphysik</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-36.mp3" length="104841018" type="audio/mp3" />
+<link>http://alternativlos.org/36/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-36.mp3</guid>
+<pubDate>Tue, 19 Apr 2016 18:00:00 GMT</pubDate>
+<itunes:duration>2:53:00</itunes:duration>
+<itunes:keywords>alternativlos, Wendelstein 7-X, Plasmaphysik, Kernfusion</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F36%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT035: über die Facebook-Löschdebatte und Diskurskultur im Internet</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über die Facebook-Löschdebatte und Diskurskultur im Internet</itunes:subtitle>
+<itunes:summary>über die Facebook-Löschdebatte und Diskurskultur im Internet</itunes:summary>
+<description>über die Facebook-Löschdebatte und Diskurskultur im Internet</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-35.mp3" length="105581745" type="audio/mp3" />
+<link>http://alternativlos.org/35/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-35.mp3</guid>
+<pubDate>Sun, 13 Sep 2015 18:00:00 GMT</pubDate>
+<itunes:duration>2:18:00</itunes:duration>
+<itunes:keywords>alternativlos, facebook, löschdebatte, diskurskultur</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F35%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT034: mit Rop Gonggrijp über die Gesamtsituation</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über die Gesamtsituation</itunes:subtitle>
+<itunes:summary>über die Gesamtsituation</itunes:summary>
+<description>über die Gesamtsituation</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-34.mp3" length="68900143" type="audio/mp3" />
+<link>http://alternativlos.org/34/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-34.mp3</guid>
+<pubDate>Sun, 6 Sep 2015 18:00:00 GMT</pubDate>
+<itunes:duration>1:48:00</itunes:duration>
+<itunes:keywords>alternativlos, gesamtsituation</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F34%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT033: mit Sascha Lobo über Hohlphrasen in der Politik</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über Hohlphrasen in der Politik</itunes:subtitle>
+<itunes:summary>über Hohlphrasen in der Politik</itunes:summary>
+<description>über Hohlphrasen in der Politik</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-33.mp3" length="100302907" type="audio/mp3" />
+<link>http://alternativlos.org/33/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-33.mp3</guid>
+<pubDate>Mon, 10 Nov 2014 08:00:00 GMT</pubDate>
+<itunes:duration>2:35:00</itunes:duration>
+<itunes:keywords>alternativlos, politik, hohlphrasen</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F33%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT032: über den kalten Krieg</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über den kalten Krieg</itunes:subtitle>
+<itunes:summary>über den kalten Krieg</itunes:summary>
+<description>über den kalten Krieg damals und heute</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-32.mp3" length="45484476" type="audio/mp3" />
+<link>http://alternativlos.org/32/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-32.mp3</guid>
+<pubDate>Mon, 25 Aug 2014 00:00:00 GMT</pubDate>
+<itunes:duration>1:18:00</itunes:duration>
+<itunes:keywords>alternativlos, kalter krieg, schwarzer kanal, propaganda</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F32%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT031: über Diskursformen im Internet</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über Diskursformen im Internet</itunes:subtitle>
+<itunes:summary>über Diskursformen im Internet</itunes:summary>
+<description>über Diskursformen im Internet (featuring Trolle, Mimimis und die Empöreria)</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-31.mp3" length="133015882" type="audio/mp3" />
+<link>http://alternativlos.org/31/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-31.mp3</guid>
+<pubDate>Tue, 15 Apr 2014 18:00:00 GMT</pubDate>
+<itunes:duration>3:07:00</itunes:duration>
+<itunes:keywords>alternativlos, webforen, diskurs im internet, trolle, mimimis, empöreria</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F31%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT030: über SIGINT, Krypto und die Crypto Wars</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über SIGINT, Krypto und die Crypto Wars</itunes:subtitle>
+<itunes:summary>über SIGINT, Krypto und die Crypto Wars</itunes:summary>
+<description>über SIGINT, die NSA, Datenverschlüsselung und die Crypto Wars</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-30.mp3" length="115174452" type="audio/mp3" />
+<link>http://alternativlos.org/30/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-30.mp3</guid>
+<pubDate>Sat, 12 Oct 2013 18:00:00 GMT</pubDate>
+<itunes:duration>2:55:00</itunes:duration>
+<itunes:keywords>alternativlos, sigint, nsa, krypto, crypto wars, verschlüsselung</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?user_id=alternativlos&amp;url=http%3A%2F%2Falternativlos.org%2F30%2F" type="text/html" />
+</item>
+
+<item>
+<title>ALT029: über Weltbildmanipulation (mit Gast: Frank Schirrmacher)</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über Weltbildmanipulation am Beispiel von Egoismus</itunes:subtitle>
+<itunes:summary>über Weltbildmanipulation am Beispiel von Egoismus</itunes:summary>
+<description>Mit Frank Schirrmacher über Spieltheorie, Egoismus, Weltbild-Manipulation und Märkte</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-29.mp3" length="127376896" type="audio/mp3" />
+<link>http://alternativlos.org/29/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-29.mp3</guid>
+<pubDate>Fri, 10 May 2013 08:00:00 GMT</pubDate>
+<itunes:duration>2:41:00</itunes:duration>
+<itunes:keywords>alternativlos, weltbildmanipulation, schirrmacher, egoismus</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F29%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT028: Sondersendung zu den US-Wahlen (mit Gast: Rop Gonggrijp)</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über die US-Wahlen, das US-Wahlsystem, und Möglichkeiten der Wahlfälschung</itunes:subtitle>
+<itunes:summary>über die US-Wahlen, das US-Wahlsystem, und Möglichkeiten der Wahlfälschung</itunes:summary>
+<description>über die US-Wahlen, das US-Wahlsystem und Möglichkeiten für Betrug und Wahlfälschung</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-28.mp3" length="81596831" type="audio/mp3" />
+<link>http://alternativlos.org/28/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-28.mp3</guid>
+<pubDate>Thu, 1 Nov 2012 12:00:00 GMT</pubDate>
+<itunes:duration>2:06:30</itunes:duration>
+<itunes:keywords>alternativlos, us-wahlen, romney, obama, wahlbetrug, wahlfälschung</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F28%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT027: Kriegsroboter und Killerdrohnen</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über Kriegsroboter — Stand der Technik, Folgen und Zukunftsaussichten</itunes:subtitle>
+<itunes:summary>über Kriegsroboter — Stand der Technik, Folgen und Zukunftsaussichten</itunes:summary>
+<description>über Kriegsroboter — Historie, Stand der Technik, Folgen für die Einsatzgebiete und womit wir in den nächsten Jahren rechnen müssen</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-27.mp3" length="112305435" type="audio/mp3" />
+<link>http://alternativlos.org/27/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-27.mp3</guid>
+<pubDate>Sat, 6 Oct 2012 12:00:00 GMT</pubDate>
+<itunes:duration>1:41:00</itunes:duration>
+<itunes:keywords>alternativlos, kriegsroboter, killerdrohnen</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F27%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT026: investigativer Journalismus (mit Gast: Gaby Weber)</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über investigativen Journalismus, Adolf Eichmann und die Adenauer-Zeit</itunes:subtitle>
+<itunes:summary>über investigativen Journalismus, Adolf Eichmann und die Adenauer-Zeit</itunes:summary>
+<description>über investigativen Journalismus, Adolf Eichmann, verdeckte Atombombentests und die Adenauer-Zeit.</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-26.mp3" length="91987708" type="audio/mp3" />
+<link>http://alternativlos.org/26/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-26.mp3</guid>
+<pubDate>Sat, 18 Aug 2012 12:00:00 GMT</pubDate>
+<itunes:duration>2:13:57</itunes:duration>
+<itunes:keywords>alternativlos, investigativer journalismus, gaby weber, adolf eichmann, dimona, konrad adenauer, hans globke</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F26%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT025: Cyberwar (mit Gast: FX)</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über die Geschichte und das aktuelle Spannungsfeld von Cyberwar</itunes:subtitle>
+<itunes:summary>über die Geschichte und das aktuelle Spannungsfeld von Cyberwar</itunes:summary>
+<description>über Cyberwar; Geschichte, Strategien, Exploits, Mitigations, Attributierbarkeit und internationales Recht.</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-25.mp3" length="110692827" type="audio/mp3" />
+<link>http://alternativlos.org/25/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-25.mp3</guid>
+<pubDate>Fri, 13 Jul 2012 12:00:00 GMT</pubDate>
+<itunes:duration>2:25:00</itunes:duration>
+<itunes:keywords>alternativlos, cyberwar, fx</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F25%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT024: Interview mit Dr.Mathias Döpfner</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über den Axel-Springer-Verlag und das Leistungsschutzrecht</itunes:subtitle>
+<itunes:summary>über den Axel-Springer-Verlag und das Leistungsschutzrecht</itunes:summary>
+<description>über den Axel-Springer-Verlag, Leistungsschutzrecht, das Verhältnis von Politik, Anzeigenkunden und Presse, BILD und die Zukunft des Kapitalismus.</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-24.mp3" length="59675120" type="audio/mp3" />
+<link>http://alternativlos.org/24/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-24.mp3</guid>
+<pubDate>Mon, 02 Jul 2012 12:00:00 GMT</pubDate>
+<itunes:duration>1:23:30</itunes:duration>
+<itunes:keywords>alternativlos, dr.mathias döpfner, axel springer verlag, leistungsschutzrecht, bild</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F24%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT023: Verschwörungstheorien</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über Verschwörungstheorien, die sich später als wahr herausstellten</itunes:subtitle>
+<itunes:summary>über Verschwörungstheorien, die sich später als wahr herausstellten</itunes:summary>
+<description>über Verschwörungstheorien, die sich später als wahr herausstellten (und was eine Verschwörungstheorie eigentlich von der Wahrheit unterscheidet)</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-23.mp3" length="105345083" type="audio/mp3" />
+<link>http://alternativlos.org/23/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-23.mp3</guid>
+<pubDate>Sun, 06 May 2012 00:00:00 GMT</pubDate>
+<itunes:duration>1:40:26</itunes:duration>
+<itunes:keywords>alternativlos, verschwörungstheorien, major consensus narrative, wahrheit</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F23%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT022: Korruption</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über Korruption</itunes:subtitle>
+<itunes:summary>über Korruption</itunes:summary>
+<description>über Politik und Korruption, Wulff, PR und Manipulation, die Eurozone, Griechenland und den Weltwährungsfonds</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-22.mp3" length="83108480" type="audio/mp3" />
+<link>http://alternativlos.org/22/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-22.mp3</guid>
+<pubDate>Mon, 05 Mar 2012 22:00:00 GMT</pubDate>
+<itunes:duration>1:41:50</itunes:duration>
+<itunes:keywords>alternativlos, korruption, wulff, politik, euro, griechenland, weltwährungsfonds</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F22%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT021: Terrorismus</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über den Terrorismus</itunes:subtitle>
+<itunes:summary>über den Terrorismus</itunes:summary>
+<description>über den Terrorismus - speziell von rechts und unter Beteiligung staatlicher Stellen und geheimdienstlicher Strukturen. Special: El Fefe vs. Frank Guevara — wie El Fefe zum Diktator von Absurdistan wurde (Prequel zu Alternativlos 11)</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-21.mp3" length="82174997" type="audio/mp3" />
+<link>http://alternativlos.org/21/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-21.mp3</guid>
+<pubDate>Sat, 10 Dec 2011 22:00:00 GMT</pubDate>
+<itunes:duration>1:35:39</itunes:duration>
+<itunes:keywords>alternativlos, terrorismus, freiheitskämpfer, partisan, haager landkriegsordnung, genfer konvention, el fefe, frank guevara</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F21%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT020: Politischer Diskurs</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>über den politischen Diskurs im Wandel der Zeit</itunes:subtitle>
+<itunes:summary>über den politischen Diskurs im Wandel der Zeit</itunes:summary>
+<description>Mit unserem Gast Frank Schirrmacher diskutieren wir den politischen Diskurs von Wehner bis Rösler</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-20.mp3" length="98357419" type="audio/mp3" />
+<link>http://alternativlos.org/20/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-20.mp3</guid>
+<pubDate>Sun, 23 Oct 2011 00:00:00 GMT</pubDate>
+<itunes:duration>2:12:02</itunes:duration>
+<itunes:keywords>alternativlos, politischer diskurs, wehner, willy brandt, politische reden, demografie, twitter, piraten</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F20%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT019: Staatstrojaner</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>+++SONDERSENDUNG+++ über den Staatstrojaner</itunes:subtitle>
+<itunes:summary>+++SONDERSENDUNG+++ über den Staatstrojaner</itunes:summary>
+<description>Mit unserem Gast Constanze Kurz plaudern wir über die Hintergründe des aktuellen Staatstrojaner-Skandals</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-19.mp3" length="63230743" type="audio/mp3" />
+<link>http://alternativlos.org/19/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-19.mp3</guid>
+<pubDate>Tue, 11 Oct 2011 00:00:00 GMT</pubDate>
+<itunes:duration>1:19:57</itunes:duration>
+<itunes:keywords>alternativlos, staatstrojaner, ccc</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F19%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT018: Peak Oil, Weltuntergang</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Über Peak Oil und die Klimaveränderung und die Konsequenzen und wie wir uns darauf vorbereiten können</itunes:subtitle>
+<itunes:summary>Über Peak Oil und die Klimaveränderung und die Konsequenzen und wie wir uns darauf vorbereiten können</itunes:summary>
+<description>Das Öl wird immer teurer, der Meeresspiegel steigt, die Apokalypse droht.  Wie können wir uns darauf vorbereiten?</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-18.mp3" length="83462617" type="audio/mp3" />
+<link>http://alternativlos.org/18/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-18.mp3</guid>
+<pubDate>Sat, 20 Aug 2011 12:00:00 GMT</pubDate>
+<itunes:duration>1:38:57</itunes:duration>
+<itunes:keywords>alternativlos, peak oil, wachstum, globalisierung, wirtschaft, untergang, resiliance conspiracy</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F18%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>ALT017: Aktien, Derivate, Börse</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Über Aktien, Derivate, die Börse und den Bankenstresstest</itunes:subtitle>
+<itunes:summary>Über Aktien, Derivate, die Börse und den Bankenstresstest</itunes:summary>
+<description>Wie funktioniert eine Aktiengesellschaft, wer interagiert (und verdient) an der Börse alles, wie funktionieren Staatsanleihen (mit kleinem Exkurs zum Bankenstresstest und Griechenland)</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-17.mp3" length="89885440" type="audio/mp3" />
+<link>http://alternativlos.org/17/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-17.mp3</guid>
+<pubDate>Sun, 17 Jul 2011 10:00:00 GMT</pubDate>
+<itunes:duration>2:10:00</itunes:duration>
+<itunes:keywords>alternativlos, aktien, börse, derivate, banken, stresstest, griechenland</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F17%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+
+<item>
+<title>ALT016: Geld, Bitcoin, Währungspolitik und Gold</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Über Geld, Währungen, Geldpolitik, Bitcoin und Schrumpfgeld</itunes:subtitle>
+<itunes:summary>Über Geld, Währungen, Geldpolitik, Bitcoin und Schrumpfgeld</itunes:summary>
+<description>Wir erklären, wo das Geld herkommt, was der Goldstandard ist, welchen Einfluss eine Notenbank auf die Währung ausüben kann und wie das in der Praxis funktioniert, warum digitales Bargeld knifflig ist und was es für Ansätze gibt, wieso ihr euer Geld lieber nicht in Bitcoin anlegen sollt, was Schrumpfgeld ist und was ihr kaufen sollt, wenn ihr glaubt, dass nächsten Monat das Währungssystem kollabiert.</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-16.mp3" length="107473335" type="audio/mp3" />
+<link>http://alternativlos.org/16/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-16.mp3</guid>
+<pubDate>Tue, 07 Jun 2011 00:00:00 GMT</pubDate>
+<itunes:duration>2:02:00</itunes:duration>
+<itunes:keywords>alternativlos, geld, währung, goldstandard, geldpolitik, bitcoin, schrumpfgeld</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F16%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>15. Sendung vom 26.4.2011</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Über die Kulturgeschichte und Ökonomie von Opium, Heroin und Kokain</itunes:subtitle>
+<itunes:summary>Über die Kulturgeschichte und Ökonomie von Opium, Heroin und Kokain</itunes:summary>
+<description>Über die Kulturgeschichte und Ökonomie von Opium, Heroin und Kokain</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-15.mp3" length="98164148" type="audio/mp3" />
+<link>http://alternativlos.org/15/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-15.mp3</guid>
+<pubDate>Tue, 26 Apr 2011 15:00:00 GMT</pubDate>
+<itunes:duration>1:54:28</itunes:duration>
+<itunes:keywords>alternativlos, rauschgift, drogen, opium, heroin, kokain</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F15%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>14. Sendung vom 18.3.2011</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Mit Michael Sailer über havarierende Atomreaktoren</itunes:subtitle>
+<itunes:summary>Mit Michael Sailer über havarierende Atomreaktoren in Japan und anderswo</itunes:summary>
+<description>Mit Michael Sailer über havarierende Atomreaktoren in Japan und anderswo</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-14.mp3" length="90485517" type="audio/mp3" />
+<link>http://alternativlos.org/14/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-14.mp3</guid>
+<pubDate>Fri, 18 Mar 2011 20:00:00 GMT</pubDate>
+<itunes:duration>1:50:33</itunes:duration>
+<itunes:keywords>alternativlos, michael sailer, atomreaktor, atomkraftwerk, akw, fukushima, kernspaltung</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F14%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>13. Sendung vom 27.2.2011</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Mit Constanze Kurz über Plagiate und Guttenberg</itunes:subtitle>
+<itunes:summary>Mit Constanze Kurz über Plagiate und Guttenberg</itunes:summary>
+<description>Mit Constanze Kurz über Plagiate im Allgemeinen und Herrn zu Guttenberg im Speziellen</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-13.mp3" length="66241676" type="audio/mp3" />
+<link>http://alternativlos.org/13/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-13.mp3</guid>
+<pubDate>Sun, 27 Feb 2011 00:00:00 GMT</pubDate>
+<itunes:duration>1:24:08</itunes:duration>
+<itunes:keywords>alternativlos, constanze kurz, plagiate, guttenberg</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F13%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>12. Sendung vom 13.2.2011</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Über Neusprech mit den Gästen Martin Haase und Kai Biermann vom Neusprechblog</itunes:subtitle>
+<itunes:summary>Sendung über Neusprech mit den Gästen Martin Haase und Kai Biermann vom Neusprechblog</itunes:summary>
+<description>Sendung über Neusprech mit den Gästen Martin Haase und Kai Biermann vom Neusprechblog</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-12.mp3" length="62352682" type="audio/mp3" />
+<link>http://alternativlos.org/12/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-12.mp3</guid>
+<pubDate>Sun, 13 Feb 2011 00:00:00 GMT</pubDate>
+<itunes:duration>1:19:42</itunes:duration>
+<itunes:keywords>alternativlos, neusprech, martin haase, kai biermann, orwell</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F12%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>11. Sendung vom 1.2.2011</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Über die Revolution in Ägypten, Internet-Abschalten und andere Zensur, und Revolutionen im Allgemeinen</itunes:subtitle>
+<itunes:summary>Sondersendung über die Revolution in Ägypten, Internet-Abschalten und andere Zensurarten, und Revolutionen im Allgemeinen</itunes:summary>
+<description>Sondersendung über die Revolution in Ägypten, Internet-Abschalten und andere Zensurarten, und Revolutionen im Allgemeinen</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-11.mp3" length="89841257" type="audio/mp3" />
+<link>http://alternativlos.org/11/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-11.mp3</guid>
+<pubDate>Tue, 01 Feb 2011 18:00:00 GMT</pubDate>
+<itunes:duration>1:42:00</itunes:duration>
+<itunes:keywords>alternativlos, ägypten, revolution, internet, abschalten, kill switch</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F11%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>10. Sendung vom 10.12.2010</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Über Wikileaks, Regierungsgeheimnisse, Whistleblowing und DDoS</itunes:subtitle>
+<itunes:summary>Sondersendung über Wikileaks, warum die Regierungen so entsetzt sind, richtiges Whistleblowing und DDoS.</itunes:summary>
+<description>Sondersendung über Wikileaks, warum die Regierungen so entsetzt sind, richtiges Whistleblowing und DDoS.</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-10.mp3" length="95155096" type="audio/mp3" />
+<link>http://alternativlos.org/10/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-10.mp3</guid>
+<pubDate>Fri, 10 Dec 2010 15:00:00 GMT</pubDate>
+<itunes:duration>1:49:01</itunes:duration>
+<itunes:keywords>alternativlos, wikileaks, julian assange, whistleblower, ddos</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F10%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>9. Sendung vom 24.11.2010</title>
+<itunes:author>Frank Rieger, Felix von Leitner, Monoxyd</itunes:author>
+<itunes:subtitle>Über Terrorpanik, Meinungsmache und wie Nachrichten funktionieren</itunes:subtitle>
+<itunes:summary>Sondersendung über die Mechanismen hinter der Terrorpanik in den Medien, Methoden zur Manipulation der öffentlichen Meinung und die Folgen des beschleunigten News-Zyklus</itunes:summary>
+<description>Sondersendung über die Mechanismen hinter der Terrorpanik in den Medien, Methoden zur Manipulation der öffentlichen Meinung und die Folgen des beschleunigten News-Zyklus</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-9.mp3" length="94505109" type="audio/mp3" />
+<link>http://alternativlos.org/9/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-9.mp3</guid>
+<pubDate>Wed, 24 Nov 2010 19:00:00 GMT</pubDate>
+<itunes:duration>1:55:50</itunes:duration>
+<itunes:keywords>alternativlos, terrorpanik, news-zyklus, meinungsmache, manipulation, medienmechanismen</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F9%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>8. Sendung vom 5.11.2010</title>
+<itunes:author>Frank Rieger, Felix von Leitner, Markus Kompa</itunes:author>
+<itunes:subtitle>Über Geheimdienste und Geschichten aus dem Kalten Krieg</itunes:subtitle>
+<itunes:summary>Sondersendung über Geheimdiensthistorie und Geschichten aus dem Kalten Krieg.</itunes:summary>
+<description>Sondersendung über Geheimdiensthistorie und Geschichten aus dem Kalten Krieg.</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-8.mp3" length="104536255" type="audio/mp3" />
+<link>http://alternativlos.org/8/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-8.mp3</guid>
+<pubDate>Sat, 06 Nov 2010 00:00:00 GMT</pubDate>
+<itunes:duration>2:18:15</itunes:duration>
+<itunes:keywords>alternativlos, spionage, mi6, cia, missile gap, mulholland, remote viewing, dulles, petrow</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F8%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>7. Sendung vom 27.10.2010</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Über Erdgaspipelines, Provokateure, Satellitennavigation und die Spielebranche</itunes:subtitle>
+<itunes:summary>Dieses Mal geht es um einen klaren Fall von Selbstmord, Erdgas aus Russland, frischen Salat, Provokateure bei Polizei und in der Politik, einen großartigen Politik-Hack Israels, satellitennavigierte Riesenhunde, einen russischen Waldspecht und Gemecker über Apple und die Spielebranche.</itunes:summary>
+<description>Dieses Mal geht es um einen klaren Fall von Selbstmord, Erdgas aus Russland, frischen Salat, Provokateure bei Polizei und in der Politik, einen großartigen Politik-Hack Israels, satellitennavigierte Riesenhunde, einen russischen Waldspecht und Gemecker über Apple und die Spielebranche.</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-7.mp3" length="77010147" type="audio/mp3" />
+<link>http://alternativlos.org/7/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-7.mp3</guid>
+<pubDate>Wed, 27 Oct 2010 23:00:00 GMT</pubDate>
+<itunes:duration>1:27:49</itunes:duration>
+<itunes:keywords>alternativlos, gazprom, selbstmord, erdgas, russland, salat, regenwurm, provokateur, polizeigewalt, tatort internet, glonass, galileo, gps, russian woodpecker, apple, spielebranche</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F7%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>6. Sendung vom 9.10.2010</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Sondersendung über die Polizei und Netzneutralität</itunes:subtitle>
+<itunes:summary>Sondersendung zum Thema Polizeieinsätze (Einsätze, Taktik, Ausrüstung, wie man sich geschickt verhält) und Netzneutralität.  Außerdem: Lustiges PGP-Nummernradio.</itunes:summary>
+<description>Sondersendung zum Thema Polizeieinsätze (Einsätze, Taktik, Ausrüstung, wie man sich geschickt verhält) und Netzneutralität.  Außerdem: Lustiges PGP-Nummernradio.</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-6.mp3" length="120003224" type="audio/mp3" />
+<link>http://alternativlos.org/6/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-6.mp3</guid>
+<pubDate>Sat, 09 Oct 2010 00:00:00 GMT</pubDate>
+<itunes:duration>2:10:50</itunes:duration>
+<itunes:keywords>alternativlos, polizei, taktik, ausrüstung, wasserwerfer, reizgas, tränengas, netzneutralität, pgp, nummernradio</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F6%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>5. Sendung vom 26.9.2010</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Sondersendung über Stuxnet, X.509, Exploits und Atomkraftwerke</itunes:subtitle>
+<itunes:summary>Sondersendung zum Thema Stuxnet, X.509-Zertifikaten, Exploitmärkten, explodierenden russischen Pipelines und Risiken für hiesige Atomkraftwerke.</itunes:summary>
+<description>Sondersendung zum Thema Stuxnet, X.509-Zertifikaten, Exploitmärkten, explodierenden russischen Pipelines und Risiken für hiesige Atomkraftwerke.</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-5.mp3" length="85407017" type="audio/mp3" />
+<link>http://alternativlos.org/5/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-5.mp3</guid>
+<pubDate>Sun, 26 Sep 2010 00:00:00 GMT</pubDate>
+<itunes:duration>1:27:49</itunes:duration>
+<itunes:keywords>alternativlos, stuxnet, exploitmarkt, iran, akw, bushehr, natanz, isfahan, sabotage, ssl, x.509</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F5%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>4. Sendung vom 19.9.2010</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Einwanderungspolitik, Peak Oil, Mexiko und der Afghanistanausstieg</itunes:subtitle>
+<itunes:summary>Dieses Mal geht es um die neuen Rechten, Einwanderungspolitik, Peak Oil, Containerschifffahrt, kolumbianische Drogendrohnen, Russlands Pipeline- und Innenpolitik, Rohstoffspekulanten und der Afghanistanausstieg</itunes:summary>
+<description>Dieses Mal geht es um die neuen Rechten, Einwanderungspolitik, Peak Oil, Containerschifffahrt, kolumbianische Drogendrohnen, Russlands Pipeline- und Innenpolitik, Rohstoffspekulanten und der Afghanistanausstieg</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-4.mp3" length="56901897" type="audio/mp3" />
+<link>http://alternativlos.org/4/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-4.mp3</guid>
+<pubDate>Sun, 19 Sep 2010 00:00:00 GMT</pubDate>
+<itunes:duration>1:16:27</itunes:duration>
+<itunes:keywords>alternativlos, boulevard, nazis, wilders, einwanderungspolitik, peak oil, containerschiffahrt, kolumbianische drogendrohnen, rohstoffspekulanten, afghanistanausstieg</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F4%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>3. Sendung vom 28.8.2010</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Netzneutralität, Elitenbildung, Raketenabwehr in Abchasien</itunes:subtitle>
+<itunes:summary>Dieses Mal geht es um Netzneutralität, die Contentmafia, die Festung Europa, Bilderberg und andere Eliten, Kinderpornographie, die Pharmamafia, Streetview, Stargardobyl, wie man mit U-Booten kommuniziert, S-300-Raketen in Abchasien und die Verbindung zu Israel und dem Iran, und den Irak-Abzug der US-Armee</itunes:summary>
+<description>Dieses Mal geht es um Netzneutralität, die Contentmafia, die Festung Europa, Bilderberg und andere Eliten, Kinderpornographie, die Pharmamafia, Streetview, Stargardobyl, wie man mit U-Booten kommuniziert, S-300-Raketen in Abchasien und die Verbindung zu Israel und dem Iran, und den Irak-Abzug der US-Armee</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-3.mp3" length="40559649" type="audio/mp3" />
+<link>http://alternativlos.org/3/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-3.mp3</guid>
+<pubDate>Sat, 28 Aug 2010 00:00:00 GMT</pubDate>
+<itunes:duration>1:03:24</itunes:duration>
+<itunes:keywords>alternativlos, boulevard, netzneutralität, contentmafia, festung europa, bilderberg, elitenbildung, kinderpornographie, pharmamafia, streetview, stargardobyl, u-boot-kommunikation, s-300 raketenabwehr abchasien, irak-abzug us-armee</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F3%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>2. Sendung vom 5.8.2010</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Apple, Wikileaks, U-Boote</itunes:subtitle>
+<itunes:summary>Dieses Mal geht es um Flattr, Apple, Wikileaks, Luftabwehrraketen, Loveparade, Amnesty International, Drohnen, U-Boote, die Straße von Hormus, Hughes Glomar Explorer, Red Star Rogue und K-129.</itunes:summary>
+<description>Dieses Mal geht es um Flattr, Apple, Wikileaks, Luftabwehrraketen, Loveparade, Amnesty International, Drohnen, U-Boote, die Straße von Hormus, Hughes Glomar Explorer, Red Star Rogue und K-129.</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-2.mp3" length="85858088" type="audio/mp3" />
+<link>http://alternativlos.org/2/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-2.mp3</guid>
+<pubDate>Wed, 04 Aug 2010 00:00:00 GMT</pubDate>
+<itunes:duration>1:06:08</itunes:duration>
+<itunes:keywords>alternativlos, boulevard, tim pritlove, flattr, apple, itunes, ogg, jailbreaking, iPhone, android, Wikileaks, Stinger Missile, loveparade, amnesty international, Drohnen, u-boot, hormuz, Hughes Glomar Explorer, Red Star Rogue, K129</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F2%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+<item>
+<title>1. Sendung vom 25.7.2010</title>
+<itunes:author>Frank Rieger, Felix von Leitner</itunes:author>
+<itunes:subtitle>Griechenland, Polizeigewalt, Homöopathie</itunes:subtitle>
+<itunes:summary>Dieses Mal geht es um Griechenland, Polizeigewalt, den Bankenbailout, Homöopathie und Mini-Nukes</itunes:summary>
+<description>Dieses Mal geht es um Griechenland, Polizeigewalt, den Bankenbailout, Homöopathie und Mini-Nukes</description>
+<enclosure url="http://alternativlos.cdn.as250.net/alternativlos-1.mp3" length="76125221" type="audio/mp3" />
+<link>http://alternativlos.org/1/</link>
+<guid>http://alternativlos.cdn.as250.net/alternativlos-1.mp3</guid>
+<pubDate>Sun, 25 Jul 2010 00:00:00 GMT</pubDate>
+<itunes:duration>1:00:13</itunes:duration>
+<itunes:keywords>alternativlos, frank, fefe, griechenland, bailout, banken, homöopathie</itunes:keywords>
+<itunes:explicit>no</itunes:explicit>
+<atom:link rel="payment" href="https://flattr.com/submit/auto?url=http%3A%2F%2Falternativlos.org%2F1%2F&amp;user_id=alternativlos" type="text/html" />
+</item>
+
+</channel>
+</rss>
+
+

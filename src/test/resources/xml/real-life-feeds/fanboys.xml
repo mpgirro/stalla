@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sc="http://podlove.org/simple-chapters" version="2.0">
+    <channel>
+        <title>Fanboys</title>
+        <link>http://fanboys.fm</link>
+        <atom:link href="http://fanboys.fm/episodes.mp3.rss" rel="self" type="application/rss+xml" title="mp3 Audio"/>
+        <language>de-de</language>
+        <copyright>cc-by-nc-sa</copyright>
+        <itunes:subtitle>Wayne's World for radio</itunes:subtitle>
+        <itunes:author>fanboys</itunes:author>
+        <itunes:summary>Regelmässiges Kaffeekränzchen in Sachen Nerdkram</itunes:summary>
+        <itunes:explicit>no</itunes:explicit>
+        <description>Regelmässiges Kaffeekränzchen in Sachen Nerdkram</description>
+        <itunes:owner>
+            <itunes:name>fanboys</itunes:name>
+            <itunes:email>all@fanboys.fm</itunes:email>
+        </itunes:owner>
+        <itunes:image href="http://fanboys.fm/images/cover.jpg"/>
+        <itunes:category text="Technology"/>
+        <itunes:category text="Technology">
+            <itunes:category text="Gadgets"/>
+        </itunes:category>
+        <itunes:category text="Technology">
+            <itunes:category text="Tech News"/>
+        </itunes:category>
+        <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+
+        <item>
+            <title>Episode #422 - Die Antifa Tastatur</title>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:author>fanboys</itunes:author>
+            <itunes:subtitle>Die Antifa Tastatur</itunes:subtitle>
+            <enclosure url="https://archive.org/download/FAN422/FAN422.mp3" length="25268310" type="audio/mpeg"/>
+            <guid isPermaLink="false">FAN422</guid>
+            <pubDate>Sat, 12 Dec 2020 16:13:07 +0000</pubDate>
+            <itunes:duration>00:52:22</itunes:duration>
+            <description><![CDATA[
+00:03:09 <a href="https://www.theverge.com/2020/12/9/22158483/facebook-antitrust-lawsuit-anti-competition-behavior-attorneys-general" rel="nofollow">FTC verklagt Facebook</a><br/>
+00:08:22 <a href="https://www.apple.com/newsroom/2020/12/apple-introduces-airpods-max-the-magic-of-airpods-in-a-stunning-over-ear-design/" rel="nofollow">Airpod Max</a><br/>
+00:12:18 <a href="https://www.theverge.com/2020/12/9/22165280/microsoft-xcloud-ios-pc-launch-spring-2021-announced" rel="nofollow">xCloud ab Frühling auf iOS</a><br/>
+00:14:21 <a href="https://www.theverge.com/2020/12/9/22165983/google-ceo-sundar-pichai-apology-timnit-gebru-exit" rel="nofollow">Google's AI Ethics debacle</a><br/>
+00:20:21 <a href="https://www.macrumors.com/2020/12/04/family-sharing-subscriptions-in-app-purchases/" rel="nofollow">Family Sharing für In-App-Käufe</a><br/>
+00:22:44 Cookies<br/>
+00:32:39 <a href="https://karabiner-elements.pqrs.org" rel="nofollow">Karabiner</a><br/>
+00:40:22 <a href="https://www.keysmith.app" rel="nofollow">KeySmith</a><br/>
+00:47:47 <a href="https://apps.apple.com/us/app/disco-elysium/id1508191454?mt=12" rel="nofollow">Disco Elysium</a><br/>
+00:50:08 <a href="https://www.youtube.com/watch?v=BG0onokd66w" rel="nofollow">Rausschmeisser</a><br/> <br/><a rel="payment" href="https://patreon.com/fanboys">&nbsp;</a>]]></description>
+            <sc:chapters version="1.0">
+			<sc:chapter start="00:03:09" title="FTC verklagt Facebook" href="https://www.theverge.com/2020/12/9/22158483/facebook-antitrust-lawsuit-anti-competition-behavior-attorneys-general" rel="nofollow" />
+			<sc:chapter start="00:08:22" title="Airpod Max" href="https://www.apple.com/newsroom/2020/12/apple-introduces-airpods-max-the-magic-of-airpods-in-a-stunning-over-ear-design/" rel="nofollow" />
+			<sc:chapter start="00:12:18" title="xCloud ab Frühling auf iOS" href="https://www.theverge.com/2020/12/9/22165280/microsoft-xcloud-ios-pc-launch-spring-2021-announced" rel="nofollow" />
+			<sc:chapter start="00:14:21" title="Google's AI Ethics debacle" href="https://www.theverge.com/2020/12/9/22165983/google-ceo-sundar-pichai-apology-timnit-gebru-exit" rel="nofollow" />
+			<sc:chapter start="00:20:21" title="Family Sharing für In-App-Käufe" href="https://www.macrumors.com/2020/12/04/family-sharing-subscriptions-in-app-purchases/" rel="nofollow" />
+			<sc:chapter start="00:22:44" title="Cookies" />
+			<sc:chapter start="00:32:39" title="Karabiner" href="https://karabiner-elements.pqrs.org" rel="nofollow" />
+			<sc:chapter start="00:40:22" title="KeySmith" href="https://www.keysmith.app" rel="nofollow" />
+			<sc:chapter start="00:47:47" title="Disco Elysium" href="https://apps.apple.com/us/app/disco-elysium/id1508191454?mt=12" rel="nofollow" />
+			<sc:chapter start="00:50:08" title="Rausschmeisser" href="https://www.youtube.com/watch?v=BG0onokd66w" rel="nofollow" />
+           	</sc:chapters>
+			<itunes:season>1</itunes:season>
+           	<itunes:episode>422</itunes:episode>
+           	<itunes:title>Die Antifa Tastatur</itunes:title>
+            <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+            <atom:link rel="http://podlove.org/deep-link" href="http://fanboys.fm/422" />
+        </item>
+
+        <item>
+            <title>Episode #421 - Das Internet niederbrennen</title>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:author>fanboys</itunes:author>
+            <itunes:subtitle>Das Internet niederbrennen</itunes:subtitle>
+            <enclosure url="https://archive.org/download/FAN421/FAN421.mp3" length="35591818" type="audio/mpeg"/>
+            <guid isPermaLink="false">FAN421</guid>
+            <pubDate>Mon, 07 Dec 2020 13:35:19 +0000</pubDate>
+            <itunes:duration>01:13:44</itunes:duration>
+            <description><![CDATA[
+00:05:02 <a href="https://www.apple.com/mac/m1/" rel="nofollow">Mac Apple Event</a><br/>
+00:14:07 <a href="https://www.theverge.com/2020/11/18/21572302/apple-app-store-small-business-program-commission-cut-15-percent-Reduktion" rel="nofollow">App Store Small Business Program</a><br/>
+00:17:20 <a href="https://www.apple.com/newsroom/2020/12/apple-presents-app-store-best-of-2020-winners/" rel="nofollow">App Store Best of 2020</a><br/>
+00:24:26 <a href="https://www.platformer.news/p/how-microsoft-crushed-slack" rel="nofollow">Salesforce kauft Slack</a><br/>
+00:26:23 <a href="https://helpx.adobe.com/photoshop/using/neural-filters.html" rel="nofollow">Photoshop Neural Filters</a><br/>
+00:34:26 <a href="https://hci.rwth-aachen.de/usgermankeyboard" rel="nofollow">US German Keyboard Layout</a><br/>
+00:37:01 <a href="http://www.innersloth.com/gameAmongUs.php" rel="nofollow">Among Us</a><br/>
+00:42:39 <a href="https://www.hopperapp.com" rel="nofollow">Hopper</a><br/>
+00:45:46 <a href="https://apps.apple.com/us/app/id1526477736" rel="nofollow">Gnomitaire (iOS und Android)</a><br/>
+00:48:19 <a href="https://apps.apple.com/us/app/south-of-the-circle/id1477077753" rel="nofollow">South of the Circle (Apple Arcade)</a><br/>
+00:50:19 <a href="https://thepathless.com" rel="nofollow">The Pathless (Apple Arcade)</a><br/>
+00:56:25 <a href="https://www.youtube.com/watch?v=ueYJAnDXDuI" rel="nofollow">Days Gone (PS4)</a><br/>
+01:04:11 <a href="https://store.steampowered.com/app/448510/Overcooked/" rel="nofollow">Overcooked</a><br/>
+01:11:23 <a href="https://www.youtube.com/watch?v=IKX9fGvF63E" rel="nofollow">Rausschmeisser</a><br/> <br/><a rel="payment" href="https://patreon.com/fanboys">&nbsp;</a>]]></description>
+            <sc:chapters version="1.0">
+			<sc:chapter start="00:05:02" title="Mac Apple Event" href="https://www.apple.com/mac/m1/" rel="nofollow" />
+			<sc:chapter start="00:14:07" title="App Store Small Business Program" href="https://www.theverge.com/2020/11/18/21572302/apple-app-store-small-business-program-commission-cut-15-percent-Reduktion" rel="nofollow" />
+			<sc:chapter start="00:17:20" title="App Store Best of 2020" href="https://www.apple.com/newsroom/2020/12/apple-presents-app-store-best-of-2020-winners/" rel="nofollow" />
+			<sc:chapter start="00:24:26" title="Salesforce kauft Slack" href="https://www.platformer.news/p/how-microsoft-crushed-slack" rel="nofollow" />
+			<sc:chapter start="00:26:23" title="Photoshop Neural Filters" href="https://helpx.adobe.com/photoshop/using/neural-filters.html" rel="nofollow" />
+			<sc:chapter start="00:34:26" title="US German Keyboard Layout" href="https://hci.rwth-aachen.de/usgermankeyboard" rel="nofollow" />
+			<sc:chapter start="00:37:01" title="Among Us" href="http://www.innersloth.com/gameAmongUs.php" rel="nofollow" />
+			<sc:chapter start="00:42:39" title="Hopper" href="https://www.hopperapp.com" rel="nofollow" />
+			<sc:chapter start="00:45:46" title="Gnomitaire (iOS und Android)" href="https://apps.apple.com/us/app/id1526477736" rel="nofollow" />
+			<sc:chapter start="00:48:19" title="South of the Circle (Apple Arcade)" href="https://apps.apple.com/us/app/south-of-the-circle/id1477077753" rel="nofollow" />
+			<sc:chapter start="00:50:19" title="The Pathless (Apple Arcade)" href="https://thepathless.com" rel="nofollow" />
+			<sc:chapter start="00:56:25" title="Days Gone (PS4)" href="https://www.youtube.com/watch?v=ueYJAnDXDuI" rel="nofollow" />
+			<sc:chapter start="01:04:11" title="Overcooked" href="https://store.steampowered.com/app/448510/Overcooked/" rel="nofollow" />
+			<sc:chapter start="01:11:23" title="Rausschmeisser" href="https://www.youtube.com/watch?v=IKX9fGvF63E" rel="nofollow" />
+           	</sc:chapters>
+			<itunes:season>1</itunes:season>
+           	<itunes:episode>421</itunes:episode>
+           	<itunes:title>Das Internet niederbrennen</itunes:title>
+            <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+            <atom:link rel="http://podlove.org/deep-link" href="http://fanboys.fm/421" />
+        </item>
+
+        <item>
+            <title>Episode #420 - Home youtube-dling Is Killing Music</title>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:author>fanboys</itunes:author>
+            <itunes:subtitle>Home youtube-dling Is Killing Music</itunes:subtitle>
+            <enclosure url="https://archive.org/download/FAN420/FAN420.mp3" length="28812729" type="audio/mpeg"/>
+            <guid isPermaLink="false">FAN420</guid>
+            <pubDate>Fri, 30 Oct 2020 17:01:41 +0000</pubDate>
+            <itunes:duration>00:57:34</itunes:duration>
+            <description><![CDATA[
+00:02:22 <a href="https://www.imore.com/did-boot-camp-update-just-out-new-2020-16-inch-macbook-pro" rel="nofollow">Neue (Apple Silicon) Macsbooks Pros?</a><br/>
+00:09:12 <a href="https://www.theverge.com/2020/10/26/21528438/facebook-cloud-gaming-beta-android-web-jason-rubin-interview" rel="nofollow">Schlumpfbeeren Cloud Gaming</a><br/>
+00:09:51 <a href="https://eclecticlight.co/2020/10/23/why-have-my-hp-printers-stopped-working-how-to-check-their-software-signature/" rel="nofollow">Codesigning SNAFU bei HP</a><br/>
+00:12:35 <a href="https://torrentfreak.com/riaas-youtube-dl-takedown-ticks-of-developers-and-githubs-ceo-201027/" rel="nofollow">youtube-dl takedown</a><br/>
+00:20:01 <a href="http://discroom.com/" rel="nofollow">Spiele-News: Disc Room, Far - Lone Sails, Cyberpunk 2077</a><br/>
+00:26:39 <a href="https://apps.apple.com/de/app/cluster-diary/id1535388491" rel="nofollow">Cluster Diary</a><br/>
+00:26:58 <a href="https://apps.apple.com/app/id1535797892" rel="nofollow">Kontakt Tagebuch</a><br/>
+00:29:36 <a href="https://youtu.be/ZWgkRcI5PMQ" rel="nofollow">Halle of Games Vorträge</a><br/>
+00:31:03 <a href="https://apps.apple.com/us/app/shapr-3d-cad-modeling/id1091675654" rel="nofollow">Shapr 3D</a><br/>
+00:34:04 <a href="https://www.spiegel.de/netzwelt/games/5-youtube-kanaele-die-einen-ungewoehnlichen-blick-auf-spiele-werfen-a-5e56bfdd-edde-48d5-913d-064dc2ab7495" rel="nofollow">You-Tube-Kanäle</a><br/>
+00:39:00 <a href="https://youtu.be/ueYJAnDXDuI" rel="nofollow">Days Gone</a><br/>
+00:43:16 <a href="https://www.youtube.com/watch?v=uYS-kNvgXR8" rel="nofollow">Dwarf Fortress - UI is coming</a><br/>
+00:47:08 Ghost of Tsushima<br/>
+00:56:01 <a href="https://www.youtube.com/watch?v=F-mztxHgYQo" rel="nofollow">Rausschmeisser</a><br/> <br/><a rel="payment" href="https://patreon.com/fanboys">&nbsp;</a>]]></description>
+            <sc:chapters version="1.0">
+			<sc:chapter start="00:02:22" title="Neue (Apple Silicon) Macsbooks Pros?" href="https://www.imore.com/did-boot-camp-update-just-out-new-2020-16-inch-macbook-pro" rel="nofollow" />
+			<sc:chapter start="00:09:12" title="Schlumpfbeeren Cloud Gaming" href="https://www.theverge.com/2020/10/26/21528438/facebook-cloud-gaming-beta-android-web-jason-rubin-interview" rel="nofollow" />
+			<sc:chapter start="00:09:51" title="Codesigning SNAFU bei HP" href="https://eclecticlight.co/2020/10/23/why-have-my-hp-printers-stopped-working-how-to-check-their-software-signature/" rel="nofollow" />
+			<sc:chapter start="00:12:35" title="youtube-dl takedown" href="https://torrentfreak.com/riaas-youtube-dl-takedown-ticks-of-developers-and-githubs-ceo-201027/" rel="nofollow" />
+			<sc:chapter start="00:20:01" title="Spiele-News: Disc Room, Far - Lone Sails, Cyberpunk 2077" href="http://discroom.com/" rel="nofollow" />
+			<sc:chapter start="00:26:39" title="Cluster Diary" href="https://apps.apple.com/de/app/cluster-diary/id1535388491" rel="nofollow" />
+			<sc:chapter start="00:26:58" title="Kontakt Tagebuch" href="https://apps.apple.com/app/id1535797892" rel="nofollow" />
+			<sc:chapter start="00:29:36" title="Halle of Games Vorträge" href="https://youtu.be/ZWgkRcI5PMQ" rel="nofollow" />
+			<sc:chapter start="00:31:03" title="Shapr 3D" href="https://apps.apple.com/us/app/shapr-3d-cad-modeling/id1091675654" rel="nofollow" />
+			<sc:chapter start="00:34:04" title="You-Tube-Kanäle" href="https://www.spiegel.de/netzwelt/games/5-youtube-kanaele-die-einen-ungewoehnlichen-blick-auf-spiele-werfen-a-5e56bfdd-edde-48d5-913d-064dc2ab7495" rel="nofollow" />
+			<sc:chapter start="00:39:00" title="Days Gone" href="https://youtu.be/ueYJAnDXDuI" rel="nofollow" />
+			<sc:chapter start="00:43:16" title="Dwarf Fortress - UI is coming" href="https://www.youtube.com/watch?v=uYS-kNvgXR8" rel="nofollow" />
+			<sc:chapter start="00:47:08" title="Ghost of Tsushima" />
+			<sc:chapter start="00:56:01" title="Rausschmeisser" href="https://www.youtube.com/watch?v=F-mztxHgYQo" rel="nofollow" />
+           	</sc:chapters>
+			<itunes:season>1</itunes:season>
+           	<itunes:episode>420</itunes:episode>
+           	<itunes:title>Home youtube-dling Is Killing Music</itunes:title>
+            <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+            <atom:link rel="http://podlove.org/deep-link" href="http://fanboys.fm/420" />
+        </item>
+
+        <item>
+            <title>Episode #419 - Haben Sie krumme Zehen?</title>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:author>fanboys</itunes:author>
+            <itunes:subtitle>Haben Sie krumme Zehen?</itunes:subtitle>
+            <enclosure url="https://archive.org/download/FAN419/FAN419.mp3" length="29892485" type="audio/mpeg"/>
+            <guid isPermaLink="false">FAN419</guid>
+            <pubDate>Fri, 23 Oct 2020 19:43:52 +0000</pubDate>
+            <itunes:duration>01:00:05</itunes:duration>
+            <description><![CDATA[
+00:07:56 <a href="https://www.macworld.com/article/3586355/apple-releases-ios-14-1-with-support-for-iphone-12-10-bit-hdr-and-bug-fixes.html" rel="nofollow">iOS 14.1 Released</a><br/>
+00:09:36 <a href="https://www.macrumors.com/2020/10/20/apple-releases-homepod-14-1-software/" rel="nofollow">Homepod 14.1</a><br/>
+00:11:29 <a href="https://variety.com/2020/music/news/apple-music-tv-launch-videos-1234809088/" rel="nofollow">Apple Music TV</a><br/>
+00:13:34 <a href="https://twitter.com/tcm_box" rel="nofollow">MonkeyBox-Twitter-Account</a><br/>
+00:19:03 <a href="https://www.eventbrite.com/e/the-secrets-of-monkey-island-30th-anniversary-livestream-tickets-124486302883" rel="nofollow">Monkey Island wird 30</a><br/>
+00:23:46 <a href="https://www.ifun.de/die-digitale-buecherei-zeitungen-pressreader-im-video-151915/" rel="nofollow">PressReader</a><br/>
+00:25:48 <a href="https://store.steampowered.com/app/473950/Manifold_Garden/" rel="nofollow">Manifold Garden in Steam</a><br/>
+00:29:27 <a href="https://apps.apple.com/de/app/scriptable/id1405459188?l=en" rel="nofollow">Scriptable</a><br/>
+00:30:07 <a href="https://apps.apple.com/us/app/pyto-python-3/id1436650069" rel="nofollow">Pyto</a><br/>
+00:35:47 <a href="http://lonelymountains.com/" rel="nofollow">Lonely Mountains: Downhill ”Eldfjall Island“ DLC</a><br/>
+00:36:50 E-Scooter – Jahr 2<br/>
+00:39:29 <a href="https://swapfiets.de" rel="nofollow">Swapfiets</a><br/>
+00:41:06 <a href="https://en.wikipedia.org/wiki/Dwarf_Fortress" rel="nofollow">Dwarf Fortress</a><br/>
+00:52:15 <a href="https://goose.game" rel="nofollow">Untitled Geese Game</a><br/>
+00:57:24 <a href="https://www.youtube.com/watch?v=xDKZjWpaS1A" rel="nofollow">Rausschmeisser</a><br/> <br/><a rel="payment" href="https://patreon.com/fanboys">&nbsp;</a>]]></description>
+            <sc:chapters version="1.0">
+			<sc:chapter start="00:07:56" title="iOS 14.1 Released" href="https://www.macworld.com/article/3586355/apple-releases-ios-14-1-with-support-for-iphone-12-10-bit-hdr-and-bug-fixes.html" rel="nofollow" />
+			<sc:chapter start="00:09:36" title="Homepod 14.1" href="https://www.macrumors.com/2020/10/20/apple-releases-homepod-14-1-software/" rel="nofollow" />
+			<sc:chapter start="00:11:29" title="Apple Music TV" href="https://variety.com/2020/music/news/apple-music-tv-launch-videos-1234809088/" rel="nofollow" />
+			<sc:chapter start="00:13:34" title="MonkeyBox-Twitter-Account" href="https://twitter.com/tcm_box" rel="nofollow" />
+			<sc:chapter start="00:19:03" title="Monkey Island wird 30" href="https://www.eventbrite.com/e/the-secrets-of-monkey-island-30th-anniversary-livestream-tickets-124486302883" rel="nofollow" />
+			<sc:chapter start="00:23:46" title="PressReader" href="https://www.ifun.de/die-digitale-buecherei-zeitungen-pressreader-im-video-151915/" rel="nofollow" />
+			<sc:chapter start="00:25:48" title="Manifold Garden in Steam" href="https://store.steampowered.com/app/473950/Manifold_Garden/" rel="nofollow" />
+			<sc:chapter start="00:29:27" title="Scriptable" href="https://apps.apple.com/de/app/scriptable/id1405459188?l=en" rel="nofollow" />
+			<sc:chapter start="00:30:07" title="Pyto" href="https://apps.apple.com/us/app/pyto-python-3/id1436650069" rel="nofollow" />
+			<sc:chapter start="00:35:47" title="Lonely Mountains: Downhill ”Eldfjall Island“ DLC" href="http://lonelymountains.com/" rel="nofollow" />
+			<sc:chapter start="00:36:50" title="E-Scooter – Jahr 2" />
+			<sc:chapter start="00:39:29" title="Swapfiets" href="https://swapfiets.de" rel="nofollow" />
+			<sc:chapter start="00:41:06" title="Dwarf Fortress" href="https://en.wikipedia.org/wiki/Dwarf_Fortress" rel="nofollow" />
+			<sc:chapter start="00:52:15" title="Untitled Geese Game" href="https://goose.game" rel="nofollow" />
+			<sc:chapter start="00:57:24" title="Rausschmeisser" href="https://www.youtube.com/watch?v=xDKZjWpaS1A" rel="nofollow" />
+           	</sc:chapters>
+			<itunes:season>1</itunes:season>
+           	<itunes:episode>419</itunes:episode>
+           	<itunes:title>Haben Sie krumme Zehen?</itunes:title>
+            <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+            <atom:link rel="http://podlove.org/deep-link" href="http://fanboys.fm/419" />
+        </item>
+
+        <item>
+            <title>Episode #418 - CSI Cupertino</title>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:author>fanboys</itunes:author>
+            <itunes:subtitle>CSI Cupertino</itunes:subtitle>
+            <enclosure url="https://archive.org/download/FAN418/FAN418.mp3" length="28839186" type="audio/mpeg"/>
+            <guid isPermaLink="false">FAN418</guid>
+            <pubDate>Fri, 16 Oct 2020 14:58:07 +0000</pubDate>
+            <itunes:duration>00:58:10</itunes:duration>
+            <description><![CDATA[
+00:04:43 <a href="https://www.apple.com/apple-events/" rel="nofollow">Apple iPhone Event</a><br/>
+00:05:29 <a href="https://www.apple.com/homepod-mini/" rel="nofollow">Homepod Mini</a><br/>
+00:06:14 <a href="https://www.macrumors.com/2020/10/14/intercom-feature-homepod-ios-apple-watch-carplay/" rel="nofollow">Intercom</a><br/>
+00:09:01 <a href="https://www.apple.com/iphone-12/" rel="nofollow">iPhone 12 (Mini)</a><br/>
+00:14:50 <a href="https://www.theverge.com/2020/10/14/21515789/apple-portless-iphone-magsafe-wireless-charging" rel="nofollow">MagSafe</a><br/>
+00:18:05 <a href="https://www.apple.com/iphone-12-pro/" rel="nofollow">iPhone 12 Pro (Max)</a><br/>
+00:27:19 <a href="https://www.youtube.com/watch?v=7TBPrYJDoDE" rel="nofollow">PS5 User Interface</a><br/>
+00:33:43 <a href="https://github.com/pointfreeco/swift-composable-architecture" rel="nofollow">The Composable Architecture</a><br/>
+00:37:02 <a href="https://matthewpalmer.net/vanilla/" rel="nofollow">Vanilla</a><br/>
+00:38:27 <a href="https://codingmonkeys.de/bigclock/appstore" rel="nofollow">Big Clock TV</a><br/>
+00:41:44 <a href="https://apps.apple.com/us/app/blotter/id406580224?mt=12" rel="nofollow">Blotter</a><br/>
+00:42:46 <a href="https://screen.so/#/home" rel="nofollow">Screen</a><br/>
+00:45:20 <a href="https://halleofgames.de" rel="nofollow">Halle of Games</a><br/>
+00:45:52 <a href="https://en.wikipedia.org/wiki/Ghost_of_Tsushima" rel="nofollow">Ghost of Tsushima</a><br/>
+00:56:20 <a href="https://www.youtube.com/watch?v=3pRUFTSX4ko" rel="nofollow">Rausschmeisser</a><br/> <br/><a rel="payment" href="https://patreon.com/fanboys">&nbsp;</a>]]></description>
+            <sc:chapters version="1.0">
+			<sc:chapter start="00:04:43" title="Apple iPhone Event" href="https://www.apple.com/apple-events/" rel="nofollow" />
+			<sc:chapter start="00:05:29" title="Homepod Mini" href="https://www.apple.com/homepod-mini/" rel="nofollow" />
+			<sc:chapter start="00:06:14" title="Intercom" href="https://www.macrumors.com/2020/10/14/intercom-feature-homepod-ios-apple-watch-carplay/" rel="nofollow" />
+			<sc:chapter start="00:09:01" title="iPhone 12 (Mini)" href="https://www.apple.com/iphone-12/" rel="nofollow" />
+			<sc:chapter start="00:14:50" title="MagSafe" href="https://www.theverge.com/2020/10/14/21515789/apple-portless-iphone-magsafe-wireless-charging" rel="nofollow" />
+			<sc:chapter start="00:18:05" title="iPhone 12 Pro (Max)" href="https://www.apple.com/iphone-12-pro/" rel="nofollow" />
+			<sc:chapter start="00:27:19" title="PS5 User Interface" href="https://www.youtube.com/watch?v=7TBPrYJDoDE" rel="nofollow" />
+			<sc:chapter start="00:33:43" title="The Composable Architecture" href="https://github.com/pointfreeco/swift-composable-architecture" rel="nofollow" />
+			<sc:chapter start="00:37:02" title="Vanilla" href="https://matthewpalmer.net/vanilla/" rel="nofollow" />
+			<sc:chapter start="00:38:27" title="Big Clock TV" href="https://codingmonkeys.de/bigclock/appstore" rel="nofollow" />
+			<sc:chapter start="00:41:44" title="Blotter" href="https://apps.apple.com/us/app/blotter/id406580224?mt=12" rel="nofollow" />
+			<sc:chapter start="00:42:46" title="Screen" href="https://screen.so/#/home" rel="nofollow" />
+			<sc:chapter start="00:45:20" title="Halle of Games" href="https://halleofgames.de" rel="nofollow" />
+			<sc:chapter start="00:45:52" title="Ghost of Tsushima" href="https://en.wikipedia.org/wiki/Ghost_of_Tsushima" rel="nofollow" />
+			<sc:chapter start="00:56:20" title="Rausschmeisser" href="https://www.youtube.com/watch?v=3pRUFTSX4ko" rel="nofollow" />
+           	</sc:chapters>
+			<itunes:season>1</itunes:season>
+           	<itunes:episode>418</itunes:episode>
+           	<itunes:title>CSI Cupertino</itunes:title>
+            <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+            <atom:link rel="http://podlove.org/deep-link" href="http://fanboys.fm/418" />
+        </item>
+
+        <item>
+            <title>Episode #417 - Face Automation</title>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:author>fanboys</itunes:author>
+            <itunes:subtitle>Face Automation</itunes:subtitle>
+            <enclosure url="https://archive.org/download/FAN417/FAN417.mp3" length="21942943" type="audio/mpeg"/>
+            <guid isPermaLink="false">FAN417</guid>
+            <pubDate>Fri, 02 Oct 2020 19:42:22 +0000</pubDate>
+            <itunes:duration>00:44:37</itunes:duration>
+            <description><![CDATA[
+00:02:46 <a href="https://www.apple.com/de/apple-one/" rel="nofollow">Apple One</a><br/>
+00:09:10 iOS 14 - Dies und das<br/>
+00:17:15 watchOS: Übersetzen<br/>
+00:19:57 <a href="https://www.polygon.com/2020/9/24/21454568/amazon-luna-cloud-gaming-service-channels-price-release-date" rel="nofollow">Amazon Luna</a><br/>
+00:23:09 Cyberpunk 2077 mandatory crunch<br/>
+00:27:16 Watch Face Automation<br/>
+00:30:27 <a href="https://scriptable.app" rel="nofollow">Scriptable</a><br/>
+00:36:55 Avenue 5<br/>
+00:41:10 <a href="https://www.youtube.com/watch?v=un9x-DjTMT0" rel="nofollow">Rausschmeisser</a><br/> <br/><a rel="payment" href="https://patreon.com/fanboys">&nbsp;</a>]]></description>
+            <sc:chapters version="1.0">
+			<sc:chapter start="00:02:46" title="Apple One" href="https://www.apple.com/de/apple-one/" rel="nofollow" />
+			<sc:chapter start="00:09:10" title="iOS 14 - Dies und das" />
+			<sc:chapter start="00:17:15" title="watchOS: Übersetzen" />
+			<sc:chapter start="00:19:57" title="Amazon Luna" href="https://www.polygon.com/2020/9/24/21454568/amazon-luna-cloud-gaming-service-channels-price-release-date" rel="nofollow" />
+			<sc:chapter start="00:23:09" title="Cyberpunk 2077 mandatory crunch" />
+			<sc:chapter start="00:27:16" title="Watch Face Automation" />
+			<sc:chapter start="00:30:27" title="Scriptable" href="https://scriptable.app" rel="nofollow" />
+			<sc:chapter start="00:36:55" title="Avenue 5" />
+			<sc:chapter start="00:41:10" title="Rausschmeisser" href="https://www.youtube.com/watch?v=un9x-DjTMT0" rel="nofollow" />
+           	</sc:chapters>
+			<itunes:season>1</itunes:season>
+           	<itunes:episode>417</itunes:episode>
+           	<itunes:title>Face Automation</itunes:title>
+            <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+            <atom:link rel="http://podlove.org/deep-link" href="http://fanboys.fm/417" />
+        </item>
+
+        <item>
+            <title>Episode #416 - Ohne Gewehr</title>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:author>fanboys</itunes:author>
+            <itunes:subtitle>Ohne Gewehr</itunes:subtitle>
+            <enclosure url="https://archive.org/download/FAN416/FAN416.mp3" length="33402673" type="audio/mpeg"/>
+            <guid isPermaLink="false">FAN416</guid>
+            <pubDate>Sat, 26 Sep 2020 19:27:49 +0000</pubDate>
+            <itunes:duration>01:07:40</itunes:duration>
+            <description><![CDATA[
+00:00:55 XBox Series X, XBox Series S<br/>
+00:08:13 Apple Event<br/>
+00:22:37 iOS 14<br/>
+00:26:05 PS5 Event<br/>
+00:33:40 PS5 Vorbestellungsdebakel<br/>
+00:37:52 Microsoft buys Bethesda<br/>
+00:41:28 PS4 Remoteplay mit Controller an der Konsole<br/>
+00:44:26 iOS 14 Tipps<br/>
+00:49:05 Ori and the Will of the Wisps (XBox, Switch)<br/>
+00:50:24 Spelunky 2<br/>
+00:52:19 <a href="https://nova.app" rel="nofollow">Nova</a><br/>
+00:56:50 Ghost of Tsushima<br/>
+01:06:44 <a href="https://www.youtube.com/watch?v=PGa8PZB7SEg" rel="nofollow">Rausschmeisser</a><br/> <br/><a rel="payment" href="https://patreon.com/fanboys">&nbsp;</a>]]></description>
+            <sc:chapters version="1.0">
+			<sc:chapter start="00:00:55" title="XBox Series X, XBox Series S" />
+			<sc:chapter start="00:08:13" title="Apple Event" />
+			<sc:chapter start="00:22:37" title="iOS 14" />
+			<sc:chapter start="00:26:05" title="PS5 Event" />
+			<sc:chapter start="00:33:40" title="PS5 Vorbestellungsdebakel" />
+			<sc:chapter start="00:37:52" title="Microsoft buys Bethesda" />
+			<sc:chapter start="00:41:28" title="PS4 Remoteplay mit Controller an der Konsole" />
+			<sc:chapter start="00:44:26" title="iOS 14 Tipps" />
+			<sc:chapter start="00:49:05" title="Ori and the Will of the Wisps (XBox, Switch)" />
+			<sc:chapter start="00:50:24" title="Spelunky 2" />
+			<sc:chapter start="00:52:19" title="Nova" href="https://nova.app" rel="nofollow" />
+			<sc:chapter start="00:56:50" title="Ghost of Tsushima" />
+			<sc:chapter start="01:06:44" title="Rausschmeisser" href="https://www.youtube.com/watch?v=PGa8PZB7SEg" rel="nofollow" />
+           	</sc:chapters>
+			<itunes:season>1</itunes:season>
+           	<itunes:episode>416</itunes:episode>
+           	<itunes:title>Ohne Gewehr</itunes:title>
+            <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+            <atom:link rel="http://podlove.org/deep-link" href="http://fanboys.fm/416" />
+        </item>
+
+        <item>
+            <title>Episode #415 - Siebenachtelfünf</title>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:author>fanboys</itunes:author>
+            <itunes:subtitle>Siebenachtelfünf</itunes:subtitle>
+            <enclosure url="https://archive.org/download/FAN415/FAN415.mp3" length="19850472" type="audio/mpeg"/>
+            <guid isPermaLink="false">FAN415</guid>
+            <pubDate>Thu, 10 Sep 2020 19:45:00 +0000</pubDate>
+            <itunes:duration>00:39:59</itunes:duration>
+            <description><![CDATA[
+00:04:16 <a href="https://www.apple.com/apple-events/" rel="nofollow">Apple Event am 19.9.2020</a><br/>
+00:08:44 <a href="https://news.xbox.com/en-us/2020/09/09/xbox-series-x-and-xbox-series-s-launching-november-10/" rel="nofollow">XBox One Series X/S ab 10. November, Preise: $499/$299</a><br/>
+00:20:18 Bildschirmaufnahme mit Ton von außen<br/>
+00:22:09 <a href="https://www.icmd.app" rel="nofollow">iCMD</a><br/>
+00:24:19 <a href="https://rectangleapp.com" rel="nofollow">Rectangle</a><br/>
+00:26:47 <a href="https://www.youtube.com/watch?v=fWvr3fhTqnQ" rel="nofollow">Cascina Caradonna (Dina) spielt The Last of Us Part II</a><br/>
+00:28:08 <a href="https://apps.apple.com/us/app/tageslicht/id1528380533" rel="nofollow">Tageslicht</a><br/>
+00:31:03 Spiritfarer<br/>
+00:33:58 Ghost of Tsushima<br/>
+00:38:53 <a href="https://www.youtube.com/watch?v=k2lSAxw75co" rel="nofollow">Rausschmeisser</a><br/> <br/><a rel="payment" href="https://patreon.com/fanboys">&nbsp;</a>]]></description>
+            <sc:chapters version="1.0">
+			<sc:chapter start="00:04:16" title="Apple Event am 19.9.2020" href="https://www.apple.com/apple-events/" rel="nofollow" />
+			<sc:chapter start="00:08:44" title="XBox One Series X/S ab 10. November, Preise: $499/$299" href="https://news.xbox.com/en-us/2020/09/09/xbox-series-x-and-xbox-series-s-launching-november-10/" rel="nofollow" />
+			<sc:chapter start="00:20:18" title="Bildschirmaufnahme mit Ton von außen" />
+			<sc:chapter start="00:22:09" title="iCMD" href="https://www.icmd.app" rel="nofollow" />
+			<sc:chapter start="00:24:19" title="Rectangle" href="https://rectangleapp.com" rel="nofollow" />
+			<sc:chapter start="00:26:47" title="Cascina Caradonna (Dina) spielt The Last of Us Part II" href="https://www.youtube.com/watch?v=fWvr3fhTqnQ" rel="nofollow" />
+			<sc:chapter start="00:28:08" title="Tageslicht" href="https://apps.apple.com/us/app/tageslicht/id1528380533" rel="nofollow" />
+			<sc:chapter start="00:31:03" title="Spiritfarer" />
+			<sc:chapter start="00:33:58" title="Ghost of Tsushima" />
+			<sc:chapter start="00:38:53" title="Rausschmeisser" href="https://www.youtube.com/watch?v=k2lSAxw75co" rel="nofollow" />
+           	</sc:chapters>
+			<itunes:season>1</itunes:season>
+           	<itunes:episode>415</itunes:episode>
+           	<itunes:title>Siebenachtelfünf</itunes:title>
+            <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+            <atom:link rel="http://podlove.org/deep-link" href="http://fanboys.fm/415" />
+        </item>
+
+        <item>
+            <title>Episode #414 - Katzen und Katzenfutter</title>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:author>fanboys</itunes:author>
+            <itunes:subtitle>Katzen und Katzenfutter</itunes:subtitle>
+            <enclosure url="https://archive.org/download/FAN414/FAN414.mp3" length="31449132" type="audio/mpeg"/>
+            <guid isPermaLink="false">FAN414</guid>
+            <pubDate>Sat, 05 Sep 2020 15:11:48 +0000</pubDate>
+            <itunes:duration>01:03:36</itunes:duration>
+            <description><![CDATA[
+00:04:26 <a href="https://www.bloomberg.com/news/articles/2020-09-01/apple-targets-75-million-5g-iphones-for-fall-product-blitz?sref=9hGJlFio" rel="nofollow">Apple Gerüchte</a><br/>
+00:12:30 <a href="https://www.theverge.com/2020/9/1/21417167/vlambeer-shutting-down-nuclear-throne-games-studio" rel="nofollow">Vlambeer macht dicht</a><br/>
+00:20:17 <a href="https://www.amazon.de/KLIM-Laptop-RGB-K%C3%BChler-Laptop-Gaming-K%C3%BChlung-USB-L%C3%BCfter-PS4-kompatibel/dp/B081RJFTRT/" rel="nofollow">Externer Lüfter</a><br/>
+00:26:38 <a href="https://www.amazon.de/Archivist-Wasp-novel-Nicole-Kornher-Stace/dp/1618730975" rel="nofollow">Nicole Kornher-Stace: Archivist Wasp &amp; Latchkey</a><br/>
+00:34:25 <a href="https://youtu.be/luyL_D_25yM" rel="nofollow">Fall Guys (PS4, PC Steam)</a><br/>
+00:39:25 Katzenfutter<br/>
+00:40:18 <a href="https://store.steampowered.com/app/972660/Spiritfarer/" rel="nofollow">Spiritfarer</a><br/>
+00:45:47 The Last Campfire (Apple Arcade, PS4, XBox One, Switch, Epic Store)<br/>
+00:52:17 The Eternal Castle [Remastered] (Switch, Steam) www.theeternalcastle.net<br/>
+00:53:52 <a href="https://controlgame.com" rel="nofollow">Control DLC AWE</a><br/>
+00:56:17 <a href="https://youtu.be/_hImqpnXfmE" rel="nofollow">Ghost of Tsushima (PS4)</a><br/>
+01:02:12 <a href="https://youtu.be/eYf595EJAc4" rel="nofollow">Rausschmeisser</a><br/> <br/><a rel="payment" href="https://patreon.com/fanboys">&nbsp;</a>]]></description>
+            <sc:chapters version="1.0">
+			<sc:chapter start="00:04:26" title="Apple Gerüchte" href="https://www.bloomberg.com/news/articles/2020-09-01/apple-targets-75-million-5g-iphones-for-fall-product-blitz?sref=9hGJlFio" rel="nofollow" />
+			<sc:chapter start="00:12:30" title="Vlambeer macht dicht" href="https://www.theverge.com/2020/9/1/21417167/vlambeer-shutting-down-nuclear-throne-games-studio" rel="nofollow" />
+			<sc:chapter start="00:20:17" title="Externer Lüfter" href="https://www.amazon.de/KLIM-Laptop-RGB-K%C3%BChler-Laptop-Gaming-K%C3%BChlung-USB-L%C3%BCfter-PS4-kompatibel/dp/B081RJFTRT/" rel="nofollow" />
+			<sc:chapter start="00:26:38" title="Nicole Kornher-Stace: Archivist Wasp &amp; Latchkey" href="https://www.amazon.de/Archivist-Wasp-novel-Nicole-Kornher-Stace/dp/1618730975" rel="nofollow" />
+			<sc:chapter start="00:34:25" title="Fall Guys (PS4, PC Steam)" href="https://youtu.be/luyL_D_25yM" rel="nofollow" />
+			<sc:chapter start="00:39:25" title="Katzenfutter" />
+			<sc:chapter start="00:40:18" title="Spiritfarer" href="https://store.steampowered.com/app/972660/Spiritfarer/" rel="nofollow" />
+			<sc:chapter start="00:45:47" title="The Last Campfire (Apple Arcade, PS4, XBox One, Switch, Epic Store)" />
+			<sc:chapter start="00:52:17" title="The Eternal Castle [Remastered] (Switch, Steam) www.theeternalcastle.net" />
+			<sc:chapter start="00:53:52" title="Control DLC AWE" href="https://controlgame.com" rel="nofollow" />
+			<sc:chapter start="00:56:17" title="Ghost of Tsushima (PS4)" href="https://youtu.be/_hImqpnXfmE" rel="nofollow" />
+			<sc:chapter start="01:02:12" title="Rausschmeisser" href="https://youtu.be/eYf595EJAc4" rel="nofollow" />
+           	</sc:chapters>
+			<itunes:season>1</itunes:season>
+           	<itunes:episode>414</itunes:episode>
+           	<itunes:title>Katzen und Katzenfutter</itunes:title>
+            <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+            <atom:link rel="http://podlove.org/deep-link" href="http://fanboys.fm/414" />
+        </item>
+
+        <item>
+            <title>Episode #413 - Watschen für Alle</title>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:author>fanboys</itunes:author>
+            <itunes:subtitle>Watschen für Alle</itunes:subtitle>
+            <enclosure url="https://archive.org/download/FAN413/FAN413.mp3" length="27320949" type="audio/mpeg"/>
+            <guid isPermaLink="false">FAN413</guid>
+            <pubDate>Sat, 22 Aug 2020 10:08:42 +0000</pubDate>
+            <itunes:duration>00:55:41</itunes:duration>
+            <description><![CDATA[
+00:02:42 Epic vs. Apple<br/>
+00:14:43 <a href="https://t3n.de/news/apple-look-around-deutschland-1183276/" rel="nofollow">Doch kein &quot;Look Around&quot; in Deutschland</a><br/>
+00:23:06 <a href="https://www.tor.com/2018/07/24/revealing-charlie-jane-anders-the-city-in-the-middle-of-the-night/" rel="nofollow">Charlie Jane Anders: The City in the Middle of the Night</a><br/>
+00:35:30 <a href="https://github.com/EddieCameron/keyword-searches-in-safari" rel="nofollow">keysearch</a><br/>
+00:37:09 <a href="https://www.tor.com/2019/03/26/book-reviews-arkady-martine-a-memory-called-empire/" rel="nofollow">Arkady Martine: A Memory Called Empire</a><br/>
+00:44:26 <a href="https://github.com/kyleneideck/BackgroundMusic" rel="nofollow">BackgroundMusic</a><br/>
+00:46:14 <a href="https://carrion.game" rel="nofollow">Carrion</a><br/>
+00:54:14 <a href="https://www.youtube.com/watch?v=tq7sJCVciWE" rel="nofollow">Rausschmeisser</a><br/> <br/><a rel="payment" href="https://patreon.com/fanboys">&nbsp;</a>]]></description>
+            <sc:chapters version="1.0">
+			<sc:chapter start="00:02:42" title="Epic vs. Apple" />
+			<sc:chapter start="00:14:43" title="Doch kein &quot;Look Around&quot; in Deutschland" href="https://t3n.de/news/apple-look-around-deutschland-1183276/" rel="nofollow" />
+			<sc:chapter start="00:23:06" title="Charlie Jane Anders: The City in the Middle of the Night" href="https://www.tor.com/2018/07/24/revealing-charlie-jane-anders-the-city-in-the-middle-of-the-night/" rel="nofollow" />
+			<sc:chapter start="00:35:30" title="keysearch" href="https://github.com/EddieCameron/keyword-searches-in-safari" rel="nofollow" />
+			<sc:chapter start="00:37:09" title="Arkady Martine: A Memory Called Empire" href="https://www.tor.com/2019/03/26/book-reviews-arkady-martine-a-memory-called-empire/" rel="nofollow" />
+			<sc:chapter start="00:44:26" title="BackgroundMusic" href="https://github.com/kyleneideck/BackgroundMusic" rel="nofollow" />
+			<sc:chapter start="00:46:14" title="Carrion" href="https://carrion.game" rel="nofollow" />
+			<sc:chapter start="00:54:14" title="Rausschmeisser" href="https://www.youtube.com/watch?v=tq7sJCVciWE" rel="nofollow" />
+           	</sc:chapters>
+			<itunes:season>1</itunes:season>
+           	<itunes:episode>413</itunes:episode>
+           	<itunes:title>Watschen für Alle</itunes:title>
+            <atom:link rel="payment" href="https://patreon.com/fanboys" type="text/html" />
+            <atom:link rel="http://podlove.org/deep-link" href="http://fanboys.fm/413" />
+        </item>
+
+    </channel>
+</rss>
