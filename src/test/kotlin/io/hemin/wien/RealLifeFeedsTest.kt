@@ -36,7 +36,7 @@ internal class RealLifeFeedsTest {
             assertThat(tmpFile, "written file").isNotEmpty()
 
             val reparsedPodcast = PodcastRssParser.parse(tmpFile)
-            assertThat(reparsedPodcast, "written file matches original Podcast").isEqualTo(parsedPodcast)
+            assertThat(reparsedPodcast, "written file for ${file.nameWithoutExtension} matches original Podcast").isEqualTo(parsedPodcast)
 
             tmpFile.delete()
         }

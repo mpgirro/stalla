@@ -14,7 +14,7 @@ internal class ValidatingRssCategoryBuilder : RssCategoryBuilder {
     override fun domain(domain: String?): RssCategoryBuilder = apply { this.domain = domain }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = ::categoryValue.isInitialized
+        get() = ::categoryValue.isInitialized && ::categoryValue.get() != ""
 
     override fun build(): RssCategory? {
         if (!hasEnoughDataToBuild) {
