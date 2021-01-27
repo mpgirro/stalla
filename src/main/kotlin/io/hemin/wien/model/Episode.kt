@@ -7,6 +7,10 @@ import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.builder.episode.EpisodeGooglePlayBuilder
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.builder.episode.EpisodeITunesBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastChaptersBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastSoundbiteBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastTranscriptBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBitloveBuilder
@@ -16,8 +20,13 @@ import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilde
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeGooglePlayBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeGuidBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeITunesBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodcastBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodcastChaptersBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodcastSoundbiteBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodcastTranscriptBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
+import io.hemin.wien.model.Episode.Podcast.Transcript.Type
 import io.hemin.wien.model.Episode.Podlove.SimpleChapter
 import java.time.Duration
 import java.time.temporal.TemporalAccessor
@@ -256,6 +265,11 @@ data class Episode(
         val chapters: Chapters? = null
     ) {
 
+        companion object Factory : BuilderFactory<Podcast, EpisodePodcastBuilder> {
+            @JvmStatic
+            override fun builder(): EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
+        }
+
         /**
          * The transcript for the episode.
          *
@@ -270,6 +284,11 @@ data class Episode(
             val language: Locale? = null,
             val rel: String? = null
         ) {
+
+            companion object Factory : BuilderFactory<Transcript, EpisodePodcastTranscriptBuilder> {
+                @JvmStatic
+                override fun builder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
+            }
 
             /**
              * Supported transcript types. See the
@@ -305,7 +324,12 @@ data class Episode(
         data class Chapters(
             val url: String,
             val type: String
-        )
+        ) {
+            companion object Factory : BuilderFactory<Chapters, EpisodePodcastChaptersBuilder> {
+                @JvmStatic
+                override fun builder(): EpisodePodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
+            }
+        }
 
         /**
          * The soundbite information for the episode. Used to automatically extract soundbites from the [Episode.enclosure].
@@ -318,6 +342,11 @@ data class Episode(
             val startTime: Duration,
             val duration: Duration,
             val title: String? = null
-        )
+        ) {
+            companion object Factory : BuilderFactory<Soundbite, EpisodePodcastSoundbiteBuilder> {
+                @JvmStatic
+                override fun builder(): EpisodePodcastSoundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+            }
+        }
     }
 }

@@ -6,12 +6,16 @@ import io.hemin.wien.builder.podcast.PodcastFyydBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
 import io.hemin.wien.builder.podcast.PodcastPodcastBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastFundingBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastLockedBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastFeedpressBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastFyydBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastGooglePlayBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastITunesBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastPodcastBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastPodcastFundingBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastPodcastLockedBuilder
 import java.time.temporal.TemporalAccessor
 
 /**
@@ -215,7 +219,11 @@ data class Podcast(
         data class Locked(
             val owner: String,
             val locked: Boolean
-        )
+        ) {
+            companion object Factory : BuilderFactory<Locked, PodcastPodcastLockedBuilder> {
+                @JvmStatic override fun builder(): PodcastPodcastLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+            }
+        }
 
         /**
          * The funding information for the podcast.
@@ -226,6 +234,10 @@ data class Podcast(
         data class Funding(
             val url: String,
             val message: String
-        )
+        ) {
+            companion object Factory : BuilderFactory<Funding, PodcastPodcastFundingBuilder> {
+                @JvmStatic override fun builder(): PodcastPodcastFundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+            }
+        }
     }
 }
