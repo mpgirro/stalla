@@ -36,6 +36,7 @@ data class RssImage(
     val description: String? = null
 ) {
     companion object Factory : BuilderFactory<RssImage, RssImageBuilder> {
+        /** Returns a builder implementation for building [RssImage] model instances. */
         @JvmStatic override fun builder(): RssImageBuilder = ValidatingRssImageBuilder()
     }
 }

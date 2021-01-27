@@ -12,6 +12,7 @@ import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
 sealed class ITunesStyleCategory(open val name: String) {
 
     companion object Factory : BuilderFactory<ITunesStyleCategory, ITunesStyleCategoryBuilder> {
+        /** Returns a builder implementation for building [ITunesStyleCategory] model instances. */
         @JvmStatic override fun builder(): ITunesStyleCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
     }
 

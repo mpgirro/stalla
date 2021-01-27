@@ -75,6 +75,7 @@ data class Episode(
 ) {
 
     companion object Factory : BuilderFactory<Episode, EpisodeBuilder> {
+        /** Returns a builder implementation for building [Episode] model instances. */
         @JvmStatic override fun builder(): EpisodeBuilder = ValidatingEpisodeBuilder()
     }
 
@@ -91,6 +92,7 @@ data class Episode(
         val type: String
     ) {
         companion object Factory : BuilderFactory<Enclosure, EpisodeEnclosureBuilder> {
+            /** Returns a builder implementation for building [Enclosure] model instances. */
             @JvmStatic override fun builder(): EpisodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
         }
     }
@@ -106,6 +108,7 @@ data class Episode(
         val isPermalink: Boolean? = null
     ) {
         companion object Factory : BuilderFactory<Guid, EpisodeGuidBuilder> {
+            /** Returns a builder implementation for building [Guid] model instances. */
             @JvmStatic override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
         }
     }
@@ -119,6 +122,7 @@ data class Episode(
         val encoded: String
     ) {
         companion object Factory : BuilderFactory<Content, EpisodeContentBuilder> {
+            /** Returns a builder implementation for building [Content] model instances. */
             @JvmStatic override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
         }
     }
@@ -150,6 +154,7 @@ data class Episode(
     ) : ITunesBase {
 
         companion object Factory : BuilderFactory<ITunes, EpisodeITunesBuilder> {
+            /** Returns a builder implementation for building [ITunes] model instances. */
             @JvmStatic override fun builder(): EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
         }
 
@@ -199,6 +204,7 @@ data class Episode(
         override val image: HrefOnlyImage? = null
     ) : GooglePlayBase {
         companion object Factory : BuilderFactory<GooglePlay, EpisodeGooglePlayBuilder> {
+            /** Returns a builder implementation for building [GooglePlay] model instances. */
             @JvmStatic override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
         }
     }
@@ -214,6 +220,7 @@ data class Episode(
     ) {
 
         companion object Factory : BuilderFactory<Podlove, EpisodePodloveBuilder> {
+            /** Returns a builder implementation for building [Podlove] model instances. */
             @JvmStatic override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
         }
 
@@ -233,6 +240,7 @@ data class Episode(
             val image: String? = null
         ) {
             companion object Factory : BuilderFactory<SimpleChapter, EpisodePodloveSimpleChapterBuilder> {
+                /** Returns a builder implementation for building [SimpleChapter] model instances. */
                 @JvmStatic override fun builder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
             }
         }
@@ -247,8 +255,8 @@ data class Episode(
         val guid: String
     ) {
         companion object Factory : BuilderFactory<Bitlove, EpisodeBitloveBuilder> {
-            @JvmStatic
-            override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
+            /** Returns a builder implementation for building [Bitlove] model instances. */
+            @JvmStatic override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
         }
     }
 
@@ -266,8 +274,8 @@ data class Episode(
     ) {
 
         companion object Factory : BuilderFactory<Podcast, EpisodePodcastBuilder> {
-            @JvmStatic
-            override fun builder(): EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
+            /** Returns a builder implementation for building [Podcast] model instances. */
+            @JvmStatic override fun builder(): EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
         }
 
         /**
@@ -286,8 +294,8 @@ data class Episode(
         ) {
 
             companion object Factory : BuilderFactory<Transcript, EpisodePodcastTranscriptBuilder> {
-                @JvmStatic
-                override fun builder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
+                /** Returns a builder implementation for building [Transcript] model instances. */
+                @JvmStatic override fun builder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
             }
 
             /**
@@ -326,8 +334,8 @@ data class Episode(
             val type: String
         ) {
             companion object Factory : BuilderFactory<Chapters, EpisodePodcastChaptersBuilder> {
-                @JvmStatic
-                override fun builder(): EpisodePodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
+                /** Returns a builder implementation for building [Chapters] model instances. */
+                @JvmStatic override fun builder(): EpisodePodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
             }
         }
 
@@ -344,8 +352,8 @@ data class Episode(
             val title: String? = null
         ) {
             companion object Factory : BuilderFactory<Soundbite, EpisodePodcastSoundbiteBuilder> {
-                @JvmStatic
-                override fun builder(): EpisodePodcastSoundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+                /** Returns a builder implementation for building [Soundbite] model instances. */
+                @JvmStatic override fun builder(): EpisodePodcastSoundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
             }
         }
     }

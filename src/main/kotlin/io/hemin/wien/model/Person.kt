@@ -16,6 +16,7 @@ data class Person(
     val uri: String? = null
 ) {
     companion object Factory : BuilderFactory<Person, PersonBuilder> {
+        /** Returns a builder implementation for building [Person] model instances. */
         @JvmStatic override fun builder(): PersonBuilder = ValidatingPersonBuilder()
     }
 }

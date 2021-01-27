@@ -16,6 +16,7 @@ data class Atom(
     val links: List<Link>
 ) {
     companion object Factory : BuilderFactory<Atom, AtomBuilder> {
+        /** Returns a builder implementation for building [Atom] model instances. */
         @JvmStatic override fun builder(): AtomBuilder = ValidatingAtomBuilder()
     }
 }
