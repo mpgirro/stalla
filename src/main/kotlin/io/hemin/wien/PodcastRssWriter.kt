@@ -12,6 +12,7 @@ import io.hemin.wien.writer.namespace.FeedpressWriter
 import io.hemin.wien.writer.namespace.FyydWriter
 import io.hemin.wien.writer.namespace.GooglePlayWriter
 import io.hemin.wien.writer.namespace.ITunesWriter
+import io.hemin.wien.writer.namespace.PodcastNamespaceWriter
 import io.hemin.wien.writer.namespace.PodloveSimpleChapterWriter
 import io.hemin.wien.writer.namespace.RssWriter
 import org.w3c.dom.Document
@@ -35,7 +36,8 @@ object PodcastRssWriter {
         BitloveWriter(),
         FeedpressWriter(),
         FyydWriter(),
-        PodloveSimpleChapterWriter()
+        PodloveSimpleChapterWriter(),
+        PodcastNamespaceWriter()
     )
 
     private val supportedNamespaces = writers.mapNotNull { it.namespace }

@@ -3,7 +3,6 @@ package io.hemin.wien.writer.namespace
 import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.hasSize
-import io.hemin.wien.childNodesNamed
 import io.hemin.wien.hasNoChildren
 import io.hemin.wien.hasNoDifferences
 import io.hemin.wien.hasValue
@@ -81,8 +80,8 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
                 description = " ",
                 categories = categories,
                 image = HrefOnlyImage(" "),
-                explicit = null,
-                block = null
+                block = false,
+                explicit = null
             )
         )
         assertAll {
@@ -116,8 +115,8 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
                 description = "",
                 categories = categories,
                 image = HrefOnlyImage(""),
-                explicit = null,
-                block = null
+                block = false,
+                explicit = null
             )
         )
         assertAll {
@@ -172,7 +171,7 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write googleplay tags to the item when the data is blank`() {
-        val episode = anEpisode(googlePlay = anEpisodeGooglePlay(description = " ", explicit = null, block = null, image = anHrefOnlyImage(" ")))
+        val episode = anEpisode(googlePlay = anEpisodeGooglePlay(description = " ", image = anHrefOnlyImage(" "), block = false, explicit = null))
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "description")
             assertTagIsNotWrittenToEpisode(episode, "explicit")
@@ -183,7 +182,7 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write googleplay tags to the item when the data is empty`() {
-        val episode = anEpisode(googlePlay = anEpisodeGooglePlay(description = "", explicit = null, block = null, image = anHrefOnlyImage("")))
+        val episode = anEpisode(googlePlay = anEpisodeGooglePlay(description = "", image = anHrefOnlyImage(""), block = false, explicit = null))
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "description")
             assertTagIsNotWrittenToEpisode(episode, "explicit")

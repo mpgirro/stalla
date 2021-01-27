@@ -27,7 +27,7 @@ internal class FakeEpisodeITunesBuilder : FakeBuilder<Episode.ITunes>(), Episode
 
     override fun explicit(explicit: Boolean?): EpisodeITunesBuilder = apply { this.explicit = explicit }
 
-    override fun block(block: Boolean?): EpisodeITunesBuilder = apply { this.block = block }
+    override fun block(block: Boolean): EpisodeITunesBuilder = apply { this.block = block }
 
     override fun season(season: Int?): EpisodeITunesBuilder = apply { this.season = season }
 

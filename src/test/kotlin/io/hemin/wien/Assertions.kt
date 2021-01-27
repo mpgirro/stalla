@@ -1,11 +1,13 @@
 package io.hemin.wien
 
 import assertk.Assert
+import assertk.assertions.isNotEmpty
 import assertk.assertions.support.expected
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.dom.asListOfNodes
 import io.hemin.wien.dom.asString
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.FeedNamespace.Companion.matches
 import org.w3c.dom.Attr
 import org.w3c.dom.Element
 import org.w3c.dom.Node
@@ -62,6 +64,7 @@ internal fun Assert<File>.isNotEmpty() = given { file ->
 
 /** Asserts none of the [Builder]s [`hasEnoughDataToBuild`][Builder.hasEnoughDataToBuild] is `true`. */
 internal fun Assert<List<Builder<*>>>.noneHasEnoughDataToBuild() = given { builders ->
+    assertThat(builders, this.name).isNotEmpty()
     if (builders.any { it.hasEnoughDataToBuild }) {
         expected(
             message = "none of the builders to have hasEnoughDataToBuild == true",
@@ -138,5 +141,5 @@ internal fun Assert<Attr>.hasValue(expected: String) = given { element ->
 internal fun Assert<Node>.childNodesNamed(localName: String, namespace: FeedNamespace? = null) =
     transform { node ->
         node.childNodes.asListOfNodes()
-            .filter { it.localName == localName && it.namespaceURI == namespace?.uri }
+            .filter { it.localName == localName && namespace.matches(it.namespaceURI) }
     }

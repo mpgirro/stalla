@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+      <channel>
+        <atom:link href="https://feeds.soundcloud.com/users/soundcloud:users:334742538/sounds.rss" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://feeds.soundcloud.com/users/soundcloud:users:334742538/sounds.rss?before=631776438" rel="next" type="application/rss+xml"/>
+        <title>Gemischtes Hack</title>
+        <link>https://soundcloud.com/user-910339503</link>
+        <pubDate>Fri, 01 Nov 2019 22:55:06 +0000</pubDate>
+        <lastBuildDate>Fri, 01 Nov 2019 22:55:06 +0000</lastBuildDate>
+        <ttl>60</ttl>
+        <language>de</language>
+        <copyright>All rights reserved</copyright>
+        <webMaster>feeds@soundcloud.com (SoundCloud Feeds)</webMaster>
+        <description>Felix Lobrecht (Comedian) und Tommi Schmitt (Comedy-Autor &amp; Kolumnist) haben einen Podcast.</description>
+        <itunes:subtitle>Felix Lobrecht (Comedian) und Tommi Schmitt (Come…</itunes:subtitle>
+        <itunes:owner>
+          <itunes:name>Gemischtes Hack</itunes:name>
+          <itunes:email>feeds@soundcloud.com</itunes:email>
+        </itunes:owner>
+        <itunes:author>Felix Lobrecht &amp; Tommi Schmitt</itunes:author>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="https://i1.sndcdn.com/avatars-000604074438-tofppy-original.jpg"/>
+        <image>
+          <url>https://i1.sndcdn.com/avatars-000604074438-tofppy-original.jpg</url>
+          <title>Gemischtes Hack</title>
+          <link>https://soundcloud.com/user-910339503</link>
+        </image>
+        <itunes:category text="Comedy"/>
+        <item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/635262570</guid>
+      <title>#72 PAUSE KURZ VOR ARSCH</title>
+      <pubDate>Tue, 11 Jun 2019 22:02:20 +0000</pubDate>
+      <link>https://soundcloud.com/user-910339503/72-pause-kurz-vor-arsch</link>
+      <itunes:duration>00:54:52</itunes:duration>
+      <itunes:author>Felix Lobrecht &amp; Tommi Schmitt</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>#72 PAUSE KURZ VOR ARSCH by Felix Lobrecht &amp; Tommi Schmitt</itunes:summary>
+      <itunes:subtitle>#72 PAUSE KURZ VOR ARSCH by Felix Lobrecht &amp; Tomm…</itunes:subtitle>
+      <description>#72 PAUSE KURZ VOR ARSCH by Felix Lobrecht &amp; Tommi Schmitt</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/635262570-user-910339503-72-pause-kurz-vor-arsch.mp3" length="105339009"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000550472760-jb0wab-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/631776438</guid>
+      <title>#71 UNSERE WEIBER</title>
+      <pubDate>Tue, 04 Jun 2019 20:34:10 +0000</pubDate>
+      <link>https://soundcloud.com/user-910339503/71-uweiber</link>
+      <itunes:duration>01:16:26</itunes:duration>
+      <itunes:author>Felix Lobrecht &amp; Tommi Schmitt</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>#71 UNSERE WEIBER by Felix Lobrecht &amp; Tommi Schmitt</itunes:summary>
+      <itunes:subtitle>#71 UNSERE WEIBER by Felix Lobrecht &amp; Tommi Schmi…</itunes:subtitle>
+      <description>#71 UNSERE WEIBER by Felix Lobrecht &amp; Tommi Schmitt</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/631776438-user-910339503-71-uweiber.mp3" length="146758766"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000546862173-zamw3o-t3000x3000.jpg"/>
+    </item>
+      </channel>
+    </rss>

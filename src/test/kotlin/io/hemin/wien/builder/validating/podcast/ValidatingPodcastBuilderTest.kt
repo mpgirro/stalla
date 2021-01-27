@@ -14,10 +14,12 @@ import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
 import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
+import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import io.hemin.wien.dateTime
+import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Podcast
 import org.junit.jupiter.api.Test
 import java.time.Month
@@ -49,6 +51,15 @@ internal class ValidatingPodcastBuilderTest {
     private val expectedITunesCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
         .category("itunes category")
         .subcategory("itunes subcategory")
+
+    private val expectedCategoryBuilders = listOf(
+        ValidatingRssCategoryBuilder().category("category 1").domain("domain"),
+        ValidatingRssCategoryBuilder().category("category 2")
+    )
+
+    private val expectedLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+        .locked(true)
+        .owner("owner@example.com")
 
     @Test
     internal fun `should not build a Podcast when the mandatory fields are missing`() {
@@ -167,6 +178,7 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::feedpress).isNull()
                 prop(Podcast::fyyd).isNull()
                 prop(Podcast::googlePlay).isNull()
+                prop(Podcast::podcast).isNull()
             }
         }
     }
@@ -187,14 +199,17 @@ internal class ValidatingPodcastBuilderTest {
             .webMaster("webMaster")
             .imageBuilder(expectedImageBuilder)
             .addEpisodeBuilder(expectedEpisodeBuilder)
+            .addCategoryBuilder(expectedCategoryBuilders[0])
+            .addCategoryBuilder(expectedCategoryBuilders[1])
             .apply {
-                iTunes.imageBuilder(expectedITunesImageBuilder)
+                iTunesBuilder.imageBuilder(expectedITunesImageBuilder)
                     .addCategoryBuilder(expectedITunesCategoryBuilder)
                     .explicit(false)
-                atom.addAuthorBuilder(expectedAtomAuthorBuilder)
-                feedpress.newsletterId("feedpress newsletterId")
-                fyyd.verify("fyyd verify")
-                googlePlay.description("play description")
+                atomBuilder.addAuthorBuilder(expectedAtomAuthorBuilder)
+                feedpressBuilder.newsletterId("feedpress newsletterId")
+                fyydBuilder.verify("fyyd verify")
+                googlePlayBuilder.description("play description")
+                podcastBuilder.lockedBuilder(expectedLockedBuilder)
             }
 
         assertAll {
@@ -213,14 +228,16 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::managingEditor).isEqualTo("managingEditor")
                 prop(Podcast::webMaster).isEqualTo("webMaster")
                 prop(Podcast::image).isEqualTo(expectedImageBuilder.build())
+                prop(Podcast::categories).containsExactly(expectedCategoryBuilders[0].build(), expectedCategoryBuilders[1].build())
                 prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
                 prop(Podcast::iTunes).isNotNull().prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
-                prop(Podcast::atom).isNotNull().prop(Podcast.Atom::authors)
+                prop(Podcast::atom).isNotNull().prop(Atom::authors)
                     .containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Podcast::feedpress).isNotNull().prop(Podcast.Feedpress::newsletterId)
                     .isEqualTo("feedpress newsletterId")
                 prop(Podcast::fyyd).isNotNull().prop(Podcast.Fyyd::verify).isEqualTo("fyyd verify")
                 prop(Podcast::googlePlay).isNotNull().prop(Podcast.GooglePlay::description).isEqualTo("play description")
+                prop(Podcast::podcast).isNotNull().prop(Podcast.Podcast::locked).isEqualTo(expectedLockedBuilder.build())
             }
         }
     }

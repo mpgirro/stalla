@@ -16,8 +16,8 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
     private var keywords: String? = null
     private var author: String? = null
     private var categoryBuilders: MutableList<ITunesStyleCategoryBuilder> = mutableListOf()
-    private var block: Boolean? = null
-    private var complete: Boolean? = null
+    private var block: Boolean = false
+    private var complete: Boolean = false
     private var type: Podcast.ITunes.ShowType? = null
     private var ownerBuilder: PersonBuilder? = null
     private var title: String? = null
@@ -39,9 +39,9 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
 
     override fun explicit(explicit: Boolean): PodcastITunesBuilder = apply { this.explicit = explicit }
 
-    override fun block(block: Boolean?): PodcastITunesBuilder = apply { this.block = block }
+    override fun block(block: Boolean): PodcastITunesBuilder = apply { this.block = block }
 
-    override fun complete(complete: Boolean?): PodcastITunesBuilder = apply { this.complete = complete }
+    override fun complete(complete: Boolean): PodcastITunesBuilder = apply { this.complete = complete }
 
     override fun type(type: String?): PodcastITunesBuilder = apply { this.type = Podcast.ITunes.ShowType.of(type) }
 

@@ -8,7 +8,11 @@ import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastChaptersBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastSoundbiteBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastTranscriptBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
+import io.hemin.wien.builder.fake.FakeAtomBuilder
 import io.hemin.wien.builder.fake.FakeBuilder
 import io.hemin.wien.builder.fake.FakeHrefOnlyImageBuilder
 import io.hemin.wien.builder.fake.FakeITunesStyleCategoryBuilder
@@ -32,17 +36,19 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
     var pubDate: TemporalAccessor? = null
     var source: String? = null
 
-    override val content: FakeEpisodeContentBuilder = FakeEpisodeContentBuilder()
+    override val contentBuilder: FakeEpisodeContentBuilder = FakeEpisodeContentBuilder()
 
-    override val iTunes: FakeEpisodeITunesBuilder = FakeEpisodeITunesBuilder()
+    override val iTunesBuilder: FakeEpisodeITunesBuilder = FakeEpisodeITunesBuilder()
 
-    override val atom: FakeEpisodeAtomBuilder = FakeEpisodeAtomBuilder()
+    override val atomBuilder: FakeAtomBuilder = FakeAtomBuilder()
 
-    override val podlove: FakeEpisodePodloveBuilder = FakeEpisodePodloveBuilder()
+    override val podloveBuilder: FakeEpisodePodloveBuilder = FakeEpisodePodloveBuilder()
 
-    override val googlePlay: FakeEpisodeGooglePlayBuilder = FakeEpisodeGooglePlayBuilder()
+    override val googlePlayBuilder: FakeEpisodeGooglePlayBuilder = FakeEpisodeGooglePlayBuilder()
 
-    override val bitlove: FakeEpisodeBitloveBuilder = FakeEpisodeBitloveBuilder()
+    override val bitloveBuilder: FakeEpisodeBitloveBuilder = FakeEpisodeBitloveBuilder()
+
+    override val podcastBuilder: FakeEpisodePodcastBuilder = FakeEpisodePodcastBuilder()
 
     override fun title(title: String): EpisodeBuilder = apply { this.titleValue = title }
 
@@ -82,7 +88,13 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder = FakeITunesStyleCategoryBuilder()
+    override fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder = FakeITunesStyleCategoryBuilder()
+
+    override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder = FakeEpisodePodcastTranscriptBuilder()
+
+    override fun createEpisodePodcastChaptersBuilder(): EpisodePodcastChaptersBuilder = FakeEpisodePodcastChaptersBuilder()
+
+    override fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastSoundbiteBuilder = FakeEpisodePodcastSoundbiteBuilder()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -98,12 +110,13 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         if (guidBuilder != other.guidBuilder) return false
         if (pubDate != other.pubDate) return false
         if (source != other.source) return false
-        if (content != other.content) return false
-        if (iTunes != other.iTunes) return false
-        if (atom != other.atom) return false
-        if (podlove != other.podlove) return false
-        if (googlePlay != other.googlePlay) return false
-        if (bitlove != other.bitlove) return false
+        if (contentBuilder != other.contentBuilder) return false
+        if (iTunesBuilder != other.iTunesBuilder) return false
+        if (atomBuilder != other.atomBuilder) return false
+        if (podloveBuilder != other.podloveBuilder) return false
+        if (googlePlayBuilder != other.googlePlayBuilder) return false
+        if (bitloveBuilder != other.bitloveBuilder) return false
+        if (podcastBuilder != other.podcastBuilder) return false
 
         return true
     }
@@ -119,17 +132,19 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         result = 31 * result + (guidBuilder?.hashCode() ?: 0)
         result = 31 * result + (pubDate?.hashCode() ?: 0)
         result = 31 * result + (source?.hashCode() ?: 0)
-        result = 31 * result + content.hashCode()
-        result = 31 * result + iTunes.hashCode()
-        result = 31 * result + atom.hashCode()
-        result = 31 * result + podlove.hashCode()
-        result = 31 * result + googlePlay.hashCode()
-        result = 31 * result + bitlove.hashCode()
+        result = 31 * result + contentBuilder.hashCode()
+        result = 31 * result + iTunesBuilder.hashCode()
+        result = 31 * result + atomBuilder.hashCode()
+        result = 31 * result + podloveBuilder.hashCode()
+        result = 31 * result + googlePlayBuilder.hashCode()
+        result = 31 * result + bitloveBuilder.hashCode()
+        result = 31 * result + podcastBuilder.hashCode()
         return result
     }
 
     override fun toString() =
         "FakeEpisodeBuilder(titleValue=$titleValue, enclosureBuilderValue=$enclosureBuilderValue, link=$link, description=$description, " +
-            "author=$author, categories=$categoryBuilders, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
-            "content=$content, iTunes=$iTunes, atom=$atom, podlove=$podlove, googlePlay=$googlePlay, bitlove=$bitlove)"
+            "author=$author, categoryBuilders=$categoryBuilders, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
+            "contentBuilder=$contentBuilder, iTunesBuilder=$iTunesBuilder, atomBuilder=$atomBuilder, podloveBuilder=$podloveBuilder, " +
+            "googlePlayBuilder=$googlePlayBuilder, bitloveBuilder=$bitloveBuilder, podcastBuilder=$podcastBuilder)"
 }

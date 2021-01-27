@@ -40,9 +40,9 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
 
     override fun explicit(explicit: Boolean): PodcastITunesBuilder = apply { this.explicit = explicit }
 
-    override fun block(block: Boolean?): PodcastITunesBuilder = apply { this.block = block }
+    override fun block(block: Boolean): PodcastITunesBuilder = apply { this.block = block }
 
-    override fun complete(complete: Boolean?): PodcastITunesBuilder = apply { this.complete = complete }
+    override fun complete(complete: Boolean): PodcastITunesBuilder = apply { this.complete = complete }
 
     override fun type(type: String?): PodcastITunesBuilder = apply { this.type = Podcast.ITunes.ShowType.of(type) }
 

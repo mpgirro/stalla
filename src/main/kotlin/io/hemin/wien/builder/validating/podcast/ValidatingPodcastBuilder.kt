@@ -1,5 +1,6 @@
 package io.hemin.wien.builder.validating.podcast
 
+import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.LinkBuilder
@@ -7,12 +8,15 @@ import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
-import io.hemin.wien.builder.podcast.PodcastAtomBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.podcast.PodcastFeedpressBuilder
 import io.hemin.wien.builder.podcast.PodcastFyydBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastFundingBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastLockedBuilder
+import io.hemin.wien.builder.validating.ValidatingAtomBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
 import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingLinkBuilder
@@ -37,18 +41,21 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
     private var managingEditor: String? = null
     private var webMaster: String? = null
     private var imageBuilder: RssImageBuilder? = null
+    private val categoryBuilders: MutableList<RssCategoryBuilder> = mutableListOf()
 
     private val episodeBuilders: MutableList<EpisodeBuilder> = mutableListOf()
 
-    override val iTunes: PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
+    override val iTunesBuilder: PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
 
-    override val atom: PodcastAtomBuilder = ValidatingPodcastAtomBuilder()
+    override val atomBuilder: AtomBuilder = ValidatingAtomBuilder()
 
-    override val fyyd: PodcastFyydBuilder = ValidatingPodcastFyydBuilder()
+    override val fyydBuilder: PodcastFyydBuilder = ValidatingPodcastFyydBuilder()
 
-    override val feedpress: PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
+    override val feedpressBuilder: PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
 
-    override val googlePlay: PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+    override val googlePlayBuilder: PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+
+    override val podcastBuilder: PodcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
 
     override fun title(title: String): PodcastBuilder = apply { this.titleValue = title }
 
@@ -78,6 +85,10 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
         episodeBuilders.add(episodeBuilder)
     }
 
+    override fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): PodcastBuilder = apply {
+        categoryBuilders.add(categoryBuilder)
+    }
+
     override fun createRssImageBuilder(): RssImageBuilder = ValidatingRssImageBuilder()
 
     override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = ValidatingHrefOnlyImageBuilder()
@@ -88,7 +99,11 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+    override fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+
+    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+
+    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder = ValidatingPodcastPodcastFundingBuilder()
 
     override val hasEnoughDataToBuild: Boolean
         get() = episodeBuilders.any { it.hasEnoughDataToBuild } &&
@@ -96,11 +111,11 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
             ::linkValue.isInitialized && ::languageValue.isInitialized
 
     override fun build(): Podcast? {
-        val builtEpisodes = episodeBuilders.mapNotNull { it.build() }
         if (!hasEnoughDataToBuild) {
             return null
         }
 
+        val builtEpisodes = episodeBuilders.mapNotNull { it.build() }
         return Podcast(
             title = titleValue,
             link = linkValue,
@@ -115,11 +130,13 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
             webMaster = webMaster,
             image = imageBuilder?.build(),
             episodes = builtEpisodes,
-            iTunes = iTunes.build(),
-            atom = atom.build(),
-            fyyd = fyyd.build(),
-            feedpress = feedpress.build(),
-            googlePlay = googlePlay.build()
+            iTunes = iTunesBuilder.build(),
+            atom = atomBuilder.build(),
+            fyyd = fyydBuilder.build(),
+            feedpress = feedpressBuilder.build(),
+            googlePlay = googlePlayBuilder.build(),
+            categories = categoryBuilders.mapNotNull { it.build() },
+            podcast = podcastBuilder.build()
         )
     }
 }

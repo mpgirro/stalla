@@ -19,4 +19,3 @@ data class Person(
         @JvmStatic override fun builder(): PersonBuilder = ValidatingPersonBuilder()
     }
 }
-

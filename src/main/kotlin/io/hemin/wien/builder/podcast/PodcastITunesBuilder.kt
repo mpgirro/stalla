@@ -35,10 +35,10 @@ interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
     fun explicit(explicit: Boolean): PodcastITunesBuilder
 
     /** Set the block flag value. */
-    fun block(block: Boolean?): PodcastITunesBuilder
+    fun block(block: Boolean): PodcastITunesBuilder
 
     /** Set the complete flag value. */
-    fun complete(complete: Boolean?): PodcastITunesBuilder
+    fun complete(complete: Boolean): PodcastITunesBuilder
 
     /** Set the type value. */
     fun type(type: String?): PodcastITunesBuilder

@@ -1,0 +1,2789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="https://feeds.buzzsprout.com/styles.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <atom:link href="https://feeds.buzzsprout.com/794573.rss" rel="self" type="application/rss+xml" />
+  <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" xmlns="http://www.w3.org/2005/Atom" />
+  <title>O Tarz Mı?</title>
+  <lastBuildDate>Wed, 20 Jan 2021 13:08:51 -0500</lastBuildDate>
+  <link>http://soundcloud.com/otarzmi</link>
+  <language>tr</language>
+  <copyright>© 2021 O Tarz Mı?</copyright>
+  <podcast:locked owner="otarzmi@gmail.com">yes</podcast:locked>
+  <itunes:subtitle><![CDATA[Podcast by otarzmi]]></itunes:subtitle>
+  <itunes:author>otarzmi</itunes:author>
+  <itunes:summary><![CDATA[Podcast by otarzmi]]></itunes:summary>
+  <itunes:type>episodic</itunes:type>
+  <itunes:explicit>false</itunes:explicit>
+  <description><![CDATA[Podcast by otarzmi]]></description>
+  <itunes:owner>
+    <itunes:name>otarzmi</itunes:name>
+    <itunes:email>otarzmi@gmail.com</itunes:email>
+  </itunes:owner>
+  <image>
+     <url>https://storage.buzzsprout.com/variants/97ba39un61fbkw0t4ax7gx0mzdci/f81607a3cd537406cf0cf506c726bfe2824c5e584c9e9dc5e04e42436c820a79?.jpg</url>
+     <title>O Tarz Mı?</title>
+     <link>http://soundcloud.com/otarzmi</link>
+  </image>
+  <itunes:image href="https://storage.buzzsprout.com/variants/97ba39un61fbkw0t4ax7gx0mzdci/f81607a3cd537406cf0cf506c726bfe2824c5e584c9e9dc5e04e42436c820a79?.jpg" />
+  <itunes:category text="Comedy" />
+  <item>
+    <itunes:title>S06E29-Askıda Netflix</itunes:title>
+    <title>S06E29-Askıda Netflix</title>
+    <description><![CDATA[<p>Görümcemin Heykelleri, Zeytin Şelalesi, Eser Miktar ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Görümcemin Heykelleri, Zeytin Şelalesi, Eser Miktar ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Görümcemin Heykelleri, Zeytin Şelalesi, Eser Miktar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/7193050-s06e29-askida-netflix.mp3?blob_id=31113133" length="29364468" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-7193050</guid>
+    <pubDate>Fri, 08 Jan 2021 18:00:00 +0300</pubDate>
+    <itunes:duration>2442</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>29</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E28 - Kötü Potidyen</itunes:title>
+    <title>S06E28 - Kötü Potidyen</title>
+    <description><![CDATA[<p>Ondan Eğitim, Simitlenme Zamanı, Vapur Uykusu ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Ondan Eğitim, Simitlenme Zamanı, Vapur Uykusu ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ondan Eğitim, Simitlenme Zamanı, Vapur Uykusu ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/7141192-s06e28-kotu-potidyen.mp3?blob_id=30722158" length="29111823" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-7141192</guid>
+    <pubDate>Tue, 05 Jan 2021 19:00:00 +0300</pubDate>
+    <itunes:duration>2421</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E27 - OTM Yılbaşı Özel ft. Sarp. Apak</itunes:title>
+    <title>S06E27 - OTM Yılbaşı Özel ft. Sarp. Apak</title>
+    <description><![CDATA[<p>Sarp Yengo ve dahası...&nbsp;</p>]]></description>
+    <content:encoded><![CDATA[<p>Sarp Yengo ve dahası...&nbsp;</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Sarp Yengo ve dahası... </itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/7082710-s06e27-otm-yilbasi-ozel-ft-sarp-apak.mp3?blob_id=30315976" length="31122765" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-7082710</guid>
+    <pubDate>Thu, 31 Dec 2020 21:00:00 +0300</pubDate>
+    <itunes:duration>2589</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E26 - Torunlar</itunes:title>
+    <title>S06E26 - Torunlar</title>
+    <description><![CDATA[<p>Kirli Çıkı Akrabalar, Yine Kaslılar ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Kirli Çıkı Akrabalar, Yine Kaslılar ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kirli Çıkı Akrabalar, Yine Kaslılar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/7007395-s06e26-torunlar.mp3?blob_id=29891209" length="30089209" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-7007395</guid>
+    <pubDate>Fri, 25 Dec 2020 20:00:00 +0300</pubDate>
+    <itunes:duration>2503</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E25 - Kıyır Kıyır</itunes:title>
+    <title>S06E25 - Kıyır Kıyır</title>
+    <description><![CDATA[<p>Selam Anksiyetesi, Komşunun Açısı ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Selam Anksiyetesi, Komşunun Açısı ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Selam Anksiyetesi, Komşunun Açısı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6968003-s06e25-kiyir-kiyir.mp3?blob_id=29664548" length="31353752" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6968003</guid>
+    <pubDate>Tue, 22 Dec 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>2608</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E24 - Bilimi Seven Kaçsın</itunes:title>
+    <title>S06E24 - Bilimi Seven Kaçsın</title>
+    <description><![CDATA[<p>Ünlülü İçerik, Bunun Daha Büyüğü, Aşı Komplosu ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Ünlülü İçerik, Bunun Daha Büyüğü, Aşı Komplosu ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ünlülü İçerik, Bunun Daha Büyüğü, Aşı Komplosu ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6912350-s06e24-bilimi-seven-kacsin.mp3?blob_id=29373929" length="30426194" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6912350</guid>
+    <pubDate>Fri, 18 Dec 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>2531</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E23-Yâr Bana Malt Bana</itunes:title>
+    <title>S06E23-Yâr Bana Malt Bana</title>
+    <description><![CDATA[<p>Yalancı dayı, yanan inekler, yeni yıl dilekleri ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Yalancı dayı, yanan inekler, yeni yıl dilekleri ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yalancı dayı, yanan inekler, yeni yıl dilekleri ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6861565-s06e23-yar-bana-malt-bana.mp3?blob_id=29077603" length="31816443" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6861565</guid>
+    <pubDate>Tue, 15 Dec 2020 20:00:00 +0300</pubDate>
+    <itunes:duration>2646</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E22-Her Yerde Ard Var</itunes:title>
+    <title>S06E22-Her Yerde Ard Var</title>
+    <description><![CDATA[<p>Ateş Kotası, Ard Keşfet, Havası Sönmüş Arkadaş ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Ateş Kotası, Ard Keşfet, Havası Sönmüş Arkadaş ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ateş Kotası, Ard Keşfet, Havası Sönmüş Arkadaş ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6786673-s06e22-her-yerde-ard-var.mp3?blob_id=28657696" length="31994178" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6786673</guid>
+    <pubDate>Thu, 10 Dec 2020 18:00:00 +0300</pubDate>
+    <itunes:duration>2661</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E21-Çok Değerli Bir Şey Söyledin Aslında</itunes:title>
+    <title>S06E21-Çok Değerli Bir Şey Söyledin Aslında</title>
+    <description><![CDATA[<p>BENGİ ABİ RETURNS ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>BENGİ ABİ RETURNS ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>BENGİ ABİ RETURNS ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6770638-s06e21-cok-degerli-bir-sey-soyledin-aslinda.mp3?blob_id=28566268" length="31493829" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6770638</guid>
+    <pubDate>Wed, 09 Dec 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>2620</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>21</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E20-Makinalı Burç Yorumcusu</itunes:title>
+    <title>S06E20-Makinalı Burç Yorumcusu</title>
+    <description><![CDATA[<p>Çin Duyarı, Guru Cult'ı, Gerçek Punkçılık ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Çin Duyarı, Guru Cult'ı, Gerçek Punkçılık ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Çin Duyarı, Guru Cult&#39;ı, Gerçek Punkçılık ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6673415-s06e20-makinali-burc-yorumcusu.mp3?blob_id=28028393" length="30170739" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6673415</guid>
+    <pubDate>Thu, 03 Dec 2020 20:00:00 +0300</pubDate>
+    <itunes:duration>2509</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>20</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E19-Su Pişirdim</itunes:title>
+    <title>S06E19-Su Pişirdim</title>
+    <description><![CDATA[<p>Suphi'nin Evliliği, Anime Ameliyatı, Metrodaki Kemancı ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Suphi'nin Evliliği, Anime Ameliyatı, Metrodaki Kemancı ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Suphi&#39;nin Evliliği, Anime Ameliyatı, Metrodaki Kemancı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6632449-s06e19-su-pisirdim.mp3?blob_id=27796675" length="32006388" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6632449</guid>
+    <pubDate>Tue, 01 Dec 2020 20:00:00 +0300</pubDate>
+    <itunes:duration>2662</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>19</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E18-Bazı Belli Kişiler</itunes:title>
+    <title>S06E18-Bazı Belli Kişiler</title>
+    <description><![CDATA[<p>Uluslararası Selamlama, İsviçre'de Çok Para Kazanmak, Düşük Hayat ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Uluslararası Selamlama, İsviçre'de Çok Para Kazanmak, Düşük Hayat ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Uluslararası Selamlama, İsviçre&#39;de Çok Para Kazanmak, Düşük Hayat ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6570565-s06e18-bazi-belli-kisiler.mp3?blob_id=27499996" length="35577121" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6570565</guid>
+    <pubDate>Thu, 26 Nov 2020 23:00:00 +0300</pubDate>
+    <itunes:duration>2960</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E17-Atalet Savaşçısı</itunes:title>
+    <title>S06E17-Atalet Savaşçısı</title>
+    <description><![CDATA[<p>Karanlık Tarafa Dokunmak, Çalışmayan Modifiye, Da Vinci Sendromu ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Karanlık Tarafa Dokunmak, Çalışmayan Modifiye, Da Vinci Sendromu ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Karanlık Tarafa Dokunmak, Çalışmayan Modifiye, Da Vinci Sendromu ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6531496-s06e17-atalet-savascisi.mp3?blob_id=27325120" length="30513347" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6531496</guid>
+    <pubDate>Tue, 24 Nov 2020 20:00:00 +0300</pubDate>
+    <itunes:duration>2538</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>17</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E16-Ard Art&#39;a</itunes:title>
+    <title>S06E16-Ard Art&#39;a</title>
+    <description><![CDATA[<p>Bıyıklı Kuşlar, Contemporary Ard, Balkan Numarası ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Bıyıklı Kuşlar, Contemporary Ard, Balkan Numarası ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Bıyıklı Kuşlar, Contemporary Ard, Balkan Numarası ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6458872-s06e16-ard-art-a.mp3?blob_id=26976784" length="32422988" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6458872</guid>
+    <pubDate>Thu, 19 Nov 2020 21:00:00 +0300</pubDate>
+    <itunes:duration>2697</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>16</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E15-Yovaryo</itunes:title>
+    <title>S06E15-Yovaryo</title>
+    <description><![CDATA[<p>Objeleştirme Sanatı, Plastik İstifi, Topraktan Pilav Çekmek ve dahası...&nbsp;</p>]]></description>
+    <content:encoded><![CDATA[<p>Objeleştirme Sanatı, Plastik İstifi, Topraktan Pilav Çekmek ve dahası...&nbsp;</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Objeleştirme Sanatı, Plastik İstifi, Topraktan Pilav Çekmek ve dahası... </itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6415327-s06e15-yovaryo.mp3?blob_id=26776753" length="31573169" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6415327</guid>
+    <pubDate>Tue, 17 Nov 2020 20:00:00 +0300</pubDate>
+    <itunes:duration>2626</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>15</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E14-İri Kıyım Karşı Cins Hukukçu</itunes:title>
+    <title>S06E14-İri Kıyım Karşı Cins Hukukçu</title>
+    <description><![CDATA[<p>Çok Çok Sandalyeler, Komşu Sorunsalı, Kahve ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Çok Çok Sandalyeler, Komşu Sorunsalı, Kahve ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Çok Çok Sandalyeler, Komşu Sorunsalı, Kahve ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6344752-s06e14-iri-kiyim-karsi-cins-hukukcu.mp3?blob_id=26443159" length="34971495" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6344752</guid>
+    <pubDate>Thu, 12 Nov 2020 21:00:00 +0300</pubDate>
+    <itunes:duration>2909</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>14</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E13-Hangi Mitolojik Hayvansın?</itunes:title>
+    <title>S06E13-Hangi Mitolojik Hayvansın?</title>
+    <description><![CDATA[<p>Kötü Dövmeci, Eski Sevgilinin Portresi, Sinsi İnsan/Kaslı İnsan ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Kötü Dövmeci, Eski Sevgilinin Portresi, Sinsi İnsan/Kaslı İnsan ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kötü Dövmeci, Eski Sevgilinin Portresi, Sinsi İnsan/Kaslı İnsan ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6308833-s06e13-hangi-mitolojik-hayvansin.mp3?blob_id=26269972" length="32333963" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6308833</guid>
+    <pubDate>Tue, 10 Nov 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>2690</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>13</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>Özel Bölüm</itunes:title>
+    <title>Özel Bölüm</title>
+    <description><![CDATA[<p>AKUT Gönüllüsü Simge Öngören depremle ilgili bilmemiz gerekenleri anlatıyor.</p>]]></description>
+    <content:encoded><![CDATA[<p>AKUT Gönüllüsü Simge Öngören depremle ilgili bilmemiz gerekenleri anlatıyor.</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>AKUT Gönüllüsü Simge Öngören depremle ilgili bilmemiz gerekenleri anlatıyor.</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6217456-ozel-bolum.mp3?blob_id=25838170" length="17637542" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6217456</guid>
+    <pubDate>Wed, 04 Nov 2020 14:00:00 +0300</pubDate>
+    <itunes:duration>1465</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E12-Ödip Cansever</itunes:title>
+    <title>S06E12-Ödip Cansever</title>
+    <description><![CDATA[<p>Erotik İsimler, Halloween Partisi, Pahalı Saatler ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Erotik İsimler, Halloween Partisi, Pahalı Saatler ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Erotik İsimler, Halloween Partisi, Pahalı Saatler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6146398-s06e12-odip-cansever.mp3?blob_id=25505743" length="28922789" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6146398</guid>
+    <pubDate>Fri, 30 Oct 2020 20:00:00 +0300</pubDate>
+    <itunes:duration>2405</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E11-Satır Köfte Postçusu</itunes:title>
+    <title>S06E11-Satır Köfte Postçusu</title>
+    <description><![CDATA[<p>Kontrolsuz Bloggerlık, Multitasking, Yüksek Şakavil ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Kontrolsuz Bloggerlık, Multitasking, Yüksek Şakavil ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kontrolsuz Bloggerlık, Multitasking, Yüksek Şakavil ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6091639-s06e11-satir-kofte-postcusu.mp3?blob_id=25251568" length="28337228" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6091639</guid>
+    <pubDate>Tue, 27 Oct 2020 21:00:00 +0300</pubDate>
+    <itunes:duration>2357</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>11</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E10-Doğrudur, Aynen...</itunes:title>
+    <title>S06E10-Doğrudur, Aynen...</title>
+    <description><![CDATA[<p>Sahte Feng Şui, &nbsp;Galaktik Dolandırıcılık, Edebi Bir Dil ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Sahte Feng Şui, &nbsp;Galaktik Dolandırıcılık, Edebi Bir Dil ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Sahte Feng Şui,  Galaktik Dolandırıcılık, Edebi Bir Dil ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/6015943-s06e10-dogrudur-aynen.mp3?blob_id=24893119" length="34972435" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-6015943</guid>
+    <pubDate>Thu, 22 Oct 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>2909</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E09-Yoğun Bir Hüseyin Dayı</itunes:title>
+    <title>S06E09-Yoğun Bir Hüseyin Dayı</title>
+    <description><![CDATA[<p>Kaka Kutusu, YouTuber Bayılması, Sexting Tuzağı ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Kaka Kutusu, YouTuber Bayılması, Sexting Tuzağı ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kaka Kutusu, YouTuber Bayılması, Sexting Tuzağı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/5981359-s06e09-yogun-bir-huseyin-dayi.mp3?blob_id=24727060" length="30329039" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-5981359</guid>
+    <pubDate>Tue, 20 Oct 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>2522</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E08-Bilemezsinizcilik</itunes:title>
+    <title>S06E08-Bilemezsinizcilik</title>
+    <description><![CDATA[<p>Laf Sokma Problemi, Agnostik Dayı, Dandik Futbolcu Kariyeri ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Laf Sokma Problemi, Agnostik Dayı, Dandik Futbolcu Kariyeri ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Laf Sokma Problemi, Agnostik Dayı, Dandik Futbolcu Kariyeri ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/5911222-s06e08-bilemezsinizcilik.mp3?blob_id=24389470" length="32177855" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-5911222</guid>
+    <pubDate>Thu, 15 Oct 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>2677</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>8</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E07-Bir Rapçinin Haritası</itunes:title>
+    <title>S06E07-Bir Rapçinin Haritası</title>
+    <description><![CDATA[<p>Kollu Tuvalet, Seks Oyuncakları, İrili Ufaklı Ev Aletleri ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Kollu Tuvalet, Seks Oyuncakları, İrili Ufaklı Ev Aletleri ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kollu Tuvalet, Seks Oyuncakları, İrili Ufaklı Ev Aletleri ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/5876101-s06e07-bir-rapcinin-haritasi.mp3?blob_id=24215437" length="29778561" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-5876101</guid>
+    <pubDate>Tue, 13 Oct 2020 18:00:00 +0300</pubDate>
+    <itunes:duration>2477</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>7</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E06-Etlenmeye Hazır Bir Roman Gibi</itunes:title>
+    <title>S06E06-Etlenmeye Hazır Bir Roman Gibi</title>
+    <description><![CDATA[<p>Bombanın Psikolojisi, Köprü Parası, Para Bulma Etiği ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Bombanın Psikolojisi, Köprü Parası, Para Bulma Etiği ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Bombanın Psikolojisi, Köprü Parası, Para Bulma Etiği ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/5803408-s06e06-etlenmeye-hazir-bir-roman-gibi.mp3?blob_id=23875597" length="30578848" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-5803408</guid>
+    <pubDate>Thu, 08 Oct 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>2543</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>6</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E05-Bili Bililerine</itunes:title>
+    <title>S06E05-Bili Bililerine</title>
+    <description><![CDATA[<p>Küstüm Şov, Dandik Şirin, Komik Gülme ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Küstüm Şov, Dandik Şirin, Komik Gülme ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Küstüm Şov, Dandik Şirin, Komik Gülme ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/5745022-s06e05-bili-bililerine.mp3?blob_id=23600452" length="29303341" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-5745022</guid>
+    <pubDate>Mon, 05 Oct 2020 14:00:00 +0300</pubDate>
+    <itunes:duration>2437</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E04-Dijital Projeler Üreten Kreatif Bir Şirket</itunes:title>
+    <title>S06E04-Dijital Projeler Üreten Kreatif Bir Şirket</title>
+    <description><![CDATA[<p>Filtre Bağımlılığı, Kayseri Bağları, Arkadaşın Seksist Manitası ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Filtre Bağımlılığı, Kayseri Bağları, Arkadaşın Seksist Manitası ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Filtre Bağımlılığı, Kayseri Bağları, Arkadaşın Seksist Manitası ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/5698411-s06e04-dijital-projeler-ureten-kreatif-bir-sirket.mp3?blob_id=23412055" length="30136295" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-5698411</guid>
+    <pubDate>Thu, 01 Oct 2020 23:00:00 +0300</pubDate>
+    <itunes:duration>2506</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>4</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E03-Vizyonumuz/Misyonumuz</itunes:title>
+    <title>S06E03-Vizyonumuz/Misyonumuz</title>
+    <description><![CDATA[<p>Şirketi Okutmak, Dalyaray, Çocuk İnsan ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Şirketi Okutmak, Dalyaray, Çocuk İnsan ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Şirketi Okutmak, Dalyaray, Çocuk İnsan ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/5639062-s06e03-vizyonumuz-misyonumuz.mp3?blob_id=23097208" length="34124814" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-5639062</guid>
+    <pubDate>Mon, 28 Sep 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>2839</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>3</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E02-2000&#39;ler Pop Kültürü </itunes:title>
+    <title>S06E02-2000&#39;ler Pop Kültürü </title>
+    <description><![CDATA[<p>Aldatma Testi, Anksiyete Bozukluğu, Taksicinin Yaşam Tercihleri ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Aldatma Testi, Anksiyete Bozukluğu, Taksicinin Yaşam Tercihleri ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Aldatma Testi, Anksiyete Bozukluğu, Taksicinin Yaşam Tercihleri ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/5587471-s06e02-2000-ler-pop-kulturu.mp3?blob_id=22851427" length="29193627" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-5587471</guid>
+    <pubDate>Thu, 24 Sep 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>2428</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>2</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S06E01-Sezon Finali</itunes:title>
+    <title>S06E01-Sezon Finali</title>
+    <description><![CDATA[<p>Günahkar Tatiller, Flört Sporu, Aslı Börek ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Günahkar Tatiller, Flört Sporu, Aslı Börek ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Günahkar Tatiller, Flört Sporu, Aslı Börek ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/5535475-s06e01-sezon-finali.mp3?blob_id=22602037" length="29355347" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-5535475</guid>
+    <pubDate>Mon, 21 Sep 2020 18:00:00 +0300</pubDate>
+    <itunes:duration>2441</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>6</itunes:season>
+    <itunes:episode>1</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E50-Kontrollü Sığlık</itunes:title>
+    <title>S05E50-Kontrollü Sığlık</title>
+    <description><![CDATA[<p>Power Podcast Festivali Kapsamında, şefler Geveze moderatörlüğünde cillop bir OTM bölümü tadında bir muhabbete oturuyor.</p>]]></description>
+    <content:encoded><![CDATA[<p>Power Podcast Festivali Kapsamında, şefler Geveze moderatörlüğünde cillop bir OTM bölümü tadında bir muhabbete oturuyor.</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Power Podcast Festivali Kapsamında, şefler Geveze moderatörlüğünde cillop bir OTM bölümü tadında bir muhabbete oturuyor.</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/4605485-s05e50-kontrollu-siglik.mp3?blob_id=18171551" length="32249604" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-4605485</guid>
+    <pubDate>Fri, 17 Jul 2020 15:00:00 +0300</pubDate>
+    <itunes:duration>2683</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>50</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E49-Peki Ama Ben Ne Olucam?</itunes:title>
+    <title>S05E49-Peki Ama Ben Ne Olucam?</title>
+    <description><![CDATA[<p>Amerikan Özentiliği, Röntgencilik, 2021. Yüzyıl ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Amerikan Özentiliği, Röntgencilik, 2021. Yüzyıl ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Amerikan Özentiliği, Röntgencilik, 2021. Yüzyıl ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3670336-s05e49-peki-ama-ben-ne-olucam.mp3?blob_id=13638865" length="26418482" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3670336</guid>
+    <pubDate>Fri, 08 May 2020 11:00:00 +0300</pubDate>
+    <itunes:duration>2197</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E48-Müzik, Bakışmalar...</itunes:title>
+    <title>S05E48-Müzik, Bakışmalar...</title>
+    <description><![CDATA[<p>Ramazan Davulculuğu, Bizon Avcılığı, Kardeş Boğduruculuğu ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Ramazan Davulculuğu, Bizon Avcılığı, Kardeş Boğduruculuğu ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ramazan Davulculuğu, Bizon Avcılığı, Kardeş Boğduruculuğu ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3582568-s05e48-muzik-bakismalar.mp3?blob_id=13218634" length="29796137" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3582568</guid>
+    <pubDate>Fri, 01 May 2020 21:00:00 +0300</pubDate>
+    <itunes:duration>2478</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>48</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E47-Şehrin Keşmekeşi</itunes:title>
+    <title>S05E47-Şehrin Keşmekeşi</title>
+    <description><![CDATA[<p>KIbrıs'ta Ekim Başkadır, Corona ve Tenasül, Bono'nun Siparişi ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>KIbrıs'ta Ekim Başkadır, Corona ve Tenasül, Bono'nun Siparişi ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>KIbrıs&#39;ta Ekim Başkadır, Corona ve Tenasül, Bono&#39;nun Siparişi ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3445444-s05e47-sehrin-kesmekesi.mp3?blob_id=12569788" length="30959100" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3445444</guid>
+    <pubDate>Tue, 21 Apr 2020 10:00:00 +0300</pubDate>
+    <itunes:duration>2575</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E46-İnternet Yemeği</itunes:title>
+    <title>S05E46-İnternet Yemeği</title>
+    <description><![CDATA[<p>Corona Tişörtü, Discord Podcasti, Kötü Risotto ve dahası</p>]]></description>
+    <content:encoded><![CDATA[<p>Corona Tişörtü, Discord Podcasti, Kötü Risotto ve dahası</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Corona Tişörtü, Discord Podcasti, Kötü Risotto ve dahası</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3342328-s05e46-internet-yemegi.mp3?blob_id=12064642" length="27764470" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3342328</guid>
+    <pubDate>Mon, 13 Apr 2020 15:00:00 +0300</pubDate>
+    <itunes:duration>2310</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E45-Göbek Teoremi</itunes:title>
+    <title>S05E45-Göbek Teoremi</title>
+    <description><![CDATA[<p>Torba Silmek, Yatmanın Erdemi, Boksör Etiği ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Torba Silmek, Yatmanın Erdemi, Boksör Etiği ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Torba Silmek, Yatmanın Erdemi, Boksör Etiği ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3300256-s05e45-gobek-teoremi.mp3?blob_id=11867797" length="25642595" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3300256</guid>
+    <pubDate>Thu, 09 Apr 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>2133</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E44-Gençler De Öksürür</itunes:title>
+    <title>S05E44-Gençler De Öksürür</title>
+    <description><![CDATA[<p>Patates Yatağı, Maske Karaborsası, Corona WhatsApp Grubu ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Patates Yatağı, Maske Karaborsası, Corona WhatsApp Grubu ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Patates Yatağı, Maske Karaborsası, Corona WhatsApp Grubu ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3258808-s05e44-gencler-de-oksurur.mp3?blob_id=11683963" length="19910199" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3258808</guid>
+    <pubDate>Mon, 06 Apr 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>1655</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>44</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E43-Ya Ben Nağaptığımı Biliyo Muyum?</itunes:title>
+    <title>S05E43-Ya Ben Nağaptığımı Biliyo Muyum?</title>
+    <description><![CDATA[<p>Tuvalet Kağıdı Bankı, Güzel Hatalar, Taştoşlar ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Tuvalet Kağıdı Bankı, Güzel Hatalar, Taştoşlar ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Tuvalet Kağıdı Bankı, Güzel Hatalar, Taştoşlar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3223567-s05e43-ya-ben-nagaptigimi-biliyo-muyum.mp3?blob_id=11522164" length="22440506" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3223567</guid>
+    <pubDate>Fri, 03 Apr 2020 14:00:00 +0300</pubDate>
+    <itunes:duration>1866</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E42-250.Bölüm Özel (Değil)</itunes:title>
+    <title>S05E42-250.Bölüm Özel (Değil)</title>
+    <description><![CDATA[<p>İşte Eş, Kızgın Kumlar Serin Sular, Kaçak Amcalar ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>İşte Eş, Kızgın Kumlar Serin Sular, Kaçak Amcalar ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>İşte Eş, Kızgın Kumlar Serin Sular, Kaçak Amcalar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3118099-s05e42-250-bolum-ozel-degil.mp3?blob_id=11141980" length="22546748" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3118099</guid>
+    <pubDate>Mon, 30 Mar 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>1875</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>42</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E41-Oh Mrs. Barbunya</itunes:title>
+    <title>S05E41-Oh Mrs. Barbunya</title>
+    <description><![CDATA[<p>Soğuk Duş, Zigon Tutkusu, İç İşleri Müdürü ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Soğuk Duş, Zigon Tutkusu, İç İşleri Müdürü ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Soğuk Duş, Zigon Tutkusu, İç İşleri Müdürü ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3118021-s05e41-oh-mrs-barbunya.mp3?blob_id=11026687" length="21441129" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3118021</guid>
+    <pubDate>Thu, 26 Mar 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>1783</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>41</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E40-OTM Corona Özel 2</itunes:title>
+    <title>S05E40-OTM Corona Özel 2</title>
+    <description><![CDATA[<p>Şefler halkın corona sorunlarına derman oluyor.</p>]]></description>
+    <content:encoded><![CDATA[<p>Şefler halkın corona sorunlarına derman oluyor.</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Şefler halkın corona sorunlarına derman oluyor.</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3093157-s05e40-otm-corona-ozel-2.mp3?blob_id=10914697" length="20602912" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3093157</guid>
+    <pubDate>Mon, 23 Mar 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>1713</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>40</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E39-OTM Corona Özel 1</itunes:title>
+    <title>S05E39-OTM Corona Özel 1</title>
+    <description><![CDATA[<p>Şefler halkın corona sorunlarına derman oluyor.</p>]]></description>
+    <content:encoded><![CDATA[<p>Şefler halkın corona sorunlarına derman oluyor.</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Şefler halkın corona sorunlarına derman oluyor.</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/3073969-s05e39-otm-corona-ozel-1.mp3?blob_id=10828375" length="22618207" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-3073969</guid>
+    <pubDate>Sat, 21 Mar 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>1881</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>39</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E38-Kişisel Çöküşüm</itunes:title>
+    <title>S05E38-Kişisel Çöküşüm</title>
+    <description><![CDATA[<p>Günlük, Dayı, Sex ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Günlük, Dayı, Sex ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Günlük, Dayı, Sex ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2969656-s05e38-kisisel-cokusum.mp3?blob_id=10351102" length="29109217" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2969656</guid>
+    <pubDate>Tue, 10 Mar 2020 11:00:00 +0300</pubDate>
+    <itunes:duration>2422</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>38</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E37-İyileşme Topları</itunes:title>
+    <title>S05E37-İyileşme Topları</title>
+    <description><![CDATA[<p>Ayrılan Ebeveynler, Gizli Süper-Güçler, Genç Devrimciler ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Ayrılan Ebeveynler, Gizli Süper-Güçler, Genç Devrimciler ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ayrılan Ebeveynler, Gizli Süper-Güçler, Genç Devrimciler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2923327-s05e37-iyilesme-toplari.mp3?blob_id=10145290" length="31124512" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2923327</guid>
+    <pubDate>Thu, 05 Mar 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>2590</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>37</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E36-Boksör Naptın?</itunes:title>
+    <title>S05E36-Boksör Naptın?</title>
+    <description><![CDATA[<p>Tüm Olası Felaketler, Post-Müdür Çağı, Nargile vs 3.Dalga ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Tüm Olası Felaketler, Post-Müdür Çağı, Nargile vs 3.Dalga ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Tüm Olası Felaketler, Post-Müdür Çağı, Nargile vs 3.Dalga ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2901589-s05e36-boksor-naptin.mp3?blob_id=10049002" length="29323327" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2901589</guid>
+    <pubDate>Tue, 03 Mar 2020 12:00:00 +0300</pubDate>
+    <itunes:duration>2440</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>36</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E35-Güvercinler</itunes:title>
+    <title>S05E35-Güvercinler</title>
+    <description><![CDATA[<p>Kötü iş övmek, Navigasyon fakiri, Meme terörü ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Kötü iş övmek, Navigasyon fakiri, Meme terörü ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kötü iş övmek, Navigasyon fakiri, Meme terörü ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2859190-s05e35-guvercinler.mp3?blob_id=9860404" length="32176515" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2859190</guid>
+    <pubDate>Thu, 27 Feb 2020 18:00:00 +0300</pubDate>
+    <itunes:duration>2678</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>35</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E34-Madam Mıstık</itunes:title>
+    <title>S05E34-Madam Mıstık</title>
+    <description><![CDATA[<p>OTM Sevmeyen, Dişindeki Şey, Medyumluk ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>OTM Sevmeyen, Dişindeki Şey, Medyumluk ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>OTM Sevmeyen, Dişindeki Şey, Medyumluk ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2826964-s05e34-madam-mistik.mp3?blob_id=9721288" length="27522122" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2826964</guid>
+    <pubDate>Mon, 24 Feb 2020 19:00:00 +0300</pubDate>
+    <itunes:duration>2290</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>34</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E33-İşte Şimdi Pilavlanma Zamanı</itunes:title>
+    <title>S05E33-İşte Şimdi Pilavlanma Zamanı</title>
+    <description><![CDATA[<p>2000'ler Nostaljisi, Kışın Şort Giymek, Mükemmel Podcastin Sırları ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>2000'ler Nostaljisi, Kışın Şort Giymek, Mükemmel Podcastin Sırları ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>2000&#39;ler Nostaljisi, Kışın Şort Giymek, Mükemmel Podcastin Sırları ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2794204-s05e33-iste-simdi-pilavlanma-zamani.mp3?blob_id=9567625" length="29840541" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2794204</guid>
+    <pubDate>Thu, 20 Feb 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>2483</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>33</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E32-Geçmiş Sevgililer Günü Özel ft Öykü Karayel, Sarp Apak, Burcu Erim</itunes:title>
+    <title>S05E32-Geçmiş Sevgililer Günü Özel ft Öykü Karayel, Sarp Apak, Burcu Erim</title>
+    <description><![CDATA[<p>Şeflerin değerli eşlerinden OTM Özel...</p>]]></description>
+    <content:encoded><![CDATA[<p>Şeflerin değerli eşlerinden OTM Özel...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Şeflerin değerli eşlerinden OTM Özel...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2774257-s05e32-gecmis-sevgililer-gunu-ozel-ft-oyku-karayel-sarp-apak-burcu-erim.mp3?blob_id=9475363" length="29893831" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2774257</guid>
+    <pubDate>Tue, 18 Feb 2020 13:00:00 +0300</pubDate>
+    <itunes:duration>2487</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>32</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E31-Ben Seni Yoruyo Muyum Yarim?</itunes:title>
+    <title>S05E31-Ben Seni Yoruyo Muyum Yarim?</title>
+    <description><![CDATA[<p>UFO Araştırmaları, Homofis Sorumlulukları, Borderline Kişilerle Yaşamak ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>UFO Araştırmaları, Homofis Sorumlulukları, Borderline Kişilerle Yaşamak ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>UFO Araştırmaları, Homofis Sorumlulukları, Borderline Kişilerle Yaşamak ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2732977-s05e31-ben-seni-yoruyo-muyum-yarim.mp3?blob_id=9289063" length="30304201" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2732977</guid>
+    <pubDate>Thu, 13 Feb 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>2521</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>31</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E30-Torun Tokmağı</itunes:title>
+    <title>S05E30-Torun Tokmağı</title>
+    <description><![CDATA[<p>Koltuklu Duş, Pilli Margarinli Salata, Ninja Aybars ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Koltuklu Duş, Pilli Margarinli Salata, Ninja Aybars ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Koltuklu Duş, Pilli Margarinli Salata, Ninja Aybars ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2714995-s05e30-torun-tokmagi.mp3?blob_id=9203482" length="30767784" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2714995</guid>
+    <pubDate>Tue, 11 Feb 2020 15:00:00 +0300</pubDate>
+    <itunes:duration>2560</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>30</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E29-Kazulet Reyiz</itunes:title>
+    <title>S05E29-Kazulet Reyiz</title>
+    <description><![CDATA[<p>Diyet terörü, Kirli konuşma, Gelecekten haberler ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Diyet terörü, Kirli konuşma, Gelecekten haberler ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Diyet terörü, Kirli konuşma, Gelecekten haberler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2624593-s05e29-kazulet-reyiz.mp3?blob_id=8786020" length="29572839" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2624593</guid>
+    <pubDate>Fri, 31 Jan 2020 14:00:00 +0300</pubDate>
+    <itunes:duration>2461</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>29</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E28-Instagram Kemiği ft. İrem Sak</itunes:title>
+    <title>S05E28-Instagram Kemiği ft. İrem Sak</title>
+    <description><![CDATA[<p>Uykusuzluk, Sosyal medya bağımlılığı, Brad Pitt'in çatısı ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Uykusuzluk, Sosyal medya bağımlılığı, Brad Pitt'in çatısı ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Uykusuzluk, Sosyal medya bağımlılığı, Brad Pitt&#39;in çatısı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2595919-s05e28-instagram-kemigi-ft-irem-sak.mp3?blob_id=8653969" length="34280835" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2595919</guid>
+    <pubDate>Tue, 28 Jan 2020 11:00:00 +0300</pubDate>
+    <itunes:duration>2853</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>28</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E27-Üçgen Rengi</itunes:title>
+    <title>S05E27-Üçgen Rengi</title>
+    <description><![CDATA[<p>Birtakım şefler, birtakım şeflerden gelen minnak soruları yanıtlıyor.</p>]]></description>
+    <content:encoded><![CDATA[<p>Birtakım şefler, birtakım şeflerden gelen minnak soruları yanıtlıyor.</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Birtakım şefler, birtakım şeflerden gelen minnak soruları yanıtlıyor.</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2565676-s05e27-ucgen-rengi.mp3?blob_id=8513215" length="32140780" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2565676</guid>
+    <pubDate>Fri, 24 Jan 2020 16:00:00 +0300</pubDate>
+    <itunes:duration>2675</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>27</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E26-Taş-Kuş Grafiği</itunes:title>
+    <title>S05E26-Taş-Kuş Grafiği</title>
+    <description><![CDATA[<p>Kötü Netflix dizileri, Yüksek bilincinizle dalaşmak, Tenasülü yormak ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Kötü Netflix dizileri, Yüksek bilincinizle dalaşmak, Tenasülü yormak ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kötü Netflix dizileri, Yüksek bilincinizle dalaşmak, Tenasülü yormak ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2552731-s05e26-tas-kus-grafigi.mp3?blob_id=8452570" length="30250559" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2552731</guid>
+    <pubDate>Wed, 22 Jan 2020 18:00:00 +0300</pubDate>
+    <itunes:duration>2517</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>26</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E25-Ah Eliz Ah! ft. Sarp Apak</itunes:title>
+    <title>S05E25-Ah Eliz Ah! ft. Sarp Apak</title>
+    <description><![CDATA[<p>Usta İstilası, Twitter Motivatörü, Tofuları Bana Getir ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Usta İstilası, Twitter Motivatörü, Tofuları Bana Getir ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Usta İstilası, Twitter Motivatörü, Tofuları Bana Getir ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2469764-s05e25-ah-eliz-ah-ft-sarp-apak.mp3?blob_id=8139635" length="33193096" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2469764</guid>
+    <pubDate>Mon, 13 Jan 2020 16:00:00 +0300</pubDate>
+    <itunes:duration>2762</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>25</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E24-İfrazat</itunes:title>
+    <title>S05E24-İfrazat</title>
+    <description><![CDATA[<p>Aksiyon halinde yaşlılar, Zor arkadaşlar, ağlamalı kusmalı ilk date ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>Aksiyon halinde yaşlılar, Zor arkadaşlar, ağlamalı kusmalı ilk date ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Aksiyon halinde yaşlılar, Zor arkadaşlar, ağlamalı kusmalı ilk date ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2446382-s05e24-ifrazat.mp3?blob_id=8032901" length="29394474" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2446382</guid>
+    <pubDate>Thu, 09 Jan 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>2446</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>24</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E23-Potemkin Zırhlısı ft. Melikşah Altuntaş</itunes:title>
+    <title>S05E23-Potemkin Zırhlısı ft. Melikşah Altuntaş</title>
+    <description><![CDATA[<p>30 Yaş Bunalımı, Fanlık vs. Stalkerlık, Deli Ünlüler ve dahası...</p>]]></description>
+    <content:encoded><![CDATA[<p>30 Yaş Bunalımı, Fanlık vs. Stalkerlık, Deli Ünlüler ve dahası...</p>]]></content:encoded>
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>30 Yaş Bunalımı, Fanlık vs. Stalkerlık, Deli Ünlüler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2418971-s05e23-potemkin-zirhlisi-ft-meliksah-altuntas.mp3?blob_id=7877021" length="29947450" type="audio/mpeg" />
+    <guid isPermaLink="false">Buzzsprout-2418971</guid>
+    <pubDate>Mon, 06 Jan 2020 17:00:00 +0300</pubDate>
+    <itunes:duration>2492</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season>5</itunes:season>
+    <itunes:episode>23</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E22-Az Beyin Çok Öfke</itunes:title>
+    <title>S05E22-Az Beyin Çok Öfke</title>
+    <description><![CDATA[Üzücü Uyak, Yedekleme Heist, Gevgev Hoca ve dahası...]]></description>
+    <content:encoded><![CDATA[Üzücü Uyak, Yedekleme Heist, Gevgev Hoca ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/zimw9g54ucamynmqvhmvqmrkuj1e/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Üzücü Uyak, Yedekleme Heist, Gevgev Hoca ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399618-s05e22-az-beyin-cok-ofke.mp3?blob_id=7802000" length="31623885" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/735735100</guid>
+    <pubDate>Mon, 30 Dec 2019 17:00:33 +0300</pubDate>
+    <itunes:duration>2631</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E21-20 Liralık Umca ft. İbrahim Selim</itunes:title>
+    <title>S05E21-20 Liralık Umca ft. İbrahim Selim</title>
+    <description><![CDATA[Cool tatil, Balkanlarda kumar, Apokalips sığınağı ve dahası...]]></description>
+    <content:encoded><![CDATA[Cool tatil, Balkanlarda kumar, Apokalips sığınağı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/e2c5gcv5s6etg06qgcufkh0z1kz1/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Cool tatil, Balkanlarda kumar, Apokalips sığınağı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399621-s05e21-20-liralik-umca-ft-ibrahim-selim.mp3?blob_id=7802015" length="32586895" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/734097868</guid>
+    <pubDate>Thu, 26 Dec 2019 17:00:53 +0300</pubDate>
+    <itunes:duration>2712</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E20-Son Çocuklar</itunes:title>
+    <title>S05E20-Son Çocuklar</title>
+    <description><![CDATA[Kıyamette kaçılacak ülkeler, Rapçinin parası, İkinci bahar ve dahası...]]></description>
+    <content:encoded><![CDATA[Kıyamette kaçılacak ülkeler, Rapçinin parası, İkinci bahar ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/k76sjhk8wxzczzd9zemmhkm97ovc/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kıyamette kaçılacak ülkeler, Rapçinin parası, İkinci bahar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399636-s05e20-son-cocuklar.mp3?blob_id=7802297" length="32194396" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/732843478</guid>
+    <pubDate>Mon, 23 Dec 2019 17:53:21 +0300</pubDate>
+    <itunes:duration>2679</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E19-Konuş Deli</itunes:title>
+    <title>S05E19-Konuş Deli</title>
+    <description><![CDATA[Hediyede fırsat eşitsizliği, Toz komplosu, Tatsız ev arkadaşı ve dahası...]]></description>
+    <content:encoded><![CDATA[Hediyede fırsat eşitsizliği, Toz komplosu, Tatsız ev arkadaşı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/1q3f0449pe9omrnk1hooufrjwi41/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Hediyede fırsat eşitsizliği, Toz komplosu, Tatsız ev arkadaşı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399639-s05e19-konus-deli.mp3?blob_id=7802369" length="34477076" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/730701046</guid>
+    <pubDate>Thu, 19 Dec 2019 17:00:43 +0300</pubDate>
+    <itunes:duration>2869</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E18-Erken Yılbaşı Özel</itunes:title>
+    <title>S05E18-Erken Yılbaşı Özel</title>
+    <description><![CDATA[Yılbaşı, Yılbaşı ve Kutsi...]]></description>
+    <content:encoded><![CDATA[Yılbaşı, Yılbaşı ve Kutsi...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/1lnokc5bx4rl9d48scyziorezjo1/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yılbaşı, Yılbaşı ve Kutsi...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399642-s05e18-erken-yilbasi-ozel.mp3?blob_id=7802267" length="34262992" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/728662261</guid>
+    <pubDate>Mon, 16 Dec 2019 18:54:54 +0300</pubDate>
+    <itunes:duration>2851</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E17-Suyitsu</itunes:title>
+    <title>S05E17-Suyitsu</title>
+    <description><![CDATA[Çocuğu bi şeye yazdırmak, Gerçek duyar, Alarm sesleri ve dahası...]]></description>
+    <content:encoded><![CDATA[Çocuğu bi şeye yazdırmak, Gerçek duyar, Alarm sesleri ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/ettr0abr1g7gqg9id2kpbowgell9/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Çocuğu bi şeye yazdırmak, Gerçek duyar, Alarm sesleri ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399645-s05e17-suyitsu.mp3?blob_id=7802396" length="33638853" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/726643705</guid>
+    <pubDate>Thu, 12 Dec 2019 17:00:33 +0300</pubDate>
+    <itunes:duration>2799</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E16-Post Bonomo</itunes:title>
+    <title>S05E16-Post Bonomo</title>
+    <description><![CDATA[Applerin hızına yetişmek, Depresyon saçı, İçe dönük farkındalık ve dahası...]]></description>
+    <content:encoded><![CDATA[Applerin hızına yetişmek, Depresyon saçı, İçe dönük farkındalık ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/ij3oy456ytavceotxb8hqrcy4w2x/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Applerin hızına yetişmek, Depresyon saçı, İçe dönük farkındalık ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399648-s05e16-post-bonomo.mp3?blob_id=7802417" length="31766822" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/725679016</guid>
+    <pubDate>Tue, 10 Dec 2019 12:57:01 +0300</pubDate>
+    <itunes:duration>2643</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E15-Kadınayzır</itunes:title>
+    <title>S05E15-Kadınayzır</title>
+    <description><![CDATA[Yolda para bulmak, Onu Öyle Yapmayın Projesi, Hesap ödeme kavgası ve dahası...]]></description>
+    <content:encoded><![CDATA[Yolda para bulmak, Onu Öyle Yapmayın Projesi, Hesap ödeme kavgası ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/jb3wm8yh27d9kam3ubat4v6mqyks/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yolda para bulmak, Onu Öyle Yapmayın Projesi, Hesap ödeme kavgası ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399651-s05e15-kadinayzir.mp3?blob_id=7802357" length="32533252" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/723156775</guid>
+    <pubDate>Thu, 05 Dec 2019 17:42:16 +0300</pubDate>
+    <itunes:duration>2707</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E14-Zongulbar</itunes:title>
+    <title>S05E14-Zongulbar</title>
+    <description><![CDATA[Küllü bira, Yara izi hikayeleri, Ev içi iklim krizi ve dahası...]]></description>
+    <content:encoded><![CDATA[Küllü bira, Yara izi hikayeleri, Ev içi iklim krizi ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/3iuiin6vgslwq468kym8vazzlano/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Küllü bira, Yara izi hikayeleri, Ev içi iklim krizi ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399654-s05e14-zongulbar.mp3?blob_id=7802381" length="33175236" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/722043163</guid>
+    <pubDate>Tue, 03 Dec 2019 12:26:20 +0300</pubDate>
+    <itunes:duration>2761</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E13-Çift Kaplanlar ft. KALT</itunes:title>
+    <title>S05E13-Çift Kaplanlar ft. KALT</title>
+    <description><![CDATA[Röntgenci komşular, Metal konseri, Alerji sömürüsü ve dahası...]]></description>
+    <content:encoded><![CDATA[Röntgenci komşular, Metal konseri, Alerji sömürüsü ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/kq6h9etwucxv86aamuad2j3lv9k6/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Röntgenci komşular, Metal konseri, Alerji sömürüsü ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399657-s05e13-cift-kaplanlar-ft-kalt.mp3?blob_id=7802453" length="44410007" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/718121839</guid>
+    <pubDate>Mon, 25 Nov 2019 17:00:23 +0300</pubDate>
+    <itunes:duration>3697</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E12-Rahatla Biraz Bebiştay Yaa</itunes:title>
+    <title>S05E12-Rahatla Biraz Bebiştay Yaa</title>
+    <description><![CDATA[Erteleme problemi, Zenginin yatı, Sürpriz doğum günü terörü ve dahası...]]></description>
+    <content:encoded><![CDATA[Erteleme problemi, Zenginin yatı, Sürpriz doğum günü terörü ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/a6q6bfmt09joqm8huww0wpcmqcn6/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Erteleme problemi, Zenginin yatı, Sürpriz doğum günü terörü ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399660-s05e12-rahatla-biraz-bebistay-yaa.mp3?blob_id=7802420" length="30357493" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/716439307</guid>
+    <pubDate>Thu, 21 Nov 2019 20:42:33 +0300</pubDate>
+    <itunes:duration>2526</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E11-Faaliyet</itunes:title>
+    <title>S05E11-Faaliyet</title>
+    <description><![CDATA[Kaaanka, Artı eksi listesi, Merkür retrosu ve dahası...]]></description>
+    <content:encoded><![CDATA[Kaaanka, Artı eksi listesi, Merkür retrosu ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/jabjyfvz7p2c4j8fpe7fsogtai6p/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kaaanka, Artı eksi listesi, Merkür retrosu ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399663-s05e11-faaliyet.mp3?blob_id=7802435" length="31320428" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/715356130</guid>
+    <pubDate>Tue, 19 Nov 2019 16:25:25 +0300</pubDate>
+    <itunes:duration>2606</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E10-Mıknatıslı Kadın Avcu</itunes:title>
+    <title>S05E10-Mıknatıslı Kadın Avcu</title>
+    <description><![CDATA[Online alış veriş, Bitmemiş romanlar, Farazi teklikler ve dahası...]]></description>
+    <content:encoded><![CDATA[Online alış veriş, Bitmemiş romanlar, Farazi teklikler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/in1glexmd858a76u0f98zl7ydi7k/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Online alış veriş, Bitmemiş romanlar, Farazi teklikler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399666-s05e10-miknatisli-kadin-avcu.mp3?blob_id=7802438" length="29043106" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/712620091</guid>
+    <pubDate>Thu, 14 Nov 2019 17:00:23 +0300</pubDate>
+    <itunes:duration>2416</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E09-Bişen Ekmek</itunes:title>
+    <title>S05E09-Bişen Ekmek</title>
+    <description><![CDATA[Apartman yöneticisi, Frontal korteks, Banyo lifindeki kıl, WhatsApp story ve dahası...]]></description>
+    <content:encoded><![CDATA[Apartman yöneticisi, Frontal korteks, Banyo lifindeki kıl, WhatsApp story ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/gh2v2zfur9bywc4ws19u5csxom5a/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Apartman yöneticisi, Frontal korteks, Banyo lifindeki kıl, WhatsApp story ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399669-s05e09-bisen-ekmek.mp3?blob_id=7802486" length="30809800" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/711034609</guid>
+    <pubDate>Mon, 11 Nov 2019 17:00:24 +0300</pubDate>
+    <itunes:duration>2564</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E08-Omurgasız Ama Gerçek</itunes:title>
+    <title>S05E08-Omurgasız Ama Gerçek</title>
+    <description><![CDATA[Lucifer Alemdaroğlu, Depresyon Arkadaşlıkları, Çin Parkı ve dahası...]]></description>
+    <content:encoded><![CDATA[Lucifer Alemdaroğlu, Depresyon Arkadaşlıkları, Çin Parkı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/wgcgzdai8756me6vuwfkoygn6zmv/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Lucifer Alemdaroğlu, Depresyon Arkadaşlıkları, Çin Parkı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399672-s05e08-omurgasiz-ama-gercek.mp3?blob_id=7802597" length="30065641" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/709240930</guid>
+    <pubDate>Thu, 07 Nov 2019 18:27:49 +0300</pubDate>
+    <itunes:duration>2502</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E07-Esat Şiset</itunes:title>
+    <title>S05E07-Esat Şiset</title>
+    <description><![CDATA[Klip oyunculuğu, İsotlu Parfüm, Kankanın exinin kankası ve dahası...]]></description>
+    <content:encoded><![CDATA[Klip oyunculuğu, İsotlu Parfüm, Kankanın exinin kankası ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/6e7dqhhtvy9pryq658qhhcv03433/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Klip oyunculuğu, İsotlu Parfüm, Kankanın exinin kankası ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399675-s05e07-esat-siset.mp3?blob_id=7802618" length="30545543" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/707625328</guid>
+    <pubDate>Mon, 04 Nov 2019 18:00:22 +0300</pubDate>
+    <itunes:duration>2542</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E06-Bengiyen Yaklaşımlar</itunes:title>
+    <title>S05E06-Bengiyen Yaklaşımlar</title>
+    <description><![CDATA[Ofiste sosyalleşmek, Ruh hastası ev arkadaşı, Tabii ki yaşlılar ve dahası...]]></description>
+    <content:encoded><![CDATA[Ofiste sosyalleşmek, Ruh hastası ev arkadaşı, Tabii ki yaşlılar ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/k1tmnuehwhngb7mok02ngskcd96i/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ofiste sosyalleşmek, Ruh hastası ev arkadaşı, Tabii ki yaşlılar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399678-s05e06-bengiyen-yaklasimlar.mp3?blob_id=7802660" length="29945583" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/705797998</guid>
+    <pubDate>Thu, 31 Oct 2019 18:00:42 +0300</pubDate>
+    <itunes:duration>2492</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E05-Akdeniz Cesetleri</itunes:title>
+    <title>S05E05-Akdeniz Cesetleri</title>
+    <description><![CDATA[İlişkinin komiği, Fake profil fotoğrafları, İlk nickler ve dahası...]]></description>
+    <content:encoded><![CDATA[İlişkinin komiği, Fake profil fotoğrafları, İlk nickler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/frj3n4r1gimh4as6fkvxy7r8k3zg/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>İlişkinin komiği, Fake profil fotoğrafları, İlk nickler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399681-s05e05-akdeniz-cesetleri.mp3?blob_id=7802795" length="31817616" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/702785008</guid>
+    <pubDate>Mon, 28 Oct 2019 18:00:12 +0300</pubDate>
+    <itunes:duration>2648</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E04-The Rise of Fıkri</itunes:title>
+    <title>S05E04-The Rise of Fıkri</title>
+    <description><![CDATA[Ödipik nudelar, İsmail'in matkabı, Tik Tok ve dahası...]]></description>
+    <content:encoded><![CDATA[Ödipik nudelar, İsmail'in matkabı, Tik Tok ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/15g67etwsayq9ztuq3mjd72pl8v6/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ödipik nudelar, İsmail&#39;in matkabı, Tik Tok ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399684-s05e04-the-rise-of-fikri.mp3?blob_id=7803182" length="35273616" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/700953238</guid>
+    <pubDate>Thu, 24 Oct 2019 18:00:12 +0300</pubDate>
+    <itunes:duration>2936</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E03-Döş Sıkıntısı</itunes:title>
+    <title>S05E03-Döş Sıkıntısı</title>
+    <description><![CDATA[İlk buluşma dekoltesi, Eski sevgili kapıştırmak, Fake hesaplar ve dahası...]]></description>
+    <content:encoded><![CDATA[İlk buluşma dekoltesi, Eski sevgili kapıştırmak, Fake hesaplar ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/p4as9k153ihi20tsjusxtamyv1ww/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>İlk buluşma dekoltesi, Eski sevgili kapıştırmak, Fake hesaplar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399687-s05e03-dos-sikintisi.mp3?blob_id=7803185" length="31577804" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/699464881</guid>
+    <pubDate>Mon, 21 Oct 2019 18:00:22 +0300</pubDate>
+    <itunes:duration>2628</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E02-Ard İmplantı</itunes:title>
+    <title>S05E02-Ard İmplantı</title>
+    <description><![CDATA[Squat takıntıları, Alpaka kaygıları, Fellah Köftesi ve dahası...]]></description>
+    <content:encoded><![CDATA[Squat takıntıları, Alpaka kaygıları, Fellah Köftesi ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/egq18fn1a0hkcdle97qqslrdiv91/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Squat takıntıları, Alpaka kaygıları, Fellah Köftesi ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399690-s05e02-ard-implanti.mp3?blob_id=7803194" length="32522598" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/697799023</guid>
+    <pubDate>Thu, 17 Oct 2019 19:14:16 +0300</pubDate>
+    <itunes:duration>2706</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S05E01-Matkaba Karşı</itunes:title>
+    <title>S05E01-Matkaba Karşı</title>
+    <description><![CDATA[Yeni sezon, Tanıdık soslar, Katastrofik mezuniyetler, Ganyan bayii ve dahası...]]></description>
+    <content:encoded><![CDATA[Yeni sezon, Tanıdık soslar, Katastrofik mezuniyetler, Ganyan bayii ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/83ffp7ffnyouc7ow8esrjx6yylxv/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yeni sezon, Tanıdık soslar, Katastrofik mezuniyetler, Ganyan bayii ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399693-s05e01-matkaba-karsi.mp3?blob_id=7803197" length="32051633" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/695545687</guid>
+    <pubDate>Mon, 14 Oct 2019 18:39:02 +0300</pubDate>
+    <itunes:duration>2667</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E50 - Ve Beyhan Abi... (Sezon Finali)</itunes:title>
+    <title>S04E50 - Ve Beyhan Abi... (Sezon Finali)</title>
+    <description><![CDATA[Beyhan Abi dertlerinize derman olurken, dördüncü sezonu beraber kapatıyoruz...]]></description>
+    <content:encoded><![CDATA[Beyhan Abi dertlerinize derman olurken, dördüncü sezonu beraber kapatıyoruz...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/x8fclx9echun8coqptvq5k48s6bl/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Beyhan Abi dertlerinize derman olurken, dördüncü sezonu beraber kapatıyoruz...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399696-s04e50-ve-beyhan-abi-sezon-finali.mp3?blob_id=7803203" length="41603904" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/636151671</guid>
+    <pubDate>Thu, 13 Jun 2019 20:42:00 +0300</pubDate>
+    <itunes:duration>3463</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E49 - Fatma Girik&#39;in Lama Kafesi</itunes:title>
+    <title>S04E49 - Fatma Girik&#39;in Lama Kafesi</title>
+    <description><![CDATA[Ev Taşıma İşleri, Bebek Masajı, Tenasül Paktı ve dahası...]]></description>
+    <content:encoded><![CDATA[Ev Taşıma İşleri, Bebek Masajı, Tenasül Paktı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/drena9a014ky5vffrdrr58w4s070/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ev Taşıma İşleri, Bebek Masajı, Tenasül Paktı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399699-s04e49-fatma-girik-in-lama-kafesi.mp3?blob_id=7803209" length="27740710" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/634570542</guid>
+    <pubDate>Mon, 10 Jun 2019 19:29:38 +0300</pubDate>
+    <itunes:duration>2308</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E48 - OTM Live IF Beşiktaş/İstanbul/28.05.2019</itunes:title>
+    <title>S04E48 - OTM Live IF Beşiktaş/İstanbul/28.05.2019</title>
+    <description><![CDATA[Anadolu Füzyon, Doğaçlama Tiyatro, Art House Sevgili ve dahası...]]></description>
+    <content:encoded><![CDATA[Anadolu Füzyon, Doğaçlama Tiyatro, Art House Sevgili ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/lap94jdbd974x1v577niev8ihgfk/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Anadolu Füzyon, Doğaçlama Tiyatro, Art House Sevgili ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399702-s04e48-otm-live-if-besiktas-istanbul-28-05-2019.mp3?blob_id=7803218" length="41873819" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/632044419</guid>
+    <pubDate>Wed, 05 Jun 2019 18:00:25 +0300</pubDate>
+    <itunes:duration>3486</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E47 - Nerede O Eski Magazinler?</itunes:title>
+    <title>S04E47 - Nerede O Eski Magazinler?</title>
+    <description><![CDATA[Yamyamlık, "BAYAN", Çizgi Filmler ve dahası...]]></description>
+    <content:encoded><![CDATA[Yamyamlık, "BAYAN", Çizgi Filmler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/jlr7b2486w75sfflcc2li2423xkl/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yamyamlık, &quot;BAYAN&quot;, Çizgi Filmler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399705-s04e47-nerede-o-eski-magazinler.mp3?blob_id=7803215" length="25997818" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/625374111</guid>
+    <pubDate>Thu, 23 May 2019 19:35:58 +0300</pubDate>
+    <itunes:duration>2163</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E46 - Turşu Cinayetleri</itunes:title>
+    <title>S04E46 - Turşu Cinayetleri</title>
+    <description><![CDATA[Bullyler, Belde İsimleri, Spoiler Psikopatları ve dahası...]]></description>
+    <content:encoded><![CDATA[Bullyler, Belde İsimleri, Spoiler Psikopatları ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/4tkl9ati03i8hkoqqhie2w5t8i6f/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Bullyler, Belde İsimleri, Spoiler Psikopatları ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399708-s04e46-tursu-cinayetleri.mp3?blob_id=7803227" length="31769714" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/623737074</guid>
+    <pubDate>Mon, 20 May 2019 21:33:15 +0300</pubDate>
+    <itunes:duration>2644</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E45 - Yükselenim Robert</itunes:title>
+    <title>S04E45 - Yükselenim Robert</title>
+    <description><![CDATA[Kötü Hediye, Burçlar, Like Kaygısı ve dahası...]]></description>
+    <content:encoded><![CDATA[Kötü Hediye, Burçlar, Like Kaygısı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/ij4l764wg1bjkesn66n1vlm1gl7t/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kötü Hediye, Burçlar, Like Kaygısı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399711-s04e45-yukselenim-robert.mp3?blob_id=7803224" length="30839650" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/621448788</guid>
+    <pubDate>Thu, 16 May 2019 18:00:29 +0300</pubDate>
+    <itunes:duration>2566</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E44 - Cezmiler Semihlere Karşı</itunes:title>
+    <title>S04E44 - Cezmiler Semihlere Karşı</title>
+    <description><![CDATA[Baby Shower, Lüzumsuz Teknoloji, Aromalı Patronlar ve dahası...]]></description>
+    <content:encoded><![CDATA[Baby Shower, Lüzumsuz Teknoloji, Aromalı Patronlar ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/c39qeeih2o01fw95pl8bwexa1q3p/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Baby Shower, Lüzumsuz Teknoloji, Aromalı Patronlar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399714-s04e44-cezmiler-semihlere-karsi.mp3?blob_id=7803221" length="32509202" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/620036964</guid>
+    <pubDate>Mon, 13 May 2019 20:11:19 +0300</pubDate>
+    <itunes:duration>2705</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E43 - T-Pop</itunes:title>
+    <title>S04E43 - T-Pop</title>
+    <description><![CDATA[Ölü Online Oyunlar, K-Pop, Aşk/Kariyer Açmazları ve dahası...]]></description>
+    <content:encoded><![CDATA[Ölü Online Oyunlar, K-Pop, Aşk/Kariyer Açmazları ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/aq2oo319q6c8bjbxp5791quuf80d/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ölü Online Oyunlar, K-Pop, Aşk/Kariyer Açmazları ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399717-s04e43-t-pop.mp3?blob_id=7803230" length="29531832" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/617988084</guid>
+    <pubDate>Thu, 09 May 2019 18:00:29 +0300</pubDate>
+    <itunes:duration>2457</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E42 - Kumpir ve Pepinto</itunes:title>
+    <title>S04E42 - Kumpir ve Pepinto</title>
+    <description><![CDATA[Kedi İnsanı, Köpek İnsanı, Hızlıca Ünlü Olma Yolları ve dahası...]]></description>
+    <content:encoded><![CDATA[Kedi İnsanı, Köpek İnsanı, Hızlıca Ünlü Olma Yolları ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/vggbsw9kmn02onrfjzil8xxpqsn7/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kedi İnsanı, Köpek İnsanı, Hızlıca Ünlü Olma Yolları ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399720-s04e42-kumpir-ve-pepinto.mp3?blob_id=7803233" length="31265655" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/616654470</guid>
+    <pubDate>Mon, 06 May 2019 22:42:55 +0300</pubDate>
+    <itunes:duration>2602</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E41 - Haldun Bey ve Ekrem Emmi</itunes:title>
+    <title>S04E41 - Haldun Bey ve Ekrem Emmi</title>
+    <description><![CDATA[Elitizm, Deep Tiviç, O Tarz Festival Rehberi ve dahası]]></description>
+    <content:encoded><![CDATA[Elitizm, Deep Tiviç, O Tarz Festival Rehberi ve dahası]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/s8v94aaj97ef03pr3gc7y6b7t87j/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Elitizm, Deep Tiviç, O Tarz Festival Rehberi ve dahası</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399723-s04e41-haldun-bey-ve-ekrem-emmi.mp3?blob_id=7803236" length="34049904" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/614565969</guid>
+    <pubDate>Thu, 02 May 2019 19:00:29 +0300</pubDate>
+    <itunes:duration>2834</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E40 - Hayaller vs Gerçekler</itunes:title>
+    <title>S04E40 - Hayaller vs Gerçekler</title>
+    <description><![CDATA[Erkek ortamı, İstanbul'da kiralar, Uygun düğün ve dahası...]]></description>
+    <content:encoded><![CDATA[Erkek ortamı, İstanbul'da kiralar, Uygun düğün ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/kp708067kod4nw0654i2pu03y0ud/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Erkek ortamı, İstanbul&#39;da kiralar, Uygun düğün ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399726-s04e40-hayaller-vs-gercekler.mp3?blob_id=7803242" length="28955516" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/613015677</guid>
+    <pubDate>Mon, 29 Apr 2019 17:00:29 +0300</pubDate>
+    <itunes:duration>2409</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E39 - Şu Sevdalar Hackerlığı</itunes:title>
+    <title>S04E39 - Şu Sevdalar Hackerlığı</title>
+    <description><![CDATA[İlkokul aşkları, Gezen tavuklar, Çöp şişçi abiyle yakın ilişkiler ve dahası...]]></description>
+    <content:encoded><![CDATA[İlkokul aşkları, Gezen tavuklar, Çöp şişçi abiyle yakın ilişkiler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/685monkn4911kudel3kd1xrrd5px/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>İlkokul aşkları, Gezen tavuklar, Çöp şişçi abiyle yakın ilişkiler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399729-s04e39-su-sevdalar-hackerligi.mp3?blob_id=7803248" length="29741700" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/611142195</guid>
+    <pubDate>Thu, 25 Apr 2019 19:00:29 +0300</pubDate>
+    <itunes:duration>2475</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E38 - Sıcak Toplar</itunes:title>
+    <title>S04E38 - Sıcak Toplar</title>
+    <description><![CDATA[Ölümsüzlük, Yaşlılar, Et Kamyonu ve dahası...]]></description>
+    <content:encoded><![CDATA[Ölümsüzlük, Yaşlılar, Et Kamyonu ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/4lq1d5et4a0afh7ci5go3op5xlu3/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ölümsüzlük, Yaşlılar, Et Kamyonu ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399732-s04e38-sicak-toplar.mp3?blob_id=7803245" length="34001415" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/609663126</guid>
+    <pubDate>Mon, 22 Apr 2019 19:00:34 +0300</pubDate>
+    <itunes:duration>2830</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E37 - Dijital Yörük</itunes:title>
+    <title>S04E37 - Dijital Yörük</title>
+    <description><![CDATA[Gündüz Flüoresanı, Totem, Okuma Koçluğu ve dahası...]]></description>
+    <content:encoded><![CDATA[Gündüz Flüoresanı, Totem, Okuma Koçluğu ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/zef1eobvbjqghc90w91t49fc15ij/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Gündüz Flüoresanı, Totem, Okuma Koçluğu ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399735-s04e37-dijital-yoruk.mp3?blob_id=7803254" length="31349466" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/607742424</guid>
+    <pubDate>Thu, 18 Apr 2019 19:00:24 +0300</pubDate>
+    <itunes:duration>2609</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E36 - Büyük Update</itunes:title>
+    <title>S04E36 - Büyük Update</title>
+    <description><![CDATA[Patso, Pizza, Deep İmla, Dünyanın en kötü oyunları ve dahası...]]></description>
+    <content:encoded><![CDATA[Patso, Pizza, Deep İmla, Dünyanın en kötü oyunları ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/774hgdcrxyhju5hiucdsq44tui1j/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Patso, Pizza, Deep İmla, Dünyanın en kötü oyunları ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399738-s04e36-buyuk-update.mp3?blob_id=7803251" length="36677503" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/606315792</guid>
+    <pubDate>Mon, 15 Apr 2019 20:00:14 +0300</pubDate>
+    <itunes:duration>3053</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E35 - Bebilyo</itunes:title>
+    <title>S04E35 - Bebilyo</title>
+    <description><![CDATA[Minimum tutar maduriyeti, sırta kazak, aşure ve dahası....]]></description>
+    <content:encoded><![CDATA[Minimum tutar maduriyeti, sırta kazak, aşure ve dahası....]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/xz5bq2ra9443fpzuf3148cqwvzdr/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Minimum tutar maduriyeti, sırta kazak, aşure ve dahası....</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399741-s04e35-bebilyo.mp3?blob_id=7803257" length="36726013" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/600762996</guid>
+    <pubDate>Thu, 04 Apr 2019 19:00:22 +0300</pubDate>
+    <itunes:duration>3057</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E34 - Badi Şeymink</itunes:title>
+    <title>S04E34 - Badi Şeymink</title>
+    <description><![CDATA[Slip mayo, Private hesaplar ve dahası...]]></description>
+    <content:encoded><![CDATA[Slip mayo, Private hesaplar ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/vxpz3zw9tqvptfd1a80sv2hkjotj/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Slip mayo, Private hesaplar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399744-s04e34-badi-seymink.mp3?blob_id=7803266" length="35029527" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/599446644</guid>
+    <pubDate>Mon, 01 Apr 2019 23:53:33 +0300</pubDate>
+    <itunes:duration>2915</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E33 - Egg Sexing</itunes:title>
+    <title>S04E33 - Egg Sexing</title>
+    <description><![CDATA[Kedi güzellik yarışması, Buzlanda, Ankara'da tutku ve dehşet, Public evlenme teklifleri ve dahası...]]></description>
+    <content:encoded><![CDATA[Kedi güzellik yarışması, Buzlanda, Ankara'da tutku ve dehşet, Public evlenme teklifleri ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/ft7n2e0nt4oyqun3w1md2glar138/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kedi güzellik yarışması, Buzlanda, Ankara&#39;da tutku ve dehşet, Public evlenme teklifleri ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399747-s04e33-egg-sexing.mp3?blob_id=7803278" length="36216004" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/596697366</guid>
+    <pubDate>Thu, 28 Mar 2019 20:00:09 +0300</pubDate>
+    <itunes:duration>3014</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E32 - ASMR</itunes:title>
+    <title>S04E32 - ASMR</title>
+    <description><![CDATA[Uyku problemleri, pornoyu yeniden keşfetmek ve nicesi...]]></description>
+    <content:encoded><![CDATA[Uyku problemleri, pornoyu yeniden keşfetmek ve nicesi...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/nz3sx7bg5ziwqzny41z228aaluxj/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Uyku problemleri, pornoyu yeniden keşfetmek ve nicesi...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399750-s04e32-asmr.mp3?blob_id=7803269" length="34440193" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/595647339</guid>
+    <pubDate>Mon, 25 Mar 2019 20:48:51 +0300</pubDate>
+    <itunes:duration>2866</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S04E31 - otarzmiyiaciyimmi.com</itunes:title>
+    <title>S04E31 - otarzmiyiaciyimmi.com</title>
+    <description><![CDATA[Küçük elçiler, makyaj yapan tavşanlar ve dahası...]]></description>
+    <content:encoded><![CDATA[Küçük elçiler, makyaj yapan tavşanlar ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/y1neem1kyw9j88xtnuawvrlxu0t3/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Küçük elçiler, makyaj yapan tavşanlar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399753-s04e31-otarzmiyiaciyimmi-com.mp3?blob_id=7803275" length="33312046" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/593417679</guid>
+    <pubDate>Thu, 21 Mar 2019 20:00:19 +0300</pubDate>
+    <itunes:duration>2772</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E30 - Dışar Şortu</itunes:title>
+    <title>S4E30 - Dışar Şortu</title>
+    <description><![CDATA[Yatak tişörtleri, Dostoyevs ki ayrı ve dahası...]]></description>
+    <content:encoded><![CDATA[Yatak tişörtleri, Dostoyevs ki ayrı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/a9anb96y71dte6tqzu0tlazupgg6/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yatak tişörtleri, Dostoyevs ki ayrı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399756-s4e30-disar-sortu.mp3?blob_id=7803281" length="32832102" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/592029402</guid>
+    <pubDate>Mon, 18 Mar 2019 20:45:09 +0300</pubDate>
+    <itunes:duration>2732</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E29 - Dünyanın Sonuna Hoş Geldiniz</itunes:title>
+    <title>S4E29 - Dünyanın Sonuna Hoş Geldiniz</title>
+    <description><![CDATA[Kıyamet yakın mı? Çıplak Şefler, Çikın nagıtta çikın var mı? Buyurun kusma festivaline...]]></description>
+    <content:encoded><![CDATA[Kıyamet yakın mı? Çıplak Şefler, Çikın nagıtta çikın var mı? Buyurun kusma festivaline...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/f0nfpzq89mibby4tg76rhbyixt89/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kıyamet yakın mı? Çıplak Şefler, Çikın nagıtta çikın var mı? Buyurun kusma festivaline...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399759-s4e29-dunyanin-sonuna-hos-geldiniz.mp3?blob_id=7803287" length="33668029" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/590051877</guid>
+    <pubDate>Thu, 14 Mar 2019 20:52:34 +0300</pubDate>
+    <itunes:duration>2802</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E28 - Ben Hiç Pokemon İzlemedim</itunes:title>
+    <title>S4E28 - Ben Hiç Pokemon İzlemedim</title>
+    <description><![CDATA[Bakkalla romantik anlar, Seymen ağa ve Charizard, paramparça aşklar ve aşırı pahalı montlar]]></description>
+    <content:encoded><![CDATA[Bakkalla romantik anlar, Seymen ağa ve Charizard, paramparça aşklar ve aşırı pahalı montlar]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/i4sb0afdxb0v0di0683x065z7z94/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Bakkalla romantik anlar, Seymen ağa ve Charizard, paramparça aşklar ve aşırı pahalı montlar</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399762-s4e28-ben-hic-pokemon-izlemedim.mp3?blob_id=7803284" length="33412365" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/588479208</guid>
+    <pubDate>Mon, 11 Mar 2019 22:06:00 +0300</pubDate>
+    <itunes:duration>2780</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E27 - Beyaz Yakalı Tatili</itunes:title>
+    <title>S4E27 - Beyaz Yakalı Tatili</title>
+    <description><![CDATA[Masa başı işleri, beyaz yakalılar tatili ve dahası...]]></description>
+    <content:encoded><![CDATA[Masa başı işleri, beyaz yakalılar tatili ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/y2bqsplz15aad2qyl16dhwx1e34s/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Masa başı işleri, beyaz yakalılar tatili ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399765-s4e27-beyaz-yakali-tatili.mp3?blob_id=7803305" length="37830074" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/585212379</guid>
+    <pubDate>Tue, 05 Mar 2019 12:03:17 +0300</pubDate>
+    <itunes:duration>3149</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E26 - Babalarımızın Perisi</itunes:title>
+    <title>S4E26 - Babalarımızın Perisi</title>
+    <description><![CDATA[Şikayetler, tavsiyeler, demir parası olmayan ülkeler, wakkanda tadına bakkanda, reikiye adanmış ömürler, çözülenler, çözülmeyenler ve çok daha fazlası...]]></description>
+    <content:encoded><![CDATA[Şikayetler, tavsiyeler, demir parası olmayan ülkeler, wakkanda tadına bakkanda, reikiye adanmış ömürler, çözülenler, çözülmeyenler ve çok daha fazlası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/udqjw7726xbiisdtpvqpjrm79d9p/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Şikayetler, tavsiyeler, demir parası olmayan ülkeler, wakkanda tadına bakkanda, reikiye adanmış ömürler, çözülenler, çözülmeyenler ve çok daha fazlası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399768-s4e26-babalarimizin-perisi.mp3?blob_id=7803296" length="34643578" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/582888186</guid>
+    <pubDate>Thu, 28 Feb 2019 22:27:18 +0300</pubDate>
+    <itunes:duration>2883</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E25 - Okul Servisi</itunes:title>
+    <title>S4E25 - Okul Servisi</title>
+    <description><![CDATA[Okul servisi zorbalar, anadolu çorba isimleri ve dahası...]]></description>
+    <content:encoded><![CDATA[Okul servisi zorbalar, anadolu çorba isimleri ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/mwfbkpw7w18b1tlr5b105se4fnzf/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Okul servisi zorbalar, anadolu çorba isimleri ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399771-s4e25-okul-servisi.mp3?blob_id=7803290" length="32402965" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/581165310</guid>
+    <pubDate>Mon, 25 Feb 2019 20:30:06 +0300</pubDate>
+    <itunes:duration>2696</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E24 - Dondurma</itunes:title>
+    <title>S4E24 - Dondurma</title>
+    <description><![CDATA[Gemi demiri emenler, sorbeler ve dahası...]]></description>
+    <content:encoded><![CDATA[Gemi demiri emenler, sorbeler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/ja7woqjo96ny476nshc0bu5gfrtf/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Gemi demiri emenler, sorbeler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399774-s4e24-dondurma.mp3?blob_id=7803299" length="31506121" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/579299700</guid>
+    <pubDate>Fri, 22 Feb 2019 04:32:31 +0300</pubDate>
+    <itunes:duration>2622</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E23 - Yıldız</itunes:title>
+    <title>S4E23 - Yıldız</title>
+    <description><![CDATA[Yıldız ticareti ve dahası...]]></description>
+    <content:encoded><![CDATA[Yıldız ticareti ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/6k1gnjow1cjs0g0qap28rgoglp0n/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yıldız ticareti ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399777-s4e23-yildiz.mp3?blob_id=7803302" length="31949676" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/577472985</guid>
+    <pubDate>Mon, 18 Feb 2019 22:22:31 +0300</pubDate>
+    <itunes:duration>2659</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E22 - Fasıl</itunes:title>
+    <title>S4E22 - Fasıl</title>
+    <description><![CDATA[Tek şarkılık vokal eğitim, sosyal medya ve dahası...]]></description>
+    <content:encoded><![CDATA[Tek şarkılık vokal eğitim, sosyal medya ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/krivstt9jy1zpslfvv7xgy8qmbe0/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Tek şarkılık vokal eğitim, sosyal medya ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399780-s4e22-fasil.mp3?blob_id=7803308" length="34152110" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/575315364</guid>
+    <pubDate>Thu, 14 Feb 2019 20:45:05 +0300</pubDate>
+    <itunes:duration>2842</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E21 - Meditasyon</itunes:title>
+    <title>S4E21 - Meditasyon</title>
+    <description><![CDATA[Vegan kebap, meditasyon ve dahası...]]></description>
+    <content:encoded><![CDATA[Vegan kebap, meditasyon ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/b3ckmnopn7qy50zg33kepefsm6i3/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Vegan kebap, meditasyon ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399783-s4e21-meditasyon.mp3?blob_id=7803317" length="30199898" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/573306528</guid>
+    <pubDate>Mon, 11 Feb 2019 20:45:05 +0300</pubDate>
+    <itunes:duration>2513</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E20 - Uzay</itunes:title>
+    <title>S4E20 - Uzay</title>
+    <description><![CDATA[Paranoyaklık ve dahası...]]></description>
+    <content:encoded><![CDATA[Paranoyaklık ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/6h1otjdj9o6akjhyvzhc18ru57tk/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Paranoyaklık ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399786-s4e20-uzay.mp3?blob_id=7803314" length="36787758" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/569951367</guid>
+    <pubDate>Thu, 07 Feb 2019 20:45:05 +0300</pubDate>
+    <itunes:duration>3062</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E19 - Jetpack</itunes:title>
+    <title>S4E19 - Jetpack</title>
+    <description><![CDATA[Kitap kulübü, kem göz ve dahası...]]></description>
+    <content:encoded><![CDATA[Kitap kulübü, kem göz ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/1a6ok2yea9f71tzl4c3pthy64ukd/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kitap kulübü, kem göz ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399789-s4e19-jetpack.mp3?blob_id=7803311" length="33641786" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/569949147</guid>
+    <pubDate>Mon, 04 Feb 2019 20:45:05 +0300</pubDate>
+    <itunes:duration>2800</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E18 - Bar Bar Bar</itunes:title>
+    <title>S4E18 - Bar Bar Bar</title>
+    <description><![CDATA[Son içki bükücüler ve dahası...]]></description>
+    <content:encoded><![CDATA[Son içki bükücüler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/h4ydaisqjc3vrljtiokljzfae1wa/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Son içki bükücüler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399792-s4e18-bar-bar-bar.mp3?blob_id=7803323" length="35316974" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/565892823</guid>
+    <pubDate>Thu, 31 Jan 2019 03:00:00 +0300</pubDate>
+    <itunes:duration>2939</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E17 - Jammer</itunes:title>
+    <title>S4E17 - Jammer</title>
+    <description><![CDATA[Telefon]]></description>
+    <content:encoded><![CDATA[Telefon]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/kpmhdt9plbn8l0yogoq0r18o14lx/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Telefon</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399795-s4e17-jammer.mp3?blob_id=7803320" length="29716520" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/565889460</guid>
+    <pubDate>Mon, 28 Jan 2019 20:45:03 +0300</pubDate>
+    <itunes:duration>2472</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E16 - Saçlar</itunes:title>
+    <title>S4E16 - Saçlar</title>
+    <description><![CDATA[Avlananlar, bilimsel şeyler ve dahası...]]></description>
+    <content:encoded><![CDATA[Avlananlar, bilimsel şeyler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/2ra5vz4gnuyida0o41ngtern9jqm/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Avlananlar, bilimsel şeyler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399798-s4e16-saclar.mp3?blob_id=7803329" length="38777980" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/563867439</guid>
+    <pubDate>Thu, 24 Jan 2019 20:46:01 +0300</pubDate>
+    <itunes:duration>3228</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E15 - Yenilik</itunes:title>
+    <title>S4E15 - Yenilik</title>
+    <description><![CDATA[Yeni dönem başlıyor...]]></description>
+    <content:encoded><![CDATA[Yeni dönem başlıyor...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/n60eflmd8rih33phy7r0pvz6dlzq/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yeni dönem başlıyor...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399801-s4e15-yenilik.mp3?blob_id=7803326" length="31943095" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/562392732</guid>
+    <pubDate>Mon, 21 Jan 2019 20:45:03 +0300</pubDate>
+    <itunes:duration>2658</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E14 - Magic</itunes:title>
+    <title>S4E14 - Magic</title>
+    <description><![CDATA[MGT oynayanlar, tuvalet kağıdı sorunsalı ve dahası...]]></description>
+    <content:encoded><![CDATA[MGT oynayanlar, tuvalet kağıdı sorunsalı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/xeqy2kvzax4lknw7e4mqb4z1x8im/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>MGT oynayanlar, tuvalet kağıdı sorunsalı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399804-s4e14-magic.mp3?blob_id=7803332" length="45341713" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/562394133</guid>
+    <pubDate>Mon, 21 Jan 2019 18:39:59 +0300</pubDate>
+    <itunes:duration>3775</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4B13 - Evlenme Teklifi</itunes:title>
+    <title>S4B13 - Evlenme Teklifi</title>
+    <description><![CDATA[Evlilik teklifi sürprizi, fizikçi şef ve dahası...]]></description>
+    <content:encoded><![CDATA[Evlilik teklifi sürprizi, fizikçi şef ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/lzoerr2zl67a3t1e5z1z0ouwxq9k/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Evlilik teklifi sürprizi, fizikçi şef ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399807-s4b13-evlenme-teklifi.mp3?blob_id=7803338" length="46178069" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/556995264</guid>
+    <pubDate>Thu, 10 Jan 2019 22:26:44 +0300</pubDate>
+    <itunes:duration>3844</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E12 - Rap</itunes:title>
+    <title>S4E12 - Rap</title>
+    <description><![CDATA[Rapler, korku filmleri ve dahası...]]></description>
+    <content:encoded><![CDATA[Rapler, korku filmleri ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/qdqykzig5xwcbmxrqgr3aqvvz7t3/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Rapler, korku filmleri ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399810-s4e12-rap.mp3?blob_id=7803341" length="46896517" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/551083422</guid>
+    <pubDate>Fri, 28 Dec 2018 19:57:18 +0300</pubDate>
+    <itunes:duration>3904</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E10 - Kustafa</itunes:title>
+    <title>S4E10 - Kustafa</title>
+    <description><![CDATA[Servet avcısı, yılbaşı planları ve dahası...]]></description>
+    <content:encoded><![CDATA[Servet avcısı, yılbaşı planları ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/k4ximsl52b56yrvzzf73q8ntjgl4/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Servet avcısı, yılbaşı planları ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399813-s4e10-kustafa.mp3?blob_id=7803344" length="49550241" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/545986641</guid>
+    <pubDate>Mon, 17 Dec 2018 03:36:31 +0300</pubDate>
+    <itunes:duration>4125</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E9 - Yavuz&#39;un Kaşığı</itunes:title>
+    <title>S4E9 - Yavuz&#39;un Kaşığı</title>
+    <description><![CDATA[Kameralar, yeni yeni bir şeyler, seksizm ve dahası]]></description>
+    <content:encoded><![CDATA[Kameralar, yeni yeni bir şeyler, seksizm ve dahası]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/1fowgqii33295nx0yd6kv9wxretd/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kameralar, yeni yeni bir şeyler, seksizm ve dahası</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399816-s4e9-yavuz-un-kasigi.mp3?blob_id=7803356" length="89950619" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/539909601</guid>
+    <pubDate>Wed, 05 Dec 2018 02:46:31 +0300</pubDate>
+    <itunes:duration>7492</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E8 - Flash</itunes:title>
+    <title>S4E8 - Flash</title>
+    <description><![CDATA[Hızlı hızlı cevaplar, şakalı...]]></description>
+    <content:encoded><![CDATA[Hızlı hızlı cevaplar, şakalı...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/trsquyfb20bgg1h4ha8b8kdm82g4/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Hızlı hızlı cevaplar, şakalı...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399819-s4e8-flash.mp3?blob_id=7803359" length="78958923" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/536424771</guid>
+    <pubDate>Wed, 28 Nov 2018 00:39:53 +0300</pubDate>
+    <itunes:duration>6576</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E7 - İçim Interior</itunes:title>
+    <title>S4E7 - İçim Interior</title>
+    <description><![CDATA[Hintliler, 90'lar, O Tat mı Lahmacun ve dahası...]]></description>
+    <content:encoded><![CDATA[Hintliler, 90'lar, O Tat mı Lahmacun ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/9205kaax2e2vpjtp702j8wb2gy8h/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Hintliler, 90&#39;lar, O Tat mı Lahmacun ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399822-s4e7-icim-interior.mp3?blob_id=7803368" length="91251955" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/532694082</guid>
+    <pubDate>Tue, 20 Nov 2018 05:46:17 +0300</pubDate>
+    <itunes:duration>7600</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E6 - Oktaaay</itunes:title>
+    <title>S4E6 - Oktaaay</title>
+    <description><![CDATA[Oktay, Oktay, Oktay ve dahası...]]></description>
+    <content:encoded><![CDATA[Oktay, Oktay, Oktay ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/dcn8iujdt7zt6hy02dmy97sr0cfr/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Oktay, Oktay, Oktay ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399825-s4e6-oktaaay.mp3?blob_id=7803350" length="94524877" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/525731847</guid>
+    <pubDate>Tue, 06 Nov 2018 21:10:56 +0300</pubDate>
+    <itunes:duration>7873</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E5 - Atasözü</itunes:title>
+    <title>S4E5 - Atasözü</title>
+    <description><![CDATA[Kumar, whatsapp ve dahası...]]></description>
+    <content:encoded><![CDATA[Kumar, whatsapp ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/91a3zemrllkxhfuyk6lcwb5pqllq/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kumar, whatsapp ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399828-s4e5-atasozu.mp3?blob_id=7803347" length="90053236" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/524840904</guid>
+    <pubDate>Mon, 05 Nov 2018 02:32:34 +0300</pubDate>
+    <itunes:duration>7500</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E4 - Etik Etik Etik</itunes:title>
+    <title>S4E4 - Etik Etik Etik</title>
+    <description><![CDATA[Etik üstüne bir takım konuşmalar, okul başkanlığı seçimleri ve dahası...]]></description>
+    <content:encoded><![CDATA[Etik üstüne bir takım konuşmalar, okul başkanlığı seçimleri ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/5dd20wkczdux9xeqj2ptgrx8n7go/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Etik üstüne bir takım konuşmalar, okul başkanlığı seçimleri ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399831-s4e4-etik-etik-etik.mp3?blob_id=7803353" length="89995258" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/522240447</guid>
+    <pubDate>Tue, 30 Oct 2018 20:33:32 +0300</pubDate>
+    <itunes:duration>7496</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E3 - WOW</itunes:title>
+    <title>S4E3 - WOW</title>
+    <description><![CDATA[Yemekler, seksistler, ırkçılar ve dahası...]]></description>
+    <content:encoded><![CDATA[Yemekler, seksistler, ırkçılar ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/t5sbceyjxgxq1pvplemqslho0ao9/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yemekler, seksistler, ırkçılar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399834-s4e3-wow.mp3?blob_id=7803362" length="86588137" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/516218559</guid>
+    <pubDate>Thu, 18 Oct 2018 18:23:25 +0300</pubDate>
+    <itunes:duration>7212</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E2 - Derbi</itunes:title>
+    <title>S4E2 - Derbi</title>
+    <description><![CDATA[Cep telefonu olmayan genç, gözlük sorunsalı ve dahası...]]></description>
+    <content:encoded><![CDATA[Cep telefonu olmayan genç, gözlük sorunsalı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/8v1wwi5n3lu26iy4vn4ik3wfxrgw/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Cep telefonu olmayan genç, gözlük sorunsalı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399837-s4e2-derbi.mp3?blob_id=7803371" length="65053735" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/505394406</guid>
+    <pubDate>Wed, 26 Sep 2018 13:30:51 +0300</pubDate>
+    <itunes:duration>5417</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S4E1 - Cüce</itunes:title>
+    <title>S4E1 - Cüce</title>
+    <description><![CDATA[Cüceler, komedyenler projesi, elektronik sigara sorunsalı ve dahası...]]></description>
+    <content:encoded><![CDATA[Cüceler, komedyenler projesi, elektronik sigara sorunsalı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/wlqv8qbig0emlryoipmo2uw12b8f/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Cüceler, komedyenler projesi, elektronik sigara sorunsalı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399840-s4e1-cuce.mp3?blob_id=7803374" length="85993174" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/501617445</guid>
+    <pubDate>Tue, 18 Sep 2018 16:27:22 +0300</pubDate>
+    <itunes:duration>7162</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E11 - Gomiş</itunes:title>
+    <title>S3E11 - Gomiş</title>
+    <description><![CDATA[Fifa vs Pes, alman aile ve dahası... Axe'ın sunduğu O Tarz Mı her salı geekyapar'ın Youtube kanalında!]]></description>
+    <content:encoded><![CDATA[Fifa vs Pes, alman aile ve dahası... Axe'ın sunduğu O Tarz Mı her salı geekyapar'ın Youtube kanalında!]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/7psgibd7u2ug06aqxv5f7dq4hefw/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Fifa vs Pes, alman aile ve dahası... Axe&#39;ın sunduğu O Tarz Mı her salı geekyapar&#39;ın Youtube kanalında!</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399843-s3e11-gomis.mp3?blob_id=7803395" length="95052261" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/429582036</guid>
+    <pubDate>Sat, 14 Apr 2018 15:23:30 +0300</pubDate>
+    <itunes:duration>7917</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E10 - Karanlık Aile</itunes:title>
+    <title>S3E10 - Karanlık Aile</title>
+    <description><![CDATA[Anneannesi kötü, omegle ve fazlası...]]></description>
+    <content:encoded><![CDATA[Anneannesi kötü, omegle ve fazlası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/c05alcsvo09oeepmzz2acwvlaj8k/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Anneannesi kötü, omegle ve fazlası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399846-s3e10-karanlik-aile.mp3?blob_id=7803389" length="101722173" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/420673180</guid>
+    <pubDate>Tue, 27 Mar 2018 11:42:08 +0300</pubDate>
+    <itunes:duration>8473</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E9 - Mikasa</itunes:title>
+    <title>S3E9 - Mikasa</title>
+    <description><![CDATA[Çocuğuna anime karakteri ismi koymak isteyen ebeveyn, film sitesinde tanışıp kaynaşan gençler ve dahası...]]></description>
+    <content:encoded><![CDATA[Çocuğuna anime karakteri ismi koymak isteyen ebeveyn, film sitesinde tanışıp kaynaşan gençler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/ppz8eujtt1z4lgljnx43ffn913mz/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Çocuğuna anime karakteri ismi koymak isteyen ebeveyn, film sitesinde tanışıp kaynaşan gençler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399849-s3e9-mikasa.mp3?blob_id=7803392" length="88026366" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/413459808</guid>
+    <pubDate>Wed, 14 Mar 2018 12:07:48 +0300</pubDate>
+    <itunes:duration>7332</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E8 - Basurlu Yılan</itunes:title>
+    <title>S3E8 - Basurlu Yılan</title>
+    <description><![CDATA[Cimri sevgili, hesap kavgası, ajans muhabbetleri ve dahası...]]></description>
+    <content:encoded><![CDATA[Cimri sevgili, hesap kavgası, ajans muhabbetleri ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/bilp4ieclo5bcopbfscf89huepyh/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Cimri sevgili, hesap kavgası, ajans muhabbetleri ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399852-s3e8-basurlu-yilan.mp3?blob_id=7803401" length="88918200" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/408632076</guid>
+    <pubDate>Sun, 04 Mar 2018 22:46:13 +0300</pubDate>
+    <itunes:duration>7406</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E7 - Kaplumbağa</itunes:title>
+    <title>S3E7 - Kaplumbağa</title>
+    <description><![CDATA[Kaplumbağa sesinden rahatsız olan çift, çocuk aşkına birbirine giren kuzenler ve dahası...]]></description>
+    <content:encoded><![CDATA[Kaplumbağa sesinden rahatsız olan çift, çocuk aşkına birbirine giren kuzenler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/i7vmt77ktbkp8d8mg435r4qjdfj4/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Kaplumbağa sesinden rahatsız olan çift, çocuk aşkına birbirine giren kuzenler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399855-s3e7-kaplumbaga.mp3?blob_id=7803398" length="99596216" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/404217594</guid>
+    <pubDate>Sat, 24 Feb 2018 00:14:30 +0300</pubDate>
+    <itunes:duration>8296</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E6 - Çileee</itunes:title>
+    <title>S3E6 - Çileee</title>
+    <description><![CDATA[Benim ederim daha fazla diyen bencil sevgili, 8 yıldır asgari ücretle çalışan abi, sizden gelen müzikler ve dahası...]]></description>
+    <content:encoded><![CDATA[Benim ederim daha fazla diyen bencil sevgili, 8 yıldır asgari ücretle çalışan abi, sizden gelen müzikler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/k4ft5huvexjvjy21kdfdfzn2uqoh/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Benim ederim daha fazla diyen bencil sevgili, 8 yıldır asgari ücretle çalışan abi, sizden gelen müzikler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399858-s3e6-cileee.mp3?blob_id=7803386" length="72891437" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/399328152</guid>
+    <pubDate>Wed, 14 Feb 2018 07:31:28 +0300</pubDate>
+    <itunes:duration>6071</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E5 - Günlük</itunes:title>
+    <title>S3E5 - Günlük</title>
+    <description><![CDATA[Zeplinlere inanmayan sevgili, günlükler ve dahası...]]></description>
+    <content:encoded><![CDATA[Zeplinlere inanmayan sevgili, günlükler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/3pg1pfb1255xk1v44r0g30uz73yt/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Zeplinlere inanmayan sevgili, günlükler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399861-s3e5-gunluk.mp3?blob_id=7803404" length="74636878" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/396478062</guid>
+    <pubDate>Thu, 08 Feb 2018 21:38:41 +0300</pubDate>
+    <itunes:duration>6216</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E4 - Bazı Konular</itunes:title>
+    <title>S3E4 - Bazı Konular</title>
+    <description><![CDATA[Ellenen şef, tarihin en kısa sorusu ve dahası...]]></description>
+    <content:encoded><![CDATA[Ellenen şef, tarihin en kısa sorusu ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/9uviapoh57gm99v3fqgvluoohgg6/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ellenen şef, tarihin en kısa sorusu ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399864-s3e4-bazi-konular.mp3?blob_id=7803380" length="64130293" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/396412938</guid>
+    <pubDate>Thu, 08 Feb 2018 20:12:43 +0300</pubDate>
+    <itunes:duration>5341</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E3 - Öyle Oldu Böyle Oldu</itunes:title>
+    <title>S3E3 - Öyle Oldu Böyle Oldu</title>
+    <description><![CDATA[Çok çılgın sevgililer, şiveyi fazla kaçıran bir genç ve dahası...]]></description>
+    <content:encoded><![CDATA[Çok çılgın sevgililer, şiveyi fazla kaçıran bir genç ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/4a0k2yzaak05z2jw7wxsttgeb4p8/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Çok çılgın sevgililer, şiveyi fazla kaçıran bir genç ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399867-s3e3-oyle-oldu-boyle-oldu.mp3?blob_id=7803416" length="69617624" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/388311317</guid>
+    <pubDate>Wed, 24 Jan 2018 10:32:00 +0300</pubDate>
+    <itunes:duration>5798</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E2 - Çok Kötüyüz</itunes:title>
+    <title>S3E2 - Çok Kötüyüz</title>
+    <description><![CDATA[Bir takım kötüler, beybiliboylar, kolej çocukları ve dahası...]]></description>
+    <content:encoded><![CDATA[Bir takım kötüler, beybiliboylar, kolej çocukları ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/6qmejep89qc0961yst7y7xebg7fk/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Bir takım kötüler, beybiliboylar, kolej çocukları ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399870-s3e2-cok-kotuyuz.mp3?blob_id=7803410" length="64728110" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/384561887</guid>
+    <pubDate>Tue, 16 Jan 2018 22:24:00 +0300</pubDate>
+    <itunes:duration>5390</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S3E1 - Yok deve</itunes:title>
+    <title>S3E1 - Yok deve</title>
+    <description><![CDATA[Asosyal bir genç, inatçı bir deve ve dahası...]]></description>
+    <content:encoded><![CDATA[Asosyal bir genç, inatçı bir deve ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/w95lhq4ac1lie0do11hl7yod2x89/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Asosyal bir genç, inatçı bir deve ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399873-s3e1-yok-deve.mp3?blob_id=7803407" length="69945532" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/382048304</guid>
+    <pubDate>Thu, 11 Jan 2018 18:10:17 +0300</pubDate>
+    <itunes:duration>5825</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E17 - Eniyi&#39;s (Yeni Yıl Özel)</itunes:title>
+    <title>S2E17 - Eniyi&#39;s (Yeni Yıl Özel)</title>
+    <description><![CDATA[Yılın en iyileri Eniyi's adı altında bu programda...]]></description>
+    <content:encoded><![CDATA[Yılın en iyileri Eniyi's adı altında bu programda...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/sjvudjqwwmfife0a27m89drltuqt/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yılın en iyileri Eniyi&#39;s adı altında bu programda...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399876-s2e17-eniyi-s-yeni-yil-ozel.mp3?blob_id=7803413" length="62252008" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/382020188</guid>
+    <pubDate>Thu, 11 Jan 2018 16:49:01 +0300</pubDate>
+    <itunes:duration>5184</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E1 - Kulaklık</itunes:title>
+    <title>S2E1 - Kulaklık</title>
+    <description><![CDATA[Pahalı hediyeye tav olan sevgili, pahalı kulaklık muhabbetleri, güçlü olanın kazandığı bir dünya ve dahası...]]></description>
+    <content:encoded><![CDATA[Pahalı hediyeye tav olan sevgili, pahalı kulaklık muhabbetleri, güçlü olanın kazandığı bir dünya ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/wageethctdhuyr4x7olebj4mp9t6/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Pahalı hediyeye tav olan sevgili, pahalı kulaklık muhabbetleri, güçlü olanın kazandığı bir dünya ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399885-s2e1-kulaklik.mp3?blob_id=7803434" length="72240234" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379255202</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:35 +0300</pubDate>
+    <itunes:duration>6014</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E4 - Okçuluk</itunes:title>
+    <title>S2E4 - Okçuluk</title>
+    <description><![CDATA[20TL'ye ok, bi takım hayran kızlar, sünnetçilik ve dahası...]]></description>
+    <content:encoded><![CDATA[20TL'ye ok, bi takım hayran kızlar, sünnetçilik ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/f4ttd1c2r7dn0khpdzkwtlk7w2dv/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>20TL&#39;ye ok, bi takım hayran kızlar, sünnetçilik ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399879-s2e4-okculuk.mp3?blob_id=7803422" length="70768493" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379275869</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:35 +0300</pubDate>
+    <itunes:duration>5891</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E3 - DJ Berç</itunes:title>
+    <title>S2E3 - DJ Berç</title>
+    <description><![CDATA[Uzaktan DJ süzen kız, bir takım önemli hijyenler, yaşça büyük ablanın yanına gitmek isteyen genç çocuk ve dahası...]]></description>
+    <content:encoded><![CDATA[Uzaktan DJ süzen kız, bir takım önemli hijyenler, yaşça büyük ablanın yanına gitmek isteyen genç çocuk ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/xhtvhxkigojejon81vv6o9imd517/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Uzaktan DJ süzen kız, bir takım önemli hijyenler, yaşça büyük ablanın yanına gitmek isteyen genç çocuk ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399882-s2e3-dj-berc.mp3?blob_id=7803419" length="70305186" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379271939</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:35 +0300</pubDate>
+    <itunes:duration>5853</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E5 - Ortam Kızı</itunes:title>
+    <title>S2E5 - Ortam Kızı</title>
+    <description><![CDATA[Fazla kültürlü fazla iyi çok fazla bir genç, kıskanç arkadaş ve dahası...]]></description>
+    <content:encoded><![CDATA[Fazla kültürlü fazla iyi çok fazla bir genç, kıskanç arkadaş ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/rqq0448vagunq5ynypb3m3ld2p8d/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Fazla kültürlü fazla iyi çok fazla bir genç, kıskanç arkadaş ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399918-s2e5-ortam-kizi.mp3?blob_id=7803482" length="71541515" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379292219</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>5956</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E2 - Soyut Carolina</itunes:title>
+    <title>S2E2 - Soyut Carolina</title>
+    <description><![CDATA[Hazırlıkta kalan kız, yürüdüğü kızı oyunda öldüren oğlan, ilişkisi çorba olmuş aşık ve dahası...]]></description>
+    <content:encoded><![CDATA[Hazırlıkta kalan kız, yürüdüğü kızı oyunda öldüren oğlan, ilişkisi çorba olmuş aşık ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/svv9wz7yhx4pwjbji9pbo0uer233/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Hazırlıkta kalan kız, yürüdüğü kızı oyunda öldüren oğlan, ilişkisi çorba olmuş aşık ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399921-s2e2-soyut-carolina.mp3?blob_id=7803473" length="64893464" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379261706</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>5402</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E7 - Cezalandırıcı</itunes:title>
+    <title>S2E7 - Cezalandırıcı</title>
+    <description><![CDATA[M. Akatlar, Teoman, Droneları Vurmasınlar, cezalandırıcı ve dahası...]]></description>
+    <content:encoded><![CDATA[M. Akatlar, Teoman, Droneları Vurmasınlar, cezalandırıcı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/4jexbr65jdy0c7494qvqajmsf5br/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>M. Akatlar, Teoman, Droneları Vurmasınlar, cezalandırıcı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399915-s2e7-cezalandirici.mp3?blob_id=7803470" length="71734931" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379296755</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>5972</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E8 - Telomer</itunes:title>
+    <title>S2E8 - Telomer</title>
+    <description><![CDATA[Telomerler, Kerrut teyzenin maceraları, uzak olmak için yakın dur üniversitesi öğretim görevlisi ve dahası...]]></description>
+    <content:encoded><![CDATA[Telomerler, Kerrut teyzenin maceraları, uzak olmak için yakın dur üniversitesi öğretim görevlisi ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/awlhkbcpdrb0b9836vxwrwdj8uqr/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Telomerler, Kerrut teyzenin maceraları, uzak olmak için yakın dur üniversitesi öğretim görevlisi ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399909-s2e8-telomer.mp3?blob_id=7803467" length="66608441" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379298588</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>5544</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E6 - Edebiyat Rambosu</itunes:title>
+    <title>S2E6 - Edebiyat Rambosu</title>
+    <description><![CDATA[Bir takım şaka polisliği, Kutsi ve Kutsiyeler, kendini edebiyat rambosu sanan dinleyici ve dahası...]]></description>
+    <content:encoded><![CDATA[Bir takım şaka polisliği, Kutsi ve Kutsiyeler, kendini edebiyat rambosu sanan dinleyici ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/k3pbxtjo3sikfe3iwrqn5clxeevy/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Bir takım şaka polisliği, Kutsi ve Kutsiyeler, kendini edebiyat rambosu sanan dinleyici ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399912-s2e6-edebiyat-rambosu.mp3?blob_id=7803464" length="73077840" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379298138</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>6084</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E12 - Çaycı Abla</itunes:title>
+    <title>S2E12 - Çaycı Abla</title>
+    <description><![CDATA[Emcükleyenler, Bengi'nin ekibe dahil olması, çaycı abla ve dahası...]]></description>
+    <content:encoded><![CDATA[Emcükleyenler, Bengi'nin ekibe dahil olması, çaycı abla ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/9ei421o5g0b3dfa8znm728zydstx/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Emcükleyenler, Bengi&#39;nin ekibe dahil olması, çaycı abla ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399900-s2e12-cayci-abla.mp3?blob_id=7803461" length="66359818" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379332701</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>5524</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E11 - Yolex</itunes:title>
+    <title>S2E11 - Yolex</title>
+    <description><![CDATA[Yolexler, konuklar, freestyle rapler ve dahası...]]></description>
+    <content:encoded><![CDATA[Yolexler, konuklar, freestyle rapler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/p1c44a80yf84ck8agkbyvfqe9q2t/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Yolexler, konuklar, freestyle rapler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399897-s2e11-yolex.mp3?blob_id=7803455" length="73283720" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379333277</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>6101</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E15 - Hermione</itunes:title>
+    <title>S2E15 - Hermione</title>
+    <description><![CDATA[Ustalar birliği, Hermione, laz uşaklar ve dahası...]]></description>
+    <content:encoded><![CDATA[Ustalar birliği, Hermione, laz uşaklar ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/n2xd7bo07vdalamt56c255bmq9cr/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ustalar birliği, Hermione, laz uşaklar ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399891-s2e15-hermione.mp3?blob_id=7803449" length="71252444" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379344362</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>5931</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E13 - Wattpad</itunes:title>
+    <title>S2E13 - Wattpad</title>
+    <description><![CDATA[Gizli wattpad yazarı kız, hashtag'e musallat olan escort, Adana ve dahası...]]></description>
+    <content:encoded><![CDATA[Gizli wattpad yazarı kız, hashtag'e musallat olan escort, Adana ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/ktf08ashvwegvn0lll3bm09k0c9t/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Gizli wattpad yazarı kız, hashtag&#39;e musallat olan escort, Adana ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399894-s2e13-wattpad.mp3?blob_id=7803452" length="70177242" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379340555</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>5842</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E16 - Laz İtalyan</itunes:title>
+    <title>S2E16 - Laz İtalyan</title>
+    <description><![CDATA[İtalyanlar, aldatılanlar, boynuzlular ve dahası...]]></description>
+    <content:encoded><![CDATA[İtalyanlar, aldatılanlar, boynuzlular ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/90hij23iem867vckw5liu9imdglw/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>İtalyanlar, aldatılanlar, boynuzlular ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399888-s2e16-laz-italyan.mp3?blob_id=7803443" length="80952134" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379347065</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>6740</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E10 - Çomar ve Mahzar</itunes:title>
+    <title>S2E10 - Çomar ve Mahzar</title>
+    <description><![CDATA[Beatbox yapan bebekler, bir at hikayesi, acayip sert erkekler ve dahası...]]></description>
+    <content:encoded><![CDATA[Beatbox yapan bebekler, bir at hikayesi, acayip sert erkekler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/v0c2hoc8469r0qo5k12nneu2s25h/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Beatbox yapan bebekler, bir at hikayesi, acayip sert erkekler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399903-s2e10-comar-ve-mahzar.mp3?blob_id=7803437" length="70183264" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379332221</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>5842</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E9 - Beatbox</itunes:title>
+    <title>S2E9 - Beatbox</title>
+    <description><![CDATA[Beatbox, ölen hamster refik, batı etkisinde Türk edebiyatı ve dahası...]]></description>
+    <content:encoded><![CDATA[Beatbox, ölen hamster refik, batı etkisinde Türk edebiyatı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/dlsu814icvdh5mzdcuxykp2vc7jy/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Beatbox, ölen hamster refik, batı etkisinde Türk edebiyatı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399906-s2e9-beatbox.mp3?blob_id=7803446" length="62033982" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379300100</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:34 +0300</pubDate>
+    <itunes:duration>5163</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S2E14 - Annesi Kötü</itunes:title>
+    <title>S2E14 - Annesi Kötü</title>
+    <description><![CDATA[Evli sevgili, annesi kötü bir adam, teyze ve dahası...]]></description>
+    <content:encoded><![CDATA[Evli sevgili, annesi kötü bir adam, teyze ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/ulpvf7ncgjtkafdeth08vvgrrg8d/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Evli sevgili, annesi kötü bir adam, teyze ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399924-s2e14-annesi-kotu.mp3?blob_id=7803476" length="71774063" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/379339301</guid>
+    <pubDate>Sat, 06 Jan 2018 01:12:33 +0300</pubDate>
+    <itunes:duration>5975</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E4 - Şişman Çocuk</itunes:title>
+    <title>S1E4 - Şişman Çocuk</title>
+    <description><![CDATA[Çapkın basketbolcu, eski sevgilisi ve komşusu arasında kalan kız, tinderdaki şişman çocuk ve dahası...]]></description>
+    <content:encoded><![CDATA[Çapkın basketbolcu, eski sevgilisi ve komşusu arasında kalan kız, tinderdaki şişman çocuk ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/c5hye6cxyg8jrifrglsutwabaxlx/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Çapkın basketbolcu, eski sevgilisi ve komşusu arasında kalan kız, tinderdaki şişman çocuk ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399954-s1e4-sisman-cocuk.mp3?blob_id=7803533" length="70573889" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/376367225</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>5875</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E5 - Masaj Salonu</itunes:title>
+    <title>S1E5 - Masaj Salonu</title>
+    <description><![CDATA[Ofisteki nemrut adam, masaja gidip gitmediği belli olmayan sevgili, iş yerindeki gizli aşk ve dahası...]]></description>
+    <content:encoded><![CDATA[Ofisteki nemrut adam, masaja gidip gitmediği belli olmayan sevgili, iş yerindeki gizli aşk ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/iev9utudu3abdlloeu15synaerrt/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Ofisteki nemrut adam, masaja gidip gitmediği belli olmayan sevgili, iş yerindeki gizli aşk ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399951-s1e5-masaj-salonu.mp3?blob_id=7803524" length="57364289" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/376386452</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>4774</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E3 - Ahbab-ı Tenasül</itunes:title>
+    <title>S1E3 - Ahbab-ı Tenasül</title>
+    <description><![CDATA[3 Ahbab-ı tenasül - 1 sevgili, krunazlık yaparken acı gerçeği öğrenen muhasebeci, hemşireli tekne partisi ve dahası...]]></description>
+    <content:encoded><![CDATA[3 Ahbab-ı tenasül - 1 sevgili, krunazlık yaparken acı gerçeği öğrenen muhasebeci, hemşireli tekne partisi ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/143ueqxc59nmzumk2jueomb1bbzr/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>3 Ahbab-ı tenasül - 1 sevgili, krunazlık yaparken acı gerçeği öğrenen muhasebeci, hemşireli tekne partisi ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399957-s1e3-ahbab-i-tenasul.mp3?blob_id=7803518" length="64795713" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/376154786</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>5394</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E8 - Bayan Güzellik</itunes:title>
+    <title>S1E8 - Bayan Güzellik</title>
+    <description><![CDATA[Tüyleri yüzünden insanı soğutan güzel bayan, sevdiği kızı ayartmak için palavralar atan genç, şizofren babayla uğraşan sevgili ve dahası...]]></description>
+    <content:encoded><![CDATA[Tüyleri yüzünden insanı soğutan güzel bayan, sevdiği kızı ayartmak için palavralar atan genç, şizofren babayla uğraşan sevgili ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/dw6e6mchxua61jncsa7sog5ualcu/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Tüyleri yüzünden insanı soğutan güzel bayan, sevdiği kızı ayartmak için palavralar atan genç, şizofren babayla uğraşan sevgili ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399942-s1e8-bayan-guzellik.mp3?blob_id=7803506" length="64598226" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/377033624</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>5377</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E10 - Meme Ucu</itunes:title>
+    <title>S1E10 - Meme Ucu</title>
+    <description><![CDATA[İnanılmaz mütevazı kadın, devlete giden zengin çocuk, çaycı ol diyen baba ve dahası...]]></description>
+    <content:encoded><![CDATA[İnanılmaz mütevazı kadın, devlete giden zengin çocuk, çaycı ol diyen baba ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/h0h8qs9unzf9xn3j4m662oy9x350/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>İnanılmaz mütevazı kadın, devlete giden zengin çocuk, çaycı ol diyen baba ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399936-s1e10-meme-ucu.mp3?blob_id=7803497" length="65937984" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/378955544</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>5489</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E9 - İngiliz Aksanı</itunes:title>
+    <title>S1E9 - İngiliz Aksanı</title>
+    <description><![CDATA[Sarılgan ev arkadaşı, halı sahada pas isteyen patron, fake türk kızı ve dahası...]]></description>
+    <content:encoded><![CDATA[Sarılgan ev arkadaşı, halı sahada pas isteyen patron, fake türk kızı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/jbns6ocd5876k34bdjnazd0mwo68/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Sarılgan ev arkadaşı, halı sahada pas isteyen patron, fake türk kızı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399939-s1e9-ingiliz-aksani.mp3?blob_id=7803500" length="61237207" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/377041700</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>5097</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E6 - İri Kıyım Kız</itunes:title>
+    <title>S1E6 - İri Kıyım Kız</title>
+    <description><![CDATA[Paketçi sanılan çalışan, sahnede büyüyen sevgili, arkadaş grubundaki iri kıyım kız, entel manti ve dahası...]]></description>
+    <content:encoded><![CDATA[Paketçi sanılan çalışan, sahnede büyüyen sevgili, arkadaş grubundaki iri kıyım kız, entel manti ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/mese9maamtwirz0jnf3ygpq8zsug/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Paketçi sanılan çalışan, sahnede büyüyen sevgili, arkadaş grubundaki iri kıyım kız, entel manti ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399948-s1e6-iri-kiyim-kiz.mp3?blob_id=7803503" length="67363337" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/376929395</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>5608</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E13 - Hastalık</itunes:title>
+    <title>S1E13 - Hastalık</title>
+    <description><![CDATA[İş arkadaşını hasta eden adam, kuzenini kıskanan çocuk, kavga eden çift ve dahası...]]></description>
+    <content:encoded><![CDATA[İş arkadaşını hasta eden adam, kuzenini kıskanan çocuk, kavga eden çift ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/vuzaxvdhog9jgwvlg9471r0mitvt/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>İş arkadaşını hasta eden adam, kuzenini kıskanan çocuk, kavga eden çift ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399927-s1e13-hastalik.mp3?blob_id=7803488" length="64875009" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/378970010</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>5400</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E11 - Tost</itunes:title>
+    <title>S1E11 - Tost</title>
+    <description><![CDATA[Sevgili miyiz? diyen ilk buluşmadaki kız, kapısına tost bırakılan genç, eski sevgili sorunsalı ve dahası...]]></description>
+    <content:encoded><![CDATA[Sevgili miyiz? diyen ilk buluşmadaki kız, kapısına tost bırakılan genç, eski sevgili sorunsalı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/mxqrfjfu0aa043hxllifrmkoe4d3/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Sevgili miyiz? diyen ilk buluşmadaki kız, kapısına tost bırakılan genç, eski sevgili sorunsalı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399933-s1e11-tost.mp3?blob_id=7803491" length="63938041" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/378963500</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>5322</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E12 - At</itunes:title>
+    <title>S1E12 - At</title>
+    <description><![CDATA[Komşularının gözetlediğini bilen çift, ailesinin at aldığı kız, içmeyince muhabbeti sarmayan amca ve dahası...]]></description>
+    <content:encoded><![CDATA[Komşularının gözetlediğini bilen çift, ailesinin at aldığı kız, içmeyince muhabbeti sarmayan amca ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/ggwia11drob007lzh7os3apor2cr/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Komşularının gözetlediğini bilen çift, ailesinin at aldığı kız, içmeyince muhabbeti sarmayan amca ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399930-s1e12-at.mp3?blob_id=7803479" length="67576476" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/378967973</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>5625</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E7 - Cesur ve Güzel</itunes:title>
+    <title>S1E7 - Cesur ve Güzel</title>
+    <description><![CDATA[Aşırı büyük kediyi sakat bırakatan komşu, yurtdışında onun bunun parmağıyla fotoğraf çekilen kız arkadaş, kıro sevgili ve dahası...]]></description>
+    <content:encoded><![CDATA[Aşırı büyük kediyi sakat bırakatan komşu, yurtdışında onun bunun parmağıyla fotoğraf çekilen kız arkadaş, kıro sevgili ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/zfxmefcnc88xzxuwaaiofmc3bz1m/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Aşırı büyük kediyi sakat bırakatan komşu, yurtdışında onun bunun parmağıyla fotoğraf çekilen kız arkadaş, kıro sevgili ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399945-s1e7-cesur-ve-guzel.mp3?blob_id=7803485" length="55864028" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/377024024</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:57 +0300</pubDate>
+    <itunes:duration>4649</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E14 - Kıymık</itunes:title>
+    <title>S1E14 - Kıymık</title>
+    <description><![CDATA[Uydurma oyunla mezun olan genç, bekar öğrenci evinde coşanlar, sosyal medyayı kullanamayan ajans başkanı ve dahası...]]></description>
+    <content:encoded><![CDATA[Uydurma oyunla mezun olan genç, bekar öğrenci evinde coşanlar, sosyal medyayı kullanamayan ajans başkanı ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/h5rdqlart1pgiplv6w1adlbjp5ov/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Uydurma oyunla mezun olan genç, bekar öğrenci evinde coşanlar, sosyal medyayı kullanamayan ajans başkanı ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399960-s1e14-kiymik.mp3?blob_id=7803512" length="48402816" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/378973895</guid>
+    <pubDate>Fri, 05 Jan 2018 23:00:29 +0300</pubDate>
+    <itunes:duration>4027</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E1 - Şefiiiiiiiiiim!</itunes:title>
+    <title>S1E1 - Şefiiiiiiiiiim!</title>
+    <description><![CDATA[Şefiiiim bana oradan bir eski sevgili, biraz kokulu bir şeyler ve dahası...]]></description>
+    <content:encoded><![CDATA[Şefiiiim bana oradan bir eski sevgili, biraz kokulu bir şeyler ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/gy34siz4twdualnhw2ms0p4dmfl9/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Şefiiiim bana oradan bir eski sevgili, biraz kokulu bir şeyler ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399963-s1e1-sefiiiiiiiiiim.mp3?blob_id=7803530" length="62097682" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/376118105</guid>
+    <pubDate>Fri, 05 Jan 2018 22:46:40 +0300</pubDate>
+    <itunes:duration>5169</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>S1E2 - Koca Yürekli Adam</itunes:title>
+    <title>S1E2 - Koca Yürekli Adam</title>
+    <description><![CDATA[Bir takım yürümeler, ruh çağırma, çıldırmış gamer sevgili ve dahası...]]></description>
+    <content:encoded><![CDATA[Bir takım yürümeler, ruh çağırma, çıldırmış gamer sevgili ve dahası...]]></content:encoded>
+    <itunes:image href="https://storage.buzzsprout.com/variants/nai9vdziu0ra13wfttyarangvl5y/8d66eb17bb7d02ca4856ab443a78f2148cafbb129f58a3c81282007c6fe24ff2?.jpg" />
+    <itunes:author>otarzmi</itunes:author>
+    <itunes:summary>Bir takım yürümeler, ruh çağırma, çıldırmış gamer sevgili ve dahası...</itunes:summary>
+    <enclosure url="https://www.buzzsprout.com/794573/2399966-s1e2-koca-yurekli-adam.mp3?blob_id=7803521" length="57684664" type="audio/mpeg" />
+    <guid isPermaLink="false">tag:soundcloud,2010:tracks/376121021</guid>
+    <pubDate>Fri, 29 Dec 2017 15:04:29 +0300</pubDate>
+    <itunes:duration>4801</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:episodeType></itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+</channel>
+</rss>

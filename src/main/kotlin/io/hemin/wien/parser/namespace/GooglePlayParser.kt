@@ -21,19 +21,25 @@ internal class GooglePlayParser : NamespaceParser() {
 
     override fun Node.parseChannelData(builder: PodcastBuilder) {
         when (localName) {
-            "author" -> builder.googlePlay.author(ifCanBeParsed { textOrNull() })
-            "owner" -> builder.googlePlay.owner(ifCanBeParsed { textOrNull() })
+            "author" -> builder.googlePlayBuilder.author(ifCanBeParsed { textOrNull() })
+            "owner" -> builder.googlePlayBuilder.owner(ifCanBeParsed { textOrNull() })
             "category" -> {
-                val categoryBuilder = builder.createITunesCategoryBuilder()
+                val categoryBuilder = builder.createITunesStyleCategoryBuilder()
                 val category = ifCanBeParsed { toITunesCategoryBuilder(categoryBuilder, namespace) } ?: return
-                builder.googlePlay.addCategoryBuilder(category)
+                builder.googlePlayBuilder.addCategoryBuilder(category)
             }
-            "description" -> builder.googlePlay.description(ifCanBeParsed { textOrNull() })
-            "explicit" -> builder.googlePlay.explicit(ifCanBeParsed { textAsBooleanOrNull() })
-            "block" -> builder.googlePlay.block(ifCanBeParsed { textAsBooleanOrNull() })
+            "description" -> builder.googlePlayBuilder.description(ifCanBeParsed { textOrNull() })
+            "explicit" -> {
+                val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googlePlayBuilder.explicit(explicit)
+            }
+            "block" -> {
+                val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googlePlayBuilder.block(block)
+            }
             "image" -> {
                 val imageBuilder = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
-                builder.googlePlay.imageBuilder(imageBuilder)
+                builder.googlePlayBuilder.imageBuilder(imageBuilder)
             }
             else -> pass
         }
@@ -41,12 +47,18 @@ internal class GooglePlayParser : NamespaceParser() {
 
     override fun Node.parseItemData(builder: EpisodeBuilder) {
         when (localName) {
-            "description" -> builder.googlePlay.description(ifCanBeParsed { textOrNull() })
-            "explicit" -> builder.googlePlay.explicit(ifCanBeParsed { textAsBooleanOrNull() })
-            "block" -> builder.googlePlay.block(ifCanBeParsed { textAsBooleanOrNull() })
+            "description" -> builder.googlePlayBuilder.description(ifCanBeParsed { textOrNull() })
+            "explicit" -> {
+                val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googlePlayBuilder.explicit(explicit)
+            }
+            "block" -> {
+                val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googlePlayBuilder.block(block)
+            }
             "image" -> {
                 val imageBuilder = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
-                builder.googlePlay.imageBuilder(imageBuilder)
+                builder.googlePlayBuilder.imageBuilder(imageBuilder)
             }
             else -> pass
         }

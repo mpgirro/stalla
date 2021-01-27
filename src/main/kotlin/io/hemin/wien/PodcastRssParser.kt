@@ -16,6 +16,7 @@ import io.hemin.wien.parser.namespace.FeedpressParser
 import io.hemin.wien.parser.namespace.FyydParser
 import io.hemin.wien.parser.namespace.GooglePlayParser
 import io.hemin.wien.parser.namespace.ITunesParser
+import io.hemin.wien.parser.namespace.PodcastNamespaceParser
 import io.hemin.wien.parser.namespace.PodloveSimpleChapterParser
 import io.hemin.wien.parser.namespace.RssParser
 import org.w3c.dom.Document
@@ -39,12 +40,9 @@ object PodcastRssParser {
         GooglePlayParser(),
         ITunesParser(),
         PodloveSimpleChapterParser(),
-        RssParser()
+        RssParser(),
+        PodcastNamespaceParser()
     )
-
-    /** Set of all XML namespaces supported when parsing documents. */
-    val supportedNamespaces: Set<String> = parsers.mapNotNull { parser -> parser.namespace?.uri }
-        .toSet()
 
     private val builder: DocumentBuilder = DomBuilderFactory.newDocumentBuilder()
 

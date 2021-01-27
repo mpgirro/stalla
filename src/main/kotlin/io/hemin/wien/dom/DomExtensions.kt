@@ -1,6 +1,7 @@
 package io.hemin.wien.dom
 
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.FeedNamespace.Companion.matches
 import io.hemin.wien.util.trimmedOrNullIfBlank
 import org.w3c.dom.Attr
 import org.w3c.dom.Element
@@ -14,7 +15,7 @@ internal fun Node.findElementByName(
     namespace: FeedNamespace? = null,
     filter: (Node) -> Boolean = { true }
 ) = childNodes.asListOfNodes()
-    .firstOrNull { it.getTagName() == name && it.namespaceURI == namespace?.uri && filter(it) }
+    .firstOrNull { it.getTagName() == name && namespace.matches(it.namespaceURI) && filter(it) }
     ?.asElement()
 
 private fun Node.getTagName(): String? = when (this) {

@@ -1,32 +1,37 @@
 package io.hemin.wien.builder.podcast
 
+import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
-import io.hemin.wien.builder.LinkBuilder
-import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.LinkBuilderProvider
+import io.hemin.wien.builder.PersonBuilderProvider
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
+import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import java.time.temporal.TemporalAccessor
 
-interface PodcastBuilder : Builder<Podcast> {
+interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderProvider {
 
     /** The builder for data from the iTunes namespace. */
-    val iTunes: PodcastITunesBuilder
+    val iTunesBuilder: PodcastITunesBuilder
 
     /** The builder for data from the Atom namespace. */
-    val atom: PodcastAtomBuilder
+    val atomBuilder: AtomBuilder
 
     /** The builder for data from the Fyyd namespace. */
-    val fyyd: PodcastFyydBuilder
+    val fyydBuilder: PodcastFyydBuilder
 
     /** The builder for data from the Feedpress namespace. */
-    val feedpress: PodcastFeedpressBuilder
+    val feedpressBuilder: PodcastFeedpressBuilder
 
     /** The builder for data from the Google Play namespace. */
-    val googlePlay: PodcastGooglePlayBuilder
+    val googlePlayBuilder: PodcastGooglePlayBuilder
+
+    /** Set the Podcast namespace builder. */
+    val podcastBuilder: PodcastPodcastBuilder
 
     /** Set the title value. */
     fun title(title: String): PodcastBuilder
@@ -71,21 +76,29 @@ interface PodcastBuilder : Builder<Podcast> {
      */
     fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder
 
+    /**
+     * Adds a category to the list of categories.
+     *
+     * @param categoryBuilder The The [RssCategoryBuilder] used to initialize the
+     * [Episode.categories] items when [build] is called.
+     */
+    fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): PodcastBuilder
+
     /** Creates an instance of [RssImageBuilder] to use with this builder. */
     fun createRssImageBuilder(): RssImageBuilder
 
     /** Creates an instance of [HrefOnlyImageBuilder] to use with this builder. */
     fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
 
-    /** Creates an instance of [LinkBuilder] to use with this builder. */
-    fun createLinkBuilder(): LinkBuilder
-
-    /** Creates an instance of [PersonBuilder] to use with this builder. */
-    fun createPersonBuilder(): PersonBuilder
-
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
     fun createRssCategoryBuilder(): RssCategoryBuilder
 
     /** Creates an instance of [ITunesStyleCategoryBuilder] to use with this builder. */
-    fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder
+    fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder
+
+    /** Creates an instance of [PodcastPodcastLockedBuilder] to use with this builder. */
+    fun createPodcastPodcastLockedBuilder(): PodcastPodcastLockedBuilder
+
+    /** Creates an instance of [PodcastPodcastFundingBuilder] to use with this builder. */
+    fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder
 }

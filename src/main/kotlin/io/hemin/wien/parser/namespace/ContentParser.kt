@@ -24,7 +24,7 @@ internal class ContentParser : NamespaceParser() {
         when (localName) {
             "encoded" -> {
                 val encoded = ifCanBeParsed { textOrNull() } ?: return
-                builder.content.encoded(encoded)
+                builder.contentBuilder.encoded(encoded)
             }
             else -> pass
         }

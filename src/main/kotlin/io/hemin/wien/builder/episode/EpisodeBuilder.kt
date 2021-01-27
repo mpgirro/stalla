@@ -1,33 +1,37 @@
 package io.hemin.wien.builder.episode
 
+import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
-import io.hemin.wien.builder.LinkBuilder
-import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.LinkBuilderProvider
+import io.hemin.wien.builder.PersonBuilderProvider
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.model.Episode
 import java.time.temporal.TemporalAccessor
 
-interface EpisodeBuilder : Builder<Episode> {
+interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderProvider {
 
     /** The builder for data from the Content namespace. */
-    val content: EpisodeContentBuilder
+    val contentBuilder: EpisodeContentBuilder
 
     /** The builder for data from the iTunes namespace. */
-    val iTunes: EpisodeITunesBuilder
+    val iTunesBuilder: EpisodeITunesBuilder
 
     /** The builder for data from the Atom namespace. */
-    val atom: EpisodeAtomBuilder
+    val atomBuilder: AtomBuilder
 
     /** The builder for data from namespaces of the Podlove standards. */
-    val podlove: EpisodePodloveBuilder
+    val podloveBuilder: EpisodePodloveBuilder
 
     /** The builder for data from the Google Play namespace. */
-    val googlePlay: EpisodeGooglePlayBuilder
+    val googlePlayBuilder: EpisodeGooglePlayBuilder
 
     /** The builder for data from the Bitlove namespace. */
-    val bitlove: EpisodeBitloveBuilder
+    val bitloveBuilder: EpisodeBitloveBuilder
+
+    /** The builder for data from the Podcast namespace. */
+    val podcastBuilder: EpisodePodcastBuilder
 
     /** Set the title value. */
     fun title(title: String): EpisodeBuilder
@@ -80,12 +84,6 @@ interface EpisodeBuilder : Builder<Episode> {
     /** Creates an instance of [EpisodeGuidBuilder] to use with this builder. */
     fun createGuidBuilder(): EpisodeGuidBuilder
 
-    /** Creates an instance of [LinkBuilder] to use with this builder. */
-    fun createLinkBuilder(): LinkBuilder
-
-    /** Creates an instance of [PersonBuilder] to use with this builder. */
-    fun createPersonBuilder(): PersonBuilder
-
     /** Creates an instance of [HrefOnlyImageBuilder] to use with this builder. */
     fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
 
@@ -96,5 +94,14 @@ interface EpisodeBuilder : Builder<Episode> {
     fun createRssCategoryBuilder(): RssCategoryBuilder
 
     /** Creates an instance of [ITunesStyleCategoryBuilder] to use with this builder. */
-    fun createITunesCategoryBuilder(): ITunesStyleCategoryBuilder
+    fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder
+
+    /** Creates an instance of [EpisodePodcastTranscriptBuilder] to use with this builder. */
+    fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder
+
+    /** Creates an instance of [EpisodePodcastChaptersBuilder] to use with this builder. */
+    fun createEpisodePodcastChaptersBuilder(): EpisodePodcastChaptersBuilder
+
+    /** Creates an instance of [EpisodePodcastSoundbiteBuilder] to use with this builder. */
+    fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastSoundbiteBuilder
 }

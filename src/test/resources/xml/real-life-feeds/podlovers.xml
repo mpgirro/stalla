@@ -1,0 +1,1587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:psc="http://podlove.org/simple-chapters" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:fh="http://purl.org/syndication/history/1.0">
+
+  <channel>
+    <title>Podlovers</title>
+    <link>https://podlovers.org/</link>
+    <description>
+      <![CDATA[Der Podlove Entwickler:innen Podcast]]>
+    </description>
+    <lastBuildDate>Fri, 08 Jan 2021 19:32:35 +0000</lastBuildDate>
+
+    <image>
+      <url>http://backend.podlovers.org/wp-content/uploads/2020/07/white-green_3000x3000.png</url>
+      <title>Podlovers</title>
+      <link>https://podlovers.org/</link>
+    </image>
+    <atom:link rel="self" type="application/rss+xml" title="Podlovers (MP3 Feed)" href="https://feeds.podlovers.org/mp3" />
+    <atom:link rel="first" href="https://feeds.podlovers.org/mp3" />
+    <language>de-DE</language>
+    <fyyd:verify xmlns:fyyd="https://fyyd.de/fyyd-ns/">pc5t8gep9v1vrvopkwjyhqghnp1k5l8ay73Kbw4</fyyd:verify>
+
+    <atom:contributor>
+      <atom:name>Eric Teubert</atom:name>
+      <atom:uri>https://ericteubert.de/</atom:uri>
+    </atom:contributor>
+
+    <atom:contributor>
+      <atom:name>Alexander Heimbuch</atom:name>
+      <atom:uri>https://alexander.heimbu.ch</atom:uri>
+    </atom:contributor>
+
+    <atom:contributor>
+      <atom:name>Michaela Lehr</atom:name>
+      <atom:uri>https://geildanke.com</atom:uri>
+    </atom:contributor>
+    <generator>Podlove Podcast Publisher v3.2.2-beta1</generator>
+    <itunes:author>Podlovers</itunes:author>
+    <itunes:type>episodic</itunes:type>
+    <itunes:summary>
+      <![CDATA[Podlove ist eine Initiative zur Verbesserung der Open Source Infrastruktur zum Podcasting. Podlove ist gleichzeitig auch ein Netzwerk an Entwickler:innen zur Diskussion von Features und Standardisierung.]]>
+    </itunes:summary>
+    <itunes:category text="Technology" />
+
+    <itunes:owner>
+      <itunes:name>Podlovers</itunes:name>
+      <itunes:email>feed@podlovers.org</itunes:email>
+    </itunes:owner>
+    <itunes:image href="http://backend.podlovers.org/wp-content/uploads/2020/07/white-green_3000x3000.png" />
+    <itunes:subtitle>Der Podlove Entwickler:innen Podcast</itunes:subtitle>
+    <itunes:block>no</itunes:block>
+    <itunes:explicit>no</itunes:explicit>
+
+
+    <item>
+      <title>Ultraschall mit Ralf Stockmann</title>
+      <link>https://podlovers.org/episode/lov012-ultraschall-mit-ralf-stockmann/</link>
+      <pubDate>Thu, 24 Dec 2020 11:42:14 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-12-21t18:20:53+00:00-959a4b129c80e63</guid>
+      <description>
+        <![CDATA[Vom Innovationsmanageralltag an der Staatsbibliothek, über Open Source Software Entwicklung bis hin zur Frage des idealen Metadatencontainers: Das Themenspektrum in dieser Episode ist breit gefächert.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/lov012-ultraschall-mit-ralf-stockmann/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/16/s/feed/c/mp3/lov012.mp3" length="107966891" type="audio/mpeg" />
+
+      <itunes:duration>02:08:11</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Wir sprechen mit Ralf über Ultraschall: die Software zum Aufnehmen und Schneiden von Podcasts.</itunes:subtitle>
+      <itunes:title>Ultraschall mit Ralf Stockmann</itunes:title>
+      <itunes:episode>12</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[Vom Innovationsmanageralltag an der Staatsbibliothek, über Open Source Software Entwicklung bis hin zur Frage des idealen Metadatencontainers: Das Themenspektrum in dieser Episode ist breit gefächert.]]>
+      </itunes:summary>
+
+      <content:encoded>
+        <![CDATA[
+<p><strong>Vorstellung Gast</strong></p>
+
+
+
+<ul><li><a href="https://sendegate.de/">Sendegate</a></li><li><a href="https://ultraschall.fm/">Ultraschall</a></li><li><a href="https://wikigeeks.de/" data-type="URL" data-id="https://wikigeeks.de/">Wikigeeks </a></li><li><a href="https://staatsbibliothek-berlin.de/">Staatsbibliothek Berlin</a></li><li><a href="https://podlovers.org/episode/wordpress-entwicklung-mit-dennis-morhardt/">Episode mit Dennis</a></li></ul>
+
+
+
+<p><strong>Feedback</strong></p>
+
+
+
+<ul><li><a href="https://twitter.com/0xffff/status/1337315884239613953">Leidbekundungen von anderen Entwicklern</a></li><li><a href="https://wp-cli.org/">WordPress CLI</a></li><li><a href="https://themeforest.net/item/enfold-responsive-multipurpose-theme/4519990">Enfold Theme</a></li><li><a href="https://rogueamoeba.com/soundsource/">SoundSource</a></li></ul>
+
+
+
+<p><strong>Gast: Ralf Stockmann</strong></p>
+
+
+
+<ul><li><a href="https://www.webex.com/">WebEx</a></li><li><a href="https://de.wikipedia.org/wiki/OPAC">OPAC</a></li><li><a href="https://en.wikipedia.org/wiki/Debian">Debian</a></li><li><a href="https://typo3.org/">Typo3</a></li><li><a href="https://de.wikipedia.org/wiki/Scrum">Scrum</a></li><li><a href="https://kanboard.org/">Kanboard</a></li><li><a href="https://trello.com/">Trello</a></li><li><a href="https://mastodon.social">Mastodon</a></li><li><a href="https://de.wikipedia.org/wiki/Air_Gap">Air Gap</a></li><li><a href="https://www.itzbund.de/Webs/DfD/SharedDocs/Projekte/Bundescloud.html?__site=DfD">Bundescloud</a></li><li><a href="http://www.youtube.com/watch?v=UIDb6VBO9os">Talk vom Twitter Bootstrap Entwickler: &#8220;What Is Open Source &amp; Why Do I Feel So Guilty?&#8221;</a></li><li><a href="https://wir.muessenreden.de/">Wir. Müssen Reden</a></li><li><a href="http://schoene-ecken.de/">Schöne Ecken</a></li><li><a href="https://www.youtube.com/channel/UC6asN9P2a-SSCtL8urIPyTQ">Das Sendezentrum auf YouTube</a></li><li><a href="https://c3voc.de/">CCC VOC</a></li></ul>
+
+
+
+<p><strong>Ultraschall</strong></p>
+
+
+
+<ul><li><a href="https://ultraschall.fm">Ultraschall</a></li><li><a href="https://www.reaper.fm/">Reaper</a> </li><li><a href="https://www.lua.org/">Lua</a> </li><li><a href="https://stackoverflow.com/">StackOverflow</a> </li><li><a href="https://de.wikipedia.org/wiki/Reverse_Engineering">Reverse Engineering </a></li><li><a href="https://www.youtube.com/watch?v=7gaRSbBGU4s">Ultraschall Vorstellungstalk</a> </li><li><a href="https://sendegate.de/">Sendegate Forum</a></li><li><a href="https://de.wikipedia.org/wiki/Truck_Number">Bus-Faktor</a></li></ul>
+
+
+
+<p></p>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:26.874" title="Vorstellung Gast" />
+        <psc:chapter start="00:02:42.768" title="Feedback: WordPress und ein Stern" />
+        <psc:chapter start="00:08:05.250" title="Verbesserungen bei Podlove" />
+        <psc:chapter start="00:13:10.622" title="Heute keine Technikecke" />
+        <psc:chapter start="00:13:52.857" title="Gast: Ralf Stockmann" />
+        <psc:chapter start="00:14:28.438" title="Innovationsmanageralltag &amp; Remote Work Tools" />
+        <psc:chapter start="00:25:52.694" title="Nicht-kommerziell getriebene Produktentwicklung" />
+        <psc:chapter start="00:36:51.070" title="Ralfs Einstieg ins Podcasting &amp; Wikigeeks" />
+        <psc:chapter start="00:41:28.022" title="Podlove Workshops, Sendezentrum &amp; co." />
+        <psc:chapter start="00:47:03.000" title="Ultraschall" />
+        <psc:chapter start="00:58:27.611" title="Dokumentation" />
+        <psc:chapter start="01:03:48.244" title="Alles nur Deutsch: bewusst lokal" />
+        <psc:chapter start="01:07:20.337" title="Der goldene Weg f&#xFC;r User Interfaces" />
+        <psc:chapter start="01:12:13.079" title="Release Workflows &amp; Betas" />
+        <psc:chapter start="01:26:41.463" title="Accidentally 5.0 Release" />
+        <psc:chapter start="01:31:10.301" title="Balance im Open Source Alltag" />
+        <psc:chapter start="01:38:31.582" title="Opinionated UI/UX" />
+        <psc:chapter start="01:41:56.431" title="Call for Developers" />
+        <psc:chapter start="01:50:26.482" title="GUIs bauen in Reaper" />
+        <psc:chapter start="01:52:45.000" title="Ultraschall meets Podlove Publisher" />
+        <psc:chapter start="02:04:26.736" title="Danksagung &amp; Verabschiedung" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Ralf Stockmann</atom:name>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>WordPress Entwicklung mit Dennis Morhardt</title>
+      <link>https://podlovers.org/episode/wordpress-entwicklung-mit-dennis-morhardt/</link>
+      <pubDate>Fri, 04 Dec 2020 19:11:18 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-12-04t07:55:14+00:00-1fc21ad3ff4f27e</guid>
+      <description>
+        <![CDATA[Wir sprechen mit Dennis über die Zukunft von WordPress aus Entwicklersicht, Podcast Produktion, Kompaktkassetten und Gema Schabernack.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/wordpress-entwicklung-mit-dennis-morhardt/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/15/s/feed/c/mp3/LOV011.mp3" length="135582151" type="audio/mpeg" />
+
+      <itunes:duration>02:41:04</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>WordPress Entwicklung mit Dennis Morhardt (Anycast, Bahnfreunde, Good Morning in the Morning!)</itunes:subtitle>
+      <itunes:title>Wordpress Entwicklung mit Dennis Morhardt</itunes:title>
+      <itunes:episode>11</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[Wir sprechen mit Dennis über die Zukunft von WordPress aus Entwicklersicht, Podcast Produktion, Kompaktkassetten und Gema Schabernack.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/07/white-green_3000x3000.png" />
+      <content:encoded>
+        <![CDATA[
+<h3 id="Vorstellung-Gast">Vorstellung Gast</h3>
+
+
+
+<ul><li class=""><a href="https://dennismorhardt.de/" target="_blank" rel="noreferrer noopener">Dennis Morhardt</a></li><li class=""><a href="https://anyca.st/" target="_blank" rel="noreferrer noopener">Anycast</a></li><li class=""><a href="https://sendegate.de/" target="_blank" rel="noreferrer noopener">Sendegate</a></li><li class=""><a href="https://wikigeeks.de/" target="_blank" rel="noreferrer noopener">Wikigeeks</a></li></ul>
+
+
+
+<h3 id="Feedback">Feedback</h3>
+
+
+
+<ul><li class=""><a href="https://freakshow.fm/fs253-zero-latency-computing?t=1%3A17%3A45%2C1%3A21%3A58" target="_blank" rel="noreferrer noopener">FS254-Zero-Latency-Computing</a></li></ul>
+
+
+
+<h3 id="Verbesserungen-beim-Podlove-Webplayer">Verbesserungen beim Podlove Webplayer</h3>
+
+
+
+<ul><li class=""><a href="https://github.com/podlove/podlove-web-player-wp-plugin/compare/v5.3.1...v5.4.3" target="_blank" rel="noreferrer noopener">Podlove Web Player Release 5.4</a></li><li class=""><a href="https://community.podlove.org/t/podlove-web-player-5-cannot-edit-the-share-tab/2303" target="_blank" rel="noreferrer noopener">Podlove Web Player Bug: Default Config nicht speicherbar</a></li><li class=""><a href="https://sendegate.de/t/webplayer-sehr-langsam/12521" target="_blank" rel="noreferrer noopener">Podlove Web Player Performance Probleme</a></li><li class=""><a href="https://developer.mozilla.org/de/docs/Web/Events/DOMContentLoaded" target="_blank" rel="noreferrer noopener">JavaScript DOMContentLoaded Event</a></li><li class=""><a href="https://developer.wordpress.org/rest-api/" target="_blank" rel="noreferrer noopener">WordPress REST API</a></li><li class=""><a href="https://de.wikipedia.org/wiki/Stub_(Programmierung)" target="_blank" rel="noreferrer noopener">Stub</a></li><li class=""><a href="https://developer.mozilla.org/de/docs/Web/API/XMLHttpRequest" target="_blank" rel="noreferrer noopener">XMLHttpRequest API</a></li><li class=""><a href="https://developer.mozilla.org/de/docs/Web/API/Service_Worker_API/Using_Service_Workers" target="_blank" rel="noreferrer noopener">Service Worker</a></li><li class=""><a href="https://developer.mozilla.org/de/docs/Web/API/Cache" target="_blank" rel="noreferrer noopener">Web Caching API</a></li><li class=""><a href="https://developer.mozilla.org/de/docs/Web/API/Fetch_API" target="_blank" rel="noreferrer noopener">Fetch API</a></li></ul>
+
+
+
+<h3 id="Verbesserungen-beim-Podlove-Publisher">Verbesserungen beim Podlove Publisher</h3>
+
+
+
+<ul><li class=""><a href="https://twig.symfony.com/" target="_blank" rel="noreferrer noopener">Twig</a></li><li class=""><a href="https://getcomposer.org/" target="_blank" rel="noreferrer noopener">Composer</a></li><li class=""><a href="https://www.hostpress.de/blog/wordpress-white-screen-beheben/" target="_blank" rel="noreferrer noopener">White Screen of Death (WSOD)</a></li><li class=""><a href="https://de.wikipedia.org/wiki/Moppelkotze" target="_blank" rel="noreferrer noopener">Moppelkotze</a></li><li class=""><a href="https://www.php.net/manual/de/language.oop5.autoload.php" target="_blank" rel="noreferrer noopener">PHP Autoloading</a></li><li class=""><a href="https://www.php.net/manual/de/language.namespaces.php" target="_blank" rel="noreferrer noopener">PHP Namespace</a></li><li class=""><a href="https://github.com/humbug/php-scoper" target="_blank" rel="noreferrer noopener">PHP Scoper</a></li><li class=""><a href="https://yarnpkg.com/" target="_blank" rel="noreferrer noopener">yarn</a></li><li class=""><a href="https://github.com/10up/action-wordpress-plugin-deploy" target="_blank" rel="noreferrer noopener">WordPress Release Github Action</a></li><li class=""><a href="https://de.ryte.com/wiki/Staging_Environment" target="_blank" rel="noreferrer noopener">Staging Environment</a></li><li class=""><a href="https://www.docker.com/get-started" target="_blank" rel="noreferrer noopener">Docker</a></li></ul>
+
+
+
+<h3 id="WordPress-Fluch-oder-Fluch">WordPress Fluch oder Fluch?</h3>
+
+
+
+<ul><li class=""><a href="https://www.php-fig.org/psr/psr-4/" target="_blank" rel="noreferrer noopener">PSR-4 Autoloader Standard</a></li><li class=""><a href="https://www.php-fig.org/" target="_blank" rel="noreferrer noopener">PHP Standard Interop Group (PHP-FIG)</a></li><li class=""><a href="https://symfony.com/" target="_blank" rel="noreferrer noopener">Symfony</a></li><li class=""><a href="https://de.wordpress.org/gutenberg/" target="_blank" rel="noreferrer noopener">WordPress Gutenberg</a></li><li class=""><a href="https://www.wix.com/" target="_blank" rel="noreferrer noopener">WIX</a></li><li class=""><a href="https://de.wikipedia.org/wiki/Matthew_Mullenweg" target="_blank" rel="noreferrer noopener">Matthew Mullenweg</a></li><li class=""><a href="https://reactjs.org/" target="_blank" rel="noreferrer noopener">React</a></li><li class=""><a href="http://cafelog.com/" target="_blank" rel="noreferrer noopener">B2</a></li><li class=""><a href="https://codex.wordpress.org/Options_API" target="_blank" rel="noreferrer noopener">WP Options</a></li><li class=""><a href="https://typo3.org/" target="_blank" rel="noreferrer noopener">Typo3</a></li><li class=""><a href="https://www.php.net/releases/8.0/en.php" target="_blank" rel="noreferrer noopener">PHP 8</a></li><li class=""><a href="https://yoast.com/" target="_blank" rel="noreferrer noopener">Yoast</a></li><li class=""><a href="https://babeljs.io/" target="_blank" rel="noreferrer noopener">BabelJS</a></li><li class=""><a href="https://de.wikipedia.org/wiki/Apache_Subversion" target="_blank" rel="noreferrer noopener">SVN</a></li><li class=""><a href="https://make.wordpress.org/" target="_blank" rel="noreferrer noopener">Make WordPress</a></li><li class=""><a href="https://git-scm.com/docs/git-svn" target="_blank" rel="noreferrer noopener">git-svn</a></li><li class=""><a href="https://bazel.build/" target="_blank" rel="noreferrer noopener">Bazel</a></li><li class=""><a href="https://codex.wordpress.org/WordPress_MU" target="_blank" rel="noreferrer noopener">WordPress MU</a></li><li class=""><a href="https://multilingualpress.de/doku/wordpress-multisite-installieren-einrichten/" target="_blank" rel="noreferrer noopener">WordPress MultiSite installieren</a></li><li class=""><a href="https://de.wordpress.org/plugins/hyperdb/" target="_blank" rel="noreferrer noopener">HyperDB</a></li></ul>
+
+
+
+<h3 id="Podlove-Subscribe-Button-sucht-Entwicklerinnen">Podlove Subscribe Button sucht Entwicklerinnen</h3>
+
+
+
+<ul><li class=""><a href="https://github.com/podlove/podlove-ui/tree/development/apps/subscribe-button" target="_blank" rel="noreferrer noopener">Podlove Subscribe Button UI</a></li><li class=""><a href="https://tortoisesvn.net/index.de.html" target="_blank" rel="noreferrer noopener">TortoiseSVN</a></li><li class=""><a href="https://wordpress.org/plugins/podlove-subscribe-button/" target="_blank" rel="noreferrer noopener">Podlove Subscribe Button WordPress Plugin</a></li><li class=""><a href="https://github.com/podlove/podlove-subscribe-button-wp-plugin" target="_blank" rel="noreferrer noopener">Podlove Subscribe Button WordPress Plugin Source Code</a></li></ul>
+
+
+
+<h3 id="Podcast-Landschaft">Podcast-Landschaft</h3>
+
+
+
+<ul><li class=""><a href="https://podcasterinnen.org/podcasterinnen/michi-podlovers" target="_blank" rel="noreferrer noopener">Michi jetzt offiziell Podcasterin</a></li><li class=""><a href="https://twitter.com/FischaelaMeer" target="_blank" rel="noreferrer noopener">Michi auf Twitter</a></li></ul>
+
+
+
+<h3 id="Erics-Technikecke">Erics Technikecke</h3>
+
+
+
+<ul><li class=""><a href="https://www.apple.com/de/mac-mini/" target="_blank" rel="noreferrer noopener">M1 Mac Mini</a></li><li class=""><a href="https://www.apple.com/de/macbook-air/" target="_blank" rel="noreferrer noopener">M1 Macbook Air</a></li></ul>
+
+
+
+<h3 id="Gast-Podcasts">Gast: Podcasts</h3>
+
+
+
+<ul><li><a rel="noreferrer noopener" href="https://twitter.com/bruhndsoweiter" target="_blank">Renke Bruhn</a></li><li><a rel="noreferrer noopener" href="https://www.thomann.de/de/beyerdynamic_dt297pv80_mk_ii.htm" target="_blank">Beyerdynamic DT297</a></li><li><a rel="noreferrer noopener" href="https://bahnhelden.de/" target="_blank">Bahnhelden</a></li><li><a rel="noreferrer noopener" href="https://de.rode.com/microphones/lavalier" target="_blank">Rode Lavalier</a></li><li><a rel="noreferrer noopener" href="https://gmitm-podcast.de/" target="_blank">Good Morning in the Morning! &#8211; Der originale Podcast zum Dschungelcamp</a></li></ul>
+
+
+
+<h3 id="Gast-Anycast">Gast: Anycast</h3>
+
+
+
+<ul><li class=""><a href="https://de.wikipedia.org/wiki/Kompaktkassette" target="_blank" rel="noreferrer noopener">Kasette</a></li></ul>
+
+
+
+<h3 id="Gast-Sendungsvorbereitung">Gast: Sendungsvorbereitung</h3>
+
+
+
+<ul><li class=""><a href="https://trello.com/" target="_blank" rel="noreferrer noopener">Trello</a></li><li class=""><a href="https://workflowy.com/" target="_blank" rel="noreferrer noopener">Workflowy</a></li></ul>
+
+
+
+<h3 id="Wünsche-an-Podlove">Wünsche an Podlove</h3>
+
+
+
+<ul><li class=""><a href="https://de.wikipedia.org/wiki/Headless" target="_blank" rel="noreferrer noopener">Headless Systeme</a></li><li class=""><a href="https://podlovers.org/episode/podlove-radiator" target="_blank" rel="noreferrer noopener">Podlove Radiator</a></li><li class=""><a href="https://podlovers.org/episode/podlove-radiator/?t=19%3A21" target="_blank" rel="noreferrer noopener">Podcast Betriebssystem</a></li><li class=""><a href="https://podlovers.org/episode/podlove-publisher/?t=1%3A33%3A23" target="_blank" rel="noreferrer noopener">Publisher Queue</a></li></ul>
+
+
+
+<h3 id="Verabschiedung">Verabschiedung</h3>
+
+
+
+<ul><li><a rel="noreferrer noopener" href="https://gist.github.com/gglnx/5233635" target="_blank">WordPress RSS Podcast Feed in 112 Zeilen</a></li></ul>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Begr&#xFC;&#xDF;ung" />
+        <psc:chapter start="00:00:27.037" title="Vorstellung Gast" />
+        <psc:chapter start="00:03:02.970" title="Feedback" />
+        <psc:chapter start="00:04:33.186" title="Verbesserungen beim Podlove Webplayer" />
+        <psc:chapter start="00:11:49.160" title="Verbesserungen beim Podlove Publisher" />
+        <psc:chapter start="00:30:17.044" title="WordPress Fluch oder Fluch?" />
+        <psc:chapter start="01:30:18.286" title="Podlove Subscribe Button sucht Entwicklerinnen" />
+        <psc:chapter start="01:32:56.180" title="Erfahrungen beim Publishen: Was haben wir gelernt?" />
+        <psc:chapter start="01:35:18.729" title="Podcast-Landschaft" />
+        <psc:chapter start="01:37:47.345" title="Erics Technikecke" />
+        <psc:chapter start="01:44:15.423" title="Gast: Podcasts" />
+        <psc:chapter start="01:47:36.373" title="Gast: Good Morning in the Morning!" />
+        <psc:chapter start="02:02:54.485" title="Gast: Bahnhelden" />
+        <psc:chapter start="02:09:35.766" title="Gast: Anycast" />
+        <psc:chapter start="02:20:55.575" title="Gast: Sendungsvorbereitungstools" />
+        <psc:chapter start="02:24:31.862" title="Gast: W&#xFC;nsche an Podlove" />
+        <psc:chapter start="02:38:30.992" title="Verabschiedung" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Dennis Morhardt</atom:name>
+        <atom:uri>https://dennismorhardt.de/</atom:uri>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>Podcast-Produktion mit Toby Baier</title>
+      <link>https://podlovers.org/episode/podcast-produktion-mit-toby-baier/</link>
+      <pubDate>Sat, 21 Nov 2020 16:41:51 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-11-18t12:14:23+00:00-fc0b68ccd4ae888</guid>
+      <description>
+        <![CDATA[Wir sprechen mit Toby über seine Technik und Workflows, Podcasting-Apps, Podseed und Spotify.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/podcast-produktion-mit-toby-baier/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/14/s/feed/c/mp3/LOV010.mp3" length="102972861" type="audio/mpeg" />
+
+      <itunes:duration>02:02:14</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Podcast-Produktion mit Toby Baier (Einschlafen Podcast, Realitätsabgleich, Pubkameraden)</itunes:subtitle>
+      <itunes:title>Podcast-Produktion mit Toby Baier</itunes:title>
+      <itunes:episode>10</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[Wir sprechen mit Toby über seine Technik und Workflows, Podcasting-Apps, Podseed und Spotify.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/11/orange_3000x3000.png" />
+      <content:encoded>
+        <![CDATA[
+<h2>Begrüßung und Vorstellung</h2>
+
+
+
+<ul><li><a href="http://mik.fm/">Webseite von Toby Baier</a></li><li><a href="https://twitter.com/tobybaier">Toby @tobybaier auf Twitter</a></li><li><a href="http://einschlafen-podcast.de/">Einschlafen Podcast</a></li><li><a href="https://wrint.de/category/realitaetsabgleich/">Realitätsabgleich bei WRINT&nbsp;(mit Holger Klein)</a></li><li><a href="http://www.pubkameraden.de/">Pubkameraden Podcast</a></li><li><a href="http://malmituns.klogschieters.de/">Podcast: Mal mit uns</a></li><li><a href="http://www.klogschieters.de/">Klogschieters Podcast</a></li></ul>
+
+
+
+<h2>Feedback</h2>
+
+
+
+<ul><li><a href="https://twitter.com/innovaTutor/status/1326658250121621504">Feedback auf Twitter</a></li><li><a href="https://wordpress.org/plugins/podlove-web-player/">Podlove Web Player WordPress Plugin</a></li><li><a href="https://plus.podlove.org/">Publisher PLUS</a></li><li><a href="https://agilemanifesto.org/iso/de/manifesto.html">Agiles Manifest</a></li><li><a href="https://community.podlove.org/t/biweekly-roundtable-for-contributors/2461">2-wöchentliches Podlove Kontributor:innen Treffen auf Discord</a></li></ul>
+
+
+
+<h2>Erics Technikecke</h2>
+
+
+
+<ul><li><a href="https://www.thomann.de/de/sennheiser_e865_micro.htm">Sennheiser E 865 Kondensator Gesangsmikrofon</a></li><li><a href="https://gametalk.fm/">Game Talk FM Podcast</a></li><li><a href="https://www.thomann.de/de/focusrite_scarlett_2i2_3rd_gen.htm">Focusrite Scarlett 2i2 3rd Gen</a></li><li><a href="https://www.thomann.de/de/steinberg_ur22c.htm">Steinberg UR22C</a></li><li><a href="https://www.thomann.de/de/beyerdynamic_dt770_pro80_ohm.htm">beyerdynamic DT-770 PRO/80 Ohm</a></li><li><a href="https://rogueamoeba.com/soundsource/">Rogue Amoeba SoundSource</a></li><li><a href="https://www.apple.com/de/shop/buy-mac/macbook-air">MacBook Air</a></li></ul>
+
+
+
+<h2>Was haben wir bei Podlove verbessert?</h2>
+
+
+
+<ul><li>Neuer Web Player Release (tba)</li></ul>
+
+
+
+<h2>Podcast-Landschaft</h2>
+
+
+
+<ul><li><a href="https://twitter.com/PodcastindexOrg/status/1324532576158011392">Buzzsprout setzt podcastindex.org Kapitel-Marken um</a></li><li><a href="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#chapters">podcastindex.org Kapitelmarken Namespace</a></li><li><a href="https://feedburner.google.com/">Feedburner</a></li><li><a href="https://podlove.org/paged-feeds/">Paged Feeds</a></li></ul>
+
+
+
+<h2>Gast: Toby Baier</h2>
+
+
+
+<ul><li><a href="https://www.hosteurope.de/">HostEurope</a></li><li><a href="https://www.buecher.de/shop/kinderbuecher/weisst-du-eigentlich-wie-lieb-ich-dich-hab-mini-bilderbuch/mcbratney-samjeram-anita/products_products/detail/prod_id/38033444/">Weißt du eigentlich, wie lieb ich dich hab?</a></li><li><a href="https://www.buecher.de/shop/kinderbuecher/der-hase-mit-der-roten-nase/heine-helme/products_products/detail/prod_id/03052993/">Der Hase mit der roten Nase</a></li><li><a href="https://en.wikipedia.org/wiki/A_Treatise_of_Human_Nature">A Treatise of Human Nature</a></li><li><a href="https://www.podigee.com/de/">Podigee</a></li><li><a href="https://de.wikipedia.org/wiki/ArgoUML">ArgoUML</a></li><li><a href="https://antennapod.org/">AntennaPod</a></li><li><a href="https://play.google.com/store/apps/details?id=de.danoeh.antennapodsp.einschlafenpodcast&amp;hl=de&amp;gl=US">Einschlafen Podcast Android App</a></li><li><a href="https://apps.apple.com/de/app/einschlafen-podcast/id1104768209">Einschlafen Podcast iOS App</a></li><li><a href="https://flattr.com/">Flattr</a></li><li><a href="https://github.com/danieloeh/AntennaPodSP">AntennaPod Single Purpose App von danieloeh auf Github</a></li><li><a href="https://das-sendezentrum.de/subscribe/">Subscribe Podcast Konferenz</a></li><li><a href="https://de.wikipedia.org/wiki/App-Store-Optimierung">ASO</a></li><li><a href="https://fyyd.de/">fyyd</a></li><li><a href="https://auphonic.com/landing">Auphonic</a></li><li><a href="https://www.reaper.fm/">Reaper</a></li><li><a href="https://ultraschall.fm/">Ultraschall</a></li><li><a href="https://de.wikipedia.org/wiki/Opus_(Audioformat)">Opus</a></li><li><a href="https://github.com/eazyliving/firtz">firtz</a></li><li><a href="https://www.thomann.de/de/beyerdynamic_dt297pv80_mk_ii.htm">beyerdynamic DT-297-PV/80</a></li><li><a href="https://www.landesmuseum-ol.de/">Landesmuseum Oldenburg</a></li><li><a href="https://www.thomann.de/de/zoom_h6_black.htm">Zoom H6</a></li><li><a href="https://viertausendhertz.de/durch-die-gegend/">Durch die Gegend Podcast</a></li><li><a href="https://www.podseed.org/">Podseed</a></li><li><a href="https://www.wikimedia.de/">Wikimedia</a></li><li><a href="https://dejure.org/gesetze/AO/52.html">§52 AO Gemeinnützige Zwecke</a></li><li><a href="https://www.youtube.com/watch?v=yfKWr0GYB1I&amp;list=PLfKGlJqno3dqe8irGkf28zXrXXIr1Q_KC">Podlove Tutorials von Benjamin</a></li><li><a href="https://www.podcaster.de/">podcaster.de</a></li><li><a href="http://www.jungundnaiv-podcast.de/">Jung &amp; Naiv Podcast</a></li><li><a href="https://plus.podlove.org/">Podlove Publisher Plus</a></li><li><a href="https://www.everquest.com/home">EverQuest</a></li><li><a href="https://everquest.allakhazam.com/">Allakhazam</a></li></ul>
+
+
+
+<p></p>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Vorstellung und Begr&#xFC;&#xDF;ung" />
+        <psc:chapter start="00:02:14.847" title="Feedback" />
+        <psc:chapter start="00:12:03.656" title="Erics Technikecke" />
+        <psc:chapter start="00:18:41.781" title="Was haben wir bei Episode LOV010 gelernt?" />
+        <psc:chapter start="00:21:44.775" title="Was haben wir bei Podlove verbessert?" />
+        <psc:chapter start="00:23:37.754" title="Podcast-Landschaft" />
+        <psc:chapter start="00:34:10.308" title="Gast: Toby Baier &#x2013; Podcasting Anf&#xE4;nge" />
+        <psc:chapter start="00:41:36.492" title="Gast: Toby Baier &#x2013; Podlove" />
+        <psc:chapter start="00:44:55.107" title="Gast: Toby Baier &#x2013; Podcast-Apps" />
+        <psc:chapter start="00:53:30.930" title="Gast: Toby Baier &#x2013; Spotify" />
+        <psc:chapter start="01:03:56.866" title="Gast: Toby Baier &#x2013; Workflows &amp; Technik" />
+        <psc:chapter start="01:18:36.365" title="Gast: Toby Baier &#x2013; Kommunikation mit H&#xF6;rer:innen" />
+        <psc:chapter start="01:24:57.133" title="Gast: Toby Baier &#x2013; Recording" />
+        <psc:chapter start="01:35:53.785" title="Gast: Toby Baier &#x2013; Podseed" />
+        <psc:chapter start="01:46:56.610" title="Gast: Toby Baier &#x2013; Podlove-Workflows" />
+        <psc:chapter start="01:58:03.308" title="Gast: Toby Baier &#x2013; Pers&#xF6;nliches Identit&#xE4;tsmanagement" />
+        <psc:chapter start="02:01:11.274" title="Verabschiedung" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Toby Baier</atom:name>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>Podcastverzeichnisse mit Christian Bednarek</title>
+      <link>https://podlovers.org/episode/podcastverzeichnisse-mit-christian-bednarek/</link>
+      <pubDate>Fri, 06 Nov 2020 19:21:57 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-11-01t15:21:30+00:00-4e72f236d0b008c</guid>
+      <description>
+        <![CDATA[Diesmal sprechen wir mit Eazy über Podcastverzeichnisse und die Einzigartigkeit der Podcastlandschaft. Christian erzählt uns wieso Fyyd eigentlich ein Nebenprodukt ist und wieviel Potenzial dieser Metadatenschatz bietet. Dabei gehen wir über die fehlenden Daten in RSS ein und diskutieren wieso Plattformen dieser dezentralen Welt gefährlich werden.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/podcastverzeichnisse-mit-christian-bednarek/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/13/s/feed/c/mp3/LOV009.mp3" length="78273698" type="audio/mpeg" />
+
+      <itunes:duration>01:32:50</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Podcastverzeichnisse und Dezentralität von Podcasts mit Christian Bednarek (Hörsuppe und Fyyd)</itunes:subtitle>
+      <itunes:title>Podcastverzeichnisse mit Christian Bednarek</itunes:title>
+      <itunes:episode>9</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[Diesmal sprechen wir mit Eazy über Podcastverzeichnisse und die Einzigartigkeit der Podcastlandschaft. Christian erzählt uns wieso Fyyd eigentlich ein Nebenprodukt ist und wieviel Potenzial dieser Metadatenschatz bietet. Dabei gehen wir über die fehlenden Daten in RSS ein und diskutieren wieso Plattformen dieser dezentralen Welt gefährlich werden.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/08/white-blue_3000x3000.png" />
+      <content:encoded>
+        <![CDATA[
+<h3>Feedback</h3>
+
+
+
+<ul><li><a href="https://www.youtube.com/user/yoursql719">Benjamin Hartwichs Kanal</a></li><li><a href="https://www.youtube.com/watch?v=yfKWr0GYB1I">Podlove Podcast Publisher Tutorial 1: Installation und Einrichtung</a></li><li><a href="https://www.youtube.com/watch?v=kdZ_CQ87ezA">Podlove Podcast Publisher Tutorial 2: Episode veröffentlichen</a></li><li><a href="https://www.youtube.com/watch?v=eEH-ZEyMkh8">Podlove Podcast Publisher Tutorial 3: Zusätzliche Module aktivieren</a></li><li><a href="https://www.youtube.com/watch?v=Ln5iJNHH800">Podlove Podcast Publisher Tutorial 4: Player Gestaltung und Podlove Templates</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#erfahrungen-beim-publishen"></a>Erfahrungen beim Publishen</h3>
+
+
+
+<ul><li><a href="https://de.wikipedia.org/wiki/Kompressor_(Signalverarbeitung)">Kompressor</a></li><li><a href="https://de.wikipedia.org/wiki/Expander_(Audio)">Expander</a></li><li><a href="https://sendegate.de/t/rode-podcaster-usb-an-xlr-interface/12333">Rode Podcaster (USB) an XLR interface?</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#verbesserungen-bei-podlove"></a>Verbesserungen bei Podlove</h3>
+
+
+
+<ul><li><a href="https://www.npmjs.com/package/@podlove/source-publisher">Podlove Publisher Gridsome Source Plugin</a></li><li><a href="https://gridsome.org/">Gridsome</a></li><li><a href="https://github.com/TypistTech/imposter-plugin">PHP Composer Imposter Plugin</a></li><li><a href="https://github.com/humbug/php-scoper">PHP Scoper</a></li><li><a href="https://github.com/podlove/podlove-ui/issues/679">Button Focus Outline</a></li><li><a href="https://github.com/podlove/podlove-ui/issues/592">Subscribe Button Copy Endcard</a></li><li><a href="https://github.com/podlove/podlove-ui/issues/634">Published Date als Component</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#gast-christian-bednarek"></a>Gast: Christian Bednarek</h3>
+
+
+
+<ul><li><a href="https://twitter.com/eazyliving">Christian auf Twitter</a></li><li><a href="https://andreas-hubel.de/eazy/">Andreas Hubel: Podcast zur Person Eazy</a></li><li><a href="https://fyyd.de/">Fyyd</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#podcastindexorg"></a>Podcastindex.org</h3>
+
+
+
+<ul><li><a href="https://podcastindex.org/">Podcastindex</a></li><li><a href="https://mp3s.nashownotes.com/pc20rss.xml">Podcast zum Podcastingindex</a></li><li><a href="https://github.com/Podcastindex-org/podcast-namespace">Podcast Namespace</a></li><li><a href="https://de.wikipedia.org/wiki/Outline_Processor_Markup_Language">OPML</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#problem-des-rss-feeds"></a>Problem des RSS Feeds</h3>
+
+
+
+<ul><li><a href="https://freakshow.fm/">Mobilemacs/Freakshow</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#schatzkiste-fyyd"></a>Schatzkiste Fyyd</h3>
+
+
+
+<ul><li><a href="https://github.com/eazyliving/fyyd-api">Fyyd API</a></li><li><a href="https://de.wordpress.org/plugins/fyyd-podcast-shortcodes/">Fyyd WordPress Plugin</a></li><li><a href="https://github.com/eazyliving/fyyd-wordpress">WordPress Plugin auf Github</a></li><li><a href="https://twitter.com/dirkprimbs">Dirk Primbs</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#transkripte-im-feed"></a>Transkripte im Feed</h3>
+
+
+
+<ul><li><a href="https://github.com/Podcastindex-org/podcast-namespace/blob/main/transcripts">Standardvorschlag Podcastindex.org Transkripte</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#exkurs-flattr-board"></a>Exkurs Flattr Board</h3>
+
+
+
+<ul><li><a href="https://de.wikipedia.org/wiki/Flattr">Flattr Wikipedia</a></li><li><a href="https://flattr.com/">flattr.com</a></li><li><a href="https://de.wikipedia.org/wiki/Micropayment">Micropayments</a></li><li><a href="https://9to5mac.com/2015/06/14/instacast-shuts-down-vemedio-podcast-app/">Instacast eingestellt</a></li><li><a href="https://github.com/martinhering/instacast">Instacast</a></li><li><a href="https://tim.pritlove.org/2012/05/01/zwei-jahre-flattr/">Tim Pritlove zu Flattr</a></li><li><a href="https://mariadb.org/">MariaDB</a></li><li><a href="https://twitter.com/MartinRuetzler">Martin Rützler auf Twitter</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#motivation-fyyd"></a>Motivation Fyyd</h3>
+
+
+
+<ul><li><a href="https://twitter.com/hoersuppe">Hörsuppe</a></li><li><a href="https://www.elastic.co/de/elasticsearch/">ElasticSearch</a></li><li><a href="https://de.wikipedia.org/wiki/Fermi-Paradoxon">Fermi Paradoxon</a></li><li><a href="https://www.sendegarten.de/">Sendegarten</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#christians-retro-tagebuch-crt"></a>Christians Retro Tagebuch (CRT)</h3>
+
+
+
+<ul><li><a href="https://de.wikipedia.org/wiki/Die_Fantastischen_Vier">Fantastischen Vier</a></li><li><a href="https://de.wikipedia.org/wiki/Kathodenstrahlr%C3%B6hrenbildschirm">Cathode Ray Tube</a></li><li><a href="https://twitter.com/denis2342">Denis Ahrens</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#fyyd-hosting-und-deployment"></a>Fyyd Hosting und Deployment</h3>
+
+
+
+<ul><li><a href="https://www.hetzner.de/">Hetzner</a></li><li><a href="https://de.wikipedia.org/wiki/Virtuelle_Maschine">Virtuelle Maschine</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV009/episode.md#plattformisierung"></a>Plattformisierung</h3>
+
+
+
+<ul><li><a href="https://www.forbes.com/sites/johnkoetsier/2020/05/19/joe-rogan-moves-podcast-with-286-million-fans-to-spotify-drops-apple-youtube-other-platforms">Joe Rogan exklusiv bei Spotify</a></li><li><a href="http://podcasts.joerogan.net/">Joe Rogan Experience</a></li><li><a href="https://www.theverge.com/2020/10/28/21538165/joe-rogan-experience-alex-jones-tim-dillon">Alex Jones bei Joe Rogan</a></li><li><a href="https://www.podigee.com/">Podigee</a></li><li><a href="https://vimeo.com/">Vimeo</a></li><li><a href="https://letscast.fm/">LetsCast</a></li><li><a href="https://apps.apple.com/de/app/auphonic-recorder/id1081792712">Auphonic App</a></li></ul>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Begr&#xFC;ssung" />
+        <psc:chapter start="00:00:27.214" title="Feedback" />
+        <psc:chapter start="00:02:12.125" title="Erfahrungen beim Publishen" />
+        <psc:chapter start="00:06:30.569" title="Verbesserungen bei Podlove" />
+        <psc:chapter start="00:13:44.271" title="Gast: Christian Bednarek" />
+        <psc:chapter start="00:16:04.629" title="Podcastverzeichnis Fyyd" />
+        <psc:chapter start="00:17:28.007" title="Podcastindex.org" />
+        <psc:chapter start="00:24:43.882" title="Problem des RSS Feeds" />
+        <psc:chapter start="00:30:04.083" title="Schatzkiste Fyyd" />
+        <psc:chapter start="00:36:38.867" title="Transkripte im Feed" />
+        <psc:chapter start="00:39:57.806" title="Exkurs Flattr Board" />
+        <psc:chapter start="00:46:56.578" title="Motivation Fyyd" />
+        <psc:chapter start="00:52:54.558" title="Christians Retro Tagebuch (CRT)" />
+        <psc:chapter start="00:56:57.487" title="Fyyd Hosting und Deployment" />
+        <psc:chapter start="01:02:25.132" title="Fyyd Aufr&#xE4;umen" />
+        <psc:chapter start="01:05:24.797" title="Ideen f&#xFC;r Fyyd" />
+        <psc:chapter start="01:12:37.767" title="Plattformisierung" />
+        <psc:chapter start="01:32:01.462" title="Verabschiedung" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Christian Bednarek</atom:name>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>Podcast-Produktion mit Stefan Schulz</title>
+      <link>https://podlovers.org/episode/lov008-podcast-produktion-mit-stefan-schulz/</link>
+      <pubDate>Tue, 27 Oct 2020 19:08:53 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-10-15t08:06:23+00:00-411e64c77c40320</guid>
+      <description>
+        <![CDATA[Wir sprechen mit Stefan über seine Workflows. Er hört zur Sendungsvorbereitung Podcasts in 3-facher Geschwindigkeit und organisiert dutzende Clips für Stundenlange Sendungen. Wir reden auch über Steady und seine Erfahrungen damit.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/lov008-podcast-produktion-mit-stefan-schulz/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/12/s/feed/c/mp3/LOV008.mp3" length="102401283" type="audio/mpeg" />
+
+      <itunes:duration>02:01:34</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Workflows und Tools für die Podcast-Produktion mit Stefan Schulz (Alias Fernsehpodcast, Die Neuen Zwanziger, Aufwachen Podcast, ...)</itunes:subtitle>
+      <itunes:title>Podcast-Produktion mit Stefan Schulz</itunes:title>
+      <itunes:episode>8</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[Wir sprechen mit Stefan über seine Workflows. Er hört zur Sendungsvorbereitung Podcasts in 3-facher Geschwindigkeit und organisiert dutzende Clips für Stundenlange Sendungen. Wir reden auch über Steady und seine Erfahrungen damit.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/10/white-orange_3000x3000.png" />
+      <content:encoded>
+        <![CDATA[
+<h2>Verbesserungen bei Podlove</h2>
+
+
+
+<ul><li><a href="https://community.podlove.org/t/release-3-1-0/2399" data-type="URL" data-id="https://community.podlove.org/t/release-3-1-0/2399">Podlove Publisher Release 3.1</a></li><li><a href="https://github.com/opawg/user-agents/" data-type="URL" data-id="https://github.com/opawg/user-agents/">OPAWG</a></li></ul>
+
+
+
+<h2>Podcast Landschaft</h2>
+
+
+
+<ul><li><a href="https://songshift.com/blog/spotify_transfers" data-type="URL" data-id="https://songshift.com/blog/spotify_transfers">Spotify verbietet SongShift, Playlisten zu exportieren</a></li><li><a href="https://github.com/Podcastindex-org/podcast-namespace" data-type="URL" data-id="https://github.com/Podcastindex-org/podcast-namespace">Podcast RSS Namespace</a></li><li><a href="https://help.apple.com/itc/podcasts_connect/#/itcb54353390" data-type="URL" data-id="https://help.apple.com/itc/podcasts_connect/#/itcb54353390">Apple itunes namespace RSS Documentation</a></li><li><a href="https://support.google.com/googleplay/podcasts/answer/6260341#series" data-type="URL" data-id="https://support.google.com/googleplay/podcasts/answer/6260341#series">Google namespace Documentation</a></li><li><a href="http://curry.com/" data-type="URL" data-id="http://curry.com/">Adam Curry</a></li><li><a href="https://www.noagendashow.net/" data-type="URL" data-id="https://www.noagendashow.net/">No Agenda Podcast</a></li><li><a href="https://neuezwanziger.de/" data-type="URL" data-id="https://neuezwanziger.de/">Neue Zwanziger Podcast</a></li></ul>
+
+
+
+<h2>Gast: Stefan Schulz</h2>
+
+
+
+<ul><li><a href="https://stefanschulz.com/">stefanschulz.com</a></li><li><a href="https://aufwachen-podcast.de/" data-type="URL" data-id="https://aufwachen-podcast.de/">Aufwachen! Podcast</a></li><li><a href="https://alias-podcast.de/" data-type="URL" data-id="https://alias-podcast.de/">Alias Podcast</a></li><li><a href="https://zoomcorp.com/en/jp/digital-mixer-multi-track-recorders/digital-mixer-recorders/livetrak-l-12/" data-type="URL" data-id="https://zoomcorp.com/en/jp/digital-mixer-multi-track-recorders/digital-mixer-recorders/livetrak-l-12/">Zoom L12</a></li><li><a href="https://obsproject.com/" data-type="URL" data-id="https://obsproject.com/">OBS Studio</a></li><li><a href="https://www.vegascreativesoftware.com/de/vegas-pro/" data-type="URL" data-id="https://www.vegascreativesoftware.com/de/vegas-pro/">Vegas Pro</a></li><li><a href="https://support.apple.com/en-us/HT202658">iOS: Assistive Touch</a></li><li><a href="https://steadyhq.com/de/neuezwanziger" data-type="URL" data-id="https://steadyhq.com/de/neuezwanziger">Die Neuen Zwanziger auf Steady</a></li><li><a href="https://zapier.com/home" data-type="URL" data-id="https://zapier.com/home">Zapier</a></li><li><a href="https://en.wikipedia.org/wiki/Payment_Services_Directive" data-type="URL" data-id="https://en.wikipedia.org/wiki/Payment_Services_Directive">PSD2</a></li><li><a href="https://www.discourse.org/" data-type="URL" data-id="https://www.discourse.org/">Discourse</a></li><li><a href="https://de.wikipedia.org/wiki/WoltLab_Burning_Board" data-type="URL" data-id="https://de.wikipedia.org/wiki/WoltLab_Burning_Board">WoltLab Forensoftware</a></li></ul>
+
+
+
+<p></p>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Start" />
+        <psc:chapter start="00:00:29.197" title="Feedback" />
+        <psc:chapter start="00:03:30.911" title="Verbesserungen bei Podlove" />
+        <psc:chapter start="00:09:52.613" title="Podcast Landschaft" />
+        <psc:chapter start="00:10:53.565" title="Podcast Landschaft: Podcast RSS Namespace" />
+        <psc:chapter start="00:37:02.572" title="Gast: Stefan und seine Workflows" />
+        <psc:chapter start="01:02:39.310" title="Auphonic &amp; Publisher Workflow" />
+        <psc:chapter start="01:14:57.368" title="Steady f&#xFC;r Paywall-Podcasting" />
+        <psc:chapter start="01:23:47.490" title="Forensoftware" />
+        <psc:chapter start="01:25:41.986" title="Wunschliste: Web Player" />
+        <psc:chapter start="01:28:34.335" title="Wunschliste: Transkripte und Contributors" />
+        <psc:chapter start="01:31:40.269" title="Wunschliste: Statistik" />
+        <psc:chapter start="01:35:14.082" title="Shownotes, Transkripte &amp; Pain-Driven Software Development" />
+        <psc:chapter start="01:42:29.714" title="&#xC4;rgerliches &amp; Podcast-Webseiten-UX" />
+        <psc:chapter start="01:48:27.182" title="Wunschkonzert: Paywall f&#xFC;r Podcasts" />
+        <psc:chapter start="01:54:20.948" title="Demn&#xE4;chst in Deinem Podlove" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Stefan Schulz</atom:name>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>Podcast-Produktion mit Daniela Ishorst</title>
+      <link>https://podlovers.org/episode/podcast-produktion-mit-daniela-ishorst/</link>
+      <pubDate>Wed, 14 Oct 2020 14:07:18 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-10-13t09:52:53+00:00-df793573d8556b0</guid>
+      <description>
+        <![CDATA[Wir sprechen dieses Mal mit Daniela über die Tools und Technik bei der Podcast-Produktion. Das ist bei ihr besonders spannend, denn ihre drei Podcasts (kunst & horst, Plauschgewitter, Projekt Kaktus) werden alle auf ganz unterschiedliche Weisen produziert und organisiert.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/podcast-produktion-mit-daniela-ishorst/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/11/s/feed/c/mp3/LOV007.mp3" length="68148441" type="audio/mpeg" />
+
+      <itunes:duration>01:20:47</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Workflows und Tools für die Podcast-Produktion mit Daniela Ishorst (kunst &amp;amp; horst, Plauschgewitter, Projekt Kaktus)</itunes:subtitle>
+      <itunes:title>Podcast-Produktion mit Daniela Ishorst</itunes:title>
+      <itunes:episode>7</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[Wir sprechen dieses Mal mit Daniela über die Tools und Technik bei der Podcast-Produktion. Das ist bei ihr besonders spannend, denn ihre drei Podcasts (kunst &amp; horst, Plauschgewitter, Projekt Kaktus) werden alle auf ganz unterschiedliche Weisen produziert und organisiert.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/10/pink_3000x3000.png" />
+      <content:encoded>
+        <![CDATA[
+<h3>Vorstellung der Gästin</h3>
+
+
+
+<ul><li><a href="https://podcasterinnen.org/">Daniela auf Twitter</a></li><li><a href="https://podcasterinnen.org/">Podcast: Projekt Kaktus</a></li><li><a href="https://podcasterinnen.org/">Podcast: kunst &amp; horst</a></li><li><a href="https://podcasterinnen.org/">Podcast: Plauschgewitter</a></li><li><a href="https://podcasterinnen.org/">podcasterinnen.org</a></li></ul>
+
+
+
+<h3>Feedback und Learnings</h3>
+
+
+
+<ul><li><a href="https://community.podlove.org/t/lov003-podlove-web-play/2313/5?u=podlovers">Frage zur Sharing-Konfiguration im Podlove Web Player</a></li><li><a href="https://www.youtube.com/watch?v=SfD6rgMWWF0">Tims Video zu Reapers Dynamic Split Items</a></li><li><a href="https://www.thomann.de/de/rode_podcaster.htm">Erics Kondensator Mikrofon von Rode</a></li><li><a href="https://sendegate.de/t/profi-klang-fuer-alle-das-hmc660-headset-richtig-einsetzen-fuer-unter-100/3076">Sendegate-Beitrag zum Superlux-HMC-660-Headset</a></li><li><a href="https://www.thomann.de/de/superlux_hmc_660_x.htm">Superlux HMC 660 bei Thomann</a></li></ul>
+
+
+
+<h3>Verbesserungen bei Podlove</h3>
+
+
+
+<ul><li><a href="https://github.com/podlove/podlove-publisher/releases/tag/3.1-beta3">Publisher 3.1-beta3 auf Github</a></li><li><a href="https://github.com/opawg">Open Podcast Analytics Working Group auf Github</a></li><li><a href="https://matomo.org/">Matamo Analytics</a></li></ul>
+
+
+
+<h3>Thema: Podcast-Produktion mit Daniela Ishorst</h3>
+
+
+
+<ul><li><a href="http://einschlafen-podcast.de/">Einschlafen Podcast</a></li><li><a href="https://www.podigee.com/de/">Podigee</a></li><li><a href="https://uberspace.de/en/">Uberspace</a></li><li><a href="https://www.thomann.de/de/zoom_h2n.htm">Zoom H2 bei Thomann</a></li><li><a href="https://das-sendezentrum.de/subscribe/">Subscribe Podcast Konferenz</a></li></ul>
+
+
+
+<h3>Preproduction</h3>
+
+
+
+<ul><li><a href="https://pad.ouvaton.coop/">Etherpad: Ouvaton</a></li><li><a href="https://plauschgewitter.de/2019/11/07/pg017-die-sarah-connor-trilogie/">Plauschgewitter Folge &#8220;Die Sarah Connor Trilogie&#8221;</a></li></ul>
+
+
+
+<h3>Production</h3>
+
+
+
+<ul><li><a href="https://studio-link.de/">Studiolink</a></li><li><a href="https://www.reaper.fm/">Reaper</a></li><li><a href="https://ultraschall.fm/">Ultraschall</a></li><li><a href="https://meet.google.com/">Google Meet</a></li><li><a href="https://discord.com/">Discord</a></li><li><a href="https://justbeamit.com/">justbeamit.com</a></li><li><a href="https://www.thomann.de/de/beyerdynamic_dt297pv80_mk_ii.htm">Beyerdynamic DT297 bei Thomann</a></li><li><a href="https://www.thomann.de/de/focusrite_scarlett_solo_3rd_gen.htm">Focusrite Scarlett Solo bei Thomann</a></li><li><a href="https://www.thomann.de/de/behringer_xenyx_302_usb.htm">Behringer Xenyx bei Thomann</a></li><li><a href="https://www.beyerdynamic.de/fox.html">Beyerdynamic Fox</a></li><li><a href="https://www.thomann.de/de/beyerdynamic_dt770pro.htm">Beyerdynamic DT-770 Pro 250 Ohm bei Thomann</a></li></ul>
+
+
+
+<h3>Postproduction</h3>
+
+
+
+<ul><li><a href="https://en.wikipedia.org/wiki/WebVTT">Web Video Text Track (VTT) bei Wikipedia (en)</a></li><li><a href="https://auphonic.com/">Auphonic</a></li><li><a href="https://wit.ai/">Wit.ai</a></li><li><a href="https://www.audacity.de/">Audacity</a></li><li><a href="https://www.kunstundhorst.de/2018/03/27/kuuho041-welcome-to-hell-neukoellner-oper-g20spezial/">kuuho041 Welcome To Hell – Neuköllner Oper – G20Spezial</a></li></ul>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Begr&#xFC;&#xDF;ung und Vorstellung der G&#xE4;stin" />
+        <psc:chapter start="00:03:13.069" title="Feedback" />
+        <psc:chapter start="00:05:10.415" title="Erfahrungen beim Publishen" />
+        <psc:chapter start="00:09:49.192" title="Verbesserungen bei Podlove" />
+        <psc:chapter start="00:19:05.845" title="Podcasterin Daniela &#x2013; Der Beginn vor 5 Jahren" />
+        <psc:chapter start="00:25:09.575" title="Podcast-Preproduction bei Daniela und den Podlovers" />
+        <psc:chapter start="00:38:29.657" title="Podcast-Recording bei Daniela und den Podlovers" />
+        <psc:chapter start="00:52:47.202" title="Podcast-Postproduction bei Daniela und den Podlovers" />
+        <psc:chapter start="01:09:42.543" title="Allgemeines Feedback zu Podlove von Daniela" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Daniela Ishorst</atom:name>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>Podlove Publisher Plus</title>
+      <link>https://podlovers.org/episode/podlove-publisher-plus/</link>
+      <pubDate>Thu, 24 Sep 2020 18:15:32 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-09-19t14:55:40+00:00-e4dfeed6e8b6716</guid>
+      <description>
+        <![CDATA[In dieser Episode geht es um einen ganz neuen Service im Podlove Universum: der Publisher Plus. Wir sprechen über Erics Motivation ein SaaS zu mit bootstrapping Mindset zu gründen, was Plus für Publisher Nutzer bedeutet und die Finanzierung von Open Source Projekten. Nebenbei reißen wir kleine Themen wie bspw. den Publisher 3.0 Release mit an und was Nutzerinnen beachten sollten, wenn sie upgraden.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/podlove-publisher-plus/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/7/s/feed/c/mp3/LOV006.mp3" length="86634390" type="audio/mpeg" />
+
+      <itunes:duration>01:42:47</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Podlove Publisher Plus: Motivation, Features und Ausblick über den neuen Service im Podlove Universum</itunes:subtitle>
+      <itunes:title>Podlove Publisher Plus</itunes:title>
+      <itunes:episode>6</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[In dieser Episode geht es um einen ganz neuen Service im Podlove Universum: der Publisher Plus. Wir sprechen über Erics Motivation ein SaaS zu mit bootstrapping Mindset zu gründen, was Plus für Publisher Nutzer bedeutet und die Finanzierung von Open Source Projekten. Nebenbei reißen wir kleine Themen wie bspw. den Publisher 3.0 Release mit an und was Nutzerinnen beachten sollten, wenn sie upgraden.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/07/white-green_3000x3000.png" />
+      <content:encoded>
+        <![CDATA[
+<h3>Feedback</h3>
+
+
+
+<ul><li><a href="https://community.podlove.org/t/how-to-configure-a-dark-theme/2358/3">Theming Probleme</a></li><li><a href="https://github.com/podlove/podlove-web-player-wp-plugin">Podlove Web Player WordPress Plugin</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#programmiersprachen-neben-elixir"></a>Programmiersprachen neben Elixir</h3>
+
+
+
+<ul><li><a href="https://de.wikipedia.org/wiki/PHP">PHP</a></li><li><a href="https://de.wikipedia.org/wiki/File_Transfer_Protocol">FTP</a></li><li><a href="https://de.wikipedia.org/wiki/Secure_Shell">SSH</a></li><li><a href="https://de.wikipedia.org/wiki/Vim">VIM</a></li><li><a href="https://de.wikipedia.org/wiki/Ruby_(Programmiersprache)">Ruby</a></li><li><a href="https://de.wikipedia.org/wiki/Elixir_(Programmiersprache)">Elixir</a></li><li><a href="https://de.wikipedia.org/wiki/MySQL">MySQL</a></li><li><a href="https://de.wikipedia.org/wiki/PostgreSQL">PostgreSQL</a></li><li><a href="https://de.wikipedia.org/wiki/Fortran">Fortran</a></li><li><a href="https://de.wikipedia.org/wiki/Anforderung_(Informatik)">Funktonale/Nichtfunktionale Anforderungen</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#podlove-unterst%C3%BCtzen"></a>Podlove unterstützen</h3>
+
+
+
+<ul><li><a href="https://freakshow.fm/fs247-pulp-fiction-koffermoment">FS247 Pulp-Fiction-Koffermoment</a></li><li><a href="https://github.com/podlove/podlove-ui">Podlove UI</a></li><li><a href="https://github.com/podlove/podlove-publisher">Podlove Publisher</a></li><li><a href="https://community.podlove.org/">Podlove Community</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#podcastindexorg"></a>podcastindex.org</h3>
+
+
+
+<ul><li><a href="https://podcastindex.org/">podcastindex.org</a></li><li><a href="http://music.amazon.de/podcasts">Amazon Music Podcasts</a></li><li><a href="https://de.wikipedia.org/wiki/Adam_Curry">Adam Curry</a></li><li><a href="https://www.noagendashow.net/">No Agenda Podcast</a></li><li><a href="https://de.wikipedia.org/wiki/Hypertext_Transfer_Protocol#HTTP-Anfragemethoden">GET/POST</a></li><li><a href="http://mp3s.nashownotes.com/pc20rss.xml">Podcasting 2.0 Podcast</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#icon-verzeichnisse"></a>Icon Verzeichnisse</h3>
+
+
+
+<ul><li><a href="https://thenounproject.com/">thenounproject.com</a></li><li><a href="https://heroicons.com/">heroicons.com</a></li><li><a href="https://reactjs.org/docs/introducing-jsx.html">JSX</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#podlove-verbesserungen"></a>Podlove Verbesserungen</h3>
+
+
+
+<ul><li><a href="https://gridsome.org/docs/fetching-data/">Gridsome Source</a></li><li><a href="https://www.npmjs.com/package/@podlove/utils">@podlove/utils</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#podlove-publisher-30"></a>Podlove Publisher 3.0</h3>
+
+
+
+<ul><li><a href="https://de.wordpress.org/plugins/podlove-podcasting-plugin-for-wordpress/">WordPress Podlove Podcasting Plugin</a></li><li><a href="https://de.wordpress.org/plugins/podlove-podcasting-plugin-for-wordpress/#developers">Changelog</a></li><li><a href="https://twitter.com/ericteubert/status/1303645089957400577">Over 1.000 updates and not a single issue report / support request so far <img src="https://s.w.org/images/core/emoji/13.0.0/72x72/1f44c-1f3fb.png" alt="👌🏻" class="wp-smiley" style="height: 1em; max-height: 1em;" /></a></li><li><a href="https://alexwebdevelop.com/xml-from-scratch/">PHP XML Generator</a></li><li><a href="https://de.wikipedia.org/wiki/Suchmaschinenoptimierung">SEO</a></li><li><a href="https://de.wikipedia.org/wiki/Facebook#Open_Graph">OpenGraph</a></li><li><a href="https://de.wikipedia.org/wiki/Migration_(Informationstechnik)#Umstellung_auf_neuere_Schnittstellen_und_Techniken">Deprecation</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#podlove-publisher-plus"></a>Podlove Publisher Plus</h3>
+
+
+
+<ul><li><a href="https://plus.podlove.org/">plus.podlove.org</a></li><li><a href="https://de.wikipedia.org/wiki/Software_as_a_Service">SaaS</a></li><li><a href="https://de.wikipedia.org/wiki/Finanzierung#Selbstfinanzierung">Bootstrapping</a></li><li><a href="https://de.wikipedia.org/wiki/Einhorn_(Finanzen)">Silicon Valley Unicorns</a></li><li><a href="https://stripe.com/">Stripe</a></li><li><a href="https://de.wikipedia.org/wiki/Minimum_Viable_Product">MVP</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#podlove-services"></a>Podlove Services</h3>
+
+
+
+<ul><li><a href="https://tuple.app/">tuple.app</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#bootstrapping-vs-enterprise"></a>Bootstrapping vs. Enterprise</h3>
+
+
+
+<ul><li><a href="https://www.digitalocean.com/">Digital Ocean</a></li><li><a href="https://aws.amazon.com/">AWS</a></li><li><a href="https://cloud.google.com/">Google Cloud</a></li><li><a href="https://www.itwissen.info/Monolithische-Software-Architektur.html">Monolithische Software Architektur</a></li><li><a href="https://de.wikipedia.org/wiki/Microservices">Microservices</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#open-source-vs-closed-source"></a>Open Source vs. Closed Source</h3>
+
+
+
+<ul><li><a href="https://de.wikipedia.org/wiki/Open_Source">Open Source</a></li><li><a href="https://ghost.org/">ghost.org</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#erfolgreiche-open-source-projekte"></a>Erfolgreiche Open Source Projekte</h3>
+
+
+
+<ul><li><a href="https://drone.io/">DroneCI</a></li><li><a href="https://www.jenkins.io/">Jenkins</a></li><li><a href="https://www.packet.com/">packet.com</a></li><li><a href="https://de.wikipedia.org/wiki/On_Premises">On Premises</a></li><li><a href="https://tailwindcss.com/">TailwindCSS</a></li><li><a href="https://tailwindui.com/">TailwindUI</a></li><li><a href="https://refactoringui.com/">Refactoring UI</a></li><li><a href="https://github.com/sponsors/calebporzio">Caleb Porzio</a></li><li><a href="https://github.com/livewire/livewire">LiveWire</a></li><li><a href="https://github.com/alpinejs/alpine">AlpineJS</a></li><li><a href="https://github.com/sponsors">Github Sponsors</a></li><li><a href="https://sindresorhus.com/">Sindre Sorhus</a></li><li><a href="https://vuejs.org/">VueJS</a></li><li><a href="https://news.vuejs.org/issues/186">VueJS 3</a></li><li><a href="https://evanyou.me/">Evan You</a></li><li><a href="https://www.patreon.com/evanyou">Patreon</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#podlove-finanzierung"></a>Podlove Finanzierung</h3>
+
+
+
+<ul><li><a href="https://metaebene.me/blog/2013/01/15/podlove-crowdfunding/">Spendenaufruf</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#podlovers-hosting"></a>Podlovers Hosting</h3>
+
+
+
+<ul><li><a href="https://uberspace.org/">Uberspace</a></li><li><a href="https://de.wikipedia.org/wiki/Linux-VServer">vServer</a></li><li><a href="https://de.wikipedia.org/wiki/Webspace">Webspace</a></li><li><a href="https://backend.podlovers.org/">backend.podlovers.org</a></li><li><a href="https://de.wikipedia.org/wiki/Docker_(Software)">Docker Container</a></li><li><a href="https://www.digitalocean.com/products/droplets/">Digital Ocean Droplet</a></li><li><a href="https://backend.podlovers.org/">files.podlovers.org</a></li><li><a href="https://www.digitalocean.com/products/spaces/">Digital Ocean Space mit CDN</a></li><li><a href="https://en.wikipedia.org/wiki/Object_storage">Object Storage</a></li><li><a href="https://feeds.podlovers.org/">feeds.podlovers.org</a></li><li><a href="https://github.com/tompave/fun_with_flags">Fun with Flags Elixir</a></li><li><a href="https://www.mailgun.com/">Mailgun</a></li><li><a href="https://podlovers.org/">podlovers.org</a></li><li><a href="https://pages.github.com/">Github Pages</a></li><li><a href="https://en.wikipedia.org/wiki/GraphQL">GraphQL</a></li><li><a href="https://community.podlove.org/">community.podlove.org</a></li><li><a href="https://www.discourse.org/">Discourse</a></li><li><a href="https://disqus.com/">Disqus</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV006/episode.md#open-source-services"></a>Open Source Services</h3>
+
+
+
+<ul><li><a href="https://min.io/">Minio</a></li><li><a href="https://www.digitalocean.com/docs/spaces/">Kosten Digital Ocean Spaces</a></li></ul>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Begr&#xFC;ssung" />
+        <psc:chapter start="00:01:08.307" title="Feedback" />
+        <psc:chapter start="00:08:25.491" title="Programmiersparchen neben Elixir" />
+        <psc:chapter start="00:13:41.431" title="Podlove unterst&#xFC;tzen" />
+        <psc:chapter start="00:25:28.681" title="Reaper Dynamic Split Items" />
+        <psc:chapter start="00:28:14.028" title="podcastindex.org" />
+        <psc:chapter start="00:31:11.284" title="Icon Verzeichnisse" />
+        <psc:chapter start="00:33:07.646" title="Podlove Verbesserungen" />
+        <psc:chapter start="00:34:05.530" title="Podlove Publisher 3.0" />
+        <psc:chapter start="00:45:28.872" title="Podlove Publisher Plus" />
+        <psc:chapter start="00:53:57.361" title="Podlove Services" />
+        <psc:chapter start="00:58:56.622" title="Bootstrapping vs. Enterprise" />
+        <psc:chapter start="01:07:10.523" title="Open Source vs. Closed Source" />
+        <psc:chapter start="01:11:13.523" title="Erfolgreiche Open Source Projekte" />
+        <psc:chapter start="01:21:52.895" title="Podlove Finanzierung" />
+        <psc:chapter start="01:24:12.112" title="Podlovers Hosting" />
+        <psc:chapter start="01:39:11.474" title="Open Source Services" />
+        <psc:chapter start="01:42:14.107" title="Verabschiedung" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>Podlove Radiator</title>
+      <link>https://podlovers.org/episode/podlove-radiator/</link>
+      <pubDate>Fri, 11 Sep 2020 18:05:13 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-09-09t11:03:02+00:00-ba8d0a204e80243</guid>
+      <description>
+        <![CDATA[In dieser Folge geht es das erste Mal über ein Projekt, das nie das Licht der Welt erblickt hat: den Podlove Radiator. Dafür haben wir uns Dom, Letty und Tim eingeladen, die alle am Projekt beteiligt waren. Wir sprechen darüber was der Radiator werden sollte, warum wir mit der Entwicklung begonnen und wieder aufgehört haben, wie sich die Vision des Radiators auf andere Podlove-Projekte auswirkt und weshalb es generell schwierig ist sehr komplexe Open-Source-Projekte zu entwickeln.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/podlove-radiator/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/6/s/feed/c/mp3/LOV005.mp3" length="113444506" type="audio/mpeg" />
+
+      <itunes:duration>02:14:43</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Podlove Radiator: Motivation, Geschichte, Vision und die Schwierigkeit komplexer Open-Source-Projekte</itunes:subtitle>
+      <itunes:title>Podlove Radiator</itunes:title>
+      <itunes:episode>5</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[In dieser Folge geht es das erste Mal über ein Projekt, das nie das Licht der Welt erblickt hat: den Podlove Radiator. Dafür haben wir uns Dom, Letty und Tim eingeladen, die alle am Projekt beteiligt waren. Wir sprechen darüber was der Radiator werden sollte, warum wir mit der Entwicklung begonnen und wieder aufgehört haben, wie sich die Vision des Radiators auf andere Podlove-Projekte auswirkt und weshalb es generell schwierig ist sehr komplexe Open-Source-Projekte zu entwickeln.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/09/blue_3000x3000.png" />
+      <content:encoded>
+        <![CDATA[
+<h2>Feedback</h2>
+
+
+
+<ul><li><a href="https://podlovers.org/episode/podlove-publisher/">LOV002</a></li><li><a href="https://auphonic.com/landing">Auphonic</a></li></ul>
+
+
+
+<h2>Erfahrungen beim Publishen</h2>
+
+
+
+<ul><li><a href="https://www.npmjs.com/package/niederschrift">niederschrift bei npm</a></li><li><a href="https://de.wikipedia.org/wiki/Protokoll_(Niederschrift)">Niederschrift bei Wikipedia</a></li><li><a href="https://cre.fm/cre220-sprechendes-denken">CRE-Folge zum Sprechenden Denken</a></li></ul>
+
+
+
+<h2>Verbesserungen in Podlove</h2>
+
+
+
+<ul><li><a href="https://podlove.org/specifications/">Spezifikationen bei Podlove</a></li><li><a href="https://github.com/podlove/podlove-timeline">Podlove Timeline bei Github</a></li></ul>
+
+
+
+<h2>Podlove Radiator</h2>
+
+
+
+<ul><li><a href="https://de.wikipedia.org/wiki/Erlang_(Programmiersprache)">Erlang auf Wikipedia</a></li><li><a href="https://metaebene.me/blog/2012/05/06/bitlove/">Bitlove</a></li><li><a href="https://de.wikipedia.org/wiki/PHP">PHP auf Wikipedia</a></li><li><a href="https://www.spiegel.de/thema/podcasts_vom_spiegel/">Podcasts bei spiegel.de</a></li><li><a href="https://newsinitiative.withgoogle.com/dnifund/">Digital News Innovation Fund (DNI Fund)</a></li><li><a href="https://twitter.com/timpritlove">Tim (@timpritlove) auf Twitter</a></li><li><a href="https://twitter.com/monkeydom">Dom (@monkeydom) auf Twitter</a></li><li><a href="https://de.wikipedia.org/wiki/Elixir_(Programmiersprache)">Elixir bei Wikipedia</a></li><li><a href="https://twitter.com/Lettebowskie">Letty (@Lettebowskie) auf Twitter</a></li><li><a href="https://de.wikipedia.org/wiki/Mandantenf%C3%A4higkeit">Multimandantenfähigkeit auf Wikipedia</a></li><li><a href="https://de.wikipedia.org/wiki/Representational_State_Transfer">REST bei Wikipedia</a></li><li><a href="https://de.wikipedia.org/wiki/GraphQL">GraphQL bei Wikipedia</a></li><li><a href="https://moneymoney-app.com/">MoneyMoney</a></li><li><a href="https://www.monkey-office.de/products/monkeyoffice/">MonKey Office</a></li><li><a href="https://de.wikipedia.org/wiki/CNAME_Resource_Record">CNAME Resource Record auf Wikipedia</a></li><li><a href="https://de.wikipedia.org/wiki/Open_Source">Open Source auf Wikipedia</a></li><li><a href="https://de.wikipedia.org/wiki/Scrum">Scrum auf Wikipedia</a></li><li><a href="https://castro.fm/">Castro</a></li><li><a href="https://overcast.fm/">Overcast</a></li><li><a href="https://de.wikipedia.org/wiki/HTTP-Streaming">HLS bei Wikipedia</a></li><li><a href="https://de.wikipedia.org/wiki/Bookmarklet">Bookmarklet bei Wikipedia</a></li></ul>
+
+
+
+<h2>Ausblick</h2>
+
+
+
+<ul><li><a href="https://plus.podlove.org/">Podlove Publisher PLUS</a></li><li>Meldet euch bei <a href="https://twitter.com/ericteubert">Eric</a>, <a href="https://twitter.com/zusatzstoff">Alex</a> oder <a href="https://twitter.com/FischaelaMeer">Michi</a> wenn ihr gerne bei Podlove mitarbeiten möchtet.</li><li><a href="https://www.bountysource.com/">Bountysource</a></li><li><a href="https://www.phoenixframework.org/">Phoenix Framework</a></li><li><a href="https://en.wikipedia.org/wiki/BEAM_(Erlang_virtual_machine)">Erlang VM bei Wikipedia (en)</a></li><li><a href="https://de.wikipedia.org/wiki/Ruby_(Programmiersprache)">Ruby bei Wikipedia</a></li><li><a href="https://de.wikipedia.org/wiki/Ruby_on_Rails">Ruby on Rails bei Wikipedia</a></li><li><a href="https://freakshow.fm/fs225-frontend-von-judaea">Freakshow Episode 225</a></li><li><a href="https://de.wikipedia.org/wiki/React">React bei Wikipedia</a></li><li><a href="https://de.wikipedia.org/wiki/Redux_(JavaScript-Bibliothek)">Redux bei Wikipedia</a></li><li><a href="https://nuxtjs.org/">Nuxt.js</a></li><li><a href="https://vuex.vuejs.org/">VueX</a></li><li><a href="https://github.com/alexander-heimbuch/redux-vuex">redux-vuex</a></li><li><a href="https://justbeamit.com/">justbeamit.com</a></li></ul>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Begr&#xFC;&#xDF;ung" />
+        <psc:chapter start="00:01:18.832" title="Feedback" />
+        <psc:chapter start="00:02:48.915" title="Erfahrungen beim Publishen" />
+        <psc:chapter start="00:07:42.000" title="Verbesserungen bei Podlove" />
+        <psc:chapter start="00:10:56.730" title="Spezifikationen bei Podlove" />
+        <psc:chapter start="00:12:18.196" title="Podlove Web Player A11y" />
+        <psc:chapter start="00:13:05.150" title="Podlove Radiator &#x2013; Was ist der Radiator?" />
+        <psc:chapter start="00:15:01.837" title="Podlove Radiator &#x2013; Die Anf&#xE4;nge" />
+        <psc:chapter start="00:22:34.471" title="Podlove Radiator &#x2013; Kickstart f&#xFC;r Teamarbeit" />
+        <psc:chapter start="00:30:13.369" title="Podlove Radiator &#x2013; Featureset, Roadmap" />
+        <psc:chapter start="00:43:43.690" title="Podlove Radiator &#x2013; Was haben wir erreicht?" />
+        <psc:chapter start="00:47:44.638" title="Podlove Radiator &#x2013; Das Ende des Projekts" />
+        <psc:chapter start="00:54:36.515" title="Podlove Radiator &#x2013; Woran hat es gefehlt?" />
+        <psc:chapter start="01:04:47.857" title="Podlove Radiator &#x2013; Wieso geht es nicht weiter?" />
+        <psc:chapter start="01:13:45.842" title="Podlove Radiator &#x2013; Wie k&#xF6;nnte es weitergehen" />
+        <psc:chapter start="01:18:27.485" title="Podlove Radiator &#x2013; Die Vision" />
+        <psc:chapter start="01:29:42.398" title="Podlove Radiator &#x2013; Ausblick" />
+        <psc:chapter start="01:31:44.822" title="Podlove Publisher PLUS" />
+        <psc:chapter start="01:36:43.071" title="Aufruf an Entwickler:innen und Community" />
+        <psc:chapter start="01:41:04.247" title="Elixir &#x2013; Durchdringbare Magie mit geiler Doku" />
+        <psc:chapter start="01:53:28.745" title="Was haben wir pers&#xF6;nlich aus dem Projekt gelernt?" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Letty</atom:name>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Dominik Wagner</atom:name>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Tim Pritlove</atom:name>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>Podlove Subscribe Button</title>
+      <link>https://podlovers.org/episode/lov004-podlove-subscribe-button/</link>
+      <pubDate>Sat, 29 Aug 2020 06:01:24 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-08-22t11:45:30+00:00-596efde74ef914b</guid>
+      <description>
+        <![CDATA[Auch dieses Mal dürfen wir einen Gast in unserer Runde begrüßen. Ben berichtet zusammen mit Michi, wie es zur Idee des Podlove Subscribe Buttons kam, was die Herausforderungen dabei waren und wie der Button derzeit eingesetzt wird. Weiterhin schauen wir in die Gegenwart und erklären, was gerade noch fehlt, um den Subscribe Button zu aktualisieren und wie ihr uns dabei unterstützen könnt.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/lov004-podlove-subscribe-button/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/5/s/feed/c/mp3/LOV004.mp3" length="56586357" type="audio/mpeg" />
+
+      <itunes:duration>01:07:01</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Podlove Subscribe Button: Motivation, Geschichte, Features, Ausblick</itunes:subtitle>
+      <itunes:title>Podlove Subscribe Button</itunes:title>
+      <itunes:episode>4</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[Auch dieses Mal dürfen wir einen Gast in unserer Runde begrüßen. Ben berichtet zusammen mit Michi, wie es zur Idee des Podlove Subscribe Buttons kam, was die Herausforderungen dabei waren und wie der Button derzeit eingesetzt wird. Weiterhin schauen wir in die Gegenwart und erklären, was gerade noch fehlt, um den Subscribe Button zu aktualisieren und wie ihr uns dabei unterstützen könnt.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/07/white-pink_3000x3000.png" />
+      <content:encoded>
+        <![CDATA[
+<h3>Feedback</h3>
+
+
+
+<ul><li><a href="https://community.podlove.org/t/lov003-podlove-web-play/2313">Advi zu Podlove Web Player Related Episodes und Theming</a></li><li><a href="https://twitter.com/podlove_org/status/1292076616919724033">Castro funktioniert wieder</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#erfahrungen-beim-publishen"></a>Erfahrungen beim Publishen</h3>
+
+
+
+<ul><li><a href="https://ultraschall.fm/">Ultraschall sehr gut</a></li><li><a href="https://auphonic.com/">Auphonic Presets</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#folgt-alex-auf-twitter"></a>Folgt Alex! (auf Twitter)</h3>
+
+
+
+<ul><li><a href="https://twitter.com/zusatzstoff">Alex auf Twitter</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#verbesserungen-in-podlove"></a>Verbesserungen in Podlove</h3>
+
+
+
+<ul><li>Podlove Publisher:&nbsp;<a href="https://github.com/podlove/podlove-publisher/issues/1131">Transkripte können jetzt gelöscht werden</a></li><li>Podlove Publisher:&nbsp;<a href="https://github.com/podlove/podlove-publisher/pull/1134">API für Episoden &amp; Contriburors</a></li><li>Podlove Web Player:&nbsp;<a href="https://community.podlove.org/t/podlove-web-player-5-cannot-edit-the-share-tab/2303/6">Editieren des Share Tabs im Default</a>,&nbsp;<a href="https://community.podlove.org/t/webplayer-missing-after-update-to-version-5-2-7/2308">Klaudia bewahrt vor Unheil</a></li><li>Podlove Web Player:&nbsp;<a href="https://github.com/podlove/podlove-ui/pull/604">Barrierefreiheit verbessert</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#transkript-editor"></a>Transkript Editor</h3>
+
+
+
+<ul><li><a href="https://www.podigee.com/en/blog/podcast-transcripts-how-to-get-a-transcription-of-your-podcast/">Podigee Transkript Editor</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#wordpress-markdown-nach-graphql"></a>WordPress Markdown nach GraphQL</h3>
+
+
+
+<ul><li><a href="https://kevq.uk/how-to-convert-wordpress-to-markdown/">WordPress nach Markdown</a></li><li><a href="https://www.gatsbyjs.com/docs/adding-markdown-pages/">Markdown in Gatsby</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#vorstellung-ben"></a>Vorstellung Ben</h3>
+
+
+
+<ul><li><a href="https://twitter.com/zeroathome">Ben auf Twitter</a></li><li><a href="https://www.podigee.com/en/about/the-team">Podigee Team</a></li><li><a href="https://f.hubspotusercontent10.net/hubfs/7102713/Backend%20Developer%20mwd.pdf">Backend Entwickler gesucht</a></li><li><a href="https://www.ruby-lang.org/de/">Ruby Programmiersprache</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#psb-die-anf%C3%A4nge"></a>PSB: Die Anfänge</h3>
+
+
+
+<ul><li><a href="https://das-sendezentrum.de/events/rp14/">Sendezentrum re:publica 2014</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#psb-technologie"></a>PSB: Technologie</h3>
+
+
+
+<ul><li><a href="https://coffeescript.org/">Coffee Script</a></li><li><a href="https://www.typescriptlang.org/">TypeScript</a></li><li><a href="https://haml.info/">Haml</a></li><li><a href="https://pugjs.org/api/getting-started.html">Pug</a></li><li><a href="https://webpack.js.org/">Webpack</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#psb-fiat-lux"></a>PSB: Fiat Lux</h3>
+
+
+
+<ul><li><a href="https://podlove.org/2014/12/22/introducing-the-podlove-subscribe-button/">Vorstellung Dezember 2014</a></li><li><a href="https://podlove.org/2015/04/22/integrating-the-podlove-subscribe-button/">WordPress Integration 2015</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#psb-redesign"></a>PSB: Redesign</h3>
+
+
+
+<ul><li><a href="https://podlove.org/2016/05/04/podlove-subscribe-button-the-redesign/">Redesign 2016</a></li><li><a href="https://podlove.org/2016/05/14/software-updates-for-using-the-podlove-subscribe-button/">Veröffentlichung Mai 2016</a></li><li><a href="https://de.wordpress.org/plugins/podlove-subscribe-button/">WordPress Plugin</a></li><li><a href="https://github.com/chemiker">Chemiker Github</a></li><li><a href="https://subscribe-button.podlove.org/">subscribe-button.podlove.org</a></li><li><a href="https://subscribe.podlove.org/">subscribe.podlove.org</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#psb-gegenwart"></a>PSB: Gegenwart</h3>
+
+
+
+<ul><li><a href="https://www.npmjs.com/package/@podlove/clients">@podlove/clients</a></li><li><a href="https://support.pocketcasts.com/article/how-can-i-use-pocket-casts-with-apps-like-launch-center/">Pocket Casts Schema</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#psb-unterst%C3%BCtzung-gesucht"></a>PSB: Unterstützung gesucht</h3>
+
+
+
+<ul><li><a href="https://github.com/podlove/podlove-ui">Podlove UI Monorepo</a></li><li><a href="https://vuejs.org/">VueJS</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#psb-client-auswahl"></a>PSB: Client Auswahl</h3>
+
+
+
+<ul><li><a href="https://github.com/podlove/podlove-ui/commit/3b87286fdabbb7d8891baea5d913aa4a876a093a">Bugfix für Device Detection</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#psb-clients-und-mehr"></a>PSB: Clients und Mehr</h3>
+
+
+
+<ul><li><a href="https://steadyhq.com/de">Steady</a></li><li><a href="https://www.patreon.com/europe">Patreon</a></li></ul>
+
+
+
+<h3><a href="https://github.com/podlove/orga/blob/master/podlovers/episodes/LOV004/episode.md#psb-cdn"></a>PSB: CDN</h3>
+
+
+
+<ul><li><a href="https://cdn.podigee.com/">Podigee CDN</a></li><li><a href="https://www.keycdn.com/">KeyCDN</a></li></ul>
+
+
+
+<p></p>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Begr&#xFC;&#xDF;ung" />
+        <psc:chapter start="00:01:52.737" title="Feedback" />
+        <psc:chapter start="00:06:48.981" title="Erfahrungen beim Publishen" />
+        <psc:chapter start="00:11:24.378" title="Folgt Alex! (auf Twitter)" />
+        <psc:chapter start="00:12:23.612" title="Verbesserungen in Podlove" />
+        <psc:chapter start="00:16:16.443" title="Transkript Editor" />
+        <psc:chapter start="00:17:24.060" title="Wordpress Markdown nach GraphQL" />
+        <psc:chapter start="00:18:48.014" title="Vorstellung Ben" />
+        <psc:chapter start="00:23:26.787" title="PSB: Die Anf&#xE4;nge" />
+        <psc:chapter start="00:26:40.974" title="PSB: Technologie" />
+        <psc:chapter start="00:30:02.901" title="PSB: Fiat Lux" />
+        <psc:chapter start="00:31:45.044" title="PSB: Redesign" />
+        <psc:chapter start="00:38:09.466" title="PSB: Gegenwart" />
+        <psc:chapter start="00:42:06.922" title="PSB: Unterst&#xFC;tzunge gesucht" />
+        <psc:chapter start="00:47:27.269" title="PSB: Client Auswahl" />
+        <psc:chapter start="00:52:58.931" title="PSB: Clients und Mehr" />
+        <psc:chapter start="00:55:09.814" title="PSB: Client Reihenfolge" />
+        <psc:chapter start="00:56:33.398" title="PSB: Einsteiger vs. Profi Anwender" />
+        <psc:chapter start="00:58:33.571" title="PSB: Zusammenfassung" />
+        <psc:chapter start="01:00:34.175" title="PSB: CDN" />
+        <psc:chapter start="01:02:56.496" title="Ausklang" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Ben Zimmer</atom:name>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>Podlove Web Player</title>
+      <link>https://podlovers.org/episode/podlove-web-player/</link>
+      <pubDate>Sun, 16 Aug 2020 11:58:58 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-08-08t21:50:44+00:00-34cddb373f950e8</guid>
+      <description>
+        <![CDATA[Wir holen uns Simon zur Hilfe um über die Anfänge des Podlove Web Player zu sprechen: Warum es ihn gibt und wie die ersten Versionen aussahen. In der zweiten Hälfte geht es tief in den Technik-Kaninchenbau: Alex erläutert seine Motivation für den Neubau für Podlove Web Player 4 und 5. Zum Schluss besprechen wir das holprige Release des aktuellen Web Player Plugins.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/podlove-web-player/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/4/s/feed/c/mp3/LOV003.mp3" length="76976929" type="audio/mpeg" />
+
+      <itunes:duration>01:31:18</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Podlove Web Player: Motivation, Geschichte, Features, Ausblick</itunes:subtitle>
+      <itunes:title>Podlove Web Player</itunes:title>
+      <itunes:episode>3</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[Wir holen uns Simon zur Hilfe um über die Anfänge des Podlove Web Player zu sprechen: Warum es ihn gibt und wie die ersten Versionen aussahen. In der zweiten Hälfte geht es tief in den Technik-Kaninchenbau: Alex erläutert seine Motivation für den Neubau für Podlove Web Player 4 und 5. Zum Schluss besprechen wir das holprige Release des aktuellen Web Player Plugins.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/08/white-blue_3000x3000.png" />
+      <content:encoded>
+        <![CDATA[
+<h3>Begrüßung &amp; Feedback</h3>
+
+
+
+<ul><li><a href="Gast: Simon Waldherr">Gast: Simon Waldherr</a></li><li><a href="https://www.gnu.org/licenses/gpl-faq.html#GPLCommercially">GPL</a></li><li><a href="https://sendegate.de/">Sendegate</a></li><li><a href="https://overcast.fm/">Overcast</a></li><li><a href="https://www.castro.fm/">Castro</a></li><li><a href="https://en.wikipedia.org/wiki/IPv6">IPv6</a></li><li><a href="https://www.docker.com/">Docker</a></li></ul>
+
+
+
+<h3>Erfahrungen beim Publishen: Was haben wir gelernt?</h3>
+
+
+
+<ul><li>Mikrofon (USB Kondensator t.bone SC 440) Probleme </li><li><a href="https://www.homebrewaudio.com/reafir-madness-hidden-noise-reduction-tool-in-reaper/">Noise Filter in Reaper: ReaFIR</a></li><li><a href="https://github.com/podlove/podlove-publisher/issues/1131">Transkripte im Publisher nicht löschbar</a></li><li><a href="https://www.npmjs.com/package/niederschrift">niederschrift: Transkribierungs-Hilfstool</a></li><li><a href="https://github.com/shownotes">shownot.es Projekt</a></li><li><a href="https://sendegate.de/t/profi-klang-fuer-alle-das-hmc660-headset-richtig-einsetzen-fuer-unter-100/3076">&#8220;Sendegate Audio Setup&#8221; / HMC 660</a></li><li><a href="http://unfurl.eric.co.de/">Unfurl</a></li><li><a href="https://tailwindcss.com/">Tailwind CSS</a></li></ul>
+
+
+
+<h3>Podlove Web Player</h3>
+
+
+
+<ul><li><a href="https://twitter.com/gerritvanaaken/">Gerrit van Aaken</a></li><li><a href="https://podlove.org/2012/11/19/podlove-web-player-1-2/">Podlove Web Player 1.2 Blogpost</a></li><li><a href="https://podlove.org/2013/02/14/podlove-web-player-2-0/">Podlove Web Player 2.0 Blogpost</a></li><li><a href="https://en.wikipedia.org/wiki/Git">git</a></li><li><a href="https://wordpress.org/plugins/podlove-web-player/">Podlove Web Player WordPress Plugin</a></li><li><a href="https://jquery.com/">jQuery</a></li><li><a href="https://twitter.com/line_o">Juri @line_o</a></li><li><a href="https://twitter.com/plutonik8">Alexandra @plutonik8</a></li><li><a href="https://podlove.org/deep-link/">Podlove Deep Link</a></li><li><a href="https://twitter.com/Graphorama">Sven @Graphorama</a></li><li><a href="https://reactjs.org/">React JS</a></li><li><a href="https://redux.js.org/">Redux</a></li><li><a href="https://vuejs.org/">Vue JS</a></li><li><a href="https://docs.podlove.org/podlove-web-player/">Podlove Web Player 5 Dokumentation</a></li><li><a href="https://github.com/alexander-heimbuch/redux-vuex">Redux Vuex</a></li><li><a href="https://en.wikipedia.org/wiki/Long-running_transaction">Sagas</a></li><li><a href="https://www.mediaelementjs.com/">Mediaelement JS</a></li><li><a href="https://auphonic.com/">Auphonic</a></li><li><a href="https://en.wikipedia.org/wiki/Adobe_Flash">Adobe Flash</a></li><li><a href="https://en.wikipedia.org/wiki/Microsoft_Silverlight">Microsoft Silverlight</a></li><li><a href="https://subscribe-button.podlove.org/">Podlove Subscribe Button</a></li><li><a href="https://github.com/10up/action-wordpress-plugin-deploy">GitHub WordPress Plugin Deployment Workflow</a></li></ul>
+
+
+
+<p></p>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Begr&#xFC;&#xDF;ung" />
+        <psc:chapter start="00:00:26.196" title="Simon" />
+        <psc:chapter start="00:01:56.397" title="Feedback" />
+        <psc:chapter start="00:07:08.279" title="Erfahrungen beim Publishen" />
+        <psc:chapter start="00:13:29.226" title="Shownotes" />
+        <psc:chapter start="00:20:43.264" title="Audio-Hardware" />
+        <psc:chapter start="00:22:51.183" title="Podlove Web Player: Warum eigentlich?" />
+        <psc:chapter start="00:25:41.451" title="Podlove Web Player 1" />
+        <psc:chapter start="00:28:16.131" title="Podlove Web Player 2" />
+        <psc:chapter start="00:33:44.999" title="Podlove Web Player 3" />
+        <psc:chapter start="00:44:17.011" title="Podlove Web Player 4" />
+        <psc:chapter start="01:02:41.149" title="Podlove UI" />
+        <psc:chapter start="01:05:50.035" title="Podlove Web Player 5" />
+        <psc:chapter start="01:12:50.121" title="Podlove Web Player WordPress Plugin" />
+        <psc:chapter start="01:29:23.552" title="Ausblick" />
+        <psc:chapter start="01:30:49.849" title="Und Tsch&#xFC;ss" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Simon</atom:name>
+        <atom:uri>http://simon.waldherr.eu/</atom:uri>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>Podlove Publisher</title>
+      <link>https://podlovers.org/episode/podlove-publisher/</link>
+      <pubDate>Sun, 02 Aug 2020 14:38:55 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-07-26t18:14:02+00:00-5b54b2f0d281f24</guid>
+      <description>
+        <![CDATA[In dieser Folge erzählt uns Eric alles über den Podlove Publisher. Wir lassen acht Jahre Entwicklung Revue passieren, sprechen über erfolgreiche und auch zähe Zeiten und darüber, was wir uns für die Zukunft des Publishers wünschen. Außerdem besprechen wir, welche Erfahrungen wir bei der Produktion unserer ersten Podcastfolge gemacht haben, und wie diese schon jetzt unsere Arbeit an Podlove-Projekten beeinflusst.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/podlove-publisher/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/3/s/feed/c/mp3/LOV002.mp3" length="104029258" type="audio/mpeg" />
+
+      <itunes:duration>02:03:30</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Acht Jahre Podlove Publisher: Motivation, Geschichte, Features, Ausblick</itunes:subtitle>
+      <itunes:title>Podlove Publisher</itunes:title>
+      <itunes:episode>2</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[In dieser Folge erzählt uns Eric alles über den Podlove Publisher. Wir lassen acht Jahre Entwicklung Revue passieren, sprechen über erfolgreiche und auch zähe Zeiten und darüber, was wir uns für die Zukunft des Publishers wünschen. Außerdem besprechen wir, welche Erfahrungen wir bei der Produktion unserer ersten Podcastfolge gemacht haben, und wie diese schon jetzt unsere Arbeit an Podlove-Projekten beeinflusst.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/07/white-pink_3000x3000-1024x1024.png" />
+      <content:encoded>
+        <![CDATA[
+<h3>Feedback</h3>
+
+
+
+<ul><li><a href="https://sendegate.de/t/podlovers-der-podlove-entwickler-innen-podcast/11891">Ankündigung im Sendegate</a></li><li><a href="https://twitter.com/podlove_org/status/1284521385910579200">Ankündigung auf Twitter</a></li><li><a href="https://twitter.com/podlovers">Podlovers auf Twitter</a></li><li><a href="https://twitter.com/fyyd_de">Fyyd auf Twitter</a></li><li><a href="https://fyyd.de/user/hoersuppe/curation/nullnummern?page=0">Nullnummern auf fyyd</a></li><li><a href="https://twitter.com/hoersuppe">Nullnummern auf Twitter (Hörsuppe)</a></li><li><a href="https://gohugo.io/">Hugo</a></li></ul>
+
+
+
+<h3>Erfahrungen beim Publishen: Was haben wir gelernt?</h3>
+
+
+
+<ul><li><a href="https://ultraschall.fm/">Ultraschall</a>&nbsp;</li><li><a href="https://www.youtube.com/watch?v=ND4AG43wSPQ">Ultraschall 4 Release Video</a></li><li><a href="https://www.reaper.fm/">Reaper</a></li><li><a href="https://ultraschall.fm/install/">Ultraschall Installations-Tutorial</a>&nbsp;</li><li><a href="https://studio-link.de/">StudioLink</a></li><li><a href="https://discord.com/new">Discord</a></li><li><a href="https://auphonic.com/">Auphonic</a></li><li><a href="https://aws.amazon.com/de/s3/">S3</a></li><li><a href="https://github.com/podlove/podlove-publisher/issues/1123">Github Issue für eine gelungenere Auphonic Integration im Publisher</a></li><li><a href="https://github.com/podlove/podlove-publisher/issues/1124">Github Issue für ein besseres Onboarding im Publisher</a></li><li><a href="https://www.youtube.com/watch?v=Hmrm-jUe6u4">Podlove Publisher Video (Youtube)</a></li><li><a href="https://de.wikipedia.org/wiki/PHP">PHP (Wikipedia)</a></li><li><a href="https://de.wikipedia.org/wiki/WordPress">WordPress (Wikipedia)</a></li><li><a href="https://www.youtube.com/watch?v=Jofuw9CQaw8">Video &#8220;How to enable Chapter Marks?&#8221;</a></li><li><a href="https://podba.se/validate/">Erics empfohlener Feedvalidator</a></li><li><a href="https://castro.fm/">Castro Podcast Player</a></li><li><a href="https://podlovers.org/episode/wir-mussen-reden/">Podlovers Webseite mit Timeline</a></li><li><a href="https://en.wikipedia.org/wiki/WebVTT">WebVTT (Wikipedia)</a></li></ul>
+
+
+
+<h3>Podlove-Updates: Was haben wir verbessert?</h3>
+
+
+
+<ul><li><a href="https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout">CSS Grid Layout</a></li><li><a href="https://github.com/podlove/podlove-ui">Podlove UI Repository</a></li><li><a href="https://github.com/orgs/podlove/projects/2">Podlove Issue Board auf Github</a></li></ul>
+
+
+
+<h3>Acht Jahre Podlove Publisher:&nbsp;Motivation, Geschichte, Features, Ausblick</h3>
+
+
+
+<ul><li><a href="https://publisher.podlove.org/">Podlove Publisher</a></li><li><a href="https://libsyn.com/">Libsyn</a></li><li><a href="https://blubrry.com/">Blubrry</a></li><li><a href="https://de.wikipedia.org/wiki/File_Transfer_Protocol">FTP (Wikipedia)</a></li><li><a href="https://de.wikipedia.org/wiki/RSS_(Web-Feed)">RSS (Wikipedia)</a></li><li><a href="https://de.wikipedia.org/wiki/Domain_(Internet)">Domain (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GPL (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/MIT_License">MIT (Wikipedia)</a></li><li><a href="https://create.blubrry.com/resources/powerpress/">PowerPress by Blubrry</a></li><li><a href="https://de.wordpress.org/plugins/seriously-simple-podcasting/">Seriously Simple Podcasting WordPress Plugin</a></li><li><a href="https://podlove.org/2012/01/07/fiat-lux/">Fiat Lux: Erster Blogpost auf podlove.org</a></li><li><a href="https://podlove.org/simple-chapters/">Podlove Simple Chapters</a></li><li><a href="https://podlove.org/alternate-feeds/">Alternate Feeds</a></li><li><a href="https://en.wikipedia.org/wiki/Ogg">Ogg (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/Opus_(audio_format)">Opus (Wikipedia)</a></li><li><a href="https://www.youtube.com/watch?v=YWebs8p8_As">Podlove Podcast Publisher Einführung 1. Teil (Youtube)</a></li><li><a href="https://www.youtube.com/watch?v=bLgPqohbRv0">Podlove Podcast Publisher Einführung 2. Teil (Youtube)</a></li><li><a href="http://www.mediaelementjs.com/">MediaElement.js</a></li><li><a href="https://wordpress.org/support/article/taxonomies/">Taxonomies</a></li><li><a href="https://metaebene.me/">Metaebene</a></li><li><a href="https://der-lautsprecher.de/">Lautsprecher Podcast</a></li><li><a href="http://einschlafen-podcast.de/">Einschlafen Podcast</a></li><li><a href="https://podlove.org/paged-feeds/">Paged Feeds</a></li><li><a href="https://de.wikipedia.org/wiki/FeedBurner">FeedBurner (Wikipedia)</a></li><li><a href="https://de.wikipedia.org/wiki/Proxy_(Rechnernetz)">Proxy Server (Wikipedia)</a></li><li><a href="https://freakshow.fm/">Freak Show</a></li><li><a href="https://www.podc.at/">Podcat</a></li><li><a href="https://de.wikipedia.org/wiki/App.net">App.net (Wikipedia)</a></li><li><a href="https://twig.symfony.com/">Twig Template Engine</a></li><li><a href="https://docs.podlove.org/podlove-publisher/reference/templates.html">Publisher Templates Dokumentation</a></li><li><a href="https://docs.podlove.org/podlove-publisher/guides/understanding-templates.html">Publisher Templates Guide</a></li><li><a href="https://semver.org/lang/de/">Semantic Versioning</a></li><li><a href="https://podlove.org/podlove-subscribe-button/">Podlove Subscribe Button</a></li><li><a href="https://d3js.org/">D3.js</a></li><li><a href="https://d3js.org/">Cron (Wikipedia)</a></li><li><a href="https://developer.wordpress.org/plugins/cron/">WP-Cron</a></li><li><a href="https://elixir-lang.org/">Elixir</a></li><li><a href="https://letsencrypt.org/de/">Let&#8217;s Encrypt</a></li><li><a href="https://vuejs.org/">Vue.js</a></li><li><a href="https://de.wikipedia.org/wiki/Chaos_Communication_Camp">Chaos Communication Camp (Wikipedia)</a></li><li><a href="https://de.wikipedia.org/wiki/.htaccess">.htaccess (Wikipedia)</a></li><li><a href="https://de.wikipedia.org/wiki/Parser">Parser (Wikipedia)</a></li><li><a href="https://de.wikipedia.org/wiki/Regul%C3%A4rer_Ausdruck">Regulärer Ausdruck (Wikipedia)</a></li><li><a href="https://plus.podlove.org/">Publisher PLUS</a></li><li><a href="https://de.wikipedia.org/wiki/Flattr">Flattr (Wikipedia)</a></li><li><a href="https://metaebene.me/blog/2012/05/06/bitlove/">Bitlove</a></li></ul>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Intro" />
+        <psc:chapter start="00:01:13.112" title="Feedback" />
+        <psc:chapter start="00:08:11.117" title="Erfahrungen beim Publishen: Was haben wir gelernt?" />
+        <psc:chapter start="00:09:06.321" title="Alex' Erfahrungen beim Prodizieren der ersten Folge" />
+        <psc:chapter start="00:28:06.411" title="Erics Erfahrungen beim Einreichen des Podcasts bei Apple" />
+        <psc:chapter start="00:33:05.395" title="Michis Erfahrungen beim Transkripte schreiben" />
+        <psc:chapter start="00:36:33.826" title="Updates f&#xFC;r den Podlove Publisher" />
+        <psc:chapter start="00:40:24.440" title="Updates f&#xFC;r den Subscribe Button im Web Player" />
+        <psc:chapter start="00:44:17.309" title="Was ist der Podlove Publisher?" />
+        <psc:chapter start="00:44:17.309" title="Kurze Geschichte des Publishers: Was war die Motivation den Publisher zu entwickeln?" />
+        <psc:chapter start="00:53:26.748" title="Kurze Geschichte des Publishers: Die Anf&#xE4;nge 2011" />
+        <psc:chapter start="01:07:20.938" title="Kurze Geschichte des Publishers: Release und Feature-Entwicklung" />
+        <psc:chapter start="01:22:37.602" title="Kurze Geschichte des Publishers: Version 2.0" />
+        <psc:chapter start="01:33:22.183" title="Kurze Geschichte des Publishers: Ab hier wird's z&#xE4;h" />
+        <psc:chapter start="01:40:49.591" title="Kurze Geschichte des Publishers: Version 2.5" />
+        <psc:chapter start="01:51:18.056" title="Kurze Geschichte des Publishers: Neueste Features" />
+        <psc:chapter start="01:55:40.806" title="Ausblick: Version 3.0, Ziele, Vision" />
+        <psc:chapter start="02:03:03.095" title="Verabschiedung" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+    </item>
+
+    <item>
+      <title>Wir. Müssen Reden</title>
+      <link>https://podlovers.org/episode/wir-mussen-reden/</link>
+      <pubDate>Wed, 15 Jul 2020 15:37:32 +0000</pubDate>
+      <guid isPermaLink="false">podlove-2020-07-13t19:33:45+00:00-2094546435a1a81</guid>
+      <description>
+        <![CDATA[Lange war es still im Podlove Projekt, das soll sich jetzt ändern! In dieser Episode versuchen wir uns zunächst an einer Definition von Podlove und stellen die drei Projekte Podlove Publisher, Podlove Web Player sowie Podlove Subscribe Button vor. Zentral geht es aber eigentlich um die Entwickler:innen: Wer wir sind, wie wir in das Projekt gekommen sind, was uns motiviert und wie wir mit Podlove weiter machen wollen.]]>
+      </description>
+      <atom:link rel="http://podlove.org/deep-link" href="https://backend.podlovers.org/wir-mussen-reden/#" />
+
+      <enclosure url="https://backend.podlovers.org/podlove/file/1/s/feed/c/mp3/LOV001.mp3" length="42338033" type="audio/mpeg" />
+
+      <itunes:duration>00:50:03</itunes:duration>
+      <itunes:author>Podlovers</itunes:author>
+      <itunes:subtitle>Die Podlove Entwickler:innen stellen sich vor.</itunes:subtitle>
+      <itunes:title>Wir. Müssen Reden</itunes:title>
+      <itunes:episode>1</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:summary>
+        <![CDATA[Lange war es still im Podlove Projekt, das soll sich jetzt ändern! In dieser Episode versuchen wir uns zunächst an einer Definition von Podlove und stellen die drei Projekte Podlove Publisher, Podlove Web Player sowie Podlove Subscribe Button vor. Zentral geht es aber eigentlich um die Entwickler:innen: Wer wir sind, wie wir in das Projekt gekommen sind, was uns motiviert und wie wir mit Podlove weiter machen wollen.]]>
+      </itunes:summary>
+      <itunes:image href="https://backend.podlovers.org/wp-content/uploads/2020/07/episode-cover.png" />
+      <content:encoded>
+        <![CDATA[
+<h3>Podlove Publisher</h3>
+
+
+
+<ul><li><a href="https://podlove.org/">Podlove</a></li><li><a href="https://github.com/podlove">Github Podlove</a></li><li><a href="https://de.wikipedia.org/wiki/Open_Source">Open Source</a></li><li><a href="https://auphonic.com/">Auphonic</a></li><li><a href="https://de.wikipedia.org/wiki/Tim_Pritlove">Tim Pritlove</a></li><li><a href="https://podlove.org/podlove-podcast-publisher/">Podlove Publisher</a></li><li><a href="https://podlove.org/simple-chapters/">Podlove Simple Chapters</a></li><li><a href="https://twitter.com/marcoarment/status/1258376419140349957">Don&#8217;t doubt the Germans!</a></li><li><a href="https://podlove.org/podlove-web-player/">Podlove Web Player</a></li><li><a href="https://de.wordpress.org/plugins/podlove-podcasting-plugin-for-wordpress/">Podlove Podcast Publisher</a></li></ul>
+
+
+
+<h3>Podlove Web Player</h3>
+
+
+
+<ul><li><a href="https://podlove.org/podlove-podcast-publisher/">Podlove Web Player</a></li><li><a href="https://docs.podlove.org/podlove-web-player/">Podlove Web Player für Entwickler</a></li><li><a href="https://podlove.org/podlove-web-player/">Podlove Web Player WordPress Plugin</a></li></ul>
+
+
+
+<h3>Podlove Subscribe Button</h3>
+
+
+
+<ul><li><a href="https://podlove.org/podlove-subscribe-button/">Podlove Subscribe Button</a></li><li><a href="https://subscribe-button.podlove.org/">Subscribe Button Features</a></li></ul>
+
+
+
+<h3>Vorstellung Eric</h3>
+
+
+
+<ul><li><a href="https://ericteubert.de/">Eric Teubert</a></li><li><a href="https://metaebene.me/podcasts/">Podcasts Metaebene</a></li><li><a href="https://de.wikipedia.org/wiki/Chaos_Communication_Congress">Chaos Communication Congress</a></li><li><a href="https://metaebene.me/timpritlove/">Metaebene</a></li><li><a href="https://github.com/WordPress/WordPress">WordPress</a></li><li><a href="https://de.wikipedia.org/wiki/PHP">PHP</a></li><li><a href="https://www.php.net/manual/de/language.namespaces.php">PHP Namespaces</a></li><li><a href="https://praegnanz.de/weblog/das-podlove-projekt-sammelt-geld-und-ihr-solltet-was-geben">Podlove Spenden Aufruf</a></li><li><a href="https://de.wikipedia.org/wiki/Gap_Year_(Lebensabschnitt)">Gap Year</a></li><li><a href="https://www.br.de/index.html">Bayrischer Rundfunk</a></li></ul>
+
+
+
+<h3>Vorstellung Michi</h3>
+
+
+
+<ul><li><a href="https://geildanke.com/en/about/">Michaela Lehr</a></li><li><a href="https://de.wikipedia.org/wiki/User_Experience">User Experience</a></li><li><a href="https://t3n.de/news/ux-design-leicht-verstaendlich-803138/">UX Design</a></li></ul>
+
+
+
+<h3>Vorstellung Alex</h3>
+
+
+
+<ul><li><a href="https://alexander.heimbu.ch/">Alexander Heimbuch</a></li><li><a href="https://de.wikipedia.org/wiki/Flattr">Flattr</a></li><li><a href="https://cre.fm/cre167-nodejs">CRE167 NodeJS</a></li><li><a href="https://de.wikipedia.org/wiki/JavaScript">JavaScript</a></li><li><a href="https://github.com/podlove/podlove-ui">Github Podlove UI</a></li><li><a href="https://www.youtube.com/watch?v=VXgaN8pSqvQ">Podlove Web Player auf der Subscribe 9</a></li></ul>
+
+
+
+<h3>Podlovers Podcast</h3>
+
+
+
+<ul><li><a href="https://community.podlove.org/">Podlove Community</a></li><li><a href="https://sendegate.de/">Sendegate</a></li></ul>
+
+
+
+<p></p>
+]]>
+      </content:encoded>
+      <psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+        <psc:chapter start="00:00:00.000" title="Intro" />
+        <psc:chapter start="00:01:16.906" title="Podlove (Publisher) Projekt" />
+        <psc:chapter start="00:06:57.922" title="Podlove Web Player" />
+        <psc:chapter start="00:09:14.330" title="Podlove Subscribe Button" />
+        <psc:chapter start="00:11:37.970" title="Vorstellung Eric" />
+        <psc:chapter start="00:24:01.239" title="Vorstellung Michi" />
+        <psc:chapter start="00:29:13.192" title="Vorstellung Alex" />
+        <psc:chapter start="00:35:20.782" title="Entwicklung im Urlaub" />
+        <psc:chapter start="00:37:48.406" title="Remote Arbeiten" />
+        <psc:chapter start="00:40:19.537" title="Podlovers Podcast" />
+        <psc:chapter start="00:47:07.858" title="Ausblick" />
+      </psc:chapters>
+      <atom:contributor>
+        <atom:name>Alexander Heimbuch</atom:name>
+        <atom:uri>https://alexander.heimbu.ch</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Michaela Lehr</atom:name>
+        <atom:uri>https://geildanke.com</atom:uri>
+      </atom:contributor>
+
+      <atom:contributor>
+        <atom:name>Eric Teubert</atom:name>
+        <atom:uri>https://ericteubert.de/</atom:uri>
+      </atom:contributor>
+    </item>
+  </channel>
+</rss>

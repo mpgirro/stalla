@@ -7,6 +7,7 @@ import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.parser.DateParser
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.FeedNamespace.Companion.matches
 import io.hemin.wien.util.trimmedOrNullIfBlank
 import org.w3c.dom.Element
 import org.w3c.dom.Node
@@ -37,7 +38,7 @@ internal fun Node.textAsBooleanOrNull(): Boolean? = textOrNull().parseAsBooleanO
  * @return The logical interpretation of the string parameter, or `null`.
  */
 internal fun String?.parseAsBooleanOrNull(): Boolean? =
-    when (this?.toLowerCase(Locale.ROOT)) {
+    when (this.trimmedOrNullIfBlank()?.toLowerCase(Locale.ROOT)) {
         "true", "yes" -> true
         "false", "no" -> false
         else -> null
@@ -72,7 +73,7 @@ internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.pars
  */
 internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: FeedNamespace? = null): RssImageBuilder {
     for (node in childNodes.asListOfNodes()) {
-        if (node.namespaceURI != namespace?.uri) continue
+        if (!namespace.matches(node.namespaceURI)) continue
 
         when (node.localName) {
             "description" -> imageBuilder.description(node.textOrNull())
@@ -125,7 +126,7 @@ internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): Hr
 internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedNamespace? = null): PersonBuilder {
     for (child in childNodes.asListOfNodes()) {
         if (child !is Element) continue
-        if (child.namespaceURI != namespace?.uri) continue
+        if (!namespace.matches(child.namespaceURI)) continue
         val value: String? = child.textOrNull()
 
         when (child.localName) {
@@ -146,9 +147,11 @@ internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedN
  *
  * @return The [categoryBuilder] populated with the DOM node contents.
  */
-internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): RssCategoryBuilder =
-    categoryBuilder.category(textContent.trim())
+internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): RssCategoryBuilder? {
+    val categoryValue = textOrNull() ?: return null
+    return categoryBuilder.category(categoryValue)
         .domain(getAttributeValueByName("domain"))
+}
 
 /**
  * Parses the node contents into a [ITunesStyleCategoryBuilder] if possible, ensuring the child nodes

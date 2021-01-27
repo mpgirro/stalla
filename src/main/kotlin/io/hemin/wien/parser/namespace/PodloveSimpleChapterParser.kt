@@ -26,7 +26,7 @@ internal class PodloveSimpleChapterParser : NamespaceParser() {
         when (localName) {
             "chapters" -> {
                 val chapters = ifCanBeParsed { toPodloveSimpleChapterBuilders(builder) } ?: return
-                builder.podlove.addSimpleChapterBuilders(chapters)
+                builder.podloveBuilder.addSimpleChapterBuilders(chapters)
             }
             else -> pass
         }

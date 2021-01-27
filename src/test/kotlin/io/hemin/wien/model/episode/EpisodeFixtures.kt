@@ -1,6 +1,7 @@
 package io.hemin.wien.model.episode
 
 import io.hemin.wien.dateTime
+import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.Link
@@ -10,8 +11,10 @@ import io.hemin.wien.model.aLink
 import io.hemin.wien.model.aPerson
 import io.hemin.wien.model.anHrefOnlyImage
 import io.hemin.wien.model.anRssCategory
+import java.time.Duration
 import java.time.Month
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 internal fun anEpisode(
     title: String = "episode title",
@@ -26,10 +29,11 @@ internal fun anEpisode(
     source: String? = "episode source",
     content: Episode.Content? = anEpisodeContent(),
     iTunes: Episode.ITunes? = anEpisodeITunes(),
-    atom: Episode.Atom? = anEpisodeAtom(),
+    atom: Atom? = anEpisodeAtom(),
     podlove: Episode.Podlove? = anEpisodePodlove(),
     googlePlay: Episode.GooglePlay? = anEpisodeGooglePlay(),
-    bitlove: Episode.Bitlove? = anEpisodeBitlove()
+    bitlove: Episode.Bitlove? = anEpisodeBitlove(),
+    podcast: Episode.Podcast? = anEpisodePodcast()
 ) = Episode(
     title,
     link,
@@ -46,7 +50,8 @@ internal fun anEpisode(
     atom,
     podlove,
     googlePlay,
-    bitlove
+    bitlove,
+    podcast
 )
 
 internal fun anEpisodeEnclosure(
@@ -69,7 +74,7 @@ internal fun anEpisodeITunes(
     duration: String? = "episode itunes duration",
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode itunes image url"),
     explicit: Boolean? = true,
-    block: Boolean? = true,
+    block: Boolean = true,
     season: Int? = 2,
     episode: Int? = 3,
     episodeType: Episode.ITunes.EpisodeType? = Episode.ITunes.EpisodeType.FULL,
@@ -82,7 +87,7 @@ internal fun anEpisodeAtom(
     authors: List<Person> = listOf(aPerson("episode atom author name")),
     contributors: List<Person> = listOf(aPerson("episode atom contributor name")),
     links: List<Link> = listOf(aLink("episode atom link href"))
-) = Episode.Atom(authors, contributors, links)
+) = Atom(authors, contributors, links)
 
 internal fun anEpisodePodlove(
     simpleChapters: List<Episode.Podlove.SimpleChapter> = listOf(aPodloveSimpleChapter())
@@ -98,10 +103,34 @@ internal fun aPodloveSimpleChapter(
 internal fun anEpisodeGooglePlay(
     description: String? = "episode googleplay description",
     explicit: Boolean? = true,
-    block: Boolean? = true,
+    block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode googleplay image url")
 ) = Episode.GooglePlay(description, explicit, block, image)
 
 internal fun anEpisodeBitlove(
     guid: String = "episode bitlove guid"
 ) = Episode.Bitlove(guid)
+
+internal fun anEpisodePodcast(
+    transcripts: List<Episode.Podcast.Transcript> = listOf(anEpisodePodcastTranscript()),
+    soundbites: List<Episode.Podcast.Soundbite> = listOf(anEpisodePodcastSoundbite()),
+    chapters: Episode.Podcast.Chapters? = anEpisodePodcastChapters()
+) = Episode.Podcast(transcripts, soundbites, chapters)
+
+fun anEpisodePodcastTranscript(
+    url: String = "episode podcast: transcript url",
+    type: Episode.Podcast.Transcript.Type = Episode.Podcast.Transcript.Type.SRT,
+    language: Locale? = Locale.ITALY,
+    rel: String? = "captions"
+) = Episode.Podcast.Transcript(url, type, language, rel)
+
+fun anEpisodePodcastSoundbite(
+    startTime: Duration = Duration.ofSeconds(1),
+    duration: Duration = Duration.ofSeconds(15).plusMillis(123),
+    title: String? = "episode podcast: soundbite title"
+) = Episode.Podcast.Soundbite(startTime, duration, title)
+
+internal fun anEpisodePodcastChapters(
+    url: String = "episode podcast: chapters url",
+    type: String = "episode podcast: chapters type"
+) = Episode.Podcast.Chapters(url, type)

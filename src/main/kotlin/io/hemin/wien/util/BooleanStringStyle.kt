@@ -10,7 +10,11 @@ internal enum class BooleanStringStyle(val trueValue: String, val falseValue: St
      * A true value will be written as `yes`, a false value as `null`. Useful for cases
      * when false values should cause a node to be omitted, as it only supports `yes`.
      */
-    YES_NULL("yes", null)
+    YES_NULL("yes", null),
+    /**
+     * A true value will be written as `yes`, a false value as `no`.
+     */
+    YES_NO("yes", "no")
 }
 
 internal fun Boolean.asBooleanString(style: BooleanStringStyle) =

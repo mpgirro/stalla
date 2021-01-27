@@ -1,17 +1,17 @@
 package io.hemin.wien.model
 
-import io.hemin.wien.builder.podcast.PodcastAtomBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.builder.podcast.PodcastFeedpressBuilder
 import io.hemin.wien.builder.podcast.PodcastFyydBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.builder.podcast.PodcastITunesBuilder
-import io.hemin.wien.builder.validating.podcast.ValidatingPodcastAtomBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastFeedpressBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastFyydBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastGooglePlayBuilder
 import io.hemin.wien.builder.validating.podcast.ValidatingPodcastITunesBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastPodcastBuilder
 import java.time.temporal.TemporalAccessor
 
 /**
@@ -35,6 +35,8 @@ import java.time.temporal.TemporalAccessor
  * @property fyyd The data from the Fyyd namespace, or null if no data from this namespace was found.
  * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
  * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
+ * @property categories The RSS feed categories, if any.
+ * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
  */
 data class Podcast(
     val title: String,
@@ -54,10 +56,12 @@ data class Podcast(
     val atom: Atom? = null,
     val fyyd: Fyyd? = null,
     val feedpress: Feedpress? = null,
-    val googlePlay: GooglePlay? = null
+    val googlePlay: GooglePlay? = null,
+    val categories: List<RssCategory> = emptyList(),
+    val podcast: Podcast? = null
 ) {
 
-    companion object Factory : BuilderFactory<Podcast, PodcastBuilder> {
+    companion object Factory : BuilderFactory<io.hemin.wien.model.Podcast, PodcastBuilder> {
         @JvmStatic override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
     }
 
@@ -85,9 +89,9 @@ data class Podcast(
         val keywords: String? = null,
         override val author: String? = null,
         val categories: List<ITunesStyleCategory>,
-        override val explicit: Boolean,
-        override val block: Boolean? = null,
-        val complete: Boolean? = null,
+        val explicit: Boolean,
+        override val block: Boolean,
+        val complete: Boolean,
         val type: ShowType? = null,
         val owner: Person? = null,
         override val title: String? = null,
@@ -143,28 +147,11 @@ data class Podcast(
         val categories: List<ITunesStyleCategory>,
         override val description: String? = null,
         override val explicit: Boolean? = null,
-        override val block: Boolean? = null,
+        override val block: Boolean,
         override val image: HrefOnlyImage? = null
     ) : GooglePlayBase {
         companion object Factory : BuilderFactory<GooglePlay, PodcastGooglePlayBuilder> {
             @JvmStatic override fun builder(): PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
-        }
-    }
-
-    /**
-     * Model class for data from elements of the Atom namespace that are valid within `<channel>` elements.
-     *
-     * @property authors List of data from the `<atom:author>` elements as [Person] instances.
-     * @property contributors List of data from the `<atom:contributor>` elements as [Person] instances.
-     * @property links List of data from the `<atom:link>` elements as [Link] instances.
-     */
-    data class Atom(
-        val authors: List<Person>,
-        val contributors: List<Person>,
-        val links: List<Link>
-    ) {
-        companion object Factory : BuilderFactory<Atom, PodcastAtomBuilder> {
-            @JvmStatic override fun builder(): PodcastAtomBuilder = ValidatingPodcastAtomBuilder()
         }
     }
 
@@ -198,7 +185,47 @@ data class Podcast(
         val link: String? = null
     ) {
         companion object Factory : BuilderFactory<Feedpress, PodcastFeedpressBuilder> {
-            @JvmStatic override fun builder(): PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
+            @JvmStatic
+            override fun builder(): PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
         }
+    }
+
+    /**
+     * Model class for data from elements of the Podcast 1.0 namespace that are valid within `<channel>` elements.
+     *
+     * @property locked The lock status of the podcast.
+     * @property funding The funding information for the podcast.
+     */
+    data class Podcast(
+        val locked: Locked? = null,
+        val funding: List<Funding> = emptyList()
+    ) {
+
+        companion object Factory : BuilderFactory<Podcast, PodcastPodcastBuilder> {
+            @JvmStatic override fun builder(): PodcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
+        }
+
+        /**
+         * The lock status of the podcast. Tells other podcast platforms whether they are allowed to
+         * import this feed into their systems.
+         *
+         * @param owner An email address that can be used to verify ownership when moving hosting platforms.
+         * @param locked When `true`, the podcast cannot be transferred to a new hosting platform.
+         */
+        data class Locked(
+            val owner: String,
+            val locked: Boolean
+        )
+
+        /**
+         * The funding information for the podcast.
+         *
+         * @param url The URL where listeners can find funding information for the podcast.
+         * @param message The recommended CTA text to show users for the funding link.
+         */
+        data class Funding(
+            val url: String,
+            val message: String
+        )
     }
 }

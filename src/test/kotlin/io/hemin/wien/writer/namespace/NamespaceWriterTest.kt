@@ -54,10 +54,10 @@ internal abstract class NamespaceWriterTest {
         podcast: Podcast = aPodcast(),
         assertions: (element: Element) -> Unit
     ) {
-        val itemElement = createChannelElement()
-        writer.tryWritingPodcastData(podcast, itemElement)
+        val channelElement = createChannelElement()
+        writer.tryWritingPodcastData(podcast, channelElement)
 
-        val actualElement = itemElement.findElementByName(localName, namespace)
+        val actualElement = channelElement.findElementByName(localName, namespace)
             ?: fail("The <${namespace?.prefix ?: ""}:$localName> tag was not written")
 
         assertions(actualElement)
@@ -68,10 +68,10 @@ internal abstract class NamespaceWriterTest {
         podcast: Podcast = aPodcast(),
         assertions: (element: Element) -> Unit
     ) {
-        val itemElement = createChannelElement()
-        writer.tryWritingPodcastData(podcast, itemElement)
+        val channelElement = createChannelElement()
+        writer.tryWritingPodcastData(podcast, channelElement)
 
-        val actual = itemElement.findNodeByXPath(xPath)
+        val actual = channelElement.findNodeByXPath(xPath)
             ?: fail("No tag matching `$xPath` was written")
         if (actual !is Element) fail("The XPath `$xPath` does not match an element")
 
@@ -83,10 +83,10 @@ internal abstract class NamespaceWriterTest {
         podcast: Podcast = aPodcast(),
         assertions: (elements: List<Element>) -> Unit
     ) {
-        val itemElement = createChannelElement()
-        writer.tryWritingPodcastData(podcast, itemElement)
+        val channelElement = createChannelElement()
+        writer.tryWritingPodcastData(podcast, channelElement)
 
-        val actual = itemElement.findNodesByXPath(xPath)
+        val actual = channelElement.findNodesByXPath(xPath)
             ?: fail("No tags matching `$xPath` found")
         if (actual.isEmpty()) fail("No tag matching `$xPath` was written")
         val actualElements = actual.asListOfNodes().filterIsInstance(Element::class.java)
@@ -100,10 +100,11 @@ internal abstract class NamespaceWriterTest {
         localName: String,
         namespace: FeedNamespace? = writer.namespace
     ) {
-        val itemElement = createChannelElement()
-        writer.tryWritingPodcastData(podcast, itemElement)
+        val channelElement = createChannelElement()
+        writer.tryWritingPodcastData(podcast, channelElement)
 
-        assertThat(itemElement.findElementByName(localName, namespace)).doesNotExist()
+        val tagName = "${namespace?.prefix ?: ""}:$localName"
+        assertThat(channelElement.findElementByName(localName, namespace), tagName).doesNotExist()
     }
 
     protected fun writeEpisodeData(
@@ -160,7 +161,8 @@ internal abstract class NamespaceWriterTest {
         val itemElement = createChannelElement().createItemElement()
         writer.tryWritingEpisodeData(episode, itemElement)
 
-        assertThat(itemElement.findElementByName(localName, namespace)).doesNotExist()
+        val tagName = "${namespace?.prefix ?: ""}:$localName"
+        assertThat(itemElement.findElementByName(localName, namespace), tagName).doesNotExist()
     }
 
     protected fun createChannelElement(): Element {

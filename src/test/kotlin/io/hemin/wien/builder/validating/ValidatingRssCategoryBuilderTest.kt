@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingRssCategoryBuilderTest {
 
     @Test
-    internal fun `should not build an RssCategory when the mandatory fields are absent`() {
+    internal fun `should not build an RssCategory when the category value is empty`() {
         val categoryBuilder = ValidatingRssCategoryBuilder()
 
         assertAll {

@@ -1,6 +1,5 @@
 package io.hemin.wien.model
 
-import io.hemin.wien.builder.episode.EpisodeAtomBuilder
 import io.hemin.wien.builder.episode.EpisodeBitloveBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.builder.episode.EpisodeContentBuilder
@@ -10,7 +9,6 @@ import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.builder.episode.EpisodeITunesBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveBuilder
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
-import io.hemin.wien.builder.validating.episode.ValidatingEpisodeAtomBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBitloveBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodeContentBuilder
@@ -21,7 +19,9 @@ import io.hemin.wien.builder.validating.episode.ValidatingEpisodeITunesBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveBuilder
 import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.model.Episode.Podlove.SimpleChapter
+import java.time.Duration
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<item>` elements.
@@ -42,6 +42,7 @@ import java.time.temporal.TemporalAccessor
  * @property podlove The data from the Podlove standards namespaces, or null if no data from these namespaces were found.
  * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property bitlove The data from the Bitlove namespace, or null if no data from this namespace was found.
+ * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
  */
 @Suppress("unused")
 data class Episode(
@@ -49,7 +50,7 @@ data class Episode(
     val link: String? = null,
     val description: String? = null,
     val author: String? = null,
-    val categories: List<RssCategory>,
+    val categories: List<RssCategory> = emptyList(),
     val comments: String? = null,
     val enclosure: Enclosure,
     val guid: Guid? = null,
@@ -60,7 +61,8 @@ data class Episode(
     val atom: Atom? = null,
     val podlove: Podlove? = null,
     val googlePlay: GooglePlay? = null,
-    val bitlove: Bitlove? = null
+    val bitlove: Bitlove? = null,
+    val podcast: Podcast? = null
 ) {
 
     companion object Factory : BuilderFactory<Episode, EpisodeBuilder> {
@@ -128,8 +130,8 @@ data class Episode(
         override val title: String? = null,
         val duration: String? = null,
         override val image: HrefOnlyImage? = null,
-        override val explicit: Boolean? = null,
-        override val block: Boolean? = null,
+        val explicit: Boolean? = null,
+        override val block: Boolean,
         val season: Int? = null,
         val episode: Int? = null,
         val episodeType: EpisodeType? = null,
@@ -184,28 +186,11 @@ data class Episode(
     data class GooglePlay(
         override val description: String? = null,
         override val explicit: Boolean? = null,
-        override val block: Boolean? = null,
+        override val block: Boolean,
         override val image: HrefOnlyImage? = null
     ) : GooglePlayBase {
         companion object Factory : BuilderFactory<GooglePlay, EpisodeGooglePlayBuilder> {
             @JvmStatic override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
-        }
-    }
-
-    /**
-     * Model class for data from elements of the Atom namespace that are valid within `<item>` elements.
-     *
-     * @property authors List of data from the `<atom:author>` elements as [Person] instances.
-     * @property contributors List of data from the `<atom:contributor>` elements as [Person] instances.
-     * @property links List of data from the `<atom:link>` elements as [Link] instances.
-     */
-    data class Atom(
-        val authors: List<Person>,
-        val contributors: List<Person>,
-        val links: List<Link>
-    ) {
-        companion object Factory : BuilderFactory<Atom, EpisodeAtomBuilder> {
-            @JvmStatic override fun builder(): EpisodeAtomBuilder = ValidatingEpisodeAtomBuilder()
         }
     }
 
@@ -253,7 +238,86 @@ data class Episode(
         val guid: String
     ) {
         companion object Factory : BuilderFactory<Bitlove, EpisodeBitloveBuilder> {
-            @JvmStatic override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
+            @JvmStatic
+            override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
         }
+    }
+
+    /**
+     * Model class for data from elements of the Podcast 1.0 namespace that are valid within `<item>` elements.
+     *
+     * @property transcripts The transcript information for the episode.
+     * @property soundbites The soundbites information for the episode.
+     * @property chapters The chapters information for the episode.
+     */
+    data class Podcast(
+        val transcripts: List<Transcript> = emptyList(),
+        val soundbites: List<Soundbite> = emptyList(),
+        val chapters: Chapters? = null
+    ) {
+
+        /**
+         * The transcript for the episode.
+         *
+         * @param url The URL of the episode transcript.
+         * @param type The type of transcript. One of the supported [Type]s.
+         * @param language The transcript language.
+         * @param rel When present and equals to `captions`, the transcript is considered to be a CC, regardless of its [type].
+         */
+        data class Transcript(
+            val url: String,
+            val type: Type,
+            val language: Locale? = null,
+            val rel: String? = null
+        ) {
+
+            /**
+             * Supported transcript types. See the
+             * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/transcripts/transcripts.md).
+             */
+            enum class Type(val rawType: String) {
+                /** Plain text, with no timing information. */
+                PLAIN_TEXT("text/plain"),
+
+                /** HTML, potentially with some timing information. */
+                HTML("text/html"),
+
+                /** JSON ,with full timing information. */
+                JSON("application/json"),
+
+                /** SRT, with full timing information. */
+                SRT("application/srt");
+
+                companion object {
+
+                    fun from(rawType: String): Type? = values().find { it.rawType == rawType }
+                }
+            }
+        }
+
+        /**
+         * The chapters information for the episode. See the
+         * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#chapters).
+         *
+         * @param url The URL for the chapters information.
+         * @param type The MIME type of the chapters file. JSON (`application/json+chapters`) is the preferred format.
+         */
+        data class Chapters(
+            val url: String,
+            val type: String
+        )
+
+        /**
+         * The soundbite information for the episode. Used to automatically extract soundbites from the [Episode.enclosure].
+         *
+         * @param startTime The timestamp at which the soundbite starts.
+         * @param duration The duration of the timestamp (recommended between 15 and 120 seconds).
+         * @param title A custom title for the soundbite. When null, the [Episode.title] is used.
+         */
+        data class Soundbite(
+            val startTime: Duration,
+            val duration: Duration,
+            val title: String? = null
+        )
     }
 }
