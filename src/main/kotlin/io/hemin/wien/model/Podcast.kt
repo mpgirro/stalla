@@ -67,7 +67,8 @@ data class Podcast(
 
     companion object Factory : BuilderFactory<io.hemin.wien.model.Podcast, PodcastBuilder> {
         /** Returns a builder implementation for building [io.hemin.wien.model.Podcast] model instances. */
-        @JvmStatic override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
+        @JvmStatic
+        override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
     }
 
     /**
@@ -105,7 +106,8 @@ data class Podcast(
 
         companion object Factory : BuilderFactory<ITunes, PodcastITunesBuilder> {
             /** Returns a builder implementation for building [ITunes] model instances. */
-            @JvmStatic override fun builder(): PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
+            @JvmStatic
+            override fun builder(): PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
         }
 
         /**
@@ -158,7 +160,8 @@ data class Podcast(
     ) : GooglePlayBase {
         companion object Factory : BuilderFactory<GooglePlay, PodcastGooglePlayBuilder> {
             /** Returns a builder implementation for building [GooglePlay] model instances. */
-            @JvmStatic override fun builder(): PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+            @JvmStatic
+            override fun builder(): PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
         }
     }
 
@@ -172,7 +175,8 @@ data class Podcast(
     ) {
         companion object Factory : BuilderFactory<Fyyd, PodcastFyydBuilder> {
             /** Returns a builder implementation for building [Fyyd] model instances. */
-            @JvmStatic override fun builder(): PodcastFyydBuilder = ValidatingPodcastFyydBuilder()
+            @JvmStatic
+            override fun builder(): PodcastFyydBuilder = ValidatingPodcastFyydBuilder()
         }
     }
 
@@ -194,7 +198,8 @@ data class Podcast(
     ) {
         companion object Factory : BuilderFactory<Feedpress, PodcastFeedpressBuilder> {
             /** Returns a builder implementation for building [Feedpress] model instances. */
-            @JvmStatic override fun builder(): PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
+            @JvmStatic
+            override fun builder(): PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
         }
     }
 
@@ -211,7 +216,8 @@ data class Podcast(
 
         companion object Factory : BuilderFactory<Podcast, PodcastPodcastBuilder> {
             /** Returns a builder implementation for building [Podcast] model instances. */
-            @JvmStatic override fun builder(): PodcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
+            @JvmStatic
+            override fun builder(): PodcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
         }
 
         /**
@@ -227,7 +233,8 @@ data class Podcast(
         ) {
             companion object Factory : BuilderFactory<Locked, PodcastPodcastLockedBuilder> {
                 /** Returns a builder implementation for building [Locked] model instances. */
-                @JvmStatic override fun builder(): PodcastPodcastLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+                @JvmStatic
+                override fun builder(): PodcastPodcastLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
             }
         }
 
@@ -243,7 +250,8 @@ data class Podcast(
         ) {
             companion object Factory : BuilderFactory<Funding, PodcastPodcastFundingBuilder> {
                 /** Returns a builder implementation for building [Funding] model instances. */
-                @JvmStatic override fun builder(): PodcastPodcastFundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+                @JvmStatic
+                override fun builder(): PodcastPodcastFundingBuilder = ValidatingPodcastPodcastFundingBuilder()
             }
         }
     }

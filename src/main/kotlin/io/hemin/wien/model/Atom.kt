@@ -17,6 +17,7 @@ data class Atom(
 ) {
     companion object Factory : BuilderFactory<Atom, AtomBuilder> {
         /** Returns a builder implementation for building [Atom] model instances. */
-        @JvmStatic override fun builder(): AtomBuilder = ValidatingAtomBuilder()
+        @JvmStatic
+        override fun builder(): AtomBuilder = ValidatingAtomBuilder()
     }
 }

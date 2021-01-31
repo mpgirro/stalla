@@ -25,6 +25,7 @@ data class Link(
 ) {
     companion object Factory : BuilderFactory<Link, LinkBuilder> {
         /** Returns a builder implementation for building [Link] model instances. */
-        @JvmStatic override fun builder(): LinkBuilder = ValidatingLinkBuilder()
+        @JvmStatic
+        override fun builder(): LinkBuilder = ValidatingLinkBuilder()
     }
 }

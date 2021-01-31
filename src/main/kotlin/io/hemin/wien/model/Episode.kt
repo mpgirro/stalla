@@ -76,7 +76,8 @@ data class Episode(
 
     companion object Factory : BuilderFactory<Episode, EpisodeBuilder> {
         /** Returns a builder implementation for building [Episode] model instances. */
-        @JvmStatic override fun builder(): EpisodeBuilder = ValidatingEpisodeBuilder()
+        @JvmStatic
+        override fun builder(): EpisodeBuilder = ValidatingEpisodeBuilder()
     }
 
     /**
@@ -93,7 +94,8 @@ data class Episode(
     ) {
         companion object Factory : BuilderFactory<Enclosure, EpisodeEnclosureBuilder> {
             /** Returns a builder implementation for building [Enclosure] model instances. */
-            @JvmStatic override fun builder(): EpisodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
+            @JvmStatic
+            override fun builder(): EpisodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
         }
     }
 
@@ -109,7 +111,8 @@ data class Episode(
     ) {
         companion object Factory : BuilderFactory<Guid, EpisodeGuidBuilder> {
             /** Returns a builder implementation for building [Guid] model instances. */
-            @JvmStatic override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
+            @JvmStatic
+            override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
         }
     }
 
@@ -123,7 +126,8 @@ data class Episode(
     ) {
         companion object Factory : BuilderFactory<Content, EpisodeContentBuilder> {
             /** Returns a builder implementation for building [Content] model instances. */
-            @JvmStatic override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
+            @JvmStatic
+            override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
         }
     }
 
@@ -155,7 +159,8 @@ data class Episode(
 
         companion object Factory : BuilderFactory<ITunes, EpisodeITunesBuilder> {
             /** Returns a builder implementation for building [ITunes] model instances. */
-            @JvmStatic override fun builder(): EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+            @JvmStatic
+            override fun builder(): EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
         }
 
         /**
@@ -205,7 +210,8 @@ data class Episode(
     ) : GooglePlayBase {
         companion object Factory : BuilderFactory<GooglePlay, EpisodeGooglePlayBuilder> {
             /** Returns a builder implementation for building [GooglePlay] model instances. */
-            @JvmStatic override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+            @JvmStatic
+            override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
         }
     }
 
@@ -221,7 +227,8 @@ data class Episode(
 
         companion object Factory : BuilderFactory<Podlove, EpisodePodloveBuilder> {
             /** Returns a builder implementation for building [Podlove] model instances. */
-            @JvmStatic override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
+            @JvmStatic
+            override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
         }
 
         /**
@@ -241,7 +248,8 @@ data class Episode(
         ) {
             companion object Factory : BuilderFactory<SimpleChapter, EpisodePodloveSimpleChapterBuilder> {
                 /** Returns a builder implementation for building [SimpleChapter] model instances. */
-                @JvmStatic override fun builder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
+                @JvmStatic
+                override fun builder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
             }
         }
     }
@@ -256,7 +264,8 @@ data class Episode(
     ) {
         companion object Factory : BuilderFactory<Bitlove, EpisodeBitloveBuilder> {
             /** Returns a builder implementation for building [Bitlove] model instances. */
-            @JvmStatic override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
+            @JvmStatic
+            override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
         }
     }
 
@@ -275,7 +284,8 @@ data class Episode(
 
         companion object Factory : BuilderFactory<Podcast, EpisodePodcastBuilder> {
             /** Returns a builder implementation for building [Podcast] model instances. */
-            @JvmStatic override fun builder(): EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
+            @JvmStatic
+            override fun builder(): EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
         }
 
         /**
@@ -295,7 +305,8 @@ data class Episode(
 
             companion object Factory : BuilderFactory<Transcript, EpisodePodcastTranscriptBuilder> {
                 /** Returns a builder implementation for building [Transcript] model instances. */
-                @JvmStatic override fun builder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
+                @JvmStatic
+                override fun builder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
             }
 
             /**
@@ -335,7 +346,8 @@ data class Episode(
         ) {
             companion object Factory : BuilderFactory<Chapters, EpisodePodcastChaptersBuilder> {
                 /** Returns a builder implementation for building [Chapters] model instances. */
-                @JvmStatic override fun builder(): EpisodePodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
+                @JvmStatic
+                override fun builder(): EpisodePodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
             }
         }
 
@@ -353,7 +365,8 @@ data class Episode(
         ) {
             companion object Factory : BuilderFactory<Soundbite, EpisodePodcastSoundbiteBuilder> {
                 /** Returns a builder implementation for building [Soundbite] model instances. */
-                @JvmStatic override fun builder(): EpisodePodcastSoundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+                @JvmStatic
+                override fun builder(): EpisodePodcastSoundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
             }
         }
     }

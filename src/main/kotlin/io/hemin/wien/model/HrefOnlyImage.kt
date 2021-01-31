@@ -11,6 +11,7 @@ import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
 data class HrefOnlyImage(val href: String) {
     companion object Factory : BuilderFactory<HrefOnlyImage, HrefOnlyImageBuilder> {
         /** Returns a builder implementation for building [HrefOnlyImage] model instances. */
-        @JvmStatic override fun builder(): HrefOnlyImageBuilder = ValidatingHrefOnlyImageBuilder()
+        @JvmStatic
+        override fun builder(): HrefOnlyImageBuilder = ValidatingHrefOnlyImageBuilder()
     }
 }

@@ -37,6 +37,7 @@ data class RssImage(
 ) {
     companion object Factory : BuilderFactory<RssImage, RssImageBuilder> {
         /** Returns a builder implementation for building [RssImage] model instances. */
-        @JvmStatic override fun builder(): RssImageBuilder = ValidatingRssImageBuilder()
+        @JvmStatic
+        override fun builder(): RssImageBuilder = ValidatingRssImageBuilder()
     }
 }
