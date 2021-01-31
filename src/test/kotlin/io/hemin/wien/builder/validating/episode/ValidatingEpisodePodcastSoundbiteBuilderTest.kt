@@ -40,6 +40,17 @@ internal class ValidatingEpisodePodcastSoundbiteBuilderTest {
     }
 
     @Test
+    internal fun `should not build an Episode Podcast Soundbite with when the startTime field is negative`() {
+        val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+            .startTime(Duration.ZERO.minusSeconds(1))
+            .duration(Duration.ofSeconds(15))
+
+        assertAll {
+            assertThat(soundbiteBuilder.build()).isNull()
+        }
+    }
+
+    @Test
     internal fun `should not build an Episode Podcast Soundbite with when the duration field is missing`() {
         val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
             .startTime(Duration.ofSeconds(1))
@@ -47,6 +58,28 @@ internal class ValidatingEpisodePodcastSoundbiteBuilderTest {
         assertAll {
             assertThat(soundbiteBuilder).prop(EpisodePodcastSoundbiteBuilder::hasEnoughDataToBuild).isFalse()
 
+            assertThat(soundbiteBuilder.build()).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should not build an Episode Podcast Soundbite with when the duration field is zero`() {
+        val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+            .startTime(Duration.ofSeconds(1))
+            .duration(Duration.ZERO)
+
+        assertAll {
+            assertThat(soundbiteBuilder.build()).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should not build an Episode Podcast Soundbite with when the duration field is negative`() {
+        val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+            .startTime(Duration.ofSeconds(1))
+            .duration(Duration.ZERO.minusSeconds(1))
+
+        assertAll {
             assertThat(soundbiteBuilder.build()).isNull()
         }
     }

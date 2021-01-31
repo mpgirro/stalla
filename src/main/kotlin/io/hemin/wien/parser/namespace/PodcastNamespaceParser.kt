@@ -12,6 +12,8 @@ import io.hemin.wien.dom.textAsBooleanOrNull
 import io.hemin.wien.model.Episode
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.isNullOrNegative
+import io.hemin.wien.util.isNullOrNotPositive
 import io.hemin.wien.util.trimmedOrNullIfBlank
 import org.w3c.dom.Node
 import java.time.Duration
@@ -86,9 +88,11 @@ internal class PodcastNamespaceParser : NamespaceParser() {
         val duration = getAttributeByName("duration")?.value.trimmedOrNullIfBlank().parseAsDurationOrNull()
         val title = textContent?.trimmedOrNullIfBlank()
 
-        if (startTime == null || duration == null) return null
-        return soundbiteBuilder.startTime(startTime)
-            .duration(duration)
+        if (startTime.isNullOrNegative()) return null
+        if (duration.isNullOrNotPositive()) return null
+
+        return soundbiteBuilder.startTime(startTime as Duration)
+            .duration(duration as Duration)
             .title(title)
     }
 
