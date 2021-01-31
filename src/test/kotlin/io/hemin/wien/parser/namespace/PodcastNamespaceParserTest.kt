@@ -121,10 +121,22 @@ internal class PodcastNamespaceParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.podcastBuilder, "podcast item data").all {
+        assertThat(builder.podcastBuilder, "podcast: item data").all {
             prop(FakeEpisodePodcastBuilder::chaptersBuilderValue).isNull()
             prop(FakeEpisodePodcastBuilder::soundbiteBuilders).isEmpty()
             prop(FakeEpisodePodcastBuilder::transcriptBuilders).isEmpty()
+        }
+    }
+
+    @Test
+    internal fun `should not extract podcast soundbite tags from the item when the durations are invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.podcastBuilder, "podcast: item data").all {
+            prop(FakeEpisodePodcastBuilder::soundbiteBuilders).isEmpty()
         }
     }
 }
