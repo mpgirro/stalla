@@ -1,9 +1,8 @@
 package io.hemin.wien.builder
 
-import io.hemin.wien.model.RssCategory
 import io.hemin.wien.model.RssImage
 
-/** Builder for constructing [RssCategory] instances. */
+/** Builder for constructing [RssImage] instances. */
 interface RssImageBuilder : Builder<RssImage> {
 
     /** Set the url value. */

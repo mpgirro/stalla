@@ -1,6 +1,5 @@
 package io.hemin.wien.builder
 
-import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.model.ITunesStyleCategory
 
 /** Builder for constructing [ITunesStyleCategory] instances. */

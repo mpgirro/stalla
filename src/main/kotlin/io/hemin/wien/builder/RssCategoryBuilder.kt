@@ -1,6 +1,5 @@
 package io.hemin.wien.builder
 
-import io.hemin.wien.model.Link
 import io.hemin.wien.model.RssCategory
 
 /** Builder for constructing [RssCategory] instances. */
