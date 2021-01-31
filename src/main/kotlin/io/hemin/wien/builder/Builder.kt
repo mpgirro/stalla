@@ -31,15 +31,6 @@ interface Builder<T> {
      */
     val hasEnoughDataToBuild: Boolean
 
-    /** Check if all argument elements are not null */
-    fun allNotNull(vararg elements: Any?): Boolean = elements.all { p -> p != null }
-
-    /** Check if at least one argument element is not null */
-    fun anyNotNull(vararg elements: Any?): Boolean = elements.any { p -> p != null }
-
-    /** Check if all argument elements are null */
-    fun allNull(vararg elements: Any?): Boolean = elements.all { p -> p == null }
-
     /** Creates an immutable copy of a given collection as a list. */
     fun <T : Any> immutableCopyOf(collection: Collection<T?>): ImmutableList<T> {
         val nonNulls: List<T> = collection.filterNotNull()
