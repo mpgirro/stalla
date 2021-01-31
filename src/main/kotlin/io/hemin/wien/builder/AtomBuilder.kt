@@ -2,6 +2,7 @@ package io.hemin.wien.builder
 
 import io.hemin.wien.model.Atom
 
+/** Builder for constructing [Atom] instances. */
 interface AtomBuilder : Builder<Atom> {
 
     /**

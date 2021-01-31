@@ -3,6 +3,7 @@ package io.hemin.wien.builder.episode
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Episode
 
+/** Builder for constructing [Episode.Podlove] instances. */
 interface EpisodePodloveBuilder : Builder<Episode.Podlove> {
 
     /**

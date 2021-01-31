@@ -4,6 +4,7 @@ import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.model.Episode
 
+/** Builder for constructing [Episode.ITunes] instances. */
 interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
 
     /** Set the title value. */

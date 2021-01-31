@@ -1,7 +1,9 @@
 package io.hemin.wien.builder
 
+import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
 
+/** Builder for constructing [Link] instances. */
 interface PersonBuilder : Builder<Person> {
 
     /** Set the name value. */

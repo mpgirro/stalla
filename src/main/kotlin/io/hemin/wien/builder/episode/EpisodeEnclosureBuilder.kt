@@ -3,6 +3,7 @@ package io.hemin.wien.builder.episode
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Episode
 
+/** Builder for constructing [Episode.Enclosure] instances. */
 interface EpisodeEnclosureBuilder : Builder<Episode.Enclosure> {
 
     /** Set the url value. */

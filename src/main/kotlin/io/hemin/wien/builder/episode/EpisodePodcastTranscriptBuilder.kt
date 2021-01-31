@@ -4,6 +4,7 @@ import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Episode
 import java.util.Locale
 
+/** Builder for constructing [Episode.Podcast.Transcript] instances. */
 interface EpisodePodcastTranscriptBuilder : Builder<Episode.Podcast.Transcript> {
 
     fun url(url: String): EpisodePodcastTranscriptBuilder

@@ -10,6 +10,7 @@ import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.model.Episode
 import java.time.temporal.TemporalAccessor
 
+/** Builder for constructing [Episode] instances. */
 interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderProvider {
 
     /** The builder for data from the Content namespace. */

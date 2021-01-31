@@ -3,6 +3,7 @@ package io.hemin.wien.builder.podcast
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Podcast
 
+/** Builder for constructing [Podcast.Podcast] instances. */
 interface PodcastPodcastBuilder : Builder<Podcast.Podcast> {
 
     /**

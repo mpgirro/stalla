@@ -4,6 +4,7 @@ import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Episode
 import java.time.Duration
 
+/** Builder for constructing [Episode.Podcast.Soundbite] instances. */
 interface EpisodePodcastSoundbiteBuilder : Builder<Episode.Podcast.Soundbite> {
 
     fun startTime(startTime: Duration): EpisodePodcastSoundbiteBuilder
