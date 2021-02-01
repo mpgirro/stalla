@@ -1,7 +1,5 @@
 package io.hemin.wien.builder
 
-import com.google.common.collect.ImmutableList
-
 /**
  * Interface for builder implementations.
  *
@@ -30,11 +28,4 @@ interface Builder<T> {
      * fields are set.
      */
     val hasEnoughDataToBuild: Boolean
-
-    /** Creates an immutable copy of a given collection as a list. */
-    fun <T : Any> immutableCopyOf(collection: Collection<T?>): ImmutableList<T> {
-        val nonNulls: List<T> = collection.filterNotNull()
-            .toList()
-        return ImmutableList.copyOf(nonNulls)
-    }
 }

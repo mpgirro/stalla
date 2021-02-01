@@ -48,8 +48,6 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
 
-    api("com.google.guava:guava:30.1-jre") // TODO replace with Kotlin immutable collections when available
-
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("com.willowtreeapps.assertk:assertk:0.23")
     testImplementation("org.xmlunit:xmlunit-core:2.8.2")
