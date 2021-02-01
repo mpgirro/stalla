@@ -3,7 +3,8 @@ package io.hemin.wien.builder.episode
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Episode
 
-internal interface EpisodePodcastBuilder : Builder<Episode.Podcast> {
+/** Builder for constructing [Episode.Podcast] instances. */
+interface EpisodePodcastBuilder : Builder<Episode.Podcast> {
 
     /**
      * The builder for the Podcast namespace `<chapters>` info.

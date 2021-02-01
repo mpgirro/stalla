@@ -3,7 +3,8 @@ package io.hemin.wien.builder.podcast
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Podcast
 
-internal interface PodcastPodcastBuilder : Builder<Podcast.Podcast> {
+/** Builder for constructing [Podcast.Podcast] instances. */
+interface PodcastPodcastBuilder : Builder<Podcast.Podcast> {
 
     /**
      * The builder for the Podcast namespace `<locked>` status.

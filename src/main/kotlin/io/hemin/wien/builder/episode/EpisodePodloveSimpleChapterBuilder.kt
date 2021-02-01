@@ -3,7 +3,8 @@ package io.hemin.wien.builder.episode
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Episode
 
-internal interface EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter> {
+/** Builder for constructing [Episode.Podlove.SimpleChapter] instances. */
+interface EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter> {
 
     /** Set the start value. */
     fun start(start: String): EpisodePodloveSimpleChapterBuilder

@@ -4,6 +4,7 @@ import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.util.anyNotNull
 
 internal class ValidatingPodcastGooglePlayBuilder : PodcastGooglePlayBuilder {
 

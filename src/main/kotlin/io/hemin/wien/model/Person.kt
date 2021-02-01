@@ -1,5 +1,8 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.builder.validating.ValidatingPersonBuilder
+
 /**
  * Model class for elements describing persons.
  *
@@ -11,4 +14,10 @@ data class Person(
     val name: String,
     val email: String? = null,
     val uri: String? = null
-)
+) {
+    companion object Factory : BuilderFactory<Person, PersonBuilder> {
+        /** Returns a builder implementation for building [Person] model instances. */
+        @JvmStatic
+        override fun builder(): PersonBuilder = ValidatingPersonBuilder()
+    }
+}

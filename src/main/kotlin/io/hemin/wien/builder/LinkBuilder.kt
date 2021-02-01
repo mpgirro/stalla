@@ -2,7 +2,8 @@ package io.hemin.wien.builder
 
 import io.hemin.wien.model.Link
 
-internal interface LinkBuilder : Builder<Link> {
+/** Builder for constructing [Link] instances. */
+interface LinkBuilder : Builder<Link> {
 
     /** Set the href value. */
     fun href(href: String): LinkBuilder

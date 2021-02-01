@@ -1,5 +1,21 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.builder.podcast.PodcastBuilder
+import io.hemin.wien.builder.podcast.PodcastFeedpressBuilder
+import io.hemin.wien.builder.podcast.PodcastFyydBuilder
+import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
+import io.hemin.wien.builder.podcast.PodcastITunesBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastFundingBuilder
+import io.hemin.wien.builder.podcast.PodcastPodcastLockedBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastFeedpressBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastFyydBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastGooglePlayBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastITunesBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastPodcastBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastPodcastFundingBuilder
+import io.hemin.wien.builder.validating.podcast.ValidatingPodcastPodcastLockedBuilder
 import java.time.temporal.TemporalAccessor
 
 /**
@@ -49,6 +65,12 @@ data class Podcast(
     val podcast: Podcast? = null
 ) {
 
+    companion object Factory : BuilderFactory<io.hemin.wien.model.Podcast, PodcastBuilder> {
+        /** Returns a builder implementation for building [io.hemin.wien.model.Podcast] model instances. */
+        @JvmStatic
+        override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
+    }
+
     /**
      * Model class for data from the iTunes namespace valid within an RSS `<channel>`.
      *
@@ -81,6 +103,12 @@ data class Podcast(
         override val title: String? = null,
         val newFeedUrl: String? = null
     ) : ITunesBase {
+
+        companion object Factory : BuilderFactory<ITunes, PodcastITunesBuilder> {
+            /** Returns a builder implementation for building [ITunes] model instances. */
+            @JvmStatic
+            override fun builder(): PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
+        }
 
         /**
          * Enum model for the defined values encountered within the
@@ -129,7 +157,13 @@ data class Podcast(
         override val explicit: Boolean? = null,
         override val block: Boolean,
         override val image: HrefOnlyImage? = null
-    ) : GooglePlayBase
+    ) : GooglePlayBase {
+        companion object Factory : BuilderFactory<GooglePlay, PodcastGooglePlayBuilder> {
+            /** Returns a builder implementation for building [GooglePlay] model instances. */
+            @JvmStatic
+            override fun builder(): PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the Fyyd namespace that are valid within `<channel>` elements.
@@ -138,7 +172,13 @@ data class Podcast(
      */
     data class Fyyd(
         val verify: String
-    )
+    ) {
+        companion object Factory : BuilderFactory<Fyyd, PodcastFyydBuilder> {
+            /** Returns a builder implementation for building [Fyyd] model instances. */
+            @JvmStatic
+            override fun builder(): PodcastFyydBuilder = ValidatingPodcastFyydBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the Feedpress namespace that are valid within `<channel>` elements.
@@ -155,7 +195,13 @@ data class Podcast(
         val podcastId: String? = null,
         val cssFile: String? = null,
         val link: String? = null
-    )
+    ) {
+        companion object Factory : BuilderFactory<Feedpress, PodcastFeedpressBuilder> {
+            /** Returns a builder implementation for building [Feedpress] model instances. */
+            @JvmStatic
+            override fun builder(): PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the Podcast 1.0 namespace that are valid within `<channel>` elements.
@@ -168,6 +214,12 @@ data class Podcast(
         val funding: List<Funding> = emptyList()
     ) {
 
+        companion object Factory : BuilderFactory<Podcast, PodcastPodcastBuilder> {
+            /** Returns a builder implementation for building [Podcast] model instances. */
+            @JvmStatic
+            override fun builder(): PodcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
+        }
+
         /**
          * The lock status of the podcast. Tells other podcast platforms whether they are allowed to
          * import this feed into their systems.
@@ -178,7 +230,13 @@ data class Podcast(
         data class Locked(
             val owner: String,
             val locked: Boolean
-        )
+        ) {
+            companion object Factory : BuilderFactory<Locked, PodcastPodcastLockedBuilder> {
+                /** Returns a builder implementation for building [Locked] model instances. */
+                @JvmStatic
+                override fun builder(): PodcastPodcastLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+            }
+        }
 
         /**
          * The funding information for the podcast.
@@ -189,6 +247,12 @@ data class Podcast(
         data class Funding(
             val url: String,
             val message: String
-        )
+        ) {
+            companion object Factory : BuilderFactory<Funding, PodcastPodcastFundingBuilder> {
+                /** Returns a builder implementation for building [Funding] model instances. */
+                @JvmStatic
+                override fun builder(): PodcastPodcastFundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+            }
+        }
     }
 }

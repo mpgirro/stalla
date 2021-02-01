@@ -1,5 +1,8 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.builder.RssCategoryBuilder
+import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
+
 /**
  * An [RSS `<category>` tag][https://www.w3schools.com/XML/rss_tag_category_channel.asp]:
  *
@@ -10,4 +13,10 @@ package io.hemin.wien.model
  * @param name The name of the category.
  * @param domain A name or URL identifying a categorization taxonomy.
  */
-data class RssCategory(val name: String, val domain: String? = null)
+data class RssCategory(val name: String, val domain: String? = null) {
+    companion object Factory : BuilderFactory<RssCategory, RssCategoryBuilder> {
+        /** Returns a builder implementation for building [RssCategory] model instances. */
+        @JvmStatic
+        override fun builder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
+    }
+}

@@ -3,7 +3,8 @@ package io.hemin.wien.builder.podcast
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Podcast
 
-internal interface PodcastFeedpressBuilder : Builder<Podcast.Feedpress> {
+/** Builder for constructing [Podcast.Feedpress] instances. */
+interface PodcastFeedpressBuilder : Builder<Podcast.Feedpress> {
 
     /** Set the newsletterId value. */
     fun newsletterId(newsletterId: String?): PodcastFeedpressBuilder

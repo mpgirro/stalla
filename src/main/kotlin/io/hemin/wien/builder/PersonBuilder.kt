@@ -2,7 +2,8 @@ package io.hemin.wien.builder
 
 import io.hemin.wien.model.Person
 
-internal interface PersonBuilder : Builder<Person> {
+/** Builder for constructing [Person] instances. */
+interface PersonBuilder : Builder<Person> {
 
     /** Set the name value. */
     fun name(name: String): PersonBuilder

@@ -2,7 +2,8 @@ package io.hemin.wien.builder
 
 import io.hemin.wien.model.RssImage
 
-internal interface RssImageBuilder : Builder<RssImage> {
+/** Builder for constructing [RssImage] instances. */
+interface RssImageBuilder : Builder<RssImage> {
 
     /** Set the url value. */
     fun url(url: String): RssImageBuilder

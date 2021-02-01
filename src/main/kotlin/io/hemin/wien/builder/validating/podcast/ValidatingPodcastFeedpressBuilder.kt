@@ -2,6 +2,7 @@ package io.hemin.wien.builder.validating.podcast
 
 import io.hemin.wien.builder.podcast.PodcastFeedpressBuilder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.util.anyNotNull
 
 internal class ValidatingPodcastFeedpressBuilder : PodcastFeedpressBuilder {
 

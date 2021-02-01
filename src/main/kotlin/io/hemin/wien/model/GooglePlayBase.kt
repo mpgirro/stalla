@@ -1,6 +1,6 @@
 package io.hemin.wien.model
 
-interface GooglePlayBase {
+internal interface GooglePlayBase {
 
     val description: String?
     val explicit: Boolean?

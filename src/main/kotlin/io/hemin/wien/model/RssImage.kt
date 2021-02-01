@@ -1,5 +1,8 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.builder.RssImageBuilder
+import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
+
 /**
  * An [RSS `<image>` tag][https://www.w3schools.com/XML/rss_tag_image.asp]. An
  * RSS image tag looks something like this:
@@ -31,4 +34,10 @@ data class RssImage(
     val width: Int? = null,
     val height: Int? = null,
     val description: String? = null
-)
+) {
+    companion object Factory : BuilderFactory<RssImage, RssImageBuilder> {
+        /** Returns a builder implementation for building [RssImage] model instances. */
+        @JvmStatic
+        override fun builder(): RssImageBuilder = ValidatingRssImageBuilder()
+    }
+}

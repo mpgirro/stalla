@@ -2,7 +2,8 @@ package io.hemin.wien.builder
 
 import io.hemin.wien.model.Atom
 
-internal interface AtomBuilder : Builder<Atom> {
+/** Builder for constructing [Atom] instances. */
+interface AtomBuilder : Builder<Atom> {
 
     /**
      * Adds a person builder to the list of authors.

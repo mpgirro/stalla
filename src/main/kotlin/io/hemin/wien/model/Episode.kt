@@ -1,5 +1,31 @@
 package io.hemin.wien.model
 
+import io.hemin.wien.builder.episode.EpisodeBitloveBuilder
+import io.hemin.wien.builder.episode.EpisodeBuilder
+import io.hemin.wien.builder.episode.EpisodeContentBuilder
+import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
+import io.hemin.wien.builder.episode.EpisodeGooglePlayBuilder
+import io.hemin.wien.builder.episode.EpisodeGuidBuilder
+import io.hemin.wien.builder.episode.EpisodeITunesBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastChaptersBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastSoundbiteBuilder
+import io.hemin.wien.builder.episode.EpisodePodcastTranscriptBuilder
+import io.hemin.wien.builder.episode.EpisodePodloveBuilder
+import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBitloveBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeContentBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeGooglePlayBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeGuidBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodeITunesBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodcastBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodcastChaptersBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodcastSoundbiteBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodcastTranscriptBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveBuilder
+import io.hemin.wien.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.model.Episode.Podcast.Transcript.Type
 import io.hemin.wien.model.Episode.Podlove.SimpleChapter
 import java.time.Duration
@@ -48,6 +74,12 @@ data class Episode(
     val podcast: Podcast? = null
 ) {
 
+    companion object Factory : BuilderFactory<Episode, EpisodeBuilder> {
+        /** Returns a builder implementation for building [Episode] model instances. */
+        @JvmStatic
+        override fun builder(): EpisodeBuilder = ValidatingEpisodeBuilder()
+    }
+
     /**
      * Model class for `<enclosure>` elements within RSS `<item>` elements.
      *
@@ -59,7 +91,13 @@ data class Episode(
         val url: String,
         val length: Long,
         val type: String
-    )
+    ) {
+        companion object Factory : BuilderFactory<Enclosure, EpisodeEnclosureBuilder> {
+            /** Returns a builder implementation for building [Enclosure] model instances. */
+            @JvmStatic
+            override fun builder(): EpisodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
+        }
+    }
 
     /**
      * Model class for `<guid>` elements within RSS `<item>` elements.
@@ -70,7 +108,13 @@ data class Episode(
     data class Guid(
         val guid: String,
         val isPermalink: Boolean? = null
-    )
+    ) {
+        companion object Factory : BuilderFactory<Guid, EpisodeGuidBuilder> {
+            /** Returns a builder implementation for building [Guid] model instances. */
+            @JvmStatic
+            override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the Content namespace that are valid within `<item>` elements.
@@ -79,7 +123,13 @@ data class Episode(
      */
     data class Content(
         val encoded: String
-    )
+    ) {
+        companion object Factory : BuilderFactory<Content, EpisodeContentBuilder> {
+            /** Returns a builder implementation for building [Content] model instances. */
+            @JvmStatic
+            override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the iTunes namespace that are valid within `<item>` elements.
@@ -106,6 +156,12 @@ data class Episode(
         override val subtitle: String? = null,
         override val summary: String? = null
     ) : ITunesBase {
+
+        companion object Factory : BuilderFactory<ITunes, EpisodeITunesBuilder> {
+            /** Returns a builder implementation for building [ITunes] model instances. */
+            @JvmStatic
+            override fun builder(): EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        }
 
         /**
          * Enum model for the defined values encountered within the
@@ -151,7 +207,13 @@ data class Episode(
         override val explicit: Boolean? = null,
         override val block: Boolean,
         override val image: HrefOnlyImage? = null
-    ) : GooglePlayBase
+    ) : GooglePlayBase {
+        companion object Factory : BuilderFactory<GooglePlay, EpisodeGooglePlayBuilder> {
+            /** Returns a builder implementation for building [GooglePlay] model instances. */
+            @JvmStatic
+            override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of namespaces from the Podlove
@@ -162,6 +224,12 @@ data class Episode(
     data class Podlove(
         val simpleChapters: List<SimpleChapter>
     ) {
+
+        companion object Factory : BuilderFactory<Podlove, EpisodePodloveBuilder> {
+            /** Returns a builder implementation for building [Podlove] model instances. */
+            @JvmStatic
+            override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
+        }
 
         /**
          * Model class for data from `<psc:chapter>` elements of the Podlove
@@ -177,7 +245,13 @@ data class Episode(
             val title: String,
             val href: String? = null,
             val image: String? = null
-        )
+        ) {
+            companion object Factory : BuilderFactory<SimpleChapter, EpisodePodloveSimpleChapterBuilder> {
+                /** Returns a builder implementation for building [SimpleChapter] model instances. */
+                @JvmStatic
+                override fun builder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
+            }
+        }
     }
 
     /**
@@ -187,7 +261,13 @@ data class Episode(
      */
     data class Bitlove(
         val guid: String
-    )
+    ) {
+        companion object Factory : BuilderFactory<Bitlove, EpisodeBitloveBuilder> {
+            /** Returns a builder implementation for building [Bitlove] model instances. */
+            @JvmStatic
+            override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
+        }
+    }
 
     /**
      * Model class for data from elements of the Podcast 1.0 namespace that are valid within `<item>` elements.
@@ -201,6 +281,12 @@ data class Episode(
         val soundbites: List<Soundbite> = emptyList(),
         val chapters: Chapters? = null
     ) {
+
+        companion object Factory : BuilderFactory<Podcast, EpisodePodcastBuilder> {
+            /** Returns a builder implementation for building [Podcast] model instances. */
+            @JvmStatic
+            override fun builder(): EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
+        }
 
         /**
          * The transcript for the episode.
@@ -216,6 +302,12 @@ data class Episode(
             val language: Locale? = null,
             val rel: String? = null
         ) {
+
+            companion object Factory : BuilderFactory<Transcript, EpisodePodcastTranscriptBuilder> {
+                /** Returns a builder implementation for building [Transcript] model instances. */
+                @JvmStatic
+                override fun builder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
+            }
 
             /**
              * Supported transcript types. See the
@@ -251,7 +343,13 @@ data class Episode(
         data class Chapters(
             val url: String,
             val type: String
-        )
+        ) {
+            companion object Factory : BuilderFactory<Chapters, EpisodePodcastChaptersBuilder> {
+                /** Returns a builder implementation for building [Chapters] model instances. */
+                @JvmStatic
+                override fun builder(): EpisodePodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
+            }
+        }
 
         /**
          * The soundbite information for the episode. Used to automatically extract soundbites from the [Episode.enclosure].
@@ -264,6 +362,12 @@ data class Episode(
             val startTime: Duration,
             val duration: Duration,
             val title: String? = null
-        )
+        ) {
+            companion object Factory : BuilderFactory<Soundbite, EpisodePodcastSoundbiteBuilder> {
+                /** Returns a builder implementation for building [Soundbite] model instances. */
+                @JvmStatic
+                override fun builder(): EpisodePodcastSoundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+            }
+        }
     }
 }
