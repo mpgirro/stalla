@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.10.0
+
+* Adds feed writing support
+* Adds additional elements for RSS and iTunes namespace
+* Adds support for Podcastindex namespace
+* Adds huge amount of unit tests
+* Adds builder factory methods to model companion objects
+* Changes to java.time representation
+
 ## v0.9.0
 
 * Adds support for the Bitlove namespace
