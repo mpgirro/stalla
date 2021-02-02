@@ -19,7 +19,9 @@ interface AtomBuilder : Builder<Atom> {
      *
      * @param authorBuilders The author builder list to add.
      */
-    fun addAuthorBuilders(authorBuilders: List<PersonBuilder>): AtomBuilder
+    fun addAuthorBuilders(authorBuilders: List<PersonBuilder>): AtomBuilder = apply {
+        authorBuilders.forEach { authorBuilder -> addAuthorBuilder(authorBuilder) }
+    }
 
     /**
      * Adds a person builder to the list of contributors.
@@ -33,7 +35,9 @@ interface AtomBuilder : Builder<Atom> {
      *
      * @param contributorBuilders The contributor builder list to add.
      */
-    fun addContributorBuilders(contributorBuilders: List<PersonBuilder>): AtomBuilder
+    fun addContributorBuilders(contributorBuilders: List<PersonBuilder>): AtomBuilder = apply {
+        contributorBuilders.forEach { contributorBuilder -> addContributorBuilder(contributorBuilder) }
+    }
 
     /**
      * Adds a link builder to the list of links.
@@ -47,7 +51,9 @@ interface AtomBuilder : Builder<Atom> {
      *
      * @param linkBuilders The link builder list to add.
      */
-    fun addLinkBuilders(linkBuilders: List<LinkBuilder>): AtomBuilder
+    fun addLinkBuilders(linkBuilders: List<LinkBuilder>): AtomBuilder = apply {
+        linkBuilders.forEach { linkBuilder -> addLinkBuilder(linkBuilder) }
+    }
 
     override fun from(model: Atom): AtomBuilder {
         return Atom.builder()
