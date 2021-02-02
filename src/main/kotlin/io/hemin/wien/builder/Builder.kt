@@ -15,6 +15,14 @@ interface Builder<T> {
     fun build(): T?
 
     /**
+     * Creates a builder instance with the properties set in the model.
+     *
+     * @param model The model prototype for the new builder.
+     * @return The created builder instance.
+     */
+    fun from(model: T): Builder<T>
+
+    /**
      * This property is `true` when the builder has been provided with enough data to be able to
      * [build] the final model, That means that when this property is `true` the [build] method
      * will return a non-null instance of the model, and when this is `false`, it will always

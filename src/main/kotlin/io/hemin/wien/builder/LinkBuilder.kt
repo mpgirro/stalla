@@ -25,4 +25,15 @@ interface LinkBuilder : Builder<Link> {
 
     /** Set the type value. */
     fun type(type: String?): LinkBuilder
+
+    override fun from(model: Link): LinkBuilder {
+        return Link.builder()
+            .href(model.href)
+            .hrefLang(model.hrefLang)
+            .hrefResolved(model.hrefResolved)
+            .length(model.length)
+            .rel(model.rel)
+            .title(model.title)
+            .type(model.type)
+    }
 }

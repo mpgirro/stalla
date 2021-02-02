@@ -13,4 +13,12 @@ interface PersonBuilder : Builder<Person> {
 
     /** Set the uri value. */
     fun uri(uri: String?): PersonBuilder
+
+    override fun from(model: Person): PersonBuilder {
+        return Person.builder()
+            .name(model.name)
+            .email(model.email)
+            .uri(model.uri)
+    }
+
 }

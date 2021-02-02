@@ -4,6 +4,7 @@ import assertk.all
 import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.containsExactly
+import assertk.assertions.isEqualTo
 import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
@@ -13,6 +14,7 @@ import io.hemin.wien.builder.AtomBuilder
 import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
+import io.hemin.wien.model.episode.anEpisodeAtom
 import org.junit.jupiter.api.Test
 
 internal class ValidatingAtomBuilderTest {
@@ -87,6 +89,18 @@ internal class ValidatingAtomBuilderTest {
                 prop(Atom::contributors).containsExactly(Person("contributor 1"), Person("contributor 2"), Person("contributor 3"))
                 prop(Atom::links).containsExactly(Link("link 1"), Link("link 2"))
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Atom builder with all properties from an Atom model`() {
+        val atom = anEpisodeAtom()
+        val atomBuilder = Atom.builder().from(atom)
+
+        assertAll {
+            assertThat(atomBuilder).prop(AtomBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(atomBuilder.build()).isNotNull().isEqualTo(atom)
         }
     }
 }

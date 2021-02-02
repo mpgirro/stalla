@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.LinkBuilder
 import io.hemin.wien.model.Link
+import io.hemin.wien.model.aLink
 import org.junit.jupiter.api.Test
 
 internal class ValidatingLinkBuilderTest {
@@ -69,6 +70,18 @@ internal class ValidatingLinkBuilderTest {
                 prop(Link::title).isEqualTo("title")
                 prop(Link::type).isEqualTo("type")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate a Link builder with all properties from a Link model`() {
+        val link = aLink()
+        val linkBuilder = Link.builder().from(link)
+
+        assertAll {
+            assertThat(linkBuilder).prop(LinkBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(linkBuilder.build()).isNotNull().isEqualTo(link)
         }
     }
 }

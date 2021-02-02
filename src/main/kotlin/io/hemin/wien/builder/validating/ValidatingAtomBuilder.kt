@@ -15,12 +15,24 @@ internal class ValidatingAtomBuilder : AtomBuilder {
         authorBuilders.add(authorBuilder)
     }
 
+    override fun addAuthorBuilders(authorBuilders: List<PersonBuilder>): AtomBuilder = apply {
+        this.authorBuilders.addAll(authorBuilders)
+    }
+
     override fun addContributorBuilder(contributorBuilder: PersonBuilder): AtomBuilder = apply {
         contributorBuilders.add(contributorBuilder)
     }
 
+    override fun addContributorBuilders(contributorBuilders: List<PersonBuilder>): AtomBuilder = apply {
+        this.contributorBuilders.addAll(contributorBuilders)
+    }
+
     override fun addLinkBuilder(linkBuilder: LinkBuilder): AtomBuilder = apply {
         linkBuilders.add(linkBuilder)
+    }
+
+    override fun addLinkBuilders(linkBuilders: List<LinkBuilder>): AtomBuilder = apply {
+        this.linkBuilders.addAll(linkBuilders)
     }
 
     override val hasEnoughDataToBuild: Boolean
