@@ -128,6 +128,5 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
         imageBuilder(RssImage.builder().from(podcast.image))
         addEpisodeBuilders(podcast.episodes.map(Episode.builder()::from))
         addCategoryBuilders(podcast.categories.map(RssCategory.builder()::from))
-
     }
 }
