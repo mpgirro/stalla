@@ -48,14 +48,10 @@ interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderP
     /** Set the author value. */
     fun author(author: String?): EpisodeBuilder
 
-    /**
-     * Adds a category to the list of categories.
-     *
-     * @param categoryBuilder The The [RssCategoryBuilder] used to initialize the
-     * [Episode.categories] items when [build] is called.
-     */
+    /** Adds an [RssCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder
 
+    /** Adds multiple [RssCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilderys(categoryBuilders: List<RssCategoryBuilder>): EpisodeBuilder = apply {
         categoryBuilders.forEach { categoryBuilder -> addCategoryBuilder(categoryBuilder) }
     }
@@ -63,20 +59,10 @@ interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderP
     /** Set the comments value. */
     fun comments(comments: String?): EpisodeBuilder
 
-    /**
-     * Set the [EpisodeEnclosureBuilder].
-     *
-     * @param enclosureBuilder The [EpisodeEnclosureBuilder] used to initialize the
-     * [Episode.enclosure] when [build] is called.
-     */
+    /** Set the [EpisodeEnclosureBuilder]. */
     fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder
 
-    /**
-     * Set the [EpisodeGuidBuilder].
-     *
-     * @param guidBuilder The [EpisodeGuidBuilder] used to initialize the
-     * [Episode.guid] when [build] is called.
-     */
+    /** Set the [EpisodeGuidBuilder]. */
     fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder
 
     /** Set the pubDate value. */

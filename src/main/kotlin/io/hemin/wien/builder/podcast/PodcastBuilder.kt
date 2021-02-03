@@ -70,28 +70,21 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
     /** Set the webMaster value. */
     fun webMaster(webMaster: String?): PodcastBuilder
 
-    /** Set the Image builder. */
+    /** Set the [RssImageBuilder]. */
     fun imageBuilder(imageBuilder: RssImageBuilder?): PodcastBuilder
 
-    /**
-     * Adds an [EpisodeBuilder] to the list of episodes.
-     *
-     * @param episodeBuilder The [EpisodeBuilder] to add.
-     */
+    /** Adds an [EpisodeBuilder] to the list of episode builders. */
     fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder
 
+    /** Adds multiple [EpisodeBuilder] to the list of episode builders. */
     fun addEpisodeBuilders(episodeBuilders: List<EpisodeBuilder>): PodcastBuilder = apply {
         episodeBuilders.forEach { episodeBuilder -> addEpisodeBuilder(episodeBuilder) }
     }
 
-    /**
-     * Adds a category to the list of categories.
-     *
-     * @param categoryBuilder The The [RssCategoryBuilder] used to initialize the
-     * [Episode.categories] items when [build] is called.
-     */
+    /** Adds an [RssCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): PodcastBuilder
 
+    /** Adds multiple [RssCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilders(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder = apply {
         categoryBuilders.forEach { categoryBuilder -> addCategoryBuilder(categoryBuilder) }
     }

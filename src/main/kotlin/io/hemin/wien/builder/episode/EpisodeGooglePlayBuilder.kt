@@ -18,7 +18,7 @@ interface EpisodeGooglePlayBuilder : Builder<Episode.GooglePlay> {
     /** Set the block value. */
     fun block(block: Boolean): EpisodeGooglePlayBuilder
 
-    /** Set the Image builder. */
+    /** Set the [HrefOnlyImageBuilder]. */
     fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder
 
     override fun from(model: Episode.GooglePlay?): EpisodeGooglePlayBuilder = whenNotNull(model) { googlePlay ->

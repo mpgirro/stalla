@@ -15,7 +15,7 @@ interface Builder<T> {
     fun build(): T?
 
     /**
-     * Applies the properties of [model] to this builder
+     * Applies the properties of [model] to this builder.
      *
      * @param model The model prototype for this builder.
      * @return This builder instance.

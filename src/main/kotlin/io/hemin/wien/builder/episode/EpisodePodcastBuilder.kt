@@ -8,24 +8,30 @@ import io.hemin.wien.util.whenNotNull
 interface EpisodePodcastBuilder : Builder<Episode.Podcast> {
 
     /**
-     * The builder for the Podcast namespace `<chapters>` info.
+     * Set the [EpisodePodcastChaptersBuilder] for the Podcast namespace `<chapters>` info.
      */
     fun chaptersBuilder(chaptersBuilder: EpisodePodcastChaptersBuilder): EpisodePodcastBuilder
 
     /**
-     * The builders for the Podcast namespace `<soundbite>` info.
+     * Adds a [EpisodePodcastSoundbiteBuilder] for the Podcast namespace `<soundbite>` info to the list of soundbite builders.
      */
     fun addSoundbiteBuilder(soundbiteBuilder: EpisodePodcastSoundbiteBuilder): EpisodePodcastBuilder
 
+    /**
+     * Adds multiple [EpisodePodcastSoundbiteBuilder] for the Podcast namespace `<soundbite>` info to the list of soundbite builders.
+     */
     fun addSoundbiteBuilders(soundbiteBuilders: List<EpisodePodcastSoundbiteBuilder>): EpisodePodcastBuilder = apply {
         soundbiteBuilders.forEach { soundbite -> addSoundbiteBuilder(soundbite) }
     }
 
     /**
-     * The builders for the Podcast namespace `<transcript>` info.
+     * Adds a [EpisodePodcastTranscriptBuilder] for the Podcast namespace `<transcript>` info to the list of transcript builders.
      */
     fun addTranscriptBuilder(transcriptBuilder: EpisodePodcastTranscriptBuilder): EpisodePodcastBuilder
 
+    /**
+     * Adds multiple [EpisodePodcastTranscriptBuilder] for the Podcast namespace `<transcript>` info to the list of transcript builders.
+     */
     fun addTranscriptBuilders(transcriptBuilders: List<EpisodePodcastTranscriptBuilder>): EpisodePodcastBuilder = apply {
         transcriptBuilders.forEach { transcript -> addTranscriptBuilder(transcript) }
     }

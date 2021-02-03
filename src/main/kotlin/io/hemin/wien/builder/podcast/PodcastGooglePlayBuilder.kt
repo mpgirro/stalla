@@ -17,14 +17,10 @@ interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
     /** Set the owner email value. */
     fun owner(email: String?): PodcastGooglePlayBuilder
 
-    /**
-     * Adds a category builder to the list of category builders.
-     *
-     * @param categoryBuilder The [ITunesStyleCategoryBuilder] used to initialize the
-     * [Podcast.GooglePlay.categories] list when [build] is called.
-     */
+    /** Adds an [ITunesStyleCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastGooglePlayBuilder
 
+    /** Adds multiple [ITunesStyleCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilders(categoryBuilders: List<ITunesStyleCategoryBuilder>): PodcastGooglePlayBuilder = apply {
         categoryBuilders.forEach { categoryBuilder -> addCategoryBuilder(categoryBuilder) }
     }
@@ -38,7 +34,7 @@ interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
     /** Set the block flag value. */
     fun block(block: Boolean): PodcastGooglePlayBuilder
 
-    /** Set the ImageBuilder. */
+    /** Set the [HrefOnlyImageBuilder]. */
     fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGooglePlayBuilder
 
     override fun from(model: Podcast.GooglePlay?): PodcastGooglePlayBuilder = whenNotNull(model) { googlePlay ->

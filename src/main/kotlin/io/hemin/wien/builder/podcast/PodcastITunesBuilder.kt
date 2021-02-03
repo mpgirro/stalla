@@ -28,14 +28,10 @@ interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
     /** Set the author value. */
     fun author(author: String?): PodcastITunesBuilder
 
-    /**
-     * Adds a category builder to the list of category builders.
-     *
-     * @param categoryBuilder The [ITunesStyleCategoryBuilder] used to initialize the
-     * [Podcast.ITunes.categories] list when [build] is called.
-     */
+    /** Adds an [ITunesStyleCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastITunesBuilder
 
+    /** Adds multiple [ITunesStyleCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilders(categoryBuilders: List<ITunesStyleCategoryBuilder>): PodcastITunesBuilder = apply {
         categoryBuilders.forEach { categoryBuilder -> addCategoryBuilder(categoryBuilder) }
     }

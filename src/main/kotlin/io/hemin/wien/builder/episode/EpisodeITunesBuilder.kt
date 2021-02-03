@@ -15,7 +15,7 @@ interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
     /** Set the duration value. */
     fun duration(duration: String?): EpisodeITunesBuilder
 
-    /** Set the Image builder. */
+    /** Set the [HrefOnlyImageBuilder]. */
     fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeITunesBuilder
 
     /** Set the explicit flag value. */

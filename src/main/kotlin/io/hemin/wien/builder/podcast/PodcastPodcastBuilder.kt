@@ -7,16 +7,17 @@ import io.hemin.wien.util.whenNotNull
 /** Builder for constructing [Podcast.Podcast] instances. */
 interface PodcastPodcastBuilder : Builder<Podcast.Podcast> {
 
-    /**
-     * The builder for the Podcast namespace `<locked>` status.
-     */
+    /** Set the [PodcastPodcastLockedBuilder]. */
     fun lockedBuilder(lockedBuilder: PodcastPodcastLockedBuilder): PodcastPodcastBuilder
 
     /**
-     * The builders for the Podcast namespace `<funding>` info.
+     * Adds a [PodcastPodcastFundingBuilder] for the Podcast namespace `<funding>` info to the list of funding builders.
      */
     fun addFundingBuilder(fundingBuilder: PodcastPodcastFundingBuilder): PodcastPodcastBuilder
 
+    /**
+     * Adds multiple [PodcastPodcastFundingBuilder] for the Podcast namespace `<funding>` info to the list of funding builders.
+     */
     fun addFundingBuilders(fundingBuilders: List<PodcastPodcastFundingBuilder>): PodcastPodcastBuilder = apply {
         fundingBuilders.forEach { fundingBuilder -> addFundingBuilder(fundingBuilder) }
     }
