@@ -3,12 +3,15 @@ package io.hemin.wien.builder.validating.episode
 import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.containsExactly
+import assertk.assertions.isEqualTo
 import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodePodloveBuilder
+import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisodePodlove
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodePodloveBuilderTest {
@@ -54,6 +57,18 @@ internal class ValidatingEpisodePodloveBuilderTest {
 
             assertThat(podloveBuilder.build()?.simpleChapters).isNotNull()
                 .containsExactly(expectedChapterBuilder.build(), anotherChapterBuilder.build())
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode Podlove builder with all properties from an Episode Podlove model`() {
+        val episodePodlove = anEpisodePodlove()
+        val episodePodloveBuilder = Episode.Podlove.builder().from(episodePodlove)
+
+        assertAll {
+            assertThat(episodePodloveBuilder).prop(EpisodePodloveBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodePodloveBuilder.build()).isNotNull().isEqualTo(episodePodlove)
         }
     }
 }

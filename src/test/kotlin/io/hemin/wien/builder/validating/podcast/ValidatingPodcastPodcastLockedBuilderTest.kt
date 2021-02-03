@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.podcast.PodcastPodcastLockedBuilder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.podcast.aPodcastPodcastLocked
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastPodcastLockedBuilderTest {
@@ -63,6 +64,18 @@ internal class ValidatingPodcastPodcastLockedBuilderTest {
                 prop(Podcast.Podcast.Locked::locked).isTrue()
                 prop(Podcast.Podcast.Locked::owner).isEqualTo("Send me money please, kthxbye")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate a Podcastindex Locked builder with all properties from an Podcastindex Locked model`() {
+        val locked = aPodcastPodcastLocked()
+        val lockedBuilder = Podcast.Podcast.Locked.builder().from(locked)
+
+        assertAll {
+            assertThat(lockedBuilder).prop(PodcastPodcastLockedBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(lockedBuilder.build()).isNotNull().isEqualTo(locked)
         }
     }
 }

@@ -2,6 +2,7 @@ package io.hemin.wien.builder.episode
 
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Episode.Podlove.SimpleChapter] instances. */
 interface EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter> {
@@ -17,4 +18,11 @@ interface EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleCha
 
     /** Set the image value. */
     fun image(image: String?): EpisodePodloveSimpleChapterBuilder
+
+    override fun from(model: Episode.Podlove.SimpleChapter?): EpisodePodloveSimpleChapterBuilder = whenNotNull(model) { simpleChapter ->
+        start(simpleChapter.start)
+        title(simpleChapter.title)
+        href(simpleChapter.href)
+        image(simpleChapter.image)
+    }
 }

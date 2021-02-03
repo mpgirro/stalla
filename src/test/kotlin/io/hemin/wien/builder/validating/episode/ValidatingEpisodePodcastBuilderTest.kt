@@ -12,6 +12,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodePodcastBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisodePodcast
 import org.junit.jupiter.api.Test
 import java.time.Duration
 import java.util.Locale
@@ -145,6 +146,18 @@ internal class ValidatingEpisodePodcastBuilderTest {
                 prop(Episode.Podcast::soundbites).containsExactly(firstExpectedSoundbiteBuilder.build(), secondExpectedSoundbiteBuilder.build())
                 prop(Episode.Podcast::transcripts).containsExactly(firstExpectedTranscriptBuilder.build(), secondExpectedTranscriptBuilder.build())
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode Podcastindex builder with all properties from an Episode Podcastindex model`() {
+        val episodePodcast = anEpisodePodcast()
+        val episodePodcastBuilder = Episode.Podcast.builder().from(episodePodcast)
+
+        assertAll {
+            assertThat(episodePodcastBuilder).prop(EpisodePodcastBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodePodcastBuilder.build()).isNotNull().isEqualTo(episodePodcast)
         }
     }
 }

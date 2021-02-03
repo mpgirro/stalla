@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.podcast.PodcastPodcastFundingBuilder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.podcast.aPodcastPodcastFunding
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastPodcastFundingBuilderTest {
@@ -63,6 +64,18 @@ internal class ValidatingPodcastPodcastFundingBuilderTest {
                 prop(Podcast.Podcast.Funding::url).isEqualTo("https://example.com/donate")
                 prop(Podcast.Podcast.Funding::message).isEqualTo("Send me money please, kthxbye")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate a Podcastindex Funding builder with all properties from an Podcastindex Funding model`() {
+        val funding = aPodcastPodcastFunding()
+        val fundingBuilder = Podcast.Podcast.Funding.builder().from(funding)
+
+        assertAll {
+            assertThat(fundingBuilder).prop(PodcastPodcastFundingBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(fundingBuilder.build()).isNotNull().isEqualTo(funding)
         }
     }
 }

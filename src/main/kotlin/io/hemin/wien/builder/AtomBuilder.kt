@@ -3,6 +3,7 @@ package io.hemin.wien.builder
 import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
+import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Atom] instances. */
 interface AtomBuilder : Builder<Atom> {
@@ -55,10 +56,9 @@ interface AtomBuilder : Builder<Atom> {
         linkBuilders.forEach { linkBuilder -> addLinkBuilder(linkBuilder) }
     }
 
-    override fun from(model: Atom): AtomBuilder {
-        return Atom.builder()
-            .addAuthorBuilders(model.authors.map { author -> Person.builder().from(author)})
-            .addContributorBuilders(model.contributors.map { contributor -> Person.builder().from(contributor) })
-            .addLinkBuilders(model.links.map { link -> Link.builder().from(link) })
+    override fun from(model: Atom?): AtomBuilder = whenNotNull(model) { atom ->
+        addAuthorBuilders(atom.authors.map { author -> Person.builder().from(author) })
+        addContributorBuilders(atom.contributors.map { contributor -> Person.builder().from(contributor) })
+        addLinkBuilders(atom.links.map { link -> Link.builder().from(link) })
     }
 }

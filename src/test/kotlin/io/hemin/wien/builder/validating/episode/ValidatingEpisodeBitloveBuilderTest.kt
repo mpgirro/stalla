@@ -10,6 +10,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodeBitloveBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisodeBitlove
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeBitloveBuilderTest {
@@ -34,6 +35,18 @@ internal class ValidatingEpisodeBitloveBuilderTest {
             assertThat(episodeBitloveBuilder).prop(EpisodeBitloveBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeBitloveBuilder.build()).isNotNull().prop(Episode.Bitlove::guid).isEqualTo("guid")
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode Bitlove builder with all properties from an Episode Bitlove model`() {
+        val episodeBitlove = anEpisodeBitlove()
+        val episodeBitloveBuilder = Episode.Bitlove.builder().from(episodeBitlove)
+
+        assertAll {
+            assertThat(episodeBitloveBuilder).prop(EpisodeBitloveBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeBitloveBuilder.build()).isNotNull().isEqualTo(episodeBitlove)
         }
     }
 }

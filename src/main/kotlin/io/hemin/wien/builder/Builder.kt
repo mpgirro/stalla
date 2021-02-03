@@ -15,12 +15,12 @@ interface Builder<T> {
     fun build(): T?
 
     /**
-     * Creates a builder instance with the properties set in the model.
+     * Applies the properties of [model] to this builder
      *
-     * @param model The model prototype for the new builder.
-     * @return The created builder instance.
+     * @param model The model prototype for this builder.
+     * @return This builder instance.
      */
-    fun from(model: T): Builder<T>
+    fun from(model: T?): Builder<T>
 
     /**
      * This property is `true` when the builder has been provided with enough data to be able to

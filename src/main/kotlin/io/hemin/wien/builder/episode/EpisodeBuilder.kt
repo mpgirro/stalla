@@ -8,6 +8,8 @@ import io.hemin.wien.builder.LinkBuilderProvider
 import io.hemin.wien.builder.PersonBuilderProvider
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.RssCategory
+import io.hemin.wien.util.whenNotNull
 import java.time.temporal.TemporalAccessor
 
 /** Builder for constructing [Episode] instances. */
@@ -53,6 +55,10 @@ interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderP
      * [Episode.categories] items when [build] is called.
      */
     fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder
+
+    fun addCategoryBuilderys(categoryBuilders: List<RssCategoryBuilder>): EpisodeBuilder = apply {
+        categoryBuilders.forEach { categoryBuilder -> addCategoryBuilder(categoryBuilder) }
+    }
 
     /** Set the comments value. */
     fun comments(comments: String?): EpisodeBuilder
@@ -105,4 +111,24 @@ interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderP
 
     /** Creates an instance of [EpisodePodcastSoundbiteBuilder] to use with this builder. */
     fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastSoundbiteBuilder
+
+    override fun from(model: Episode?): EpisodeBuilder = whenNotNull(model) { episode ->
+        contentBuilder.from(episode.content)
+        iTunesBuilder.from(episode.iTunes)
+        atomBuilder.from(episode.atom)
+        podloveBuilder.from(episode.podlove)
+        googlePlayBuilder.from(episode.googlePlay)
+        bitloveBuilder.from(episode.bitlove)
+        podcastBuilder.from(episode.podcast)
+        title(episode.title)
+        link(episode.link)
+        description(episode.description)
+        author(episode.author)
+        addCategoryBuilderys(episode.categories.map { category -> RssCategory.builder().from(category) })
+        comments(episode.comments)
+        enclosureBuilder(Episode.Enclosure.builder().from(episode.enclosure))
+        guidBuilder(Episode.Guid.builder().from(episode.guid))
+        pubDate(episode.pubDate)
+        source(episode.source)
+    }
 }

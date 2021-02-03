@@ -12,6 +12,7 @@ import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodeITunesBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisodeITunes
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeITunesBuilderTest {
@@ -324,6 +325,18 @@ internal class ValidatingEpisodeITunesBuilderTest {
                 prop(Episode.ITunes::subtitle).isEqualTo("subtitle")
                 prop(Episode.ITunes::summary).isEqualTo("summary")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode ITunes builder with all properties from an Episode ITunes model`() {
+        val episodeItunes = anEpisodeITunes()
+        val episodeITunesBuilder = Episode.ITunes.builder().from(episodeItunes)
+
+        assertAll {
+            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeITunesBuilder.build()).isNotNull().isEqualTo(episodeItunes)
         }
     }
 }

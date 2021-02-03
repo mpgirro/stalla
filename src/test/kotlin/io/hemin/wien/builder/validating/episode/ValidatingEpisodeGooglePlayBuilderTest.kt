@@ -12,6 +12,7 @@ import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodeGooglePlayBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisodeGooglePlay
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeGooglePlayBuilderTest {
@@ -114,6 +115,18 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
                 prop(Episode.GooglePlay::block).isNotNull().isFalse()
                 prop(Episode.GooglePlay::image).isEqualTo(expectedImageBuilder.build())
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode GooglePlay builder with all properties from an Episode GooglePlay model`() {
+        val episodeGooglePlay = anEpisodeGooglePlay()
+        val episodeGooglePlayBuilder = Episode.GooglePlay.builder().from(episodeGooglePlay)
+
+        assertAll {
+            assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeGooglePlayBuilder.build()).isNotNull().isEqualTo(episodeGooglePlay)
         }
     }
 }

@@ -11,6 +11,9 @@ import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.RssCategory
+import io.hemin.wien.model.RssImage
+import io.hemin.wien.util.whenNotNull
 import java.time.temporal.TemporalAccessor
 
 /** Builder for constructing [Podcast] instances. */
@@ -77,6 +80,10 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
      */
     fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder
 
+    fun addEpisodeBuilders(episodeBuilders: List<EpisodeBuilder>): PodcastBuilder = apply {
+        episodeBuilders.forEach { episodeBuilder -> addEpisodeBuilder(episodeBuilder) }
+    }
+
     /**
      * Adds a category to the list of categories.
      *
@@ -84,6 +91,10 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
      * [Episode.categories] items when [build] is called.
      */
     fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): PodcastBuilder
+
+    fun addCategoryBuilders(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder = apply {
+        categoryBuilders.forEach { categoryBuilder -> addCategoryBuilder(categoryBuilder) }
+    }
 
     /** Creates an instance of [RssImageBuilder] to use with this builder. */
     fun createRssImageBuilder(): RssImageBuilder
@@ -102,4 +113,27 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
 
     /** Creates an instance of [PodcastPodcastFundingBuilder] to use with this builder. */
     fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder
+
+    override fun from(model: Podcast?): PodcastBuilder = whenNotNull(model) { podcast ->
+        iTunesBuilder.from(podcast.iTunes)
+        atomBuilder.from(podcast.atom)
+        fyydBuilder.from(podcast.fyyd)
+        feedpressBuilder.from(podcast.feedpress)
+        googlePlayBuilder.from(podcast.googlePlay)
+        podcastBuilder.from(podcast.podcast)
+        title(podcast.title)
+        link(podcast.link)
+        description(podcast.description)
+        pubDate(podcast.pubDate)
+        lastBuildDate(podcast.lastBuildDate)
+        language(podcast.language)
+        generator(podcast.generator)
+        copyright(podcast.copyright)
+        docs(podcast.docs)
+        managingEditor(podcast.managingEditor)
+        webMaster(podcast.webMaster)
+        imageBuilder(RssImage.builder().from(podcast.image))
+        addEpisodeBuilders(podcast.episodes.map { episode -> Episode.builder().from(episode) })
+        addCategoryBuilders(podcast.categories.map { category -> RssCategory.builder().from(category) })
+    }
 }

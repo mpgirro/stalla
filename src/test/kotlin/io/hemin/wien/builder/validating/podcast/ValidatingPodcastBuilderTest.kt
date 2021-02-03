@@ -21,6 +21,7 @@ import io.hemin.wien.builder.validating.episode.ValidatingEpisodeEnclosureBuilde
 import io.hemin.wien.dateTime
 import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.podcast.aPodcast
 import org.junit.jupiter.api.Test
 import java.time.Month
 
@@ -239,6 +240,18 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::googlePlay).isNotNull().prop(Podcast.GooglePlay::description).isEqualTo("play description")
                 prop(Podcast::podcast).isNotNull().prop(Podcast.Podcast::locked).isEqualTo(expectedLockedBuilder.build())
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate a Podcast builder with all properties from an Podcast model`() {
+        val podcast = aPodcast()
+        val podcastBuilder = Podcast.builder().from(podcast)
+
+        assertAll {
+            assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastBuilder.build()).isNotNull().isEqualTo(podcast)
         }
     }
 }

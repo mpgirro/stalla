@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisodeGuid
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeGuidBuilderTest {
@@ -54,6 +55,18 @@ internal class ValidatingEpisodeGuidBuilderTest {
                 prop(Episode.Guid::guid).isEqualTo("textContent")
                 prop(Episode.Guid::isPermalink).isNotNull().isTrue()
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode Guid builder with all properties from an Episode Guid model`() {
+        val episodeGuid = anEpisodeGuid()
+        val episodeGuidBuilder = Episode.Guid.builder().from(episodeGuid)
+
+        assertAll {
+            assertThat(episodeGuidBuilder).prop(EpisodeGuidBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeGuidBuilder.build()).isNotNull().isEqualTo(episodeGuid)
         }
     }
 }

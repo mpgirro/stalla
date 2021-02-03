@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodePodcastChaptersBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisodePodcastChapters
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodePodcastChaptersBuilderTest {
@@ -63,6 +64,18 @@ internal class ValidatingEpisodePodcastChaptersBuilderTest {
                 prop(Episode.Podcast.Chapters::url).isEqualTo("https://example.com/episode/chapters.json")
                 prop(Episode.Podcast.Chapters::type).isEqualTo("text/json+chapters")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode Podcastindex Chapters builder with all properties from an Episode Podcastindex Chapters model`() {
+        val episodePodcastChapters = anEpisodePodcastChapters()
+        val episodePodcastChaptersBuilder = Episode.Podcast.Chapters.builder().from(episodePodcastChapters)
+
+        assertAll {
+            assertThat(episodePodcastChaptersBuilder).prop(EpisodePodcastChaptersBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodePodcastChaptersBuilder.build()).isNotNull().isEqualTo(episodePodcastChapters)
         }
     }
 }

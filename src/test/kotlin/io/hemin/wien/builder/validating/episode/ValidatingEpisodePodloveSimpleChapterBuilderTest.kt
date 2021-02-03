@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodePodloveSimpleChapterBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.aPodloveSimpleChapter
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodePodloveSimpleChapterBuilderTest {
@@ -61,6 +62,18 @@ internal class ValidatingEpisodePodloveSimpleChapterBuilderTest {
                 prop(Episode.Podlove.SimpleChapter::href).isEqualTo("href")
                 prop(Episode.Podlove.SimpleChapter::image).isEqualTo("image")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode Podlove SimpleChapter builder with all properties from an Episode Podlove SimpleChapter model`() {
+        val podloveSimpleChapter = aPodloveSimpleChapter()
+        val podloveSimpleChaptersBuilder = Episode.Podlove.SimpleChapter.builder().from(podloveSimpleChapter)
+
+        assertAll {
+            assertThat(podloveSimpleChaptersBuilder).prop(EpisodePodloveSimpleChapterBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podloveSimpleChaptersBuilder.build()).isNotNull().isEqualTo(podloveSimpleChapter)
         }
     }
 }

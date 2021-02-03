@@ -1,6 +1,7 @@
 package io.hemin.wien.builder
 
 import io.hemin.wien.model.RssImage
+import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [RssImage] instances. */
 interface RssImageBuilder : Builder<RssImage> {
@@ -22,4 +23,13 @@ interface RssImageBuilder : Builder<RssImage> {
 
     /** Set the description value. */
     fun description(description: String?): RssImageBuilder
+
+    override fun from(model: RssImage?): RssImageBuilder = whenNotNull(model) { image ->
+        url(image.url)
+        title(image.title)
+        link(image.link)
+        width(image.width)
+        height(image.height)
+        description(image.description)
+    }
 }
