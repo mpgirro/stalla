@@ -78,7 +78,7 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
 
     /** Adds multiple [EpisodeBuilder] to the list of episode builders. */
     fun addEpisodeBuilders(episodeBuilders: List<EpisodeBuilder>): PodcastBuilder = apply {
-        episodeBuilders.forEach { episodeBuilder -> addEpisodeBuilder(episodeBuilder) }
+        episodeBuilders.forEach(::addEpisodeBuilder)
     }
 
     /** Adds an [RssCategoryBuilder] to the list of category builders. */
@@ -86,7 +86,7 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
 
     /** Adds multiple [RssCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilders(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder = apply {
-        categoryBuilders.forEach { categoryBuilder -> addCategoryBuilder(categoryBuilder) }
+        categoryBuilders.forEach(::addCategoryBuilder)
     }
 
     /** Creates an instance of [RssImageBuilder] to use with this builder. */
@@ -126,7 +126,8 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
         managingEditor(podcast.managingEditor)
         webMaster(podcast.webMaster)
         imageBuilder(RssImage.builder().from(podcast.image))
-        addEpisodeBuilders(podcast.episodes.map { episode -> Episode.builder().from(episode) })
-        addCategoryBuilders(podcast.categories.map { category -> RssCategory.builder().from(category) })
+        addEpisodeBuilders(podcast.episodes.map(Episode.builder()::from))
+        addCategoryBuilders(podcast.categories.map(RssCategory.builder()::from))
+
     }
 }

@@ -21,7 +21,7 @@ interface EpisodePodcastBuilder : Builder<Episode.Podcast> {
      * Adds multiple [EpisodePodcastSoundbiteBuilder] for the Podcast namespace `<soundbite>` info to the list of soundbite builders.
      */
     fun addSoundbiteBuilders(soundbiteBuilders: List<EpisodePodcastSoundbiteBuilder>): EpisodePodcastBuilder = apply {
-        soundbiteBuilders.forEach { soundbite -> addSoundbiteBuilder(soundbite) }
+        soundbiteBuilders.forEach(::addSoundbiteBuilder)
     }
 
     /**
@@ -33,12 +33,12 @@ interface EpisodePodcastBuilder : Builder<Episode.Podcast> {
      * Adds multiple [EpisodePodcastTranscriptBuilder] for the Podcast namespace `<transcript>` info to the list of transcript builders.
      */
     fun addTranscriptBuilders(transcriptBuilders: List<EpisodePodcastTranscriptBuilder>): EpisodePodcastBuilder = apply {
-        transcriptBuilders.forEach { transcript -> addTranscriptBuilder(transcript) }
+        transcriptBuilders.forEach(::addTranscriptBuilder)
     }
 
     override fun from(model: Episode.Podcast?): EpisodePodcastBuilder = whenNotNull(model) { podcast ->
         chaptersBuilder(Episode.Podcast.Chapters.builder().from(podcast.chapters))
-        addSoundbiteBuilders(podcast.soundbites.map { soundbite -> Episode.Podcast.Soundbite.builder().from(soundbite) })
-        addTranscriptBuilders(podcast.transcripts.map { transcript -> Episode.Podcast.Transcript.builder().from(transcript) })
+        addSoundbiteBuilders(podcast.soundbites.map(Episode.Podcast.Soundbite.builder()::from))
+        addTranscriptBuilders(podcast.transcripts.map(Episode.Podcast.Transcript.builder()::from))
     }
 }

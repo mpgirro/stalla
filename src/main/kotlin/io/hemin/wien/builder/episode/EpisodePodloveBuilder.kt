@@ -14,6 +14,6 @@ interface EpisodePodloveBuilder : Builder<Episode.Podlove> {
     fun addSimpleChapterBuilders(chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>): EpisodePodloveBuilder
 
     override fun from(model: Episode.Podlove?): EpisodePodloveBuilder = whenNotNull(model) { podlove ->
-        addSimpleChapterBuilders(podlove.simpleChapters.map { simpleChapter -> Episode.Podlove.SimpleChapter.builder().from(simpleChapter) })
+        addSimpleChapterBuilders(podlove.simpleChapters.map(Episode.Podlove.SimpleChapter.builder()::from))
     }
 }

@@ -19,11 +19,11 @@ interface PodcastPodcastBuilder : Builder<Podcast.Podcast> {
      * Adds multiple [PodcastPodcastFundingBuilder] for the Podcast namespace `<funding>` info to the list of funding builders.
      */
     fun addFundingBuilders(fundingBuilders: List<PodcastPodcastFundingBuilder>): PodcastPodcastBuilder = apply {
-        fundingBuilders.forEach { fundingBuilder -> addFundingBuilder(fundingBuilder) }
+        fundingBuilders.forEach(::addFundingBuilder)
     }
 
     override fun from(model: Podcast.Podcast?): PodcastPodcastBuilder = whenNotNull(model) { podcast ->
         lockedBuilder(Podcast.Podcast.Locked.builder().from(podcast.locked))
-        addFundingBuilders(podcast.funding.map { funding -> Podcast.Podcast.Funding.builder().from(funding) })
+        addFundingBuilders(podcast.funding.map(Podcast.Podcast.Funding.builder()::from))
     }
 }

@@ -22,7 +22,7 @@ interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
 
     /** Adds multiple [ITunesStyleCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilders(categoryBuilders: List<ITunesStyleCategoryBuilder>): PodcastGooglePlayBuilder = apply {
-        categoryBuilders.forEach { categoryBuilder -> addCategoryBuilder(categoryBuilder) }
+        categoryBuilders.forEach(::addCategoryBuilder)
     }
 
     /** Set the description value. */
@@ -40,7 +40,7 @@ interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
     override fun from(model: Podcast.GooglePlay?): PodcastGooglePlayBuilder = whenNotNull(model) { googlePlay ->
         author(googlePlay.author)
         owner(googlePlay.owner)
-        addCategoryBuilders(googlePlay.categories.map { category -> ITunesStyleCategory.builder().from(category) })
+        addCategoryBuilders(googlePlay.categories.map(ITunesStyleCategory.builder()::from))
         description(googlePlay.description)
         explicit(googlePlay.explicit)
         block(googlePlay.block)

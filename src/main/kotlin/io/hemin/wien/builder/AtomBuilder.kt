@@ -13,7 +13,7 @@ interface AtomBuilder : Builder<Atom> {
 
     /** Adds multiple [PersonBuilder] to the list of author builders. */
     fun addAuthorBuilders(authorBuilders: List<PersonBuilder>): AtomBuilder = apply {
-        authorBuilders.forEach { authorBuilder -> addAuthorBuilder(authorBuilder) }
+        authorBuilders.forEach(::addAuthorBuilder)
     }
 
     /** Adds a [PersonBuilder] to the list of contributor builders. */
@@ -21,7 +21,7 @@ interface AtomBuilder : Builder<Atom> {
 
     /** Adds multiple [PersonBuilder] to the list of contributor builders. */
     fun addContributorBuilders(contributorBuilders: List<PersonBuilder>): AtomBuilder = apply {
-        contributorBuilders.forEach { contributorBuilder -> addContributorBuilder(contributorBuilder) }
+        contributorBuilders.forEach(::addContributorBuilder)
     }
 
     /** Adds a [LinkBuilder] to the list of links. */
@@ -29,12 +29,12 @@ interface AtomBuilder : Builder<Atom> {
 
     /** Adds multiple [LinkBuilder] to the list of links. */
     fun addLinkBuilders(linkBuilders: List<LinkBuilder>): AtomBuilder = apply {
-        linkBuilders.forEach { linkBuilder -> addLinkBuilder(linkBuilder) }
+        linkBuilders.forEach(::addLinkBuilder)
     }
 
     override fun from(model: Atom?): AtomBuilder = whenNotNull(model) { atom ->
-        addAuthorBuilders(atom.authors.map { author -> Person.builder().from(author) })
-        addContributorBuilders(atom.contributors.map { contributor -> Person.builder().from(contributor) })
-        addLinkBuilders(atom.links.map { link -> Link.builder().from(link) })
+        addAuthorBuilders(atom.authors.map(Person.builder()::from))
+        addContributorBuilders(atom.contributors.map(Person.builder()::from))
+        addLinkBuilders(atom.links.map(Link.builder()::from))
     }
 }

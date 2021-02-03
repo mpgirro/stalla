@@ -53,7 +53,7 @@ interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderP
 
     /** Adds multiple [RssCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilderys(categoryBuilders: List<RssCategoryBuilder>): EpisodeBuilder = apply {
-        categoryBuilders.forEach { categoryBuilder -> addCategoryBuilder(categoryBuilder) }
+        categoryBuilders.forEach(::addCategoryBuilder)
     }
 
     /** Set the comments value. */
@@ -110,7 +110,7 @@ interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderP
         link(episode.link)
         description(episode.description)
         author(episode.author)
-        addCategoryBuilderys(episode.categories.map { category -> RssCategory.builder().from(category) })
+        addCategoryBuilderys(episode.categories.map(RssCategory.builder()::from))
         comments(episode.comments)
         enclosureBuilder(Episode.Enclosure.builder().from(episode.enclosure))
         guidBuilder(Episode.Guid.builder().from(episode.guid))

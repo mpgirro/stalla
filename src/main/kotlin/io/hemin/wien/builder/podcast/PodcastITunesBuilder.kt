@@ -33,7 +33,7 @@ interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
 
     /** Adds multiple [ITunesStyleCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilders(categoryBuilders: List<ITunesStyleCategoryBuilder>): PodcastITunesBuilder = apply {
-        categoryBuilders.forEach { categoryBuilder -> addCategoryBuilder(categoryBuilder) }
+        categoryBuilders.forEach(::addCategoryBuilder)
     }
 
     /** Set the explicit flag value. */
@@ -63,7 +63,7 @@ interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
         imageBuilder(HrefOnlyImage.builder().from(itunes.image))
         keywords(itunes.keywords)
         author(itunes.author)
-        addCategoryBuilders(itunes.categories.map { category -> ITunesStyleCategory.builder().from(category) })
+        addCategoryBuilders(itunes.categories.map(ITunesStyleCategory.builder()::from))
         explicit(itunes.explicit)
         block(itunes.block)
         complete(itunes.complete)
