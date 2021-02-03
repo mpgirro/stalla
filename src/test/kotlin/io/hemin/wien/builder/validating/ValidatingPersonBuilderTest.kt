@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.Person
+import io.hemin.wien.model.aPerson
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPersonBuilderTest {
@@ -57,6 +58,18 @@ internal class ValidatingPersonBuilderTest {
                 prop(Person::email).isEqualTo("email")
                 prop(Person::uri).isEqualTo("uri")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate a Person builder with all properties from a Person model`() {
+        val person = aPerson()
+        val personBuilder = Person.builder().from(person)
+
+        assertAll {
+            assertThat(personBuilder).prop(PersonBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(personBuilder.build()).isNotNull().isEqualTo(person)
         }
     }
 }

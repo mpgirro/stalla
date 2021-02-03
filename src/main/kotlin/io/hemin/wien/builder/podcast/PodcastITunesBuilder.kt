@@ -4,7 +4,11 @@ import io.hemin.wien.builder.Builder
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.PersonBuilder
+import io.hemin.wien.model.HrefOnlyImage
+import io.hemin.wien.model.ITunesStyleCategory
+import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Podcast.ITunes] instances. */
 interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
@@ -24,13 +28,13 @@ interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
     /** Set the author value. */
     fun author(author: String?): PodcastITunesBuilder
 
-    /**
-     * Adds a category builder to the list of category builders.
-     *
-     * @param categoryBuilder The [ITunesStyleCategoryBuilder] used to initialize the
-     * [Podcast.ITunes.categories] list when [build] is called.
-     */
+    /** Adds an [ITunesStyleCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastITunesBuilder
+
+    /** Adds multiple [ITunesStyleCategoryBuilder] to the list of category builders. */
+    fun addCategoryBuilders(categoryBuilders: List<ITunesStyleCategoryBuilder>): PodcastITunesBuilder = apply {
+        categoryBuilders.forEach(::addCategoryBuilder)
+    }
 
     /** Set the explicit flag value. */
     fun explicit(explicit: Boolean): PodcastITunesBuilder
@@ -52,4 +56,20 @@ interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
 
     /** Set the new URL at which this feed is located. */
     fun newFeedUrl(newFeedUrl: String?): PodcastITunesBuilder
+
+    override fun from(model: Podcast.ITunes?): PodcastITunesBuilder = whenNotNull(model) { itunes ->
+        subtitle(itunes.subtitle)
+        summary(itunes.summary)
+        imageBuilder(HrefOnlyImage.builder().from(itunes.image))
+        keywords(itunes.keywords)
+        author(itunes.author)
+        addCategoryBuilders(itunes.categories.map(ITunesStyleCategory.builder()::from))
+        explicit(itunes.explicit)
+        block(itunes.block)
+        complete(itunes.complete)
+        type(itunes.type?.type)
+        ownerBuilder(Person.builder().from(itunes.owner))
+        title(itunes.title)
+        newFeedUrl(itunes.newFeedUrl)
+    }
 }

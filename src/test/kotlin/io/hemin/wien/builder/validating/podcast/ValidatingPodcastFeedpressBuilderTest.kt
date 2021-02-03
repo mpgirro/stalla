@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.podcast.PodcastFeedpressBuilder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.podcast.aPodcastFeedpress
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastFeedpressBuilderTest {
@@ -135,6 +136,18 @@ internal class ValidatingPodcastFeedpressBuilderTest {
                 prop(Podcast.Feedpress::cssFile).isEqualTo("cssFile")
                 prop(Podcast.Feedpress::link).isEqualTo("link")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate a Podcast Feedpress builder with all properties from an Podcast Feedpress model`() {
+        val podcastFeedpress = aPodcastFeedpress()
+        val podcastFeedpressBuilder = Podcast.Feedpress.builder().from(podcastFeedpress)
+
+        assertAll {
+            assertThat(podcastFeedpressBuilder).prop(PodcastFeedpressBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastFeedpressBuilder.build()).isNotNull().isEqualTo(podcastFeedpress)
         }
     }
 }

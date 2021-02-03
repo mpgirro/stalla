@@ -10,6 +10,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.podcast.PodcastFyydBuilder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.podcast.aPodcastFyyd
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastFyydBuilderTest {
@@ -34,6 +35,18 @@ internal class ValidatingPodcastFyydBuilderTest {
             assertThat(podcastFyydBuilder).prop(PodcastFyydBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastFyydBuilder.build()).isNotNull().prop(Podcast.Fyyd::verify).isEqualTo("verify")
+        }
+    }
+
+    @Test
+    internal fun `should populate a Podcast Feedpress builder with all properties from an Podcast Feedpress model`() {
+        val podcastFyyd = aPodcastFyyd()
+        val podcastFyydBuilder = Podcast.Fyyd.builder().from(podcastFyyd)
+
+        assertAll {
+            assertThat(podcastFyydBuilder).prop(PodcastFyydBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastFyydBuilder.build()).isNotNull().isEqualTo(podcastFyyd)
         }
     }
 }

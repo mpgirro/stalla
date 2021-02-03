@@ -15,6 +15,7 @@ import io.hemin.wien.builder.podcast.PodcastGooglePlayBuilder
 import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
 import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.podcast.aPodcastGooglePlay
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastGooglePlayBuilderTest {
@@ -206,6 +207,18 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
                 prop(Podcast.GooglePlay::block).isFalse()
                 prop(Podcast.GooglePlay::image).isEqualTo(expectedImageBuilder.build())
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate a Podcast GooglePlay builder with all properties from an Podcast GooglePlay model`() {
+        val podcastGooglePlay = aPodcastGooglePlay()
+        val podcastGooglePlayBuilder = Podcast.GooglePlay.builder().from(podcastGooglePlay)
+
+        assertAll {
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastGooglePlayBuilder.build()).isNotNull().isEqualTo(podcastGooglePlay)
         }
     }
 }

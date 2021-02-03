@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodePodcastTranscriptBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisodePodcastTranscript
 import org.junit.jupiter.api.Test
 import java.util.Locale
 
@@ -68,6 +69,18 @@ internal class ValidatingEpisodePodcastTranscriptBuilderTest {
                 prop(Episode.Podcast.Transcript::language).isEqualTo(Locale.ITALIAN)
                 prop(Episode.Podcast.Transcript::rel).isEqualTo("captions")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode Podcastindex Transcript builder with all properties from an Episode Podcastindex Transcript model`() {
+        val episodePodcastTranscript = anEpisodePodcastTranscript()
+        val episodePodcastTranscriptBuilder = Episode.Podcast.Transcript.builder().from(episodePodcastTranscript)
+
+        assertAll {
+            assertThat(episodePodcastTranscriptBuilder).prop(EpisodePodcastTranscriptBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodePodcastTranscriptBuilder.build()).isNotNull().isEqualTo(episodePodcastTranscript)
         }
     }
 }

@@ -1,6 +1,7 @@
 package io.hemin.wien.builder
 
 import io.hemin.wien.model.Link
+import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Link] instances. */
 interface LinkBuilder : Builder<Link> {
@@ -25,4 +26,14 @@ interface LinkBuilder : Builder<Link> {
 
     /** Set the type value. */
     fun type(type: String?): LinkBuilder
+
+    override fun from(model: Link?): LinkBuilder = whenNotNull(model) { link ->
+        href(link.href)
+        hrefLang(link.hrefLang)
+        hrefResolved(link.hrefResolved)
+        length(link.length)
+        rel(link.rel)
+        title(link.title)
+        type(link.type)
+    }
 }

@@ -17,6 +17,7 @@ import io.hemin.wien.builder.validating.ValidatingRssCategoryBuilder
 import io.hemin.wien.dateTime
 import io.hemin.wien.model.Atom
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisode
 import org.junit.jupiter.api.Test
 import java.time.Month
 
@@ -156,6 +157,18 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::bitlove).isNotNull().prop(Episode.Bitlove::guid).isEqualTo("bitlove guid")
                 prop(Episode::podcast).isNotNull().prop(Episode.Podcast::chapters).isEqualTo(expectedPodcastChaptersBuilder.build())
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode builder with all properties from an Episode model`() {
+        val episode = anEpisode()
+        val episodeBuilder = Episode.builder().from(episode)
+
+        assertAll {
+            assertThat(episodeBuilder).prop(EpisodeBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeBuilder.build()).isNotNull().isEqualTo(episode)
         }
     }
 }

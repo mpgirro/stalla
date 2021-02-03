@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.model.RssImage
+import io.hemin.wien.model.anRssImage
 import org.junit.jupiter.api.Test
 
 internal class ValidatingRssImageBuilderTest {
@@ -104,6 +105,18 @@ internal class ValidatingRssImageBuilderTest {
                 prop(RssImage::height).isEqualTo(456)
                 prop(RssImage::description).isEqualTo("description")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an RssImage builder with all properties from an RssImage model`() {
+        val image = anRssImage()
+        val imageBuilder = RssImage.builder().from(image)
+
+        assertAll {
+            assertThat(imageBuilder).prop(RssImageBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(imageBuilder.build()).isNotNull().isEqualTo(image)
         }
     }
 }

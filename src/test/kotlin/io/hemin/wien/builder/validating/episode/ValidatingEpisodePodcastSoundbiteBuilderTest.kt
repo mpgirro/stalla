@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodePodcastSoundbiteBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisodePodcastSoundbite
 import org.junit.jupiter.api.Test
 import java.time.Duration
 
@@ -99,6 +100,18 @@ internal class ValidatingEpisodePodcastSoundbiteBuilderTest {
                 prop(Episode.Podcast.Soundbite::duration).isEqualTo(Duration.ofSeconds(15))
                 prop(Episode.Podcast.Soundbite::title).isEqualTo("soundbite")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode Podcastindex Soundbite builder with all properties from an Episode Podcastindex Soundbite model`() {
+        val episodePodcastSoundbite = anEpisodePodcastSoundbite()
+        val episodePodcastSoundbiteBuilder = Episode.Podcast.Soundbite.builder().from(episodePodcastSoundbite)
+
+        assertAll {
+            assertThat(episodePodcastSoundbiteBuilder).prop(EpisodePodcastSoundbiteBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodePodcastSoundbiteBuilder.build()).isNotNull().isEqualTo(episodePodcastSoundbite)
         }
     }
 }

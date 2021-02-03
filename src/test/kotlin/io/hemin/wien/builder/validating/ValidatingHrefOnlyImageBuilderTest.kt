@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.model.HrefOnlyImage
+import io.hemin.wien.model.anHrefOnlyImage
 import org.junit.jupiter.api.Test
 
 internal class ValidatingHrefOnlyImageBuilderTest {
@@ -37,6 +38,18 @@ internal class ValidatingHrefOnlyImageBuilderTest {
             assertThat(imageBuilder.build()).isNotNull().all {
                 prop(HrefOnlyImage::href).isEqualTo("href")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an HrefOnlyImage builder with all properties from an HrefOnlyImage model`() {
+        val image = anHrefOnlyImage()
+        val imageBuilder = HrefOnlyImage.builder().from(image)
+
+        assertAll {
+            assertThat(imageBuilder).prop(HrefOnlyImageBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(imageBuilder.build()).isNotNull().isEqualTo(image)
         }
     }
 }

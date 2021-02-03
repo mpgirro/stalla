@@ -8,6 +8,8 @@ import io.hemin.wien.builder.LinkBuilderProvider
 import io.hemin.wien.builder.PersonBuilderProvider
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.RssCategory
+import io.hemin.wien.util.whenNotNull
 import java.time.temporal.TemporalAccessor
 
 /** Builder for constructing [Episode] instances. */
@@ -46,31 +48,21 @@ interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderP
     /** Set the author value. */
     fun author(author: String?): EpisodeBuilder
 
-    /**
-     * Adds a category to the list of categories.
-     *
-     * @param categoryBuilder The The [RssCategoryBuilder] used to initialize the
-     * [Episode.categories] items when [build] is called.
-     */
+    /** Adds an [RssCategoryBuilder] to the list of category builders. */
     fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder
+
+    /** Adds multiple [RssCategoryBuilder] to the list of category builders. */
+    fun addCategoryBuilderys(categoryBuilders: List<RssCategoryBuilder>): EpisodeBuilder = apply {
+        categoryBuilders.forEach(::addCategoryBuilder)
+    }
 
     /** Set the comments value. */
     fun comments(comments: String?): EpisodeBuilder
 
-    /**
-     * Set the [EpisodeEnclosureBuilder].
-     *
-     * @param enclosureBuilder The [EpisodeEnclosureBuilder] used to initialize the
-     * [Episode.enclosure] when [build] is called.
-     */
+    /** Set the [EpisodeEnclosureBuilder]. */
     fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder
 
-    /**
-     * Set the [EpisodeGuidBuilder].
-     *
-     * @param guidBuilder The [EpisodeGuidBuilder] used to initialize the
-     * [Episode.guid] when [build] is called.
-     */
+    /** Set the [EpisodeGuidBuilder]. */
     fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder
 
     /** Set the pubDate value. */
@@ -105,4 +97,24 @@ interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderP
 
     /** Creates an instance of [EpisodePodcastSoundbiteBuilder] to use with this builder. */
     fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastSoundbiteBuilder
+
+    override fun from(model: Episode?): EpisodeBuilder = whenNotNull(model) { episode ->
+        contentBuilder.from(episode.content)
+        iTunesBuilder.from(episode.iTunes)
+        atomBuilder.from(episode.atom)
+        podloveBuilder.from(episode.podlove)
+        googlePlayBuilder.from(episode.googlePlay)
+        bitloveBuilder.from(episode.bitlove)
+        podcastBuilder.from(episode.podcast)
+        title(episode.title)
+        link(episode.link)
+        description(episode.description)
+        author(episode.author)
+        addCategoryBuilderys(episode.categories.map(RssCategory.builder()::from))
+        comments(episode.comments)
+        enclosureBuilder(Episode.Enclosure.builder().from(episode.enclosure))
+        guidBuilder(Episode.Guid.builder().from(episode.guid))
+        pubDate(episode.pubDate)
+        source(episode.source)
+    }
 }

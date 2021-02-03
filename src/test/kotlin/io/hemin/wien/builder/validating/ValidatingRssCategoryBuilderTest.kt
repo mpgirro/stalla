@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.model.RssCategory
+import io.hemin.wien.model.anRssCategory
 import org.junit.jupiter.api.Test
 
 internal class ValidatingRssCategoryBuilderTest {
@@ -54,6 +55,18 @@ internal class ValidatingRssCategoryBuilderTest {
                 prop(RssCategory::name).isEqualTo("category")
                 prop(RssCategory::domain).isEqualTo("domain")
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate a RssCategory builder with all properties from a RssCategory model`() {
+        val category = anRssCategory()
+        val categoryBuilder = RssCategory.builder().from(category)
+
+        assertAll {
+            assertThat(categoryBuilder).prop(RssCategoryBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(categoryBuilder.build()).isNotNull().isEqualTo(category)
         }
     }
 }

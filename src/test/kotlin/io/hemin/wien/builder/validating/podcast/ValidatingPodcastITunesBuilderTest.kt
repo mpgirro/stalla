@@ -15,6 +15,7 @@ import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
 import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
 import io.hemin.wien.builder.validating.ValidatingPersonBuilder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.model.podcast.aPodcastITunes
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastITunesBuilderTest {
@@ -105,6 +106,18 @@ internal class ValidatingPodcastITunesBuilderTest {
                 prop(Podcast.ITunes::newFeedUrl).isEqualTo("newFeedUrl")
                 prop(Podcast.ITunes::image).isEqualTo(expectedImageBuilder.build())
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate a Podcast Itunes builder with all properties from an Podcast Itunes model`() {
+        val podcastITunes = aPodcastITunes()
+        val podcastITunesBuilder = Podcast.ITunes.builder().from(podcastITunes)
+
+        assertAll {
+            assertThat(podcastITunesBuilder).prop(PodcastITunesBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastITunesBuilder.build()).isNotNull().isEqualTo(podcastITunes)
         }
     }
 }

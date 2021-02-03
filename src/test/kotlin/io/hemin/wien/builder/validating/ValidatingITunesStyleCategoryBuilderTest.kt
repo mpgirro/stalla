@@ -12,6 +12,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.model.ITunesStyleCategory
+import io.hemin.wien.model.anITunesCategory
 import org.junit.jupiter.api.Test
 
 internal class ValidatingITunesStyleCategoryBuilderTest {
@@ -55,6 +56,18 @@ internal class ValidatingITunesStyleCategoryBuilderTest {
                     prop(ITunesStyleCategory.Nested::name).isEqualTo("category")
                     prop(ITunesStyleCategory.Nested::subcategory).isEqualTo(ITunesStyleCategory.Simple("subcategory"))
                 }
+        }
+    }
+
+    @Test
+    internal fun `should populate an ITunesStyleCategory builder with all properties from an ITunesStyleCategory model`() {
+        val category = anITunesCategory()
+        val categoryBuilder = ITunesStyleCategory.builder().from(category)
+
+        assertAll {
+            assertThat(categoryBuilder).prop(ITunesStyleCategoryBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(categoryBuilder.build()).isNotNull().isEqualTo(category)
         }
     }
 }

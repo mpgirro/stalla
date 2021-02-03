@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import io.hemin.wien.builder.episode.EpisodeEnclosureBuilder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.model.episode.anEpisodeEnclosure
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeEnclosureBuilderTest {
@@ -80,6 +81,18 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
                 prop(Episode.Enclosure::type).isEqualTo("type")
                 prop(Episode.Enclosure::length).isEqualTo(123)
             }
+        }
+    }
+
+    @Test
+    internal fun `should populate an Episode Enclosure builder with all properties from an Episode Enclosure model`() {
+        val episodeEnclosure = anEpisodeEnclosure()
+        val episodeEnclosureBuilder = Episode.Enclosure.builder().from(episodeEnclosure)
+
+        assertAll {
+            assertThat(episodeEnclosureBuilder).prop(EpisodeEnclosureBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeEnclosureBuilder.build()).isNotNull().isEqualTo(episodeEnclosure)
         }
     }
 }

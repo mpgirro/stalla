@@ -1,5 +1,7 @@
 package io.hemin.wien.util
 
+import io.hemin.wien.builder.Builder
+
 /** Check if all argument elements are not null */
 internal fun allNotNull(vararg elements: Any?): Boolean = elements.all { p -> p != null }
 
@@ -8,3 +10,12 @@ internal fun anyNotNull(vararg elements: Any?): Boolean = elements.any { p -> p 
 
 /** Check if all argument elements are null */
 internal fun allNull(vararg elements: Any?): Boolean = elements.all { p -> p == null }
+
+/**
+ * Calls [callback] when [model] is not null
+ * @return The [this] context from which [whenNotNull] was called.
+ */
+internal fun <T : Any, R : Builder<T>> R.whenNotNull(model: T?, callback: (T) -> Unit): R {
+    model?.let(callback)
+    return this
+}
