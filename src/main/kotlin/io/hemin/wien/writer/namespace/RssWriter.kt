@@ -70,6 +70,10 @@ internal class RssWriter : NamespaceWriter() {
             appendElement("webMaster") { textContent = podcast.webMaster?.trim() }
         }
 
+        if (podcast.ttl != null) {
+            appendElement("ttl") { textContent = podcast.ttl.toString() }
+        }
+
         appendRssCategoryElements(podcast.categories)
 
         if (podcast.image != null) appendRssImageElement(podcast.image)

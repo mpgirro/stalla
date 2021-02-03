@@ -32,6 +32,7 @@ import java.time.temporal.TemporalAccessor
  * @property docs The RSS `<docs>` field textContent.
  * @property managingEditor The RSS `<managingEditor>` field textContent.
  * @property webMaster The RSS `<webMaster>` field textContent.
+ * @property ttl The RSS `<ttl>` field textContent.
  * @property image The RSS `<image>` element wrapped in an [RssImage] instance.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
  * @property iTunes The data from the iTunes namespace, or null if no data from this namespace was found.
@@ -54,6 +55,7 @@ data class Podcast(
     val docs: String? = null,
     val managingEditor: String? = null,
     val webMaster: String? = null,
+    val ttl: Int? = null,
     val image: RssImage? = null,
     val episodes: List<Episode>,
     val iTunes: ITunes? = null,

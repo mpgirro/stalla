@@ -70,6 +70,9 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
     /** Set the webMaster value. */
     fun webMaster(webMaster: String?): PodcastBuilder
 
+    /** Set the time to live (ttl) value. */
+    fun ttl(ttl: Int?): PodcastBuilder
+
     /** Set the [RssImageBuilder]. */
     fun imageBuilder(imageBuilder: RssImageBuilder?): PodcastBuilder
 
@@ -125,6 +128,7 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
         docs(podcast.docs)
         managingEditor(podcast.managingEditor)
         webMaster(podcast.webMaster)
+        ttl(podcast.ttl)
         imageBuilder(RssImage.builder().from(podcast.image))
         addEpisodeBuilders(podcast.episodes.map(Episode.builder()::from))
         addCategoryBuilders(podcast.categories.map(RssCategory.builder()::from))
