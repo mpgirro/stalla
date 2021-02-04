@@ -35,6 +35,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     var docs: String? = null
     var managingEditor: String? = null
     var webMaster: String? = null
+    var ttl: Int? = null
     var imageBuilder: RssImageBuilder? = null
 
     val episodeBuilders: MutableList<EpisodeBuilder> = mutableListOf()
@@ -73,6 +74,8 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     override fun managingEditor(managingEditor: String?): PodcastBuilder = apply { this.managingEditor = managingEditor }
 
     override fun webMaster(webMaster: String?): PodcastBuilder = apply { this.webMaster = webMaster }
+
+    override fun ttl(ttl: Int?): PodcastBuilder = apply { this.ttl = ttl }
 
     override fun imageBuilder(imageBuilder: RssImageBuilder?): PodcastBuilder = apply { this.imageBuilder = imageBuilder }
 
@@ -115,6 +118,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         if (docs != other.docs) return false
         if (managingEditor != other.managingEditor) return false
         if (webMaster != other.webMaster) return false
+        if (ttl != other.ttl) return false
         if (imageBuilder != other.imageBuilder) return false
         if (episodeBuilders != other.episodeBuilders) return false
         if (categoryBuilders != other.categoryBuilders) return false
@@ -140,6 +144,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         result = 31 * result + (docs?.hashCode() ?: 0)
         result = 31 * result + (managingEditor?.hashCode() ?: 0)
         result = 31 * result + (webMaster?.hashCode() ?: 0)
+        result = 31 * result + (ttl?.hashCode() ?: 0)
         result = 31 * result + (imageBuilder?.hashCode() ?: 0)
         result = 31 * result + episodeBuilders.hashCode()
         result = 31 * result + categoryBuilders.hashCode()
@@ -155,7 +160,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     override fun toString() =
         "FakePodcastBuilder(titleValue=$titleValue, linkValue=$linkValue, descriptionValue=$descriptionValue, languageValue=$languageValue, " +
             "pubDate=$pubDate, lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, docs=$docs, " +
-            "managingEditor=$managingEditor, webMaster=$webMaster, imageBuilder=$imageBuilder, episodeBuilders=$episodeBuilders, " +
+            "managingEditor=$managingEditor, webMaster=$webMaster, ttl=$ttl, imageBuilder=$imageBuilder, episodeBuilders=$episodeBuilders, " +
             "categoryBuilders=$categoryBuilders, iTunesBuilder=$iTunesBuilder, atomBuilder=$atomBuilder, fyydBuilder=$fyydBuilder, " +
             "feedpressBuilder=$feedpressBuilder, googlePlayBuilder=$googlePlayBuilder, podcastBuilder=$podcastBuilder)"
 }

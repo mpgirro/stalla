@@ -40,6 +40,7 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
     private var docs: String? = null
     private var managingEditor: String? = null
     private var webMaster: String? = null
+    private var ttl: Int? = null
     private var imageBuilder: RssImageBuilder? = null
     private val categoryBuilders: MutableList<RssCategoryBuilder> = mutableListOf()
 
@@ -78,6 +79,8 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
     override fun managingEditor(managingEditor: String?): PodcastBuilder = apply { this.managingEditor = managingEditor }
 
     override fun webMaster(webMaster: String?): PodcastBuilder = apply { this.webMaster = webMaster }
+
+    override fun ttl(ttl: Int?): PodcastBuilder = apply { this.ttl = ttl }
 
     override fun imageBuilder(imageBuilder: RssImageBuilder?): PodcastBuilder = apply { this.imageBuilder = imageBuilder }
 
@@ -128,6 +131,7 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
             docs = docs,
             managingEditor = managingEditor,
             webMaster = webMaster,
+            ttl = ttl,
             image = imageBuilder?.build(),
             episodes = builtEpisodes,
             iTunes = iTunesBuilder.build(),

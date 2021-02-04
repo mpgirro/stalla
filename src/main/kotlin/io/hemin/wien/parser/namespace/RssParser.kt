@@ -6,6 +6,7 @@ import io.hemin.wien.builder.episode.EpisodeGuidBuilder
 import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.dom.getAttributeValueByName
 import io.hemin.wien.dom.parseAsBooleanOrNull
+import io.hemin.wien.dom.parseAsInt
 import io.hemin.wien.dom.parseAsTemporalAccessor
 import io.hemin.wien.dom.textOrNull
 import io.hemin.wien.dom.toRssCategoryBuilder
@@ -54,6 +55,7 @@ internal class RssParser : NamespaceParser() {
                 builder.title(title)
             }
             "webMaster" -> builder.webMaster(ifCanBeParsed { textOrNull() })
+            "ttl" -> builder.ttl(ifCanBeParsed { parseAsInt() })
             "category" -> {
                 val categoryBuilder = ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) } ?: return
                 builder.addCategoryBuilder(categoryBuilder)
