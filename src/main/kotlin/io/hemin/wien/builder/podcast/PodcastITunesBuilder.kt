@@ -5,9 +5,9 @@ import io.hemin.wien.builder.HrefOnlyImageBuilder
 import io.hemin.wien.builder.ITunesStyleCategoryBuilder
 import io.hemin.wien.builder.PersonBuilder
 import io.hemin.wien.model.HrefOnlyImage
-import io.hemin.wien.model.ITunesStyleCategory
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.util.asBuilders
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Podcast.ITunes] instances. */
@@ -63,7 +63,7 @@ interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
         imageBuilder(HrefOnlyImage.builder().from(itunes.image))
         keywords(itunes.keywords)
         author(itunes.author)
-        addCategoryBuilders(itunes.categories.map(ITunesStyleCategory.builder()::from))
+        addCategoryBuilders(itunes.categories.asBuilders())
         explicit(itunes.explicit)
         block(itunes.block)
         complete(itunes.complete)

@@ -2,6 +2,7 @@ package io.hemin.wien.builder.podcast
 
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Podcast
+import io.hemin.wien.util.asBuilders
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Podcast.Podcast] instances. */
@@ -24,6 +25,6 @@ interface PodcastPodcastBuilder : Builder<Podcast.Podcast> {
 
     override fun from(model: Podcast.Podcast?): PodcastPodcastBuilder = whenNotNull(model) { podcast ->
         lockedBuilder(Podcast.Podcast.Locked.builder().from(podcast.locked))
-        addFundingBuilders(podcast.funding.map(Podcast.Podcast.Funding.builder()::from))
+        addFundingBuilders(podcast.funding.asBuilders())
     }
 }

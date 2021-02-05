@@ -8,7 +8,7 @@ import io.hemin.wien.builder.LinkBuilderProvider
 import io.hemin.wien.builder.PersonBuilderProvider
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.model.Episode
-import io.hemin.wien.model.RssCategory
+import io.hemin.wien.util.asBuilders
 import io.hemin.wien.util.whenNotNull
 import java.time.temporal.TemporalAccessor
 
@@ -110,7 +110,7 @@ interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderP
         link(episode.link)
         description(episode.description)
         author(episode.author)
-        addCategoryBuilderys(episode.categories.map(RssCategory.builder()::from))
+        addCategoryBuilderys(episode.categories.asBuilders())
         comments(episode.comments)
         enclosureBuilder(Episode.Enclosure.builder().from(episode.enclosure))
         guidBuilder(Episode.Guid.builder().from(episode.guid))

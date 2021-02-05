@@ -2,6 +2,7 @@ package io.hemin.wien.builder.episode
 
 import io.hemin.wien.builder.Builder
 import io.hemin.wien.model.Episode
+import io.hemin.wien.util.asBuilders
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Episode.Podcast] instances. */
@@ -38,7 +39,7 @@ interface EpisodePodcastBuilder : Builder<Episode.Podcast> {
 
     override fun from(model: Episode.Podcast?): EpisodePodcastBuilder = whenNotNull(model) { podcast ->
         chaptersBuilder(Episode.Podcast.Chapters.builder().from(podcast.chapters))
-        addSoundbiteBuilders(podcast.soundbites.map(Episode.Podcast.Soundbite.builder()::from))
-        addTranscriptBuilders(podcast.transcripts.map(Episode.Podcast.Transcript.builder()::from))
+        addSoundbiteBuilders(podcast.soundbites.asBuilders())
+        addTranscriptBuilders(podcast.transcripts.asBuilders())
     }
 }

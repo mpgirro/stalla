@@ -9,10 +9,9 @@ import io.hemin.wien.builder.PersonBuilderProvider
 import io.hemin.wien.builder.RssCategoryBuilder
 import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.builder.episode.EpisodeBuilder
-import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
-import io.hemin.wien.model.RssCategory
 import io.hemin.wien.model.RssImage
+import io.hemin.wien.util.asBuilders
 import io.hemin.wien.util.whenNotNull
 import java.time.temporal.TemporalAccessor
 
@@ -130,7 +129,7 @@ interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderP
         webMaster(podcast.webMaster)
         ttl(podcast.ttl)
         imageBuilder(RssImage.builder().from(podcast.image))
-        addEpisodeBuilders(podcast.episodes.map(Episode.builder()::from))
-        addCategoryBuilders(podcast.categories.map(RssCategory.builder()::from))
+        addEpisodeBuilders(podcast.episodes.asBuilders())
+        addCategoryBuilders(podcast.categories.asBuilders())
     }
 }
