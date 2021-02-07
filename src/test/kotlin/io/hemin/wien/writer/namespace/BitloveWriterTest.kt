@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test
 
 internal class BitloveWriterTest : NamespaceWriterTest() {
 
-    override val writer = BitloveWriter()
+    override val writer = BitloveWriter
 
     @Test
     internal fun `should write a the correct bitlove_guid attribute to the item enclosure tag when there is data to write`() {
@@ -20,7 +20,7 @@ internal class BitloveWriterTest : NamespaceWriterTest() {
 
         // We need to run the RSS writer first, to create the <enclosure> tag (among others)
         val episode = anEpisode()
-        RssWriter().tryWritingEpisodeData(episode, itemElement)
+        RssWriter.tryWritingEpisodeData(episode, itemElement)
         val enclosureItem = itemElement.findElementByName("enclosure")
             ?: throw IllegalStateException("The RssWriter did not create an <enclosure> tag, but was expected to")
 

@@ -28,16 +28,16 @@ object PodcastRssWriter {
 
     // Writers are sorted in order of "importance"
     private val writers: List<NamespaceWriter> = listOf(
-        RssWriter(),
-        ContentWriter(),
-        ITunesWriter(),
-        GooglePlayWriter(),
-        AtomWriter(),
-        BitloveWriter(),
-        FeedpressWriter(),
-        FyydWriter(),
-        PodloveSimpleChapterWriter(),
-        PodcastNamespaceWriter()
+        RssWriter,
+        ContentWriter,
+        ITunesWriter,
+        GooglePlayWriter,
+        AtomWriter,
+        BitloveWriter,
+        FeedpressWriter,
+        FyydWriter,
+        PodloveSimpleChapterWriter,
+        PodcastNamespaceWriter
     )
 
     private val supportedNamespaces = writers.mapNotNull { it.namespace }

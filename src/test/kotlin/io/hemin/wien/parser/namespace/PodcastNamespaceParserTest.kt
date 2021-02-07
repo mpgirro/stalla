@@ -19,7 +19,6 @@ import io.hemin.wien.builder.fake.podcast.FakePodcastPodcastFundingBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastPodcastLockedBuilder
 import io.hemin.wien.dom.XmlRes
 import io.hemin.wien.model.Episode
-import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
@@ -28,7 +27,7 @@ import java.util.Locale
 
 internal class PodcastNamespaceParserTest : NamespaceParserTest() {
 
-    override val parser: NamespaceParser = PodcastNamespaceParser()
+    override val parser = PodcastNamespaceParser
 
     private val expectedLockedBuilder = FakePodcastPodcastLockedBuilder()
         .locked(true)

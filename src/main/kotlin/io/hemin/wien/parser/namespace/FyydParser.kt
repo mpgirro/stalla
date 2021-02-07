@@ -12,7 +12,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `https://fyyd.de/fyyd-ns/`
  */
-internal class FyydParser : NamespaceParser() {
+internal object FyydParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.FYYD
 

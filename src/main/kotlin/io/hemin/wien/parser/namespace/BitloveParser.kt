@@ -13,7 +13,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://bitlove.org`
  */
-internal class BitloveParser : NamespaceParser() {
+internal object BitloveParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.BITLOVE
 

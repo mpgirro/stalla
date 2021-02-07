@@ -14,7 +14,7 @@ import org.w3c.dom.Node
 
 internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
 
-    override val parser = PodloveSimpleChapterParser()
+    override val parser = PodloveSimpleChapterParser
 
     @Test
     fun `should not extract podlove chapter data from item when absent`() {

@@ -21,7 +21,7 @@ import org.w3c.dom.Element
 
 internal class RssWriterTest : NamespaceWriterTest() {
 
-    override val writer = RssWriter()
+    override val writer = RssWriter
 
     @Test
     internal fun `should write the correct RSS tags to the channel when there is data to write`() {

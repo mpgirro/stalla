@@ -18,7 +18,7 @@ import org.w3c.dom.Node
 
 internal class AtomParserTest : NamespaceParserTest() {
 
-    override val parser = AtomParser()
+    override val parser = AtomParser
 
     private val expectedLinkBuilder = FakeLinkBuilder()
         .href("http://example.org/feed/m4a")

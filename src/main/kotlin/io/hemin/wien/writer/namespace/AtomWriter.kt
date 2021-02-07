@@ -16,7 +16,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://www.w3.org/2005/Atom`
  */
-internal class AtomWriter : NamespaceWriter() {
+internal object AtomWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.ATOM
 

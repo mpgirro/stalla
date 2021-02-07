@@ -13,7 +13,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://podlove.org/simple-chapters`
  */
-internal class PodloveSimpleChapterWriter : NamespaceWriter() {
+internal object PodloveSimpleChapterWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.PODLOVE_SIMPLE_CHAPTER
 

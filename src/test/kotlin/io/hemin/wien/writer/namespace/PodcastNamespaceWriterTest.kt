@@ -17,7 +17,7 @@ import java.time.Duration
 
 internal class PodcastNamespaceWriterTest : NamespaceWriterTest() {
 
-    override val writer = PodcastNamespaceWriter()
+    override val writer = PodcastNamespaceWriter
 
     @Test
     internal fun `should write the correct podcast tags to the channel when there is data to write`() {

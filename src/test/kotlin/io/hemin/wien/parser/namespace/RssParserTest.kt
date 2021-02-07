@@ -24,7 +24,7 @@ import java.time.Month
 
 internal class RssParserTest : NamespaceParserTest() {
 
-    override val parser = RssParser()
+    override val parser = RssParser
 
     // "Fri, 16 Mar 2018 22:49:08 +0000"
     private val expectedDate = dateTime(year = 2018, month = Month.MARCH, day = 16, hour = 22, minute = 49, second = 8)

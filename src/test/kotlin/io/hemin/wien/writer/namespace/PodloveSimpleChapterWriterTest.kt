@@ -16,7 +16,7 @@ import org.w3c.dom.Element
 
 internal class PodloveSimpleChapterWriterTest : NamespaceWriterTest() {
 
-    override val writer = PodloveSimpleChapterWriter()
+    override val writer = PodloveSimpleChapterWriter
 
     @Test
     internal fun `should write the correct psc tags to the item when there is data to write`() {

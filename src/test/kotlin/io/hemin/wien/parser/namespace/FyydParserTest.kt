@@ -7,14 +7,13 @@ import assertk.assertions.prop
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastFyydBuilder
 import io.hemin.wien.dom.XmlRes
-import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
 internal class FyydParserTest : NamespaceParserTest() {
 
-    override val parser: NamespaceParser = FyydParser()
+    override val parser = FyydParser
 
     @Test
     fun `should extract fyyd data from channel when present`() {
