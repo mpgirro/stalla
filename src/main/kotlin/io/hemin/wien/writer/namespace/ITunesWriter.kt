@@ -19,7 +19,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://www.itunes.com/dtds/podcast-1.0.dtd`
  */
-internal class ITunesWriter : NamespaceWriter() {
+internal object ITunesWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.ITUNES
 

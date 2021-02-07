@@ -13,7 +13,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `https://feed.press/xmlns`
  */
-internal class FeedpressWriter : NamespaceWriter() {
+internal object FeedpressWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.FEEDPRESS
 

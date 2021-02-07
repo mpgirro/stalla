@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 
 internal class GooglePlayWriterTest : NamespaceWriterTest() {
 
-    override val writer = GooglePlayWriter()
+    override val writer = GooglePlayWriter
 
     @Test
     internal fun `should write the correct googleplay tags to the channel when there is data to write`() {

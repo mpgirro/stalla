@@ -17,7 +17,7 @@ import java.time.Duration
  * but `https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md`
  * should also be accepted as equivalent. TODO allow both NS
  */
-internal class PodcastNamespaceWriter : NamespaceWriter() {
+internal object PodcastNamespaceWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.PODCAST
 

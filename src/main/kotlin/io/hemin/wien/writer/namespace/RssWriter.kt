@@ -20,7 +20,7 @@ import org.w3c.dom.Element
  *
  * `http://www.rssboard.org/rss-2-0`
  */
-internal class RssWriter : NamespaceWriter() {
+internal object RssWriter : NamespaceWriter() {
 
     /** Standard RSS 2.0 elements do not have a namespace. This value is therefore null. */
     override val namespace: FeedNamespace? = null

@@ -13,7 +13,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://bitlove.org`
  */
-internal class BitloveWriter : NamespaceWriter() {
+internal object BitloveWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.BITLOVE
 

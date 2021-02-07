@@ -17,7 +17,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://www.w3.org/2005/Atom`
  */
-internal class AtomParser : NamespaceParser() {
+internal object AtomParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.ATOM
 

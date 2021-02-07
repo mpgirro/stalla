@@ -12,7 +12,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `https://fyyd.de/fyyd-ns/`
  */
-internal class FyydWriter : NamespaceWriter() {
+internal object FyydWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.FYYD
 

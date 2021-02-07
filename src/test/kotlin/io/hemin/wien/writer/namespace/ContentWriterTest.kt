@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 
 internal class ContentWriterTest : NamespaceWriterTest() {
 
-    override val writer = ContentWriter()
+    override val writer = ContentWriter
 
     @Test
     internal fun `should write a the correct content_encoded tag to the item when there is data to write`() {

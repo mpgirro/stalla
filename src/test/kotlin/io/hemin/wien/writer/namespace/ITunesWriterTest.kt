@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 
 internal class ITunesWriterTest : NamespaceWriterTest() {
 
-    override val writer = ITunesWriter()
+    override val writer = ITunesWriter
 
     @Test
     internal fun `should write the correct itunes tags to the channel when there is data to write`() {

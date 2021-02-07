@@ -27,7 +27,7 @@ import org.w3c.dom.Node
 
 internal class ITunesParserTest : NamespaceParserTest() {
 
-    override val parser = ITunesParser()
+    override val parser = ITunesParser
 
     private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/podcast-cover.jpg")
 

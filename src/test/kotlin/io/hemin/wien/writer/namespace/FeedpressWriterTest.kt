@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 
 internal class FeedpressWriterTest : NamespaceWriterTest() {
 
-    override val writer = FeedpressWriter()
+    override val writer = FeedpressWriter
 
     @Test
     internal fun `should write the correct feedpress tags to the channel when there is data to write`() {

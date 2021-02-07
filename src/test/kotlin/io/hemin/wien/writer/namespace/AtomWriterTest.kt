@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 
 internal class AtomWriterTest : NamespaceWriterTest() {
 
-    override val writer = AtomWriter()
+    override val writer = AtomWriter
 
     @Test
     internal fun `should write the correct atom tags to the channel when there is data to write`() {

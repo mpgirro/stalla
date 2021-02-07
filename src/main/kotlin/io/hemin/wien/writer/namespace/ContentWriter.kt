@@ -12,7 +12,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://purl.org/rss/1.0/modules/content/`
  */
-internal class ContentWriter : NamespaceWriter() {
+internal object ContentWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.CONTENT
 

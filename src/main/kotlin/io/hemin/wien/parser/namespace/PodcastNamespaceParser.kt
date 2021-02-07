@@ -20,7 +20,7 @@ import java.time.Duration
 import java.time.format.DateTimeParseException
 import java.util.Locale
 
-internal class PodcastNamespaceParser : NamespaceParser() {
+internal object PodcastNamespaceParser : NamespaceParser() {
 
     override val namespace: FeedNamespace = FeedNamespace.PODCAST
 

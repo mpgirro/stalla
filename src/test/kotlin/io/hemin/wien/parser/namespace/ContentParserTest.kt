@@ -7,14 +7,13 @@ import assertk.assertions.prop
 import io.hemin.wien.builder.fake.episode.FakeEpisodeBuilder
 import io.hemin.wien.builder.fake.episode.FakeEpisodeContentBuilder
 import io.hemin.wien.dom.XmlRes
-import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
 internal class ContentParserTest : NamespaceParserTest() {
 
-    override val parser: NamespaceParser = ContentParser()
+    override val parser = ContentParser
 
     @Test
     fun `should extract content data from item when present`() {

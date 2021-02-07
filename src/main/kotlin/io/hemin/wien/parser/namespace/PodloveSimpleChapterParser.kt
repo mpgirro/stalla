@@ -14,7 +14,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://podlove.org/simple-chapters`
  */
-internal class PodloveSimpleChapterParser : NamespaceParser() {
+internal object PodloveSimpleChapterParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.PODLOVE_SIMPLE_CHAPTER
 

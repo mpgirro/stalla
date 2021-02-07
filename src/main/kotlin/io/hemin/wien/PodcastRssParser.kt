@@ -32,16 +32,16 @@ import javax.xml.parsers.DocumentBuilder
 object PodcastRssParser {
 
     private val parsers: List<NamespaceParser> = listOf(
-        AtomParser(),
-        BitloveParser(),
-        ContentParser(),
-        FeedpressParser(),
-        FyydParser(),
-        GooglePlayParser(),
-        ITunesParser(),
-        PodloveSimpleChapterParser(),
-        RssParser(),
-        PodcastNamespaceParser()
+        AtomParser,
+        BitloveParser,
+        ContentParser,
+        FeedpressParser,
+        FyydParser,
+        GooglePlayParser,
+        ITunesParser,
+        PodloveSimpleChapterParser,
+        RssParser,
+        PodcastNamespaceParser
     )
 
     private val builder: DocumentBuilder = DomBuilderFactory.newDocumentBuilder()

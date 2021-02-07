@@ -8,14 +8,13 @@ import assertk.assertions.prop
 import io.hemin.wien.builder.fake.podcast.FakePodcastBuilder
 import io.hemin.wien.builder.fake.podcast.FakePodcastFeedpressBuilder
 import io.hemin.wien.dom.XmlRes
-import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
 internal class FeedpressParserTest : NamespaceParserTest() {
 
-    override val parser: NamespaceParser = FeedpressParser()
+    override val parser = FeedpressParser
 
     @Test
     fun `should extract feedpress data from channel when present`() {

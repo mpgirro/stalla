@@ -23,7 +23,7 @@ import org.w3c.dom.Node
  *
  * The RSS specification is described []here][http://www.rssboard.org/rss-2-0].
  */
-internal class RssParser : NamespaceParser() {
+internal object RssParser : NamespaceParser() {
 
     override val namespace: FeedNamespace? = null
 

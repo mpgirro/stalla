@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 
 internal class FyydWriterTest : NamespaceWriterTest() {
 
-    override val writer = FyydWriter()
+    override val writer = FyydWriter
 
     @Test
     internal fun `should write a the correct fyyd_verify tag to the channel when there is data to write`() {

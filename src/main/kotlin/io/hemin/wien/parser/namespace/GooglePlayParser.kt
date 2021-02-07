@@ -15,7 +15,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://www.google.com/schemas/play-podcasts/1.0`
  */
-internal class GooglePlayParser : NamespaceParser() {
+internal object GooglePlayParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.GOOGLE_PLAY
 
