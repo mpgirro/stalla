@@ -5,6 +5,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.BooleanStringStyle
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import io.hemin.wien.util.asBooleanString
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -17,6 +18,7 @@ import java.time.Duration
  * but `https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md`
  * should also be accepted as equivalent. TODO allow both NS
  */
+@InternalApi
 internal object PodcastNamespaceWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.PODCAST

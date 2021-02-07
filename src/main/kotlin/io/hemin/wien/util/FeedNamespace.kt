@@ -1,5 +1,6 @@
 package io.hemin.wien.util
 
+@InternalApi
 internal enum class FeedNamespace(
     val prefix: String,
     val uri: String,

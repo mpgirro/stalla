@@ -1,5 +1,6 @@
 package io.hemin.wien.dom
 
+import io.hemin.wien.util.InternalApi
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 
@@ -8,6 +9,7 @@ import org.w3c.dom.NodeList
  *
  * @property nodes The [NodeList] to provide a [List] API for.
  */
+@InternalApi
 internal class NodeListWrapper(private val nodes: NodeList) : AbstractList<Node>(), RandomAccess {
 
     /** Returns the number of elements in this nodes. */

@@ -13,6 +13,7 @@ import io.hemin.wien.dom.toRssCategoryBuilder
 import io.hemin.wien.dom.toRssImageBuilder
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
@@ -23,6 +24,7 @@ import org.w3c.dom.Node
  *
  * The RSS specification is described []here][http://www.rssboard.org/rss-2-0].
  */
+@InternalApi
 internal object RssParser : NamespaceParser() {
 
     override val namespace: FeedNamespace? = null

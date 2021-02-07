@@ -7,6 +7,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.BooleanStringStyle
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import io.hemin.wien.util.asBooleanString
 import io.hemin.wien.util.asDateString
 import io.hemin.wien.util.isNeitherNullNorBlank
@@ -20,6 +21,7 @@ import org.w3c.dom.Element
  *
  * `http://www.rssboard.org/rss-2-0`
  */
+@InternalApi
 internal object RssWriter : NamespaceWriter() {
 
     /** Standard RSS 2.0 elements do not have a namespace. This value is therefore null. */

@@ -11,6 +11,7 @@ import io.hemin.wien.dom.toITunesCategoryBuilder
 import io.hemin.wien.dom.toPersonBuilder
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import org.w3c.dom.Node
 
 /**
@@ -18,6 +19,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://www.itunes.com/dtds/podcast-1.0.dtd`
  */
+@InternalApi
 internal object ITunesParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.ITUNES

@@ -1,5 +1,6 @@
 package io.hemin.wien.dom
 
+import io.hemin.wien.util.InternalApi
 import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.parsers.ParserConfigurationException
@@ -9,6 +10,7 @@ import javax.xml.parsers.ParserConfigurationException
  * XML documents. This factory applies required configuration
  * to the API instance, for consistent usage in this library.
  */
+@InternalApi
 internal object DomBuilderFactory {
 
     private val factory: DocumentBuilderFactory = DocumentBuilderFactory.newInstance()

@@ -15,34 +15,34 @@ import io.hemin.wien.model.RssCategory
 
 /** Transforms this list into a list of [RssCategoryBuilder] */
 @JvmName("asRssCategoryBuilders")
-internal fun List<RssCategory>.asBuilders(): List<RssCategoryBuilder> = this.map(RssCategory.builder()::from)
+public fun List<RssCategory>.asBuilders(): List<RssCategoryBuilder> = map(RssCategory.builder()::from)
 
 /** Transforms this list into a list of [ITunesStyleCategoryBuilder] */
 @JvmName("asItunesCategoryBuilders")
-internal fun List<ITunesStyleCategory>.asBuilders(): List<ITunesStyleCategoryBuilder> = this.map(ITunesStyleCategory.builder()::from)
+public fun List<ITunesStyleCategory>.asBuilders(): List<ITunesStyleCategoryBuilder> = map(ITunesStyleCategory.builder()::from)
 
 /** Transforms this list into a list of [EpisodeEnclosureBuilder] */
 @JvmName("asEnclosureBuilders")
-internal fun List<Episode.Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = this.map(Episode.Enclosure.builder()::from)
+public fun List<Episode.Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = map(Episode.Enclosure.builder()::from)
 
 /** Transforms this list into a list of [EpisodePodcastSoundbiteBuilder] */
 @JvmName("asSoundbiteBuilders")
-internal fun List<Episode.Podcast.Soundbite>.asBuilders(): List<EpisodePodcastSoundbiteBuilder> = this.map(Episode.Podcast.Soundbite.builder()::from)
+public fun List<Episode.Podcast.Soundbite>.asBuilders(): List<EpisodePodcastSoundbiteBuilder> = map(Episode.Podcast.Soundbite.builder()::from)
 
 /** Transforms this list into a list of [EpisodePodcastTranscriptBuilder] */
 @JvmName("asTranscriptBuilders")
-internal fun List<Episode.Podcast.Transcript>.asBuilders(): List<EpisodePodcastTranscriptBuilder> =
-    this.map(Episode.Podcast.Transcript.builder()::from)
+public fun List<Episode.Podcast.Transcript>.asBuilders(): List<EpisodePodcastTranscriptBuilder> =
+    map(Episode.Podcast.Transcript.builder()::from)
 
 /** Transforms this list into a list of [PodcastPodcastFundingBuilder] */
 @JvmName("asFundingBuilders")
-internal fun List<Podcast.Podcast.Funding>.asBuilders(): List<PodcastPodcastFundingBuilder> = this.map(Podcast.Podcast.Funding.builder()::from)
+public fun List<Podcast.Podcast.Funding>.asBuilders(): List<PodcastPodcastFundingBuilder> = map(Podcast.Podcast.Funding.builder()::from)
 
 /** Transforms this list into a list of [EpisodePodloveSimpleChapterBuilder] */
 @JvmName("asSimpleChapterBuilders")
-internal fun List<Episode.Podlove.SimpleChapter>.asBuilders(): List<EpisodePodloveSimpleChapterBuilder> =
-    this.map(Episode.Podlove.SimpleChapter.builder()::from)
+public fun List<Episode.Podlove.SimpleChapter>.asBuilders(): List<EpisodePodloveSimpleChapterBuilder> =
+    map(Episode.Podlove.SimpleChapter.builder()::from)
 
 /** Transforms this list into a list of [EpisodeBuilder] */
 @JvmName("asEpisodeBuilders")
-internal fun List<Episode>.asBuilders(): List<EpisodeBuilder> = this.map(Episode.builder()::from)
+public fun List<Episode>.asBuilders(): List<EpisodeBuilder> = map(Episode.builder()::from)

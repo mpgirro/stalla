@@ -8,6 +8,7 @@ import io.hemin.wien.builder.RssImageBuilder
 import io.hemin.wien.parser.DateParser
 import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.util.FeedNamespace.Companion.matches
+import io.hemin.wien.util.InternalApi
 import io.hemin.wien.util.trimmedOrNullIfBlank
 import org.w3c.dom.Element
 import org.w3c.dom.Node
@@ -20,6 +21,7 @@ import java.util.Locale
  *
  * @return The content of the DOM node in string representation, or null.
  */
+@InternalApi
 internal fun Node.textOrNull(): String? = textContent.trimmedOrNullIfBlank()
 
 /**
@@ -29,6 +31,7 @@ internal fun Node.textOrNull(): String? = textContent.trimmedOrNullIfBlank()
  * @see parseAsBooleanOrNull
  * @return The logical interpretation of the DOM node's text content as boolean, or `null`.
  */
+@InternalApi
 internal fun Node.textAsBooleanOrNull(): Boolean? = textOrNull().parseAsBooleanOrNull()
 
 /**
@@ -37,6 +40,7 @@ internal fun Node.textAsBooleanOrNull(): Boolean? = textOrNull().parseAsBooleanO
  *
  * @return The logical interpretation of the string parameter, or `null`.
  */
+@InternalApi
 internal fun String?.parseAsBooleanOrNull(): Boolean? =
     when (this.trimmedOrNullIfBlank()?.toLowerCase(Locale.ROOT)) {
         "true", "yes" -> true
@@ -49,6 +53,7 @@ internal fun String?.parseAsBooleanOrNull(): Boolean? =
  *
  * @return The DOM node content as an [Int], or `null` if conversion failed.
  */
+@InternalApi
 internal fun Node.parseAsInt(): Int? = textOrNull()?.toIntOrNull()
 
 /**
@@ -57,6 +62,7 @@ internal fun Node.parseAsInt(): Int? = textOrNull()?.toIntOrNull()
  *
  * @return The DOM node content as a [TemporalAccessor], or `null` if parsing failed.
  */
+@InternalApi
 internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.parse(textOrNull())
 
 /**
@@ -71,6 +77,7 @@ internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.pars
  *
  * @return The [imageBuilder] populated with the DOM node contents.
  */
+@InternalApi
 internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: FeedNamespace? = null): RssImageBuilder {
     for (node in childNodes.asListOfNodes()) {
         if (!namespace.matches(node.namespaceURI)) continue
@@ -107,6 +114,7 @@ internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: Fe
  *
  * @return The [imageBuilder] populated with the DOM node contents.
  */
+@InternalApi
 internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): HrefOnlyImageBuilder {
     val href: String? = getAttributeValueByName("href")
     if (!href.isNullOrBlank()) imageBuilder.href(href)
@@ -123,6 +131,7 @@ internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): Hr
  *
  * @return The [personBuilder] populated with the DOM node contents.
  */
+@InternalApi
 internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedNamespace? = null): PersonBuilder {
     for (child in childNodes.asListOfNodes()) {
         if (child !is Element) continue
@@ -147,6 +156,7 @@ internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedN
  *
  * @return The [categoryBuilder] populated with the DOM node contents.
  */
+@InternalApi
 internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): RssCategoryBuilder? {
     val categoryValue = textOrNull() ?: return null
     return categoryBuilder.category(categoryValue)
@@ -163,6 +173,7 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
  *
  * @return The [categoryBuilder] populated with the DOM node contents.
  */
+@InternalApi
 internal fun Node.toITunesCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder, namespace: FeedNamespace? = null): ITunesStyleCategoryBuilder {
     val category = getAttributeValueByName("text")?.trim() ?: return categoryBuilder
     categoryBuilder.category(category)

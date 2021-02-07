@@ -9,6 +9,7 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.model.GooglePlayBase
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import io.hemin.wien.util.isNeitherNullNorBlank
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -18,6 +19,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://www.google.com/schemas/play-podcasts/1.0`
  */
+@InternalApi
 internal object GooglePlayWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.GOOGLE_PLAY

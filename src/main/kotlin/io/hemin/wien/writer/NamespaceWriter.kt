@@ -3,10 +3,12 @@ package io.hemin.wien.writer
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
 /** Base class for XML namespace writer implementations. */
+@InternalApi
 internal abstract class NamespaceWriter {
 
     /** The URI of the namespace written to by this writer. */

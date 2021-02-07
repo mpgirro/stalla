@@ -12,6 +12,7 @@ import io.hemin.wien.dom.textAsBooleanOrNull
 import io.hemin.wien.model.Episode
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import io.hemin.wien.util.isNullOrNegative
 import io.hemin.wien.util.isNullOrNotPositive
 import io.hemin.wien.util.trimmedOrNullIfBlank
@@ -20,6 +21,12 @@ import java.time.Duration
 import java.time.format.DateTimeParseException
 import java.util.Locale
 
+/**
+ * Parser implementation for the PodcastIndex namespace.
+ *
+ * The namespace URI is: `https://podcastindex.org/namespace/1.0`
+ */
+@InternalApi
 internal object PodcastNamespaceParser : NamespaceParser() {
 
     override val namespace: FeedNamespace = FeedNamespace.PODCAST
