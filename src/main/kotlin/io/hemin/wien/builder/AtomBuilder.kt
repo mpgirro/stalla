@@ -6,29 +6,29 @@ import io.hemin.wien.model.Person
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Atom] instances. */
-interface AtomBuilder : Builder<Atom> {
+public interface AtomBuilder : Builder<Atom> {
 
     /** Adds a [PersonBuilder] to the list of author builders. */
-    fun addAuthorBuilder(authorBuilder: PersonBuilder): AtomBuilder
+    public fun addAuthorBuilder(authorBuilder: PersonBuilder): AtomBuilder
 
     /** Adds multiple [PersonBuilder] to the list of author builders. */
-    fun addAuthorBuilders(authorBuilders: List<PersonBuilder>): AtomBuilder = apply {
+    public fun addAuthorBuilders(authorBuilders: List<PersonBuilder>): AtomBuilder = apply {
         authorBuilders.forEach(::addAuthorBuilder)
     }
 
     /** Adds a [PersonBuilder] to the list of contributor builders. */
-    fun addContributorBuilder(contributorBuilder: PersonBuilder): AtomBuilder
+    public fun addContributorBuilder(contributorBuilder: PersonBuilder): AtomBuilder
 
     /** Adds multiple [PersonBuilder] to the list of contributor builders. */
-    fun addContributorBuilders(contributorBuilders: List<PersonBuilder>): AtomBuilder = apply {
+    public fun addContributorBuilders(contributorBuilders: List<PersonBuilder>): AtomBuilder = apply {
         contributorBuilders.forEach(::addContributorBuilder)
     }
 
     /** Adds a [LinkBuilder] to the list of links. */
-    fun addLinkBuilder(linkBuilder: LinkBuilder): AtomBuilder
+    public fun addLinkBuilder(linkBuilder: LinkBuilder): AtomBuilder
 
     /** Adds multiple [LinkBuilder] to the list of links. */
-    fun addLinkBuilders(linkBuilders: List<LinkBuilder>): AtomBuilder = apply {
+    public fun addLinkBuilders(linkBuilders: List<LinkBuilder>): AtomBuilder = apply {
         linkBuilders.forEach(::addLinkBuilder)
     }
 

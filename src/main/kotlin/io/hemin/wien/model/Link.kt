@@ -14,7 +14,7 @@ import io.hemin.wien.builder.validating.ValidatingLinkBuilder
  * @property title The title of the link.
  * @property type The type of the link.
  */
-data class Link(
+public data class Link(
     val href: String,
     val hrefLang: String? = null,
     val hrefResolved: String? = null,
@@ -23,7 +23,9 @@ data class Link(
     val title: String? = null,
     val type: String? = null
 ) {
-    companion object Factory : BuilderFactory<Link, LinkBuilder> {
+
+    public companion object Factory : BuilderFactory<Link, LinkBuilder> {
+
         /** Returns a builder implementation for building [Link] model instances. */
         @JvmStatic
         override fun builder(): LinkBuilder = ValidatingLinkBuilder()

@@ -4,25 +4,25 @@ import io.hemin.wien.model.RssImage
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [RssImage] instances. */
-interface RssImageBuilder : Builder<RssImage> {
+public interface RssImageBuilder : Builder<RssImage> {
 
     /** Set the url value. */
-    fun url(url: String): RssImageBuilder
+    public fun url(url: String): RssImageBuilder
 
     /** Set the title value. */
-    fun title(title: String): RssImageBuilder
+    public fun title(title: String): RssImageBuilder
 
     /** Set the link value. */
-    fun link(link: String): RssImageBuilder
+    public fun link(link: String): RssImageBuilder
 
     /** Set the width value. */
-    fun width(width: Int?): RssImageBuilder
+    public fun width(width: Int?): RssImageBuilder
 
     /** Set the height value. */
-    fun height(height: Int?): RssImageBuilder
+    public fun height(height: Int?): RssImageBuilder
 
     /** Set the description value. */
-    fun description(description: String?): RssImageBuilder
+    public fun description(description: String?): RssImageBuilder
 
     override fun from(model: RssImage?): RssImageBuilder = whenNotNull(model) { image ->
         url(image.url)

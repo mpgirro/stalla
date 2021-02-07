@@ -5,19 +5,19 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Episode.Podlove.SimpleChapter] instances. */
-interface EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter> {
+public interface EpisodePodloveSimpleChapterBuilder : Builder<Episode.Podlove.SimpleChapter> {
 
     /** Set the start value. */
-    fun start(start: String): EpisodePodloveSimpleChapterBuilder
+    public fun start(start: String): EpisodePodloveSimpleChapterBuilder
 
     /** Set the title value. */
-    fun title(title: String): EpisodePodloveSimpleChapterBuilder
+    public fun title(title: String): EpisodePodloveSimpleChapterBuilder
 
     /** Set the href value. */
-    fun href(href: String?): EpisodePodloveSimpleChapterBuilder
+    public fun href(href: String?): EpisodePodloveSimpleChapterBuilder
 
     /** Set the image value. */
-    fun image(image: String?): EpisodePodloveSimpleChapterBuilder
+    public fun image(image: String?): EpisodePodloveSimpleChapterBuilder
 
     override fun from(model: Episode.Podlove.SimpleChapter?): EpisodePodloveSimpleChapterBuilder = whenNotNull(model) { simpleChapter ->
         start(simpleChapter.start)

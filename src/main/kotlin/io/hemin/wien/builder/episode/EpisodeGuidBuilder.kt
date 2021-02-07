@@ -5,13 +5,13 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Episode.Guid] instances. */
-interface EpisodeGuidBuilder : Builder<Episode.Guid> {
+public interface EpisodeGuidBuilder : Builder<Episode.Guid> {
 
     /** Set the textContent value. */
-    fun textContent(textContent: String): EpisodeGuidBuilder
+    public fun textContent(textContent: String): EpisodeGuidBuilder
 
     /** Set the isPermalink value. */
-    fun isPermalink(isPermalink: Boolean?): EpisodeGuidBuilder
+    public fun isPermalink(isPermalink: Boolean?): EpisodeGuidBuilder
 
     override fun from(model: Episode.Guid?): EpisodeGuidBuilder = whenNotNull(model) { guid ->
         textContent(guid.guid)

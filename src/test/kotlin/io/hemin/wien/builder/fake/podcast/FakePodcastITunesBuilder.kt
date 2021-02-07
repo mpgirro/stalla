@@ -44,7 +44,7 @@ internal class FakePodcastITunesBuilder : FakeBuilder<Podcast.ITunes>(), Podcast
 
     override fun complete(complete: Boolean): PodcastITunesBuilder = apply { this.complete = complete }
 
-    override fun type(type: String?): PodcastITunesBuilder = apply { this.type = Podcast.ITunes.ShowType.of(type) }
+    override fun type(type: String?): PodcastITunesBuilder = apply { this.type = Podcast.ITunes.ShowType.from(type) }
 
     override fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastITunesBuilder = apply { this.ownerBuilder = ownerBuilder }
 

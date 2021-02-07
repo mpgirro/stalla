@@ -5,10 +5,10 @@ import io.hemin.wien.model.Episode
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Episode.Content] instances. */
-interface EpisodeContentBuilder : Builder<Episode.Content> {
+public interface EpisodeContentBuilder : Builder<Episode.Content> {
 
     /** Set the encoded value. */
-    fun encoded(encoded: String): EpisodeContentBuilder
+    public fun encoded(encoded: String): EpisodeContentBuilder
 
     override fun from(model: Episode.Content?): EpisodeContentBuilder = whenNotNull(model) { content ->
         encoded(content.encoded)

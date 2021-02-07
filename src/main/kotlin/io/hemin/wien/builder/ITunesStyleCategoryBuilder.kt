@@ -4,13 +4,13 @@ import io.hemin.wien.model.ITunesStyleCategory
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [ITunesStyleCategory] instances. */
-interface ITunesStyleCategoryBuilder : Builder<ITunesStyleCategory> {
+public interface ITunesStyleCategoryBuilder : Builder<ITunesStyleCategory> {
 
     /** Set the category value. */
-    fun category(category: String): ITunesStyleCategoryBuilder
+    public fun category(category: String): ITunesStyleCategoryBuilder
 
     /** Set the subcategory value. */
-    fun subcategory(subcategory: String?): ITunesStyleCategoryBuilder
+    public fun subcategory(subcategory: String?): ITunesStyleCategoryBuilder
 
     override fun from(model: ITunesStyleCategory?): ITunesStyleCategoryBuilder = whenNotNull(model) { category ->
         when (category) {

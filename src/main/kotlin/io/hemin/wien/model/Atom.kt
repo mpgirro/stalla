@@ -10,12 +10,14 @@ import io.hemin.wien.builder.validating.ValidatingAtomBuilder
  * @property contributors List of data from the `<atom:contributor>` elements as [Person] instances.
  * @property links List of data from the `<atom:link>` elements as [Link] instances.
  */
-data class Atom(
+public data class Atom(
     val authors: List<Person>,
     val contributors: List<Person>,
     val links: List<Link>
 ) {
-    companion object Factory : BuilderFactory<Atom, AtomBuilder> {
+
+    public companion object Factory : BuilderFactory<Atom, AtomBuilder> {
+
         /** Returns a builder implementation for building [Atom] model instances. */
         @JvmStatic
         override fun builder(): AtomBuilder = ValidatingAtomBuilder()

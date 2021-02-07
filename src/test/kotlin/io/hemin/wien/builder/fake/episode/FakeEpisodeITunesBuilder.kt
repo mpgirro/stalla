@@ -33,7 +33,7 @@ internal class FakeEpisodeITunesBuilder : FakeBuilder<Episode.ITunes>(), Episode
 
     override fun episode(episode: Int?): EpisodeITunesBuilder = apply { this.episode = episode }
 
-    override fun episodeType(episodeType: String?): EpisodeITunesBuilder = apply { this.episodeType = Episode.ITunes.EpisodeType.of(episodeType) }
+    override fun episodeType(episodeType: String?): EpisodeITunesBuilder = apply { this.episodeType = Episode.ITunes.EpisodeType.from(episodeType) }
 
     override fun author(author: String?): EpisodeITunesBuilder = apply { this.author = author }
 

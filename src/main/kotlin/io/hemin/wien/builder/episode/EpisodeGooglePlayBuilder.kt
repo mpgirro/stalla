@@ -7,19 +7,19 @@ import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Episode.GooglePlay] instances. */
-interface EpisodeGooglePlayBuilder : Builder<Episode.GooglePlay> {
+public interface EpisodeGooglePlayBuilder : Builder<Episode.GooglePlay> {
 
     /** Set the description value. */
-    fun description(description: String?): EpisodeGooglePlayBuilder
+    public fun description(description: String?): EpisodeGooglePlayBuilder
 
     /** Set the explicit value. */
-    fun explicit(explicit: Boolean?): EpisodeGooglePlayBuilder
+    public fun explicit(explicit: Boolean?): EpisodeGooglePlayBuilder
 
     /** Set the block value. */
-    fun block(block: Boolean): EpisodeGooglePlayBuilder
+    public fun block(block: Boolean): EpisodeGooglePlayBuilder
 
     /** Set the [HrefOnlyImageBuilder]. */
-    fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder
+    public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder
 
     override fun from(model: Episode.GooglePlay?): EpisodeGooglePlayBuilder = whenNotNull(model) { googlePlay ->
         description(googlePlay.description)

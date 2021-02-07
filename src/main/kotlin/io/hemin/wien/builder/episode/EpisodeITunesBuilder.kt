@@ -7,40 +7,40 @@ import io.hemin.wien.model.HrefOnlyImage
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Episode.ITunes] instances. */
-interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
+public interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
 
     /** Set the title value. */
-    fun title(title: String?): EpisodeITunesBuilder
+    public fun title(title: String?): EpisodeITunesBuilder
 
     /** Set the duration value. */
-    fun duration(duration: String?): EpisodeITunesBuilder
+    public fun duration(duration: String?): EpisodeITunesBuilder
 
     /** Set the [HrefOnlyImageBuilder]. */
-    fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeITunesBuilder
+    public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeITunesBuilder
 
     /** Set the explicit flag value. */
-    fun explicit(explicit: Boolean?): EpisodeITunesBuilder
+    public fun explicit(explicit: Boolean?): EpisodeITunesBuilder
 
     /** Set the block flag value. */
-    fun block(block: Boolean): EpisodeITunesBuilder
+    public fun block(block: Boolean): EpisodeITunesBuilder
 
     /** Set the season value. */
-    fun season(season: Int?): EpisodeITunesBuilder
+    public fun season(season: Int?): EpisodeITunesBuilder
 
     /** Set the episode value. */
-    fun episode(episode: Int?): EpisodeITunesBuilder
+    public fun episode(episode: Int?): EpisodeITunesBuilder
 
     /** Set the episodeType value. */
-    fun episodeType(episodeType: String?): EpisodeITunesBuilder
+    public fun episodeType(episodeType: String?): EpisodeITunesBuilder
 
     /** Set the author value. */
-    fun author(author: String?): EpisodeITunesBuilder
+    public fun author(author: String?): EpisodeITunesBuilder
 
     /** Set the subtitle value. */
-    fun subtitle(subtitle: String?): EpisodeITunesBuilder
+    public fun subtitle(subtitle: String?): EpisodeITunesBuilder
 
     /** Set the summary value. */
-    fun summary(summary: String?): EpisodeITunesBuilder
+    public fun summary(summary: String?): EpisodeITunesBuilder
 
     override fun from(model: Episode.ITunes?): EpisodeITunesBuilder = whenNotNull(model) { itunes ->
         title(itunes.title)

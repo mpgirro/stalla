@@ -11,51 +11,51 @@ import io.hemin.wien.util.asBuilders
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Podcast.ITunes] instances. */
-interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
+public interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
 
     /** Set the subtitle value. */
-    fun subtitle(subtitle: String?): PodcastITunesBuilder
+    public fun subtitle(subtitle: String?): PodcastITunesBuilder
 
     /** Set the summary value. */
-    fun summary(summary: String?): PodcastITunesBuilder
+    public fun summary(summary: String?): PodcastITunesBuilder
 
     /** Set the ImageBuilder. */
-    fun imageBuilder(imageBuilder: HrefOnlyImageBuilder): PodcastITunesBuilder
+    public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder): PodcastITunesBuilder
 
     /** Set the keywords value. */
-    fun keywords(keywords: String?): PodcastITunesBuilder
+    public fun keywords(keywords: String?): PodcastITunesBuilder
 
     /** Set the author value. */
-    fun author(author: String?): PodcastITunesBuilder
+    public fun author(author: String?): PodcastITunesBuilder
 
     /** Adds an [ITunesStyleCategoryBuilder] to the list of category builders. */
-    fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastITunesBuilder
+    public fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastITunesBuilder
 
     /** Adds multiple [ITunesStyleCategoryBuilder] to the list of category builders. */
-    fun addCategoryBuilders(categoryBuilders: List<ITunesStyleCategoryBuilder>): PodcastITunesBuilder = apply {
+    public fun addCategoryBuilders(categoryBuilders: List<ITunesStyleCategoryBuilder>): PodcastITunesBuilder = apply {
         categoryBuilders.forEach(::addCategoryBuilder)
     }
 
     /** Set the explicit flag value. */
-    fun explicit(explicit: Boolean): PodcastITunesBuilder
+    public fun explicit(explicit: Boolean): PodcastITunesBuilder
 
     /** Set the block flag value. */
-    fun block(block: Boolean): PodcastITunesBuilder
+    public fun block(block: Boolean): PodcastITunesBuilder
 
     /** Set the complete flag value. */
-    fun complete(complete: Boolean): PodcastITunesBuilder
+    public fun complete(complete: Boolean): PodcastITunesBuilder
 
     /** Set the type value. */
-    fun type(type: String?): PodcastITunesBuilder
+    public fun type(type: String?): PodcastITunesBuilder
 
     /** Set the Person representing the owner. */
-    fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastITunesBuilder
+    public fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastITunesBuilder
 
     /** Set the episode title. */
-    fun title(title: String?): PodcastITunesBuilder
+    public fun title(title: String?): PodcastITunesBuilder
 
     /** Set the new URL at which this feed is located. */
-    fun newFeedUrl(newFeedUrl: String?): PodcastITunesBuilder
+    public fun newFeedUrl(newFeedUrl: String?): PodcastITunesBuilder
 
     override fun from(model: Podcast.ITunes?): PodcastITunesBuilder = whenNotNull(model) { itunes ->
         subtitle(itunes.subtitle)
