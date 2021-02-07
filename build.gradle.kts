@@ -53,9 +53,15 @@ dependencies {
     testImplementation("org.xmlunit:xmlunit-core:2.8.2")
 }
 
+kotlin {
+    explicitApi()
+}
+
 tasks {
     withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
 
     withType<Test> {
