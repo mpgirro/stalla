@@ -49,7 +49,7 @@ internal abstract class NamespaceParser {
      * Parsing is only executed when the parser supports the node, which
      * by default means that the node's namespaceURI property matches
      * the parser's [namespace]. Some parsers may change this behavior,
-     * such as [io.hemin.wien.parser.namespace.BitloveParser].
+     * such as [dev.stalla.parser.namespace.BitloveParser].
      *
      * @see canParse
      * @param node The DOM node from which all data is extracted from.
