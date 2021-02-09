@@ -12,7 +12,7 @@ internal class PodcastRssWriterTest {
 
     @Test
     internal fun `should write a feed to a file correctly`() {
-        val file = File.createTempFile("wien_test", "writer_output")
+        val file = File.createTempFile("stalla_test", "writer_output")
 
         val podcast = aPodcast()
         dev.stalla.PodcastRssWriter.writeRssFeed(podcast, file)

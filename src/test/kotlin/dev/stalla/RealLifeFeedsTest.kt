@@ -29,7 +29,7 @@ internal class RealLifeFeedsTest {
             val parsedPodcast = dev.stalla.PodcastRssParser.parse(file)
             assertThat(parsedPodcast, "parsed podcast").isNotNull()
 
-            val tmpFile = File.createTempFile("wien_test", "writer_output")
+            val tmpFile = File.createTempFile("stalla_test", "writer_output")
             dev.stalla.PodcastRssWriter.writeRssFeed(parsedPodcast!!, tmpFile)
 
             assertThat(tmpFile, "written file").exists()
