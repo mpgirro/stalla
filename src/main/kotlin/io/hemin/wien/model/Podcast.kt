@@ -128,7 +128,7 @@ public data class Podcast(
             /** Type describing a serial show. */
             SERIAL("serial");
 
-            public companion object {
+            public companion object Factory {
 
                 /**
                  * Factory method for the instance of the Enum matching the [type] parameter.

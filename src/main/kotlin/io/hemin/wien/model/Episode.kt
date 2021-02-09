@@ -188,7 +188,7 @@ public data class Episode(
             /** Type describing a trailer episode. */
             TRAILER("trailer");
 
-            public companion object {
+            public companion object Factory {
 
                 /**
                  * Factory method for the instance of the Enum matching the [type] parameter.
@@ -345,7 +345,7 @@ public data class Episode(
                 /** SRT, with full timing information. */
                 SRT("application/srt");
 
-                public companion object {
+                public companion object Factory {
 
                     public fun from(rawType: String): Type? = values().find { it.rawType == rawType }
                 }
