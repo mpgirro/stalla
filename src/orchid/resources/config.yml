@@ -1,0 +1,45 @@
+site:
+  theme: Editorial
+  about:
+    siteName: Stalla
+    siteDescription: This is a short description of this project.
+
+theme:
+  menu:
+    - type: 'separator'
+      title: 'Wiki'
+    - type: 'wiki'
+    - type: 'page'
+      itemId: 'Changelog'
+    - type: 'separator'
+      title: 'API Docs'
+    - type: 'sourcedocPages'
+      moduleType: 'kotlindoc'
+      node: 'classes'
+      asSubmenu: true
+      submenuTitle: 'Classes'
+    - type: 'sourcedocPages'
+      moduleType: 'kotlindoc'
+      node: 'packages'
+      asSubmenu: true
+      submenuTitle: 'Packages'
+
+Editorial:
+  primaryColor: '#DE9149'
+  legacySearch: false
+  social:
+    github: 'mpgirro/stalla'
+  metaComponents:
+    - type: 'orchidSearch'
+
+kotlindoc:
+  name: 'dev.stalla'
+  sourceDirs:
+    - './../../main/kotlin'
+  showRunnerLogs: false
+  homePageOnly: false
+  sourcePages:
+    menu:
+      - type: 'sourcedocPageLinks'
+        itemTitleType: 'signature'
+        includeItems: true
