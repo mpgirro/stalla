@@ -5,9 +5,11 @@ import io.hemin.wien.builder.podcast.PodcastBuilder
 import io.hemin.wien.dom.isDirectChildOf
 import io.hemin.wien.util.FeedNamespace
 import io.hemin.wien.util.FeedNamespace.Companion.matches
+import io.hemin.wien.util.InternalApi
 import org.w3c.dom.Node
 
 /** Base class for XML namespace parser implementations. */
+@InternalApi
 internal abstract class NamespaceParser {
 
     /** The URI of the namespace processed by this parser. */

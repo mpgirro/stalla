@@ -4,6 +4,7 @@ import io.hemin.wien.dom.appendElement
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 
@@ -12,6 +13,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://purl.org/rss/1.0/modules/content/`
  */
+@InternalApi
 internal object ContentWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.CONTENT

@@ -54,7 +54,7 @@ import java.util.Locale
  * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
  */
 @Suppress("unused")
-data class Episode(
+public data class Episode(
     val title: String,
     val link: String? = null,
     val description: String? = null,
@@ -74,7 +74,8 @@ data class Episode(
     val podcast: Podcast? = null
 ) {
 
-    companion object Factory : BuilderFactory<Episode, EpisodeBuilder> {
+    public companion object Factory : BuilderFactory<Episode, EpisodeBuilder> {
+
         /** Returns a builder implementation for building [Episode] model instances. */
         @JvmStatic
         override fun builder(): EpisodeBuilder = ValidatingEpisodeBuilder()
@@ -87,12 +88,14 @@ data class Episode(
      * @property length The `length` attribute textContent of the RSS `<enclosure>` element. The media length in seconds.
      * @property type The `type` attribute textContent of the RSS `<enclosure>` element.
      */
-    data class Enclosure(
+    public data class Enclosure(
         val url: String,
         val length: Long,
         val type: String
     ) {
-        companion object Factory : BuilderFactory<Enclosure, EpisodeEnclosureBuilder> {
+
+        public companion object Factory : BuilderFactory<Enclosure, EpisodeEnclosureBuilder> {
+
             /** Returns a builder implementation for building [Enclosure] model instances. */
             @JvmStatic
             override fun builder(): EpisodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
@@ -105,11 +108,13 @@ data class Episode(
      * @property guid The text content of the element.
      * @property isPermalink The boolean interpretation of the `isPermalink` attribute.
      */
-    data class Guid(
+    public data class Guid(
         val guid: String,
         val isPermalink: Boolean? = null
     ) {
-        companion object Factory : BuilderFactory<Guid, EpisodeGuidBuilder> {
+
+        public companion object Factory : BuilderFactory<Guid, EpisodeGuidBuilder> {
+
             /** Returns a builder implementation for building [Guid] model instances. */
             @JvmStatic
             override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
@@ -121,10 +126,12 @@ data class Episode(
      *
      * @property encoded The text content of the `<content:encoded>` element.
      */
-    data class Content(
+    public data class Content(
         val encoded: String
     ) {
-        companion object Factory : BuilderFactory<Content, EpisodeContentBuilder> {
+
+        public companion object Factory : BuilderFactory<Content, EpisodeContentBuilder> {
+
             /** Returns a builder implementation for building [Content] model instances. */
             @JvmStatic
             override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
@@ -143,7 +150,7 @@ data class Episode(
      * @property episode The numeric value of the `<itunes:episode>` field's text content.
      * @property episodeType The `<itunes:episodeType>` field text content.
      */
-    data class ITunes(
+    public data class ITunes(
         override val title: String? = null,
         val duration: String? = null,
         override val image: HrefOnlyImage? = null,
@@ -157,7 +164,8 @@ data class Episode(
         override val summary: String? = null
     ) : ITunesBase {
 
-        companion object Factory : BuilderFactory<ITunes, EpisodeITunesBuilder> {
+        public companion object Factory : BuilderFactory<ITunes, EpisodeITunesBuilder> {
+
             /** Returns a builder implementation for building [ITunes] model instances. */
             @JvmStatic
             override fun builder(): EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
@@ -169,7 +177,7 @@ data class Episode(
          *
          * @property type The string representation of the enum instance.
          */
-        enum class EpisodeType(val type: String) {
+        public enum class EpisodeType(public val type: String) {
 
             /** Type describing a bonus episode. */
             BONUS("bonus"),
@@ -180,15 +188,16 @@ data class Episode(
             /** Type describing a trailer episode. */
             TRAILER("trailer");
 
-            companion object {
+            public companion object Factory {
+
                 /**
                  * Factory method for the instance of the Enum matching the [type] parameter.
                  *
                  * @param type The string representation of the Enum instance.
                  * @return The Enum instance matching [type], or null if not matching instance exists.
                  */
-                fun of(type: String?): EpisodeType? = type?.let {
-                    values().find { t -> t.type == it.toLowerCase() }
+                public fun from(type: String?): EpisodeType? = type?.let {
+                    values().find { value -> value.type == it.toLowerCase() }
                 }
             }
         }
@@ -202,13 +211,15 @@ data class Episode(
      * @property block The logical value of the `<googleplay:block>` field's text content.
      * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
      */
-    data class GooglePlay(
+    public data class GooglePlay(
         override val description: String? = null,
         override val explicit: Boolean? = null,
         override val block: Boolean,
         override val image: HrefOnlyImage? = null
     ) : GooglePlayBase {
-        companion object Factory : BuilderFactory<GooglePlay, EpisodeGooglePlayBuilder> {
+
+        public companion object Factory : BuilderFactory<GooglePlay, EpisodeGooglePlayBuilder> {
+
             /** Returns a builder implementation for building [GooglePlay] model instances. */
             @JvmStatic
             override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
@@ -221,11 +232,12 @@ data class Episode(
      *
      * @property simpleChapters List of data from the `<psc:chapter>` elements as [SimpleChapter] instances.
      */
-    data class Podlove(
+    public data class Podlove(
         val simpleChapters: List<SimpleChapter>
     ) {
 
-        companion object Factory : BuilderFactory<Podlove, EpisodePodloveBuilder> {
+        public companion object Factory : BuilderFactory<Podlove, EpisodePodloveBuilder> {
+
             /** Returns a builder implementation for building [Podlove] model instances. */
             @JvmStatic
             override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
@@ -240,13 +252,15 @@ data class Episode(
          * @property href The value of the chapter's `href` attribute.
          * @property image The value of the chapter's `image` attribute.
          */
-        data class SimpleChapter(
+        public data class SimpleChapter(
             val start: String,
             val title: String,
             val href: String? = null,
             val image: String? = null
         ) {
-            companion object Factory : BuilderFactory<SimpleChapter, EpisodePodloveSimpleChapterBuilder> {
+
+            public companion object Factory : BuilderFactory<SimpleChapter, EpisodePodloveSimpleChapterBuilder> {
+
                 /** Returns a builder implementation for building [SimpleChapter] model instances. */
                 @JvmStatic
                 override fun builder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
@@ -259,10 +273,12 @@ data class Episode(
      *
      * @property guid The GUID attribute for the RSS enclosure element.
      */
-    data class Bitlove(
+    public data class Bitlove(
         val guid: String
     ) {
-        companion object Factory : BuilderFactory<Bitlove, EpisodeBitloveBuilder> {
+
+        public companion object Factory : BuilderFactory<Bitlove, EpisodeBitloveBuilder> {
+
             /** Returns a builder implementation for building [Bitlove] model instances. */
             @JvmStatic
             override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
@@ -276,13 +292,14 @@ data class Episode(
      * @property soundbites The soundbites information for the episode.
      * @property chapters The chapters information for the episode.
      */
-    data class Podcast(
+    public data class Podcast(
         val transcripts: List<Transcript> = emptyList(),
         val soundbites: List<Soundbite> = emptyList(),
         val chapters: Chapters? = null
     ) {
 
-        companion object Factory : BuilderFactory<Podcast, EpisodePodcastBuilder> {
+        public companion object Factory : BuilderFactory<Podcast, EpisodePodcastBuilder> {
+
             /** Returns a builder implementation for building [Podcast] model instances. */
             @JvmStatic
             override fun builder(): EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
@@ -296,14 +313,15 @@ data class Episode(
          * @param language The transcript language.
          * @param rel When present and equals to `captions`, the transcript is considered to be a CC, regardless of its [type].
          */
-        data class Transcript(
+        public data class Transcript(
             val url: String,
             val type: Type,
             val language: Locale? = null,
             val rel: String? = null
         ) {
 
-            companion object Factory : BuilderFactory<Transcript, EpisodePodcastTranscriptBuilder> {
+            public companion object Factory : BuilderFactory<Transcript, EpisodePodcastTranscriptBuilder> {
+
                 /** Returns a builder implementation for building [Transcript] model instances. */
                 @JvmStatic
                 override fun builder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
@@ -313,7 +331,8 @@ data class Episode(
              * Supported transcript types. See the
              * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/transcripts/transcripts.md).
              */
-            enum class Type(val rawType: String) {
+            public enum class Type(public val rawType: String) {
+
                 /** Plain text, with no timing information. */
                 PLAIN_TEXT("text/plain"),
 
@@ -326,9 +345,9 @@ data class Episode(
                 /** SRT, with full timing information. */
                 SRT("application/srt");
 
-                companion object {
+                public companion object Factory {
 
-                    fun from(rawType: String): Type? = values().find { it.rawType == rawType }
+                    public fun from(rawType: String): Type? = values().find { it.rawType == rawType }
                 }
             }
         }
@@ -340,11 +359,13 @@ data class Episode(
          * @param url The URL for the chapters information.
          * @param type The MIME type of the chapters file. JSON (`application/json+chapters`) is the preferred format.
          */
-        data class Chapters(
+        public data class Chapters(
             val url: String,
             val type: String
         ) {
-            companion object Factory : BuilderFactory<Chapters, EpisodePodcastChaptersBuilder> {
+
+            public companion object Factory : BuilderFactory<Chapters, EpisodePodcastChaptersBuilder> {
+
                 /** Returns a builder implementation for building [Chapters] model instances. */
                 @JvmStatic
                 override fun builder(): EpisodePodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
@@ -358,12 +379,14 @@ data class Episode(
          * @param duration The duration of the timestamp (recommended between 15 and 120 seconds).
          * @param title A custom title for the soundbite. When null, the [Episode.title] is used.
          */
-        data class Soundbite(
+        public data class Soundbite(
             val startTime: Duration,
             val duration: Duration,
             val title: String? = null
         ) {
-            companion object Factory : BuilderFactory<Soundbite, EpisodePodcastSoundbiteBuilder> {
+
+            public companion object Factory : BuilderFactory<Soundbite, EpisodePodcastSoundbiteBuilder> {
+
                 /** Returns a builder implementation for building [Soundbite] model instances. */
                 @JvmStatic
                 override fun builder(): EpisodePodcastSoundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()

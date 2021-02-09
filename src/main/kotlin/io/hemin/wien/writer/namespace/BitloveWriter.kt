@@ -5,6 +5,7 @@ import io.hemin.wien.dom.setAttributeWithNS
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
 
@@ -13,6 +14,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://bitlove.org`
  */
+@InternalApi
 internal object BitloveWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.BITLOVE

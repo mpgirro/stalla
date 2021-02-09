@@ -3,6 +3,7 @@ package io.hemin.wien.util
 /**
  * Indicates how a boolean value should be written as a string.
  */
+@InternalApi
 internal enum class BooleanStringStyle(val trueValue: String, val falseValue: String?) {
     /** A true value will be written as `true`, a false value as `false`. */
     TRUE_FALSE("true", "false"),
@@ -17,5 +18,6 @@ internal enum class BooleanStringStyle(val trueValue: String, val falseValue: St
     YES_NO("yes", "no")
 }
 
+@InternalApi
 internal fun Boolean.asBooleanString(style: BooleanStringStyle) =
     if (this) style.trueValue else style.falseValue

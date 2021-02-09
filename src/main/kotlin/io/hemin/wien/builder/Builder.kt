@@ -5,14 +5,14 @@ package io.hemin.wien.builder
  *
  * @param T The type that a builder implementation creates instances for.
  */
-interface Builder<T> {
+public interface Builder<T> {
 
     /**
      * Creates a model instance with the properties set in this builder.
      *
      * @return The created model instance.
      */
-    fun build(): T?
+    public fun build(): T?
 
     /**
      * Applies the properties of [model] to this builder.
@@ -20,7 +20,7 @@ interface Builder<T> {
      * @param model The model prototype for this builder.
      * @return This builder instance.
      */
-    fun from(model: T?): Builder<T>
+    public fun from(model: T?): Builder<T>
 
     /**
      * This property is `true` when the builder has been provided with enough data to be able to
@@ -35,5 +35,5 @@ interface Builder<T> {
      * more mandatory fields, this property will be `true` only after _all_ the mandatory
      * fields are set.
      */
-    val hasEnoughDataToBuild: Boolean
+    public val hasEnoughDataToBuild: Boolean
 }

@@ -1,5 +1,6 @@
 package io.hemin.wien.parser
 
+import io.hemin.wien.util.InternalApi
 import java.time.LocalDateTime
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -15,6 +16,7 @@ import java.util.Locale
  * Various formats are supported. This class attempts to find the correct
  * format to produce the intended date object.
  */
+@InternalApi
 internal object DateParser {
 
     private val dayOfWeek = mapOf(

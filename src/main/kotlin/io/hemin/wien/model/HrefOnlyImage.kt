@@ -8,8 +8,10 @@ import io.hemin.wien.builder.validating.ValidatingHrefOnlyImageBuilder
  *
  * @property href The value of the `href` attribute. Represents the image URL.
  */
-data class HrefOnlyImage(val href: String) {
-    companion object Factory : BuilderFactory<HrefOnlyImage, HrefOnlyImageBuilder> {
+public data class HrefOnlyImage(val href: String) {
+
+    public companion object Factory : BuilderFactory<HrefOnlyImage, HrefOnlyImageBuilder> {
+
         /** Returns a builder implementation for building [HrefOnlyImage] model instances. */
         @JvmStatic
         override fun builder(): HrefOnlyImageBuilder = ValidatingHrefOnlyImageBuilder()

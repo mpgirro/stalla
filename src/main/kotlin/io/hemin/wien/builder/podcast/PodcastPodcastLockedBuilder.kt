@@ -5,13 +5,13 @@ import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Podcast.Podcast.Locked] instances. */
-interface PodcastPodcastLockedBuilder : Builder<Podcast.Podcast.Locked> {
+public interface PodcastPodcastLockedBuilder : Builder<Podcast.Podcast.Locked> {
 
     /** Set the owner value. */
-    fun owner(owner: String): PodcastPodcastLockedBuilder
+    public fun owner(owner: String): PodcastPodcastLockedBuilder
 
     /** Set the locked value. */
-    fun locked(locked: Boolean): PodcastPodcastLockedBuilder
+    public fun locked(locked: Boolean): PodcastPodcastLockedBuilder
 
     override fun from(model: Podcast.Podcast.Locked?): PodcastPodcastLockedBuilder = whenNotNull(model) { podcastLocked ->
         owner(podcastLocked.owner)

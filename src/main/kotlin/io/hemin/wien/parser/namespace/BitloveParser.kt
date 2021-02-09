@@ -6,6 +6,7 @@ import io.hemin.wien.dom.getAttributeValueByName
 import io.hemin.wien.dom.isDirectChildOf
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import org.w3c.dom.Node
 
 /**
@@ -13,6 +14,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://bitlove.org`
  */
+@InternalApi
 internal object BitloveParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.BITLOVE

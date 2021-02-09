@@ -9,9 +9,10 @@ import io.hemin.wien.builder.validating.ValidatingITunesStyleCategoryBuilder
  *
  * @param name The name of the category.
  */
-sealed class ITunesStyleCategory(open val name: String) {
+public sealed class ITunesStyleCategory(public open val name: String) {
 
-    companion object Factory : BuilderFactory<ITunesStyleCategory, ITunesStyleCategoryBuilder> {
+    public companion object Factory : BuilderFactory<ITunesStyleCategory, ITunesStyleCategoryBuilder> {
+
         /** Returns a builder implementation for building [ITunesStyleCategory] model instances. */
         @JvmStatic
         override fun builder(): ITunesStyleCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
@@ -24,7 +25,7 @@ sealed class ITunesStyleCategory(open val name: String) {
      * <itunes:category text="News" />
      * ```
      */
-    data class Simple(override val name: String) : ITunesStyleCategory(name)
+    public data class Simple(override val name: String) : ITunesStyleCategory(name)
 
     /**
      * An iTunes-style category that contains a nested subcategory:
@@ -37,5 +38,5 @@ sealed class ITunesStyleCategory(open val name: String) {
      *
      * @param subcategory The nested [Simple] subcategory.
      */
-    data class Nested(override val name: String, val subcategory: Simple) : ITunesStyleCategory(name)
+    public data class Nested(override val name: String, val subcategory: Simple) : ITunesStyleCategory(name)
 }

@@ -1,7 +1,7 @@
 package io.hemin.wien.builder
 
-interface PersonBuilderProvider {
+public interface PersonBuilderProvider {
 
     /** Creates an instance of [PersonBuilder] to use with this builder. */
-    fun createPersonBuilder(): PersonBuilder
+    public fun createPersonBuilder(): PersonBuilder
 }

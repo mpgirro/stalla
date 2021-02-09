@@ -10,12 +10,14 @@ import io.hemin.wien.builder.validating.ValidatingPersonBuilder
  * @property email The email of the person.
  * @property uri The uri of the person.
  */
-data class Person(
+public data class Person(
     val name: String,
     val email: String? = null,
     val uri: String? = null
 ) {
-    companion object Factory : BuilderFactory<Person, PersonBuilder> {
+
+    public companion object Factory : BuilderFactory<Person, PersonBuilder> {
+
         /** Returns a builder implementation for building [Person] model instances. */
         @JvmStatic
         override fun builder(): PersonBuilder = ValidatingPersonBuilder()

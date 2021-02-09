@@ -27,7 +27,7 @@ import io.hemin.wien.builder.validating.ValidatingRssImageBuilder
  * @property height The numeric value of an RSS `<height>` element inside an `<image>` element.
  * @property description The value of an RSS `<description>` element inside an `<image>`.
  */
-data class RssImage(
+public data class RssImage(
     val url: String,
     val title: String,
     val link: String,
@@ -35,7 +35,9 @@ data class RssImage(
     val height: Int? = null,
     val description: String? = null
 ) {
-    companion object Factory : BuilderFactory<RssImage, RssImageBuilder> {
+
+    public companion object Factory : BuilderFactory<RssImage, RssImageBuilder> {
+
         /** Returns a builder implementation for building [RssImage] model instances. */
         @JvmStatic
         override fun builder(): RssImageBuilder = ValidatingRssImageBuilder()

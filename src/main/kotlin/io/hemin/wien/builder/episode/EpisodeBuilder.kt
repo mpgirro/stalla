@@ -13,90 +13,90 @@ import io.hemin.wien.util.whenNotNull
 import java.time.temporal.TemporalAccessor
 
 /** Builder for constructing [Episode] instances. */
-interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderProvider {
+public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderProvider {
 
     /** The builder for data from the Content namespace. */
-    val contentBuilder: EpisodeContentBuilder
+    public val contentBuilder: EpisodeContentBuilder
 
     /** The builder for data from the iTunes namespace. */
-    val iTunesBuilder: EpisodeITunesBuilder
+    public val iTunesBuilder: EpisodeITunesBuilder
 
     /** The builder for data from the Atom namespace. */
-    val atomBuilder: AtomBuilder
+    public val atomBuilder: AtomBuilder
 
     /** The builder for data from namespaces of the Podlove standards. */
-    val podloveBuilder: EpisodePodloveBuilder
+    public val podloveBuilder: EpisodePodloveBuilder
 
     /** The builder for data from the Google Play namespace. */
-    val googlePlayBuilder: EpisodeGooglePlayBuilder
+    public val googlePlayBuilder: EpisodeGooglePlayBuilder
 
     /** The builder for data from the Bitlove namespace. */
-    val bitloveBuilder: EpisodeBitloveBuilder
+    public val bitloveBuilder: EpisodeBitloveBuilder
 
     /** The builder for data from the Podcast namespace. */
-    val podcastBuilder: EpisodePodcastBuilder
+    public val podcastBuilder: EpisodePodcastBuilder
 
     /** Set the title value. */
-    fun title(title: String): EpisodeBuilder
+    public fun title(title: String): EpisodeBuilder
 
     /** Set the link value. */
-    fun link(link: String?): EpisodeBuilder
+    public fun link(link: String?): EpisodeBuilder
 
     /** Set the description value. */
-    fun description(description: String?): EpisodeBuilder
+    public fun description(description: String?): EpisodeBuilder
 
     /** Set the author value. */
-    fun author(author: String?): EpisodeBuilder
+    public fun author(author: String?): EpisodeBuilder
 
     /** Adds an [RssCategoryBuilder] to the list of category builders. */
-    fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder
+    public fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder
 
     /** Adds multiple [RssCategoryBuilder] to the list of category builders. */
-    fun addCategoryBuilderys(categoryBuilders: List<RssCategoryBuilder>): EpisodeBuilder = apply {
+    public fun addCategoryBuilderys(categoryBuilders: List<RssCategoryBuilder>): EpisodeBuilder = apply {
         categoryBuilders.forEach(::addCategoryBuilder)
     }
 
     /** Set the comments value. */
-    fun comments(comments: String?): EpisodeBuilder
+    public fun comments(comments: String?): EpisodeBuilder
 
     /** Set the [EpisodeEnclosureBuilder]. */
-    fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder
+    public fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder
 
     /** Set the [EpisodeGuidBuilder]. */
-    fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder
+    public fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder
 
     /** Set the pubDate value. */
-    fun pubDate(pubDate: TemporalAccessor?): EpisodeBuilder
+    public fun pubDate(pubDate: TemporalAccessor?): EpisodeBuilder
 
     /** Set the source value. */
-    fun source(source: String?): EpisodeBuilder
+    public fun source(source: String?): EpisodeBuilder
 
     /** Creates an instance of [EpisodeEnclosureBuilder] to use with this builder. */
-    fun createEnclosureBuilder(): EpisodeEnclosureBuilder
+    public fun createEnclosureBuilder(): EpisodeEnclosureBuilder
 
     /** Creates an instance of [EpisodeGuidBuilder] to use with this builder. */
-    fun createGuidBuilder(): EpisodeGuidBuilder
+    public fun createGuidBuilder(): EpisodeGuidBuilder
 
     /** Creates an instance of [HrefOnlyImageBuilder] to use with this builder. */
-    fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
+    public fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
 
     /** Creates an instance of [EpisodePodloveSimpleChapterBuilder] to use with this builder. */
-    fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder
+    public fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder
 
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
-    fun createRssCategoryBuilder(): RssCategoryBuilder
+    public fun createRssCategoryBuilder(): RssCategoryBuilder
 
     /** Creates an instance of [ITunesStyleCategoryBuilder] to use with this builder. */
-    fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder
+    public fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder
 
     /** Creates an instance of [EpisodePodcastTranscriptBuilder] to use with this builder. */
-    fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder
+    public fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder
 
     /** Creates an instance of [EpisodePodcastChaptersBuilder] to use with this builder. */
-    fun createEpisodePodcastChaptersBuilder(): EpisodePodcastChaptersBuilder
+    public fun createEpisodePodcastChaptersBuilder(): EpisodePodcastChaptersBuilder
 
     /** Creates an instance of [EpisodePodcastSoundbiteBuilder] to use with this builder. */
-    fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastSoundbiteBuilder
+    public fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastSoundbiteBuilder
 
     override fun from(model: Episode?): EpisodeBuilder = whenNotNull(model) { episode ->
         contentBuilder.from(episode.content)

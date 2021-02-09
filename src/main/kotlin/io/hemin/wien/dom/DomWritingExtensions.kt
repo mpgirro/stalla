@@ -7,6 +7,7 @@ import io.hemin.wien.model.RssCategory
 import io.hemin.wien.model.RssImage
 import io.hemin.wien.util.BooleanStringStyle
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import io.hemin.wien.util.asBooleanString
 import io.hemin.wien.util.isNeitherNullNorBlank
 import org.w3c.dom.Attr
@@ -23,6 +24,7 @@ import org.w3c.dom.Node
  * @param image The image to represent with the new element.
  * @param namespace The namespace to use for the new element.
  */
+@InternalApi
 internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: FeedNamespace): Element? {
     require(namespace == FeedNamespace.ITUNES || namespace == FeedNamespace.GOOGLE_PLAY) {
         "Only 'itunes:image' and 'googleplay:image' tags are supported, but the desired prefix was '${namespace.prefix}:'"
@@ -38,6 +40,7 @@ internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: Fe
  *
  * @param image The image to represent with the new element.
  */
+@InternalApi
 internal fun Node.appendRssImageElement(image: RssImage): Element? {
     if (image.url.isBlank()) return null
     return appendElement("image") {
@@ -70,6 +73,7 @@ internal fun Node.appendRssImageElement(image: RssImage): Element? {
  *
  * @return Returns the newly created [Element].
  */
+@InternalApi
 internal fun Node.appendElement(elementTagName: String, namespace: FeedNamespace? = null, init: Element.() -> Unit = {}): Element {
     val tagName = if (namespace != null) "${namespace.prefix}:$elementTagName" else elementTagName
     val element = getDocument().createElementNS(namespace?.uri, tagName)
@@ -94,6 +98,7 @@ private fun Node.getDocument(): Document = when {
  *
  * @return Returns the newly created [Attr].
  */
+@InternalApi
 internal fun Element.setAttributeWithNS(attributeName: String, namespace: FeedNamespace? = null, init: Attr.() -> Unit = {}): Attr {
     val name = if (namespace != null) "${namespace.prefix}:$attributeName" else attributeName
     val attr = ownerDocument.createAttributeNS(namespace?.uri, name)
@@ -109,6 +114,7 @@ internal fun Element.setAttributeWithNS(attributeName: String, namespace: FeedNa
  * @param value The value to use
  * @param namespace The namespace to use, if any
  */
+@InternalApi
 internal fun Node.appendYesElementIfTrue(tagName: String, value: Boolean, namespace: FeedNamespace? = null): Element? {
     val stringValue = value.asBooleanString(BooleanStringStyle.YES_NULL)
         ?: return null
@@ -126,6 +132,7 @@ internal fun Node.appendYesElementIfTrue(tagName: String, value: Boolean, namesp
  * @param value The value to use
  * @param namespace The namespace to use, if any
  */
+@InternalApi
 internal fun Node.appendTrueFalseElement(tagName: String, value: Boolean, namespace: FeedNamespace? = null) =
     appendElement(tagName, namespace) {
         textContent = value.asBooleanString(BooleanStringStyle.TRUE_FALSE)
@@ -138,6 +145,7 @@ internal fun Node.appendTrueFalseElement(tagName: String, value: Boolean, namesp
  * @param value The value to use
  * @param namespace The namespace to use, if any
  */
+@InternalApi
 internal fun Node.appendYesNoElement(tagName: String, value: Boolean, namespace: FeedNamespace? = null) =
     appendElement(tagName, namespace) {
         textContent = value.asBooleanString(BooleanStringStyle.YES_NO)
@@ -150,6 +158,7 @@ internal fun Node.appendYesNoElement(tagName: String, value: Boolean, namespace:
  * @param person The person instance to use
  * @param namespace The namespace to use, if any
  */
+@InternalApi
 internal fun Node.appendPersonElement(tagName: String, person: Person, namespace: FeedNamespace? = null) {
     if (person.name.isBlank()) return
 
@@ -172,6 +181,7 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
  * @param categories The [categories][ITunesStyleCategory] to append.
  * @param namespace The namespace to use, if any.
  */
+@InternalApi
 internal fun Node.appendITunesStyleCategoryElements(categories: List<ITunesStyleCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
         if (category.name.isBlank()) continue
@@ -193,6 +203,7 @@ internal fun Node.appendITunesStyleCategoryElements(categories: List<ITunesStyle
  * @param categories The [categories][RssCategory] to append.
  * @param namespace The namespace to use, if any.
  */
+@InternalApi
 internal fun Node.appendRssCategoryElements(categories: List<RssCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
         if (category.name.isBlank()) continue

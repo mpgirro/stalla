@@ -7,6 +7,7 @@ import io.hemin.wien.model.Link
 import io.hemin.wien.model.Person
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import io.hemin.wien.util.isNeitherNullNorBlank
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -16,6 +17,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://www.w3.org/2005/Atom`
  */
+@InternalApi
 internal object AtomWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.ATOM

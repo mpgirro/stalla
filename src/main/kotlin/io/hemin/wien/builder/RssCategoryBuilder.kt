@@ -4,13 +4,13 @@ import io.hemin.wien.model.RssCategory
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [RssCategory] instances. */
-interface RssCategoryBuilder : Builder<RssCategory> {
+public interface RssCategoryBuilder : Builder<RssCategory> {
 
     /** Set the category value. */
-    fun category(category: String): RssCategoryBuilder
+    public fun category(category: String): RssCategoryBuilder
 
     /** Set the domain value. */
-    fun domain(domain: String?): RssCategoryBuilder
+    public fun domain(domain: String?): RssCategoryBuilder
 
     override fun from(model: RssCategory?): RssCategoryBuilder = whenNotNull(model) { category ->
         category(category.name)

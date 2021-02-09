@@ -8,6 +8,7 @@ import io.hemin.wien.dom.toHrefOnlyImageBuilder
 import io.hemin.wien.dom.toITunesCategoryBuilder
 import io.hemin.wien.parser.NamespaceParser
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import org.w3c.dom.Node
 
 /**
@@ -15,6 +16,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://www.google.com/schemas/play-podcasts/1.0`
  */
+@InternalApi
 internal object GooglePlayParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.GOOGLE_PLAY

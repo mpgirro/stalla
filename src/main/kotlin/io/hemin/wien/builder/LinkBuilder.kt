@@ -4,28 +4,28 @@ import io.hemin.wien.model.Link
 import io.hemin.wien.util.whenNotNull
 
 /** Builder for constructing [Link] instances. */
-interface LinkBuilder : Builder<Link> {
+public interface LinkBuilder : Builder<Link> {
 
     /** Set the href value. */
-    fun href(href: String): LinkBuilder
+    public fun href(href: String): LinkBuilder
 
     /** Set the hrefLang value. */
-    fun hrefLang(hrefLang: String?): LinkBuilder
+    public fun hrefLang(hrefLang: String?): LinkBuilder
 
     /** Set the hrefResolved value. */
-    fun hrefResolved(hrefResolved: String?): LinkBuilder
+    public fun hrefResolved(hrefResolved: String?): LinkBuilder
 
     /** Set the length value. */
-    fun length(length: String?): LinkBuilder
+    public fun length(length: String?): LinkBuilder
 
     /** Set the rel value. */
-    fun rel(rel: String?): LinkBuilder
+    public fun rel(rel: String?): LinkBuilder
 
     /** Set the title value. */
-    fun title(title: String?): LinkBuilder
+    public fun title(title: String?): LinkBuilder
 
     /** Set the type value. */
-    fun type(type: String?): LinkBuilder
+    public fun type(type: String?): LinkBuilder
 
     override fun from(model: Link?): LinkBuilder = whenNotNull(model) { link ->
         href(link.href)

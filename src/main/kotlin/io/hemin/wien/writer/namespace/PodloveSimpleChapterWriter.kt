@@ -4,6 +4,7 @@ import io.hemin.wien.dom.appendElement
 import io.hemin.wien.model.Episode
 import io.hemin.wien.model.Podcast
 import io.hemin.wien.util.FeedNamespace
+import io.hemin.wien.util.InternalApi
 import io.hemin.wien.util.isNeitherNullNorBlank
 import io.hemin.wien.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -13,6 +14,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://podlove.org/simple-chapters`
  */
+@InternalApi
 internal object PodloveSimpleChapterWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.PODLOVE_SIMPLE_CHAPTER

@@ -43,7 +43,7 @@ import java.time.temporal.TemporalAccessor
  * @property categories The RSS feed categories, if any.
  * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
  */
-data class Podcast(
+public data class Podcast(
     val title: String,
     val link: String,
     val description: String,
@@ -67,7 +67,8 @@ data class Podcast(
     val podcast: Podcast? = null
 ) {
 
-    companion object Factory : BuilderFactory<io.hemin.wien.model.Podcast, PodcastBuilder> {
+    public companion object Factory : BuilderFactory<io.hemin.wien.model.Podcast, PodcastBuilder> {
+
         /** Returns a builder implementation for building [io.hemin.wien.model.Podcast] model instances. */
         @JvmStatic
         override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
@@ -90,7 +91,7 @@ data class Podcast(
      * @property owner The `<itunes:title>` field text content.
      * @property owner The `<itunes:new-feed-url>` field text content.
      */
-    data class ITunes(
+    public data class ITunes(
         override val subtitle: String? = null,
         override val summary: String? = null,
         override val image: HrefOnlyImage?,
@@ -106,7 +107,8 @@ data class Podcast(
         val newFeedUrl: String? = null
     ) : ITunesBase {
 
-        companion object Factory : BuilderFactory<ITunes, PodcastITunesBuilder> {
+        public companion object Factory : BuilderFactory<ITunes, PodcastITunesBuilder> {
+
             /** Returns a builder implementation for building [ITunes] model instances. */
             @JvmStatic
             override fun builder(): PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
@@ -118,7 +120,7 @@ data class Podcast(
          *
          * @property type The string representation of the Enum instance.
          */
-        enum class ShowType(val type: String) {
+        public enum class ShowType(public val type: String) {
 
             /** Type describing an episodic show. */
             EPISODIC("episodic"),
@@ -126,14 +128,15 @@ data class Podcast(
             /** Type describing a serial show. */
             SERIAL("serial");
 
-            companion object {
+            public companion object Factory {
+
                 /**
                  * Factory method for the instance of the Enum matching the [type] parameter.
                  *
                  * @param type The string representation of the Enum instance.
                  * @return The Enum instance matching [type], or null if not matching instance exists.
                  */
-                fun of(type: String?): ShowType? = type?.let {
+                public fun from(type: String?): ShowType? = type?.let {
                     values().find { t -> t.type == it.toLowerCase() }
                 }
             }
@@ -151,7 +154,7 @@ data class Podcast(
      * @property block The logical value of the `<googleplay:block>` field's text content.
      * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
      */
-    data class GooglePlay(
+    public data class GooglePlay(
         val author: String? = null,
         val owner: String? = null,
         val categories: List<ITunesStyleCategory>,
@@ -160,7 +163,9 @@ data class Podcast(
         override val block: Boolean,
         override val image: HrefOnlyImage? = null
     ) : GooglePlayBase {
-        companion object Factory : BuilderFactory<GooglePlay, PodcastGooglePlayBuilder> {
+
+        public companion object Factory : BuilderFactory<GooglePlay, PodcastGooglePlayBuilder> {
+
             /** Returns a builder implementation for building [GooglePlay] model instances. */
             @JvmStatic
             override fun builder(): PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
@@ -172,10 +177,12 @@ data class Podcast(
      *
      * @property verify The Podcast's verification token.
      */
-    data class Fyyd(
+    public data class Fyyd(
         val verify: String
     ) {
-        companion object Factory : BuilderFactory<Fyyd, PodcastFyydBuilder> {
+
+        public companion object Factory : BuilderFactory<Fyyd, PodcastFyydBuilder> {
+
             /** Returns a builder implementation for building [Fyyd] model instances. */
             @JvmStatic
             override fun builder(): PodcastFyydBuilder = ValidatingPodcastFyydBuilder()
@@ -191,14 +198,16 @@ data class Podcast(
      * @property cssFile The feed's custom CSS file.
      * @property link An alternative link to podcast or RSS clients.
      */
-    data class Feedpress(
+    public data class Feedpress(
         val newsletterId: String? = null,
         val locale: String? = null,
         val podcastId: String? = null,
         val cssFile: String? = null,
         val link: String? = null
     ) {
-        companion object Factory : BuilderFactory<Feedpress, PodcastFeedpressBuilder> {
+
+        public companion object Factory : BuilderFactory<Feedpress, PodcastFeedpressBuilder> {
+
             /** Returns a builder implementation for building [Feedpress] model instances. */
             @JvmStatic
             override fun builder(): PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
@@ -211,12 +220,13 @@ data class Podcast(
      * @property locked The lock status of the podcast.
      * @property funding The funding information for the podcast.
      */
-    data class Podcast(
+    public data class Podcast(
         val locked: Locked? = null,
         val funding: List<Funding> = emptyList()
     ) {
 
-        companion object Factory : BuilderFactory<Podcast, PodcastPodcastBuilder> {
+        public companion object Factory : BuilderFactory<Podcast, PodcastPodcastBuilder> {
+
             /** Returns a builder implementation for building [Podcast] model instances. */
             @JvmStatic
             override fun builder(): PodcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
@@ -229,11 +239,13 @@ data class Podcast(
          * @param owner An email address that can be used to verify ownership when moving hosting platforms.
          * @param locked When `true`, the podcast cannot be transferred to a new hosting platform.
          */
-        data class Locked(
+        public data class Locked(
             val owner: String,
             val locked: Boolean
         ) {
-            companion object Factory : BuilderFactory<Locked, PodcastPodcastLockedBuilder> {
+
+            public companion object Factory : BuilderFactory<Locked, PodcastPodcastLockedBuilder> {
+
                 /** Returns a builder implementation for building [Locked] model instances. */
                 @JvmStatic
                 override fun builder(): PodcastPodcastLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
@@ -246,11 +258,13 @@ data class Podcast(
          * @param url The URL where listeners can find funding information for the podcast.
          * @param message The recommended CTA text to show users for the funding link.
          */
-        data class Funding(
+        public data class Funding(
             val url: String,
             val message: String
         ) {
-            companion object Factory : BuilderFactory<Funding, PodcastPodcastFundingBuilder> {
+
+            public companion object Factory : BuilderFactory<Funding, PodcastPodcastFundingBuilder> {
+
                 /** Returns a builder implementation for building [Funding] model instances. */
                 @JvmStatic
                 override fun builder(): PodcastPodcastFundingBuilder = ValidatingPodcastPodcastFundingBuilder()

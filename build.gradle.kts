@@ -25,7 +25,7 @@ buildscript {
 }
 
 plugins {
-    id("org.jetbrains.kotlin.jvm").version("1.4.21")
+    id("org.jetbrains.kotlin.jvm").version("1.4.30")
     id("org.jetbrains.dokka") version "1.4.20"
     id("jacoco")
     id("java")
@@ -53,9 +53,16 @@ dependencies {
     testImplementation("org.xmlunit:xmlunit-core:2.8.2")
 }
 
+kotlin {
+    explicitApi()
+}
+
 tasks {
     withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions {
+            jvmTarget = "1.8"
+            freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn", "-Xopt-in=io.hemin.wien.util.InternalApi")
+        }
     }
 
     withType<Test> {
