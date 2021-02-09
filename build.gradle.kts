@@ -33,7 +33,7 @@ plugins {
     id("org.jmailen.kotlinter") version "3.3.0"
 }
 
-group = "io.hemin"
+group = "dev.stalla"
 version = "0.10.0"
 
 val junit5Version = "5.7.0"
@@ -61,7 +61,7 @@ tasks {
     withType<KotlinCompile> {
         kotlinOptions {
             jvmTarget = "1.8"
-            freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn", "-Xopt-in=io.hemin.wien.util.InternalApi")
+            freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn", "-Xopt-in=dev.stalla.util.InternalApi")
         }
     }
 
