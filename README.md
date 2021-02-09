@@ -1,15 +1,25 @@
-# WIEN: Podcast RSS Feed metadata Parser and Writer
+<h1 align="center">
+  Stalla
+</h1>
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mpgirro/wien/Buildbot)
-[![Coverage Status](https://coveralls.io/repos/github/mpgirro/wien/badge.svg?branch=master)](https://coveralls.io/github/mpgirro/wien?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d3c5df2fbf4c9aaabe66e52a847cdd)](https://www.codacy.com/app/mpgirro/wien?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mpgirro/wien&amp;utm_campaign=Badge_Grade)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmpgirro%2Fwien.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmpgirro%2Fwien?ref=badge_shield)
+<h3 align="center">
+  Podcast RSS Feed metadata Parser and Writer
+</h3>
 
-An RSS 2.0 feed parser for extracting Podcast metadata on the JVM. This library is written in Kotlin, but fully Java compatible.
+<div align="center">
 
-## ⚠️ Early development status warning
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mpgirro/stalla/Buildbot)
+[![Coverage Status](https://coveralls.io/repos/github/mpgirro/stalla/badge.svg?branch=master)](https://coveralls.io/github/mpgirro/stalla?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d3c5df2fbf4c9aaabe66e52a847cdd)](https://www.codacy.com/app/mpgirro/stalla?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mpgirro/stalla&amp;utm_campaign=Badge_Grade)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmpgirro%2Fwien.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmpgirro%2Fstalla?ref=badge_shield)
 
-WIEN is undergoing active development and things may change and APIs may break. We expect breaking changes to happen on our way to v1.0, when our API will be finalised. You __should probably not use it in production yet__, even though we're confident what we have implemented is fairly stable.
+</div>
+
+An RSS 2.0 feed parser and writer library for Podcast metadata on the JVM. This library is written in Kotlin and has a Java-friendly API.
+
+## ⚠️ Active development status warning
+
+Stalla is undergoing active development and things may change and APIs may break. We expect breaking changes to happen on our way to v1.0, when our API will be finalised. You __should probably not use it in production yet__, even though we're confident what we have implemented is fairly stable.
 
 ## Supported standards
 
@@ -27,13 +37,13 @@ WIEN is undergoing active development and things may change and APIs may break. 
 - [ ] [Dublin Core](http://purl.org/dc/elements/1.1/) (properties in the `/elements/1.1/` namespace)
 - [ ] [Media RSS](http://www.rssboard.org/media-rss) ([example feed](https://gist.github.com/misener/7dd9b587b468aea1ae5a))
 
-Feel free to open an issue if WIEN is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.
+Feel free to open an issue if Stalla is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.
 
 ## Usage
 
 ### Parsing an RSS feed
 
-To parse an RSS feed, you need to use the [`PodcastRssParser`](src/main/kotlin/io/hemin/wien/PodcastRssParser.kt) object.
+To parse an RSS feed, you need to use the [`PodcastRssParser`](src/main/kotlin/dev/stalla/PodcastRssParser.kt) object.
 Parsing an RSS feed is as easy as picking the overload of `parse()` that fits your needs:
 
 ```kotlin
@@ -45,7 +55,7 @@ The `parse()` function will return a parsed `Podcast?`, which may be `null` if t
 
 ### Writing an RSS feed
 
-To write an RSS feed, you need to use the [`PodcastRssWriter`](src/main/kotlin/io/hemin/wien/PodcastRssWriter.kt) object.
+To write an RSS feed, you need to use the [`PodcastRssWriter`](src/main/kotlin/dev/stalla/PodcastRssWriter.kt) object.
 Writing an RSS feed is as easy as picking the overload of `writeRssFeed()` that fits your needs:
 
 ```kotlin
@@ -71,10 +81,10 @@ $ ./gradlew dokkaJekyll
 
 Use [ROME](https://github.com/rometools/rome) instead. It supports both RSS and Atom feed parsing, and provides a unified result interface for the extracted information.
 
-We've provided several modules to extend ROME for additional XML namespaces relevant for Podcast feeds. However, the ROME developers unfortunatelly have not merged the pull requests. Therefore, this library does not support the same range of information extraction as WIEN does.
+We've provided several modules to extend ROME for additional XML namespaces relevant for Podcast feeds. However, the ROME developers unfortunatelly have not merged the pull requests. Therefore, this library does not support the same range of information extraction as Stalla does.
 
 Also note that certain standard information are only supported by either RSS 2.0 or Atom 1.0 feeds, but not available in both feed types.
 
 ## License
 
-Wien is released under the [BSD 3-clause license](LICENSE).
+Stalla is released under the [BSD 3-clause license](LICENSE).
