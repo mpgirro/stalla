@@ -26,16 +26,16 @@ internal class RealLifeFeedsTest {
 
     private fun testRealLifeFeed(file: File) {
         assertAll {
-            val parsedPodcast = dev.stalla.PodcastRssParser.parse(file)
+            val parsedPodcast = PodcastRssParser.parse(file)
             assertThat(parsedPodcast, "parsed podcast").isNotNull()
 
             val tmpFile = File.createTempFile("stalla_test", "writer_output")
-            dev.stalla.PodcastRssWriter.writeRssFeed(parsedPodcast!!, tmpFile)
+            PodcastRssWriter.writeRssFeed(parsedPodcast!!, tmpFile)
 
             assertThat(tmpFile, "written file").exists()
             assertThat(tmpFile, "written file").isNotEmpty()
 
-            val reparsedPodcast = dev.stalla.PodcastRssParser.parse(tmpFile)
+            val reparsedPodcast = PodcastRssParser.parse(tmpFile)
             assertThat(reparsedPodcast, "written file for ${file.nameWithoutExtension} matches original Podcast").isEqualTo(parsedPodcast)
 
             tmpFile.delete()

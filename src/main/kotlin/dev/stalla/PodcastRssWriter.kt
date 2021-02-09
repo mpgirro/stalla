@@ -40,7 +40,7 @@ public object PodcastRssWriter {
         PodcastNamespaceWriter
     )
 
-    private val supportedNamespaces = dev.stalla.PodcastRssWriter.writers.mapNotNull { it.namespace }
+    private val supportedNamespaces = writers.mapNotNull { it.namespace }
 
     private val documentBuilder = DomBuilderFactory.newDocumentBuilder()
 
@@ -59,7 +59,7 @@ public object PodcastRssWriter {
      */
     public fun writeRssFeed(podcast: Podcast, file: File) {
         file.outputStream()
-            .use { outputStream -> dev.stalla.PodcastRssWriter.writeRssFeed(podcast, outputStream) }
+            .use { outputStream -> writeRssFeed(podcast, outputStream) }
     }
 
     /**
@@ -69,23 +69,23 @@ public object PodcastRssWriter {
      * @param stream The [OutputStream] to write to.
      */
     public fun writeRssFeed(podcast: Podcast, stream: OutputStream) {
-        val document = dev.stalla.PodcastRssWriter.writeToDocument(podcast)
+        val document = writeToDocument(podcast)
         val source = DOMSource(document)
 
         stream.bufferedWriter().use { writer ->
             val result = StreamResult(writer)
-            dev.stalla.PodcastRssWriter.transformer.transform(source, result)
+            transformer.transform(source, result)
         }
     }
 
     private fun writeToDocument(podcast: Podcast): Document {
-        val document = dev.stalla.PodcastRssWriter.documentBuilder.newDocument()
-        val rssElement = dev.stalla.PodcastRssWriter.createRssElement(document)
+        val document = documentBuilder.newDocument()
+        val rssElement = createRssElement(document)
 
         val channelElement = rssElement.appendChild(document.createElement("channel"))
             .asElement()
 
-        for (writer in dev.stalla.PodcastRssWriter.writers) {
+        for (writer in writers) {
             writer.tryWritingPodcastData(podcast, channelElement)
         }
 
@@ -93,7 +93,7 @@ public object PodcastRssWriter {
             val itemElement = channelElement.appendChild(document.createElement("item"))
                 .asElement()
 
-            for (writer in dev.stalla.PodcastRssWriter.writers) {
+            for (writer in writers) {
                 writer.tryWritingEpisodeData(episode, itemElement)
             }
         }
@@ -103,7 +103,7 @@ public object PodcastRssWriter {
 
     private fun createRssElement(document: Document) = document.appendChild(document.createElement("rss"))
         .asElement()
-        .addNamespaces(dev.stalla.PodcastRssWriter.supportedNamespaces)
+        .addNamespaces(supportedNamespaces)
         .apply {
             setAttribute("version", "2.0")
             setAttribute("encoding", "UTF-8")

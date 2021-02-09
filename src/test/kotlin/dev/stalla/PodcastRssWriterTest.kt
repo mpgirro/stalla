@@ -15,13 +15,13 @@ internal class PodcastRssWriterTest {
         val file = File.createTempFile("stalla_test", "writer_output")
 
         val podcast = aPodcast()
-        dev.stalla.PodcastRssWriter.writeRssFeed(podcast, file)
+        PodcastRssWriter.writeRssFeed(podcast, file)
 
         assertAll {
             assertThat(file, "written file").exists()
             assertThat(file, "written file").isNotEmpty()
 
-            val reparsedPodcast = dev.stalla.PodcastRssParser.parse(file)
+            val reparsedPodcast = PodcastRssParser.parse(file)
             assertThat(reparsedPodcast, "written file matches original Podcast").isEqualTo(podcast)
 
             file.delete()

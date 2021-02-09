@@ -27,17 +27,17 @@ internal class PodcastRssParserTest {
 
     @Test
     internal fun `should return null when parsing an empty document`() {
-        assertThat(dev.stalla.PodcastRssParser.parse(createDocument())).isNull()
+        assertThat(PodcastRssParser.parse(createDocument())).isNull()
     }
 
     @Test
     internal fun `should return null when parsing a document with no 'rss' tag at top level`() {
-        assertThat(dev.stalla.PodcastRssParser.parse(createDocumentWithNode("banana"))).isNull()
+        assertThat(PodcastRssParser.parse(createDocumentWithNode("banana"))).isNull()
     }
 
     @Test
     internal fun `should return null when parsing a document with an empty 'rss' tag`() {
-        assertThat(dev.stalla.PodcastRssParser.parse(createDocumentWithNode("rss"))).isNull()
+        assertThat(PodcastRssParser.parse(createDocumentWithNode("rss"))).isNull()
     }
 
     @Test
@@ -46,7 +46,7 @@ internal class PodcastRssParserTest {
             val rssElement = findElementByName("rss") ?: fail("No rss element found")
             rssElement.appendChild(createElement("banana"))
         }
-        assertThat(dev.stalla.PodcastRssParser.parse(document)).isNull()
+        assertThat(PodcastRssParser.parse(document)).isNull()
     }
 
     @Test
@@ -55,7 +55,7 @@ internal class PodcastRssParserTest {
             val rssElement = findElementByName("rss") ?: fail("No rss element found")
             rssElement.appendChild(createElement("channel"))
         }
-        assertThat(dev.stalla.PodcastRssParser.parse(document)).isNull()
+        assertThat(PodcastRssParser.parse(document)).isNull()
     }
 
     @Test
@@ -65,7 +65,7 @@ internal class PodcastRssParserTest {
             val channelElement = rssElement.findElementByName("channel") ?: fail("No channel element found")
             rssElement.insertBefore(createElement("channel"), channelElement)
         }
-        assertThat(dev.stalla.PodcastRssParser.parse(document)).isNotNull()
+        assertThat(PodcastRssParser.parse(document)).isNotNull()
     }
 
     @Test
@@ -75,7 +75,7 @@ internal class PodcastRssParserTest {
             val channelElement = rssElement.appendChild(createElement("channel"))
             channelElement.appendChild(createElement("banana"))
         }
-        assertThat(dev.stalla.PodcastRssParser.parse(document)).isNull()
+        assertThat(PodcastRssParser.parse(document)).isNull()
     }
 
     @Test
@@ -86,14 +86,14 @@ internal class PodcastRssParserTest {
             val firstItemElement = channelElement.findElementByName("item") ?: fail("No item element found")
             channelElement.insertBefore(createElement("item"), firstItemElement)
         }
-        assertThat(dev.stalla.PodcastRssParser.parse(document)).isNotNull()
+        assertThat(PodcastRssParser.parse(document)).isNotNull()
             .prop(Podcast::episodes).hasSize(2) // Two in the xml — the empty one we inserted is skipped
     }
 
     @Test
     internal fun `should parse a basic feed correctly`() {
         val document = validRssDocument()
-        assertThat(dev.stalla.PodcastRssParser.parse(document)).isNotNull().all {
+        assertThat(PodcastRssParser.parse(document)).isNotNull().all {
             prop(Podcast::title).isEqualTo("Lorem Ipsum title")
             prop(Podcast::description).isEqualTo("Lorem Ipsum description")
             prop(Podcast::link).isEqualTo("http://example.org")
@@ -129,7 +129,7 @@ internal class PodcastRssParserTest {
     @Test
     internal fun `should parse a complex feed correctly`() {
         val document = validRssDocument("/xml/rss-complex.xml")
-        assertThat(dev.stalla.PodcastRssParser.parse(document)).isNotNull().all {
+        assertThat(PodcastRssParser.parse(document)).isNotNull().all {
             prop(Podcast::generator).isEqualTo("Fireside (https://fireside.fm)")
             prop(Podcast::title).isEqualTo("Smashing Security")
             prop(Podcast::link).isEqualTo("http://www.smashingsecurity.com")

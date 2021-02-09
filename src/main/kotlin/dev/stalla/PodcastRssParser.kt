@@ -53,7 +53,7 @@ public object PodcastRssParser {
      * @param uri The location of the content to be parsed.
      * @return A [Podcast] if the XML document behind the URI is an RSS document, otherwise null.
      */
-    public fun parse(uri: String): Podcast? = dev.stalla.PodcastRssParser.parse(dev.stalla.PodcastRssParser.builder.parse(uri))
+    public fun parse(uri: String): Podcast? = parse(builder.parse(uri))
 
     /**
      * Parse the content of the given input stream as an XML document
@@ -62,7 +62,7 @@ public object PodcastRssParser {
      * @param inputStream InputStream containing the content to be parsed.
      * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise null.
      */
-    public fun parse(inputStream: InputStream): Podcast? = dev.stalla.PodcastRssParser.parse(dev.stalla.PodcastRssParser.builder.parse(inputStream))
+    public fun parse(inputStream: InputStream): Podcast? = parse(builder.parse(inputStream))
 
     /**
      * Parse the content of the given input stream as an XML document
@@ -73,7 +73,7 @@ public object PodcastRssParser {
      * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise null.
      */
     public fun parse(inputStream: InputStream, systemId: String): Podcast? =
-        dev.stalla.PodcastRssParser.parse(dev.stalla.PodcastRssParser.builder.parse(inputStream, systemId))
+        parse(builder.parse(inputStream, systemId))
 
     /**
      * Parse the content of the given file as an XML document
@@ -82,7 +82,7 @@ public object PodcastRssParser {
      * @param file File containing the content to be parsed.
      * @return A [Podcast] if the XML document behind the file is an RSS document, otherwise null.
      */
-    public fun parse(file: File): Podcast? = dev.stalla.PodcastRssParser.parse(dev.stalla.PodcastRssParser.builder.parse(file))
+    public fun parse(file: File): Podcast? = parse(builder.parse(file))
 
     /**
      * Parse the content of the given input source as an XML document
@@ -91,7 +91,7 @@ public object PodcastRssParser {
      * @param inputSource InputSource containing the content to be parsed.
      * @return A [Podcast] if the XML document behind the input source is an RSS document, otherwise null.
      */
-    public fun parse(inputSource: InputSource): Podcast? = dev.stalla.PodcastRssParser.parse(dev.stalla.PodcastRssParser.builder.parse(inputSource))
+    public fun parse(inputSource: InputSource): Podcast? = parse(builder.parse(inputSource))
 
     /**
      * Parse the content of the given XML document and return a [Podcast] if the XML document is an RSS feed.
@@ -118,7 +118,7 @@ public object PodcastRssParser {
                     builder.addEpisodeBuilder(episodeBuilder)
                 }
                 else -> {
-                    for (parser in dev.stalla.PodcastRssParser.parsers) {
+                    for (parser in parsers) {
                         parser.tryParsingChannelChildNode(element, builder)
                     }
                 }
@@ -130,7 +130,7 @@ public object PodcastRssParser {
     private fun Node.parseEpisodeNode(): EpisodeBuilder? = ifTagNameIs("item") {
         val builder: EpisodeBuilder = ValidatingEpisodeBuilder()
         for (element in childNodes.asListOfNodes()) {
-            for (parser in dev.stalla.PodcastRssParser.parsers) {
+            for (parser in parsers) {
                 parser.tryParsingItemChildNode(element, builder)
             }
         }

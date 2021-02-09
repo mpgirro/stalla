@@ -69,7 +69,7 @@ public data class Podcast(
 
     public companion object Factory : BuilderFactory<dev.stalla.model.Podcast, PodcastBuilder> {
 
-        /** Returns a builder implementation for building [io.hemin.wien.model.Podcast] model instances. */
+        /** Returns a builder implementation for building [dev.stalla.model.Podcast] model instances. */
         @JvmStatic
         override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
     }
