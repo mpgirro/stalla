@@ -6,7 +6,7 @@ buildscript {
         google()
         mavenCentral()
         jcenter()
-        maven { url = "https://kotlin.bintray.com/kotlinx/" }
+//        maven { url = "https://kotlin.bintray.com/kotlinx/" }
     }
 
     val ktlintVersion = "0.40.0"
@@ -61,6 +61,7 @@ dependencies {
     orchidRuntimeOnly("io.github.javaeden.orchid:OrchidKotlindoc:$orchidVersion")
     orchidRuntimeOnly("io.github.javaeden.orchid:OrchidSearch:$orchidVersion")
     orchidRuntimeOnly("io.github.javaeden.orchid:OrchidGithub:$orchidVersion")
+    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidWiki:$orchidVersion")
 
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("com.willowtreeapps.assertk:assertk:0.23")

@@ -8,8 +8,8 @@ theme:
   extraCss:
     - 'assets/css/custom.scss'
   menu:
-    - type: 'page'
-      itemId: 'Changelog'
+    - type: 'wiki'
+      title: 'Manual'
     - type: 'separator'
       title: 'API Docs'
     - type: 'sourcedocPages'
@@ -22,6 +22,8 @@ theme:
       node: 'packages'
       asSubmenu: true
       submenuTitle: 'Packages'
+    - type: 'page'
+      itemId: 'Changelog'
 
 Editorial:
   primaryColor: '#0098f1'
@@ -36,8 +38,6 @@ kotlindoc:
     - './../../main/kotlin'
   showRunnerLogs: false
   homePageOnly: false
-  homePagePermalink: ':module'
-  sourcePagePermalink: ':moduleType/:module/:sourceDocPath'
   sourcePages:
     menu:
       - type: 'sourcedocPageLinks'
@@ -54,3 +54,10 @@ kotlindoc:
       pageContentsMenu:
         - type: 'sourcedocPageLinks'
           includeItems: true
+
+wiki:
+  sections:
+    manual:
+      adapter:
+        type: "github"
+        repo: "mpgirro/stalla"
