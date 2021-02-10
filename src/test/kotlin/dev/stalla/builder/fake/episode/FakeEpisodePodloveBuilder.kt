@@ -3,9 +3,9 @@ package dev.stalla.builder.fake.episode
 import dev.stalla.builder.episode.EpisodePodloveBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.podlove.EpisodePodlove
 
-internal class FakeEpisodePodloveBuilder : FakeBuilder<Episode.Podlove>(), EpisodePodloveBuilder {
+internal class FakeEpisodePodloveBuilder : FakeBuilder<EpisodePodlove>(), EpisodePodloveBuilder {
 
     var chapterBuilders: MutableList<EpisodePodloveSimpleChapterBuilder> = mutableListOf()
 

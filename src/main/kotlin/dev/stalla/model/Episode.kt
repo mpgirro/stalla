@@ -9,8 +9,6 @@ import dev.stalla.builder.episode.EpisodePodcastBuilder
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
-import dev.stalla.builder.episode.EpisodePodloveBuilder
-import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBitloveBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeContentBuilder
@@ -20,12 +18,10 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastChaptersBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastTranscriptBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodePodloveBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
 import dev.stalla.model.Episode.Podcast.Transcript.Type
-import dev.stalla.model.Episode.Podlove.SimpleChapter
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.podlove.EpisodePodlove
 import java.time.Duration
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
@@ -66,7 +62,7 @@ public data class Episode(
     val content: Content? = null,
     val iTunes: EpisodeItunes? = null,
     val atom: Atom? = null,
-    val podlove: Podlove? = null,
+    val podlove: EpisodePodlove? = null,
     val googlePlay: EpisodeGoogleplay? = null,
     val bitlove: Bitlove? = null,
     val podcast: Podcast? = null
@@ -133,48 +129,6 @@ public data class Episode(
             /** Returns a builder implementation for building [Content] model instances. */
             @JvmStatic
             override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
-        }
-    }
-
-    /**
-     * Model class for data from elements of namespaces from the Podlove
-     * standards family that are valid within `<item>` elements.
-     *
-     * @property simpleChapters List of data from the `<psc:chapter>` elements as [SimpleChapter] instances.
-     */
-    public data class Podlove(
-        val simpleChapters: List<SimpleChapter>
-    ) {
-
-        public companion object Factory : BuilderFactory<Podlove, EpisodePodloveBuilder> {
-
-            /** Returns a builder implementation for building [Podlove] model instances. */
-            @JvmStatic
-            override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
-        }
-
-        /**
-         * Model class for data from `<psc:chapter>` elements of the Podlove
-         * Simple Chapter namespace that are valid within `<item>` elements.
-         *
-         * @property start The value of the chapter's `start` attribute.
-         * @property title The value of the chapter's `title` attribute.
-         * @property href The value of the chapter's `href` attribute.
-         * @property image The value of the chapter's `image` attribute.
-         */
-        public data class SimpleChapter(
-            val start: String,
-            val title: String,
-            val href: String? = null,
-            val image: String? = null
-        ) {
-
-            public companion object Factory : BuilderFactory<SimpleChapter, EpisodePodloveSimpleChapterBuilder> {
-
-                /** Returns a builder implementation for building [SimpleChapter] model instances. */
-                @JvmStatic
-                override fun builder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
-            }
         }
     }
 

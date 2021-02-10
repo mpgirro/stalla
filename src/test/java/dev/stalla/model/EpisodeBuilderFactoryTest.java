@@ -3,6 +3,8 @@ package dev.stalla.model;
 import dev.stalla.builder.episode.*;
 import dev.stalla.model.googleplay.EpisodeGoogleplay;
 import dev.stalla.model.itunes.EpisodeItunes;
+import dev.stalla.model.podlove.EpisodePodlove;
+import dev.stalla.model.podlove.SimpleChapter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -77,11 +79,11 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Podlove model using builder factory methods only")
     public void testEpisodePodloveBuilderFactory() {
-        EpisodePodloveSimpleChapterBuilder episodePodloveSimpleChapterBuilder = Episode.Podlove.SimpleChapter.builder()
+        EpisodePodloveSimpleChapterBuilder episodePodloveSimpleChapterBuilder = SimpleChapter.builder()
             .title("title")
             .start("start");
 
-        EpisodePodloveBuilder episodePodloveBuilder = Episode.Podlove.builder()
+        EpisodePodloveBuilder episodePodloveBuilder = EpisodePodlove.builder()
             .addSimpleChapterBuilder(episodePodloveSimpleChapterBuilder);
 
         assertNotNull(episodePodloveBuilder.build());
@@ -90,7 +92,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Podlove.SimpleChapter model using builder factory methods only")
     public void testEpisodePodloveSimpleChapterBuilderFactory() {
-        EpisodePodloveSimpleChapterBuilder episodePodloveSimpleChapterBuilder = Episode.Podlove.SimpleChapter.builder()
+        EpisodePodloveSimpleChapterBuilder episodePodloveSimpleChapterBuilder = SimpleChapter.builder()
             .title("title")
             .start("start");
 

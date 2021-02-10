@@ -14,6 +14,8 @@ import dev.stalla.model.anRssCategory
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
+import dev.stalla.model.podlove.EpisodePodlove
+import dev.stalla.model.podlove.SimpleChapter
 import java.time.Duration
 import java.time.Month
 import java.time.temporal.TemporalAccessor
@@ -33,7 +35,7 @@ internal fun anEpisode(
     content: Episode.Content? = anEpisodeContent(),
     iTunes: EpisodeItunes? = anEpisodeITunes(),
     atom: Atom? = anEpisodeAtom(),
-    podlove: Episode.Podlove? = anEpisodePodlove(),
+    podlove: EpisodePodlove? = anEpisodePodlove(),
     googlePlay: EpisodeGoogleplay? = anEpisodeGooglePlay(),
     bitlove: Episode.Bitlove? = anEpisodeBitlove(),
     podcast: Episode.Podcast? = anEpisodePodcast()
@@ -93,15 +95,15 @@ internal fun anEpisodeAtom(
 ) = Atom(authors, contributors, links)
 
 internal fun anEpisodePodlove(
-    simpleChapters: List<Episode.Podlove.SimpleChapter> = listOf(aPodloveSimpleChapter())
-) = Episode.Podlove(simpleChapters)
+    simpleChapters: List<SimpleChapter> = listOf(aPodloveSimpleChapter())
+) = EpisodePodlove(simpleChapters)
 
 internal fun aPodloveSimpleChapter(
     start: String = "episode podlove simple chapter start",
     title: String = "episode podlove simple chapter title",
     href: String? = "episode podlove simple chapter href",
     image: String? = "episode podlove simple chapter image"
-) = Episode.Podlove.SimpleChapter(start, title, href, image)
+) = SimpleChapter(start, title, href, image)
 
 internal fun anEpisodeGooglePlay(
     description: String? = "episode googleplay description",

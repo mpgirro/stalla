@@ -12,6 +12,7 @@ import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
 import dev.stalla.model.RssCategory
 import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.podlove.SimpleChapter
 
 /** Transforms this list into a list of [RssCategoryBuilder] */
 @InternalApi
@@ -47,8 +48,8 @@ internal fun List<Podcast.Podcast.Funding>.asBuilders(): List<PodcastPodcastFund
 /** Transforms this list into a list of [EpisodePodloveSimpleChapterBuilder] */
 @InternalApi
 @JvmName("asSimpleChapterBuilders")
-internal fun List<Episode.Podlove.SimpleChapter>.asBuilders(): List<EpisodePodloveSimpleChapterBuilder> =
-    map(Episode.Podlove.SimpleChapter.builder()::from)
+internal fun List<SimpleChapter>.asBuilders(): List<EpisodePodloveSimpleChapterBuilder> =
+    map(SimpleChapter.builder()::from)
 
 /** Transforms this list into a list of [EpisodeBuilder] */
 @InternalApi
