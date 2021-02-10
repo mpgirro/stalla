@@ -21,6 +21,7 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.Atom
 import dev.stalla.model.Podcast
+import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.PodcastItunes
@@ -237,7 +238,7 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::iTunes).isNotNull().prop(PodcastItunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
                 prop(Podcast::atom).isNotNull().prop(Atom::authors)
                     .containsExactly(expectedAtomAuthorBuilder.build())
-                prop(Podcast::feedpress).isNotNull().prop(Podcast.Feedpress::newsletterId)
+                prop(Podcast::feedpress).isNotNull().prop(Feedpress::newsletterId)
                     .isEqualTo("feedpress newsletterId")
                 prop(Podcast::fyyd).isNotNull().prop(Fyyd::verify).isEqualTo("fyyd verify")
                 prop(Podcast::googlePlay).isNotNull().prop(PodcastGoogleplay::description).isEqualTo("play description")

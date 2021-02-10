@@ -5,6 +5,7 @@ import dev.stalla.builder.ITunesStyleCategoryBuilder;
 import dev.stalla.builder.episode.EpisodeBuilder;
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder;
 import dev.stalla.builder.podcast.*;
+import dev.stalla.model.feedpress.Feedpress;
 import dev.stalla.model.fyyd.Fyyd;
 import dev.stalla.model.googleplay.PodcastGoogleplay;
 import dev.stalla.model.itunes.ITunesStyleCategory;
@@ -76,7 +77,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a Podcast.Feedpress model using builder factory methods only")
     public void testPodcastFeedpressBuilderFactory() {
-        PodcastFeedpressBuilder podcastFeedpressBuilder = Podcast.Feedpress.builder()
+        PodcastFeedpressBuilder podcastFeedpressBuilder = Feedpress.builder()
             .locale("locale");
 
         assertNotNull(podcastFeedpressBuilder.build());

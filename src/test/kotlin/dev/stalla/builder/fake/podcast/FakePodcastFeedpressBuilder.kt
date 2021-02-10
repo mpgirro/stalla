@@ -2,9 +2,9 @@ package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastFeedpressBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.feedpress.Feedpress
 
-internal class FakePodcastFeedpressBuilder : FakeBuilder<Podcast.Feedpress>(), PodcastFeedpressBuilder {
+internal class FakePodcastFeedpressBuilder : FakeBuilder<Feedpress>(), PodcastFeedpressBuilder {
 
     var newsletterIdValue: String? = null
     var localeValue: String? = null

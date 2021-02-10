@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.podcast.PodcastFeedpressBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.util.anyNotNull
 
 internal class ValidatingPodcastFeedpressBuilder : PodcastFeedpressBuilder {
@@ -25,11 +25,11 @@ internal class ValidatingPodcastFeedpressBuilder : PodcastFeedpressBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() = anyNotNull(newsletterId, locale, podcastId, cssFile, link)
 
-    override fun build(): Podcast.Feedpress? {
+    override fun build(): Feedpress? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Podcast.Feedpress(newsletterId, locale, podcastId, cssFile, link)
+        return Feedpress(newsletterId, locale, podcastId, cssFile, link)
     }
 }
