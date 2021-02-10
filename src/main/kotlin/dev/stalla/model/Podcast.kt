@@ -2,16 +2,15 @@ package dev.stalla.model
 
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.podcast.PodcastFeedpressBuilder
-import dev.stalla.builder.podcast.PodcastFyydBuilder
 import dev.stalla.builder.podcast.PodcastPodcastBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastFeedpressBuilder
-import dev.stalla.builder.validating.podcast.ValidatingPodcastFyydBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastFundingBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastLockedBuilder
+import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.PodcastItunes
 import java.time.temporal.TemporalAccessor
@@ -70,23 +69,6 @@ public data class Podcast(
         /** Returns a builder implementation for building [dev.stalla.model.Podcast] model instances. */
         @JvmStatic
         override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
-    }
-
-    /**
-     * Model class for data from elements of the Fyyd namespace that are valid within `<channel>` elements.
-     *
-     * @property verify The Podcast's verification token.
-     */
-    public data class Fyyd(
-        val verify: String
-    ) {
-
-        public companion object Factory : BuilderFactory<Fyyd, PodcastFyydBuilder> {
-
-            /** Returns a builder implementation for building [Fyyd] model instances. */
-            @JvmStatic
-            override fun builder(): PodcastFyydBuilder = ValidatingPodcastFyydBuilder()
-        }
     }
 
     /**

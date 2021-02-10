@@ -5,6 +5,7 @@ import dev.stalla.builder.ITunesStyleCategoryBuilder;
 import dev.stalla.builder.episode.EpisodeBuilder;
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder;
 import dev.stalla.builder.podcast.*;
+import dev.stalla.model.fyyd.Fyyd;
 import dev.stalla.model.googleplay.PodcastGoogleplay;
 import dev.stalla.model.itunes.ITunesStyleCategory;
 import dev.stalla.model.itunes.PodcastItunes;
@@ -66,7 +67,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a Podcast.Fyyd model using builder factory methods only")
     public void testPodcastFyydBuilderFactory() {
-        PodcastFyydBuilder podcastFyydBuilder = Podcast.Fyyd.builder()
+        PodcastFyydBuilder podcastFyydBuilder = Fyyd.builder()
             .verify("verify");
 
         assertNotNull(podcastFyydBuilder.build());

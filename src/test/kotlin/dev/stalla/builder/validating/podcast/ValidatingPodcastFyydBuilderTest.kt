@@ -9,7 +9,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastFyydBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.podcast.aPodcastFyyd
 import org.junit.jupiter.api.Test
 
@@ -34,14 +34,14 @@ internal class ValidatingPodcastFyydBuilderTest {
         assertAll {
             assertThat(podcastFyydBuilder).prop(PodcastFyydBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(podcastFyydBuilder.build()).isNotNull().prop(Podcast.Fyyd::verify).isEqualTo("verify")
+            assertThat(podcastFyydBuilder.build()).isNotNull().prop(Fyyd::verify).isEqualTo("verify")
         }
     }
 
     @Test
     internal fun `should populate a Podcast Feedpress builder with all properties from an Podcast Feedpress model`() {
         val podcastFyyd = aPodcastFyyd()
-        val podcastFyydBuilder = Podcast.Fyyd.builder().from(podcastFyyd)
+        val podcastFyydBuilder = Fyyd.builder().from(podcastFyyd)
 
         assertAll {
             assertThat(podcastFyydBuilder).prop(PodcastFyydBuilder::hasEnoughDataToBuild).isTrue()

@@ -16,6 +16,7 @@ import dev.stalla.model.anITunesCategory
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.anRssImage
 import dev.stalla.model.episode.anEpisode
+import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.ITunesStyleCategory
 import dev.stalla.model.itunes.PodcastItunes
@@ -40,7 +41,7 @@ internal fun aPodcast(
     episodes: List<Episode> = listOf(anEpisode()),
     iTunes: PodcastItunes? = aPodcastITunes(),
     atom: Atom? = aPodcastAtom(),
-    fyyd: Podcast.Fyyd? = aPodcastFyyd(),
+    fyyd: Fyyd? = aPodcastFyyd(),
     feedpress: Podcast.Feedpress? = aPodcastFeedpress(),
     googlePlay: PodcastGoogleplay? = aPodcastGooglePlay(),
     podcast: Podcast.Podcast? = aPodcastPodcast(),
@@ -93,7 +94,7 @@ internal fun aPodcastAtom(
 
 internal fun aPodcastFyyd(
     verify: String = "podcast fyyd verify"
-) = Podcast.Fyyd(verify)
+) = Fyyd(verify)
 
 internal fun aPodcastFeedpress(
     newsletterId: String? = "podcast feedpress newsletterId",
