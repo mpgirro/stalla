@@ -1,7 +1,7 @@
 package dev.stalla.builder.fake
 
 import dev.stalla.builder.LinkBuilder
-import dev.stalla.model.Link
+import dev.stalla.model.atom.Link
 
 internal class FakeLinkBuilder : FakeBuilder<Link>(), LinkBuilder {
 

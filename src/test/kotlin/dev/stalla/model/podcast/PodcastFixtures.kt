@@ -4,7 +4,6 @@ import dev.stalla.dateTime
 import dev.stalla.model.Atom
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.Link
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
 import dev.stalla.model.aLink
@@ -13,6 +12,7 @@ import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.anITunesCategory
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.anRssImage
+import dev.stalla.model.atom.Link
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd

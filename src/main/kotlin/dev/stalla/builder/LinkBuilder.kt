@@ -1,6 +1,6 @@
 package dev.stalla.builder
 
-import dev.stalla.model.Link
+import dev.stalla.model.atom.Link
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [Link] instances. */

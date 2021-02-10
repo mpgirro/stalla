@@ -1,7 +1,8 @@
-package dev.stalla.model
+package dev.stalla.model.atom
 
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
+import dev.stalla.model.BuilderFactory
 
 /**
  * Model class for elements describing hyperlinks.

@@ -1,5 +1,6 @@
 package dev.stalla.model
 
+import dev.stalla.model.atom.Link
 import dev.stalla.model.itunes.ITunesStyleCategory
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
