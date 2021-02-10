@@ -2,7 +2,6 @@ package dev.stalla.model
 
 import dev.stalla.builder.episode.EpisodeBitloveBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
-import dev.stalla.builder.episode.EpisodeContentBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.episode.EpisodeGuidBuilder
 import dev.stalla.builder.episode.EpisodePodcastBuilder
@@ -11,7 +10,6 @@ import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBitloveBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodeContentBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeGuidBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastBuilder
@@ -19,6 +17,7 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastChaptersBui
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastTranscriptBuilder
 import dev.stalla.model.Episode.Podcast.Transcript.Type
+import dev.stalla.model.content.Content
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.podlove.EpisodePodlove
@@ -112,23 +111,6 @@ public data class Episode(
             /** Returns a builder implementation for building [Guid] model instances. */
             @JvmStatic
             override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
-        }
-    }
-
-    /**
-     * Model class for data from elements of the Content namespace that are valid within `<item>` elements.
-     *
-     * @property encoded The text content of the `<content:encoded>` element.
-     */
-    public data class Content(
-        val encoded: String
-    ) {
-
-        public companion object Factory : BuilderFactory<Content, EpisodeContentBuilder> {
-
-            /** Returns a builder implementation for building [Content] model instances. */
-            @JvmStatic
-            override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
         }
     }
 

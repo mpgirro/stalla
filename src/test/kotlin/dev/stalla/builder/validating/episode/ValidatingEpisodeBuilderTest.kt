@@ -17,6 +17,7 @@ import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.Atom
 import dev.stalla.model.Episode
+import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
@@ -152,7 +153,7 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::guid).isEqualTo(Episode.Guid("guid"))
                 prop(Episode::pubDate).isEqualTo(expectedDate)
                 prop(Episode::source).isEqualTo("source")
-                prop(Episode::content).isNotNull().prop(Episode.Content::encoded).isEqualTo("encoded")
+                prop(Episode::content).isNotNull().prop(Content::encoded).isEqualTo("encoded")
                 prop(Episode::iTunes).isNotNull().prop(EpisodeItunes::title).isEqualTo("iTunes title")
                 prop(Episode::atom).isNotNull().prop(Atom::authors).containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Episode::podlove).isNotNull().prop(EpisodePodlove::simpleChapters).containsExactly(expectedSimpleChapterBuilder.build())

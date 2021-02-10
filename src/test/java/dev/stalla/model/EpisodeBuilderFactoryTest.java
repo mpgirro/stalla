@@ -1,6 +1,7 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.episode.*;
+import dev.stalla.model.content.Content;
 import dev.stalla.model.googleplay.EpisodeGoogleplay;
 import dev.stalla.model.itunes.EpisodeItunes;
 import dev.stalla.model.podlove.EpisodePodlove;
@@ -52,7 +53,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Content model using builder factory methods only")
     public void testEpisodeContentBuilderFactory() {
-        EpisodeContentBuilder episodeContentBuilder = Episode.Content.builder()
+        EpisodeContentBuilder episodeContentBuilder = Content.builder()
             .encoded("encoded");
 
         assertNotNull(episodeContentBuilder.build());

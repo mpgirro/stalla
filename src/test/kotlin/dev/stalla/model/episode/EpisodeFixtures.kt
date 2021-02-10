@@ -11,6 +11,7 @@ import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.anRssCategory
+import dev.stalla.model.content.Content
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
@@ -32,7 +33,7 @@ internal fun anEpisode(
     guid: Episode.Guid? = anEpisodeGuid(),
     pubDate: TemporalAccessor? = dateTime(year = 2020, month = Month.DECEMBER, day = 20, hour = 12, minute = 11, second = 10),
     source: String? = "episode source",
-    content: Episode.Content? = anEpisodeContent(),
+    content: Content? = anEpisodeContent(),
     iTunes: EpisodeItunes? = anEpisodeITunes(),
     atom: Atom? = anEpisodeAtom(),
     podlove: EpisodePodlove? = anEpisodePodlove(),
@@ -72,7 +73,7 @@ internal fun anEpisodeGuid(
 
 internal fun anEpisodeContent(
     encoded: String = "episode content encoded"
-) = Episode.Content(encoded)
+) = Content(encoded)
 
 internal fun anEpisodeITunes(
     title: String? = "episode itunes title",

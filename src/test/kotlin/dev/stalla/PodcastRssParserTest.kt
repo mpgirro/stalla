@@ -16,6 +16,7 @@ import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
+import dev.stalla.model.content.Content
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.itunes.ITunesStyleCategory
@@ -242,7 +243,7 @@ internal class PodcastRssParserTest {
                         )
                     }
                     prop(Episode::content).isNotNull()
-                        .prop(Episode.Content::encoded).isEqualTo(
+                        .prop(Content::encoded).isEqualTo(
                             "<p>Darknet Diaries host Jack Rhysider joins us to discuss a cybersecurity goof in the wake of the US presidential elections, the US finally fingering the hackers responsible for disrupting the Winter Olympics in South Korea, and to take a long hard look at long hard legal mumbojumbo...</p>\n" +
                                 "\n" +
                                 "<p>All this and much much more is discussed in the latest edition of the &quot;Smashing Security&quot; podcast by computer security veterans <a href=\"https://www.smashingsecurity.com/hosts/graham-cluley\">Graham Cluley</a> and <a href= \"https://www.smashingsecurity.com/hosts/carole-theriault\">Carole Theriault</a>, joined this week by Jack Rhysider from Darknet Diaries.</p>\n" +
