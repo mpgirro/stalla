@@ -10,8 +10,9 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
-import dev.stalla.model.Episode
 import dev.stalla.model.episode.anEpisodePodcastTranscript
+import dev.stalla.model.podcastns.Transcript
+import dev.stalla.model.podcastns.TranscriptType
 import org.junit.jupiter.api.Test
 import java.util.Locale
 
@@ -31,7 +32,7 @@ internal class ValidatingEpisodePodcastTranscriptBuilderTest {
     @Test
     internal fun `should not build an Episode Podcast Transcript with when the url field is missing`() {
         val transcriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
-            .type(Episode.Podcast.Transcript.Type.PLAIN_TEXT)
+            .type(TranscriptType.PLAIN_TEXT)
 
         assertAll {
             assertThat(transcriptBuilder).prop(EpisodePodcastTranscriptBuilder::hasEnoughDataToBuild).isFalse()
@@ -56,7 +57,7 @@ internal class ValidatingEpisodePodcastTranscriptBuilderTest {
     internal fun `should build an Episode Podcast Transcript with with all the added entries to its fields`() {
         val transcriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
             .url("https://example.com/episode/transcript.txt")
-            .type(Episode.Podcast.Transcript.Type.PLAIN_TEXT)
+            .type(TranscriptType.PLAIN_TEXT)
             .language(Locale.ITALIAN)
             .rel("captions")
 
@@ -64,10 +65,10 @@ internal class ValidatingEpisodePodcastTranscriptBuilderTest {
             assertThat(transcriptBuilder).prop(EpisodePodcastTranscriptBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(transcriptBuilder.build()).isNotNull().all {
-                prop(Episode.Podcast.Transcript::url).isEqualTo("https://example.com/episode/transcript.txt")
-                prop(Episode.Podcast.Transcript::type).isEqualTo(Episode.Podcast.Transcript.Type.PLAIN_TEXT)
-                prop(Episode.Podcast.Transcript::language).isEqualTo(Locale.ITALIAN)
-                prop(Episode.Podcast.Transcript::rel).isEqualTo("captions")
+                prop(Transcript::url).isEqualTo("https://example.com/episode/transcript.txt")
+                prop(Transcript::type).isEqualTo(TranscriptType.PLAIN_TEXT)
+                prop(Transcript::language).isEqualTo(Locale.ITALIAN)
+                prop(Transcript::rel).isEqualTo("captions")
             }
         }
     }
@@ -75,7 +76,7 @@ internal class ValidatingEpisodePodcastTranscriptBuilderTest {
     @Test
     internal fun `should populate an Episode Podcastindex Transcript builder with all properties from an Episode Podcastindex Transcript model`() {
         val episodePodcastTranscript = anEpisodePodcastTranscript()
-        val episodePodcastTranscriptBuilder = Episode.Podcast.Transcript.builder().from(episodePodcastTranscript)
+        val episodePodcastTranscriptBuilder = Transcript.builder().from(episodePodcastTranscript)
 
         assertAll {
             assertThat(episodePodcastTranscriptBuilder).prop(EpisodePodcastTranscriptBuilder::hasEnoughDataToBuild).isTrue()

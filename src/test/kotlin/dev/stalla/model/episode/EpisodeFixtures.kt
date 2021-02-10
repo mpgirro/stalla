@@ -2,13 +2,10 @@ package dev.stalla.model.episode
 
 import dev.stalla.dateTime
 import dev.stalla.model.Atom
-import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.Episode
-import dev.stalla.model.rss.Guid
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Link
 import dev.stalla.model.Person
-import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
@@ -18,8 +15,16 @@ import dev.stalla.model.content.Content
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
+import dev.stalla.model.podcastns.Chapters
+import dev.stalla.model.podcastns.EpisodePodcast
+import dev.stalla.model.podcastns.Soundbite
+import dev.stalla.model.podcastns.Transcript
+import dev.stalla.model.podcastns.TranscriptType
 import dev.stalla.model.podlove.EpisodePodlove
 import dev.stalla.model.podlove.SimpleChapter
+import dev.stalla.model.rss.Enclosure
+import dev.stalla.model.rss.Guid
+import dev.stalla.model.rss.RssCategory
 import java.time.Duration
 import java.time.Month
 import java.time.temporal.TemporalAccessor
@@ -42,7 +47,7 @@ internal fun anEpisode(
     podlove: EpisodePodlove? = anEpisodePodlove(),
     googlePlay: EpisodeGoogleplay? = anEpisodeGooglePlay(),
     bitlove: Bitlove? = anEpisodeBitlove(),
-    podcast: Episode.Podcast? = anEpisodePodcast()
+    podcast: EpisodePodcast? = anEpisodePodcast()
 ) = Episode(
     title,
     link,
@@ -121,25 +126,25 @@ internal fun anEpisodeBitlove(
 ) = Bitlove(guid)
 
 internal fun anEpisodePodcast(
-    transcripts: List<Episode.Podcast.Transcript> = listOf(anEpisodePodcastTranscript()),
-    soundbites: List<Episode.Podcast.Soundbite> = listOf(anEpisodePodcastSoundbite()),
-    chapters: Episode.Podcast.Chapters? = anEpisodePodcastChapters()
-) = Episode.Podcast(transcripts, soundbites, chapters)
+    transcripts: List<Transcript> = listOf(anEpisodePodcastTranscript()),
+    soundbites: List<Soundbite> = listOf(anEpisodePodcastSoundbite()),
+    chapters: Chapters? = anEpisodePodcastChapters()
+) = EpisodePodcast(transcripts, soundbites, chapters)
 
 fun anEpisodePodcastTranscript(
     url: String = "episode podcast: transcript url",
-    type: Episode.Podcast.Transcript.Type = Episode.Podcast.Transcript.Type.SRT,
+    type: TranscriptType = TranscriptType.SRT,
     language: Locale? = Locale.ITALY,
     rel: String? = "captions"
-) = Episode.Podcast.Transcript(url, type, language, rel)
+) = Transcript(url, type, language, rel)
 
 fun anEpisodePodcastSoundbite(
     startTime: Duration = Duration.ofSeconds(1),
     duration: Duration = Duration.ofSeconds(15).plusMillis(123),
     title: String? = "episode podcast: soundbite title"
-) = Episode.Podcast.Soundbite(startTime, duration, title)
+) = Soundbite(startTime, duration, title)
 
 internal fun anEpisodePodcastChapters(
     url: String = "episode podcast: chapters url",
     type: String = "episode podcast: chapters type"
-) = Episode.Podcast.Chapters(url, type)
+) = Chapters(url, type)

@@ -2,10 +2,10 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.podcastns.Soundbite
 import java.time.Duration
 
-internal class FakeEpisodePodcastSoundbiteBuilder : FakeBuilder<Episode.Podcast.Soundbite>(), EpisodePodcastSoundbiteBuilder {
+internal class FakeEpisodePodcastSoundbiteBuilder : FakeBuilder<Soundbite>(), EpisodePodcastSoundbiteBuilder {
 
     var startTime: Duration? = null
     var duration: Duration? = null

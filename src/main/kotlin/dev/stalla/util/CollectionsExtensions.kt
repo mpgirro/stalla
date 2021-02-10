@@ -8,12 +8,14 @@ import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.Episode
-import dev.stalla.model.Podcast
-import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.podcastns.Funding
+import dev.stalla.model.podcastns.Soundbite
+import dev.stalla.model.podcastns.Transcript
 import dev.stalla.model.podlove.SimpleChapter
+import dev.stalla.model.rss.Enclosure
+import dev.stalla.model.rss.RssCategory
 
 /** Transforms this list into a list of [RssCategoryBuilder] */
 @InternalApi
@@ -33,18 +35,18 @@ internal fun List<Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = map(E
 /** Transforms this list into a list of [EpisodePodcastSoundbiteBuilder] */
 @InternalApi
 @JvmName("asSoundbiteBuilders")
-internal fun List<Episode.Podcast.Soundbite>.asBuilders(): List<EpisodePodcastSoundbiteBuilder> = map(Episode.Podcast.Soundbite.builder()::from)
+internal fun List<Soundbite>.asBuilders(): List<EpisodePodcastSoundbiteBuilder> = map(Soundbite.builder()::from)
 
 /** Transforms this list into a list of [EpisodePodcastTranscriptBuilder] */
 @InternalApi
 @JvmName("asTranscriptBuilders")
-internal fun List<Episode.Podcast.Transcript>.asBuilders(): List<EpisodePodcastTranscriptBuilder> =
-    map(Episode.Podcast.Transcript.builder()::from)
+internal fun List<Transcript>.asBuilders(): List<EpisodePodcastTranscriptBuilder> =
+    map(Transcript.builder()::from)
 
 /** Transforms this list into a list of [PodcastPodcastFundingBuilder] */
 @InternalApi
 @JvmName("asFundingBuilders")
-internal fun List<Podcast.Podcast.Funding>.asBuilders(): List<PodcastPodcastFundingBuilder> = map(Podcast.Podcast.Funding.builder()::from)
+internal fun List<Funding>.asBuilders(): List<PodcastPodcastFundingBuilder> = map(Funding.builder()::from)
 
 /** Transforms this list into a list of [EpisodePodloveSimpleChapterBuilder] */
 @InternalApi

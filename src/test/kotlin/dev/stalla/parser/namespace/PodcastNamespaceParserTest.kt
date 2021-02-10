@@ -18,7 +18,7 @@ import dev.stalla.builder.fake.podcast.FakePodcastPodcastBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastFundingBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastLockedBuilder
 import dev.stalla.dom.XmlRes
-import dev.stalla.model.Episode
+import dev.stalla.model.podcastns.TranscriptType
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
@@ -48,7 +48,7 @@ internal class PodcastNamespaceParserTest : NamespaceParserTest() {
 
     private val expectedTranscriptBuilder = FakeEpisodePodcastTranscriptBuilder()
         .url("https://example.com/ep3/transcript.txt")
-        .type(Episode.Podcast.Transcript.Type.PLAIN_TEXT)
+        .type(TranscriptType.PLAIN_TEXT)
         .language(Locale.ITALY)
         .rel("captions")
 

@@ -11,8 +11,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastPodcastBuilder
-import dev.stalla.model.Podcast
 import dev.stalla.model.podcast.aPodcastPodcast
+import dev.stalla.model.podcastns.PodcastPodcast
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastPodcastBuilderTest {
@@ -48,7 +48,7 @@ internal class ValidatingPodcastPodcastBuilderTest {
         assertAll {
             assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(podcastPodcastBuilder.build()).isNotNull().prop(Podcast.Podcast::locked).isEqualTo(expectedLockedBuilder.build())
+            assertThat(podcastPodcastBuilder.build()).isNotNull().prop(PodcastPodcast::locked).isEqualTo(expectedLockedBuilder.build())
         }
     }
 
@@ -73,7 +73,7 @@ internal class ValidatingPodcastPodcastBuilderTest {
             assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastPodcastBuilder.build()).isNotNull()
-                .prop(Podcast.Podcast::funding).containsExactly(firstExpectedFundingBuilder.build())
+                .prop(PodcastPodcast::funding).containsExactly(firstExpectedFundingBuilder.build())
         }
     }
 
@@ -100,8 +100,8 @@ internal class ValidatingPodcastPodcastBuilderTest {
             assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastPodcastBuilder.build()).isNotNull().all {
-                prop(Podcast.Podcast::locked).isEqualTo(expectedLockedBuilder.build())
-                prop(Podcast.Podcast::funding).containsExactly(firstExpectedFundingBuilder.build(), secondExpectedFundingBuilder.build())
+                prop(PodcastPodcast::locked).isEqualTo(expectedLockedBuilder.build())
+                prop(PodcastPodcast::funding).containsExactly(firstExpectedFundingBuilder.build(), secondExpectedFundingBuilder.build())
             }
         }
     }
@@ -109,7 +109,7 @@ internal class ValidatingPodcastPodcastBuilderTest {
     @Test
     internal fun `should populate a Podcastindex builder with all properties from an Podcastindex model`() {
         val podcastPodcast = aPodcastPodcast()
-        val podcastPodcastBuilder = Podcast.Podcast.builder().from(podcastPodcast)
+        val podcastPodcastBuilder = PodcastPodcast.builder().from(podcastPodcast)
 
         assertAll {
             assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()

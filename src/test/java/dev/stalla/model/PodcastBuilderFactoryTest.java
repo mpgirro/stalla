@@ -10,6 +10,9 @@ import dev.stalla.model.fyyd.Fyyd;
 import dev.stalla.model.googleplay.PodcastGoogleplay;
 import dev.stalla.model.itunes.ITunesStyleCategory;
 import dev.stalla.model.itunes.PodcastItunes;
+import dev.stalla.model.podcastns.Funding;
+import dev.stalla.model.podcastns.Locked;
+import dev.stalla.model.podcastns.PodcastPodcast;
 import dev.stalla.model.rss.Enclosure;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -87,11 +90,11 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a Podcast.Podcast model using builder factory methods only")
     public void testPodcastPodcastBuilderFactory() {
-        PodcastPodcastFundingBuilder podcastFundingBuilder = Podcast.Podcast.Funding.builder()
+        PodcastPodcastFundingBuilder podcastFundingBuilder = Funding.builder()
             .url("url")
             .message("message");
 
-        PodcastPodcastBuilder podcastPodcastBuilder = Podcast.Podcast.builder()
+        PodcastPodcastBuilder podcastPodcastBuilder = PodcastPodcast.builder()
             .addFundingBuilder(podcastFundingBuilder);
 
         assertNotNull(podcastPodcastBuilder.build());
@@ -100,7 +103,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a Podcast.Podcast.Locked model using builder factory methods only")
     public void testPodcastPodcastLockedBuilderFactory() {
-        PodcastPodcastLockedBuilder podcastLockedBuilder = Podcast.Podcast.Locked.builder()
+        PodcastPodcastLockedBuilder podcastLockedBuilder = Locked.builder()
             .locked(false)
             .owner("owner");
 
@@ -110,7 +113,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a Podcast.Podcast.Funding model using builder factory methods only")
     public void testPodcastPodcastFundingBuilderFactory() {
-        PodcastPodcastFundingBuilder podcastFundingBuilder = Podcast.Podcast.Funding.builder()
+        PodcastPodcastFundingBuilder podcastFundingBuilder = Funding.builder()
             .url("url")
             .message("message");
 

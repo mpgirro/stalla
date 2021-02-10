@@ -10,8 +10,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
-import dev.stalla.model.Episode
 import dev.stalla.model.episode.anEpisodePodcastChapters
+import dev.stalla.model.podcastns.Chapters
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodePodcastChaptersBuilderTest {
@@ -61,8 +61,8 @@ internal class ValidatingEpisodePodcastChaptersBuilderTest {
             assertThat(chaptersBuilder).prop(EpisodePodcastChaptersBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(chaptersBuilder.build()).isNotNull().all {
-                prop(Episode.Podcast.Chapters::url).isEqualTo("https://example.com/episode/chapters.json")
-                prop(Episode.Podcast.Chapters::type).isEqualTo("text/json+chapters")
+                prop(Chapters::url).isEqualTo("https://example.com/episode/chapters.json")
+                prop(Chapters::type).isEqualTo("text/json+chapters")
             }
         }
     }
@@ -70,7 +70,7 @@ internal class ValidatingEpisodePodcastChaptersBuilderTest {
     @Test
     internal fun `should populate an Episode Podcastindex Chapters builder with all properties from an Episode Podcastindex Chapters model`() {
         val episodePodcastChapters = anEpisodePodcastChapters()
-        val episodePodcastChaptersBuilder = Episode.Podcast.Chapters.builder().from(episodePodcastChapters)
+        val episodePodcastChaptersBuilder = Chapters.builder().from(episodePodcastChapters)
 
         assertAll {
             assertThat(episodePodcastChaptersBuilder).prop(EpisodePodcastChaptersBuilder::hasEnoughDataToBuild).isTrue()

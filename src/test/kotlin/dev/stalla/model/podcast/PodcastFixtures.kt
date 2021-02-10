@@ -7,8 +7,6 @@ import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Link
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
-import dev.stalla.model.rss.RssCategory
-import dev.stalla.model.rss.RssImage
 import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
@@ -22,6 +20,11 @@ import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.ITunesStyleCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
+import dev.stalla.model.podcastns.Funding
+import dev.stalla.model.podcastns.Locked
+import dev.stalla.model.podcastns.PodcastPodcast
+import dev.stalla.model.rss.RssCategory
+import dev.stalla.model.rss.RssImage
 import java.time.Month
 import java.time.temporal.TemporalAccessor
 
@@ -45,7 +48,7 @@ internal fun aPodcast(
     fyyd: Fyyd? = aPodcastFyyd(),
     feedpress: Feedpress? = aPodcastFeedpress(),
     googlePlay: PodcastGoogleplay? = aPodcastGooglePlay(),
-    podcast: Podcast.Podcast? = aPodcastPodcast(),
+    podcast: PodcastPodcast? = aPodcastPodcast(),
     categories: List<RssCategory> = listOf(anRssCategory("podcast category"))
 ) = Podcast(
     title,
@@ -116,16 +119,16 @@ internal fun aPodcastGooglePlay(
 ) = PodcastGoogleplay(author, owner, categories, description, explicit, block, image)
 
 internal fun aPodcastPodcast(
-    locked: Podcast.Podcast.Locked? = aPodcastPodcastLocked(),
-    funding: List<Podcast.Podcast.Funding> = listOf(aPodcastPodcastFunding())
-) = Podcast.Podcast(locked, funding)
+    locked: Locked? = aPodcastPodcastLocked(),
+    funding: List<Funding> = listOf(aPodcastPodcastFunding())
+) = PodcastPodcast(locked, funding)
 
 internal fun aPodcastPodcastLocked(
     owner: String = "podcast podcast: locked owner",
     locked: Boolean = true
-) = Podcast.Podcast.Locked(owner, locked)
+) = Locked(owner, locked)
 
 internal fun aPodcastPodcastFunding(
     url: String = "podcast podcast: funding url",
     message: String = "podcast podcast: funding message"
-) = Podcast.Podcast.Funding(url, message)
+) = Funding(url, message)

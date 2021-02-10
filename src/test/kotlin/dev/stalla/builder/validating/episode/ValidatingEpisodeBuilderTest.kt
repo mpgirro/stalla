@@ -17,13 +17,14 @@ import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.Atom
 import dev.stalla.model.Episode
-import dev.stalla.model.rss.Guid
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.podcastns.EpisodePodcast
 import dev.stalla.model.podlove.EpisodePodlove
+import dev.stalla.model.rss.Guid
 import org.junit.jupiter.api.Test
 import java.time.Month
 
@@ -161,7 +162,7 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::podlove).isNotNull().prop(EpisodePodlove::simpleChapters).containsExactly(expectedSimpleChapterBuilder.build())
                 prop(Episode::googlePlay).isNotNull().prop(EpisodeGoogleplay::description).isEqualTo("play description")
                 prop(Episode::bitlove).isNotNull().prop(Bitlove::guid).isEqualTo("bitlove guid")
-                prop(Episode::podcast).isNotNull().prop(Episode.Podcast::chapters).isEqualTo(expectedPodcastChaptersBuilder.build())
+                prop(Episode::podcast).isNotNull().prop(EpisodePodcast::chapters).isEqualTo(expectedPodcastChaptersBuilder.build())
             }
         }
     }

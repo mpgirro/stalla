@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.podcastns.Chapters
 
 internal class ValidatingEpisodePodcastChaptersBuilder : EpisodePodcastChaptersBuilder {
 
@@ -15,11 +15,11 @@ internal class ValidatingEpisodePodcastChaptersBuilder : EpisodePodcastChaptersB
     override val hasEnoughDataToBuild: Boolean
         get() = ::urlValue.isInitialized && ::typeValue.isInitialized
 
-    override fun build(): Episode.Podcast.Chapters? {
+    override fun build(): Chapters? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Episode.Podcast.Chapters(urlValue, typeValue)
+        return Chapters(urlValue, typeValue)
     }
 }

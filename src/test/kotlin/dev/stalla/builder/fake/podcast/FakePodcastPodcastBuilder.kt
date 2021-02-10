@@ -4,9 +4,9 @@ import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastPodcastBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.podcastns.PodcastPodcast
 
-internal class FakePodcastPodcastBuilder : FakeBuilder<Podcast.Podcast>(), PodcastPodcastBuilder {
+internal class FakePodcastPodcastBuilder : FakeBuilder<PodcastPodcast>(), PodcastPodcastBuilder {
 
     var lockedBuilderValue: PodcastPodcastLockedBuilder? = null
     val fundingBuilders: MutableList<PodcastPodcastFundingBuilder> = mutableListOf()
