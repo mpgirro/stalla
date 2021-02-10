@@ -34,7 +34,7 @@ Stalla is undergoing active development and things may change and APIs may break
 - [x] [Google Play](https://developers.google.com/search/reference/podcast/rss-feed)
 - [x] [Podcastindex.org](https://github.com/Podcastindex-org/podcast-namespace) ([example feed](https://github.com/Podcastindex-org/podcast-namespace/blob/main/example.xml))
 - [ ] [Spotify](https://drive.google.com/file/d/1KDY1zbRc6J2tkNvhniagor_qcH-pp2T0/view)
-- [ ] [Dublin Core](http://purl.org/dc/elements/1.1/) ([RFC ~~~~~~~~5013](https://tools.ietf.org/html/rfc5013)) – properties in the `/elements/1.1/` namespace
+- [ ] [Dublin Core](http://purl.org/dc/elements/1.1/) ([RFC 5013](https://tools.ietf.org/html/rfc5013)) – properties in the `/elements/1.1/` namespace
 - [ ] [Media RSS](http://www.rssboard.org/media-rss) ([example feed](https://gist.github.com/misener/7dd9b587b468aea1ae5a))
 
 Feel free to open an issue if Stalla is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.
