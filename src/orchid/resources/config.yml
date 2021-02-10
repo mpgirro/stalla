@@ -23,15 +23,6 @@ theme:
       asSubmenu: true
       submenuTitle: 'Packages'
 
-allPages:
-  components:
-    - type: "pageContent"
-    - type: "prism"
-      githubTheme: 'duotone-light'
-      languages:
-        - kotlin
-        - java
-
 Editorial:
   primaryColor: '#0098f1'
   legacySearch: false
@@ -41,7 +32,6 @@ Editorial:
     - type: 'orchidSearch'
 
 kotlindoc:
-  name: 'dev.stalla'
   sourceDirs:
     - './../../main/kotlin'
   showRunnerLogs: false
