@@ -5,10 +5,9 @@ site:
     siteDescription: This is a short description of this project.
 
 theme:
+  extraCss:
+    - 'assets/css/custom.scss'
   menu:
-    - type: 'separator'
-      title: 'Wiki'
-    - type: 'wiki'
     - type: 'page'
       itemId: 'Changelog'
     - type: 'separator'
@@ -24,8 +23,17 @@ theme:
       asSubmenu: true
       submenuTitle: 'Packages'
 
+allPages:
+  components:
+    - type: "pageContent"
+    - type: "prism"
+      githubTheme: 'duotone-light'
+      languages:
+        - kotlin
+        - java
+
 Editorial:
-  primaryColor: '#DE9149'
+  primaryColor: '#0098f1'
   legacySearch: false
   social:
     github: 'mpgirro/stalla'
@@ -38,8 +46,21 @@ kotlindoc:
     - './../../main/kotlin'
   showRunnerLogs: false
   homePageOnly: false
+  homePagePermalink: ':module'
+  sourcePagePermalink: ':moduleType/:module/:sourceDocPath'
   sourcePages:
     menu:
       - type: 'sourcedocPageLinks'
         itemTitleType: 'signature'
         includeItems: true
+  classesPages:
+    layoutConfig:
+      pageContentsMenu:
+        - type: 'sourcedocPageLinks'
+          includeItems: true
+          itemTitleType: "SIGNATURE"
+  packagesPages:
+    layoutConfig:
+      pageContentsMenu:
+        - type: 'sourcedocPageLinks'
+          includeItems: true

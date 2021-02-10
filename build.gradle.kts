@@ -6,7 +6,7 @@ buildscript {
         google()
         mavenCentral()
         jcenter()
-//        maven { url = "https://kotlin.bintray.com/kotlinx/" }
+        maven { url = "https://kotlin.bintray.com/kotlinx/" }
     }
 
     val ktlintVersion = "0.40.0"
@@ -51,31 +51,16 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
 
-    val orchid_version = "0.21.0"
-    implementation("io.github.javaeden.orchid:OrchidCore:$orchid_version")
-    orchidCompile("io.github.javaeden.orchid:OrchidCore:$orchid_version")
-
-
-    orchidRuntime("io.github.javaeden.orchid:OrchidPages:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidPluginDocs:$orchid_version")
-    /*
-    orchidRuntime("io.github.javaeden.orchid:OrchidPosts:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidWiki:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidNetlify:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidNetlifyCMS:$orchid_version")
-
-
-    orchidRuntime("io.github.javaeden.orchid:OrchidWritersBlocks:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidSyntaxHighlighter:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidTaxonomies:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidFutureImperfect:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidAsciidoc:$orchid_version")
-    */
-    orchidRuntime("io.github.javaeden.orchid:OrchidEditorial:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidSourceDoc:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidKotlindoc:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidSearch:$orchid_version")
-    orchidRuntime("io.github.javaeden.orchid:OrchidGithub:$orchid_version")
+    val orchidVersion = "0.21.0"
+    implementation("io.github.javaeden.orchid:OrchidCore:$orchidVersion")
+    orchidImplementation("io.github.javaeden.orchid:OrchidCore:$orchidVersion")
+    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidPages:$orchidVersion")
+    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidPluginDocs:$orchidVersion")
+    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidEditorial:$orchidVersion")
+    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidSourceDoc:$orchidVersion")
+    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidKotlindoc:$orchidVersion")
+    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidSearch:$orchidVersion")
+    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidGithub:$orchidVersion")
 
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("com.willowtreeapps.assertk:assertk:0.23")
@@ -110,6 +95,7 @@ tasks {
 }
 
 orchid {
+    args = listOf("--experimentalSourceDoc")
  //   baseUrl = "https://stalla.dev"        // a baseUrl prepended to all generated links. Can also be set as `site.baseUrl` in `config.yml` Defaults to '/'
     runTask = "build"                     // specify a task to run with 'gradle orchidRun'
 }
