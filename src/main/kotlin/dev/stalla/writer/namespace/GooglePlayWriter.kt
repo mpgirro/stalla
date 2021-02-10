@@ -6,8 +6,8 @@ import dev.stalla.dom.appendITunesStyleCategoryElements
 import dev.stalla.dom.appendYesElementIfTrue
 import dev.stalla.dom.appendYesNoElement
 import dev.stalla.model.Episode
-import dev.stalla.model.GooglePlayBase
 import dev.stalla.model.Podcast
+import dev.stalla.model.googleplay.GooglePlayBase
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
 import dev.stalla.util.isNeitherNullNorBlank

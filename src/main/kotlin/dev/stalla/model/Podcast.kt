@@ -3,18 +3,16 @@ package dev.stalla.model
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.podcast.PodcastFeedpressBuilder
 import dev.stalla.builder.podcast.PodcastFyydBuilder
-import dev.stalla.builder.podcast.PodcastGooglePlayBuilder
 import dev.stalla.builder.podcast.PodcastPodcastBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastFeedpressBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastFyydBuilder
-import dev.stalla.builder.validating.podcast.ValidatingPodcastGooglePlayBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastFundingBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastLockedBuilder
-import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.PodcastItunes
 import java.time.temporal.TemporalAccessor
 
@@ -62,7 +60,7 @@ public data class Podcast(
     val atom: Atom? = null,
     val fyyd: Fyyd? = null,
     val feedpress: Feedpress? = null,
-    val googlePlay: GooglePlay? = null,
+    val googlePlay: PodcastGoogleplay? = null,
     val categories: List<RssCategory> = emptyList(),
     val podcast: Podcast? = null
 ) {
@@ -72,35 +70,6 @@ public data class Podcast(
         /** Returns a builder implementation for building [dev.stalla.model.Podcast] model instances. */
         @JvmStatic
         override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
-    }
-
-    /**
-     * Model class for data from the Google Play namespace valid within an RSS `<channel>`.
-     *
-     * @property author The `<googleplay:author>` field text content.
-     * @property owner The `<googleplay:email>` field text content.
-     * @property categories The list of `<googleplay:category>` element's field text contents.
-     * @property description The `<googleplay:description>` field text content.
-     * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
-     * @property block The logical value of the `<googleplay:block>` field's text content.
-     * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
-     */
-    public data class GooglePlay(
-        val author: String? = null,
-        val owner: String? = null,
-        val categories: List<ITunesStyleCategory>,
-        override val description: String? = null,
-        override val explicit: Boolean? = null,
-        override val block: Boolean,
-        override val image: HrefOnlyImage? = null
-    ) : GooglePlayBase {
-
-        public companion object Factory : BuilderFactory<GooglePlay, PodcastGooglePlayBuilder> {
-
-            /** Returns a builder implementation for building [GooglePlay] model instances. */
-            @JvmStatic
-            override fun builder(): PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
-        }
     }
 
     /**

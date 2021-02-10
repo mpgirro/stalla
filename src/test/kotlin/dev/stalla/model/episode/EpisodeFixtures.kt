@@ -11,6 +11,7 @@ import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.anRssCategory
+import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import java.time.Duration
@@ -33,7 +34,7 @@ internal fun anEpisode(
     iTunes: EpisodeItunes? = anEpisodeITunes(),
     atom: Atom? = anEpisodeAtom(),
     podlove: Episode.Podlove? = anEpisodePodlove(),
-    googlePlay: Episode.GooglePlay? = anEpisodeGooglePlay(),
+    googlePlay: EpisodeGoogleplay? = anEpisodeGooglePlay(),
     bitlove: Episode.Bitlove? = anEpisodeBitlove(),
     podcast: Episode.Podcast? = anEpisodePodcast()
 ) = Episode(
@@ -107,7 +108,7 @@ internal fun anEpisodeGooglePlay(
     explicit: Boolean? = true,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode googleplay image url")
-) = Episode.GooglePlay(description, explicit, block, image)
+) = EpisodeGoogleplay(description, explicit, block, image)
 
 internal fun anEpisodeBitlove(
     guid: String = "episode bitlove guid"

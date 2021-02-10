@@ -1,4 +1,6 @@
-package dev.stalla.model
+package dev.stalla.model.googleplay
+
+import dev.stalla.model.HrefOnlyImage
 
 internal interface GooglePlayBase {
 

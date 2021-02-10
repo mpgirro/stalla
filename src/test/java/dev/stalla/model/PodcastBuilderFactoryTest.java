@@ -5,6 +5,7 @@ import dev.stalla.builder.ITunesStyleCategoryBuilder;
 import dev.stalla.builder.episode.EpisodeBuilder;
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder;
 import dev.stalla.builder.podcast.*;
+import dev.stalla.model.googleplay.PodcastGoogleplay;
 import dev.stalla.model.itunes.ITunesStyleCategory;
 import dev.stalla.model.itunes.PodcastItunes;
 import org.junit.jupiter.api.DisplayName;
@@ -54,9 +55,9 @@ public class PodcastBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build a Podcast.GooglePlay model using builder factory methods only")
+    @DisplayName("should build a PodcastGoogleplay model using builder factory methods only")
     public void testPodcastGooglePlayBuilderFactory() {
-        PodcastGooglePlayBuilder podcastGooglePlayBuilder = Podcast.GooglePlay.builder()
+        PodcastGooglePlayBuilder podcastGooglePlayBuilder = PodcastGoogleplay.builder()
             .author("author");
 
         assertNotNull(podcastGooglePlayBuilder.build());

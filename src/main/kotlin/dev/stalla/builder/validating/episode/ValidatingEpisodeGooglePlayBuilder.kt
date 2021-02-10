@@ -2,7 +2,7 @@ package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.episode.EpisodeGooglePlayBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.util.anyNotNull
 
 internal class ValidatingEpisodeGooglePlayBuilder : EpisodeGooglePlayBuilder {
@@ -23,12 +23,12 @@ internal class ValidatingEpisodeGooglePlayBuilder : EpisodeGooglePlayBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() = block || anyNotNull(description, explicit) || imageBuilder?.hasEnoughDataToBuild == true
 
-    override fun build(): Episode.GooglePlay? {
+    override fun build(): EpisodeGoogleplay? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
         val image = imageBuilder?.build()
-        return Episode.GooglePlay(description, explicit, block, image)
+        return EpisodeGoogleplay(description, explicit, block, image)
     }
 }

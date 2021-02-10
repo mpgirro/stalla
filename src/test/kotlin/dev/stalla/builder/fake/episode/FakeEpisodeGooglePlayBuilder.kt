@@ -3,9 +3,9 @@ package dev.stalla.builder.fake.episode
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.episode.EpisodeGooglePlayBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.googleplay.EpisodeGoogleplay
 
-internal class FakeEpisodeGooglePlayBuilder : FakeBuilder<Episode.GooglePlay>(), EpisodeGooglePlayBuilder {
+internal class FakeEpisodeGooglePlayBuilder : FakeBuilder<EpisodeGoogleplay>(), EpisodeGooglePlayBuilder {
 
     var description: String? = null
     var explicit: Boolean? = null

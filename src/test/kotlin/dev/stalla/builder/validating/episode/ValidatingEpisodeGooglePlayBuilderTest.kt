@@ -11,8 +11,8 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeGooglePlayBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.model.Episode
 import dev.stalla.model.episode.anEpisodeGooglePlay
+import dev.stalla.model.googleplay.EpisodeGoogleplay
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeGooglePlayBuilderTest {
@@ -39,10 +39,10 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
             assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
-                prop(Episode.GooglePlay::description).isEqualTo("description")
-                prop(Episode.GooglePlay::explicit).isNull()
-                prop(Episode.GooglePlay::block).isFalse()
-                prop(Episode.GooglePlay::image).isNull()
+                prop(EpisodeGoogleplay::description).isEqualTo("description")
+                prop(EpisodeGoogleplay::explicit).isNull()
+                prop(EpisodeGoogleplay::block).isFalse()
+                prop(EpisodeGoogleplay::image).isNull()
             }
         }
     }
@@ -56,10 +56,10 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
             assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
-                prop(Episode.GooglePlay::description).isNull()
-                prop(Episode.GooglePlay::explicit).isNotNull().isFalse()
-                prop(Episode.GooglePlay::block).isFalse()
-                prop(Episode.GooglePlay::image).isNull()
+                prop(EpisodeGoogleplay::description).isNull()
+                prop(EpisodeGoogleplay::explicit).isNotNull().isFalse()
+                prop(EpisodeGoogleplay::block).isFalse()
+                prop(EpisodeGoogleplay::image).isNull()
             }
         }
     }
@@ -73,10 +73,10 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
             assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
-                prop(Episode.GooglePlay::description).isNull()
-                prop(Episode.GooglePlay::explicit).isNull()
-                prop(Episode.GooglePlay::block).isNotNull().isTrue()
-                prop(Episode.GooglePlay::image).isNull()
+                prop(EpisodeGoogleplay::description).isNull()
+                prop(EpisodeGoogleplay::explicit).isNull()
+                prop(EpisodeGoogleplay::block).isNotNull().isTrue()
+                prop(EpisodeGoogleplay::image).isNull()
             }
         }
     }
@@ -90,10 +90,10 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
             assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
-                prop(Episode.GooglePlay::description).isNull()
-                prop(Episode.GooglePlay::explicit).isNull()
-                prop(Episode.GooglePlay::block).isFalse()
-                prop(Episode.GooglePlay::image).isEqualTo(expectedImageBuilder.build())
+                prop(EpisodeGoogleplay::description).isNull()
+                prop(EpisodeGoogleplay::explicit).isNull()
+                prop(EpisodeGoogleplay::block).isFalse()
+                prop(EpisodeGoogleplay::image).isEqualTo(expectedImageBuilder.build())
             }
         }
     }
@@ -110,10 +110,10 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
             assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
-                prop(Episode.GooglePlay::description).isEqualTo("description")
-                prop(Episode.GooglePlay::explicit).isNotNull().isFalse()
-                prop(Episode.GooglePlay::block).isNotNull().isFalse()
-                prop(Episode.GooglePlay::image).isEqualTo(expectedImageBuilder.build())
+                prop(EpisodeGoogleplay::description).isEqualTo("description")
+                prop(EpisodeGoogleplay::explicit).isNotNull().isFalse()
+                prop(EpisodeGoogleplay::block).isNotNull().isFalse()
+                prop(EpisodeGoogleplay::image).isEqualTo(expectedImageBuilder.build())
             }
         }
     }
@@ -121,7 +121,7 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
     @Test
     internal fun `should populate an Episode GooglePlay builder with all properties from an Episode GooglePlay model`() {
         val episodeGooglePlay = anEpisodeGooglePlay()
-        val episodeGooglePlayBuilder = Episode.GooglePlay.builder().from(episodeGooglePlay)
+        val episodeGooglePlayBuilder = EpisodeGoogleplay.builder().from(episodeGooglePlay)
 
         assertAll {
             assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()

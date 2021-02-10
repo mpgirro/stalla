@@ -5,11 +5,12 @@ import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.ITunesStyleCategoryBuilder
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Podcast
+import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Podcast.GooglePlay] instances. */
-public interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
+/** Builder for constructing [PodcastGoogleplay] instances. */
+public interface PodcastGooglePlayBuilder : Builder<PodcastGoogleplay> {
 
     /** Set the author value. */
     public fun author(author: String?): PodcastGooglePlayBuilder
@@ -37,7 +38,7 @@ public interface PodcastGooglePlayBuilder : Builder<Podcast.GooglePlay> {
     /** Set the [HrefOnlyImageBuilder]. */
     public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGooglePlayBuilder
 
-    override fun from(model: Podcast.GooglePlay?): PodcastGooglePlayBuilder = whenNotNull(model) { googlePlay ->
+    override fun from(model: PodcastGoogleplay?): PodcastGooglePlayBuilder = whenNotNull(model) { googlePlay ->
         author(googlePlay.author)
         owner(googlePlay.owner)
         addCategoryBuilders(googlePlay.categories.asBuilders())

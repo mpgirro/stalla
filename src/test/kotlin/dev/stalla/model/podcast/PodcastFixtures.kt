@@ -16,6 +16,7 @@ import dev.stalla.model.anITunesCategory
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.anRssImage
 import dev.stalla.model.episode.anEpisode
+import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.ITunesStyleCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
@@ -41,7 +42,7 @@ internal fun aPodcast(
     atom: Atom? = aPodcastAtom(),
     fyyd: Podcast.Fyyd? = aPodcastFyyd(),
     feedpress: Podcast.Feedpress? = aPodcastFeedpress(),
-    googlePlay: Podcast.GooglePlay? = aPodcastGooglePlay(),
+    googlePlay: PodcastGoogleplay? = aPodcastGooglePlay(),
     podcast: Podcast.Podcast? = aPodcastPodcast(),
     categories: List<RssCategory> = listOf(anRssCategory("podcast category"))
 ) = Podcast(
@@ -110,7 +111,7 @@ internal fun aPodcastGooglePlay(
     explicit: Boolean? = true,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url")
-) = Podcast.GooglePlay(author, owner, categories, description, explicit, block, image)
+) = PodcastGoogleplay(author, owner, categories, description, explicit, block, image)
 
 internal fun aPodcastPodcast(
     locked: Podcast.Podcast.Locked? = aPodcastPodcastLocked(),

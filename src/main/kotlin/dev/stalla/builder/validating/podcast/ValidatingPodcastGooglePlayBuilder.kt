@@ -3,7 +3,7 @@ package dev.stalla.builder.validating.podcast
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.ITunesStyleCategoryBuilder
 import dev.stalla.builder.podcast.PodcastGooglePlayBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.anyNotNull
 
 internal class ValidatingPodcastGooglePlayBuilder : PodcastGooglePlayBuilder {
@@ -40,12 +40,12 @@ internal class ValidatingPodcastGooglePlayBuilder : PodcastGooglePlayBuilder {
             return categoryBuilders.any { it.hasEnoughDataToBuild }
         }
 
-    override fun build(): Podcast.GooglePlay? {
+    override fun build(): PodcastGoogleplay? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Podcast.GooglePlay(
+        return PodcastGoogleplay(
             author = author,
             owner = owner,
             categories = categoryBuilders.mapNotNull { it.build() },

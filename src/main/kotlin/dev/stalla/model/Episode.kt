@@ -4,7 +4,6 @@ import dev.stalla.builder.episode.EpisodeBitloveBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeContentBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
-import dev.stalla.builder.episode.EpisodeGooglePlayBuilder
 import dev.stalla.builder.episode.EpisodeGuidBuilder
 import dev.stalla.builder.episode.EpisodePodcastBuilder
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
@@ -16,7 +15,6 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodeBitloveBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeContentBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodeGooglePlayBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeGuidBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastChaptersBuilder
@@ -26,6 +24,7 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodePodloveBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
 import dev.stalla.model.Episode.Podcast.Transcript.Type
 import dev.stalla.model.Episode.Podlove.SimpleChapter
+import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
 import java.time.Duration
 import java.time.temporal.TemporalAccessor
@@ -68,7 +67,7 @@ public data class Episode(
     val iTunes: EpisodeItunes? = null,
     val atom: Atom? = null,
     val podlove: Podlove? = null,
-    val googlePlay: GooglePlay? = null,
+    val googlePlay: EpisodeGoogleplay? = null,
     val bitlove: Bitlove? = null,
     val podcast: Podcast? = null
 ) {
@@ -134,29 +133,6 @@ public data class Episode(
             /** Returns a builder implementation for building [Content] model instances. */
             @JvmStatic
             override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
-        }
-    }
-
-    /**
-     * Model class for data from elements of the Google Play namespace that are valid within `<item>` elements.
-     *
-     * @property description The `<googleplay:description>` field text content.
-     * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
-     * @property block The logical value of the `<googleplay:block>` field's text content.
-     * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
-     */
-    public data class GooglePlay(
-        override val description: String? = null,
-        override val explicit: Boolean? = null,
-        override val block: Boolean,
-        override val image: HrefOnlyImage? = null
-    ) : GooglePlayBase {
-
-        public companion object Factory : BuilderFactory<GooglePlay, EpisodeGooglePlayBuilder> {
-
-            /** Returns a builder implementation for building [GooglePlay] model instances. */
-            @JvmStatic
-            override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
         }
     }
 

@@ -4,9 +4,9 @@ import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.ITunesStyleCategoryBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastGooglePlayBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.googleplay.PodcastGoogleplay
 
-internal class FakePodcastGooglePlayBuilder : FakeBuilder<Podcast.GooglePlay>(), PodcastGooglePlayBuilder {
+internal class FakePodcastGooglePlayBuilder : FakeBuilder<PodcastGoogleplay>(), PodcastGooglePlayBuilder {
 
     var author: String? = null
     var owner: String? = null
