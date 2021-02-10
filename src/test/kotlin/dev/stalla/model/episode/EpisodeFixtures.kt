@@ -11,6 +11,7 @@ import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.anRssCategory
+import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
@@ -38,7 +39,7 @@ internal fun anEpisode(
     atom: Atom? = anEpisodeAtom(),
     podlove: EpisodePodlove? = anEpisodePodlove(),
     googlePlay: EpisodeGoogleplay? = anEpisodeGooglePlay(),
-    bitlove: Episode.Bitlove? = anEpisodeBitlove(),
+    bitlove: Bitlove? = anEpisodeBitlove(),
     podcast: Episode.Podcast? = anEpisodePodcast()
 ) = Episode(
     title,
@@ -115,7 +116,7 @@ internal fun anEpisodeGooglePlay(
 
 internal fun anEpisodeBitlove(
     guid: String = "episode bitlove guid"
-) = Episode.Bitlove(guid)
+) = Bitlove(guid)
 
 internal fun anEpisodePodcast(
     transcripts: List<Episode.Podcast.Transcript> = listOf(anEpisodePodcastTranscript()),

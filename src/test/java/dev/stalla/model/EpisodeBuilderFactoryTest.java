@@ -1,6 +1,7 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.episode.*;
+import dev.stalla.model.bitlove.Bitlove;
 import dev.stalla.model.content.Content;
 import dev.stalla.model.googleplay.EpisodeGoogleplay;
 import dev.stalla.model.itunes.EpisodeItunes;
@@ -103,7 +104,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Bitlove model using builder factory methods only")
     public void testEpisodeBitloveBuilderFactory() {
-        EpisodeBitloveBuilder episodeBitloveBuilder = Episode.Bitlove.builder()
+        EpisodeBitloveBuilder episodeBitloveBuilder = Bitlove.builder()
             .guid("guid");
 
         assertNotNull(episodeBitloveBuilder.build());

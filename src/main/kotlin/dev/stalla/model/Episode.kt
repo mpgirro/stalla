@@ -1,6 +1,5 @@
 package dev.stalla.model
 
-import dev.stalla.builder.episode.EpisodeBitloveBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.episode.EpisodeGuidBuilder
@@ -8,7 +7,6 @@ import dev.stalla.builder.episode.EpisodePodcastBuilder
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodeBitloveBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeGuidBuilder
@@ -17,6 +15,7 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastChaptersBui
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastTranscriptBuilder
 import dev.stalla.model.Episode.Podcast.Transcript.Type
+import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
@@ -111,23 +110,6 @@ public data class Episode(
             /** Returns a builder implementation for building [Guid] model instances. */
             @JvmStatic
             override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
-        }
-    }
-
-    /**
-     * Model class for data from elements of the Bitlove namespace that are valid within `<item>` elements.
-     *
-     * @property guid The GUID attribute for the RSS enclosure element.
-     */
-    public data class Bitlove(
-        val guid: String
-    ) {
-
-        public companion object Factory : BuilderFactory<Bitlove, EpisodeBitloveBuilder> {
-
-            /** Returns a builder implementation for building [Bitlove] model instances. */
-            @JvmStatic
-            override fun builder(): EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
         }
     }
 

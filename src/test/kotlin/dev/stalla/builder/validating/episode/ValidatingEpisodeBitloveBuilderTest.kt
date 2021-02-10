@@ -9,7 +9,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeBitloveBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.episode.anEpisodeBitlove
 import org.junit.jupiter.api.Test
 
@@ -34,14 +34,14 @@ internal class ValidatingEpisodeBitloveBuilderTest {
         assertAll {
             assertThat(episodeBitloveBuilder).prop(EpisodeBitloveBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodeBitloveBuilder.build()).isNotNull().prop(Episode.Bitlove::guid).isEqualTo("guid")
+            assertThat(episodeBitloveBuilder.build()).isNotNull().prop(Bitlove::guid).isEqualTo("guid")
         }
     }
 
     @Test
     internal fun `should populate an Episode Bitlove builder with all properties from an Episode Bitlove model`() {
         val episodeBitlove = anEpisodeBitlove()
-        val episodeBitloveBuilder = Episode.Bitlove.builder().from(episodeBitlove)
+        val episodeBitloveBuilder = Bitlove.builder().from(episodeBitlove)
 
         assertAll {
             assertThat(episodeBitloveBuilder).prop(EpisodeBitloveBuilder::hasEnoughDataToBuild).isTrue()

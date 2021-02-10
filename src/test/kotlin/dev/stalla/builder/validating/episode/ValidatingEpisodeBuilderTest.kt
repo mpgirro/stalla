@@ -17,6 +17,7 @@ import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.Atom
 import dev.stalla.model.Episode
+import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.googleplay.EpisodeGoogleplay
@@ -158,7 +159,7 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::atom).isNotNull().prop(Atom::authors).containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Episode::podlove).isNotNull().prop(EpisodePodlove::simpleChapters).containsExactly(expectedSimpleChapterBuilder.build())
                 prop(Episode::googlePlay).isNotNull().prop(EpisodeGoogleplay::description).isEqualTo("play description")
-                prop(Episode::bitlove).isNotNull().prop(Episode.Bitlove::guid).isEqualTo("bitlove guid")
+                prop(Episode::bitlove).isNotNull().prop(Bitlove::guid).isEqualTo("bitlove guid")
                 prop(Episode::podcast).isNotNull().prop(Episode.Podcast::chapters).isEqualTo(expectedPodcastChaptersBuilder.build())
             }
         }
