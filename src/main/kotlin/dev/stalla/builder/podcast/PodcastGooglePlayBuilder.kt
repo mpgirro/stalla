@@ -4,7 +4,6 @@ import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.ITunesStyleCategoryBuilder
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.Podcast
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull

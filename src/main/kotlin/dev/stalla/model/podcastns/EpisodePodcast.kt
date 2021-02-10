@@ -23,5 +23,4 @@ public data class EpisodePodcast(
         @JvmStatic
         override fun builder(): EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
     }
-
 }

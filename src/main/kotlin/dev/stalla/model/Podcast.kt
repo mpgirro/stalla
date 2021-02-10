@@ -66,5 +66,4 @@ public data class Podcast(
         @JvmStatic
         override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
     }
-
 }

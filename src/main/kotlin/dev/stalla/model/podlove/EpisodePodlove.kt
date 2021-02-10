@@ -20,5 +20,4 @@ public data class EpisodePodlove(
         @JvmStatic
         override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
     }
-
 }

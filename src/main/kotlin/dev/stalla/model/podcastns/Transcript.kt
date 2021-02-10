@@ -26,5 +26,4 @@ public data class Transcript(
         @JvmStatic
         override fun builder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
     }
-
 }

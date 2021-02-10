@@ -10,8 +10,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeGuidBuilder
-import dev.stalla.model.rss.Guid
 import dev.stalla.model.episode.anEpisodeGuid
+import dev.stalla.model.rss.Guid
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeGuidBuilderTest {

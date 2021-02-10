@@ -61,5 +61,4 @@ public data class Episode(
         @JvmStatic
         override fun builder(): EpisodeBuilder = ValidatingEpisodeBuilder()
     }
-
 }

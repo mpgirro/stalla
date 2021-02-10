@@ -12,9 +12,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.dom.DomBuilderFactory
 import dev.stalla.dom.findElementByName
-import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.Episode
-import dev.stalla.model.rss.Guid
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
@@ -24,6 +22,8 @@ import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.itunes.ITunesStyleCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
+import dev.stalla.model.rss.Enclosure
+import dev.stalla.model.rss.Guid
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
 import java.time.Month

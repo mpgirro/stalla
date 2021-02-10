@@ -2,7 +2,6 @@ package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.util.whenNotNull
