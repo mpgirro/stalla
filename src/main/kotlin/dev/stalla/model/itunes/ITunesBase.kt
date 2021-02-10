@@ -1,4 +1,6 @@
-package dev.stalla.model
+package dev.stalla.model.itunes
+
+import dev.stalla.model.HrefOnlyImage
 
 internal interface ITunesBase {
     val image: HrefOnlyImage?

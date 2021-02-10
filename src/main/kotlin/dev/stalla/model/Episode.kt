@@ -6,7 +6,6 @@ import dev.stalla.builder.episode.EpisodeContentBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.episode.EpisodeGooglePlayBuilder
 import dev.stalla.builder.episode.EpisodeGuidBuilder
-import dev.stalla.builder.episode.EpisodeITunesBuilder
 import dev.stalla.builder.episode.EpisodePodcastBuilder
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
@@ -19,7 +18,6 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodeContentBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeGooglePlayBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeGuidBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodeITunesBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastChaptersBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastSoundbiteBuilder
@@ -28,6 +26,7 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodePodloveBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
 import dev.stalla.model.Episode.Podcast.Transcript.Type
 import dev.stalla.model.Episode.Podlove.SimpleChapter
+import dev.stalla.model.itunes.EpisodeItunes
 import java.time.Duration
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
@@ -66,7 +65,7 @@ public data class Episode(
     val pubDate: TemporalAccessor? = null,
     val source: String? = null,
     val content: Content? = null,
-    val iTunes: ITunes? = null,
+    val iTunes: EpisodeItunes? = null,
     val atom: Atom? = null,
     val podlove: Podlove? = null,
     val googlePlay: GooglePlay? = null,
@@ -135,71 +134,6 @@ public data class Episode(
             /** Returns a builder implementation for building [Content] model instances. */
             @JvmStatic
             override fun builder(): EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
-        }
-    }
-
-    /**
-     * Model class for data from elements of the iTunes namespace that are valid within `<item>` elements.
-     *
-     * @property title The `<itunes:title>` field text content.
-     * @property duration The `<itunes:duration>` field text content.
-     * @property image The data from the `<itunes:image>` element as an [HrefOnlyImage].
-     * @property explicit The logical value of the `<itunes:explicit>` field's text content.
-     * @property block The logical value of the `<itunes:block>` field's text content.
-     * @property season The numeric value of the `<itunes:season>` field's text content.
-     * @property episode The numeric value of the `<itunes:episode>` field's text content.
-     * @property episodeType The `<itunes:episodeType>` field text content.
-     */
-    public data class ITunes(
-        override val title: String? = null,
-        val duration: String? = null,
-        override val image: HrefOnlyImage? = null,
-        val explicit: Boolean? = null,
-        override val block: Boolean,
-        val season: Int? = null,
-        val episode: Int? = null,
-        val episodeType: EpisodeType? = null,
-        override val author: String? = null,
-        override val subtitle: String? = null,
-        override val summary: String? = null
-    ) : ITunesBase {
-
-        public companion object Factory : BuilderFactory<ITunes, EpisodeITunesBuilder> {
-
-            /** Returns a builder implementation for building [ITunes] model instances. */
-            @JvmStatic
-            override fun builder(): EpisodeITunesBuilder = ValidatingEpisodeITunesBuilder()
-        }
-
-        /**
-         * Enum model for the defined values encountered within the
-         * `<itunes:episodeType>` element within a `<item>` element.
-         *
-         * @property type The string representation of the enum instance.
-         */
-        public enum class EpisodeType(public val type: String) {
-
-            /** Type describing a bonus episode. */
-            BONUS("bonus"),
-
-            /** Type describing a full episode. */
-            FULL("full"),
-
-            /** Type describing a trailer episode. */
-            TRAILER("trailer");
-
-            public companion object Factory {
-
-                /**
-                 * Factory method for the instance of the Enum matching the [type] parameter.
-                 *
-                 * @param type The string representation of the Enum instance.
-                 * @return The Enum instance matching [type], or null if not matching instance exists.
-                 */
-                public fun from(type: String?): EpisodeType? = type?.let {
-                    values().find { value -> value.type == it.toLowerCase() }
-                }
-            }
         }
     }
 

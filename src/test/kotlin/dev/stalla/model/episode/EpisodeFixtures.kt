@@ -11,6 +11,8 @@ import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.anRssCategory
+import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.itunes.EpisodeType
 import java.time.Duration
 import java.time.Month
 import java.time.temporal.TemporalAccessor
@@ -28,7 +30,7 @@ internal fun anEpisode(
     pubDate: TemporalAccessor? = dateTime(year = 2020, month = Month.DECEMBER, day = 20, hour = 12, minute = 11, second = 10),
     source: String? = "episode source",
     content: Episode.Content? = anEpisodeContent(),
-    iTunes: Episode.ITunes? = anEpisodeITunes(),
+    iTunes: EpisodeItunes? = anEpisodeITunes(),
     atom: Atom? = anEpisodeAtom(),
     podlove: Episode.Podlove? = anEpisodePodlove(),
     googlePlay: Episode.GooglePlay? = anEpisodeGooglePlay(),
@@ -77,11 +79,11 @@ internal fun anEpisodeITunes(
     block: Boolean = true,
     season: Int? = 2,
     episode: Int? = 3,
-    episodeType: Episode.ITunes.EpisodeType? = Episode.ITunes.EpisodeType.FULL,
+    episodeType: EpisodeType? = EpisodeType.FULL,
     author: String? = "episode itunes author",
     subtitle: String? = "episode itunes subtitle",
     summary: String? = "episode itunes summary"
-) = Episode.ITunes(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
+) = EpisodeItunes(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
 
 internal fun anEpisodeAtom(
     authors: List<Person> = listOf(aPerson("episode atom author name")),

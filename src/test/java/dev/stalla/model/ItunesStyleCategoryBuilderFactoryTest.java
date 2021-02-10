@@ -1,6 +1,7 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.ITunesStyleCategoryBuilder;
+import dev.stalla.model.itunes.ITunesStyleCategory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -11,8 +11,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.ITunesStyleCategoryBuilder
-import dev.stalla.model.ITunesStyleCategory
 import dev.stalla.model.anITunesCategory
+import dev.stalla.model.itunes.ITunesStyleCategory
 import org.junit.jupiter.api.Test
 
 internal class ValidatingITunesStyleCategoryBuilderTest {

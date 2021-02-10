@@ -1,5 +1,7 @@
 package dev.stalla.model
 
+import dev.stalla.model.itunes.ITunesStyleCategory
+
 internal fun anRssImage(
     url: String = "image url",
     title: String = "image title",

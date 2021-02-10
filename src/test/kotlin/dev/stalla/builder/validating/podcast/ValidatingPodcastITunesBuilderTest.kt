@@ -14,7 +14,8 @@ import dev.stalla.builder.podcast.PodcastITunesBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingITunesStyleCategoryBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.itunes.PodcastItunes
+import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.podcast.aPodcastITunes
 import org.junit.jupiter.api.Test
 
@@ -53,19 +54,19 @@ internal class ValidatingPodcastITunesBuilderTest {
             assertThat(podcastITunesBuilder).prop(PodcastITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastITunesBuilder.build()).isNotNull().all {
-                prop(Podcast.ITunes::explicit).isNotNull().isFalse()
-                prop(Podcast.ITunes::subtitle).isNull()
-                prop(Podcast.ITunes::summary).isNull()
-                prop(Podcast.ITunes::keywords).isNull()
-                prop(Podcast.ITunes::author).isNull()
-                prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
-                prop(Podcast.ITunes::block).isFalse()
-                prop(Podcast.ITunes::complete).isFalse()
-                prop(Podcast.ITunes::type).isNull()
-                prop(Podcast.ITunes::owner).isNull()
-                prop(Podcast.ITunes::title).isNull()
-                prop(Podcast.ITunes::newFeedUrl).isNull()
-                prop(Podcast.ITunes::image).isEqualTo(expectedImageBuilder.build())
+                prop(PodcastItunes::explicit).isNotNull().isFalse()
+                prop(PodcastItunes::subtitle).isNull()
+                prop(PodcastItunes::summary).isNull()
+                prop(PodcastItunes::keywords).isNull()
+                prop(PodcastItunes::author).isNull()
+                prop(PodcastItunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
+                prop(PodcastItunes::block).isFalse()
+                prop(PodcastItunes::complete).isFalse()
+                prop(PodcastItunes::type).isNull()
+                prop(PodcastItunes::owner).isNull()
+                prop(PodcastItunes::title).isNull()
+                prop(PodcastItunes::newFeedUrl).isNull()
+                prop(PodcastItunes::image).isEqualTo(expectedImageBuilder.build())
             }
         }
     }
@@ -82,7 +83,7 @@ internal class ValidatingPodcastITunesBuilderTest {
             .addCategoryBuilder(otherExpectedITunesCategoryBuilder)
             .block(false)
             .complete(false)
-            .type(Podcast.ITunes.ShowType.SERIAL.type)
+            .type(ShowType.SERIAL.type)
             .ownerBuilder(expectedPersonBuilder)
             .title("title")
             .newFeedUrl("newFeedUrl")
@@ -92,19 +93,19 @@ internal class ValidatingPodcastITunesBuilderTest {
             assertThat(podcastITunesBuilder).prop(PodcastITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastITunesBuilder.build()).isNotNull().all {
-                prop(Podcast.ITunes::explicit).isNotNull().isTrue()
-                prop(Podcast.ITunes::subtitle).isEqualTo("subtitle")
-                prop(Podcast.ITunes::summary).isEqualTo("summary")
-                prop(Podcast.ITunes::keywords).isEqualTo("keywords")
-                prop(Podcast.ITunes::author).isEqualTo("author")
-                prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build(), otherExpectedITunesCategoryBuilder.build())
-                prop(Podcast.ITunes::block).isNotNull().isFalse()
-                prop(Podcast.ITunes::complete).isNotNull().isFalse()
-                prop(Podcast.ITunes::type).isEqualTo(Podcast.ITunes.ShowType.SERIAL)
-                prop(Podcast.ITunes::owner).isEqualTo(expectedPersonBuilder.build())
-                prop(Podcast.ITunes::title).isEqualTo("title")
-                prop(Podcast.ITunes::newFeedUrl).isEqualTo("newFeedUrl")
-                prop(Podcast.ITunes::image).isEqualTo(expectedImageBuilder.build())
+                prop(PodcastItunes::explicit).isNotNull().isTrue()
+                prop(PodcastItunes::subtitle).isEqualTo("subtitle")
+                prop(PodcastItunes::summary).isEqualTo("summary")
+                prop(PodcastItunes::keywords).isEqualTo("keywords")
+                prop(PodcastItunes::author).isEqualTo("author")
+                prop(PodcastItunes::categories).containsExactly(expectedITunesCategoryBuilder.build(), otherExpectedITunesCategoryBuilder.build())
+                prop(PodcastItunes::block).isNotNull().isFalse()
+                prop(PodcastItunes::complete).isNotNull().isFalse()
+                prop(PodcastItunes::type).isEqualTo(ShowType.SERIAL)
+                prop(PodcastItunes::owner).isEqualTo(expectedPersonBuilder.build())
+                prop(PodcastItunes::title).isEqualTo("title")
+                prop(PodcastItunes::newFeedUrl).isEqualTo("newFeedUrl")
+                prop(PodcastItunes::image).isEqualTo(expectedImageBuilder.build())
             }
         }
     }
@@ -112,7 +113,7 @@ internal class ValidatingPodcastITunesBuilderTest {
     @Test
     internal fun `should populate a Podcast Itunes builder with all properties from an Podcast Itunes model`() {
         val podcastITunes = aPodcastITunes()
-        val podcastITunesBuilder = Podcast.ITunes.builder().from(podcastITunes)
+        val podcastITunesBuilder = PodcastItunes.builder().from(podcastITunes)
 
         assertAll {
             assertThat(podcastITunesBuilder).prop(PodcastITunesBuilder::hasEnoughDataToBuild).isTrue()

@@ -9,9 +9,9 @@ import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.model.Episode
-import dev.stalla.model.ITunesStyleCategory
 import dev.stalla.model.Podcast
 import dev.stalla.model.RssCategory
+import dev.stalla.model.itunes.ITunesStyleCategory
 
 /** Transforms this list into a list of [RssCategoryBuilder] */
 @InternalApi

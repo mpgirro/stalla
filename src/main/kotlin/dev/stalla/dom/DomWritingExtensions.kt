@@ -1,10 +1,10 @@
 package dev.stalla.dom
 
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.ITunesStyleCategory
 import dev.stalla.model.Person
 import dev.stalla.model.RssCategory
 import dev.stalla.model.RssImage
+import dev.stalla.model.itunes.ITunesStyleCategory
 import dev.stalla.util.BooleanStringStyle
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi

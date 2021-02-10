@@ -3,9 +3,10 @@ package dev.stalla.builder.fake.episode
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.episode.EpisodeITunesBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.itunes.EpisodeType
 
-internal class FakeEpisodeITunesBuilder : FakeBuilder<Episode.ITunes>(), EpisodeITunesBuilder {
+internal class FakeEpisodeITunesBuilder : FakeBuilder<EpisodeItunes>(), EpisodeITunesBuilder {
 
     var title: String? = null
     var duration: String? = null
@@ -14,7 +15,7 @@ internal class FakeEpisodeITunesBuilder : FakeBuilder<Episode.ITunes>(), Episode
     var block: Boolean? = null
     var season: Int? = null
     var episode: Int? = null
-    var episodeType: Episode.ITunes.EpisodeType? = null
+    var episodeType: EpisodeType? = null
     var author: String? = null
     var subtitle: String? = null
     var summary: String? = null
@@ -33,7 +34,7 @@ internal class FakeEpisodeITunesBuilder : FakeBuilder<Episode.ITunes>(), Episode
 
     override fun episode(episode: Int?): EpisodeITunesBuilder = apply { this.episode = episode }
 
-    override fun episodeType(episodeType: String?): EpisodeITunesBuilder = apply { this.episodeType = Episode.ITunes.EpisodeType.from(episodeType) }
+    override fun episodeType(episodeType: String?): EpisodeITunesBuilder = apply { this.episodeType = EpisodeType.from(episodeType) }
 
     override fun author(author: String?): EpisodeITunesBuilder = apply { this.author = author }
 

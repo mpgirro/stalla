@@ -2,12 +2,12 @@ package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Episode.ITunes] instances. */
-public interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
+/** Builder for constructing [EpisodeItunes] instances. */
+public interface EpisodeITunesBuilder : Builder<EpisodeItunes> {
 
     /** Set the title value. */
     public fun title(title: String?): EpisodeITunesBuilder
@@ -42,7 +42,7 @@ public interface EpisodeITunesBuilder : Builder<Episode.ITunes> {
     /** Set the summary value. */
     public fun summary(summary: String?): EpisodeITunesBuilder
 
-    override fun from(model: Episode.ITunes?): EpisodeITunesBuilder = whenNotNull(model) { itunes ->
+    override fun from(model: EpisodeItunes?): EpisodeITunesBuilder = whenNotNull(model) { itunes ->
         title(itunes.title)
         duration(itunes.duration)
         imageBuilder(HrefOnlyImage.builder().from(itunes.image))

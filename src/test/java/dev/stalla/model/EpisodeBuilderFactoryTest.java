@@ -1,6 +1,7 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.episode.*;
+import dev.stalla.model.itunes.EpisodeItunes;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -55,9 +56,9 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Itunes model using builder factory methods only")
+    @DisplayName("should build an EpisodeItunes model using builder factory methods only")
     public void testEpisodeItunesBuilderFactory() {
-        EpisodeITunesBuilder episodeITunesBuilder = Episode.ITunes.builder()
+        EpisodeITunesBuilder episodeITunesBuilder = EpisodeItunes.builder()
             .title("title");
 
         assertNotNull(episodeITunesBuilder.build());

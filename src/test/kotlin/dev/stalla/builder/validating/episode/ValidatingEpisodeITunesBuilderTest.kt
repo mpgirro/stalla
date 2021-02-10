@@ -11,8 +11,9 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeITunesBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.model.Episode
 import dev.stalla.model.episode.anEpisodeITunes
+import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.itunes.EpisodeType
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeITunesBuilderTest {
@@ -39,17 +40,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isEqualTo("title")
-                prop(Episode.ITunes::duration).isNull()
-                prop(Episode.ITunes::season).isNull()
-                prop(Episode.ITunes::episode).isNull()
-                prop(Episode.ITunes::episodeType).isNull()
-                prop(Episode.ITunes::explicit).isNull()
-                prop(Episode.ITunes::block).isFalse()
-                prop(Episode.ITunes::image).isNull()
-                prop(Episode.ITunes::author).isNull()
-                prop(Episode.ITunes::subtitle).isNull()
-                prop(Episode.ITunes::summary).isNull()
+                prop(EpisodeItunes::title).isEqualTo("title")
+                prop(EpisodeItunes::duration).isNull()
+                prop(EpisodeItunes::season).isNull()
+                prop(EpisodeItunes::episode).isNull()
+                prop(EpisodeItunes::episodeType).isNull()
+                prop(EpisodeItunes::explicit).isNull()
+                prop(EpisodeItunes::block).isFalse()
+                prop(EpisodeItunes::image).isNull()
+                prop(EpisodeItunes::author).isNull()
+                prop(EpisodeItunes::subtitle).isNull()
+                prop(EpisodeItunes::summary).isNull()
             }
         }
     }
@@ -63,17 +64,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isNull()
-                prop(Episode.ITunes::duration).isEqualTo("duration")
-                prop(Episode.ITunes::season).isNull()
-                prop(Episode.ITunes::episode).isNull()
-                prop(Episode.ITunes::episodeType).isNull()
-                prop(Episode.ITunes::explicit).isNull()
-                prop(Episode.ITunes::block).isFalse()
-                prop(Episode.ITunes::image).isNull()
-                prop(Episode.ITunes::author).isNull()
-                prop(Episode.ITunes::subtitle).isNull()
-                prop(Episode.ITunes::summary).isNull()
+                prop(EpisodeItunes::title).isNull()
+                prop(EpisodeItunes::duration).isEqualTo("duration")
+                prop(EpisodeItunes::season).isNull()
+                prop(EpisodeItunes::episode).isNull()
+                prop(EpisodeItunes::episodeType).isNull()
+                prop(EpisodeItunes::explicit).isNull()
+                prop(EpisodeItunes::block).isFalse()
+                prop(EpisodeItunes::image).isNull()
+                prop(EpisodeItunes::author).isNull()
+                prop(EpisodeItunes::subtitle).isNull()
+                prop(EpisodeItunes::summary).isNull()
             }
         }
     }
@@ -87,17 +88,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isNull()
-                prop(Episode.ITunes::duration).isNull()
-                prop(Episode.ITunes::season).isEqualTo(2)
-                prop(Episode.ITunes::episode).isNull()
-                prop(Episode.ITunes::episodeType).isNull()
-                prop(Episode.ITunes::explicit).isNull()
-                prop(Episode.ITunes::block).isFalse()
-                prop(Episode.ITunes::image).isNull()
-                prop(Episode.ITunes::author).isNull()
-                prop(Episode.ITunes::subtitle).isNull()
-                prop(Episode.ITunes::summary).isNull()
+                prop(EpisodeItunes::title).isNull()
+                prop(EpisodeItunes::duration).isNull()
+                prop(EpisodeItunes::season).isEqualTo(2)
+                prop(EpisodeItunes::episode).isNull()
+                prop(EpisodeItunes::episodeType).isNull()
+                prop(EpisodeItunes::explicit).isNull()
+                prop(EpisodeItunes::block).isFalse()
+                prop(EpisodeItunes::image).isNull()
+                prop(EpisodeItunes::author).isNull()
+                prop(EpisodeItunes::subtitle).isNull()
+                prop(EpisodeItunes::summary).isNull()
             }
         }
     }
@@ -111,17 +112,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isNull()
-                prop(Episode.ITunes::duration).isNull()
-                prop(Episode.ITunes::season).isNull()
-                prop(Episode.ITunes::episode).isEqualTo(3)
-                prop(Episode.ITunes::episodeType).isNull()
-                prop(Episode.ITunes::explicit).isNull()
-                prop(Episode.ITunes::block).isFalse()
-                prop(Episode.ITunes::image).isNull()
-                prop(Episode.ITunes::author).isNull()
-                prop(Episode.ITunes::subtitle).isNull()
-                prop(Episode.ITunes::summary).isNull()
+                prop(EpisodeItunes::title).isNull()
+                prop(EpisodeItunes::duration).isNull()
+                prop(EpisodeItunes::season).isNull()
+                prop(EpisodeItunes::episode).isEqualTo(3)
+                prop(EpisodeItunes::episodeType).isNull()
+                prop(EpisodeItunes::explicit).isNull()
+                prop(EpisodeItunes::block).isFalse()
+                prop(EpisodeItunes::image).isNull()
+                prop(EpisodeItunes::author).isNull()
+                prop(EpisodeItunes::subtitle).isNull()
+                prop(EpisodeItunes::summary).isNull()
             }
         }
     }
@@ -129,23 +130,23 @@ internal class ValidatingEpisodeITunesBuilderTest {
     @Test
     internal fun `should build an Episode ITunes with only an episodeType`() {
         val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
-            .episodeType(Episode.ITunes.EpisodeType.BONUS.type)
+            .episodeType(EpisodeType.BONUS.type)
 
         assertAll {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isNull()
-                prop(Episode.ITunes::duration).isNull()
-                prop(Episode.ITunes::season).isNull()
-                prop(Episode.ITunes::episode).isNull()
-                prop(Episode.ITunes::episodeType).isEqualTo(Episode.ITunes.EpisodeType.BONUS)
-                prop(Episode.ITunes::explicit).isNull()
-                prop(Episode.ITunes::block).isFalse()
-                prop(Episode.ITunes::image).isNull()
-                prop(Episode.ITunes::author).isNull()
-                prop(Episode.ITunes::subtitle).isNull()
-                prop(Episode.ITunes::summary).isNull()
+                prop(EpisodeItunes::title).isNull()
+                prop(EpisodeItunes::duration).isNull()
+                prop(EpisodeItunes::season).isNull()
+                prop(EpisodeItunes::episode).isNull()
+                prop(EpisodeItunes::episodeType).isEqualTo(EpisodeType.BONUS)
+                prop(EpisodeItunes::explicit).isNull()
+                prop(EpisodeItunes::block).isFalse()
+                prop(EpisodeItunes::image).isNull()
+                prop(EpisodeItunes::author).isNull()
+                prop(EpisodeItunes::subtitle).isNull()
+                prop(EpisodeItunes::summary).isNull()
             }
         }
     }
@@ -159,17 +160,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isNull()
-                prop(Episode.ITunes::duration).isNull()
-                prop(Episode.ITunes::season).isNull()
-                prop(Episode.ITunes::episode).isNull()
-                prop(Episode.ITunes::episodeType).isNull()
-                prop(Episode.ITunes::explicit).isNotNull().isFalse()
-                prop(Episode.ITunes::block).isFalse()
-                prop(Episode.ITunes::image).isNull()
-                prop(Episode.ITunes::author).isNull()
-                prop(Episode.ITunes::subtitle).isNull()
-                prop(Episode.ITunes::summary).isNull()
+                prop(EpisodeItunes::title).isNull()
+                prop(EpisodeItunes::duration).isNull()
+                prop(EpisodeItunes::season).isNull()
+                prop(EpisodeItunes::episode).isNull()
+                prop(EpisodeItunes::episodeType).isNull()
+                prop(EpisodeItunes::explicit).isNotNull().isFalse()
+                prop(EpisodeItunes::block).isFalse()
+                prop(EpisodeItunes::image).isNull()
+                prop(EpisodeItunes::author).isNull()
+                prop(EpisodeItunes::subtitle).isNull()
+                prop(EpisodeItunes::summary).isNull()
             }
         }
     }
@@ -183,17 +184,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isNull()
-                prop(Episode.ITunes::duration).isNull()
-                prop(Episode.ITunes::season).isNull()
-                prop(Episode.ITunes::episode).isNull()
-                prop(Episode.ITunes::episodeType).isNull()
-                prop(Episode.ITunes::explicit).isNull()
-                prop(Episode.ITunes::block).isNotNull().isTrue()
-                prop(Episode.ITunes::image).isNull()
-                prop(Episode.ITunes::author).isNull()
-                prop(Episode.ITunes::subtitle).isNull()
-                prop(Episode.ITunes::summary).isNull()
+                prop(EpisodeItunes::title).isNull()
+                prop(EpisodeItunes::duration).isNull()
+                prop(EpisodeItunes::season).isNull()
+                prop(EpisodeItunes::episode).isNull()
+                prop(EpisodeItunes::episodeType).isNull()
+                prop(EpisodeItunes::explicit).isNull()
+                prop(EpisodeItunes::block).isNotNull().isTrue()
+                prop(EpisodeItunes::image).isNull()
+                prop(EpisodeItunes::author).isNull()
+                prop(EpisodeItunes::subtitle).isNull()
+                prop(EpisodeItunes::summary).isNull()
             }
         }
     }
@@ -207,17 +208,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isNull()
-                prop(Episode.ITunes::duration).isNull()
-                prop(Episode.ITunes::season).isNull()
-                prop(Episode.ITunes::episode).isNull()
-                prop(Episode.ITunes::episodeType).isNull()
-                prop(Episode.ITunes::explicit).isNull()
-                prop(Episode.ITunes::block).isFalse()
-                prop(Episode.ITunes::image).isEqualTo(expectedImageBuilder.build())
-                prop(Episode.ITunes::author).isNull()
-                prop(Episode.ITunes::subtitle).isNull()
-                prop(Episode.ITunes::summary).isNull()
+                prop(EpisodeItunes::title).isNull()
+                prop(EpisodeItunes::duration).isNull()
+                prop(EpisodeItunes::season).isNull()
+                prop(EpisodeItunes::episode).isNull()
+                prop(EpisodeItunes::episodeType).isNull()
+                prop(EpisodeItunes::explicit).isNull()
+                prop(EpisodeItunes::block).isFalse()
+                prop(EpisodeItunes::image).isEqualTo(expectedImageBuilder.build())
+                prop(EpisodeItunes::author).isNull()
+                prop(EpisodeItunes::subtitle).isNull()
+                prop(EpisodeItunes::summary).isNull()
             }
         }
     }
@@ -231,17 +232,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isNull()
-                prop(Episode.ITunes::duration).isNull()
-                prop(Episode.ITunes::season).isNull()
-                prop(Episode.ITunes::episode).isNull()
-                prop(Episode.ITunes::episodeType).isNull()
-                prop(Episode.ITunes::explicit).isNull()
-                prop(Episode.ITunes::block).isFalse()
-                prop(Episode.ITunes::image).isNull()
-                prop(Episode.ITunes::author).isEqualTo("author")
-                prop(Episode.ITunes::subtitle).isNull()
-                prop(Episode.ITunes::summary).isNull()
+                prop(EpisodeItunes::title).isNull()
+                prop(EpisodeItunes::duration).isNull()
+                prop(EpisodeItunes::season).isNull()
+                prop(EpisodeItunes::episode).isNull()
+                prop(EpisodeItunes::episodeType).isNull()
+                prop(EpisodeItunes::explicit).isNull()
+                prop(EpisodeItunes::block).isFalse()
+                prop(EpisodeItunes::image).isNull()
+                prop(EpisodeItunes::author).isEqualTo("author")
+                prop(EpisodeItunes::subtitle).isNull()
+                prop(EpisodeItunes::summary).isNull()
             }
         }
     }
@@ -255,17 +256,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isNull()
-                prop(Episode.ITunes::duration).isNull()
-                prop(Episode.ITunes::season).isNull()
-                prop(Episode.ITunes::episode).isNull()
-                prop(Episode.ITunes::episodeType).isNull()
-                prop(Episode.ITunes::explicit).isNull()
-                prop(Episode.ITunes::block).isFalse()
-                prop(Episode.ITunes::image).isNull()
-                prop(Episode.ITunes::author).isNull()
-                prop(Episode.ITunes::subtitle).isEqualTo("subtitle")
-                prop(Episode.ITunes::summary).isNull()
+                prop(EpisodeItunes::title).isNull()
+                prop(EpisodeItunes::duration).isNull()
+                prop(EpisodeItunes::season).isNull()
+                prop(EpisodeItunes::episode).isNull()
+                prop(EpisodeItunes::episodeType).isNull()
+                prop(EpisodeItunes::explicit).isNull()
+                prop(EpisodeItunes::block).isFalse()
+                prop(EpisodeItunes::image).isNull()
+                prop(EpisodeItunes::author).isNull()
+                prop(EpisodeItunes::subtitle).isEqualTo("subtitle")
+                prop(EpisodeItunes::summary).isNull()
             }
         }
     }
@@ -279,17 +280,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isNull()
-                prop(Episode.ITunes::duration).isNull()
-                prop(Episode.ITunes::season).isNull()
-                prop(Episode.ITunes::episode).isNull()
-                prop(Episode.ITunes::episodeType).isNull()
-                prop(Episode.ITunes::explicit).isNull()
-                prop(Episode.ITunes::block).isFalse()
-                prop(Episode.ITunes::image).isNull()
-                prop(Episode.ITunes::author).isNull()
-                prop(Episode.ITunes::subtitle).isNull()
-                prop(Episode.ITunes::summary).isEqualTo("summary")
+                prop(EpisodeItunes::title).isNull()
+                prop(EpisodeItunes::duration).isNull()
+                prop(EpisodeItunes::season).isNull()
+                prop(EpisodeItunes::episode).isNull()
+                prop(EpisodeItunes::episodeType).isNull()
+                prop(EpisodeItunes::explicit).isNull()
+                prop(EpisodeItunes::block).isFalse()
+                prop(EpisodeItunes::image).isNull()
+                prop(EpisodeItunes::author).isNull()
+                prop(EpisodeItunes::subtitle).isNull()
+                prop(EpisodeItunes::summary).isEqualTo("summary")
             }
         }
     }
@@ -301,7 +302,7 @@ internal class ValidatingEpisodeITunesBuilderTest {
             .duration("duration")
             .season(2)
             .episode(3)
-            .episodeType(Episode.ITunes.EpisodeType.BONUS.type)
+            .episodeType(EpisodeType.BONUS.type)
             .explicit(false)
             .block(false)
             .imageBuilder(expectedImageBuilder)
@@ -313,17 +314,17 @@ internal class ValidatingEpisodeITunesBuilderTest {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
-                prop(Episode.ITunes::title).isEqualTo("title")
-                prop(Episode.ITunes::duration).isEqualTo("duration")
-                prop(Episode.ITunes::season).isEqualTo(2)
-                prop(Episode.ITunes::episode).isEqualTo(3)
-                prop(Episode.ITunes::episodeType).isEqualTo(Episode.ITunes.EpisodeType.BONUS)
-                prop(Episode.ITunes::explicit).isNotNull().isFalse()
-                prop(Episode.ITunes::block).isNotNull().isFalse()
-                prop(Episode.ITunes::image).isEqualTo(expectedImageBuilder.build())
-                prop(Episode.ITunes::author).isEqualTo("author")
-                prop(Episode.ITunes::subtitle).isEqualTo("subtitle")
-                prop(Episode.ITunes::summary).isEqualTo("summary")
+                prop(EpisodeItunes::title).isEqualTo("title")
+                prop(EpisodeItunes::duration).isEqualTo("duration")
+                prop(EpisodeItunes::season).isEqualTo(2)
+                prop(EpisodeItunes::episode).isEqualTo(3)
+                prop(EpisodeItunes::episodeType).isEqualTo(EpisodeType.BONUS)
+                prop(EpisodeItunes::explicit).isNotNull().isFalse()
+                prop(EpisodeItunes::block).isNotNull().isFalse()
+                prop(EpisodeItunes::image).isEqualTo(expectedImageBuilder.build())
+                prop(EpisodeItunes::author).isEqualTo("author")
+                prop(EpisodeItunes::subtitle).isEqualTo("subtitle")
+                prop(EpisodeItunes::summary).isEqualTo("summary")
             }
         }
     }
@@ -331,7 +332,7 @@ internal class ValidatingEpisodeITunesBuilderTest {
     @Test
     internal fun `should populate an Episode ITunes builder with all properties from an Episode ITunes model`() {
         val episodeItunes = anEpisodeITunes()
-        val episodeITunesBuilder = Episode.ITunes.builder().from(episodeItunes)
+        val episodeITunesBuilder = EpisodeItunes.builder().from(episodeItunes)
 
         assertAll {
             assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()

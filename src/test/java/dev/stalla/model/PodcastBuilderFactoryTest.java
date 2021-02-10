@@ -5,6 +5,8 @@ import dev.stalla.builder.ITunesStyleCategoryBuilder;
 import dev.stalla.builder.episode.EpisodeBuilder;
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder;
 import dev.stalla.builder.podcast.*;
+import dev.stalla.model.itunes.ITunesStyleCategory;
+import dev.stalla.model.itunes.PodcastItunes;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +37,7 @@ public class PodcastBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build a Podcast.Itunes model using builder factory methods only")
+    @DisplayName("should build a PodcastItunes model using builder factory methods only")
     public void testPodcastItunesBuilderFactory() {
         ITunesStyleCategoryBuilder iTunesStyleCategoryBuilder = ITunesStyleCategory.builder()
             .category("category");
@@ -43,7 +45,7 @@ public class PodcastBuilderFactoryTest {
         HrefOnlyImageBuilder hrefOnlyImageBuilder = HrefOnlyImage.builder()
             .href("href");
 
-        PodcastITunesBuilder podcastITunesBuilder = Podcast.ITunes.builder()
+        PodcastITunesBuilder podcastITunesBuilder = PodcastItunes.builder()
             .explicit(false)
             .addCategoryBuilder(iTunesStyleCategoryBuilder)
             .imageBuilder(hrefOnlyImageBuilder);

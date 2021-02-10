@@ -14,9 +14,13 @@ import dev.stalla.dom.DomBuilderFactory
 import dev.stalla.dom.findElementByName
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.ITunesStyleCategory
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
+import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.itunes.EpisodeType
+import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.itunes.PodcastItunes
+import dev.stalla.model.itunes.ShowType
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
 import java.time.Month
@@ -141,23 +145,23 @@ internal class PodcastRssParserTest {
             )
             prop(Podcast::language).isEqualTo("en-us")
             prop(Podcast::iTunes).isNotNull().all {
-                prop(Podcast.ITunes::type).isEqualTo(Podcast.ITunes.ShowType.EPISODIC)
-                prop(Podcast.ITunes::subtitle).isEqualTo("News and views from the world of cybersecurity, hacking, and internet threats")
-                prop(Podcast.ITunes::author).isEqualTo("Graham Cluley, Carole Theriault")
-                prop(Podcast.ITunes::summary).isEqualTo(
+                prop(PodcastItunes::type).isEqualTo(ShowType.EPISODIC)
+                prop(PodcastItunes::subtitle).isEqualTo("News and views from the world of cybersecurity, hacking, and internet threats")
+                prop(PodcastItunes::author).isEqualTo("Graham Cluley, Carole Theriault")
+                prop(PodcastItunes::summary).isEqualTo(
                     "A helpful and hilarious take on the week's tech SNAFUs. Computer security industry veterans <a href=\"https://www.smashingsecurity.com/hosts/graham-cluley\">Graham Cluley</a> and <a href=\"https://www.smashingsecurity.com/hosts/carole-theriault\">Carole Theriault</a> chat with <a href=\"https://www.smashingsecurity.com/guests\">guests</a> about cybercrime, hacking, and online privacy.   It's not your typical cybersecurity podcast...\n" +
                         "Winner of the \"Best Security Podcast 2018\" and \"Best Security Podcast 2019\", Smashing Security has had over four million downloads. Past guests include Garry Kasparov, Mikko Hyppönen, and Rory Cellan-Jones.\n" +
                         "Follow the podcast on Twitter at <a href=\"https://twitter.com/SmashinSecurity\">@SmashinSecurity</a>, and subscribe for free in your favourite podcast app. New episodes released at 7pm EST every Wednesday (midnight UK)."
                 )
-                prop(Podcast.ITunes::image).isNotNull()
+                prop(PodcastItunes::image).isNotNull()
                     .prop(HrefOnlyImage::href).isEqualTo("https://assets.fireside.fm/file/fireside-images/podcasts/images/d/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/cover.jpg?v=1")
-                prop(Podcast.ITunes::explicit).isNotNull().isTrue()
-                prop(Podcast.ITunes::keywords).isEqualTo("computer security, cybersecurity, hacking, privacy, cybercrime, cyber, cyberwarfare, infosec")
-                prop(Podcast.ITunes::owner).isNotNull().all {
+                prop(PodcastItunes::explicit).isNotNull().isTrue()
+                prop(PodcastItunes::keywords).isEqualTo("computer security, cybersecurity, hacking, privacy, cybercrime, cyber, cyberwarfare, infosec")
+                prop(PodcastItunes::owner).isNotNull().all {
                     prop(Person::name).isEqualTo("Graham Cluley, Carole Theriault")
                     prop(Person::email).isEqualTo("studio@smashingsecurity.com")
                 }
-                prop(Podcast.ITunes::categories).containsExactly(
+                prop(PodcastItunes::categories).containsExactly(
                     ITunesStyleCategory.Simple(name = "Technology"),
                     ITunesStyleCategory.Nested(name = "News", subcategory = ITunesStyleCategory.Simple(name = "Tech News")),
                     ITunesStyleCategory.Simple(name = "Comedy")
@@ -202,15 +206,15 @@ internal class PodcastRssParserTest {
                             "Assorted sound effects: AudioBlocks. Special Guests: Danielle Papadakis and Jack Rhysider."
                     )
                     prop(Episode::iTunes).isNotNull().all {
-                        prop(Episode.ITunes::episodeType).isEqualTo(Episode.ITunes.EpisodeType.FULL)
-                        prop(Episode.ITunes::author).isEqualTo("Graham Cluley, Carole Theriault")
-                        prop(Episode.ITunes::subtitle).isEqualTo("Darknet Diaries host Jack Rhysider joins us to discuss a cybersecurity goof in the wake of the US presidential elections, the US finally fingering the hackers responsible for disrupting the Winter Olympics in South Korea, and to take a long hard look at long hard legal mumbojumbo...")
-                        prop(Episode.ITunes::duration).isEqualTo("1:12:57")
-                        prop(Episode.ITunes::explicit).isNotNull().isTrue()
-                        prop(Episode.ITunes::image).isNotNull()
+                        prop(EpisodeItunes::episodeType).isEqualTo(EpisodeType.FULL)
+                        prop(EpisodeItunes::author).isEqualTo("Graham Cluley, Carole Theriault")
+                        prop(EpisodeItunes::subtitle).isEqualTo("Darknet Diaries host Jack Rhysider joins us to discuss a cybersecurity goof in the wake of the US presidential elections, the US finally fingering the hackers responsible for disrupting the Winter Olympics in South Korea, and to take a long hard look at long hard legal mumbojumbo...")
+                        prop(EpisodeItunes::duration).isEqualTo("1:12:57")
+                        prop(EpisodeItunes::explicit).isNotNull().isTrue()
+                        prop(EpisodeItunes::image).isNotNull()
                             .prop(HrefOnlyImage::href)
                             .isEqualTo("https://assets.fireside.fm/file/fireside-images/podcasts/images/d/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/cover.jpg?v=1")
-                        prop(Episode.ITunes::summary).isEqualTo(
+                        prop(EpisodeItunes::summary).isEqualTo(
                             "<p>Darknet Diaries host Jack Rhysider joins us to discuss a cybersecurity goof in the wake of the US presidential elections, the US finally fingering the hackers responsible for disrupting the Winter Olympics in South Korea, and to take a long hard look at long hard legal mumbojumbo...</p>\n" +
                                 "\n" +
                                 "<p>All this and much much more is discussed in the latest edition of the &quot;Smashing Security&quot; podcast by computer security veterans <a href=\"https://www.smashingsecurity.com/hosts/graham-cluley\">Graham Cluley</a> and <a href= \"https://www.smashingsecurity.com/hosts/carole-theriault\">Carole Theriault</a>, joined this week by Jack Rhysider from Darknet Diaries.</p>\n" +

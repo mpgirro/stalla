@@ -7,8 +7,8 @@ import dev.stalla.dom.appendPersonElement
 import dev.stalla.dom.appendTrueFalseElement
 import dev.stalla.dom.appendYesElementIfTrue
 import dev.stalla.model.Episode
-import dev.stalla.model.ITunesBase
 import dev.stalla.model.Podcast
+import dev.stalla.model.itunes.ITunesBase
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
 import dev.stalla.util.isNeitherNullNorBlank

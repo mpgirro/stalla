@@ -18,8 +18,8 @@ import dev.stalla.builder.fake.podcast.FakePodcastBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastITunesBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.hasNotEnoughDataToBuild
-import dev.stalla.model.Episode
-import dev.stalla.model.Podcast
+import dev.stalla.model.itunes.EpisodeType
+import dev.stalla.model.itunes.ShowType
 import dev.stalla.noneHasEnoughDataToBuild
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
@@ -58,7 +58,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakePodcastITunesBuilder::block).isNotNull().isFalse()
             prop(FakePodcastITunesBuilder::complete).isNotNull().isFalse()
             prop(FakePodcastITunesBuilder::imageBuilderValue).isEqualTo(expectedPodcastImageBuilder)
-            prop(FakePodcastITunesBuilder::type).isEqualTo(Podcast.ITunes.ShowType.EPISODIC)
+            prop(FakePodcastITunesBuilder::type).isEqualTo(ShowType.EPISODIC)
             prop(FakePodcastITunesBuilder::title).isEqualTo("podcast itunes title")
             prop(FakePodcastITunesBuilder::newFeedUrl).isEqualTo("podcast itunes new-feed-url")
         }
@@ -124,7 +124,7 @@ internal class ITunesParserTest : NamespaceParserTest() {
             prop(FakeEpisodeITunesBuilder::explicit).isNotNull().isFalse()
             prop(FakeEpisodeITunesBuilder::block).isNotNull().isFalse()
             prop(FakeEpisodeITunesBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
-            prop(FakeEpisodeITunesBuilder::episodeType).isEqualTo(Episode.ITunes.EpisodeType.FULL)
+            prop(FakeEpisodeITunesBuilder::episodeType).isEqualTo(EpisodeType.FULL)
             prop(FakeEpisodeITunesBuilder::author).isEqualTo("author")
             prop(FakeEpisodeITunesBuilder::subtitle).isEqualTo("subtitle")
             prop(FakeEpisodeITunesBuilder::summary).isEqualTo("summary")

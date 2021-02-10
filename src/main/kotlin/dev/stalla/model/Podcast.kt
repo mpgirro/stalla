@@ -4,7 +4,6 @@ import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.podcast.PodcastFeedpressBuilder
 import dev.stalla.builder.podcast.PodcastFyydBuilder
 import dev.stalla.builder.podcast.PodcastGooglePlayBuilder
-import dev.stalla.builder.podcast.PodcastITunesBuilder
 import dev.stalla.builder.podcast.PodcastPodcastBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
@@ -12,10 +11,11 @@ import dev.stalla.builder.validating.podcast.ValidatingPodcastBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastFeedpressBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastFyydBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastGooglePlayBuilder
-import dev.stalla.builder.validating.podcast.ValidatingPodcastITunesBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastFundingBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastLockedBuilder
+import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.itunes.PodcastItunes
 import java.time.temporal.TemporalAccessor
 
 /**
@@ -58,7 +58,7 @@ public data class Podcast(
     val ttl: Int? = null,
     val image: RssImage? = null,
     val episodes: List<Episode>,
-    val iTunes: ITunes? = null,
+    val iTunes: PodcastItunes? = null,
     val atom: Atom? = null,
     val fyyd: Fyyd? = null,
     val feedpress: Feedpress? = null,
@@ -72,75 +72,6 @@ public data class Podcast(
         /** Returns a builder implementation for building [dev.stalla.model.Podcast] model instances. */
         @JvmStatic
         override fun builder(): PodcastBuilder = ValidatingPodcastBuilder()
-    }
-
-    /**
-     * Model class for data from the iTunes namespace valid within an RSS `<channel>`.
-     *
-     * @property subtitle The `<itunes:subtitle>` field text content.
-     * @property summary The `<itunes:summary>` field text content.
-     * @property image The data from the `<itunes:image>` element as an [HrefOnlyImage].
-     * @property keywords The `<itunes:keywords>` field text content.
-     * @property author The `<itunes:author>` field text content.
-     * @property categories The list of `<itunes:category>` element's field text contents.
-     * @property explicit The logical value of the `<itunes:explicit>` field's text content.
-     * @property block The logical value of the `<itunes:block>` field's text content.
-     * @property complete The logical value of the `<itunes:complete>` field's text content.
-     * @property type The `<itunes:type>` field text content.
-     * @property owner The `<itunes:owner>` elements data as a [Person].
-     * @property owner The `<itunes:title>` field text content.
-     * @property owner The `<itunes:new-feed-url>` field text content.
-     */
-    public data class ITunes(
-        override val subtitle: String? = null,
-        override val summary: String? = null,
-        override val image: HrefOnlyImage?,
-        val keywords: String? = null,
-        override val author: String? = null,
-        val categories: List<ITunesStyleCategory>,
-        val explicit: Boolean,
-        override val block: Boolean,
-        val complete: Boolean,
-        val type: ShowType? = null,
-        val owner: Person? = null,
-        override val title: String? = null,
-        val newFeedUrl: String? = null
-    ) : ITunesBase {
-
-        public companion object Factory : BuilderFactory<ITunes, PodcastITunesBuilder> {
-
-            /** Returns a builder implementation for building [ITunes] model instances. */
-            @JvmStatic
-            override fun builder(): PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
-        }
-
-        /**
-         * Enum model for the defined values encountered within the
-         * `<itunes:type>` element within a `<channel>` element.
-         *
-         * @property type The string representation of the Enum instance.
-         */
-        public enum class ShowType(public val type: String) {
-
-            /** Type describing an episodic show. */
-            EPISODIC("episodic"),
-
-            /** Type describing a serial show. */
-            SERIAL("serial");
-
-            public companion object Factory {
-
-                /**
-                 * Factory method for the instance of the Enum matching the [type] parameter.
-                 *
-                 * @param type The string representation of the Enum instance.
-                 * @return The Enum instance matching [type], or null if not matching instance exists.
-                 */
-                public fun from(type: String?): ShowType? = type?.let {
-                    values().find { t -> t.type == it.toLowerCase() }
-                }
-            }
-        }
     }
 
     /**

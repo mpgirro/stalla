@@ -21,6 +21,7 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.Atom
 import dev.stalla.model.Podcast
+import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.podcast.aPodcast
 import org.junit.jupiter.api.Test
 import java.time.Month
@@ -231,7 +232,7 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::image).isEqualTo(expectedImageBuilder.build())
                 prop(Podcast::categories).containsExactly(expectedCategoryBuilders[0].build(), expectedCategoryBuilders[1].build())
                 prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
-                prop(Podcast::iTunes).isNotNull().prop(Podcast.ITunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
+                prop(Podcast::iTunes).isNotNull().prop(PodcastItunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
                 prop(Podcast::atom).isNotNull().prop(Atom::authors)
                     .containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Podcast::feedpress).isNotNull().prop(Podcast.Feedpress::newsletterId)

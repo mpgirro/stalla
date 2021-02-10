@@ -7,10 +7,10 @@ import dev.stalla.hasNoChildren
 import dev.stalla.hasNoDifferences
 import dev.stalla.hasTextContent
 import dev.stalla.hasValue
-import dev.stalla.model.ITunesStyleCategory
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.episode.anEpisodeITunes
+import dev.stalla.model.itunes.ITunesStyleCategory
 import dev.stalla.model.podcast.aPodcast
 import dev.stalla.model.podcast.aPodcastITunes
 import org.junit.jupiter.api.Test

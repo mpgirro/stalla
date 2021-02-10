@@ -1,6 +1,6 @@
 package dev.stalla.builder
 
-import dev.stalla.model.ITunesStyleCategory
+import dev.stalla.model.itunes.ITunesStyleCategory
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [ITunesStyleCategory] instances. */

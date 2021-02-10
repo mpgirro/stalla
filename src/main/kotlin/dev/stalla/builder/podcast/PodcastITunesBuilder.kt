@@ -6,12 +6,12 @@ import dev.stalla.builder.ITunesStyleCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
-import dev.stalla.model.Podcast
+import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Podcast.ITunes] instances. */
-public interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
+/** Builder for constructing [PodcastItunes] instances. */
+public interface PodcastITunesBuilder : Builder<PodcastItunes> {
 
     /** Set the subtitle value. */
     public fun subtitle(subtitle: String?): PodcastITunesBuilder
@@ -57,7 +57,7 @@ public interface PodcastITunesBuilder : Builder<Podcast.ITunes> {
     /** Set the new URL at which this feed is located. */
     public fun newFeedUrl(newFeedUrl: String?): PodcastITunesBuilder
 
-    override fun from(model: Podcast.ITunes?): PodcastITunesBuilder = whenNotNull(model) { itunes ->
+    override fun from(model: PodcastItunes?): PodcastITunesBuilder = whenNotNull(model) { itunes ->
         subtitle(itunes.subtitle)
         summary(itunes.summary)
         imageBuilder(HrefOnlyImage.builder().from(itunes.image))

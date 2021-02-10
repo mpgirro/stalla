@@ -4,7 +4,6 @@ import dev.stalla.dateTime
 import dev.stalla.model.Atom
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.ITunesStyleCategory
 import dev.stalla.model.Link
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
@@ -17,6 +16,9 @@ import dev.stalla.model.anITunesCategory
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.anRssImage
 import dev.stalla.model.episode.anEpisode
+import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.itunes.PodcastItunes
+import dev.stalla.model.itunes.ShowType
 import java.time.Month
 import java.time.temporal.TemporalAccessor
 
@@ -35,7 +37,7 @@ internal fun aPodcast(
     ttl: Int? = 123,
     image: RssImage? = anRssImage(url = "podcast image url"),
     episodes: List<Episode> = listOf(anEpisode()),
-    iTunes: Podcast.ITunes? = aPodcastITunes(),
+    iTunes: PodcastItunes? = aPodcastITunes(),
     atom: Atom? = aPodcastAtom(),
     fyyd: Podcast.Fyyd? = aPodcastFyyd(),
     feedpress: Podcast.Feedpress? = aPodcastFeedpress(),
@@ -76,11 +78,11 @@ internal fun aPodcastITunes(
     explicit: Boolean = true,
     block: Boolean = true,
     complete: Boolean = true,
-    type: Podcast.ITunes.ShowType? = Podcast.ITunes.ShowType.EPISODIC,
+    type: ShowType? = ShowType.EPISODIC,
     owner: Person? = aPerson("podcast itunes owner name", uri = null),
     title: String? = "podcast itunes title",
     newFeedUrl: String? = "podcast itunes newFeedUrl"
-) = Podcast.ITunes(subtitle, summary, image, keywords, author, categories, explicit, block, complete, type, owner, title, newFeedUrl)
+) = PodcastItunes(subtitle, summary, image, keywords, author, categories, explicit, block, complete, type, owner, title, newFeedUrl)
 
 internal fun aPodcastAtom(
     authors: List<Person> = listOf(aPerson("podcast atom author name")),

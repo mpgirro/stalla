@@ -4,7 +4,8 @@ import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.ITunesStyleCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.podcast.PodcastITunesBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.itunes.PodcastItunes
+import dev.stalla.model.itunes.ShowType
 
 internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
 
@@ -18,7 +19,7 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
     private var categoryBuilders: MutableList<ITunesStyleCategoryBuilder> = mutableListOf()
     private var block: Boolean = false
     private var complete: Boolean = false
-    private var type: Podcast.ITunes.ShowType? = null
+    private var type: ShowType? = null
     private var ownerBuilder: PersonBuilder? = null
     private var title: String? = null
     private var newFeedUrl: String? = null
@@ -43,7 +44,7 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
 
     override fun complete(complete: Boolean): PodcastITunesBuilder = apply { this.complete = complete }
 
-    override fun type(type: String?): PodcastITunesBuilder = apply { this.type = Podcast.ITunes.ShowType.from(type) }
+    override fun type(type: String?): PodcastITunesBuilder = apply { this.type = ShowType.from(type) }
 
     override fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastITunesBuilder = apply { this.ownerBuilder = ownerBuilder }
 
@@ -59,12 +60,12 @@ internal class ValidatingPodcastITunesBuilder : PodcastITunesBuilder {
         get() = explicit != null && categoryBuilders.any { it.hasEnoughDataToBuild } &&
             (::imageBuilderValue.isInitialized && imageBuilderValue.hasEnoughDataToBuild)
 
-    override fun build(): Podcast.ITunes? {
+    override fun build(): PodcastItunes? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Podcast.ITunes(
+        return PodcastItunes(
             subtitle = subtitle,
             summary = summary,
             image = imageBuilderValue.build() ?: return null,

@@ -2,7 +2,8 @@ package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.episode.EpisodeITunesBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.util.anyNotNull
 
 internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
@@ -14,7 +15,7 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
     private var block: Boolean = false
     private var season: Int? = null
     private var episode: Int? = null
-    private var episodeType: Episode.ITunes.EpisodeType? = null
+    private var episodeType: EpisodeType? = null
     private var author: String? = null
     private var subtitle: String? = null
     private var summary: String? = null
@@ -34,7 +35,7 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
     override fun episode(episode: Int?): EpisodeITunesBuilder = apply { this.episode = episode }
 
     override fun episodeType(episodeType: String?): EpisodeITunesBuilder = apply {
-        this.episodeType = Episode.ITunes.EpisodeType.from(episodeType)
+        this.episodeType = EpisodeType.from(episodeType)
     }
 
     override fun author(author: String?): EpisodeITunesBuilder = apply { this.author = author }
@@ -48,12 +49,12 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
             imageBuilder?.hasEnoughDataToBuild == true ||
             block
 
-    override fun build(): Episode.ITunes? {
+    override fun build(): EpisodeItunes? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
         val image = imageBuilder?.build()
-        return Episode.ITunes(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
+        return EpisodeItunes(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
     }
 }

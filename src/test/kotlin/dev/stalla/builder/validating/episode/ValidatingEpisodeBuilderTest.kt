@@ -18,6 +18,7 @@ import dev.stalla.dateTime
 import dev.stalla.model.Atom
 import dev.stalla.model.Episode
 import dev.stalla.model.episode.anEpisode
+import dev.stalla.model.itunes.EpisodeItunes
 import org.junit.jupiter.api.Test
 import java.time.Month
 
@@ -150,7 +151,7 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::pubDate).isEqualTo(expectedDate)
                 prop(Episode::source).isEqualTo("source")
                 prop(Episode::content).isNotNull().prop(Episode.Content::encoded).isEqualTo("encoded")
-                prop(Episode::iTunes).isNotNull().prop(Episode.ITunes::title).isEqualTo("iTunes title")
+                prop(Episode::iTunes).isNotNull().prop(EpisodeItunes::title).isEqualTo("iTunes title")
                 prop(Episode::atom).isNotNull().prop(Atom::authors).containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Episode::podlove).isNotNull().prop(Episode.Podlove::simpleChapters).containsExactly(expectedSimpleChapterBuilder.build())
                 prop(Episode::googlePlay).isNotNull().prop(Episode.GooglePlay::description).isEqualTo("play description")

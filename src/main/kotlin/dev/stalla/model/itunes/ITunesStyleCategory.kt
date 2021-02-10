@@ -1,7 +1,8 @@
-package dev.stalla.model
+package dev.stalla.model.itunes
 
 import dev.stalla.builder.ITunesStyleCategoryBuilder
 import dev.stalla.builder.validating.ValidatingITunesStyleCategoryBuilder
+import dev.stalla.model.BuilderFactory
 
 /**
  * An [iTunes-style `<category>` tag][https://help.apple.com/itc/podcasts_connect/#/itcb54353390].
