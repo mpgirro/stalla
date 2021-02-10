@@ -2,7 +2,9 @@ package dev.stalla.model.episode
 
 import dev.stalla.dateTime
 import dev.stalla.model.Atom
+import dev.stalla.model.Enclosure
 import dev.stalla.model.Episode
+import dev.stalla.model.Guid
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Link
 import dev.stalla.model.Person
@@ -30,8 +32,8 @@ internal fun anEpisode(
     author: String? = "episode author",
     categories: List<RssCategory> = listOf(anRssCategory("episode category")),
     comments: String? = "episode comments",
-    enclosure: Episode.Enclosure = anEpisodeEnclosure(),
-    guid: Episode.Guid? = anEpisodeGuid(),
+    enclosure: Enclosure = anEpisodeEnclosure(),
+    guid: Guid? = anEpisodeGuid(),
     pubDate: TemporalAccessor? = dateTime(year = 2020, month = Month.DECEMBER, day = 20, hour = 12, minute = 11, second = 10),
     source: String? = "episode source",
     content: Content? = anEpisodeContent(),
@@ -65,12 +67,12 @@ internal fun anEpisodeEnclosure(
     url: String = "episode enclosure url",
     length: Long = 777,
     type: String = "episode enclosure type"
-) = Episode.Enclosure(url, length, type)
+) = Enclosure(url, length, type)
 
 internal fun anEpisodeGuid(
     textContent: String = "episode guid textContent",
     isPermalink: Boolean? = false
-) = Episode.Guid(textContent, isPermalink)
+) = Guid(textContent, isPermalink)
 
 internal fun anEpisodeContent(
     encoded: String = "episode content encoded"

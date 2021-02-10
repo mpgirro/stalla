@@ -12,7 +12,9 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.dom.DomBuilderFactory
 import dev.stalla.dom.findElementByName
+import dev.stalla.model.Enclosure
 import dev.stalla.model.Episode
+import dev.stalla.model.Guid
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
@@ -110,9 +112,9 @@ internal class PodcastRssParserTest {
                     prop(Episode::link).isEqualTo("http://example.org/episode1")
                     prop(Episode::description).isEqualTo("Lorem Ipsum episode 1 description")
                     prop(Episode::enclosure).all {
-                        prop(Episode.Enclosure::url).isEqualTo("http://example.org/episode1.m4a")
-                        prop(Episode.Enclosure::type).isEqualTo("audio/mp4")
-                        prop(Episode.Enclosure::length).isEqualTo(78589133)
+                        prop(Enclosure::url).isEqualTo("http://example.org/episode1.m4a")
+                        prop(Enclosure::type).isEqualTo("audio/mp4")
+                        prop(Enclosure::length).isEqualTo(78589133)
                     }
                 }
 
@@ -121,9 +123,9 @@ internal class PodcastRssParserTest {
                     prop(Episode::link).isEqualTo("http://example.org/episode2")
                     prop(Episode::description).isEqualTo("Lorem Ipsum episode 2 description")
                     prop(Episode::enclosure).all {
-                        prop(Episode.Enclosure::url).isEqualTo("http://example.org/episode2.mp3")
-                        prop(Episode.Enclosure::type).isEqualTo("audio/mp3")
-                        prop(Episode.Enclosure::length).isEqualTo(78133)
+                        prop(Enclosure::url).isEqualTo("http://example.org/episode2.mp3")
+                        prop(Enclosure::type).isEqualTo("audio/mp3")
+                        prop(Enclosure::length).isEqualTo(78133)
                     }
                 }
             }
@@ -185,15 +187,15 @@ internal class PodcastRssParserTest {
                     prop(Episode::title).isEqualTo("204: Green buttons, Olympic attacks, and... an apology")
                     prop(Episode::link).isEqualTo("http://www.smashingsecurity.com/204")
                     prop(Episode::guid).isNotNull().all {
-                        prop(Episode.Guid::guid).isEqualTo("2ed98bdd-ea95-4129-98cf-ee23dd2ab478")
-                        prop(Episode.Guid::isPermalink).isNotNull().isFalse()
+                        prop(Guid::guid).isEqualTo("2ed98bdd-ea95-4129-98cf-ee23dd2ab478")
+                        prop(Guid::isPermalink).isNotNull().isFalse()
                     }
                     prop(Episode::pubDate).isEqualTo(dateTime(year = 2020, month = Month.NOVEMBER, day = 12))
                     prop(Episode::author).isEqualTo("Graham Cluley, Carole Theriault")
                     prop(Episode::enclosure).all {
-                        prop(Episode.Enclosure::url).isEqualTo("https://aphid.fireside.fm/d/1437767933/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/2ed98bdd-ea95-4129-98cf-ee23dd2ab478.mp3")
-                        prop(Episode.Enclosure::type).isEqualTo("audio/mpeg")
-                        prop(Episode.Enclosure::length).isEqualTo(70104299)
+                        prop(Enclosure::url).isEqualTo("https://aphid.fireside.fm/d/1437767933/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/2ed98bdd-ea95-4129-98cf-ee23dd2ab478.mp3")
+                        prop(Enclosure::type).isEqualTo("audio/mpeg")
+                        prop(Enclosure::length).isEqualTo(70104299)
                     }
                     prop(Episode::description).isEqualTo(
                         "Darknet Diaries host Jack Rhysider joins us to discuss a cybersecurity goof in the wake of the US presidential elections, the US finally fingering the hackers responsible for disrupting the Winter Olympics in South Korea, and to take a long hard look at long hard legal mumbojumbo...\n" +

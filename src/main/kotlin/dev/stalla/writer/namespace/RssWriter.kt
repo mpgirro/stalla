@@ -3,7 +3,9 @@ package dev.stalla.writer.namespace
 import dev.stalla.dom.appendElement
 import dev.stalla.dom.appendRssCategoryElements
 import dev.stalla.dom.appendRssImageElement
+import dev.stalla.model.Enclosure
 import dev.stalla.model.Episode
+import dev.stalla.model.Guid
 import dev.stalla.model.Podcast
 import dev.stalla.util.BooleanStringStyle
 import dev.stalla.util.FeedNamespace
@@ -119,7 +121,7 @@ internal object RssWriter : NamespaceWriter() {
         }
     }
 
-    private fun Element.appendEnclosureElement(enclosure: Episode.Enclosure) {
+    private fun Element.appendEnclosureElement(enclosure: Enclosure) {
         if (enclosure.url.isBlank() || enclosure.type.isBlank()) return
         appendElement("enclosure") {
             setAttribute("url", enclosure.url.trim())
@@ -128,7 +130,7 @@ internal object RssWriter : NamespaceWriter() {
         }
     }
 
-    private fun Element.appendGuidElement(guid: Episode.Guid) {
+    private fun Element.appendGuidElement(guid: Guid) {
         if (guid.guid.isBlank()) return
         appendElement("guid") {
             if (guid.isPermalink != null) {

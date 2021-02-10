@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.Enclosure
 
 internal class ValidatingEpisodeEnclosureBuilder : EpisodeEnclosureBuilder {
 
@@ -18,11 +18,11 @@ internal class ValidatingEpisodeEnclosureBuilder : EpisodeEnclosureBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() = ::urlValue.isInitialized && lengthValue >= 0 && ::typeValue.isInitialized
 
-    override fun build(): Episode.Enclosure? {
+    override fun build(): Enclosure? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Episode.Enclosure(urlValue, lengthValue, typeValue)
+        return Enclosure(urlValue, lengthValue, typeValue)
     }
 }

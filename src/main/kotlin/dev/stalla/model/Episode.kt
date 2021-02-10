@@ -1,15 +1,11 @@
 package dev.stalla.model
 
 import dev.stalla.builder.episode.EpisodeBuilder
-import dev.stalla.builder.episode.EpisodeEnclosureBuilder
-import dev.stalla.builder.episode.EpisodeGuidBuilder
 import dev.stalla.builder.episode.EpisodePodcastBuilder
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodeGuidBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastChaptersBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastSoundbiteBuilder
@@ -71,46 +67,6 @@ public data class Episode(
         /** Returns a builder implementation for building [Episode] model instances. */
         @JvmStatic
         override fun builder(): EpisodeBuilder = ValidatingEpisodeBuilder()
-    }
-
-    /**
-     * Model class for `<enclosure>` elements within RSS `<item>` elements.
-     *
-     * @property url The `url` attribute textContent of the RSS `<enclosure>` element.
-     * @property length The `length` attribute textContent of the RSS `<enclosure>` element. The media length in seconds.
-     * @property type The `type` attribute textContent of the RSS `<enclosure>` element.
-     */
-    public data class Enclosure(
-        val url: String,
-        val length: Long,
-        val type: String
-    ) {
-
-        public companion object Factory : BuilderFactory<Enclosure, EpisodeEnclosureBuilder> {
-
-            /** Returns a builder implementation for building [Enclosure] model instances. */
-            @JvmStatic
-            override fun builder(): EpisodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
-        }
-    }
-
-    /**
-     * Model class for `<guid>` elements within RSS `<item>` elements.
-     *
-     * @property guid The text content of the element.
-     * @property isPermalink The boolean interpretation of the `isPermalink` attribute.
-     */
-    public data class Guid(
-        val guid: String,
-        val isPermalink: Boolean? = null
-    ) {
-
-        public companion object Factory : BuilderFactory<Guid, EpisodeGuidBuilder> {
-
-            /** Returns a builder implementation for building [Guid] model instances. */
-            @JvmStatic
-            override fun builder(): EpisodeGuidBuilder = ValidatingEpisodeGuidBuilder()
-        }
     }
 
     /**

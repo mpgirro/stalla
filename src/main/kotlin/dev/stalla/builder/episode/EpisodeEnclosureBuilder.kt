@@ -1,11 +1,11 @@
 package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
-import dev.stalla.model.Episode
+import dev.stalla.model.Enclosure
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Episode.Enclosure] instances. */
-public interface EpisodeEnclosureBuilder : Builder<Episode.Enclosure> {
+/** Builder for constructing [Enclosure] instances. */
+public interface EpisodeEnclosureBuilder : Builder<Enclosure> {
 
     /** Set the url value. */
     public fun url(url: String): EpisodeEnclosureBuilder
@@ -16,7 +16,7 @@ public interface EpisodeEnclosureBuilder : Builder<Episode.Enclosure> {
     /** Set the type value. */
     public fun type(type: String): EpisodeEnclosureBuilder
 
-    override fun from(model: Episode.Enclosure?): EpisodeEnclosureBuilder = whenNotNull(model) { enclosure ->
+    override fun from(model: Enclosure?): EpisodeEnclosureBuilder = whenNotNull(model) { enclosure ->
         url(enclosure.url)
         length(enclosure.length)
         type(enclosure.type)

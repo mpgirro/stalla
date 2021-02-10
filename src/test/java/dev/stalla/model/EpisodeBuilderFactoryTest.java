@@ -19,7 +19,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode model using builder factory methods only")
     public void testEpisodeBuilderFactory() {
-        EpisodeEnclosureBuilder episodeEnclosureBuilder = Episode.Enclosure.builder()
+        EpisodeEnclosureBuilder episodeEnclosureBuilder = Enclosure.builder()
             .url("url")
             .length(123)
             .type("type");
@@ -34,7 +34,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Enclosure model using builder factory methods only")
     public void testEpisodeEnclosureBuilderFactory() {
-        EpisodeEnclosureBuilder episodeEnclosureBuilder = Episode.Enclosure.builder()
+        EpisodeEnclosureBuilder episodeEnclosureBuilder = Enclosure.builder()
             .url("url")
             .length(123)
             .type("type");
@@ -45,7 +45,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Guid model using builder factory methods only")
     public void testEpisodeGuidBuilderFactory() {
-        EpisodeGuidBuilder episodeGuidBuilder = Episode.Guid.builder()
+        EpisodeGuidBuilder episodeGuidBuilder = Guid.builder()
             .textContent("content");
 
         assertNotNull(episodeGuidBuilder.build());

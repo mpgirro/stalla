@@ -17,6 +17,7 @@ import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.Atom
 import dev.stalla.model.Episode
+import dev.stalla.model.Guid
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisode
@@ -151,7 +152,7 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::categories).containsExactly(expectedCategoryBuilders[0].build(), expectedCategoryBuilders[1].build())
                 prop(Episode::comments).isEqualTo("comments")
                 prop(Episode::enclosure).isEqualTo(expectedEnclosureBuilder.build())
-                prop(Episode::guid).isEqualTo(Episode.Guid("guid"))
+                prop(Episode::guid).isEqualTo(Guid("guid"))
                 prop(Episode::pubDate).isEqualTo(expectedDate)
                 prop(Episode::source).isEqualTo("source")
                 prop(Episode::content).isNotNull().prop(Content::encoded).isEqualTo("encoded")

@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeGuidBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.Guid
 import dev.stalla.model.episode.anEpisodeGuid
 import org.junit.jupiter.api.Test
 
@@ -36,8 +36,8 @@ internal class ValidatingEpisodeGuidBuilderTest {
             assertThat(episodeGuidBuilder).prop(EpisodeGuidBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGuidBuilder.build()).isNotNull().all {
-                prop(Episode.Guid::guid).isEqualTo("textContent")
-                prop(Episode.Guid::isPermalink).isNull()
+                prop(Guid::guid).isEqualTo("textContent")
+                prop(Guid::isPermalink).isNull()
             }
         }
     }
@@ -52,8 +52,8 @@ internal class ValidatingEpisodeGuidBuilderTest {
             assertThat(episodeGuidBuilder).prop(EpisodeGuidBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGuidBuilder.build()).isNotNull().all {
-                prop(Episode.Guid::guid).isEqualTo("textContent")
-                prop(Episode.Guid::isPermalink).isNotNull().isTrue()
+                prop(Guid::guid).isEqualTo("textContent")
+                prop(Guid::isPermalink).isNotNull().isTrue()
             }
         }
     }
@@ -61,7 +61,7 @@ internal class ValidatingEpisodeGuidBuilderTest {
     @Test
     internal fun `should populate an Episode Guid builder with all properties from an Episode Guid model`() {
         val episodeGuid = anEpisodeGuid()
-        val episodeGuidBuilder = Episode.Guid.builder().from(episodeGuid)
+        val episodeGuidBuilder = Guid.builder().from(episodeGuid)
 
         assertAll {
             assertThat(episodeGuidBuilder).prop(EpisodeGuidBuilder::hasEnoughDataToBuild).isTrue()

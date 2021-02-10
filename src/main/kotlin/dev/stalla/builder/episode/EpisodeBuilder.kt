@@ -7,7 +7,9 @@ import dev.stalla.builder.ITunesStyleCategoryBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
+import dev.stalla.model.Enclosure
 import dev.stalla.model.Episode
+import dev.stalla.model.Guid
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor
@@ -112,8 +114,8 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
         author(episode.author)
         addCategoryBuilderys(episode.categories.asBuilders())
         comments(episode.comments)
-        enclosureBuilder(Episode.Enclosure.builder().from(episode.enclosure))
-        guidBuilder(Episode.Guid.builder().from(episode.guid))
+        enclosureBuilder(Enclosure.builder().from(episode.enclosure))
+        guidBuilder(Guid.builder().from(episode.guid))
         pubDate(episode.pubDate)
         source(episode.source)
     }

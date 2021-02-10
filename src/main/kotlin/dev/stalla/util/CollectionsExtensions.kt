@@ -8,6 +8,7 @@ import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
+import dev.stalla.model.Enclosure
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
 import dev.stalla.model.RssCategory
@@ -27,7 +28,7 @@ internal fun List<ITunesStyleCategory>.asBuilders(): List<ITunesStyleCategoryBui
 /** Transforms this list into a list of [EpisodeEnclosureBuilder] */
 @InternalApi
 @JvmName("asEnclosureBuilders")
-internal fun List<Episode.Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = map(Episode.Enclosure.builder()::from)
+internal fun List<Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = map(Enclosure.builder()::from)
 
 /** Transforms this list into a list of [EpisodePodcastSoundbiteBuilder] */
 @InternalApi

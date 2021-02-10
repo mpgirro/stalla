@@ -20,7 +20,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a Podcast model using builder factory methods only")
     public void testPodcastBuilderFactory() {
-        EpisodeEnclosureBuilder episodeEnclosureBuilder = Episode.Enclosure.builder()
+        EpisodeEnclosureBuilder episodeEnclosureBuilder = Enclosure.builder()
             .url("url")
             .length(123)
             .type("type");
