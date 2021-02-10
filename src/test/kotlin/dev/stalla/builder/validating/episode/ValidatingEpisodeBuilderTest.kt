@@ -17,7 +17,7 @@ import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.Atom
 import dev.stalla.model.Episode
-import dev.stalla.model.Guid
+import dev.stalla.model.rss.Guid
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisode

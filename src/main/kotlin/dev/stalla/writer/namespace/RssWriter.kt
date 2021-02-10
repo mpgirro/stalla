@@ -3,9 +3,9 @@ package dev.stalla.writer.namespace
 import dev.stalla.dom.appendElement
 import dev.stalla.dom.appendRssCategoryElements
 import dev.stalla.dom.appendRssImageElement
-import dev.stalla.model.Enclosure
+import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.Episode
-import dev.stalla.model.Guid
+import dev.stalla.model.rss.Guid
 import dev.stalla.model.Podcast
 import dev.stalla.util.BooleanStringStyle
 import dev.stalla.util.FeedNamespace

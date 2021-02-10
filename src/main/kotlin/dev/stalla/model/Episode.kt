@@ -16,6 +16,9 @@ import dev.stalla.model.content.Content
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.podlove.EpisodePodlove
+import dev.stalla.model.rss.Enclosure
+import dev.stalla.model.rss.Guid
+import dev.stalla.model.rss.RssCategory
 import java.time.Duration
 import java.time.temporal.TemporalAccessor
 import java.util.Locale

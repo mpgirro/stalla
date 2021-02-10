@@ -1,7 +1,7 @@
 package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
-import dev.stalla.model.Guid
+import dev.stalla.model.rss.Guid
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [Guid] instances. */

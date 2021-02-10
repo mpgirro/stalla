@@ -10,7 +10,7 @@ import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.model.Podcast
-import dev.stalla.model.RssImage
+import dev.stalla.model.rss.RssImage
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor

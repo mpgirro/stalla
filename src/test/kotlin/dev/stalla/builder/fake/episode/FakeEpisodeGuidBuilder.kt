@@ -2,7 +2,7 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodeGuidBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Guid
+import dev.stalla.model.rss.Guid
 
 internal class FakeEpisodeGuidBuilder : FakeBuilder<Guid>(), EpisodeGuidBuilder {
 

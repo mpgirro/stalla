@@ -1,7 +1,7 @@
 package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
-import dev.stalla.model.Enclosure
+import dev.stalla.model.rss.Enclosure
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [Enclosure] instances. */

@@ -1,7 +1,8 @@
-package dev.stalla.model
+package dev.stalla.model.rss
 
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
+import dev.stalla.model.BuilderFactory
 
 /**
  * An [RSS `<image>` tag][https://www.w3schools.com/XML/rss_tag_image.asp]. An

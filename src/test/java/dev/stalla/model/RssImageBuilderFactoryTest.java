@@ -1,6 +1,7 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.RssImageBuilder;
+import dev.stalla.model.rss.RssImage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

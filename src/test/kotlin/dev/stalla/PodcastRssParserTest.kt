@@ -12,9 +12,9 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.dom.DomBuilderFactory
 import dev.stalla.dom.findElementByName
-import dev.stalla.model.Enclosure
+import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.Episode
-import dev.stalla.model.Guid
+import dev.stalla.model.rss.Guid
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast

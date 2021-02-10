@@ -10,6 +10,7 @@ import dev.stalla.model.fyyd.Fyyd;
 import dev.stalla.model.googleplay.PodcastGoogleplay;
 import dev.stalla.model.itunes.ITunesStyleCategory;
 import dev.stalla.model.itunes.PodcastItunes;
+import dev.stalla.model.rss.Enclosure;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

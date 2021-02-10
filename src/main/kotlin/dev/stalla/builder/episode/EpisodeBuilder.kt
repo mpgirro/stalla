@@ -7,9 +7,9 @@ import dev.stalla.builder.ITunesStyleCategoryBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
-import dev.stalla.model.Enclosure
+import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.Episode
-import dev.stalla.model.Guid
+import dev.stalla.model.rss.Guid
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor

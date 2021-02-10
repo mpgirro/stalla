@@ -7,8 +7,8 @@ import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Link
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
-import dev.stalla.model.RssCategory
-import dev.stalla.model.RssImage
+import dev.stalla.model.rss.RssCategory
+import dev.stalla.model.rss.RssImage
 import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage

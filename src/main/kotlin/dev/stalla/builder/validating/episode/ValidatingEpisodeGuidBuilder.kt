@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodeGuidBuilder
-import dev.stalla.model.Guid
+import dev.stalla.model.rss.Guid
 
 internal class ValidatingEpisodeGuidBuilder : EpisodeGuidBuilder {
 

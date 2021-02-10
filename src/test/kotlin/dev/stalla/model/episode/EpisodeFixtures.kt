@@ -2,13 +2,13 @@ package dev.stalla.model.episode
 
 import dev.stalla.dateTime
 import dev.stalla.model.Atom
-import dev.stalla.model.Enclosure
+import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.Episode
-import dev.stalla.model.Guid
+import dev.stalla.model.rss.Guid
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Link
 import dev.stalla.model.Person
-import dev.stalla.model.RssCategory
+import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage

@@ -1,7 +1,8 @@
-package dev.stalla.model
+package dev.stalla.model.rss
 
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
+import dev.stalla.model.BuilderFactory
 
 /**
  * Model class for `<enclosure>` elements within RSS `<item>` elements.

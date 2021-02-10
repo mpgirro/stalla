@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
-import dev.stalla.model.Enclosure
+import dev.stalla.model.rss.Enclosure
 
 internal class ValidatingEpisodeEnclosureBuilder : EpisodeEnclosureBuilder {
 

@@ -8,10 +8,10 @@ import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.model.Enclosure
+import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
-import dev.stalla.model.RssCategory
+import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.itunes.ITunesStyleCategory
 import dev.stalla.model.podlove.SimpleChapter
 

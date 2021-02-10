@@ -2,7 +2,7 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Enclosure
+import dev.stalla.model.rss.Enclosure
 
 internal class FakeEpisodeEnclosureBuilder : FakeBuilder<Enclosure>(), EpisodeEnclosureBuilder {
 

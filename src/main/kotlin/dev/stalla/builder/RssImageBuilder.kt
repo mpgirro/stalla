@@ -1,6 +1,6 @@
 package dev.stalla.builder
 
-import dev.stalla.model.RssImage
+import dev.stalla.model.rss.RssImage
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [RssImage] instances. */

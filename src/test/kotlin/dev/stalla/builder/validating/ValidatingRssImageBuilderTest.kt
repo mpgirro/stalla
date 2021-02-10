@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.RssImageBuilder
-import dev.stalla.model.RssImage
+import dev.stalla.model.rss.RssImage
 import dev.stalla.model.anRssImage
 import org.junit.jupiter.api.Test
 

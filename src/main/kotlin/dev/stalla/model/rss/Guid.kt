@@ -1,7 +1,8 @@
-package dev.stalla.model
+package dev.stalla.model.rss
 
 import dev.stalla.builder.episode.EpisodeGuidBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeGuidBuilder
+import dev.stalla.model.BuilderFactory
 
 /**
  * Model class for `<guid>` elements within RSS `<item>` elements.

@@ -2,8 +2,8 @@ package dev.stalla.dom
 
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
-import dev.stalla.model.RssCategory
-import dev.stalla.model.RssImage
+import dev.stalla.model.rss.RssCategory
+import dev.stalla.model.rss.RssImage
 import dev.stalla.model.itunes.ITunesStyleCategory
 import dev.stalla.util.BooleanStringStyle
 import dev.stalla.util.FeedNamespace

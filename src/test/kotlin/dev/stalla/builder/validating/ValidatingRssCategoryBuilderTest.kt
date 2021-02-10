@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.RssCategoryBuilder
-import dev.stalla.model.RssCategory
+import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.anRssCategory
 import org.junit.jupiter.api.Test
 

@@ -12,6 +12,8 @@ import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.PodcastItunes
+import dev.stalla.model.rss.RssCategory
+import dev.stalla.model.rss.RssImage
 import java.time.temporal.TemporalAccessor
 
 /**
