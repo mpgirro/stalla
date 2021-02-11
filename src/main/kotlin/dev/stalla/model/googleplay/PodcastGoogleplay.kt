@@ -25,7 +25,7 @@ public data class PodcastGoogleplay(
     override val explicit: Boolean? = null,
     override val block: Boolean,
     override val image: HrefOnlyImage? = null
-) : GooglePlayBase {
+) : GoogleplayBase {
 
     public companion object Factory : BuilderFactory<PodcastGoogleplay, PodcastGooglePlayBuilder> {
 

@@ -7,7 +7,7 @@ import dev.stalla.dom.appendYesElementIfTrue
 import dev.stalla.dom.appendYesNoElement
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
-import dev.stalla.model.googleplay.GooglePlayBase
+import dev.stalla.model.googleplay.GoogleplayBase
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
 import dev.stalla.util.isNeitherNullNorBlank
@@ -46,7 +46,7 @@ internal object GooglePlayWriter : NamespaceWriter() {
         appendCommonElements(play)
     }
 
-    private fun Element.appendCommonElements(play: GooglePlayBase) {
+    private fun Element.appendCommonElements(play: GoogleplayBase) {
         val description = play.description
         if (description.isNeitherNullNorBlank()) {
             appendElement("description", namespace) { textContent = description?.trim() }
