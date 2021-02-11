@@ -31,7 +31,7 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     public val feedpressBuilder: PodcastFeedpressBuilder
 
     /** The builder for data from the Google Play namespace. */
-    public val googlePlayBuilder: PodcastGoogleplayBuilder
+    public val googleplayBuilder: PodcastGoogleplayBuilder
 
     /** Set the Podcast namespace builder. */
     public val podcastBuilder: PodcastPodcastBuilder
@@ -114,7 +114,7 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
         atomBuilder.from(podcast.atom)
         fyydBuilder.from(podcast.fyyd)
         feedpressBuilder.from(podcast.feedpress)
-        googlePlayBuilder.from(podcast.googleplay)
+        googleplayBuilder.from(podcast.googleplay)
         podcastBuilder.from(podcast.podcast)
         title(podcast.title)
         link(podcast.link)

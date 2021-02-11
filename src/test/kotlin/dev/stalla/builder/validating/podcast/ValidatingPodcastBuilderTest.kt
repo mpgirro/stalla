@@ -214,7 +214,7 @@ internal class ValidatingPodcastBuilderTest {
                 atomBuilder.addAuthorBuilder(expectedAtomAuthorBuilder)
                 feedpressBuilder.newsletterId("feedpress newsletterId")
                 fyydBuilder.verify("fyyd verify")
-                googlePlayBuilder.description("play description")
+                googleplayBuilder.description("play description")
                 podcastBuilder.lockedBuilder(expectedLockedBuilder)
             }
 

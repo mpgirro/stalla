@@ -44,7 +44,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override val podloveBuilder: FakeEpisodePodloveBuilder = FakeEpisodePodloveBuilder()
 
-    val googleplayBuilder: FakeEpisodeGoogleplayBuilder = FakeEpisodeGoogleplayBuilder()
+    override val googleplayBuilder: FakeEpisodeGoogleplayBuilder = FakeEpisodeGoogleplayBuilder()
 
     override val bitloveBuilder: FakeEpisodeBitloveBuilder = FakeEpisodeBitloveBuilder()
 

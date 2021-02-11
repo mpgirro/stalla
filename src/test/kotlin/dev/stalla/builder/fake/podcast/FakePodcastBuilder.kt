@@ -49,7 +49,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override val feedpressBuilder: FakePodcastFeedpressBuilder = FakePodcastFeedpressBuilder()
 
-    val googleplayBuilder: FakePodcastGoogleplayBuilder = FakePodcastGoogleplayBuilder()
+    override val googleplayBuilder: FakePodcastGoogleplayBuilder = FakePodcastGoogleplayBuilder()
 
     override val podcastBuilder: FakePodcastPodcastBuilder = FakePodcastPodcastBuilder()
 

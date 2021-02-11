@@ -54,7 +54,7 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
 
     override val feedpressBuilder: PodcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
 
-    val googleplayBuilder: PodcastGoogleplayBuilder = ValidatingPodcastGoogleplayBuilder()
+    override val googleplayBuilder: PodcastGoogleplayBuilder = ValidatingPodcastGoogleplayBuilder()
 
     override val podcastBuilder: PodcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
 
