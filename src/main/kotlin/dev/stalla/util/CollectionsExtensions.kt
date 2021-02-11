@@ -1,6 +1,6 @@
 package dev.stalla.util
 
-import dev.stalla.builder.ITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
@@ -22,10 +22,10 @@ import dev.stalla.model.rss.RssCategory
 @JvmName("asRssCategoryBuilders")
 internal fun List<RssCategory>.asBuilders(): List<RssCategoryBuilder> = map(RssCategory.builder()::from)
 
-/** Transforms this list into a list of [ITunesStyleCategoryBuilder] */
+/** Transforms this list into a list of [ItunesStyleCategoryBuilder] */
 @InternalApi
 @JvmName("asItunesCategoryBuilders")
-internal fun List<ItunesStyleCategory>.asBuilders(): List<ITunesStyleCategoryBuilder> = map(ItunesStyleCategory.builder()::from)
+internal fun List<ItunesStyleCategory>.asBuilders(): List<ItunesStyleCategoryBuilder> = map(ItunesStyleCategory.builder()::from)
 
 /** Transforms this list into a list of [EpisodeEnclosureBuilder] */
 @InternalApi

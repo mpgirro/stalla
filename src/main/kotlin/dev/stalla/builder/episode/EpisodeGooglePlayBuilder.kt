@@ -7,21 +7,21 @@ import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [EpisodeGoogleplay] instances. */
-public interface EpisodeGooglePlayBuilder : Builder<EpisodeGoogleplay> {
+public interface EpisodeGoogleplayBuilder : Builder<EpisodeGoogleplay> {
 
     /** Set the description value. */
-    public fun description(description: String?): EpisodeGooglePlayBuilder
+    public fun description(description: String?): EpisodeGoogleplayBuilder
 
     /** Set the explicit value. */
-    public fun explicit(explicit: Boolean?): EpisodeGooglePlayBuilder
+    public fun explicit(explicit: Boolean?): EpisodeGoogleplayBuilder
 
     /** Set the block value. */
-    public fun block(block: Boolean): EpisodeGooglePlayBuilder
+    public fun block(block: Boolean): EpisodeGoogleplayBuilder
 
     /** Set the [HrefOnlyImageBuilder]. */
-    public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder
+    public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGoogleplayBuilder
 
-    override fun from(model: EpisodeGoogleplay?): EpisodeGooglePlayBuilder = whenNotNull(model) { googlePlay ->
+    override fun from(model: EpisodeGoogleplay?): EpisodeGoogleplayBuilder = whenNotNull(model) { googlePlay ->
         description(googlePlay.description)
         explicit(googlePlay.explicit)
         block(googlePlay.block)

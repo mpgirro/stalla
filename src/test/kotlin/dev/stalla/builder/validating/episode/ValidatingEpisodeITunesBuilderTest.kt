@@ -9,23 +9,23 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import dev.stalla.builder.episode.EpisodeITunesBuilder
+import dev.stalla.builder.episode.EpisodeItunesBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.model.episode.anEpisodeITunes
+import dev.stalla.model.episode.anEpisodeItunes
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import org.junit.jupiter.api.Test
 
-internal class ValidatingEpisodeITunesBuilderTest {
+internal class ValidatingEpisodeItunesBuilderTest {
 
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
     @Test
     internal fun `should not build an Episode ITunes when all fields are missing`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(episodeITunesBuilder.build()).isNull()
         }
@@ -33,11 +33,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only a title`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .title("title")
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isEqualTo("title")
@@ -57,11 +57,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only a duration`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .duration("duration")
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
@@ -81,11 +81,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only a season number`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .season(2)
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
@@ -105,11 +105,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only an episode number`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .episode(3)
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
@@ -129,11 +129,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only an episodeType`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .episodeType(EpisodeType.BONUS.type)
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
@@ -153,11 +153,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only explicit`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .explicit(false)
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
@@ -177,11 +177,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only block`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .block(true)
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
@@ -201,11 +201,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only an image`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .imageBuilder(expectedImageBuilder)
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
@@ -225,11 +225,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only an author`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .author("author")
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
@@ -249,11 +249,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only a subtitle`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .subtitle("subtitle")
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
@@ -273,11 +273,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with only a summary`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .summary("summary")
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
@@ -297,7 +297,7 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should build an Episode ITunes with all the optional fields`() {
-        val episodeITunesBuilder = ValidatingEpisodeITunesBuilder()
+        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .title("title")
             .duration("duration")
             .season(2)
@@ -311,7 +311,7 @@ internal class ValidatingEpisodeITunesBuilderTest {
             .summary("summary")
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isEqualTo("title")
@@ -331,11 +331,11 @@ internal class ValidatingEpisodeITunesBuilderTest {
 
     @Test
     internal fun `should populate an Episode ITunes builder with all properties from an Episode ITunes model`() {
-        val episodeItunes = anEpisodeITunes()
+        val episodeItunes = anEpisodeItunes()
         val episodeITunesBuilder = EpisodeItunes.builder().from(episodeItunes)
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().isEqualTo(episodeItunes)
         }

@@ -9,15 +9,15 @@ import dev.stalla.hasTextContent
 import dev.stalla.hasValue
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.episode.anEpisodeITunes
+import dev.stalla.model.episode.anEpisodeItunes
 import dev.stalla.model.itunes.ItunesStyleCategory
 import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcast.aPodcastITunes
+import dev.stalla.model.podcast.aPodcastItunes
 import org.junit.jupiter.api.Test
 
-internal class ITunesWriterTest : NamespaceWriterTest() {
+internal class ItunesWriterTest : NamespaceWriterTest() {
 
-    override val writer = ITunesWriter
+    override val writer = ItunesWriter
 
     @Test
     internal fun `should write the correct itunes tags to the channel when there is data to write`() {
@@ -75,7 +75,7 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write itunes tags to the channel when there is no data to write`() {
-        val podcast = aPodcast(iTunes = null)
+        val podcast = aPodcast(itunes = null)
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
             assertTagIsNotWrittenToPodcast(podcast, "category")
@@ -100,7 +100,7 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
             ItunesStyleCategory.Nested("nested", ItunesStyleCategory.Simple(" "))
         )
         val podcast = aPodcast(
-            iTunes = aPodcastITunes(
+            itunes = aPodcastItunes(
                 subtitle = " ",
                 summary = " ",
                 image = anHrefOnlyImage(" "),
@@ -148,7 +148,7 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
             ItunesStyleCategory.Nested("nested", ItunesStyleCategory.Simple(""))
         )
         val podcast = aPodcast(
-            iTunes = aPodcastITunes(
+            itunes = aPodcastItunes(
                 subtitle = "",
                 summary = "",
                 image = anHrefOnlyImage(""),
@@ -228,7 +228,7 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write itunes tags to the item when there is no data to write`() {
-        val episode = anEpisode(iTunes = null)
+        val episode = anEpisode(itunes = null)
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "duration")
             assertTagIsNotWrittenToEpisode(episode, "season")
@@ -244,7 +244,7 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write itunes tags to the item when the data is blank`() {
         val episode = anEpisode(
-            iTunes = anEpisodeITunes(
+            itunes = anEpisodeItunes(
                 title = " ",
                 duration = " ",
                 image = anHrefOnlyImage(" "),
@@ -273,7 +273,7 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write itunes tags to the item when the data is empty`() {
         val episode = anEpisode(
-            iTunes = anEpisodeITunes(
+            itunes = anEpisodeItunes(
                 title = "",
                 duration = "",
                 image = anHrefOnlyImage(""),

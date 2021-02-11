@@ -20,7 +20,7 @@ import org.w3c.dom.Element
  * The namespace URI is: `http://www.google.com/schemas/play-podcasts/1.0`
  */
 @InternalApi
-internal object GooglePlayWriter : NamespaceWriter() {
+internal object GoogleplayWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.GOOGLE_PLAY
 

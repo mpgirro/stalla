@@ -9,7 +9,7 @@ import dev.stalla.model.Podcast
 import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
-import dev.stalla.model.anITunesCategory
+import dev.stalla.model.anItunesCategory
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.anRssImage
 import dev.stalla.model.atom.Link
@@ -43,11 +43,11 @@ internal fun aPodcast(
     ttl: Int? = 123,
     image: RssImage? = anRssImage(url = "podcast image url"),
     episodes: List<Episode> = listOf(anEpisode()),
-    iTunes: PodcastItunes? = aPodcastITunes(),
+    itunes: PodcastItunes? = aPodcastItunes(),
     atom: Atom? = aPodcastAtom(),
     fyyd: Fyyd? = aPodcastFyyd(),
     feedpress: Feedpress? = aPodcastFeedpress(),
-    googlePlay: PodcastGoogleplay? = aPodcastGooglePlay(),
+    googleplay: PodcastGoogleplay? = aPodcastGoogleplay(),
     podcast: PodcastPodcast? = aPodcastPodcast(),
     categories: List<RssCategory> = listOf(anRssCategory("podcast category"))
 ) = Podcast(
@@ -65,22 +65,22 @@ internal fun aPodcast(
     ttl,
     image,
     episodes,
-    iTunes,
+    itunes,
     atom,
     fyyd,
     feedpress,
-    googlePlay,
+    googleplay,
     categories,
     podcast
 )
 
-internal fun aPodcastITunes(
+internal fun aPodcastItunes(
     subtitle: String? = "podcast itunes subtitle",
     summary: String? = "podcast itunes summary",
     image: HrefOnlyImage = anHrefOnlyImage(href = "podcast itunes image url"),
     keywords: String? = "podcast itunes keywords",
     author: String? = "podcast itunes author",
-    categories: List<ItunesStyleCategory> = listOf(anITunesCategory("podcast itunes category", "podcast itunes subcategory")),
+    categories: List<ItunesStyleCategory> = listOf(anItunesCategory("podcast itunes category", "podcast itunes subcategory")),
     explicit: Boolean = true,
     block: Boolean = true,
     complete: Boolean = true,
@@ -108,10 +108,10 @@ internal fun aPodcastFeedpress(
     link: String? = "podcast feedpress link"
 ) = Feedpress(newsletterId, locale, podcastId, cssFile, link)
 
-internal fun aPodcastGooglePlay(
+internal fun aPodcastGoogleplay(
     author: String? = "podcast googleplay author",
     owner: String? = "podcast googleplay owner",
-    categories: List<ItunesStyleCategory> = listOf(anITunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
+    categories: List<ItunesStyleCategory> = listOf(anItunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean = true,

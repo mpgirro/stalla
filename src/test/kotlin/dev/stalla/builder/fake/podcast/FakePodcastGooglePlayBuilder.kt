@@ -1,40 +1,40 @@
 package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.builder.podcast.PodcastGooglePlayBuilder
+import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.model.googleplay.PodcastGoogleplay
 
-internal class FakePodcastGooglePlayBuilder : FakeBuilder<PodcastGoogleplay>(), PodcastGooglePlayBuilder {
+internal class FakePodcastGoogleplayBuilder : FakeBuilder<PodcastGoogleplay>(), PodcastGoogleplayBuilder {
 
     var author: String? = null
     var owner: String? = null
-    var categoryBuilders: MutableList<ITunesStyleCategoryBuilder> = mutableListOf()
+    var categoryBuilders: MutableList<ItunesStyleCategoryBuilder> = mutableListOf()
     var description: String? = null
     var explicit: Boolean? = null
     var block: Boolean? = null
     var imageBuilder: HrefOnlyImageBuilder? = null
 
-    override fun author(author: String?): PodcastGooglePlayBuilder = apply { this.author = author }
+    override fun author(author: String?): PodcastGoogleplayBuilder = apply { this.author = author }
 
-    override fun owner(email: String?): PodcastGooglePlayBuilder = apply { this.owner = email }
+    override fun owner(email: String?): PodcastGoogleplayBuilder = apply { this.owner = email }
 
-    override fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastGooglePlayBuilder = apply {
+    override fun addCategoryBuilder(categoryBuilder: ItunesStyleCategoryBuilder): PodcastGoogleplayBuilder = apply {
         categoryBuilders.add(categoryBuilder)
     }
 
-    override fun description(description: String?): PodcastGooglePlayBuilder = apply { this.description = description }
+    override fun description(description: String?): PodcastGoogleplayBuilder = apply { this.description = description }
 
-    override fun explicit(explicit: Boolean?): PodcastGooglePlayBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: Boolean?): PodcastGoogleplayBuilder = apply { this.explicit = explicit }
 
-    override fun block(block: Boolean): PodcastGooglePlayBuilder = apply { this.block = block }
+    override fun block(block: Boolean): PodcastGoogleplayBuilder = apply { this.block = block }
 
-    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGoogleplayBuilder = apply { this.imageBuilder = imageBuilder }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakePodcastGooglePlayBuilder) return false
+        if (other !is FakePodcastGoogleplayBuilder) return false
 
         if (author != other.author) return false
         if (owner != other.owner) return false

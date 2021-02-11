@@ -1,12 +1,12 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.episode.EpisodeITunesBuilder
+import dev.stalla.builder.episode.EpisodeItunesBuilder
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.util.anyNotNull
 
-internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
+internal class ValidatingEpisodeItunesBuilder : EpisodeItunesBuilder {
 
     private var title: String? = null
     private var duration: String? = null
@@ -20,29 +20,29 @@ internal class ValidatingEpisodeITunesBuilder : EpisodeITunesBuilder {
     private var subtitle: String? = null
     private var summary: String? = null
 
-    override fun title(title: String?): EpisodeITunesBuilder = apply { this.title = title }
+    override fun title(title: String?): EpisodeItunesBuilder = apply { this.title = title }
 
-    override fun duration(duration: String?): EpisodeITunesBuilder = apply { this.duration = duration }
+    override fun duration(duration: String?): EpisodeItunesBuilder = apply { this.duration = duration }
 
-    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeITunesBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeItunesBuilder = apply { this.imageBuilder = imageBuilder }
 
-    override fun explicit(explicit: Boolean?): EpisodeITunesBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: Boolean?): EpisodeItunesBuilder = apply { this.explicit = explicit }
 
-    override fun block(block: Boolean): EpisodeITunesBuilder = apply { this.block = block }
+    override fun block(block: Boolean): EpisodeItunesBuilder = apply { this.block = block }
 
-    override fun season(season: Int?): EpisodeITunesBuilder = apply { this.season = season }
+    override fun season(season: Int?): EpisodeItunesBuilder = apply { this.season = season }
 
-    override fun episode(episode: Int?): EpisodeITunesBuilder = apply { this.episode = episode }
+    override fun episode(episode: Int?): EpisodeItunesBuilder = apply { this.episode = episode }
 
-    override fun episodeType(episodeType: String?): EpisodeITunesBuilder = apply {
+    override fun episodeType(episodeType: String?): EpisodeItunesBuilder = apply {
         this.episodeType = EpisodeType.from(episodeType)
     }
 
-    override fun author(author: String?): EpisodeITunesBuilder = apply { this.author = author }
+    override fun author(author: String?): EpisodeItunesBuilder = apply { this.author = author }
 
-    override fun subtitle(subtitle: String?): EpisodeITunesBuilder = apply { this.subtitle = subtitle }
+    override fun subtitle(subtitle: String?): EpisodeItunesBuilder = apply { this.subtitle = subtitle }
 
-    override fun summary(summary: String?): EpisodeITunesBuilder = apply { this.summary = summary }
+    override fun summary(summary: String?): EpisodeItunesBuilder = apply { this.summary = summary }
 
     override val hasEnoughDataToBuild: Boolean
         get() = anyNotNull(title, duration, explicit, season, episode, episodeType, author, summary, subtitle) ||

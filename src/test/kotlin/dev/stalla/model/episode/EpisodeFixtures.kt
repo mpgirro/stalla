@@ -42,10 +42,10 @@ internal fun anEpisode(
     pubDate: TemporalAccessor? = dateTime(year = 2020, month = Month.DECEMBER, day = 20, hour = 12, minute = 11, second = 10),
     source: String? = "episode source",
     content: Content? = anEpisodeContent(),
-    iTunes: EpisodeItunes? = anEpisodeITunes(),
+    itunes: EpisodeItunes? = anEpisodeItunes(),
     atom: Atom? = anEpisodeAtom(),
     podlove: EpisodePodlove? = anEpisodePodlove(),
-    googlePlay: EpisodeGoogleplay? = anEpisodeGooglePlay(),
+    googleplay: EpisodeGoogleplay? = anEpisodeGoogleplay(),
     bitlove: Bitlove? = anEpisodeBitlove(),
     podcast: EpisodePodcast? = anEpisodePodcast()
 ) = Episode(
@@ -60,10 +60,10 @@ internal fun anEpisode(
     pubDate,
     source,
     content,
-    iTunes,
+    itunes,
     atom,
     podlove,
-    googlePlay,
+    googleplay,
     bitlove,
     podcast
 )
@@ -83,7 +83,7 @@ internal fun anEpisodeContent(
     encoded: String = "episode content encoded"
 ) = Content(encoded)
 
-internal fun anEpisodeITunes(
+internal fun anEpisodeItunes(
     title: String? = "episode itunes title",
     duration: String? = "episode itunes duration",
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode itunes image url"),
@@ -114,7 +114,7 @@ internal fun aPodloveSimpleChapter(
     image: String? = "episode podlove simple chapter image"
 ) = SimpleChapter(start, title, href, image)
 
-internal fun anEpisodeGooglePlay(
+internal fun anEpisodeGoogleplay(
     description: String? = "episode googleplay description",
     explicit: Boolean? = true,
     block: Boolean = true,

@@ -1,7 +1,7 @@
 package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
@@ -15,7 +15,7 @@ import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.fake.FakeAtomBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakeITunesStyleCategoryBuilder
+import dev.stalla.builder.fake.FakeItunesStyleCategoryBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
 import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
@@ -38,13 +38,13 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override val contentBuilder: FakeEpisodeContentBuilder = FakeEpisodeContentBuilder()
 
-    override val iTunesBuilder: FakeEpisodeITunesBuilder = FakeEpisodeITunesBuilder()
+    override val itunesBuilder: FakeEpisodeItunesBuilder = FakeEpisodeItunesBuilder()
 
     override val atomBuilder: FakeAtomBuilder = FakeAtomBuilder()
 
     override val podloveBuilder: FakeEpisodePodloveBuilder = FakeEpisodePodloveBuilder()
 
-    override val googlePlayBuilder: FakeEpisodeGooglePlayBuilder = FakeEpisodeGooglePlayBuilder()
+    val googleplayBuilder: FakeEpisodeGoogleplayBuilder = FakeEpisodeGoogleplayBuilder()
 
     override val bitloveBuilder: FakeEpisodeBitloveBuilder = FakeEpisodeBitloveBuilder()
 
@@ -88,7 +88,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder = FakeITunesStyleCategoryBuilder()
+    override fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder = FakeItunesStyleCategoryBuilder()
 
     override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder = FakeEpisodePodcastTranscriptBuilder()
 
@@ -111,10 +111,10 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         if (pubDate != other.pubDate) return false
         if (source != other.source) return false
         if (contentBuilder != other.contentBuilder) return false
-        if (iTunesBuilder != other.iTunesBuilder) return false
+        if (itunesBuilder != other.itunesBuilder) return false
         if (atomBuilder != other.atomBuilder) return false
         if (podloveBuilder != other.podloveBuilder) return false
-        if (googlePlayBuilder != other.googlePlayBuilder) return false
+        if (googleplayBuilder != other.googleplayBuilder) return false
         if (bitloveBuilder != other.bitloveBuilder) return false
         if (podcastBuilder != other.podcastBuilder) return false
 
@@ -133,10 +133,10 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         result = 31 * result + (pubDate?.hashCode() ?: 0)
         result = 31 * result + (source?.hashCode() ?: 0)
         result = 31 * result + contentBuilder.hashCode()
-        result = 31 * result + iTunesBuilder.hashCode()
+        result = 31 * result + itunesBuilder.hashCode()
         result = 31 * result + atomBuilder.hashCode()
         result = 31 * result + podloveBuilder.hashCode()
-        result = 31 * result + googlePlayBuilder.hashCode()
+        result = 31 * result + googleplayBuilder.hashCode()
         result = 31 * result + bitloveBuilder.hashCode()
         result = 31 * result + podcastBuilder.hashCode()
         return result
@@ -145,6 +145,6 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
     override fun toString() =
         "FakeEpisodeBuilder(titleValue=$titleValue, enclosureBuilderValue=$enclosureBuilderValue, link=$link, description=$description, " +
             "author=$author, categoryBuilders=$categoryBuilders, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
-            "contentBuilder=$contentBuilder, iTunesBuilder=$iTunesBuilder, atomBuilder=$atomBuilder, podloveBuilder=$podloveBuilder, " +
-            "googlePlayBuilder=$googlePlayBuilder, bitloveBuilder=$bitloveBuilder, podcastBuilder=$podcastBuilder)"
+            "contentBuilder=$contentBuilder, iTunesBuilder=$itunesBuilder, atomBuilder=$atomBuilder, podloveBuilder=$podloveBuilder, " +
+            "googlePlayBuilder=$googleplayBuilder, bitloveBuilder=$bitloveBuilder, podcastBuilder=$podcastBuilder)"
 }

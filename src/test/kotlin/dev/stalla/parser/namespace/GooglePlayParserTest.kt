@@ -10,11 +10,11 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakeITunesStyleCategoryBuilder
+import dev.stalla.builder.fake.FakeItunesStyleCategoryBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
-import dev.stalla.builder.fake.episode.FakeEpisodeGooglePlayBuilder
+import dev.stalla.builder.fake.episode.FakeEpisodeGoogleplayBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastBuilder
-import dev.stalla.builder.fake.podcast.FakePodcastGooglePlayBuilder
+import dev.stalla.builder.fake.podcast.FakePodcastGoogleplayBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.hasNotEnoughDataToBuild
 import dev.stalla.noneHasEnoughDataToBuild
@@ -22,9 +22,9 @@ import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
-internal class GooglePlayParserTest : NamespaceParserTest() {
+internal class GoogleplayParserTest : NamespaceParserTest() {
 
-    override val parser = GooglePlayParser
+    override val parser = GoogleplayParser
 
     private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/podcast-cover.jpg")
 
@@ -36,14 +36,14 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.googlePlayBuilder, "channel.googleplay").all {
-            prop(FakePodcastGooglePlayBuilder::author).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastGooglePlayBuilder::owner).isEqualTo("email@example.org")
-            prop(FakePodcastGooglePlayBuilder::categoryBuilders).containsExactly(FakeITunesStyleCategoryBuilder().category("Technology"))
-            prop(FakePodcastGooglePlayBuilder::description).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastGooglePlayBuilder::explicit).isNotNull().isFalse()
-            prop(FakePodcastGooglePlayBuilder::block).isNotNull().isFalse()
-            prop(FakePodcastGooglePlayBuilder::imageBuilder).isEqualTo(expectedPodcastImageBuilder)
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::author).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastGoogleplayBuilder::owner).isEqualTo("email@example.org")
+            prop(FakePodcastGoogleplayBuilder::categoryBuilders).containsExactly(FakeItunesStyleCategoryBuilder().category("Technology"))
+            prop(FakePodcastGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isFalse()
+            prop(FakePodcastGoogleplayBuilder::block).isNotNull().isFalse()
+            prop(FakePodcastGoogleplayBuilder::imageBuilder).isEqualTo(expectedPodcastImageBuilder)
         }
     }
 
@@ -53,14 +53,14 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.googlePlayBuilder, "channel.googleplay").all {
-            prop(FakePodcastGooglePlayBuilder::author).isNull()
-            prop(FakePodcastGooglePlayBuilder::owner).isNull()
-            prop(FakePodcastGooglePlayBuilder::categoryBuilders).isEmpty()
-            prop(FakePodcastGooglePlayBuilder::description).isNull()
-            prop(FakePodcastGooglePlayBuilder::explicit).isNull()
-            prop(FakePodcastGooglePlayBuilder::block).isNull()
-            prop(FakePodcastGooglePlayBuilder::imageBuilder).isNull()
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::author).isNull()
+            prop(FakePodcastGoogleplayBuilder::owner).isNull()
+            prop(FakePodcastGoogleplayBuilder::categoryBuilders).isEmpty()
+            prop(FakePodcastGoogleplayBuilder::description).isNull()
+            prop(FakePodcastGoogleplayBuilder::explicit).isNull()
+            prop(FakePodcastGoogleplayBuilder::block).isNull()
+            prop(FakePodcastGoogleplayBuilder::imageBuilder).isNull()
         }
     }
 
@@ -70,14 +70,14 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.googlePlayBuilder, "channel.googleplay").all {
-            prop(FakePodcastGooglePlayBuilder::author).isNull()
-            prop(FakePodcastGooglePlayBuilder::owner).isNull()
-            prop(FakePodcastGooglePlayBuilder::categoryBuilders).noneHasEnoughDataToBuild()
-            prop(FakePodcastGooglePlayBuilder::description).isNull()
-            prop(FakePodcastGooglePlayBuilder::explicit).isNull()
-            prop(FakePodcastGooglePlayBuilder::block).isNull()
-            prop(FakePodcastGooglePlayBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::author).isNull()
+            prop(FakePodcastGoogleplayBuilder::owner).isNull()
+            prop(FakePodcastGoogleplayBuilder::categoryBuilders).noneHasEnoughDataToBuild()
+            prop(FakePodcastGoogleplayBuilder::description).isNull()
+            prop(FakePodcastGoogleplayBuilder::explicit).isNull()
+            prop(FakePodcastGoogleplayBuilder::block).isNull()
+            prop(FakePodcastGoogleplayBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
         }
     }
 
@@ -87,11 +87,11 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.googlePlayBuilder, "item.googleplay").all {
-            prop(FakeEpisodeGooglePlayBuilder::description).isEqualTo("Lorem Ipsum")
-            prop(FakeEpisodeGooglePlayBuilder::explicit).isNotNull().isFalse()
-            prop(FakeEpisodeGooglePlayBuilder::block).isNotNull().isFalse()
-            prop(FakeEpisodeGooglePlayBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
+        assertThat(builder.googleplayBuilder, "item.googleplay").all {
+            prop(FakeEpisodeGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeGoogleplayBuilder::explicit).isNotNull().isFalse()
+            prop(FakeEpisodeGoogleplayBuilder::block).isNotNull().isFalse()
+            prop(FakeEpisodeGoogleplayBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
         }
     }
 
@@ -101,11 +101,11 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.googlePlayBuilder, "item.googleplay").all {
-            prop(FakeEpisodeGooglePlayBuilder::description).isNull()
-            prop(FakeEpisodeGooglePlayBuilder::explicit).isNull()
-            prop(FakeEpisodeGooglePlayBuilder::block).isNull()
-            prop(FakeEpisodeGooglePlayBuilder::imageBuilder).isNull()
+        assertThat(builder.googleplayBuilder, "item.googleplay").all {
+            prop(FakeEpisodeGoogleplayBuilder::description).isNull()
+            prop(FakeEpisodeGoogleplayBuilder::explicit).isNull()
+            prop(FakeEpisodeGoogleplayBuilder::block).isNull()
+            prop(FakeEpisodeGoogleplayBuilder::imageBuilder).isNull()
         }
     }
 
@@ -115,11 +115,11 @@ internal class GooglePlayParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)
 
-        assertThat(builder.googlePlayBuilder, "item.googleplay").all {
-            prop(FakeEpisodeGooglePlayBuilder::description).isNull()
-            prop(FakeEpisodeGooglePlayBuilder::explicit).isNull()
-            prop(FakeEpisodeGooglePlayBuilder::block).isNull()
-            prop(FakeEpisodeGooglePlayBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
+        assertThat(builder.googleplayBuilder, "item.googleplay").all {
+            prop(FakeEpisodeGoogleplayBuilder::description).isNull()
+            prop(FakeEpisodeGoogleplayBuilder::explicit).isNull()
+            prop(FakeEpisodeGoogleplayBuilder::block).isNull()
+            prop(FakeEpisodeGoogleplayBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
         }
     }
 }

@@ -17,7 +17,7 @@ import org.w3c.dom.Node
  * The namespace URI is: `http://www.google.com/schemas/play-podcasts/1.0`
  */
 @InternalApi
-internal object GooglePlayParser : NamespaceParser() {
+internal object GoogleplayParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.GOOGLE_PLAY
 
@@ -49,18 +49,18 @@ internal object GooglePlayParser : NamespaceParser() {
 
     override fun Node.parseItemData(builder: EpisodeBuilder) {
         when (localName) {
-            "description" -> builder.googlePlayBuilder.description(ifCanBeParsed { textOrNull() })
+            "description" -> builder.googleplayBuilder.description(ifCanBeParsed { textOrNull() })
             "explicit" -> {
                 val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
-                builder.googlePlayBuilder.explicit(explicit)
+                builder.googleplayBuilder.explicit(explicit)
             }
             "block" -> {
                 val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
-                builder.googlePlayBuilder.block(block)
+                builder.googleplayBuilder.block(block)
             }
             "image" -> {
                 val imageBuilder = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
-                builder.googlePlayBuilder.imageBuilder(imageBuilder)
+                builder.googleplayBuilder.imageBuilder(imageBuilder)
             }
             else -> pass
         }

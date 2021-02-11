@@ -10,34 +10,34 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import dev.stalla.builder.podcast.PodcastITunesBuilder
+import dev.stalla.builder.podcast.PodcastItunesBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingITunesStyleCategoryBuilder
+import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
-import dev.stalla.model.podcast.aPodcastITunes
+import dev.stalla.model.podcast.aPodcastItunes
 import org.junit.jupiter.api.Test
 
-internal class ValidatingPodcastITunesBuilderTest {
+internal class ValidatingPodcastItunesBuilderTest {
 
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
     private val expectedPersonBuilder = ValidatingPersonBuilder().name("name")
 
-    private val expectedITunesCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+    private val expectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
         .category("itunes category 1")
         .subcategory("itunes subcategory")
 
-    private val otherExpectedITunesCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+    private val otherExpectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
         .category("itunes category 2")
 
     @Test
     internal fun `should not build a Podcast ITunes when all fields are missing`() {
-        val podcastITunesBuilder = ValidatingPodcastITunesBuilder()
+        val podcastITunesBuilder = ValidatingPodcastItunesBuilder()
 
         assertAll {
-            assertThat(podcastITunesBuilder).prop(PodcastITunesBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(podcastITunesBuilder).prop(PodcastItunesBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(podcastITunesBuilder.build()).isNull()
         }
@@ -45,13 +45,13 @@ internal class ValidatingPodcastITunesBuilderTest {
 
     @Test
     internal fun `should build a valid Podcast ITunes when there are all the mandatory fields`() {
-        val podcastITunesBuilder = ValidatingPodcastITunesBuilder()
+        val podcastITunesBuilder = ValidatingPodcastItunesBuilder()
             .imageBuilder(expectedImageBuilder)
             .explicit(false)
             .addCategoryBuilder(expectedITunesCategoryBuilder)
 
         assertAll {
-            assertThat(podcastITunesBuilder).prop(PodcastITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastITunesBuilder).prop(PodcastItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastITunesBuilder.build()).isNotNull().all {
                 prop(PodcastItunes::explicit).isNotNull().isFalse()
@@ -73,7 +73,7 @@ internal class ValidatingPodcastITunesBuilderTest {
 
     @Test
     internal fun `should build a valid Podcast ITunes when there are all fields`() {
-        val podcastITunesBuilder = ValidatingPodcastITunesBuilder()
+        val podcastITunesBuilder = ValidatingPodcastItunesBuilder()
             .explicit(true)
             .subtitle("subtitle")
             .summary("summary")
@@ -90,7 +90,7 @@ internal class ValidatingPodcastITunesBuilderTest {
             .imageBuilder(expectedImageBuilder)
 
         assertAll {
-            assertThat(podcastITunesBuilder).prop(PodcastITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastITunesBuilder).prop(PodcastItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastITunesBuilder.build()).isNotNull().all {
                 prop(PodcastItunes::explicit).isNotNull().isTrue()
@@ -112,11 +112,11 @@ internal class ValidatingPodcastITunesBuilderTest {
 
     @Test
     internal fun `should populate a Podcast Itunes builder with all properties from an Podcast Itunes model`() {
-        val podcastITunes = aPodcastITunes()
+        val podcastITunes = aPodcastItunes()
         val podcastITunesBuilder = PodcastItunes.builder().from(podcastITunes)
 
         assertAll {
-            assertThat(podcastITunesBuilder).prop(PodcastITunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastITunesBuilder).prop(PodcastItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastITunesBuilder.build()).isNotNull().isEqualTo(podcastITunes)
         }

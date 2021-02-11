@@ -11,30 +11,30 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import dev.stalla.builder.podcast.PodcastGooglePlayBuilder
+import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingITunesStyleCategoryBuilder
+import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
 import dev.stalla.model.googleplay.PodcastGoogleplay
-import dev.stalla.model.podcast.aPodcastGooglePlay
+import dev.stalla.model.podcast.aPodcastGoogleplay
 import org.junit.jupiter.api.Test
 
-internal class ValidatingPodcastGooglePlayBuilderTest {
+internal class ValidatingPodcastGoogleplayBuilderTest {
 
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
-    private val expectedITunesCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+    private val expectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
         .category("googleplay category")
         .subcategory("googleplay subcategory")
 
-    private val otherExpectedITunesCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+    private val otherExpectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
         .category("googleplay category 2")
 
     @Test
     internal fun `should not build a Podcast GooglePlay when all fields are missing`() {
-        val podcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
 
         assertAll {
-            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(podcastGooglePlayBuilder.build()).isNull()
         }
@@ -42,11 +42,11 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
 
     @Test
     internal fun `should build a valid Podcast GooglePlay when there is only an author`() {
-        val podcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .author("author")
 
         assertAll {
-            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isEqualTo("author")
@@ -62,11 +62,11 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
 
     @Test
     internal fun `should build a valid Podcast GooglePlay when there is only an owner`() {
-        val podcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .owner("owner")
 
         assertAll {
-            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
@@ -82,11 +82,11 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
 
     @Test
     internal fun `should build a valid Podcast GooglePlay when there is only a category`() {
-        val podcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .addCategoryBuilder(expectedITunesCategoryBuilder)
 
         assertAll {
-            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
@@ -102,11 +102,11 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
 
     @Test
     internal fun `should build a valid Podcast GooglePlay when there is only a description`() {
-        val podcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .description("description")
 
         assertAll {
-            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
@@ -122,11 +122,11 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
 
     @Test
     internal fun `should build a valid Podcast GooglePlay when there is only an explicit`() {
-        val podcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .explicit(true)
 
         assertAll {
-            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
@@ -142,11 +142,11 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
 
     @Test
     internal fun `should build a valid Podcast GooglePlay when there is only a block`() {
-        val podcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .block(true)
 
         assertAll {
-            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
@@ -162,11 +162,11 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
 
     @Test
     internal fun `should build a valid Podcast GooglePlay when there is only an image`() {
-        val podcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .imageBuilder(expectedImageBuilder)
 
         assertAll {
-            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
@@ -182,7 +182,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
 
     @Test
     internal fun `should build a valid Podcast GooglePlay when there are all fields`() {
-        val podcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .author("author")
             .owner("owner")
             .addCategoryBuilder(expectedITunesCategoryBuilder)
@@ -193,7 +193,7 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
             .imageBuilder(expectedImageBuilder)
 
         assertAll {
-            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isEqualTo("author")
@@ -212,11 +212,11 @@ internal class ValidatingPodcastGooglePlayBuilderTest {
 
     @Test
     internal fun `should populate a Podcast GooglePlay builder with all properties from an Podcast GooglePlay model`() {
-        val podcastGooglePlay = aPodcastGooglePlay()
+        val podcastGooglePlay = aPodcastGoogleplay()
         val podcastGooglePlayBuilder = PodcastGoogleplay.builder().from(podcastGooglePlay)
 
         assertAll {
-            assertThat(podcastGooglePlayBuilder).prop(PodcastGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().isEqualTo(podcastGooglePlay)
         }

@@ -1,17 +1,17 @@
 package dev.stalla.builder.validating
 
-import dev.stalla.builder.ITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.model.itunes.ItunesStyleCategory
 
-internal class ValidatingITunesStyleCategoryBuilder : ITunesStyleCategoryBuilder {
+internal class ValidatingItunesStyleCategoryBuilder : ItunesStyleCategoryBuilder {
 
     private lateinit var categoryValue: String
 
     private var subcategoryValue: String? = null
 
-    override fun category(category: String): ITunesStyleCategoryBuilder = apply { this.categoryValue = category }
+    override fun category(category: String): ItunesStyleCategoryBuilder = apply { this.categoryValue = category }
 
-    override fun subcategory(subcategory: String?): ITunesStyleCategoryBuilder = apply { this.subcategoryValue = subcategory }
+    override fun subcategory(subcategory: String?): ItunesStyleCategoryBuilder = apply { this.subcategoryValue = subcategory }
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::categoryValue.isInitialized

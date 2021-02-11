@@ -39,7 +39,7 @@ internal fun anRssCategory(
     domain: String? = "rss category domain"
 ) = RssCategory(category, domain)
 
-internal fun anITunesCategory(
+internal fun anItunesCategory(
     category: String = "itunes category",
     subcategory: String? = "itunes category subcategory"
 ) = if (subcategory == null) {

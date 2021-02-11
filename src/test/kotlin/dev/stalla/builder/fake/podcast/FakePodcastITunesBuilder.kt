@@ -1,14 +1,14 @@
 package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.builder.podcast.PodcastITunesBuilder
+import dev.stalla.builder.podcast.PodcastItunesBuilder
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 
-internal class FakePodcastITunesBuilder : FakeBuilder<PodcastItunes>(), PodcastITunesBuilder {
+internal class FakePodcastItunesBuilder : FakeBuilder<PodcastItunes>(), PodcastItunesBuilder {
 
     var imageBuilderValue: HrefOnlyImageBuilder? = null
     var explicit: Boolean? = null
@@ -17,7 +17,7 @@ internal class FakePodcastITunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
     var summary: String? = null
     var keywords: String? = null
     var author: String? = null
-    var categoryBuilders: MutableList<ITunesStyleCategoryBuilder> = mutableListOf()
+    var categoryBuilders: MutableList<ItunesStyleCategoryBuilder> = mutableListOf()
     var block: Boolean? = null
     var complete: Boolean? = null
     var type: ShowType? = null
@@ -25,41 +25,41 @@ internal class FakePodcastITunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
     var title: String? = null
     var newFeedUrl: String? = null
 
-    override fun subtitle(subtitle: String?): PodcastITunesBuilder = apply { this.subtitle = subtitle }
+    override fun subtitle(subtitle: String?): PodcastItunesBuilder = apply { this.subtitle = subtitle }
 
-    override fun summary(summary: String?): PodcastITunesBuilder = apply { this.summary = summary }
+    override fun summary(summary: String?): PodcastItunesBuilder = apply { this.summary = summary }
 
-    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder): PodcastITunesBuilder = apply { this.imageBuilderValue = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder): PodcastItunesBuilder = apply { this.imageBuilderValue = imageBuilder }
 
-    override fun keywords(keywords: String?): PodcastITunesBuilder = apply { this.keywords = keywords }
+    override fun keywords(keywords: String?): PodcastItunesBuilder = apply { this.keywords = keywords }
 
-    override fun author(author: String?): PodcastITunesBuilder = apply { this.author = author }
+    override fun author(author: String?): PodcastItunesBuilder = apply { this.author = author }
 
-    override fun addCategoryBuilder(categoryBuilder: ITunesStyleCategoryBuilder): PodcastITunesBuilder = apply {
+    override fun addCategoryBuilder(categoryBuilder: ItunesStyleCategoryBuilder): PodcastItunesBuilder = apply {
         categoryBuilders.add(categoryBuilder)
     }
 
-    override fun explicit(explicit: Boolean): PodcastITunesBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: Boolean): PodcastItunesBuilder = apply { this.explicit = explicit }
 
-    override fun block(block: Boolean): PodcastITunesBuilder = apply { this.block = block }
+    override fun block(block: Boolean): PodcastItunesBuilder = apply { this.block = block }
 
-    override fun complete(complete: Boolean): PodcastITunesBuilder = apply { this.complete = complete }
+    override fun complete(complete: Boolean): PodcastItunesBuilder = apply { this.complete = complete }
 
-    override fun type(type: String?): PodcastITunesBuilder = apply { this.type = ShowType.from(type) }
+    override fun type(type: String?): PodcastItunesBuilder = apply { this.type = ShowType.from(type) }
 
-    override fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastITunesBuilder = apply { this.ownerBuilder = ownerBuilder }
+    override fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastItunesBuilder = apply { this.ownerBuilder = ownerBuilder }
 
-    override fun title(title: String?): PodcastITunesBuilder = apply {
+    override fun title(title: String?): PodcastItunesBuilder = apply {
         this.title = title
     }
 
-    override fun newFeedUrl(newFeedUrl: String?): PodcastITunesBuilder = apply {
+    override fun newFeedUrl(newFeedUrl: String?): PodcastItunesBuilder = apply {
         this.newFeedUrl = newFeedUrl
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakePodcastITunesBuilder) return false
+        if (other !is FakePodcastItunesBuilder) return false
 
         if (imageBuilderValue != other.imageBuilderValue) return false
         if (explicit != other.explicit) return false

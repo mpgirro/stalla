@@ -7,42 +7,42 @@ import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [EpisodeItunes] instances. */
-public interface EpisodeITunesBuilder : Builder<EpisodeItunes> {
+public interface EpisodeItunesBuilder : Builder<EpisodeItunes> {
 
     /** Set the title value. */
-    public fun title(title: String?): EpisodeITunesBuilder
+    public fun title(title: String?): EpisodeItunesBuilder
 
     /** Set the duration value. */
-    public fun duration(duration: String?): EpisodeITunesBuilder
+    public fun duration(duration: String?): EpisodeItunesBuilder
 
     /** Set the [HrefOnlyImageBuilder]. */
-    public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeITunesBuilder
+    public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeItunesBuilder
 
     /** Set the explicit flag value. */
-    public fun explicit(explicit: Boolean?): EpisodeITunesBuilder
+    public fun explicit(explicit: Boolean?): EpisodeItunesBuilder
 
     /** Set the block flag value. */
-    public fun block(block: Boolean): EpisodeITunesBuilder
+    public fun block(block: Boolean): EpisodeItunesBuilder
 
     /** Set the season value. */
-    public fun season(season: Int?): EpisodeITunesBuilder
+    public fun season(season: Int?): EpisodeItunesBuilder
 
     /** Set the episode value. */
-    public fun episode(episode: Int?): EpisodeITunesBuilder
+    public fun episode(episode: Int?): EpisodeItunesBuilder
 
     /** Set the episodeType value. */
-    public fun episodeType(episodeType: String?): EpisodeITunesBuilder
+    public fun episodeType(episodeType: String?): EpisodeItunesBuilder
 
     /** Set the author value. */
-    public fun author(author: String?): EpisodeITunesBuilder
+    public fun author(author: String?): EpisodeItunesBuilder
 
     /** Set the subtitle value. */
-    public fun subtitle(subtitle: String?): EpisodeITunesBuilder
+    public fun subtitle(subtitle: String?): EpisodeItunesBuilder
 
     /** Set the summary value. */
-    public fun summary(summary: String?): EpisodeITunesBuilder
+    public fun summary(summary: String?): EpisodeItunesBuilder
 
-    override fun from(model: EpisodeItunes?): EpisodeITunesBuilder = whenNotNull(model) { itunes ->
+    override fun from(model: EpisodeItunes?): EpisodeItunesBuilder = whenNotNull(model) { itunes ->
         title(itunes.title)
         duration(itunes.duration)
         imageBuilder(HrefOnlyImage.builder().from(itunes.image))

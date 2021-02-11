@@ -1,7 +1,7 @@
 package dev.stalla.model.itunes
 
-import dev.stalla.builder.podcast.PodcastITunesBuilder
-import dev.stalla.builder.validating.podcast.ValidatingPodcastITunesBuilder
+import dev.stalla.builder.podcast.PodcastItunesBuilder
+import dev.stalla.builder.validating.podcast.ValidatingPodcastItunesBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
@@ -39,10 +39,10 @@ public data class PodcastItunes(
     val newFeedUrl: String? = null
 ) : ItunesBase {
 
-    public companion object Factory : BuilderFactory<PodcastItunes, PodcastITunesBuilder> {
+    public companion object Factory : BuilderFactory<PodcastItunes, PodcastItunesBuilder> {
 
         /** Returns a builder implementation for building [PodcastItunes] model instances. */
         @JvmStatic
-        override fun builder(): PodcastITunesBuilder = ValidatingPodcastITunesBuilder()
+        override fun builder(): PodcastItunesBuilder = ValidatingPodcastItunesBuilder()
     }
 }

@@ -1,7 +1,7 @@
 package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
@@ -10,7 +10,7 @@ import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.fake.FakeAtomBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakeITunesStyleCategoryBuilder
+import dev.stalla.builder.fake.FakeItunesStyleCategoryBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
 import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
@@ -41,7 +41,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
     val episodeBuilders: MutableList<EpisodeBuilder> = mutableListOf()
     val categoryBuilders: MutableList<RssCategoryBuilder> = mutableListOf()
 
-    override val iTunesBuilder: FakePodcastITunesBuilder = FakePodcastITunesBuilder()
+    override val itunesBuilder: FakePodcastItunesBuilder = FakePodcastItunesBuilder()
 
     override val atomBuilder: FakeAtomBuilder = FakeAtomBuilder()
 
@@ -49,7 +49,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override val feedpressBuilder: FakePodcastFeedpressBuilder = FakePodcastFeedpressBuilder()
 
-    override val googlePlayBuilder: FakePodcastGooglePlayBuilder = FakePodcastGooglePlayBuilder()
+    val googleplayBuilder: FakePodcastGoogleplayBuilder = FakePodcastGoogleplayBuilder()
 
     override val podcastBuilder: FakePodcastPodcastBuilder = FakePodcastPodcastBuilder()
 
@@ -97,7 +97,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder = FakeITunesStyleCategoryBuilder()
+    override fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder = FakeItunesStyleCategoryBuilder()
 
     override fun createPodcastPodcastLockedBuilder(): PodcastPodcastLockedBuilder = FakePodcastPodcastLockedBuilder()
 
@@ -122,11 +122,11 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         if (imageBuilder != other.imageBuilder) return false
         if (episodeBuilders != other.episodeBuilders) return false
         if (categoryBuilders != other.categoryBuilders) return false
-        if (iTunesBuilder != other.iTunesBuilder) return false
+        if (itunesBuilder != other.itunesBuilder) return false
         if (atomBuilder != other.atomBuilder) return false
         if (fyydBuilder != other.fyydBuilder) return false
         if (feedpressBuilder != other.feedpressBuilder) return false
-        if (googlePlayBuilder != other.googlePlayBuilder) return false
+        if (googleplayBuilder != other.googleplayBuilder) return false
         if (podcastBuilder != other.podcastBuilder) return false
 
         return true
@@ -148,11 +148,11 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         result = 31 * result + (imageBuilder?.hashCode() ?: 0)
         result = 31 * result + episodeBuilders.hashCode()
         result = 31 * result + categoryBuilders.hashCode()
-        result = 31 * result + iTunesBuilder.hashCode()
+        result = 31 * result + itunesBuilder.hashCode()
         result = 31 * result + atomBuilder.hashCode()
         result = 31 * result + fyydBuilder.hashCode()
         result = 31 * result + feedpressBuilder.hashCode()
-        result = 31 * result + googlePlayBuilder.hashCode()
+        result = 31 * result + googleplayBuilder.hashCode()
         result = 31 * result + podcastBuilder.hashCode()
         return result
     }
@@ -161,6 +161,6 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         "FakePodcastBuilder(titleValue=$titleValue, linkValue=$linkValue, descriptionValue=$descriptionValue, languageValue=$languageValue, " +
             "pubDate=$pubDate, lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, docs=$docs, " +
             "managingEditor=$managingEditor, webMaster=$webMaster, ttl=$ttl, imageBuilder=$imageBuilder, episodeBuilders=$episodeBuilders, " +
-            "categoryBuilders=$categoryBuilders, iTunesBuilder=$iTunesBuilder, atomBuilder=$atomBuilder, fyydBuilder=$fyydBuilder, " +
-            "feedpressBuilder=$feedpressBuilder, googlePlayBuilder=$googlePlayBuilder, podcastBuilder=$podcastBuilder)"
+            "categoryBuilders=$categoryBuilders, iTunesBuilder=$itunesBuilder, atomBuilder=$atomBuilder, fyydBuilder=$fyydBuilder, " +
+            "feedpressBuilder=$feedpressBuilder, googlePlayBuilder=$googleplayBuilder, podcastBuilder=$podcastBuilder)"
 }

@@ -1,28 +1,28 @@
 package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.episode.EpisodeGooglePlayBuilder
+import dev.stalla.builder.episode.EpisodeGoogleplayBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 
-internal class FakeEpisodeGooglePlayBuilder : FakeBuilder<EpisodeGoogleplay>(), EpisodeGooglePlayBuilder {
+internal class FakeEpisodeGoogleplayBuilder : FakeBuilder<EpisodeGoogleplay>(), EpisodeGoogleplayBuilder {
 
     var description: String? = null
     var explicit: Boolean? = null
     var block: Boolean? = null
     var imageBuilder: HrefOnlyImageBuilder? = null
 
-    override fun description(description: String?): EpisodeGooglePlayBuilder = apply { this.description = description }
+    override fun description(description: String?): EpisodeGoogleplayBuilder = apply { this.description = description }
 
-    override fun explicit(explicit: Boolean?): EpisodeGooglePlayBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: Boolean?): EpisodeGoogleplayBuilder = apply { this.explicit = explicit }
 
-    override fun block(block: Boolean): EpisodeGooglePlayBuilder = apply { this.block = block }
+    override fun block(block: Boolean): EpisodeGoogleplayBuilder = apply { this.block = block }
 
-    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGoogleplayBuilder = apply { this.imageBuilder = imageBuilder }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakeEpisodeGooglePlayBuilder) return false
+        if (other !is FakeEpisodeGoogleplayBuilder) return false
 
         if (description != other.description) return false
         if (explicit != other.explicit) return false

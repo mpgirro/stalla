@@ -1,7 +1,7 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.HrefOnlyImageBuilder;
-import dev.stalla.builder.ITunesStyleCategoryBuilder;
+import dev.stalla.builder.ItunesStyleCategoryBuilder;
 import dev.stalla.builder.episode.EpisodeBuilder;
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder;
 import dev.stalla.builder.podcast.*;
@@ -46,27 +46,27 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a PodcastItunes model using builder factory methods only")
     public void testPodcastItunesBuilderFactory() {
-        ITunesStyleCategoryBuilder iTunesStyleCategoryBuilder = ItunesStyleCategory.builder()
+        ItunesStyleCategoryBuilder itunesStyleCategoryBuilder = ItunesStyleCategory.builder()
             .category("category");
 
         HrefOnlyImageBuilder hrefOnlyImageBuilder = HrefOnlyImage.builder()
             .href("href");
 
-        PodcastITunesBuilder podcastITunesBuilder = PodcastItunes.builder()
+        PodcastItunesBuilder podcastItunesBuilder = PodcastItunes.builder()
             .explicit(false)
-            .addCategoryBuilder(iTunesStyleCategoryBuilder)
+            .addCategoryBuilder(itunesStyleCategoryBuilder)
             .imageBuilder(hrefOnlyImageBuilder);
 
-        assertNotNull(podcastITunesBuilder.build());
+        assertNotNull(podcastItunesBuilder.build());
     }
 
     @Test
     @DisplayName("should build a PodcastGoogleplay model using builder factory methods only")
     public void testPodcastGooglePlayBuilderFactory() {
-        PodcastGooglePlayBuilder podcastGooglePlayBuilder = PodcastGoogleplay.builder()
+        PodcastGoogleplayBuilder podcastGoogleplayBuilder = PodcastGoogleplay.builder()
             .author("author");
 
-        assertNotNull(podcastGooglePlayBuilder.build());
+        assertNotNull(podcastGoogleplayBuilder.build());
     }
 
     @Test

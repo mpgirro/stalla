@@ -20,45 +20,45 @@ import org.w3c.dom.Node
  * The namespace URI is: `http://www.itunes.com/dtds/podcast-1.0.dtd`
  */
 @InternalApi
-internal object ITunesParser : NamespaceParser() {
+internal object ItunesParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.ITUNES
 
     override fun Node.parseChannelData(builder: PodcastBuilder) {
         when (localName) {
-            "author" -> builder.iTunesBuilder.author(ifCanBeParsed { textOrNull() })
+            "author" -> builder.itunesBuilder.author(ifCanBeParsed { textOrNull() })
             "block" -> {
                 val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
-                builder.iTunesBuilder.block(block)
+                builder.itunesBuilder.block(block)
             }
             "category" -> {
                 val categoryBuilder = ifCanBeParsed {
                     toITunesCategoryBuilder(builder.createITunesStyleCategoryBuilder(), namespace)
                 } ?: return
-                builder.iTunesBuilder.addCategoryBuilder(categoryBuilder)
+                builder.itunesBuilder.addCategoryBuilder(categoryBuilder)
             }
             "complete" -> {
                 val complete = ifCanBeParsed { textAsBooleanOrNull() } ?: return
-                builder.iTunesBuilder.complete(complete)
+                builder.itunesBuilder.complete(complete)
             }
             "explicit" -> {
                 val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
-                builder.iTunesBuilder.explicit(explicit)
+                builder.itunesBuilder.explicit(explicit)
             }
             "image" -> {
                 val image = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) } ?: return
-                builder.iTunesBuilder.imageBuilder(image)
+                builder.itunesBuilder.imageBuilder(image)
             }
-            "keywords" -> builder.iTunesBuilder.keywords(ifCanBeParsed { textOrNull() })
+            "keywords" -> builder.itunesBuilder.keywords(ifCanBeParsed { textOrNull() })
             "owner" -> {
                 val ownerBuilder = ifCanBeParsed { toOwnerBuilder(builder.createPersonBuilder()) }
-                builder.iTunesBuilder.ownerBuilder(ownerBuilder)
+                builder.itunesBuilder.ownerBuilder(ownerBuilder)
             }
-            "subtitle" -> builder.iTunesBuilder.subtitle(ifCanBeParsed { textOrNull() })
-            "summary" -> builder.iTunesBuilder.summary(ifCanBeParsed { textOrNull() })
-            "type" -> builder.iTunesBuilder.type(ifCanBeParsed { textOrNull() })
-            "title" -> builder.iTunesBuilder.title(ifCanBeParsed { textOrNull() })
-            "new-feed-url" -> builder.iTunesBuilder.newFeedUrl(ifCanBeParsed { textOrNull() })
+            "subtitle" -> builder.itunesBuilder.subtitle(ifCanBeParsed { textOrNull() })
+            "summary" -> builder.itunesBuilder.summary(ifCanBeParsed { textOrNull() })
+            "type" -> builder.itunesBuilder.type(ifCanBeParsed { textOrNull() })
+            "title" -> builder.itunesBuilder.title(ifCanBeParsed { textOrNull() })
+            "new-feed-url" -> builder.itunesBuilder.newFeedUrl(ifCanBeParsed { textOrNull() })
             else -> pass
         }
     }
@@ -73,24 +73,24 @@ internal object ITunesParser : NamespaceParser() {
         when (localName) {
             "block" -> {
                 val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
-                builder.iTunesBuilder.block(block)
+                builder.itunesBuilder.block(block)
             }
-            "duration" -> builder.iTunesBuilder.duration(ifCanBeParsed { textOrNull() })
-            "episode" -> builder.iTunesBuilder.episode(ifCanBeParsed { parseAsInt() })
-            "episodeType" -> builder.iTunesBuilder.episodeType(ifCanBeParsed { textOrNull() })
+            "duration" -> builder.itunesBuilder.duration(ifCanBeParsed { textOrNull() })
+            "episode" -> builder.itunesBuilder.episode(ifCanBeParsed { parseAsInt() })
+            "episodeType" -> builder.itunesBuilder.episodeType(ifCanBeParsed { textOrNull() })
             "explicit" -> {
                 val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
-                builder.iTunesBuilder.explicit(explicit)
+                builder.itunesBuilder.explicit(explicit)
             }
             "image" -> {
                 val imageBuilder = toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder())
-                builder.iTunesBuilder.imageBuilder(imageBuilder)
+                builder.itunesBuilder.imageBuilder(imageBuilder)
             }
-            "season" -> builder.iTunesBuilder.season(ifCanBeParsed { parseAsInt() })
-            "title" -> builder.iTunesBuilder.title(ifCanBeParsed { textOrNull() })
-            "author" -> builder.iTunesBuilder.author(ifCanBeParsed { textOrNull() })
-            "subtitle" -> builder.iTunesBuilder.subtitle(ifCanBeParsed { textOrNull() })
-            "summary" -> builder.iTunesBuilder.summary(ifCanBeParsed { textOrNull() })
+            "season" -> builder.itunesBuilder.season(ifCanBeParsed { parseAsInt() })
+            "title" -> builder.itunesBuilder.title(ifCanBeParsed { textOrNull() })
+            "author" -> builder.itunesBuilder.author(ifCanBeParsed { textOrNull() })
+            "subtitle" -> builder.itunesBuilder.subtitle(ifCanBeParsed { textOrNull() })
+            "summary" -> builder.itunesBuilder.summary(ifCanBeParsed { textOrNull() })
             else -> pass
         }
     }

@@ -66,19 +66,19 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an EpisodeItunes model using builder factory methods only")
     public void testEpisodeItunesBuilderFactory() {
-        EpisodeITunesBuilder episodeITunesBuilder = EpisodeItunes.builder()
+        EpisodeItunesBuilder episodeItunesBuilder = EpisodeItunes.builder()
             .title("title");
 
-        assertNotNull(episodeITunesBuilder.build());
+        assertNotNull(episodeItunesBuilder.build());
     }
 
     @Test
     @DisplayName("should build an EpisodeGoogleplay model model using builder factory methods only")
     public void testEpisodeGooglePlayBuilderFactory() {
-        EpisodeGooglePlayBuilder episodeGooglePlayBuilder = EpisodeGoogleplay.builder()
+        EpisodeGoogleplayBuilder episodeGoogleplayBuilder = EpisodeGoogleplay.builder()
             .explicit(false);
 
-        assertNotNull(episodeGooglePlayBuilder.build());
+        assertNotNull(episodeGoogleplayBuilder.build());
     }
 
     @Test

@@ -9,22 +9,22 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import dev.stalla.builder.episode.EpisodeGooglePlayBuilder
+import dev.stalla.builder.episode.EpisodeGoogleplayBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.model.episode.anEpisodeGooglePlay
+import dev.stalla.model.episode.anEpisodeGoogleplay
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import org.junit.jupiter.api.Test
 
-internal class ValidatingEpisodeGooglePlayBuilderTest {
+internal class ValidatingEpisodeGoogleplayBuilderTest {
 
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
     @Test
     internal fun `should not build an Episode GooglePlay when all fields are missing`() {
-        val episodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+        val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
 
         assertAll {
-            assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(episodeGooglePlayBuilder.build()).isNull()
         }
@@ -32,11 +32,11 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
 
     @Test
     internal fun `should build an Episode GooglePlay with only a description`() {
-        val episodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+        val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .description("description")
 
         assertAll {
-            assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(EpisodeGoogleplay::description).isEqualTo("description")
@@ -49,11 +49,11 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
 
     @Test
     internal fun `should build an Episode GooglePlay with only explicit`() {
-        val episodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+        val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .explicit(false)
 
         assertAll {
-            assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(EpisodeGoogleplay::description).isNull()
@@ -66,11 +66,11 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
 
     @Test
     internal fun `should build an Episode GooglePlay with only block`() {
-        val episodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+        val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .block(true)
 
         assertAll {
-            assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(EpisodeGoogleplay::description).isNull()
@@ -83,11 +83,11 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
 
     @Test
     internal fun `should build an Episode GooglePlay with only an image`() {
-        val episodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+        val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .imageBuilder(expectedImageBuilder)
 
         assertAll {
-            assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(EpisodeGoogleplay::description).isNull()
@@ -100,14 +100,14 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
 
     @Test
     internal fun `should build an Episode GooglePlay with all the optional fields`() {
-        val episodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+        val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .description("description")
             .explicit(false)
             .block(false)
             .imageBuilder(expectedImageBuilder)
 
         assertAll {
-            assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(EpisodeGoogleplay::description).isEqualTo("description")
@@ -120,11 +120,11 @@ internal class ValidatingEpisodeGooglePlayBuilderTest {
 
     @Test
     internal fun `should populate an Episode GooglePlay builder with all properties from an Episode GooglePlay model`() {
-        val episodeGooglePlay = anEpisodeGooglePlay()
+        val episodeGooglePlay = anEpisodeGoogleplay()
         val episodeGooglePlayBuilder = EpisodeGoogleplay.builder().from(episodeGooglePlay)
 
         assertAll {
-            assertThat(episodeGooglePlayBuilder).prop(EpisodeGooglePlayBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().isEqualTo(episodeGooglePlay)
         }

@@ -134,10 +134,10 @@ internal class ValidatingEpisodeBuilderTest {
             .source("source")
             .apply {
                 contentBuilder.encoded("encoded")
-                iTunesBuilder.title("iTunes title")
+                itunesBuilder.title("iTunes title")
                 atomBuilder.addAuthorBuilder(expectedAtomAuthorBuilder)
                 podloveBuilder.addSimpleChapterBuilder(expectedSimpleChapterBuilder)
-                googlePlayBuilder.description("play description")
+                googleplayBuilder.description("play description")
                 bitloveBuilder.guid("bitlove guid")
                 podcastBuilder.chaptersBuilder(expectedPodcastChaptersBuilder)
             }

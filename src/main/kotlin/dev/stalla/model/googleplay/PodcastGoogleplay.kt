@@ -1,7 +1,7 @@
 package dev.stalla.model.googleplay
 
-import dev.stalla.builder.podcast.PodcastGooglePlayBuilder
-import dev.stalla.builder.validating.podcast.ValidatingPodcastGooglePlayBuilder
+import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
+import dev.stalla.builder.validating.podcast.ValidatingPodcastGoogleplayBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.itunes.ItunesStyleCategory
@@ -27,10 +27,10 @@ public data class PodcastGoogleplay(
     override val image: HrefOnlyImage? = null
 ) : GoogleplayBase {
 
-    public companion object Factory : BuilderFactory<PodcastGoogleplay, PodcastGooglePlayBuilder> {
+    public companion object Factory : BuilderFactory<PodcastGoogleplay, PodcastGoogleplayBuilder> {
 
         /** Returns a builder implementation for building [PodcastGoogleplay] model instances. */
         @JvmStatic
-        override fun builder(): PodcastGooglePlayBuilder = ValidatingPodcastGooglePlayBuilder()
+        override fun builder(): PodcastGoogleplayBuilder = ValidatingPodcastGoogleplayBuilder()
     }
 }

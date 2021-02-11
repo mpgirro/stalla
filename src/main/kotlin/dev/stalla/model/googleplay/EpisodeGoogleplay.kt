@@ -1,7 +1,7 @@
 package dev.stalla.model.googleplay
 
-import dev.stalla.builder.episode.EpisodeGooglePlayBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodeGooglePlayBuilder
+import dev.stalla.builder.episode.EpisodeGoogleplayBuilder
+import dev.stalla.builder.validating.episode.ValidatingEpisodeGoogleplayBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.HrefOnlyImage
 
@@ -20,10 +20,10 @@ public data class EpisodeGoogleplay(
     override val image: HrefOnlyImage? = null
 ) : GoogleplayBase {
 
-    public companion object Factory : BuilderFactory<EpisodeGoogleplay, EpisodeGooglePlayBuilder> {
+    public companion object Factory : BuilderFactory<EpisodeGoogleplay, EpisodeGoogleplayBuilder> {
 
         /** Returns a builder implementation for building [EpisodeGoogleplay] model instances. */
         @JvmStatic
-        override fun builder(): EpisodeGooglePlayBuilder = ValidatingEpisodeGooglePlayBuilder()
+        override fun builder(): EpisodeGoogleplayBuilder = ValidatingEpisodeGoogleplayBuilder()
     }
 }

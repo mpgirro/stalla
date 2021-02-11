@@ -1,7 +1,7 @@
 package dev.stalla.model.itunes
 
-import dev.stalla.builder.ITunesStyleCategoryBuilder
-import dev.stalla.builder.validating.ValidatingITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
 import dev.stalla.model.BuilderFactory
 
 /**
@@ -12,11 +12,11 @@ import dev.stalla.model.BuilderFactory
  */
 public sealed class ItunesStyleCategory(public open val name: String) {
 
-    public companion object Factory : BuilderFactory<ItunesStyleCategory, ITunesStyleCategoryBuilder> {
+    public companion object Factory : BuilderFactory<ItunesStyleCategory, ItunesStyleCategoryBuilder> {
 
         /** Returns a builder implementation for building [ItunesStyleCategory] model instances. */
         @JvmStatic
-        override fun builder(): ITunesStyleCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+        override fun builder(): ItunesStyleCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
     }
 
     /**

@@ -12,7 +12,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingITunesStyleCategoryBuilder
+import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
@@ -54,7 +54,7 @@ internal class ValidatingPodcastBuilderTest {
 
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 
-    private val expectedITunesCategoryBuilder = ValidatingITunesStyleCategoryBuilder()
+    private val expectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
         .category("itunes category")
         .subcategory("itunes subcategory")
 
@@ -208,7 +208,7 @@ internal class ValidatingPodcastBuilderTest {
             .addCategoryBuilder(expectedCategoryBuilders[0])
             .addCategoryBuilder(expectedCategoryBuilders[1])
             .apply {
-                iTunesBuilder.imageBuilder(expectedITunesImageBuilder)
+                itunesBuilder.imageBuilder(expectedITunesImageBuilder)
                     .addCategoryBuilder(expectedITunesCategoryBuilder)
                     .explicit(false)
                 atomBuilder.addAuthorBuilder(expectedAtomAuthorBuilder)

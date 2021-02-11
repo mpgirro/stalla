@@ -4,15 +4,15 @@ import dev.stalla.model.itunes.ItunesStyleCategory
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [ItunesStyleCategory] instances. */
-public interface ITunesStyleCategoryBuilder : Builder<ItunesStyleCategory> {
+public interface ItunesStyleCategoryBuilder : Builder<ItunesStyleCategory> {
 
     /** Set the category value. */
-    public fun category(category: String): ITunesStyleCategoryBuilder
+    public fun category(category: String): ItunesStyleCategoryBuilder
 
     /** Set the subcategory value. */
-    public fun subcategory(subcategory: String?): ITunesStyleCategoryBuilder
+    public fun subcategory(subcategory: String?): ItunesStyleCategoryBuilder
 
-    override fun from(model: ItunesStyleCategory?): ITunesStyleCategoryBuilder = whenNotNull(model) { category ->
+    override fun from(model: ItunesStyleCategory?): ItunesStyleCategoryBuilder = whenNotNull(model) { category ->
         when (category) {
             is ItunesStyleCategory.Simple -> category(category.name)
             is ItunesStyleCategory.Nested -> {

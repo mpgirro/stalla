@@ -3,7 +3,7 @@ package dev.stalla.builder.podcast
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
@@ -19,7 +19,7 @@ import java.time.temporal.TemporalAccessor
 public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderProvider {
 
     /** The builder for data from the iTunes namespace. */
-    public val iTunesBuilder: PodcastITunesBuilder
+    public val itunesBuilder: PodcastItunesBuilder
 
     /** The builder for data from the Atom namespace. */
     public val atomBuilder: AtomBuilder
@@ -31,7 +31,7 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     public val feedpressBuilder: PodcastFeedpressBuilder
 
     /** The builder for data from the Google Play namespace. */
-    public val googlePlayBuilder: PodcastGooglePlayBuilder
+    public val googlePlayBuilder: PodcastGoogleplayBuilder
 
     /** Set the Podcast namespace builder. */
     public val podcastBuilder: PodcastPodcastBuilder
@@ -100,8 +100,8 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
     public fun createRssCategoryBuilder(): RssCategoryBuilder
 
-    /** Creates an instance of [ITunesStyleCategoryBuilder] to use with this builder. */
-    public fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder
+    /** Creates an instance of [ItunesStyleCategoryBuilder] to use with this builder. */
+    public fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder
 
     /** Creates an instance of [PodcastPodcastLockedBuilder] to use with this builder. */
     public fun createPodcastPodcastLockedBuilder(): PodcastPodcastLockedBuilder
@@ -110,7 +110,7 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     public fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder
 
     override fun from(model: Podcast?): PodcastBuilder = whenNotNull(model) { podcast ->
-        iTunesBuilder.from(podcast.itunes)
+        itunesBuilder.from(podcast.itunes)
         atomBuilder.from(podcast.atom)
         fyydBuilder.from(podcast.fyyd)
         feedpressBuilder.from(podcast.feedpress)

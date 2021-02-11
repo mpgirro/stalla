@@ -1,20 +1,20 @@
 package dev.stalla.builder.fake
 
-import dev.stalla.builder.ITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.model.itunes.ItunesStyleCategory
 
-internal class FakeITunesStyleCategoryBuilder : FakeBuilder<ItunesStyleCategory>(), ITunesStyleCategoryBuilder {
+internal class FakeItunesStyleCategoryBuilder : FakeBuilder<ItunesStyleCategory>(), ItunesStyleCategoryBuilder {
 
     var category: String? = null
     var subcategory: String? = null
 
-    override fun category(category: String): ITunesStyleCategoryBuilder = apply { this.category = category }
+    override fun category(category: String): ItunesStyleCategoryBuilder = apply { this.category = category }
 
-    override fun subcategory(subcategory: String?): ITunesStyleCategoryBuilder = apply { this.subcategory = subcategory }
+    override fun subcategory(subcategory: String?): ItunesStyleCategoryBuilder = apply { this.subcategory = subcategory }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakeITunesStyleCategoryBuilder) return false
+        if (other !is FakeItunesStyleCategoryBuilder) return false
 
         if (category != other.category) return false
         if (subcategory != other.subcategory) return false

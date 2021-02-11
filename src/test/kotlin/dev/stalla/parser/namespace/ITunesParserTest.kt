@@ -10,12 +10,12 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakeITunesStyleCategoryBuilder
+import dev.stalla.builder.fake.FakeItunesStyleCategoryBuilder
 import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
-import dev.stalla.builder.fake.episode.FakeEpisodeITunesBuilder
+import dev.stalla.builder.fake.episode.FakeEpisodeItunesBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastBuilder
-import dev.stalla.builder.fake.podcast.FakePodcastITunesBuilder
+import dev.stalla.builder.fake.podcast.FakePodcastItunesBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.hasNotEnoughDataToBuild
 import dev.stalla.model.itunes.EpisodeType
@@ -25,9 +25,9 @@ import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 
-internal class ITunesParserTest : NamespaceParserTest() {
+internal class ItunesParserTest : NamespaceParserTest() {
 
-    override val parser = ITunesParser
+    override val parser = ItunesParser
 
     private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/podcast-cover.jpg")
 
@@ -43,24 +43,24 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.iTunesBuilder, "channel.itunes").all {
-            prop(FakePodcastITunesBuilder::author).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastITunesBuilder::ownerBuilder).isEqualTo(expectedOwnerBuilder)
-            prop(FakePodcastITunesBuilder::categoryBuilders).containsExactly(
-                FakeITunesStyleCategoryBuilder().category("Technology").subcategory("Tech News"),
-                FakeITunesStyleCategoryBuilder().category("Society & Culture"),
-                FakeITunesStyleCategoryBuilder().category("Technology").subcategory("Gadgets")
+        assertThat(builder.itunesBuilder, "channel.itunes").all {
+            prop(FakePodcastItunesBuilder::author).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastItunesBuilder::ownerBuilder).isEqualTo(expectedOwnerBuilder)
+            prop(FakePodcastItunesBuilder::categoryBuilders).containsExactly(
+                FakeItunesStyleCategoryBuilder().category("Technology").subcategory("Tech News"),
+                FakeItunesStyleCategoryBuilder().category("Society & Culture"),
+                FakeItunesStyleCategoryBuilder().category("Technology").subcategory("Gadgets")
             )
-            prop(FakePodcastITunesBuilder::subtitle).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastITunesBuilder::summary).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastITunesBuilder::keywords).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastITunesBuilder::explicit).isNotNull().isFalse()
-            prop(FakePodcastITunesBuilder::block).isNotNull().isFalse()
-            prop(FakePodcastITunesBuilder::complete).isNotNull().isFalse()
-            prop(FakePodcastITunesBuilder::imageBuilderValue).isEqualTo(expectedPodcastImageBuilder)
-            prop(FakePodcastITunesBuilder::type).isEqualTo(ShowType.EPISODIC)
-            prop(FakePodcastITunesBuilder::title).isEqualTo("podcast itunes title")
-            prop(FakePodcastITunesBuilder::newFeedUrl).isEqualTo("podcast itunes new-feed-url")
+            prop(FakePodcastItunesBuilder::subtitle).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastItunesBuilder::summary).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastItunesBuilder::keywords).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastItunesBuilder::explicit).isNotNull().isFalse()
+            prop(FakePodcastItunesBuilder::block).isNotNull().isFalse()
+            prop(FakePodcastItunesBuilder::complete).isNotNull().isFalse()
+            prop(FakePodcastItunesBuilder::imageBuilderValue).isEqualTo(expectedPodcastImageBuilder)
+            prop(FakePodcastItunesBuilder::type).isEqualTo(ShowType.EPISODIC)
+            prop(FakePodcastItunesBuilder::title).isEqualTo("podcast itunes title")
+            prop(FakePodcastItunesBuilder::newFeedUrl).isEqualTo("podcast itunes new-feed-url")
         }
     }
 
@@ -70,20 +70,20 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.iTunesBuilder, "channel.itunes").all {
-            prop(FakePodcastITunesBuilder::author).isNull()
-            prop(FakePodcastITunesBuilder::ownerBuilder).isNull()
-            prop(FakePodcastITunesBuilder::categoryBuilders).isEmpty()
-            prop(FakePodcastITunesBuilder::subtitle).isNull()
-            prop(FakePodcastITunesBuilder::summary).isNull()
-            prop(FakePodcastITunesBuilder::keywords).isNull()
-            prop(FakePodcastITunesBuilder::explicit).isNull()
-            prop(FakePodcastITunesBuilder::block).isNull()
-            prop(FakePodcastITunesBuilder::complete).isNull()
-            prop(FakePodcastITunesBuilder::imageBuilderValue).isNull()
-            prop(FakePodcastITunesBuilder::type).isNull()
-            prop(FakePodcastITunesBuilder::title).isNull()
-            prop(FakePodcastITunesBuilder::newFeedUrl).isNull()
+        assertThat(builder.itunesBuilder, "channel.itunes").all {
+            prop(FakePodcastItunesBuilder::author).isNull()
+            prop(FakePodcastItunesBuilder::ownerBuilder).isNull()
+            prop(FakePodcastItunesBuilder::categoryBuilders).isEmpty()
+            prop(FakePodcastItunesBuilder::subtitle).isNull()
+            prop(FakePodcastItunesBuilder::summary).isNull()
+            prop(FakePodcastItunesBuilder::keywords).isNull()
+            prop(FakePodcastItunesBuilder::explicit).isNull()
+            prop(FakePodcastItunesBuilder::block).isNull()
+            prop(FakePodcastItunesBuilder::complete).isNull()
+            prop(FakePodcastItunesBuilder::imageBuilderValue).isNull()
+            prop(FakePodcastItunesBuilder::type).isNull()
+            prop(FakePodcastItunesBuilder::title).isNull()
+            prop(FakePodcastItunesBuilder::newFeedUrl).isNull()
         }
     }
 
@@ -93,20 +93,20 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.iTunesBuilder, "channel.itunes").all {
-            prop(FakePodcastITunesBuilder::author).isNull()
-            prop(FakePodcastITunesBuilder::ownerBuilder).isNotNull().hasNotEnoughDataToBuild()
-            prop(FakePodcastITunesBuilder::categoryBuilders).noneHasEnoughDataToBuild()
-            prop(FakePodcastITunesBuilder::subtitle).isNull()
-            prop(FakePodcastITunesBuilder::summary).isNull()
-            prop(FakePodcastITunesBuilder::keywords).isNull()
-            prop(FakePodcastITunesBuilder::explicit).isNull()
-            prop(FakePodcastITunesBuilder::block).isNull()
-            prop(FakePodcastITunesBuilder::complete).isNull()
-            prop(FakePodcastITunesBuilder::imageBuilderValue).isNotNull().hasNotEnoughDataToBuild()
-            prop(FakePodcastITunesBuilder::type).isNull()
-            prop(FakePodcastITunesBuilder::title).isNull()
-            prop(FakePodcastITunesBuilder::newFeedUrl).isNull()
+        assertThat(builder.itunesBuilder, "channel.itunes").all {
+            prop(FakePodcastItunesBuilder::author).isNull()
+            prop(FakePodcastItunesBuilder::ownerBuilder).isNotNull().hasNotEnoughDataToBuild()
+            prop(FakePodcastItunesBuilder::categoryBuilders).noneHasEnoughDataToBuild()
+            prop(FakePodcastItunesBuilder::subtitle).isNull()
+            prop(FakePodcastItunesBuilder::summary).isNull()
+            prop(FakePodcastItunesBuilder::keywords).isNull()
+            prop(FakePodcastItunesBuilder::explicit).isNull()
+            prop(FakePodcastItunesBuilder::block).isNull()
+            prop(FakePodcastItunesBuilder::complete).isNull()
+            prop(FakePodcastItunesBuilder::imageBuilderValue).isNotNull().hasNotEnoughDataToBuild()
+            prop(FakePodcastItunesBuilder::type).isNull()
+            prop(FakePodcastItunesBuilder::title).isNull()
+            prop(FakePodcastItunesBuilder::newFeedUrl).isNull()
         }
     }
 
@@ -116,18 +116,18 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.iTunesBuilder, "item.itunes").all {
-            prop(FakeEpisodeITunesBuilder::title).isEqualTo("Lorem Ipsum")
-            prop(FakeEpisodeITunesBuilder::duration).isEqualTo("03:24:27")
-            prop(FakeEpisodeITunesBuilder::season).isEqualTo(1)
-            prop(FakeEpisodeITunesBuilder::episode).isEqualTo(1)
-            prop(FakeEpisodeITunesBuilder::explicit).isNotNull().isFalse()
-            prop(FakeEpisodeITunesBuilder::block).isNotNull().isFalse()
-            prop(FakeEpisodeITunesBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
-            prop(FakeEpisodeITunesBuilder::episodeType).isEqualTo(EpisodeType.FULL)
-            prop(FakeEpisodeITunesBuilder::author).isEqualTo("author")
-            prop(FakeEpisodeITunesBuilder::subtitle).isEqualTo("subtitle")
-            prop(FakeEpisodeITunesBuilder::summary).isEqualTo("summary")
+        assertThat(builder.itunesBuilder, "item.itunes").all {
+            prop(FakeEpisodeItunesBuilder::title).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeItunesBuilder::duration).isEqualTo("03:24:27")
+            prop(FakeEpisodeItunesBuilder::season).isEqualTo(1)
+            prop(FakeEpisodeItunesBuilder::episode).isEqualTo(1)
+            prop(FakeEpisodeItunesBuilder::explicit).isNotNull().isFalse()
+            prop(FakeEpisodeItunesBuilder::block).isNotNull().isFalse()
+            prop(FakeEpisodeItunesBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
+            prop(FakeEpisodeItunesBuilder::episodeType).isEqualTo(EpisodeType.FULL)
+            prop(FakeEpisodeItunesBuilder::author).isEqualTo("author")
+            prop(FakeEpisodeItunesBuilder::subtitle).isEqualTo("subtitle")
+            prop(FakeEpisodeItunesBuilder::summary).isEqualTo("summary")
         }
     }
 
@@ -137,18 +137,18 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.iTunesBuilder, "item.itunes").all {
-            prop(FakeEpisodeITunesBuilder::title).isNull()
-            prop(FakeEpisodeITunesBuilder::duration).isNull()
-            prop(FakeEpisodeITunesBuilder::season).isNull()
-            prop(FakeEpisodeITunesBuilder::episode).isNull()
-            prop(FakeEpisodeITunesBuilder::explicit).isNull()
-            prop(FakeEpisodeITunesBuilder::block).isNull()
-            prop(FakeEpisodeITunesBuilder::imageBuilder).isNull()
-            prop(FakeEpisodeITunesBuilder::episodeType).isNull()
-            prop(FakeEpisodeITunesBuilder::author).isNull()
-            prop(FakeEpisodeITunesBuilder::subtitle).isNull()
-            prop(FakeEpisodeITunesBuilder::summary).isNull()
+        assertThat(builder.itunesBuilder, "item.itunes").all {
+            prop(FakeEpisodeItunesBuilder::title).isNull()
+            prop(FakeEpisodeItunesBuilder::duration).isNull()
+            prop(FakeEpisodeItunesBuilder::season).isNull()
+            prop(FakeEpisodeItunesBuilder::episode).isNull()
+            prop(FakeEpisodeItunesBuilder::explicit).isNull()
+            prop(FakeEpisodeItunesBuilder::block).isNull()
+            prop(FakeEpisodeItunesBuilder::imageBuilder).isNull()
+            prop(FakeEpisodeItunesBuilder::episodeType).isNull()
+            prop(FakeEpisodeItunesBuilder::author).isNull()
+            prop(FakeEpisodeItunesBuilder::subtitle).isNull()
+            prop(FakeEpisodeItunesBuilder::summary).isNull()
         }
     }
 
@@ -158,18 +158,18 @@ internal class ITunesParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)
 
-        assertThat(builder.iTunesBuilder, "item.itunes").all {
-            prop(FakeEpisodeITunesBuilder::title).isNull()
-            prop(FakeEpisodeITunesBuilder::duration).isNull()
-            prop(FakeEpisodeITunesBuilder::season).isNull()
-            prop(FakeEpisodeITunesBuilder::episode).isNull()
-            prop(FakeEpisodeITunesBuilder::explicit).isNull()
-            prop(FakeEpisodeITunesBuilder::block).isNull()
-            prop(FakeEpisodeITunesBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
-            prop(FakeEpisodeITunesBuilder::episodeType).isNull()
-            prop(FakeEpisodeITunesBuilder::author).isNull()
-            prop(FakeEpisodeITunesBuilder::subtitle).isNull()
-            prop(FakeEpisodeITunesBuilder::summary).isNull()
+        assertThat(builder.itunesBuilder, "item.itunes").all {
+            prop(FakeEpisodeItunesBuilder::title).isNull()
+            prop(FakeEpisodeItunesBuilder::duration).isNull()
+            prop(FakeEpisodeItunesBuilder::season).isNull()
+            prop(FakeEpisodeItunesBuilder::episode).isNull()
+            prop(FakeEpisodeItunesBuilder::explicit).isNull()
+            prop(FakeEpisodeItunesBuilder::block).isNull()
+            prop(FakeEpisodeItunesBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
+            prop(FakeEpisodeItunesBuilder::episodeType).isNull()
+            prop(FakeEpisodeItunesBuilder::author).isNull()
+            prop(FakeEpisodeItunesBuilder::subtitle).isNull()
+            prop(FakeEpisodeItunesBuilder::summary).isNull()
         }
     }
 }

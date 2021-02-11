@@ -1,24 +1,24 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.episode.EpisodeGooglePlayBuilder
+import dev.stalla.builder.episode.EpisodeGoogleplayBuilder
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.util.anyNotNull
 
-internal class ValidatingEpisodeGooglePlayBuilder : EpisodeGooglePlayBuilder {
+internal class ValidatingEpisodeGoogleplayBuilder : EpisodeGoogleplayBuilder {
 
     private var description: String? = null
     private var explicit: Boolean? = null
     private var block: Boolean = false
     private var imageBuilder: HrefOnlyImageBuilder? = null
 
-    override fun description(description: String?): EpisodeGooglePlayBuilder = apply { this.description = description }
+    override fun description(description: String?): EpisodeGoogleplayBuilder = apply { this.description = description }
 
-    override fun explicit(explicit: Boolean?): EpisodeGooglePlayBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: Boolean?): EpisodeGoogleplayBuilder = apply { this.explicit = explicit }
 
-    override fun block(block: Boolean): EpisodeGooglePlayBuilder = apply { this.block = block }
+    override fun block(block: Boolean): EpisodeGoogleplayBuilder = apply { this.block = block }
 
-    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGooglePlayBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGoogleplayBuilder = apply { this.imageBuilder = imageBuilder }
 
     override val hasEnoughDataToBuild: Boolean
         get() = block || anyNotNull(description, explicit) || imageBuilder?.hasEnoughDataToBuild == true
