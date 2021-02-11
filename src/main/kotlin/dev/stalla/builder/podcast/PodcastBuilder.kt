@@ -110,11 +110,11 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     public fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder
 
     override fun from(model: Podcast?): PodcastBuilder = whenNotNull(model) { podcast ->
-        iTunesBuilder.from(podcast.iTunes)
+        iTunesBuilder.from(podcast.itunes)
         atomBuilder.from(podcast.atom)
         fyydBuilder.from(podcast.fyyd)
         feedpressBuilder.from(podcast.feedpress)
-        googlePlayBuilder.from(podcast.googlePlay)
+        googlePlayBuilder.from(podcast.googleplay)
         podcastBuilder.from(podcast.podcast)
         title(podcast.title)
         link(podcast.link)

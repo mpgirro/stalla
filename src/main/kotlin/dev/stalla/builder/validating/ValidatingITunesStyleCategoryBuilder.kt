@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating
 
 import dev.stalla.builder.ITunesStyleCategoryBuilder
-import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.itunes.ItunesStyleCategory
 
 internal class ValidatingITunesStyleCategoryBuilder : ITunesStyleCategoryBuilder {
 
@@ -16,16 +16,16 @@ internal class ValidatingITunesStyleCategoryBuilder : ITunesStyleCategoryBuilder
     override val hasEnoughDataToBuild: Boolean
         get() = ::categoryValue.isInitialized
 
-    override fun build(): ITunesStyleCategory? {
+    override fun build(): ItunesStyleCategory? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
         val subcategory = subcategoryValue
         return if (subcategory == null) {
-            ITunesStyleCategory.Simple(categoryValue)
+            ItunesStyleCategory.Simple(categoryValue)
         } else {
-            ITunesStyleCategory.Nested(categoryValue, ITunesStyleCategory.Simple(subcategory))
+            ItunesStyleCategory.Nested(categoryValue, ItunesStyleCategory.Simple(subcategory))
         }
     }
 }

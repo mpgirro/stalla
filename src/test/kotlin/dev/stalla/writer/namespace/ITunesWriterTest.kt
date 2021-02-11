@@ -10,7 +10,7 @@ import dev.stalla.hasValue
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.episode.anEpisodeITunes
-import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.itunes.ItunesStyleCategory
 import dev.stalla.model.podcast.aPodcast
 import dev.stalla.model.podcast.aPodcastITunes
 import org.junit.jupiter.api.Test
@@ -95,9 +95,9 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write itunes tags to the channel when the data is blank`() {
         val categories = listOf(
-            ITunesStyleCategory.Simple(" "),
-            ITunesStyleCategory.Nested(" ", ITunesStyleCategory.Simple("subcategory")),
-            ITunesStyleCategory.Nested("nested", ITunesStyleCategory.Simple(" "))
+            ItunesStyleCategory.Simple(" "),
+            ItunesStyleCategory.Nested(" ", ItunesStyleCategory.Simple("subcategory")),
+            ItunesStyleCategory.Nested("nested", ItunesStyleCategory.Simple(" "))
         )
         val podcast = aPodcast(
             iTunes = aPodcastITunes(
@@ -143,9 +143,9 @@ internal class ITunesWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write itunes tags to the channel when the data is empty`() {
         val categories = listOf(
-            ITunesStyleCategory.Simple(""),
-            ITunesStyleCategory.Nested("", ITunesStyleCategory.Simple("subcategory")),
-            ITunesStyleCategory.Nested("nested", ITunesStyleCategory.Simple(""))
+            ItunesStyleCategory.Simple(""),
+            ItunesStyleCategory.Nested("", ItunesStyleCategory.Simple("subcategory")),
+            ItunesStyleCategory.Nested("nested", ItunesStyleCategory.Simple(""))
         )
         val podcast = aPodcast(
             iTunes = aPodcastITunes(

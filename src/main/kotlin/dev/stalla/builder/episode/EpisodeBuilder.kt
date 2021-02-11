@@ -102,10 +102,10 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
 
     override fun from(model: Episode?): EpisodeBuilder = whenNotNull(model) { episode ->
         contentBuilder.from(episode.content)
-        iTunesBuilder.from(episode.iTunes)
+        iTunesBuilder.from(episode.itunes)
         atomBuilder.from(episode.atom)
         podloveBuilder.from(episode.podlove)
-        googlePlayBuilder.from(episode.googlePlay)
+        googlePlayBuilder.from(episode.googleplay)
         bitloveBuilder.from(episode.bitlove)
         podcastBuilder.from(episode.podcast)
         title(episode.title)

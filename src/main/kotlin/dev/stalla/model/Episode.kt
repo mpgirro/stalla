@@ -27,10 +27,10 @@ import java.time.temporal.TemporalAccessor
  * @property pubDate The RSS `<pubDate>` field textContent.
  * @property source The RSS `<source>` field textContent.
  * @property content The data from the Content namespace, or null if no data from this namespace was found.
- * @property iTunes The data from the iTunes namespace, or null if no data from this namespace was found.
+ * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
  * @property podlove The data from the Podlove standards namespaces, or null if no data from these namespaces were found.
- * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
+ * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property bitlove The data from the Bitlove namespace, or null if no data from this namespace was found.
  * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
  */
@@ -47,10 +47,10 @@ public data class Episode(
     val pubDate: TemporalAccessor? = null,
     val source: String? = null,
     val content: Content? = null,
-    val iTunes: EpisodeItunes? = null,
+    val itunes: EpisodeItunes? = null,
     val atom: Atom? = null,
     val podlove: EpisodePodlove? = null,
-    val googlePlay: EpisodeGoogleplay? = null,
+    val googleplay: EpisodeGoogleplay? = null,
     val bitlove: Bitlove? = null,
     val podcast: EpisodePodcast? = null
 ) {

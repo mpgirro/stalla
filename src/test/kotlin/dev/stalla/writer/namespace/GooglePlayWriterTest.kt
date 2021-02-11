@@ -10,7 +10,7 @@ import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.episode.anEpisodeGooglePlay
-import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.itunes.ItunesStyleCategory
 import dev.stalla.model.podcast.aPodcast
 import dev.stalla.model.podcast.aPodcastGooglePlay
 import org.junit.jupiter.api.Test
@@ -69,9 +69,9 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write googleplay tags to the channel when the data is blank`() {
         val categories = listOf(
-            ITunesStyleCategory.Simple(" "),
-            ITunesStyleCategory.Nested(" ", ITunesStyleCategory.Simple("subcategory")),
-            ITunesStyleCategory.Nested("nested", ITunesStyleCategory.Simple(" "))
+            ItunesStyleCategory.Simple(" "),
+            ItunesStyleCategory.Nested(" ", ItunesStyleCategory.Simple("subcategory")),
+            ItunesStyleCategory.Nested("nested", ItunesStyleCategory.Simple(" "))
         )
         val podcast = aPodcast(
             googlePlay = aPodcastGooglePlay(
@@ -104,9 +104,9 @@ internal class GooglePlayWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write googleplay tags to the channel when the data is empty`() {
         val categories = listOf(
-            ITunesStyleCategory.Simple(""),
-            ITunesStyleCategory.Nested("", ITunesStyleCategory.Simple("subcategory")),
-            ITunesStyleCategory.Nested("nested", ITunesStyleCategory.Simple(""))
+            ItunesStyleCategory.Simple(""),
+            ItunesStyleCategory.Nested("", ItunesStyleCategory.Simple("subcategory")),
+            ItunesStyleCategory.Nested("nested", ItunesStyleCategory.Simple(""))
         )
         val podcast = aPodcast(
             googlePlay = aPodcastGooglePlay(

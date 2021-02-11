@@ -19,7 +19,7 @@ import dev.stalla.model.Podcast
 import dev.stalla.model.content.Content
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
-import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.itunes.ItunesStyleCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.rss.Enclosure
@@ -147,7 +147,7 @@ internal class PodcastRssParserTest {
                     "Follow the podcast on Twitter at <a href=\"https://twitter.com/SmashinSecurity\">@SmashinSecurity</a>, and subscribe for free in your favourite podcast app. New episodes released at 7pm EST every Wednesday (midnight UK)."
             )
             prop(Podcast::language).isEqualTo("en-us")
-            prop(Podcast::iTunes).isNotNull().all {
+            prop(Podcast::itunes).isNotNull().all {
                 prop(PodcastItunes::type).isEqualTo(ShowType.EPISODIC)
                 prop(PodcastItunes::subtitle).isEqualTo("News and views from the world of cybersecurity, hacking, and internet threats")
                 prop(PodcastItunes::author).isEqualTo("Graham Cluley, Carole Theriault")
@@ -165,9 +165,9 @@ internal class PodcastRssParserTest {
                     prop(Person::email).isEqualTo("studio@smashingsecurity.com")
                 }
                 prop(PodcastItunes::categories).containsExactly(
-                    ITunesStyleCategory.Simple(name = "Technology"),
-                    ITunesStyleCategory.Nested(name = "News", subcategory = ITunesStyleCategory.Simple(name = "Tech News")),
-                    ITunesStyleCategory.Simple(name = "Comedy")
+                    ItunesStyleCategory.Simple(name = "Technology"),
+                    ItunesStyleCategory.Nested(name = "News", subcategory = ItunesStyleCategory.Simple(name = "Tech News")),
+                    ItunesStyleCategory.Simple(name = "Comedy")
                 )
             }
             prop(Podcast::atom).isNull()
@@ -175,7 +175,7 @@ internal class PodcastRssParserTest {
             prop(Podcast::docs).isNull()
             prop(Podcast::feedpress).isNull()
             prop(Podcast::fyyd).isNull()
-            prop(Podcast::googlePlay).isNull()
+            prop(Podcast::googleplay).isNull()
             prop(Podcast::lastBuildDate).isNull()
             prop(Podcast::managingEditor).isNull()
             prop(Podcast::webMaster).isNull()
@@ -208,7 +208,7 @@ internal class PodcastRssParserTest {
                             "Theme tune: \"Vinyl Memories\" by Mikael Manvelyan.\n" +
                             "Assorted sound effects: AudioBlocks. Special Guests: Danielle Papadakis and Jack Rhysider."
                     )
-                    prop(Episode::iTunes).isNotNull().all {
+                    prop(Episode::itunes).isNotNull().all {
                         prop(EpisodeItunes::episodeType).isEqualTo(EpisodeType.FULL)
                         prop(EpisodeItunes::author).isEqualTo("Graham Cluley, Carole Theriault")
                         prop(EpisodeItunes::subtitle).isEqualTo("Darknet Diaries host Jack Rhysider joins us to discuss a cybersecurity goof in the wake of the US presidential elections, the US finally fingering the hackers responsible for disrupting the Winter Olympics in South Korea, and to take a long hard look at long hard legal mumbojumbo...")

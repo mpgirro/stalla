@@ -179,11 +179,11 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::webMaster).isNull()
                 prop(Podcast::image).isNull()
                 prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
-                prop(Podcast::iTunes).isNull()
+                prop(Podcast::itunes).isNull()
                 prop(Podcast::atom).isNull()
                 prop(Podcast::feedpress).isNull()
                 prop(Podcast::fyyd).isNull()
-                prop(Podcast::googlePlay).isNull()
+                prop(Podcast::googleplay).isNull()
                 prop(Podcast::podcast).isNull()
             }
         }
@@ -236,13 +236,13 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::image).isEqualTo(expectedImageBuilder.build())
                 prop(Podcast::categories).containsExactly(expectedCategoryBuilders[0].build(), expectedCategoryBuilders[1].build())
                 prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
-                prop(Podcast::iTunes).isNotNull().prop(PodcastItunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
+                prop(Podcast::itunes).isNotNull().prop(PodcastItunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
                 prop(Podcast::atom).isNotNull().prop(Atom::authors)
                     .containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Podcast::feedpress).isNotNull().prop(Feedpress::newsletterId)
                     .isEqualTo("feedpress newsletterId")
                 prop(Podcast::fyyd).isNotNull().prop(Fyyd::verify).isEqualTo("fyyd verify")
-                prop(Podcast::googlePlay).isNotNull().prop(PodcastGoogleplay::description).isEqualTo("play description")
+                prop(Podcast::googleplay).isNotNull().prop(PodcastGoogleplay::description).isEqualTo("play description")
                 prop(Podcast::podcast).isNotNull().prop(PodcastPodcast::locked).isEqualTo(expectedLockedBuilder.build())
             }
         }

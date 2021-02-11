@@ -134,11 +134,11 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
             ttl = ttl,
             image = imageBuilder?.build(),
             episodes = builtEpisodes,
-            iTunes = iTunesBuilder.build(),
+            itunes = iTunesBuilder.build(),
             atom = atomBuilder.build(),
             fyyd = fyydBuilder.build(),
             feedpress = feedpressBuilder.build(),
-            googlePlay = googlePlayBuilder.build(),
+            googleplay = googlePlayBuilder.build(),
             categories = categoryBuilders.mapNotNull { it.build() },
             podcast = podcastBuilder.build()
         )

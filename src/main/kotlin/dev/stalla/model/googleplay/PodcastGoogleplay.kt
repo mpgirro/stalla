@@ -4,7 +4,7 @@ import dev.stalla.builder.podcast.PodcastGooglePlayBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastGooglePlayBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.itunes.ItunesStyleCategory
 
 /**
  * Model class for data from the Google Play namespace valid within an RSS `<channel>`.
@@ -20,7 +20,7 @@ import dev.stalla.model.itunes.ITunesStyleCategory
 public data class PodcastGoogleplay(
     val author: String? = null,
     val owner: String? = null,
-    val categories: List<ITunesStyleCategory>,
+    val categories: List<ItunesStyleCategory>,
     override val description: String? = null,
     override val explicit: Boolean? = null,
     override val block: Boolean,

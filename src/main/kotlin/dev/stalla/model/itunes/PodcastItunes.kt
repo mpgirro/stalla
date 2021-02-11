@@ -29,7 +29,7 @@ public data class PodcastItunes(
     override val image: HrefOnlyImage?,
     val keywords: String? = null,
     override val author: String? = null,
-    val categories: List<ITunesStyleCategory>,
+    val categories: List<ItunesStyleCategory>,
     val explicit: Boolean,
     override val block: Boolean,
     val complete: Boolean,
@@ -37,7 +37,7 @@ public data class PodcastItunes(
     val owner: Person? = null,
     override val title: String? = null,
     val newFeedUrl: String? = null
-) : ITunesBase {
+) : ItunesBase {
 
     public companion object Factory : BuilderFactory<PodcastItunes, PodcastITunesBuilder> {
 

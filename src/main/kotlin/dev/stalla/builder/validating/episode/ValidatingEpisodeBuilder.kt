@@ -125,10 +125,10 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
             pubDate = pubDate,
             source = source,
             content = contentBuilder.build(),
-            iTunes = iTunesBuilder.build(),
+            itunes = iTunesBuilder.build(),
             atom = atomBuilder.build(),
             podlove = podloveBuilder.build(),
-            googlePlay = googlePlayBuilder.build(),
+            googleplay = googlePlayBuilder.build(),
             bitlove = bitloveBuilder.build(),
             podcast = podcastBuilder.build()
         )

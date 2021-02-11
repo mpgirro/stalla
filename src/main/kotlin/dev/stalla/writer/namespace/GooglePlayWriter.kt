@@ -25,7 +25,7 @@ internal object GooglePlayWriter : NamespaceWriter() {
     override val namespace = FeedNamespace.GOOGLE_PLAY
 
     override fun Element.appendPodcastData(podcast: Podcast) {
-        val play = podcast.googlePlay ?: return
+        val play = podcast.googleplay ?: return
 
         if (play.author.isNeitherNullNorBlank()) {
             appendElement("author", namespace) { textContent = play.author?.trim() }
@@ -41,7 +41,7 @@ internal object GooglePlayWriter : NamespaceWriter() {
     }
 
     override fun Element.appendEpisodeData(episode: Episode) {
-        val play = episode.googlePlay ?: return
+        val play = episode.googleplay ?: return
 
         appendCommonElements(play)
     }

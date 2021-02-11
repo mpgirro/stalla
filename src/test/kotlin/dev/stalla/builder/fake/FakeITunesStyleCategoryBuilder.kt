@@ -1,9 +1,9 @@
 package dev.stalla.builder.fake
 
 import dev.stalla.builder.ITunesStyleCategoryBuilder
-import dev.stalla.model.itunes.ITunesStyleCategory
+import dev.stalla.model.itunes.ItunesStyleCategory
 
-internal class FakeITunesStyleCategoryBuilder : FakeBuilder<ITunesStyleCategory>(), ITunesStyleCategoryBuilder {
+internal class FakeITunesStyleCategoryBuilder : FakeBuilder<ItunesStyleCategory>(), ITunesStyleCategoryBuilder {
 
     var category: String? = null
     var subcategory: String? = null

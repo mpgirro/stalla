@@ -28,11 +28,11 @@ import java.time.temporal.TemporalAccessor
  * @property ttl The RSS `<ttl>` field textContent.
  * @property image The RSS `<image>` element wrapped in an [RssImage] instance.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
- * @property iTunes The data from the iTunes namespace, or null if no data from this namespace was found.
+ * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
  * @property fyyd The data from the Fyyd namespace, or null if no data from this namespace was found.
  * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
- * @property googlePlay The data from the Google Play namespace, or null if no data from this namespace was found.
+ * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property categories The RSS feed categories, if any.
  * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
  */
@@ -51,11 +51,11 @@ public data class Podcast(
     val ttl: Int? = null,
     val image: RssImage? = null,
     val episodes: List<Episode>,
-    val iTunes: PodcastItunes? = null,
+    val itunes: PodcastItunes? = null,
     val atom: Atom? = null,
     val fyyd: Fyyd? = null,
     val feedpress: Feedpress? = null,
-    val googlePlay: PodcastGoogleplay? = null,
+    val googleplay: PodcastGoogleplay? = null,
     val categories: List<RssCategory> = emptyList(),
     val podcast: PodcastPodcast? = null
 ) {

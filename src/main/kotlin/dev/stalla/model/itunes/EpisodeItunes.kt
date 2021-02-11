@@ -29,7 +29,7 @@ public data class EpisodeItunes(
     override val author: String? = null,
     override val subtitle: String? = null,
     override val summary: String? = null
-) : ITunesBase {
+) : ItunesBase {
 
     public companion object Factory : BuilderFactory<EpisodeItunes, EpisodeITunesBuilder> {
 

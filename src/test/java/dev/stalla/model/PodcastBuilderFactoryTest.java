@@ -8,7 +8,7 @@ import dev.stalla.builder.podcast.*;
 import dev.stalla.model.feedpress.Feedpress;
 import dev.stalla.model.fyyd.Fyyd;
 import dev.stalla.model.googleplay.PodcastGoogleplay;
-import dev.stalla.model.itunes.ITunesStyleCategory;
+import dev.stalla.model.itunes.ItunesStyleCategory;
 import dev.stalla.model.itunes.PodcastItunes;
 import dev.stalla.model.podcastns.Funding;
 import dev.stalla.model.podcastns.Locked;
@@ -46,7 +46,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a PodcastItunes model using builder factory methods only")
     public void testPodcastItunesBuilderFactory() {
-        ITunesStyleCategoryBuilder iTunesStyleCategoryBuilder = ITunesStyleCategory.builder()
+        ITunesStyleCategoryBuilder iTunesStyleCategoryBuilder = ItunesStyleCategory.builder()
             .category("category");
 
         HrefOnlyImageBuilder hrefOnlyImageBuilder = HrefOnlyImage.builder()

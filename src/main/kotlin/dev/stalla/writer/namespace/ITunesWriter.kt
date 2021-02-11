@@ -8,7 +8,7 @@ import dev.stalla.dom.appendTrueFalseElement
 import dev.stalla.dom.appendYesElementIfTrue
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
-import dev.stalla.model.itunes.ITunesBase
+import dev.stalla.model.itunes.ItunesBase
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
 import dev.stalla.util.isNeitherNullNorBlank
@@ -26,7 +26,7 @@ internal object ITunesWriter : NamespaceWriter() {
     override val namespace = FeedNamespace.ITUNES
 
     override fun Element.appendPodcastData(podcast: Podcast) {
-        val iTunes = podcast.iTunes ?: return
+        val iTunes = podcast.itunes ?: return
 
         appendITunesStyleCategoryElements(iTunes.categories, namespace)
 
@@ -50,11 +50,11 @@ internal object ITunesWriter : NamespaceWriter() {
             appendElement("new-feed-url", namespace) { textContent = iTunes.newFeedUrl?.trim() }
         }
 
-        appendCommonElements(podcast.iTunes)
+        appendCommonElements(podcast.itunes)
     }
 
     override fun Element.appendEpisodeData(episode: Episode) {
-        val iTunes = episode.iTunes ?: return
+        val iTunes = episode.itunes ?: return
 
         if (iTunes.duration.isNeitherNullNorBlank()) {
             appendElement("duration", namespace) { textContent = iTunes.duration?.trim() }
@@ -76,31 +76,31 @@ internal object ITunesWriter : NamespaceWriter() {
             appendTrueFalseElement("explicit", iTunes.explicit, namespace)
         }
 
-        appendCommonElements(episode.iTunes)
+        appendCommonElements(episode.itunes)
     }
 
-    private fun Element.appendCommonElements(iTunes: ITunesBase) {
-        val image = iTunes.image
+    private fun Element.appendCommonElements(itunes: ItunesBase) {
+        val image = itunes.image
         if (image != null) appendHrefOnlyImageElement(image, namespace)
 
-        val title = iTunes.title
+        val title = itunes.title
         if (title.isNeitherNullNorBlank()) {
             appendElement("title", namespace) { textContent = title?.trim() }
         }
 
-        appendYesElementIfTrue("block", iTunes.block, namespace)
+        appendYesElementIfTrue("block", itunes.block, namespace)
 
-        val author = iTunes.author
+        val author = itunes.author
         if (author.isNeitherNullNorBlank()) {
             appendElement("author", namespace) { textContent = author?.trim() }
         }
 
-        val subtitle = iTunes.subtitle
+        val subtitle = itunes.subtitle
         if (subtitle.isNeitherNullNorBlank()) {
             appendElement("subtitle", namespace) { textContent = subtitle?.trim() }
         }
 
-        val summary = iTunes.summary
+        val summary = itunes.summary
         if (summary.isNeitherNullNorBlank()) {
             appendElement("summary", namespace) { textContent = summary?.trim() }
         }
