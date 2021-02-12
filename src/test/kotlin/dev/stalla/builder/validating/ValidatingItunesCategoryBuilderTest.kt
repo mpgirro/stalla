@@ -10,19 +10,19 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.model.anItunesCategory
-import dev.stalla.model.itunes.ItunesStyleCategory
+import dev.stalla.model.itunes.ItunesCategory
 import org.junit.jupiter.api.Test
 
-internal class ValidatingItunesStyleCategoryBuilderTest {
+internal class ValidatingItunesCategoryBuilderTest {
 
     @Test
     internal fun `should not build an ITunesStyleCategory when the mandatory fields are absent`() {
-        val categoryBuilder = ValidatingItunesStyleCategoryBuilder()
+        val categoryBuilder = ValidatingItunesCategoryBuilder()
 
         assertAll {
-            assertThat(categoryBuilder).prop(ItunesStyleCategoryBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(categoryBuilder).prop(ItunesCategoryBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(categoryBuilder.build()).isNull()
         }
@@ -30,31 +30,31 @@ internal class ValidatingItunesStyleCategoryBuilderTest {
 
     @Test
     internal fun `should build an ITunesStyleCategory Simple when only provided a category`() {
-        val categoryBuilder = ValidatingItunesStyleCategoryBuilder()
+        val categoryBuilder = ValidatingItunesCategoryBuilder()
             .category("category")
 
         assertAll {
-            assertThat(categoryBuilder).prop(ItunesStyleCategoryBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(categoryBuilder).prop(ItunesCategoryBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(categoryBuilder.build()).isNotNull()
-                .isInstanceOf(ItunesStyleCategory.Simple::class)
-                .prop(ItunesStyleCategory.Simple::name).isEqualTo("category")
+                .isInstanceOf(ItunesCategory.Simple::class)
+                .prop(ItunesCategory.Simple::name).isEqualTo("category")
         }
     }
 
     @Test
     internal fun `should build an ITunesStyleCategory Nested when provided both a category and a subcategory`() {
-        val categoryBuilder = ValidatingItunesStyleCategoryBuilder()
+        val categoryBuilder = ValidatingItunesCategoryBuilder()
             .category("category")
             .subcategory("subcategory")
 
         assertAll {
-            assertThat(categoryBuilder).prop(ItunesStyleCategoryBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(categoryBuilder).prop(ItunesCategoryBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(categoryBuilder.build()).isNotNull()
-                .isInstanceOf(ItunesStyleCategory.Nested::class).all {
-                    prop(ItunesStyleCategory.Nested::name).isEqualTo("category")
-                    prop(ItunesStyleCategory.Nested::subcategory).isEqualTo(ItunesStyleCategory.Simple("subcategory"))
+                .isInstanceOf(ItunesCategory.Nested::class).all {
+                    prop(ItunesCategory.Nested::name).isEqualTo("category")
+                    prop(ItunesCategory.Nested::subcategory).isEqualTo(ItunesCategory.Simple("subcategory"))
                 }
         }
     }
@@ -62,10 +62,10 @@ internal class ValidatingItunesStyleCategoryBuilderTest {
     @Test
     internal fun `should populate an ITunesStyleCategory builder with all properties from an ITunesStyleCategory model`() {
         val category = anItunesCategory()
-        val categoryBuilder = ItunesStyleCategory.builder().from(category)
+        val categoryBuilder = ItunesCategory.builder().from(category)
 
         assertAll {
-            assertThat(categoryBuilder).prop(ItunesStyleCategoryBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(categoryBuilder).prop(ItunesCategoryBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(categoryBuilder.build()).isNotNull().isEqualTo(category)
         }

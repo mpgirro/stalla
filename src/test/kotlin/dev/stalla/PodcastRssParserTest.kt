@@ -19,7 +19,7 @@ import dev.stalla.model.Podcast
 import dev.stalla.model.content.Content
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
-import dev.stalla.model.itunes.ItunesStyleCategory
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.rss.Enclosure
@@ -165,9 +165,9 @@ internal class PodcastRssParserTest {
                     prop(Person::email).isEqualTo("studio@smashingsecurity.com")
                 }
                 prop(PodcastItunes::categories).containsExactly(
-                    ItunesStyleCategory.Simple(name = "Technology"),
-                    ItunesStyleCategory.Nested(name = "News", subcategory = ItunesStyleCategory.Simple(name = "Tech News")),
-                    ItunesStyleCategory.Simple(name = "Comedy")
+                    ItunesCategory.Simple(name = "Technology"),
+                    ItunesCategory.Nested(name = "News", subcategory = ItunesCategory.Simple(name = "Tech News")),
+                    ItunesCategory.Simple(name = "Comedy")
                 )
             }
             prop(Podcast::atom).isNull()

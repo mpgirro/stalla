@@ -1,14 +1,14 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.HrefOnlyImageBuilder;
-import dev.stalla.builder.ItunesStyleCategoryBuilder;
+import dev.stalla.builder.ItunesCategoryBuilder;
 import dev.stalla.builder.episode.EpisodeBuilder;
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder;
 import dev.stalla.builder.podcast.*;
 import dev.stalla.model.feedpress.Feedpress;
 import dev.stalla.model.fyyd.Fyyd;
 import dev.stalla.model.googleplay.PodcastGoogleplay;
-import dev.stalla.model.itunes.ItunesStyleCategory;
+import dev.stalla.model.itunes.ItunesCategory;
 import dev.stalla.model.itunes.PodcastItunes;
 import dev.stalla.model.podcastindex.Funding;
 import dev.stalla.model.podcastindex.Locked;
@@ -46,7 +46,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a PodcastItunes model using builder factory methods only")
     public void testPodcastItunesBuilderFactory() {
-        ItunesStyleCategoryBuilder itunesStyleCategoryBuilder = ItunesStyleCategory.builder()
+        ItunesCategoryBuilder itunesCategoryBuilder = ItunesCategory.builder()
             .category("category");
 
         HrefOnlyImageBuilder hrefOnlyImageBuilder = HrefOnlyImage.builder()
@@ -54,7 +54,7 @@ public class PodcastBuilderFactoryTest {
 
         PodcastItunesBuilder podcastItunesBuilder = PodcastItunes.builder()
             .explicit(false)
-            .addCategoryBuilder(itunesStyleCategoryBuilder)
+            .addCategoryBuilder(itunesCategoryBuilder)
             .imageBuilder(hrefOnlyImageBuilder);
 
         assertNotNull(podcastItunesBuilder.build());

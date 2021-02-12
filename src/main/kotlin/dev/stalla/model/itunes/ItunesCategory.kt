@@ -1,7 +1,7 @@
 package dev.stalla.model.itunes
 
-import dev.stalla.builder.ItunesStyleCategoryBuilder
-import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
+import dev.stalla.builder.validating.ValidatingItunesCategoryBuilder
 import dev.stalla.model.BuilderFactory
 
 /**
@@ -10,13 +10,13 @@ import dev.stalla.model.BuilderFactory
  *
  * @param name The name of the category.
  */
-public sealed class ItunesStyleCategory(public open val name: String) {
+public sealed class ItunesCategory(public open val name: String) {
 
-    public companion object Factory : BuilderFactory<ItunesStyleCategory, ItunesStyleCategoryBuilder> {
+    public companion object Factory : BuilderFactory<ItunesCategory, ItunesCategoryBuilder> {
 
-        /** Returns a builder implementation for building [ItunesStyleCategory] model instances. */
+        /** Returns a builder implementation for building [ItunesCategory] model instances. */
         @JvmStatic
-        override fun builder(): ItunesStyleCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
+        override fun builder(): ItunesCategoryBuilder = ValidatingItunesCategoryBuilder()
     }
 
     /**
@@ -26,7 +26,7 @@ public sealed class ItunesStyleCategory(public open val name: String) {
      * <itunes:category text="News" />
      * ```
      */
-    public data class Simple(override val name: String) : ItunesStyleCategory(name)
+    public data class Simple(override val name: String) : ItunesCategory(name)
 
     /**
      * An iTunes-style category that contains a nested subcategory:
@@ -39,5 +39,5 @@ public sealed class ItunesStyleCategory(public open val name: String) {
      *
      * @param subcategory The nested [Simple] subcategory.
      */
-    public data class Nested(override val name: String, val subcategory: Simple) : ItunesStyleCategory(name)
+    public data class Nested(override val name: String, val subcategory: Simple) : ItunesCategory(name)
 }

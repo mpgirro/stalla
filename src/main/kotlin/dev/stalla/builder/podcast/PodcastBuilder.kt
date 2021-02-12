@@ -3,7 +3,7 @@ package dev.stalla.builder.podcast
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
@@ -100,8 +100,8 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
     public fun createRssCategoryBuilder(): RssCategoryBuilder
 
-    /** Creates an instance of [ItunesStyleCategoryBuilder] to use with this builder. */
-    public fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder
+    /** Creates an instance of [ItunesCategoryBuilder] to use with this builder. */
+    public fun createITunesStyleCategoryBuilder(): ItunesCategoryBuilder
 
     /** Creates an instance of [PodcastPodcastindexLockedBuilder] to use with this builder. */
     public fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder

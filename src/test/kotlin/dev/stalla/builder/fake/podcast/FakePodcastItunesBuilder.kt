@@ -1,7 +1,7 @@
 package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastItunesBuilder
@@ -17,7 +17,7 @@ internal class FakePodcastItunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
     var summary: String? = null
     var keywords: String? = null
     var author: String? = null
-    var categoryBuilders: MutableList<ItunesStyleCategoryBuilder> = mutableListOf()
+    var categoryBuilders: MutableList<ItunesCategoryBuilder> = mutableListOf()
     var block: Boolean? = null
     var complete: Boolean? = null
     var type: ShowType? = null
@@ -35,7 +35,7 @@ internal class FakePodcastItunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
 
     override fun author(author: String?): PodcastItunesBuilder = apply { this.author = author }
 
-    override fun addCategoryBuilder(categoryBuilder: ItunesStyleCategoryBuilder): PodcastItunesBuilder = apply {
+    override fun addCategoryBuilder(categoryBuilder: ItunesCategoryBuilder): PodcastItunesBuilder = apply {
         categoryBuilders.add(categoryBuilder)
     }
 

@@ -1,7 +1,7 @@
 package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.model.googleplay.PodcastGoogleplay
@@ -10,7 +10,7 @@ internal class FakePodcastGoogleplayBuilder : FakeBuilder<PodcastGoogleplay>(), 
 
     var author: String? = null
     var owner: String? = null
-    var categoryBuilders: MutableList<ItunesStyleCategoryBuilder> = mutableListOf()
+    var categoryBuilders: MutableList<ItunesCategoryBuilder> = mutableListOf()
     var description: String? = null
     var explicit: Boolean? = null
     var block: Boolean? = null
@@ -20,7 +20,7 @@ internal class FakePodcastGoogleplayBuilder : FakeBuilder<PodcastGoogleplay>(), 
 
     override fun owner(email: String?): PodcastGoogleplayBuilder = apply { this.owner = email }
 
-    override fun addCategoryBuilder(categoryBuilder: ItunesStyleCategoryBuilder): PodcastGoogleplayBuilder = apply {
+    override fun addCategoryBuilder(categoryBuilder: ItunesCategoryBuilder): PodcastGoogleplayBuilder = apply {
         categoryBuilders.add(categoryBuilder)
     }
 

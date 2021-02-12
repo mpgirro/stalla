@@ -17,7 +17,7 @@ import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
-import dev.stalla.model.itunes.ItunesStyleCategory
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.podcastindex.Funding
@@ -80,7 +80,7 @@ internal fun aPodcastItunes(
     image: HrefOnlyImage = anHrefOnlyImage(href = "podcast itunes image url"),
     keywords: String? = "podcast itunes keywords",
     author: String? = "podcast itunes author",
-    categories: List<ItunesStyleCategory> = listOf(anItunesCategory("podcast itunes category", "podcast itunes subcategory")),
+    categories: List<ItunesCategory> = listOf(anItunesCategory("podcast itunes category", "podcast itunes subcategory")),
     explicit: Boolean = true,
     block: Boolean = true,
     complete: Boolean = true,
@@ -111,7 +111,7 @@ internal fun aPodcastFeedpress(
 internal fun aPodcastGoogleplay(
     author: String? = "podcast googleplay author",
     owner: String? = "podcast googleplay owner",
-    categories: List<ItunesStyleCategory> = listOf(anItunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
+    categories: List<ItunesCategory> = listOf(anItunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean = true,

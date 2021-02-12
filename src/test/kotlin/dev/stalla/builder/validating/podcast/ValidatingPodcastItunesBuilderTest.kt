@@ -12,7 +12,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastItunesBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
+import dev.stalla.builder.validating.ValidatingItunesCategoryBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
@@ -25,11 +25,11 @@ internal class ValidatingPodcastItunesBuilderTest {
 
     private val expectedPersonBuilder = ValidatingPersonBuilder().name("name")
 
-    private val expectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
+    private val expectedITunesCategoryBuilder = ValidatingItunesCategoryBuilder()
         .category("itunes category 1")
         .subcategory("itunes subcategory")
 
-    private val otherExpectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
+    private val otherExpectedITunesCategoryBuilder = ValidatingItunesCategoryBuilder()
         .category("itunes category 2")
 
     @Test
