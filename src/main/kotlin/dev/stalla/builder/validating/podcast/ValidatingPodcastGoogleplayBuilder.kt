@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.anyNotNull
@@ -10,7 +10,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     private var author: String? = null
     private var owner: String? = null
-    private var categoryBuilders: MutableList<ItunesStyleCategoryBuilder> = mutableListOf()
+    private var categoryBuilders: MutableList<ItunesCategoryBuilder> = mutableListOf()
     private var description: String? = null
     private var explicit: Boolean? = null
     private var block: Boolean = false
@@ -20,7 +20,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     override fun owner(email: String?): PodcastGoogleplayBuilder = apply { this.owner = email }
 
-    override fun addCategoryBuilder(categoryBuilder: ItunesStyleCategoryBuilder): PodcastGoogleplayBuilder = apply {
+    override fun addCategoryBuilder(categoryBuilder: ItunesCategoryBuilder): PodcastGoogleplayBuilder = apply {
         categoryBuilders.add(categoryBuilder)
     }
 

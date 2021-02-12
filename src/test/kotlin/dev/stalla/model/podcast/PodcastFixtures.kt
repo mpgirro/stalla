@@ -17,12 +17,12 @@ import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
-import dev.stalla.model.itunes.ItunesStyleCategory
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
-import dev.stalla.model.podcastns.Funding
-import dev.stalla.model.podcastns.Locked
-import dev.stalla.model.podcastns.PodcastPodcast
+import dev.stalla.model.podcastindex.Funding
+import dev.stalla.model.podcastindex.Locked
+import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import java.time.Month
@@ -48,7 +48,7 @@ internal fun aPodcast(
     fyyd: Fyyd? = aPodcastFyyd(),
     feedpress: Feedpress? = aPodcastFeedpress(),
     googleplay: PodcastGoogleplay? = aPodcastGoogleplay(),
-    podcast: PodcastPodcast? = aPodcastPodcast(),
+    podcastindex: PodcastPodcastindex? = aPodcastPodcastindex(),
     categories: List<RssCategory> = listOf(anRssCategory("podcast category"))
 ) = Podcast(
     title,
@@ -71,7 +71,7 @@ internal fun aPodcast(
     feedpress,
     googleplay,
     categories,
-    podcast
+    podcastindex
 )
 
 internal fun aPodcastItunes(
@@ -80,7 +80,7 @@ internal fun aPodcastItunes(
     image: HrefOnlyImage = anHrefOnlyImage(href = "podcast itunes image url"),
     keywords: String? = "podcast itunes keywords",
     author: String? = "podcast itunes author",
-    categories: List<ItunesStyleCategory> = listOf(anItunesCategory("podcast itunes category", "podcast itunes subcategory")),
+    categories: List<ItunesCategory> = listOf(anItunesCategory("podcast itunes category", "podcast itunes subcategory")),
     explicit: Boolean = true,
     block: Boolean = true,
     complete: Boolean = true,
@@ -111,24 +111,24 @@ internal fun aPodcastFeedpress(
 internal fun aPodcastGoogleplay(
     author: String? = "podcast googleplay author",
     owner: String? = "podcast googleplay owner",
-    categories: List<ItunesStyleCategory> = listOf(anItunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
+    categories: List<ItunesCategory> = listOf(anItunesCategory("podcast googleplay category", "podcast googleplay subcategory")),
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url")
 ) = PodcastGoogleplay(author, owner, categories, description, explicit, block, image)
 
-internal fun aPodcastPodcast(
-    locked: Locked? = aPodcastPodcastLocked(),
-    funding: List<Funding> = listOf(aPodcastPodcastFunding())
-) = PodcastPodcast(locked, funding)
+internal fun aPodcastPodcastindex(
+    locked: Locked? = aPodcastPodcastindexLocked(),
+    funding: List<Funding> = listOf(aPodcastPodcastindexFunding())
+) = PodcastPodcastindex(locked, funding)
 
-internal fun aPodcastPodcastLocked(
+internal fun aPodcastPodcastindexLocked(
     owner: String = "podcast podcast: locked owner",
     locked: Boolean = true
 ) = Locked(owner, locked)
 
-internal fun aPodcastPodcastFunding(
+internal fun aPodcastPodcastindexFunding(
     url: String = "podcast podcast: funding url",
     message: String = "podcast podcast: funding message"
 ) = Funding(url, message)

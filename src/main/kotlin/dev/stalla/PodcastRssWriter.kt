@@ -12,7 +12,7 @@ import dev.stalla.writer.namespace.FeedpressWriter
 import dev.stalla.writer.namespace.FyydWriter
 import dev.stalla.writer.namespace.GoogleplayWriter
 import dev.stalla.writer.namespace.ItunesWriter
-import dev.stalla.writer.namespace.PodcastNamespaceWriter
+import dev.stalla.writer.namespace.PodcastindexWriter
 import dev.stalla.writer.namespace.PodloveSimpleChapterWriter
 import dev.stalla.writer.namespace.RssWriter
 import org.w3c.dom.Document
@@ -37,7 +37,7 @@ public object PodcastRssWriter {
         FeedpressWriter,
         FyydWriter,
         PodloveSimpleChapterWriter,
-        PodcastNamespaceWriter
+        PodcastindexWriter
     )
 
     private val supportedNamespaces = writers.mapNotNull { it.namespace }

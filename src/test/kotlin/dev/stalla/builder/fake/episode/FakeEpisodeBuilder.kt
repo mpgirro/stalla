@@ -1,21 +1,21 @@
 package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.episode.EpisodeGuidBuilder
-import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
-import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
-import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.fake.FakeAtomBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakeItunesStyleCategoryBuilder
+import dev.stalla.builder.fake.FakeItunesCategoryBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
 import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
@@ -48,7 +48,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override val bitloveBuilder: FakeEpisodeBitloveBuilder = FakeEpisodeBitloveBuilder()
 
-    override val podcastBuilder: FakeEpisodePodcastBuilder = FakeEpisodePodcastBuilder()
+    override val podcastindexBuilder: FakeEpisodePodcastindexBuilder = FakeEpisodePodcastindexBuilder()
 
     override fun title(title: String): EpisodeBuilder = apply { this.titleValue = title }
 
@@ -88,13 +88,13 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder = FakeItunesStyleCategoryBuilder()
+    override fun createITunesStyleCategoryBuilder(): ItunesCategoryBuilder = FakeItunesCategoryBuilder()
 
-    override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder = FakeEpisodePodcastTranscriptBuilder()
+    override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder = FakeEpisodePodcastindexTranscriptBuilder()
 
-    override fun createEpisodePodcastChaptersBuilder(): EpisodePodcastChaptersBuilder = FakeEpisodePodcastChaptersBuilder()
+    override fun createEpisodePodcastChaptersBuilder(): EpisodePodcastindexChaptersBuilder = FakeEpisodePodcastindexChaptersBuilder()
 
-    override fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastSoundbiteBuilder = FakeEpisodePodcastSoundbiteBuilder()
+    override fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -116,7 +116,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         if (podloveBuilder != other.podloveBuilder) return false
         if (googleplayBuilder != other.googleplayBuilder) return false
         if (bitloveBuilder != other.bitloveBuilder) return false
-        if (podcastBuilder != other.podcastBuilder) return false
+        if (podcastindexBuilder != other.podcastindexBuilder) return false
 
         return true
     }
@@ -138,7 +138,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         result = 31 * result + podloveBuilder.hashCode()
         result = 31 * result + googleplayBuilder.hashCode()
         result = 31 * result + bitloveBuilder.hashCode()
-        result = 31 * result + podcastBuilder.hashCode()
+        result = 31 * result + podcastindexBuilder.hashCode()
         return result
     }
 
@@ -146,5 +146,5 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
         "FakeEpisodeBuilder(titleValue=$titleValue, enclosureBuilderValue=$enclosureBuilderValue, link=$link, description=$description, " +
             "author=$author, categoryBuilders=$categoryBuilders, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
             "contentBuilder=$contentBuilder, iTunesBuilder=$itunesBuilder, atomBuilder=$atomBuilder, podloveBuilder=$podloveBuilder, " +
-            "googlePlayBuilder=$googleplayBuilder, bitloveBuilder=$bitloveBuilder, podcastBuilder=$podcastBuilder)"
+            "googlePlayBuilder=$googleplayBuilder, bitloveBuilder=$bitloveBuilder, podcastBuilder=$podcastindexBuilder)"
 }

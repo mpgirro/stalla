@@ -2,7 +2,7 @@ package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
@@ -13,12 +13,12 @@ import dev.stalla.builder.podcast.PodcastFeedpressBuilder
 import dev.stalla.builder.podcast.PodcastFyydBuilder
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.builder.podcast.PodcastItunesBuilder
-import dev.stalla.builder.podcast.PodcastPodcastBuilder
-import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.validating.ValidatingAtomBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
+import dev.stalla.builder.validating.ValidatingItunesCategoryBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
@@ -56,7 +56,7 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
 
     override val googleplayBuilder: PodcastGoogleplayBuilder = ValidatingPodcastGoogleplayBuilder()
 
-    override val podcastBuilder: PodcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
+    override val podcastPodcastindexBuilder: PodcastPodcastindexBuilder = ValidatingPodcastPodcastindexBuilder()
 
     override fun title(title: String): PodcastBuilder = apply { this.titleValue = title }
 
@@ -102,11 +102,11 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
+    override fun createITunesStyleCategoryBuilder(): ItunesCategoryBuilder = ValidatingItunesCategoryBuilder()
 
-    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
 
-    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
 
     override val hasEnoughDataToBuild: Boolean
         get() = episodeBuilders.any { it.hasEnoughDataToBuild } &&
@@ -140,7 +140,7 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
             feedpress = feedpressBuilder.build(),
             googleplay = googleplayBuilder.build(),
             categories = categoryBuilders.mapNotNull { it.build() },
-            podcast = podcastBuilder.build()
+            podcast = podcastPodcastindexBuilder.build()
         )
     }
 }

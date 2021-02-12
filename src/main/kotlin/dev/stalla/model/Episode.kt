@@ -7,7 +7,7 @@ import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
-import dev.stalla.model.podcastns.EpisodePodcast
+import dev.stalla.model.podcastindex.EpisodePodcastindex
 import dev.stalla.model.podlove.EpisodePodlove
 import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.rss.Guid
@@ -33,7 +33,7 @@ import java.time.temporal.TemporalAccessor
  * @property podlove The data from the Podlove standards namespaces, or null if no data from these namespaces were found.
  * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property bitlove The data from the Bitlove namespace, or null if no data from this namespace was found.
- * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
+ * @property podcastindex The data from the Podcast namespace, or null if no data from this namespace was found.
  */
 @Suppress("unused")
 public data class Episode(
@@ -53,7 +53,7 @@ public data class Episode(
     val podlove: EpisodePodlove? = null,
     val googleplay: EpisodeGoogleplay? = null,
     val bitlove: Bitlove? = null,
-    val podcast: EpisodePodcast? = null
+    val podcastindex: EpisodePodcastindex? = null
 ) {
 
     public companion object Factory : BuilderFactory<Episode, EpisodeBuilder> {

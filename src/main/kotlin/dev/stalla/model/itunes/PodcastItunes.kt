@@ -29,7 +29,7 @@ public data class PodcastItunes(
     override val image: HrefOnlyImage?,
     val keywords: String? = null,
     override val author: String? = null,
-    val categories: List<ItunesStyleCategory>,
+    val categories: List<ItunesCategory>,
     val explicit: Boolean,
     override val block: Boolean,
     val complete: Boolean,

@@ -22,7 +22,7 @@ import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
-import dev.stalla.model.podcastns.EpisodePodcast
+import dev.stalla.model.podcastindex.EpisodePodcastindex
 import dev.stalla.model.podlove.EpisodePodlove
 import dev.stalla.model.rss.Guid
 import org.junit.jupiter.api.Test
@@ -48,7 +48,7 @@ internal class ValidatingEpisodeBuilderTest {
         ValidatingRssCategoryBuilder().category("category 2")
     )
 
-    private val expectedPodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
+    private val expectedPodcastChaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
         .url("https://example.com/episode/chapters.json")
         .type("application/json+chapters")
 
@@ -113,7 +113,7 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::podlove).isNull()
                 prop(Episode::googleplay).isNull()
                 prop(Episode::bitlove).isNull()
-                prop(Episode::podcast).isNull()
+                prop(Episode::podcastindex).isNull()
             }
         }
     }
@@ -139,7 +139,7 @@ internal class ValidatingEpisodeBuilderTest {
                 podloveBuilder.addSimpleChapterBuilder(expectedSimpleChapterBuilder)
                 googleplayBuilder.description("play description")
                 bitloveBuilder.guid("bitlove guid")
-                podcastBuilder.chaptersBuilder(expectedPodcastChaptersBuilder)
+                podcastindexBuilder.chaptersBuilder(expectedPodcastChaptersBuilder)
             }
 
         assertAll {
@@ -162,7 +162,7 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::podlove).isNotNull().prop(EpisodePodlove::simpleChapters).containsExactly(expectedSimpleChapterBuilder.build())
                 prop(Episode::googleplay).isNotNull().prop(EpisodeGoogleplay::description).isEqualTo("play description")
                 prop(Episode::bitlove).isNotNull().prop(Bitlove::guid).isEqualTo("bitlove guid")
-                prop(Episode::podcast).isNotNull().prop(EpisodePodcast::chapters).isEqualTo(expectedPodcastChaptersBuilder.build())
+                prop(Episode::podcastindex).isNotNull().prop(EpisodePodcastindex::chapters).isEqualTo(expectedPodcastChaptersBuilder.build())
             }
         }
     }

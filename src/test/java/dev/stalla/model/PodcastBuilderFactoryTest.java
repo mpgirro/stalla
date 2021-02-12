@@ -1,18 +1,18 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.HrefOnlyImageBuilder;
-import dev.stalla.builder.ItunesStyleCategoryBuilder;
+import dev.stalla.builder.ItunesCategoryBuilder;
 import dev.stalla.builder.episode.EpisodeBuilder;
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder;
 import dev.stalla.builder.podcast.*;
 import dev.stalla.model.feedpress.Feedpress;
 import dev.stalla.model.fyyd.Fyyd;
 import dev.stalla.model.googleplay.PodcastGoogleplay;
-import dev.stalla.model.itunes.ItunesStyleCategory;
+import dev.stalla.model.itunes.ItunesCategory;
 import dev.stalla.model.itunes.PodcastItunes;
-import dev.stalla.model.podcastns.Funding;
-import dev.stalla.model.podcastns.Locked;
-import dev.stalla.model.podcastns.PodcastPodcast;
+import dev.stalla.model.podcastindex.Funding;
+import dev.stalla.model.podcastindex.Locked;
+import dev.stalla.model.podcastindex.PodcastPodcastindex;
 import dev.stalla.model.rss.Enclosure;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,7 +46,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a PodcastItunes model using builder factory methods only")
     public void testPodcastItunesBuilderFactory() {
-        ItunesStyleCategoryBuilder itunesStyleCategoryBuilder = ItunesStyleCategory.builder()
+        ItunesCategoryBuilder itunesCategoryBuilder = ItunesCategory.builder()
             .category("category");
 
         HrefOnlyImageBuilder hrefOnlyImageBuilder = HrefOnlyImage.builder()
@@ -54,7 +54,7 @@ public class PodcastBuilderFactoryTest {
 
         PodcastItunesBuilder podcastItunesBuilder = PodcastItunes.builder()
             .explicit(false)
-            .addCategoryBuilder(itunesStyleCategoryBuilder)
+            .addCategoryBuilder(itunesCategoryBuilder)
             .imageBuilder(hrefOnlyImageBuilder);
 
         assertNotNull(podcastItunesBuilder.build());
@@ -90,20 +90,20 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a Podcast.Podcast model using builder factory methods only")
     public void testPodcastPodcastBuilderFactory() {
-        PodcastPodcastFundingBuilder podcastFundingBuilder = Funding.builder()
+        PodcastPodcastindexFundingBuilder podcastFundingBuilder = Funding.builder()
             .url("url")
             .message("message");
 
-        PodcastPodcastBuilder podcastPodcastBuilder = PodcastPodcast.builder()
+        PodcastPodcastindexBuilder podcastPodcastindexBuilder = PodcastPodcastindex.builder()
             .addFundingBuilder(podcastFundingBuilder);
 
-        assertNotNull(podcastPodcastBuilder.build());
+        assertNotNull(podcastPodcastindexBuilder.build());
     }
 
     @Test
     @DisplayName("should build a Podcast.Podcast.Locked model using builder factory methods only")
     public void testPodcastPodcastLockedBuilderFactory() {
-        PodcastPodcastLockedBuilder podcastLockedBuilder = Locked.builder()
+        PodcastPodcastindexLockedBuilder podcastLockedBuilder = Locked.builder()
             .locked(false)
             .owner("owner");
 
@@ -113,7 +113,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a Podcast.Podcast.Funding model using builder factory methods only")
     public void testPodcastPodcastFundingBuilderFactory() {
-        PodcastPodcastFundingBuilder podcastFundingBuilder = Funding.builder()
+        PodcastPodcastindexFundingBuilder podcastFundingBuilder = Funding.builder()
             .url("url")
             .message("message");
 

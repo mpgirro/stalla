@@ -1,7 +1,7 @@
 package dev.stalla.dom
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
@@ -164,17 +164,17 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
 }
 
 /**
- * Parses the node contents into a [ItunesStyleCategoryBuilder] if possible, ensuring the child nodes
+ * Parses the node contents into a [ItunesCategoryBuilder] if possible, ensuring the child nodes
  * have the specified [namespace], then populates the [categoryBuilder] with the parsed data.
  *
- * @param categoryBuilder An empty [ItunesStyleCategoryBuilder] instance to initialise with the node's
+ * @param categoryBuilder An empty [ItunesCategoryBuilder] instance to initialise with the node's
  * contents.
  * @param namespace The [FeedNamespace] to ensure the child nodes have.
  *
  * @return The [categoryBuilder] populated with the DOM node contents.
  */
 @InternalApi
-internal fun Node.toITunesCategoryBuilder(categoryBuilder: ItunesStyleCategoryBuilder, namespace: FeedNamespace? = null): ItunesStyleCategoryBuilder {
+internal fun Node.toITunesCategoryBuilder(categoryBuilder: ItunesCategoryBuilder, namespace: FeedNamespace? = null): ItunesCategoryBuilder {
     val category = getAttributeValueByName("text")?.trim() ?: return categoryBuilder
     categoryBuilder.category(category)
 

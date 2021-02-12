@@ -12,7 +12,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
+import dev.stalla.builder.validating.ValidatingItunesCategoryBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
@@ -26,7 +26,7 @@ import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcastns.PodcastPodcast
+import dev.stalla.model.podcastindex.PodcastPodcastindex
 import org.junit.jupiter.api.Test
 import java.time.Month
 
@@ -54,7 +54,7 @@ internal class ValidatingPodcastBuilderTest {
 
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 
-    private val expectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
+    private val expectedITunesCategoryBuilder = ValidatingItunesCategoryBuilder()
         .category("itunes category")
         .subcategory("itunes subcategory")
 
@@ -63,7 +63,7 @@ internal class ValidatingPodcastBuilderTest {
         ValidatingRssCategoryBuilder().category("category 2")
     )
 
-    private val expectedLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+    private val expectedLockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
         .locked(true)
         .owner("owner@example.com")
 
@@ -215,7 +215,7 @@ internal class ValidatingPodcastBuilderTest {
                 feedpressBuilder.newsletterId("feedpress newsletterId")
                 fyydBuilder.verify("fyyd verify")
                 googleplayBuilder.description("play description")
-                podcastBuilder.lockedBuilder(expectedLockedBuilder)
+                podcastPodcastindexBuilder.lockedBuilder(expectedLockedBuilder)
             }
 
         assertAll {
@@ -243,7 +243,7 @@ internal class ValidatingPodcastBuilderTest {
                     .isEqualTo("feedpress newsletterId")
                 prop(Podcast::fyyd).isNotNull().prop(Fyyd::verify).isEqualTo("fyyd verify")
                 prop(Podcast::googleplay).isNotNull().prop(PodcastGoogleplay::description).isEqualTo("play description")
-                prop(Podcast::podcast).isNotNull().prop(PodcastPodcast::locked).isEqualTo(expectedLockedBuilder.build())
+                prop(Podcast::podcast).isNotNull().prop(PodcastPodcastindex::locked).isEqualTo(expectedLockedBuilder.build())
             }
         }
     }

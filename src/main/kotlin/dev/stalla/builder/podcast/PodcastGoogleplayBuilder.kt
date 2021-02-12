@@ -2,7 +2,7 @@ package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.asBuilders
@@ -17,11 +17,11 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     /** Set the owner email value. */
     public fun owner(email: String?): PodcastGoogleplayBuilder
 
-    /** Adds an [ItunesStyleCategoryBuilder] to the list of category builders. */
-    public fun addCategoryBuilder(categoryBuilder: ItunesStyleCategoryBuilder): PodcastGoogleplayBuilder
+    /** Adds an [ItunesCategoryBuilder] to the list of category builders. */
+    public fun addCategoryBuilder(categoryBuilder: ItunesCategoryBuilder): PodcastGoogleplayBuilder
 
-    /** Adds multiple [ItunesStyleCategoryBuilder] to the list of category builders. */
-    public fun addCategoryBuilders(categoryBuilders: List<ItunesStyleCategoryBuilder>): PodcastGoogleplayBuilder = apply {
+    /** Adds multiple [ItunesCategoryBuilder] to the list of category builders. */
+    public fun addCategoryBuilders(categoryBuilders: List<ItunesCategoryBuilder>): PodcastGoogleplayBuilder = apply {
         categoryBuilders.forEach(::addCategoryBuilder)
     }
 

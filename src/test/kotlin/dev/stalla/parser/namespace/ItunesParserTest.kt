@@ -10,7 +10,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakeItunesStyleCategoryBuilder
+import dev.stalla.builder.fake.FakeItunesCategoryBuilder
 import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeItunesBuilder
@@ -47,9 +47,9 @@ internal class ItunesParserTest : NamespaceParserTest() {
             prop(FakePodcastItunesBuilder::author).isEqualTo("Lorem Ipsum")
             prop(FakePodcastItunesBuilder::ownerBuilder).isEqualTo(expectedOwnerBuilder)
             prop(FakePodcastItunesBuilder::categoryBuilders).containsExactly(
-                FakeItunesStyleCategoryBuilder().category("Technology").subcategory("Tech News"),
-                FakeItunesStyleCategoryBuilder().category("Society & Culture"),
-                FakeItunesStyleCategoryBuilder().category("Technology").subcategory("Gadgets")
+                FakeItunesCategoryBuilder().category("Technology").subcategory("Tech News"),
+                FakeItunesCategoryBuilder().category("Society & Culture"),
+                FakeItunesCategoryBuilder().category("Technology").subcategory("Gadgets")
             )
             prop(FakePodcastItunesBuilder::subtitle).isEqualTo("Lorem Ipsum")
             prop(FakePodcastItunesBuilder::summary).isEqualTo("Lorem Ipsum")

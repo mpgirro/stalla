@@ -5,7 +5,7 @@ import dev.stalla.model.bitlove.Bitlove;
 import dev.stalla.model.content.Content;
 import dev.stalla.model.googleplay.EpisodeGoogleplay;
 import dev.stalla.model.itunes.EpisodeItunes;
-import dev.stalla.model.podcastns.*;
+import dev.stalla.model.podcastindex.*;
 import dev.stalla.model.podlove.EpisodePodlove;
 import dev.stalla.model.podlove.SimpleChapter;
 import dev.stalla.model.rss.Enclosure;
@@ -116,44 +116,44 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Podcast model using builder factory methods only")
     public void testEpisodePodcastBuilderFactory() {
-        EpisodePodcastSoundbiteBuilder episodePodcastSoundbiteBuilder = Soundbite.builder()
+        EpisodePodcastindexSoundbiteBuilder episodePodcastindexSoundbiteBuilder = Soundbite.builder()
             .startTime(Duration.ZERO)
             .duration(Duration.ZERO);
 
-        EpisodePodcastBuilder episodePodcastBuilder = EpisodePodcast.builder()
-            .addSoundbiteBuilder(episodePodcastSoundbiteBuilder);
+        EpisodePodcastindexBuilder episodePodcastindexBuilder = EpisodePodcastindex.builder()
+            .addSoundbiteBuilder(episodePodcastindexSoundbiteBuilder);
 
-        assertNotNull(episodePodcastBuilder.build());
+        assertNotNull(episodePodcastindexBuilder.build());
     }
 
     @Test
     @DisplayName("should build an Episode.Podcast.Transcript model using builder factory methods only")
     public void testEpisodePodcastTranscriptBuilderFactory() {
-        EpisodePodcastTranscriptBuilder episodePodcastTranscriptBuilder = Transcript.builder()
+        EpisodePodcastindexTranscriptBuilder episodePodcastindexTranscriptBuilder = Transcript.builder()
             .url("url")
             .type(TranscriptType.PLAIN_TEXT);
 
-        assertNotNull(episodePodcastTranscriptBuilder.build());
+        assertNotNull(episodePodcastindexTranscriptBuilder.build());
     }
 
     @Test
     @DisplayName("should build an Episode.Podcast.Chapter model using builder factory methods only")
     public void testEpisodePodcastChapterBuilderFactory() {
-        EpisodePodcastChaptersBuilder episodePodcastChaptersBuilder = Chapters.builder()
+        EpisodePodcastindexChaptersBuilder episodePodcastindexChaptersBuilder = Chapters.builder()
             .url("url")
             .type("type");
 
-        assertNotNull(episodePodcastChaptersBuilder.build());
+        assertNotNull(episodePodcastindexChaptersBuilder.build());
     }
 
     @Test
     @DisplayName("should build an Episode.Podcast.Soundbite model using builder factory methods only")
     public void testEpisodePodcastSoundbiteBuilderFactory() {
-        EpisodePodcastSoundbiteBuilder episodePodcastSoundbiteBuilder = Soundbite.builder()
+        EpisodePodcastindexSoundbiteBuilder episodePodcastindexSoundbiteBuilder = Soundbite.builder()
             .startTime(Duration.ZERO)
             .duration(Duration.ZERO.plusMinutes(1));
 
-        assertNotNull(episodePodcastSoundbiteBuilder.build());
+        assertNotNull(episodePodcastindexSoundbiteBuilder.build());
     }
 
 }

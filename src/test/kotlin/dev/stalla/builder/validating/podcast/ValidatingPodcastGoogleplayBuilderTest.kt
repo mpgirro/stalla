@@ -13,7 +13,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
+import dev.stalla.builder.validating.ValidatingItunesCategoryBuilder
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.podcast.aPodcastGoogleplay
 import org.junit.jupiter.api.Test
@@ -22,11 +22,11 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
-    private val expectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
+    private val expectedITunesCategoryBuilder = ValidatingItunesCategoryBuilder()
         .category("googleplay category")
         .subcategory("googleplay subcategory")
 
-    private val otherExpectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
+    private val otherExpectedITunesCategoryBuilder = ValidatingItunesCategoryBuilder()
         .category("googleplay category 2")
 
     @Test

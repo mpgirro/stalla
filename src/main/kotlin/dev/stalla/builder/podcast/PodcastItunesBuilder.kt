@@ -2,7 +2,7 @@ package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
@@ -28,11 +28,11 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
     /** Set the author value. */
     public fun author(author: String?): PodcastItunesBuilder
 
-    /** Adds an [ItunesStyleCategoryBuilder] to the list of category builders. */
-    public fun addCategoryBuilder(categoryBuilder: ItunesStyleCategoryBuilder): PodcastItunesBuilder
+    /** Adds an [ItunesCategoryBuilder] to the list of category builders. */
+    public fun addCategoryBuilder(categoryBuilder: ItunesCategoryBuilder): PodcastItunesBuilder
 
-    /** Adds multiple [ItunesStyleCategoryBuilder] to the list of category builders. */
-    public fun addCategoryBuilders(categoryBuilders: List<ItunesStyleCategoryBuilder>): PodcastItunesBuilder = apply {
+    /** Adds multiple [ItunesCategoryBuilder] to the list of category builders. */
+    public fun addCategoryBuilders(categoryBuilders: List<ItunesCategoryBuilder>): PodcastItunesBuilder = apply {
         categoryBuilders.forEach(::addCategoryBuilder)
     }
 
