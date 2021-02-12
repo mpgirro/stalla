@@ -4,8 +4,8 @@ import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastBuilder
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
-import dev.stalla.model.googleplay.PodcastGoogleplay2
-import dev.stalla.model.itunes.PodcastItunes2
+import dev.stalla.model.googleplay.PodcastGoogleplay
+import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.podcastns.PodcastPodcast
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
@@ -51,11 +51,11 @@ public data class Podcast(
     val ttl: Int? = null,
     val image: RssImage? = null,
     val episodes: List<Episode>,
-    val itunes: PodcastItunes2? = null,
+    val itunes: PodcastItunes? = null,
     val atom: Atom? = null,
     val fyyd: Fyyd? = null,
     val feedpress: Feedpress? = null,
-    val googleplay: PodcastGoogleplay2? = null,
+    val googleplay: PodcastGoogleplay? = null,
     val categories: List<RssCategory> = emptyList(),
     val podcast: PodcastPodcast? = null
 ) {

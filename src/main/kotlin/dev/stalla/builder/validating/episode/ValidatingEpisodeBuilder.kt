@@ -2,7 +2,7 @@ package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder2
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
@@ -10,9 +10,9 @@ import dev.stalla.builder.episode.EpisodeBitloveBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeContentBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
-import dev.stalla.builder.episode.EpisodeGoogleplayBuilder2
+import dev.stalla.builder.episode.EpisodeGoogleplayBuilder
 import dev.stalla.builder.episode.EpisodeGuidBuilder
-import dev.stalla.builder.episode.EpisodeItunesBuilder2
+import dev.stalla.builder.episode.EpisodeItunesBuilder
 import dev.stalla.builder.episode.EpisodePodcastBuilder
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
@@ -21,7 +21,7 @@ import dev.stalla.builder.episode.EpisodePodloveBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.validating.ValidatingAtomBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder2
+import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
@@ -44,13 +44,13 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
 
     override val contentBuilder: EpisodeContentBuilder = ValidatingEpisodeContentBuilder()
 
-    override val itunesBuilder: EpisodeItunesBuilder2 = ValidatingEpisodeItunesBuilder2()
+    override val itunesBuilder: EpisodeItunesBuilder = ValidatingEpisodeItunesBuilder()
 
     override val atomBuilder: AtomBuilder = ValidatingAtomBuilder()
 
     override val podloveBuilder: EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
 
-    override val googleplayBuilder: EpisodeGoogleplayBuilder2 = ValidatingEpisodeGoogleplayBuilder2()
+    override val googleplayBuilder: EpisodeGoogleplayBuilder = ValidatingEpisodeGoogleplayBuilder()
 
     override val bitloveBuilder: EpisodeBitloveBuilder = ValidatingEpisodeBitloveBuilder()
 
@@ -94,7 +94,7 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder2 = ValidatingItunesStyleCategoryBuilder2()
+    override fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
 
     override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
 

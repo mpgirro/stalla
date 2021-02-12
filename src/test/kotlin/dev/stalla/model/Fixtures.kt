@@ -1,7 +1,7 @@
 package dev.stalla.model
 
 import dev.stalla.model.atom.Link
-import dev.stalla.model.itunes.ItunesStyleCategory2
+import dev.stalla.model.itunes.ItunesStyleCategory
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 
@@ -43,7 +43,7 @@ internal fun anItunesCategory(
     category: String = "itunes category",
     subcategory: String? = "itunes category subcategory"
 ) = if (subcategory == null) {
-    ItunesStyleCategory2.Simple(category)
+    ItunesStyleCategory.Simple(category)
 } else {
-    ItunesStyleCategory2.Nested(category, ItunesStyleCategory2.Simple(subcategory))
+    ItunesStyleCategory.Nested(category, ItunesStyleCategory.Simple(subcategory))
 }

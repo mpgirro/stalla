@@ -2,7 +2,7 @@ package dev.stalla.dom
 
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
-import dev.stalla.model.itunes.ItunesStyleCategory2
+import dev.stalla.model.itunes.ItunesStyleCategory
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import dev.stalla.util.BooleanStringStyle
@@ -178,17 +178,17 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
 /**
  * Appends iTunes-Style <ns:category> tags with the data from the provided [categories].
  *
- * @param categories The [categories][ItunesStyleCategory2] to append.
+ * @param categories The [categories][ItunesStyleCategory] to append.
  * @param namespace The namespace to use, if any.
  */
 @InternalApi
-internal fun Node.appendITunesStyleCategoryElements(categories: List<ItunesStyleCategory2>, namespace: FeedNamespace? = null) {
+internal fun Node.appendITunesStyleCategoryElements(categories: List<ItunesStyleCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
         if (category.name.isBlank()) continue
         appendElement("category", namespace) {
             setAttribute("text", category.name.trim())
 
-            if (category is ItunesStyleCategory2.Nested && category.subcategory.name.isNotBlank()) {
+            if (category is ItunesStyleCategory.Nested && category.subcategory.name.isNotBlank()) {
                 appendElement("category", namespace) {
                     setAttribute("text", category.subcategory.name.trim())
                 }

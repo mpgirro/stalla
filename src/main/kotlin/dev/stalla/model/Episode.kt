@@ -4,8 +4,8 @@ import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
-import dev.stalla.model.googleplay.EpisodeGoogleplay2
-import dev.stalla.model.itunes.EpisodeItunes2
+import dev.stalla.model.googleplay.EpisodeGoogleplay
+import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.podcastns.EpisodePodcast
 import dev.stalla.model.podlove.EpisodePodlove
 import dev.stalla.model.rss.Enclosure
@@ -47,10 +47,10 @@ public data class Episode(
     val pubDate: TemporalAccessor? = null,
     val source: String? = null,
     val content: Content? = null,
-    val itunes: EpisodeItunes2? = null,
+    val itunes: EpisodeItunes? = null,
     val atom: Atom? = null,
     val podlove: EpisodePodlove? = null,
-    val googleplay: EpisodeGoogleplay2? = null,
+    val googleplay: EpisodeGoogleplay? = null,
     val bitlove: Bitlove? = null,
     val podcast: EpisodePodcast? = null
 ) {
