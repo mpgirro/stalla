@@ -27,7 +27,7 @@ import java.util.Locale
  * The namespace URI is: `https://podcastindex.org/namespace/1.0`
  */
 @InternalApi
-internal object PodcastNamespaceParser : NamespaceParser() {
+internal object PodcastindexParser : NamespaceParser() {
 
     override val namespace: FeedNamespace = FeedNamespace.PODCAST
 

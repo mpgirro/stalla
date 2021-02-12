@@ -16,7 +16,7 @@ import dev.stalla.parser.namespace.FeedpressParser
 import dev.stalla.parser.namespace.FyydParser
 import dev.stalla.parser.namespace.GoogleplayParser
 import dev.stalla.parser.namespace.ItunesParser
-import dev.stalla.parser.namespace.PodcastNamespaceParser
+import dev.stalla.parser.namespace.PodcastindexParser
 import dev.stalla.parser.namespace.PodloveSimpleChapterParser
 import dev.stalla.parser.namespace.RssParser
 import org.w3c.dom.Document
@@ -41,7 +41,7 @@ public object PodcastRssParser {
         ItunesParser,
         PodloveSimpleChapterParser,
         RssParser,
-        PodcastNamespaceParser
+        PodcastindexParser
     )
 
     private val builder: DocumentBuilder = DomBuilderFactory.newDocumentBuilder()

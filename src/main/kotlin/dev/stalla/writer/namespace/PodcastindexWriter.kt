@@ -20,7 +20,7 @@ import java.time.Duration
  * should also be accepted as equivalent. TODO allow both NS
  */
 @InternalApi
-internal object PodcastNamespaceWriter : NamespaceWriter() {
+internal object PodcastindexWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.PODCAST
 

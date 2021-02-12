@@ -25,9 +25,9 @@ import org.w3c.dom.Node
 import java.time.Duration
 import java.util.Locale
 
-internal class PodcastNamespaceParserTest : NamespaceParserTest() {
+internal class PodcastindexParserTest : NamespaceParserTest() {
 
-    override val parser = PodcastNamespaceParser
+    override val parser = PodcastindexParser
 
     private val expectedLockedBuilder = FakePodcastPodcastLockedBuilder()
         .locked(true)

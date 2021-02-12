@@ -15,9 +15,9 @@ import dev.stalla.model.podcast.aPodcastPodcastLocked
 import org.junit.jupiter.api.Test
 import java.time.Duration
 
-internal class PodcastNamespaceWriterTest : NamespaceWriterTest() {
+internal class PodcastindexWriterTest : NamespaceWriterTest() {
 
-    override val writer = PodcastNamespaceWriter
+    override val writer = PodcastindexWriter
 
     @Test
     internal fun `should write the correct podcast tags to the channel when there is data to write`() {
