@@ -11,7 +11,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastindexBuilder
-import dev.stalla.model.episode.anEpisodePodcast
+import dev.stalla.model.episode.anEpisodePodcastindex
 import dev.stalla.model.podcastindex.EpisodePodcastindex
 import dev.stalla.model.podcastindex.TranscriptType
 import org.junit.jupiter.api.Test
@@ -153,7 +153,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
 
     @Test
     internal fun `should populate an Episode Podcastindex builder with all properties from an Episode Podcastindex model`() {
-        val episodePodcast = anEpisodePodcast()
+        val episodePodcast = anEpisodePodcastindex()
         val episodePodcastBuilder = EpisodePodcastindex.builder().from(episodePodcast)
 
         assertAll {

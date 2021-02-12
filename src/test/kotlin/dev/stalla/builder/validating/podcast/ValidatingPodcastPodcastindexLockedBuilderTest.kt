@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
-import dev.stalla.model.podcast.aPodcastPodcastLocked
+import dev.stalla.model.podcast.aPodcastPodcastindexLocked
 import dev.stalla.model.podcastindex.Locked
 import org.junit.jupiter.api.Test
 
@@ -69,7 +69,7 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
 
     @Test
     internal fun `should populate a Podcastindex Locked builder with all properties from an Podcastindex Locked model`() {
-        val locked = aPodcastPodcastLocked()
+        val locked = aPodcastPodcastindexLocked()
         val lockedBuilder = Locked.builder().from(locked)
 
         assertAll {

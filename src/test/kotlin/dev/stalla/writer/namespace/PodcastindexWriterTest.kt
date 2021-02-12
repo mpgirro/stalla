@@ -4,14 +4,14 @@ import assertk.assertAll
 import assertk.assertThat
 import dev.stalla.hasNoDifferences
 import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.episode.anEpisodePodcast
-import dev.stalla.model.episode.anEpisodePodcastChapters
-import dev.stalla.model.episode.anEpisodePodcastSoundbite
-import dev.stalla.model.episode.anEpisodePodcastTranscript
+import dev.stalla.model.episode.anEpisodePodcastindex
+import dev.stalla.model.episode.anEpisodePodcastindexChapters
+import dev.stalla.model.episode.anEpisodePodcastindexSoundbite
+import dev.stalla.model.episode.anEpisodePodcastindexTranscript
 import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcast.aPodcastPodcast
-import dev.stalla.model.podcast.aPodcastPodcastFunding
-import dev.stalla.model.podcast.aPodcastPodcastLocked
+import dev.stalla.model.podcast.aPodcastPodcastindex
+import dev.stalla.model.podcast.aPodcastPodcastindexFunding
+import dev.stalla.model.podcast.aPodcastPodcastindexLocked
 import org.junit.jupiter.api.Test
 import java.time.Duration
 
@@ -45,9 +45,9 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write podcast tags to the channel when the data is blank`() {
         val podcast = aPodcast(
-            podcastindex = aPodcastPodcast(
-                locked = aPodcastPodcastLocked(" "),
-                funding = listOf(aPodcastPodcastFunding(" ", " "))
+            podcastindex = aPodcastPodcastindex(
+                locked = aPodcastPodcastindexLocked(" "),
+                funding = listOf(aPodcastPodcastindexFunding(" ", " "))
             )
         )
         assertAll {
@@ -59,9 +59,9 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write podcast tags to the channel when the data is empty`() {
         val podcast = aPodcast(
-            podcastindex = aPodcastPodcast(
-                locked = aPodcastPodcastLocked(""),
-                funding = listOf(aPodcastPodcastFunding("", ""))
+            podcastindex = aPodcastPodcastindex(
+                locked = aPodcastPodcastindexLocked(""),
+                funding = listOf(aPodcastPodcastindexFunding("", ""))
             )
         )
         assertAll {
@@ -101,9 +101,9 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write podcast tags to the item when the data is blank`() {
         val episode = anEpisode(
-            podcastindex = anEpisodePodcast(
-                transcripts = listOf(anEpisodePodcastTranscript(" ")),
-                chapters = anEpisodePodcastChapters(" ")
+            podcastindex = anEpisodePodcastindex(
+                transcripts = listOf(anEpisodePodcastindexTranscript(" ")),
+                chapters = anEpisodePodcastindexChapters(" ")
             )
         )
         assertAll {
@@ -115,9 +115,9 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write podcast tags to the item when the data is empty`() {
         val episode = anEpisode(
-            podcastindex = anEpisodePodcast(
-                transcripts = listOf(anEpisodePodcastTranscript("")),
-                chapters = anEpisodePodcastChapters("")
+            podcastindex = anEpisodePodcastindex(
+                transcripts = listOf(anEpisodePodcastindexTranscript("")),
+                chapters = anEpisodePodcastindexChapters("")
             )
         )
         assertAll {
@@ -129,11 +129,11 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write podcast soundbite tags to the item when the durations are invalid`() {
         val episode = anEpisode(
-            podcastindex = anEpisodePodcast(
+            podcastindex = anEpisodePodcastindex(
                 soundbites = listOf(
-                    anEpisodePodcastSoundbite(startTime = Duration.ofSeconds(-1)),
-                    anEpisodePodcastSoundbite(duration = Duration.ZERO),
-                    anEpisodePodcastSoundbite(duration = Duration.ofSeconds(-1))
+                    anEpisodePodcastindexSoundbite(startTime = Duration.ofSeconds(-1)),
+                    anEpisodePodcastindexSoundbite(duration = Duration.ZERO),
+                    anEpisodePodcastindexSoundbite(duration = Duration.ofSeconds(-1))
                 )
             )
         )

@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
-import dev.stalla.model.podcast.aPodcastPodcastFunding
+import dev.stalla.model.podcast.aPodcastPodcastindexFunding
 import dev.stalla.model.podcastindex.Funding
 import org.junit.jupiter.api.Test
 
@@ -69,7 +69,7 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
 
     @Test
     internal fun `should populate a Podcastindex Funding builder with all properties from an Podcastindex Funding model`() {
-        val funding = aPodcastPodcastFunding()
+        val funding = aPodcastPodcastindexFunding()
         val fundingBuilder = Funding.builder().from(funding)
 
         assertAll {

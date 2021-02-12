@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
-import dev.stalla.model.episode.anEpisodePodcastSoundbite
+import dev.stalla.model.episode.anEpisodePodcastindexSoundbite
 import dev.stalla.model.podcastindex.Soundbite
 import org.junit.jupiter.api.Test
 import java.time.Duration
@@ -105,7 +105,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
     @Test
     internal fun `should populate an Episode Podcastindex Soundbite builder with all properties from an Episode Podcastindex Soundbite model`() {
-        val episodePodcastSoundbite = anEpisodePodcastSoundbite()
+        val episodePodcastSoundbite = anEpisodePodcastindexSoundbite()
         val episodePodcastSoundbiteBuilder = Soundbite.builder().from(episodePodcastSoundbite)
 
         assertAll {

@@ -47,7 +47,7 @@ internal fun anEpisode(
     podlove: EpisodePodlove? = anEpisodePodlove(),
     googleplay: EpisodeGoogleplay? = anEpisodeGoogleplay(),
     bitlove: Bitlove? = anEpisodeBitlove(),
-    podcastindex: EpisodePodcastindex? = anEpisodePodcast()
+    podcastindex: EpisodePodcastindex? = anEpisodePodcastindex()
 ) = Episode(
     title,
     link,
@@ -125,26 +125,26 @@ internal fun anEpisodeBitlove(
     guid: String = "episode bitlove guid"
 ) = Bitlove(guid)
 
-internal fun anEpisodePodcast(
-    transcripts: List<Transcript> = listOf(anEpisodePodcastTranscript()),
-    soundbites: List<Soundbite> = listOf(anEpisodePodcastSoundbite()),
-    chapters: Chapters? = anEpisodePodcastChapters()
+internal fun anEpisodePodcastindex(
+    transcripts: List<Transcript> = listOf(anEpisodePodcastindexTranscript()),
+    soundbites: List<Soundbite> = listOf(anEpisodePodcastindexSoundbite()),
+    chapters: Chapters? = anEpisodePodcastindexChapters()
 ) = EpisodePodcastindex(transcripts, soundbites, chapters)
 
-fun anEpisodePodcastTranscript(
+fun anEpisodePodcastindexTranscript(
     url: String = "episode podcast: transcript url",
     type: TranscriptType = TranscriptType.SRT,
     language: Locale? = Locale.ITALY,
     rel: String? = "captions"
 ) = Transcript(url, type, language, rel)
 
-fun anEpisodePodcastSoundbite(
+fun anEpisodePodcastindexSoundbite(
     startTime: Duration = Duration.ofSeconds(1),
     duration: Duration = Duration.ofSeconds(15).plusMillis(123),
     title: String? = "episode podcast: soundbite title"
 ) = Soundbite(startTime, duration, title)
 
-internal fun anEpisodePodcastChapters(
+internal fun anEpisodePodcastindexChapters(
     url: String = "episode podcast: chapters url",
     type: String = "episode podcast: chapters type"
 ) = Chapters(url, type)
