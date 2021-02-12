@@ -1,6 +1,6 @@
 package dev.stalla.util
 
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder2
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
@@ -9,7 +9,7 @@ import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.model.Episode
-import dev.stalla.model.itunes.ItunesStyleCategory
+import dev.stalla.model.itunes.ItunesStyleCategory2
 import dev.stalla.model.podcastns.Funding
 import dev.stalla.model.podcastns.Soundbite
 import dev.stalla.model.podcastns.Transcript
@@ -22,10 +22,10 @@ import dev.stalla.model.rss.RssCategory
 @JvmName("asRssCategoryBuilders")
 internal fun List<RssCategory>.asBuilders(): List<RssCategoryBuilder> = map(RssCategory.builder()::from)
 
-/** Transforms this list into a list of [ItunesStyleCategoryBuilder] */
+/** Transforms this list into a list of [ItunesStyleCategoryBuilder2] */
 @InternalApi
 @JvmName("asItunesCategoryBuilders")
-internal fun List<ItunesStyleCategory>.asBuilders(): List<ItunesStyleCategoryBuilder> = map(ItunesStyleCategory.builder()::from)
+internal fun List<ItunesStyleCategory2>.asBuilders(): List<ItunesStyleCategoryBuilder2> = map(ItunesStyleCategory2.builder()::from)
 
 /** Transforms this list into a list of [EpisodeEnclosureBuilder] */
 @InternalApi

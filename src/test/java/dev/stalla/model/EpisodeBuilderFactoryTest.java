@@ -3,8 +3,8 @@ package dev.stalla.model;
 import dev.stalla.builder.episode.*;
 import dev.stalla.model.bitlove.Bitlove;
 import dev.stalla.model.content.Content;
-import dev.stalla.model.googleplay.EpisodeGoogleplay;
-import dev.stalla.model.itunes.EpisodeItunes;
+import dev.stalla.model.googleplay.EpisodeGoogleplay2;
+import dev.stalla.model.itunes.EpisodeItunes2;
 import dev.stalla.model.podcastns.*;
 import dev.stalla.model.podlove.EpisodePodlove;
 import dev.stalla.model.podlove.SimpleChapter;
@@ -66,7 +66,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an EpisodeItunes model using builder factory methods only")
     public void testEpisodeItunesBuilderFactory() {
-        EpisodeItunesBuilder episodeItunesBuilder = EpisodeItunes.builder()
+        EpisodeItunesBuilder2 episodeItunesBuilder = EpisodeItunes2.builder()
             .title("title");
 
         assertNotNull(episodeItunesBuilder.build());
@@ -75,7 +75,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an EpisodeGoogleplay model model using builder factory methods only")
     public void testEpisodeGooglePlayBuilderFactory() {
-        EpisodeGoogleplayBuilder episodeGoogleplayBuilder = EpisodeGoogleplay.builder()
+        EpisodeGoogleplayBuilder2 episodeGoogleplayBuilder = EpisodeGoogleplay2.builder()
             .explicit(false);
 
         assertNotNull(episodeGoogleplayBuilder.build());

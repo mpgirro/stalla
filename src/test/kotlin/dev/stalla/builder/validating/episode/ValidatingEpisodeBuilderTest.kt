@@ -20,8 +20,8 @@ import dev.stalla.model.Episode
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.googleplay.EpisodeGoogleplay
-import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.googleplay.EpisodeGoogleplay2
+import dev.stalla.model.itunes.EpisodeItunes2
 import dev.stalla.model.podcastns.EpisodePodcast
 import dev.stalla.model.podlove.EpisodePodlove
 import dev.stalla.model.rss.Guid
@@ -157,10 +157,10 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::pubDate).isEqualTo(expectedDate)
                 prop(Episode::source).isEqualTo("source")
                 prop(Episode::content).isNotNull().prop(Content::encoded).isEqualTo("encoded")
-                prop(Episode::itunes).isNotNull().prop(EpisodeItunes::title).isEqualTo("iTunes title")
+                prop(Episode::itunes).isNotNull().prop(EpisodeItunes2::title).isEqualTo("iTunes title")
                 prop(Episode::atom).isNotNull().prop(Atom::authors).containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Episode::podlove).isNotNull().prop(EpisodePodlove::simpleChapters).containsExactly(expectedSimpleChapterBuilder.build())
-                prop(Episode::googleplay).isNotNull().prop(EpisodeGoogleplay::description).isEqualTo("play description")
+                prop(Episode::googleplay).isNotNull().prop(EpisodeGoogleplay2::description).isEqualTo("play description")
                 prop(Episode::bitlove).isNotNull().prop(Bitlove::guid).isEqualTo("bitlove guid")
                 prop(Episode::podcast).isNotNull().prop(EpisodePodcast::chapters).isEqualTo(expectedPodcastChaptersBuilder.build())
             }

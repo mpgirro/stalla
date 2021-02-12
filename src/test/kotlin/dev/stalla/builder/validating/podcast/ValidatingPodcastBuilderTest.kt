@@ -12,7 +12,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder
+import dev.stalla.builder.validating.ValidatingItunesStyleCategoryBuilder2
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
@@ -23,8 +23,8 @@ import dev.stalla.model.Atom
 import dev.stalla.model.Podcast
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
-import dev.stalla.model.googleplay.PodcastGoogleplay
-import dev.stalla.model.itunes.PodcastItunes
+import dev.stalla.model.googleplay.PodcastGoogleplay2
+import dev.stalla.model.itunes.PodcastItunes2
 import dev.stalla.model.podcast.aPodcast
 import dev.stalla.model.podcastns.PodcastPodcast
 import org.junit.jupiter.api.Test
@@ -54,7 +54,7 @@ internal class ValidatingPodcastBuilderTest {
 
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 
-    private val expectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder()
+    private val expectedITunesCategoryBuilder = ValidatingItunesStyleCategoryBuilder2()
         .category("itunes category")
         .subcategory("itunes subcategory")
 
@@ -236,13 +236,13 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::image).isEqualTo(expectedImageBuilder.build())
                 prop(Podcast::categories).containsExactly(expectedCategoryBuilders[0].build(), expectedCategoryBuilders[1].build())
                 prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
-                prop(Podcast::itunes).isNotNull().prop(PodcastItunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
+                prop(Podcast::itunes).isNotNull().prop(PodcastItunes2::categories).containsExactly(expectedITunesCategoryBuilder.build())
                 prop(Podcast::atom).isNotNull().prop(Atom::authors)
                     .containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Podcast::feedpress).isNotNull().prop(Feedpress::newsletterId)
                     .isEqualTo("feedpress newsletterId")
                 prop(Podcast::fyyd).isNotNull().prop(Fyyd::verify).isEqualTo("fyyd verify")
-                prop(Podcast::googleplay).isNotNull().prop(PodcastGoogleplay::description).isEqualTo("play description")
+                prop(Podcast::googleplay).isNotNull().prop(PodcastGoogleplay2::description).isEqualTo("play description")
                 prop(Podcast::podcast).isNotNull().prop(PodcastPodcast::locked).isEqualTo(expectedLockedBuilder.build())
             }
         }

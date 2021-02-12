@@ -10,8 +10,8 @@ import dev.stalla.writer.namespace.BitloveWriter
 import dev.stalla.writer.namespace.ContentWriter
 import dev.stalla.writer.namespace.FeedpressWriter
 import dev.stalla.writer.namespace.FyydWriter
-import dev.stalla.writer.namespace.GoogleplayWriter
-import dev.stalla.writer.namespace.ItunesWriter
+import dev.stalla.writer.namespace.GoogleplayWriter2
+import dev.stalla.writer.namespace.ItunesWriter2
 import dev.stalla.writer.namespace.PodcastNamespaceWriter
 import dev.stalla.writer.namespace.PodloveSimpleChapterWriter
 import dev.stalla.writer.namespace.RssWriter
@@ -30,8 +30,8 @@ public object PodcastRssWriter {
     private val writers: List<NamespaceWriter> = listOf(
         RssWriter,
         ContentWriter,
-        ItunesWriter,
-        GoogleplayWriter,
+        ItunesWriter2,
+        GoogleplayWriter2,
         AtomWriter,
         BitloveWriter,
         FeedpressWriter,

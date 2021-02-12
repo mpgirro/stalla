@@ -3,7 +3,7 @@ package dev.stalla.builder.episode
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder2
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
@@ -21,7 +21,7 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
     public val contentBuilder: EpisodeContentBuilder
 
     /** The builder for data from the iTunes namespace. */
-    public val itunesBuilder: EpisodeItunesBuilder
+    public val itunesBuilder: EpisodeItunesBuilder2
 
     /** The builder for data from the Atom namespace. */
     public val atomBuilder: AtomBuilder
@@ -30,7 +30,7 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
     public val podloveBuilder: EpisodePodloveBuilder
 
     /** The builder for data from the Google Play namespace. */
-    public val googleplayBuilder: EpisodeGoogleplayBuilder
+    public val googleplayBuilder: EpisodeGoogleplayBuilder2
 
     /** The builder for data from the Bitlove namespace. */
     public val bitloveBuilder: EpisodeBitloveBuilder
@@ -88,8 +88,8 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
     public fun createRssCategoryBuilder(): RssCategoryBuilder
 
-    /** Creates an instance of [ItunesStyleCategoryBuilder] to use with this builder. */
-    public fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder
+    /** Creates an instance of [ItunesStyleCategoryBuilder2] to use with this builder. */
+    public fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder2
 
     /** Creates an instance of [EpisodePodcastTranscriptBuilder] to use with this builder. */
     public fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder

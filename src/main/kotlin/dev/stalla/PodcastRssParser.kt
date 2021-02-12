@@ -14,8 +14,8 @@ import dev.stalla.parser.namespace.BitloveParser
 import dev.stalla.parser.namespace.ContentParser
 import dev.stalla.parser.namespace.FeedpressParser
 import dev.stalla.parser.namespace.FyydParser
-import dev.stalla.parser.namespace.GoogleplayParser
-import dev.stalla.parser.namespace.ItunesParser
+import dev.stalla.parser.namespace.GoogleplayParser2
+import dev.stalla.parser.namespace.ItunesParser2
 import dev.stalla.parser.namespace.PodcastNamespaceParser
 import dev.stalla.parser.namespace.PodloveSimpleChapterParser
 import dev.stalla.parser.namespace.RssParser
@@ -37,8 +37,8 @@ public object PodcastRssParser {
         ContentParser,
         FeedpressParser,
         FyydParser,
-        GoogleplayParser,
-        ItunesParser,
+        GoogleplayParser2,
+        ItunesParser2,
         PodloveSimpleChapterParser,
         RssParser,
         PodcastNamespaceParser

@@ -1,7 +1,7 @@
 package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder2
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
@@ -15,7 +15,7 @@ import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.fake.FakeAtomBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakeItunesStyleCategoryBuilder
+import dev.stalla.builder.fake.FakeItunesStyleCategoryBuilder2
 import dev.stalla.builder.fake.FakeLinkBuilder
 import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
@@ -38,13 +38,13 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override val contentBuilder: FakeEpisodeContentBuilder = FakeEpisodeContentBuilder()
 
-    override val itunesBuilder: FakeEpisodeItunesBuilder = FakeEpisodeItunesBuilder()
+    override val itunesBuilder: FakeEpisodeItunesBuilder2 = FakeEpisodeItunesBuilder2()
 
     override val atomBuilder: FakeAtomBuilder = FakeAtomBuilder()
 
     override val podloveBuilder: FakeEpisodePodloveBuilder = FakeEpisodePodloveBuilder()
 
-    override val googleplayBuilder: FakeEpisodeGoogleplayBuilder = FakeEpisodeGoogleplayBuilder()
+    override val googleplayBuilder: FakeEpisodeGoogleplayBuilder2 = FakeEpisodeGoogleplayBuilder2()
 
     override val bitloveBuilder: FakeEpisodeBitloveBuilder = FakeEpisodeBitloveBuilder()
 
@@ -88,7 +88,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder = FakeItunesStyleCategoryBuilder()
+    override fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder2 = FakeItunesStyleCategoryBuilder2()
 
     override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder = FakeEpisodePodcastTranscriptBuilder()
 

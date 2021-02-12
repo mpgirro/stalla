@@ -12,8 +12,8 @@ import dev.stalla.model.anRssCategory
 import dev.stalla.model.atom.Link
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
-import dev.stalla.model.googleplay.EpisodeGoogleplay
-import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.googleplay.EpisodeGoogleplay2
+import dev.stalla.model.itunes.EpisodeItunes2
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.podcastns.Chapters
 import dev.stalla.model.podcastns.EpisodePodcast
@@ -42,10 +42,10 @@ internal fun anEpisode(
     pubDate: TemporalAccessor? = dateTime(year = 2020, month = Month.DECEMBER, day = 20, hour = 12, minute = 11, second = 10),
     source: String? = "episode source",
     content: Content? = anEpisodeContent(),
-    itunes: EpisodeItunes? = anEpisodeItunes(),
+    itunes: EpisodeItunes2? = anEpisodeItunes(),
     atom: Atom? = anEpisodeAtom(),
     podlove: EpisodePodlove? = anEpisodePodlove(),
-    googleplay: EpisodeGoogleplay? = anEpisodeGoogleplay(),
+    googleplay: EpisodeGoogleplay2? = anEpisodeGoogleplay(),
     bitlove: Bitlove? = anEpisodeBitlove(),
     podcast: EpisodePodcast? = anEpisodePodcast()
 ) = Episode(
@@ -95,7 +95,7 @@ internal fun anEpisodeItunes(
     author: String? = "episode itunes author",
     subtitle: String? = "episode itunes subtitle",
     summary: String? = "episode itunes summary"
-) = EpisodeItunes(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
+) = EpisodeItunes2(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
 
 internal fun anEpisodeAtom(
     authors: List<Person> = listOf(aPerson("episode atom author name")),
@@ -119,7 +119,7 @@ internal fun anEpisodeGoogleplay(
     explicit: Boolean? = true,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode googleplay image url")
-) = EpisodeGoogleplay(description, explicit, block, image)
+) = EpisodeGoogleplay2(description, explicit, block, image)
 
 internal fun anEpisodeBitlove(
     guid: String = "episode bitlove guid"

@@ -1,15 +1,15 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.HrefOnlyImageBuilder;
-import dev.stalla.builder.ItunesStyleCategoryBuilder;
+import dev.stalla.builder.ItunesStyleCategoryBuilder2;
 import dev.stalla.builder.episode.EpisodeBuilder;
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder;
 import dev.stalla.builder.podcast.*;
 import dev.stalla.model.feedpress.Feedpress;
 import dev.stalla.model.fyyd.Fyyd;
-import dev.stalla.model.googleplay.PodcastGoogleplay;
-import dev.stalla.model.itunes.ItunesStyleCategory;
-import dev.stalla.model.itunes.PodcastItunes;
+import dev.stalla.model.googleplay.PodcastGoogleplay2;
+import dev.stalla.model.itunes.ItunesStyleCategory2;
+import dev.stalla.model.itunes.PodcastItunes2;
 import dev.stalla.model.podcastns.Funding;
 import dev.stalla.model.podcastns.Locked;
 import dev.stalla.model.podcastns.PodcastPodcast;
@@ -46,13 +46,13 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a PodcastItunes model using builder factory methods only")
     public void testPodcastItunesBuilderFactory() {
-        ItunesStyleCategoryBuilder itunesStyleCategoryBuilder = ItunesStyleCategory.builder()
+        ItunesStyleCategoryBuilder2 itunesStyleCategoryBuilder = ItunesStyleCategory2.builder()
             .category("category");
 
         HrefOnlyImageBuilder hrefOnlyImageBuilder = HrefOnlyImage.builder()
             .href("href");
 
-        PodcastItunesBuilder podcastItunesBuilder = PodcastItunes.builder()
+        PodcastItunesBuilder2 podcastItunesBuilder = PodcastItunes2.builder()
             .explicit(false)
             .addCategoryBuilder(itunesStyleCategoryBuilder)
             .imageBuilder(hrefOnlyImageBuilder);
@@ -63,7 +63,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a PodcastGoogleplay model using builder factory methods only")
     public void testPodcastGooglePlayBuilderFactory() {
-        PodcastGoogleplayBuilder podcastGoogleplayBuilder = PodcastGoogleplay.builder()
+        PodcastGoogleplayBuilder2 podcastGoogleplayBuilder = PodcastGoogleplay2.builder()
             .author("author");
 
         assertNotNull(podcastGoogleplayBuilder.build());
