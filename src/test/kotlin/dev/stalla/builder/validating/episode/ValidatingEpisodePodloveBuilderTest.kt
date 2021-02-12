@@ -10,8 +10,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodloveBuilder
-import dev.stalla.model.Episode
 import dev.stalla.model.episode.anEpisodePodlove
+import dev.stalla.model.podlove.EpisodePodlove
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodePodloveBuilderTest {
@@ -63,7 +63,7 @@ internal class ValidatingEpisodePodloveBuilderTest {
     @Test
     internal fun `should populate an Episode Podlove builder with all properties from an Episode Podlove model`() {
         val episodePodlove = anEpisodePodlove()
-        val episodePodloveBuilder = Episode.Podlove.builder().from(episodePodlove)
+        val episodePodloveBuilder = EpisodePodlove.builder().from(episodePodlove)
 
         assertAll {
             assertThat(episodePodloveBuilder).prop(EpisodePodloveBuilder::hasEnoughDataToBuild).isTrue()

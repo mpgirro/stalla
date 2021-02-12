@@ -9,7 +9,7 @@ import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
 import dev.stalla.dom.getAttributeByName
 import dev.stalla.dom.textAsBooleanOrNull
-import dev.stalla.model.Episode
+import dev.stalla.model.podcastns.TranscriptType
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
@@ -116,7 +116,7 @@ internal object PodcastNamespaceParser : NamespaceParser() {
     private fun Node.toTranscriptBuilder(transcriptBuilder: EpisodePodcastTranscriptBuilder): EpisodePodcastTranscriptBuilder? {
         val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()
         val type = getAttributeByName("type")?.value.trimmedOrNullIfBlank()?.let { rawType ->
-            Episode.Podcast.Transcript.Type.from(rawType)
+            TranscriptType.from(rawType)
         }
         val language = getAttributeByName("language")?.value.trimmedOrNullIfBlank()?.let { rawLocale ->
             Locale.forLanguageTag(rawLocale)

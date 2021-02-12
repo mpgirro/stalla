@@ -1,7 +1,7 @@
 package dev.stalla.builder.fake
 
 import dev.stalla.builder.RssCategoryBuilder
-import dev.stalla.model.RssCategory
+import dev.stalla.model.rss.RssCategory
 
 internal class FakeRssCategoryBuilder : FakeBuilder<RssCategory>(), RssCategoryBuilder {
 

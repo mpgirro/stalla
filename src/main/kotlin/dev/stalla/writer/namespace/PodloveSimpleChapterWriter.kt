@@ -3,6 +3,7 @@ package dev.stalla.writer.namespace
 import dev.stalla.dom.appendElement
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
+import dev.stalla.model.podlove.SimpleChapter
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
 import dev.stalla.util.isNeitherNullNorBlank
@@ -35,7 +36,7 @@ internal object PodloveSimpleChapterWriter : NamespaceWriter() {
         }
     }
 
-    private fun Element.appendChapterElement(chapter: Episode.Podlove.SimpleChapter) {
+    private fun Element.appendChapterElement(chapter: SimpleChapter) {
         appendElement("chapter", namespace) {
             setAttribute("start", chapter.start.trim())
             setAttribute("title", chapter.title.trim())
@@ -49,5 +50,5 @@ internal object PodloveSimpleChapterWriter : NamespaceWriter() {
         }
     }
 
-    private fun Episode.Podlove.SimpleChapter.isValid() = start.isNotBlank() && title.isNotBlank()
+    private fun SimpleChapter.isValid() = start.isNotBlank() && title.isNotBlank()
 }

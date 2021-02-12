@@ -3,9 +3,9 @@ package dev.stalla.writer.namespace
 import dev.stalla.dom.appendElement
 import dev.stalla.dom.appendPersonElement
 import dev.stalla.model.Episode
-import dev.stalla.model.Link
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
+import dev.stalla.model.atom.Link
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
 import dev.stalla.util.isNeitherNullNorBlank

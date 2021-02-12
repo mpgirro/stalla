@@ -1,6 +1,7 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.LinkBuilder;
+import dev.stalla.model.atom.Link;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

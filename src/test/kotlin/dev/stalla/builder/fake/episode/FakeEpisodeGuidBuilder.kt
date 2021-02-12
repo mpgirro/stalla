@@ -2,9 +2,9 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodeGuidBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.rss.Guid
 
-internal class FakeEpisodeGuidBuilder : FakeBuilder<Episode.Guid>(), EpisodeGuidBuilder {
+internal class FakeEpisodeGuidBuilder : FakeBuilder<Guid>(), EpisodeGuidBuilder {
 
     var textContent: String? = null
     var isPermalink: Boolean? = null

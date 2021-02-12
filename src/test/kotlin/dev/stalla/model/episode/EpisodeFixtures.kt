@@ -1,16 +1,30 @@
 package dev.stalla.model.episode
 
 import dev.stalla.dateTime
-import dev.stalla.model.Atom
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.Link
 import dev.stalla.model.Person
-import dev.stalla.model.RssCategory
 import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.anRssCategory
+import dev.stalla.model.atom.Atom
+import dev.stalla.model.atom.Link
+import dev.stalla.model.bitlove.Bitlove
+import dev.stalla.model.content.Content
+import dev.stalla.model.googleplay.EpisodeGoogleplay
+import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.itunes.EpisodeType
+import dev.stalla.model.podcastns.Chapters
+import dev.stalla.model.podcastns.EpisodePodcast
+import dev.stalla.model.podcastns.Soundbite
+import dev.stalla.model.podcastns.Transcript
+import dev.stalla.model.podcastns.TranscriptType
+import dev.stalla.model.podlove.EpisodePodlove
+import dev.stalla.model.podlove.SimpleChapter
+import dev.stalla.model.rss.Enclosure
+import dev.stalla.model.rss.Guid
+import dev.stalla.model.rss.RssCategory
 import java.time.Duration
 import java.time.Month
 import java.time.temporal.TemporalAccessor
@@ -23,17 +37,17 @@ internal fun anEpisode(
     author: String? = "episode author",
     categories: List<RssCategory> = listOf(anRssCategory("episode category")),
     comments: String? = "episode comments",
-    enclosure: Episode.Enclosure = anEpisodeEnclosure(),
-    guid: Episode.Guid? = anEpisodeGuid(),
+    enclosure: Enclosure = anEpisodeEnclosure(),
+    guid: Guid? = anEpisodeGuid(),
     pubDate: TemporalAccessor? = dateTime(year = 2020, month = Month.DECEMBER, day = 20, hour = 12, minute = 11, second = 10),
     source: String? = "episode source",
-    content: Episode.Content? = anEpisodeContent(),
-    iTunes: Episode.ITunes? = anEpisodeITunes(),
+    content: Content? = anEpisodeContent(),
+    itunes: EpisodeItunes? = anEpisodeItunes(),
     atom: Atom? = anEpisodeAtom(),
-    podlove: Episode.Podlove? = anEpisodePodlove(),
-    googlePlay: Episode.GooglePlay? = anEpisodeGooglePlay(),
-    bitlove: Episode.Bitlove? = anEpisodeBitlove(),
-    podcast: Episode.Podcast? = anEpisodePodcast()
+    podlove: EpisodePodlove? = anEpisodePodlove(),
+    googleplay: EpisodeGoogleplay? = anEpisodeGoogleplay(),
+    bitlove: Bitlove? = anEpisodeBitlove(),
+    podcast: EpisodePodcast? = anEpisodePodcast()
 ) = Episode(
     title,
     link,
@@ -46,10 +60,10 @@ internal fun anEpisode(
     pubDate,
     source,
     content,
-    iTunes,
+    itunes,
     atom,
     podlove,
-    googlePlay,
+    googleplay,
     bitlove,
     podcast
 )
@@ -58,18 +72,18 @@ internal fun anEpisodeEnclosure(
     url: String = "episode enclosure url",
     length: Long = 777,
     type: String = "episode enclosure type"
-) = Episode.Enclosure(url, length, type)
+) = Enclosure(url, length, type)
 
 internal fun anEpisodeGuid(
     textContent: String = "episode guid textContent",
     isPermalink: Boolean? = false
-) = Episode.Guid(textContent, isPermalink)
+) = Guid(textContent, isPermalink)
 
 internal fun anEpisodeContent(
     encoded: String = "episode content encoded"
-) = Episode.Content(encoded)
+) = Content(encoded)
 
-internal fun anEpisodeITunes(
+internal fun anEpisodeItunes(
     title: String? = "episode itunes title",
     duration: String? = "episode itunes duration",
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode itunes image url"),
@@ -77,11 +91,11 @@ internal fun anEpisodeITunes(
     block: Boolean = true,
     season: Int? = 2,
     episode: Int? = 3,
-    episodeType: Episode.ITunes.EpisodeType? = Episode.ITunes.EpisodeType.FULL,
+    episodeType: EpisodeType? = EpisodeType.FULL,
     author: String? = "episode itunes author",
     subtitle: String? = "episode itunes subtitle",
     summary: String? = "episode itunes summary"
-) = Episode.ITunes(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
+) = EpisodeItunes(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
 
 internal fun anEpisodeAtom(
     authors: List<Person> = listOf(aPerson("episode atom author name")),
@@ -90,47 +104,47 @@ internal fun anEpisodeAtom(
 ) = Atom(authors, contributors, links)
 
 internal fun anEpisodePodlove(
-    simpleChapters: List<Episode.Podlove.SimpleChapter> = listOf(aPodloveSimpleChapter())
-) = Episode.Podlove(simpleChapters)
+    simpleChapters: List<SimpleChapter> = listOf(aPodloveSimpleChapter())
+) = EpisodePodlove(simpleChapters)
 
 internal fun aPodloveSimpleChapter(
     start: String = "episode podlove simple chapter start",
     title: String = "episode podlove simple chapter title",
     href: String? = "episode podlove simple chapter href",
     image: String? = "episode podlove simple chapter image"
-) = Episode.Podlove.SimpleChapter(start, title, href, image)
+) = SimpleChapter(start, title, href, image)
 
-internal fun anEpisodeGooglePlay(
+internal fun anEpisodeGoogleplay(
     description: String? = "episode googleplay description",
     explicit: Boolean? = true,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode googleplay image url")
-) = Episode.GooglePlay(description, explicit, block, image)
+) = EpisodeGoogleplay(description, explicit, block, image)
 
 internal fun anEpisodeBitlove(
     guid: String = "episode bitlove guid"
-) = Episode.Bitlove(guid)
+) = Bitlove(guid)
 
 internal fun anEpisodePodcast(
-    transcripts: List<Episode.Podcast.Transcript> = listOf(anEpisodePodcastTranscript()),
-    soundbites: List<Episode.Podcast.Soundbite> = listOf(anEpisodePodcastSoundbite()),
-    chapters: Episode.Podcast.Chapters? = anEpisodePodcastChapters()
-) = Episode.Podcast(transcripts, soundbites, chapters)
+    transcripts: List<Transcript> = listOf(anEpisodePodcastTranscript()),
+    soundbites: List<Soundbite> = listOf(anEpisodePodcastSoundbite()),
+    chapters: Chapters? = anEpisodePodcastChapters()
+) = EpisodePodcast(transcripts, soundbites, chapters)
 
 fun anEpisodePodcastTranscript(
     url: String = "episode podcast: transcript url",
-    type: Episode.Podcast.Transcript.Type = Episode.Podcast.Transcript.Type.SRT,
+    type: TranscriptType = TranscriptType.SRT,
     language: Locale? = Locale.ITALY,
     rel: String? = "captions"
-) = Episode.Podcast.Transcript(url, type, language, rel)
+) = Transcript(url, type, language, rel)
 
 fun anEpisodePodcastSoundbite(
     startTime: Duration = Duration.ofSeconds(1),
     duration: Duration = Duration.ofSeconds(15).plusMillis(123),
     title: String? = "episode podcast: soundbite title"
-) = Episode.Podcast.Soundbite(startTime, duration, title)
+) = Soundbite(startTime, duration, title)
 
 internal fun anEpisodePodcastChapters(
     url: String = "episode podcast: chapters url",
     type: String = "episode podcast: chapters type"
-) = Episode.Podcast.Chapters(url, type)
+) = Chapters(url, type)

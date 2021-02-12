@@ -2,9 +2,9 @@ package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastFyydBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.fyyd.Fyyd
 
-internal class FakePodcastFyydBuilder : FakeBuilder<Podcast.Fyyd>(), PodcastFyydBuilder {
+internal class FakePodcastFyydBuilder : FakeBuilder<Fyyd>(), PodcastFyydBuilder {
 
     var verifyValue: String? = null
 

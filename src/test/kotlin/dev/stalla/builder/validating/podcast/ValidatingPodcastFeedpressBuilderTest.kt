@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastFeedpressBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.podcast.aPodcastFeedpress
 import org.junit.jupiter.api.Test
 
@@ -36,11 +36,11 @@ internal class ValidatingPodcastFeedpressBuilderTest {
             assertThat(podcastFeedpressBuilder).prop(PodcastFeedpressBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastFeedpressBuilder.build()).isNotNull().all {
-                prop(Podcast.Feedpress::newsletterId).isEqualTo("newsletterId")
-                prop(Podcast.Feedpress::locale).isNull()
-                prop(Podcast.Feedpress::podcastId).isNull()
-                prop(Podcast.Feedpress::cssFile).isNull()
-                prop(Podcast.Feedpress::link).isNull()
+                prop(Feedpress::newsletterId).isEqualTo("newsletterId")
+                prop(Feedpress::locale).isNull()
+                prop(Feedpress::podcastId).isNull()
+                prop(Feedpress::cssFile).isNull()
+                prop(Feedpress::link).isNull()
             }
         }
     }
@@ -54,11 +54,11 @@ internal class ValidatingPodcastFeedpressBuilderTest {
             assertThat(podcastFeedpressBuilder).prop(PodcastFeedpressBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastFeedpressBuilder.build()).isNotNull().all {
-                prop(Podcast.Feedpress::newsletterId).isNull()
-                prop(Podcast.Feedpress::locale).isEqualTo("locale")
-                prop(Podcast.Feedpress::podcastId).isNull()
-                prop(Podcast.Feedpress::cssFile).isNull()
-                prop(Podcast.Feedpress::link).isNull()
+                prop(Feedpress::newsletterId).isNull()
+                prop(Feedpress::locale).isEqualTo("locale")
+                prop(Feedpress::podcastId).isNull()
+                prop(Feedpress::cssFile).isNull()
+                prop(Feedpress::link).isNull()
             }
         }
     }
@@ -72,11 +72,11 @@ internal class ValidatingPodcastFeedpressBuilderTest {
             assertThat(podcastFeedpressBuilder).prop(PodcastFeedpressBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastFeedpressBuilder.build()).isNotNull().all {
-                prop(Podcast.Feedpress::newsletterId).isNull()
-                prop(Podcast.Feedpress::locale).isNull()
-                prop(Podcast.Feedpress::podcastId).isEqualTo("podcastId")
-                prop(Podcast.Feedpress::cssFile).isNull()
-                prop(Podcast.Feedpress::link).isNull()
+                prop(Feedpress::newsletterId).isNull()
+                prop(Feedpress::locale).isNull()
+                prop(Feedpress::podcastId).isEqualTo("podcastId")
+                prop(Feedpress::cssFile).isNull()
+                prop(Feedpress::link).isNull()
             }
         }
     }
@@ -90,11 +90,11 @@ internal class ValidatingPodcastFeedpressBuilderTest {
             assertThat(podcastFeedpressBuilder).prop(PodcastFeedpressBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastFeedpressBuilder.build()).isNotNull().all {
-                prop(Podcast.Feedpress::newsletterId).isNull()
-                prop(Podcast.Feedpress::locale).isNull()
-                prop(Podcast.Feedpress::podcastId).isNull()
-                prop(Podcast.Feedpress::cssFile).isEqualTo("cssFile")
-                prop(Podcast.Feedpress::link).isNull()
+                prop(Feedpress::newsletterId).isNull()
+                prop(Feedpress::locale).isNull()
+                prop(Feedpress::podcastId).isNull()
+                prop(Feedpress::cssFile).isEqualTo("cssFile")
+                prop(Feedpress::link).isNull()
             }
         }
     }
@@ -108,11 +108,11 @@ internal class ValidatingPodcastFeedpressBuilderTest {
             assertThat(podcastFeedpressBuilder).prop(PodcastFeedpressBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastFeedpressBuilder.build()).isNotNull().all {
-                prop(Podcast.Feedpress::newsletterId).isNull()
-                prop(Podcast.Feedpress::locale).isNull()
-                prop(Podcast.Feedpress::podcastId).isNull()
-                prop(Podcast.Feedpress::cssFile).isNull()
-                prop(Podcast.Feedpress::link).isEqualTo("link")
+                prop(Feedpress::newsletterId).isNull()
+                prop(Feedpress::locale).isNull()
+                prop(Feedpress::podcastId).isNull()
+                prop(Feedpress::cssFile).isNull()
+                prop(Feedpress::link).isEqualTo("link")
             }
         }
     }
@@ -130,11 +130,11 @@ internal class ValidatingPodcastFeedpressBuilderTest {
             assertThat(podcastFeedpressBuilder).prop(PodcastFeedpressBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastFeedpressBuilder.build()).isNotNull().all {
-                prop(Podcast.Feedpress::newsletterId).isEqualTo("newsletterId")
-                prop(Podcast.Feedpress::locale).isEqualTo("locale")
-                prop(Podcast.Feedpress::podcastId).isEqualTo("podcastId")
-                prop(Podcast.Feedpress::cssFile).isEqualTo("cssFile")
-                prop(Podcast.Feedpress::link).isEqualTo("link")
+                prop(Feedpress::newsletterId).isEqualTo("newsletterId")
+                prop(Feedpress::locale).isEqualTo("locale")
+                prop(Feedpress::podcastId).isEqualTo("podcastId")
+                prop(Feedpress::cssFile).isEqualTo("cssFile")
+                prop(Feedpress::link).isEqualTo("link")
             }
         }
     }
@@ -142,7 +142,7 @@ internal class ValidatingPodcastFeedpressBuilderTest {
     @Test
     internal fun `should populate a Podcast Feedpress builder with all properties from an Podcast Feedpress model`() {
         val podcastFeedpress = aPodcastFeedpress()
-        val podcastFeedpressBuilder = Podcast.Feedpress.builder().from(podcastFeedpress)
+        val podcastFeedpressBuilder = Feedpress.builder().from(podcastFeedpress)
 
         assertAll {
             assertThat(podcastFeedpressBuilder).prop(PodcastFeedpressBuilder::hasEnoughDataToBuild).isTrue()

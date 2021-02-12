@@ -10,8 +10,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.LinkBuilder
-import dev.stalla.model.Link
 import dev.stalla.model.aLink
+import dev.stalla.model.atom.Link
 import org.junit.jupiter.api.Test
 
 internal class ValidatingLinkBuilderTest {

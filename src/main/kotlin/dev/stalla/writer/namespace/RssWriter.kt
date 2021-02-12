@@ -5,6 +5,8 @@ import dev.stalla.dom.appendRssCategoryElements
 import dev.stalla.dom.appendRssImageElement
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
+import dev.stalla.model.rss.Enclosure
+import dev.stalla.model.rss.Guid
 import dev.stalla.util.BooleanStringStyle
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
@@ -119,7 +121,7 @@ internal object RssWriter : NamespaceWriter() {
         }
     }
 
-    private fun Element.appendEnclosureElement(enclosure: Episode.Enclosure) {
+    private fun Element.appendEnclosureElement(enclosure: Enclosure) {
         if (enclosure.url.isBlank() || enclosure.type.isBlank()) return
         appendElement("enclosure") {
             setAttribute("url", enclosure.url.trim())
@@ -128,7 +130,7 @@ internal object RssWriter : NamespaceWriter() {
         }
     }
 
-    private fun Element.appendGuidElement(guid: Episode.Guid) {
+    private fun Element.appendGuidElement(guid: Guid) {
         if (guid.guid.isBlank()) return
         appendElement("guid") {
             if (guid.isPermalink != null) {

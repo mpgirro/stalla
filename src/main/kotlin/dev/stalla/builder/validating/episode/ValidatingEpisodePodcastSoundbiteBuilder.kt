@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.podcastns.Soundbite
 import java.time.Duration
 
 internal class ValidatingEpisodePodcastSoundbiteBuilder : EpisodePodcastSoundbiteBuilder {
@@ -20,7 +20,7 @@ internal class ValidatingEpisodePodcastSoundbiteBuilder : EpisodePodcastSoundbit
     override val hasEnoughDataToBuild: Boolean
         get() = ::startTimeValue.isInitialized && ::durationValue.isInitialized
 
-    override fun build(): Episode.Podcast.Soundbite? {
+    override fun build(): Soundbite? {
         if (!hasEnoughDataToBuild) {
             return null
         }
@@ -29,6 +29,6 @@ internal class ValidatingEpisodePodcastSoundbiteBuilder : EpisodePodcastSoundbit
             return null
         }
 
-        return Episode.Podcast.Soundbite(startTimeValue, durationValue, title)
+        return Soundbite(startTimeValue, durationValue, title)
     }
 }

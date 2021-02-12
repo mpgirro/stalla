@@ -2,19 +2,20 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.podcastns.Transcript
+import dev.stalla.model.podcastns.TranscriptType
 import java.util.Locale
 
-internal class FakeEpisodePodcastTranscriptBuilder : FakeBuilder<Episode.Podcast.Transcript>(), EpisodePodcastTranscriptBuilder {
+internal class FakeEpisodePodcastTranscriptBuilder : FakeBuilder<Transcript>(), EpisodePodcastTranscriptBuilder {
 
     var url: String? = null
-    var type: Episode.Podcast.Transcript.Type? = null
+    var type: TranscriptType? = null
     var language: Locale? = null
     var rel: String? = null
 
     override fun url(url: String): EpisodePodcastTranscriptBuilder = apply { this.url = url }
 
-    override fun type(type: Episode.Podcast.Transcript.Type): EpisodePodcastTranscriptBuilder = apply { this.type = type }
+    override fun type(type: TranscriptType): EpisodePodcastTranscriptBuilder = apply { this.type = type }
 
     override fun language(language: Locale?): EpisodePodcastTranscriptBuilder = apply { this.language = language }
 

@@ -2,9 +2,9 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodeContentBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.content.Content
 
-internal class FakeEpisodeContentBuilder : FakeBuilder<Episode.Content>(), EpisodeContentBuilder {
+internal class FakeEpisodeContentBuilder : FakeBuilder<Content>(), EpisodeContentBuilder {
 
     var encoded: String? = null
 

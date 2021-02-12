@@ -15,9 +15,16 @@ import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.dateTime
-import dev.stalla.model.Atom
 import dev.stalla.model.Episode
+import dev.stalla.model.atom.Atom
+import dev.stalla.model.bitlove.Bitlove
+import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisode
+import dev.stalla.model.googleplay.EpisodeGoogleplay
+import dev.stalla.model.itunes.EpisodeItunes
+import dev.stalla.model.podcastns.EpisodePodcast
+import dev.stalla.model.podlove.EpisodePodlove
+import dev.stalla.model.rss.Guid
 import org.junit.jupiter.api.Test
 import java.time.Month
 
@@ -101,10 +108,10 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::pubDate).isNull()
                 prop(Episode::source).isNull()
                 prop(Episode::content).isNull()
-                prop(Episode::iTunes).isNull()
+                prop(Episode::itunes).isNull()
                 prop(Episode::atom).isNull()
                 prop(Episode::podlove).isNull()
-                prop(Episode::googlePlay).isNull()
+                prop(Episode::googleplay).isNull()
                 prop(Episode::bitlove).isNull()
                 prop(Episode::podcast).isNull()
             }
@@ -127,10 +134,10 @@ internal class ValidatingEpisodeBuilderTest {
             .source("source")
             .apply {
                 contentBuilder.encoded("encoded")
-                iTunesBuilder.title("iTunes title")
+                itunesBuilder.title("iTunes title")
                 atomBuilder.addAuthorBuilder(expectedAtomAuthorBuilder)
                 podloveBuilder.addSimpleChapterBuilder(expectedSimpleChapterBuilder)
-                googlePlayBuilder.description("play description")
+                googleplayBuilder.description("play description")
                 bitloveBuilder.guid("bitlove guid")
                 podcastBuilder.chaptersBuilder(expectedPodcastChaptersBuilder)
             }
@@ -146,16 +153,16 @@ internal class ValidatingEpisodeBuilderTest {
                 prop(Episode::categories).containsExactly(expectedCategoryBuilders[0].build(), expectedCategoryBuilders[1].build())
                 prop(Episode::comments).isEqualTo("comments")
                 prop(Episode::enclosure).isEqualTo(expectedEnclosureBuilder.build())
-                prop(Episode::guid).isEqualTo(Episode.Guid("guid"))
+                prop(Episode::guid).isEqualTo(Guid("guid"))
                 prop(Episode::pubDate).isEqualTo(expectedDate)
                 prop(Episode::source).isEqualTo("source")
-                prop(Episode::content).isNotNull().prop(Episode.Content::encoded).isEqualTo("encoded")
-                prop(Episode::iTunes).isNotNull().prop(Episode.ITunes::title).isEqualTo("iTunes title")
+                prop(Episode::content).isNotNull().prop(Content::encoded).isEqualTo("encoded")
+                prop(Episode::itunes).isNotNull().prop(EpisodeItunes::title).isEqualTo("iTunes title")
                 prop(Episode::atom).isNotNull().prop(Atom::authors).containsExactly(expectedAtomAuthorBuilder.build())
-                prop(Episode::podlove).isNotNull().prop(Episode.Podlove::simpleChapters).containsExactly(expectedSimpleChapterBuilder.build())
-                prop(Episode::googlePlay).isNotNull().prop(Episode.GooglePlay::description).isEqualTo("play description")
-                prop(Episode::bitlove).isNotNull().prop(Episode.Bitlove::guid).isEqualTo("bitlove guid")
-                prop(Episode::podcast).isNotNull().prop(Episode.Podcast::chapters).isEqualTo(expectedPodcastChaptersBuilder.build())
+                prop(Episode::podlove).isNotNull().prop(EpisodePodlove::simpleChapters).containsExactly(expectedSimpleChapterBuilder.build())
+                prop(Episode::googleplay).isNotNull().prop(EpisodeGoogleplay::description).isEqualTo("play description")
+                prop(Episode::bitlove).isNotNull().prop(Bitlove::guid).isEqualTo("bitlove guid")
+                prop(Episode::podcast).isNotNull().prop(EpisodePodcast::chapters).isEqualTo(expectedPodcastChaptersBuilder.build())
             }
         }
     }

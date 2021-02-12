@@ -2,9 +2,9 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.rss.Enclosure
 
-internal class FakeEpisodeEnclosureBuilder : FakeBuilder<Episode.Enclosure>(), EpisodeEnclosureBuilder {
+internal class FakeEpisodeEnclosureBuilder : FakeBuilder<Enclosure>(), EpisodeEnclosureBuilder {
 
     var urlValue: String? = null
     var lengthValue: Long = -1

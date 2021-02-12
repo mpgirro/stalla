@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodeGuidBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.rss.Guid
 
 internal class ValidatingEpisodeGuidBuilder : EpisodeGuidBuilder {
 
@@ -16,11 +16,11 @@ internal class ValidatingEpisodeGuidBuilder : EpisodeGuidBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() = ::text.isInitialized
 
-    override fun build(): Episode.Guid? {
+    override fun build(): Guid? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Episode.Guid(text, isPermalink)
+        return Guid(text, isPermalink)
     }
 }

@@ -1,5 +1,10 @@
 package dev.stalla.model
 
+import dev.stalla.model.atom.Link
+import dev.stalla.model.itunes.ItunesStyleCategory
+import dev.stalla.model.rss.RssCategory
+import dev.stalla.model.rss.RssImage
+
 internal fun anRssImage(
     url: String = "image url",
     title: String = "image title",
@@ -34,11 +39,11 @@ internal fun anRssCategory(
     domain: String? = "rss category domain"
 ) = RssCategory(category, domain)
 
-internal fun anITunesCategory(
+internal fun anItunesCategory(
     category: String = "itunes category",
     subcategory: String? = "itunes category subcategory"
 ) = if (subcategory == null) {
-    ITunesStyleCategory.Simple(category)
+    ItunesStyleCategory.Simple(category)
 } else {
-    ITunesStyleCategory.Nested(category, ITunesStyleCategory.Simple(subcategory))
+    ItunesStyleCategory.Nested(category, ItunesStyleCategory.Simple(subcategory))
 }

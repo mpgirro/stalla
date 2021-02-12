@@ -3,11 +3,13 @@ package dev.stalla.builder.episode
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.model.Episode
+import dev.stalla.model.rss.Enclosure
+import dev.stalla.model.rss.Guid
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor
@@ -19,7 +21,7 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
     public val contentBuilder: EpisodeContentBuilder
 
     /** The builder for data from the iTunes namespace. */
-    public val iTunesBuilder: EpisodeITunesBuilder
+    public val itunesBuilder: EpisodeItunesBuilder
 
     /** The builder for data from the Atom namespace. */
     public val atomBuilder: AtomBuilder
@@ -28,7 +30,7 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
     public val podloveBuilder: EpisodePodloveBuilder
 
     /** The builder for data from the Google Play namespace. */
-    public val googlePlayBuilder: EpisodeGooglePlayBuilder
+    public val googleplayBuilder: EpisodeGoogleplayBuilder
 
     /** The builder for data from the Bitlove namespace. */
     public val bitloveBuilder: EpisodeBitloveBuilder
@@ -86,8 +88,8 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
     public fun createRssCategoryBuilder(): RssCategoryBuilder
 
-    /** Creates an instance of [ITunesStyleCategoryBuilder] to use with this builder. */
-    public fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder
+    /** Creates an instance of [ItunesStyleCategoryBuilder] to use with this builder. */
+    public fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder
 
     /** Creates an instance of [EpisodePodcastTranscriptBuilder] to use with this builder. */
     public fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder
@@ -100,10 +102,10 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
 
     override fun from(model: Episode?): EpisodeBuilder = whenNotNull(model) { episode ->
         contentBuilder.from(episode.content)
-        iTunesBuilder.from(episode.iTunes)
+        itunesBuilder.from(episode.itunes)
         atomBuilder.from(episode.atom)
         podloveBuilder.from(episode.podlove)
-        googlePlayBuilder.from(episode.googlePlay)
+        googleplayBuilder.from(episode.googleplay)
         bitloveBuilder.from(episode.bitlove)
         podcastBuilder.from(episode.podcast)
         title(episode.title)
@@ -112,8 +114,8 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
         author(episode.author)
         addCategoryBuilderys(episode.categories.asBuilders())
         comments(episode.comments)
-        enclosureBuilder(Episode.Enclosure.builder().from(episode.enclosure))
-        guidBuilder(Episode.Guid.builder().from(episode.guid))
+        enclosureBuilder(Enclosure.builder().from(episode.enclosure))
+        guidBuilder(Guid.builder().from(episode.guid))
         pubDate(episode.pubDate)
         source(episode.source)
     }

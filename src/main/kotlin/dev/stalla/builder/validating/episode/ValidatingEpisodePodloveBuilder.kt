@@ -2,7 +2,7 @@ package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodePodloveBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.podlove.EpisodePodlove
 
 internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
 
@@ -19,12 +19,12 @@ internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() = chapterBuilders.any { it.hasEnoughDataToBuild }
 
-    override fun build(): Episode.Podlove? {
+    override fun build(): EpisodePodlove? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
         val chapters = chapterBuilders.mapNotNull { it.build() }
-        return Episode.Podlove(chapters)
+        return EpisodePodlove(chapters)
     }
 }

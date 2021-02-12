@@ -2,9 +2,9 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.podlove.SimpleChapter
 
-internal class FakeEpisodePodloveSimpleChapterBuilder : FakeBuilder<Episode.Podlove.SimpleChapter>(), EpisodePodloveSimpleChapterBuilder {
+internal class FakeEpisodePodloveSimpleChapterBuilder : FakeBuilder<SimpleChapter>(), EpisodePodloveSimpleChapterBuilder {
 
     var startValue: String? = null
     var titleValue: String? = null

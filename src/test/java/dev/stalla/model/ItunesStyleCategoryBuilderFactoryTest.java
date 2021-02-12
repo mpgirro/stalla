@@ -1,6 +1,7 @@
 package dev.stalla.model;
 
-import dev.stalla.builder.ITunesStyleCategoryBuilder;
+import dev.stalla.builder.ItunesStyleCategoryBuilder;
+import dev.stalla.model.itunes.ItunesStyleCategory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,10 +12,10 @@ public class ItunesStyleCategoryBuilderFactoryTest {
     @Test
     @DisplayName("should build an ItunesStyleCategory model using builder factory methods only")
     public void testEpisodeBuilderFactory() {
-        ITunesStyleCategoryBuilder iTunesStyleCategoryBuilder = ITunesStyleCategory.builder()
+        ItunesStyleCategoryBuilder itunesStyleCategoryBuilder = ItunesStyleCategory.builder()
             .category("category");
 
-        assertNotNull(iTunesStyleCategoryBuilder.build());
+        assertNotNull(itunesStyleCategoryBuilder.build());
     }
 
 }

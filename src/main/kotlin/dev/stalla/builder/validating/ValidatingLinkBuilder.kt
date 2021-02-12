@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating
 
 import dev.stalla.builder.LinkBuilder
-import dev.stalla.model.Link
+import dev.stalla.model.atom.Link
 
 internal class ValidatingLinkBuilder : LinkBuilder {
 

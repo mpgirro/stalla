@@ -1,6 +1,15 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.episode.*;
+import dev.stalla.model.bitlove.Bitlove;
+import dev.stalla.model.content.Content;
+import dev.stalla.model.googleplay.EpisodeGoogleplay;
+import dev.stalla.model.itunes.EpisodeItunes;
+import dev.stalla.model.podcastns.*;
+import dev.stalla.model.podlove.EpisodePodlove;
+import dev.stalla.model.podlove.SimpleChapter;
+import dev.stalla.model.rss.Enclosure;
+import dev.stalla.model.rss.Guid;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +22,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode model using builder factory methods only")
     public void testEpisodeBuilderFactory() {
-        EpisodeEnclosureBuilder episodeEnclosureBuilder = Episode.Enclosure.builder()
+        EpisodeEnclosureBuilder episodeEnclosureBuilder = Enclosure.builder()
             .url("url")
             .length(123)
             .type("type");
@@ -28,7 +37,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Enclosure model using builder factory methods only")
     public void testEpisodeEnclosureBuilderFactory() {
-        EpisodeEnclosureBuilder episodeEnclosureBuilder = Episode.Enclosure.builder()
+        EpisodeEnclosureBuilder episodeEnclosureBuilder = Enclosure.builder()
             .url("url")
             .length(123)
             .type("type");
@@ -39,7 +48,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Guid model using builder factory methods only")
     public void testEpisodeGuidBuilderFactory() {
-        EpisodeGuidBuilder episodeGuidBuilder = Episode.Guid.builder()
+        EpisodeGuidBuilder episodeGuidBuilder = Guid.builder()
             .textContent("content");
 
         assertNotNull(episodeGuidBuilder.build());
@@ -48,38 +57,38 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Content model using builder factory methods only")
     public void testEpisodeContentBuilderFactory() {
-        EpisodeContentBuilder episodeContentBuilder = Episode.Content.builder()
+        EpisodeContentBuilder episodeContentBuilder = Content.builder()
             .encoded("encoded");
 
         assertNotNull(episodeContentBuilder.build());
     }
 
     @Test
-    @DisplayName("should build an Episode.Itunes model using builder factory methods only")
+    @DisplayName("should build an EpisodeItunes model using builder factory methods only")
     public void testEpisodeItunesBuilderFactory() {
-        EpisodeITunesBuilder episodeITunesBuilder = Episode.ITunes.builder()
+        EpisodeItunesBuilder episodeItunesBuilder = EpisodeItunes.builder()
             .title("title");
 
-        assertNotNull(episodeITunesBuilder.build());
+        assertNotNull(episodeItunesBuilder.build());
     }
 
     @Test
-    @DisplayName("should build an Episode.GooglePlay model model using builder factory methods only")
+    @DisplayName("should build an EpisodeGoogleplay model model using builder factory methods only")
     public void testEpisodeGooglePlayBuilderFactory() {
-        EpisodeGooglePlayBuilder episodeGooglePlayBuilder = Episode.GooglePlay.builder()
+        EpisodeGoogleplayBuilder episodeGoogleplayBuilder = EpisodeGoogleplay.builder()
             .explicit(false);
 
-        assertNotNull(episodeGooglePlayBuilder.build());
+        assertNotNull(episodeGoogleplayBuilder.build());
     }
 
     @Test
     @DisplayName("should build an Episode.Podlove model using builder factory methods only")
     public void testEpisodePodloveBuilderFactory() {
-        EpisodePodloveSimpleChapterBuilder episodePodloveSimpleChapterBuilder = Episode.Podlove.SimpleChapter.builder()
+        EpisodePodloveSimpleChapterBuilder episodePodloveSimpleChapterBuilder = SimpleChapter.builder()
             .title("title")
             .start("start");
 
-        EpisodePodloveBuilder episodePodloveBuilder = Episode.Podlove.builder()
+        EpisodePodloveBuilder episodePodloveBuilder = EpisodePodlove.builder()
             .addSimpleChapterBuilder(episodePodloveSimpleChapterBuilder);
 
         assertNotNull(episodePodloveBuilder.build());
@@ -88,7 +97,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Podlove.SimpleChapter model using builder factory methods only")
     public void testEpisodePodloveSimpleChapterBuilderFactory() {
-        EpisodePodloveSimpleChapterBuilder episodePodloveSimpleChapterBuilder = Episode.Podlove.SimpleChapter.builder()
+        EpisodePodloveSimpleChapterBuilder episodePodloveSimpleChapterBuilder = SimpleChapter.builder()
             .title("title")
             .start("start");
 
@@ -98,7 +107,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Bitlove model using builder factory methods only")
     public void testEpisodeBitloveBuilderFactory() {
-        EpisodeBitloveBuilder episodeBitloveBuilder = Episode.Bitlove.builder()
+        EpisodeBitloveBuilder episodeBitloveBuilder = Bitlove.builder()
             .guid("guid");
 
         assertNotNull(episodeBitloveBuilder.build());
@@ -107,11 +116,11 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Podcast model using builder factory methods only")
     public void testEpisodePodcastBuilderFactory() {
-        EpisodePodcastSoundbiteBuilder episodePodcastSoundbiteBuilder = Episode.Podcast.Soundbite.builder()
+        EpisodePodcastSoundbiteBuilder episodePodcastSoundbiteBuilder = Soundbite.builder()
             .startTime(Duration.ZERO)
             .duration(Duration.ZERO);
 
-        EpisodePodcastBuilder episodePodcastBuilder = Episode.Podcast.builder()
+        EpisodePodcastBuilder episodePodcastBuilder = EpisodePodcast.builder()
             .addSoundbiteBuilder(episodePodcastSoundbiteBuilder);
 
         assertNotNull(episodePodcastBuilder.build());
@@ -120,9 +129,9 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Podcast.Transcript model using builder factory methods only")
     public void testEpisodePodcastTranscriptBuilderFactory() {
-        EpisodePodcastTranscriptBuilder episodePodcastTranscriptBuilder = Episode.Podcast.Transcript.builder()
+        EpisodePodcastTranscriptBuilder episodePodcastTranscriptBuilder = Transcript.builder()
             .url("url")
-            .type(Episode.Podcast.Transcript.Type.PLAIN_TEXT);
+            .type(TranscriptType.PLAIN_TEXT);
 
         assertNotNull(episodePodcastTranscriptBuilder.build());
     }
@@ -130,7 +139,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Podcast.Chapter model using builder factory methods only")
     public void testEpisodePodcastChapterBuilderFactory() {
-        EpisodePodcastChaptersBuilder episodePodcastChaptersBuilder = Episode.Podcast.Chapters.builder()
+        EpisodePodcastChaptersBuilder episodePodcastChaptersBuilder = Chapters.builder()
             .url("url")
             .type("type");
 
@@ -140,7 +149,7 @@ public class EpisodeBuilderFactoryTest {
     @Test
     @DisplayName("should build an Episode.Podcast.Soundbite model using builder factory methods only")
     public void testEpisodePodcastSoundbiteBuilderFactory() {
-        EpisodePodcastSoundbiteBuilder episodePodcastSoundbiteBuilder = Episode.Podcast.Soundbite.builder()
+        EpisodePodcastSoundbiteBuilder episodePodcastSoundbiteBuilder = Soundbite.builder()
             .startTime(Duration.ZERO)
             .duration(Duration.ZERO.plusMinutes(1));
 

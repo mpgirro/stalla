@@ -2,9 +2,9 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodeBitloveBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.bitlove.Bitlove
 
-internal class FakeEpisodeBitloveBuilder : FakeBuilder<Episode.Bitlove>(), EpisodeBitloveBuilder {
+internal class FakeEpisodeBitloveBuilder : FakeBuilder<Bitlove>(), EpisodeBitloveBuilder {
 
     var guid: String? = null
 

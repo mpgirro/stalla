@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating
 
 import dev.stalla.builder.RssCategoryBuilder
-import dev.stalla.model.RssCategory
+import dev.stalla.model.rss.RssCategory
 
 internal class ValidatingRssCategoryBuilder : RssCategoryBuilder {
 

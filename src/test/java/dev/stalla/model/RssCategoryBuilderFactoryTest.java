@@ -1,6 +1,7 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.RssCategoryBuilder;
+import dev.stalla.model.rss.RssCategory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

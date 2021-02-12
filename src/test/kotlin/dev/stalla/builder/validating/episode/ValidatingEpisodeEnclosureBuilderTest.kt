@@ -10,8 +10,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
-import dev.stalla.model.Episode
 import dev.stalla.model.episode.anEpisodeEnclosure
+import dev.stalla.model.rss.Enclosure
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeEnclosureBuilderTest {
@@ -77,9 +77,9 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
             assertThat(episodeEnclosureBuilder).prop(EpisodeEnclosureBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeEnclosureBuilder.build()).isNotNull().all {
-                prop(Episode.Enclosure::url).isEqualTo("url")
-                prop(Episode.Enclosure::type).isEqualTo("type")
-                prop(Episode.Enclosure::length).isEqualTo(123)
+                prop(Enclosure::url).isEqualTo("url")
+                prop(Enclosure::type).isEqualTo("type")
+                prop(Enclosure::length).isEqualTo(123)
             }
         }
     }
@@ -87,7 +87,7 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
     @Test
     internal fun `should populate an Episode Enclosure builder with all properties from an Episode Enclosure model`() {
         val episodeEnclosure = anEpisodeEnclosure()
-        val episodeEnclosureBuilder = Episode.Enclosure.builder().from(episodeEnclosure)
+        val episodeEnclosureBuilder = Enclosure.builder().from(episodeEnclosure)
 
         assertAll {
             assertThat(episodeEnclosureBuilder).prop(EpisodeEnclosureBuilder::hasEnoughDataToBuild).isTrue()

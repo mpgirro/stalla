@@ -10,8 +10,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
-import dev.stalla.model.Podcast
 import dev.stalla.model.podcast.aPodcastPodcastLocked
+import dev.stalla.model.podcastns.Locked
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastPodcastLockedBuilderTest {
@@ -61,8 +61,8 @@ internal class ValidatingPodcastPodcastLockedBuilderTest {
             assertThat(lockedBuilder).prop(PodcastPodcastLockedBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(lockedBuilder.build()).isNotNull().all {
-                prop(Podcast.Podcast.Locked::locked).isTrue()
-                prop(Podcast.Podcast.Locked::owner).isEqualTo("Send me money please, kthxbye")
+                prop(Locked::locked).isTrue()
+                prop(Locked::owner).isEqualTo("Send me money please, kthxbye")
             }
         }
     }
@@ -70,7 +70,7 @@ internal class ValidatingPodcastPodcastLockedBuilderTest {
     @Test
     internal fun `should populate a Podcastindex Locked builder with all properties from an Podcastindex Locked model`() {
         val locked = aPodcastPodcastLocked()
-        val lockedBuilder = Podcast.Podcast.Locked.builder().from(locked)
+        val lockedBuilder = Locked.builder().from(locked)
 
         assertAll {
             assertThat(lockedBuilder).prop(PodcastPodcastLockedBuilder::hasEnoughDataToBuild).isTrue()

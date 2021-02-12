@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.podcastns.Locked
 
 internal class ValidatingPodcastPodcastLockedBuilder : PodcastPodcastLockedBuilder {
 
@@ -19,12 +19,12 @@ internal class ValidatingPodcastPodcastLockedBuilder : PodcastPodcastLockedBuild
     override val hasEnoughDataToBuild: Boolean
         get() = ::ownerValue.isInitialized && locked != null
 
-    override fun build(): Podcast.Podcast.Locked? {
+    override fun build(): Locked? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
         val lockedValue = locked ?: throw IllegalStateException("The locked flag is not set, while hasEnoughDataToBuild == true")
-        return Podcast.Podcast.Locked(ownerValue, lockedValue)
+        return Locked(ownerValue, lockedValue)
     }
 }

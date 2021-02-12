@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodeBitloveBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.bitlove.Bitlove
 
 internal class ValidatingEpisodeBitloveBuilder : EpisodeBitloveBuilder {
 
@@ -12,11 +12,11 @@ internal class ValidatingEpisodeBitloveBuilder : EpisodeBitloveBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() = ::guidValue.isInitialized
 
-    override fun build(): Episode.Bitlove? {
+    override fun build(): Bitlove? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Episode.Bitlove(guidValue)
+        return Bitlove(guidValue)
     }
 }

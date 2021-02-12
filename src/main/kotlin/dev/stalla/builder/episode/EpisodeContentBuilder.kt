@@ -1,16 +1,16 @@
 package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
-import dev.stalla.model.Episode
+import dev.stalla.model.content.Content
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Episode.Content] instances. */
-public interface EpisodeContentBuilder : Builder<Episode.Content> {
+/** Builder for constructing [Content] instances. */
+public interface EpisodeContentBuilder : Builder<Content> {
 
     /** Set the encoded value. */
     public fun encoded(encoded: String): EpisodeContentBuilder
 
-    override fun from(model: Episode.Content?): EpisodeContentBuilder = whenNotNull(model) { content ->
+    override fun from(model: Content?): EpisodeContentBuilder = whenNotNull(model) { content ->
         encoded(content.encoded)
     }
 }

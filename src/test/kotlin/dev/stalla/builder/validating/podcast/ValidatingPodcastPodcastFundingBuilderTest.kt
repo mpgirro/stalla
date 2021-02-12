@@ -10,8 +10,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.model.Podcast
 import dev.stalla.model.podcast.aPodcastPodcastFunding
+import dev.stalla.model.podcastns.Funding
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastPodcastFundingBuilderTest {
@@ -61,8 +61,8 @@ internal class ValidatingPodcastPodcastFundingBuilderTest {
             assertThat(fundingBuilder).prop(PodcastPodcastFundingBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(fundingBuilder.build()).isNotNull().all {
-                prop(Podcast.Podcast.Funding::url).isEqualTo("https://example.com/donate")
-                prop(Podcast.Podcast.Funding::message).isEqualTo("Send me money please, kthxbye")
+                prop(Funding::url).isEqualTo("https://example.com/donate")
+                prop(Funding::message).isEqualTo("Send me money please, kthxbye")
             }
         }
     }
@@ -70,7 +70,7 @@ internal class ValidatingPodcastPodcastFundingBuilderTest {
     @Test
     internal fun `should populate a Podcastindex Funding builder with all properties from an Podcastindex Funding model`() {
         val funding = aPodcastPodcastFunding()
-        val fundingBuilder = Podcast.Podcast.Funding.builder().from(funding)
+        val fundingBuilder = Funding.builder().from(funding)
 
         assertAll {
             assertThat(fundingBuilder).prop(PodcastPodcastFundingBuilder::hasEnoughDataToBuild).isTrue()

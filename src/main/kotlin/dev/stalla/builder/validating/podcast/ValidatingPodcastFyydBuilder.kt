@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.podcast.PodcastFyydBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.fyyd.Fyyd
 
 internal class ValidatingPodcastFyydBuilder : PodcastFyydBuilder {
 
@@ -12,10 +12,10 @@ internal class ValidatingPodcastFyydBuilder : PodcastFyydBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() = ::verifyValue.isInitialized
 
-    override fun build(): Podcast.Fyyd? {
+    override fun build(): Fyyd? {
         if (!hasEnoughDataToBuild) {
             return null
         }
-        return Podcast.Fyyd(verifyValue)
+        return Fyyd(verifyValue)
     }
 }

@@ -11,8 +11,9 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastBuilder
-import dev.stalla.model.Episode
 import dev.stalla.model.episode.anEpisodePodcast
+import dev.stalla.model.podcastns.EpisodePodcast
+import dev.stalla.model.podcastns.TranscriptType
 import org.junit.jupiter.api.Test
 import java.time.Duration
 import java.util.Locale
@@ -35,13 +36,13 @@ internal class ValidatingEpisodePodcastBuilderTest {
 
     private val firstExpectedTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
         .url("https://example.com/episode/transcript.srt")
-        .type(Episode.Podcast.Transcript.Type.SRT)
+        .type(TranscriptType.SRT)
         .language(Locale.ITALIAN)
         .rel("captions")
 
     private val secondExpectedTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
         .url("https://example.com/episode/transcript.txt")
-        .type(Episode.Podcast.Transcript.Type.PLAIN_TEXT)
+        .type(TranscriptType.PLAIN_TEXT)
         .language(Locale.ITALIAN)
 
     @Test
@@ -63,7 +64,7 @@ internal class ValidatingEpisodePodcastBuilderTest {
         assertAll {
             assertThat(episodePodcastBuilder).prop(EpisodePodcastBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodePodcastBuilder.build()).isNotNull().prop(Episode.Podcast::chapters).isEqualTo(expectedChaptersBuilder.build())
+            assertThat(episodePodcastBuilder.build()).isNotNull().prop(EpisodePodcast::chapters).isEqualTo(expectedChaptersBuilder.build())
         }
     }
 
@@ -88,7 +89,7 @@ internal class ValidatingEpisodePodcastBuilderTest {
             assertThat(episodePodcastBuilder).prop(EpisodePodcastBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodePodcastBuilder.build()).isNotNull()
-                .prop(Episode.Podcast::soundbites).containsExactly(firstExpectedSoundbiteBuilder.build())
+                .prop(EpisodePodcast::soundbites).containsExactly(firstExpectedSoundbiteBuilder.build())
         }
     }
 
@@ -113,7 +114,7 @@ internal class ValidatingEpisodePodcastBuilderTest {
             assertThat(episodePodcastBuilder).prop(EpisodePodcastBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodePodcastBuilder.build()).isNotNull()
-                .prop(Episode.Podcast::transcripts).containsExactly(firstExpectedTranscriptBuilder.build())
+                .prop(EpisodePodcast::transcripts).containsExactly(firstExpectedTranscriptBuilder.build())
         }
     }
 
@@ -142,9 +143,9 @@ internal class ValidatingEpisodePodcastBuilderTest {
             assertThat(episodePodcastBuilder).prop(EpisodePodcastBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodePodcastBuilder.build()).isNotNull().all {
-                prop(Episode.Podcast::chapters).isEqualTo(expectedChaptersBuilder.build())
-                prop(Episode.Podcast::soundbites).containsExactly(firstExpectedSoundbiteBuilder.build(), secondExpectedSoundbiteBuilder.build())
-                prop(Episode.Podcast::transcripts).containsExactly(firstExpectedTranscriptBuilder.build(), secondExpectedTranscriptBuilder.build())
+                prop(EpisodePodcast::chapters).isEqualTo(expectedChaptersBuilder.build())
+                prop(EpisodePodcast::soundbites).containsExactly(firstExpectedSoundbiteBuilder.build(), secondExpectedSoundbiteBuilder.build())
+                prop(EpisodePodcast::transcripts).containsExactly(firstExpectedTranscriptBuilder.build(), secondExpectedTranscriptBuilder.build())
             }
         }
     }
@@ -152,7 +153,7 @@ internal class ValidatingEpisodePodcastBuilderTest {
     @Test
     internal fun `should populate an Episode Podcastindex builder with all properties from an Episode Podcastindex model`() {
         val episodePodcast = anEpisodePodcast()
-        val episodePodcastBuilder = Episode.Podcast.builder().from(episodePodcast)
+        val episodePodcastBuilder = EpisodePodcast.builder().from(episodePodcast)
 
         assertAll {
             assertThat(episodePodcastBuilder).prop(EpisodePodcastBuilder::hasEnoughDataToBuild).isTrue()

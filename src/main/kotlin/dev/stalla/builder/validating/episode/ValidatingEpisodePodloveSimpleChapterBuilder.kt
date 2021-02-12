@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.podlove.SimpleChapter
 
 internal class ValidatingEpisodePodloveSimpleChapterBuilder : EpisodePodloveSimpleChapterBuilder {
 
@@ -22,12 +22,12 @@ internal class ValidatingEpisodePodloveSimpleChapterBuilder : EpisodePodloveSimp
     override val hasEnoughDataToBuild: Boolean
         get() = ::startValue.isInitialized && ::titleValue.isInitialized
 
-    override fun build(): Episode.Podlove.SimpleChapter? {
+    override fun build(): SimpleChapter? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Episode.Podlove.SimpleChapter(
+        return SimpleChapter(
             start = startValue,
             title = titleValue,
             href = href,

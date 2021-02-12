@@ -2,9 +2,9 @@ package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.podcastns.Funding
 
-internal class FakePodcastPodcastFundingBuilder : FakeBuilder<Podcast.Podcast.Funding>(), PodcastPodcastFundingBuilder {
+internal class FakePodcastPodcastFundingBuilder : FakeBuilder<Funding>(), PodcastPodcastFundingBuilder {
 
     var url: String? = null
     var message: String? = null

@@ -9,7 +9,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeContentBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisodeContent
 import org.junit.jupiter.api.Test
 
@@ -34,14 +34,14 @@ internal class ValidatingEpisodeContentBuilderTest {
         assertAll {
             assertThat(episodeContentBuilder).prop(EpisodeContentBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodeContentBuilder.build()).isNotNull().prop(Episode.Content::encoded).isEqualTo("encoded")
+            assertThat(episodeContentBuilder.build()).isNotNull().prop(Content::encoded).isEqualTo("encoded")
         }
     }
 
     @Test
     internal fun `should populate an Episode Bitlove builder with all properties from an Episode Bitlove model`() {
         val episodeContent = anEpisodeContent()
-        val episodeContentBuilder = Episode.Content.builder().from(episodeContent)
+        val episodeContentBuilder = Content.builder().from(episodeContent)
 
         assertAll {
             assertThat(episodeContentBuilder).prop(EpisodeContentBuilder::hasEnoughDataToBuild).isTrue()

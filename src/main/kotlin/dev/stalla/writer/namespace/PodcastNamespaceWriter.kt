@@ -3,6 +3,7 @@ package dev.stalla.writer.namespace
 import dev.stalla.dom.appendElement
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
+import dev.stalla.model.podcastns.Chapters
 import dev.stalla.util.BooleanStringStyle
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
@@ -75,7 +76,7 @@ internal object PodcastNamespaceWriter : NamespaceWriter() {
         }
     }
 
-    private fun Episode.Podcast.Chapters.canBeWritten() = url.isNotBlank() && type.isNotBlank()
+    private fun Chapters.canBeWritten() = url.isNotBlank() && type.isNotBlank()
 
     private fun Duration.isPositive(): Boolean = !(isNegative || isZero)
 

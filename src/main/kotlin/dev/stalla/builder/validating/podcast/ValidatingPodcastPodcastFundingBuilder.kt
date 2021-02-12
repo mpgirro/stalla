@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.model.Podcast
+import dev.stalla.model.podcastns.Funding
 
 internal class ValidatingPodcastPodcastFundingBuilder : PodcastPodcastFundingBuilder {
 
@@ -19,11 +19,11 @@ internal class ValidatingPodcastPodcastFundingBuilder : PodcastPodcastFundingBui
     override val hasEnoughDataToBuild: Boolean
         get() = ::urlValue.isInitialized && ::messageValue.isInitialized
 
-    override fun build(): Podcast.Podcast.Funding? {
+    override fun build(): Funding? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Podcast.Podcast.Funding(urlValue, messageValue)
+        return Funding(urlValue, messageValue)
     }
 }

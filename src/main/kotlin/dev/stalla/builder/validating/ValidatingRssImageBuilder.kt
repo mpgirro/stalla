@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating
 
 import dev.stalla.builder.RssImageBuilder
-import dev.stalla.model.RssImage
+import dev.stalla.model.rss.RssImage
 
 internal class ValidatingRssImageBuilder : RssImageBuilder {
 

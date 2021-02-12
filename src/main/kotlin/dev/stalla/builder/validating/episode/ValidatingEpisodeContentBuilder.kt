@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodeContentBuilder
-import dev.stalla.model.Episode
+import dev.stalla.model.content.Content
 
 internal class ValidatingEpisodeContentBuilder : EpisodeContentBuilder {
 
@@ -12,11 +12,11 @@ internal class ValidatingEpisodeContentBuilder : EpisodeContentBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() = ::encodedValue.isInitialized
 
-    override fun build(): Episode.Content? {
+    override fun build(): Content? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return Episode.Content(encodedValue)
+        return Content(encodedValue)
     }
 }

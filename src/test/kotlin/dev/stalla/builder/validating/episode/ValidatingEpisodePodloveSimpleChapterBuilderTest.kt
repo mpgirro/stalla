@@ -10,8 +10,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
-import dev.stalla.model.Episode
 import dev.stalla.model.episode.aPodloveSimpleChapter
+import dev.stalla.model.podlove.SimpleChapter
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodePodloveSimpleChapterBuilderTest {
@@ -37,10 +37,10 @@ internal class ValidatingEpisodePodloveSimpleChapterBuilderTest {
             assertThat(chapterBuilder).prop(EpisodePodloveSimpleChapterBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(chapterBuilder.build()).isNotNull().all {
-                prop(Episode.Podlove.SimpleChapter::start).isEqualTo("start")
-                prop(Episode.Podlove.SimpleChapter::title).isEqualTo("title")
-                prop(Episode.Podlove.SimpleChapter::href).isNull()
-                prop(Episode.Podlove.SimpleChapter::image).isNull()
+                prop(SimpleChapter::start).isEqualTo("start")
+                prop(SimpleChapter::title).isEqualTo("title")
+                prop(SimpleChapter::href).isNull()
+                prop(SimpleChapter::image).isNull()
             }
         }
     }
@@ -57,10 +57,10 @@ internal class ValidatingEpisodePodloveSimpleChapterBuilderTest {
             assertThat(chapterBuilder).prop(EpisodePodloveSimpleChapterBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(chapterBuilder.build()).isNotNull().all {
-                prop(Episode.Podlove.SimpleChapter::start).isEqualTo("start")
-                prop(Episode.Podlove.SimpleChapter::title).isEqualTo("title")
-                prop(Episode.Podlove.SimpleChapter::href).isEqualTo("href")
-                prop(Episode.Podlove.SimpleChapter::image).isEqualTo("image")
+                prop(SimpleChapter::start).isEqualTo("start")
+                prop(SimpleChapter::title).isEqualTo("title")
+                prop(SimpleChapter::href).isEqualTo("href")
+                prop(SimpleChapter::image).isEqualTo("image")
             }
         }
     }
@@ -68,7 +68,7 @@ internal class ValidatingEpisodePodloveSimpleChapterBuilderTest {
     @Test
     internal fun `should populate an Episode Podlove SimpleChapter builder with all properties from an Episode Podlove SimpleChapter model`() {
         val podloveSimpleChapter = aPodloveSimpleChapter()
-        val podloveSimpleChaptersBuilder = Episode.Podlove.SimpleChapter.builder().from(podloveSimpleChapter)
+        val podloveSimpleChaptersBuilder = SimpleChapter.builder().from(podloveSimpleChapter)
 
         assertAll {
             assertThat(podloveSimpleChaptersBuilder).prop(EpisodePodloveSimpleChapterBuilder::hasEnoughDataToBuild).isTrue()

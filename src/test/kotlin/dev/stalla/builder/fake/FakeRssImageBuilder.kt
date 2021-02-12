@@ -1,7 +1,7 @@
 package dev.stalla.builder.fake
 
 import dev.stalla.builder.RssImageBuilder
-import dev.stalla.model.RssImage
+import dev.stalla.model.rss.RssImage
 
 internal class FakeRssImageBuilder : FakeBuilder<RssImage>(), RssImageBuilder {
 

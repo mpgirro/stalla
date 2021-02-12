@@ -3,14 +3,14 @@ package dev.stalla.builder.podcast
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ITunesStyleCategoryBuilder
+import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.model.Podcast
-import dev.stalla.model.RssImage
+import dev.stalla.model.rss.RssImage
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor
@@ -19,7 +19,7 @@ import java.time.temporal.TemporalAccessor
 public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderProvider {
 
     /** The builder for data from the iTunes namespace. */
-    public val iTunesBuilder: PodcastITunesBuilder
+    public val itunesBuilder: PodcastItunesBuilder
 
     /** The builder for data from the Atom namespace. */
     public val atomBuilder: AtomBuilder
@@ -31,7 +31,7 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     public val feedpressBuilder: PodcastFeedpressBuilder
 
     /** The builder for data from the Google Play namespace. */
-    public val googlePlayBuilder: PodcastGooglePlayBuilder
+    public val googleplayBuilder: PodcastGoogleplayBuilder
 
     /** Set the Podcast namespace builder. */
     public val podcastBuilder: PodcastPodcastBuilder
@@ -100,8 +100,8 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
     public fun createRssCategoryBuilder(): RssCategoryBuilder
 
-    /** Creates an instance of [ITunesStyleCategoryBuilder] to use with this builder. */
-    public fun createITunesStyleCategoryBuilder(): ITunesStyleCategoryBuilder
+    /** Creates an instance of [ItunesStyleCategoryBuilder] to use with this builder. */
+    public fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder
 
     /** Creates an instance of [PodcastPodcastLockedBuilder] to use with this builder. */
     public fun createPodcastPodcastLockedBuilder(): PodcastPodcastLockedBuilder
@@ -110,11 +110,11 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     public fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder
 
     override fun from(model: Podcast?): PodcastBuilder = whenNotNull(model) { podcast ->
-        iTunesBuilder.from(podcast.iTunes)
+        itunesBuilder.from(podcast.itunes)
         atomBuilder.from(podcast.atom)
         fyydBuilder.from(podcast.fyyd)
         feedpressBuilder.from(podcast.feedpress)
-        googlePlayBuilder.from(podcast.googlePlay)
+        googleplayBuilder.from(podcast.googleplay)
         podcastBuilder.from(podcast.podcast)
         title(podcast.title)
         link(podcast.link)

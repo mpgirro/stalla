@@ -1,6 +1,6 @@
 package dev.stalla.builder
 
-import dev.stalla.model.RssCategory
+import dev.stalla.model.rss.RssCategory
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [RssCategory] instances. */
