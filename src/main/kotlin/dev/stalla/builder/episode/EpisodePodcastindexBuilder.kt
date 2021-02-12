@@ -1,13 +1,12 @@
 package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
-import dev.stalla.model.Episode
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.model.podcastindex.EpisodePodcastindex
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Episode.Podcast] instances. */
+/** Builder for constructing [EpisodePodcastindex] instances. */
 public interface EpisodePodcastindexBuilder : Builder<EpisodePodcastindex> {
 
     /**
