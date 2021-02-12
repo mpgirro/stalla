@@ -5,7 +5,7 @@ import dev.stalla.model.bitlove.Bitlove;
 import dev.stalla.model.content.Content;
 import dev.stalla.model.googleplay.EpisodeGoogleplay;
 import dev.stalla.model.itunes.EpisodeItunes;
-import dev.stalla.model.podcastns.*;
+import dev.stalla.model.podcastindex.*;
 import dev.stalla.model.podlove.EpisodePodlove;
 import dev.stalla.model.podlove.SimpleChapter;
 import dev.stalla.model.rss.Enclosure;

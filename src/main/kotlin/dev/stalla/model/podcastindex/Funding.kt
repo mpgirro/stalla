@@ -1,4 +1,4 @@
-package dev.stalla.model.podcastns
+package dev.stalla.model.podcastindex
 
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastFundingBuilder

@@ -20,9 +20,9 @@ import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.ItunesStyleCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
-import dev.stalla.model.podcastns.Funding
-import dev.stalla.model.podcastns.Locked
-import dev.stalla.model.podcastns.PodcastPodcast
+import dev.stalla.model.podcastindex.Funding
+import dev.stalla.model.podcastindex.Locked
+import dev.stalla.model.podcastindex.PodcastPodcast
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import java.time.Month

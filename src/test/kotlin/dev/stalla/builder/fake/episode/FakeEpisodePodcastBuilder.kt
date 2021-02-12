@@ -5,7 +5,7 @@ import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.podcastns.EpisodePodcast
+import dev.stalla.model.podcastindex.EpisodePodcast
 
 internal class FakeEpisodePodcastBuilder : FakeBuilder<EpisodePodcast>(), EpisodePodcastBuilder {
 

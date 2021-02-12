@@ -3,7 +3,7 @@ package dev.stalla.writer.namespace
 import dev.stalla.dom.appendElement
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
-import dev.stalla.model.podcastns.Chapters
+import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.util.BooleanStringStyle
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi

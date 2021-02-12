@@ -18,7 +18,7 @@ import dev.stalla.builder.fake.podcast.FakePodcastPodcastBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastFundingBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastLockedBuilder
 import dev.stalla.dom.XmlRes
-import dev.stalla.model.podcastns.TranscriptType
+import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node

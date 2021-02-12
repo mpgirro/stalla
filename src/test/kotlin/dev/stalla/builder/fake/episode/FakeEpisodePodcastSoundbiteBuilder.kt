@@ -2,7 +2,7 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.podcastns.Soundbite
+import dev.stalla.model.podcastindex.Soundbite
 import java.time.Duration
 
 internal class FakeEpisodePodcastSoundbiteBuilder : FakeBuilder<Soundbite>(), EpisodePodcastSoundbiteBuilder {

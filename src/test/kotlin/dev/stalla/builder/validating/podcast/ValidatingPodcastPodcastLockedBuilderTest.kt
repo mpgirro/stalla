@@ -11,7 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
 import dev.stalla.model.podcast.aPodcastPodcastLocked
-import dev.stalla.model.podcastns.Locked
+import dev.stalla.model.podcastindex.Locked
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastPodcastLockedBuilderTest {

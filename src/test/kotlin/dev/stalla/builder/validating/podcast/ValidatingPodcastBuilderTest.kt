@@ -26,7 +26,7 @@ import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcastns.PodcastPodcast
+import dev.stalla.model.podcastindex.PodcastPodcast
 import org.junit.jupiter.api.Test
 import java.time.Month
 

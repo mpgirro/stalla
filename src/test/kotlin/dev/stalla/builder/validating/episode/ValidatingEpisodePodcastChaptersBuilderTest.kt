@@ -11,7 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
 import dev.stalla.model.episode.anEpisodePodcastChapters
-import dev.stalla.model.podcastns.Chapters
+import dev.stalla.model.podcastindex.Chapters
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodePodcastChaptersBuilderTest {

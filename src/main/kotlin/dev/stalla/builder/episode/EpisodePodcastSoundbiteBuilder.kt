@@ -1,7 +1,7 @@
 package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
-import dev.stalla.model.podcastns.Soundbite
+import dev.stalla.model.podcastindex.Soundbite
 import dev.stalla.util.whenNotNull
 import java.time.Duration
 

@@ -4,7 +4,7 @@ import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastPodcastBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
-import dev.stalla.model.podcastns.PodcastPodcast
+import dev.stalla.model.podcastindex.PodcastPodcast
 
 internal class FakePodcastPodcastBuilder : FakeBuilder<PodcastPodcast>(), PodcastPodcastBuilder {
 

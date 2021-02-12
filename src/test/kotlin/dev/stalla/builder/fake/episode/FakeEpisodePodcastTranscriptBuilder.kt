@@ -2,8 +2,8 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.podcastns.Transcript
-import dev.stalla.model.podcastns.TranscriptType
+import dev.stalla.model.podcastindex.Transcript
+import dev.stalla.model.podcastindex.TranscriptType
 import java.util.Locale
 
 internal class FakeEpisodePodcastTranscriptBuilder : FakeBuilder<Transcript>(), EpisodePodcastTranscriptBuilder {

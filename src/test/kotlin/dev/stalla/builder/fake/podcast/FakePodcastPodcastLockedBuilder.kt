@@ -2,7 +2,7 @@ package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
-import dev.stalla.model.podcastns.Locked
+import dev.stalla.model.podcastindex.Locked
 
 internal class FakePodcastPodcastLockedBuilder : FakeBuilder<Locked>(), PodcastPodcastLockedBuilder {
 

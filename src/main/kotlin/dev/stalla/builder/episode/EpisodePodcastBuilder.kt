@@ -2,8 +2,8 @@ package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
 import dev.stalla.model.Episode
-import dev.stalla.model.podcastns.Chapters
-import dev.stalla.model.podcastns.EpisodePodcast
+import dev.stalla.model.podcastindex.Chapters
+import dev.stalla.model.podcastindex.EpisodePodcast
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 

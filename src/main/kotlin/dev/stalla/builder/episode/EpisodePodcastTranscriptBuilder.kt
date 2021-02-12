@@ -1,8 +1,8 @@
 package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
-import dev.stalla.model.podcastns.Transcript
-import dev.stalla.model.podcastns.TranscriptType
+import dev.stalla.model.podcastindex.Transcript
+import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.util.whenNotNull
 import java.util.Locale
 

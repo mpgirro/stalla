@@ -2,7 +2,7 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.model.podcastns.Chapters
+import dev.stalla.model.podcastindex.Chapters
 
 internal class FakeEpisodePodcastChaptersBuilder : FakeBuilder<Chapters>(), EpisodePodcastChaptersBuilder {
 

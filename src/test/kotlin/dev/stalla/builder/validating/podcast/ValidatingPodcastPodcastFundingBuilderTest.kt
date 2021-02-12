@@ -11,7 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.model.podcast.aPodcastPodcastFunding
-import dev.stalla.model.podcastns.Funding
+import dev.stalla.model.podcastindex.Funding
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastPodcastFundingBuilderTest {

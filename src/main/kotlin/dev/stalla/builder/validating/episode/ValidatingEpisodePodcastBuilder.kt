@@ -4,7 +4,7 @@ import dev.stalla.builder.episode.EpisodePodcastBuilder
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
-import dev.stalla.model.podcastns.EpisodePodcast
+import dev.stalla.model.podcastindex.EpisodePodcast
 
 internal class ValidatingEpisodePodcastBuilder : EpisodePodcastBuilder {
 

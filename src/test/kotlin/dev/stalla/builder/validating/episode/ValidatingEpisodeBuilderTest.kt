@@ -22,7 +22,7 @@ import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
-import dev.stalla.model.podcastns.EpisodePodcast
+import dev.stalla.model.podcastindex.EpisodePodcast
 import dev.stalla.model.podlove.EpisodePodlove
 import dev.stalla.model.rss.Guid
 import org.junit.jupiter.api.Test

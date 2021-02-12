@@ -1,8 +1,8 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
-import dev.stalla.model.podcastns.Transcript
-import dev.stalla.model.podcastns.TranscriptType
+import dev.stalla.model.podcastindex.Transcript
+import dev.stalla.model.podcastindex.TranscriptType
 import java.util.Locale
 
 internal class ValidatingEpisodePodcastTranscriptBuilder : EpisodePodcastTranscriptBuilder {

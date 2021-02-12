@@ -12,8 +12,8 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastBuilder
 import dev.stalla.model.episode.anEpisodePodcast
-import dev.stalla.model.podcastns.EpisodePodcast
-import dev.stalla.model.podcastns.TranscriptType
+import dev.stalla.model.podcastindex.EpisodePodcast
+import dev.stalla.model.podcastindex.TranscriptType
 import org.junit.jupiter.api.Test
 import java.time.Duration
 import java.util.Locale

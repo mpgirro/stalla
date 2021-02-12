@@ -1,4 +1,4 @@
-package dev.stalla.model.podcastns
+package dev.stalla.model.podcastindex
 
 /**
  * Supported transcript types. See the

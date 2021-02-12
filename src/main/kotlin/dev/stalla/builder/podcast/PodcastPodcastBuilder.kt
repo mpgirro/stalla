@@ -1,8 +1,8 @@
 package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder
-import dev.stalla.model.podcastns.Locked
-import dev.stalla.model.podcastns.PodcastPodcast
+import dev.stalla.model.podcastindex.Locked
+import dev.stalla.model.podcastindex.PodcastPodcast
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 

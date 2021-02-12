@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
-import dev.stalla.model.podcastns.Soundbite
+import dev.stalla.model.podcastindex.Soundbite
 import java.time.Duration
 
 internal class ValidatingEpisodePodcastSoundbiteBuilder : EpisodePodcastSoundbiteBuilder {

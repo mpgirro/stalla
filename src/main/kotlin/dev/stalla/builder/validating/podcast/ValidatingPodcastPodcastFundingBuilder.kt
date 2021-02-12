@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.model.podcastns.Funding
+import dev.stalla.model.podcastindex.Funding
 
 internal class ValidatingPodcastPodcastFundingBuilder : PodcastPodcastFundingBuilder {
 

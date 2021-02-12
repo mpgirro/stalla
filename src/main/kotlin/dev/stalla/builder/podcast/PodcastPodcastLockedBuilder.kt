@@ -2,7 +2,7 @@ package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder
 import dev.stalla.model.Podcast
-import dev.stalla.model.podcastns.Locked
+import dev.stalla.model.podcastindex.Locked
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [Podcast.Podcast.Locked] instances. */

@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
-import dev.stalla.model.podcastns.Chapters
+import dev.stalla.model.podcastindex.Chapters
 
 internal class ValidatingEpisodePodcastChaptersBuilder : EpisodePodcastChaptersBuilder {
 

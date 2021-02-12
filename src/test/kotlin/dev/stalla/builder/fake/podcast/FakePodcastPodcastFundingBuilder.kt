@@ -2,7 +2,7 @@ package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.model.podcastns.Funding
+import dev.stalla.model.podcastindex.Funding
 
 internal class FakePodcastPodcastFundingBuilder : FakeBuilder<Funding>(), PodcastPodcastFundingBuilder {
 

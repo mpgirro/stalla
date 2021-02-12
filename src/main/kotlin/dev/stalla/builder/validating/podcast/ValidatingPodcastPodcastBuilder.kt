@@ -3,7 +3,7 @@ package dev.stalla.builder.validating.podcast
 import dev.stalla.builder.podcast.PodcastPodcastBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
-import dev.stalla.model.podcastns.PodcastPodcast
+import dev.stalla.model.podcastindex.PodcastPodcast
 
 internal class ValidatingPodcastPodcastBuilder : PodcastPodcastBuilder {
 

@@ -10,9 +10,9 @@ import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.model.Episode
 import dev.stalla.model.itunes.ItunesStyleCategory
-import dev.stalla.model.podcastns.Funding
-import dev.stalla.model.podcastns.Soundbite
-import dev.stalla.model.podcastns.Transcript
+import dev.stalla.model.podcastindex.Funding
+import dev.stalla.model.podcastindex.Soundbite
+import dev.stalla.model.podcastindex.Transcript
 import dev.stalla.model.podlove.SimpleChapter
 import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.rss.RssCategory

@@ -1,7 +1,7 @@
 package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder
-import dev.stalla.model.podcastns.Funding
+import dev.stalla.model.podcastindex.Funding
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [Funding] instances. */

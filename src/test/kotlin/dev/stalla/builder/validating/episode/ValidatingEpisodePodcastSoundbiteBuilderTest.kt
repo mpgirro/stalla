@@ -11,7 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.model.episode.anEpisodePodcastSoundbite
-import dev.stalla.model.podcastns.Soundbite
+import dev.stalla.model.podcastindex.Soundbite
 import org.junit.jupiter.api.Test
 import java.time.Duration
 

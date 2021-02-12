@@ -9,7 +9,7 @@ import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
 import dev.stalla.dom.getAttributeByName
 import dev.stalla.dom.textAsBooleanOrNull
-import dev.stalla.model.podcastns.TranscriptType
+import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
