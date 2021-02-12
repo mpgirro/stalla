@@ -15,7 +15,7 @@ import dev.stalla.model.episode.anEpisodeGoogleplay
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import org.junit.jupiter.api.Test
 
-internal class ValidatingEpisodeGoogleplayBuilderTest2 {
+internal class ValidatingEpisodeGoogleplayBuilderTest {
 
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
