@@ -1,21 +1,21 @@
 package dev.stalla.builder.validating.episode
 
-import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.model.podcastindex.Soundbite
 import java.time.Duration
 
-internal class ValidatingEpisodePodcastSoundbiteBuilder : EpisodePodcastSoundbiteBuilder {
+internal class ValidatingEpisodePodcastindexSoundbiteBuilder : EpisodePodcastindexSoundbiteBuilder {
 
     private lateinit var startTimeValue: Duration
     private lateinit var durationValue: Duration
 
     private var title: String? = null
 
-    override fun startTime(startTime: Duration): EpisodePodcastSoundbiteBuilder = apply { this.startTimeValue = startTime }
+    override fun startTime(startTime: Duration): EpisodePodcastindexSoundbiteBuilder = apply { this.startTimeValue = startTime }
 
-    override fun duration(duration: Duration): EpisodePodcastSoundbiteBuilder = apply { this.durationValue = duration }
+    override fun duration(duration: Duration): EpisodePodcastindexSoundbiteBuilder = apply { this.durationValue = duration }
 
-    override fun title(title: String?): EpisodePodcastSoundbiteBuilder = apply { this.title = title }
+    override fun title(title: String?): EpisodePodcastindexSoundbiteBuilder = apply { this.title = title }
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::startTimeValue.isInitialized && ::durationValue.isInitialized

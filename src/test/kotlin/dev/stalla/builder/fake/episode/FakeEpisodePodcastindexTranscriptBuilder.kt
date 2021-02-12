@@ -1,29 +1,29 @@
 package dev.stalla.builder.fake.episode
 
-import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.model.podcastindex.Transcript
 import dev.stalla.model.podcastindex.TranscriptType
 import java.util.Locale
 
-internal class FakeEpisodePodcastTranscriptBuilder : FakeBuilder<Transcript>(), EpisodePodcastTranscriptBuilder {
+internal class FakeEpisodePodcastindexTranscriptBuilder : FakeBuilder<Transcript>(), EpisodePodcastindexTranscriptBuilder {
 
     var url: String? = null
     var type: TranscriptType? = null
     var language: Locale? = null
     var rel: String? = null
 
-    override fun url(url: String): EpisodePodcastTranscriptBuilder = apply { this.url = url }
+    override fun url(url: String): EpisodePodcastindexTranscriptBuilder = apply { this.url = url }
 
-    override fun type(type: TranscriptType): EpisodePodcastTranscriptBuilder = apply { this.type = type }
+    override fun type(type: TranscriptType): EpisodePodcastindexTranscriptBuilder = apply { this.type = type }
 
-    override fun language(language: Locale?): EpisodePodcastTranscriptBuilder = apply { this.language = language }
+    override fun language(language: Locale?): EpisodePodcastindexTranscriptBuilder = apply { this.language = language }
 
-    override fun rel(rel: String?): EpisodePodcastTranscriptBuilder = apply { this.rel = rel }
+    override fun rel(rel: String?): EpisodePodcastindexTranscriptBuilder = apply { this.rel = rel }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakeEpisodePodcastTranscriptBuilder) return false
+        if (other !is FakeEpisodePodcastindexTranscriptBuilder) return false
 
         if (url != other.url) return false
         if (type != other.type) return false

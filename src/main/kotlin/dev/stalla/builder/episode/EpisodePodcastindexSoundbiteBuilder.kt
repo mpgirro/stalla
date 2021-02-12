@@ -6,18 +6,18 @@ import dev.stalla.util.whenNotNull
 import java.time.Duration
 
 /** Builder for constructing [Soundbite] instances. */
-public interface EpisodePodcastSoundbiteBuilder : Builder<Soundbite> {
+public interface EpisodePodcastindexSoundbiteBuilder : Builder<Soundbite> {
 
     /** Set the starTime value. */
-    public fun startTime(startTime: Duration): EpisodePodcastSoundbiteBuilder
+    public fun startTime(startTime: Duration): EpisodePodcastindexSoundbiteBuilder
 
     /** Set the duration value. */
-    public fun duration(duration: Duration): EpisodePodcastSoundbiteBuilder
+    public fun duration(duration: Duration): EpisodePodcastindexSoundbiteBuilder
 
     /** Set the title value. */
-    public fun title(title: String?): EpisodePodcastSoundbiteBuilder
+    public fun title(title: String?): EpisodePodcastindexSoundbiteBuilder
 
-    override fun from(model: Soundbite?): EpisodePodcastSoundbiteBuilder = whenNotNull(model) { soundbite ->
+    override fun from(model: Soundbite?): EpisodePodcastindexSoundbiteBuilder = whenNotNull(model) { soundbite ->
         startTime(soundbite.startTime)
         duration(soundbite.duration)
         title(soundbite.title)

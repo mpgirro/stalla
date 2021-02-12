@@ -5,15 +5,15 @@ import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [Chapters] instances. */
-public interface EpisodePodcastChaptersBuilder : Builder<Chapters> {
+public interface EpisodePodcastindexChaptersBuilder : Builder<Chapters> {
 
     /** Set the url value . */
-    public fun url(url: String): EpisodePodcastChaptersBuilder
+    public fun url(url: String): EpisodePodcastindexChaptersBuilder
 
     /** Set the type value. */
-    public fun type(type: String): EpisodePodcastChaptersBuilder
+    public fun type(type: String): EpisodePodcastindexChaptersBuilder
 
-    override fun from(model: Chapters?): EpisodePodcastChaptersBuilder = whenNotNull(model) { chapters ->
+    override fun from(model: Chapters?): EpisodePodcastindexChaptersBuilder = whenNotNull(model) { chapters ->
         url(chapters.url)
         type(chapters.type)
     }

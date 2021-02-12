@@ -16,8 +16,8 @@ import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
 import dev.stalla.builder.fake.FakeRssImageBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
-import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.model.Podcast
 import java.time.temporal.TemporalAccessor
 
@@ -51,7 +51,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override val googleplayBuilder: FakePodcastGoogleplayBuilder = FakePodcastGoogleplayBuilder()
 
-    override val podcastBuilder: FakePodcastPodcastBuilder = FakePodcastPodcastBuilder()
+    override val podcastPodcastindexBuilder: FakePodcastPodcastindexBuilder = FakePodcastPodcastindexBuilder()
 
     override fun title(title: String): PodcastBuilder = apply { this.titleValue = title }
 
@@ -99,9 +99,9 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder = FakeItunesStyleCategoryBuilder()
 
-    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastLockedBuilder = FakePodcastPodcastLockedBuilder()
+    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder = FakePodcastPodcastindexLockedBuilder()
 
-    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder = FakePodcastPodcastFundingBuilder()
+    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder = FakePodcastPodcastindexFundingBuilder()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -127,7 +127,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         if (fyydBuilder != other.fyydBuilder) return false
         if (feedpressBuilder != other.feedpressBuilder) return false
         if (googleplayBuilder != other.googleplayBuilder) return false
-        if (podcastBuilder != other.podcastBuilder) return false
+        if (podcastPodcastindexBuilder != other.podcastPodcastindexBuilder) return false
 
         return true
     }
@@ -153,7 +153,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
         result = 31 * result + fyydBuilder.hashCode()
         result = 31 * result + feedpressBuilder.hashCode()
         result = 31 * result + googleplayBuilder.hashCode()
-        result = 31 * result + podcastBuilder.hashCode()
+        result = 31 * result + podcastPodcastindexBuilder.hashCode()
         return result
     }
 
@@ -162,5 +162,5 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
             "pubDate=$pubDate, lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, docs=$docs, " +
             "managingEditor=$managingEditor, webMaster=$webMaster, ttl=$ttl, imageBuilder=$imageBuilder, episodeBuilders=$episodeBuilders, " +
             "categoryBuilders=$categoryBuilders, iTunesBuilder=$itunesBuilder, atomBuilder=$atomBuilder, fyydBuilder=$fyydBuilder, " +
-            "feedpressBuilder=$feedpressBuilder, googlePlayBuilder=$googleplayBuilder, podcastBuilder=$podcastBuilder)"
+            "feedpressBuilder=$feedpressBuilder, googlePlayBuilder=$googleplayBuilder, podcastBuilder=$podcastPodcastindexBuilder)"
 }

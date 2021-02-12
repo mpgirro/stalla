@@ -1,18 +1,18 @@
 package dev.stalla.builder.validating.podcast
 
-import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.model.podcastindex.Locked
 
-internal class ValidatingPodcastPodcastLockedBuilder : PodcastPodcastLockedBuilder {
+internal class ValidatingPodcastPodcastindexLockedBuilder : PodcastPodcastindexLockedBuilder {
 
     private lateinit var ownerValue: String
     private var locked: Boolean? = null
 
-    override fun owner(owner: String): PodcastPodcastLockedBuilder = apply {
+    override fun owner(owner: String): PodcastPodcastindexLockedBuilder = apply {
         this.ownerValue = owner
     }
 
-    override fun locked(locked: Boolean): PodcastPodcastLockedBuilder = apply {
+    override fun locked(locked: Boolean): PodcastPodcastindexLockedBuilder = apply {
         this.locked = locked
     }
 

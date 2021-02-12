@@ -36,7 +36,7 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
     public val bitloveBuilder: EpisodeBitloveBuilder
 
     /** The builder for data from the Podcast namespace. */
-    public val podcastBuilder: EpisodePodcastBuilder
+    public val podcastindexBuilder: EpisodePodcastindexBuilder
 
     /** Set the title value. */
     public fun title(title: String): EpisodeBuilder
@@ -91,14 +91,14 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
     /** Creates an instance of [ItunesStyleCategoryBuilder] to use with this builder. */
     public fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder
 
-    /** Creates an instance of [EpisodePodcastTranscriptBuilder] to use with this builder. */
-    public fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastTranscriptBuilder
+    /** Creates an instance of [EpisodePodcastindexTranscriptBuilder] to use with this builder. */
+    public fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder
 
-    /** Creates an instance of [EpisodePodcastChaptersBuilder] to use with this builder. */
-    public fun createEpisodePodcastChaptersBuilder(): EpisodePodcastChaptersBuilder
+    /** Creates an instance of [EpisodePodcastindexChaptersBuilder] to use with this builder. */
+    public fun createEpisodePodcastChaptersBuilder(): EpisodePodcastindexChaptersBuilder
 
-    /** Creates an instance of [EpisodePodcastSoundbiteBuilder] to use with this builder. */
-    public fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastSoundbiteBuilder
+    /** Creates an instance of [EpisodePodcastindexSoundbiteBuilder] to use with this builder. */
+    public fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder
 
     override fun from(model: Episode?): EpisodeBuilder = whenNotNull(model) { episode ->
         contentBuilder.from(episode.content)
@@ -107,7 +107,7 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
         podloveBuilder.from(episode.podlove)
         googleplayBuilder.from(episode.googleplay)
         bitloveBuilder.from(episode.bitlove)
-        podcastBuilder.from(episode.podcastindex)
+        podcastindexBuilder.from(episode.podcastindex)
         title(episode.title)
         link(episode.link)
         description(episode.description)

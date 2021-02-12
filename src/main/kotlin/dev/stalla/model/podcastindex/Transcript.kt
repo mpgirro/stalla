@@ -1,7 +1,7 @@
 package dev.stalla.model.podcastindex
 
-import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastTranscriptBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
+import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexTranscriptBuilder
 import dev.stalla.model.BuilderFactory
 import java.util.Locale
 
@@ -20,10 +20,10 @@ public data class Transcript(
     val rel: String? = null
 ) {
 
-    public companion object Factory : BuilderFactory<Transcript, EpisodePodcastTranscriptBuilder> {
+    public companion object Factory : BuilderFactory<Transcript, EpisodePodcastindexTranscriptBuilder> {
 
         /** Returns a builder implementation for building [Transcript] model instances. */
         @JvmStatic
-        override fun builder(): EpisodePodcastTranscriptBuilder = ValidatingEpisodePodcastTranscriptBuilder()
+        override fun builder(): EpisodePodcastindexTranscriptBuilder = ValidatingEpisodePodcastindexTranscriptBuilder()
     }
 }

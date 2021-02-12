@@ -9,14 +9,14 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
-import dev.stalla.builder.fake.episode.FakeEpisodePodcastBuilder
-import dev.stalla.builder.fake.episode.FakeEpisodePodcastChaptersBuilder
-import dev.stalla.builder.fake.episode.FakeEpisodePodcastSoundbiteBuilder
-import dev.stalla.builder.fake.episode.FakeEpisodePodcastTranscriptBuilder
+import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexBuilder
+import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexChaptersBuilder
+import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexSoundbiteBuilder
+import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastBuilder
-import dev.stalla.builder.fake.podcast.FakePodcastPodcastBuilder
-import dev.stalla.builder.fake.podcast.FakePodcastPodcastFundingBuilder
-import dev.stalla.builder.fake.podcast.FakePodcastPodcastLockedBuilder
+import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexBuilder
+import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexFundingBuilder
+import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexLockedBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.NamespaceParserTest
@@ -29,24 +29,24 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
 
     override val parser = PodcastindexParser
 
-    private val expectedLockedBuilder = FakePodcastPodcastLockedBuilder()
+    private val expectedLockedBuilder = FakePodcastPodcastindexLockedBuilder()
         .locked(true)
         .owner("podcastowner@example.com")
 
-    private val expectedFundingBuilder = FakePodcastPodcastFundingBuilder()
+    private val expectedFundingBuilder = FakePodcastPodcastindexFundingBuilder()
         .url("https://example.com/donate")
         .message("Support the show!")
 
-    private val expectedChaptersBuilder = FakeEpisodePodcastChaptersBuilder()
+    private val expectedChaptersBuilder = FakeEpisodePodcastindexChaptersBuilder()
         .url("https://example.com/ep3_chapters.json")
         .type("application/json")
 
-    private val expectedSoundbiteBuilder = FakeEpisodePodcastSoundbiteBuilder()
+    private val expectedSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
         .startTime(Duration.ofMillis(33833))
         .duration(Duration.ofSeconds(60))
         .title("I'm a soundbite")
 
-    private val expectedTranscriptBuilder = FakeEpisodePodcastTranscriptBuilder()
+    private val expectedTranscriptBuilder = FakeEpisodePodcastindexTranscriptBuilder()
         .url("https://example.com/ep3/transcript.txt")
         .type(TranscriptType.PLAIN_TEXT)
         .language(Locale.ITALY)
@@ -58,9 +58,9 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.podcastBuilder, "podcast: podcast data").isNotNull().all {
-            prop(FakePodcastPodcastBuilder::lockedBuilderValue).isEqualTo(expectedLockedBuilder)
-            prop(FakePodcastPodcastBuilder::fundingBuilders).containsExactly(expectedFundingBuilder)
+        assertThat(builder.podcastPodcastindexBuilder, "podcast: podcast data").isNotNull().all {
+            prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isEqualTo(expectedLockedBuilder)
+            prop(FakePodcastPodcastindexBuilder::fundingBuilders).containsExactly(expectedFundingBuilder)
         }
     }
 
@@ -70,9 +70,9 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.podcastBuilder, "podcast: episode data").all {
-            prop(FakePodcastPodcastBuilder::lockedBuilderValue).isNull()
-            prop(FakePodcastPodcastBuilder::fundingBuilders).isEmpty()
+        assertThat(builder.podcastPodcastindexBuilder, "podcast: episode data").all {
+            prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
+            prop(FakePodcastPodcastindexBuilder::fundingBuilders).isEmpty()
         }
     }
 
@@ -82,9 +82,9 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.podcastBuilder, "podcast: episode data").all {
-            prop(FakePodcastPodcastBuilder::lockedBuilderValue).isNull()
-            prop(FakePodcastPodcastBuilder::fundingBuilders).isEmpty()
+        assertThat(builder.podcastPodcastindexBuilder, "podcast: episode data").all {
+            prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
+            prop(FakePodcastPodcastindexBuilder::fundingBuilders).isEmpty()
         }
     }
 
@@ -94,10 +94,10 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.podcastBuilder, "podcast: item data").all {
-            prop(FakeEpisodePodcastBuilder::chaptersBuilderValue).isEqualTo(expectedChaptersBuilder)
-            prop(FakeEpisodePodcastBuilder::soundbiteBuilders).containsExactly(expectedSoundbiteBuilder)
-            prop(FakeEpisodePodcastBuilder::transcriptBuilders).containsExactly(expectedTranscriptBuilder)
+        assertThat(builder.podcastindexBuilder, "podcast: item data").all {
+            prop(FakeEpisodePodcastindexBuilder::chaptersBuilderValue).isEqualTo(expectedChaptersBuilder)
+            prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).containsExactly(expectedSoundbiteBuilder)
+            prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).containsExactly(expectedTranscriptBuilder)
         }
     }
 
@@ -107,10 +107,10 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.podcastBuilder, "podcast: item data").all {
-            prop(FakeEpisodePodcastBuilder::chaptersBuilderValue).isNull()
-            prop(FakeEpisodePodcastBuilder::soundbiteBuilders).isEmpty()
-            prop(FakeEpisodePodcastBuilder::transcriptBuilders).isEmpty()
+        assertThat(builder.podcastindexBuilder, "podcast: item data").all {
+            prop(FakeEpisodePodcastindexBuilder::chaptersBuilderValue).isNull()
+            prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).isEmpty()
+            prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).isEmpty()
         }
     }
 
@@ -120,10 +120,10 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.podcastBuilder, "podcast: item data").all {
-            prop(FakeEpisodePodcastBuilder::chaptersBuilderValue).isNull()
-            prop(FakeEpisodePodcastBuilder::soundbiteBuilders).isEmpty()
-            prop(FakeEpisodePodcastBuilder::transcriptBuilders).isEmpty()
+        assertThat(builder.podcastindexBuilder, "podcast: item data").all {
+            prop(FakeEpisodePodcastindexBuilder::chaptersBuilderValue).isNull()
+            prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).isEmpty()
+            prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).isEmpty()
         }
     }
 
@@ -134,8 +134,8 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.podcastBuilder, "podcast: item data").all {
-            prop(FakeEpisodePodcastBuilder::soundbiteBuilders).isEmpty()
+        assertThat(builder.podcastindexBuilder, "podcast: item data").all {
+            prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).isEmpty()
         }
     }
 }

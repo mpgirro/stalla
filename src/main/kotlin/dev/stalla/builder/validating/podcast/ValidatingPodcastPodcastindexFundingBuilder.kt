@@ -1,18 +1,18 @@
 package dev.stalla.builder.validating.podcast
 
-import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.model.podcastindex.Funding
 
-internal class ValidatingPodcastPodcastFundingBuilder : PodcastPodcastFundingBuilder {
+internal class ValidatingPodcastPodcastindexFundingBuilder : PodcastPodcastindexFundingBuilder {
 
     private lateinit var urlValue: String
     private lateinit var messageValue: String
 
-    override fun url(url: String): PodcastPodcastFundingBuilder = apply {
+    override fun url(url: String): PodcastPodcastindexFundingBuilder = apply {
         this.urlValue = url
     }
 
-    override fun message(message: String): PodcastPodcastFundingBuilder = apply {
+    override fun message(message: String): PodcastPodcastindexFundingBuilder = apply {
         this.messageValue = message
     }
 

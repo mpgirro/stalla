@@ -48,7 +48,7 @@ internal class ValidatingEpisodeBuilderTest {
         ValidatingRssCategoryBuilder().category("category 2")
     )
 
-    private val expectedPodcastChaptersBuilder = ValidatingEpisodePodcastChaptersBuilder()
+    private val expectedPodcastChaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
         .url("https://example.com/episode/chapters.json")
         .type("application/json+chapters")
 
@@ -139,7 +139,7 @@ internal class ValidatingEpisodeBuilderTest {
                 podloveBuilder.addSimpleChapterBuilder(expectedSimpleChapterBuilder)
                 googleplayBuilder.description("play description")
                 bitloveBuilder.guid("bitlove guid")
-                podcastBuilder.chaptersBuilder(expectedPodcastChaptersBuilder)
+                podcastindexBuilder.chaptersBuilder(expectedPodcastChaptersBuilder)
             }
 
         assertAll {

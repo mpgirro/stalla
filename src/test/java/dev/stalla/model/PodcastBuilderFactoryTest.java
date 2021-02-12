@@ -90,20 +90,20 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a Podcast.Podcast model using builder factory methods only")
     public void testPodcastPodcastBuilderFactory() {
-        PodcastPodcastFundingBuilder podcastFundingBuilder = Funding.builder()
+        PodcastPodcastindexFundingBuilder podcastFundingBuilder = Funding.builder()
             .url("url")
             .message("message");
 
-        PodcastPodcastBuilder podcastPodcastBuilder = PodcastPodcastindex.builder()
+        PodcastPodcastindexBuilder podcastPodcastindexBuilder = PodcastPodcastindex.builder()
             .addFundingBuilder(podcastFundingBuilder);
 
-        assertNotNull(podcastPodcastBuilder.build());
+        assertNotNull(podcastPodcastindexBuilder.build());
     }
 
     @Test
     @DisplayName("should build a Podcast.Podcast.Locked model using builder factory methods only")
     public void testPodcastPodcastLockedBuilderFactory() {
-        PodcastPodcastLockedBuilder podcastLockedBuilder = Locked.builder()
+        PodcastPodcastindexLockedBuilder podcastLockedBuilder = Locked.builder()
             .locked(false)
             .owner("owner");
 
@@ -113,7 +113,7 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a Podcast.Podcast.Funding model using builder factory methods only")
     public void testPodcastPodcastFundingBuilderFactory() {
-        PodcastPodcastFundingBuilder podcastFundingBuilder = Funding.builder()
+        PodcastPodcastindexFundingBuilder podcastFundingBuilder = Funding.builder()
             .url("url")
             .message("message");
 

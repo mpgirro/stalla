@@ -63,7 +63,7 @@ internal class ValidatingPodcastBuilderTest {
         ValidatingRssCategoryBuilder().category("category 2")
     )
 
-    private val expectedLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+    private val expectedLockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
         .locked(true)
         .owner("owner@example.com")
 
@@ -215,7 +215,7 @@ internal class ValidatingPodcastBuilderTest {
                 feedpressBuilder.newsletterId("feedpress newsletterId")
                 fyydBuilder.verify("fyyd verify")
                 googleplayBuilder.description("play description")
-                podcastBuilder.lockedBuilder(expectedLockedBuilder)
+                podcastPodcastindexBuilder.lockedBuilder(expectedLockedBuilder)
             }
 
         assertAll {

@@ -1,20 +1,20 @@
 package dev.stalla.builder.validating.podcast
 
-import dev.stalla.builder.podcast.PodcastPodcastBuilder
-import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.model.podcastindex.PodcastPodcastindex
 
-internal class ValidatingPodcastPodcastBuilder : PodcastPodcastBuilder {
+internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder {
 
-    private lateinit var lockedBuilderValue: PodcastPodcastLockedBuilder
-    private val fundingBuilders: MutableList<PodcastPodcastFundingBuilder> = mutableListOf()
+    private lateinit var lockedBuilderValue: PodcastPodcastindexLockedBuilder
+    private val fundingBuilders: MutableList<PodcastPodcastindexFundingBuilder> = mutableListOf()
 
-    override fun lockedBuilder(lockedBuilder: PodcastPodcastLockedBuilder): PodcastPodcastBuilder = apply {
+    override fun lockedBuilder(lockedBuilder: PodcastPodcastindexLockedBuilder): PodcastPodcastindexBuilder = apply {
         this.lockedBuilderValue = lockedBuilder
     }
 
-    override fun addFundingBuilder(fundingBuilder: PodcastPodcastFundingBuilder): PodcastPodcastBuilder = apply {
+    override fun addFundingBuilder(fundingBuilder: PodcastPodcastindexFundingBuilder): PodcastPodcastindexBuilder = apply {
         fundingBuilders.add(fundingBuilder)
     }
 

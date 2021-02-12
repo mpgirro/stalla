@@ -1,7 +1,7 @@
 package dev.stalla.model.podcastindex
 
-import dev.stalla.builder.episode.EpisodePodcastBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexBuilder
+import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexBuilder
 import dev.stalla.model.BuilderFactory
 
 /**
@@ -17,10 +17,10 @@ public data class EpisodePodcastindex(
     val chapters: Chapters? = null
 ) {
 
-    public companion object Factory : BuilderFactory<EpisodePodcastindex, EpisodePodcastBuilder> {
+    public companion object Factory : BuilderFactory<EpisodePodcastindex, EpisodePodcastindexBuilder> {
 
         /** Returns a builder implementation for building [EpisodePodcastindex] model instances. */
         @JvmStatic
-        override fun builder(): EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
+        override fun builder(): EpisodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
     }
 }

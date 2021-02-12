@@ -4,10 +4,10 @@ import dev.stalla.builder.ItunesStyleCategoryBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
-import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
-import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
-import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.model.Episode
 import dev.stalla.model.itunes.ItunesStyleCategory
 import dev.stalla.model.podcastindex.Funding
@@ -32,21 +32,21 @@ internal fun List<ItunesStyleCategory>.asBuilders(): List<ItunesStyleCategoryBui
 @JvmName("asEnclosureBuilders")
 internal fun List<Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = map(Enclosure.builder()::from)
 
-/** Transforms this list into a list of [EpisodePodcastSoundbiteBuilder] */
+/** Transforms this list into a list of [EpisodePodcastindexSoundbiteBuilder] */
 @InternalApi
 @JvmName("asSoundbiteBuilders")
-internal fun List<Soundbite>.asBuilders(): List<EpisodePodcastSoundbiteBuilder> = map(Soundbite.builder()::from)
+internal fun List<Soundbite>.asBuilders(): List<EpisodePodcastindexSoundbiteBuilder> = map(Soundbite.builder()::from)
 
-/** Transforms this list into a list of [EpisodePodcastTranscriptBuilder] */
+/** Transforms this list into a list of [EpisodePodcastindexTranscriptBuilder] */
 @InternalApi
 @JvmName("asTranscriptBuilders")
-internal fun List<Transcript>.asBuilders(): List<EpisodePodcastTranscriptBuilder> =
+internal fun List<Transcript>.asBuilders(): List<EpisodePodcastindexTranscriptBuilder> =
     map(Transcript.builder()::from)
 
-/** Transforms this list into a list of [PodcastPodcastFundingBuilder] */
+/** Transforms this list into a list of [PodcastPodcastindexFundingBuilder] */
 @InternalApi
 @JvmName("asFundingBuilders")
-internal fun List<Funding>.asBuilders(): List<PodcastPodcastFundingBuilder> = map(Funding.builder()::from)
+internal fun List<Funding>.asBuilders(): List<PodcastPodcastindexFundingBuilder> = map(Funding.builder()::from)
 
 /** Transforms this list into a list of [EpisodePodloveSimpleChapterBuilder] */
 @InternalApi

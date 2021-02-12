@@ -10,31 +10,31 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import dev.stalla.builder.podcast.PodcastPodcastBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
 import dev.stalla.model.podcast.aPodcastPodcast
 import dev.stalla.model.podcastindex.PodcastPodcastindex
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastPodcastindexBuilderTest {
 
-    private val expectedLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+    private val expectedLockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
         .locked(true)
         .owner("owner@example.com")
 
-    private val firstExpectedFundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+    private val firstExpectedFundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
         .url("https://example.com/donate")
         .message("First funding")
 
-    private val secondExpectedFundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+    private val secondExpectedFundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
         .url("https://example.com/donate-more")
         .message("Second funding")
 
     @Test
     internal fun `should not build a Podcast Podcast with when all the fields are empty`() {
-        val podcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
+        val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
 
         assertAll {
-            assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(podcastPodcastBuilder).prop(PodcastPodcastindexBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(podcastPodcastBuilder.build()).isNull()
         }
@@ -42,11 +42,11 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
 
     @Test
     internal fun `should build a Podcast Podcast with at least a locked builder`() {
-        val podcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
+        val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
             .lockedBuilder(expectedLockedBuilder)
 
         assertAll {
-            assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastPodcastBuilder).prop(PodcastPodcastindexBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastPodcastBuilder.build()).isNotNull().prop(PodcastPodcastindex::locked).isEqualTo(expectedLockedBuilder.build())
         }
@@ -54,11 +54,11 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
 
     @Test
     internal fun `should not build a Podcast Podcast when there is only a locked builder that doesn't build`() {
-        val podcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
-            .lockedBuilder(ValidatingPodcastPodcastLockedBuilder())
+        val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
+            .lockedBuilder(ValidatingPodcastPodcastindexLockedBuilder())
 
         assertAll {
-            assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(podcastPodcastBuilder).prop(PodcastPodcastindexBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(podcastPodcastBuilder.build()).isNull()
         }
@@ -66,11 +66,11 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
 
     @Test
     internal fun `should build a Podcast Podcast with at least one funding builder`() {
-        val podcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
+        val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
             .addFundingBuilder(firstExpectedFundingBuilder)
 
         assertAll {
-            assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastPodcastBuilder).prop(PodcastPodcastindexBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastPodcastBuilder.build()).isNotNull()
                 .prop(PodcastPodcastindex::funding).containsExactly(firstExpectedFundingBuilder.build())
@@ -79,11 +79,11 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
 
     @Test
     internal fun `should not build a Podcast Podcast when there is only a funding builder that doesn't build`() {
-        val podcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
-            .addFundingBuilder(ValidatingPodcastPodcastFundingBuilder())
+        val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
+            .addFundingBuilder(ValidatingPodcastPodcastindexFundingBuilder())
 
         assertAll {
-            assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(podcastPodcastBuilder).prop(PodcastPodcastindexBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(podcastPodcastBuilder.build()).isNull()
         }
@@ -91,13 +91,13 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
 
     @Test
     internal fun `should build a Podcast Podcast with with all the added entries to its fields`() {
-        val podcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
+        val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
             .lockedBuilder(expectedLockedBuilder)
             .addFundingBuilder(firstExpectedFundingBuilder)
             .addFundingBuilder(secondExpectedFundingBuilder)
 
         assertAll {
-            assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastPodcastBuilder).prop(PodcastPodcastindexBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastPodcastBuilder.build()).isNotNull().all {
                 prop(PodcastPodcastindex::locked).isEqualTo(expectedLockedBuilder.build())
@@ -112,7 +112,7 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
         val podcastPodcastBuilder = PodcastPodcastindex.builder().from(podcastPodcast)
 
         assertAll {
-            assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(podcastPodcastBuilder).prop(PodcastPodcastindexBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastPodcastBuilder.build()).isNotNull().isEqualTo(podcastPodcast)
         }

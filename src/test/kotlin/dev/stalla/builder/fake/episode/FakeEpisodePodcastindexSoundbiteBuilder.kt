@@ -1,25 +1,25 @@
 package dev.stalla.builder.fake.episode
 
-import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.model.podcastindex.Soundbite
 import java.time.Duration
 
-internal class FakeEpisodePodcastSoundbiteBuilder : FakeBuilder<Soundbite>(), EpisodePodcastSoundbiteBuilder {
+internal class FakeEpisodePodcastindexSoundbiteBuilder : FakeBuilder<Soundbite>(), EpisodePodcastindexSoundbiteBuilder {
 
     var startTime: Duration? = null
     var duration: Duration? = null
     var title: String? = null
 
-    override fun startTime(startTime: Duration): EpisodePodcastSoundbiteBuilder = apply { this.startTime = startTime }
+    override fun startTime(startTime: Duration): EpisodePodcastindexSoundbiteBuilder = apply { this.startTime = startTime }
 
-    override fun duration(duration: Duration): EpisodePodcastSoundbiteBuilder = apply { this.duration = duration }
+    override fun duration(duration: Duration): EpisodePodcastindexSoundbiteBuilder = apply { this.duration = duration }
 
-    override fun title(title: String?): EpisodePodcastSoundbiteBuilder = apply { this.title = title }
+    override fun title(title: String?): EpisodePodcastindexSoundbiteBuilder = apply { this.title = title }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakeEpisodePodcastSoundbiteBuilder) return false
+        if (other !is FakeEpisodePodcastindexSoundbiteBuilder) return false
 
         if (startTime != other.startTime) return false
         if (duration != other.duration) return false

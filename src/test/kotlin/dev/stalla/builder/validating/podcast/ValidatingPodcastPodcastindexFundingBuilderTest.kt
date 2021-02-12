@@ -9,7 +9,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.model.podcast.aPodcastPodcastFunding
 import dev.stalla.model.podcastindex.Funding
 import org.junit.jupiter.api.Test
@@ -18,10 +18,10 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
 
     @Test
     internal fun `should not build a Podcast Podcast Funding with when all the fields are missing`() {
-        val fundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+        val fundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
 
         assertAll {
-            assertThat(fundingBuilder).prop(PodcastPodcastFundingBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(fundingBuilder).prop(PodcastPodcastindexFundingBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(fundingBuilder.build()).isNull()
         }
@@ -29,11 +29,11 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
 
     @Test
     internal fun `should not build a Podcast Podcast Funding with when the url field is missing`() {
-        val fundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+        val fundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
             .message("Send me money please, kthxbye")
 
         assertAll {
-            assertThat(fundingBuilder).prop(PodcastPodcastFundingBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(fundingBuilder).prop(PodcastPodcastindexFundingBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(fundingBuilder.build()).isNull()
         }
@@ -41,11 +41,11 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
 
     @Test
     internal fun `should not build a Podcast Podcast Funding with when the message field is missing`() {
-        val fundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+        val fundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
             .url("https://example.com/donate")
 
         assertAll {
-            assertThat(fundingBuilder).prop(PodcastPodcastFundingBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(fundingBuilder).prop(PodcastPodcastindexFundingBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(fundingBuilder.build()).isNull()
         }
@@ -53,12 +53,12 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
 
     @Test
     internal fun `should build a Podcast Podcast Funding with with all the added entries to its fields`() {
-        val fundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+        val fundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
             .url("https://example.com/donate")
             .message("Send me money please, kthxbye")
 
         assertAll {
-            assertThat(fundingBuilder).prop(PodcastPodcastFundingBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(fundingBuilder).prop(PodcastPodcastindexFundingBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(fundingBuilder.build()).isNotNull().all {
                 prop(Funding::url).isEqualTo("https://example.com/donate")
@@ -73,7 +73,7 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
         val fundingBuilder = Funding.builder().from(funding)
 
         assertAll {
-            assertThat(fundingBuilder).prop(PodcastPodcastFundingBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(fundingBuilder).prop(PodcastPodcastindexFundingBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(fundingBuilder.build()).isNotNull().isEqualTo(funding)
         }

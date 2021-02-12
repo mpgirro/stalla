@@ -1,11 +1,11 @@
 package dev.stalla.builder.validating.episode
 
-import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.model.podcastindex.Transcript
 import dev.stalla.model.podcastindex.TranscriptType
 import java.util.Locale
 
-internal class ValidatingEpisodePodcastTranscriptBuilder : EpisodePodcastTranscriptBuilder {
+internal class ValidatingEpisodePodcastindexTranscriptBuilder : EpisodePodcastindexTranscriptBuilder {
 
     private lateinit var urlValue: String
     private lateinit var typeValue: TranscriptType
@@ -13,13 +13,13 @@ internal class ValidatingEpisodePodcastTranscriptBuilder : EpisodePodcastTranscr
     private var language: Locale? = null
     private var rel: String? = null
 
-    override fun url(url: String): EpisodePodcastTranscriptBuilder = apply { this.urlValue = url }
+    override fun url(url: String): EpisodePodcastindexTranscriptBuilder = apply { this.urlValue = url }
 
-    override fun type(type: TranscriptType): EpisodePodcastTranscriptBuilder = apply { this.typeValue = type }
+    override fun type(type: TranscriptType): EpisodePodcastindexTranscriptBuilder = apply { this.typeValue = type }
 
-    override fun language(language: Locale?): EpisodePodcastTranscriptBuilder = apply { this.language = language }
+    override fun language(language: Locale?): EpisodePodcastindexTranscriptBuilder = apply { this.language = language }
 
-    override fun rel(rel: String?): EpisodePodcastTranscriptBuilder = apply { this.rel = rel }
+    override fun rel(rel: String?): EpisodePodcastindexTranscriptBuilder = apply { this.rel = rel }
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::urlValue.isInitialized && ::typeValue.isInitialized

@@ -1,7 +1,7 @@
 package dev.stalla.model.podcastindex
 
-import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastSoundbiteBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
+import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexSoundbiteBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.Episode
 import java.time.Duration
@@ -19,10 +19,10 @@ public data class Soundbite(
     val title: String? = null
 ) {
 
-    public companion object Factory : BuilderFactory<Soundbite, EpisodePodcastSoundbiteBuilder> {
+    public companion object Factory : BuilderFactory<Soundbite, EpisodePodcastindexSoundbiteBuilder> {
 
         /** Returns a builder implementation for building [Soundbite] model instances. */
         @JvmStatic
-        override fun builder(): EpisodePodcastSoundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+        override fun builder(): EpisodePodcastindexSoundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
     }
 }

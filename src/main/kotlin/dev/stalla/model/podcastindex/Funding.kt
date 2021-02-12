@@ -1,7 +1,7 @@
 package dev.stalla.model.podcastindex
 
-import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
-import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastFundingBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
+import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastindexFundingBuilder
 import dev.stalla.model.BuilderFactory
 
 /**
@@ -15,10 +15,10 @@ public data class Funding(
     val message: String
 ) {
 
-    public companion object Factory : BuilderFactory<Funding, PodcastPodcastFundingBuilder> {
+    public companion object Factory : BuilderFactory<Funding, PodcastPodcastindexFundingBuilder> {
 
         /** Returns a builder implementation for building [Funding] model instances. */
         @JvmStatic
-        override fun builder(): PodcastPodcastFundingBuilder = ValidatingPodcastPodcastFundingBuilder()
+        override fun builder(): PodcastPodcastindexFundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
     }
 }

@@ -1,7 +1,7 @@
 package dev.stalla.model.podcastindex
 
-import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
-import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastLockedBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
+import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastindexLockedBuilder
 import dev.stalla.model.BuilderFactory
 
 /**
@@ -16,10 +16,10 @@ public data class Locked(
     val locked: Boolean
 ) {
 
-    public companion object Factory : BuilderFactory<Locked, PodcastPodcastLockedBuilder> {
+    public companion object Factory : BuilderFactory<Locked, PodcastPodcastindexLockedBuilder> {
 
         /** Returns a builder implementation for building [Locked] model instances. */
         @JvmStatic
-        override fun builder(): PodcastPodcastLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+        override fun builder(): PodcastPodcastindexLockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
     }
 }

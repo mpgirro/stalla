@@ -9,7 +9,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.model.episode.anEpisodePodcastSoundbite
 import dev.stalla.model.podcastindex.Soundbite
 import org.junit.jupiter.api.Test
@@ -19,10 +19,10 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when all the fields are missing`() {
-        val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+        val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
 
         assertAll {
-            assertThat(soundbiteBuilder).prop(EpisodePodcastSoundbiteBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(soundbiteBuilder).prop(EpisodePodcastindexSoundbiteBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(soundbiteBuilder.build()).isNull()
         }
@@ -30,11 +30,11 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the startTime field is missing`() {
-        val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+        val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .duration(Duration.ofSeconds(15))
 
         assertAll {
-            assertThat(soundbiteBuilder).prop(EpisodePodcastSoundbiteBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(soundbiteBuilder).prop(EpisodePodcastindexSoundbiteBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(soundbiteBuilder.build()).isNull()
         }
@@ -42,7 +42,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the startTime field is negative`() {
-        val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+        val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(Duration.ZERO.minusSeconds(1))
             .duration(Duration.ofSeconds(15))
 
@@ -53,11 +53,11 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the duration field is missing`() {
-        val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+        val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(Duration.ofSeconds(1))
 
         assertAll {
-            assertThat(soundbiteBuilder).prop(EpisodePodcastSoundbiteBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(soundbiteBuilder).prop(EpisodePodcastindexSoundbiteBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(soundbiteBuilder.build()).isNull()
         }
@@ -65,7 +65,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the duration field is zero`() {
-        val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+        val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(Duration.ofSeconds(1))
             .duration(Duration.ZERO)
 
@@ -76,7 +76,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the duration field is negative`() {
-        val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+        val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(Duration.ofSeconds(1))
             .duration(Duration.ZERO.minusSeconds(1))
 
@@ -87,13 +87,13 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
     @Test
     internal fun `should build an Episode Podcast Soundbite with with all the added entries to its fields`() {
-        val soundbiteBuilder = ValidatingEpisodePodcastSoundbiteBuilder()
+        val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(Duration.ofSeconds(1))
             .duration(Duration.ofSeconds(15))
             .title("soundbite")
 
         assertAll {
-            assertThat(soundbiteBuilder).prop(EpisodePodcastSoundbiteBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(soundbiteBuilder).prop(EpisodePodcastindexSoundbiteBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(soundbiteBuilder.build()).isNotNull().all {
                 prop(Soundbite::startTime).isEqualTo(Duration.ofSeconds(1))
@@ -109,7 +109,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
         val episodePodcastSoundbiteBuilder = Soundbite.builder().from(episodePodcastSoundbite)
 
         assertAll {
-            assertThat(episodePodcastSoundbiteBuilder).prop(EpisodePodcastSoundbiteBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodePodcastSoundbiteBuilder).prop(EpisodePodcastindexSoundbiteBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodePodcastSoundbiteBuilder.build()).isNotNull().isEqualTo(episodePodcastSoundbite)
         }

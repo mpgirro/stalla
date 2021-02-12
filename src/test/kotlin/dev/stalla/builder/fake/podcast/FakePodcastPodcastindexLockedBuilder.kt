@@ -1,25 +1,25 @@
 package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.model.podcastindex.Locked
 
-internal class FakePodcastPodcastLockedBuilder : FakeBuilder<Locked>(), PodcastPodcastLockedBuilder {
+internal class FakePodcastPodcastindexLockedBuilder : FakeBuilder<Locked>(), PodcastPodcastindexLockedBuilder {
 
     var owner: String? = null
     var locked: Boolean? = null
 
-    override fun owner(owner: String): PodcastPodcastLockedBuilder = apply {
+    override fun owner(owner: String): PodcastPodcastindexLockedBuilder = apply {
         this.owner = owner
     }
 
-    override fun locked(locked: Boolean): PodcastPodcastLockedBuilder = apply {
+    override fun locked(locked: Boolean): PodcastPodcastindexLockedBuilder = apply {
         this.locked = locked
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakePodcastPodcastLockedBuilder) return false
+        if (other !is FakePodcastPodcastindexLockedBuilder) return false
 
         if (owner != other.owner) return false
         if (locked != other.locked) return false

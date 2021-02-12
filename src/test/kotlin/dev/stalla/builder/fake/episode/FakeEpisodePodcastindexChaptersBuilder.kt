@@ -1,21 +1,21 @@
 package dev.stalla.builder.fake.episode
 
-import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.model.podcastindex.Chapters
 
-internal class FakeEpisodePodcastChaptersBuilder : FakeBuilder<Chapters>(), EpisodePodcastChaptersBuilder {
+internal class FakeEpisodePodcastindexChaptersBuilder : FakeBuilder<Chapters>(), EpisodePodcastindexChaptersBuilder {
 
     var url: String? = null
     var type: String? = null
 
-    override fun url(url: String): EpisodePodcastChaptersBuilder = apply { this.url = url }
+    override fun url(url: String): EpisodePodcastindexChaptersBuilder = apply { this.url = url }
 
-    override fun type(type: String): EpisodePodcastChaptersBuilder = apply { this.type = type }
+    override fun type(type: String): EpisodePodcastindexChaptersBuilder = apply { this.type = type }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakeEpisodePodcastChaptersBuilder) return false
+        if (other !is FakeEpisodePodcastindexChaptersBuilder) return false
 
         if (url != other.url) return false
         if (type != other.type) return false

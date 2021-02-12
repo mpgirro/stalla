@@ -1,25 +1,25 @@
 package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.fake.FakeBuilder
-import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.model.podcastindex.Funding
 
-internal class FakePodcastPodcastFundingBuilder : FakeBuilder<Funding>(), PodcastPodcastFundingBuilder {
+internal class FakePodcastPodcastindexFundingBuilder : FakeBuilder<Funding>(), PodcastPodcastindexFundingBuilder {
 
     var url: String? = null
     var message: String? = null
 
-    override fun url(url: String): PodcastPodcastFundingBuilder = apply {
+    override fun url(url: String): PodcastPodcastindexFundingBuilder = apply {
         this.url = url
     }
 
-    override fun message(message: String): PodcastPodcastFundingBuilder = apply {
+    override fun message(message: String): PodcastPodcastindexFundingBuilder = apply {
         this.message = message
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakePodcastPodcastFundingBuilder) return false
+        if (other !is FakePodcastPodcastindexFundingBuilder) return false
 
         if (url != other.url) return false
         if (message != other.message) return false

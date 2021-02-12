@@ -34,7 +34,7 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     public val googleplayBuilder: PodcastGoogleplayBuilder
 
     /** Set the Podcast namespace builder. */
-    public val podcastBuilder: PodcastPodcastBuilder
+    public val podcastPodcastindexBuilder: PodcastPodcastindexBuilder
 
     /** Set the title value. */
     public fun title(title: String): PodcastBuilder
@@ -103,11 +103,11 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     /** Creates an instance of [ItunesStyleCategoryBuilder] to use with this builder. */
     public fun createITunesStyleCategoryBuilder(): ItunesStyleCategoryBuilder
 
-    /** Creates an instance of [PodcastPodcastLockedBuilder] to use with this builder. */
-    public fun createPodcastPodcastLockedBuilder(): PodcastPodcastLockedBuilder
+    /** Creates an instance of [PodcastPodcastindexLockedBuilder] to use with this builder. */
+    public fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder
 
-    /** Creates an instance of [PodcastPodcastFundingBuilder] to use with this builder. */
-    public fun createPodcastPodcastFundingBuilder(): PodcastPodcastFundingBuilder
+    /** Creates an instance of [PodcastPodcastindexFundingBuilder] to use with this builder. */
+    public fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder
 
     override fun from(model: Podcast?): PodcastBuilder = whenNotNull(model) { podcast ->
         itunesBuilder.from(podcast.itunes)
@@ -115,7 +115,7 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
         fyydBuilder.from(podcast.fyyd)
         feedpressBuilder.from(podcast.feedpress)
         googleplayBuilder.from(podcast.googleplay)
-        podcastBuilder.from(podcast.podcast)
+        podcastPodcastindexBuilder.from(podcast.podcast)
         title(podcast.title)
         link(podcast.link)
         description(podcast.description)

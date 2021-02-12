@@ -9,7 +9,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.model.podcast.aPodcastPodcastLocked
 import dev.stalla.model.podcastindex.Locked
 import org.junit.jupiter.api.Test
@@ -18,10 +18,10 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
 
     @Test
     internal fun `should not build a Podcast Podcast Locked with when all the fields are missing`() {
-        val lockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+        val lockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
 
         assertAll {
-            assertThat(lockedBuilder).prop(PodcastPodcastLockedBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(lockedBuilder).prop(PodcastPodcastindexLockedBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(lockedBuilder.build()).isNull()
         }
@@ -29,11 +29,11 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
 
     @Test
     internal fun `should not build a Podcast Podcast Locked with when the locked field is missing`() {
-        val lockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+        val lockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
             .owner("Send me money please, kthxbye")
 
         assertAll {
-            assertThat(lockedBuilder).prop(PodcastPodcastLockedBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(lockedBuilder).prop(PodcastPodcastindexLockedBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(lockedBuilder.build()).isNull()
         }
@@ -41,11 +41,11 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
 
     @Test
     internal fun `should not build a Podcast Podcast Locked with when the owner field is missing`() {
-        val lockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+        val lockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
             .locked(true)
 
         assertAll {
-            assertThat(lockedBuilder).prop(PodcastPodcastLockedBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(lockedBuilder).prop(PodcastPodcastindexLockedBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(lockedBuilder.build()).isNull()
         }
@@ -53,12 +53,12 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
 
     @Test
     internal fun `should build a Podcast Podcast Locked with with all the added entries to its fields`() {
-        val lockedBuilder = ValidatingPodcastPodcastLockedBuilder()
+        val lockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
             .locked(true)
             .owner("Send me money please, kthxbye")
 
         assertAll {
-            assertThat(lockedBuilder).prop(PodcastPodcastLockedBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(lockedBuilder).prop(PodcastPodcastindexLockedBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(lockedBuilder.build()).isNotNull().all {
                 prop(Locked::locked).isTrue()
@@ -73,7 +73,7 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
         val lockedBuilder = Locked.builder().from(locked)
 
         assertAll {
-            assertThat(lockedBuilder).prop(PodcastPodcastLockedBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(lockedBuilder).prop(PodcastPodcastindexLockedBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(lockedBuilder.build()).isNotNull().isEqualTo(locked)
         }

@@ -7,21 +7,21 @@ import dev.stalla.util.whenNotNull
 import java.util.Locale
 
 /** Builder for constructing [Transcript] instances. */
-public interface EpisodePodcastTranscriptBuilder : Builder<Transcript> {
+public interface EpisodePodcastindexTranscriptBuilder : Builder<Transcript> {
 
     /** Set the url value. */
-    public fun url(url: String): EpisodePodcastTranscriptBuilder
+    public fun url(url: String): EpisodePodcastindexTranscriptBuilder
 
     /** Set the [TranscriptType] value. */
-    public fun type(type: TranscriptType): EpisodePodcastTranscriptBuilder
+    public fun type(type: TranscriptType): EpisodePodcastindexTranscriptBuilder
 
     /** Set the language value. */
-    public fun language(language: Locale?): EpisodePodcastTranscriptBuilder
+    public fun language(language: Locale?): EpisodePodcastindexTranscriptBuilder
 
     /** Set the rel value. */
-    public fun rel(rel: String?): EpisodePodcastTranscriptBuilder
+    public fun rel(rel: String?): EpisodePodcastindexTranscriptBuilder
 
-    override fun from(model: Transcript?): EpisodePodcastTranscriptBuilder = whenNotNull(model) { transcript ->
+    override fun from(model: Transcript?): EpisodePodcastindexTranscriptBuilder = whenNotNull(model) { transcript ->
         url(transcript.url)
         type(transcript.type)
         language(transcript.language)
