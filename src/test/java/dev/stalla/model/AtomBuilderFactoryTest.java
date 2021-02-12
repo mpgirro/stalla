@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class AtomBuiderFactoryTest {
+public class AtomBuilderFactoryTest {
 
     @Test
     @DisplayName("should build an Atom model using builder factory methods only")
