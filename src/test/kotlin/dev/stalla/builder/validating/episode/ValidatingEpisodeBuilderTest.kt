@@ -15,8 +15,8 @@ import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.dateTime
-import dev.stalla.model.atom.Atom
 import dev.stalla.model.Episode
+import dev.stalla.model.atom.Atom
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.episode.anEpisode

@@ -1,7 +1,6 @@
 package dev.stalla.model.podcast
 
 import dev.stalla.dateTime
-import dev.stalla.model.atom.Atom
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
@@ -12,6 +11,7 @@ import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.anItunesCategory
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.anRssImage
+import dev.stalla.model.atom.Atom
 import dev.stalla.model.atom.Link
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.feedpress.Feedpress
