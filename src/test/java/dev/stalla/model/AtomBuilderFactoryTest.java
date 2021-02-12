@@ -2,6 +2,7 @@ package dev.stalla.model;
 
 import dev.stalla.builder.AtomBuilder;
 import dev.stalla.builder.PersonBuilder;
+import dev.stalla.model.atom.Atom;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

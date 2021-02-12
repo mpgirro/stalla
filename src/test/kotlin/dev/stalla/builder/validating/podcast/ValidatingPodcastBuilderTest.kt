@@ -19,7 +19,7 @@ import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import dev.stalla.dateTime
-import dev.stalla.model.Atom
+import dev.stalla.model.atom.Atom
 import dev.stalla.model.Podcast
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd

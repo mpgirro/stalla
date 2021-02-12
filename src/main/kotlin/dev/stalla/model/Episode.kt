@@ -2,6 +2,7 @@ package dev.stalla.model
 
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
+import dev.stalla.model.atom.Atom
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.googleplay.EpisodeGoogleplay

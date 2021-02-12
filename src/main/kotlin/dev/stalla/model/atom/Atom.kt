@@ -1,8 +1,9 @@
-package dev.stalla.model
+package dev.stalla.model.atom
 
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.validating.ValidatingAtomBuilder
-import dev.stalla.model.atom.Link
+import dev.stalla.model.BuilderFactory
+import dev.stalla.model.Person
 
 /**
  * Model class for data from elements of the Atom namespace.

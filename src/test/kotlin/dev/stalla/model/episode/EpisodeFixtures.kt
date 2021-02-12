@@ -1,7 +1,7 @@
 package dev.stalla.model.episode
 
 import dev.stalla.dateTime
-import dev.stalla.model.Atom
+import dev.stalla.model.atom.Atom
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person

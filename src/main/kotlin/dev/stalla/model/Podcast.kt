@@ -2,6 +2,7 @@ package dev.stalla.model
 
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastBuilder
+import dev.stalla.model.atom.Atom
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay

@@ -3,7 +3,7 @@ package dev.stalla.builder.fake
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.PersonBuilder
-import dev.stalla.model.Atom
+import dev.stalla.model.atom.Atom
 
 internal class FakeAtomBuilder : FakeBuilder<Atom>(), AtomBuilder {
 
