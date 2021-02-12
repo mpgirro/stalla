@@ -45,7 +45,7 @@ internal object PodcastNamespaceWriter : NamespaceWriter() {
     }
 
     override fun Element.appendEpisodeData(episode: Episode) {
-        val podcastNs = episode.podcast ?: return
+        val podcastNs = episode.podcastindex ?: return
 
         if (podcastNs.chapters != null && podcastNs.chapters.canBeWritten()) {
             appendElement("chapters", namespace) {

@@ -35,7 +35,7 @@ internal class PodcastNamespaceWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write podcast tags to the channel when there is no data to write`() {
-        val podcast = aPodcast(podcast = null)
+        val podcast = aPodcast(podcastindex = null)
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "locked")
             assertTagIsNotWrittenToPodcast(podcast, "funding")
@@ -45,7 +45,7 @@ internal class PodcastNamespaceWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write podcast tags to the channel when the data is blank`() {
         val podcast = aPodcast(
-            podcast = aPodcastPodcast(
+            podcastindex = aPodcastPodcast(
                 locked = aPodcastPodcastLocked(" "),
                 funding = listOf(aPodcastPodcastFunding(" ", " "))
             )
@@ -59,7 +59,7 @@ internal class PodcastNamespaceWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write podcast tags to the channel when the data is empty`() {
         val podcast = aPodcast(
-            podcast = aPodcastPodcast(
+            podcastindex = aPodcastPodcast(
                 locked = aPodcastPodcastLocked(""),
                 funding = listOf(aPodcastPodcastFunding("", ""))
             )
@@ -90,7 +90,7 @@ internal class PodcastNamespaceWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write podcast tags to the item when there is no data to write`() {
-        val episode = anEpisode(podcast = null)
+        val episode = anEpisode(podcastindex = null)
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "transcript")
             assertTagIsNotWrittenToEpisode(episode, "soundbite")
@@ -101,7 +101,7 @@ internal class PodcastNamespaceWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write podcast tags to the item when the data is blank`() {
         val episode = anEpisode(
-            podcast = anEpisodePodcast(
+            podcastindex = anEpisodePodcast(
                 transcripts = listOf(anEpisodePodcastTranscript(" ")),
                 chapters = anEpisodePodcastChapters(" ")
             )
@@ -115,7 +115,7 @@ internal class PodcastNamespaceWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write podcast tags to the item when the data is empty`() {
         val episode = anEpisode(
-            podcast = anEpisodePodcast(
+            podcastindex = anEpisodePodcast(
                 transcripts = listOf(anEpisodePodcastTranscript("")),
                 chapters = anEpisodePodcastChapters("")
             )
@@ -129,7 +129,7 @@ internal class PodcastNamespaceWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write podcast soundbite tags to the item when the durations are invalid`() {
         val episode = anEpisode(
-            podcast = anEpisodePodcast(
+            podcastindex = anEpisodePodcast(
                 soundbites = listOf(
                     anEpisodePodcastSoundbite(startTime = Duration.ofSeconds(-1)),
                     anEpisodePodcastSoundbite(duration = Duration.ZERO),

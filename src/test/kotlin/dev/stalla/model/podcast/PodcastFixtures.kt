@@ -22,7 +22,7 @@ import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.podcastindex.Funding
 import dev.stalla.model.podcastindex.Locked
-import dev.stalla.model.podcastindex.PodcastPodcast
+import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import java.time.Month
@@ -48,7 +48,7 @@ internal fun aPodcast(
     fyyd: Fyyd? = aPodcastFyyd(),
     feedpress: Feedpress? = aPodcastFeedpress(),
     googleplay: PodcastGoogleplay? = aPodcastGoogleplay(),
-    podcast: PodcastPodcast? = aPodcastPodcast(),
+    podcastindex: PodcastPodcastindex? = aPodcastPodcast(),
     categories: List<RssCategory> = listOf(anRssCategory("podcast category"))
 ) = Podcast(
     title,
@@ -71,7 +71,7 @@ internal fun aPodcast(
     feedpress,
     googleplay,
     categories,
-    podcast
+    podcastindex
 )
 
 internal fun aPodcastItunes(
@@ -121,7 +121,7 @@ internal fun aPodcastGoogleplay(
 internal fun aPodcastPodcast(
     locked: Locked? = aPodcastPodcastLocked(),
     funding: List<Funding> = listOf(aPodcastPodcastFunding())
-) = PodcastPodcast(locked, funding)
+) = PodcastPodcastindex(locked, funding)
 
 internal fun aPodcastPodcastLocked(
     owner: String = "podcast podcast: locked owner",

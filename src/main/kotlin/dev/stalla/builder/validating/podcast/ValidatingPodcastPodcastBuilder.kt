@@ -3,7 +3,7 @@ package dev.stalla.builder.validating.podcast
 import dev.stalla.builder.podcast.PodcastPodcastBuilder
 import dev.stalla.builder.podcast.PodcastPodcastFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastLockedBuilder
-import dev.stalla.model.podcastindex.PodcastPodcast
+import dev.stalla.model.podcastindex.PodcastPodcastindex
 
 internal class ValidatingPodcastPodcastBuilder : PodcastPodcastBuilder {
 
@@ -22,12 +22,12 @@ internal class ValidatingPodcastPodcastBuilder : PodcastPodcastBuilder {
         get() = (::lockedBuilderValue.isInitialized && lockedBuilderValue.hasEnoughDataToBuild) ||
             fundingBuilders.any { it.hasEnoughDataToBuild }
 
-    override fun build(): PodcastPodcast? {
+    override fun build(): PodcastPodcastindex? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
         val locked = if (::lockedBuilderValue.isInitialized) lockedBuilderValue.build() else null
-        return PodcastPodcast(locked, fundingBuilders.mapNotNull { it.build() })
+        return PodcastPodcastindex(locked, fundingBuilders.mapNotNull { it.build() })
     }
 }

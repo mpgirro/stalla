@@ -120,7 +120,7 @@ public class EpisodeBuilderFactoryTest {
             .startTime(Duration.ZERO)
             .duration(Duration.ZERO);
 
-        EpisodePodcastBuilder episodePodcastBuilder = EpisodePodcast.builder()
+        EpisodePodcastBuilder episodePodcastBuilder = EpisodePodcastindex.builder()
             .addSoundbiteBuilder(episodePodcastSoundbiteBuilder);
 
         assertNotNull(episodePodcastBuilder.build());

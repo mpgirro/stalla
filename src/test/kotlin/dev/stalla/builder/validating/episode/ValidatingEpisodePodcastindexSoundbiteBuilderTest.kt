@@ -15,7 +15,7 @@ import dev.stalla.model.podcastindex.Soundbite
 import org.junit.jupiter.api.Test
 import java.time.Duration
 
-internal class ValidatingEpisodePodcastSoundbiteBuilderTest {
+internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when all the fields are missing`() {

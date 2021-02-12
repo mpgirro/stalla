@@ -7,7 +7,7 @@ import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.PodcastItunes
-import dev.stalla.model.podcastindex.PodcastPodcast
+import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import java.time.temporal.TemporalAccessor
@@ -58,7 +58,7 @@ public data class Podcast(
     val feedpress: Feedpress? = null,
     val googleplay: PodcastGoogleplay? = null,
     val categories: List<RssCategory> = emptyList(),
-    val podcast: PodcastPodcast? = null
+    val podcast: PodcastPodcastindex? = null
 ) {
 
     public companion object Factory : BuilderFactory<Podcast, PodcastBuilder> {

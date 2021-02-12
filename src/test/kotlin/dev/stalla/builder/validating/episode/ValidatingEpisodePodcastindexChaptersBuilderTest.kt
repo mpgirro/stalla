@@ -14,7 +14,7 @@ import dev.stalla.model.episode.anEpisodePodcastChapters
 import dev.stalla.model.podcastindex.Chapters
 import org.junit.jupiter.api.Test
 
-internal class ValidatingEpisodePodcastChaptersBuilderTest {
+internal class ValidatingEpisodePodcastindexChaptersBuilderTest {
 
     @Test
     internal fun `should not build an Episode Podcast Chapters with when all the fields are missing`() {

@@ -16,7 +16,7 @@ import dev.stalla.model.podcastindex.TranscriptType
 import org.junit.jupiter.api.Test
 import java.util.Locale
 
-internal class ValidatingEpisodePodcastTranscriptBuilderTest {
+internal class ValidatingEpisodePodcastindexTranscriptBuilderTest {
 
     @Test
     internal fun `should not build an Episode Podcast Transcript with when all the fields are missing`() {

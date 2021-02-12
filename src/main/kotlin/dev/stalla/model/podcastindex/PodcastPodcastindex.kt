@@ -10,14 +10,14 @@ import dev.stalla.model.BuilderFactory
  * @property locked The lock status of the podcast.
  * @property funding The funding information for the podcast.
  */
-public data class PodcastPodcast(
+public data class PodcastPodcastindex(
     val locked: Locked? = null,
     val funding: List<Funding> = emptyList()
 ) {
 
-    public companion object Factory : BuilderFactory<PodcastPodcast, PodcastPodcastBuilder> {
+    public companion object Factory : BuilderFactory<PodcastPodcastindex, PodcastPodcastBuilder> {
 
-        /** Returns a builder implementation for building [PodcastPodcast] model instances. */
+        /** Returns a builder implementation for building [PodcastPodcastindex] model instances. */
         @JvmStatic
         override fun builder(): PodcastPodcastBuilder = ValidatingPodcastPodcastBuilder()
     }

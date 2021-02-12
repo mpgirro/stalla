@@ -2,12 +2,12 @@ package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder
 import dev.stalla.model.podcastindex.Locked
-import dev.stalla.model.podcastindex.PodcastPodcast
+import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [PodcastPodcast] instances. */
-public interface PodcastPodcastBuilder : Builder<PodcastPodcast> {
+/** Builder for constructing [PodcastPodcastindex] instances. */
+public interface PodcastPodcastBuilder : Builder<PodcastPodcastindex> {
 
     /** Set the [PodcastPodcastLockedBuilder]. */
     public fun lockedBuilder(lockedBuilder: PodcastPodcastLockedBuilder): PodcastPodcastBuilder
@@ -24,7 +24,7 @@ public interface PodcastPodcastBuilder : Builder<PodcastPodcast> {
         fundingBuilders.forEach(::addFundingBuilder)
     }
 
-    override fun from(model: PodcastPodcast?): PodcastPodcastBuilder = whenNotNull(model) { podcast ->
+    override fun from(model: PodcastPodcastindex?): PodcastPodcastBuilder = whenNotNull(model) { podcast ->
         lockedBuilder(Locked.builder().from(podcast.locked))
         addFundingBuilders(podcast.funding.asBuilders())
     }

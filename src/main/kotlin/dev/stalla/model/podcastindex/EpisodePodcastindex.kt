@@ -11,15 +11,15 @@ import dev.stalla.model.BuilderFactory
  * @property soundbites The soundbites information for the episode.
  * @property chapters The chapters information for the episode.
  */
-public data class EpisodePodcast(
+public data class EpisodePodcastindex(
     val transcripts: List<Transcript> = emptyList(),
     val soundbites: List<Soundbite> = emptyList(),
     val chapters: Chapters? = null
 ) {
 
-    public companion object Factory : BuilderFactory<EpisodePodcast, EpisodePodcastBuilder> {
+    public companion object Factory : BuilderFactory<EpisodePodcastindex, EpisodePodcastBuilder> {
 
-        /** Returns a builder implementation for building [EpisodePodcast] model instances. */
+        /** Returns a builder implementation for building [EpisodePodcastindex] model instances. */
         @JvmStatic
         override fun builder(): EpisodePodcastBuilder = ValidatingEpisodePodcastBuilder()
     }

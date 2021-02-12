@@ -16,7 +16,7 @@ import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.podcastindex.Chapters
-import dev.stalla.model.podcastindex.EpisodePodcast
+import dev.stalla.model.podcastindex.EpisodePodcastindex
 import dev.stalla.model.podcastindex.Soundbite
 import dev.stalla.model.podcastindex.Transcript
 import dev.stalla.model.podcastindex.TranscriptType
@@ -47,7 +47,7 @@ internal fun anEpisode(
     podlove: EpisodePodlove? = anEpisodePodlove(),
     googleplay: EpisodeGoogleplay? = anEpisodeGoogleplay(),
     bitlove: Bitlove? = anEpisodeBitlove(),
-    podcast: EpisodePodcast? = anEpisodePodcast()
+    podcastindex: EpisodePodcastindex? = anEpisodePodcast()
 ) = Episode(
     title,
     link,
@@ -65,7 +65,7 @@ internal fun anEpisode(
     podlove,
     googleplay,
     bitlove,
-    podcast
+    podcastindex
 )
 
 internal fun anEpisodeEnclosure(
@@ -129,7 +129,7 @@ internal fun anEpisodePodcast(
     transcripts: List<Transcript> = listOf(anEpisodePodcastTranscript()),
     soundbites: List<Soundbite> = listOf(anEpisodePodcastSoundbite()),
     chapters: Chapters? = anEpisodePodcastChapters()
-) = EpisodePodcast(transcripts, soundbites, chapters)
+) = EpisodePodcastindex(transcripts, soundbites, chapters)
 
 fun anEpisodePodcastTranscript(
     url: String = "episode podcast: transcript url",

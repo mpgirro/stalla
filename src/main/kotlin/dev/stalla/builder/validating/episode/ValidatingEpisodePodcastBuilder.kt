@@ -4,7 +4,7 @@ import dev.stalla.builder.episode.EpisodePodcastBuilder
 import dev.stalla.builder.episode.EpisodePodcastChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastTranscriptBuilder
-import dev.stalla.model.podcastindex.EpisodePodcast
+import dev.stalla.model.podcastindex.EpisodePodcastindex
 
 internal class ValidatingEpisodePodcastBuilder : EpisodePodcastBuilder {
 
@@ -29,12 +29,12 @@ internal class ValidatingEpisodePodcastBuilder : EpisodePodcastBuilder {
             transcriptBuilders.any { it.hasEnoughDataToBuild } ||
             soundbiteBuilders.any { it.hasEnoughDataToBuild }
 
-    override fun build(): EpisodePodcast? {
+    override fun build(): EpisodePodcastindex? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return EpisodePodcast(
+        return EpisodePodcastindex(
             transcripts = transcriptBuilders.mapNotNull { it.build() },
             soundbites = soundbiteBuilders.mapNotNull { it.build() },
             chapters = chaptersBuilderValue?.build()

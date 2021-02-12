@@ -26,7 +26,7 @@ import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcastindex.PodcastPodcast
+import dev.stalla.model.podcastindex.PodcastPodcastindex
 import org.junit.jupiter.api.Test
 import java.time.Month
 
@@ -243,7 +243,7 @@ internal class ValidatingPodcastBuilderTest {
                     .isEqualTo("feedpress newsletterId")
                 prop(Podcast::fyyd).isNotNull().prop(Fyyd::verify).isEqualTo("fyyd verify")
                 prop(Podcast::googleplay).isNotNull().prop(PodcastGoogleplay::description).isEqualTo("play description")
-                prop(Podcast::podcast).isNotNull().prop(PodcastPodcast::locked).isEqualTo(expectedLockedBuilder.build())
+                prop(Podcast::podcast).isNotNull().prop(PodcastPodcastindex::locked).isEqualTo(expectedLockedBuilder.build())
             }
         }
     }

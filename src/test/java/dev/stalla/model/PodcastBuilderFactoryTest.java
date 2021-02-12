@@ -12,7 +12,7 @@ import dev.stalla.model.itunes.ItunesStyleCategory;
 import dev.stalla.model.itunes.PodcastItunes;
 import dev.stalla.model.podcastindex.Funding;
 import dev.stalla.model.podcastindex.Locked;
-import dev.stalla.model.podcastindex.PodcastPodcast;
+import dev.stalla.model.podcastindex.PodcastPodcastindex;
 import dev.stalla.model.rss.Enclosure;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -94,7 +94,7 @@ public class PodcastBuilderFactoryTest {
             .url("url")
             .message("message");
 
-        PodcastPodcastBuilder podcastPodcastBuilder = PodcastPodcast.builder()
+        PodcastPodcastBuilder podcastPodcastBuilder = PodcastPodcastindex.builder()
             .addFundingBuilder(podcastFundingBuilder);
 
         assertNotNull(podcastPodcastBuilder.build());

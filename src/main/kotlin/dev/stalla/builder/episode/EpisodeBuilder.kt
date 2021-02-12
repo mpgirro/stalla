@@ -107,7 +107,7 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
         podloveBuilder.from(episode.podlove)
         googleplayBuilder.from(episode.googleplay)
         bitloveBuilder.from(episode.bitlove)
-        podcastBuilder.from(episode.podcast)
+        podcastBuilder.from(episode.podcastindex)
         title(episode.title)
         link(episode.link)
         description(episode.description)

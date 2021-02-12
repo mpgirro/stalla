@@ -3,12 +3,12 @@ package dev.stalla.builder.episode
 import dev.stalla.builder.Builder
 import dev.stalla.model.Episode
 import dev.stalla.model.podcastindex.Chapters
-import dev.stalla.model.podcastindex.EpisodePodcast
+import dev.stalla.model.podcastindex.EpisodePodcastindex
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [Episode.Podcast] instances. */
-public interface EpisodePodcastBuilder : Builder<EpisodePodcast> {
+public interface EpisodePodcastBuilder : Builder<EpisodePodcastindex> {
 
     /**
      * Set the [EpisodePodcastChaptersBuilder] for the Podcast namespace `<chapters>` info.
@@ -39,7 +39,7 @@ public interface EpisodePodcastBuilder : Builder<EpisodePodcast> {
         transcriptBuilders.forEach(::addTranscriptBuilder)
     }
 
-    override fun from(model: EpisodePodcast?): EpisodePodcastBuilder = whenNotNull(model) { podcast ->
+    override fun from(model: EpisodePodcastindex?): EpisodePodcastBuilder = whenNotNull(model) { podcast ->
         chaptersBuilder(Chapters.builder().from(podcast.chapters))
         addSoundbiteBuilders(podcast.soundbites.asBuilders())
         addTranscriptBuilders(podcast.transcripts.asBuilders())

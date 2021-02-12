@@ -130,7 +130,7 @@ internal class ValidatingEpisodeBuilder : EpisodeBuilder {
             podlove = podloveBuilder.build(),
             googleplay = googleplayBuilder.build(),
             bitlove = bitloveBuilder.build(),
-            podcast = podcastBuilder.build()
+            podcastindex = podcastBuilder.build()
         )
     }
 }

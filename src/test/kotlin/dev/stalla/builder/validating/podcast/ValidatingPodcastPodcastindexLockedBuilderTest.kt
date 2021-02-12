@@ -14,7 +14,7 @@ import dev.stalla.model.podcast.aPodcastPodcastLocked
 import dev.stalla.model.podcastindex.Locked
 import org.junit.jupiter.api.Test
 
-internal class ValidatingPodcastPodcastLockedBuilderTest {
+internal class ValidatingPodcastPodcastindexLockedBuilderTest {
 
     @Test
     internal fun `should not build a Podcast Podcast Locked with when all the fields are missing`() {

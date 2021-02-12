@@ -12,10 +12,10 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastPodcastBuilder
 import dev.stalla.model.podcast.aPodcastPodcast
-import dev.stalla.model.podcastindex.PodcastPodcast
+import dev.stalla.model.podcastindex.PodcastPodcastindex
 import org.junit.jupiter.api.Test
 
-internal class ValidatingPodcastPodcastBuilderTest {
+internal class ValidatingPodcastPodcastindexBuilderTest {
 
     private val expectedLockedBuilder = ValidatingPodcastPodcastLockedBuilder()
         .locked(true)
@@ -48,7 +48,7 @@ internal class ValidatingPodcastPodcastBuilderTest {
         assertAll {
             assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(podcastPodcastBuilder.build()).isNotNull().prop(PodcastPodcast::locked).isEqualTo(expectedLockedBuilder.build())
+            assertThat(podcastPodcastBuilder.build()).isNotNull().prop(PodcastPodcastindex::locked).isEqualTo(expectedLockedBuilder.build())
         }
     }
 
@@ -73,7 +73,7 @@ internal class ValidatingPodcastPodcastBuilderTest {
             assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastPodcastBuilder.build()).isNotNull()
-                .prop(PodcastPodcast::funding).containsExactly(firstExpectedFundingBuilder.build())
+                .prop(PodcastPodcastindex::funding).containsExactly(firstExpectedFundingBuilder.build())
         }
     }
 
@@ -100,8 +100,8 @@ internal class ValidatingPodcastPodcastBuilderTest {
             assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastPodcastBuilder.build()).isNotNull().all {
-                prop(PodcastPodcast::locked).isEqualTo(expectedLockedBuilder.build())
-                prop(PodcastPodcast::funding).containsExactly(firstExpectedFundingBuilder.build(), secondExpectedFundingBuilder.build())
+                prop(PodcastPodcastindex::locked).isEqualTo(expectedLockedBuilder.build())
+                prop(PodcastPodcastindex::funding).containsExactly(firstExpectedFundingBuilder.build(), secondExpectedFundingBuilder.build())
             }
         }
     }
@@ -109,7 +109,7 @@ internal class ValidatingPodcastPodcastBuilderTest {
     @Test
     internal fun `should populate a Podcastindex builder with all properties from an Podcastindex model`() {
         val podcastPodcast = aPodcastPodcast()
-        val podcastPodcastBuilder = PodcastPodcast.builder().from(podcastPodcast)
+        val podcastPodcastBuilder = PodcastPodcastindex.builder().from(podcastPodcast)
 
         assertAll {
             assertThat(podcastPodcastBuilder).prop(PodcastPodcastBuilder::hasEnoughDataToBuild).isTrue()
