@@ -11,13 +11,16 @@ public sealed interface ItunesCategory {
     public companion object Factory {
 
         // Note that the map call here does a required smart cast
-        private val instances: List<ItunesCategory> = listOf(
-            SimpleItunesCategory.values().map { it },
-            NestedItunesCategory.values().map { it }
-        ).flatten()
+        private val categoryMap: Map<String, ItunesCategory> = run {
+            val categories = listOf(
+                SimpleItunesCategory.values().map { it },
+                NestedItunesCategory.values().map { it }
+            )
+            categories.flatten().map { it.value.toLowerCase() to it }.toMap()
+        }
 
         public fun from(category: String?): ItunesCategory? = category?.let {
-            instances.find { instance -> instance.value.equals(it, ignoreCase = true) }
+            return categoryMap.get(it.toLowerCase())
         }
     }
 }
