@@ -17,7 +17,7 @@ public sealed interface ItunesCategory {
         ).flatten()
 
         public fun from(category: String?): ItunesCategory? = category?.let {
-            instances.find { instance -> instance.value.toLowerCase() == it.toLowerCase() }
+            instances.find { instance -> instance.value.equals(it, ignoreCase = true) }
         }
     }
 }

@@ -6,6 +6,7 @@ import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.parser.DateParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
@@ -184,6 +185,18 @@ internal fun Node.toITunesCategoryBuilder(categoryBuilder: ItunesCategoryBuilder
     categoryBuilder.subcategory(subcategory)
 
     return categoryBuilder
+}
+
+@InternalApi
+internal fun Node.toItunesCategory(namespace: FeedNamespace? = null): ItunesCategory? {
+    val categoryValue = getAttributeValueByName("text")?.trim() ?: return null
+    val category = ItunesCategory.from(categoryValue) ?: return null
+
+    val elem = findElementByName("category", namespace)
+    val subcategoryElement = elem ?: return category
+
+    val subcategoryValue = subcategoryElement.getAttributeValueByName("text")?.trim()
+    return ItunesCategory.from(subcategoryValue) ?: return category
 }
 
 /**

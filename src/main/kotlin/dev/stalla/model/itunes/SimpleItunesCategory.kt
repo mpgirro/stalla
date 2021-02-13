@@ -15,16 +15,16 @@ public enum class SimpleItunesCategory(public override val value: String) : Itun
     FICTION("Fiction"),
     GOVERNMENT("Government"),
     HISTORY("History"),
-    HEALTH_AND_FITNESS("Health &amp; Fitness"),
-    KIDS_AND_FAMILY("Kids &amp; Family"),
+    HEALTH_AND_FITNESS("Health & Fitness"),
+    KIDS_AND_FAMILY("Kids & Family"),
     LEISURE("Leisure"),
     MUSIC("Music"),
     NEWS("News"),
-    RELIGION_AND_SPIRITUALITY("Religion &amp; Spirituality"),
+    RELIGION_AND_SPIRITUALITY("Religion & Spirituality"),
     SCIENCE("Science"),
-    SOCIETY_AND_CULTURE("Society &amp; Culture"),
+    SOCIETY_AND_CULTURE("Society & Culture"),
     SPORTS("Sports"),
     TECHNOLOGY("Technology"),
     TRUE_CRIME("True Crime"),
-    TV_AND_FILM("TV &amp; Film")
+    TV_AND_FILM("TV & Film")
 }

@@ -35,8 +35,8 @@
         <itunes:image href="podcast itunes image url"/>
         <itunes:keywords>podcast itunes keywords</itunes:keywords>
         <itunes:author>podcast itunes author</itunes:author>
-        <itunes:category text="podcast itunes category">
-            <itunes:category text="podcast itunes subcategory"/>
+        <itunes:category text="Fiction">
+            <itunes:category text="Science Fiction"/>
         </itunes:category>
         <itunes:explicit>true</itunes:explicit>
         <itunes:block>yes</itunes:block>

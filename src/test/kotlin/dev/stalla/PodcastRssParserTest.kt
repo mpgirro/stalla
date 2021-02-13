@@ -17,11 +17,12 @@ import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
 import dev.stalla.model.content.Content
-import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
+import dev.stalla.model.itunes.NestedItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
+import dev.stalla.model.itunes.SimpleItunesCategory
 import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.rss.Guid
 import org.junit.jupiter.api.Assertions.fail
@@ -165,9 +166,9 @@ internal class PodcastRssParserTest {
                     prop(Person::email).isEqualTo("studio@smashingsecurity.com")
                 }
                 prop(PodcastItunes::categories).containsExactly(
-                    GoogleplayCategory.Simple(name = "Technology"),
-                    GoogleplayCategory.Nested(name = "News", subcategory = GoogleplayCategory.Simple(name = "Tech News")),
-                    GoogleplayCategory.Simple(name = "Comedy")
+                    SimpleItunesCategory.TECHNOLOGY,
+                    NestedItunesCategory.TECH_NEWS,
+                    SimpleItunesCategory.COMEDY
                 )
             }
             prop(Podcast::atom).isNull()
