@@ -13,7 +13,7 @@ package dev.stalla.model.itunes
  *
  * @param parent The parent [SimpleItunesCategory].
  */
-public enum class NestedItunesCategory(public override val value: String, public val parent: SimpleItunesCategory) : ItunesCategory {
+public enum class NestedItunesCategory(public override val categoryName: String, public val parent: SimpleItunesCategory) : ItunesCategory {
     BOOKS("Books", SimpleItunesCategory.ARTS),
     DESIGN("Design", SimpleItunesCategory.ARTS),
     FASHION_AND_BEAUTY("Fashion & Beauty", SimpleItunesCategory.ARTS),
@@ -104,5 +104,16 @@ public enum class NestedItunesCategory(public override val value: String, public
     FILM_HISTORY("Film History", SimpleItunesCategory.TV_AND_FILM),
     FILM_INTERVIEWS("Film Interviews", SimpleItunesCategory.TV_AND_FILM),
     FILM_REVIEWS("Film Reviews", SimpleItunesCategory.TV_AND_FILM),
-    TV_REVIEWS("TV Reviews", SimpleItunesCategory.TV_AND_FILM)
+    TV_REVIEWS("TV Reviews", SimpleItunesCategory.TV_AND_FILM);
+
+    public companion object Factory : ItunesCategoryFactory {
+
+        private val categoryMap: Map<String, ItunesCategory> = values().map { category ->
+            category.categoryName.toLowerCase() to category
+        }.toMap()
+
+        public override fun from(category: String?): ItunesCategory? = category?.let {
+            return categoryMap[it.toLowerCase()]
+        }
+    }
 }

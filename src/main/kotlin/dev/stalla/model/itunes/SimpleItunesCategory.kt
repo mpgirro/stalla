@@ -10,7 +10,7 @@ package dev.stalla.model.itunes
  * Categories are defined in the [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
  * To define a nested subcategory, use [NestedItunesCategory].
  */
-public enum class SimpleItunesCategory(public override val value: String) : ItunesCategory {
+public enum class SimpleItunesCategory(public override val categoryName: String) : ItunesCategory {
     ARTS("Arts"),
     BUSINESS("Business"),
     COMEDY("Comedy"),
@@ -29,5 +29,16 @@ public enum class SimpleItunesCategory(public override val value: String) : Itun
     SPORTS("Sports"),
     TECHNOLOGY("Technology"),
     TRUE_CRIME("True Crime"),
-    TV_AND_FILM("TV & Film")
+    TV_AND_FILM("TV & Film");
+
+    public companion object Factory : ItunesCategoryFactory {
+
+        private val categoryMap: Map<String, ItunesCategory> = values().map { category ->
+            category.categoryName.toLowerCase() to category
+        }.toMap()
+
+        public override fun from(category: String?): ItunesCategory? = category?.let {
+            return categoryMap[it.toLowerCase()]
+        }
+    }
 }

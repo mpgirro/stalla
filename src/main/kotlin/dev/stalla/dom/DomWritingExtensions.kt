@@ -187,22 +187,22 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
 @InternalApi
 internal fun Node.appendITunesStyleCategoryElements(categories: List<ItunesCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
-        if (category.value.isBlank()) continue
+        if (category.categoryName.isBlank()) continue
 
         when (category) {
             is SimpleItunesCategory -> {
                 appendElement("category", namespace) {
-                    setAttribute("text", category.value.trim())
+                    setAttribute("text", category.categoryName.trim())
                 }
             }
             is NestedItunesCategory -> {
                 appendElement("category", namespace) {
                     // Write parent category
-                    setAttribute("text", category.parent.value.trim())
+                    setAttribute("text", category.parent.categoryName.trim())
 
                     // Write sub-category
                     appendElement("category", namespace) {
-                        setAttribute("text", category.value.trim())
+                        setAttribute("text", category.categoryName.trim())
                     }
                 }
             }

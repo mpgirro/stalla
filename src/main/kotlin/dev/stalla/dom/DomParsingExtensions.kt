@@ -195,7 +195,10 @@ internal fun Node.toItunesCategory(namespace: FeedNamespace? = null): ItunesCate
  * @return The [categoryBuilder] populated with the DOM node contents.
  */
 @InternalApi
-internal fun Node.toGoogleplayCategoryBuilder(categoryBuilder: GoogleplayCategoryBuilder, namespace: FeedNamespace? = null): GoogleplayCategoryBuilder {
+internal fun Node.toGoogleplayCategoryBuilder(
+    categoryBuilder: GoogleplayCategoryBuilder,
+    namespace: FeedNamespace? = null
+): GoogleplayCategoryBuilder {
     val category = getAttributeValueByName("text")?.trim() ?: return categoryBuilder
     categoryBuilder.category(category)
 

@@ -7,6 +7,8 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.itunes.NestedItunesCategory
+import dev.stalla.model.itunes.SimpleItunesCategory
 import org.junit.jupiter.api.Test
 
 class ItunesCategoryFactoryTest {
@@ -128,22 +130,63 @@ class ItunesCategoryFactoryTest {
     )
 
     @Test
-    fun `should retrieve all defined iTunes categories from the factory method`() {
+    fun `should retrieve all defined iTunes categories from the interface factory method`() {
         for (simpleCategory in validSimpleItunesCategoryNames) {
             assertThat(ItunesCategory.from(simpleCategory)).isNotNull().all {
-                prop(ItunesCategory::value).isEqualTo(simpleCategory)
+                prop(ItunesCategory::categoryName).isEqualTo(simpleCategory)
             }
         }
         for (nestedCategory in validNestedItunesCategoryNames) {
             assertThat(ItunesCategory.from(nestedCategory)).isNotNull().all {
-                prop(ItunesCategory::value).isEqualTo(nestedCategory)
+                prop(ItunesCategory::categoryName).isEqualTo(nestedCategory)
             }
         }
     }
 
     @Test
-    fun `should not retrieve a not defined iTunes category from the factory method`() {
+    fun `should retrieve all defined simple iTunes categories from the simple factory method`() {
+        for (simpleCategory in validSimpleItunesCategoryNames) {
+            assertThat(SimpleItunesCategory.from(simpleCategory)).isNotNull().all {
+                prop(ItunesCategory::categoryName).isEqualTo(simpleCategory)
+            }
+        }
+    }
+
+    @Test
+    fun `should retrieve all defined nested iTunes categories from the nested factory method`() {
+        for (nestedCategory in validNestedItunesCategoryNames) {
+            assertThat(NestedItunesCategory.from(nestedCategory)).isNotNull().all {
+                prop(ItunesCategory::categoryName).isEqualTo(nestedCategory)
+            }
+        }
+    }
+
+    @Test
+    fun `should not retrieve an undefined iTunes category from the simple factory method`() {
+        assertThat(SimpleItunesCategory.from("itunes category")).isNull()
+    }
+
+    @Test
+    fun `should not retrieve an undefined iTunes category from the nested factory method`() {
+        assertThat(NestedItunesCategory.from("itunes category")).isNull()
+    }
+
+    @Test
+    fun `should not retrieve an undefined iTunes category from the interface factory method`() {
         assertThat(ItunesCategory.from("itunes category")).isNull()
     }
 
+    @Test
+    fun `should not retrieve a simple iTunes category from the nested iTunes category factory method`() {
+        for (simpleCategory in validSimpleItunesCategoryNames) {
+            assertThat(NestedItunesCategory.from(simpleCategory)).isNull()
+        }
+    }
+
+    @Test
+    fun `should not retrieve a nested iTunes category from the simple iTunes category factory method`() {
+        for (nestedCategory in validNestedItunesCategoryNames) {
+            assertThat(SimpleItunesCategory.from(nestedCategory)).isNull()
+        }
+    }
 }

@@ -6,21 +6,21 @@ package dev.stalla.model.itunes
 public sealed interface ItunesCategory {
 
     /** The name of the category */
-    public val value: String
+    public val categoryName: String
 
-    public companion object Factory {
+    public companion object Factory : ItunesCategoryFactory {
 
-        // Note that the map call here does a required smart cast
         private val categoryMap: Map<String, ItunesCategory> = run {
+            // Note that the map calls here do a necessary smart cast
             val categories = listOf(
                 SimpleItunesCategory.values().map { it },
                 NestedItunesCategory.values().map { it }
             )
-            categories.flatten().map { it.value.toLowerCase() to it }.toMap()
+            categories.flatten().map { it.categoryName.toLowerCase() to it }.toMap()
         }
 
-        public fun from(category: String?): ItunesCategory? = category?.let {
-            return categoryMap.get(it.toLowerCase())
+        public override fun from(category: String?): ItunesCategory? = category?.let {
+            return categoryMap[it.toLowerCase()]
         }
     }
 }

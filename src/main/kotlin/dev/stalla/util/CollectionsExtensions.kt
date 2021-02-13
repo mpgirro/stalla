@@ -23,9 +23,9 @@ import dev.stalla.model.rss.RssCategory
 internal fun List<RssCategory>.asBuilders(): List<RssCategoryBuilder> = map(RssCategory.builder()::from)
 
 /** Transforms this list into a list of [ItunesCategoryBuilder] */
-//@InternalApi
-//@JvmName("asItunesCategoryBuilders")
-//internal fun List<ItunesCategory>.asBuilders(): List<ItunesCategoryBuilder> = map(ItunesCategory.builder()::from)
+// @InternalApi
+// @JvmName("asItunesCategoryBuilders")
+// internal fun List<ItunesCategory>.asBuilders(): List<ItunesCategoryBuilder> = map(ItunesCategory.builder()::from)
 
 /** Transforms this list into a list of [GoogleplayCategoryBuilder] */
 @InternalApi
