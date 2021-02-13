@@ -3,7 +3,6 @@ package dev.stalla.builder.podcast
 import dev.stalla.builder.Builder
 import dev.stalla.builder.GoogleplayCategoryBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.asBuilders

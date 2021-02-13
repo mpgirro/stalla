@@ -1,9 +1,7 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.GoogleplayCategoryBuilder;
-import dev.stalla.builder.ItunesCategoryBuilder;
 import dev.stalla.model.googleplay.GoogleplayCategory;
-import dev.stalla.model.itunes.ItunesCategory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

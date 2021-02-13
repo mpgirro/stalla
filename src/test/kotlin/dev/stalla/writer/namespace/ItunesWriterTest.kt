@@ -131,11 +131,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write itunes tags to the channel when the data is empty`() {
-        val categories = listOf(
-            SimpleItunesCategory.SCIENCE
-//            NestedItunesCategory.SCIENCE_FICTION,
-//            NestedItunesCategory.TECH_NEWS
-        )
+        val categories = listOf(SimpleItunesCategory.SCIENCE)
         val podcast = aPodcast(
             itunes = aPodcastItunes(
                 subtitle = "",

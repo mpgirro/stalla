@@ -1,14 +1,12 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.HrefOnlyImageBuilder;
-import dev.stalla.builder.ItunesCategoryBuilder;
 import dev.stalla.builder.episode.EpisodeBuilder;
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder;
 import dev.stalla.builder.podcast.*;
 import dev.stalla.model.feedpress.Feedpress;
 import dev.stalla.model.fyyd.Fyyd;
 import dev.stalla.model.googleplay.PodcastGoogleplay;
-import dev.stalla.model.itunes.ItunesCategory;
 import dev.stalla.model.itunes.PodcastItunes;
 import dev.stalla.model.itunes.SimpleItunesCategory;
 import dev.stalla.model.podcastindex.Funding;

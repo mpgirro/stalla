@@ -9,6 +9,8 @@ package dev.stalla.model.itunes
  * </itunes:category>
  * ```
  *
+ * Categories and their hierarchy are defined in the [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
+ *
  * @param parent The parent [SimpleItunesCategory].
  */
 public enum class NestedItunesCategory(public override val value: String, public val parent: SimpleItunesCategory) : ItunesCategory {

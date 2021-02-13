@@ -6,6 +6,9 @@ package dev.stalla.model.itunes
  * ```
  * <itunes:category text="News" />
  * ```
+ *
+ * Categories are defined in the [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
+ * To define a nested subcategory, use [NestedItunesCategory].
  */
 public enum class SimpleItunesCategory(public override val value: String) : ItunesCategory {
     ARTS("Arts"),
