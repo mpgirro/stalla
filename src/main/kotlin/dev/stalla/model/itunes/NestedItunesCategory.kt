@@ -112,6 +112,7 @@ public enum class NestedItunesCategory(public override val categoryName: String,
             category.categoryName.toLowerCase() to category
         }.toMap()
 
+        @JvmStatic
         public override fun from(category: String?): ItunesCategory? = category?.let {
             return categoryMap[it.toLowerCase()]
         }

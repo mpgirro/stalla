@@ -19,6 +19,7 @@ public sealed interface ItunesCategory {
             categories.flatten().map { it.categoryName.toLowerCase() to it }.toMap()
         }
 
+        @JvmStatic
         public override fun from(category: String?): ItunesCategory? = category?.let {
             return categoryMap[it.toLowerCase()]
         }
