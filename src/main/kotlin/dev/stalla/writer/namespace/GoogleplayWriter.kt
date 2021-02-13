@@ -1,8 +1,8 @@
 package dev.stalla.writer.namespace
 
 import dev.stalla.dom.appendElement
+import dev.stalla.dom.appendGoogleplayCategoryElements
 import dev.stalla.dom.appendHrefOnlyImageElement
-import dev.stalla.dom.appendITunesStyleCategoryElements
 import dev.stalla.dom.appendYesElementIfTrue
 import dev.stalla.dom.appendYesNoElement
 import dev.stalla.model.Episode
@@ -35,7 +35,7 @@ internal object GoogleplayWriter : NamespaceWriter() {
             appendElement("owner", namespace) { textContent = play.owner?.trim() }
         }
 
-        appendITunesStyleCategoryElements(play.categories, namespace)
+        appendGoogleplayCategoryElements(play.categories, namespace)
 
         appendCommonElements(play)
     }

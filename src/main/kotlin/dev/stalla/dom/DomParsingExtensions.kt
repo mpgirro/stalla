@@ -1,5 +1,6 @@
 package dev.stalla.dom
 
+import dev.stalla.builder.GoogleplayCategoryBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.PersonBuilder
@@ -175,6 +176,28 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
  */
 @InternalApi
 internal fun Node.toITunesCategoryBuilder(categoryBuilder: ItunesCategoryBuilder, namespace: FeedNamespace? = null): ItunesCategoryBuilder {
+    val category = getAttributeValueByName("text")?.trim() ?: return categoryBuilder
+    categoryBuilder.category(category)
+
+    val subcategoryElement = findElementByName("category", namespace) ?: return categoryBuilder
+    val subcategory = subcategoryElement.getAttributeValueByName("text")?.trim() ?: return categoryBuilder
+    categoryBuilder.subcategory(subcategory)
+
+    return categoryBuilder
+}
+
+/**
+ * Parses the node contents into a [GoogleplayCategoryBuilder] if possible, ensuring the child nodes
+ * have the specified [namespace], then populates the [categoryBuilder] with the parsed data.
+ *
+ * @param categoryBuilder An empty [GoogleplayCategoryBuilder] instance to initialise with the node's
+ * contents.
+ * @param namespace The [FeedNamespace] to ensure the child nodes have.
+ *
+ * @return The [categoryBuilder] populated with the DOM node contents.
+ */
+@InternalApi
+internal fun Node.toGoogleplayCategoryBuilder(categoryBuilder: GoogleplayCategoryBuilder, namespace: FeedNamespace? = null): GoogleplayCategoryBuilder {
     val category = getAttributeValueByName("text")?.trim() ?: return categoryBuilder
     categoryBuilder.category(category)
 

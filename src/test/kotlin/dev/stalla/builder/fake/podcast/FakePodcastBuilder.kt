@@ -1,7 +1,7 @@
 package dev.stalla.builder.fake.podcast
 
+import dev.stalla.builder.GoogleplayCategoryBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
@@ -9,8 +9,8 @@ import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.fake.FakeAtomBuilder
 import dev.stalla.builder.fake.FakeBuilder
+import dev.stalla.builder.fake.FakeGoogleplayCategoryBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakeItunesCategoryBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
 import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
@@ -97,7 +97,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createITunesStyleCategoryBuilder(): ItunesCategoryBuilder = FakeItunesCategoryBuilder()
+    override fun createGoogleplayCategoryBuilder(): GoogleplayCategoryBuilder = FakeGoogleplayCategoryBuilder()
 
     override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder = FakePodcastPodcastindexLockedBuilder()
 

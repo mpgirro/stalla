@@ -10,7 +10,8 @@ import dev.stalla.hasValue
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.episode.anEpisodeItunes
-import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.itunes.NestedItunesCategory
+import dev.stalla.model.itunes.SimpleItunesCategory
 import dev.stalla.model.podcast.aPodcast
 import dev.stalla.model.podcast.aPodcastItunes
 import org.junit.jupiter.api.Test
@@ -95,9 +96,12 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write itunes tags to the channel when the data is blank`() {
         val categories = listOf(
-            ItunesCategory.Simple(" "),
-            ItunesCategory.Nested(" ", ItunesCategory.Simple("subcategory")),
-            ItunesCategory.Nested("nested", ItunesCategory.Simple(" "))
+//            GoogleplayCategory.Simple(" "),
+//            GoogleplayCategory.Nested(" ", GoogleplayCategory.Simple("subcategory")),
+//            GoogleplayCategory.Nested("nested", GoogleplayCategory.Simple(" "))
+            SimpleItunesCategory.SCIENCE,
+            NestedItunesCategory.SCIENCE_FICTION,
+            NestedItunesCategory.TECH_NEWS
         )
         val podcast = aPodcast(
             itunes = aPodcastItunes(
@@ -143,9 +147,12 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
     @Test
     internal fun `should not write itunes tags to the channel when the data is empty`() {
         val categories = listOf(
-            ItunesCategory.Simple(""),
-            ItunesCategory.Nested("", ItunesCategory.Simple("subcategory")),
-            ItunesCategory.Nested("nested", ItunesCategory.Simple(""))
+//            GoogleplayCategory.Simple(""),
+//            GoogleplayCategory.Nested("", GoogleplayCategory.Simple("subcategory")),
+//            GoogleplayCategory.Nested("nested", GoogleplayCategory.Simple(""))
+            SimpleItunesCategory.SCIENCE,
+            NestedItunesCategory.SCIENCE_FICTION,
+            NestedItunesCategory.TECH_NEWS
         )
         val podcast = aPodcast(
             itunes = aPodcastItunes(

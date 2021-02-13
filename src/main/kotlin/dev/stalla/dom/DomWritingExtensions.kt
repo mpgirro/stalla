@@ -2,7 +2,10 @@ package dev.stalla.dom
 
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
+import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.itunes.NestedItunesCategory
+import dev.stalla.model.itunes.SimpleItunesCategory
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import dev.stalla.util.BooleanStringStyle
@@ -184,11 +187,43 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
 @InternalApi
 internal fun Node.appendITunesStyleCategoryElements(categories: List<ItunesCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
+        if (category.value.isBlank()) continue
+
+        when (category) {
+            is SimpleItunesCategory -> {
+                appendElement("category", namespace) {
+                    setAttribute("text", category.value.trim())
+                }
+            }
+            is NestedItunesCategory -> {
+                appendElement("category", namespace) {
+                    // Write parent category
+                    setAttribute("text", category.parent.value.trim())
+
+                    // Write sub-category
+                    appendElement("category", namespace) {
+                        setAttribute("text", category.value.trim())
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Appends Google Play style `<googleplay:category> tags with the data from the provided [categories].
+ *
+ * @param categories The [categories][GoogleplayCategory] to append.
+ * @param namespace The namespace to use, if any.
+ */
+@InternalApi
+internal fun Node.appendGoogleplayCategoryElements(categories: List<GoogleplayCategory>, namespace: FeedNamespace? = null) {
+    for (category in categories) {
         if (category.name.isBlank()) continue
         appendElement("category", namespace) {
             setAttribute("text", category.name.trim())
 
-            if (category is ItunesCategory.Nested && category.subcategory.name.isNotBlank()) {
+            if (category is GoogleplayCategory.Nested && category.subcategory.name.isNotBlank()) {
                 appendElement("category", namespace) {
                     setAttribute("text", category.subcategory.name.trim())
                 }

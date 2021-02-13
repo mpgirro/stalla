@@ -2,12 +2,11 @@ package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
-import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [PodcastItunes] instances. */
@@ -28,12 +27,18 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
     /** Set the author value. */
     public fun author(author: String?): PodcastItunesBuilder
 
-    /** Adds an [ItunesCategoryBuilder] to the list of category builders. */
-    public fun addCategoryBuilder(categoryBuilder: ItunesCategoryBuilder): PodcastItunesBuilder
+    public fun addCategory(category: ItunesCategory): PodcastItunesBuilder
 
-    /** Adds multiple [ItunesCategoryBuilder] to the list of category builders. */
-    public fun addCategoryBuilders(categoryBuilders: List<ItunesCategoryBuilder>): PodcastItunesBuilder = apply {
-        categoryBuilders.forEach(::addCategoryBuilder)
+    public fun addCategory(category: String?): PodcastItunesBuilder = apply {
+        ItunesCategory.from(category)?.let { instance -> addCategory(instance) }
+    }
+
+    public fun addCategoryInstances(categories: List<ItunesCategory>): PodcastItunesBuilder = apply {
+        categories.forEach(::addCategory)
+    }
+
+    public fun addCategoryStrings(categories: List<String>): PodcastItunesBuilder = apply {
+        categories.forEach(::addCategory)
     }
 
     /** Set the explicit flag value. */
@@ -63,7 +68,7 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
         imageBuilder(HrefOnlyImage.builder().from(itunes.image))
         keywords(itunes.keywords)
         author(itunes.author)
-        addCategoryBuilders(itunes.categories.asBuilders())
+        addCategoryInstances(itunes.categories)
         explicit(itunes.explicit)
         block(itunes.block)
         complete(itunes.complete)

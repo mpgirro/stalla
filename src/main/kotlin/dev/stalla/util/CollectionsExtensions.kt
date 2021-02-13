@@ -1,6 +1,6 @@
 package dev.stalla.util
 
-import dev.stalla.builder.ItunesCategoryBuilder
+import dev.stalla.builder.GoogleplayCategoryBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
@@ -9,7 +9,7 @@ import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.model.Episode
-import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.podcastindex.Funding
 import dev.stalla.model.podcastindex.Soundbite
 import dev.stalla.model.podcastindex.Transcript
@@ -23,9 +23,14 @@ import dev.stalla.model.rss.RssCategory
 internal fun List<RssCategory>.asBuilders(): List<RssCategoryBuilder> = map(RssCategory.builder()::from)
 
 /** Transforms this list into a list of [ItunesCategoryBuilder] */
+//@InternalApi
+//@JvmName("asItunesCategoryBuilders")
+//internal fun List<ItunesCategory>.asBuilders(): List<ItunesCategoryBuilder> = map(ItunesCategory.builder()::from)
+
+/** Transforms this list into a list of [GoogleplayCategoryBuilder] */
 @InternalApi
-@JvmName("asItunesCategoryBuilders")
-internal fun List<ItunesCategory>.asBuilders(): List<ItunesCategoryBuilder> = map(ItunesCategory.builder()::from)
+@JvmName("asGoogleplayCategoryBuilders")
+internal fun List<GoogleplayCategory>.asBuilders(): List<GoogleplayCategoryBuilder> = map(GoogleplayCategory.builder()::from)
 
 /** Transforms this list into a list of [EpisodeEnclosureBuilder] */
 @InternalApi

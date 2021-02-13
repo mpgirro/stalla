@@ -12,7 +12,6 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingItunesCategoryBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
@@ -23,7 +22,9 @@ import dev.stalla.model.Podcast
 import dev.stalla.model.atom.Atom
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
+import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.podcast.aPodcast
 import dev.stalla.model.podcastindex.PodcastPodcastindex
@@ -54,7 +55,9 @@ internal class ValidatingPodcastBuilderTest {
 
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 
-    private val expectedITunesCategoryBuilder = ValidatingItunesCategoryBuilder()
+    private val expectedItunesCategory: ItunesCategory = ItunesCategory.from("Science Fiction")!!
+
+    private val expectedGoogleplayCategoryBuilder = GoogleplayCategory.builder()
         .category("itunes category")
         .subcategory("itunes subcategory")
 
@@ -209,7 +212,7 @@ internal class ValidatingPodcastBuilderTest {
             .addCategoryBuilder(expectedCategoryBuilders[1])
             .apply {
                 itunesBuilder.imageBuilder(expectedITunesImageBuilder)
-                    .addCategoryBuilder(expectedITunesCategoryBuilder)
+                    .addCategory(expectedItunesCategory)
                     .explicit(false)
                 atomBuilder.addAuthorBuilder(expectedAtomAuthorBuilder)
                 feedpressBuilder.newsletterId("feedpress newsletterId")
@@ -236,7 +239,7 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::image).isEqualTo(expectedImageBuilder.build())
                 prop(Podcast::categories).containsExactly(expectedCategoryBuilders[0].build(), expectedCategoryBuilders[1].build())
                 prop(Podcast::episodes).containsExactly(expectedEpisodeBuilder.build())
-                prop(Podcast::itunes).isNotNull().prop(PodcastItunes::categories).containsExactly(expectedITunesCategoryBuilder.build())
+                prop(Podcast::itunes).isNotNull().prop(PodcastItunes::categories).containsExactly(expectedItunesCategory)
                 prop(Podcast::atom).isNotNull().prop(Atom::authors)
                     .containsExactly(expectedAtomAuthorBuilder.build())
                 prop(Podcast::feedpress).isNotNull().prop(Feedpress::newsletterId)

@@ -13,7 +13,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingItunesCategoryBuilder
+import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.podcast.aPodcastGoogleplay
 import org.junit.jupiter.api.Test
@@ -22,11 +22,11 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
-    private val expectedITunesCategoryBuilder = ValidatingItunesCategoryBuilder()
+    private val expectedGoogleplayCategoryBuilder = GoogleplayCategory.builder()
         .category("googleplay category")
         .subcategory("googleplay subcategory")
 
-    private val otherExpectedITunesCategoryBuilder = ValidatingItunesCategoryBuilder()
+    private val otherExpectedGoogleplayCategoryBuilder = GoogleplayCategory.builder()
         .category("googleplay category 2")
 
     @Test
@@ -83,7 +83,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     @Test
     internal fun `should build a valid Podcast GooglePlay when there is only a category`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
-            .addCategoryBuilder(expectedITunesCategoryBuilder)
+            .addCategoryBuilder(expectedGoogleplayCategoryBuilder)
 
         assertAll {
             assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
@@ -91,7 +91,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
                 prop(PodcastGoogleplay::owner).isNull()
-                prop(PodcastGoogleplay::categories).containsExactly(expectedITunesCategoryBuilder.build())
+                prop(PodcastGoogleplay::categories).containsExactly(expectedGoogleplayCategoryBuilder.build())
                 prop(PodcastGoogleplay::description).isNull()
                 prop(PodcastGoogleplay::explicit).isNull()
                 prop(PodcastGoogleplay::block).isFalse()
@@ -185,8 +185,8 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .author("author")
             .owner("owner")
-            .addCategoryBuilder(expectedITunesCategoryBuilder)
-            .addCategoryBuilder(otherExpectedITunesCategoryBuilder)
+            .addCategoryBuilder(expectedGoogleplayCategoryBuilder)
+            .addCategoryBuilder(otherExpectedGoogleplayCategoryBuilder)
             .description("description")
             .explicit(true)
             .block(false)
@@ -199,8 +199,8 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                 prop(PodcastGoogleplay::author).isEqualTo("author")
                 prop(PodcastGoogleplay::owner).isEqualTo("owner")
                 prop(PodcastGoogleplay::categories).containsExactly(
-                    expectedITunesCategoryBuilder.build(),
-                    otherExpectedITunesCategoryBuilder.build()
+                    expectedGoogleplayCategoryBuilder.build(),
+                    otherExpectedGoogleplayCategoryBuilder.build()
                 )
                 prop(PodcastGoogleplay::description).isEqualTo("description")
                 prop(PodcastGoogleplay::explicit).isNotNull().isTrue()

@@ -36,8 +36,8 @@
         <itunes:category text="Tech News"/>
     </itunes:category>
     <itunes:category text="Society &amp; Culture"/>
-    <itunes:category text="Technology">
-        <itunes:category text="Gadgets"/>
+    <itunes:category text="Fiction">
+        <itunes:category text="Science Fiction"/>
     </itunes:category>
     <itunes:explicit>no</itunes:explicit>
     <itunes:block>no</itunes:block>

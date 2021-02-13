@@ -10,6 +10,7 @@ import dev.stalla.model.fyyd.Fyyd;
 import dev.stalla.model.googleplay.PodcastGoogleplay;
 import dev.stalla.model.itunes.ItunesCategory;
 import dev.stalla.model.itunes.PodcastItunes;
+import dev.stalla.model.itunes.SimpleItunesCategory;
 import dev.stalla.model.podcastindex.Funding;
 import dev.stalla.model.podcastindex.Locked;
 import dev.stalla.model.podcastindex.PodcastPodcastindex;
@@ -46,15 +47,12 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a PodcastItunes model using builder factory methods only")
     public void testPodcastItunesBuilderFactory() {
-        ItunesCategoryBuilder itunesCategoryBuilder = ItunesCategory.builder()
-            .category("category");
-
         HrefOnlyImageBuilder hrefOnlyImageBuilder = HrefOnlyImage.builder()
             .href("href");
 
         PodcastItunesBuilder podcastItunesBuilder = PodcastItunes.builder()
             .explicit(false)
-            .addCategoryBuilder(itunesCategoryBuilder)
+            .addCategory(SimpleItunesCategory.NEWS)
             .imageBuilder(hrefOnlyImageBuilder);
 
         assertNotNull(podcastItunesBuilder.build());

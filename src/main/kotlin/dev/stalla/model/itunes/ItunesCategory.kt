@@ -1,43 +1,23 @@
 package dev.stalla.model.itunes
 
-import dev.stalla.builder.ItunesCategoryBuilder
-import dev.stalla.builder.validating.ValidatingItunesCategoryBuilder
-import dev.stalla.model.BuilderFactory
-
 /**
- * An [iTunes-style `<category>` tag][https://help.apple.com/itc/podcasts_connect/#/itcb54353390].
- * The same format is also used for Google Play <category> tags, just with a different namespace.
- *
- * @param name The name of the category.
+ * An [iTunes-style `<category>` tag][https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12].
  */
-public sealed class ItunesCategory(public open val name: String) {
+public sealed interface ItunesCategory {
 
-    public companion object Factory : BuilderFactory<ItunesCategory, ItunesCategoryBuilder> {
+    /** The name of the category */
+    public val value: String
 
-        /** Returns a builder implementation for building [ItunesCategory] model instances. */
-        @JvmStatic
-        override fun builder(): ItunesCategoryBuilder = ValidatingItunesCategoryBuilder()
+    public companion object Factory {
+
+        // Note that the map call here does a required smart cast
+        private val instances: List<ItunesCategory> = listOf(
+            SimpleItunesCategory.values().map { it },
+            NestedItunesCategory.values().map { it }
+        ).flatten()
+
+        public fun from(category: String?): ItunesCategory? = category?.let {
+            instances.find { instance -> instance.value.toLowerCase() == it.toLowerCase() }
+        }
     }
-
-    /**
-     * A simple iTunes-style category, without a nested subcategory:
-     *
-     * ```
-     * <itunes:category text="News" />
-     * ```
-     */
-    public data class Simple(override val name: String) : ItunesCategory(name)
-
-    /**
-     * An iTunes-style category that contains a nested subcategory:
-     *
-     * ```
-     * <itunes:category text="News">
-     *     <itunes:category text="Tech News" />
-     * </itunes:category>
-     * ```
-     *
-     * @param subcategory The nested [Simple] subcategory.
-     */
-    public data class Nested(override val name: String, val subcategory: Simple) : ItunesCategory(name)
 }

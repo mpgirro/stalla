@@ -1,57 +1,6 @@
 package dev.stalla.model.itunes
 
 /**
- * An [iTunes-style `<category>` tag][https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12].
- */
-public sealed interface ItunesSpecialCategory {
-
-    /** The name of the category */
-    public val category: String
-
-    public companion object Factory {
-
-        // Note that the map call here does a required smart cast
-        private val instances: List<ItunesSpecialCategory> = listOf(
-            SimpleItunesCategory.values().map { it },
-            NestedItunesCategory.values().map { it }
-        ).flatten()
-
-        public fun from(category: String?): ItunesSpecialCategory? = category?.let {
-            instances.find { instance -> instance.category == it.toLowerCase() }
-        }
-    }
-}
-
-/**
- * A simple iTunes-style category, without a nested subcategory:
- *
- * ```
- * <itunes:category text="News" />
- * ```
- */
-public enum class SimpleItunesCategory(public override val category: String) : ItunesSpecialCategory {
-    ARTS("Arts"),
-    BUSINESS("Business"),
-    COMEDY("Comedy"),
-    EDUCATION("Education"),
-    FICTION("Fiction"),
-    GOVERNMENT("Government"),
-    HISTORY("History"),
-    HEALTH_AND_FITNESS("Health &amp; Fitness"),
-    KIDS_AND_FAMILY("Kids &amp; Family"),
-    LEISURE("Leisure"),
-    MUSIC("Music"),
-    NEWS("News"),
-    RELIGION_AND_SPIRITUALITY("Religion &amp; Spirituality"),
-    SCIENCE("Science"),
-    SOCIETY_AND_CULTURE("Society &amp; Culture"),
-    SPORTS("Sports"),
-    TECHNOLOGY("Technology"),
-    TRUE_CRIME("True Crime"),
-    TV_AND_FILM("TV &amp; Film")
-}
-
-/**
  * An iTunes-style subcategory that is contained within a parent [SimpleItunesCategory]:
  *
  * ```
@@ -62,7 +11,7 @@ public enum class SimpleItunesCategory(public override val category: String) : I
  *
  * @param parent The parent [SimpleItunesCategory].
  */
-public enum class NestedItunesCategory(public override val category: String, public val parent: SimpleItunesCategory) : ItunesSpecialCategory {
+public enum class NestedItunesCategory(public override val value: String, public val parent: SimpleItunesCategory) : ItunesCategory {
     BOOKS("Books", SimpleItunesCategory.ARTS),
     DESIGN("Design", SimpleItunesCategory.ARTS),
     FASHION_AND_BEAUTY("Fashion &amp; Beauty", SimpleItunesCategory.ARTS),
