@@ -10,7 +10,7 @@ import dev.stalla.hasValue
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.episode.anEpisodeItunes
-import dev.stalla.model.itunes.SimpleItunesCategory
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.podcast.aPodcast
 import dev.stalla.model.podcast.aPodcastItunes
 import org.junit.jupiter.api.Test
@@ -131,7 +131,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write itunes tags to the channel when the data is empty`() {
-        val categories = listOf(SimpleItunesCategory.SCIENCE)
+        val categories = listOf(ItunesCategory.Science)
         val podcast = aPodcast(
             itunes = aPodcastItunes(
                 subtitle = "",

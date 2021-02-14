@@ -7,8 +7,8 @@ import dev.stalla.builder.podcast.*;
 import dev.stalla.model.feedpress.Feedpress;
 import dev.stalla.model.fyyd.Fyyd;
 import dev.stalla.model.googleplay.PodcastGoogleplay;
+import dev.stalla.model.itunes.ItunesCategory;
 import dev.stalla.model.itunes.PodcastItunes;
-import dev.stalla.model.itunes.SimpleItunesCategory;
 import dev.stalla.model.podcastindex.Funding;
 import dev.stalla.model.podcastindex.Locked;
 import dev.stalla.model.podcastindex.PodcastPodcastindex;
@@ -50,7 +50,7 @@ public class PodcastBuilderFactoryTest {
 
         PodcastItunesBuilder podcastItunesBuilder = PodcastItunes.builder()
             .explicit(false)
-            .addCategory(SimpleItunesCategory.NEWS)
+            .addCategory(ItunesCategory.News)
             .imageBuilder(hrefOnlyImageBuilder);
 
         assertNotNull(podcastItunesBuilder.build());

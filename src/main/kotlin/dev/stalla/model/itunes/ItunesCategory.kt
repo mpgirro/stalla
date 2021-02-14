@@ -2,13 +2,34 @@ package dev.stalla.model.itunes
 
 import dev.stalla.util.findItunesCategory
 
-/**
- * An [iTunes-style `<category>` tag][https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12].
- */
-public sealed interface ItunesCategory {
+public sealed class ItunesCategory(public open val name: String) {
 
-    /** The name of the category */
-    public val categoryName: String
+    /**
+     * A simple iTunes-style category, without a nested subcategory:
+     *
+     * ```
+     * <itunes:category text="News" />
+     * ```
+     *
+     * Categories are defined in the [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
+     * To define a nested subcategory, use [Simple].
+     */
+    public abstract class Simple protected constructor(override val name: String) : ItunesCategory(name)
+
+    /**
+     * An iTunes-style subcategory that is contained within a parent [Simple]:
+     *
+     * ```
+     * <itunes:category text="News">
+     *     <itunes:category text="Tech News" />
+     * </itunes:category>
+     * ```
+     *
+     * Categories and their hierarchy are defined in the [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
+     *
+     * @param parent The parent [Nested].
+     */
+    public abstract class Nested protected constructor(override val name: String, public val parent: Simple) : ItunesCategory(name)
 
     public companion object Factory {
 
@@ -16,333 +37,335 @@ public sealed interface ItunesCategory {
         public fun from(category: String?): ItunesCategory? = findItunesCategory(category)
 
         @JvmField
-        public val ARTS: ItunesCategory = SimpleItunesCategory.ARTS
+        public val Arts: Simple = object : Simple("Arts") {}
 
         @JvmField
-        public val BOOKS: ItunesCategory = NestedItunesCategory.BOOKS
+        public val Books: Nested = object : Nested("Books", Arts) {}
 
         @JvmField
-        public val DESIGN: ItunesCategory = NestedItunesCategory.DESIGN
+        public val Design: Nested = object : Nested("Design", Arts) {}
 
         @JvmField
-        public val FASHION_AND_BEAUTY: ItunesCategory = NestedItunesCategory.FASHION_AND_BEAUTY
+        public val FashionAndBeauty: Nested = object : Nested("Fashion & Beauty", Arts) {}
 
         @JvmField
-        public val FOOD: ItunesCategory = NestedItunesCategory.FOOD
+        public val Food: Nested = object : Nested("Food", Arts) {}
 
         @JvmField
-        public val PERFORMING_ARTS: ItunesCategory = NestedItunesCategory.PERFORMING_ARTS
+        public val PerformingArts: Nested = object : Nested("Performing Arts", Arts) {}
 
         @JvmField
-        public val VISUAL_ARTS: ItunesCategory = NestedItunesCategory.VISUAL_ARTS
+        public val VisualArts: Nested = object : Nested("Visual Arts", Arts) {}
 
         @JvmField
-        public val BUSINESS: ItunesCategory = SimpleItunesCategory.BUSINESS
+        public val Business: Simple = object : Simple("Business") {}
 
         @JvmField
-        public val CAREERS: ItunesCategory = NestedItunesCategory.CAREERS
+        public val Careers: Nested = object : Nested("Careers", Business) {}
 
         @JvmField
-        public val ENTREPRENEURSHIP: ItunesCategory = NestedItunesCategory.ENTREPRENEURSHIP
+        public val Entrepreneurship: Nested = object : Nested("Entrepreneurship", Business) {}
 
         @JvmField
-        public val INVESTING: ItunesCategory = NestedItunesCategory.INVESTING
+        public val Investing: Nested = object : Nested("Investing", Business) {}
 
         @JvmField
-        public val MANAGEMENT: ItunesCategory = NestedItunesCategory.MANAGEMENT
+        public val Management: Nested = object : Nested("Management", Business) {}
 
         @JvmField
-        public val MARKETING: ItunesCategory = NestedItunesCategory.MARKETING
+        public val Marketing: Nested = object : Nested("Marketing", Business) {}
 
         @JvmField
-        public val NON_PROFIT: ItunesCategory = NestedItunesCategory.NON_PROFIT
+        public val NonProfit: Nested = object : Nested("Non-Profit", Business) {}
 
         @JvmField
-        public val COMEDY: ItunesCategory = SimpleItunesCategory.COMEDY
+        public val Comedy: Simple = object : Simple("Comedy") {}
 
         @JvmField
-        public val COMEDY_INTERVIEWS: ItunesCategory = NestedItunesCategory.COMEDY_INTERVIEWS
+        public val ComedyInterviews: Nested = object : Nested("Comedy Interviews", Comedy) {}
 
         @JvmField
-        public val IMPROV: ItunesCategory = NestedItunesCategory.IMPROV
+        public val Improv: Nested = object : Nested("Improv", Comedy) {}
 
         @JvmField
-        public val STAND_UP: ItunesCategory = NestedItunesCategory.STAND_UP
+        public val StandUp: Nested = object : Nested("Stand-Up", Comedy) {}
 
         @JvmField
-        public val EDUCATION: ItunesCategory = SimpleItunesCategory.EDUCATION
+        public val Education: Simple = object : Simple("Education") {}
 
         @JvmField
-        public val COURSES: ItunesCategory = NestedItunesCategory.COURSES
+        public val Courses: Nested = object : Nested("Courses", Education) {}
 
         @JvmField
-        public val HOW_TO: ItunesCategory = NestedItunesCategory.HOW_TO
+        public val HowTo: Nested = object : Nested("How To", Education) {}
 
         @JvmField
-        public val LANGUAGE_LEARNING: ItunesCategory = NestedItunesCategory.LANGUAGE_LEARNING
+        public val LanguageLearning: Nested = object : Nested("Language Learning", Education) {}
 
         @JvmField
-        public val SELF_IMPROVEMENT: ItunesCategory = NestedItunesCategory.SELF_IMPROVEMENT
+        public val SelfImprovement: Nested = object : Nested("Self-Improvement", Education) {}
 
         @JvmField
-        public val FICTION: ItunesCategory = SimpleItunesCategory.FICTION
+        public val Fiction: Simple = object : Simple("Fiction") {}
 
         @JvmField
-        public val COMEDY_FICTION: ItunesCategory = NestedItunesCategory.COMEDY_FICTION
+        public val ComedyFiction: Nested = object : Nested("Comedy Fiction", Fiction) {}
 
         @JvmField
-        public val DRAMA: ItunesCategory = NestedItunesCategory.DRAMA
+        public val Drama: Nested = object : Nested("Drama", Fiction) {}
 
         @JvmField
-        public val SCIENCE_FICTION: ItunesCategory = NestedItunesCategory.SCIENCE_FICTION
+        public val ScienceFiction: Nested = object : Nested("Science Fiction", Fiction) {}
 
         @JvmField
-        public val GOVERNMENT: ItunesCategory = SimpleItunesCategory.GOVERNMENT
+        public val Government: Simple = object : Simple("Government") {}
 
         @JvmField
-        public val HISTORY: ItunesCategory = SimpleItunesCategory.HISTORY
+        public val History: Simple = object : Simple("History") {}
 
         @JvmField
-        public val HEALTH_AND_FITNESS: ItunesCategory = SimpleItunesCategory.HEALTH_AND_FITNESS
+        public val HealthAndFitness: Simple = object : Simple("Health & Fitness") {}
 
         @JvmField
-        public val ALTERNATIVE_HEALTH: ItunesCategory = NestedItunesCategory.ALTERNATIVE_HEALTH
+        public val AlternativeHealth: Nested = object : Nested("Alternative Health", HealthAndFitness) {}
 
         @JvmField
-        public val FITNESS: ItunesCategory = NestedItunesCategory.FITNESS
+        public val Fitness: Nested = object : Nested("Fitness", HealthAndFitness) {}
 
         @JvmField
-        public val MEDICINE: ItunesCategory = NestedItunesCategory.MEDICINE
+        public val Medicine: Nested = object : Nested("Medicine", HealthAndFitness) {}
 
         @JvmField
-        public val MENTAL_HEALTH: ItunesCategory = NestedItunesCategory.MENTAL_HEALTH
+        public val MentalHealth: Nested = object : Nested("Mental Health", HealthAndFitness) {}
 
         @JvmField
-        public val NUTRITION: ItunesCategory = NestedItunesCategory.NUTRITION
+        public val Nutrition: Nested = object : Nested("Nutrition", HealthAndFitness) {}
 
         @JvmField
-        public val SEXUALITY: ItunesCategory = NestedItunesCategory.SEXUALITY
+        public val Sexuality: Nested = object : Nested("Sexuality", HealthAndFitness) {}
 
         @JvmField
-        public val KIDS_AND_FAMILY: ItunesCategory = SimpleItunesCategory.KIDS_AND_FAMILY
+        public val KidsAndFamily: Simple = object : Simple("Kids & Family") {}
 
         @JvmField
-        public val EDUCATION_FOR_KIDS: ItunesCategory = NestedItunesCategory.EDUCATION_FOR_KIDS
+        public val EducationForKids: Nested = object : Nested("Education for Kids", KidsAndFamily) {}
 
         @JvmField
-        public val PARENTING: ItunesCategory = NestedItunesCategory.PARENTING
+        public val Parenting: Nested = object : Nested("Parenting", KidsAndFamily) {}
 
         @JvmField
-        public val PETS_AND_ANIMALS: ItunesCategory = NestedItunesCategory.PETS_AND_ANIMALS
+        public val PetsAndAnimals: Nested = object : Nested("Pets & Animals", KidsAndFamily) {}
 
         @JvmField
-        public val STORIES_FOR_KIDS: ItunesCategory = NestedItunesCategory.STORIES_FOR_KIDS
+        public val StoriesForKids: Nested = object : Nested("Stories for Kids", KidsAndFamily) {}
 
         @JvmField
-        public val LEISURE: ItunesCategory = SimpleItunesCategory.LEISURE
+        public val Leisure: Simple = object : Simple("Leisure") {}
 
         @JvmField
-        public val ANIMATION_AND_MANGA: ItunesCategory = NestedItunesCategory.ANIMATION_AND_MANGA
+        public val AnimationAndManga: Nested = object : Nested("Animation & Manga", Leisure) {}
 
         @JvmField
-        public val AUTOMOTIVE: ItunesCategory = NestedItunesCategory.AUTOMOTIVE
+        public val Automotive: Nested = object : Nested("Automotive", Leisure) {}
 
         @JvmField
-        public val AVIATION: ItunesCategory = NestedItunesCategory.AVIATION
+        public val Aviation: Nested = object : Nested("Aviation", Leisure) {}
 
         @JvmField
-        public val CRAFTS: ItunesCategory = NestedItunesCategory.CRAFTS
+        public val Crafts: Nested = object : Nested("Crafts", Leisure) {}
 
         @JvmField
-        public val GAMES: ItunesCategory = NestedItunesCategory.GAMES
+        public val Games: Nested = object : Nested("Games", Leisure) {}
 
         @JvmField
-        public val HOBBIES: ItunesCategory = NestedItunesCategory.HOBBIES
+        public val Hobbies: Nested = object : Nested("Hobbies", Leisure) {}
 
         @JvmField
-        public val HOME_AND_GARDEN: ItunesCategory = NestedItunesCategory.HOME_AND_GARDEN
+        public val HomeAndGarden: Nested = object : Nested("Home & Garden", Leisure) {}
 
         @JvmField
-        public val VIDEO_GAMES: ItunesCategory = NestedItunesCategory.VIDEO_GAMES
+        public val VideoGames: Nested = object : Nested("Video Games", Leisure) {}
 
         @JvmField
-        public val MUSIC: ItunesCategory = SimpleItunesCategory.MUSIC
+        public val Music: Simple = object : Simple("Music") {}
 
         @JvmField
-        public val MUSIC_COMMENTARY: ItunesCategory = NestedItunesCategory.MUSIC_COMMENTARY
+        public val MusicCommentary: Nested = object : Nested("Music Commentary", Music) {}
 
         @JvmField
-        public val MUSIC_HISTORY: ItunesCategory = NestedItunesCategory.MUSIC_HISTORY
+        public val MusicHistory: Nested = object : Nested("Music History", Music) {}
 
         @JvmField
-        public val MUSIC_INTERVIEWS: ItunesCategory = NestedItunesCategory.MUSIC_INTERVIEWS
+        public val MusicInterviews: Nested = object : Nested("Music Interviews", Music) {}
 
         @JvmField
-        public val NEWS: ItunesCategory = SimpleItunesCategory.NEWS
+        public val News: Simple = object : Simple("News") {}
 
         @JvmField
-        public val BUSINESS_NEWS: ItunesCategory = NestedItunesCategory.BUSINESS_NEWS
+        public val BusinessNews: Nested = object : Nested("Business News", News) {}
 
         @JvmField
-        public val DAILY_NEWS: ItunesCategory = NestedItunesCategory.DAILY_NEWS
+        public val DailyNews: Nested = object : Nested("Daily News", News) {}
 
         @JvmField
-        public val ENTERTAINMENT_NEWS: ItunesCategory = NestedItunesCategory.ENTERTAINMENT_NEWS
+        public val EntertainmentNews: Nested = object : Nested("Entertainment News", News) {}
 
         @JvmField
-        public val NEWS_COMMENTARY: ItunesCategory = NestedItunesCategory.NEWS_COMMENTARY
+        public val NewsCommentary: Nested = object : Nested("News Commentary", News) {}
 
         @JvmField
-        public val POLITICS: ItunesCategory = NestedItunesCategory.POLITICS
+        public val Politics: Nested = object : Nested("Politics", News) {}
 
         @JvmField
-        public val SPORTS_NEWS: ItunesCategory = NestedItunesCategory.SPORTS_NEWS
+        public val SportsNews: Nested = object : Nested("Sports News", News) {}
 
         @JvmField
-        public val TECH_NEWS: ItunesCategory = NestedItunesCategory.TECH_NEWS
+        public val TechNews: Nested = object : Nested("Tech News", News) {}
 
         @JvmField
-        public val RELIGION_AND_SPIRITUALITY: ItunesCategory = SimpleItunesCategory.RELIGION_AND_SPIRITUALITY
+        public val ReligionAndSpirituality: Simple = object : Simple("Religion & Spirituality") {}
 
         @JvmField
-        public val BUDDHISM: ItunesCategory = NestedItunesCategory.BUDDHISM
+        public val Buddhism: Nested = object : Nested("Buddhism", ReligionAndSpirituality) {}
 
         @JvmField
-        public val CHRISTIANITY: ItunesCategory = NestedItunesCategory.CHRISTIANITY
+        public val Christianity: Nested = object : Nested("Christianity", ReligionAndSpirituality) {}
 
         @JvmField
-        public val HINDUISM: ItunesCategory = NestedItunesCategory.HINDUISM
+        public val Hinduism: Nested = object : Nested("Hinduism", ReligionAndSpirituality) {}
 
         @JvmField
-        public val ISLAM: ItunesCategory = NestedItunesCategory.ISLAM
+        public val Islam: Nested = object : Nested("Islam", ReligionAndSpirituality) {}
 
         @JvmField
-        public val JUDAISM: ItunesCategory = NestedItunesCategory.JUDAISM
+        public val Judaism: Nested = object : Nested("Judaism", ReligionAndSpirituality) {}
 
         @JvmField
-        public val RELIGION: ItunesCategory = NestedItunesCategory.RELIGION
+        public val Religion: Nested = object : Nested("Religion", ReligionAndSpirituality) {}
 
         @JvmField
-        public val SPIRITUALITY: ItunesCategory = NestedItunesCategory.SPIRITUALITY
+        public val Spirituality: Nested = object : Nested("Spirituality", ReligionAndSpirituality) {}
 
         @JvmField
-        public val SCIENCE: ItunesCategory = SimpleItunesCategory.SCIENCE
+        public val Science: Simple = object : Simple("Science") {}
 
         @JvmField
-        public val ASTRONOMY: ItunesCategory = NestedItunesCategory.ASTRONOMY
+        public val Astronomy: Nested = object : Nested("Astronomy", Science) {}
 
         @JvmField
-        public val CHEMISTRY: ItunesCategory = NestedItunesCategory.CHEMISTRY
+        public val Chemistry: Nested = object : Nested("Chemistry", Science) {}
 
         @JvmField
-        public val EARTH_SCIENCES: ItunesCategory = NestedItunesCategory.EARTH_SCIENCES
+        public val EarthSciences: Nested = object : Nested("Earth Sciences", Science) {}
 
         @JvmField
-        public val LIFE_SCIENCES: ItunesCategory = NestedItunesCategory.LIFE_SCIENCES
+        public val LifeSciences: Nested = object : Nested("Life Sciences", Science) {}
 
         @JvmField
-        public val MATHEMATICS: ItunesCategory = NestedItunesCategory.MATHEMATICS
+        public val Mathematics: Nested = object : Nested("Mathematics", Science) {}
 
         @JvmField
-        public val NATURAL_SCIENCES: ItunesCategory = NestedItunesCategory.NATURAL_SCIENCES
+        public val NaturalSciences: Nested = object : Nested("Natural Sciences", Science) {}
 
         @JvmField
-        public val NATURE: ItunesCategory = NestedItunesCategory.NATURE
+        public val Nature: Nested = object : Nested("Nature", Science) {}
 
         @JvmField
-        public val PHYSICS: ItunesCategory = NestedItunesCategory.PHYSICS
+        public val Physics: Nested = object : Nested("Physics", Science) {}
 
         @JvmField
-        public val SOCIAL_SCIENCES: ItunesCategory = NestedItunesCategory.SOCIAL_SCIENCES
+        public val SocialSciences: Nested = object : Nested("Social Sciences", Science) {}
 
         @JvmField
-        public val SOCIETY_AND_CULTURE: ItunesCategory = SimpleItunesCategory.SOCIETY_AND_CULTURE
+        public val SocietyAndCulture: Simple = object : Simple("Society & Culture") {}
 
         @JvmField
-        public val DOCUMENTARY: ItunesCategory = NestedItunesCategory.DOCUMENTARY
+        public val Documentary: Nested = object : Nested("Documentary", SocietyAndCulture) {}
 
         @JvmField
-        public val PERSONAL_JOURNALS: ItunesCategory = NestedItunesCategory.PERSONAL_JOURNALS
+        public val PersonalJournals: Nested = object : Nested("Personal Journals", SocietyAndCulture) {}
 
         @JvmField
-        public val PHILOSOPHY: ItunesCategory = NestedItunesCategory.PHILOSOPHY
+        public val Philosophy: Nested = object : Nested("Philosophy", SocietyAndCulture) {}
 
         @JvmField
-        public val PLACES_AND_TRAVEL: ItunesCategory = NestedItunesCategory.PLACES_AND_TRAVEL
+        public val PlacesAndTravel: Nested = object : Nested("Places & Travel", SocietyAndCulture) {}
 
         @JvmField
-        public val RELATIONSHIPS: ItunesCategory = NestedItunesCategory.RELATIONSHIPS
+        public val Relationships: Nested = object : Nested("Relationships", SocietyAndCulture) {}
 
         @JvmField
-        public val SPORTS: ItunesCategory = SimpleItunesCategory.SPORTS
+        public val Sports: Simple = object : Simple("Sports") {}
 
         @JvmField
-        public val BASEBALL: ItunesCategory = NestedItunesCategory.BASEBALL
+        public val Baseball: Nested = object : Nested("Baseball", Sports) {}
 
         @JvmField
-        public val BASKETBALL: ItunesCategory = NestedItunesCategory.BASKETBALL
+        public val Basketball: Nested = object : Nested("Basketball", Sports) {}
 
         @JvmField
-        public val CRICKET: ItunesCategory = NestedItunesCategory.CRICKET
+        public val Cricket: Nested = object : Nested("Cricket", Sports) {}
 
         @JvmField
-        public val FANTASY_SPORTS: ItunesCategory = NestedItunesCategory.FANTASY_SPORTS
+        public val FantasySports: Nested = object : Nested("Fantasy Sports", Sports) {}
 
         @JvmField
-        public val FOOTBALL: ItunesCategory = NestedItunesCategory.FOOTBALL
+        public val Football: Nested = object : Nested("Football", Sports) {}
 
         @JvmField
-        public val GOLF: ItunesCategory = NestedItunesCategory.GOLF
+        public val Golf: Nested = object : Nested("Golf", Sports) {}
 
         @JvmField
-        public val HOCKEY: ItunesCategory = NestedItunesCategory.HOCKEY
+        public val Hockey: Nested = object : Nested("Hockey", Sports) {}
 
         @JvmField
-        public val RUGBY: ItunesCategory = NestedItunesCategory.RUGBY
+        public val Rugby: Nested = object : Nested("Rugby", Sports) {}
 
         @JvmField
-        public val RUNNING: ItunesCategory = NestedItunesCategory.RUNNING
+        public val Running: Nested = object : Nested("Running", Sports) {}
 
         @JvmField
-        public val SOCCER: ItunesCategory = NestedItunesCategory.SOCCER
+        public val Soccer: Nested = object : Nested("Soccer", Sports) {}
 
         @JvmField
-        public val SWIMMING: ItunesCategory = NestedItunesCategory.SWIMMING
+        public val Swimming: Nested = object : Nested("Swimming", Sports) {}
 
         @JvmField
-        public val TENNIS: ItunesCategory = NestedItunesCategory.TENNIS
+        public val Tennis: Nested = object : Nested("Tennis", Sports) {}
 
         @JvmField
-        public val VOLLEYBALL: ItunesCategory = NestedItunesCategory.VOLLEYBALL
+        public val Volleyball: Nested = object : Nested("Volleyball", Sports) {}
 
         @JvmField
-        public val WILDERNESS: ItunesCategory = NestedItunesCategory.WILDERNESS
+        public val Wilderness: Nested = object : Nested("Wilderness", Sports) {}
 
         @JvmField
-        public val WRESTLING: ItunesCategory = NestedItunesCategory.WRESTLING
+        public val Wrestling: Nested = object : Nested("", Sports) {}
 
         @JvmField
-        public val TECHNOLOGY: ItunesCategory = SimpleItunesCategory.TECHNOLOGY
+        public val Technology: Simple = object : Simple("Technology") {}
 
         @JvmField
-        public val TRUE_CRIME: ItunesCategory = SimpleItunesCategory.TRUE_CRIME
+        public val TrueCrime: Simple = object : Simple("True Crime") {}
 
         @JvmField
-        public val TV_AND_FILM: ItunesCategory = SimpleItunesCategory.TV_AND_FILM
+        public val TvAndFilm: Simple = object : Simple("TV & Film") {}
 
         @JvmField
-        public val AFTER_SHOWS: ItunesCategory = NestedItunesCategory.AFTER_SHOWS
+        public val AfterShows: Nested = object : Nested("After Shows", TvAndFilm) {}
 
         @JvmField
-        public val FILM_HISTORY: ItunesCategory = NestedItunesCategory.FILM_HISTORY
+        public val FilmHistory: Nested = object : Nested("Film History", TvAndFilm) {}
 
         @JvmField
-        public val FILM_INTERVIEWS: ItunesCategory = NestedItunesCategory.FILM_INTERVIEWS
+        public val FilmInterviews: Nested = object : Nested("Film Interviews", TvAndFilm) {}
 
         @JvmField
-        public val FILM_REVIEWS: ItunesCategory = NestedItunesCategory.FILM_REVIEWS
+        public val FilmReviews: Nested = object : Nested("Film Reviews", TvAndFilm) {}
 
         @JvmField
-        public val TV_REVIEWS: ItunesCategory = NestedItunesCategory.TV_REVIEWS
+        public val TvReviews: Nested = object : Nested("TV Reviews", TvAndFilm) {}
     }
 }
+
+

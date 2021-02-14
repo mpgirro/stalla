@@ -131,12 +131,12 @@ class ItunesCategoryFactoryTest {
     fun `should retrieve all defined iTunes categories from the interface factory method`() {
         for (simpleCategory in validSimpleItunesCategoryNames) {
             assertThat(ItunesCategory.from(simpleCategory)).isNotNull().all {
-                prop(ItunesCategory::categoryName).isEqualTo(simpleCategory)
+                prop(ItunesCategory::name).isEqualTo(simpleCategory)
             }
         }
         for (nestedCategory in validNestedItunesCategoryNames) {
             assertThat(ItunesCategory.from(nestedCategory)).isNotNull().all {
-                prop(ItunesCategory::categoryName).isEqualTo(nestedCategory)
+                prop(ItunesCategory::name).isEqualTo(nestedCategory)
             }
         }
     }
