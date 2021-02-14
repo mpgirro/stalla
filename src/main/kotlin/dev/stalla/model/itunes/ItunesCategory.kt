@@ -340,7 +340,7 @@ public sealed class ItunesCategory(public open val name: String) {
         public val Wilderness: Nested = object : Nested("Wilderness", Sports) {}
 
         @JvmField
-        public val Wrestling: Nested = object : Nested("", Sports) {}
+        public val Wrestling: Nested = object : Nested("Wrestling", Sports) {}
 
         @JvmField
         public val Technology: Simple = object : Simple("Technology") {}
@@ -367,5 +367,3 @@ public sealed class ItunesCategory(public open val name: String) {
         public val TvReviews: Nested = object : Nested("TV Reviews", TvAndFilm) {}
     }
 }
-
-
