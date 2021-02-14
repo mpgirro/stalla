@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingGoogleplayCategoryBuilderTest {
 
     @Test
-    internal fun `should not build an GoogleplayCategory when the mandatory fields are absent`() {
+    internal fun `should not build a GoogleplayCategory when the mandatory fields are absent`() {
         val categoryBuilder = ValidatingGoogleplayCategoryBuilder()
 
         assertAll {
@@ -29,7 +29,7 @@ internal class ValidatingGoogleplayCategoryBuilderTest {
     }
 
     @Test
-    internal fun `should build an GoogleplayCategory Simple when only provided a category`() {
+    internal fun `should build a GoogleplayCategory Simple when only provided a category`() {
         val categoryBuilder = ValidatingGoogleplayCategoryBuilder()
             .category("category")
 
@@ -43,7 +43,7 @@ internal class ValidatingGoogleplayCategoryBuilderTest {
     }
 
     @Test
-    internal fun `should build an GoogleplayCategory Nested when provided both a category and a subcategory`() {
+    internal fun `should build a GoogleplayCategory Nested when provided both a category and a subcategory`() {
         val categoryBuilder = ValidatingGoogleplayCategoryBuilder()
             .category("category")
             .subcategory("subcategory")
@@ -60,7 +60,7 @@ internal class ValidatingGoogleplayCategoryBuilderTest {
     }
 
     @Test
-    internal fun `should populate an GoogleplayCategory builder with all properties from an ITunesStyleCategory model`() {
+    internal fun `should populate a GoogleplayCategory builder with all properties from a GoogleplayCategory model`() {
         val category = aGoogleplayCategory()
         val categoryBuilder = GoogleplayCategory.builder().from(category)
 
