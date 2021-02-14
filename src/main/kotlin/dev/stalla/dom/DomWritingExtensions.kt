@@ -4,8 +4,6 @@ import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
-import dev.stalla.model.itunes.NestedItunesCategory
-import dev.stalla.model.itunes.SimpleItunesCategory
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import dev.stalla.util.BooleanStringStyle
@@ -187,22 +185,22 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
 @InternalApi
 internal fun Node.appendITunesStyleCategoryElements(categories: List<ItunesCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
-        if (category.categoryName.isBlank()) continue
+        if (category.name.isBlank()) continue
 
         when (category) {
-            is SimpleItunesCategory -> {
+            is ItunesCategory.Simple -> {
                 appendElement("category", namespace) {
-                    setAttribute("text", category.categoryName.trim())
+                    setAttribute("text", category.name.trim())
                 }
             }
-            is NestedItunesCategory -> {
+            is ItunesCategory.Nested -> {
                 appendElement("category", namespace) {
                     // Write parent category
-                    setAttribute("text", category.parent.categoryName.trim())
+                    setAttribute("text", category.parent.name.trim())
 
                     // Write sub-category
                     appendElement("category", namespace) {
-                        setAttribute("text", category.categoryName.trim())
+                        setAttribute("text", category.name.trim())
                     }
                 }
             }

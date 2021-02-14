@@ -19,7 +19,6 @@ import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.ItunesCategory
-import dev.stalla.model.itunes.NestedItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.podcastindex.Funding
@@ -82,7 +81,7 @@ internal fun aPodcastItunes(
     image: HrefOnlyImage = anHrefOnlyImage(href = "podcast itunes image url"),
     keywords: String? = "podcast itunes keywords",
     author: String? = "podcast itunes author",
-    categories: List<ItunesCategory> = listOf(NestedItunesCategory.SCIENCE_FICTION),
+    categories: List<ItunesCategory> = listOf(ItunesCategory.ScienceFiction),
     explicit: Boolean = true,
     block: Boolean = true,
     complete: Boolean = true,
