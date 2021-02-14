@@ -37,15 +37,15 @@ public enum class NestedItunesCategory(public override val categoryName: String,
     DRAMA("Drama", SimpleItunesCategory.FICTION),
     SCIENCE_FICTION("Science Fiction", SimpleItunesCategory.FICTION),
     ALTERNATIVE_HEALTH("Alternative Health", SimpleItunesCategory.HEALTH_AND_FITNESS),
-    FITNES("Fitness", SimpleItunesCategory.HEALTH_AND_FITNESS),
+    FITNESS("Fitness", SimpleItunesCategory.HEALTH_AND_FITNESS),
     MEDICINE("Medicine", SimpleItunesCategory.HEALTH_AND_FITNESS),
     MENTAL_HEALTH("Mental Health", SimpleItunesCategory.HEALTH_AND_FITNESS),
     NUTRITION("Nutrition", SimpleItunesCategory.HEALTH_AND_FITNESS),
     SEXUALITY("Sexuality", SimpleItunesCategory.HEALTH_AND_FITNESS),
-    EDUCATION_FOR_KIDS("Education for Kids", SimpleItunesCategory.HEALTH_AND_FITNESS),
-    PARENTING("Parenting", SimpleItunesCategory.HEALTH_AND_FITNESS),
-    PETS_AND_ANIMALS("Pets & Animals", SimpleItunesCategory.HEALTH_AND_FITNESS),
-    STORIES_FOR_KIDS("Stories for Kids", SimpleItunesCategory.HEALTH_AND_FITNESS),
+    EDUCATION_FOR_KIDS("Education for Kids", SimpleItunesCategory.KIDS_AND_FAMILY),
+    PARENTING("Parenting", SimpleItunesCategory.KIDS_AND_FAMILY),
+    PETS_AND_ANIMALS("Pets & Animals", SimpleItunesCategory.KIDS_AND_FAMILY),
+    STORIES_FOR_KIDS("Stories for Kids", SimpleItunesCategory.KIDS_AND_FAMILY),
     ANIMATION_AND_MANGA("Animation & Manga", SimpleItunesCategory.LEISURE),
     AUTOMOTIVE("Automotive", SimpleItunesCategory.LEISURE),
     AVIATION("Aviation", SimpleItunesCategory.LEISURE),
@@ -76,7 +76,7 @@ public enum class NestedItunesCategory(public override val categoryName: String,
     EARTH_SCIENCES("Earth Sciences", SimpleItunesCategory.SCIENCE),
     LIFE_SCIENCES("Life Sciences", SimpleItunesCategory.SCIENCE),
     MATHEMATICS("Mathematics", SimpleItunesCategory.SCIENCE),
-    NEUTRAL_SCIENCES("Natural Sciences", SimpleItunesCategory.SCIENCE),
+    NATURAL_SCIENCES("Natural Sciences", SimpleItunesCategory.SCIENCE),
     NATURE("Nature", SimpleItunesCategory.SCIENCE),
     PHYSICS("Physics", SimpleItunesCategory.SCIENCE),
     SOCIAL_SCIENCES("Social Sciences", SimpleItunesCategory.SCIENCE),
@@ -105,16 +105,4 @@ public enum class NestedItunesCategory(public override val categoryName: String,
     FILM_INTERVIEWS("Film Interviews", SimpleItunesCategory.TV_AND_FILM),
     FILM_REVIEWS("Film Reviews", SimpleItunesCategory.TV_AND_FILM),
     TV_REVIEWS("TV Reviews", SimpleItunesCategory.TV_AND_FILM);
-
-    public companion object Factory : ItunesCategoryFactory {
-
-        private val categoryMap: Map<String, ItunesCategory> = values().map { category ->
-            category.categoryName.toLowerCase() to category
-        }.toMap()
-
-        @JvmStatic
-        public override fun from(category: String?): ItunesCategory? = category?.let {
-            return categoryMap[it.toLowerCase()]
-        }
-    }
 }

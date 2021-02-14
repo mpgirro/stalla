@@ -30,16 +30,4 @@ public enum class SimpleItunesCategory(public override val categoryName: String)
     TECHNOLOGY("Technology"),
     TRUE_CRIME("True Crime"),
     TV_AND_FILM("TV & Film");
-
-    public companion object Factory : ItunesCategoryFactory {
-
-        private val categoryMap: Map<String, ItunesCategory> = values().map { category ->
-            category.categoryName.toLowerCase() to category
-        }.toMap()
-
-        @JvmStatic
-        public override fun from(category: String?): ItunesCategory? = category?.let {
-            return categoryMap[it.toLowerCase()]
-        }
-    }
 }
