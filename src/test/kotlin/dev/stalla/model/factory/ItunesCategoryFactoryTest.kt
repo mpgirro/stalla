@@ -2,16 +2,20 @@ package dev.stalla.model.factory
 
 import assertk.all
 import assertk.assertThat
+import assertk.assertions.contains
 import assertk.assertions.isEqualTo
+import assertk.assertions.isInstanceOf
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.model.itunes.ItunesCategory
 import org.junit.jupiter.api.Test
+import kotlin.reflect.KVisibility
+import kotlin.reflect.full.declaredMemberProperties
 
 class ItunesCategoryFactoryTest {
 
-    private val validSimpleItunesCategoryNames = listOf(
+    private val simpleCategoryNames = listOf(
         "Arts",
         "Business",
         "Comedy",
@@ -33,7 +37,7 @@ class ItunesCategoryFactoryTest {
         "TV & Film"
     )
 
-    private val validNestedItunesCategoryNames = listOf(
+    private val nestedCategoryNames = listOf(
         "Books",
         "Design",
         "Fashion & Beauty",
@@ -127,16 +131,32 @@ class ItunesCategoryFactoryTest {
         "TV Reviews"
     )
 
+    private val allCategoryNames = simpleCategoryNames + nestedCategoryNames
+
     @Test
     fun `should retrieve all defined iTunes categories from the interface factory method`() {
-        for (simpleCategory in validSimpleItunesCategoryNames) {
+        for (simpleCategory in simpleCategoryNames) {
             assertThat(ItunesCategory.from(simpleCategory)).isNotNull().all {
                 prop(ItunesCategory::name).isEqualTo(simpleCategory)
+                isInstanceOf(ItunesCategory.Simple::class)
             }
         }
-        for (nestedCategory in validNestedItunesCategoryNames) {
+        for (nestedCategory in nestedCategoryNames) {
             assertThat(ItunesCategory.from(nestedCategory)).isNotNull().all {
                 prop(ItunesCategory::name).isEqualTo(nestedCategory)
+                isInstanceOf(ItunesCategory.Nested::class)
+            }
+        }
+    }
+
+    @Test
+    fun `should have a property in the interface factory companion for each iTunes category`() {
+        ItunesCategory.Factory::class.declaredMemberProperties.forEach { member ->
+            if (member.visibility == KVisibility.PUBLIC) {
+                val value = member.getter.call(this)
+                if (value is ItunesCategory) {
+                    assertThat(allCategoryNames).contains(value.name)
+                }
             }
         }
     }
