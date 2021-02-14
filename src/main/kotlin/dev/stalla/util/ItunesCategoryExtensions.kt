@@ -6,12 +6,10 @@ import dev.stalla.model.itunes.SimpleItunesCategory
 
 @InternalApi
 internal val itunesCategoryMap: Map<String, ItunesCategory> = run {
-    // Note that the map calls here do a necessary smart cast
-    val categories = listOf(
-        SimpleItunesCategory.values().map { it },
-        NestedItunesCategory.values().map { it }
-    )
-    categories.flatten().map { it.categoryName.toLowerCase() to it }.toMap()
+    val simpleCategories: List<ItunesCategory> = SimpleItunesCategory.values().toList()
+    val nestedCategories: List<ItunesCategory> = NestedItunesCategory.values().toList()
+    val allCategories = simpleCategories + nestedCategories
+    allCategories.associateBy({ it.categoryName.toLowerCase() }, { it })
 }
 
 @InternalApi
