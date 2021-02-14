@@ -1,7 +1,5 @@
 package dev.stalla.model.itunes
 
-import dev.stalla.util.findItunesCategory
-
 public sealed class ItunesCategory(public open val name: String) {
 
     /**
@@ -33,8 +31,126 @@ public sealed class ItunesCategory(public open val name: String) {
 
     public companion object Factory {
 
+        private val categoryMap: Map<String, ItunesCategory> by lazy {
+            val values: List<ItunesCategory> = listOf(
+                Arts,
+                Books,
+                Design,
+                FashionAndBeauty,
+                Food,
+                PerformingArts,
+                VisualArts,
+                Business,
+                Careers,
+                Entrepreneurship,
+                Investing,
+                Management,
+                Marketing,
+                NonProfit,
+                Comedy,
+                ComedyInterviews,
+                Improv,
+                StandUp,
+                Education,
+                Courses,
+                HowTo,
+                LanguageLearning,
+                SelfImprovement,
+                Fiction,
+                ComedyFiction,
+                Drama,
+                ScienceFiction,
+                Government,
+                History,
+                HealthAndFitness,
+                AlternativeHealth,
+                Fitness,
+                Medicine,
+                MentalHealth,
+                Nutrition,
+                Sexuality,
+                KidsAndFamily,
+                EducationForKids,
+                Parenting,
+                PetsAndAnimals,
+                StoriesForKids,
+                Leisure,
+                AnimationAndManga,
+                Automotive,
+                Aviation,
+                Crafts,
+                Games,
+                Hobbies,
+                HomeAndGarden,
+                VideoGames,
+                Music,
+                MusicCommentary,
+                MusicHistory,
+                MusicInterviews,
+                News,
+                BusinessNews,
+                DailyNews,
+                EntertainmentNews,
+                NewsCommentary,
+                Politics,
+                SportsNews,
+                TechNews,
+                ReligionAndSpirituality,
+                Buddhism,
+                Christianity,
+                Hinduism,
+                Islam,
+                Judaism,
+                Religion,
+                Spirituality,
+                Science,
+                Astronomy,
+                Chemistry,
+                EarthSciences,
+                LifeSciences,
+                Mathematics,
+                NaturalSciences,
+                Nature,
+                Physics,
+                SocialSciences,
+                SocietyAndCulture,
+                Documentary,
+                PersonalJournals,
+                Philosophy,
+                PlacesAndTravel,
+                Relationships,
+                Sports,
+                Baseball,
+                Basketball,
+                Cricket,
+                FantasySports,
+                Football,
+                Golf,
+                Hockey,
+                Rugby,
+                Running,
+                Soccer,
+                Swimming,
+                Tennis,
+                Volleyball,
+                Wilderness,
+                Wrestling,
+                Technology,
+                TrueCrime,
+                TvAndFilm,
+                AfterShows,
+                FilmHistory,
+                FilmInterviews,
+                FilmReviews,
+                TvReviews
+            )
+            values.associateBy({ it.name.toLowerCase() }, { it })
+        }
+
         @JvmStatic
-        public fun from(category: String?): ItunesCategory? = findItunesCategory(category)
+        public fun from(category: String?): ItunesCategory? = category?.let {
+            return categoryMap[it.toLowerCase()]
+        }
 
         @JvmField
         public val Arts: Simple = object : Simple("Arts") {}
