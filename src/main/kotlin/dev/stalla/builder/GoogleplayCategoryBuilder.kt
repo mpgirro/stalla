@@ -3,7 +3,7 @@ package dev.stalla.builder
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [ItunesCategory] instances. */
+/** Builder for constructing [GoogleplayCategoryBuilder] instances. */
 public interface GoogleplayCategoryBuilder : Builder<GoogleplayCategory> {
 
     /** Set the category value. */

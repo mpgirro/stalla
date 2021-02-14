@@ -10,7 +10,6 @@ public sealed class ItunesCategory(public open val name: String) {
      * ```
      *
      * Categories are defined in the [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
-     * To define a nested subcategory, use [Simple].
      */
     public abstract class Simple protected constructor(override val name: String) : ItunesCategory(name)
 
@@ -25,7 +24,7 @@ public sealed class ItunesCategory(public open val name: String) {
      *
      * Categories and their hierarchy are defined in the [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
      *
-     * @param parent The parent [Nested].
+     * @param parent The parent [Simple].
      */
     public abstract class Nested protected constructor(override val name: String, public val parent: Simple) : ItunesCategory(name)
 
