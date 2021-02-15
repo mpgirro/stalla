@@ -162,6 +162,25 @@ class ItunesCategoryFactoryTest {
     }
 
     @Test
+    fun `should retrieve the correct iTunes category instances from the companion object factory method`() {
+        ItunesCategory.Factory::class.declaredMemberProperties.forEach { member ->
+            if (member.visibility == KVisibility.PUBLIC) {
+                val value = member.getter.call(this)
+                when (value) {
+                    is ItunesCategory.Simple -> assertThat(ItunesCategory.from(value.name)).isNotNull().all {
+                        prop(ItunesCategory::name).isEqualTo(value.name)
+                        isInstanceOf(ItunesCategory.Simple::class)
+                    }
+                    is ItunesCategory.Nested -> assertThat(ItunesCategory.from(value.name)).isNotNull().all {
+                        prop(ItunesCategory::name).isEqualTo(value.name)
+                        isInstanceOf(ItunesCategory.Nested::class)
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
     fun `should not retrieve an undefined iTunes category from the interface factory method`() {
         assertThat(ItunesCategory.from("itunes category")).isNull()
     }
