@@ -53,6 +53,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                 prop(PodcastGoogleplay::explicit).isNull()
                 prop(PodcastGoogleplay::block).isFalse()
                 prop(PodcastGoogleplay::image).isNull()
+                prop(PodcastGoogleplay::newFeedUrl).isNull()
             }
         }
     }
@@ -73,6 +74,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                 prop(PodcastGoogleplay::explicit).isNull()
                 prop(PodcastGoogleplay::block).isFalse()
                 prop(PodcastGoogleplay::image).isNull()
+                prop(PodcastGoogleplay::newFeedUrl).isNull()
             }
         }
     }
@@ -93,6 +95,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                 prop(PodcastGoogleplay::explicit).isNull()
                 prop(PodcastGoogleplay::block).isFalse()
                 prop(PodcastGoogleplay::image).isNull()
+                prop(PodcastGoogleplay::newFeedUrl).isNull()
             }
         }
     }
@@ -113,6 +116,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                 prop(PodcastGoogleplay::explicit).isNull()
                 prop(PodcastGoogleplay::block).isFalse()
                 prop(PodcastGoogleplay::image).isNull()
+                prop(PodcastGoogleplay::newFeedUrl).isNull()
             }
         }
     }
@@ -133,6 +137,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                 prop(PodcastGoogleplay::explicit).isNotNull().isTrue()
                 prop(PodcastGoogleplay::block).isFalse()
                 prop(PodcastGoogleplay::image).isNull()
+                prop(PodcastGoogleplay::newFeedUrl).isNull()
             }
         }
     }
@@ -153,6 +158,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                 prop(PodcastGoogleplay::explicit).isNull()
                 prop(PodcastGoogleplay::block).isTrue()
                 prop(PodcastGoogleplay::image).isNull()
+                prop(PodcastGoogleplay::newFeedUrl).isNull()
             }
         }
     }
@@ -173,6 +179,28 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                 prop(PodcastGoogleplay::explicit).isNull()
                 prop(PodcastGoogleplay::block).isFalse()
                 prop(PodcastGoogleplay::image).isEqualTo(expectedImageBuilder.build())
+                prop(PodcastGoogleplay::newFeedUrl).isNull()
+            }
+        }
+    }
+
+    @Test
+    internal fun `should build a valid Podcast GooglePlay when there is only a newFeedUrl`() {
+        val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
+            .newFeedUrl("https://new.example.com/rss/rss.xml")
+
+        assertAll {
+            assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
+                prop(PodcastGoogleplay::author).isNull()
+                prop(PodcastGoogleplay::owner).isNull()
+                prop(PodcastGoogleplay::categories).isEmpty()
+                prop(PodcastGoogleplay::description).isNull()
+                prop(PodcastGoogleplay::explicit).isNull()
+                prop(PodcastGoogleplay::block).isFalse()
+                prop(PodcastGoogleplay::image).isNull()
+                prop(PodcastGoogleplay::newFeedUrl).isEqualTo("https://new.example.com/rss/rss.xml")
             }
         }
     }
@@ -188,6 +216,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
             .explicit(true)
             .block(false)
             .imageBuilder(expectedImageBuilder)
+            .newFeedUrl("https://new.example.com/rss/rss.xml")
 
         assertAll {
             assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
@@ -203,6 +232,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                 prop(PodcastGoogleplay::explicit).isNotNull().isTrue()
                 prop(PodcastGoogleplay::block).isFalse()
                 prop(PodcastGoogleplay::image).isEqualTo(expectedImageBuilder.build())
+                prop(PodcastGoogleplay::newFeedUrl).isEqualTo("https://new.example.com/rss/rss.xml")
             }
         }
     }

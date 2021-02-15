@@ -35,6 +35,10 @@ internal object GoogleplayWriter : NamespaceWriter() {
             appendYesNoElement("explicit", play.explicit, namespace)
         }
 
+        if (play.newFeedUrl.isNeitherNullNorBlank()) {
+            appendElement("new-feed-url", namespace) { textContent = play.newFeedUrl?.trim() }
+        }
+
         appendGoogleplayCategoryElements(play.categories, namespace)
 
         appendCommonElements(play)

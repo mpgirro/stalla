@@ -16,7 +16,7 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     /** Set the owner email value. */
     public fun owner(email: String?): PodcastGoogleplayBuilder
 
-    /** Adds a [GoogleplayCategory] to the list of categories. */
+    /** Adds  to the list of categories. */
     public fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder
 
     /** Adds multiple [GoogleplayCategory] to the list of categories. */
@@ -36,13 +36,17 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     /** Set the [HrefOnlyImageBuilder]. */
     public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGoogleplayBuilder
 
-    override fun from(model: PodcastGoogleplay?): PodcastGoogleplayBuilder = whenNotNull(model) { googlePlay ->
-        author(googlePlay.author)
-        owner(googlePlay.owner)
-        addCategories(googlePlay.categories)
-        description(googlePlay.description)
-        explicit(googlePlay.explicit)
-        block(googlePlay.block)
-        imageBuilder(HrefOnlyImage.builder().from(googlePlay.image))
+    /** Set the new URL at which this feed is located. */
+    public fun newFeedUrl(newFeedUrl: String?): PodcastGoogleplayBuilder
+
+    override fun from(model: PodcastGoogleplay?): PodcastGoogleplayBuilder = whenNotNull(model) { googleplay ->
+        author(googleplay.author)
+        owner(googleplay.owner)
+        addCategories(googleplay.categories)
+        description(googleplay.description)
+        explicit(googleplay.explicit)
+        block(googleplay.block)
+        imageBuilder(HrefOnlyImage.builder().from(googleplay.image))
+        newFeedUrl(googleplay.newFeedUrl)
     }
 }

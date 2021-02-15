@@ -115,8 +115,9 @@ internal fun aPodcastGoogleplay(
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean = true,
-    image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url")
-) = PodcastGoogleplay(author, owner, categories, description, explicit, block, image)
+    image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url"),
+    newFeedUrl: String? = "podcast googleplay newFeedUrl"
+) = PodcastGoogleplay(author, owner, categories, description, explicit, block, image, newFeedUrl)
 
 internal fun aPodcastPodcastindex(
     locked: Locked? = aPodcastPodcastindexLocked(),

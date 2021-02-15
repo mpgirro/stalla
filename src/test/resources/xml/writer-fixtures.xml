@@ -73,6 +73,7 @@
         <googleplay:explicit>yes</googleplay:explicit>
         <googleplay:block>yes</googleplay:block>
         <googleplay:image href="podcast googleplay image url"/>
+        <googleplay:new-feed-url>podcast googleplay newFeedUrl</googleplay:new-feed-url>
         <podcast:locked owner="podcast podcast: locked owner">yes</podcast:locked>
         <podcast:funding url="podcast podcast: funding url">podcast podcast: funding message</podcast:funding>
         <item>

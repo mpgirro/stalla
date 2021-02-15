@@ -44,6 +44,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::block).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::imageBuilder).isEqualTo(expectedPodcastImageBuilder)
+            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isEqualTo("https://new.example.com/rss/rss.xml")
         }
     }
 
@@ -61,6 +62,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             prop(FakePodcastGoogleplayBuilder::explicit).isNull()
             prop(FakePodcastGoogleplayBuilder::block).isNull()
             prop(FakePodcastGoogleplayBuilder::imageBuilder).isNull()
+            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isNull()
         }
     }
 
@@ -78,6 +80,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             prop(FakePodcastGoogleplayBuilder::explicit).isNull()
             prop(FakePodcastGoogleplayBuilder::block).isNull()
             prop(FakePodcastGoogleplayBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
+            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isNull()
         }
     }
 

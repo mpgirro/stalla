@@ -15,6 +15,7 @@ internal class FakePodcastGoogleplayBuilder : FakeBuilder<PodcastGoogleplay>(), 
     var explicit: Boolean? = null
     var block: Boolean? = null
     var imageBuilder: HrefOnlyImageBuilder? = null
+    var newFeedUrl: String? = null
 
     override fun author(author: String?): PodcastGoogleplayBuilder = apply { this.author = author }
 
@@ -32,6 +33,8 @@ internal class FakePodcastGoogleplayBuilder : FakeBuilder<PodcastGoogleplay>(), 
 
     override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGoogleplayBuilder = apply { this.imageBuilder = imageBuilder }
 
+    override fun newFeedUrl(newFeedUrl: String?): PodcastGoogleplayBuilder = apply { this.newFeedUrl = newFeedUrl }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is FakePodcastGoogleplayBuilder) return false
@@ -43,6 +46,7 @@ internal class FakePodcastGoogleplayBuilder : FakeBuilder<PodcastGoogleplay>(), 
         if (explicit != other.explicit) return false
         if (block != other.block) return false
         if (imageBuilder != other.imageBuilder) return false
+        if (newFeedUrl != other.newFeedUrl) return false
 
         return true
     }
@@ -55,10 +59,11 @@ internal class FakePodcastGoogleplayBuilder : FakeBuilder<PodcastGoogleplay>(), 
         result = 31 * result + (explicit?.hashCode() ?: 0)
         result = 31 * result + (block?.hashCode() ?: 0)
         result = 31 * result + (imageBuilder?.hashCode() ?: 0)
+        result = 31 * result + (newFeedUrl?.hashCode() ?: 0)
         return result
     }
 
     override fun toString() =
         "FakePodcastGooglePlayBuilder(author=$author, owner=$owner, categories=$categories, description=$description, explicit=$explicit, " +
-            "block=$block, imageBuilder=$imageBuilder)"
+            "block=$block, imageBuilder=$imageBuilder, newFeedUrl=$newFeedUrl)"
 }

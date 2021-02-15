@@ -42,6 +42,7 @@ internal object GoogleplayParser : NamespaceParser() {
                 val imageBuilder = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
                 builder.googleplayBuilder.imageBuilder(imageBuilder)
             }
+            "new-feed-url" -> builder.googleplayBuilder.newFeedUrl(ifCanBeParsed { textOrNull() })
             else -> pass
         }
     }

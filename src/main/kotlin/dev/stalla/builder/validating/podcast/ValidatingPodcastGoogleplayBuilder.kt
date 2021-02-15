@@ -15,6 +15,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
     private var explicit: Boolean? = null
     private var block: Boolean = false
     private var imageBuilder: HrefOnlyImageBuilder? = null
+    private var newFeedUrl: String? = null
 
     override fun author(author: String?): PodcastGoogleplayBuilder = apply { this.author = author }
 
@@ -30,10 +31,12 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGoogleplayBuilder = apply { this.imageBuilder = imageBuilder }
 
+    override fun newFeedUrl(newFeedUrl: String?): PodcastGoogleplayBuilder = apply { this.newFeedUrl = newFeedUrl }
+
     override val hasEnoughDataToBuild: Boolean
         get() {
             if (block) return true
-            if (anyNotNull(author, owner, description, explicit)) return true
+            if (anyNotNull(author, owner, description, explicit, newFeedUrl)) return true
             if (imageBuilder?.hasEnoughDataToBuild == true) return true
             return categories.size > 0
         }
@@ -50,7 +53,8 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
             description = description,
             explicit = explicit,
             block = block,
-            image = imageBuilder?.build()
+            image = imageBuilder?.build(),
+            newFeedUrl = newFeedUrl
         )
     }
 }
