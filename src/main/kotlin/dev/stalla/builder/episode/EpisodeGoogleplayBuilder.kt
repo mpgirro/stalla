@@ -10,6 +10,9 @@ import dev.stalla.util.whenNotNull
 /** Builder for constructing [EpisodeGoogleplay] instances. */
 public interface EpisodeGoogleplayBuilder : Builder<EpisodeGoogleplay> {
 
+    /** Set the author value. */
+    public fun author(author: String?): EpisodeGoogleplayBuilder
+
     /** Set the description value. */
     public fun description(description: String?): EpisodeGoogleplayBuilder
 
@@ -25,10 +28,11 @@ public interface EpisodeGoogleplayBuilder : Builder<EpisodeGoogleplay> {
     /** Set the [HrefOnlyImageBuilder]. */
     public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGoogleplayBuilder
 
-    override fun from(model: EpisodeGoogleplay?): EpisodeGoogleplayBuilder = whenNotNull(model) { googlePlay ->
-        description(googlePlay.description)
-        explicit(googlePlay.explicit?.type)
-        block(googlePlay.block)
-        imageBuilder(HrefOnlyImage.builder().from(googlePlay.image))
+    override fun from(model: EpisodeGoogleplay?): EpisodeGoogleplayBuilder = whenNotNull(model) { googleplay ->
+        author(googleplay.author)
+        description(googleplay.description)
+        explicit(googleplay.explicit?.type)
+        block(googleplay.block)
+        imageBuilder(HrefOnlyImage.builder().from(googleplay.image))
     }
 }

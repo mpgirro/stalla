@@ -115,6 +115,7 @@
                 <psc:chapter start="episode podlove simple chapter start" title="episode podlove simple chapter title"
                              href="episode podlove simple chapter href" image="episode podlove simple chapter image"/>
             </psc:chapters>
+            <googleplay:author>episode googleplay author</googleplay:author>
             <googleplay:description>episode googleplay description</googleplay:description>
             <googleplay:image href="episode googleplay image url"/>
             <googleplay:explicit>yes</googleplay:explicit>

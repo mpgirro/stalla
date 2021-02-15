@@ -8,10 +8,13 @@ import dev.stalla.model.googleplay.ExplicitType
 
 internal class FakeEpisodeGoogleplayBuilder : FakeBuilder<EpisodeGoogleplay>(), EpisodeGoogleplayBuilder {
 
+    var author: String? = null
     var description: String? = null
     var explicit: ExplicitType? = null
     var block: Boolean? = null
     var imageBuilder: HrefOnlyImageBuilder? = null
+
+    override fun author(author: String?): EpisodeGoogleplayBuilder = apply { this.author = author }
 
     override fun description(description: String?): EpisodeGoogleplayBuilder = apply { this.description = description }
 
@@ -25,6 +28,7 @@ internal class FakeEpisodeGoogleplayBuilder : FakeBuilder<EpisodeGoogleplay>(), 
         if (this === other) return true
         if (other !is FakeEpisodeGoogleplayBuilder) return false
 
+        if (author != other.author) return false
         if (description != other.description) return false
         if (explicit != other.explicit) return false
         if (block != other.block) return false
@@ -34,7 +38,8 @@ internal class FakeEpisodeGoogleplayBuilder : FakeBuilder<EpisodeGoogleplay>(), 
     }
 
     override fun hashCode(): Int {
-        var result = description?.hashCode() ?: 0
+        var result = author?.hashCode() ?: 0
+        result = 31 * result + (description?.hashCode() ?: 0)
         result = 31 * result + (explicit?.hashCode() ?: 0)
         result = 31 * result + (block?.hashCode() ?: 0)
         result = 31 * result + (imageBuilder?.hashCode() ?: 0)
@@ -42,5 +47,5 @@ internal class FakeEpisodeGoogleplayBuilder : FakeBuilder<EpisodeGoogleplay>(), 
     }
 
     override fun toString() =
-        "FakeEpisodeGooglePlayBuilder(description=$description, explicit=$explicit, block=$block, imageBuilder=$imageBuilder)"
+        "FakeEpisodeGooglePlayBuilder(author=$author, description=$description, explicit=$explicit, block=$block, imageBuilder=$imageBuilder)"
 }

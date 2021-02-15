@@ -116,11 +116,12 @@ internal fun aPodloveSimpleChapter(
 ) = SimpleChapter(start, title, href, image)
 
 internal fun anEpisodeGoogleplay(
+    author: String? = "episode googleplay author",
     description: String? = "episode googleplay description",
     explicit: ExplicitType? = ExplicitType.YES,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode googleplay image url")
-) = EpisodeGoogleplay(description, explicit, block, image)
+) = EpisodeGoogleplay(author, description, explicit, block, image)
 
 internal fun anEpisodeBitlove(
     guid: String = "episode bitlove guid"

@@ -48,6 +48,7 @@ internal object GoogleplayParser : NamespaceParser() {
 
     override fun Node.parseItemData(builder: EpisodeBuilder) {
         when (localName) {
+            "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
             "description" -> builder.googleplayBuilder.description(ifCanBeParsed { textOrNull() })
             "explicit" -> builder.googleplayBuilder.explicit(ifCanBeParsed { textOrNull() })
             "block" -> {

@@ -34,6 +34,7 @@
     <itunes:author>author</itunes:author>
     <itunes:subtitle>subtitle</itunes:subtitle>
     <itunes:summary>summary</itunes:summary>
+    <googleplay:author>Lorem Ipsum</googleplay:author>
     <googleplay:description>Lorem Ipsum</googleplay:description>
     <googleplay:explicit>clean</googleplay:explicit>
     <googleplay:block>no</googleplay:block>

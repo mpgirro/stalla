@@ -32,6 +32,24 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     }
 
     @Test
+    internal fun `should build an Episode GooglePlay with only a author`() {
+        val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
+            .author("author")
+
+        assertAll {
+            assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
+                prop(EpisodeGoogleplay::author).isEqualTo("author")
+                prop(EpisodeGoogleplay::description).isNull()
+                prop(EpisodeGoogleplay::explicit).isNull()
+                prop(EpisodeGoogleplay::block).isFalse()
+                prop(EpisodeGoogleplay::image).isNull()
+            }
+        }
+    }
+
+    @Test
     internal fun `should build an Episode GooglePlay with only a description`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .description("description")

@@ -88,6 +88,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
         node.parseItemChildNodes(builder)
 
         assertThat(builder.googleplayBuilder, "item.googleplay").all {
+            prop(FakeEpisodeGoogleplayBuilder::author).isEqualTo("Lorem Ipsum")
             prop(FakeEpisodeGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
             prop(FakeEpisodeGoogleplayBuilder::explicit).isNotNull().isEqualTo(ExplicitType.CLEAN)
             prop(FakeEpisodeGoogleplayBuilder::block).isNotNull().isFalse()
@@ -102,6 +103,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
         node.parseItemChildNodes(builder)
 
         assertThat(builder.googleplayBuilder, "item.googleplay").all {
+            prop(FakeEpisodeGoogleplayBuilder::author).isNull()
             prop(FakeEpisodeGoogleplayBuilder::description).isNull()
             prop(FakeEpisodeGoogleplayBuilder::explicit).isNull()
             prop(FakeEpisodeGoogleplayBuilder::block).isNull()
@@ -116,6 +118,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
         channel.parseItemChildNodes(builder)
 
         assertThat(builder.googleplayBuilder, "item.googleplay").all {
+            prop(FakeEpisodeGoogleplayBuilder::author).isNull()
             prop(FakeEpisodeGoogleplayBuilder::description).isNull()
             prop(FakeEpisodeGoogleplayBuilder::explicit).isNull()
             prop(FakeEpisodeGoogleplayBuilder::block).isNull()
