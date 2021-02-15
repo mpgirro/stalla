@@ -68,9 +68,7 @@
         <feedpress:link>podcast feedpress link</feedpress:link>
         <googleplay:author>podcast googleplay author</googleplay:author>
         <googleplay:owner>podcast googleplay owner</googleplay:owner>
-        <googleplay:category text="podcast googleplay category">
-            <googleplay:category text="podcast googleplay subcategory"/>
-        </googleplay:category>
+        <googleplay:category text="News &amp; Politics" />
         <googleplay:description>podcast googleplay description</googleplay:description>
         <googleplay:explicit>yes</googleplay:explicit>
         <googleplay:block>yes</googleplay:block>

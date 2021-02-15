@@ -51,7 +51,7 @@
     </itunes:owner>
     <googleplay:author>Lorem Ipsum</googleplay:author>
     <googleplay:owner>email@example.org</googleplay:owner>
-    <googleplay:category text="Technology" />
+    <googleplay:category text="News &amp; Politics" />
     <googleplay:description>Lorem Ipsum</googleplay:description>
     <googleplay:explicit>no</googleplay:explicit>
     <googleplay:block>no</googleplay:block>

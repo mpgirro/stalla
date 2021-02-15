@@ -1,42 +1,70 @@
 package dev.stalla.model.googleplay
 
-import dev.stalla.builder.GoogleplayCategoryBuilder
-import dev.stalla.builder.validating.ValidatingGoogleplayCategoryBuilder
-import dev.stalla.model.BuilderFactory
-
 /**
  * An [Google Play `<category>` tag][https://support.google.com/googleplay/podcasts/answer/6260341#spt].
  *
- * @param name The name of the category.
+ * @param category The name of the category.
  */
-public sealed class GoogleplayCategory(public open val name: String) {
+public enum class GoogleplayCategory(public val category: String) {
 
-    public companion object Factory : BuilderFactory<GoogleplayCategory, GoogleplayCategoryBuilder> {
+    /** Category type for _Arts_ */
+    Arts("Arts"),
 
-        /** Returns a builder implementation for building [GoogleplayCategory] model instances. */
-        @JvmStatic
-        override fun builder(): GoogleplayCategoryBuilder = ValidatingGoogleplayCategoryBuilder()
+    /** Category type for _Business_ */
+    Business("Business"),
+
+    /** Category type for _Comedy_ */
+    Comedy("Comedy"),
+
+    /** Category type for _Education_ */
+    Education("Education"),
+
+    /** Category type for _Games & Hobbies_ */
+    GamesAndHobbies("Games & Hobbies"),
+
+    /** Category type for _Government & Organizations_ */
+    GovernmentAndOrganizations("Government & Organizations"),
+
+    /** Category type for _Health_ */
+    Health("Health"),
+
+    /** Category type for _Kids & Family_ */
+    KidsAndFamily("Kids & Family"),
+
+    /** Category type for _Music_ */
+    Music("Music"),
+
+    /** Category type for _News & Politics_ */
+    NewsAndPolitics("News & Politics"),
+
+    /** Category type for _Religion & Spirituality_ */
+    ReligionAndSpirituality("Religion & Spirituality"),
+
+    /** Category type for _Science & Medicine_ */
+    ScienceAndMedicine("Science & Medicine"),
+
+    /** Category type for _Society & Culture_ */
+    SocietyAndCulture("Society & Culture"),
+
+    /** Category type for _Sports & Recreation_ */
+    SportsAndRecreation("Sports & Recreation"),
+
+    /** Category type for _TV & Film_ */
+    TvAndFilm("TV & Film"),
+
+    /** Category type for _Technology_ */
+    Technology("Technology");
+
+    public companion object Factory {
+
+        /**
+         * Factory method for the instance of the [GoogleplayCategory] matching the [category] parameter.
+         *
+         * @param category The string representation of the [GoogleplayCategory] instance.
+         * @return The [GoogleplayCategory] instance matching [category], or null if no matching instance exists.
+         */
+        public fun from(category: String?): GoogleplayCategory? = category?.let {
+            values().find { t -> t.category.equals(it, ignoreCase = true) }
+        }
     }
-
-    /**
-     * A simple Google Play style category, without a nested subcategory:
-     *
-     * ```
-     * <googleplay:category text="News" />
-     * ```
-     */
-    public data class Simple(override val name: String) : GoogleplayCategory(name)
-
-    /**
-     * An Google Play style category that contains a nested subcategory:
-     *
-     * ```
-     * <googleplay:category text="News">
-     *     <googleplay:category text="Tech News" />
-     * </googleplay:category>
-     * ```
-     *
-     * @param subcategory The nested [Simple] subcategory.
-     */
-    public data class Nested(override val name: String, val subcategory: Simple) : GoogleplayCategory(name)
 }

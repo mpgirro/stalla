@@ -4,7 +4,7 @@ import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.dom.textOrNull
-import dev.stalla.dom.toGoogleplayCategoryBuilder
+import dev.stalla.dom.toGoogleplayCategory
 import dev.stalla.dom.toHrefOnlyImageBuilder
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
@@ -26,9 +26,8 @@ internal object GoogleplayParser : NamespaceParser() {
             "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
             "owner" -> builder.googleplayBuilder.owner(ifCanBeParsed { textOrNull() })
             "category" -> {
-                val categoryBuilder = builder.createGoogleplayCategoryBuilder()
-                val category = ifCanBeParsed { toGoogleplayCategoryBuilder(categoryBuilder, namespace) } ?: return
-                builder.googleplayBuilder.addCategoryBuilder(category)
+                val category = ifCanBeParsed { toGoogleplayCategory() } ?: return
+                builder.googleplayBuilder.addCategory(category)
             }
             "description" -> builder.googleplayBuilder.description(ifCanBeParsed { textOrNull() })
             "explicit" -> {

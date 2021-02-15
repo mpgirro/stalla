@@ -5,7 +5,6 @@ import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
-import dev.stalla.model.aGoogleplayCategory
 import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
@@ -112,7 +111,7 @@ internal fun aPodcastFeedpress(
 internal fun aPodcastGoogleplay(
     author: String? = "podcast googleplay author",
     owner: String? = "podcast googleplay owner",
-    categories: List<GoogleplayCategory> = listOf(aGoogleplayCategory("podcast googleplay category", "podcast googleplay subcategory")),
+    categories: List<GoogleplayCategory> = listOf(GoogleplayCategory.NewsAndPolitics),
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean = true,

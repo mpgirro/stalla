@@ -1,8 +1,8 @@
 package dev.stalla.builder.validating.podcast
 
-import dev.stalla.builder.GoogleplayCategoryBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
+import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.anyNotNull
 
@@ -10,7 +10,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     private var author: String? = null
     private var owner: String? = null
-    private var categoryBuilders: MutableList<GoogleplayCategoryBuilder> = mutableListOf()
+    private var categories: MutableList<GoogleplayCategory> = mutableListOf()
     private var description: String? = null
     private var explicit: Boolean? = null
     private var block: Boolean = false
@@ -20,9 +20,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     override fun owner(email: String?): PodcastGoogleplayBuilder = apply { this.owner = email }
 
-    override fun addCategoryBuilder(categoryBuilder: GoogleplayCategoryBuilder): PodcastGoogleplayBuilder = apply {
-        categoryBuilders.add(categoryBuilder)
-    }
+    override fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder = apply { categories.add(category) }
 
     override fun description(description: String?): PodcastGoogleplayBuilder = apply { this.description = description }
 
@@ -37,7 +35,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
             if (block) return true
             if (anyNotNull(author, owner, description, explicit)) return true
             if (imageBuilder?.hasEnoughDataToBuild == true) return true
-            return categoryBuilders.any { it.hasEnoughDataToBuild }
+            return categories.size > 0
         }
 
     override fun build(): PodcastGoogleplay? {
@@ -48,7 +46,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
         return PodcastGoogleplay(
             author = author,
             owner = owner,
-            categories = categoryBuilders.mapNotNull { it.build() },
+            categories = categories,
             description = description,
             explicit = explicit,
             block = block,

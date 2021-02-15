@@ -45,10 +45,5 @@ internal fun anItunesCategory(
 ) = ItunesCategory.from(category)
 
 internal fun aGoogleplayCategory(
-    category: String = "googleplay category",
-    subcategory: String? = "googleplay category subcategory"
-) = if (subcategory == null) {
-    GoogleplayCategory.Simple(category)
-} else {
-    GoogleplayCategory.Nested(category, GoogleplayCategory.Simple(subcategory))
-}
+    category: String = "News & Politics"
+) = GoogleplayCategory.from(category)
