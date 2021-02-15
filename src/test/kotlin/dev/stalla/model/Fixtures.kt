@@ -1,6 +1,7 @@
 package dev.stalla.model
 
 import dev.stalla.model.atom.Link
+import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
@@ -40,10 +41,14 @@ internal fun anRssCategory(
 ) = RssCategory(category, domain)
 
 internal fun anItunesCategory(
-    category: String = "itunes category",
-    subcategory: String? = "itunes category subcategory"
+    category: String = "Science Fiction"
+) = ItunesCategory.from(category)
+
+internal fun aGoogleplayCategory(
+    category: String = "googleplay category",
+    subcategory: String? = "googleplay category subcategory"
 ) = if (subcategory == null) {
-    ItunesCategory.Simple(category)
+    GoogleplayCategory.Simple(category)
 } else {
-    ItunesCategory.Nested(category, ItunesCategory.Simple(subcategory))
+    GoogleplayCategory.Nested(category, GoogleplayCategory.Simple(subcategory))
 }

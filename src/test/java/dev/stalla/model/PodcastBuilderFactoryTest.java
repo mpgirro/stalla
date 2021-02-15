@@ -1,7 +1,6 @@
 package dev.stalla.model;
 
 import dev.stalla.builder.HrefOnlyImageBuilder;
-import dev.stalla.builder.ItunesCategoryBuilder;
 import dev.stalla.builder.episode.EpisodeBuilder;
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder;
 import dev.stalla.builder.podcast.*;
@@ -46,15 +45,12 @@ public class PodcastBuilderFactoryTest {
     @Test
     @DisplayName("should build a PodcastItunes model using builder factory methods only")
     public void testPodcastItunesBuilderFactory() {
-        ItunesCategoryBuilder itunesCategoryBuilder = ItunesCategory.builder()
-            .category("category");
-
         HrefOnlyImageBuilder hrefOnlyImageBuilder = HrefOnlyImage.builder()
             .href("href");
 
         PodcastItunesBuilder podcastItunesBuilder = PodcastItunes.builder()
             .explicit(false)
-            .addCategoryBuilder(itunesCategoryBuilder)
+            .addCategory(ItunesCategory.News)
             .imageBuilder(hrefOnlyImageBuilder);
 
         assertNotNull(podcastItunesBuilder.build());

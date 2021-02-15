@@ -10,7 +10,6 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakeItunesCategoryBuilder
 import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeItunesBuilder
@@ -19,8 +18,8 @@ import dev.stalla.builder.fake.podcast.FakePodcastItunesBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.hasNotEnoughDataToBuild
 import dev.stalla.model.itunes.EpisodeType
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.ShowType
-import dev.stalla.noneHasEnoughDataToBuild
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
@@ -46,10 +45,10 @@ internal class ItunesParserTest : NamespaceParserTest() {
         assertThat(builder.itunesBuilder, "channel.itunes").all {
             prop(FakePodcastItunesBuilder::author).isEqualTo("Lorem Ipsum")
             prop(FakePodcastItunesBuilder::ownerBuilder).isEqualTo(expectedOwnerBuilder)
-            prop(FakePodcastItunesBuilder::categoryBuilders).containsExactly(
-                FakeItunesCategoryBuilder().category("Technology").subcategory("Tech News"),
-                FakeItunesCategoryBuilder().category("Society & Culture"),
-                FakeItunesCategoryBuilder().category("Technology").subcategory("Gadgets")
+            prop(FakePodcastItunesBuilder::categories).containsExactly(
+                ItunesCategory.TechNews,
+                ItunesCategory.SocietyAndCulture,
+                ItunesCategory.ScienceFiction
             )
             prop(FakePodcastItunesBuilder::subtitle).isEqualTo("Lorem Ipsum")
             prop(FakePodcastItunesBuilder::summary).isEqualTo("Lorem Ipsum")
@@ -73,7 +72,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
         assertThat(builder.itunesBuilder, "channel.itunes").all {
             prop(FakePodcastItunesBuilder::author).isNull()
             prop(FakePodcastItunesBuilder::ownerBuilder).isNull()
-            prop(FakePodcastItunesBuilder::categoryBuilders).isEmpty()
+            prop(FakePodcastItunesBuilder::categories).isEmpty()
             prop(FakePodcastItunesBuilder::subtitle).isNull()
             prop(FakePodcastItunesBuilder::summary).isNull()
             prop(FakePodcastItunesBuilder::keywords).isNull()
@@ -96,7 +95,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
         assertThat(builder.itunesBuilder, "channel.itunes").all {
             prop(FakePodcastItunesBuilder::author).isNull()
             prop(FakePodcastItunesBuilder::ownerBuilder).isNotNull().hasNotEnoughDataToBuild()
-            prop(FakePodcastItunesBuilder::categoryBuilders).noneHasEnoughDataToBuild()
+            prop(FakePodcastItunesBuilder::categories).isEmpty()
             prop(FakePodcastItunesBuilder::subtitle).isNull()
             prop(FakePodcastItunesBuilder::summary).isNull()
             prop(FakePodcastItunesBuilder::keywords).isNull()

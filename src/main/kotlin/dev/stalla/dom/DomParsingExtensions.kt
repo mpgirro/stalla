@@ -1,10 +1,11 @@
 package dev.stalla.dom
 
+import dev.stalla.builder.GoogleplayCategoryBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.parser.DateParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
@@ -164,17 +165,40 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
 }
 
 /**
- * Parses the node contents into a [ItunesCategoryBuilder] if possible, ensuring the child nodes
+ * Parses the node contents into a [ItunesCategory] if possible, ensuring the child nodes
+ * have the specified [namespace], then populates the [ItunesCategory] with the parsed data.
+ * Only accepts category entries and nested hierarchies as they are defined in the
+ * [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
+ *
+ * @param namespace The [FeedNamespace] to ensure the child nodes have.
+ *
+ * @return The [ItunesCategory] populated with the DOM node contents.
+ */
+@InternalApi
+internal fun Node.toItunesCategory(namespace: FeedNamespace? = null): ItunesCategory? {
+    val categoryValue = getAttributeValueByName("text")?.trim() ?: return null
+    val category = ItunesCategory.from(categoryValue) ?: return null
+
+    val subcategoryElement = findElementByName("category", namespace) ?: return category
+    val subcategoryValue = subcategoryElement.getAttributeValueByName("text")?.trim()
+    return ItunesCategory.from(subcategoryValue) ?: return category
+}
+
+/**
+ * Parses the node contents into a [GoogleplayCategoryBuilder] if possible, ensuring the child nodes
  * have the specified [namespace], then populates the [categoryBuilder] with the parsed data.
  *
- * @param categoryBuilder An empty [ItunesCategoryBuilder] instance to initialise with the node's
+ * @param categoryBuilder An empty [GoogleplayCategoryBuilder] instance to initialise with the node's
  * contents.
  * @param namespace The [FeedNamespace] to ensure the child nodes have.
  *
  * @return The [categoryBuilder] populated with the DOM node contents.
  */
 @InternalApi
-internal fun Node.toITunesCategoryBuilder(categoryBuilder: ItunesCategoryBuilder, namespace: FeedNamespace? = null): ItunesCategoryBuilder {
+internal fun Node.toGoogleplayCategoryBuilder(
+    categoryBuilder: GoogleplayCategoryBuilder,
+    namespace: FeedNamespace? = null
+): GoogleplayCategoryBuilder {
     val category = getAttributeValueByName("text")?.trim() ?: return categoryBuilder
     categoryBuilder.category(category)
 

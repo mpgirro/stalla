@@ -1,10 +1,10 @@
 package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastItunesBuilder
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 
@@ -17,7 +17,7 @@ internal class FakePodcastItunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
     var summary: String? = null
     var keywords: String? = null
     var author: String? = null
-    var categoryBuilders: MutableList<ItunesCategoryBuilder> = mutableListOf()
+    var categories: MutableList<ItunesCategory> = mutableListOf()
     var block: Boolean? = null
     var complete: Boolean? = null
     var type: ShowType? = null
@@ -35,9 +35,7 @@ internal class FakePodcastItunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
 
     override fun author(author: String?): PodcastItunesBuilder = apply { this.author = author }
 
-    override fun addCategoryBuilder(categoryBuilder: ItunesCategoryBuilder): PodcastItunesBuilder = apply {
-        categoryBuilders.add(categoryBuilder)
-    }
+    override fun addCategory(category: ItunesCategory): PodcastItunesBuilder = apply { categories.add(category) }
 
     override fun explicit(explicit: Boolean): PodcastItunesBuilder = apply { this.explicit = explicit }
 
@@ -67,7 +65,7 @@ internal class FakePodcastItunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
         if (summary != other.summary) return false
         if (keywords != other.keywords) return false
         if (author != other.author) return false
-        if (categoryBuilders != other.categoryBuilders) return false
+        if (categories != other.categories) return false
         if (block != other.block) return false
         if (complete != other.complete) return false
         if (type != other.type) return false
@@ -85,7 +83,7 @@ internal class FakePodcastItunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
         result = 31 * result + (summary?.hashCode() ?: 0)
         result = 31 * result + (keywords?.hashCode() ?: 0)
         result = 31 * result + (author?.hashCode() ?: 0)
-        result = 31 * result + categoryBuilders.hashCode()
+        result = 31 * result + categories.hashCode()
         result = 31 * result + (block?.hashCode() ?: 0)
         result = 31 * result + (complete?.hashCode() ?: 0)
         result = 31 * result + (type?.hashCode() ?: 0)
@@ -97,6 +95,6 @@ internal class FakePodcastItunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
 
     override fun toString() =
         "FakePodcastITunesBuilder(imageBuilderValue=$imageBuilderValue, explicit=$explicit, subtitle=$subtitle, summary=$summary, " +
-            "keywords=$keywords, author=$author, categories=$categoryBuilders, block=$block, complete=$complete, type=$type, " +
+            "keywords=$keywords, author=$author, categories=$categories, block=$block, complete=$complete, type=$type, " +
             "ownerBuilder=$ownerBuilder, title=$title, newFeedUrl=$newFeedUrl)"
 }

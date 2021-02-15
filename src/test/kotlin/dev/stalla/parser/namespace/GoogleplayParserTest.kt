@@ -9,8 +9,8 @@ import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import dev.stalla.builder.fake.FakeGoogleplayCategoryBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakeItunesCategoryBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeGoogleplayBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastBuilder
@@ -39,7 +39,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
             prop(FakePodcastGoogleplayBuilder::author).isEqualTo("Lorem Ipsum")
             prop(FakePodcastGoogleplayBuilder::owner).isEqualTo("email@example.org")
-            prop(FakePodcastGoogleplayBuilder::categoryBuilders).containsExactly(FakeItunesCategoryBuilder().category("Technology"))
+            prop(FakePodcastGoogleplayBuilder::categoryBuilders).containsExactly(FakeGoogleplayCategoryBuilder().category("Technology"))
             prop(FakePodcastGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
             prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::block).isNotNull().isFalse()

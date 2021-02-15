@@ -1,9 +1,9 @@
 package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.ItunesCategoryBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.podcast.PodcastItunesBuilder
+import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 
@@ -16,7 +16,7 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
     private var summary: String? = null
     private var keywords: String? = null
     private var author: String? = null
-    private var categoryBuilders: MutableList<ItunesCategoryBuilder> = mutableListOf()
+    private var categories: MutableList<ItunesCategory> = mutableListOf()
     private var block: Boolean = false
     private var complete: Boolean = false
     private var type: ShowType? = null
@@ -34,9 +34,7 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
 
     override fun author(author: String?): PodcastItunesBuilder = apply { this.author = author }
 
-    override fun addCategoryBuilder(categoryBuilder: ItunesCategoryBuilder): PodcastItunesBuilder = apply {
-        categoryBuilders.add(categoryBuilder)
-    }
+    override fun addCategory(category: ItunesCategory): PodcastItunesBuilder = apply { categories.add(category) }
 
     override fun explicit(explicit: Boolean): PodcastItunesBuilder = apply { this.explicit = explicit }
 
@@ -57,7 +55,7 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
     }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = explicit != null && categoryBuilders.any { it.hasEnoughDataToBuild } &&
+        get() = explicit != null && categories.size > 0 &&
             (::imageBuilderValue.isInitialized && imageBuilderValue.hasEnoughDataToBuild)
 
     override fun build(): PodcastItunes? {
@@ -71,7 +69,7 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
             image = imageBuilderValue.build() ?: return null,
             keywords = keywords,
             author = author,
-            categories = categoryBuilders.mapNotNull { it.build() },
+            categories = categories,
             explicit = explicit ?: throw IllegalStateException("The explicit flag is not set, while hasEnoughDataToBuild == true"),
             block = block,
             complete = complete,

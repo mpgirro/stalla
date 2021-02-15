@@ -2,6 +2,7 @@ package dev.stalla.dom
 
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
+import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
@@ -185,10 +186,42 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
 internal fun Node.appendITunesStyleCategoryElements(categories: List<ItunesCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
         if (category.name.isBlank()) continue
+
+        when (category) {
+            is ItunesCategory.Simple -> {
+                appendElement("category", namespace) {
+                    setAttribute("text", category.name.trim())
+                }
+            }
+            is ItunesCategory.Nested -> {
+                appendElement("category", namespace) {
+                    // Write parent category
+                    setAttribute("text", category.parent.name.trim())
+
+                    // Write sub-category
+                    appendElement("category", namespace) {
+                        setAttribute("text", category.name.trim())
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Appends Google Play style `<googleplay:category> tags with the data from the provided [categories].
+ *
+ * @param categories The [categories][GoogleplayCategory] to append.
+ * @param namespace The namespace to use, if any.
+ */
+@InternalApi
+internal fun Node.appendGoogleplayCategoryElements(categories: List<GoogleplayCategory>, namespace: FeedNamespace? = null) {
+    for (category in categories) {
+        if (category.name.isBlank()) continue
         appendElement("category", namespace) {
             setAttribute("text", category.name.trim())
 
-            if (category is ItunesCategory.Nested && category.subcategory.name.isNotBlank()) {
+            if (category is GoogleplayCategory.Nested && category.subcategory.name.isNotBlank()) {
                 appendElement("category", namespace) {
                     setAttribute("text", category.subcategory.name.trim())
                 }

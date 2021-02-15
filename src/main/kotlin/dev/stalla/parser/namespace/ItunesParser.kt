@@ -7,7 +7,7 @@ import dev.stalla.dom.parseAsInt
 import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.dom.textOrNull
 import dev.stalla.dom.toHrefOnlyImageBuilder
-import dev.stalla.dom.toITunesCategoryBuilder
+import dev.stalla.dom.toItunesCategory
 import dev.stalla.dom.toPersonBuilder
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
@@ -32,10 +32,8 @@ internal object ItunesParser : NamespaceParser() {
                 builder.itunesBuilder.block(block)
             }
             "category" -> {
-                val categoryBuilder = ifCanBeParsed {
-                    toITunesCategoryBuilder(builder.createITunesStyleCategoryBuilder(), namespace)
-                } ?: return
-                builder.itunesBuilder.addCategoryBuilder(categoryBuilder)
+                val category = ifCanBeParsed { toItunesCategory(namespace) } ?: return
+                builder.itunesBuilder.addCategory(category)
             }
             "complete" -> {
                 val complete = ifCanBeParsed { textAsBooleanOrNull() } ?: return

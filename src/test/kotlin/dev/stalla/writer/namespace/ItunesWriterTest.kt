@@ -94,11 +94,6 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write itunes tags to the channel when the data is blank`() {
-        val categories = listOf(
-            ItunesCategory.Simple(" "),
-            ItunesCategory.Nested(" ", ItunesCategory.Simple("subcategory")),
-            ItunesCategory.Nested("nested", ItunesCategory.Simple(" "))
-        )
         val podcast = aPodcast(
             itunes = aPodcastItunes(
                 subtitle = " ",
@@ -106,7 +101,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
                 image = anHrefOnlyImage(" "),
                 keywords = " ",
                 author = " ",
-                categories = categories,
+                categories = listOf(),
                 type = null,
                 owner = null,
                 title = " ",
@@ -118,13 +113,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
         )
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
-            writePodcastDataXPathMultiple("//itunes:category", podcast) { elements ->
-                assertThat(elements).hasSize(1)
-            }
-            writePodcastData("category", podcast = podcast) { element ->
-                assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("nested")
-                assertThat(element, "category element children").hasNoChildren()
-            }
+            assertTagIsNotWrittenToPodcast(podcast, "category")
             assertTagIsNotWrittenToPodcast(podcast, "complete")
             assertTagIsNotWrittenToPodcast(podcast, "keywords")
             assertTagIsNotWrittenToPodcast(podcast, "owner")
@@ -142,11 +131,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write itunes tags to the channel when the data is empty`() {
-        val categories = listOf(
-            ItunesCategory.Simple(""),
-            ItunesCategory.Nested("", ItunesCategory.Simple("subcategory")),
-            ItunesCategory.Nested("nested", ItunesCategory.Simple(""))
-        )
+        val categories = listOf(ItunesCategory.Science)
         val podcast = aPodcast(
             itunes = aPodcastItunes(
                 subtitle = "",
@@ -170,7 +155,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
                 assertThat(elements).hasSize(1)
             }
             writePodcastData("category", podcast = podcast) { element ->
-                assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("nested")
+                assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("Science")
                 assertThat(element, "category element children").hasNoChildren()
             }
             assertTagIsNotWrittenToPodcast(podcast, "complete")
