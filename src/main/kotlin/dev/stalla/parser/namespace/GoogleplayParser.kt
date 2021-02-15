@@ -49,10 +49,7 @@ internal object GoogleplayParser : NamespaceParser() {
     override fun Node.parseItemData(builder: EpisodeBuilder) {
         when (localName) {
             "description" -> builder.googleplayBuilder.description(ifCanBeParsed { textOrNull() })
-            "explicit" -> {
-                val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
-                builder.googleplayBuilder.explicit(explicit)
-            }
+            "explicit" -> builder.googleplayBuilder.explicit(ifCanBeParsed { textOrNull() })
             "block" -> {
                 val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
                 builder.googleplayBuilder.block(block)

@@ -4,6 +4,7 @@ import dev.stalla.builder.episode.*;
 import dev.stalla.model.bitlove.Bitlove;
 import dev.stalla.model.content.Content;
 import dev.stalla.model.googleplay.EpisodeGoogleplay;
+import dev.stalla.model.googleplay.ExplicitType;
 import dev.stalla.model.itunes.EpisodeItunes;
 import dev.stalla.model.podcastindex.*;
 import dev.stalla.model.podlove.EpisodePodlove;
@@ -76,7 +77,7 @@ public class EpisodeBuilderFactoryTest {
     @DisplayName("should build an EpisodeGoogleplay model model using builder factory methods only")
     public void testEpisodeGooglePlayBuilderFactory() {
         EpisodeGoogleplayBuilder episodeGoogleplayBuilder = EpisodeGoogleplay.builder()
-            .explicit(false);
+            .explicit(ExplicitType.NO.getType());
 
         assertNotNull(episodeGoogleplayBuilder.build());
     }

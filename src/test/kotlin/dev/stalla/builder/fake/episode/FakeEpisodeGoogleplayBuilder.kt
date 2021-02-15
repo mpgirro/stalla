@@ -4,17 +4,18 @@ import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.episode.EpisodeGoogleplayBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.model.googleplay.EpisodeGoogleplay
+import dev.stalla.model.googleplay.ExplicitType
 
 internal class FakeEpisodeGoogleplayBuilder : FakeBuilder<EpisodeGoogleplay>(), EpisodeGoogleplayBuilder {
 
     var description: String? = null
-    var explicit: Boolean? = null
+    var explicit: ExplicitType? = null
     var block: Boolean? = null
     var imageBuilder: HrefOnlyImageBuilder? = null
 
     override fun description(description: String?): EpisodeGoogleplayBuilder = apply { this.description = description }
 
-    override fun explicit(explicit: Boolean?): EpisodeGoogleplayBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: ExplicitType?): EpisodeGoogleplayBuilder = apply { this.explicit = explicit }
 
     override fun block(block: Boolean): EpisodeGoogleplayBuilder = apply { this.block = block }
 

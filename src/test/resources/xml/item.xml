@@ -35,7 +35,7 @@
     <itunes:subtitle>subtitle</itunes:subtitle>
     <itunes:summary>summary</itunes:summary>
     <googleplay:description>Lorem Ipsum</googleplay:description>
-    <googleplay:explicit>no</googleplay:explicit>
+    <googleplay:explicit>clean</googleplay:explicit>
     <googleplay:block>no</googleplay:block>
     <googleplay:image href="http://example.org/episode-cover.jpg"/>
     <atom:link rel="self" type="application/rss+xml" title="Lorem Ipsum" href="http://example.org/feed/m4a"/>

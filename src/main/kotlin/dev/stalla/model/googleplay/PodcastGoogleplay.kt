@@ -21,7 +21,7 @@ public data class PodcastGoogleplay(
     val owner: String? = null,
     val categories: List<GoogleplayCategory>,
     override val description: String? = null,
-    override val explicit: Boolean? = null,
+    val explicit: Boolean? = null,
     override val block: Boolean,
     override val image: HrefOnlyImage? = null
 ) : GoogleplayBase {

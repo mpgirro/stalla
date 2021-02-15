@@ -35,6 +35,10 @@ internal object GoogleplayWriter : NamespaceWriter() {
             appendElement("owner", namespace) { textContent = play.owner?.trim() }
         }
 
+        if (play.explicit != null) {
+            appendYesNoElement("explicit", play.explicit, namespace)
+        }
+
         appendGoogleplayCategoryElements(play.categories, namespace)
 
         appendCommonElements(play)
@@ -43,6 +47,10 @@ internal object GoogleplayWriter : NamespaceWriter() {
     override fun Element.appendEpisodeData(episode: Episode) {
         val play = episode.googleplay ?: return
 
+        if (play.explicit != null) {
+            appendElement("explicit", namespace) { textContent = play.explicit.type.trim() }
+        }
+
         appendCommonElements(play)
     }
 
@@ -50,11 +58,6 @@ internal object GoogleplayWriter : NamespaceWriter() {
         val description = play.description
         if (description.isNeitherNullNorBlank()) {
             appendElement("description", namespace) { textContent = description?.trim() }
-        }
-
-        val explicit = play.explicit
-        if (explicit != null) {
-            appendYesNoElement("explicit", explicit, namespace)
         }
 
         appendYesElementIfTrue("block", play.block, namespace)

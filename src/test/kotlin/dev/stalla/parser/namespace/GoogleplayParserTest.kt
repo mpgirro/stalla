@@ -16,6 +16,7 @@ import dev.stalla.builder.fake.podcast.FakePodcastBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastGoogleplayBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.hasNotEnoughDataToBuild
+import dev.stalla.model.googleplay.ExplicitType
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
@@ -88,7 +89,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
 
         assertThat(builder.googleplayBuilder, "item.googleplay").all {
             prop(FakeEpisodeGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
-            prop(FakeEpisodeGoogleplayBuilder::explicit).isNotNull().isFalse()
+            prop(FakeEpisodeGoogleplayBuilder::explicit).isNotNull().isEqualTo(ExplicitType.CLEAN)
             prop(FakeEpisodeGoogleplayBuilder::block).isNotNull().isFalse()
             prop(FakeEpisodeGoogleplayBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
         }
