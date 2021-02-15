@@ -219,7 +219,7 @@ internal fun Node.appendGoogleplayCategoryElements(categories: List<GoogleplayCa
     for (category in categories) {
         if (category.name.isBlank()) continue
         appendElement("category", namespace) {
-            setAttribute("text", category.category.trim())
+            setAttribute("text", category.type.trim())
         }
     }
 }

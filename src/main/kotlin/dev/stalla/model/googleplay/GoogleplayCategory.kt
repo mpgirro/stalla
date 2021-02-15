@@ -3,9 +3,9 @@ package dev.stalla.model.googleplay
 /**
  * An [Google Play `<category>` tag][https://support.google.com/googleplay/podcasts/answer/6260341#spt].
  *
- * @param category The name of the category.
+ * @param type The string representation of the category.
  */
-public enum class GoogleplayCategory(public val category: String) {
+public enum class GoogleplayCategory(public val type: String) {
 
     /** Category type for _Arts_ */
     Arts("Arts"),
@@ -58,13 +58,13 @@ public enum class GoogleplayCategory(public val category: String) {
     public companion object Factory {
 
         /**
-         * Factory method for the instance of the [GoogleplayCategory] matching the [category] parameter.
+         * Factory method for the instance of the [GoogleplayCategory] matching the [type] parameter.
          *
-         * @param category The string representation of the [GoogleplayCategory] instance.
-         * @return The [GoogleplayCategory] instance matching [category], or null if no matching instance exists.
+         * @param type The string representation of the [GoogleplayCategory] instance.
+         * @return The [GoogleplayCategory] instance matching [type], or null if no matching instance exists.
          */
-        public fun from(category: String?): GoogleplayCategory? = category?.let {
-            values().find { t -> t.category.equals(it, ignoreCase = true) }
+        public fun from(type: String?): GoogleplayCategory? = type?.let {
+            values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }
 }
