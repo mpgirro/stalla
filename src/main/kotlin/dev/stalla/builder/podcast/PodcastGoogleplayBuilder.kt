@@ -16,7 +16,7 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     /** Set the owner email value. */
     public fun owner(email: String?): PodcastGoogleplayBuilder
 
-    /** Adds  to the list of categories. */
+    /** Adds to the list of categories. */
     public fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder
 
     /** Adds multiple [GoogleplayCategory] to the list of categories. */

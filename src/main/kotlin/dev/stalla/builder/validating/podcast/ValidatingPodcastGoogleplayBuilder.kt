@@ -38,7 +38,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
             if (block) return true
             if (anyNotNull(author, owner, description, explicit, newFeedUrl)) return true
             if (imageBuilder?.hasEnoughDataToBuild == true) return true
-            return categories.size > 0
+            return categories.isNotEmpty()
         }
 
     override fun build(): PodcastGoogleplay? {

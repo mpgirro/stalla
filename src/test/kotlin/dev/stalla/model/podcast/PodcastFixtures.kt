@@ -5,9 +5,11 @@ import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
+import dev.stalla.model.aGoogleplayCategory
 import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
+import dev.stalla.model.anItunesCategory
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.anRssImage
 import dev.stalla.model.atom.Atom
@@ -80,7 +82,7 @@ internal fun aPodcastItunes(
     image: HrefOnlyImage = anHrefOnlyImage(href = "podcast itunes image url"),
     keywords: String? = "podcast itunes keywords",
     author: String? = "podcast itunes author",
-    categories: List<ItunesCategory> = listOf(ItunesCategory.ScienceFiction),
+    categories: List<ItunesCategory> = listOf(anItunesCategory()),
     explicit: Boolean = true,
     block: Boolean = true,
     complete: Boolean = true,
@@ -111,7 +113,7 @@ internal fun aPodcastFeedpress(
 internal fun aPodcastGoogleplay(
     author: String? = "podcast googleplay author",
     owner: String? = "podcast googleplay owner",
-    categories: List<GoogleplayCategory> = listOf(GoogleplayCategory.NewsAndPolitics),
+    categories: List<GoogleplayCategory> = listOf(aGoogleplayCategory()),
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean = true,

@@ -32,7 +32,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode GooglePlay with only a author`() {
+    internal fun `should build an Episode GooglePlay with only an author`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .author("author")
 
