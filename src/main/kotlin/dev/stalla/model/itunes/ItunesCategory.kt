@@ -263,18 +263,14 @@ public sealed class ItunesCategory(public open val name: String) {
 
     public companion object Factory {
 
-        private val categoryMap: Map<String, ItunesCategory> by lazy {
-            val categories: List<ItunesCategory> = Factory::class.declaredMemberProperties.mapNotNull { member ->
-                var category: ItunesCategory? = null
-                if (member.visibility == KVisibility.PUBLIC) {
+        private val valueMap: Map<String, ItunesCategory> by lazy {
+            val values: List<ItunesCategory> = Factory::class.declaredMemberProperties
+                .filter { member -> member.visibility == KVisibility.PUBLIC }
+                .mapNotNull { member ->
                     val value = member.getter.call(this)
-                    if (value is ItunesCategory) {
-                        category = value
-                    }
+                    if (value is ItunesCategory) value else null
                 }
-                category
-            }
-            categories.associateBy({ it.name.toLowerCase() }, { it })
+            values.associateBy({ it.name.toLowerCase() }, { it })
         }
 
         /**
@@ -285,7 +281,7 @@ public sealed class ItunesCategory(public open val name: String) {
          */
         @JvmStatic
         public fun from(name: String?): ItunesCategory? = name?.let {
-            return categoryMap[it.toLowerCase()]
+            return valueMap[it.toLowerCase()]
         }
 
         /** Category type for _Arts_ */
