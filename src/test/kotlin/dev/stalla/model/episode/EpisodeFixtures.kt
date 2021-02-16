@@ -13,6 +13,7 @@ import dev.stalla.model.atom.Link
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.googleplay.EpisodeGoogleplay
+import dev.stalla.model.googleplay.ExplicitType
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.podcastindex.Chapters
@@ -115,11 +116,12 @@ internal fun aPodloveSimpleChapter(
 ) = SimpleChapter(start, title, href, image)
 
 internal fun anEpisodeGoogleplay(
+    author: String? = "episode googleplay author",
     description: String? = "episode googleplay description",
-    explicit: Boolean? = true,
+    explicit: ExplicitType? = ExplicitType.YES,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode googleplay image url")
-) = EpisodeGoogleplay(description, explicit, block, image)
+) = EpisodeGoogleplay(author, description, explicit, block, image)
 
 internal fun anEpisodeBitlove(
     guid: String = "episode bitlove guid"

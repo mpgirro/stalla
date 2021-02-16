@@ -55,7 +55,7 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
     }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = explicit != null && categories.size > 0 &&
+        get() = explicit != null && categories.isNotEmpty() &&
             (::imageBuilderValue.isInitialized && imageBuilderValue.hasEnoughDataToBuild)
 
     override fun build(): PodcastItunes? {

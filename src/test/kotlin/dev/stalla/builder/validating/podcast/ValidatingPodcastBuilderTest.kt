@@ -22,7 +22,6 @@ import dev.stalla.model.Podcast
 import dev.stalla.model.atom.Atom
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
-import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
@@ -56,10 +55,6 @@ internal class ValidatingPodcastBuilderTest {
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 
     private val expectedItunesCategory: ItunesCategory = ItunesCategory.from("Science Fiction")!!
-
-    private val expectedGoogleplayCategoryBuilder = GoogleplayCategory.builder()
-        .category("itunes category")
-        .subcategory("itunes subcategory")
 
     private val expectedCategoryBuilders = listOf(
         ValidatingRssCategoryBuilder().category("category 1").domain("domain"),

@@ -13,6 +13,7 @@ import dev.stalla.builder.episode.EpisodeGoogleplayBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.model.episode.anEpisodeGoogleplay
 import dev.stalla.model.googleplay.EpisodeGoogleplay
+import dev.stalla.model.googleplay.ExplicitType
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeGoogleplayBuilderTest {
@@ -27,6 +28,24 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
             assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isFalse()
 
             assertThat(episodeGooglePlayBuilder.build()).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode GooglePlay with only an author`() {
+        val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
+            .author("author")
+
+        assertAll {
+            assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
+                prop(EpisodeGoogleplay::author).isEqualTo("author")
+                prop(EpisodeGoogleplay::description).isNull()
+                prop(EpisodeGoogleplay::explicit).isNull()
+                prop(EpisodeGoogleplay::block).isFalse()
+                prop(EpisodeGoogleplay::image).isNull()
+            }
         }
     }
 
@@ -50,14 +69,14 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     @Test
     internal fun `should build an Episode GooglePlay with only explicit`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
-            .explicit(false)
+            .explicit("no")
 
         assertAll {
             assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(EpisodeGoogleplay::description).isNull()
-                prop(EpisodeGoogleplay::explicit).isNotNull().isFalse()
+                prop(EpisodeGoogleplay::explicit).isNotNull().isEqualTo(ExplicitType.NO)
                 prop(EpisodeGoogleplay::block).isFalse()
                 prop(EpisodeGoogleplay::image).isNull()
             }
@@ -102,7 +121,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     internal fun `should build an Episode GooglePlay with all the optional fields`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .description("description")
-            .explicit(false)
+            .explicit("no")
             .block(false)
             .imageBuilder(expectedImageBuilder)
 
@@ -111,7 +130,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
 
             assertThat(episodeGooglePlayBuilder.build()).isNotNull().all {
                 prop(EpisodeGoogleplay::description).isEqualTo("description")
-                prop(EpisodeGoogleplay::explicit).isNotNull().isFalse()
+                prop(EpisodeGoogleplay::explicit).isNotNull().isEqualTo(ExplicitType.NO)
                 prop(EpisodeGoogleplay::block).isNotNull().isFalse()
                 prop(EpisodeGoogleplay::image).isEqualTo(expectedImageBuilder.build())
             }

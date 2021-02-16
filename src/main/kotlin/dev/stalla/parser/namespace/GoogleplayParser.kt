@@ -4,7 +4,7 @@ import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.dom.textOrNull
-import dev.stalla.dom.toGoogleplayCategoryBuilder
+import dev.stalla.dom.toGoogleplayCategory
 import dev.stalla.dom.toHrefOnlyImageBuilder
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
@@ -26,9 +26,8 @@ internal object GoogleplayParser : NamespaceParser() {
             "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
             "owner" -> builder.googleplayBuilder.owner(ifCanBeParsed { textOrNull() })
             "category" -> {
-                val categoryBuilder = builder.createGoogleplayCategoryBuilder()
-                val category = ifCanBeParsed { toGoogleplayCategoryBuilder(categoryBuilder, namespace) } ?: return
-                builder.googleplayBuilder.addCategoryBuilder(category)
+                val category = ifCanBeParsed { toGoogleplayCategory() } ?: return
+                builder.googleplayBuilder.addCategory(category)
             }
             "description" -> builder.googleplayBuilder.description(ifCanBeParsed { textOrNull() })
             "explicit" -> {
@@ -43,17 +42,16 @@ internal object GoogleplayParser : NamespaceParser() {
                 val imageBuilder = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
                 builder.googleplayBuilder.imageBuilder(imageBuilder)
             }
+            "new-feed-url" -> builder.googleplayBuilder.newFeedUrl(ifCanBeParsed { textOrNull() })
             else -> pass
         }
     }
 
     override fun Node.parseItemData(builder: EpisodeBuilder) {
         when (localName) {
+            "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
             "description" -> builder.googleplayBuilder.description(ifCanBeParsed { textOrNull() })
-            "explicit" -> {
-                val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
-                builder.googleplayBuilder.explicit(explicit)
-            }
+            "explicit" -> builder.googleplayBuilder.explicit(ifCanBeParsed { textOrNull() })
             "block" -> {
                 val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
                 builder.googleplayBuilder.block(block)

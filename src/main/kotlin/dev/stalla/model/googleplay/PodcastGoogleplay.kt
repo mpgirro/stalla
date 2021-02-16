@@ -8,6 +8,9 @@ import dev.stalla.model.HrefOnlyImage
 /**
  * Model class for data from the Google Play namespace valid within an RSS `<channel>`.
  *
+ * Properties are as defined in the
+ * [XML Schema for the Google Play Podcasts extension](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd)
+ *
  * @property author The `<googleplay:author>` field text content.
  * @property owner The `<googleplay:email>` field text content.
  * @property categories The list of `<googleplay:category>` element's field text contents.
@@ -17,13 +20,14 @@ import dev.stalla.model.HrefOnlyImage
  * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
  */
 public data class PodcastGoogleplay(
-    val author: String? = null,
+    override val author: String? = null,
     val owner: String? = null,
     val categories: List<GoogleplayCategory>,
     override val description: String? = null,
-    override val explicit: Boolean? = null,
+    val explicit: Boolean? = null,
     override val block: Boolean,
-    override val image: HrefOnlyImage? = null
+    override val image: HrefOnlyImage? = null,
+    val newFeedUrl: String? = null
 ) : GoogleplayBase {
 
     public companion object Factory : BuilderFactory<PodcastGoogleplay, PodcastGoogleplayBuilder> {

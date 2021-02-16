@@ -40,15 +40,6 @@ internal fun anRssCategory(
     domain: String? = "rss category domain"
 ) = RssCategory(category, domain)
 
-internal fun anItunesCategory(
-    category: String = "Science Fiction"
-) = ItunesCategory.from(category)
+internal fun anItunesCategory(category: ItunesCategory = ItunesCategory.SCIENCE_FICTION) = category
 
-internal fun aGoogleplayCategory(
-    category: String = "googleplay category",
-    subcategory: String? = "googleplay category subcategory"
-) = if (subcategory == null) {
-    GoogleplayCategory.Simple(category)
-} else {
-    GoogleplayCategory.Nested(category, GoogleplayCategory.Simple(subcategory))
-}
+internal fun aGoogleplayCategory(category: GoogleplayCategory = GoogleplayCategory.NEWS_AND_POLITICS) = category

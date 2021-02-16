@@ -1,11 +1,10 @@
 package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder
-import dev.stalla.builder.GoogleplayCategoryBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
-import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [PodcastGoogleplay] instances. */
@@ -17,12 +16,12 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     /** Set the owner email value. */
     public fun owner(email: String?): PodcastGoogleplayBuilder
 
-    /** Adds an [GoogleplayCategoryBuilder] to the list of category builders. */
-    public fun addCategoryBuilder(categoryBuilder: GoogleplayCategoryBuilder): PodcastGoogleplayBuilder
+    /** Adds to the list of categories. */
+    public fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder
 
-    /** Adds multiple [GoogleplayCategoryBuilder] to the list of category builders. */
-    public fun addCategoryBuilders(categoryBuilders: List<GoogleplayCategoryBuilder>): PodcastGoogleplayBuilder = apply {
-        categoryBuilders.forEach(::addCategoryBuilder)
+    /** Adds multiple [GoogleplayCategory] to the list of categories. */
+    public fun addCategories(categories: List<GoogleplayCategory>): PodcastGoogleplayBuilder = apply {
+        categories.forEach(::addCategory)
     }
 
     /** Set the description value. */
@@ -37,13 +36,17 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     /** Set the [HrefOnlyImageBuilder]. */
     public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGoogleplayBuilder
 
-    override fun from(model: PodcastGoogleplay?): PodcastGoogleplayBuilder = whenNotNull(model) { googlePlay ->
-        author(googlePlay.author)
-        owner(googlePlay.owner)
-        addCategoryBuilders(googlePlay.categories.asBuilders())
-        description(googlePlay.description)
-        explicit(googlePlay.explicit)
-        block(googlePlay.block)
-        imageBuilder(HrefOnlyImage.builder().from(googlePlay.image))
+    /** Set the new URL at which this feed is located. */
+    public fun newFeedUrl(newFeedUrl: String?): PodcastGoogleplayBuilder
+
+    override fun from(model: PodcastGoogleplay?): PodcastGoogleplayBuilder = whenNotNull(model) { googleplay ->
+        author(googleplay.author)
+        owner(googleplay.owner)
+        addCategories(googleplay.categories)
+        description(googleplay.description)
+        explicit(googleplay.explicit)
+        block(googleplay.block)
+        imageBuilder(HrefOnlyImage.builder().from(googleplay.image))
+        newFeedUrl(googleplay.newFeedUrl)
     }
 }

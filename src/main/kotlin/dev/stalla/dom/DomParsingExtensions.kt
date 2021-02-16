@@ -1,10 +1,10 @@
 package dev.stalla.dom
 
-import dev.stalla.builder.GoogleplayCategoryBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
+import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.parser.DateParser
 import dev.stalla.util.FeedNamespace
@@ -167,6 +167,7 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
 /**
  * Parses the node contents into a [ItunesCategory] if possible, ensuring the child nodes
  * have the specified [namespace], then populates the [ItunesCategory] with the parsed data.
+ *
  * Only accepts category entries and nested hierarchies as they are defined in the
  * [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
  *
@@ -185,26 +186,12 @@ internal fun Node.toItunesCategory(namespace: FeedNamespace? = null): ItunesCate
 }
 
 /**
- * Parses the node contents into a [GoogleplayCategoryBuilder] if possible, ensuring the child nodes
- * have the specified [namespace], then populates the [categoryBuilder] with the parsed data.
+ * Parses the node contents into a [GoogleplayCategory] if possible.
  *
- * @param categoryBuilder An empty [GoogleplayCategoryBuilder] instance to initialise with the node's
- * contents.
- * @param namespace The [FeedNamespace] to ensure the child nodes have.
- *
- * @return The [categoryBuilder] populated with the DOM node contents.
+ * @return The [GoogleplayCategory] populated with the DOM node contents.
  */
 @InternalApi
-internal fun Node.toGoogleplayCategoryBuilder(
-    categoryBuilder: GoogleplayCategoryBuilder,
-    namespace: FeedNamespace? = null
-): GoogleplayCategoryBuilder {
-    val category = getAttributeValueByName("text")?.trim() ?: return categoryBuilder
-    categoryBuilder.category(category)
-
-    val subcategoryElement = findElementByName("category", namespace) ?: return categoryBuilder
-    val subcategory = subcategoryElement.getAttributeValueByName("text")?.trim() ?: return categoryBuilder
-    categoryBuilder.subcategory(subcategory)
-
-    return categoryBuilder
+internal fun Node.toGoogleplayCategory(): GoogleplayCategory? {
+    val categoryValue = getAttributeValueByName("text")?.trim() ?: return null
+    return GoogleplayCategory.from(categoryValue)
 }

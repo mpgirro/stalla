@@ -2,7 +2,6 @@ package dev.stalla.builder.podcast
 
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.Builder
-import dev.stalla.builder.GoogleplayCategoryBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PersonBuilderProvider
@@ -99,9 +98,6 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
 
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
     public fun createRssCategoryBuilder(): RssCategoryBuilder
-
-    /** Creates an instance of [GoogleplayCategoryBuilder] to use with this builder. */
-    public fun createGoogleplayCategoryBuilder(): GoogleplayCategoryBuilder
 
     /** Creates an instance of [PodcastPodcastindexLockedBuilder] to use with this builder. */
     public fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder

@@ -25,9 +25,9 @@ internal class ValidatingPodcastItunesBuilderTest {
 
     private val expectedPersonBuilder = ValidatingPersonBuilder().name("name")
 
-    private val expectedItunesCategory = ItunesCategory.Technology
+    private val expectedItunesCategory = ItunesCategory.TECHNOLOGY
 
-    private val otherExpectedItunesCategory = ItunesCategory.Arts
+    private val otherExpectedItunesCategory = ItunesCategory.ARTS
 
     @Test
     internal fun `should not build a Podcast ITunes when all fields are missing`() {

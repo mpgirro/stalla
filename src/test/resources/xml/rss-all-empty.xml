@@ -108,6 +108,7 @@
                 <psc:chapter start="" title=""
                              href="" image=""/>
             </psc:chapters>
+            <googleplay:author></googleplay:author>
             <googleplay:description></googleplay:description>
             <googleplay:image href=""/>
             <googleplay:explicit></googleplay:explicit>

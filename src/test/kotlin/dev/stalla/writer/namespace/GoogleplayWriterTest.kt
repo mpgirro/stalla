@@ -2,15 +2,11 @@ package dev.stalla.writer.namespace
 
 import assertk.assertAll
 import assertk.assertThat
-import assertk.assertions.hasSize
-import dev.stalla.hasNoChildren
 import dev.stalla.hasNoDifferences
-import dev.stalla.hasValue
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.episode.anEpisodeGoogleplay
-import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.podcast.aPodcast
 import dev.stalla.model.podcast.aPodcastGoogleplay
 import org.junit.jupiter.api.Test
@@ -50,6 +46,10 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
                 val diff = element.diffFromExpected("/rss/channel/googleplay:image")
                 assertThat(diff).hasNoDifferences()
             }
+            writePodcastData("new-feed-url") { element ->
+                val diff = element.diffFromExpected("/rss/channel/googleplay:new-feed-url")
+                assertThat(diff).hasNoDifferences()
+            }
         }
     }
 
@@ -63,82 +63,69 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
             assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "explicit")
             assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "block")
             assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "image")
+            assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "new-feed-url")
         }
     }
 
     @Test
     internal fun `should not write googleplay tags to the channel when the data is blank`() {
-        val categories = listOf(
-            GoogleplayCategory.Simple(" "),
-            GoogleplayCategory.Nested(" ", GoogleplayCategory.Simple("subcategory")),
-            GoogleplayCategory.Nested("nested", GoogleplayCategory.Simple(" "))
-        )
         val podcast = aPodcast(
             googleplay = aPodcastGoogleplay(
                 author = " ",
                 owner = " ",
                 description = " ",
-                categories = categories,
+                categories = listOf(),
                 image = HrefOnlyImage(" "),
                 block = false,
-                explicit = null
+                explicit = null,
+                newFeedUrl = " "
             )
         )
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
             assertTagIsNotWrittenToPodcast(podcast, "owner")
-            writePodcastDataXPathMultiple("//googleplay:category", podcast) { elements ->
-                assertThat(elements).hasSize(1)
-            }
-            writePodcastData("category", podcast = podcast) { element ->
-                assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("nested")
-                assertThat(element, "category element children").hasNoChildren()
-            }
+            assertTagIsNotWrittenToPodcast(podcast, "category")
             assertTagIsNotWrittenToPodcast(podcast, "description")
             assertTagIsNotWrittenToPodcast(podcast, "explicit")
             assertTagIsNotWrittenToPodcast(podcast, "block")
             assertTagIsNotWrittenToPodcast(podcast, "image")
+            assertTagIsNotWrittenToPodcast(podcast, "new-feed-url")
         }
     }
 
     @Test
     internal fun `should not write googleplay tags to the channel when the data is empty`() {
-        val categories = listOf(
-            GoogleplayCategory.Simple(""),
-            GoogleplayCategory.Nested("", GoogleplayCategory.Simple("subcategory")),
-            GoogleplayCategory.Nested("nested", GoogleplayCategory.Simple(""))
-        )
         val podcast = aPodcast(
             googleplay = aPodcastGoogleplay(
                 author = "",
                 owner = "",
                 description = "",
-                categories = categories,
+                categories = listOf(),
                 image = HrefOnlyImage(""),
                 block = false,
-                explicit = null
+                explicit = null,
+                newFeedUrl = ""
             )
         )
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
             assertTagIsNotWrittenToPodcast(podcast, "owner")
-            writePodcastDataXPathMultiple("//googleplay:category", podcast) { elements ->
-                assertThat(elements).hasSize(1)
-            }
-            writePodcastData("category", podcast = podcast) { element ->
-                assertThat(element, "category element").hasAttribute("text", namespace = null).hasValue("nested")
-                assertThat(element, "category element children").hasNoChildren()
-            }
+            assertTagIsNotWrittenToPodcast(podcast, "category")
             assertTagIsNotWrittenToPodcast(podcast, "description")
             assertTagIsNotWrittenToPodcast(podcast, "explicit")
             assertTagIsNotWrittenToPodcast(podcast, "block")
             assertTagIsNotWrittenToPodcast(podcast, "image")
+            assertTagIsNotWrittenToPodcast(podcast, "new-feed-url")
         }
     }
 
     @Test
     internal fun `should write the correct googleplay tags to the item when there is data to write`() {
         assertAll {
+            writeEpisodeData("author") { element ->
+                val diff = element.diffFromExpected("/rss/channel/item[1]/googleplay:author")
+                assertThat(diff).hasNoDifferences()
+            }
             writeEpisodeData("description") { element ->
                 val diff = element.diffFromExpected("/rss/channel/item[1]/googleplay:description")
                 assertThat(diff).hasNoDifferences()
@@ -162,6 +149,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
     internal fun `should not write googleplay tags to the item when there is no data to write`() {
         val episode = anEpisode(googleplay = null)
         assertAll {
+            assertTagIsNotWrittenToEpisode(episode, "author")
             assertTagIsNotWrittenToEpisode(episode, "description")
             assertTagIsNotWrittenToEpisode(episode, "explicit")
             assertTagIsNotWrittenToEpisode(episode, "block")
@@ -171,8 +159,17 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write googleplay tags to the item when the data is blank`() {
-        val episode = anEpisode(googleplay = anEpisodeGoogleplay(description = " ", image = anHrefOnlyImage(" "), block = false, explicit = null))
+        val episode = anEpisode(
+            googleplay = anEpisodeGoogleplay(
+                author = " ",
+                description = " ",
+                image = anHrefOnlyImage(" "),
+                block = false,
+                explicit = null
+            )
+        )
         assertAll {
+            assertTagIsNotWrittenToEpisode(episode, "author")
             assertTagIsNotWrittenToEpisode(episode, "description")
             assertTagIsNotWrittenToEpisode(episode, "explicit")
             assertTagIsNotWrittenToEpisode(episode, "block")
@@ -182,8 +179,17 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
 
     @Test
     internal fun `should not write googleplay tags to the item when the data is empty`() {
-        val episode = anEpisode(googleplay = anEpisodeGoogleplay(description = "", image = anHrefOnlyImage(""), block = false, explicit = null))
+        val episode = anEpisode(
+            googleplay = anEpisodeGoogleplay(
+                author = "",
+                description = "",
+                image = anHrefOnlyImage(""),
+                block = false,
+                explicit = null
+            )
+        )
         assertAll {
+            assertTagIsNotWrittenToEpisode(episode, "author")
             assertTagIsNotWrittenToEpisode(episode, "description")
             assertTagIsNotWrittenToEpisode(episode, "explicit")
             assertTagIsNotWrittenToEpisode(episode, "block")

@@ -9,6 +9,7 @@ import dev.stalla.model.aGoogleplayCategory
 import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
+import dev.stalla.model.anItunesCategory
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.anRssImage
 import dev.stalla.model.atom.Atom
@@ -81,7 +82,7 @@ internal fun aPodcastItunes(
     image: HrefOnlyImage = anHrefOnlyImage(href = "podcast itunes image url"),
     keywords: String? = "podcast itunes keywords",
     author: String? = "podcast itunes author",
-    categories: List<ItunesCategory> = listOf(ItunesCategory.ScienceFiction),
+    categories: List<ItunesCategory> = listOf(anItunesCategory()),
     explicit: Boolean = true,
     block: Boolean = true,
     complete: Boolean = true,
@@ -112,12 +113,13 @@ internal fun aPodcastFeedpress(
 internal fun aPodcastGoogleplay(
     author: String? = "podcast googleplay author",
     owner: String? = "podcast googleplay owner",
-    categories: List<GoogleplayCategory> = listOf(aGoogleplayCategory("podcast googleplay category", "podcast googleplay subcategory")),
+    categories: List<GoogleplayCategory> = listOf(aGoogleplayCategory()),
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean = true,
-    image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url")
-) = PodcastGoogleplay(author, owner, categories, description, explicit, block, image)
+    image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url"),
+    newFeedUrl: String? = "podcast googleplay newFeedUrl"
+) = PodcastGoogleplay(author, owner, categories, description, explicit, block, image, newFeedUrl)
 
 internal fun aPodcastPodcastindex(
     locked: Locked? = aPodcastPodcastindexLocked(),

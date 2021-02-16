@@ -1,7 +1,6 @@
 package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.AtomBuilder
-import dev.stalla.builder.GoogleplayCategoryBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.PersonBuilder
@@ -17,7 +16,6 @@ import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.validating.ValidatingAtomBuilder
-import dev.stalla.builder.validating.ValidatingGoogleplayCategoryBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
@@ -101,8 +99,6 @@ internal class ValidatingPodcastBuilder : PodcastBuilder {
     override fun createPersonBuilder(): PersonBuilder = ValidatingPersonBuilder()
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
-
-    override fun createGoogleplayCategoryBuilder(): GoogleplayCategoryBuilder = ValidatingGoogleplayCategoryBuilder()
 
     override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
 

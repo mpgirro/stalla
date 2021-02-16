@@ -27,12 +27,16 @@ internal object GoogleplayWriter : NamespaceWriter() {
     override fun Element.appendPodcastData(podcast: Podcast) {
         val play = podcast.googleplay ?: return
 
-        if (play.author.isNeitherNullNorBlank()) {
-            appendElement("author", namespace) { textContent = play.author?.trim() }
-        }
-
         if (play.owner.isNeitherNullNorBlank()) {
             appendElement("owner", namespace) { textContent = play.owner?.trim() }
+        }
+
+        if (play.explicit != null) {
+            appendYesNoElement("explicit", play.explicit, namespace)
+        }
+
+        if (play.newFeedUrl.isNeitherNullNorBlank()) {
+            appendElement("new-feed-url", namespace) { textContent = play.newFeedUrl?.trim() }
         }
 
         appendGoogleplayCategoryElements(play.categories, namespace)
@@ -43,18 +47,20 @@ internal object GoogleplayWriter : NamespaceWriter() {
     override fun Element.appendEpisodeData(episode: Episode) {
         val play = episode.googleplay ?: return
 
+        if (play.explicit != null) {
+            appendElement("explicit", namespace) { textContent = play.explicit.type.trim() }
+        }
+
         appendCommonElements(play)
     }
 
     private fun Element.appendCommonElements(play: GoogleplayBase) {
-        val description = play.description
-        if (description.isNeitherNullNorBlank()) {
-            appendElement("description", namespace) { textContent = description?.trim() }
+        if (play.author.isNeitherNullNorBlank()) {
+            appendElement("author", namespace) { textContent = play.author?.trim() }
         }
 
-        val explicit = play.explicit
-        if (explicit != null) {
-            appendYesNoElement("explicit", explicit, namespace)
+        if (play.description.isNeitherNullNorBlank()) {
+            appendElement("description", namespace) { textContent = play.description?.trim() }
         }
 
         appendYesElementIfTrue("block", play.block, namespace)

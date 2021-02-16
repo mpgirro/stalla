@@ -46,9 +46,9 @@ internal class ItunesParserTest : NamespaceParserTest() {
             prop(FakePodcastItunesBuilder::author).isEqualTo("Lorem Ipsum")
             prop(FakePodcastItunesBuilder::ownerBuilder).isEqualTo(expectedOwnerBuilder)
             prop(FakePodcastItunesBuilder::categories).containsExactly(
-                ItunesCategory.TechNews,
-                ItunesCategory.SocietyAndCulture,
-                ItunesCategory.ScienceFiction
+                ItunesCategory.TECH_NEWS,
+                ItunesCategory.SOCIETY_AND_CULTURE,
+                ItunesCategory.SCIENCE_FICTION
             )
             prop(FakePodcastItunesBuilder::subtitle).isEqualTo("Lorem Ipsum")
             prop(FakePodcastItunesBuilder::summary).isEqualTo("Lorem Ipsum")
