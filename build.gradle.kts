@@ -49,6 +49,7 @@ dependencies {
     implementation(kotlin("reflect"))
 
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$junit5Version")
     testImplementation("com.willowtreeapps.assertk:assertk:0.23")
     testImplementation("org.xmlunit:xmlunit-core:2.8.2")
 }
@@ -60,7 +61,7 @@ kotlin {
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = "9"
             freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn", "-Xopt-in=dev.stalla.util.InternalApi")
         }
     }

@@ -11,11 +11,11 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastindexBuilder
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.episode.anEpisodePodcastindex
 import dev.stalla.model.podcastindex.EpisodePodcastindex
 import dev.stalla.model.podcastindex.TranscriptType
 import org.junit.jupiter.api.Test
-import java.time.Duration
 import java.util.Locale
 
 internal class ValidatingEpisodePodcastindexBuilderTest {
@@ -25,13 +25,13 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
         .type("application/json+chapters")
 
     private val firstExpectedSoundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
-        .startTime(Duration.ofSeconds(1))
-        .duration(Duration.ofSeconds(15))
+        .startTime(StyledDuration.secondsAndFraction(1))
+        .duration(StyledDuration.secondsAndFraction(15, 11))
         .title("First soundbite")
 
     private val secondExpectedSoundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
-        .startTime(Duration.ofSeconds(2))
-        .duration(Duration.ofSeconds(12))
+        .startTime(StyledDuration.secondsAndFraction(2))
+        .duration(StyledDuration.secondsAndFraction(12, 876786))
         .title("Second soundbite")
 
     private val firstExpectedTranscriptBuilder = ValidatingEpisodePodcastindexTranscriptBuilder()

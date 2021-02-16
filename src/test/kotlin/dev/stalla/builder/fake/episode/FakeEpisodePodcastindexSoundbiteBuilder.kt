@@ -2,18 +2,18 @@ package dev.stalla.builder.fake.episode
 
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.fake.FakeBuilder
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.Soundbite
-import java.time.Duration
 
 internal class FakeEpisodePodcastindexSoundbiteBuilder : FakeBuilder<Soundbite>(), EpisodePodcastindexSoundbiteBuilder {
 
-    var startTime: Duration? = null
-    var duration: Duration? = null
+    var startTime: StyledDuration.SecondsAndFraction? = null
+    var duration: StyledDuration.SecondsAndFraction? = null
     var title: String? = null
 
-    override fun startTime(startTime: Duration): EpisodePodcastindexSoundbiteBuilder = apply { this.startTime = startTime }
+    override fun startTime(startTime: StyledDuration.SecondsAndFraction): EpisodePodcastindexSoundbiteBuilder = apply { this.startTime = startTime }
 
-    override fun duration(duration: Duration): EpisodePodcastindexSoundbiteBuilder = apply { this.duration = duration }
+    override fun duration(duration: StyledDuration.SecondsAndFraction): EpisodePodcastindexSoundbiteBuilder = apply { this.duration = duration }
 
     override fun title(title: String?): EpisodePodcastindexSoundbiteBuilder = apply { this.title = title }
 

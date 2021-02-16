@@ -14,8 +14,6 @@ import dev.stalla.model.rss.Guid;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.Duration;
-
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class EpisodeBuilderFactoryTest {
@@ -118,8 +116,8 @@ public class EpisodeBuilderFactoryTest {
     @DisplayName("should build an Episode.Podcast model using builder factory methods only")
     public void testEpisodePodcastBuilderFactory() {
         EpisodePodcastindexSoundbiteBuilder episodePodcastindexSoundbiteBuilder = Soundbite.builder()
-            .startTime(Duration.ZERO)
-            .duration(Duration.ZERO);
+            .startTime(StyledDuration.Factory.secondsAndFraction(0))
+            .duration(StyledDuration.Factory.secondsAndFraction(0));
 
         EpisodePodcastindexBuilder episodePodcastindexBuilder = EpisodePodcastindex.builder()
             .addSoundbiteBuilder(episodePodcastindexSoundbiteBuilder);
@@ -151,8 +149,8 @@ public class EpisodeBuilderFactoryTest {
     @DisplayName("should build an Episode.Podcast.Soundbite model using builder factory methods only")
     public void testEpisodePodcastSoundbiteBuilderFactory() {
         EpisodePodcastindexSoundbiteBuilder episodePodcastindexSoundbiteBuilder = Soundbite.builder()
-            .startTime(Duration.ZERO)
-            .duration(Duration.ZERO.plusMinutes(1));
+            .startTime(StyledDuration.Factory.secondsAndFraction(0))
+            .duration(StyledDuration.Factory.secondsAndFraction(1));
 
         assertNotNull(episodePodcastindexSoundbiteBuilder.build());
     }

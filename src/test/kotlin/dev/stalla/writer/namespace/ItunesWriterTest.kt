@@ -231,7 +231,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
         val episode = anEpisode(
             itunes = anEpisodeItunes(
                 title = " ",
-                duration = " ",
+                duration = null,
                 image = anHrefOnlyImage(" "),
                 season = null,
                 episode = null,
@@ -260,7 +260,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
         val episode = anEpisode(
             itunes = anEpisodeItunes(
                 title = "",
-                duration = "",
+                duration = null,
                 image = anHrefOnlyImage(""),
                 season = null,
                 episode = null,

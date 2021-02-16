@@ -10,6 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.episode.anEpisodePodcastindexSoundbite
 import dev.stalla.model.podcastindex.Soundbite
 import org.junit.jupiter.api.Test
@@ -31,7 +32,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the startTime field is missing`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
-            .duration(Duration.ofSeconds(15))
+            .duration(StyledDuration.secondsAndFraction(15))
 
         assertAll {
             assertThat(soundbiteBuilder).prop(EpisodePodcastindexSoundbiteBuilder::hasEnoughDataToBuild).isFalse()
@@ -43,8 +44,8 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the startTime field is negative`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
-            .startTime(Duration.ZERO.minusSeconds(1))
-            .duration(Duration.ofSeconds(15))
+            .startTime(StyledDuration.secondsAndFraction(-1))
+            .duration(StyledDuration.secondsAndFraction(15))
 
         assertAll {
             assertThat(soundbiteBuilder.build()).isNull()
@@ -54,7 +55,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the duration field is missing`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
-            .startTime(Duration.ofSeconds(1))
+            .startTime(StyledDuration.secondsAndFraction(1))
 
         assertAll {
             assertThat(soundbiteBuilder).prop(EpisodePodcastindexSoundbiteBuilder::hasEnoughDataToBuild).isFalse()
@@ -66,8 +67,8 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the duration field is zero`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
-            .startTime(Duration.ofSeconds(1))
-            .duration(Duration.ZERO)
+            .startTime(StyledDuration.secondsAndFraction(1))
+            .duration(StyledDuration.secondsAndFraction())
 
         assertAll {
             assertThat(soundbiteBuilder.build()).isNull()
@@ -77,8 +78,8 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the duration field is negative`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
-            .startTime(Duration.ofSeconds(1))
-            .duration(Duration.ZERO.minusSeconds(1))
+            .startTime(StyledDuration.secondsAndFraction(1))
+            .duration(StyledDuration.secondsAndFraction(-1))
 
         assertAll {
             assertThat(soundbiteBuilder.build()).isNull()
@@ -88,16 +89,16 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     @Test
     internal fun `should build an Episode Podcast Soundbite with with all the added entries to its fields`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
-            .startTime(Duration.ofSeconds(1))
-            .duration(Duration.ofSeconds(15))
+            .startTime(StyledDuration.secondsAndFraction(1))
+            .duration(StyledDuration.secondsAndFraction(15))
             .title("soundbite")
 
         assertAll {
             assertThat(soundbiteBuilder).prop(EpisodePodcastindexSoundbiteBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(soundbiteBuilder.build()).isNotNull().all {
-                prop(Soundbite::startTime).isEqualTo(Duration.ofSeconds(1))
-                prop(Soundbite::duration).isEqualTo(Duration.ofSeconds(15))
+                prop(Soundbite::startTime).isEqualTo(StyledDuration.secondsAndFraction(1))
+                prop(Soundbite::duration).isEqualTo(StyledDuration.secondsAndFraction(15))
                 prop(Soundbite::title).isEqualTo("soundbite")
             }
         }
