@@ -249,7 +249,7 @@ internal class ValidatingPodcastBuilderTest {
     @Test
     internal fun `should populate a Podcast builder with all properties from an Podcast model`() {
         val podcast = aPodcast()
-        val podcastBuilder = Podcast.builder().from(podcast)
+        val podcastBuilder = Podcast.builder().applyFrom(podcast)
 
         assertAll {
             assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isTrue()

@@ -105,13 +105,13 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     /** Creates an instance of [PodcastPodcastindexFundingBuilder] to use with this builder. */
     public fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder
 
-    override fun from(model: Podcast?): PodcastBuilder = whenNotNull(model) { podcast ->
-        itunesBuilder.from(podcast.itunes)
-        atomBuilder.from(podcast.atom)
-        fyydBuilder.from(podcast.fyyd)
-        feedpressBuilder.from(podcast.feedpress)
-        googleplayBuilder.from(podcast.googleplay)
-        podcastPodcastindexBuilder.from(podcast.podcast)
+    override fun applyFrom(prototype: Podcast?): PodcastBuilder = whenNotNull(prototype) { podcast ->
+        itunesBuilder.applyFrom(podcast.itunes)
+        atomBuilder.applyFrom(podcast.atom)
+        fyydBuilder.applyFrom(podcast.fyyd)
+        feedpressBuilder.applyFrom(podcast.feedpress)
+        googleplayBuilder.applyFrom(podcast.googleplay)
+        podcastPodcastindexBuilder.applyFrom(podcast.podcast)
         title(podcast.title)
         link(podcast.link)
         description(podcast.description)
@@ -124,7 +124,7 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
         managingEditor(podcast.managingEditor)
         webMaster(podcast.webMaster)
         ttl(podcast.ttl)
-        imageBuilder(RssImage.builder().from(podcast.image))
+        imageBuilder(RssImage.builder().applyFrom(podcast.image))
         addEpisodeBuilders(podcast.episodes.asBuilders())
         addCategoryBuilders(podcast.categories.asBuilders())
     }

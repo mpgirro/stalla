@@ -109,7 +109,7 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
     @Test
     internal fun `should populate a Podcastindex builder with all properties from an Podcastindex model`() {
         val podcastPodcast = aPodcastPodcastindex()
-        val podcastPodcastBuilder = PodcastPodcastindex.builder().from(podcastPodcast)
+        val podcastPodcastBuilder = PodcastPodcastindex.builder().applyFrom(podcastPodcast)
 
         assertAll {
             assertThat(podcastPodcastBuilder).prop(PodcastPodcastindexBuilder::hasEnoughDataToBuild).isTrue()

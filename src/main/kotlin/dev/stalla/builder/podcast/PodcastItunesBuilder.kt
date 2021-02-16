@@ -62,10 +62,10 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
     /** Set the new URL at which this feed is located. */
     public fun newFeedUrl(newFeedUrl: String?): PodcastItunesBuilder
 
-    override fun from(model: PodcastItunes?): PodcastItunesBuilder = whenNotNull(model) { itunes ->
+    override fun applyFrom(prototype: PodcastItunes?): PodcastItunesBuilder = whenNotNull(prototype) { itunes ->
         subtitle(itunes.subtitle)
         summary(itunes.summary)
-        imageBuilder(HrefOnlyImage.builder().from(itunes.image))
+        imageBuilder(HrefOnlyImage.builder().applyFrom(itunes.image))
         keywords(itunes.keywords)
         author(itunes.author)
         addCategoryInstances(itunes.categories)
@@ -73,7 +73,7 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
         block(itunes.block)
         complete(itunes.complete)
         type(itunes.type?.type)
-        ownerBuilder(Person.builder().from(itunes.owner))
+        ownerBuilder(Person.builder().applyFrom(itunes.owner))
         title(itunes.title)
         newFeedUrl(itunes.newFeedUrl)
     }

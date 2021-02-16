@@ -170,7 +170,7 @@ internal class ValidatingEpisodeBuilderTest {
     @Test
     internal fun `should populate an Episode builder with all properties from an Episode model`() {
         val episode = anEpisode()
-        val episodeBuilder = Episode.builder().from(episode)
+        val episodeBuilder = Episode.builder().applyFrom(episode)
 
         assertAll {
             assertThat(episodeBuilder).prop(EpisodeBuilder::hasEnoughDataToBuild).isTrue()

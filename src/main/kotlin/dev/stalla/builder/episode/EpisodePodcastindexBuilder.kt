@@ -38,8 +38,8 @@ public interface EpisodePodcastindexBuilder : Builder<EpisodePodcastindex> {
         transcriptBuilders.forEach(::addTranscriptBuilder)
     }
 
-    override fun from(model: EpisodePodcastindex?): EpisodePodcastindexBuilder = whenNotNull(model) { podcast ->
-        chaptersBuilder(Chapters.builder().from(podcast.chapters))
+    override fun applyFrom(prototype: EpisodePodcastindex?): EpisodePodcastindexBuilder = whenNotNull(prototype) { podcast ->
+        chaptersBuilder(Chapters.builder().applyFrom(podcast.chapters))
         addSoundbiteBuilders(podcast.soundbites.asBuilders())
         addTranscriptBuilders(podcast.transcripts.asBuilders())
     }

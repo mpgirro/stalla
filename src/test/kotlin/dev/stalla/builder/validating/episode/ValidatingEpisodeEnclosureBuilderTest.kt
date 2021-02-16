@@ -87,7 +87,7 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
     @Test
     internal fun `should populate an Episode Enclosure builder with all properties from an Episode Enclosure model`() {
         val episodeEnclosure = anEpisodeEnclosure()
-        val episodeEnclosureBuilder = Enclosure.builder().from(episodeEnclosure)
+        val episodeEnclosureBuilder = Enclosure.builder().applyFrom(episodeEnclosure)
 
         assertAll {
             assertThat(episodeEnclosureBuilder).prop(EpisodeEnclosureBuilder::hasEnoughDataToBuild).isTrue()

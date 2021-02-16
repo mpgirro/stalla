@@ -96,22 +96,22 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
     /** Creates an instance of [EpisodePodcastindexSoundbiteBuilder] to use with this builder. */
     public fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder
 
-    override fun from(model: Episode?): EpisodeBuilder = whenNotNull(model) { episode ->
-        contentBuilder.from(episode.content)
-        itunesBuilder.from(episode.itunes)
-        atomBuilder.from(episode.atom)
-        podloveBuilder.from(episode.podlove)
-        googleplayBuilder.from(episode.googleplay)
-        bitloveBuilder.from(episode.bitlove)
-        podcastindexBuilder.from(episode.podcastindex)
+    override fun applyFrom(prototype: Episode?): EpisodeBuilder = whenNotNull(prototype) { episode ->
+        contentBuilder.applyFrom(episode.content)
+        itunesBuilder.applyFrom(episode.itunes)
+        atomBuilder.applyFrom(episode.atom)
+        podloveBuilder.applyFrom(episode.podlove)
+        googleplayBuilder.applyFrom(episode.googleplay)
+        bitloveBuilder.applyFrom(episode.bitlove)
+        podcastindexBuilder.applyFrom(episode.podcastindex)
         title(episode.title)
         link(episode.link)
         description(episode.description)
         author(episode.author)
         addCategoryBuilderys(episode.categories.asBuilders())
         comments(episode.comments)
-        enclosureBuilder(Enclosure.builder().from(episode.enclosure))
-        guidBuilder(Guid.builder().from(episode.guid))
+        enclosureBuilder(Enclosure.builder().applyFrom(episode.enclosure))
+        guidBuilder(Guid.builder().applyFrom(episode.guid))
         pubDate(episode.pubDate)
         source(episode.source)
     }

@@ -15,12 +15,12 @@ public interface Builder<T> {
     public fun build(): T?
 
     /**
-     * Applies the properties of [model] to this builder.
+     * Applies the properties of [prototype] to this builder.
      *
-     * @param model The model prototype for this builder.
+     * @param prototype The model prototype for this builder.
      * @return This builder instance.
      */
-    public fun from(model: T?): Builder<T>
+    public fun applyFrom(prototype: T?): Builder<T>
 
     /**
      * This property is `true` when the builder has been provided with enough data to be able to

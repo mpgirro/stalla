@@ -140,7 +140,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     @Test
     internal fun `should populate an Episode GooglePlay builder with all properties from an Episode GooglePlay model`() {
         val episodeGooglePlay = anEpisodeGoogleplay()
-        val episodeGooglePlayBuilder = EpisodeGoogleplay.builder().from(episodeGooglePlay)
+        val episodeGooglePlayBuilder = EpisodeGoogleplay.builder().applyFrom(episodeGooglePlay)
 
         assertAll {
             assertThat(episodeGooglePlayBuilder).prop(EpisodeGoogleplayBuilder::hasEnoughDataToBuild).isTrue()

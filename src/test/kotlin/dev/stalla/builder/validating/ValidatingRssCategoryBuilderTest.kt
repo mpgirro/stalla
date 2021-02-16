@@ -61,7 +61,7 @@ internal class ValidatingRssCategoryBuilderTest {
     @Test
     internal fun `should populate a RssCategory builder with all properties from a RssCategory model`() {
         val category = anRssCategory()
-        val categoryBuilder = RssCategory.builder().from(category)
+        val categoryBuilder = RssCategory.builder().applyFrom(category)
 
         assertAll {
             assertThat(categoryBuilder).prop(RssCategoryBuilder::hasEnoughDataToBuild).isTrue()

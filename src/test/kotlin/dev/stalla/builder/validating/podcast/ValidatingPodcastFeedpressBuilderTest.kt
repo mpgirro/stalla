@@ -142,7 +142,7 @@ internal class ValidatingPodcastFeedpressBuilderTest {
     @Test
     internal fun `should populate a Podcast Feedpress builder with all properties from an Podcast Feedpress model`() {
         val podcastFeedpress = aPodcastFeedpress()
-        val podcastFeedpressBuilder = Feedpress.builder().from(podcastFeedpress)
+        val podcastFeedpressBuilder = Feedpress.builder().applyFrom(podcastFeedpress)
 
         assertAll {
             assertThat(podcastFeedpressBuilder).prop(PodcastFeedpressBuilder::hasEnoughDataToBuild).isTrue()

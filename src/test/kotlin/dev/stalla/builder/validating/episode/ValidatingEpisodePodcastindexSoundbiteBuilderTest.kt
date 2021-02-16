@@ -106,7 +106,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     @Test
     internal fun `should populate an Episode Podcastindex Soundbite builder with all properties from an Episode Podcastindex Soundbite model`() {
         val episodePodcastSoundbite = anEpisodePodcastindexSoundbite()
-        val episodePodcastSoundbiteBuilder = Soundbite.builder().from(episodePodcastSoundbite)
+        val episodePodcastSoundbiteBuilder = Soundbite.builder().applyFrom(episodePodcastSoundbite)
 
         assertAll {
             assertThat(episodePodcastSoundbiteBuilder).prop(EpisodePodcastindexSoundbiteBuilder::hasEnoughDataToBuild).isTrue()

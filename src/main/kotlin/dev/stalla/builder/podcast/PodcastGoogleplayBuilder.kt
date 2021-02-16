@@ -39,14 +39,14 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     /** Set the new URL at which this feed is located. */
     public fun newFeedUrl(newFeedUrl: String?): PodcastGoogleplayBuilder
 
-    override fun from(model: PodcastGoogleplay?): PodcastGoogleplayBuilder = whenNotNull(model) { googleplay ->
+    override fun applyFrom(prototype: PodcastGoogleplay?): PodcastGoogleplayBuilder = whenNotNull(prototype) { googleplay ->
         author(googleplay.author)
         owner(googleplay.owner)
         addCategories(googleplay.categories)
         description(googleplay.description)
         explicit(googleplay.explicit)
         block(googleplay.block)
-        imageBuilder(HrefOnlyImage.builder().from(googleplay.image))
+        imageBuilder(HrefOnlyImage.builder().applyFrom(googleplay.image))
         newFeedUrl(googleplay.newFeedUrl)
     }
 }

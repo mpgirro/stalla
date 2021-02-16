@@ -68,7 +68,7 @@ internal class ValidatingEpisodePodloveSimpleChapterBuilderTest {
     @Test
     internal fun `should populate an Episode Podlove SimpleChapter builder with all properties from an Episode Podlove SimpleChapter model`() {
         val podloveSimpleChapter = aPodloveSimpleChapter()
-        val podloveSimpleChaptersBuilder = SimpleChapter.builder().from(podloveSimpleChapter)
+        val podloveSimpleChaptersBuilder = SimpleChapter.builder().applyFrom(podloveSimpleChapter)
 
         assertAll {
             assertThat(podloveSimpleChaptersBuilder).prop(EpisodePodloveSimpleChapterBuilder::hasEnoughDataToBuild).isTrue()

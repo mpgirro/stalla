@@ -61,7 +61,7 @@ internal class ValidatingEpisodeGuidBuilderTest {
     @Test
     internal fun `should populate an Episode Guid builder with all properties from an Episode Guid model`() {
         val episodeGuid = anEpisodeGuid()
-        val episodeGuidBuilder = Guid.builder().from(episodeGuid)
+        val episodeGuidBuilder = Guid.builder().applyFrom(episodeGuid)
 
         assertAll {
             assertThat(episodeGuidBuilder).prop(EpisodeGuidBuilder::hasEnoughDataToBuild).isTrue()

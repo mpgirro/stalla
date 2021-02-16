@@ -28,11 +28,11 @@ public interface EpisodeGoogleplayBuilder : Builder<EpisodeGoogleplay> {
     /** Set the [HrefOnlyImageBuilder]. */
     public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGoogleplayBuilder
 
-    override fun from(model: EpisodeGoogleplay?): EpisodeGoogleplayBuilder = whenNotNull(model) { googleplay ->
+    override fun applyFrom(prototype: EpisodeGoogleplay?): EpisodeGoogleplayBuilder = whenNotNull(prototype) { googleplay ->
         author(googleplay.author)
         description(googleplay.description)
         explicit(googleplay.explicit?.type)
         block(googleplay.block)
-        imageBuilder(HrefOnlyImage.builder().from(googleplay.image))
+        imageBuilder(HrefOnlyImage.builder().applyFrom(googleplay.image))
     }
 }

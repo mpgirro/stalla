@@ -27,7 +27,7 @@ public interface LinkBuilder : Builder<Link> {
     /** Set the type value. */
     public fun type(type: String?): LinkBuilder
 
-    override fun from(model: Link?): LinkBuilder = whenNotNull(model) { link ->
+    override fun applyFrom(prototype: Link?): LinkBuilder = whenNotNull(prototype) { link ->
         href(link.href)
         hrefLang(link.hrefLang)
         hrefResolved(link.hrefResolved)

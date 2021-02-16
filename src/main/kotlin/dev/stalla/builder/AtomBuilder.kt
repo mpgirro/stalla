@@ -32,9 +32,9 @@ public interface AtomBuilder : Builder<Atom> {
         linkBuilders.forEach(::addLinkBuilder)
     }
 
-    override fun from(model: Atom?): AtomBuilder = whenNotNull(model) { atom ->
-        addAuthorBuilders(atom.authors.map(Person.builder()::from))
-        addContributorBuilders(atom.contributors.map(Person.builder()::from))
-        addLinkBuilders(atom.links.map(Link.builder()::from))
+    override fun applyFrom(prototype: Atom?): AtomBuilder = whenNotNull(prototype) { atom ->
+        addAuthorBuilders(atom.authors.map(Person.builder()::applyFrom))
+        addContributorBuilders(atom.contributors.map(Person.builder()::applyFrom))
+        addLinkBuilders(atom.links.map(Link.builder()::applyFrom))
     }
 }

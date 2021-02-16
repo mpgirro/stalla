@@ -111,7 +111,7 @@ internal class ValidatingRssImageBuilderTest {
     @Test
     internal fun `should populate an RssImage builder with all properties from an RssImage model`() {
         val image = anRssImage()
-        val imageBuilder = RssImage.builder().from(image)
+        val imageBuilder = RssImage.builder().applyFrom(image)
 
         assertAll {
             assertThat(imageBuilder).prop(RssImageBuilder::hasEnoughDataToBuild).isTrue()

@@ -41,7 +41,7 @@ internal class ValidatingEpisodeBitloveBuilderTest {
     @Test
     internal fun `should populate an Episode Bitlove builder with all properties from an Episode Bitlove model`() {
         val episodeBitlove = anEpisodeBitlove()
-        val episodeBitloveBuilder = Bitlove.builder().from(episodeBitlove)
+        val episodeBitloveBuilder = Bitlove.builder().applyFrom(episodeBitlove)
 
         assertAll {
             assertThat(episodeBitloveBuilder).prop(EpisodeBitloveBuilder::hasEnoughDataToBuild).isTrue()

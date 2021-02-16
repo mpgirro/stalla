@@ -76,7 +76,7 @@ internal class ValidatingLinkBuilderTest {
     @Test
     internal fun `should populate a Link builder with all properties from a Link model`() {
         val link = aLink()
-        val linkBuilder = Link.builder().from(link)
+        val linkBuilder = Link.builder().applyFrom(link)
 
         assertAll {
             assertThat(linkBuilder).prop(LinkBuilder::hasEnoughDataToBuild).isTrue()

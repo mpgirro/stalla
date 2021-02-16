@@ -14,7 +14,7 @@ public interface EpisodePodloveBuilder : Builder<EpisodePodlove> {
     /** Adds multiple [EpisodePodloveSimpleChapterBuilder] to the list of chapter builders. */
     public fun addSimpleChapterBuilders(chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>): EpisodePodloveBuilder
 
-    override fun from(model: EpisodePodlove?): EpisodePodloveBuilder = whenNotNull(model) { podlove ->
+    override fun applyFrom(prototype: EpisodePodlove?): EpisodePodloveBuilder = whenNotNull(prototype) { podlove ->
         addSimpleChapterBuilders(podlove.simpleChapters.asBuilders())
     }
 }

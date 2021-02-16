@@ -95,7 +95,7 @@ internal class ValidatingAtomBuilderTest {
     @Test
     internal fun `should populate an Atom builder with all properties from an Atom model`() {
         val atom = anEpisodeAtom()
-        val atomBuilder = Atom.builder().from(atom)
+        val atomBuilder = Atom.builder().applyFrom(atom)
 
         assertAll {
             assertThat(atomBuilder).prop(AtomBuilder::hasEnoughDataToBuild).isTrue()

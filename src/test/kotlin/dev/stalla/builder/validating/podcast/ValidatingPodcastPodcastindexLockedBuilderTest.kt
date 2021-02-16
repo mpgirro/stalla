@@ -70,7 +70,7 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
     @Test
     internal fun `should populate a Podcastindex Locked builder with all properties from an Podcastindex Locked model`() {
         val locked = aPodcastPodcastindexLocked()
-        val lockedBuilder = Locked.builder().from(locked)
+        val lockedBuilder = Locked.builder().applyFrom(locked)
 
         assertAll {
             assertThat(lockedBuilder).prop(PodcastPodcastindexLockedBuilder::hasEnoughDataToBuild).isTrue()

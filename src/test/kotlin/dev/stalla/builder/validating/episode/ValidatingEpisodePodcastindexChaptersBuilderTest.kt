@@ -70,7 +70,7 @@ internal class ValidatingEpisodePodcastindexChaptersBuilderTest {
     @Test
     internal fun `should populate an Episode Podcastindex Chapters builder with all properties from an Episode Podcastindex Chapters model`() {
         val episodePodcastChapters = anEpisodePodcastindexChapters()
-        val episodePodcastChaptersBuilder = Chapters.builder().from(episodePodcastChapters)
+        val episodePodcastChaptersBuilder = Chapters.builder().applyFrom(episodePodcastChapters)
 
         assertAll {
             assertThat(episodePodcastChaptersBuilder).prop(EpisodePodcastindexChaptersBuilder::hasEnoughDataToBuild).isTrue()

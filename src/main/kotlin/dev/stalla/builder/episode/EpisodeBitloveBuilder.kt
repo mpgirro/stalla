@@ -10,7 +10,7 @@ public interface EpisodeBitloveBuilder : Builder<Bitlove> {
     /** Set the guid value. */
     public fun guid(guid: String): EpisodeBitloveBuilder
 
-    override fun from(model: Bitlove?): EpisodeBitloveBuilder = whenNotNull(model) { bitlove ->
+    override fun applyFrom(prototype: Bitlove?): EpisodeBitloveBuilder = whenNotNull(prototype) { bitlove ->
         guid(bitlove.guid)
     }
 }
