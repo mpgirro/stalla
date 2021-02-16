@@ -14,7 +14,6 @@ import dev.stalla.model.StyledDuration
 import dev.stalla.model.episode.anEpisodePodcastindexSoundbite
 import dev.stalla.model.podcastindex.Soundbite
 import org.junit.jupiter.api.Test
-import java.time.Duration
 
 internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
@@ -44,7 +43,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     @Test
     internal fun `should not build an Episode Podcast Soundbite with when the startTime field is negative`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
-            .startTime(StyledDuration.secondsAndFraction(-1))
+            .startTime(StyledDuration.secondsAndFraction(1, positive = false))
             .duration(StyledDuration.secondsAndFraction(15))
 
         assertAll {
@@ -79,7 +78,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     internal fun `should not build an Episode Podcast Soundbite with when the duration field is negative`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(StyledDuration.secondsAndFraction(1))
-            .duration(StyledDuration.secondsAndFraction(-1))
+            .duration(StyledDuration.secondsAndFraction(1, positive = false))
 
         assertAll {
             assertThat(soundbiteBuilder.build()).isNull()

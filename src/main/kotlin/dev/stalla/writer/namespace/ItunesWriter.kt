@@ -56,8 +56,8 @@ internal object ItunesWriter : NamespaceWriter() {
     override fun Element.appendEpisodeData(episode: Episode) {
         val iTunes = episode.itunes ?: return
 
-        if (iTunes.duration.isNeitherNullNorBlank()) {
-            appendElement("duration", namespace) { textContent = iTunes.duration?.trim() }
+        if (iTunes.duration != null) {
+            appendElement("duration", namespace) { textContent = iTunes.duration.asFormattedString().trim() }
         }
 
         if (iTunes.season != null) {

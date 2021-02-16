@@ -9,6 +9,7 @@ import dev.stalla.dom.textOrNull
 import dev.stalla.dom.toHrefOnlyImageBuilder
 import dev.stalla.dom.toItunesCategory
 import dev.stalla.dom.toPersonBuilder
+import dev.stalla.model.StyledDuration
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
@@ -73,7 +74,7 @@ internal object ItunesParser : NamespaceParser() {
                 val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
                 builder.itunesBuilder.block(block)
             }
-            "duration" -> builder.itunesBuilder.duration(ifCanBeParsed { textOrNull() })
+            "duration" -> builder.itunesBuilder.duration(ifCanBeParsed { StyledDuration.of(textOrNull()) })
             "episode" -> builder.itunesBuilder.episode(ifCanBeParsed { parseAsInt() })
             "episodeType" -> builder.itunesBuilder.episodeType(ifCanBeParsed { textOrNull() })
             "explicit" -> {

@@ -14,7 +14,6 @@ import dev.stalla.model.podcast.aPodcastPodcastindex
 import dev.stalla.model.podcast.aPodcastPodcastindexFunding
 import dev.stalla.model.podcast.aPodcastPodcastindexLocked
 import org.junit.jupiter.api.Test
-import java.time.Duration
 
 internal class PodcastindexWriterTest : NamespaceWriterTest() {
 
@@ -132,9 +131,9 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
         val episode = anEpisode(
             podcastindex = anEpisodePodcastindex(
                 soundbites = listOf(
-                    anEpisodePodcastindexSoundbite(startTime = StyledDuration.secondsAndFraction(-1)),
+                    anEpisodePodcastindexSoundbite(startTime = StyledDuration.secondsAndFraction(1, positive = false)),
                     anEpisodePodcastindexSoundbite(duration = StyledDuration.secondsAndFraction(0)),
-                    anEpisodePodcastindexSoundbite(duration = StyledDuration.secondsAndFraction(-1, 1891))
+                    anEpisodePodcastindexSoundbite(duration = StyledDuration.secondsAndFraction(1, 1891, positive = false))
                 )
             )
         )

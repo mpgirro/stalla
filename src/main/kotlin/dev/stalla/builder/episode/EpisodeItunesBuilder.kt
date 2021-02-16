@@ -3,6 +3,7 @@ package dev.stalla.builder.episode
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.util.whenNotNull
 
@@ -13,7 +14,7 @@ public interface EpisodeItunesBuilder : Builder<EpisodeItunes> {
     public fun title(title: String?): EpisodeItunesBuilder
 
     /** Set the duration value. */
-    public fun duration(duration: String?): EpisodeItunesBuilder
+    public fun duration(duration: StyledDuration?): EpisodeItunesBuilder
 
     /** Set the [HrefOnlyImageBuilder]. */
     public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeItunesBuilder

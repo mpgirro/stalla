@@ -4,6 +4,7 @@ import dev.stalla.builder.episode.EpisodeItunesBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeItunesBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.model.StyledDuration
 
 /**
  * Model class for data from elements of the iTunes namespace that are valid within `<item>` elements.
@@ -19,7 +20,7 @@ import dev.stalla.model.HrefOnlyImage
  */
 public data class EpisodeItunes(
     override val title: String? = null,
-    val duration: String? = null,
+    val duration: StyledDuration? = null,
     override val image: HrefOnlyImage? = null,
     val explicit: Boolean? = null,
     override val block: Boolean,

@@ -42,7 +42,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         .type("application/json")
 
     private val expectedSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
-        .startTime(StyledDuration.secondsAndFraction(0, 33833))
+        .startTime(StyledDuration.secondsAndFraction(33, 833_000_000))
         .duration(StyledDuration.secondsAndFraction(60))
         .title("I'm a soundbite")
 

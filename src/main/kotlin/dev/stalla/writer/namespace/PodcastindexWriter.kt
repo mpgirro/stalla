@@ -10,7 +10,6 @@ import dev.stalla.util.InternalApi
 import dev.stalla.util.asBooleanString
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Element
-import java.time.Duration
 
 /**
  * Writer implementation for the Podcast namespace.
@@ -66,24 +65,15 @@ internal object PodcastindexWriter : NamespaceWriter() {
         }
 
         for (soundbite in podcastNs.soundbites) {
-            if (soundbite.startTime.isNegative || !soundbite.duration.isPositive()) continue
+            if (soundbite.startTime.isNegative || !soundbite.duration.isStrictlyPositive) continue
 
             appendElement("soundbite", namespace) {
-                setAttribute("startTime", soundbite.startTime.toSecondsString())
-                setAttribute("duration", soundbite.duration.toSecondsString())
+                setAttribute("startTime", soundbite.startTime.asFormattedString().trim())
+                setAttribute("duration", soundbite.duration.asFormattedString().trim())
                 if (soundbite.title != null) textContent = soundbite.title.trim()
             }
         }
     }
 
     private fun Chapters.canBeWritten() = url.isNotBlank() && type.isNotBlank()
-
-    private fun Duration.isPositive(): Boolean = !(isNegative || isZero)
-
-    private fun Duration.toSecondsString(): String =
-        if (toMillisPart() == 0) {
-            seconds.toString()
-        } else {
-            "$seconds.${toMillisPart().toString().padStart(3, '0')}"
-        }
 }

@@ -27,7 +27,6 @@ import dev.stalla.model.podlove.SimpleChapter
 import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.rss.Guid
 import dev.stalla.model.rss.RssCategory
-import java.time.Duration
 import java.time.Month
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
@@ -143,7 +142,7 @@ fun anEpisodePodcastindexTranscript(
 
 fun anEpisodePodcastindexSoundbite(
     startTime: StyledDuration.SecondsAndFraction = StyledDuration.secondsAndFraction(1),
-    duration: StyledDuration.SecondsAndFraction = StyledDuration.secondsAndFraction(15, 123),
+    duration: StyledDuration.SecondsAndFraction = StyledDuration.secondsAndFraction(15, 123_000_000),
     title: String? = "episode podcast: soundbite title"
 ) = Soundbite(startTime, duration, title)
 

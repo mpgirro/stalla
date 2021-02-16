@@ -194,7 +194,7 @@ internal class StyledDurationTest {
             Arguments.of("01:02:10", StyledDuration.hoursMinutesSeconds(hours = 1, minutes = 2, seconds = 10)),
             Arguments.of("01:2:10", StyledDuration.hoursMinutesSeconds(hours = 1, minutes = 2, seconds = 10)),
             Arguments.of("01:11:10", StyledDuration.hoursMinutesSeconds(hours = 1, minutes = 11, seconds = 10)),
-            Arguments.of("20:11:10", StyledDuration.hoursMinutesSeconds(hours = 20, minutes = 11, seconds = 10)),
+            Arguments.of("20:11:10", StyledDuration.hoursMinutesSeconds(hours = 20, minutes = 11, seconds = 10))
         )
 
         @JvmStatic
@@ -204,7 +204,11 @@ internal class StyledDurationTest {
             Arguments.of("1", StyledDuration.seconds(1)),
             Arguments.of("01", StyledDuration.seconds(1)),
             Arguments.of("10", StyledDuration.seconds(10)),
-            Arguments.of("1024", StyledDuration.seconds(1024))
+            Arguments.of("1024", StyledDuration.seconds(1024)),
+            Arguments.of("0.000833", StyledDuration.secondsAndFraction(0, 833_000)),
+            Arguments.of("33.0", StyledDuration.secondsAndFraction(33, 0)),
+            Arguments.of("33.833", StyledDuration.secondsAndFraction(33, 833_000_000)),
+            Arguments.of("33.0", StyledDuration.secondsAndFraction(33, 0))
         )
 
         @JvmStatic
@@ -249,7 +253,11 @@ internal class StyledDurationTest {
             Arguments.of("-1", StyledDuration.seconds(1, positive = false)),
             Arguments.of("-01", StyledDuration.seconds(1, positive = false)),
             Arguments.of("-10", StyledDuration.seconds(10, positive = false)),
-            Arguments.of("-1024", StyledDuration.seconds(1024, positive = false))
+            Arguments.of("-1024", StyledDuration.seconds(1024, positive = false)),
+            Arguments.of("-0.000833", StyledDuration.secondsAndFraction(0, 833_000, positive = false)),
+            Arguments.of("-33.0", StyledDuration.secondsAndFraction(33, 0, positive = false)),
+            Arguments.of("-33.833", StyledDuration.secondsAndFraction(33, 833_000_000, positive = false)),
+            Arguments.of("-33.0", StyledDuration.secondsAndFraction(33, 0, positive = false))
         )
     }
 }

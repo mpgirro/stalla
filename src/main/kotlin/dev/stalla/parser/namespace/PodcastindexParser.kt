@@ -9,16 +9,13 @@ import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.dom.getAttributeByName
 import dev.stalla.dom.textAsBooleanOrNull
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
-import dev.stalla.util.isNullOrNegative
-import dev.stalla.util.isNullOrNotPositive
 import dev.stalla.util.trimmedOrNullIfBlank
 import org.w3c.dom.Node
-import java.time.Duration
-import java.time.format.DateTimeParseException
 import java.util.Locale
 
 /**
@@ -91,27 +88,24 @@ internal object PodcastindexParser : NamespaceParser() {
     }
 
     private fun Node.toSoundbiteBuilder(soundbiteBuilder: EpisodePodcastindexSoundbiteBuilder): EpisodePodcastindexSoundbiteBuilder? {
-        val startTime = getAttributeByName("startTime")?.value.trimmedOrNullIfBlank().parseAsDurationOrNull()
-        val duration = getAttributeByName("duration")?.value.trimmedOrNullIfBlank().parseAsDurationOrNull()
+        val startTime = StyledDuration.of(getAttributeByName("startTime")?.value.trimmedOrNullIfBlank())
+            ?.ensureFractionalFormat()
+        val duration = StyledDuration.of(getAttributeByName("duration")?.value.trimmedOrNullIfBlank())
+            ?.ensureFractionalFormat()
         val title = textContent?.trimmedOrNullIfBlank()
 
-        if (startTime.isNullOrNegative()) return null
-        if (duration.isNullOrNotPositive()) return null
+        if (startTime !is StyledDuration.SecondsAndFraction || startTime.isNegative) return null
+        if (duration !is StyledDuration.SecondsAndFraction || !duration.isStrictlyPositive) return null
 
-        return soundbiteBuilder.startTime(startTime as Duration)
-            .duration(duration as Duration)
+        return soundbiteBuilder.startTime(startTime)
+            .duration(duration)
             .title(title)
     }
 
-    private fun String?.parseAsDurationOrNull(): Duration? {
-        if (this == null) return null
-
-        return try {
-            Duration.parse("PT${this}S")
-        } catch (e: DateTimeParseException) {
-            null
-        }
-    }
+    private fun StyledDuration.ensureFractionalFormat(): StyledDuration.SecondsAndFraction =
+        if (this !is StyledDuration.SecondsAndFraction) {
+            StyledDuration.SecondsAndFraction(rawDuration)
+        } else this
 
     private fun Node.toTranscriptBuilder(transcriptBuilder: EpisodePodcastindexTranscriptBuilder): EpisodePodcastindexTranscriptBuilder? {
         val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()

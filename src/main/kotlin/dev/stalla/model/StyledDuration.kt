@@ -3,6 +3,7 @@ package dev.stalla.model
 import dev.stalla.util.InternalApi
 import java.time.Duration
 import kotlin.math.absoluteValue
+import kotlin.math.pow
 
 public sealed class StyledDuration {
 
@@ -126,13 +127,18 @@ public sealed class StyledDuration {
 
             return when (groupValues.count()) {
                 2 -> {
-                    val nanoString = groupValues.last().trimEnd('0')
-                    val nano = nanoString.toLong() * (9 - nanoString.length)
+                    val nanoString = groupValues.last().removeAllUnneededDecimalZeroes()
+                    val nano = nanoString.toLong() * 10F.pow(9 - nanoString.length).toLong()
                     secondsAndFraction(seconds, nano, positive)
                 }
                 1 -> seconds(seconds, positive)
                 else -> null
             }
+        }
+
+        private fun String.removeAllUnneededDecimalZeroes(): String {
+            val trimmed = trimEnd('0')
+            return if (trimmed.isEmpty()) "0" else trimmed
         }
 
         private fun tryParsingAsHhMmSs(rawDuration: String): StyledDuration? {
