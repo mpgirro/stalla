@@ -165,9 +165,9 @@ internal class PodcastRssParserTest {
                     prop(Person::email).isEqualTo("studio@smashingsecurity.com")
                 }
                 prop(PodcastItunes::categories).containsExactly(
-                    ItunesCategory.Technology,
-                    ItunesCategory.TechNews,
-                    ItunesCategory.Comedy
+                    ItunesCategory.TECHNOLOGY,
+                    ItunesCategory.TECH_NEWS,
+                    ItunesCategory.COMEDY
                 )
             }
             prop(Podcast::atom).isNull()

@@ -50,7 +50,7 @@ public class PodcastBuilderFactoryTest {
 
         PodcastItunesBuilder podcastItunesBuilder = PodcastItunes.builder()
             .explicit(false)
-            .addCategory(ItunesCategory.News)
+            .addCategory(ItunesCategory.NEWS)
             .imageBuilder(hrefOnlyImageBuilder);
 
         assertNotNull(podcastItunesBuilder.build());

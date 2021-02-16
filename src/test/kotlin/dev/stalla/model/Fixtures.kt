@@ -40,6 +40,6 @@ internal fun anRssCategory(
     domain: String? = "rss category domain"
 ) = RssCategory(category, domain)
 
-internal fun anItunesCategory(category: ItunesCategory = ItunesCategory.ScienceFiction) = category
+internal fun anItunesCategory(category: ItunesCategory = ItunesCategory.SCIENCE_FICTION) = category
 
 internal fun aGoogleplayCategory(category: GoogleplayCategory = GoogleplayCategory.NEWS_AND_POLITICS) = category
