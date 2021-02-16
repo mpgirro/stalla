@@ -61,7 +61,7 @@ kotlin {
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {
-            jvmTarget = "9"
+            jvmTarget = "1.8"
             freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn", "-Xopt-in=dev.stalla.util.InternalApi")
         }
     }
