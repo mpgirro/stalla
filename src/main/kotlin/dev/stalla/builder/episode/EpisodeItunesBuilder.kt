@@ -42,10 +42,10 @@ public interface EpisodeItunesBuilder : Builder<EpisodeItunes> {
     /** Set the summary value. */
     public fun summary(summary: String?): EpisodeItunesBuilder
 
-    override fun from(model: EpisodeItunes?): EpisodeItunesBuilder = whenNotNull(model) { itunes ->
+    override fun applyFrom(prototype: EpisodeItunes?): EpisodeItunesBuilder = whenNotNull(prototype) { itunes ->
         title(itunes.title)
         duration(itunes.duration)
-        imageBuilder(HrefOnlyImage.builder().from(itunes.image))
+        imageBuilder(HrefOnlyImage.builder().applyFrom(itunes.image))
         explicit(itunes.explicit)
         block(itunes.block)
         season(itunes.season)

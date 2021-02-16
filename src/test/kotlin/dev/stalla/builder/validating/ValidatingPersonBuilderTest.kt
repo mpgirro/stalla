@@ -64,7 +64,7 @@ internal class ValidatingPersonBuilderTest {
     @Test
     internal fun `should populate a Person builder with all properties from a Person model`() {
         val person = aPerson()
-        val personBuilder = Person.builder().from(person)
+        val personBuilder = Person.builder().applyFrom(person)
 
         assertAll {
             assertThat(personBuilder).prop(PersonBuilder::hasEnoughDataToBuild).isTrue()

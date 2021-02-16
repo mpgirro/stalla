@@ -15,7 +15,7 @@ public interface PersonBuilder : Builder<Person> {
     /** Set the uri value. */
     public fun uri(uri: String?): PersonBuilder
 
-    override fun from(model: Person?): PersonBuilder = whenNotNull(model) { person ->
+    override fun applyFrom(prototype: Person?): PersonBuilder = whenNotNull(prototype) { person ->
         name(person.name)
         email(person.email)
         uri(person.uri)

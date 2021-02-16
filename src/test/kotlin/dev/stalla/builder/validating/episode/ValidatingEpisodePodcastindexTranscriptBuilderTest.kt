@@ -76,7 +76,7 @@ internal class ValidatingEpisodePodcastindexTranscriptBuilderTest {
     @Test
     internal fun `should populate an Episode Podcastindex Transcript builder with all properties from an Episode Podcastindex Transcript model`() {
         val episodePodcastTranscript = anEpisodePodcastindexTranscript()
-        val episodePodcastTranscriptBuilder = Transcript.builder().from(episodePodcastTranscript)
+        val episodePodcastTranscriptBuilder = Transcript.builder().applyFrom(episodePodcastTranscript)
 
         assertAll {
             assertThat(episodePodcastTranscriptBuilder).prop(EpisodePodcastindexTranscriptBuilder::hasEnoughDataToBuild).isTrue()

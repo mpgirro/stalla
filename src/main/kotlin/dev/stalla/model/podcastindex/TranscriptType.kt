@@ -1,10 +1,12 @@
 package dev.stalla.model.podcastindex
 
+import dev.stalla.model.TypeFactory
+
 /**
  * Supported transcript types. See the
  * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/transcripts/transcripts.md).
  */
-public enum class TranscriptType(public val rawType: String) {
+public enum class TranscriptType(public val type: String) {
 
     /** Plain text, with no timing information. */
     PLAIN_TEXT("text/plain"),
@@ -18,8 +20,10 @@ public enum class TranscriptType(public val rawType: String) {
     /** SRT, with full timing information. */
     SRT("application/srt");
 
-    public companion object Factory {
+    public companion object Factory : TypeFactory<TranscriptType> {
 
-        public fun from(rawType: String): TranscriptType? = values().find { it.rawType == rawType }
+        override fun of(type: String?): TranscriptType? = type?.let {
+            values().find { t -> t.type.equals(it, ignoreCase = true) }
+        }
     }
 }

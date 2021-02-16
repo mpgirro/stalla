@@ -178,11 +178,11 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
 @InternalApi
 internal fun Node.toItunesCategory(namespace: FeedNamespace? = null): ItunesCategory? {
     val categoryValue = getAttributeValueByName("text")?.trim() ?: return null
-    val category = ItunesCategory.from(categoryValue) ?: return null
+    val category = ItunesCategory.of(categoryValue) ?: return null
 
     val subcategoryElement = findElementByName("category", namespace) ?: return category
     val subcategoryValue = subcategoryElement.getAttributeValueByName("text")?.trim()
-    return ItunesCategory.from(subcategoryValue) ?: return category
+    return ItunesCategory.of(subcategoryValue) ?: return category
 }
 
 /**
@@ -193,5 +193,5 @@ internal fun Node.toItunesCategory(namespace: FeedNamespace? = null): ItunesCate
 @InternalApi
 internal fun Node.toGoogleplayCategory(): GoogleplayCategory? {
     val categoryValue = getAttributeValueByName("text")?.trim() ?: return null
-    return GoogleplayCategory.from(categoryValue)
+    return GoogleplayCategory.of(categoryValue)
 }

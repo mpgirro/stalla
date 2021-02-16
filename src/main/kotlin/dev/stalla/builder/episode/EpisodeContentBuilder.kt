@@ -10,7 +10,7 @@ public interface EpisodeContentBuilder : Builder<Content> {
     /** Set the encoded value. */
     public fun encoded(encoded: String): EpisodeContentBuilder
 
-    override fun from(model: Content?): EpisodeContentBuilder = whenNotNull(model) { content ->
+    override fun applyFrom(prototype: Content?): EpisodeContentBuilder = whenNotNull(prototype) { content ->
         encoded(content.encoded)
     }
 }

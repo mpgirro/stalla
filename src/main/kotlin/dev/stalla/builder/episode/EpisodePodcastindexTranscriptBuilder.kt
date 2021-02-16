@@ -21,7 +21,7 @@ public interface EpisodePodcastindexTranscriptBuilder : Builder<Transcript> {
     /** Set the rel value. */
     public fun rel(rel: String?): EpisodePodcastindexTranscriptBuilder
 
-    override fun from(model: Transcript?): EpisodePodcastindexTranscriptBuilder = whenNotNull(model) { transcript ->
+    override fun applyFrom(prototype: Transcript?): EpisodePodcastindexTranscriptBuilder = whenNotNull(prototype) { transcript ->
         url(transcript.url)
         type(transcript.type)
         language(transcript.language)

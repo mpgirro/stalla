@@ -17,7 +17,7 @@ public interface EpisodeGoogleplayBuilder : Builder<EpisodeGoogleplay> {
     public fun description(description: String?): EpisodeGoogleplayBuilder
 
     /** Set the explicit value based on it's string representation. */
-    public fun explicit(explicit: String?): EpisodeGoogleplayBuilder = apply { explicit(ExplicitType.from(explicit)) }
+    public fun explicit(explicit: String?): EpisodeGoogleplayBuilder = apply { explicit(ExplicitType.of(explicit)) }
 
     /** Set the explicit value. */
     public fun explicit(explicit: ExplicitType?): EpisodeGoogleplayBuilder
@@ -28,11 +28,11 @@ public interface EpisodeGoogleplayBuilder : Builder<EpisodeGoogleplay> {
     /** Set the [HrefOnlyImageBuilder]. */
     public fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGoogleplayBuilder
 
-    override fun from(model: EpisodeGoogleplay?): EpisodeGoogleplayBuilder = whenNotNull(model) { googleplay ->
+    override fun applyFrom(prototype: EpisodeGoogleplay?): EpisodeGoogleplayBuilder = whenNotNull(prototype) { googleplay ->
         author(googleplay.author)
         description(googleplay.description)
         explicit(googleplay.explicit?.type)
         block(googleplay.block)
-        imageBuilder(HrefOnlyImage.builder().from(googleplay.image))
+        imageBuilder(HrefOnlyImage.builder().applyFrom(googleplay.image))
     }
 }

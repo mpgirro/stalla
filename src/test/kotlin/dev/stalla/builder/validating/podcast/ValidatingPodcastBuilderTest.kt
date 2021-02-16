@@ -54,7 +54,7 @@ internal class ValidatingPodcastBuilderTest {
 
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 
-    private val expectedItunesCategory: ItunesCategory = ItunesCategory.from("Science Fiction")!!
+    private val expectedItunesCategory: ItunesCategory = ItunesCategory.of("Science Fiction")!!
 
     private val expectedCategoryBuilders = listOf(
         ValidatingRssCategoryBuilder().category("category 1").domain("domain"),
@@ -249,7 +249,7 @@ internal class ValidatingPodcastBuilderTest {
     @Test
     internal fun `should populate a Podcast builder with all properties from an Podcast model`() {
         val podcast = aPodcast()
-        val podcastBuilder = Podcast.builder().from(podcast)
+        val podcastBuilder = Podcast.builder().applyFrom(podcast)
 
         assertAll {
             assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isTrue()

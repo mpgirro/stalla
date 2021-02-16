@@ -63,7 +63,7 @@ internal class ValidatingEpisodePodloveBuilderTest {
     @Test
     internal fun `should populate an Episode Podlove builder with all properties from an Episode Podlove model`() {
         val episodePodlove = anEpisodePodlove()
-        val episodePodloveBuilder = EpisodePodlove.builder().from(episodePodlove)
+        val episodePodloveBuilder = EpisodePodlove.builder().applyFrom(episodePodlove)
 
         assertAll {
             assertThat(episodePodloveBuilder).prop(EpisodePodloveBuilder::hasEnoughDataToBuild).isTrue()

@@ -44,7 +44,7 @@ internal class ValidatingHrefOnlyImageBuilderTest {
     @Test
     internal fun `should populate an HrefOnlyImage builder with all properties from an HrefOnlyImage model`() {
         val image = anHrefOnlyImage()
-        val imageBuilder = HrefOnlyImage.builder().from(image)
+        val imageBuilder = HrefOnlyImage.builder().applyFrom(image)
 
         assertAll {
             assertThat(imageBuilder).prop(HrefOnlyImageBuilder::hasEnoughDataToBuild).isTrue()

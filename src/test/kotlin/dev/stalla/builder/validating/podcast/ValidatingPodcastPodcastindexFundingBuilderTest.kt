@@ -70,7 +70,7 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
     @Test
     internal fun `should populate a Podcastindex Funding builder with all properties from an Podcastindex Funding model`() {
         val funding = aPodcastPodcastindexFunding()
-        val fundingBuilder = Funding.builder().from(funding)
+        val fundingBuilder = Funding.builder().applyFrom(funding)
 
         assertAll {
             assertThat(fundingBuilder).prop(PodcastPodcastindexFundingBuilder::hasEnoughDataToBuild).isTrue()
