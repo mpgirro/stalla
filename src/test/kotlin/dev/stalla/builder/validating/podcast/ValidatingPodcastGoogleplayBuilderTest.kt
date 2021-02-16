@@ -22,9 +22,9 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
-    private val expectedGoogleplayCategory = GoogleplayCategory.NewsAndPolitics
+    private val expectedGoogleplayCategory = GoogleplayCategory.NEWS_AND_POLITICS
 
-    private val otherExpectedGoogleplayCategory = GoogleplayCategory.Arts
+    private val otherExpectedGoogleplayCategory = GoogleplayCategory.ARTS
 
     @Test
     internal fun `should not build a Podcast GooglePlay when all fields are missing`() {

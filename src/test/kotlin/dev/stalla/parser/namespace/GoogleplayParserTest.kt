@@ -39,7 +39,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
             prop(FakePodcastGoogleplayBuilder::author).isEqualTo("Lorem Ipsum")
             prop(FakePodcastGoogleplayBuilder::owner).isEqualTo("email@example.org")
-            prop(FakePodcastGoogleplayBuilder::categories).containsExactly(GoogleplayCategory.NewsAndPolitics)
+            prop(FakePodcastGoogleplayBuilder::categories).containsExactly(GoogleplayCategory.NEWS_AND_POLITICS)
             prop(FakePodcastGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
             prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::block).isNotNull().isFalse()

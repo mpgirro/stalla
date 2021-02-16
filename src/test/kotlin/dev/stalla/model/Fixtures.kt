@@ -42,4 +42,4 @@ internal fun anRssCategory(
 
 internal fun anItunesCategory(category: ItunesCategory = ItunesCategory.ScienceFiction) = category
 
-internal fun aGoogleplayCategory(category: GoogleplayCategory = GoogleplayCategory.NewsAndPolitics) = category
+internal fun aGoogleplayCategory(category: GoogleplayCategory = GoogleplayCategory.NEWS_AND_POLITICS) = category
