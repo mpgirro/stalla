@@ -185,22 +185,22 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
 @InternalApi
 internal fun Node.appendITunesStyleCategoryElements(categories: List<ItunesCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
-        if (category.name.isBlank()) continue
+        if (category.type.isBlank()) continue
 
         when (category) {
             is ItunesCategory.Simple -> {
                 appendElement("category", namespace) {
-                    setAttribute("text", category.name.trim())
+                    setAttribute("text", category.type.trim())
                 }
             }
             is ItunesCategory.Nested -> {
                 appendElement("category", namespace) {
                     // Write parent category
-                    setAttribute("text", category.parent.name.trim())
+                    setAttribute("text", category.parent.type.trim())
 
                     // Write sub-category
                     appendElement("category", namespace) {
-                        setAttribute("text", category.name.trim())
+                        setAttribute("text", category.type.trim())
                     }
                 }
             }

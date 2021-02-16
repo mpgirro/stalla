@@ -54,7 +54,7 @@ internal class ValidatingPodcastBuilderTest {
 
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 
-    private val expectedItunesCategory: ItunesCategory = ItunesCategory.from("Science Fiction")!!
+    private val expectedItunesCategory: ItunesCategory = ItunesCategory.of("Science Fiction")!!
 
     private val expectedCategoryBuilders = listOf(
         ValidatingRssCategoryBuilder().category("category 1").domain("domain"),

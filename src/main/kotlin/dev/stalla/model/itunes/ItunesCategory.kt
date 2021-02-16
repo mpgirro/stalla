@@ -1,5 +1,6 @@
 package dev.stalla.model.itunes
 
+import dev.stalla.model.TypeFactory
 import dev.stalla.model.itunes.ItunesCategory.Factory.AFTER_SHOWS
 import dev.stalla.model.itunes.ItunesCategory.Factory.ALTERNATIVE_HEALTH
 import dev.stalla.model.itunes.ItunesCategory.Factory.ANIMATION_AND_MANGA
@@ -233,7 +234,7 @@ import kotlin.reflect.full.declaredMemberProperties
  * | TV & Film               | Film Reviews       | [FILM_REVIEWS]              |
  * | TV & Film               | TV Reviews         | [TV_REVIEWS]                |
  */
-public sealed class ItunesCategory(public open val name: String) {
+public sealed class ItunesCategory(public open val type: String) {
 
     /**
      * A simple iTunes-style category, without a nested subcategory:
@@ -244,7 +245,7 @@ public sealed class ItunesCategory(public open val name: String) {
      *
      * Categories are defined in the [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
      */
-    public abstract class Simple protected constructor(override val name: String) : ItunesCategory(name)
+    public abstract class Simple protected constructor(override val type: String) : ItunesCategory(type)
 
     /**
      * An iTunes-style subcategory that is contained within a parent [Simple]:
@@ -259,9 +260,9 @@ public sealed class ItunesCategory(public open val name: String) {
      *
      * @param parent The parent [Simple].
      */
-    public abstract class Nested protected constructor(override val name: String, public val parent: Simple) : ItunesCategory(name)
+    public abstract class Nested protected constructor(override val type: String, public val parent: Simple) : ItunesCategory(type)
 
-    public companion object Factory {
+    public companion object Factory : TypeFactory<ItunesCategory> {
 
         private val valueMap: Map<String, ItunesCategory> by lazy {
             val values: List<ItunesCategory> = Factory::class.declaredMemberProperties
@@ -270,17 +271,11 @@ public sealed class ItunesCategory(public open val name: String) {
                     val value = member.getter.call(this)
                     if (value is ItunesCategory) value else null
                 }
-            values.associateBy({ it.name.toLowerCase() }, { it })
+            values.associateBy({ it.type.toLowerCase() }, { it })
         }
 
-        /**
-         * Factory method for the instance of the [ItunesCategory] matching the [name] parameter.
-         *
-         * @param name The string representation of the [ItunesCategory] instance.
-         * @return The [ItunesCategory] instance matching [name], or null if no matching instance exists.
-         */
         @JvmStatic
-        public fun from(name: String?): ItunesCategory? = name?.let {
+        override fun of(type: String?): ItunesCategory? = type?.let {
             return valueMap[it.toLowerCase()]
         }
 

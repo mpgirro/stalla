@@ -35,7 +35,7 @@ internal class ValidatingEpisodeItunesBuilder : EpisodeItunesBuilder {
     override fun episode(episode: Int?): EpisodeItunesBuilder = apply { this.episode = episode }
 
     override fun episodeType(episodeType: String?): EpisodeItunesBuilder = apply {
-        this.episodeType = EpisodeType.from(episodeType)
+        this.episodeType = EpisodeType.of(episodeType)
     }
 
     override fun author(author: String?): EpisodeItunesBuilder = apply { this.author = author }

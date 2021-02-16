@@ -1,5 +1,7 @@
 package dev.stalla.model.googleplay
 
+import dev.stalla.model.TypeFactory
+
 /**
  *
  * Model for the defined values encountered within the `<googleplay:category>`
@@ -59,15 +61,9 @@ public enum class GoogleplayCategory(public val type: String) {
     /** Category type for _Technology_ */
     TECHNOLOGY("Technology");
 
-    public companion object Factory {
+    public companion object Factory : TypeFactory<GoogleplayCategory> {
 
-        /**
-         * Factory method for the instance of the [GoogleplayCategory] matching the [type] parameter.
-         *
-         * @param type The string representation of the [GoogleplayCategory] instance.
-         * @return The [GoogleplayCategory] instance matching [type], or null if no matching instance exists.
-         */
-        public fun from(type: String?): GoogleplayCategory? = type?.let {
+        override fun of(type: String?): GoogleplayCategory? = type?.let {
             values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }

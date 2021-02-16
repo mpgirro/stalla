@@ -116,7 +116,7 @@ internal object PodcastindexParser : NamespaceParser() {
     private fun Node.toTranscriptBuilder(transcriptBuilder: EpisodePodcastindexTranscriptBuilder): EpisodePodcastindexTranscriptBuilder? {
         val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()
         val type = getAttributeByName("type")?.value.trimmedOrNullIfBlank()?.let { rawType ->
-            TranscriptType.from(rawType)
+            TranscriptType.of(rawType)
         }
         val language = getAttributeByName("language")?.value.trimmedOrNullIfBlank()?.let { rawLocale ->
             Locale.forLanguageTag(rawLocale)

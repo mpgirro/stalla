@@ -1,5 +1,7 @@
 package dev.stalla.model.googleplay
 
+import dev.stalla.model.TypeFactory
+
 /**
  * Enum model for the defined values encountered within the
  * `<googleplay:explicit>` element within a `<item>` element.
@@ -17,16 +19,10 @@ public enum class ExplicitType(public val type: String) {
     /** Type describing a `clean` value. */
     CLEAN("clean");
 
-    public companion object Factory {
+    public companion object Factory : TypeFactory<ExplicitType> {
 
-        /**
-         * Factory method for the instance of the Enum matching the [type] parameter.
-         *
-         * @param type The string representation of the Enum instance.
-         * @return The Enum instance matching [type], or null if not matching instance exists.
-         */
-        public fun from(type: String?): ExplicitType? = type?.let {
-            values().find { t -> t.type == it.toLowerCase() }
+        override fun of(type: String?): ExplicitType? = type?.let {
+            values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }
 }

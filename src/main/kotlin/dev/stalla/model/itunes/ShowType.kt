@@ -1,5 +1,7 @@
 package dev.stalla.model.itunes
 
+import dev.stalla.model.TypeFactory
+
 /**
  * Enum model for the defined values encountered within the
  * `<itunes:type>` element within a `<channel>` element.
@@ -14,16 +16,10 @@ public enum class ShowType(public val type: String) {
     /** Type describing a serial show. */
     SERIAL("serial");
 
-    public companion object Factory {
+    public companion object Factory : TypeFactory<ShowType> {
 
-        /**
-         * Factory method for the instance of the Enum matching the [type] parameter.
-         *
-         * @param type The string representation of the Enum instance.
-         * @return The Enum instance matching [type], or null if not matching instance exists.
-         */
-        public fun from(type: String?): ShowType? = type?.let {
-            values().find { t -> t.type == it.toLowerCase() }
+        override fun of(type: String?): ShowType? = type?.let {
+            values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }
 }

@@ -136,14 +136,14 @@ class ItunesCategoryFactoryTest {
     @Test
     fun `should retrieve all defined iTunes categories from the interface factory method`() {
         for (simpleCategory in simpleCategoryNames) {
-            assertThat(ItunesCategory.from(simpleCategory)).isNotNull().all {
-                prop(ItunesCategory::name).isEqualTo(simpleCategory)
+            assertThat(ItunesCategory.of(simpleCategory)).isNotNull().all {
+                prop(ItunesCategory::type).isEqualTo(simpleCategory)
                 isInstanceOf(ItunesCategory.Simple::class)
             }
         }
         for (nestedCategory in nestedCategoryNames) {
-            assertThat(ItunesCategory.from(nestedCategory)).isNotNull().all {
-                prop(ItunesCategory::name).isEqualTo(nestedCategory)
+            assertThat(ItunesCategory.of(nestedCategory)).isNotNull().all {
+                prop(ItunesCategory::type).isEqualTo(nestedCategory)
                 isInstanceOf(ItunesCategory.Nested::class)
             }
         }
@@ -155,7 +155,7 @@ class ItunesCategoryFactoryTest {
             if (member.visibility == KVisibility.PUBLIC) {
                 val value = member.getter.call(this)
                 if (value is ItunesCategory) {
-                    assertThat(allCategoryNames).contains(value.name)
+                    assertThat(allCategoryNames).contains(value.type)
                 }
             }
         }
@@ -167,12 +167,12 @@ class ItunesCategoryFactoryTest {
             if (member.visibility == KVisibility.PUBLIC) {
                 val value = member.getter.call(this)
                 when (value) {
-                    is ItunesCategory.Simple -> assertThat(ItunesCategory.from(value.name)).isNotNull().all {
-                        prop(ItunesCategory::name).isEqualTo(value.name)
+                    is ItunesCategory.Simple -> assertThat(ItunesCategory.of(value.type)).isNotNull().all {
+                        prop(ItunesCategory::type).isEqualTo(value.type)
                         isInstanceOf(ItunesCategory.Simple::class)
                     }
-                    is ItunesCategory.Nested -> assertThat(ItunesCategory.from(value.name)).isNotNull().all {
-                        prop(ItunesCategory::name).isEqualTo(value.name)
+                    is ItunesCategory.Nested -> assertThat(ItunesCategory.of(value.type)).isNotNull().all {
+                        prop(ItunesCategory::type).isEqualTo(value.type)
                         isInstanceOf(ItunesCategory.Nested::class)
                     }
                 }
@@ -182,6 +182,6 @@ class ItunesCategoryFactoryTest {
 
     @Test
     fun `should not retrieve an undefined iTunes category from the interface factory method`() {
-        assertThat(ItunesCategory.from("itunes category")).isNull()
+        assertThat(ItunesCategory.of("itunes category")).isNull()
     }
 }

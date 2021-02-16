@@ -30,7 +30,7 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
     public fun addCategory(category: ItunesCategory): PodcastItunesBuilder
 
     public fun addCategory(category: String?): PodcastItunesBuilder = apply {
-        ItunesCategory.from(category)?.let { instance -> addCategory(instance) }
+        ItunesCategory.of(category)?.let { instance -> addCategory(instance) }
     }
 
     public fun addCategoryInstances(categories: List<ItunesCategory>): PodcastItunesBuilder = apply {
