@@ -4,7 +4,7 @@ import dev.stalla.model.TypeFactory
 
 /**
  *
- * Model for the defined values encountered within the `<googleplay:category>`
+ * Enum model for the finite value set encountered within the `<googleplay:category>`
  * element within a `<channel>` element.
  *
  * Available values are defined in [RSS feed guidelines for Google Podcasts](https://support.google.com/podcast-publishers/answer/9889544)

@@ -3,8 +3,11 @@ package dev.stalla.model.podcastindex
 import dev.stalla.model.TypeFactory
 
 /**
- * Supported transcript types. See the
- * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/transcripts/transcripts.md).
+ * Enum model for the finite value set encountered within the `<podcast:transcript>`
+ * element within a `<item>` element. See the
+ * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/transcripts/transcripts.md)
+ * for more information on supported transcript types.
+ * .
  */
 public enum class TranscriptType(public val type: String) {
 

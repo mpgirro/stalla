@@ -3,7 +3,7 @@ package dev.stalla.model.itunes
 import dev.stalla.model.TypeFactory
 
 /**
- * Enum model for the defined values encountered within the
+ * Enum model for the finite value set encountered within the
  * `<itunes:episodeType>` element within a `<item>` element.
  *
  * @property type The string representation of the enum instance.

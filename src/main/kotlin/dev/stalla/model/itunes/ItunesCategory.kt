@@ -117,11 +117,11 @@ import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberProperties
 
 /**
- * Model for the defined values encountered within the `<itunes:category>`
+ * Model for the finite value set encountered within the `<itunes:category>`
  * element within a `<channel>` element.
  *
- * Available values are defined in [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12)
- * and listed below:
+ * The [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12)
+ * hierarchy is modeled in accordance with the following table:
  *
  * | Category                | Subcategory        | Property                    |
  * |-------------------------|--------------------|-----------------------------|
