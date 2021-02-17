@@ -4,7 +4,7 @@ import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexSoundbiteBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.Episode
-import java.time.Duration
+import dev.stalla.model.StyledDuration
 
 /**
  * The soundbite information for the episode. Used to automatically extract soundbites from the [Episode.enclosure].
@@ -14,8 +14,8 @@ import java.time.Duration
  * @param title A custom title for the soundbite. When null, the [Episode.title] is used.
  */
 public data class Soundbite(
-    val startTime: Duration,
-    val duration: Duration,
+    val startTime: StyledDuration.SecondsAndFraction,
+    val duration: StyledDuration.SecondsAndFraction,
     val title: String? = null
 ) {
 

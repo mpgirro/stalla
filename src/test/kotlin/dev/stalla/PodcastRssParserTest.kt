@@ -16,6 +16,7 @@ import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
 import dev.stalla.model.Podcast
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.content.Content
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
@@ -157,7 +158,8 @@ internal class PodcastRssParserTest {
                         "Follow the podcast on Twitter at <a href=\"https://twitter.com/SmashinSecurity\">@SmashinSecurity</a>, and subscribe for free in your favourite podcast app. New episodes released at 7pm EST every Wednesday (midnight UK)."
                 )
                 prop(PodcastItunes::image).isNotNull()
-                    .prop(HrefOnlyImage::href).isEqualTo("https://assets.fireside.fm/file/fireside-images/podcasts/images/d/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/cover.jpg?v=1")
+                    .prop(HrefOnlyImage::href)
+                    .isEqualTo("https://assets.fireside.fm/file/fireside-images/podcasts/images/d/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/cover.jpg?v=1")
                 prop(PodcastItunes::explicit).isNotNull().isTrue()
                 prop(PodcastItunes::keywords).isEqualTo("computer security, cybersecurity, hacking, privacy, cybercrime, cyber, cyberwarfare, infosec")
                 prop(PodcastItunes::owner).isNotNull().all {
@@ -212,7 +214,7 @@ internal class PodcastRssParserTest {
                         prop(EpisodeItunes::episodeType).isEqualTo(EpisodeType.FULL)
                         prop(EpisodeItunes::author).isEqualTo("Graham Cluley, Carole Theriault")
                         prop(EpisodeItunes::subtitle).isEqualTo("Darknet Diaries host Jack Rhysider joins us to discuss a cybersecurity goof in the wake of the US presidential elections, the US finally fingering the hackers responsible for disrupting the Winter Olympics in South Korea, and to take a long hard look at long hard legal mumbojumbo...")
-                        prop(EpisodeItunes::duration).isEqualTo("1:12:57")
+                        prop(EpisodeItunes::duration).isEqualTo(StyledDuration.hoursMinutesSeconds(1, 12, 57))
                         prop(EpisodeItunes::explicit).isNotNull().isTrue()
                         prop(EpisodeItunes::image).isNotNull()
                             .prop(HrefOnlyImage::href)

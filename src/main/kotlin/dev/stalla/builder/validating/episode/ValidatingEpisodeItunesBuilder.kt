@@ -2,6 +2,7 @@ package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.episode.EpisodeItunesBuilder
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.util.anyNotNull
@@ -9,7 +10,7 @@ import dev.stalla.util.anyNotNull
 internal class ValidatingEpisodeItunesBuilder : EpisodeItunesBuilder {
 
     private var title: String? = null
-    private var duration: String? = null
+    private var duration: StyledDuration? = null
     private var imageBuilder: HrefOnlyImageBuilder? = null
     private var explicit: Boolean? = null
     private var block: Boolean = false
@@ -22,7 +23,7 @@ internal class ValidatingEpisodeItunesBuilder : EpisodeItunesBuilder {
 
     override fun title(title: String?): EpisodeItunesBuilder = apply { this.title = title }
 
-    override fun duration(duration: String?): EpisodeItunesBuilder = apply { this.duration = duration }
+    override fun duration(duration: StyledDuration?): EpisodeItunesBuilder = apply { this.duration = duration }
 
     override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeItunesBuilder = apply { this.imageBuilder = imageBuilder }
 

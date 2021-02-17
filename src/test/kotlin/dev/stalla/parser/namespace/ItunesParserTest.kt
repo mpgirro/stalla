@@ -17,6 +17,7 @@ import dev.stalla.builder.fake.podcast.FakePodcastBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastItunesBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.hasNotEnoughDataToBuild
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.ShowType
@@ -117,7 +118,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
 
         assertThat(builder.itunesBuilder, "item.itunes").all {
             prop(FakeEpisodeItunesBuilder::title).isEqualTo("Lorem Ipsum")
-            prop(FakeEpisodeItunesBuilder::duration).isEqualTo("03:24:27")
+            prop(FakeEpisodeItunesBuilder::duration).isEqualTo(StyledDuration.hoursMinutesSeconds(3, 24, 27))
             prop(FakeEpisodeItunesBuilder::season).isEqualTo(1)
             prop(FakeEpisodeItunesBuilder::episode).isEqualTo(1)
             prop(FakeEpisodeItunesBuilder::explicit).isNotNull().isFalse()

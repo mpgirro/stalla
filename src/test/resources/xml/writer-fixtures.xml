@@ -89,11 +89,10 @@
             <source>episode source</source>
             <content:encoded>episode content encoded</content:encoded>
             <itunes:title>episode itunes title</itunes:title>
-            <itunes:duration>episode itunes duration</itunes:duration>
+            <itunes:duration>123</itunes:duration>
             <itunes:image href="episode itunes image url"/>
             <itunes:explicit>true</itunes:explicit>
             <itunes:block>yes</itunes:block>
-            <itunes:duration>episode itunes duration</itunes:duration>
             <itunes:season>2</itunes:season>
             <itunes:episode>3</itunes:episode>
             <itunes:episodeType>full</itunes:episodeType>

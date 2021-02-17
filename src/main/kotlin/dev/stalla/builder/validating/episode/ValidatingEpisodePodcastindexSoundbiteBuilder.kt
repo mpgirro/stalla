@@ -1,19 +1,21 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.Soundbite
-import java.time.Duration
 
 internal class ValidatingEpisodePodcastindexSoundbiteBuilder : EpisodePodcastindexSoundbiteBuilder {
 
-    private lateinit var startTimeValue: Duration
-    private lateinit var durationValue: Duration
+    private lateinit var startTimeValue: StyledDuration.SecondsAndFraction
+    private lateinit var durationValue: StyledDuration.SecondsAndFraction
 
     private var title: String? = null
 
-    override fun startTime(startTime: Duration): EpisodePodcastindexSoundbiteBuilder = apply { this.startTimeValue = startTime }
+    override fun startTime(startTime: StyledDuration.SecondsAndFraction): EpisodePodcastindexSoundbiteBuilder =
+        apply { this.startTimeValue = startTime }
 
-    override fun duration(duration: Duration): EpisodePodcastindexSoundbiteBuilder = apply { this.durationValue = duration }
+    override fun duration(duration: StyledDuration.SecondsAndFraction): EpisodePodcastindexSoundbiteBuilder =
+        apply { this.durationValue = duration }
 
     override fun title(title: String?): EpisodePodcastindexSoundbiteBuilder = apply { this.title = title }
 

@@ -3,13 +3,14 @@ package dev.stalla.builder.fake.episode
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.episode.EpisodeItunesBuilder
 import dev.stalla.builder.fake.FakeBuilder
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 
 internal class FakeEpisodeItunesBuilder : FakeBuilder<EpisodeItunes>(), EpisodeItunesBuilder {
 
     var title: String? = null
-    var duration: String? = null
+    var duration: StyledDuration? = null
     var imageBuilder: HrefOnlyImageBuilder? = null
     var explicit: Boolean? = null
     var block: Boolean? = null
@@ -22,7 +23,7 @@ internal class FakeEpisodeItunesBuilder : FakeBuilder<EpisodeItunes>(), EpisodeI
 
     override fun title(title: String?): EpisodeItunesBuilder = apply { this.title = title }
 
-    override fun duration(duration: String?): EpisodeItunesBuilder = apply { this.duration = duration }
+    override fun duration(duration: StyledDuration?): EpisodeItunesBuilder = apply { this.duration = duration }
 
     override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeItunesBuilder = apply { this.imageBuilder = imageBuilder }
 

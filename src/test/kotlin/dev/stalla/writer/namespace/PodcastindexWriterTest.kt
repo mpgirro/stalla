@@ -3,6 +3,7 @@ package dev.stalla.writer.namespace
 import assertk.assertAll
 import assertk.assertThat
 import dev.stalla.hasNoDifferences
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.episode.anEpisodePodcastindex
 import dev.stalla.model.episode.anEpisodePodcastindexChapters
@@ -13,7 +14,6 @@ import dev.stalla.model.podcast.aPodcastPodcastindex
 import dev.stalla.model.podcast.aPodcastPodcastindexFunding
 import dev.stalla.model.podcast.aPodcastPodcastindexLocked
 import org.junit.jupiter.api.Test
-import java.time.Duration
 
 internal class PodcastindexWriterTest : NamespaceWriterTest() {
 
@@ -131,9 +131,9 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
         val episode = anEpisode(
             podcastindex = anEpisodePodcastindex(
                 soundbites = listOf(
-                    anEpisodePodcastindexSoundbite(startTime = Duration.ofSeconds(-1)),
-                    anEpisodePodcastindexSoundbite(duration = Duration.ZERO),
-                    anEpisodePodcastindexSoundbite(duration = Duration.ofSeconds(-1))
+                    anEpisodePodcastindexSoundbite(startTime = StyledDuration.secondsAndFraction(1, positive = false)),
+                    anEpisodePodcastindexSoundbite(duration = StyledDuration.secondsAndFraction(0)),
+                    anEpisodePodcastindexSoundbite(duration = StyledDuration.secondsAndFraction(1, 1891, positive = false))
                 )
             )
         )

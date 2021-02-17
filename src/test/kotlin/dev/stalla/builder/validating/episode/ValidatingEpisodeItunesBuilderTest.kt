@@ -11,6 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeItunesBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.episode.anEpisodeItunes
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
@@ -58,14 +59,14 @@ internal class ValidatingEpisodeItunesBuilderTest {
     @Test
     internal fun `should build an Episode ITunes with only a duration`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
-            .duration("duration")
+            .duration(StyledDuration.seconds(10))
 
         assertAll {
             assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
-                prop(EpisodeItunes::duration).isEqualTo("duration")
+                prop(EpisodeItunes::duration).isEqualTo(StyledDuration.seconds(10))
                 prop(EpisodeItunes::season).isNull()
                 prop(EpisodeItunes::episode).isNull()
                 prop(EpisodeItunes::episodeType).isNull()
@@ -299,7 +300,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     internal fun `should build an Episode ITunes with all the optional fields`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .title("title")
-            .duration("duration")
+            .duration(StyledDuration.seconds(10))
             .season(2)
             .episode(3)
             .episodeType(EpisodeType.BONUS.type)
@@ -315,7 +316,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
 
             assertThat(episodeITunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isEqualTo("title")
-                prop(EpisodeItunes::duration).isEqualTo("duration")
+                prop(EpisodeItunes::duration).isEqualTo(StyledDuration.seconds(10))
                 prop(EpisodeItunes::season).isEqualTo(2)
                 prop(EpisodeItunes::episode).isEqualTo(3)
                 prop(EpisodeItunes::episodeType).isEqualTo(EpisodeType.BONUS)

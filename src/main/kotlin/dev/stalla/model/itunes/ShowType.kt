@@ -18,7 +18,8 @@ public enum class ShowType(public val type: String) {
 
     public companion object Factory : TypeFactory<ShowType> {
 
-        override fun of(type: String?): ShowType? = type?.let {
+        @JvmStatic
+        override fun of(rawValue: String?): ShowType? = rawValue?.let {
             values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }

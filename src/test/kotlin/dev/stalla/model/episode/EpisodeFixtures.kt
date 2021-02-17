@@ -4,6 +4,7 @@ import dev.stalla.dateTime
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.Person
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.aLink
 import dev.stalla.model.aPerson
 import dev.stalla.model.anHrefOnlyImage
@@ -26,7 +27,6 @@ import dev.stalla.model.podlove.SimpleChapter
 import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.rss.Guid
 import dev.stalla.model.rss.RssCategory
-import java.time.Duration
 import java.time.Month
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
@@ -86,7 +86,7 @@ internal fun anEpisodeContent(
 
 internal fun anEpisodeItunes(
     title: String? = "episode itunes title",
-    duration: String? = "episode itunes duration",
+    duration: StyledDuration? = StyledDuration.of("123"),
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode itunes image url"),
     explicit: Boolean? = true,
     block: Boolean = true,
@@ -141,8 +141,8 @@ fun anEpisodePodcastindexTranscript(
 ) = Transcript(url, type, language, rel)
 
 fun anEpisodePodcastindexSoundbite(
-    startTime: Duration = Duration.ofSeconds(1),
-    duration: Duration = Duration.ofSeconds(15).plusMillis(123),
+    startTime: StyledDuration.SecondsAndFraction = StyledDuration.secondsAndFraction(1),
+    duration: StyledDuration.SecondsAndFraction = StyledDuration.secondsAndFraction(15, 123_000_000),
     title: String? = "episode podcast: soundbite title"
 ) = Soundbite(startTime, duration, title)
 

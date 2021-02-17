@@ -275,7 +275,7 @@ public sealed class ItunesCategory(public open val type: String) {
         }
 
         @JvmStatic
-        override fun of(type: String?): ItunesCategory? = type?.let {
+        override fun of(rawValue: String?): ItunesCategory? = rawValue?.let {
             return valueMap[it.toLowerCase()]
         }
 

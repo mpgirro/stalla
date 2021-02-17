@@ -18,11 +18,11 @@ import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexFundingBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexLockedBuilder
 import dev.stalla.dom.XmlRes
+import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
-import java.time.Duration
 import java.util.Locale
 
 internal class PodcastindexParserTest : NamespaceParserTest() {
@@ -42,8 +42,8 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         .type("application/json")
 
     private val expectedSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
-        .startTime(Duration.ofMillis(33833))
-        .duration(Duration.ofSeconds(60))
+        .startTime(StyledDuration.secondsAndFraction(33, 833_000_000))
+        .duration(StyledDuration.secondsAndFraction(60))
         .title("I'm a soundbite")
 
     private val expectedTranscriptBuilder = FakeEpisodePodcastindexTranscriptBuilder()
