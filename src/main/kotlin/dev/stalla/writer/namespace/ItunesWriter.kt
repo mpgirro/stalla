@@ -2,7 +2,7 @@ package dev.stalla.writer.namespace
 
 import dev.stalla.dom.appendElement
 import dev.stalla.dom.appendHrefOnlyImageElement
-import dev.stalla.dom.appendITunesStyleCategoryElements
+import dev.stalla.dom.appendItunesStyleCategoryElements
 import dev.stalla.dom.appendPersonElement
 import dev.stalla.dom.appendTrueFalseElement
 import dev.stalla.dom.appendYesElementIfTrue
@@ -26,28 +26,28 @@ internal object ItunesWriter : NamespaceWriter() {
     override val namespace = FeedNamespace.ITUNES
 
     override fun Element.appendPodcastData(podcast: Podcast) {
-        val iTunes = podcast.itunes ?: return
+        val itunes = podcast.itunes ?: return
 
-        appendITunesStyleCategoryElements(iTunes.categories, namespace)
+        appendItunesStyleCategoryElements(itunes.categories, namespace)
 
-        appendYesElementIfTrue("complete", iTunes.complete, namespace)
+        appendYesElementIfTrue("complete", itunes.complete, namespace)
 
-        appendTrueFalseElement("explicit", iTunes.explicit, namespace)
+        appendTrueFalseElement("explicit", itunes.explicit, namespace)
 
-        if (iTunes.keywords.isNeitherNullNorBlank()) {
-            appendElement("keywords", namespace) { textContent = iTunes.keywords?.trim() }
+        if (itunes.keywords.isNeitherNullNorBlank()) {
+            appendElement("keywords", namespace) { textContent = itunes.keywords?.trim() }
         }
 
-        if (iTunes.owner != null) {
-            appendPersonElement("owner", iTunes.owner, namespace)
+        if (itunes.owner != null) {
+            appendPersonElement("owner", itunes.owner, namespace)
         }
 
-        if (iTunes.type != null) {
-            appendElement("type", namespace) { textContent = iTunes.type.type.trim() }
+        if (itunes.type != null) {
+            appendElement("type", namespace) { textContent = itunes.type.type.trim() }
         }
 
-        if (iTunes.newFeedUrl.isNeitherNullNorBlank()) {
-            appendElement("new-feed-url", namespace) { textContent = iTunes.newFeedUrl?.trim() }
+        if (itunes.newFeedUrl.isNeitherNullNorBlank()) {
+            appendElement("new-feed-url", namespace) { textContent = itunes.newFeedUrl?.trim() }
         }
 
         appendCommonElements(podcast.itunes)

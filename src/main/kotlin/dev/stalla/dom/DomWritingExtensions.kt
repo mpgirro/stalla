@@ -183,7 +183,7 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
  * @param namespace The namespace to use, if any.
  */
 @InternalApi
-internal fun Node.appendITunesStyleCategoryElements(categories: List<ItunesCategory>, namespace: FeedNamespace? = null) {
+internal fun Node.appendItunesStyleCategoryElements(categories: List<ItunesCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
         if (category.type.isBlank()) continue
 
