@@ -209,7 +209,7 @@ internal fun Node.appendITunesStyleCategoryElements(categories: List<ItunesCateg
 }
 
 /**
- * Appends Google Play style `<googleplay:category> tags with the data from the provided [categories].
+ * Appends Google Play style `<googleplay:category>` tags with the data from the provided [categories].
  *
  * @param categories The [categories][GoogleplayCategory] to append.
  * @param namespace The namespace to use, if any.

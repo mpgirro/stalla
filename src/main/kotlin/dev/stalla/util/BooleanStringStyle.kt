@@ -18,6 +18,7 @@ internal enum class BooleanStringStyle(val trueValue: String, val falseValue: St
     YES_NO("yes", "no")
 }
 
+/** Returns [BooleanStringStyle] representation of this matching [style] */
 @InternalApi
 internal fun Boolean.asBooleanString(style: BooleanStringStyle) =
     if (this) style.trueValue else style.falseValue

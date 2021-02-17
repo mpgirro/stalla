@@ -111,6 +111,8 @@ import dev.stalla.model.itunes.ItunesCategory.Factory.VISUAL_ARTS
 import dev.stalla.model.itunes.ItunesCategory.Factory.VOLLEYBALL
 import dev.stalla.model.itunes.ItunesCategory.Factory.WILDERNESS
 import dev.stalla.model.itunes.ItunesCategory.Factory.WRESTLING
+import dev.stalla.model.itunes.ItunesCategory.Nested
+import dev.stalla.model.itunes.ItunesCategory.Simple
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberProperties
 
@@ -233,6 +235,9 @@ import kotlin.reflect.full.declaredMemberProperties
  * | TV & Film               | Film Interviews    | [FILM_INTERVIEWS]           |
  * | TV & Film               | Film Reviews       | [FILM_REVIEWS]              |
  * | TV & Film               | TV Reviews         | [TV_REVIEWS]                |
+ *
+ * @see Simple
+ * @see Nested
  */
 public sealed class ItunesCategory(public open val type: String) {
 
