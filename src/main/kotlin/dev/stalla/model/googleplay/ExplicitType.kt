@@ -22,7 +22,7 @@ public enum class ExplicitType(public val type: String) {
     public companion object Factory : TypeFactory<ExplicitType> {
 
         @JvmStatic
-        override fun of(type: String?): ExplicitType? = type?.let {
+        override fun of(rawValue: String?): ExplicitType? = rawValue?.let {
             values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }

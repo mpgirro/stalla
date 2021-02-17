@@ -23,7 +23,7 @@ public enum class TranscriptType(public val type: String) {
     public companion object Factory : TypeFactory<TranscriptType> {
 
         @JvmStatic
-        override fun of(type: String?): TranscriptType? = type?.let {
+        override fun of(rawValue: String?): TranscriptType? = rawValue?.let {
             values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }

@@ -111,9 +111,9 @@ public sealed class StyledDuration {
         private val plainSecondsRegex = "(-)?(\\d+)(?:\\.(\\d+))?".toRegex()
 
         @JvmStatic
-        public override fun of(type: String?): StyledDuration? {
-            if (type.isNullOrBlank()) return null
-            return tryParsingAsPlainSeconds(type) ?: tryParsingAsHhMmSs(type)
+        public override fun of(rawValue: String?): StyledDuration? {
+            if (rawValue.isNullOrBlank()) return null
+            return tryParsingAsPlainSeconds(rawValue) ?: tryParsingAsHhMmSs(rawValue)
         }
 
         private fun tryParsingAsPlainSeconds(rawDuration: String): StyledDuration? {
