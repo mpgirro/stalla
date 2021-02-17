@@ -102,7 +102,7 @@ public sealed class StyledDuration {
         }
     }
 
-    public companion object Factory {
+    public companion object Factory : TypeFactory<StyledDuration> {
 
         // Parses the format: [-][HH:]MM:SS
         private val hhMmSsRegex = "(-)?(?:(\\d{1,2}):)?(\\d{1,2}):(\\d{1,2})".toRegex()
@@ -110,9 +110,10 @@ public sealed class StyledDuration {
         // Parses the format: [-]SS...[.FFF...]
         private val plainSecondsRegex = "(-)?(\\d+)(?:\\.(\\d+))?".toRegex()
 
-        public fun of(rawDuration: String?): StyledDuration? {
-            if (rawDuration.isNullOrBlank()) return null
-            return tryParsingAsPlainSeconds(rawDuration) ?: tryParsingAsHhMmSs(rawDuration)
+        @JvmStatic
+        public override fun of(type: String?): StyledDuration? {
+            if (type.isNullOrBlank()) return null
+            return tryParsingAsPlainSeconds(type) ?: tryParsingAsHhMmSs(type)
         }
 
         private fun tryParsingAsPlainSeconds(rawDuration: String): StyledDuration? {
@@ -158,6 +159,7 @@ public sealed class StyledDuration {
             }
         }
 
+        @JvmStatic
         @JvmOverloads
         public fun secondsAndFraction(seconds: Int = 0, nano: Long = 0, positive: Boolean = true): SecondsAndFraction {
             require(seconds >= 0 && nano >= 0) { "Components cannot be negative" }
@@ -167,12 +169,15 @@ public sealed class StyledDuration {
             return SecondsAndFraction(Duration.parse(durationString))
         }
 
+        @JvmStatic
+        @JvmOverloads
         public fun seconds(seconds: Int = 0, positive: Boolean = true): Seconds {
             require(seconds >= 0) { "Seconds cannot be negative" }
             val sign = signForPositive(positive)
             return Seconds(Duration.ofSeconds(seconds.toLong() * sign))
         }
 
+        @JvmStatic
         @JvmOverloads
         public fun minutesSeconds(minutes: Int = 0, seconds: Int = 0, positive: Boolean = true): MinutesSeconds {
             require(minutes >= 0 && seconds >= 0) { "Components cannot be negative" }

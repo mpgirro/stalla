@@ -63,6 +63,7 @@ public enum class GoogleplayCategory(public val type: String) {
 
     public companion object Factory : TypeFactory<GoogleplayCategory> {
 
+        @JvmStatic
         override fun of(type: String?): GoogleplayCategory? = type?.let {
             values().find { t -> t.type.equals(it, ignoreCase = true) }
         }

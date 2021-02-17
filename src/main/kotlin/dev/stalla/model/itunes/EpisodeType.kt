@@ -21,6 +21,7 @@ public enum class EpisodeType(public val type: String) {
 
     public companion object Factory : TypeFactory<EpisodeType> {
 
+        @JvmStatic
         override fun of(type: String?): EpisodeType? = type?.let {
             values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
