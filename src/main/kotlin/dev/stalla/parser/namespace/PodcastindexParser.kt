@@ -4,9 +4,9 @@ import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
-import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.getAttributeByName
 import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.model.StyledDuration
@@ -28,7 +28,7 @@ internal object PodcastindexParser : NamespaceParser() {
 
     override val namespace: FeedNamespace = FeedNamespace.PODCAST
 
-    override fun Node.parseChannelData(builder: PodcastBuilder) {
+    override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
             "locked" -> {
                 val lockedBuilder = ifCanBeParsed { toLockedBuilder(builder.createPodcastPodcastLockedBuilder()) } ?: return

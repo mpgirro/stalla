@@ -1,7 +1,7 @@
 package dev.stalla.parser.namespace
 
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
-import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.dom.textOrNull
 import dev.stalla.dom.toGoogleplayCategory
@@ -21,7 +21,7 @@ internal object GoogleplayParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.GOOGLE_PLAY
 
-    override fun Node.parseChannelData(builder: PodcastBuilder) {
+    override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
             "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
             "owner" -> builder.googleplayBuilder.owner(ifCanBeParsed { textOrNull() })

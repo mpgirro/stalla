@@ -2,7 +2,7 @@ package dev.stalla.parser.namespace
 
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
-import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.parseAsInt
 import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.dom.textOrNull
@@ -25,7 +25,7 @@ internal object ItunesParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.ITUNES
 
-    override fun Node.parseChannelData(builder: PodcastBuilder) {
+    override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
             "author" -> builder.itunesBuilder.author(ifCanBeParsed { textOrNull() })
             "block" -> {

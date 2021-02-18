@@ -1,7 +1,7 @@
 package dev.stalla.parser.namespace
 
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
-import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.dom.isDirectChildOf
 import dev.stalla.parser.NamespaceParser
@@ -19,7 +19,7 @@ internal object BitloveParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.BITLOVE
 
-    override fun Node.parseChannelData(builder: PodcastBuilder) {
+    override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         // No-op
     }
 

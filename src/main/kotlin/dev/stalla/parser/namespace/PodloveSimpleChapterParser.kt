@@ -2,7 +2,7 @@ package dev.stalla.parser.namespace
 
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
-import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.asListOfNodes
 import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.parser.NamespaceParser
@@ -20,7 +20,7 @@ internal object PodloveSimpleChapterParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.PODLOVE_SIMPLE_CHAPTER
 
-    override fun Node.parseChannelData(builder: PodcastBuilder) {
+    override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         // No-op
     }
 

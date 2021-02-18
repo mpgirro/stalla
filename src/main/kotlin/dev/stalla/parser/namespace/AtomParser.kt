@@ -5,7 +5,7 @@ import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
-import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.dom.toPersonBuilder
 import dev.stalla.parser.NamespaceParser
@@ -23,7 +23,7 @@ internal object AtomParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.ATOM
 
-    override fun Node.parseChannelData(builder: PodcastBuilder) {
+    override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         val atomBuilder = builder.atomBuilder
         parseCommonAtomData(personBuilderProvider = builder, linkBuilderProvider = builder, atomBuilder = atomBuilder)
     }
