@@ -133,14 +133,14 @@ internal fun anEpisodePodcastindex(
     chapters: Chapters? = anEpisodePodcastindexChapters()
 ) = EpisodePodcastindex(transcripts, soundbites, chapters)
 
-fun anEpisodePodcastindexTranscript(
+internal fun anEpisodePodcastindexTranscript(
     url: String = "episode podcast: transcript url",
     type: TranscriptType = TranscriptType.SRT,
     language: Locale? = Locale.ITALY,
     rel: String? = "captions"
 ) = Transcript(url, type, language, rel)
 
-fun anEpisodePodcastindexSoundbite(
+internal fun anEpisodePodcastindexSoundbite(
     startTime: StyledDuration.SecondsAndFraction = StyledDuration.secondsAndFraction(1),
     duration: StyledDuration.SecondsAndFraction = StyledDuration.secondsAndFraction(15, 123_000_000),
     title: String? = "episode podcast: soundbite title"
