@@ -18,15 +18,18 @@ import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.validating.ValidatingAtomBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.model.Episode
+import dev.stalla.util.InternalApi
 import java.time.temporal.TemporalAccessor
 
-internal class ValidatingEpisodeBuilder : EpisodeBuilder {
+@InternalApi
+internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     private lateinit var titleValue: String
     private lateinit var enclosureBuilderValue: EpisodeEnclosureBuilder

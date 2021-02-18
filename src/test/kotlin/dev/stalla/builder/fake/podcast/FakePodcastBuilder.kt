@@ -16,10 +16,11 @@ import dev.stalla.builder.fake.FakeRssImageBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.model.Podcast
 import java.time.temporal.TemporalAccessor
 
-internal class FakePodcastBuilder : FakeBuilder<Podcast>(), PodcastBuilder {
+internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuilder {
 
     var titleValue: String? = null
     var linkValue: String? = null

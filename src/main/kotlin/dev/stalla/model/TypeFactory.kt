@@ -1,11 +1,14 @@
 package dev.stalla.model
 
+import dev.stalla.util.InternalApi
+
 /**
  * Interface for companion objects of finite set types (enum or sealed class)
  * to provide a factory method for finite set type instances.
  *
  * @param T The type of the companion objects.
  */
+@InternalApi
 internal interface TypeFactory<out T> {
 
     /**

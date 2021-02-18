@@ -11,6 +11,7 @@ import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.fake.FakeAtomBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
@@ -20,7 +21,7 @@ import dev.stalla.builder.fake.FakeRssCategoryBuilder
 import dev.stalla.model.Episode
 import java.time.temporal.TemporalAccessor
 
-internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), EpisodeBuilder {
+internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), ProvidingEpisodeBuilder {
 
     var titleValue: String? = null
     var enclosureBuilderValue: EpisodeEnclosureBuilder? = null

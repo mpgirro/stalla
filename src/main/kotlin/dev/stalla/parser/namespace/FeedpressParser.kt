@@ -1,7 +1,7 @@
 package dev.stalla.parser.namespace
 
-import dev.stalla.builder.episode.EpisodeBuilder
-import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.textOrNull
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
@@ -18,7 +18,7 @@ internal object FeedpressParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.FEEDPRESS
 
-    override fun Node.parseChannelData(builder: PodcastBuilder) {
+    override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
             "newsletterId" -> builder.feedpressBuilder.newsletterId(ifCanBeParsed { textOrNull() })
             "locale" -> builder.feedpressBuilder.locale(ifCanBeParsed { textOrNull() })
@@ -29,7 +29,7 @@ internal object FeedpressParser : NamespaceParser() {
         }
     }
 
-    override fun Node.parseItemData(builder: EpisodeBuilder) {
+    override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         // No-op
     }
 }

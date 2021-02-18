@@ -4,8 +4,10 @@ import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.episode.EpisodeGoogleplayBuilder
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.googleplay.ExplicitType
+import dev.stalla.util.InternalApi
 import dev.stalla.util.anyNotNull
 
+@InternalApi
 internal class ValidatingEpisodeGoogleplayBuilder : EpisodeGoogleplayBuilder {
 
     private var author: String? = null

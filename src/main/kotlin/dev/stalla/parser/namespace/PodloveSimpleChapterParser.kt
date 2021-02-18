@@ -1,8 +1,8 @@
 package dev.stalla.parser.namespace
 
-import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
-import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.asListOfNodes
 import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.parser.NamespaceParser
@@ -20,11 +20,11 @@ internal object PodloveSimpleChapterParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.PODLOVE_SIMPLE_CHAPTER
 
-    override fun Node.parseChannelData(builder: PodcastBuilder) {
+    override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         // No-op
     }
 
-    override fun Node.parseItemData(builder: EpisodeBuilder) {
+    override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         when (localName) {
             "chapters" -> {
                 val chapters = ifCanBeParsed { toPodloveSimpleChapterBuilders(builder) } ?: return
@@ -34,7 +34,7 @@ internal object PodloveSimpleChapterParser : NamespaceParser() {
         }
     }
 
-    private fun Node.toPodloveSimpleChapterBuilders(builder: EpisodeBuilder): List<EpisodePodloveSimpleChapterBuilder> =
+    private fun Node.toPodloveSimpleChapterBuilders(builder: ProvidingEpisodeBuilder): List<EpisodePodloveSimpleChapterBuilder> =
         childNodes.asListOfNodes().asSequence()
             .filter { c -> c.localName == "chapter" }
             .map { node -> node.ifCanBeParsed { toPodloveSimpleChapterBuilder(builder.createPodloveSimpleChapterBuilder()) } }

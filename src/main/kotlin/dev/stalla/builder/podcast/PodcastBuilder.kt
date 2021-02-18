@@ -2,9 +2,6 @@ package dev.stalla.builder.podcast
 
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.Builder
-import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.LinkBuilderProvider
-import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
@@ -15,7 +12,7 @@ import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor
 
 /** Builder for constructing [Podcast] instances. */
-public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkBuilderProvider {
+public interface PodcastBuilder : Builder<Podcast> {
 
     /** The builder for data from the iTunes namespace. */
     public val itunesBuilder: PodcastItunesBuilder
@@ -89,21 +86,6 @@ public interface PodcastBuilder : Builder<Podcast>, PersonBuilderProvider, LinkB
     public fun addCategoryBuilders(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder = apply {
         categoryBuilders.forEach(::addCategoryBuilder)
     }
-
-    /** Creates an instance of [RssImageBuilder] to use with this builder. */
-    public fun createRssImageBuilder(): RssImageBuilder
-
-    /** Creates an instance of [HrefOnlyImageBuilder] to use with this builder. */
-    public fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
-
-    /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
-    public fun createRssCategoryBuilder(): RssCategoryBuilder
-
-    /** Creates an instance of [PodcastPodcastindexLockedBuilder] to use with this builder. */
-    public fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder
-
-    /** Creates an instance of [PodcastPodcastindexFundingBuilder] to use with this builder. */
-    public fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder
 
     override fun applyFrom(prototype: Podcast?): PodcastBuilder = whenNotNull(prototype) { podcast ->
         itunesBuilder.applyFrom(podcast.itunes)

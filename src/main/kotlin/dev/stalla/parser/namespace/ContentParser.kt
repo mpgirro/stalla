@@ -1,7 +1,7 @@
 package dev.stalla.parser.namespace
 
-import dev.stalla.builder.episode.EpisodeBuilder
-import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.textOrNull
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
@@ -18,11 +18,11 @@ internal object ContentParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.CONTENT
 
-    override fun Node.parseChannelData(builder: PodcastBuilder) {
+    override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         // No-op
     }
 
-    override fun Node.parseItemData(builder: EpisodeBuilder) {
+    override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         when (localName) {
             "encoded" -> {
                 val encoded = ifCanBeParsed { textOrNull() } ?: return

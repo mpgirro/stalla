@@ -15,6 +15,7 @@ import dev.stalla.builder.podcast.PodcastItunesBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
+import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.builder.validating.ValidatingAtomBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
@@ -22,9 +23,11 @@ import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.model.Podcast
+import dev.stalla.util.InternalApi
 import java.time.temporal.TemporalAccessor
 
-internal class ValidatingPodcastBuilder : PodcastBuilder {
+@InternalApi
+internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     private lateinit var titleValue: String
     private lateinit var linkValue: String

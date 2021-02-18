@@ -2,9 +2,6 @@ package dev.stalla.builder.episode
 
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.Builder
-import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.LinkBuilderProvider
-import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.model.Episode
 import dev.stalla.model.rss.Enclosure
@@ -14,7 +11,7 @@ import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor
 
 /** Builder for constructing [Episode] instances. */
-public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkBuilderProvider {
+public interface EpisodeBuilder : Builder<Episode> {
 
     /** The builder for data from the Content namespace. */
     public val contentBuilder: EpisodeContentBuilder
@@ -71,30 +68,6 @@ public interface EpisodeBuilder : Builder<Episode>, PersonBuilderProvider, LinkB
 
     /** Set the source value. */
     public fun source(source: String?): EpisodeBuilder
-
-    /** Creates an instance of [EpisodeEnclosureBuilder] to use with this builder. */
-    public fun createEnclosureBuilder(): EpisodeEnclosureBuilder
-
-    /** Creates an instance of [EpisodeGuidBuilder] to use with this builder. */
-    public fun createGuidBuilder(): EpisodeGuidBuilder
-
-    /** Creates an instance of [HrefOnlyImageBuilder] to use with this builder. */
-    public fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
-
-    /** Creates an instance of [EpisodePodloveSimpleChapterBuilder] to use with this builder. */
-    public fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder
-
-    /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
-    public fun createRssCategoryBuilder(): RssCategoryBuilder
-
-    /** Creates an instance of [EpisodePodcastindexTranscriptBuilder] to use with this builder. */
-    public fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder
-
-    /** Creates an instance of [EpisodePodcastindexChaptersBuilder] to use with this builder. */
-    public fun createEpisodePodcastChaptersBuilder(): EpisodePodcastindexChaptersBuilder
-
-    /** Creates an instance of [EpisodePodcastindexSoundbiteBuilder] to use with this builder. */
-    public fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder
 
     override fun applyFrom(prototype: Episode?): EpisodeBuilder = whenNotNull(prototype) { episode ->
         contentBuilder.applyFrom(episode.content)
