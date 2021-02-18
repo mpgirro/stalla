@@ -1,6 +1,7 @@
 package dev.stalla
 
 import dev.stalla.builder.episode.EpisodeBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastBuilder
 import dev.stalla.dom.DomBuilderFactory
@@ -128,7 +129,7 @@ public object PodcastRssParser {
     }
 
     private fun Node.parseEpisodeNode(): EpisodeBuilder? = ifTagNameIs("item") {
-        val builder: EpisodeBuilder = ValidatingEpisodeBuilder()
+        val builder: ProvidingEpisodeBuilder = ValidatingEpisodeBuilder()
         for (element in childNodes.asListOfNodes()) {
             for (parser in parsers) {
                 parser.tryParsingItemChildNode(element, builder)

@@ -1,6 +1,7 @@
 package dev.stalla.parser
 
 import dev.stalla.builder.episode.EpisodeBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.dom.isDirectChildOf
 import dev.stalla.util.FeedNamespace
@@ -55,7 +56,7 @@ internal abstract class NamespaceParser {
      * @param node The DOM node from which all data is extracted from.
      * @param builder The builder where all parsed data is added to.
      */
-    fun tryParsingItemChildNode(node: Node, builder: EpisodeBuilder) {
+    fun tryParsingItemChildNode(node: Node, builder: ProvidingEpisodeBuilder) {
         if (!canParse(node)) return
         require(node.isDirectChildOf("item")) { "This function can only parse nodes that are direct children of <item>" }
         node.parseItemData(builder)
@@ -69,7 +70,7 @@ internal abstract class NamespaceParser {
      *
      * @param builder The builder where all parsed data is added to.
      */
-    protected abstract fun Node.parseItemData(builder: EpisodeBuilder)
+    protected abstract fun Node.parseItemData(builder: ProvidingEpisodeBuilder)
 
     /**
      * Executes a block of code on the DOM node if the node has the same [namespace] of this parser.

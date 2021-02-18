@@ -1,6 +1,6 @@
 package dev.stalla.parser.namespace
 
-import dev.stalla.builder.episode.EpisodeBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.dom.isDirectChildOf
@@ -23,7 +23,7 @@ internal object BitloveParser : NamespaceParser() {
         // No-op
     }
 
-    override fun Node.parseItemData(builder: EpisodeBuilder) {
+    override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         val guid = findGuid() ?: return
         builder.bitloveBuilder.guid(guid)
     }

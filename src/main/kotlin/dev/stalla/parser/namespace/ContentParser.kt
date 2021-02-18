@@ -1,6 +1,6 @@
 package dev.stalla.parser.namespace
 
-import dev.stalla.builder.episode.EpisodeBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.dom.textOrNull
 import dev.stalla.parser.NamespaceParser
@@ -22,7 +22,7 @@ internal object ContentParser : NamespaceParser() {
         // No-op
     }
 
-    override fun Node.parseItemData(builder: EpisodeBuilder) {
+    override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         when (localName) {
             "encoded" -> {
                 val encoded = ifCanBeParsed { textOrNull() } ?: return

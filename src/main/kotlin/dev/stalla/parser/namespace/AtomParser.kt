@@ -4,7 +4,7 @@ import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PersonBuilderProvider
-import dev.stalla.builder.episode.EpisodeBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.dom.toPersonBuilder
@@ -28,7 +28,7 @@ internal object AtomParser : NamespaceParser() {
         parseCommonAtomData(personBuilderProvider = builder, linkBuilderProvider = builder, atomBuilder = atomBuilder)
     }
 
-    override fun Node.parseItemData(builder: EpisodeBuilder) {
+    override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         val atomBuilder = builder.atomBuilder
         parseCommonAtomData(personBuilderProvider = builder, linkBuilderProvider = builder, atomBuilder = atomBuilder)
     }

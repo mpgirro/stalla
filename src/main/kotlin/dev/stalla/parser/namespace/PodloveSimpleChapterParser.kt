@@ -1,7 +1,7 @@
 package dev.stalla.parser.namespace
 
-import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.dom.asListOfNodes
 import dev.stalla.dom.getAttributeValueByName
@@ -24,7 +24,7 @@ internal object PodloveSimpleChapterParser : NamespaceParser() {
         // No-op
     }
 
-    override fun Node.parseItemData(builder: EpisodeBuilder) {
+    override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         when (localName) {
             "chapters" -> {
                 val chapters = ifCanBeParsed { toPodloveSimpleChapterBuilders(builder) } ?: return
@@ -34,7 +34,7 @@ internal object PodloveSimpleChapterParser : NamespaceParser() {
         }
     }
 
-    private fun Node.toPodloveSimpleChapterBuilders(builder: EpisodeBuilder): List<EpisodePodloveSimpleChapterBuilder> =
+    private fun Node.toPodloveSimpleChapterBuilders(builder: ProvidingEpisodeBuilder): List<EpisodePodloveSimpleChapterBuilder> =
         childNodes.asListOfNodes().asSequence()
             .filter { c -> c.localName == "chapter" }
             .map { node -> node.ifCanBeParsed { toPodloveSimpleChapterBuilder(builder.createPodloveSimpleChapterBuilder()) } }

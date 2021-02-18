@@ -1,8 +1,8 @@
 package dev.stalla.parser.namespace
 
-import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.episode.EpisodeGuidBuilder
+import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.dom.parseAsBooleanOrNull
@@ -67,7 +67,7 @@ internal object RssParser : NamespaceParser() {
         }
     }
 
-    override fun Node.parseItemData(builder: EpisodeBuilder) {
+    override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         if (this !is Element) return
 
         when (localName) {
