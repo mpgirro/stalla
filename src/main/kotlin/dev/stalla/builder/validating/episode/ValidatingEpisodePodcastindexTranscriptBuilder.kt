@@ -3,8 +3,10 @@ package dev.stalla.builder.validating.episode
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.model.podcastindex.Transcript
 import dev.stalla.model.podcastindex.TranscriptType
+import dev.stalla.util.InternalApi
 import java.util.Locale
 
+@InternalApi
 internal class ValidatingEpisodePodcastindexTranscriptBuilder : EpisodePodcastindexTranscriptBuilder {
 
     private lateinit var urlValue: String

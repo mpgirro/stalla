@@ -2,7 +2,9 @@ package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.model.podcastindex.Chapters
+import dev.stalla.util.InternalApi
 
+@InternalApi
 internal class ValidatingEpisodePodcastindexChaptersBuilder : EpisodePodcastindexChaptersBuilder {
 
     private lateinit var urlValue: String

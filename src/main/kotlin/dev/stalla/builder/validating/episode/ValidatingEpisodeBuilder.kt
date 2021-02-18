@@ -25,8 +25,10 @@ import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.model.Episode
+import dev.stalla.util.InternalApi
 import java.time.temporal.TemporalAccessor
 
+@InternalApi
 internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     private lateinit var titleValue: String

@@ -2,7 +2,9 @@ package dev.stalla.builder.validating
 
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.util.InternalApi
 
+@InternalApi
 internal class ValidatingHrefOnlyImageBuilder : HrefOnlyImageBuilder {
 
     private lateinit var hrefValue: String

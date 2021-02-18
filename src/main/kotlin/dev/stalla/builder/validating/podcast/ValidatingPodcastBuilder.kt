@@ -23,8 +23,10 @@ import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.model.Podcast
+import dev.stalla.util.InternalApi
 import java.time.temporal.TemporalAccessor
 
+@InternalApi
 internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     private lateinit var titleValue: String

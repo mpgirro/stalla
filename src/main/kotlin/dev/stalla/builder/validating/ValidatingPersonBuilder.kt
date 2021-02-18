@@ -2,7 +2,9 @@ package dev.stalla.builder.validating
 
 import dev.stalla.builder.PersonBuilder
 import dev.stalla.model.Person
+import dev.stalla.util.InternalApi
 
+@InternalApi
 internal class ValidatingPersonBuilder : PersonBuilder {
 
     private lateinit var nameValue: String

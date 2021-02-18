@@ -5,7 +5,9 @@ import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.model.podcastindex.EpisodePodcastindex
+import dev.stalla.util.InternalApi
 
+@InternalApi
 internal class ValidatingEpisodePodcastindexBuilder : EpisodePodcastindexBuilder {
 
     private var chaptersBuilderValue: EpisodePodcastindexChaptersBuilder? = null

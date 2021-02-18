@@ -2,7 +2,9 @@ package dev.stalla.builder.validating
 
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.model.atom.Link
+import dev.stalla.util.InternalApi
 
+@InternalApi
 internal class ValidatingLinkBuilder : LinkBuilder {
 
     private lateinit var hrefValue: String
