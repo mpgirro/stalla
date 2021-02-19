@@ -41,7 +41,7 @@ internal class ValidatingPodcastItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast ITunes when there are all the mandatory fields`() {
+    internal fun `should build a valid Podcast Itunes when there are all the mandatory fields`() {
         val podcastItunesBuilder = ValidatingPodcastItunesBuilder()
             .imageBuilder(expectedImageBuilder)
             .explicit(false)
@@ -69,7 +69,7 @@ internal class ValidatingPodcastItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast ITunes when there are all fields`() {
+    internal fun `should build a valid Podcast Itunes when there are all fields`() {
         val podcastItunesBuilder = ValidatingPodcastItunesBuilder()
             .explicit(true)
             .subtitle("subtitle")

@@ -34,7 +34,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Enclosure model using builder factory methods only")
+    @DisplayName("should build an Episode Enclosure model using builder factory methods only")
     public void testEpisodeEnclosureBuilderFactory() {
         EpisodeEnclosureBuilder episodeEnclosureBuilder = Enclosure.builder()
             .url("url")
@@ -45,7 +45,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Guid model using builder factory methods only")
+    @DisplayName("should build an Episode Guid model using builder factory methods only")
     public void testEpisodeGuidBuilderFactory() {
         EpisodeGuidBuilder episodeGuidBuilder = Guid.builder()
             .textContent("content");
@@ -54,7 +54,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Content model using builder factory methods only")
+    @DisplayName("should build an Episode Content model using builder factory methods only")
     public void testEpisodeContentBuilderFactory() {
         EpisodeContentBuilder episodeContentBuilder = Content.builder()
             .encoded("encoded");
@@ -63,7 +63,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an EpisodeItunes model using builder factory methods only")
+    @DisplayName("should build an Episode Itunes model using builder factory methods only")
     public void testEpisodeItunesBuilderFactory() {
         EpisodeItunesBuilder episodeItunesBuilder = EpisodeItunes.builder()
             .title("title");
@@ -72,7 +72,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an EpisodeGoogleplay model model using builder factory methods only")
+    @DisplayName("should build an Episode Googleplay model model using builder factory methods only")
     public void testEpisodeGooglePlayBuilderFactory() {
         EpisodeGoogleplayBuilder episodeGoogleplayBuilder = EpisodeGoogleplay.builder()
             .explicit(ExplicitType.NO.getType());
@@ -81,7 +81,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Podlove model using builder factory methods only")
+    @DisplayName("should build an Episode Podlove model using builder factory methods only")
     public void testEpisodePodloveBuilderFactory() {
         EpisodePodloveSimpleChapterBuilder episodePodloveSimpleChapterBuilder = SimpleChapter.builder()
             .title("title")
@@ -94,7 +94,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Podlove.SimpleChapter model using builder factory methods only")
+    @DisplayName("should build an Episode Podlove SimpleChapter model using builder factory methods only")
     public void testEpisodePodloveSimpleChapterBuilderFactory() {
         EpisodePodloveSimpleChapterBuilder episodePodloveSimpleChapterBuilder = SimpleChapter.builder()
             .title("title")
@@ -104,7 +104,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Bitlove model using builder factory methods only")
+    @DisplayName("should build an Episode Bitlove model using builder factory methods only")
     public void testEpisodeBitloveBuilderFactory() {
         EpisodeBitloveBuilder episodeBitloveBuilder = Bitlove.builder()
             .guid("guid");
@@ -113,7 +113,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Podcast model using builder factory methods only")
+    @DisplayName("should build an Episode Podcastindex model using builder factory methods only")
     public void testEpisodePodcastBuilderFactory() {
         EpisodePodcastindexSoundbiteBuilder episodePodcastindexSoundbiteBuilder = Soundbite.builder()
             .startTime(StyledDuration.Factory.secondsAndFraction(0))
@@ -126,7 +126,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Podcast.Transcript model using builder factory methods only")
+    @DisplayName("should build an Episode Podcastindex Transcript model using builder factory methods only")
     public void testEpisodePodcastTranscriptBuilderFactory() {
         EpisodePodcastindexTranscriptBuilder episodePodcastindexTranscriptBuilder = Transcript.builder()
             .url("url")
@@ -136,7 +136,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Podcast.Chapter model using builder factory methods only")
+    @DisplayName("should build an Episode Podcastindex Chapter model using builder factory methods only")
     public void testEpisodePodcastChapterBuilderFactory() {
         EpisodePodcastindexChaptersBuilder episodePodcastindexChaptersBuilder = Chapters.builder()
             .url("url")
@@ -146,7 +146,7 @@ public class EpisodeBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build an Episode.Podcast.Soundbite model using builder factory methods only")
+    @DisplayName("should build an Episode Podcast Soundbite model using builder factory methods only")
     public void testEpisodePodcastSoundbiteBuilderFactory() {
         EpisodePodcastindexSoundbiteBuilder episodePodcastindexSoundbiteBuilder = Soundbite.builder()
             .startTime(StyledDuration.Factory.secondsAndFraction(0))

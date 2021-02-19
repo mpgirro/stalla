@@ -19,7 +19,7 @@ internal class PodloveSimpleChapterWriterTest : NamespaceWriterTest() {
     override val writer = PodloveSimpleChapterWriter
 
     @Test
-    internal fun `should write the correct psc tags to the item when there is data to write`() {
+    internal fun `should write the correct Podlove SimpleChapter tags to the item when there is data to write`() {
         writeEpisodeData("chapters") { element ->
             val diff = element.diffFromExpected("/rss/channel/item[1]/psc:chapters[1]")
             assertThat(diff).hasNoDifferences()
@@ -27,12 +27,12 @@ internal class PodloveSimpleChapterWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write psc tags to the item when there is no data to write`() {
+    internal fun `should not write Podlove SimpleChapter tags to the item when there is no data to write`() {
         assertTagIsNotWrittenToEpisode(anEpisode(podlove = null), "chapters")
     }
 
     @Test
-    internal fun `should not write psc tags to the item when data is blank`() {
+    internal fun `should not write Podlove SimpleChapter tags to the item when data is blank`() {
         val podlove = anEpisodePodlove(
             listOf(
                 aPodloveSimpleChapter(start = "start 1", title = "title 1", href = " ", image = " "),
@@ -53,7 +53,7 @@ internal class PodloveSimpleChapterWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write psc tags to the item when data is empty`() {
+    internal fun `should not write Podlove SimpleChapter tags to the item when data is empty`() {
         val podlove = anEpisodePodlove(
             listOf(
                 aPodloveSimpleChapter(start = "start 1", title = "title 1", href = "", image = ""),

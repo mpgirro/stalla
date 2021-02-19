@@ -16,32 +16,32 @@ internal class ContentParserTest : NamespaceParserTest() {
     override val parser = ContentParser
 
     @Test
-    fun `should extract content data from item when present`() {
+    fun `should extract Content data from item when present`() {
         val node: Node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.contentBuilder, "item content data")
+        assertThat(builder.contentBuilder, "item.content")
             .prop(FakeEpisodeContentBuilder::encoded).isEqualTo("Lorem Ipsum")
     }
 
     @Test
-    fun `should not extract content data from item when absent`() {
+    fun `should not extract Content data from item when absent`() {
         val node: Node = XmlRes("/xml/item-incomplete.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.contentBuilder, "item content data")
+        assertThat(builder.contentBuilder, "item.content")
             .prop(FakeEpisodeContentBuilder::encoded).isNull()
     }
 
     @Test
-    fun `should extract nothing from item when content data is all empty`() {
+    fun `should extract nothing from item when Content data is all empty`() {
         val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel/item")
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)
 
-        assertThat(builder.contentBuilder, "item content data")
+        assertThat(builder.contentBuilder, "item.content")
             .prop(FakeEpisodeContentBuilder::encoded).isNull()
     }
 }

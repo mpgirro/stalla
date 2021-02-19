@@ -43,7 +43,7 @@ public class PodcastBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build a PodcastItunes model using builder factory methods only")
+    @DisplayName("should build a Podcast Itunes model using builder factory methods only")
     public void testPodcastItunesBuilderFactory() {
         HrefOnlyImageBuilder hrefOnlyImageBuilder = HrefOnlyImage.builder()
             .href("href");
@@ -57,7 +57,7 @@ public class PodcastBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build a PodcastGoogleplay model using builder factory methods only")
+    @DisplayName("should build a Podcast Googleplay model using builder factory methods only")
     public void testPodcastGooglePlayBuilderFactory() {
         PodcastGoogleplayBuilder podcastGoogleplayBuilder = PodcastGoogleplay.builder()
             .author("author");
@@ -66,7 +66,7 @@ public class PodcastBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build a Podcast.Fyyd model using builder factory methods only")
+    @DisplayName("should build a Podcast Fyyd model using builder factory methods only")
     public void testPodcastFyydBuilderFactory() {
         PodcastFyydBuilder podcastFyydBuilder = Fyyd.builder()
             .verify("verify");
@@ -75,7 +75,7 @@ public class PodcastBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build a Podcast.Feedpress model using builder factory methods only")
+    @DisplayName("should build a Podcast Feedpress model using builder factory methods only")
     public void testPodcastFeedpressBuilderFactory() {
         PodcastFeedpressBuilder podcastFeedpressBuilder = Feedpress.builder()
             .locale("locale");
@@ -84,7 +84,7 @@ public class PodcastBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build a Podcast.Podcast model using builder factory methods only")
+    @DisplayName("should build a Podcast Podcastindex model using builder factory methods only")
     public void testPodcastPodcastBuilderFactory() {
         PodcastPodcastindexFundingBuilder podcastFundingBuilder = Funding.builder()
             .url("url")
@@ -97,7 +97,7 @@ public class PodcastBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build a Podcast.Podcast.Locked model using builder factory methods only")
+    @DisplayName("should build a Podcast Podcastindex Locked model using builder factory methods only")
     public void testPodcastPodcastLockedBuilderFactory() {
         PodcastPodcastindexLockedBuilder podcastLockedBuilder = Locked.builder()
             .locked(false)
@@ -107,7 +107,7 @@ public class PodcastBuilderFactoryTest {
     }
 
     @Test
-    @DisplayName("should build a Podcast.Podcast.Funding model using builder factory methods only")
+    @DisplayName("should build a Podcast Podcastindex Funding model using builder factory methods only")
     public void testPodcastPodcastFundingBuilderFactory() {
         PodcastPodcastindexFundingBuilder podcastFundingBuilder = Funding.builder()
             .url("url")

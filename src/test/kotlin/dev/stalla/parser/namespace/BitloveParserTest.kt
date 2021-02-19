@@ -21,7 +21,7 @@ internal class BitloveParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.bitloveBuilder, "item bitlove data")
+        assertThat(builder.bitloveBuilder, "channel.bitlove")
             .prop(FakeEpisodeBitloveBuilder::guid).isEqualTo("abcdefg")
     }
 
@@ -31,17 +31,17 @@ internal class BitloveParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.bitloveBuilder, "item bitlove data")
+        assertThat(builder.bitloveBuilder, "item.bitlove")
             .prop(FakeEpisodeBitloveBuilder::guid).isNull()
     }
 
     @Test
-    fun `should extract nothing from item when bitlove data is all empty`() {
+    fun `should extract nothing from item when Bitlove data is all empty`() {
         val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel/item")
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)
 
-        assertThat(builder.bitloveBuilder, "item bitlove data")
+        assertThat(builder.bitloveBuilder, "item.bitlove")
             .prop(FakeEpisodeBitloveBuilder::guid).isNull()
     }
 }

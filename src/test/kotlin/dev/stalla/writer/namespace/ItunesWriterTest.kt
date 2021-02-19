@@ -20,7 +20,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
     override val writer = ItunesWriter
 
     @Test
-    internal fun `should write the correct itunes tags to the channel when there is data to write`() {
+    internal fun `should write the correct Itunes tags to the channel when there is data to write`() {
         assertAll {
             writePodcastData("author") { element ->
                 val diff = element.diffFromExpected("/rss/channel/itunes:author")
@@ -74,7 +74,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write itunes tags to the channel when there is no data to write`() {
+    internal fun `should not write Itunes tags to the channel when there is no data to write`() {
         val podcast = aPodcast(itunes = null)
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
@@ -93,7 +93,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write itunes tags to the channel when the data is blank`() {
+    internal fun `should not write Itunes tags to the channel when the data is blank`() {
         val podcast = aPodcast(
             itunes = aPodcastItunes(
                 subtitle = " ",
@@ -130,7 +130,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write itunes tags to the channel when the data is empty`() {
+    internal fun `should not write Itunes tags to the channel when the data is empty`() {
         val categories = listOf(ItunesCategory.SCIENCE)
         val podcast = aPodcast(
             itunes = aPodcastItunes(
@@ -174,7 +174,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should write the correct itunes tags to the item when there is data to write`() {
+    internal fun `should write the correct Itunes tags to the item when there is data to write`() {
         assertAll {
             writeEpisodeData("duration") { element ->
                 val diff = element.diffFromExpected("/rss/channel/item[1]/itunes:duration")
@@ -212,7 +212,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write itunes tags to the item when there is no data to write`() {
+    internal fun `should not write Itunes tags to the item when there is no data to write`() {
         val episode = anEpisode(itunes = null)
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "duration")
@@ -227,7 +227,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write itunes tags to the item when the data is blank`() {
+    internal fun `should not write Itunes tags to the item when the data is blank`() {
         val episode = anEpisode(
             itunes = anEpisodeItunes(
                 title = " ",
@@ -256,7 +256,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write itunes tags to the item when the data is empty`() {
+    internal fun `should not write Itunes tags to the item when the data is empty`() {
         val episode = anEpisode(
             itunes = anEpisodeItunes(
                 title = "",

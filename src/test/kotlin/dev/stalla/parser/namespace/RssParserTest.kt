@@ -55,7 +55,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder, "channel RSS data").all {
+        assertThat(builder, "channel.rss").all {
             prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
             prop(FakePodcastBuilder::linkValue).isEqualTo("http://example.org")
             prop(FakePodcastBuilder::descriptionValue).isEqualTo("Lorem Ipsum")
@@ -81,7 +81,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder, "channel RSS data").all {
+        assertThat(builder, "channel.rss").all {
             prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
             prop(FakePodcastBuilder::linkValue).isEqualTo("http://example.org")
             prop(FakePodcastBuilder::descriptionValue).isEqualTo("Lorem Ipsum")
@@ -104,7 +104,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder, "channel RSS data").all {
+        assertThat(builder, "channel.rss").all {
             prop(FakePodcastBuilder::titleValue).isNull()
             prop(FakePodcastBuilder::linkValue).isNull()
             prop(FakePodcastBuilder::descriptionValue).isNull()
@@ -127,7 +127,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder, "item RSS data").all {
+        assertThat(builder, "item.rss").all {
             prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")
             prop(FakeEpisodeBuilder::link).isEqualTo("http://example.org/episode1")
             prop(FakeEpisodeBuilder::description).isEqualTo("Lorem Ipsum")
@@ -150,7 +150,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder, "item RSS data").all {
+        assertThat(builder, "item.rss").all {
             prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")
             prop(FakeEpisodeBuilder::link).isEqualTo("http://example.org/episode1")
             prop(FakeEpisodeBuilder::description).isEqualTo("Lorem Ipsum")
@@ -170,7 +170,7 @@ internal class RssParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder, "item RSS data").all {
+        assertThat(builder, "item.rss").all {
             prop(FakeEpisodeBuilder::titleValue).isNull()
             prop(FakeEpisodeBuilder::link).isNull()
             prop(FakeEpisodeBuilder::description).isNull()

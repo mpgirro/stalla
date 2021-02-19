@@ -15,7 +15,7 @@ internal class BitloveWriterTest : NamespaceWriterTest() {
     override val writer = BitloveWriter
 
     @Test
-    internal fun `should write a the correct bitlove_guid attribute to the item enclosure tag when there is data to write`() {
+    internal fun `should write a the correct Bitlove guid attribute to the item enclosure tag when there is data to write`() {
         val itemElement = createChannelElement().createItemElement()
 
         // We need to run the RSS writer first, to create the <enclosure> tag (among others)
@@ -30,7 +30,7 @@ internal class BitloveWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write a bitlove_guid attribute to the item enclosure tag when there is no data to write`() {
+    internal fun `should not write a Bitlove guid attribute to the item enclosure tag when there is no data to write`() {
         assertAll {
             val episodeWithoutBitlove = anEpisode(bitlove = null)
             assertTagIsNotWrittenToEpisode(episodeWithoutBitlove, "encoded")
@@ -43,7 +43,7 @@ internal class BitloveWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write a bitlove_guid attribute to the item enclosure tag when the data is blank`() {
+    internal fun `should not write a Bitlove guid attribute to the item enclosure tag when the data is blank`() {
         assertAll {
             val episodeWithoutBitlove = anEpisode(bitlove = anEpisodeBitlove(" "))
 
@@ -55,7 +55,7 @@ internal class BitloveWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write a bitlove_guid attribute to the item enclosure tag when the data is empty`() {
+    internal fun `should not write a Bitlove guid attribute to the item enclosure tag when the data is empty`() {
         assertAll {
             val episodeWithoutBitlove = anEpisode(bitlove = anEpisodeBitlove(""))
 

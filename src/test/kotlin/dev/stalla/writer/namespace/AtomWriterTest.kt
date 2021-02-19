@@ -20,7 +20,7 @@ internal class AtomWriterTest : NamespaceWriterTest() {
     override val writer = AtomWriter
 
     @Test
-    internal fun `should write the correct atom tags to the channel when there is data to write`() {
+    internal fun `should write the correct Atom tags to the channel when there is data to write`() {
         assertAll {
             writePodcastData("author") { element ->
                 val diff = element.diffFromExpected("/rss/channel/atom:author[1]")
@@ -38,7 +38,7 @@ internal class AtomWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write atom tags to the channel when there is no data to write`() {
+    internal fun `should not write Atom tags to the channel when there is no data to write`() {
         val podcast = aPodcast(atom = null)
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "author")
@@ -48,7 +48,7 @@ internal class AtomWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write atom tags to the channel when the data is all blank`() {
+    internal fun `should not write Atom tags to the channel when the data is all blank`() {
         val podcast = aPodcast(
             atom = aPodcastAtom(
                 authors = listOf(aPerson(" ", " ", " "), aPerson("", "", "")),
@@ -67,7 +67,7 @@ internal class AtomWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write atom subtags to the channel when their data is blank`() {
+    internal fun `should not write Atom subtags to the channel when their data is blank`() {
         val podcast = aPodcast(
             atom = aPodcastAtom(
                 authors = listOf(
@@ -134,7 +134,7 @@ internal class AtomWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should write the correct atom tags to the item when there is data to write`() {
+    internal fun `should write the correct Atom tags to the item when there is data to write`() {
         assertAll {
             writeEpisodeData("author") { element ->
                 val diff = element.diffFromExpected("/rss/channel/item[1]/atom:author[1]")
@@ -152,7 +152,7 @@ internal class AtomWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write atom tags to the item when there is no data to write`() {
+    internal fun `should not write Atom tags to the item when there is no data to write`() {
         assertAll {
             assertTagIsNotWrittenToEpisode(anEpisode(atom = null), "author")
             assertTagIsNotWrittenToEpisode(anEpisode(atom = null), "contributor")
@@ -161,7 +161,7 @@ internal class AtomWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write atom tags to the item when the data is all blank`() {
+    internal fun `should not write Atom tags to the item when the data is all blank`() {
         val episode = anEpisode(
             atom = anEpisodeAtom(
                 authors = listOf(
@@ -184,7 +184,7 @@ internal class AtomWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write atom subtags to the item when their data is blank`() {
+    internal fun `should not write Atom subtags to the item when their data is blank`() {
         val episode = anEpisode(
             atom = anEpisodeAtom(
                 authors = listOf(

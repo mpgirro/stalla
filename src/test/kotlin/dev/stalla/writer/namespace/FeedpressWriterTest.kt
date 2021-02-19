@@ -12,7 +12,7 @@ internal class FeedpressWriterTest : NamespaceWriterTest() {
     override val writer = FeedpressWriter
 
     @Test
-    internal fun `should write the correct feedpress tags to the channel when there is data to write`() {
+    internal fun `should write the correct Feedpress tags to the channel when there is data to write`() {
         assertAll {
             writePodcastData("newsletterId") { element ->
                 val diff = element.diffFromExpected("/rss/channel/feedpress:newsletterId")
@@ -38,7 +38,7 @@ internal class FeedpressWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write feedpress tags to the channel when there is no data to write`() {
+    internal fun `should not write Feedpress tags to the channel when there is no data to write`() {
         val podcast = aPodcast(feedpress = null)
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "newsletterId")
@@ -50,7 +50,7 @@ internal class FeedpressWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write feedpress tags to the channel when the data is blank`() {
+    internal fun `should not write Feedpress tags to the channel when the data is blank`() {
         val podcast = aPodcast(feedpress = aPodcastFeedpress(" ", " ", " ", " ", " "))
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "newsletterId")
@@ -62,7 +62,7 @@ internal class FeedpressWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write feedpress tags to the channel when the data is empty`() {
+    internal fun `should not write Feedpress tags to the channel when the data is empty`() {
         val podcast = aPodcast(feedpress = aPodcastFeedpress("", "", "", "", ""))
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "newsletterId")

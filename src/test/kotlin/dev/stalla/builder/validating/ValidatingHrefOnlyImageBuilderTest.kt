@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingHrefOnlyImageBuilderTest {
 
     @Test
-    internal fun `should not build an Image when the mandatory fields are missing`() {
+    internal fun `should not build an HrefOnlyImage when the mandatory fields are missing`() {
         val imageBuilder = ValidatingHrefOnlyImageBuilder()
 
         assertAll {
@@ -28,7 +28,7 @@ internal class ValidatingHrefOnlyImageBuilderTest {
     }
 
     @Test
-    internal fun `should build an Image with all the mandatory href field`() {
+    internal fun `should build an HrefOnlyImage with all the mandatory href field`() {
         val imageBuilder = ValidatingHrefOnlyImageBuilder()
             .href("href")
 

@@ -21,7 +21,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
     @Test
-    internal fun `should not build an Episode GooglePlay when all fields are missing`() {
+    internal fun `should not build an Episode Googleplay when all fields are missing`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
 
         assertAll {
@@ -32,7 +32,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode GooglePlay with only an author`() {
+    internal fun `should build an Episode Googleplay with only an author`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .author("author")
 
@@ -50,7 +50,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode GooglePlay with only a description`() {
+    internal fun `should build an Episode Googleplay with only a description`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .description("description")
 
@@ -67,7 +67,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode GooglePlay with only explicit`() {
+    internal fun `should build an Episode Googleplay with only explicit`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .explicit("no")
 
@@ -84,7 +84,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode GooglePlay with only block`() {
+    internal fun `should build an Episode Googleplay with only block`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .block(true)
 
@@ -101,7 +101,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode GooglePlay with only an image`() {
+    internal fun `should build an Episode Googleplay with only an image`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .imageBuilder(expectedImageBuilder)
 
@@ -118,7 +118,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode GooglePlay with all the optional fields`() {
+    internal fun `should build an Episode Googleplay with all the optional fields`() {
         val episodeGooglePlayBuilder = ValidatingEpisodeGoogleplayBuilder()
             .description("description")
             .explicit("no")
@@ -138,7 +138,7 @@ internal class ValidatingEpisodeGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should populate an Episode GooglePlay builder with all properties from an Episode GooglePlay model`() {
+    internal fun `should populate an Episode Googleplay builder with all properties from an Episode Googleplay model`() {
         val episodeGooglePlay = anEpisodeGoogleplay()
         val episodeGooglePlayBuilder = EpisodeGoogleplay.builder().applyFrom(episodeGooglePlay)
 

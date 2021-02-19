@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingEpisodePodloveSimpleChapterBuilderTest {
 
     @Test
-    internal fun `should not build an Episode PodloveSimpleChapter when the mandatory fields are absent`() {
+    internal fun `should not build an Episode Podlove SimpleChapter when the mandatory fields are absent`() {
         val chapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
 
         assertAll {
@@ -28,7 +28,7 @@ internal class ValidatingEpisodePodloveSimpleChapterBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode PodloveSimpleChapter with all the mandatory fields`() {
+    internal fun `should build an Episode Podlove SimpleChapter with all the mandatory fields`() {
         val chapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
             .start("start")
             .title("title")
@@ -46,7 +46,7 @@ internal class ValidatingEpisodePodloveSimpleChapterBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode PodloveSimpleChapter with all the added entries to its fields`() {
+    internal fun `should build an Episode Podlove SimpleChapter with all the added entries to its fields`() {
         val chapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
             .start("start")
             .title("title")

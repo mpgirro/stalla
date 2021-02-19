@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingLinkBuilderTest {
 
     @Test
-    internal fun `should not build a link when the mandatory fields are missing`() {
+    internal fun `should not build a Link when the mandatory fields are missing`() {
         val linkBuilder = ValidatingLinkBuilder()
 
         assertAll {
@@ -28,7 +28,7 @@ internal class ValidatingLinkBuilderTest {
     }
 
     @Test
-    internal fun `should build a link with all the mandatory fields`() {
+    internal fun `should build a Link with all the mandatory fields`() {
         val linkBuilder = ValidatingLinkBuilder()
             .href("https://example.com/link")
 
@@ -48,7 +48,7 @@ internal class ValidatingLinkBuilderTest {
     }
 
     @Test
-    internal fun `should build a link with all the optional fields`() {
+    internal fun `should build a Link with all the optional fields`() {
         val linkBuilder = ValidatingLinkBuilder()
             .href("https://example.com/link")
             .hrefLang("hrefLang")

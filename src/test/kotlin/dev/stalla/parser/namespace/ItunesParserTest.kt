@@ -38,7 +38,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
         .email("owner@example.org")
 
     @Test
-    fun `should extract all itunes fields from channel when present`() {
+    fun `should extract all Itunes fields from channel when present`() {
         val node = XmlRes("/xml/channel.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
@@ -65,7 +65,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should not extract itunes fields from channel when absent`() {
+    fun `should not extract Itunes fields from channel when absent`() {
         val node = XmlRes("/xml/channel-incomplete.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
@@ -88,7 +88,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from channel when itunes data is all empty`() {
+    fun `should extract nothing from channel when Itunes data is all empty`() {
         val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
@@ -111,7 +111,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract all itunes fields from item when present`() {
+    fun `should extract all Itunes fields from item when present`() {
         val node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
@@ -132,7 +132,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should not extract itunes fields from item when absent`() {
+    fun `should not extract Itunes fields from item when absent`() {
         val node = XmlRes("/xml/item-incomplete.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
@@ -153,7 +153,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from item when itunes data is all empty`() {
+    fun `should extract nothing from item when Itunes data is all empty`() {
         val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel/item")
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)

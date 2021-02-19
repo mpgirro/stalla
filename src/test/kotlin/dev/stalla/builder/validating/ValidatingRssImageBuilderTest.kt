@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingRssImageBuilderTest {
 
     @Test
-    internal fun `should not build an Image when the mandatory fields are missing`() {
+    internal fun `should not build an RssImage when the mandatory fields are missing`() {
         val imageBuilder = ValidatingRssImageBuilder()
 
         assertAll {
@@ -28,7 +28,7 @@ internal class ValidatingRssImageBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Image with only the url mandatory field`() {
+    internal fun `should not build an RssImage with only the url mandatory field`() {
         val imageBuilder = ValidatingRssImageBuilder()
             .url("url")
 
@@ -40,7 +40,7 @@ internal class ValidatingRssImageBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Image with only the title mandatory field`() {
+    internal fun `should not build an RssImage with only the title mandatory field`() {
         val imageBuilder = ValidatingRssImageBuilder()
             .title("title")
 
@@ -52,7 +52,7 @@ internal class ValidatingRssImageBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Image with only the link mandatory field`() {
+    internal fun `should not build an RssImage with only the link mandatory field`() {
         val imageBuilder = ValidatingRssImageBuilder()
             .link("link")
 
@@ -64,7 +64,7 @@ internal class ValidatingRssImageBuilderTest {
     }
 
     @Test
-    internal fun `should build an Image with all the mandatory fields`() {
+    internal fun `should build an RssImage with all the mandatory fields`() {
         val imageBuilder = ValidatingRssImageBuilder()
             .url("url")
             .title("title")
@@ -85,7 +85,7 @@ internal class ValidatingRssImageBuilderTest {
     }
 
     @Test
-    internal fun `should build an Image with all the optional fields`() {
+    internal fun `should build an RssImage with all the optional fields`() {
         val imageBuilder = ValidatingRssImageBuilder()
             .url("url")
             .title("title")

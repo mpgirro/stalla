@@ -32,12 +32,12 @@ internal class AtomParserTest : NamespaceParserTest() {
         .uri("http://example.org")
 
     @Test
-    fun `should extract all atom fields from channel when present`() {
+    fun `should extract all Atom fields from channel when present`() {
         val channel: Node = XmlRes("/xml/channel.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.atomBuilder, "atom podcast data").all {
+        assertThat(builder.atomBuilder, "channel.atom").all {
             prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
             prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
             prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
@@ -45,12 +45,12 @@ internal class AtomParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from channel when atom data is all empty`() {
+    fun `should extract nothing from channel when Atom data is all empty`() {
         val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.atomBuilder, "atom episode data").all {
+        assertThat(builder.atomBuilder, "channel.atom").all {
             prop(FakeAtomBuilder::authorBuilders).noneHasEnoughDataToBuild()
             prop(FakeAtomBuilder::contributorBuilders).noneHasEnoughDataToBuild()
             prop(FakeAtomBuilder::linkBuilders).isEmpty()
@@ -58,12 +58,12 @@ internal class AtomParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from channel when no atom data is present`() {
+    fun `should extract nothing from channel when no Atom data is present`() {
         val channel: Node = XmlRes("/xml/channel-incomplete.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.atomBuilder, "atom episode data").all {
+        assertThat(builder.atomBuilder, "channel.atom").all {
             prop(FakeAtomBuilder::authorBuilders).isEmpty()
             prop(FakeAtomBuilder::contributorBuilders).isEmpty()
             prop(FakeAtomBuilder::linkBuilders).isEmpty()
@@ -71,12 +71,12 @@ internal class AtomParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract all atom fields from item when present`() {
+    fun `should extract all Atom fields from item when present`() {
         val item: Node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.atomBuilder, "atom item data").all {
+        assertThat(builder.atomBuilder, "item.atom").all {
             prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
             prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
             prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
@@ -84,12 +84,12 @@ internal class AtomParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from item when no atom data is present`() {
+    fun `should extract nothing from item when no Atom data is present`() {
         val item: Node = XmlRes("/xml/item-incomplete.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.atomBuilder, "atom item data").all {
+        assertThat(builder.atomBuilder, "item.atom").all {
             prop(FakeAtomBuilder::authorBuilders).isEmpty()
             prop(FakeAtomBuilder::contributorBuilders).isEmpty()
             prop(FakeAtomBuilder::linkBuilders).isEmpty()
@@ -97,12 +97,12 @@ internal class AtomParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from item when atom data is all empty`() {
+    fun `should extract nothing from item when Atom data is all empty`() {
         val item: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel/item")
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.atomBuilder, "atom item data").all {
+        assertThat(builder.atomBuilder, "item.atom").all {
             prop(FakeAtomBuilder::authorBuilders).noneHasEnoughDataToBuild()
             prop(FakeAtomBuilder::contributorBuilders).noneHasEnoughDataToBuild()
             prop(FakeAtomBuilder::linkBuilders).isEmpty()

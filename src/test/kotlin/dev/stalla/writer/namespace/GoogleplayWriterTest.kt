@@ -16,7 +16,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
     override val writer = GoogleplayWriter
 
     @Test
-    internal fun `should write the correct googleplay tags to the channel when there is data to write`() {
+    internal fun `should write the correct Googleplay tags to the channel when there is data to write`() {
         assertAll {
             writePodcastData("author") { element ->
                 val diff = element.diffFromExpected("/rss/channel/googleplay:author")
@@ -54,7 +54,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write googleplay tags to the channel when there is no data to write`() {
+    internal fun `should not write Googleplay tags to the channel when there is no data to write`() {
         assertAll {
             assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "author")
             assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "owner")
@@ -68,7 +68,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write googleplay tags to the channel when the data is blank`() {
+    internal fun `should not write Googleplay tags to the channel when the data is blank`() {
         val podcast = aPodcast(
             googleplay = aPodcastGoogleplay(
                 author = " ",
@@ -94,7 +94,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write googleplay tags to the channel when the data is empty`() {
+    internal fun `should not write Googleplay tags to the channel when the data is empty`() {
         val podcast = aPodcast(
             googleplay = aPodcastGoogleplay(
                 author = "",
@@ -120,7 +120,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should write the correct googleplay tags to the item when there is data to write`() {
+    internal fun `should write the correct Googleplay tags to the item when there is data to write`() {
         assertAll {
             writeEpisodeData("author") { element ->
                 val diff = element.diffFromExpected("/rss/channel/item[1]/googleplay:author")
@@ -146,7 +146,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write googleplay tags to the item when there is no data to write`() {
+    internal fun `should not write Googleplay tags to the item when there is no data to write`() {
         val episode = anEpisode(googleplay = null)
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "author")
@@ -158,7 +158,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write googleplay tags to the item when the data is blank`() {
+    internal fun `should not write Googleplay tags to the item when the data is blank`() {
         val episode = anEpisode(
             googleplay = anEpisodeGoogleplay(
                 author = " ",
@@ -178,7 +178,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write googleplay tags to the item when the data is empty`() {
+    internal fun `should not write Googleplay tags to the item when the data is empty`() {
         val episode = anEpisode(
             googleplay = anEpisodeGoogleplay(
                 author = "",

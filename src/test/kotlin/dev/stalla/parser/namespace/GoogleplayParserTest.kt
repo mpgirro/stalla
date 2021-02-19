@@ -31,7 +31,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
     private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/episode-cover.jpg")
 
     @Test
-    fun `should extract all google play fields from channel when present`() {
+    fun `should extract all Googleplay fields from channel when present`() {
         val node = XmlRes("/xml/channel.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
@@ -49,7 +49,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should not extract google play fields from channel when absent`() {
+    fun `should not extract Googleplay fields from channel when absent`() {
         val node = XmlRes("/xml/channel-incomplete.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
@@ -67,7 +67,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from channel when googleplay data is all empty`() {
+    fun `should extract nothing from channel when Googleplay data is all empty`() {
         val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
@@ -85,7 +85,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract all google play fields from item when present`() {
+    fun `should extract all Googleplay fields from item when present`() {
         val node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
@@ -100,7 +100,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should not extract google play fields from item when absent`() {
+    fun `should not extract Googleplay fields from item when absent`() {
         val node = XmlRes("/xml/item-incomplete.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
@@ -115,7 +115,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from item when googleplay data is all empty`() {
+    fun `should extract nothing from item when Googleplay data is all empty`() {
         val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel/item")
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)

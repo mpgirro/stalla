@@ -22,7 +22,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
     @Test
-    internal fun `should not build an Episode ITunes when all fields are missing`() {
+    internal fun `should not build an Episode Itunes when all fields are missing`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
 
         assertAll {
@@ -33,7 +33,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only a title`() {
+    internal fun `should build an Episode Itunes with only a title`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .title("title")
 
@@ -57,7 +57,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only a duration`() {
+    internal fun `should build an Episode Itunes with only a duration`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .duration(StyledDuration.seconds(10))
 
@@ -81,7 +81,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only a season number`() {
+    internal fun `should build an Episode Itunes with only a season number`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .season(2)
 
@@ -105,7 +105,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only an episode number`() {
+    internal fun `should build an Episode Itunes with only an episode number`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .episode(3)
 
@@ -129,7 +129,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only an episodeType`() {
+    internal fun `should build an Episode Itunes with only an episodeType`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .episodeType(EpisodeType.BONUS.type)
 
@@ -153,7 +153,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only explicit`() {
+    internal fun `should build an Episode Itunes with only explicit`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .explicit(false)
 
@@ -177,7 +177,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only block`() {
+    internal fun `should build an Episode Itunes with only block`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .block(true)
 
@@ -201,7 +201,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only an image`() {
+    internal fun `should build an Episode Itunes with only an image`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .imageBuilder(expectedImageBuilder)
 
@@ -225,7 +225,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only an author`() {
+    internal fun `should build an Episode Itunes with only an author`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .author("author")
 
@@ -249,7 +249,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only a subtitle`() {
+    internal fun `should build an Episode Itunes with only a subtitle`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .subtitle("subtitle")
 
@@ -273,7 +273,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with only a summary`() {
+    internal fun `should build an Episode Itunes with only a summary`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .summary("summary")
 
@@ -297,7 +297,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode ITunes with all the optional fields`() {
+    internal fun `should build an Episode Itunes with all the optional fields`() {
         val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
             .title("title")
             .duration(StyledDuration.seconds(10))
@@ -331,7 +331,7 @@ internal class ValidatingEpisodeItunesBuilderTest {
     }
 
     @Test
-    internal fun `should populate an Episode ITunes builder with all properties from an Episode ITunes model`() {
+    internal fun `should populate an Episode Itunes builder with all properties from an Episode Itunes model`() {
         val episodeItunes = anEpisodeItunes()
         val episodeITunesBuilder = EpisodeItunes.builder().applyFrom(episodeItunes)
 

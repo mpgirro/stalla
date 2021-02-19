@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingPersonBuilderTest {
 
     @Test
-    internal fun `should not build a person when the mandatory fields are missing`() {
+    internal fun `should not build a Person when the mandatory fields are missing`() {
         val personBuilder = ValidatingPersonBuilder()
 
         assertAll {
@@ -28,7 +28,7 @@ internal class ValidatingPersonBuilderTest {
     }
 
     @Test
-    internal fun `should build a person with all the mandatory fields`() {
+    internal fun `should build a Person with all the mandatory fields`() {
         val personBuilder = ValidatingPersonBuilder()
             .name("name")
 
@@ -44,7 +44,7 @@ internal class ValidatingPersonBuilderTest {
     }
 
     @Test
-    internal fun `should build a person with all the optional fields`() {
+    internal fun `should build a Person with all the optional fields`() {
         val personBuilder = ValidatingPersonBuilder()
             .name("name")
             .email("email")

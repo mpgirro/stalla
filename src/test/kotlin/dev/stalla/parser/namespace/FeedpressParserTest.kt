@@ -17,12 +17,12 @@ internal class FeedpressParserTest : NamespaceParserTest() {
     override val parser = FeedpressParser
 
     @Test
-    fun `should extract feedpress data from channel when present`() {
+    fun `should extract Feedpress data from channel when present`() {
         val node = XmlRes("/xml/channel.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.feedpressBuilder, "channel feedpress data").all {
+        assertThat(builder.feedpressBuilder, "channel.feedpress").all {
             prop(FakePodcastFeedpressBuilder::newsletterIdValue).isEqualTo("abc123")
             prop(FakePodcastFeedpressBuilder::localeValue).isEqualTo("en")
             prop(FakePodcastFeedpressBuilder::podcastIdValue).isEqualTo("xyz123")
@@ -32,12 +32,12 @@ internal class FeedpressParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should not extract feedpress data from channel when present`() {
+    fun `should not extract Feedpress data from channel when present`() {
         val node = XmlRes("/xml/channel-incomplete.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         node.parseChannelChildNodes(builder)
 
-        assertThat(builder.feedpressBuilder, "channel feedpress data").all {
+        assertThat(builder.feedpressBuilder, "channel.feedpress").all {
             prop(FakePodcastFeedpressBuilder::newsletterIdValue).isNull()
             prop(FakePodcastFeedpressBuilder::localeValue).isNull()
             prop(FakePodcastFeedpressBuilder::podcastIdValue).isNull()
@@ -47,12 +47,12 @@ internal class FeedpressParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from channel when feedpress data is all empty`() {
+    fun `should extract nothing from channel when Feedpress data is all empty`() {
         val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.feedpressBuilder, "channel feedpress data").all {
+        assertThat(builder.feedpressBuilder, "channel.feedpress").all {
             prop(FakePodcastFeedpressBuilder::newsletterIdValue).isNull()
             prop(FakePodcastFeedpressBuilder::localeValue).isNull()
             prop(FakePodcastFeedpressBuilder::podcastIdValue).isNull()

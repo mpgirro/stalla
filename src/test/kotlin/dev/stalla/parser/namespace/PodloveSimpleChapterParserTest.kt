@@ -17,7 +17,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
     override val parser = PodloveSimpleChapterParser
 
     @Test
-    fun `should not extract podlove chapter data from item when absent`() {
+    fun `should not extract Podlove SimpleChapter data from item when absent`() {
         val node = XmlRes("/xml/item-incomplete.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
@@ -26,7 +26,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from item when podlove chapter data is all empty`() {
+    fun `should extract nothing from item when Podlove SimpleChapter data is all empty`() {
         val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel/item")
         val builder = FakeEpisodeBuilder()
         channel.parseItemChildNodes(builder)
@@ -36,7 +36,7 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract podlove chapter data from item when present`() {
+    fun `should extract Podlove SimpleChapter data from item when present`() {
         val node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)

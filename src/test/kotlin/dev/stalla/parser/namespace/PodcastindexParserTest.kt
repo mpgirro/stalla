@@ -53,7 +53,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         .rel("captions")
 
     @Test
-    fun `should extract all podcastindex fields from channel when present`() {
+    fun `should extract all Podcastindex fields from channel when present`() {
         val channel: Node = XmlRes("/xml/channel.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
@@ -65,7 +65,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from channel when podcast data is all empty`() {
+    fun `should extract nothing from channel when Podcastindex data is all empty`() {
         val channel: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
@@ -77,7 +77,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from channel when no podcast data is present`() {
+    fun `should extract nothing from channel when no Podcastindex data is present`() {
         val channel: Node = XmlRes("/xml/channel-incomplete.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
@@ -89,7 +89,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract all podcast fields from item when present`() {
+    fun `should extract all Podcastindex fields from item when present`() {
         val item: Node = XmlRes("/xml/item.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
@@ -102,7 +102,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from item when no podcast data is present`() {
+    fun `should extract nothing from item when no Podcastindex data is present`() {
         val item: Node = XmlRes("/xml/item-incomplete.xml").rootNodeByName("item")
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
@@ -115,7 +115,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should extract nothing from item when podcast data is all empty`() {
+    fun `should extract nothing from item when Podcastindex data is all empty`() {
         val item: Node = XmlRes("/xml/rss-all-empty.xml").nodeByXPath("/rss/channel/item")
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
@@ -128,7 +128,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
     }
 
     @Test
-    internal fun `should not extract podcast soundbite tags from the item when the durations are invalid`() {
+    internal fun `should not extract Podcastindex Soundbite tags from the item when the durations are invalid`() {
         val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
 
         val builder = FakeEpisodeBuilder()

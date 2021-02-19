@@ -27,7 +27,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     private val otherExpectedGoogleplayCategory = GoogleplayCategory.ARTS
 
     @Test
-    internal fun `should not build a Podcast GooglePlay when all fields are missing`() {
+    internal fun `should not build a Podcast Googleplay when all fields are missing`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
 
         assertAll {
@@ -38,7 +38,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast GooglePlay when there is only an author`() {
+    internal fun `should build a valid Podcast Googleplay when there is only an author`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .author("author")
 
@@ -59,7 +59,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast GooglePlay when there is only an owner`() {
+    internal fun `should build a valid Podcast Googleplay when there is only an owner`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .owner("owner")
 
@@ -80,7 +80,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast GooglePlay when there is only a category`() {
+    internal fun `should build a valid Podcast Googleplay when there is only a category`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .addCategory(expectedGoogleplayCategory)
 
@@ -101,7 +101,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast GooglePlay when there is only a description`() {
+    internal fun `should build a valid Podcast Googleplay when there is only a description`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .description("description")
 
@@ -122,7 +122,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast GooglePlay when there is only an explicit`() {
+    internal fun `should build a valid Podcast Googleplay when there is only an explicit`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .explicit(true)
 
@@ -143,7 +143,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast GooglePlay when there is only a block`() {
+    internal fun `should build a valid Podcast Googleplay when there is only a block`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .block(true)
 
@@ -164,7 +164,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast GooglePlay when there is only an image`() {
+    internal fun `should build a valid Podcast Googleplay when there is only an image`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .imageBuilder(expectedImageBuilder)
 
@@ -185,7 +185,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast GooglePlay when there is only a newFeedUrl`() {
+    internal fun `should build a valid Podcast Googleplay when there is only a newFeedUrl`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .newFeedUrl("https://new.example.com/rss/rss.xml")
 
@@ -206,7 +206,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should build a valid Podcast GooglePlay when there are all fields`() {
+    internal fun `should build a valid Podcast Googleplay when there are all fields`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .author("author")
             .owner("owner")
@@ -238,7 +238,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     }
 
     @Test
-    internal fun `should populate a Podcast GooglePlay builder with all properties from an Podcast GooglePlay model`() {
+    internal fun `should populate a Podcast Googleplay builder with all properties from an Podcast Googleplay model`() {
         val podcastGooglePlay = aPodcastGoogleplay()
         val podcastGooglePlayBuilder = PodcastGoogleplay.builder().applyFrom(podcastGooglePlay)
 

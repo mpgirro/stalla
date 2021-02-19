@@ -21,7 +21,7 @@ internal class ValidatingEpisodePodloveBuilderTest {
         .title("chapter title")
 
     @Test
-    internal fun `should not build an Episode Podlover Simple Chapters when there is no chapter`() {
+    internal fun `should not build an Episode Podlover SimpleChapters when there is no chapter`() {
         val podloveBuilder = ValidatingEpisodePodloveBuilder()
 
         assertAll {
@@ -32,7 +32,7 @@ internal class ValidatingEpisodePodloveBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podlover Simple Chapters when adding a simple chapter`() {
+    internal fun `should build an Episode Podlover SimpleChapters when adding a simple chapter`() {
         val podloveBuilder = ValidatingEpisodePodloveBuilder()
             .addSimpleChapterBuilder(expectedChapterBuilder)
 
@@ -45,7 +45,7 @@ internal class ValidatingEpisodePodloveBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podlover Simple Chapters when adding multiple simple chapters at once`() {
+    internal fun `should build an Episode Podlover SimpleChapters when adding multiple simple chapters at once`() {
         val anotherChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
             .start("start 2")
             .title("chapter title 2")
