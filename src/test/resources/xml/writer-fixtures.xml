@@ -74,8 +74,8 @@
         <googleplay:block>yes</googleplay:block>
         <googleplay:image href="podcast googleplay image url"/>
         <googleplay:new-feed-url>podcast googleplay newFeedUrl</googleplay:new-feed-url>
-        <podcast:locked owner="podcast podcast: locked owner">yes</podcast:locked>
-        <podcast:funding url="podcast podcast: funding url">podcast podcast: funding message</podcast:funding>
+        <podcast:locked owner="podcast podcastindex locked owner">yes</podcast:locked>
+        <podcast:funding url="podcast podcastindex funding url">podcast podcastindex funding message</podcast:funding>
         <item>
             <title>episode title</title>
             <link>episode link</link>
@@ -120,9 +120,9 @@
             <googleplay:image href="episode googleplay image url"/>
             <googleplay:explicit>yes</googleplay:explicit>
             <googleplay:block>yes</googleplay:block>
-            <podcast:transcript url="episode podcast: transcript url" type="application/srt" language="it-IT" rel="captions"/>
-            <podcast:soundbite startTime="1" duration="15.123">episode podcast: soundbite title</podcast:soundbite>
-            <podcast:chapters url="episode podcast: chapters url" type="episode podcast: chapters type"/>
+            <podcast:transcript url="episode podcastindex transcript url" type="application/srt" language="it-IT" rel="captions"/>
+            <podcast:soundbite startTime="1" duration="15.123">episode podcastindex soundbite title</podcast:soundbite>
+            <podcast:chapters url="episode podcastindex chapters url" type="episode podcastindex chapters type"/>
         </item>
     </channel>
 </rss>
