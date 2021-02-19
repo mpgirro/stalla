@@ -3,8 +3,10 @@ package dev.stalla.model.itunes
 import dev.stalla.model.TypeFactory
 
 /**
- * Enum model for the finite value set encountered within the
- * `<itunes:type>` element within a `<channel>` element.
+ * Supported show types encountered within the `<itunes:type>` element
+ * within an `<item>` element, modeled as a finite set enum class. See the
+ * [reference docs](https://help.apple.com/itc/podcasts_connect/#/itcb54353390)
+ * for more information.
  *
  * @property type The string representation of the Enum instance.
  */

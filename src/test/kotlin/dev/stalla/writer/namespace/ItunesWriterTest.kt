@@ -101,7 +101,7 @@ internal class ItunesWriterTest : NamespaceWriterTest() {
                 image = anHrefOnlyImage(" "),
                 keywords = " ",
                 author = " ",
-                categories = listOf(),
+                categories = emptyList(),
                 type = null,
                 owner = null,
                 title = " ",

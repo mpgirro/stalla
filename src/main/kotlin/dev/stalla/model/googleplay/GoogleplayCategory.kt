@@ -3,11 +3,11 @@ package dev.stalla.model.googleplay
 import dev.stalla.model.TypeFactory
 
 /**
+ * Supported category types encountered within the `<googleplay:category>` element
+ * within a `<channel>` element, modeled as a finite set enum class.
  *
- * Enum model for the finite value set encountered within the `<googleplay:category>`
- * element within a `<channel>` element.
- *
- * Available values are defined in [RSS feed guidelines for Google Podcasts](https://support.google.com/podcast-publishers/answer/9889544)
+ * Defined category values are listed in [RSS feed guidelines for Google Podcasts](https://support.google.com/podcast-publishers/answer/9889544)
+ * and marked as finite in the [XML schema definition](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd).
  *
  * @param type The string representation of the category.
  */

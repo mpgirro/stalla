@@ -1,6 +1,7 @@
 package dev.stalla.model.itunes
 
 import dev.stalla.model.TypeFactory
+import dev.stalla.model.itunes.ItunesCategory.Factory
 import dev.stalla.model.itunes.ItunesCategory.Factory.AFTER_SHOWS
 import dev.stalla.model.itunes.ItunesCategory.Factory.ALTERNATIVE_HEALTH
 import dev.stalla.model.itunes.ItunesCategory.Factory.ANIMATION_AND_MANGA
@@ -117,11 +118,12 @@ import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberProperties
 
 /**
- * Model for the finite value set encountered within the `<itunes:category>`
- * element within a `<channel>` element.
+ * Supported category types encountered within the `<itunes:category>` element
+ * within a `<channel>` element, modeled as a finite set sealed class.
  *
- * The [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12)
- * hierarchy is modeled in accordance with the following table:
+ * Defined category values are listed in [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
+ * The categories and their nested hierarchies are modeled according to the table below.
+ * This classes [companion object][Factory] exposed a reference for each instance.
  *
  * | Category                | Subcategory        | Property                    |
  * |-------------------------|--------------------|-----------------------------|
