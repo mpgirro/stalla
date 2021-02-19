@@ -13,19 +13,19 @@ public interface PodcastPodcastindexBuilder : Builder<PodcastPodcastindex> {
     public fun lockedBuilder(lockedBuilder: PodcastPodcastindexLockedBuilder): PodcastPodcastindexBuilder
 
     /**
-     * Adds a [PodcastPodcastindexFundingBuilder] for the Podcast namespace `<funding>` info to the list of funding builders.
+     * Adds the [PodcastPodcastindexFundingBuilder] for the Podcast namespace `<funding>` info to the list of funding builders.
      */
     public fun addFundingBuilder(fundingBuilder: PodcastPodcastindexFundingBuilder): PodcastPodcastindexBuilder
 
     /**
-     * Adds multiple [PodcastPodcastindexFundingBuilder] for the Podcast namespace `<funding>` info to the list of funding builders.
+     * Adds all of the [PodcastPodcastindexFundingBuilder] for the Podcast namespace `<funding>` info to the list of funding builders.
      */
-    public fun addFundingBuilders(fundingBuilders: List<PodcastPodcastindexFundingBuilder>): PodcastPodcastindexBuilder = apply {
+    public fun addAllFundingBuilder(fundingBuilders: List<PodcastPodcastindexFundingBuilder>): PodcastPodcastindexBuilder = apply {
         fundingBuilders.forEach(::addFundingBuilder)
     }
 
     override fun applyFrom(prototype: PodcastPodcastindex?): PodcastPodcastindexBuilder = whenNotNull(prototype) { podcast ->
         lockedBuilder(Locked.builder().applyFrom(podcast.locked))
-        addFundingBuilders(podcast.funding.asBuilders())
+        addAllFundingBuilder(podcast.funding.asBuilders())
     }
 }

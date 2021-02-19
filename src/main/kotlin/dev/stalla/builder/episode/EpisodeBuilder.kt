@@ -46,11 +46,11 @@ public interface EpisodeBuilder : Builder<Episode> {
     /** Set the author value. */
     public fun author(author: String?): EpisodeBuilder
 
-    /** Adds an [RssCategoryBuilder] to the list of category builders. */
+    /** Adds the [RssCategoryBuilder] to the list of category builders. */
     public fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder
 
-    /** Adds multiple [RssCategoryBuilder] to the list of category builders. */
-    public fun addCategoryBuilderys(categoryBuilders: List<RssCategoryBuilder>): EpisodeBuilder = apply {
+    /** Adds all of the [RssCategoryBuilder] to the list of category builders. */
+    public fun addAllCategoryBuilder(categoryBuilders: List<RssCategoryBuilder>): EpisodeBuilder = apply {
         categoryBuilders.forEach(::addCategoryBuilder)
     }
 
@@ -81,7 +81,7 @@ public interface EpisodeBuilder : Builder<Episode> {
         link(episode.link)
         description(episode.description)
         author(episode.author)
-        addCategoryBuilderys(episode.categories.asBuilders())
+        addAllCategoryBuilder(episode.categories.asBuilders())
         comments(episode.comments)
         enclosureBuilder(Enclosure.builder().applyFrom(episode.enclosure))
         guidBuilder(Guid.builder().applyFrom(episode.guid))

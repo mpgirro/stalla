@@ -8,13 +8,13 @@ import dev.stalla.util.whenNotNull
 /** Builder for constructing [EpisodePodlove] instances. */
 public interface EpisodePodloveBuilder : Builder<EpisodePodlove> {
 
-    /** Adds a [EpisodePodloveSimpleChapterBuilder] to the list of chapter builders. */
+    /** Adds the [EpisodePodloveSimpleChapterBuilder] to the list of chapter builders. */
     public fun addSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveBuilder
 
-    /** Adds multiple [EpisodePodloveSimpleChapterBuilder] to the list of chapter builders. */
-    public fun addSimpleChapterBuilders(chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>): EpisodePodloveBuilder
+    /** Adds all of the [EpisodePodloveSimpleChapterBuilder] to the list of chapter builders. */
+    public fun addAllSimpleChapterBuilder(chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>): EpisodePodloveBuilder
 
     override fun applyFrom(prototype: EpisodePodlove?): EpisodePodloveBuilder = whenNotNull(prototype) { podlove ->
-        addSimpleChapterBuilders(podlove.simpleChapters.asBuilders())
+        addAllSimpleChapterBuilder(podlove.simpleChapters.asBuilders())
     }
 }

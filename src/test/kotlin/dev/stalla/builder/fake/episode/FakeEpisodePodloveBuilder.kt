@@ -13,7 +13,7 @@ internal class FakeEpisodePodloveBuilder : FakeBuilder<EpisodePodlove>(), Episod
         chapterBuilders.add(chapterBuilder)
     }
 
-    override fun addSimpleChapterBuilders(chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>): EpisodePodloveBuilder = apply {
+    override fun addAllSimpleChapterBuilder(chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>): EpisodePodloveBuilder = apply {
         this.chapterBuilders.addAll(chapterBuilders)
     }
 

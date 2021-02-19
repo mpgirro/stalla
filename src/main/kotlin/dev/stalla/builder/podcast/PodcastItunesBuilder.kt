@@ -27,17 +27,11 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
     /** Set the author value. */
     public fun author(author: String?): PodcastItunesBuilder
 
+    /** Adds the [ItunesCategory] to the list of categories. */
     public fun addCategory(category: ItunesCategory): PodcastItunesBuilder
 
-    public fun addCategory(category: String?): PodcastItunesBuilder = apply {
-        ItunesCategory.of(category)?.let { instance -> addCategory(instance) }
-    }
-
-    public fun addCategoryInstances(categories: List<ItunesCategory>): PodcastItunesBuilder = apply {
-        categories.forEach(::addCategory)
-    }
-
-    public fun addCategoryStrings(categories: List<String>): PodcastItunesBuilder = apply {
+    /** Adds all of the [ItunesCategory] to the list of categories. */
+    public fun addAllCategory(categories: List<ItunesCategory>): PodcastItunesBuilder = apply {
         categories.forEach(::addCategory)
     }
 
@@ -68,7 +62,7 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
         imageBuilder(HrefOnlyImage.builder().applyFrom(itunes.image))
         keywords(itunes.keywords)
         author(itunes.author)
-        addCategoryInstances(itunes.categories)
+        addAllCategory(itunes.categories)
         explicit(itunes.explicit)
         block(itunes.block)
         complete(itunes.complete)

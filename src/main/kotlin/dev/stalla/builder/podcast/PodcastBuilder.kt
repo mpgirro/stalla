@@ -71,19 +71,19 @@ public interface PodcastBuilder : Builder<Podcast> {
     /** Set the [RssImageBuilder]. */
     public fun imageBuilder(imageBuilder: RssImageBuilder?): PodcastBuilder
 
-    /** Adds an [EpisodeBuilder] to the list of episode builders. */
+    /** Adds the [EpisodeBuilder] to the list of episode builders. */
     public fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder
 
-    /** Adds multiple [EpisodeBuilder] to the list of episode builders. */
-    public fun addEpisodeBuilders(episodeBuilders: List<EpisodeBuilder>): PodcastBuilder = apply {
+    /** Adds all of the [EpisodeBuilder] to the list of episode builders. */
+    public fun addAllEpisodeBuilder(episodeBuilders: List<EpisodeBuilder>): PodcastBuilder = apply {
         episodeBuilders.forEach(::addEpisodeBuilder)
     }
 
-    /** Adds an [RssCategoryBuilder] to the list of category builders. */
+    /** Adds the [RssCategoryBuilder] to the list of category builders. */
     public fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): PodcastBuilder
 
-    /** Adds multiple [RssCategoryBuilder] to the list of category builders. */
-    public fun addCategoryBuilders(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder = apply {
+    /** Adds all of the [RssCategoryBuilder] to the list of category builders. */
+    public fun addAllCategoryBuilder(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder = apply {
         categoryBuilders.forEach(::addCategoryBuilder)
     }
 
@@ -107,7 +107,7 @@ public interface PodcastBuilder : Builder<Podcast> {
         webMaster(podcast.webMaster)
         ttl(podcast.ttl)
         imageBuilder(RssImage.builder().applyFrom(podcast.image))
-        addEpisodeBuilders(podcast.episodes.asBuilders())
-        addCategoryBuilders(podcast.categories.asBuilders())
+        addAllEpisodeBuilder(podcast.episodes.asBuilders())
+        addAllCategoryBuilder(podcast.categories.asBuilders())
     }
 }

@@ -10,37 +10,37 @@ import dev.stalla.util.whenNotNull
 public interface EpisodePodcastindexBuilder : Builder<EpisodePodcastindex> {
 
     /**
-     * Set the [EpisodePodcastindexChaptersBuilder] for the Podcast namespace `<chapters>` info.
+     * Set the [EpisodePodcastindexChaptersBuilder] for the Podcastindex namespace `<chapters>` info.
      */
     public fun chaptersBuilder(chaptersBuilder: EpisodePodcastindexChaptersBuilder): EpisodePodcastindexBuilder
 
     /**
-     * Adds a [EpisodePodcastindexSoundbiteBuilder] for the Podcast namespace `<soundbite>` info to the list of soundbite builders.
+     * Adds the [EpisodePodcastindexSoundbiteBuilder] for the Podcastindex namespace `<soundbite>` info to the list of soundbite builders.
      */
     public fun addSoundbiteBuilder(soundbiteBuilder: EpisodePodcastindexSoundbiteBuilder): EpisodePodcastindexBuilder
 
     /**
-     * Adds multiple [EpisodePodcastindexSoundbiteBuilder] for the Podcast namespace `<soundbite>` info to the list of soundbite builders.
+     * Adds all of the [EpisodePodcastindexSoundbiteBuilder] for the Podcastindex namespace `<soundbite>` info to the list of soundbite builders.
      */
-    public fun addSoundbiteBuilders(soundbiteBuilders: List<EpisodePodcastindexSoundbiteBuilder>): EpisodePodcastindexBuilder = apply {
+    public fun addAllSoundbiteBuilder(soundbiteBuilders: List<EpisodePodcastindexSoundbiteBuilder>): EpisodePodcastindexBuilder = apply {
         soundbiteBuilders.forEach(::addSoundbiteBuilder)
     }
 
     /**
-     * Adds a [EpisodePodcastindexTranscriptBuilder] for the Podcast namespace `<transcript>` info to the list of transcript builders.
+     * Adds the [EpisodePodcastindexTranscriptBuilder] for the Podcastindex namespace `<transcript>` info to the list of transcript builders.
      */
     public fun addTranscriptBuilder(transcriptBuilder: EpisodePodcastindexTranscriptBuilder): EpisodePodcastindexBuilder
 
     /**
-     * Adds multiple [EpisodePodcastindexTranscriptBuilder] for the Podcast namespace `<transcript>` info to the list of transcript builders.
+     * Adds all of the [EpisodePodcastindexTranscriptBuilder] for the Podcastindex namespace `<transcript>` info to the list of transcript builders.
      */
-    public fun addTranscriptBuilders(transcriptBuilders: List<EpisodePodcastindexTranscriptBuilder>): EpisodePodcastindexBuilder = apply {
+    public fun addAllTranscriptBuilder(transcriptBuilders: List<EpisodePodcastindexTranscriptBuilder>): EpisodePodcastindexBuilder = apply {
         transcriptBuilders.forEach(::addTranscriptBuilder)
     }
 
     override fun applyFrom(prototype: EpisodePodcastindex?): EpisodePodcastindexBuilder = whenNotNull(prototype) { podcast ->
         chaptersBuilder(Chapters.builder().applyFrom(podcast.chapters))
-        addSoundbiteBuilders(podcast.soundbites.asBuilders())
-        addTranscriptBuilders(podcast.transcripts.asBuilders())
+        addAllSoundbiteBuilder(podcast.soundbites.asBuilders())
+        addAllTranscriptBuilder(podcast.transcripts.asBuilders())
     }
 }
