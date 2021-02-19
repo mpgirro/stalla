@@ -23,24 +23,24 @@ internal class ValidatingEpisodeItunesBuilderTest {
 
     @Test
     internal fun `should not build an Episode Itunes when all fields are missing`() {
-        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
+        val episodeItunesBuilder = ValidatingEpisodeItunesBuilder()
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(episodeItunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isFalse()
 
-            assertThat(episodeITunesBuilder.build()).isNull()
+            assertThat(episodeItunesBuilder.build()).isNull()
         }
     }
 
     @Test
     internal fun `should build an Episode Itunes with only a title`() {
-        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
+        val episodeItunesBuilder = ValidatingEpisodeItunesBuilder()
             .title("title")
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeItunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            assertThat(episodeItunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isEqualTo("title")
                 prop(EpisodeItunes::duration).isNull()
                 prop(EpisodeItunes::season).isNull()
@@ -58,13 +58,13 @@ internal class ValidatingEpisodeItunesBuilderTest {
 
     @Test
     internal fun `should build an Episode Itunes with only a duration`() {
-        val episodeITunesBuilder = ValidatingEpisodeItunesBuilder()
+        val episodeItunesBuilder = ValidatingEpisodeItunesBuilder()
             .duration(StyledDuration.seconds(10))
 
         assertAll {
-            assertThat(episodeITunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodeItunesBuilder).prop(EpisodeItunesBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodeITunesBuilder.build()).isNotNull().all {
+            assertThat(episodeItunesBuilder.build()).isNotNull().all {
                 prop(EpisodeItunes::title).isNull()
                 prop(EpisodeItunes::duration).isEqualTo(StyledDuration.seconds(10))
                 prop(EpisodeItunes::season).isNull()

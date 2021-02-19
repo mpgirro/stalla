@@ -30,7 +30,7 @@ internal class ValidatingPodcastItunesBuilderTest {
     private val otherExpectedItunesCategory = ItunesCategory.ARTS
 
     @Test
-    internal fun `should not build a Podcast ITunes when all fields are missing`() {
+    internal fun `should not build a Podcast Itunes when all fields are missing`() {
         val podcastItunesBuilder = ValidatingPodcastItunesBuilder()
 
         assertAll {
