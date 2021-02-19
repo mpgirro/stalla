@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingPodcastPodcastindexFundingBuilderTest {
 
     @Test
-    internal fun `should not build a Podcast Podcast Funding with when all the fields are missing`() {
+    internal fun `should not build a Podcast Podcastindex Funding with when all the fields are missing`() {
         val fundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
 
         assertAll {
@@ -28,7 +28,7 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
     }
 
     @Test
-    internal fun `should not build a Podcast Podcast Funding with when the url field is missing`() {
+    internal fun `should not build a Podcast Podcastindex Funding with when the url field is missing`() {
         val fundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
             .message("Send me money please, kthxbye")
 
@@ -40,7 +40,7 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
     }
 
     @Test
-    internal fun `should not build a Podcast Podcast Funding with when the message field is missing`() {
+    internal fun `should not build a Podcast Podcastindex Funding with when the message field is missing`() {
         val fundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
             .url("https://example.com/donate")
 
@@ -52,7 +52,7 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
     }
 
     @Test
-    internal fun `should build a Podcast Podcast Funding with with all the added entries to its fields`() {
+    internal fun `should build a Podcast Podcastindex Funding with with all the added entries to its fields`() {
         val fundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
             .url("https://example.com/donate")
             .message("Send me money please, kthxbye")
@@ -68,7 +68,7 @@ internal class ValidatingPodcastPodcastindexFundingBuilderTest {
     }
 
     @Test
-    internal fun `should populate a Podcastindex Funding builder with all properties from an Podcastindex Funding model`() {
+    internal fun `should populate a Podcast Podcastindex Funding builder with all properties from an Podcast Podcastindex Funding model`() {
         val funding = aPodcastPodcastindexFunding()
         val fundingBuilder = Funding.builder().applyFrom(funding)
 

@@ -30,7 +30,7 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
         .message("Second funding")
 
     @Test
-    internal fun `should not build a Podcast Podcast with when all the fields are empty`() {
+    internal fun `should not build a Podcast Podcastindex with when all the fields are empty`() {
         val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
 
         assertAll {
@@ -41,7 +41,7 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build a Podcast Podcast with at least a locked builder`() {
+    internal fun `should build a Podcast Podcastindex with at least a locked builder`() {
         val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
             .lockedBuilder(expectedLockedBuilder)
 
@@ -53,7 +53,7 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should not build a Podcast Podcast when there is only a locked builder that doesn't build`() {
+    internal fun `should not build a Podcast Podcastindex when there is only a locked builder that doesn't build`() {
         val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
             .lockedBuilder(ValidatingPodcastPodcastindexLockedBuilder())
 
@@ -65,7 +65,7 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build a Podcast Podcast with at least one funding builder`() {
+    internal fun `should build a Podcast Podcastindext with at least one funding builder`() {
         val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
             .addFundingBuilder(firstExpectedFundingBuilder)
 
@@ -78,7 +78,7 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should not build a Podcast Podcast when there is only a funding builder that doesn't build`() {
+    internal fun `should not build a Podcast Podcastindex when there is only a funding builder that doesn't build`() {
         val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
             .addFundingBuilder(ValidatingPodcastPodcastindexFundingBuilder())
 
@@ -90,7 +90,7 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build a Podcast Podcast with with all the added entries to its fields`() {
+    internal fun `should build a Podcast Podcastindex with with all the added entries to its fields`() {
         val podcastPodcastBuilder = ValidatingPodcastPodcastindexBuilder()
             .lockedBuilder(expectedLockedBuilder)
             .addFundingBuilder(firstExpectedFundingBuilder)
@@ -107,7 +107,7 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should populate a Podcastindex builder with all properties from an Podcastindex model`() {
+    internal fun `should populate a Podcast Podcastindex builder with all properties from an Podcast Podcastindex model`() {
         val podcastPodcast = aPodcastPodcastindex()
         val podcastPodcastBuilder = PodcastPodcastindex.builder().applyFrom(podcastPodcast)
 

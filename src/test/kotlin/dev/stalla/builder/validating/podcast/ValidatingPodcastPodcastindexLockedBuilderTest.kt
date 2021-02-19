@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingPodcastPodcastindexLockedBuilderTest {
 
     @Test
-    internal fun `should not build a Podcast Podcast Locked with when all the fields are missing`() {
+    internal fun `should not build a Podcast Podcastindex Locked with when all the fields are missing`() {
         val lockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
 
         assertAll {
@@ -28,7 +28,7 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
     }
 
     @Test
-    internal fun `should not build a Podcast Podcast Locked with when the locked field is missing`() {
+    internal fun `should not build a Podcast Podcastindex Locked with when the locked field is missing`() {
         val lockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
             .owner("Send me money please, kthxbye")
 
@@ -40,7 +40,7 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
     }
 
     @Test
-    internal fun `should not build a Podcast Podcast Locked with when the owner field is missing`() {
+    internal fun `should not build a Podcast Podcastindex Locked with when the owner field is missing`() {
         val lockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
             .locked(true)
 
@@ -52,7 +52,7 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
     }
 
     @Test
-    internal fun `should build a Podcast Podcast Locked with with all the added entries to its fields`() {
+    internal fun `should build a Podcast Podcastindex Locked with with all the added entries to its fields`() {
         val lockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
             .locked(true)
             .owner("Send me money please, kthxbye")
@@ -68,7 +68,7 @@ internal class ValidatingPodcastPodcastindexLockedBuilderTest {
     }
 
     @Test
-    internal fun `should populate a Podcastindex Locked builder with all properties from an Podcastindex Locked model`() {
+    internal fun `should populate a Podcast Podcastindex Locked builder with all properties from an Podcast Podcastindex Locked model`() {
         val locked = aPodcastPodcastindexLocked()
         val lockedBuilder = Locked.builder().applyFrom(locked)
 

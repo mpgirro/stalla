@@ -46,7 +46,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
         .language(Locale.ITALIAN)
 
     @Test
-    internal fun `should not build an Episode Podcast with when all the fields are empty`() {
+    internal fun `should not build an Episode Podcastindex with when all the fields are empty`() {
         val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
 
         assertAll {
@@ -57,7 +57,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcast with at least a chapters builder`() {
+    internal fun `should build an Episode Podcastindex with at least a chapters builder`() {
         val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
             .chaptersBuilder(expectedChaptersBuilder)
 
@@ -69,7 +69,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast when there is only a chapters builder that doesn't build`() {
+    internal fun `should not build an Episode Podcastindexx when there is only a chapters builder that doesn't build`() {
         val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
             .chaptersBuilder(ValidatingEpisodePodcastindexChaptersBuilder())
 
@@ -81,7 +81,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcast with at least one soundbite builder`() {
+    internal fun `should build an Episode Podcastindex with at least one soundbite builder`() {
         val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
             .addSoundbiteBuilder(firstExpectedSoundbiteBuilder)
 
@@ -94,7 +94,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast when there is only a soundbite builder that doesn't build`() {
+    internal fun `should not build an Episode Podcastindex when there is only a soundbite builder that doesn't build`() {
         val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
             .addSoundbiteBuilder(ValidatingEpisodePodcastindexSoundbiteBuilder())
 
@@ -106,7 +106,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcast with at least a transcript builder`() {
+    internal fun `should build an Episode Podcastindex with at least a transcript builder`() {
         val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
             .addTranscriptBuilder(firstExpectedTranscriptBuilder)
 
@@ -119,7 +119,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast when there is only a transcript builder that doesn't build`() {
+    internal fun `should not build an Episode Podcastindex when there is only a transcript builder that doesn't build`() {
         val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
             .addTranscriptBuilder(ValidatingEpisodePodcastindexTranscriptBuilder())
 
@@ -131,7 +131,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcast with with all the added entries to its fields`() {
+    internal fun `should build an Episode Podcastindex with with all the added entries to its fields`() {
         val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
             .chaptersBuilder(expectedChaptersBuilder)
             .addSoundbiteBuilder(firstExpectedSoundbiteBuilder)

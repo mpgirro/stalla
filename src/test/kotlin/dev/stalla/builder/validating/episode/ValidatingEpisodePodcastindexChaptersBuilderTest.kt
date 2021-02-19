@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingEpisodePodcastindexChaptersBuilderTest {
 
     @Test
-    internal fun `should not build an Episode Podcast Chapters with when all the fields are missing`() {
+    internal fun `should not build an Episode Podcastindex Chapters with when all the fields are missing`() {
         val chaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
 
         assertAll {
@@ -28,7 +28,7 @@ internal class ValidatingEpisodePodcastindexChaptersBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast Chapters with when the url field is missing`() {
+    internal fun `should not build an Episode Podcastindex Chapters with when the url field is missing`() {
         val chaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
             .type("text/json+chapters")
 
@@ -40,7 +40,7 @@ internal class ValidatingEpisodePodcastindexChaptersBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast Chapters with when the type field is missing`() {
+    internal fun `should not build an Episode Podcastindex Chapters with when the type field is missing`() {
         val chaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
             .url("https://example.com/episode/chapters.json")
 
@@ -52,7 +52,7 @@ internal class ValidatingEpisodePodcastindexChaptersBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcast Chapters with with all the added entries to its fields`() {
+    internal fun `should build an Episode Podcastindex Chapters with with all the added entries to its fields`() {
         val chaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
             .url("https://example.com/episode/chapters.json")
             .type("text/json+chapters")

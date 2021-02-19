@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
 
     @Test
-    internal fun `should not build an Episode Podcast Soundbite with when all the fields are missing`() {
+    internal fun `should not build an Episode Podcastindex Soundbite with when all the fields are missing`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
 
         assertAll {
@@ -29,7 +29,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast Soundbite with when the startTime field is missing`() {
+    internal fun `should not build an Episode Podcastindex Soundbite with when the startTime field is missing`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .duration(StyledDuration.secondsAndFraction(15))
 
@@ -41,7 +41,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast Soundbite with when the startTime field is negative`() {
+    internal fun `should not build an Episode Podcastindex Soundbite with when the startTime field is negative`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(StyledDuration.secondsAndFraction(1, positive = false))
             .duration(StyledDuration.secondsAndFraction(15))
@@ -52,7 +52,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast Soundbite with when the duration field is missing`() {
+    internal fun `should not build an Episode Podcastindex Soundbite with when the duration field is missing`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(StyledDuration.secondsAndFraction(1))
 
@@ -64,7 +64,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast Soundbite with when the duration field is zero`() {
+    internal fun `should not build an Episode Podcastindex Soundbite with when the duration field is zero`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(StyledDuration.secondsAndFraction(1))
             .duration(StyledDuration.secondsAndFraction())
@@ -75,7 +75,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast Soundbite with when the duration field is negative`() {
+    internal fun `should not build an Episode Podcastindex Soundbite with when the duration field is negative`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(StyledDuration.secondsAndFraction(1))
             .duration(StyledDuration.secondsAndFraction(1, positive = false))
@@ -86,7 +86,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcast Soundbite with with all the added entries to its fields`() {
+    internal fun `should build an Episode Podcastindex Soundbite with with all the added entries to its fields`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(StyledDuration.secondsAndFraction(1))
             .duration(StyledDuration.secondsAndFraction(15))

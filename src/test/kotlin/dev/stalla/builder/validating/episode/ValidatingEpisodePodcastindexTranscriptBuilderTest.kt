@@ -19,7 +19,7 @@ import java.util.Locale
 internal class ValidatingEpisodePodcastindexTranscriptBuilderTest {
 
     @Test
-    internal fun `should not build an Episode Podcast Transcript with when all the fields are missing`() {
+    internal fun `should not build an Episode Podcastindex Transcript with when all the fields are missing`() {
         val transcriptBuilder = ValidatingEpisodePodcastindexTranscriptBuilder()
 
         assertAll {
@@ -30,7 +30,7 @@ internal class ValidatingEpisodePodcastindexTranscriptBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast Transcript with when the url field is missing`() {
+    internal fun `should not build an Episode Podcastindex Transcript with when the url field is missing`() {
         val transcriptBuilder = ValidatingEpisodePodcastindexTranscriptBuilder()
             .type(TranscriptType.PLAIN_TEXT)
 
@@ -42,7 +42,7 @@ internal class ValidatingEpisodePodcastindexTranscriptBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcast Transcript with when the type field is missing`() {
+    internal fun `should not build an Episode Podcastindex Transcript with when the type field is missing`() {
         val transcriptBuilder = ValidatingEpisodePodcastindexTranscriptBuilder()
             .url("https://example.com/episode/transcript.txt")
 
@@ -54,7 +54,7 @@ internal class ValidatingEpisodePodcastindexTranscriptBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcast Transcript with with all the added entries to its fields`() {
+    internal fun `should build an Episode Podcastindex Transcript with with all the added entries to its fields`() {
         val transcriptBuilder = ValidatingEpisodePodcastindexTranscriptBuilder()
             .url("https://example.com/episode/transcript.txt")
             .type(TranscriptType.PLAIN_TEXT)

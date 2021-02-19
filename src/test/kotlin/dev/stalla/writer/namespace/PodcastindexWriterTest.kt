@@ -20,7 +20,7 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     override val writer = PodcastindexWriter
 
     @Test
-    internal fun `should write the correct podcast tags to the channel when there is data to write`() {
+    internal fun `should write the correct podcastindex tags to the channel when there is data to write`() {
         assertAll {
             writePodcastData("locked") { element ->
                 val diff = element.diffFromExpected("/rss/channel/podcast:locked")
@@ -34,7 +34,7 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write podcast tags to the channel when there is no data to write`() {
+    internal fun `should not write podcastindex tags to the channel when there is no data to write`() {
         val podcast = aPodcast(podcastindex = null)
         assertAll {
             assertTagIsNotWrittenToPodcast(podcast, "locked")
@@ -43,7 +43,7 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write podcast tags to the channel when the data is blank`() {
+    internal fun `should not write podcastindex tags to the channel when the data is blank`() {
         val podcast = aPodcast(
             podcastindex = aPodcastPodcastindex(
                 locked = aPodcastPodcastindexLocked(" "),
@@ -57,7 +57,7 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write podcast tags to the channel when the data is empty`() {
+    internal fun `should not write podcastindex tags to the channel when the data is empty`() {
         val podcast = aPodcast(
             podcastindex = aPodcastPodcastindex(
                 locked = aPodcastPodcastindexLocked(""),
@@ -71,7 +71,7 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should write the correct podcast tags to the item when there is data to write`() {
+    internal fun `should write the correct podcastindex tags to the item when there is data to write`() {
         assertAll {
             writeEpisodeData("transcript") { element ->
                 val diff = element.diffFromExpected("/rss/channel/item[1]/podcast:transcript")
@@ -89,7 +89,7 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write podcast tags to the item when there is no data to write`() {
+    internal fun `should not write podcastindex tags to the item when there is no data to write`() {
         val episode = anEpisode(podcastindex = null)
         assertAll {
             assertTagIsNotWrittenToEpisode(episode, "transcript")
@@ -99,7 +99,7 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write podcast tags to the item when the data is blank`() {
+    internal fun `should not write podcastindex tags to the item when the data is blank`() {
         val episode = anEpisode(
             podcastindex = anEpisodePodcastindex(
                 transcripts = listOf(anEpisodePodcastindexTranscript(" ")),
@@ -113,7 +113,7 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write podcast tags to the item when the data is empty`() {
+    internal fun `should not write podcastindex tags to the item when the data is empty`() {
         val episode = anEpisode(
             podcastindex = anEpisodePodcastindex(
                 transcripts = listOf(anEpisodePodcastindexTranscript("")),
@@ -127,7 +127,7 @@ internal class PodcastindexWriterTest : NamespaceWriterTest() {
     }
 
     @Test
-    internal fun `should not write podcast soundbite tags to the item when the durations are invalid`() {
+    internal fun `should not write podcastindex soundbite tags to the item when the durations are invalid`() {
         val episode = anEpisode(
             podcastindex = anEpisodePodcastindex(
                 soundbites = listOf(

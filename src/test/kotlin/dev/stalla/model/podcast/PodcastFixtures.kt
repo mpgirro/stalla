@@ -127,11 +127,11 @@ internal fun aPodcastPodcastindex(
 ) = PodcastPodcastindex(locked, funding)
 
 internal fun aPodcastPodcastindexLocked(
-    owner: String = "podcast podcast: locked owner",
+    owner: String = "podcast podcastindex locked owner",
     locked: Boolean = true
 ) = Locked(owner, locked)
 
 internal fun aPodcastPodcastindexFunding(
-    url: String = "podcast podcast: funding url",
-    message: String = "podcast podcast: funding message"
+    url: String = "podcast podcastindex funding url",
+    message: String = "podcast podcastindex funding message"
 ) = Funding(url, message)

@@ -53,12 +53,12 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         .rel("captions")
 
     @Test
-    fun `should extract all podcast fields from channel when present`() {
+    fun `should extract all podcastindex fields from channel when present`() {
         val channel: Node = XmlRes("/xml/channel.xml").rootNodeByName("channel")
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.podcastPodcastindexBuilder, "podcast: podcast data").isNotNull().all {
+        assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").isNotNull().all {
             prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isEqualTo(expectedLockedBuilder)
             prop(FakePodcastPodcastindexBuilder::fundingBuilders).containsExactly(expectedFundingBuilder)
         }
@@ -70,7 +70,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.podcastPodcastindexBuilder, "podcast: episode data").all {
+        assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").all {
             prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
             prop(FakePodcastPodcastindexBuilder::fundingBuilders).isEmpty()
         }
@@ -82,7 +82,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.podcastPodcastindexBuilder, "podcast: episode data").all {
+        assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").all {
             prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
             prop(FakePodcastPodcastindexBuilder::fundingBuilders).isEmpty()
         }
@@ -94,7 +94,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.podcastindexBuilder, "podcast: item data").all {
+        assertThat(builder.podcastindexBuilder, "item.podcastindex").all {
             prop(FakeEpisodePodcastindexBuilder::chaptersBuilderValue).isEqualTo(expectedChaptersBuilder)
             prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).containsExactly(expectedSoundbiteBuilder)
             prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).containsExactly(expectedTranscriptBuilder)
@@ -107,7 +107,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.podcastindexBuilder, "podcast: item data").all {
+        assertThat(builder.podcastindexBuilder, "item.podcastindex").all {
             prop(FakeEpisodePodcastindexBuilder::chaptersBuilderValue).isNull()
             prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).isEmpty()
             prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).isEmpty()
@@ -120,7 +120,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.podcastindexBuilder, "podcast: item data").all {
+        assertThat(builder.podcastindexBuilder, "item.podcastindex").all {
             prop(FakeEpisodePodcastindexBuilder::chaptersBuilderValue).isNull()
             prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).isEmpty()
             prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).isEmpty()
@@ -134,7 +134,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         item.parseItemChildNodes(builder)
 
-        assertThat(builder.podcastindexBuilder, "podcast: item data").all {
+        assertThat(builder.podcastindexBuilder, "item.podcastindex").all {
             prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).isEmpty()
         }
     }
