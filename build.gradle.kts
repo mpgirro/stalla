@@ -5,7 +5,11 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter()
+        jcenter {
+            content {
+                includeGroup("org.jetbrains.kotlinx")
+            }
+        }
     }
 
     val ktlintVersion = "0.40.0"
@@ -29,8 +33,9 @@ plugins {
     id("org.jetbrains.dokka") version "1.4.20"
     id("jacoco")
     id("java")
-    id("com.github.nbaztec.coveralls-jacoco").version("1.2.5")
+    id("com.github.nbaztec.coveralls-jacoco") version "1.2.5"
     id("org.jmailen.kotlinter") version "3.3.0"
+    id("io.gitlab.arturbosch.detekt") version "1.16.0-RC1"
 }
 
 group = "dev.stalla"
@@ -79,4 +84,10 @@ tasks {
             xml.isEnabled = true
         }
     }
+
+    /* TODO this does not work for some reason
+    tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+        jvmTarget = "1.8"
+    }
+    */
 }
