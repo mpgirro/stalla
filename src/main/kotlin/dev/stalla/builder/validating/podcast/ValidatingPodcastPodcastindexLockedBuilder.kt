@@ -26,7 +26,8 @@ internal class ValidatingPodcastPodcastindexLockedBuilder : PodcastPodcastindexL
             return null
         }
 
-        val lockedValue = locked ?: throw IllegalStateException("The locked flag is not set, while hasEnoughDataToBuild == true")
+        val lockedValue = locked
+            ?: throw IllegalStateException("The locked flag is not set, while hasEnoughDataToBuild == true")
         return Locked(ownerValue, lockedValue)
     }
 }

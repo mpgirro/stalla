@@ -60,7 +60,9 @@ internal object RssParser : NamespaceParser() {
             "webMaster" -> builder.webMaster(ifCanBeParsed { textOrNull() })
             "ttl" -> builder.ttl(ifCanBeParsed { parseAsInt() })
             "category" -> {
-                val categoryBuilder = ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) } ?: return
+                val categoryBuilder = ifCanBeParsed {
+                    toRssCategoryBuilder(builder.createRssCategoryBuilder())
+                } ?: return
                 builder.addCategoryBuilder(categoryBuilder)
             }
             "item" -> pass // Items are parsed by the root parser direcly
@@ -73,7 +75,9 @@ internal object RssParser : NamespaceParser() {
         when (localName) {
             "author" -> builder.author(ifCanBeParsed { textOrNull() })
             "category" -> {
-                val categoryBuilder = ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) } ?: return
+                val categoryBuilder = ifCanBeParsed {
+                    toRssCategoryBuilder(builder.createRssCategoryBuilder())
+                } ?: return
                 builder.addCategoryBuilder(categoryBuilder)
             }
             "comments" -> builder.comments(ifCanBeParsed { textOrNull() })

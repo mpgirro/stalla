@@ -23,7 +23,8 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     override fun owner(email: String?): PodcastGoogleplayBuilder = apply { this.owner = email }
 
-    override fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder = apply { categories.add(category) }
+    override fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder =
+        apply { categories.add(category) }
 
     override fun description(description: String?): PodcastGoogleplayBuilder = apply { this.description = description }
 
@@ -31,7 +32,8 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     override fun block(block: Boolean): PodcastGoogleplayBuilder = apply { this.block = block }
 
-    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGoogleplayBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): PodcastGoogleplayBuilder =
+        apply { this.imageBuilder = imageBuilder }
 
     override fun newFeedUrl(newFeedUrl: String?): PodcastGoogleplayBuilder = apply { this.newFeedUrl = newFeedUrl }
 

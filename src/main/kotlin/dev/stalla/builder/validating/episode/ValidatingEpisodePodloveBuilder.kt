@@ -10,11 +10,15 @@ internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
 
     private var chapterBuilders: MutableList<EpisodePodloveSimpleChapterBuilder> = mutableListOf()
 
-    override fun addSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveBuilder = apply {
+    override fun addSimpleChapterBuilder(
+        chapterBuilder: EpisodePodloveSimpleChapterBuilder
+    ): EpisodePodloveBuilder = apply {
         chapterBuilders.add(chapterBuilder)
     }
 
-    override fun addAllSimpleChapterBuilder(chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>): EpisodePodloveBuilder = apply {
+    override fun addAllSimpleChapterBuilder(
+        chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>
+    ): EpisodePodloveBuilder = apply {
         this.chapterBuilders.addAll(chapterBuilders)
     }
 

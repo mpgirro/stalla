@@ -67,7 +67,9 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     override fun pubDate(pubDate: TemporalAccessor?): PodcastBuilder = apply { this.pubDate = pubDate }
 
-    override fun lastBuildDate(lastBuildDate: TemporalAccessor?): PodcastBuilder = apply { this.lastBuildDate = lastBuildDate }
+    override fun lastBuildDate(
+        lastBuildDate: TemporalAccessor?
+    ): PodcastBuilder = apply { this.lastBuildDate = lastBuildDate }
 
     override fun language(language: String): PodcastBuilder = apply { this.languageValue = language }
 
@@ -77,13 +79,17 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     override fun docs(docs: String?): PodcastBuilder = apply { this.docs = docs }
 
-    override fun managingEditor(managingEditor: String?): PodcastBuilder = apply { this.managingEditor = managingEditor }
+    override fun managingEditor(
+        managingEditor: String?
+    ): PodcastBuilder = apply { this.managingEditor = managingEditor }
 
     override fun webMaster(webMaster: String?): PodcastBuilder = apply { this.webMaster = webMaster }
 
     override fun ttl(ttl: Int?): PodcastBuilder = apply { this.ttl = ttl }
 
-    override fun imageBuilder(imageBuilder: RssImageBuilder?): PodcastBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(
+        imageBuilder: RssImageBuilder?
+    ): PodcastBuilder = apply { this.imageBuilder = imageBuilder }
 
     override fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder = apply {
         episodeBuilders.add(episodeBuilder)
@@ -103,9 +109,11 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder = ValidatingPodcastPodcastindexLockedBuilder()
+    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder =
+        ValidatingPodcastPodcastindexLockedBuilder()
 
-    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder = ValidatingPodcastPodcastindexFundingBuilder()
+    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder =
+        ValidatingPodcastPodcastindexFundingBuilder()
 
     override val hasEnoughDataToBuild: Boolean
         get() = episodeBuilders.any { it.hasEnoughDataToBuild } &&

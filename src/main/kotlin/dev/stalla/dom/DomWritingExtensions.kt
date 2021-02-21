@@ -75,7 +75,11 @@ internal fun Node.appendRssImageElement(image: RssImage): Element? {
  * @return Returns the newly created [Element].
  */
 @InternalApi
-internal fun Node.appendElement(elementTagName: String, namespace: FeedNamespace? = null, init: Element.() -> Unit = {}): Element {
+internal fun Node.appendElement(
+    elementTagName: String,
+    namespace: FeedNamespace? = null,
+    init: Element.() -> Unit = {}
+): Element {
     val tagName = if (namespace != null) "${namespace.prefix}:$elementTagName" else elementTagName
     val element = getDocument().createElementNS(namespace?.uri, tagName)
     init(element)
@@ -100,7 +104,11 @@ private fun Node.getDocument(): Document = when {
  * @return Returns the newly created [Attr].
  */
 @InternalApi
-internal fun Element.setAttributeWithNS(attributeName: String, namespace: FeedNamespace? = null, init: Attr.() -> Unit = {}): Attr {
+internal fun Element.setAttributeWithNS(
+    attributeName: String,
+    namespace: FeedNamespace? = null,
+    init: Attr.() -> Unit = {}
+): Attr {
     val name = if (namespace != null) "${namespace.prefix}:$attributeName" else attributeName
     val attr = ownerDocument.createAttributeNS(namespace?.uri, name)
     init(attr)
@@ -183,7 +191,10 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
  * @param namespace The namespace to use, if any.
  */
 @InternalApi
-internal fun Node.appendItunesStyleCategoryElements(categories: List<ItunesCategory>, namespace: FeedNamespace? = null) {
+internal fun Node.appendItunesStyleCategoryElements(
+    categories: List<ItunesCategory>,
+    namespace: FeedNamespace? = null
+) {
     for (category in categories) {
         if (category.type.isBlank()) continue
 
@@ -215,7 +226,10 @@ internal fun Node.appendItunesStyleCategoryElements(categories: List<ItunesCateg
  * @param namespace The namespace to use, if any.
  */
 @InternalApi
-internal fun Node.appendGoogleplayCategoryElements(categories: List<GoogleplayCategory>, namespace: FeedNamespace? = null) {
+internal fun Node.appendGoogleplayCategoryElements(
+    categories: List<GoogleplayCategory>,
+    namespace: FeedNamespace? = null
+) {
     for (category in categories) {
         if (category.name.isBlank()) continue
         appendElement("category", namespace) {

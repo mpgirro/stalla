@@ -30,7 +30,8 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
 
     override fun summary(summary: String?): PodcastItunesBuilder = apply { this.summary = summary }
 
-    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder): PodcastItunesBuilder = apply { this.imageBuilderValue = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder): PodcastItunesBuilder =
+        apply { this.imageBuilderValue = imageBuilder }
 
     override fun keywords(keywords: String?): PodcastItunesBuilder = apply { this.keywords = keywords }
 
@@ -46,7 +47,9 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
 
     override fun type(type: String?): PodcastItunesBuilder = apply { this.type = ShowType.of(type) }
 
-    override fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastItunesBuilder = apply { this.ownerBuilder = ownerBuilder }
+    override fun ownerBuilder(
+        ownerBuilder: PersonBuilder?
+    ): PodcastItunesBuilder = apply { this.ownerBuilder = ownerBuilder }
 
     override fun title(title: String?): PodcastItunesBuilder = apply {
         this.title = title
@@ -72,7 +75,8 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
             keywords = keywords,
             author = author,
             categories = categories,
-            explicit = explicit ?: throw IllegalStateException("The explicit flag is not set, while hasEnoughDataToBuild == true"),
+            explicit = explicit
+                ?: throw IllegalStateException("The explicit flag is not set, while hasEnoughDataToBuild == true"),
             block = block,
             complete = complete,
             type = type,

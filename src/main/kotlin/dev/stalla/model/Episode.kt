@@ -23,14 +23,15 @@ import java.time.temporal.TemporalAccessor
  * @property author The RSS `<author>` field textContent
  * @property categories List of RSS `<category>` field contents.
  * @property comments The RSS `<comments>` field textContent.
- * @property enclosure The RSS `<enclosure>` element attributes wrapped in an [Episode.Enclosure] instance.
- * @property guid The RSS `<guid>` element wrapped in an [Episode.Guid] instance.
+ * @property enclosure The RSS `<enclosure>` element attributes wrapped in an [Enclosure] instance.
+ * @property guid The RSS `<guid>` element wrapped in an [Guid] instance.
  * @property pubDate The RSS `<pubDate>` field textContent.
  * @property source The RSS `<source>` field textContent.
  * @property content The data from the Content namespace, or null if no data from this namespace was found.
  * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
  * @property atom The data from the Atom namespace, or null if no data from this namespace was found.
- * @property podlove The data from the Podlove standards namespaces, or null if no data from these namespaces were found.
+ * @property podlove The data from the Podlove standards namespaces,
+ *                   or null if no data from these namespaces were found.
  * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property bitlove The data from the Bitlove namespace, or null if no data from this namespace was found.
  * @property podcastindex The data from the Podcast namespace, or null if no data from this namespace was found.

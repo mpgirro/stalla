@@ -40,11 +40,15 @@ internal object AtomParser : NamespaceParser() {
     ) {
         when (localName) {
             "contributor" -> {
-                val personBuilder = ifCanBeParsed { toPersonBuilder(personBuilderProvider.createPersonBuilder(), namespace) } ?: return
+                val personBuilder = ifCanBeParsed {
+                    toPersonBuilder(personBuilderProvider.createPersonBuilder(), namespace)
+                } ?: return
                 atomBuilder.addContributorBuilder(personBuilder)
             }
             "author" -> {
-                val personBuilder = ifCanBeParsed { toPersonBuilder(personBuilderProvider.createPersonBuilder(), namespace) } ?: return
+                val personBuilder = ifCanBeParsed {
+                    toPersonBuilder(personBuilderProvider.createPersonBuilder(), namespace)
+                } ?: return
                 atomBuilder.addAuthorBuilder(personBuilder)
             }
             "link" -> {

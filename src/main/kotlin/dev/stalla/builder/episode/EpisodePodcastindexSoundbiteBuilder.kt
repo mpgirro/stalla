@@ -17,9 +17,11 @@ public interface EpisodePodcastindexSoundbiteBuilder : Builder<Soundbite> {
     /** Set the title value. */
     public fun title(title: String?): EpisodePodcastindexSoundbiteBuilder
 
-    override fun applyFrom(prototype: Soundbite?): EpisodePodcastindexSoundbiteBuilder = whenNotNull(prototype) { soundbite ->
-        startTime(soundbite.startTime)
-        duration(soundbite.duration)
-        title(soundbite.title)
+    override fun applyFrom(prototype: Soundbite?): EpisodePodcastindexSoundbiteBuilder {
+        return whenNotNull(prototype) { soundbite ->
+            startTime(soundbite.startTime)
+            duration(soundbite.duration)
+            title(soundbite.title)
+        }
     }
 }

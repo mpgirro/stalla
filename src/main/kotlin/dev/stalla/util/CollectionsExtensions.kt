@@ -28,7 +28,8 @@ internal fun List<Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = map(E
 /** Transforms this list into a list of [EpisodePodcastindexSoundbiteBuilder] */
 @InternalApi
 @JvmName("asSoundbiteBuilders")
-internal fun List<Soundbite>.asBuilders(): List<EpisodePodcastindexSoundbiteBuilder> = map(Soundbite.builder()::applyFrom)
+internal fun List<Soundbite>.asBuilders(): List<EpisodePodcastindexSoundbiteBuilder> =
+    map(Soundbite.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodePodcastindexTranscriptBuilder] */
 @InternalApi

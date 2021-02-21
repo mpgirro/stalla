@@ -22,8 +22,10 @@ import dev.stalla.model.BuilderFactory
  * The `url`, `title` and `link` tags are _mandatory_, the rest are optional.
  *
  * @property url The value of an RSS `<url>` element inside an `<image>`. Represents the image URL.
- * @property title The value of an RSS `<title>` element inside an `<image>`. **Must** match the containing podcast's or episode's `title`.
- * @property link The value of an RSS `<link>` element inside an `<image>`. **Must** match the containing podcast's or episode's `link`.
+ * @property title The value of an RSS `<title>` element inside an `<image>`.
+ *                 **Must** match the containing podcast's or episode's `title`.
+ * @property link The value of an RSS `<link>` element inside an `<image>`.
+ *                **Must** match the containing podcast's or episode's `link`.
  * @property width The numeric value of an RSS `<width>` element inside an `<image>` element.
  * @property height The numeric value of an RSS `<height>` element inside an `<image>` element.
  * @property description The value of an RSS `<description>` element inside an `<image>`.

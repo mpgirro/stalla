@@ -9,7 +9,8 @@ import dev.stalla.model.HrefOnlyImage
  * Model class for data from elements of the Google Play namespace that are valid within `<item>` elements.
  *
  * Properties are as defined in the
- * [XML Schema for the Google Play Podcasts extension](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd)
+ * [XML Schema](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd)
+ * for the Google Play Podcasts extension
  *
  * @property description The `<googleplay:description>` field text content.
  * @property explicit The `<googleplay:explicit>` field text content.

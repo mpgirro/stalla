@@ -49,7 +49,8 @@ internal object DateParser {
     // lenient in parsing weird stuff. Because as y'all know time is bloody hard to do right.
     // Note: brackets indicate optional parts in the pattern
     private val formatters = listOf(
-        DateTimeFormatterBuilder().parseCaseInsensitive() // RFC-(2)822/RFC-1123 (-ish): [Tue, ]3 Dec 2011 10:15[:30[.123]][ +0100]
+        DateTimeFormatterBuilder()
+            .parseCaseInsensitive() // RFC-(2)822/RFC-1123 (-ish): [Tue, ]3 Dec 2011 10:15[:30[.123]][ +0100]
             .parseLenient()
             // Start of date section
             // Optional EEE: day of week (in English, 3 letters)

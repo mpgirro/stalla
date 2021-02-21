@@ -91,18 +91,23 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = ValidatingHrefOnlyImageBuilder()
 
-    override fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
+    override fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder =
+        ValidatingEpisodePodloveSimpleChapterBuilder()
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder = ValidatingEpisodePodcastindexTranscriptBuilder()
+    override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder =
+        ValidatingEpisodePodcastindexTranscriptBuilder()
 
-    override fun createEpisodePodcastChaptersBuilder(): EpisodePodcastindexChaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
+    override fun createEpisodePodcastChaptersBuilder(): EpisodePodcastindexChaptersBuilder =
+        ValidatingEpisodePodcastindexChaptersBuilder()
 
-    override fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
+    override fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder =
+        ValidatingEpisodePodcastindexSoundbiteBuilder()
 
     override val hasEnoughDataToBuild: Boolean
-        get() = ::titleValue.isInitialized && (::enclosureBuilderValue.isInitialized && enclosureBuilderValue.hasEnoughDataToBuild)
+        get() = ::titleValue.isInitialized
+            && (::enclosureBuilderValue.isInitialized && enclosureBuilderValue.hasEnoughDataToBuild)
 
     override fun build(): Episode? {
         if (!hasEnoughDataToBuild) {

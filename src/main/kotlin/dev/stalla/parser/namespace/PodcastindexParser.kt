@@ -31,18 +31,24 @@ internal object PodcastindexParser : NamespaceParser() {
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
             "locked" -> {
-                val lockedBuilder = ifCanBeParsed { toLockedBuilder(builder.createPodcastPodcastLockedBuilder()) } ?: return
+                val lockedBuilder = ifCanBeParsed {
+                    toLockedBuilder(builder.createPodcastPodcastLockedBuilder())
+                } ?: return
                 builder.podcastPodcastindexBuilder.lockedBuilder(lockedBuilder)
             }
             "funding" -> {
-                val fundingBuilder = ifCanBeParsed { toFundingBuilder(builder.createPodcastPodcastFundingBuilder()) } ?: return
+                val fundingBuilder = ifCanBeParsed {
+                    toFundingBuilder(builder.createPodcastPodcastFundingBuilder())
+                } ?: return
                 builder.podcastPodcastindexBuilder.addFundingBuilder(fundingBuilder)
             }
             else -> pass
         }
     }
 
-    private fun Node.toLockedBuilder(lockedBuilder: PodcastPodcastindexLockedBuilder): PodcastPodcastindexLockedBuilder? {
+    private fun Node.toLockedBuilder(
+        lockedBuilder: PodcastPodcastindexLockedBuilder
+    ): PodcastPodcastindexLockedBuilder? {
         val owner = getAttributeByName("owner")?.value.trimmedOrNullIfBlank()
         val locked = textAsBooleanOrNull()
 
@@ -51,7 +57,9 @@ internal object PodcastindexParser : NamespaceParser() {
             .locked(locked)
     }
 
-    private fun Node.toFundingBuilder(fundingBuilder: PodcastPodcastindexFundingBuilder): PodcastPodcastindexFundingBuilder? {
+    private fun Node.toFundingBuilder(
+        fundingBuilder: PodcastPodcastindexFundingBuilder
+    ): PodcastPodcastindexFundingBuilder? {
         val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()
         val message = textContent.trimmedOrNullIfBlank()
 
@@ -63,22 +71,30 @@ internal object PodcastindexParser : NamespaceParser() {
     override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         when (localName) {
             "chapters" -> {
-                val chaptersBuilder = ifCanBeParsed { toChaptersBuilder(builder.createEpisodePodcastChaptersBuilder()) } ?: return
+                val chaptersBuilder = ifCanBeParsed {
+                    toChaptersBuilder(builder.createEpisodePodcastChaptersBuilder())
+                } ?: return
                 builder.podcastindexBuilder.chaptersBuilder(chaptersBuilder)
             }
             "soundbite" -> {
-                val soundbiteBuilder = ifCanBeParsed { toSoundbiteBuilder(builder.createEpisodePodcastSoundbiteBuilder()) } ?: return
+                val soundbiteBuilder = ifCanBeParsed {
+                    toSoundbiteBuilder(builder.createEpisodePodcastSoundbiteBuilder())
+                } ?: return
                 builder.podcastindexBuilder.addSoundbiteBuilder(soundbiteBuilder)
             }
             "transcript" -> {
-                val transcriptBuilder = ifCanBeParsed { toTranscriptBuilder(builder.createEpisodePodcastTranscriptBuilder()) } ?: return
+                val transcriptBuilder = ifCanBeParsed {
+                    toTranscriptBuilder(builder.createEpisodePodcastTranscriptBuilder())
+                } ?: return
                 builder.podcastindexBuilder.addTranscriptBuilder(transcriptBuilder)
             }
             else -> pass
         }
     }
 
-    private fun Node.toChaptersBuilder(chaptersBuilder: EpisodePodcastindexChaptersBuilder): EpisodePodcastindexChaptersBuilder? {
+    private fun Node.toChaptersBuilder(
+        chaptersBuilder: EpisodePodcastindexChaptersBuilder
+    ): EpisodePodcastindexChaptersBuilder? {
         val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()
         val type = getAttributeByName("type")?.value.trimmedOrNullIfBlank()
 
@@ -87,7 +103,9 @@ internal object PodcastindexParser : NamespaceParser() {
             .type(type)
     }
 
-    private fun Node.toSoundbiteBuilder(soundbiteBuilder: EpisodePodcastindexSoundbiteBuilder): EpisodePodcastindexSoundbiteBuilder? {
+    private fun Node.toSoundbiteBuilder(
+        soundbiteBuilder: EpisodePodcastindexSoundbiteBuilder
+    ): EpisodePodcastindexSoundbiteBuilder? {
         val startTime = StyledDuration.of(getAttributeByName("startTime")?.value.trimmedOrNullIfBlank())
             ?.ensureFractionalFormat()
         val duration = StyledDuration.of(getAttributeByName("duration")?.value.trimmedOrNullIfBlank())
@@ -107,7 +125,9 @@ internal object PodcastindexParser : NamespaceParser() {
             StyledDuration.SecondsAndFraction(rawDuration)
         } else this
 
-    private fun Node.toTranscriptBuilder(transcriptBuilder: EpisodePodcastindexTranscriptBuilder): EpisodePodcastindexTranscriptBuilder? {
+    private fun Node.toTranscriptBuilder(
+        transcriptBuilder: EpisodePodcastindexTranscriptBuilder
+    ): EpisodePodcastindexTranscriptBuilder? {
         val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()
         val type = getAttributeByName("type")?.value.trimmedOrNullIfBlank()?.let { rawType ->
             TranscriptType.of(rawType)

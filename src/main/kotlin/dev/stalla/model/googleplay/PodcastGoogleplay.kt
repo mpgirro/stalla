@@ -9,7 +9,8 @@ import dev.stalla.model.HrefOnlyImage
  * Model class for data from the Google Play namespace valid within an RSS `<channel>`.
  *
  * Properties are as defined in the
- * [XML Schema for the Google Play Podcasts extension](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd)
+ * [XML Schema](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd)
+ * for the Google Play Podcasts extension
  *
  * @property author The `<googleplay:author>` field text content.
  * @property owner The `<googleplay:email>` field text content.

@@ -121,7 +121,8 @@ import kotlin.reflect.full.declaredMemberProperties
  * Supported category types encountered within the `<itunes:category>` element
  * within a `<channel>` element, modeled as a finite set sealed class.
  *
- * Defined category values are listed in [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
+ * Defined category values are listed in
+ * [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
  * The categories and their nested hierarchies are modeled according to the table below.
  * This classes [companion object][Factory] exposed a reference for each instance.
  *
@@ -250,7 +251,8 @@ public sealed class ItunesCategory(public open val type: String) {
      * <itunes:category text="News" />
      * ```
      *
-     * Categories are defined in the [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
+     * Categories are defined in the
+     * [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
      */
     public abstract class Simple protected constructor(override val type: String) : ItunesCategory(type)
 
@@ -263,11 +265,15 @@ public sealed class ItunesCategory(public open val type: String) {
      * </itunes:category>
      * ```
      *
-     * Categories and their hierarchy are defined in the [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
+     * Categories and their hierarchy are defined in the
+     * [Apple Podcasts Categories](https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12).
      *
      * @param parent The parent [Simple].
      */
-    public abstract class Nested protected constructor(override val type: String, public val parent: Simple) : ItunesCategory(type)
+    public abstract class Nested protected constructor(
+        override val type: String,
+        public val parent: Simple
+    ) : ItunesCategory(type)
 
     public companion object Factory : TypeFactory<ItunesCategory> {
 

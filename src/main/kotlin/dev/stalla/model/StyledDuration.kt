@@ -1,5 +1,9 @@
 package dev.stalla.model
 
+import dev.stalla.model.StyledDuration.HoursMinutesSeconds
+import dev.stalla.model.StyledDuration.MinutesSeconds
+import dev.stalla.model.StyledDuration.Seconds
+import dev.stalla.model.StyledDuration.SecondsAndFraction
 import dev.stalla.util.InternalApi
 import java.time.Duration
 import kotlin.math.absoluteValue
@@ -55,7 +59,8 @@ public sealed class StyledDuration {
     public val isStrictlyPositive: Boolean
         get() = !(isNegative || isZero)
 
-    final override fun toString(): String = "${javaClass.simpleName}(rawDuration: '$rawDuration', formatted: \"${asFormattedString()}\")"
+    final override fun toString(): String =
+        "${javaClass.simpleName}(rawDuration: '$rawDuration', formatted: \"${asFormattedString()}\")"
 
     /**
      * A duration expressed in the style: `[-]S[.FFF]`.
@@ -238,7 +243,12 @@ public sealed class StyledDuration {
             val seconds = groupValues.last().toInt()
 
             return when (groupValues.count()) {
-                3 -> hoursMinutesSeconds(hours = groupValues[0].toInt(), minutes = groupValues[1].toInt(), seconds, positive)
+                3 -> hoursMinutesSeconds(
+                    hours = groupValues[0].toInt(),
+                    minutes = groupValues[1].toInt(),
+                    seconds = seconds,
+                    positive = positive
+                )
                 2 -> minutesSeconds(minutes = groupValues[0].toInt(), seconds, positive)
                 else -> null
             }
@@ -313,7 +323,12 @@ public sealed class StyledDuration {
          * @return A new [HoursMinutesSeconds] instance representing the given duration.
          */
         @JvmOverloads
-        public fun hoursMinutesSeconds(hours: Int = 0, minutes: Int = 0, seconds: Int = 0, positive: Boolean = true): HoursMinutesSeconds {
+        public fun hoursMinutesSeconds(
+            hours: Int = 0,
+            minutes: Int = 0,
+            seconds: Int = 0,
+            positive: Boolean = true
+        ): HoursMinutesSeconds {
             require(hours >= 0 && minutes >= 0 && seconds >= 0) { "Components cannot be negative" }
             val sign = signForPositive(positive)
             val rawDuration = Duration.ofHours(hours.toLong() * sign)

@@ -16,7 +16,9 @@ internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder
         this.lockedBuilderValue = lockedBuilder
     }
 
-    override fun addFundingBuilder(fundingBuilder: PodcastPodcastindexFundingBuilder): PodcastPodcastindexBuilder = apply {
+    override fun addFundingBuilder(
+        fundingBuilder: PodcastPodcastindexFundingBuilder
+    ): PodcastPodcastindexBuilder = apply {
         fundingBuilders.add(fundingBuilder)
     }
 
