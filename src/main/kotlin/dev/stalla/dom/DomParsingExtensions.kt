@@ -1,3 +1,5 @@
+@file:Suppress("TooManyFunctions")
+
 package dev.stalla.dom
 
 import dev.stalla.builder.HrefOnlyImageBuilder

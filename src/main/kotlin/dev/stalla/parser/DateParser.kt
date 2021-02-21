@@ -17,8 +17,10 @@ import java.util.Locale
  * format to produce the intended date object.
  */
 @InternalApi
+
 internal object DateParser {
 
+    @Suppress("MagicNumber")
     private val dayOfWeek = mapOf(
         1L to "Mon",
         2L to "Tue",
@@ -29,6 +31,7 @@ internal object DateParser {
         7L to "Sun"
     )
 
+    @Suppress("MagicNumber")
     private val monthOfYear = mapOf(
         1L to "Jan",
         2L to "Feb",
@@ -48,6 +51,7 @@ internal object DateParser {
     // Our RFC parser is based on DateTimeFormatter#RFC_1123_DATE_TIME, but is much more
     // lenient in parsing weird stuff. Because as y'all know time is bloody hard to do right.
     // Note: brackets indicate optional parts in the pattern
+    @Suppress("MagicNumber")
     private val formatters = listOf(
         DateTimeFormatterBuilder()
             .parseCaseInsensitive() // RFC-(2)822/RFC-1123 (-ish): [Tue, ]3 Dec 2011 10:15[:30[.123]][ +0100]

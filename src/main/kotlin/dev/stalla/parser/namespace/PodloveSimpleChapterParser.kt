@@ -39,9 +39,11 @@ internal object PodloveSimpleChapterParser : NamespaceParser() {
     ): List<EpisodePodloveSimpleChapterBuilder> =
         childNodes.asListOfNodes().asSequence()
             .filter { c -> c.localName == "chapter" }
-            .map { node -> node.ifCanBeParsed {
-                toPodloveSimpleChapterBuilder(builder.createPodloveSimpleChapterBuilder())
-            } }
+            .map { node ->
+                node.ifCanBeParsed {
+                    toPodloveSimpleChapterBuilder(builder.createPodloveSimpleChapterBuilder())
+                }
+            }
             .filterNotNull()
             .toList()
 

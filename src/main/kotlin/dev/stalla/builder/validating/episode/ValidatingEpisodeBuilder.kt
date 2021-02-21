@@ -1,3 +1,5 @@
+@file:Suppress("TooManyFunctions")
+
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.AtomBuilder
@@ -108,8 +110,8 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
         ValidatingEpisodePodcastindexSoundbiteBuilder()
 
     override val hasEnoughDataToBuild: Boolean
-        get() = ::titleValue.isInitialized
-            && (::enclosureBuilderValue.isInitialized && enclosureBuilderValue.hasEnoughDataToBuild)
+        get() = ::titleValue.isInitialized &&
+            (::enclosureBuilderValue.isInitialized && enclosureBuilderValue.hasEnoughDataToBuild)
 
     override fun build(): Episode? {
         if (!hasEnoughDataToBuild) {
