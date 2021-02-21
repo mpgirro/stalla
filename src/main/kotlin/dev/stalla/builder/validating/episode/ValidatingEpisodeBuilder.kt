@@ -75,7 +75,9 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
         this.enclosureBuilderValue = enclosureBuilder
     }
 
-    override fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder = apply { this.guidBuilder = guidBuilder }
+    override fun guidBuilder(
+        guidBuilder: EpisodeGuidBuilder?
+    ): EpisodeBuilder = apply { this.guidBuilder = guidBuilder }
 
     override fun pubDate(pubDate: TemporalAccessor?): EpisodeBuilder = apply { this.pubDate = pubDate }
 
