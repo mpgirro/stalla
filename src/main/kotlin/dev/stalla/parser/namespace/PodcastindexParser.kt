@@ -70,24 +70,12 @@ internal object PodcastindexParser : NamespaceParser() {
 
     override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         when (localName) {
-            "chapters" -> {
-                val chaptersBuilder = ifCanBeParsed {
-                    toChaptersBuilder(builder.createEpisodePodcastChaptersBuilder())
-                } ?: return
-                builder.podcastindexBuilder.chaptersBuilder(chaptersBuilder)
-            }
-            "soundbite" -> {
-                val soundbiteBuilder = ifCanBeParsed {
-                    toSoundbiteBuilder(builder.createEpisodePodcastSoundbiteBuilder())
-                } ?: return
-                builder.podcastindexBuilder.addSoundbiteBuilder(soundbiteBuilder)
-            }
-            "transcript" -> {
-                val transcriptBuilder = ifCanBeParsed {
-                    toTranscriptBuilder(builder.createEpisodePodcastTranscriptBuilder())
-                } ?: return
-                builder.podcastindexBuilder.addTranscriptBuilder(transcriptBuilder)
-            }
+            "chapters" -> ifCanBeParsed { toChaptersBuilder(builder.createEpisodePodcastChaptersBuilder()) }
+                ?.let { chaptersBuilder -> builder.podcastindexBuilder.chaptersBuilder(chaptersBuilder) }
+            "soundbite" -> ifCanBeParsed { toSoundbiteBuilder(builder.createEpisodePodcastSoundbiteBuilder()) }
+                ?.let { soundbiteBuilder -> builder.podcastindexBuilder.addSoundbiteBuilder(soundbiteBuilder) }
+            "transcript" -> ifCanBeParsed { toTranscriptBuilder(builder.createEpisodePodcastTranscriptBuilder()) }
+                ?.let { transcriptBuilder -> builder.podcastindexBuilder.addTranscriptBuilder(transcriptBuilder) }
             else -> pass
         }
     }

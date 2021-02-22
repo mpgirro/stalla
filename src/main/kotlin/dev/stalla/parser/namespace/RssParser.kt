@@ -23,77 +23,55 @@ import org.w3c.dom.Node
  *
  * Note that RSS 2.0 feeds do not have a namespace URI, and thus [namespace] is null.
  *
- * The RSS specification is described []here][http://www.rssboard.org/rss-2-0].
+ * The RSS specification is described [here][http://www.rssboard.org/rss-2-0].
  */
 @InternalApi
 internal object RssParser : NamespaceParser() {
 
     override val namespace: FeedNamespace? = null
 
+    @Suppress("ComplexMethod")
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         if (this !is Element) return
 
         when (localName) {
             "copyright" -> builder.copyright(ifCanBeParsed { textOrNull() })
-            "description" -> {
-                val description = ifCanBeParsed { textOrNull() } ?: return
-                builder.description(description)
-            }
+            "description" -> ifCanBeParsed { textOrNull() }?.let { description -> builder.description(description) }
             "docs" -> builder.docs(ifCanBeParsed { textOrNull() })
             "generator" -> builder.generator(ifCanBeParsed { textOrNull() })
             "image" -> builder.imageBuilder(ifCanBeParsed { toRssImageBuilder(builder.createRssImageBuilder()) })
-            "language" -> {
-                val language = ifCanBeParsed { textOrNull() } ?: return
-                builder.language(language)
-            }
+            "language" -> ifCanBeParsed { textOrNull() }?.let { language -> builder.language(language) }
             "lastBuildDate" -> builder.lastBuildDate(ifCanBeParsed { parseAsTemporalAccessor() })
-            "link" -> {
-                val link = ifCanBeParsed { textOrNull() } ?: return
-                builder.link(link)
-            }
+            "link" -> ifCanBeParsed { textOrNull() }?.let { link -> builder.link(link) }
             "managingEditor" -> builder.managingEditor(ifCanBeParsed { textOrNull() })
             "pubDate" -> builder.pubDate(ifCanBeParsed { parseAsTemporalAccessor() })
-            "title" -> {
-                val title = ifCanBeParsed { textOrNull() } ?: return
-                builder.title(title)
-            }
+            "title" -> ifCanBeParsed { textOrNull() }?.let { title -> builder.title(title) }
             "webMaster" -> builder.webMaster(ifCanBeParsed { textOrNull() })
             "ttl" -> builder.ttl(ifCanBeParsed { parseAsInt() })
-            "category" -> {
-                val categoryBuilder = ifCanBeParsed {
-                    toRssCategoryBuilder(builder.createRssCategoryBuilder())
-                } ?: return
-                builder.addCategoryBuilder(categoryBuilder)
-            }
+            "category" -> ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) }
+                ?.let { categoryBuilder -> builder.addCategoryBuilder(categoryBuilder) }
             "item" -> pass // Items are parsed by the root parser direcly
         }
     }
 
+    @Suppress("ComplexMethod")
     override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         if (this !is Element) return
 
         when (localName) {
             "author" -> builder.author(ifCanBeParsed { textOrNull() })
-            "category" -> {
-                val categoryBuilder = ifCanBeParsed {
-                    toRssCategoryBuilder(builder.createRssCategoryBuilder())
-                } ?: return
-                builder.addCategoryBuilder(categoryBuilder)
-            }
+            "category" -> ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) }
+                ?.let { categoryBuilder -> builder.addCategoryBuilder(categoryBuilder) }
             "comments" -> builder.comments(ifCanBeParsed { textOrNull() })
             "description" -> builder.description(ifCanBeParsed { textOrNull() })
-            "enclosure" -> {
-                val enclosure = ifCanBeParsed { toEnclosureBuilder(builder.createEnclosureBuilder()) } ?: return
-                builder.enclosureBuilder(enclosure)
-            }
+            "enclosure" -> ifCanBeParsed { toEnclosureBuilder(builder.createEnclosureBuilder()) }
+                ?.let { enclosure -> builder.enclosureBuilder(enclosure) }
             "guid" -> builder.guidBuilder(ifCanBeParsed { toGuidBuilder(builder.createGuidBuilder()) })
             "link" -> builder.link(ifCanBeParsed { textOrNull() })
             "pubDate" -> builder.pubDate(ifCanBeParsed { parseAsTemporalAccessor() })
             "source" -> builder.source(ifCanBeParsed { textOrNull() })
-            "title" -> {
-                val title = ifCanBeParsed { textOrNull() } ?: return
-                builder.title(title)
-            }
+            "title" -> ifCanBeParsed { textOrNull() }
+                ?.let { title -> builder.title(title) }
         }
     }
 

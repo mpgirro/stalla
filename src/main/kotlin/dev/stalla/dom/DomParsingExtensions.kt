@@ -81,6 +81,7 @@ internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.pars
  * @return The [imageBuilder] populated with the DOM node contents.
  */
 @InternalApi
+@Suppress("ComplexMethod")
 internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: FeedNamespace? = null): RssImageBuilder {
     for (node in childNodes.asListOfNodes()) {
         if (!namespace.matches(node.namespaceURI)) continue
@@ -88,18 +89,9 @@ internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: Fe
         when (node.localName) {
             "description" -> imageBuilder.description(node.textOrNull())
             "height" -> imageBuilder.height(node.parseAsInt())
-            "link" -> {
-                val link = node.textOrNull() ?: continue
-                imageBuilder.link(link)
-            }
-            "title" -> {
-                val title = node.textOrNull() ?: continue
-                imageBuilder.title(title)
-            }
-            "url" -> {
-                val url = node.textOrNull() ?: continue
-                imageBuilder.url(url)
-            }
+            "link" -> node.textOrNull()?.let { link -> imageBuilder.link(link) }
+            "title" -> node.textOrNull()?.let { title -> imageBuilder.title(title) }
+            "url" -> node.textOrNull()?.let { url -> imageBuilder.url(url) }
             "width" -> imageBuilder.width(node.parseAsInt())
         }
     }

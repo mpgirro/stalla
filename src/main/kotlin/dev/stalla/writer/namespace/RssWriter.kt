@@ -29,6 +29,7 @@ internal object RssWriter : NamespaceWriter() {
     /** Standard RSS 2.0 elements do not have a namespace. This value is therefore null. */
     override val namespace: FeedNamespace? = null
 
+    @Suppress("ComplexMethod")
     override fun Element.appendPodcastData(podcast: Podcast) {
         if (podcast.title.isNotBlank()) {
             appendElement("title") { textContent = podcast.title.trim() }
