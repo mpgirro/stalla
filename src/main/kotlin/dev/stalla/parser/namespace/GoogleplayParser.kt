@@ -25,15 +25,12 @@ internal object GoogleplayParser : NamespaceParser() {
         when (localName) {
             "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
             "owner" -> builder.googleplayBuilder.owner(ifCanBeParsed { textOrNull() })
-            "category" -> ifCanBeParsed { toGoogleplayCategory() }
-                ?.let { category -> builder.googleplayBuilder.addCategory(category) }
+            "category" -> ifCanBeParsed { toGoogleplayCategory() }?.let(builder.googleplayBuilder::addCategory)
             "description" -> builder.googleplayBuilder.description(ifCanBeParsed { textOrNull() })
-            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }
-                ?.let { explicit -> builder.googleplayBuilder.explicit(explicit) }
-            "block" -> ifCanBeParsed { textAsBooleanOrNull() }
-                ?.let { block -> builder.googleplayBuilder.block(block) }
+            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.googleplayBuilder::explicit)
+            "block" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.googleplayBuilder::block)
             "image" -> ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
-                ?.let { imageBuilder -> builder.googleplayBuilder.imageBuilder(imageBuilder) }
+                ?.let(builder.googleplayBuilder::imageBuilder)
             "new-feed-url" -> builder.googleplayBuilder.newFeedUrl(ifCanBeParsed { textOrNull() })
             else -> pass
         }
@@ -44,10 +41,9 @@ internal object GoogleplayParser : NamespaceParser() {
             "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
             "description" -> builder.googleplayBuilder.description(ifCanBeParsed { textOrNull() })
             "explicit" -> builder.googleplayBuilder.explicit(ifCanBeParsed { textOrNull() })
-            "block" -> ifCanBeParsed { textAsBooleanOrNull() }
-                ?.let { block -> builder.googleplayBuilder.block(block) }
+            "block" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.googleplayBuilder::block)
             "image" -> ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
-                ?.let { imageBuilder -> builder.googleplayBuilder.imageBuilder(imageBuilder) }
+                ?.let(builder.googleplayBuilder::imageBuilder)
             else -> pass
         }
     }

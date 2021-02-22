@@ -30,18 +30,10 @@ internal object PodcastindexParser : NamespaceParser() {
 
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
-            "locked" -> {
-                val lockedBuilder = ifCanBeParsed {
-                    toLockedBuilder(builder.createPodcastPodcastLockedBuilder())
-                } ?: return
-                builder.podcastPodcastindexBuilder.lockedBuilder(lockedBuilder)
-            }
-            "funding" -> {
-                val fundingBuilder = ifCanBeParsed {
-                    toFundingBuilder(builder.createPodcastPodcastFundingBuilder())
-                } ?: return
-                builder.podcastPodcastindexBuilder.addFundingBuilder(fundingBuilder)
-            }
+            "locked" -> ifCanBeParsed { toLockedBuilder(builder.createPodcastPodcastLockedBuilder()) }
+                ?.let(builder.podcastPodcastindexBuilder::lockedBuilder)
+            "funding" -> ifCanBeParsed { toFundingBuilder(builder.createPodcastPodcastFundingBuilder()) }
+                ?.let(builder.podcastPodcastindexBuilder::addFundingBuilder)
             else -> pass
         }
     }
@@ -71,11 +63,11 @@ internal object PodcastindexParser : NamespaceParser() {
     override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         when (localName) {
             "chapters" -> ifCanBeParsed { toChaptersBuilder(builder.createEpisodePodcastChaptersBuilder()) }
-                ?.let { chaptersBuilder -> builder.podcastindexBuilder.chaptersBuilder(chaptersBuilder) }
+                ?.let(builder.podcastindexBuilder::chaptersBuilder)
             "soundbite" -> ifCanBeParsed { toSoundbiteBuilder(builder.createEpisodePodcastSoundbiteBuilder()) }
-                ?.let { soundbiteBuilder -> builder.podcastindexBuilder.addSoundbiteBuilder(soundbiteBuilder) }
+                ?.let(builder.podcastindexBuilder::addSoundbiteBuilder)
             "transcript" -> ifCanBeParsed { toTranscriptBuilder(builder.createEpisodePodcastTranscriptBuilder()) }
-                ?.let { transcriptBuilder -> builder.podcastindexBuilder.addTranscriptBuilder(transcriptBuilder) }
+                ?.let(builder.podcastindexBuilder::addTranscriptBuilder)
             else -> pass
         }
     }

@@ -29,18 +29,15 @@ internal object ItunesParser : NamespaceParser() {
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
             "author" -> builder.itunesBuilder.author(ifCanBeParsed { textOrNull() })
-            "block" -> ifCanBeParsed { textAsBooleanOrNull() }?.let { block -> builder.itunesBuilder.block(block) }
-            "category" -> ifCanBeParsed { toItunesCategory(namespace) }
-                ?.let { category -> builder.itunesBuilder.addCategory(category) }
-            "complete" -> ifCanBeParsed { textAsBooleanOrNull() }
-                ?.let { complete -> builder.itunesBuilder.complete(complete) }
-            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }
-                ?.let { explicit -> builder.itunesBuilder.explicit(explicit) }
+            "block" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.itunesBuilder::block)
+            "category" -> ifCanBeParsed { toItunesCategory(namespace) }?.let(builder.itunesBuilder::addCategory)
+            "complete" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.itunesBuilder::complete)
+            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.itunesBuilder::explicit)
             "image" -> ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
-                ?.let { image -> builder.itunesBuilder.imageBuilder(image) }
+                ?.let(builder.itunesBuilder::imageBuilder)
             "keywords" -> builder.itunesBuilder.keywords(ifCanBeParsed { textOrNull() })
             "owner" -> ifCanBeParsed { toOwnerBuilder(builder.createPersonBuilder()) }
-                ?.let { ownerBuilder -> builder.itunesBuilder.ownerBuilder(ownerBuilder) }
+                ?.let(builder.itunesBuilder::ownerBuilder)
             "subtitle" -> builder.itunesBuilder.subtitle(ifCanBeParsed { textOrNull() })
             "summary" -> builder.itunesBuilder.summary(ifCanBeParsed { textOrNull() })
             "type" -> builder.itunesBuilder.type(ifCanBeParsed { textOrNull() })
@@ -59,13 +56,11 @@ internal object ItunesParser : NamespaceParser() {
     @Suppress("ComplexMethod")
     override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         when (localName) {
-            "block" -> ifCanBeParsed { textAsBooleanOrNull() }
-                ?.let { block -> builder.itunesBuilder.block(block) }
+            "block" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.itunesBuilder::block)
             "duration" -> builder.itunesBuilder.duration(ifCanBeParsed { StyledDuration.of(textOrNull()) })
             "episode" -> builder.itunesBuilder.episode(ifCanBeParsed { parseAsInt() })
             "episodeType" -> builder.itunesBuilder.episodeType(ifCanBeParsed { textOrNull() })
-            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }
-                ?.let { explicit -> builder.itunesBuilder.explicit(explicit) }
+            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.itunesBuilder::explicit)
             "image" -> {
                 val imageBuilder = toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder())
                 builder.itunesBuilder.imageBuilder(imageBuilder)

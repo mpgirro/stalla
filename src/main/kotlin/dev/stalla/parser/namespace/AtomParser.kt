@@ -40,11 +40,11 @@ internal object AtomParser : NamespaceParser() {
     ) {
         when (localName) {
             "contributor" -> ifCanBeParsed { toPersonBuilder(personBuilderProvider.createPersonBuilder(), namespace) }
-                ?.let { personBuilder -> atomBuilder.addContributorBuilder(personBuilder) }
+                ?.let(atomBuilder::addContributorBuilder)
             "author" -> ifCanBeParsed { toPersonBuilder(personBuilderProvider.createPersonBuilder(), namespace) }
-                ?.let { personBuilder -> atomBuilder.addAuthorBuilder(personBuilder) }
+                ?.let(atomBuilder::addAuthorBuilder)
             "link" -> ifCanBeParsed { toLinkBuilder(linkBuilderProvider.createLinkBuilder()) }
-                ?.let { linkBuilder -> atomBuilder.addLinkBuilder(linkBuilder) }
+                ?.let(atomBuilder::addLinkBuilder)
             else -> pass
         }
     }
