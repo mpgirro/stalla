@@ -114,6 +114,7 @@ import dev.stalla.model.itunes.ItunesCategory.Factory.WILDERNESS
 import dev.stalla.model.itunes.ItunesCategory.Factory.WRESTLING
 import dev.stalla.model.itunes.ItunesCategory.Nested
 import dev.stalla.model.itunes.ItunesCategory.Simple
+import java.util.Locale
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberProperties
 
@@ -284,12 +285,12 @@ public sealed class ItunesCategory(public open val type: String) {
                     val value = member.getter.call(this)
                     if (value is ItunesCategory) value else null
                 }
-            values.associateBy({ it.type.toLowerCase() }, { it })
+            values.associateBy({ it.type.toLowerCase(Locale.ROOT) }, { it })
         }
 
         @JvmStatic
         override fun of(rawValue: String?): ItunesCategory? = rawValue?.let {
-            return valueMap[it.toLowerCase()]
+            return valueMap[it.toLowerCase(Locale.ROOT)]
         }
 
         /** Category type for _Arts_ */
