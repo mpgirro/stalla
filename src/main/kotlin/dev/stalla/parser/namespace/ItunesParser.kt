@@ -30,9 +30,12 @@ internal object ItunesParser : NamespaceParser() {
         when (localName) {
             "author" -> builder.itunesBuilder.author(ifCanBeParsed { textOrNull() })
             "block" -> ifCanBeParsed { textAsBooleanOrNull() }?.let { block -> builder.itunesBuilder.block(block) }
-            "category" -> ifCanBeParsed { toItunesCategory(namespace) }?.let { category -> builder.itunesBuilder.addCategory(category) }
-            "complete" -> ifCanBeParsed { textAsBooleanOrNull() }?.let { complete -> builder.itunesBuilder.complete(complete) }
-            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }?.let { explicit -> builder.itunesBuilder.explicit(explicit) }
+            "category" -> ifCanBeParsed { toItunesCategory(namespace) }
+                ?.let { category -> builder.itunesBuilder.addCategory(category) }
+            "complete" -> ifCanBeParsed { textAsBooleanOrNull() }
+                ?.let { complete -> builder.itunesBuilder.complete(complete) }
+            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }
+                ?.let { explicit -> builder.itunesBuilder.explicit(explicit) }
             "image" -> ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
                 ?.let { image -> builder.itunesBuilder.imageBuilder(image) }
             "keywords" -> builder.itunesBuilder.keywords(ifCanBeParsed { textOrNull() })
@@ -61,7 +64,8 @@ internal object ItunesParser : NamespaceParser() {
             "duration" -> builder.itunesBuilder.duration(ifCanBeParsed { StyledDuration.of(textOrNull()) })
             "episode" -> builder.itunesBuilder.episode(ifCanBeParsed { parseAsInt() })
             "episodeType" -> builder.itunesBuilder.episodeType(ifCanBeParsed { textOrNull() })
-            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }?.let { explicit -> builder.itunesBuilder.explicit(explicit) }
+            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }
+                ?.let { explicit -> builder.itunesBuilder.explicit(explicit) }
             "image" -> {
                 val imageBuilder = toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder())
                 builder.itunesBuilder.imageBuilder(imageBuilder)
