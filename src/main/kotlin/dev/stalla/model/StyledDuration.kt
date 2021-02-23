@@ -112,7 +112,6 @@ public sealed class StyledDuration {
         }
 
         private companion object {
-
             private const val NANOS_PER_SECOND = 1_000_000_000L
         }
     }
@@ -186,6 +185,12 @@ public sealed class StyledDuration {
 
     public companion object Factory : TypeFactory<StyledDuration> {
 
+        private const val DECIMAL_BASE = 10F
+        private const val NANO_DIGITS = 9
+        private const val HHMMSS_PATTERN = 3
+        private const val MMSS_PATTERN = 2
+        private const val SS_PATTERN = 1
+
         // Parses the format: [-][HH:]MM:SS
         private val hhMmSsRegex = "(-)?(?:(\\d{1,2}):)?(\\d{1,2}):(\\d{1,2})".toRegex()
 
@@ -217,12 +222,12 @@ public sealed class StyledDuration {
             val seconds = groupValues.first().toInt()
 
             return when (groupValues.count()) {
-                2 -> {
+                MMSS_PATTERN -> {
                     val nanoString = groupValues.last().removeAllUnneededDecimalZeroes()
-                    val nano = nanoString.toLong() * 10F.pow(9 - nanoString.length).toLong()
+                    val nano = nanoString.toLong() * DECIMAL_BASE.pow(NANO_DIGITS - nanoString.length).toLong()
                     secondsAndFraction(seconds, nano, positive)
                 }
-                1 -> seconds(seconds, positive)
+                SS_PATTERN -> seconds(seconds, positive)
                 else -> null
             }
         }
@@ -243,13 +248,17 @@ public sealed class StyledDuration {
             val seconds = groupValues.last().toInt()
 
             return when (groupValues.count()) {
-                3 -> hoursMinutesSeconds(
+                HHMMSS_PATTERN -> hoursMinutesSeconds(
                     hours = groupValues[0].toInt(),
                     minutes = groupValues[1].toInt(),
                     seconds = seconds,
                     positive = positive
                 )
-                2 -> minutesSeconds(minutes = groupValues[0].toInt(), seconds, positive)
+                MMSS_PATTERN -> minutesSeconds(
+                    minutes = groupValues[0].toInt(),
+                    seconds = seconds,
+                    positive = positive
+                )
                 else -> null
             }
         }
@@ -269,7 +278,7 @@ public sealed class StyledDuration {
             require(seconds >= 0 && nano >= 0) { "Components cannot be negative" }
             val sign = if (positive) "" else "-"
             // This is not ideal but Duration does not handle negative nano-only inputs well otherwise
-            val durationString = "PT$sign$seconds.${nano.toString().padStart(9, '0')}S"
+            val durationString = "PT$sign$seconds.${nano.toString().padStart(NANO_DIGITS, '0')}S"
             return SecondsAndFraction(Duration.parse(durationString))
         }
 

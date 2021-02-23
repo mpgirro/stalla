@@ -127,6 +127,7 @@ internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): Hr
  * @return The [personBuilder] populated with the DOM node contents.
  */
 @InternalApi
+@Suppress("LoopWithTooManyJumpStatements")
 internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedNamespace? = null): PersonBuilder {
     for (child in childNodes.asListOfNodes()) {
         if (child !is Element) continue
@@ -134,7 +135,7 @@ internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedN
         val value: String? = child.textOrNull()
 
         when (child.localName) {
-            "name" -> if (value != null) personBuilder.name(value)
+            "name" -> value?.let(personBuilder::name)
             "email" -> personBuilder.email(value)
             "uri" -> personBuilder.uri(value)
         }
@@ -170,6 +171,7 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
  * @return The [ItunesCategory] populated with the DOM node contents.
  */
 @InternalApi
+@Suppress("ReturnCount")
 internal fun Node.toItunesCategory(namespace: FeedNamespace? = null): ItunesCategory? {
     val categoryValue = getAttributeValueByName("text")?.trim() ?: return null
     val category = ItunesCategory.of(categoryValue) ?: return null

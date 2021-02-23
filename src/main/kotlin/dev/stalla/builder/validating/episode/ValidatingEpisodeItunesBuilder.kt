@@ -61,7 +61,18 @@ internal class ValidatingEpisodeItunesBuilder : EpisodeItunesBuilder {
             return null
         }
 
-        val image = imageBuilder?.build()
-        return EpisodeItunes(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
+        return EpisodeItunes(
+            title = title,
+            duration = duration,
+            image = imageBuilder?.build(),
+            explicit = explicit,
+            block = block,
+            season = season,
+            episode = episode,
+            episodeType = episodeType,
+            author = author,
+            subtitle = subtitle,
+            summary = summary
+        )
     }
 }

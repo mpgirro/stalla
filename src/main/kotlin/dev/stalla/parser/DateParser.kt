@@ -100,15 +100,13 @@ internal object DateParser {
         if (value.isNullOrBlank()) return null
         val trimmedValue = value.trim()
 
-        for (formatter in formatters) {
-            return try {
+        return formatters.mapNotNull { formatter ->
+            try {
                 formatter.withLocale(locale)
                     .parseBest(trimmedValue, ZonedDateTime::from, LocalDateTime::from)
             } catch (ignored: DateTimeParseException) {
-                continue
+                null
             }
-        }
-
-        return null
+        }.firstOrNull()
     }
 }

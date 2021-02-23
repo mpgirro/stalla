@@ -73,7 +73,7 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
         return PodcastItunes(
             subtitle = subtitle,
             summary = summary,
-            image = imageBuilderValue.build() ?: return null,
+            image = imageBuilderValue.build(),
             keywords = keywords,
             author = author,
             categories = categories,

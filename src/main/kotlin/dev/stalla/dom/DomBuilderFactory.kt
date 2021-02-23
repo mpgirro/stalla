@@ -25,6 +25,7 @@ internal object DomBuilderFactory {
      *
      * See http://bit.ly/owasp-xxe-java-dom (shortened URL on https://cheatsheetseries.owasp.org/)
      */
+    @Suppress("SwallowedException")
     private fun DocumentBuilderFactory.preventXxe() = try {
         // Disallowing DTDs prevents most XXE entity attacks. Xerces 2 only.
         setFeature("http://apache.org/xml/features/disallow-doctype-decl", true)

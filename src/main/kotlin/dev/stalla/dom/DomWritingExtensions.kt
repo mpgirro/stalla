@@ -30,7 +30,8 @@ import org.w3c.dom.Node
 @InternalApi
 internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: FeedNamespace): Element? {
     require(namespace == FeedNamespace.ITUNES || namespace == FeedNamespace.GOOGLE_PLAY) {
-        "Only 'itunes:image' and 'googleplay:image' tags are supported, but the desired prefix was '${namespace.prefix}:'"
+        "Only 'itunes:image' and 'googleplay:image' tags are supported, " +
+            "but the desired prefix was '${namespace.prefix}:'"
     }
     if (image.href.isBlank()) return null
     return appendElement("image", namespace) {

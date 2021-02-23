@@ -16,7 +16,7 @@ public data class EpisodePodlove(
 
     public companion object Factory : BuilderFactory<EpisodePodlove, EpisodePodloveBuilder> {
 
-        /** Returns a builder implementation for building [Podlove] model instances. */
+        /** Returns a builder implementation for building [EpisodePodlove] model instances. */
         @JvmStatic
         override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
     }
