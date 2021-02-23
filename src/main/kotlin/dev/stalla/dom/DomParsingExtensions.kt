@@ -89,9 +89,9 @@ internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: Fe
         when (node.localName) {
             "description" -> imageBuilder.description(node.textOrNull())
             "height" -> imageBuilder.height(node.parseAsInt())
-            "link" -> node.textOrNull()?.let { link -> imageBuilder.link(link) }
-            "title" -> node.textOrNull()?.let { title -> imageBuilder.title(title) }
-            "url" -> node.textOrNull()?.let { url -> imageBuilder.url(url) }
+            "link" -> node.textOrNull()?.let(imageBuilder::link)
+            "title" -> node.textOrNull()?.let(imageBuilder::title)
+            "url" -> node.textOrNull()?.let(imageBuilder::url)
             "width" -> imageBuilder.width(node.parseAsInt())
         }
     }
