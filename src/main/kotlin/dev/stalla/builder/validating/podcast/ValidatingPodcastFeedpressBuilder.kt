@@ -33,6 +33,12 @@ internal class ValidatingPodcastFeedpressBuilder : PodcastFeedpressBuilder {
             return null
         }
 
-        return Feedpress(newsletterId, locale, podcastId, cssFile, link)
+        return Feedpress(
+            newsletterId = newsletterId,
+            locale = locale,
+            podcastId = podcastId,
+            cssFile = cssFile,
+            link = link
+        )
     }
 }

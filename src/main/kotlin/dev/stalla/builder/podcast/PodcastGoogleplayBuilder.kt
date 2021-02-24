@@ -20,9 +20,8 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     public fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder
 
     /** Adds all of the [GoogleplayCategory] to the list of categories. */
-    public fun addAllCategorie(categories: List<GoogleplayCategory>): PodcastGoogleplayBuilder = apply {
-        categories.forEach(::addCategory)
-    }
+    public fun addAllCategorie(categories: List<GoogleplayCategory>): PodcastGoogleplayBuilder =
+        apply { categories.forEach(::addCategory) }
 
     /** Set the description value. */
     public fun description(description: String?): PodcastGoogleplayBuilder

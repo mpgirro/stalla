@@ -13,17 +13,14 @@ internal class ValidatingAtomBuilder : AtomBuilder {
     private var contributorBuilders: MutableList<PersonBuilder> = mutableListOf()
     private var linkBuilders: MutableList<LinkBuilder> = mutableListOf()
 
-    override fun addAuthorBuilder(authorBuilder: PersonBuilder): AtomBuilder = apply {
-        authorBuilders.add(authorBuilder)
-    }
+    override fun addAuthorBuilder(authorBuilder: PersonBuilder): AtomBuilder =
+        apply { authorBuilders.add(authorBuilder) }
 
-    override fun addContributorBuilder(contributorBuilder: PersonBuilder): AtomBuilder = apply {
-        contributorBuilders.add(contributorBuilder)
-    }
+    override fun addContributorBuilder(contributorBuilder: PersonBuilder): AtomBuilder =
+        apply { contributorBuilders.add(contributorBuilder) }
 
-    override fun addLinkBuilder(linkBuilder: LinkBuilder): AtomBuilder = apply {
-        linkBuilders.add(linkBuilder)
-    }
+    override fun addLinkBuilder(linkBuilder: LinkBuilder): AtomBuilder =
+        apply { linkBuilders.add(linkBuilder) }
 
     override val hasEnoughDataToBuild: Boolean
         get() = (authorBuilders + contributorBuilders + linkBuilders).any { it.hasEnoughDataToBuild }
@@ -33,9 +30,10 @@ internal class ValidatingAtomBuilder : AtomBuilder {
             return null
         }
 
-        val authors = authorBuilders.mapNotNull { it.build() }
-        val contributors = contributorBuilders.mapNotNull { it.build() }
-        val links = linkBuilders.mapNotNull { it.build() }
-        return Atom(authors, contributors, links)
+        return Atom(
+            authors = authorBuilders.mapNotNull { it.build() },
+            contributors = contributorBuilders.mapNotNull { it.build() },
+            links = linkBuilders.mapNotNull { it.build() }
+        )
     }
 }

@@ -17,7 +17,8 @@ public interface EpisodeGoogleplayBuilder : Builder<EpisodeGoogleplay> {
     public fun description(description: String?): EpisodeGoogleplayBuilder
 
     /** Set the explicit value based on it's string representation. */
-    public fun explicit(explicit: String?): EpisodeGoogleplayBuilder = apply { explicit(ExplicitType.of(explicit)) }
+    public fun explicit(explicit: String?): EpisodeGoogleplayBuilder =
+        apply { explicit(ExplicitType.of(explicit)) }
 
     /** Set the explicit value. */
     public fun explicit(explicit: ExplicitType?): EpisodeGoogleplayBuilder

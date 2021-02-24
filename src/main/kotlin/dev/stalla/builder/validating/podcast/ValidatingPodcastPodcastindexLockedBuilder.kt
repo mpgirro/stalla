@@ -10,13 +10,9 @@ internal class ValidatingPodcastPodcastindexLockedBuilder : PodcastPodcastindexL
     private lateinit var ownerValue: String
     private var locked: Boolean? = null
 
-    override fun owner(owner: String): PodcastPodcastindexLockedBuilder = apply {
-        this.ownerValue = owner
-    }
+    override fun owner(owner: String): PodcastPodcastindexLockedBuilder = apply { this.ownerValue = owner }
 
-    override fun locked(locked: Boolean): PodcastPodcastindexLockedBuilder = apply {
-        this.locked = locked
-    }
+    override fun locked(locked: Boolean): PodcastPodcastindexLockedBuilder = apply { this.locked = locked }
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::ownerValue.isInitialized && locked != null
@@ -26,8 +22,10 @@ internal class ValidatingPodcastPodcastindexLockedBuilder : PodcastPodcastindexL
             return null
         }
 
-        val lockedValue = locked
-            ?: throw IllegalStateException("The locked flag is not set, while hasEnoughDataToBuild == true")
-        return Locked(ownerValue, lockedValue)
+        return Locked(
+            owner = ownerValue,
+            locked = locked
+                ?: throw IllegalStateException("The locked flag is not set, while hasEnoughDataToBuild == true")
+        )
     }
 }

@@ -34,6 +34,10 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilder : EpisodePodcastind
             return null
         }
 
-        return Soundbite(startTimeValue, durationValue, title)
+        return Soundbite(
+            startTime = startTimeValue,
+            duration = durationValue,
+            title = title
+        )
     }
 }

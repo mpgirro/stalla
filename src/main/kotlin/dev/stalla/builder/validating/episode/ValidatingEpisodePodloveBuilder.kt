@@ -10,11 +10,8 @@ internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
 
     private var chapterBuilders: MutableList<EpisodePodloveSimpleChapterBuilder> = mutableListOf()
 
-    override fun addSimpleChapterBuilder(
-        chapterBuilder: EpisodePodloveSimpleChapterBuilder
-    ): EpisodePodloveBuilder = apply {
-        chapterBuilders.add(chapterBuilder)
-    }
+    override fun addSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveBuilder =
+        apply { chapterBuilders.add(chapterBuilder) }
 
     override fun addAllSimpleChapterBuilder(
         chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>
@@ -30,7 +27,6 @@ internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
             return null
         }
 
-        val chapters = chapterBuilders.mapNotNull { it.build() }
-        return EpisodePodlove(chapters)
+        return EpisodePodlove(simpleChapters = chapterBuilders.mapNotNull { it.build() })
     }
 }

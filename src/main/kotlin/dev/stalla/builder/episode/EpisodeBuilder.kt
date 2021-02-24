@@ -52,9 +52,8 @@ public interface EpisodeBuilder : Builder<Episode> {
     public fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder
 
     /** Adds all of the [RssCategoryBuilder] to the list of category builders. */
-    public fun addAllCategoryBuilder(categoryBuilders: List<RssCategoryBuilder>): EpisodeBuilder = apply {
-        categoryBuilders.forEach(::addCategoryBuilder)
-    }
+    public fun addAllCategoryBuilder(categoryBuilders: List<RssCategoryBuilder>): EpisodeBuilder =
+        apply { categoryBuilders.forEach(::addCategoryBuilder) }
 
     /** Set the comments value. */
     public fun comments(comments: String?): EpisodeBuilder

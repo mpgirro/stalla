@@ -67,19 +67,16 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     override fun author(author: String?): EpisodeBuilder = apply { this.author = author }
 
-    override fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder = apply {
-        categoryBuilders.add(categoryBuilder)
-    }
+    override fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder =
+        apply { categoryBuilders.add(categoryBuilder) }
 
     override fun comments(comments: String?): EpisodeBuilder = apply { this.comments = comments }
 
-    override fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder = apply {
-        this.enclosureBuilderValue = enclosureBuilder
-    }
+    override fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder =
+        apply { this.enclosureBuilderValue = enclosureBuilder }
 
-    override fun guidBuilder(
-        guidBuilder: EpisodeGuidBuilder?
-    ): EpisodeBuilder = apply { this.guidBuilder = guidBuilder }
+    override fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder =
+        apply { this.guidBuilder = guidBuilder }
 
     override fun pubDate(pubDate: TemporalAccessor?): EpisodeBuilder = apply { this.pubDate = pubDate }
 
@@ -118,9 +115,6 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
             return null
         }
 
-        val enclosure = enclosureBuilderValue.build()
-            ?: throw IllegalStateException("Cannot build the enclosure, while hasEnoughDataToBuild == true")
-
         return Episode(
             title = titleValue,
             link = link,
@@ -128,7 +122,8 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
             author = author,
             categories = categoryBuilders.mapNotNull { it.build() },
             comments = comments,
-            enclosure = enclosure,
+            enclosure = enclosureBuilderValue.build()
+                ?: throw IllegalStateException("Cannot build the enclosure, while hasEnoughDataToBuild == true"),
             guid = guidBuilder?.build(),
             pubDate = pubDate,
             source = source,

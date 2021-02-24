@@ -24,9 +24,8 @@ internal class ValidatingEpisodeGoogleplayBuilder : EpisodeGoogleplayBuilder {
 
     override fun block(block: Boolean): EpisodeGoogleplayBuilder = apply { this.block = block }
 
-    override fun imageBuilder(
-        imageBuilder: HrefOnlyImageBuilder?
-    ): EpisodeGoogleplayBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeGoogleplayBuilder =
+        apply { this.imageBuilder = imageBuilder }
 
     override val hasEnoughDataToBuild: Boolean
         get() = block || anyNotNull(author, description, explicit) || imageBuilder?.hasEnoughDataToBuild == true
@@ -36,7 +35,12 @@ internal class ValidatingEpisodeGoogleplayBuilder : EpisodeGoogleplayBuilder {
             return null
         }
 
-        val image = imageBuilder?.build()
-        return EpisodeGoogleplay(author, description, explicit, block, image)
+        return EpisodeGoogleplay(
+            author = author,
+            description = description,
+            explicit = explicit,
+            block = block,
+            image = imageBuilder?.build()
+        )
     }
 }

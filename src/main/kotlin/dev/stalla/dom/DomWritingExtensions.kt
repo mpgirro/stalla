@@ -132,7 +132,6 @@ internal fun Node.appendYesElementIfTrue(tagName: String, value: Boolean, namesp
         ?: return null
 
     return appendElement(tagName, namespace) {
-
         textContent = stringValue
     }
 }

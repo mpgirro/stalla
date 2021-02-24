@@ -33,9 +33,8 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
     public fun addCategory(category: ItunesCategory): PodcastItunesBuilder
 
     /** Adds all of the [ItunesCategory] to the list of categories. */
-    public fun addAllCategory(categories: List<ItunesCategory>): PodcastItunesBuilder = apply {
-        categories.forEach(::addCategory)
-    }
+    public fun addAllCategory(categories: List<ItunesCategory>): PodcastItunesBuilder =
+        apply { categories.forEach(::addCategory) }
 
     /** Set the explicit flag value. */
     public fun explicit(explicit: Boolean): PodcastItunesBuilder

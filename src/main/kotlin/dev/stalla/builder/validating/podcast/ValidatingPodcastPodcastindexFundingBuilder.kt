@@ -10,13 +10,9 @@ internal class ValidatingPodcastPodcastindexFundingBuilder : PodcastPodcastindex
     private lateinit var urlValue: String
     private lateinit var messageValue: String
 
-    override fun url(url: String): PodcastPodcastindexFundingBuilder = apply {
-        this.urlValue = url
-    }
+    override fun url(url: String): PodcastPodcastindexFundingBuilder = apply { this.urlValue = url }
 
-    override fun message(message: String): PodcastPodcastindexFundingBuilder = apply {
-        this.messageValue = message
-    }
+    override fun message(message: String): PodcastPodcastindexFundingBuilder = apply { this.messageValue = message }
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::urlValue.isInitialized && ::messageValue.isInitialized
@@ -26,6 +22,9 @@ internal class ValidatingPodcastPodcastindexFundingBuilder : PodcastPodcastindex
             return null
         }
 
-        return Funding(urlValue, messageValue)
+        return Funding(
+            url = urlValue,
+            message = messageValue
+        )
     }
 }

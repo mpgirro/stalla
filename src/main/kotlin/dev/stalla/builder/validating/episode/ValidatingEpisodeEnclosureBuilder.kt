@@ -25,6 +25,10 @@ internal class ValidatingEpisodeEnclosureBuilder : EpisodeEnclosureBuilder {
             return null
         }
 
-        return Enclosure(urlValue, lengthValue, typeValue)
+        return Enclosure(
+            url = urlValue,
+            length = lengthValue,
+            type = typeValue
+        )
     }
 }

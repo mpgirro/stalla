@@ -29,9 +29,8 @@ internal class ValidatingEpisodeItunesBuilder : EpisodeItunesBuilder {
 
     override fun duration(duration: StyledDuration?): EpisodeItunesBuilder = apply { this.duration = duration }
 
-    override fun imageBuilder(
-        imageBuilder: HrefOnlyImageBuilder?
-    ): EpisodeItunesBuilder = apply { this.imageBuilder = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder?): EpisodeItunesBuilder =
+        apply { this.imageBuilder = imageBuilder }
 
     override fun explicit(explicit: Boolean?): EpisodeItunesBuilder = apply { this.explicit = explicit }
 
@@ -41,9 +40,8 @@ internal class ValidatingEpisodeItunesBuilder : EpisodeItunesBuilder {
 
     override fun episode(episode: Int?): EpisodeItunesBuilder = apply { this.episode = episode }
 
-    override fun episodeType(episodeType: String?): EpisodeItunesBuilder = apply {
-        this.episodeType = EpisodeType.of(episodeType)
-    }
+    override fun episodeType(episodeType: String?): EpisodeItunesBuilder =
+        apply { this.episodeType = EpisodeType.of(episodeType) }
 
     override fun author(author: String?): EpisodeItunesBuilder = apply { this.author = author }
 

@@ -14,11 +14,8 @@ internal class ValidatingEpisodePodcastindexBuilder : EpisodePodcastindexBuilder
     private val transcriptBuilders: MutableList<EpisodePodcastindexTranscriptBuilder> = mutableListOf()
     private val soundbiteBuilders: MutableList<EpisodePodcastindexSoundbiteBuilder> = mutableListOf()
 
-    override fun chaptersBuilder(
-        chaptersBuilder: EpisodePodcastindexChaptersBuilder
-    ): EpisodePodcastindexBuilder = apply {
-        this.chaptersBuilderValue = chaptersBuilder
-    }
+    override fun chaptersBuilder(chaptersBuilder: EpisodePodcastindexChaptersBuilder): EpisodePodcastindexBuilder =
+        apply { this.chaptersBuilderValue = chaptersBuilder }
 
     override fun addSoundbiteBuilder(
         soundbiteBuilder: EpisodePodcastindexSoundbiteBuilder

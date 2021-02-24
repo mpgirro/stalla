@@ -77,17 +77,15 @@ public interface PodcastBuilder : Builder<Podcast> {
     public fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder
 
     /** Adds all of the [EpisodeBuilder] to the list of episode builders. */
-    public fun addAllEpisodeBuilder(episodeBuilders: List<EpisodeBuilder>): PodcastBuilder = apply {
-        episodeBuilders.forEach(::addEpisodeBuilder)
-    }
+    public fun addAllEpisodeBuilder(episodeBuilders: List<EpisodeBuilder>): PodcastBuilder =
+        apply { episodeBuilders.forEach(::addEpisodeBuilder) }
 
     /** Adds the [RssCategoryBuilder] to the list of category builders. */
     public fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): PodcastBuilder
 
     /** Adds all of the [RssCategoryBuilder] to the list of category builders. */
-    public fun addAllCategoryBuilder(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder = apply {
-        categoryBuilders.forEach(::addCategoryBuilder)
-    }
+    public fun addAllCategoryBuilder(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder =
+        apply { categoryBuilders.forEach(::addCategoryBuilder) }
 
     override fun applyFrom(prototype: Podcast?): PodcastBuilder = whenNotNull(prototype) { podcast ->
         itunesBuilder.applyFrom(podcast.itunes)

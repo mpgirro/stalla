@@ -23,6 +23,9 @@ internal class ValidatingEpisodeGuidBuilder : EpisodeGuidBuilder {
             return null
         }
 
-        return Guid(text, isPermalink)
+        return Guid(
+            guid = text,
+            isPermalink = isPermalink
+        )
     }
 }

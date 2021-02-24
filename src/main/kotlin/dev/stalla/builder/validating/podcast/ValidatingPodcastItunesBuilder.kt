@@ -49,17 +49,12 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
 
     override fun type(type: String?): PodcastItunesBuilder = apply { this.type = ShowType.of(type) }
 
-    override fun ownerBuilder(
-        ownerBuilder: PersonBuilder?
-    ): PodcastItunesBuilder = apply { this.ownerBuilder = ownerBuilder }
+    override fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastItunesBuilder =
+        apply { this.ownerBuilder = ownerBuilder }
 
-    override fun title(title: String?): PodcastItunesBuilder = apply {
-        this.title = title
-    }
+    override fun title(title: String?): PodcastItunesBuilder = apply { this.title = title }
 
-    override fun newFeedUrl(newFeedUrl: String?): PodcastItunesBuilder = apply {
-        this.newFeedUrl = newFeedUrl
-    }
+    override fun newFeedUrl(newFeedUrl: String?): PodcastItunesBuilder = apply { this.newFeedUrl = newFeedUrl }
 
     override val hasEnoughDataToBuild: Boolean
         get() = explicit != null && categories.isNotEmpty() &&
