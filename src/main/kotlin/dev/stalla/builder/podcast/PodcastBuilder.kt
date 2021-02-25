@@ -87,27 +87,28 @@ public interface PodcastBuilder : Builder<Podcast> {
     public fun addAllCategoryBuilder(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder =
         apply { categoryBuilders.forEach(::addCategoryBuilder) }
 
-    override fun applyFrom(prototype: Podcast?): PodcastBuilder = whenNotNull(prototype) { podcast ->
-        itunesBuilder.applyFrom(podcast.itunes)
-        atomBuilder.applyFrom(podcast.atom)
-        fyydBuilder.applyFrom(podcast.fyyd)
-        feedpressBuilder.applyFrom(podcast.feedpress)
-        googleplayBuilder.applyFrom(podcast.googleplay)
-        podcastPodcastindexBuilder.applyFrom(podcast.podcast)
-        title(podcast.title)
-        link(podcast.link)
-        description(podcast.description)
-        pubDate(podcast.pubDate)
-        lastBuildDate(podcast.lastBuildDate)
-        language(podcast.language)
-        generator(podcast.generator)
-        copyright(podcast.copyright)
-        docs(podcast.docs)
-        managingEditor(podcast.managingEditor)
-        webMaster(podcast.webMaster)
-        ttl(podcast.ttl)
-        imageBuilder(RssImage.builder().applyFrom(podcast.image))
-        addAllEpisodeBuilder(podcast.episodes.asBuilders())
-        addAllCategoryBuilder(podcast.categories.asBuilders())
-    }
+    override fun applyFrom(prototype: Podcast?): PodcastBuilder =
+        whenNotNull(prototype) { podcast ->
+            itunesBuilder.applyFrom(podcast.itunes)
+            atomBuilder.applyFrom(podcast.atom)
+            fyydBuilder.applyFrom(podcast.fyyd)
+            feedpressBuilder.applyFrom(podcast.feedpress)
+            googleplayBuilder.applyFrom(podcast.googleplay)
+            podcastPodcastindexBuilder.applyFrom(podcast.podcast)
+            title(podcast.title)
+            link(podcast.link)
+            description(podcast.description)
+            pubDate(podcast.pubDate)
+            lastBuildDate(podcast.lastBuildDate)
+            language(podcast.language)
+            generator(podcast.generator)
+            copyright(podcast.copyright)
+            docs(podcast.docs)
+            managingEditor(podcast.managingEditor)
+            webMaster(podcast.webMaster)
+            ttl(podcast.ttl)
+            imageBuilder(RssImage.builder().applyFrom(podcast.image))
+            addAllEpisodeBuilder(podcast.episodes.asBuilders())
+            addAllCategoryBuilder(podcast.categories.asBuilders())
+        }
 }

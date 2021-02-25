@@ -29,9 +29,10 @@ public interface AtomBuilder : Builder<Atom> {
     public fun addAllLinkBuilder(linkBuilders: List<LinkBuilder>): AtomBuilder =
         apply { linkBuilders.forEach(::addLinkBuilder) }
 
-    override fun applyFrom(prototype: Atom?): AtomBuilder = whenNotNull(prototype) { atom ->
-        addAllAuthorBuilder(atom.authors.map(Person.builder()::applyFrom))
-        addAllContributorBuilder(atom.contributors.map(Person.builder()::applyFrom))
-        addAllLinkBuilder(atom.links.map(Link.builder()::applyFrom))
-    }
+    override fun applyFrom(prototype: Atom?): AtomBuilder =
+        whenNotNull(prototype) { atom ->
+            addAllAuthorBuilder(atom.authors.map(Person.builder()::applyFrom))
+            addAllContributorBuilder(atom.contributors.map(Person.builder()::applyFrom))
+            addAllLinkBuilder(atom.links.map(Link.builder()::applyFrom))
+        }
 }

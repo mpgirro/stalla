@@ -24,12 +24,13 @@ public interface RssImageBuilder : Builder<RssImage> {
     /** Set the description value. */
     public fun description(description: String?): RssImageBuilder
 
-    override fun applyFrom(prototype: RssImage?): RssImageBuilder = whenNotNull(prototype) { image ->
-        url(image.url)
-        title(image.title)
-        link(image.link)
-        width(image.width)
-        height(image.height)
-        description(image.description)
-    }
+    override fun applyFrom(prototype: RssImage?): RssImageBuilder =
+        whenNotNull(prototype) { image ->
+            url(image.url)
+            title(image.title)
+            link(image.link)
+            width(image.width)
+            height(image.height)
+            description(image.description)
+        }
 }

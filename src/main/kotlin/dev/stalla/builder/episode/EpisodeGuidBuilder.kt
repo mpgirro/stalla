@@ -13,8 +13,9 @@ public interface EpisodeGuidBuilder : Builder<Guid> {
     /** Set the isPermalink value. */
     public fun isPermalink(isPermalink: Boolean?): EpisodeGuidBuilder
 
-    override fun applyFrom(prototype: Guid?): EpisodeGuidBuilder = whenNotNull(prototype) { guid ->
-        textContent(guid.guid)
-        isPermalink(guid.isPermalink)
-    }
+    override fun applyFrom(prototype: Guid?): EpisodeGuidBuilder =
+        whenNotNull(prototype) { guid ->
+            textContent(guid.guid)
+            isPermalink(guid.isPermalink)
+        }
 }

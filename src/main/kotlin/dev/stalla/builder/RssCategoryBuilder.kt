@@ -12,8 +12,9 @@ public interface RssCategoryBuilder : Builder<RssCategory> {
     /** Set the domain value. */
     public fun domain(domain: String?): RssCategoryBuilder
 
-    override fun applyFrom(prototype: RssCategory?): RssCategoryBuilder = whenNotNull(prototype) { category ->
-        category(category.name)
-        domain(category.domain)
-    }
+    override fun applyFrom(prototype: RssCategory?): RssCategoryBuilder =
+        whenNotNull(prototype) { category ->
+            category(category.name)
+            domain(category.domain)
+        }
 }

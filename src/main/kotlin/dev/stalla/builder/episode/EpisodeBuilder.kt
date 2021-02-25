@@ -70,23 +70,24 @@ public interface EpisodeBuilder : Builder<Episode> {
     /** Set the source value. */
     public fun source(source: String?): EpisodeBuilder
 
-    override fun applyFrom(prototype: Episode?): EpisodeBuilder = whenNotNull(prototype) { episode ->
-        contentBuilder.applyFrom(episode.content)
-        itunesBuilder.applyFrom(episode.itunes)
-        atomBuilder.applyFrom(episode.atom)
-        podloveBuilder.applyFrom(episode.podlove)
-        googleplayBuilder.applyFrom(episode.googleplay)
-        bitloveBuilder.applyFrom(episode.bitlove)
-        podcastindexBuilder.applyFrom(episode.podcastindex)
-        title(episode.title)
-        link(episode.link)
-        description(episode.description)
-        author(episode.author)
-        addAllCategoryBuilder(episode.categories.asBuilders())
-        comments(episode.comments)
-        enclosureBuilder(Enclosure.builder().applyFrom(episode.enclosure))
-        guidBuilder(Guid.builder().applyFrom(episode.guid))
-        pubDate(episode.pubDate)
-        source(episode.source)
-    }
+    override fun applyFrom(prototype: Episode?): EpisodeBuilder =
+        whenNotNull(prototype) { episode ->
+            contentBuilder.applyFrom(episode.content)
+            itunesBuilder.applyFrom(episode.itunes)
+            atomBuilder.applyFrom(episode.atom)
+            podloveBuilder.applyFrom(episode.podlove)
+            googleplayBuilder.applyFrom(episode.googleplay)
+            bitloveBuilder.applyFrom(episode.bitlove)
+            podcastindexBuilder.applyFrom(episode.podcastindex)
+            title(episode.title)
+            link(episode.link)
+            description(episode.description)
+            author(episode.author)
+            addAllCategoryBuilder(episode.categories.asBuilders())
+            comments(episode.comments)
+            enclosureBuilder(Enclosure.builder().applyFrom(episode.enclosure))
+            guidBuilder(Guid.builder().applyFrom(episode.guid))
+            pubDate(episode.pubDate)
+            source(episode.source)
+        }
 }

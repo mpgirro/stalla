@@ -28,10 +28,9 @@ public interface PodcastPodcastindexBuilder : Builder<PodcastPodcastindex> {
         fundingBuilders.forEach(::addFundingBuilder)
     }
 
-    override fun applyFrom(prototype: PodcastPodcastindex?): PodcastPodcastindexBuilder {
-        return whenNotNull(prototype) { podcast ->
+    override fun applyFrom(prototype: PodcastPodcastindex?): PodcastPodcastindexBuilder =
+        whenNotNull(prototype) { podcast ->
             lockedBuilder(Locked.builder().applyFrom(podcast.locked))
             addAllFundingBuilder(podcast.funding.asBuilders())
         }
-    }
 }

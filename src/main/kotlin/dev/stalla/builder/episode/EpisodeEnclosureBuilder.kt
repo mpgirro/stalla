@@ -16,9 +16,10 @@ public interface EpisodeEnclosureBuilder : Builder<Enclosure> {
     /** Set the type value. */
     public fun type(type: String): EpisodeEnclosureBuilder
 
-    override fun applyFrom(prototype: Enclosure?): EpisodeEnclosureBuilder = whenNotNull(prototype) { enclosure ->
-        url(enclosure.url)
-        length(enclosure.length)
-        type(enclosure.type)
-    }
+    override fun applyFrom(prototype: Enclosure?): EpisodeEnclosureBuilder =
+        whenNotNull(prototype) { enclosure ->
+            url(enclosure.url)
+            length(enclosure.length)
+            type(enclosure.type)
+        }
 }

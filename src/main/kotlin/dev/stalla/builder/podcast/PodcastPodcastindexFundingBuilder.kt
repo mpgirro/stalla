@@ -13,8 +13,9 @@ public interface PodcastPodcastindexFundingBuilder : Builder<Funding> {
     /** Set the message value */
     public fun message(message: String): PodcastPodcastindexFundingBuilder
 
-    override fun applyFrom(prototype: Funding?): PodcastPodcastindexFundingBuilder = whenNotNull(prototype) { funding ->
-        url(funding.url)
-        message(funding.message)
-    }
+    override fun applyFrom(prototype: Funding?): PodcastPodcastindexFundingBuilder =
+        whenNotNull(prototype) { funding ->
+            url(funding.url)
+            message(funding.message)
+        }
 }

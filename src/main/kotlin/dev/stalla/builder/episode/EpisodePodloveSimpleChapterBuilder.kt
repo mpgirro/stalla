@@ -19,12 +19,11 @@ public interface EpisodePodloveSimpleChapterBuilder : Builder<SimpleChapter> {
     /** Set the image value. */
     public fun image(image: String?): EpisodePodloveSimpleChapterBuilder
 
-    override fun applyFrom(prototype: SimpleChapter?): EpisodePodloveSimpleChapterBuilder {
-        return whenNotNull(prototype) { simpleChapter ->
+    override fun applyFrom(prototype: SimpleChapter?): EpisodePodloveSimpleChapterBuilder =
+        whenNotNull(prototype) { simpleChapter ->
             start(simpleChapter.start)
             title(simpleChapter.title)
             href(simpleChapter.href)
             image(simpleChapter.image)
         }
-    }
 }
