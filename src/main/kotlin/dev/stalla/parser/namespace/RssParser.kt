@@ -36,20 +36,36 @@ internal object RssParser : NamespaceParser() {
 
         when (localName) {
             "copyright" -> builder.copyright(ifCanBeParsed { textOrNull() })
-            "description" -> ifCanBeParsed { textOrNull() }?.let(builder::description)
+            "description" -> {
+                val description = ifCanBeParsed { textOrNull() } ?: return
+                builder.description(description)
+            }
             "docs" -> builder.docs(ifCanBeParsed { textOrNull() })
             "generator" -> builder.generator(ifCanBeParsed { textOrNull() })
             "image" -> builder.imageBuilder(ifCanBeParsed { toRssImageBuilder(builder.createRssImageBuilder()) })
-            "language" -> ifCanBeParsed { textOrNull() }?.let(builder::language)
+            "language" -> {
+                val language = ifCanBeParsed { textOrNull() } ?: return
+                builder.language(language)
+            }
             "lastBuildDate" -> builder.lastBuildDate(ifCanBeParsed { parseAsTemporalAccessor() })
-            "link" -> ifCanBeParsed { textOrNull() }?.let(builder::link)
+            "link" -> {
+                val link = ifCanBeParsed { textOrNull() } ?: return
+                builder.link(link)
+            }
             "managingEditor" -> builder.managingEditor(ifCanBeParsed { textOrNull() })
             "pubDate" -> builder.pubDate(ifCanBeParsed { parseAsTemporalAccessor() })
-            "title" -> ifCanBeParsed { textOrNull() }?.let(builder::title)
+            "title" -> {
+                val title = ifCanBeParsed { textOrNull() } ?: return
+                builder.title(title)
+            }
             "webMaster" -> builder.webMaster(ifCanBeParsed { textOrNull() })
             "ttl" -> builder.ttl(ifCanBeParsed { parseAsInt() })
-            "category" -> ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) }
-                ?.let(builder::addCategoryBuilder)
+            "category" -> {
+                val categoryBuilder = ifCanBeParsed {
+                    toRssCategoryBuilder(builder.createRssCategoryBuilder())
+                } ?: return
+                builder.addCategoryBuilder(categoryBuilder)
+            }
             "item" -> pass // Items are parsed by the root parser direcly
         }
     }
@@ -60,17 +76,28 @@ internal object RssParser : NamespaceParser() {
 
         when (localName) {
             "author" -> builder.author(ifCanBeParsed { textOrNull() })
-            "category" -> ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) }
-                ?.let(builder::addCategoryBuilder)
+            "category" -> {
+                val categoryBuilder = ifCanBeParsed {
+                    toRssCategoryBuilder(builder.createRssCategoryBuilder())
+                } ?: return
+                builder.addCategoryBuilder(categoryBuilder)
+            }
             "comments" -> builder.comments(ifCanBeParsed { textOrNull() })
             "description" -> builder.description(ifCanBeParsed { textOrNull() })
-            "enclosure" -> ifCanBeParsed { toEnclosureBuilder(builder.createEnclosureBuilder()) }
-                ?.let(builder::enclosureBuilder)
+            "enclosure" -> {
+                val enclosure = ifCanBeParsed {
+                    toEnclosureBuilder(builder.createEnclosureBuilder())
+                } ?: return
+                builder.enclosureBuilder(enclosure)
+            }
             "guid" -> builder.guidBuilder(ifCanBeParsed { toGuidBuilder(builder.createGuidBuilder()) })
             "link" -> builder.link(ifCanBeParsed { textOrNull() })
             "pubDate" -> builder.pubDate(ifCanBeParsed { parseAsTemporalAccessor() })
             "source" -> builder.source(ifCanBeParsed { textOrNull() })
-            "title" -> ifCanBeParsed { textOrNull() }?.let(builder::title)
+            "title" -> {
+                val title = ifCanBeParsed { textOrNull() } ?: return
+                builder.title(title)
+            }
         }
     }
 

@@ -20,7 +20,10 @@ internal object FyydParser : NamespaceParser() {
 
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
-            "verify" -> ifCanBeParsed { textOrNull() }?.let(builder.fyydBuilder::verify)
+            "verify" -> {
+                val verify = ifCanBeParsed { textOrNull() } ?: return
+                builder.fyydBuilder.verify(verify)
+            }
             else -> pass
         }
     }

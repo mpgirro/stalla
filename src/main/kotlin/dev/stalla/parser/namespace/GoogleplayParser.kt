@@ -25,12 +25,23 @@ internal object GoogleplayParser : NamespaceParser() {
         when (localName) {
             "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
             "owner" -> builder.googleplayBuilder.owner(ifCanBeParsed { textOrNull() })
-            "category" -> ifCanBeParsed { toGoogleplayCategory() }?.let(builder.googleplayBuilder::addCategory)
+            "category" -> {
+                val category = ifCanBeParsed { toGoogleplayCategory() } ?: return
+                builder.googleplayBuilder.addCategory(category)
+            }
             "description" -> builder.googleplayBuilder.description(ifCanBeParsed { textOrNull() })
-            "explicit" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.googleplayBuilder::explicit)
-            "block" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.googleplayBuilder::block)
-            "image" -> ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
-                ?.let(builder.googleplayBuilder::imageBuilder)
+            "explicit" -> {
+                val explicit = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googleplayBuilder.explicit(explicit)
+            }
+            "block" -> {
+                val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googleplayBuilder.block(block)
+            }
+            "image" -> {
+                val imageBuilder = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
+                builder.googleplayBuilder.imageBuilder(imageBuilder)
+            }
             "new-feed-url" -> builder.googleplayBuilder.newFeedUrl(ifCanBeParsed { textOrNull() })
             else -> pass
         }
@@ -41,9 +52,14 @@ internal object GoogleplayParser : NamespaceParser() {
             "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
             "description" -> builder.googleplayBuilder.description(ifCanBeParsed { textOrNull() })
             "explicit" -> builder.googleplayBuilder.explicit(ifCanBeParsed { textOrNull() })
-            "block" -> ifCanBeParsed { textAsBooleanOrNull() }?.let(builder.googleplayBuilder::block)
-            "image" -> ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
-                ?.let(builder.googleplayBuilder::imageBuilder)
+            "block" -> {
+                val block = ifCanBeParsed { textAsBooleanOrNull() } ?: return
+                builder.googleplayBuilder.block(block)
+            }
+            "image" -> {
+                val imageBuilder = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
+                builder.googleplayBuilder.imageBuilder(imageBuilder)
+            }
             else -> pass
         }
     }
