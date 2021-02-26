@@ -24,7 +24,7 @@ internal object GoogleplayParser : NamespaceParser() {
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
             "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
-            "owner" -> builder.googleplayBuilder.email(ifCanBeParsed { textOrNull() })
+            "email" -> builder.googleplayBuilder.email(ifCanBeParsed { textOrNull() })
             "category" -> {
                 val category = ifCanBeParsed { toGoogleplayCategory() } ?: return
                 builder.googleplayBuilder.addCategory(category)
