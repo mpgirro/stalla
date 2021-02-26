@@ -63,6 +63,12 @@ kotlin {
     explicitApi()
 }
 
+detekt {
+    input = files("src/main/java", "src/main/kotlin")
+    config = files("config/detekt/config.yml")
+    buildUponDefaultConfig = true
+}
+
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {

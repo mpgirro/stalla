@@ -24,7 +24,6 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilder : EpisodePodcastind
     override val hasEnoughDataToBuild: Boolean
         get() = ::startTimeValue.isInitialized && ::durationValue.isInitialized
 
-    @Suppress("ReturnCount")
     override fun build(): Soundbite? {
         if (!hasEnoughDataToBuild) {
             return null

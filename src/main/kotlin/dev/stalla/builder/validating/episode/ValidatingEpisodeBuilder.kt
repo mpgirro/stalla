@@ -1,5 +1,3 @@
-@file:Suppress("TooManyFunctions")
-
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.AtomBuilder

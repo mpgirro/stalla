@@ -83,7 +83,6 @@ internal object PodcastindexParser : NamespaceParser() {
             .type(type)
     }
 
-    @Suppress("ReturnCount")
     private fun Node.toSoundbiteBuilder(
         soundbiteBuilder: EpisodePodcastindexSoundbiteBuilder
     ): EpisodePodcastindexSoundbiteBuilder? {

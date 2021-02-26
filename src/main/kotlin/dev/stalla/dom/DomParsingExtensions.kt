@@ -1,5 +1,3 @@
-@file:Suppress("TooManyFunctions")
-
 package dev.stalla.dom
 
 import dev.stalla.builder.HrefOnlyImageBuilder
@@ -171,7 +169,6 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
  * @return The [ItunesCategory] populated with the DOM node contents.
  */
 @InternalApi
-@Suppress("ReturnCount")
 internal fun Node.toItunesCategory(namespace: FeedNamespace? = null): ItunesCategory? {
     val categoryValue = getAttributeValueByName("text")?.trim() ?: return null
     val category = ItunesCategory.of(categoryValue) ?: return null

@@ -1,5 +1,3 @@
-@file:Suppress("TooManyFunctions")
-
 package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder

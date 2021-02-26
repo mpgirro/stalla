@@ -1,5 +1,3 @@
-@file:Suppress("TooManyFunctions")
-
 package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
