@@ -293,443 +293,443 @@ public sealed class ItunesCategory(public open val type: String) {
             return valueMap[it.toLowerCase(Locale.ROOT)]
         }
 
-        /** Category type for _Arts_ */
+        /** Category type for `Arts`. */
         @JvmField
         public val ARTS: Simple = object : Simple("Arts") {}
 
-        /** Category type for _Books_ nested in the [ARTS] parent category */
+        /** Category type for the value `Books` nested in the [ARTS] parent category. */
         @JvmField
         public val BOOKS: Nested = object : Nested("Books", ARTS) {}
 
-        /** Category type for _Design_ nested in the [ARTS] parent category */
+        /** Category type for value `Design` nested in the [ARTS] parent category. */
         @JvmField
         public val DESIGN: Nested = object : Nested("Design", ARTS) {}
 
-        /** Category type for _Fashion & Beauty_ nested in the [ARTS] parent category */
+        /** Category type for the value `Fashion & Beauty` nested in the [ARTS] parent category. */
         @JvmField
         public val FASHION_AND_BEAUTY: Nested = object : Nested("Fashion & Beauty", ARTS) {}
 
-        /** Category type for _Food_ nested in the [ARTS] parent category */
+        /** Category type for the value `Food` nested in the [ARTS] parent category. */
         @JvmField
         public val FOOD: Nested = object : Nested("Food", ARTS) {}
 
-        /** Category type for _Performing Arts_ nested in the [ARTS] parent category */
+        /** Category type for the value `Performing Arts` nested in the [ARTS] parent category. */
         @JvmField
         public val PERFORMING_ARTS: Nested = object : Nested("Performing Arts", ARTS) {}
 
-        /** Category type for _Visual Arts_ nested in the [ARTS] parent category */
+        /** Category type for the value `Visual Arts` nested in the [ARTS] parent category. */
         @JvmField
         public val VISUAL_ARTS: Nested = object : Nested("Visual Arts", ARTS) {}
 
-        /** Category type for _Business_ */
+        /** Category type for the value `Business`. */
         @JvmField
         public val BUSINESS: Simple = object : Simple("Business") {}
 
-        /** Category type for _Careers_ nested in the [BUSINESS] parent category */
+        /** Category type for the value `Careers` nested in the [BUSINESS] parent category. */
         @JvmField
         public val CAREERS: Nested = object : Nested("Careers", BUSINESS) {}
 
-        /** Category type for _Entrepreneurship_ nested in the [BUSINESS] parent category */
+        /** Category type for the value `Entrepreneurship` nested in the [BUSINESS] parent category. */
         @JvmField
         public val ENTREPRENEURSHIP: Nested = object : Nested("Entrepreneurship", BUSINESS) {}
 
-        /** Category type for _Investing_ nested in the [BUSINESS] parent category */
+        /** Category type for the value `Investing` nested in the [BUSINESS] parent category */
         @JvmField
         public val INVESTING: Nested = object : Nested("Investing", BUSINESS) {}
 
-        /** Category type for _Management_ nested in the [BUSINESS] parent category */
+        /** Category type for the value `Management` nested in the [BUSINESS] parent category */
         @JvmField
         public val MANAGEMENT: Nested = object : Nested("Management", BUSINESS) {}
 
-        /** Category type for _Marketing_ nested in the [BUSINESS] parent category */
+        /** Category type for the value `Marketing` nested in the [BUSINESS] parent category. */
         @JvmField
         public val MARKETING: Nested = object : Nested("Marketing", BUSINESS) {}
 
-        /** Category type for _Non-Profit_ nested in the [BUSINESS] parent category */
+        /** Category type for the value `Non-Profit` nested in the [BUSINESS] parent category. */
         @JvmField
         public val NON_PROFIT: Nested = object : Nested("Non-Profit", BUSINESS) {}
 
-        /** Category type for _Comedy_ */
+        /** Category type for the value `Comedy`. */
         @JvmField
         public val COMEDY: Simple = object : Simple("Comedy") {}
 
-        /** Category type for _Comedy Interviews_ nested in the [COMEDY] parent category */
+        /** Category type for the value `Comedy Interviews` nested in the [COMEDY] parent category. */
         @JvmField
         public val COMEDY_INTERVIEWS: Nested = object : Nested("Comedy Interviews", COMEDY) {}
 
-        /** Category type for _Improv_ nested in the [COMEDY] parent category */
+        /** Category type for the value `Improv` nested in the [COMEDY] parent category. */
         @JvmField
         public val IMPROV: Nested = object : Nested("Improv", COMEDY) {}
 
-        /** Category type for _Stand-Up_ nested in the [COMEDY] parent category */
+        /** Category type for the value `Stand-Up` nested in the [COMEDY] parent category. */
         @JvmField
         public val STAND_UP: Nested = object : Nested("Stand-Up", COMEDY) {}
 
-        /** Category type for _Education_ */
+        /** Category type for the value `Education`. */
         @JvmField
         public val EDUCATION: Simple = object : Simple("Education") {}
 
-        /** Category type for _Courses_ nested in the [EDUCATION] parent category */
+        /** Category type for the value `Courses` nested in the [EDUCATION] parent category. */
         @JvmField
         public val COURSES: Nested = object : Nested("Courses", EDUCATION) {}
 
-        /** Category type for _HowTo_ nested in the [EDUCATION] parent category */
+        /** Category type for the value `HowTo` nested in the [EDUCATION] parent category. */
         @JvmField
         public val HOW_TO: Nested = object : Nested("How To", EDUCATION) {}
 
-        /** Category type for _Language Learning_ nested in the [EDUCATION] parent category */
+        /** Category type for the value `Language Learning` nested in the [EDUCATION] parent category. */
         @JvmField
         public val LANGUAGE_LEARNING: Nested = object : Nested("Language Learning", EDUCATION) {}
 
-        /** Category type for _Self-Improvement_ nested in the [EDUCATION] parent category */
+        /** Category type for the value `Self-Improvement` nested in the [EDUCATION] parent category. */
         @JvmField
         public val SELF_IMPROVEMENT: Nested = object : Nested("Self-Improvement", EDUCATION) {}
 
-        /** Category type for _Fiction_ */
+        /** Category type for the value `Fiction`. */
         @JvmField
         public val FICTION: Simple = object : Simple("Fiction") {}
 
-        /** Category type for _Comedy Fiction_ nested in the [FICTION] parent category */
+        /** Category type for the value `Comedy Fiction` nested in the [FICTION] parent category. */
         @JvmField
         public val COMEDY_FICTION: Nested = object : Nested("Comedy Fiction", FICTION) {}
 
-        /** Category type for _Drama_ nested in the [FICTION] parent category */
+        /** Category type for the value `Drama` nested in the [FICTION] parent category. */
         @JvmField
         public val DRAMA: Nested = object : Nested("Drama", FICTION) {}
 
-        /** Category type for _Science Fiction_ nested in the [FICTION] parent category */
+        /** Category type for the value `Science Fiction` nested in the [FICTION] parent category. */
         @JvmField
         public val SCIENCE_FICTION: Nested = object : Nested("Science Fiction", FICTION) {}
 
-        /** Category type for _Government_ */
+        /** Category type for the value `Government`. */
         @JvmField
         public val GOVERNMENT: Simple = object : Simple("Government") {}
 
-        /** Category type for _History_ */
+        /** Category type for the value `History`. */
         @JvmField
         public val HISTORY: Simple = object : Simple("History") {}
 
-        /** Category type for _Health & Fitness_ */
+        /** Category type for the value `Health & Fitness`. */
         @JvmField
         public val HEALTH_AND_FITNESS: Simple = object : Simple("Health & Fitness") {}
 
-        /** Category type for _Alternative Health_ nested in the [HEALTH_AND_FITNESS] parent category */
+        /** Category type for the value `Alternative Health` nested in the [HEALTH_AND_FITNESS] parent category. */
         @JvmField
         public val ALTERNATIVE_HEALTH: Nested = object : Nested("Alternative Health", HEALTH_AND_FITNESS) {}
 
-        /** Category type for _Fitness_ nested in the [HEALTH_AND_FITNESS] parent category */
+        /** Category type for the value `Fitness` nested in the [HEALTH_AND_FITNESS] parent category. */
         @JvmField
         public val FITNESS: Nested = object : Nested("Fitness", HEALTH_AND_FITNESS) {}
 
-        /** Category type for _Medicine_ nested in the [HEALTH_AND_FITNESS] parent category */
+        /** Category type for the value `Medicine` nested in the [HEALTH_AND_FITNESS] parent category. */
         @JvmField
         public val MEDICINE: Nested = object : Nested("Medicine", HEALTH_AND_FITNESS) {}
 
-        /** Category type for _Mental Health_ nested in the [HEALTH_AND_FITNESS] parent category */
+        /** Category type for the value `Mental Health` nested in the [HEALTH_AND_FITNESS] parent category. */
         @JvmField
         public val MENTAL_HEALTH: Nested = object : Nested("Mental Health", HEALTH_AND_FITNESS) {}
 
-        /** Category type for _Nutrition_ nested in the [HEALTH_AND_FITNESS] parent category */
+        /** Category type for the value `Nutrition` nested in the [HEALTH_AND_FITNESS] parent category. */
         @JvmField
         public val NUTRITION: Nested = object : Nested("Nutrition", HEALTH_AND_FITNESS) {}
 
-        /** Category type for _Sexuality_ nested in the [HEALTH_AND_FITNESS] parent category */
+        /** Category type for the value `Sexuality` nested in the [HEALTH_AND_FITNESS] parent category. */
         @JvmField
         public val SEXUALITY: Nested = object : Nested("Sexuality", HEALTH_AND_FITNESS) {}
 
-        /** Category type for _Kids & Family_ */
+        /** Category type for the value `Kids & Family`. */
         @JvmField
         public val KIDS_AND_FAMILY: Simple = object : Simple("Kids & Family") {}
 
-        /** Category type for _Education for Kids_ nested in the [KIDS_AND_FAMILY] parent category */
+        /** Category type for the value `Education for Kids` nested in the [KIDS_AND_FAMILY] parent category. */
         @JvmField
         public val EDUCATION_FOR_KIDS: Nested = object : Nested("Education for Kids", KIDS_AND_FAMILY) {}
 
-        /** Category type for _Parentings_ nested in the [KIDS_AND_FAMILY] parent category */
+        /** Category type for the value `Parentings` nested in the [KIDS_AND_FAMILY] parent category. */
         @JvmField
         public val PARENTING: Nested = object : Nested("Parenting", KIDS_AND_FAMILY) {}
 
-        /** Category type for _Pets & Animals_ nested in the [KIDS_AND_FAMILY] parent category */
+        /** Category type for the value `Pets & Animals` nested in the [KIDS_AND_FAMILY] parent category. */
         @JvmField
         public val PETS_AND_ANIMALS: Nested = object : Nested("Pets & Animals", KIDS_AND_FAMILY) {}
 
-        /** Category type for _Stories for Kids_ nested in the [KIDS_AND_FAMILY] parent category */
+        /** Category type for the value `Stories for Kids` nested in the [KIDS_AND_FAMILY] parent category. */
         @JvmField
         public val STORIES_FOR_KIDS: Nested = object : Nested("Stories for Kids", KIDS_AND_FAMILY) {}
 
-        /** Category type for _Leisure_ */
+        /** Category type for the value `Leisure`. */
         @JvmField
         public val LEISURE: Simple = object : Simple("Leisure") {}
 
-        /** Category type for _Animation & Manga_ nested in the [LEISURE] parent category */
+        /** Category type for the value `Animation & Manga` nested in the [LEISURE] parent category. */
         @JvmField
         public val ANIMATION_AND_MANGA: Nested = object : Nested("Animation & Manga", LEISURE) {}
 
-        /** Category type for _Automotive_ nested in the [LEISURE] parent category */
+        /** Category type for the value `Automotive` nested in the [LEISURE] parent category. */
         @JvmField
         public val AUTOMOTIVE: Nested = object : Nested("Automotive", LEISURE) {}
 
-        /** Category type for _Aviation_ nested in the [LEISURE] parent category */
+        /** Category type for the value `Aviation` nested in the [LEISURE] parent category. */
         @JvmField
         public val AVIATION: Nested = object : Nested("Aviation", LEISURE) {}
 
-        /** Category type for _Crafts_ nested in the [LEISURE] parent category */
+        /** Category type for the value `Crafts` nested in the [LEISURE] parent category. */
         @JvmField
         public val CRAFTS: Nested = object : Nested("Crafts", LEISURE) {}
 
-        /** Category type for _Games_ nested in the [LEISURE] parent category */
+        /** Category type for the value `Games` nested in the [LEISURE] parent category. */
         @JvmField
         public val GAMES: Nested = object : Nested("Games", LEISURE) {}
 
-        /** Category type for _Hobbies_ nested in the [LEISURE] parent category */
+        /** Category type for the value `Hobbies` nested in the [LEISURE] parent category. */
         @JvmField
         public val HOBBIES: Nested = object : Nested("Hobbies", LEISURE) {}
 
-        /** Category type for _Home & Garden_ nested in the [LEISURE] parent category */
+        /** Category type for the value `Home & Garden` nested in the [LEISURE] parent category. */
         @JvmField
         public val HOME_AND_GARDEN: Nested = object : Nested("Home & Garden", LEISURE) {}
 
-        /** Category type for _Video Games_ nested in the [LEISURE] parent category */
+        /** Category type for the value `Video Games` nested in the [LEISURE] parent category. */
         @JvmField
         public val VIDEO_GAMES: Nested = object : Nested("Video Games", LEISURE) {}
 
-        /** Category type for _Music_ */
+        /** Category type for the value `Music`. */
         @JvmField
         public val MUSIC: Simple = object : Simple("Music") {}
 
-        /** Category type for _Music Commentary_ nested in the [MUSIC] parent category */
+        /** Category type for the value `Music Commentary` nested in the [MUSIC] parent category. */
         @JvmField
         public val MUSIC_COMMENTARY: Nested = object : Nested("Music Commentary", MUSIC) {}
 
-        /** Category type for _Music History_ nested in the [MUSIC] parent category */
+        /** Category type for the value `Music History` nested in the [MUSIC] parent category. */
         @JvmField
         public val MUSIC_HISTORY: Nested = object : Nested("Music History", MUSIC) {}
 
-        /** Category type for _Music Interviews_ nested in the [MUSIC] parent category */
+        /** Category type for the value `Music Interviews` nested in the [MUSIC] parent category. */
         @JvmField
         public val MUSIC_INTERVIEWS: Nested = object : Nested("Music Interviews", MUSIC) {}
 
-        /** Category type for _News_ */
+        /** Category type for the value `News`. */
         @JvmField
         public val NEWS: Simple = object : Simple("News") {}
 
-        /** Category type for _Business News_ nested in the [NEWS] parent category */
+        /** Category type for the value `Business News` nested in the [NEWS] parent category. */
         @JvmField
         public val BUSINESS_NEWS: Nested = object : Nested("Business News", NEWS) {}
 
-        /** Category type for _Daily News_ nested in the [NEWS] parent category */
+        /** Category type for the value `Daily News` nested in the [NEWS] parent category. */
         @JvmField
         public val DAILY_NEWS: Nested = object : Nested("Daily News", NEWS) {}
 
-        /** Category type for _Entertainment News_ nested in the [NEWS] parent category */
+        /** Category type for the value `Entertainment News` nested in the [NEWS] parent category. */
         @JvmField
         public val ENTERTAINMENT_NEWS: Nested = object : Nested("Entertainment News", NEWS) {}
 
-        /** Category type for _News Commentary_ nested in the [NEWS] parent category */
+        /** Category type for the value `News Commentary` nested in the [NEWS] parent category. */
         @JvmField
         public val NEWS_COMMENTARY: Nested = object : Nested("News Commentary", NEWS) {}
 
-        /** Category type for _Politics_ nested in the [NEWS] parent category */
+        /** Category type for the value `Politics` nested in the [NEWS] parent category. */
         @JvmField
         public val POLITICS: Nested = object : Nested("Politics", NEWS) {}
 
-        /** Category type for _Sports News_ nested in the [NEWS] parent category */
+        /** Category type for the value `Sports News` nested in the [NEWS] parent category. */
         @JvmField
         public val SPORTS_NEWS: Nested = object : Nested("Sports News", NEWS) {}
 
-        /** Category type for _Tech News_ nested in the [NEWS] parent category */
+        /** Category type for the value `Tech News` nested in the [NEWS] parent category. */
         @JvmField
         public val TECH_NEWS: Nested = object : Nested("Tech News", NEWS) {}
 
-        /** Category type for _Religion & Spirituality_ */
+        /** Category type for the value `Religion & Spirituality`. */
         @JvmField
         public val RELIGION_AND_SPIRITUALITY: Simple = object : Simple("Religion & Spirituality") {}
 
-        /** Category type for _Buddhism_ nested in the [RELIGION_AND_SPIRITUALITY] parent category */
+        /** Category type for the value `Buddhism` nested in the [RELIGION_AND_SPIRITUALITY] parent category. */
         @JvmField
         public val BUDDHISM: Nested = object : Nested("Buddhism", RELIGION_AND_SPIRITUALITY) {}
 
-        /** Category type for _Christianity_ nested in the [RELIGION_AND_SPIRITUALITY] parent category */
+        /** Category type for the value `Christianity` nested in the [RELIGION_AND_SPIRITUALITY] parent category. */
         @JvmField
         public val CHRISTIANITY: Nested = object : Nested("Christianity", RELIGION_AND_SPIRITUALITY) {}
 
-        /** Category type for _Hinduism_ nested in the [RELIGION_AND_SPIRITUALITY] parent category */
+        /** Category type for the value `Hinduism` nested in the [RELIGION_AND_SPIRITUALITY] parent category. */
         @JvmField
         public val HINDUISM: Nested = object : Nested("Hinduism", RELIGION_AND_SPIRITUALITY) {}
 
-        /** Category type for _Islam_ nested in the [RELIGION_AND_SPIRITUALITY] parent category */
+        /** Category type for the value `Islam` nested in the [RELIGION_AND_SPIRITUALITY] parent category. */
         @JvmField
         public val ISLAM: Nested = object : Nested("Islam", RELIGION_AND_SPIRITUALITY) {}
 
-        /** Category type for _Judaism_ nested in the [RELIGION_AND_SPIRITUALITY] parent category */
+        /** Category type for the value `Judaism` nested in the [RELIGION_AND_SPIRITUALITY] parent category. */
         @JvmField
         public val JUDAISM: Nested = object : Nested("Judaism", RELIGION_AND_SPIRITUALITY) {}
 
-        /** Category type for _Religion_ nested in the [RELIGION_AND_SPIRITUALITY] parent category */
+        /** Category type for the value `Religion` nested in the [RELIGION_AND_SPIRITUALITY] parent category. */
         @JvmField
         public val RELIGION: Nested = object : Nested("Religion", RELIGION_AND_SPIRITUALITY) {}
 
-        /** Category type for _Spirituality_ nested in the [RELIGION_AND_SPIRITUALITY] parent category */
+        /** Category type for the value `Spirituality` nested in the [RELIGION_AND_SPIRITUALITY] parent category. */
         @JvmField
         public val SPIRITUALITY: Nested = object : Nested("Spirituality", RELIGION_AND_SPIRITUALITY) {}
 
-        /** Category type for _Science_ */
+        /** Category type for the value `Science`. */
         @JvmField
         public val SCIENCE: Simple = object : Simple("Science") {}
 
-        /** Category type for _Astronomy_ nested in the [SCIENCE] parent category */
+        /** Category type for the value `Astronomy` nested in the [SCIENCE] parent category. */
         @JvmField
         public val ASTRONOMY: Nested = object : Nested("Astronomy", SCIENCE) {}
 
-        /** Category type for _Chemistry_ nested in the [SCIENCE] parent category */
+        /** Category type for the value `Chemistry` nested in the [SCIENCE] parent category. */
         @JvmField
         public val CHEMISTRY: Nested = object : Nested("Chemistry", SCIENCE) {}
 
-        /** Category type for _Earth Sciences_ nested in the [SCIENCE] parent category */
+        /** Category type for the value `Earth Sciences` nested in the [SCIENCE] parent category. */
         @JvmField
         public val EARTH_SCIENCES: Nested = object : Nested("Earth Sciences", SCIENCE) {}
 
-        /** Category type for _Life Sciences_ nested in the [SCIENCE] parent category */
+        /** Category type for the value `Life Sciences` nested in the [SCIENCE] parent category. */
         @JvmField
         public val LIFE_SCIENCES: Nested = object : Nested("Life Sciences", SCIENCE) {}
 
-        /** Category type for _Mathematics_ nested in the [SCIENCE] parent category */
+        /** Category type for the value `Mathematics` nested in the [SCIENCE] parent category. */
         @JvmField
         public val MATHEMATICS: Nested = object : Nested("Mathematics", SCIENCE) {}
 
-        /** Category type for _Natural Sciences_ nested in the [SCIENCE] parent category */
+        /** Category type for the value `Natural Sciences` nested in the [SCIENCE] parent category. */
         @JvmField
         public val NATURAL_SCIENCES: Nested = object : Nested("Natural Sciences", SCIENCE) {}
 
-        /** Category type for _Nature_ nested in the [SCIENCE] parent category */
+        /** Category type for the value `Nature` nested in the [SCIENCE] parent category. */
         @JvmField
         public val NATURE: Nested = object : Nested("Nature", SCIENCE) {}
 
-        /** Category type for _Physics_ nested in the [SCIENCE] parent category */
+        /** Category type for the value `Physics` nested in the [SCIENCE] parent category. */
         @JvmField
         public val PHYSICS: Nested = object : Nested("Physics", SCIENCE) {}
 
-        /** Category type for _Social Sciences_ nested in the [SCIENCE] parent category */
+        /** Category type for the value `Social Sciences` nested in the [SCIENCE] parent category. */
         @JvmField
         public val SOCIAL_SCIENCES: Nested = object : Nested("Social Sciences", SCIENCE) {}
 
-        /** Category type for _Society & Culture_ */
+        /** Category type for the value `Society & Culture`. */
         @JvmField
         public val SOCIETY_AND_CULTURE: Simple = object : Simple("Society & Culture") {}
 
-        /** Category type for _Documentary_ nested in the [SOCIETY_AND_CULTURE] parent category */
+        /** Category type for the value `Documentary` nested in the [SOCIETY_AND_CULTURE] parent category. */
         @JvmField
         public val DOCUMENTARY: Nested = object : Nested("Documentary", SOCIETY_AND_CULTURE) {}
 
-        /** Category type for _Personal Journals_ nested in the [SOCIETY_AND_CULTURE] parent category */
+        /** Category type for the value `Personal Journals` nested in the [SOCIETY_AND_CULTURE] parent category. */
         @JvmField
         public val PERSONAL_JOURNALS: Nested = object : Nested("Personal Journals", SOCIETY_AND_CULTURE) {}
 
-        /** Category type for _Philosophy_ nested in the [SOCIETY_AND_CULTURE] parent category */
+        /** Category type for the value `Philosophy` nested in the [SOCIETY_AND_CULTURE] parent category. */
         @JvmField
         public val PHILOSOPHY: Nested = object : Nested("Philosophy", SOCIETY_AND_CULTURE) {}
 
-        /** Category type for _Places & Travel_ nested in the [SOCIETY_AND_CULTURE] parent category */
+        /** Category type for the value `Places & Travel` nested in the [SOCIETY_AND_CULTURE] parent category. */
         @JvmField
         public val PLACES_AND_TRAVEL: Nested = object : Nested("Places & Travel", SOCIETY_AND_CULTURE) {}
 
-        /** Category type for _Relationships_ nested in the [SOCIETY_AND_CULTURE] parent category */
+        /** Category type for the value `Relationships` nested in the [SOCIETY_AND_CULTURE] parent category. */
         @JvmField
         public val RELATIONSHIPS: Nested = object : Nested("Relationships", SOCIETY_AND_CULTURE) {}
 
-        /** Category type for _Sports_ */
+        /** Category type for the value `Sports`. */
         @JvmField
         public val SPORTS: Simple = object : Simple("Sports") {}
 
-        /** Category type for _Baseball_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Baseball` nested in the [SPORTS] parent category. */
         @JvmField
         public val BASEBALL: Nested = object : Nested("Baseball", SPORTS) {}
 
-        /** Category type for _Basketball_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Basketball` nested in the [SPORTS] parent category. */
         @JvmField
         public val BASKETBALL: Nested = object : Nested("Basketball", SPORTS) {}
 
-        /** Category type for _Cricket_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Cricket` nested in the [SPORTS] parent category. */
         @JvmField
         public val CRICKET: Nested = object : Nested("Cricket", SPORTS) {}
 
-        /** Category type for _Fantasy Sports_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Fantasy Sports` nested in the [SPORTS] parent category. */
         @JvmField
         public val FANTASY_SPORTS: Nested = object : Nested("Fantasy Sports", SPORTS) {}
 
-        /** Category type for _Football_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Football` nested in the [SPORTS] parent category. */
         @JvmField
         public val FOOTBALL: Nested = object : Nested("Football", SPORTS) {}
 
-        /** Category type for _Golf_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Golf` nested in the [SPORTS] parent category. */
         @JvmField
         public val GOLF: Nested = object : Nested("Golf", SPORTS) {}
 
-        /** Category type for _Hockey_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Hockey` nested in the [SPORTS] parent category. */
         @JvmField
         public val HOCKEY: Nested = object : Nested("Hockey", SPORTS) {}
 
-        /** Category type for _Rugby_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Rugby` nested in the [SPORTS] parent category. */
         @JvmField
         public val RUGBY: Nested = object : Nested("Rugby", SPORTS) {}
 
-        /** Category type for _Running_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Running` nested in the [SPORTS] parent category. */
         @JvmField
         public val RUNNING: Nested = object : Nested("Running", SPORTS) {}
 
-        /** Category type for _Soccer_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Soccer` nested in the [SPORTS] parent category. */
         @JvmField
         public val SOCCER: Nested = object : Nested("Soccer", SPORTS) {}
 
-        /** Category type for _Swimming_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Swimming` nested in the [SPORTS] parent category. */
         @JvmField
         public val SWIMMING: Nested = object : Nested("Swimming", SPORTS) {}
 
-        /** Category type for _Tennis_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Tennis` nested in the [SPORTS] parent category. */
         @JvmField
         public val TENNIS: Nested = object : Nested("Tennis", SPORTS) {}
 
-        /** Category type for _Volleyball_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Volleyball` nested in the [SPORTS] parent category. */
         @JvmField
         public val VOLLEYBALL: Nested = object : Nested("Volleyball", SPORTS) {}
 
-        /** Category type for _Wilderness_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Wilderness` nested in the [SPORTS] parent category. */
         @JvmField
         public val WILDERNESS: Nested = object : Nested("Wilderness", SPORTS) {}
 
-        /** Category type for _Wrestling_ nested in the [SPORTS] parent category */
+        /** Category type for the value `Wrestling` nested in the [SPORTS] parent category. */
         @JvmField
         public val WRESTLING: Nested = object : Nested("Wrestling", SPORTS) {}
 
-        /** Category type for _Technology_ */
+        /** Category type for the value `Technology`. */
         @JvmField
         public val TECHNOLOGY: Simple = object : Simple("Technology") {}
 
-        /** Category type for _True Crime_ */
+        /** Category type for the value `True Crime`. */
         @JvmField
         public val TRUE_CRIME: Simple = object : Simple("True Crime") {}
 
-        /** Category type for _TV & Film_ */
+        /** Category type for the value `TV & Film`. */
         @JvmField
         public val TV_AND_FILM: Simple = object : Simple("TV & Film") {}
 
-        /** Category type for _After Shows_ nested in the [TV_AND_FILM] parent category */
+        /** Category type for the value `After Shows` nested in the [TV_AND_FILM] parent category. */
         @JvmField
         public val AFTER_SHOWS: Nested = object : Nested("After Shows", TV_AND_FILM) {}
 
-        /** Category type for _Film History_ nested in the [TV_AND_FILM] parent category */
+        /** Category type for the value `Film History` nested in the [TV_AND_FILM] parent category. */
         @JvmField
         public val FILM_HISTORY: Nested = object : Nested("Film History", TV_AND_FILM) {}
 
-        /** Category type for _Film Interviews_ nested in the [TV_AND_FILM] parent category */
+        /** Category type for the value `Film Interviews` nested in the [TV_AND_FILM] parent category. */
         @JvmField
         public val FILM_INTERVIEWS: Nested = object : Nested("Film Interviews", TV_AND_FILM) {}
 
-        /** Category type for _Film Reviews_ nested in the [TV_AND_FILM] parent category */
+        /** Category type for the value `Film Reviews` nested in the [TV_AND_FILM] parent category. */
         @JvmField
         public val FILM_REVIEWS: Nested = object : Nested("Film Reviews", TV_AND_FILM) {}
 
-        /** Category type for _TV Reviews_ nested in the [TV_AND_FILM] parent category */
+        /** Category type for the value `TV Reviews` nested in the [TV_AND_FILM] parent category. */
         @JvmField
         public val TV_REVIEWS: Nested = object : Nested("TV Reviews", TV_AND_FILM) {}
     }

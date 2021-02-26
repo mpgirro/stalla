@@ -35,7 +35,7 @@ import java.time.temporal.TemporalAccessor
  * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
  * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property categories The RSS feed categories, if any.
- * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
+ * @property podcast The data from the Podcastindex namespace, or null if no data from this namespace was found.
  */
 public data class Podcast(
     val title: String,
