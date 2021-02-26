@@ -14,7 +14,7 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     public fun author(author: String?): PodcastGoogleplayBuilder
 
     /** Set the owner email value. */
-    public fun owner(email: String?): PodcastGoogleplayBuilder
+    public fun email(email: String?): PodcastGoogleplayBuilder
 
     /** Adds the [GoogleplayCategory] the list of categories. */
     public fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder
@@ -41,7 +41,7 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     override fun applyFrom(prototype: PodcastGoogleplay?): PodcastGoogleplayBuilder =
         whenNotNull(prototype) { googleplay ->
             author(googleplay.author)
-            owner(googleplay.owner)
+            email(googleplay.email)
             addAllCategorie(googleplay.categories)
             description(googleplay.description)
             explicit(googleplay.explicit)

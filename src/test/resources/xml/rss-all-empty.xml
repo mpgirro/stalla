@@ -59,7 +59,7 @@
         <feedpress:cssFile></feedpress:cssFile>
         <feedpress:link></feedpress:link>
         <googleplay:author></googleplay:author>
-        <googleplay:owner></googleplay:owner>
+        <googleplay:email></googleplay:email>
         <googleplay:category text="">
             <googleplay:category text=""/>
         </googleplay:category>

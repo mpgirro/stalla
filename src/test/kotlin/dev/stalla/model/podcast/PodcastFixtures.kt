@@ -112,14 +112,14 @@ internal fun aPodcastFeedpress(
 
 internal fun aPodcastGoogleplay(
     author: String? = "podcast googleplay author",
-    owner: String? = "podcast googleplay owner",
+    email: String? = "podcast googleplay email",
     categories: List<GoogleplayCategory> = listOf(aGoogleplayCategory()),
     description: String? = "podcast googleplay description",
     explicit: Boolean? = true,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url"),
     newFeedUrl: String? = "podcast googleplay newFeedUrl"
-) = PodcastGoogleplay(author, owner, categories, description, explicit, block, image, newFeedUrl)
+) = PodcastGoogleplay(author, email, categories, description, explicit, block, image, newFeedUrl)
 
 internal fun aPodcastPodcastindex(
     locked: Locked? = aPodcastPodcastindexLocked(),

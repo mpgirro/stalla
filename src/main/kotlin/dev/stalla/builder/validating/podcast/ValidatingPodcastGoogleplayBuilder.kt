@@ -11,7 +11,7 @@ import dev.stalla.util.anyNotNull
 internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     private var author: String? = null
-    private var owner: String? = null
+    private var email: String? = null
     private var categories: MutableList<GoogleplayCategory> = mutableListOf()
     private var description: String? = null
     private var explicit: Boolean? = null
@@ -21,7 +21,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     override fun author(author: String?): PodcastGoogleplayBuilder = apply { this.author = author }
 
-    override fun owner(email: String?): PodcastGoogleplayBuilder = apply { this.owner = email }
+    override fun email(email: String?): PodcastGoogleplayBuilder = apply { this.email = email }
 
     override fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder =
         apply { categories.add(category) }
@@ -40,7 +40,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() {
             if (block) return true
-            if (anyNotNull(author, owner, description, explicit, newFeedUrl)) return true
+            if (anyNotNull(author, email, description, explicit, newFeedUrl)) return true
             if (imageBuilder?.hasEnoughDataToBuild == true) return true
             return categories.isNotEmpty()
         }
@@ -52,7 +52,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
         return PodcastGoogleplay(
             author = author,
-            owner = owner,
+            email = email,
             categories = categories,
             description = description,
             explicit = explicit,

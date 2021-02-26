@@ -38,7 +38,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
 
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
             prop(FakePodcastGoogleplayBuilder::author).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastGoogleplayBuilder::owner).isEqualTo("email@example.org")
+            prop(FakePodcastGoogleplayBuilder::email).isEqualTo("email@example.org")
             prop(FakePodcastGoogleplayBuilder::categories).containsExactly(GoogleplayCategory.NEWS_AND_POLITICS)
             prop(FakePodcastGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
             prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isFalse()
@@ -56,7 +56,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
 
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
             prop(FakePodcastGoogleplayBuilder::author).isNull()
-            prop(FakePodcastGoogleplayBuilder::owner).isNull()
+            prop(FakePodcastGoogleplayBuilder::email).isNull()
             prop(FakePodcastGoogleplayBuilder::categories).isEmpty()
             prop(FakePodcastGoogleplayBuilder::description).isNull()
             prop(FakePodcastGoogleplayBuilder::explicit).isNull()
@@ -74,7 +74,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
 
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
             prop(FakePodcastGoogleplayBuilder::author).isNull()
-            prop(FakePodcastGoogleplayBuilder::owner).isNull()
+            prop(FakePodcastGoogleplayBuilder::email).isNull()
             prop(FakePodcastGoogleplayBuilder::categories).isEmpty()
             prop(FakePodcastGoogleplayBuilder::description).isNull()
             prop(FakePodcastGoogleplayBuilder::explicit).isNull()

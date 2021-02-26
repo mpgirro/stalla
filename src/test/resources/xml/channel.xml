@@ -50,7 +50,7 @@
         <itunes:email>owner@example.org</itunes:email>
     </itunes:owner>
     <googleplay:author>Lorem Ipsum</googleplay:author>
-    <googleplay:owner>email@example.org</googleplay:owner>
+    <googleplay:email>email@example.org</googleplay:email>
     <googleplay:category text="News &amp; Politics" />
     <googleplay:description>Lorem Ipsum</googleplay:description>
     <googleplay:explicit>no</googleplay:explicit>
