@@ -25,6 +25,7 @@ internal object ItunesParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.ITUNES
 
+    @Suppress("ComplexMethod")
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
             "author" -> builder.itunesBuilder.author(ifCanBeParsed { textOrNull() })
@@ -45,7 +46,9 @@ internal object ItunesParser : NamespaceParser() {
                 builder.itunesBuilder.explicit(explicit)
             }
             "image" -> {
-                val image = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) } ?: return
+                val image = ifCanBeParsed {
+                    toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder())
+                } ?: return
                 builder.itunesBuilder.imageBuilder(image)
             }
             "keywords" -> builder.itunesBuilder.keywords(ifCanBeParsed { textOrNull() })
@@ -68,6 +71,7 @@ internal object ItunesParser : NamespaceParser() {
         return personBuilder
     }
 
+    @Suppress("ComplexMethod")
     override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         when (localName) {
             "block" -> {

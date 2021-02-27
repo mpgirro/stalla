@@ -13,6 +13,7 @@ public data class Fyyd(
     val verify: String
 ) {
 
+    /** Provides a builder for the [Fyyd] class. */
     public companion object Factory : BuilderFactory<Fyyd, PodcastFyydBuilder> {
 
         /** Returns a builder implementation for building [Fyyd] model instances. */

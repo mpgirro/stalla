@@ -65,17 +65,16 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     override fun author(author: String?): EpisodeBuilder = apply { this.author = author }
 
-    override fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder = apply {
-        categoryBuilders.add(categoryBuilder)
-    }
+    override fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): EpisodeBuilder =
+        apply { categoryBuilders.add(categoryBuilder) }
 
     override fun comments(comments: String?): EpisodeBuilder = apply { this.comments = comments }
 
-    override fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder = apply {
-        this.enclosureBuilderValue = enclosureBuilder
-    }
+    override fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder =
+        apply { this.enclosureBuilderValue = enclosureBuilder }
 
-    override fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder = apply { this.guidBuilder = guidBuilder }
+    override fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder =
+        apply { this.guidBuilder = guidBuilder }
 
     override fun pubDate(pubDate: TemporalAccessor?): EpisodeBuilder = apply { this.pubDate = pubDate }
 
@@ -91,26 +90,29 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = ValidatingHrefOnlyImageBuilder()
 
-    override fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
+    override fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder =
+        ValidatingEpisodePodloveSimpleChapterBuilder()
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder = ValidatingEpisodePodcastindexTranscriptBuilder()
+    override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder =
+        ValidatingEpisodePodcastindexTranscriptBuilder()
 
-    override fun createEpisodePodcastChaptersBuilder(): EpisodePodcastindexChaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
+    override fun createEpisodePodcastChaptersBuilder(): EpisodePodcastindexChaptersBuilder =
+        ValidatingEpisodePodcastindexChaptersBuilder()
 
-    override fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
+    override fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder =
+        ValidatingEpisodePodcastindexSoundbiteBuilder()
 
     override val hasEnoughDataToBuild: Boolean
-        get() = ::titleValue.isInitialized && (::enclosureBuilderValue.isInitialized && enclosureBuilderValue.hasEnoughDataToBuild)
+        get() = ::titleValue.isInitialized &&
+            ::enclosureBuilderValue.isInitialized &&
+            enclosureBuilderValue.hasEnoughDataToBuild
 
     override fun build(): Episode? {
         if (!hasEnoughDataToBuild) {
             return null
         }
-
-        val enclosure = enclosureBuilderValue.build()
-            ?: throw IllegalStateException("Cannot build the enclosure, while hasEnoughDataToBuild == true")
 
         return Episode(
             title = titleValue,
@@ -119,7 +121,8 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
             author = author,
             categories = categoryBuilders.mapNotNull { it.build() },
             comments = comments,
-            enclosure = enclosure,
+            enclosure = enclosureBuilderValue.build()
+                ?: error("Cannot build the enclosure, while hasEnoughDataToBuild == true"),
             guid = guidBuilder?.build(),
             pubDate = pubDate,
             source = source,

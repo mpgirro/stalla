@@ -17,6 +17,7 @@ public data class Enclosure(
     val type: String
 ) {
 
+    /** Provides a builder for the [Enclosure] class. */
     public companion object Factory : BuilderFactory<Enclosure, EpisodeEnclosureBuilder> {
 
         /** Returns a builder implementation for building [Enclosure] model instances. */

@@ -1,5 +1,9 @@
 package dev.stalla.model
 
+import dev.stalla.model.StyledDuration.HoursMinutesSeconds
+import dev.stalla.model.StyledDuration.MinutesSeconds
+import dev.stalla.model.StyledDuration.Seconds
+import dev.stalla.model.StyledDuration.SecondsAndFraction
 import dev.stalla.util.InternalApi
 import java.time.Duration
 import kotlin.math.absoluteValue
@@ -55,7 +59,8 @@ public sealed class StyledDuration {
     public val isStrictlyPositive: Boolean
         get() = !(isNegative || isZero)
 
-    final override fun toString(): String = "${javaClass.simpleName}(rawDuration: '$rawDuration', formatted: \"${asFormattedString()}\")"
+    final override fun toString(): String =
+        "${javaClass.simpleName}(rawDuration: '$rawDuration', formatted: \"${asFormattedString()}\")"
 
     /**
      * A duration expressed in the style: `[-]S[.FFF]`.
@@ -179,7 +184,14 @@ public sealed class StyledDuration {
         }
     }
 
+    /** Builds an instance of [StyledDuration] from a raw value. */
     public companion object Factory : TypeFactory<StyledDuration> {
+
+        private const val DECIMAL_BASE = 10F
+        private const val NANO_DIGITS = 9
+        private const val HHMMSS_PATTERN = 3
+        private const val MMSS_PATTERN = 2
+        private const val SS_PATTERN = 1
 
         // Parses the format: [-][HH:]MM:SS
         private val hhMmSsRegex = "(-)?(?:(\\d{1,2}):)?(\\d{1,2}):(\\d{1,2})".toRegex()
@@ -212,20 +224,18 @@ public sealed class StyledDuration {
             val seconds = groupValues.first().toInt()
 
             return when (groupValues.count()) {
-                2 -> {
+                MMSS_PATTERN -> {
                     val nanoString = groupValues.last().removeAllUnneededDecimalZeroes()
-                    val nano = nanoString.toLong() * 10F.pow(9 - nanoString.length).toLong()
+                    val nano = nanoString.toLong() * DECIMAL_BASE.pow(NANO_DIGITS - nanoString.length).toLong()
                     secondsAndFraction(seconds, nano, positive)
                 }
-                1 -> seconds(seconds, positive)
+                SS_PATTERN -> seconds(seconds, positive)
                 else -> null
             }
         }
 
-        private fun String.removeAllUnneededDecimalZeroes(): String {
-            val trimmed = trimEnd('0')
-            return if (trimmed.isEmpty()) "0" else trimmed
-        }
+        private fun String.removeAllUnneededDecimalZeroes(): String =
+            trimEnd('0').ifEmpty { "0" }
 
         private fun tryParsingAsHhMmSs(rawDuration: String): StyledDuration? {
             val match = hhMmSsRegex.matchEntire(rawDuration.trim()) ?: return null
@@ -238,8 +248,17 @@ public sealed class StyledDuration {
             val seconds = groupValues.last().toInt()
 
             return when (groupValues.count()) {
-                3 -> hoursMinutesSeconds(hours = groupValues[0].toInt(), minutes = groupValues[1].toInt(), seconds, positive)
-                2 -> minutesSeconds(minutes = groupValues[0].toInt(), seconds, positive)
+                HHMMSS_PATTERN -> hoursMinutesSeconds(
+                    hours = groupValues[0].toInt(),
+                    minutes = groupValues[1].toInt(),
+                    seconds = seconds,
+                    positive = positive
+                )
+                MMSS_PATTERN -> minutesSeconds(
+                    minutes = groupValues[0].toInt(),
+                    seconds = seconds,
+                    positive = positive
+                )
                 else -> null
             }
         }
@@ -259,7 +278,7 @@ public sealed class StyledDuration {
             require(seconds >= 0 && nano >= 0) { "Components cannot be negative" }
             val sign = if (positive) "" else "-"
             // This is not ideal but Duration does not handle negative nano-only inputs well otherwise
-            val durationString = "PT$sign$seconds.${nano.toString().padStart(9, '0')}S"
+            val durationString = "PT$sign$seconds.${nano.toString().padStart(NANO_DIGITS, '0')}S"
             return SecondsAndFraction(Duration.parse(durationString))
         }
 
@@ -313,7 +332,12 @@ public sealed class StyledDuration {
          * @return A new [HoursMinutesSeconds] instance representing the given duration.
          */
         @JvmOverloads
-        public fun hoursMinutesSeconds(hours: Int = 0, minutes: Int = 0, seconds: Int = 0, positive: Boolean = true): HoursMinutesSeconds {
+        public fun hoursMinutesSeconds(
+            hours: Int = 0,
+            minutes: Int = 0,
+            seconds: Int = 0,
+            positive: Boolean = true
+        ): HoursMinutesSeconds {
             require(hours >= 0 && minutes >= 0 && seconds >= 0) { "Components cannot be negative" }
             val sign = signForPositive(positive)
             val rawDuration = Duration.ofHours(hours.toLong() * sign)

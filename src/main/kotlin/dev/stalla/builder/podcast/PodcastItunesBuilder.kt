@@ -31,9 +31,8 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
     public fun addCategory(category: ItunesCategory): PodcastItunesBuilder
 
     /** Adds all of the [ItunesCategory] to the list of categories. */
-    public fun addAllCategory(categories: List<ItunesCategory>): PodcastItunesBuilder = apply {
-        categories.forEach(::addCategory)
-    }
+    public fun addAllCategory(categories: List<ItunesCategory>): PodcastItunesBuilder =
+        apply { categories.forEach(::addCategory) }
 
     /** Set the explicit flag value. */
     public fun explicit(explicit: Boolean): PodcastItunesBuilder
@@ -56,19 +55,20 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
     /** Set the new URL at which this feed is located. */
     public fun newFeedUrl(newFeedUrl: String?): PodcastItunesBuilder
 
-    override fun applyFrom(prototype: PodcastItunes?): PodcastItunesBuilder = whenNotNull(prototype) { itunes ->
-        subtitle(itunes.subtitle)
-        summary(itunes.summary)
-        imageBuilder(HrefOnlyImage.builder().applyFrom(itunes.image))
-        keywords(itunes.keywords)
-        author(itunes.author)
-        addAllCategory(itunes.categories)
-        explicit(itunes.explicit)
-        block(itunes.block)
-        complete(itunes.complete)
-        type(itunes.type?.type)
-        ownerBuilder(Person.builder().applyFrom(itunes.owner))
-        title(itunes.title)
-        newFeedUrl(itunes.newFeedUrl)
-    }
+    override fun applyFrom(prototype: PodcastItunes?): PodcastItunesBuilder =
+        whenNotNull(prototype) { itunes ->
+            subtitle(itunes.subtitle)
+            summary(itunes.summary)
+            imageBuilder(HrefOnlyImage.builder().applyFrom(itunes.image))
+            keywords(itunes.keywords)
+            author(itunes.author)
+            addAllCategory(itunes.categories)
+            explicit(itunes.explicit)
+            block(itunes.block)
+            complete(itunes.complete)
+            type(itunes.type?.type)
+            ownerBuilder(Person.builder().applyFrom(itunes.owner))
+            title(itunes.title)
+            newFeedUrl(itunes.newFeedUrl)
+        }
 }

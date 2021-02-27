@@ -23,6 +23,9 @@ internal class ValidatingRssCategoryBuilder : RssCategoryBuilder {
             return null
         }
 
-        return RssCategory(categoryValue, domain)
+        return RssCategory(
+            name = categoryValue,
+            domain = domain
+        )
     }
 }

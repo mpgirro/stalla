@@ -21,6 +21,7 @@ public data class Feedpress(
     val link: String? = null
 ) {
 
+    /** Provides a builder for the [Feedpress] class. */
     public companion object Factory : BuilderFactory<Feedpress, PodcastFeedpressBuilder> {
 
         /** Returns a builder implementation for building [Feedpress] model instances. */

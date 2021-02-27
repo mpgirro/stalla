@@ -14,7 +14,8 @@ internal class ValidatingPodcastFeedpressBuilder : PodcastFeedpressBuilder {
     private var cssFile: String? = null
     private var link: String? = null
 
-    override fun newsletterId(newsletterId: String?): PodcastFeedpressBuilder = apply { this.newsletterId = newsletterId }
+    override fun newsletterId(newsletterId: String?): PodcastFeedpressBuilder =
+        apply { this.newsletterId = newsletterId }
 
     override fun locale(locale: String?): PodcastFeedpressBuilder = apply { this.locale = locale }
 
@@ -32,6 +33,12 @@ internal class ValidatingPodcastFeedpressBuilder : PodcastFeedpressBuilder {
             return null
         }
 
-        return Feedpress(newsletterId, locale, podcastId, cssFile, link)
+        return Feedpress(
+            newsletterId = newsletterId,
+            locale = locale,
+            podcastId = podcastId,
+            cssFile = cssFile,
+            link = link
+        )
     }
 }

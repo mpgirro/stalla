@@ -16,6 +16,7 @@ public data class Locked(
     val locked: Boolean
 ) {
 
+    /** Provides a builder for the [Locked] class. */
     public companion object Factory : BuilderFactory<Locked, PodcastPodcastindexLockedBuilder> {
 
         /** Returns a builder implementation for building [Locked] model instances. */

@@ -21,24 +21,24 @@ internal object DomBuilderFactory {
         factory.preventXxe()
     }
 
-    /**
-     *
-     * See http://bit.ly/owasp-xxe-java-dom (shortened URL on https://cheatsheetseries.owasp.org/)
-     */
-    private fun DocumentBuilderFactory.preventXxe() = try {
-        // Disallowing DTDs prevents most XXE entity attacks. Xerces 2 only.
-        setFeature("http://apache.org/xml/features/disallow-doctype-decl", true)
+    @Suppress("SwallowedException")
+    private fun DocumentBuilderFactory.preventXxe() {
+        try {
+            // See http://bit.ly/owasp-xxe-java-dom (shortened URL on https://cheatsheetseries.owasp.org/)
+            // Disallowing DTDs prevents most XXE entity attacks. Xerces 2 only.
+            setFeature("http://apache.org/xml/features/disallow-doctype-decl", true)
 
-        // Disallow external entities. Xerces 1, 2 and JDK 7+.
-        setFeature("http://xml.org/sax/features/external-general-entities", false)
-        setFeature("http://xml.org/sax/features/external-parameter-entities", false)
+            // Disallow external entities. Xerces 1, 2 and JDK 7+.
+            setFeature("http://xml.org/sax/features/external-general-entities", false)
+            setFeature("http://xml.org/sax/features/external-parameter-entities", false)
 
-        // Disable external DTDs, XIncludes, and entity reference expansion.
-        setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false)
-        isXIncludeAware = false
-        isExpandEntityReferences = false
-    } catch (e: ParserConfigurationException) {
-        // We tried setting a feature that isn't supported by the current parser
+            // Disable external DTDs, XIncludes, and entity reference expansion.
+            setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false)
+            isXIncludeAware = false
+            isExpandEntityReferences = false
+        } catch (e: ParserConfigurationException) {
+            // We tried setting a feature that isn't supported by the current parser
+        }
     }
 
     fun newDocumentBuilder(): DocumentBuilder = factory.newDocumentBuilder()

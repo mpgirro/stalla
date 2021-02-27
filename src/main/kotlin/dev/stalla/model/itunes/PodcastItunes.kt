@@ -20,8 +20,8 @@ import dev.stalla.model.Person
  * @property complete The logical value of the `<itunes:complete>` field's text content.
  * @property type The `<itunes:type>` field text content.
  * @property owner The `<itunes:owner>` elements data as a [Person].
- * @property owner The `<itunes:title>` field text content.
- * @property owner The `<itunes:new-feed-url>` field text content.
+ * @property title The `<itunes:title>` field text content.
+ * @property newFeedUrl The `<itunes:new-feed-url>` field text content.
  */
 public data class PodcastItunes(
     override val subtitle: String? = null,
@@ -39,6 +39,7 @@ public data class PodcastItunes(
     val newFeedUrl: String? = null
 ) : ItunesBase {
 
+    /** Provides a builder for the [PodcastItunes] class. */
     public companion object Factory : BuilderFactory<PodcastItunes, PodcastItunesBuilder> {
 
         /** Returns a builder implementation for building [PodcastItunes] model instances. */

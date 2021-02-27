@@ -10,7 +10,6 @@ public interface PodcastFyydBuilder : Builder<Fyyd> {
     /** Set the verify value. */
     public fun verify(verify: String): PodcastFyydBuilder
 
-    override fun applyFrom(prototype: Fyyd?): PodcastFyydBuilder = whenNotNull(prototype) { fyyd ->
-        verify(fyyd.verify)
-    }
+    override fun applyFrom(prototype: Fyyd?): PodcastFyydBuilder =
+        whenNotNull(prototype) { fyyd -> verify(fyyd.verify) }
 }

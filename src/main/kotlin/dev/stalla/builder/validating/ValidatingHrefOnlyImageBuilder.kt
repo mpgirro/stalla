@@ -19,6 +19,6 @@ internal class ValidatingHrefOnlyImageBuilder : HrefOnlyImageBuilder {
             return null
         }
 
-        return HrefOnlyImage(hrefValue)
+        return HrefOnlyImage(href = hrefValue)
     }
 }

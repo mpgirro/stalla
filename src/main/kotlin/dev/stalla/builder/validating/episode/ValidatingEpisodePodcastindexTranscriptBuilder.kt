@@ -31,6 +31,11 @@ internal class ValidatingEpisodePodcastindexTranscriptBuilder : EpisodePodcastin
             return null
         }
 
-        return Transcript(urlValue, typeValue, language, rel)
+        return Transcript(
+            url = urlValue,
+            type = typeValue,
+            language = language,
+            rel = rel
+        )
     }
 }

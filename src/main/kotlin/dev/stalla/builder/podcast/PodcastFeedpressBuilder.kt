@@ -22,11 +22,12 @@ public interface PodcastFeedpressBuilder : Builder<Feedpress> {
     /** Set the link value. */
     public fun link(link: String?): PodcastFeedpressBuilder
 
-    override fun applyFrom(prototype: Feedpress?): PodcastFeedpressBuilder = whenNotNull(prototype) { feedpress ->
-        newsletterId(feedpress.newsletterId)
-        locale(feedpress.locale)
-        podcastId(feedpress.podcastId)
-        cssFile(feedpress.cssFile)
-        link(feedpress.link)
-    }
+    override fun applyFrom(prototype: Feedpress?): PodcastFeedpressBuilder =
+        whenNotNull(prototype) { feedpress ->
+            newsletterId(feedpress.newsletterId)
+            locale(feedpress.locale)
+            podcastId(feedpress.podcastId)
+            cssFile(feedpress.cssFile)
+            link(feedpress.link)
+        }
 }

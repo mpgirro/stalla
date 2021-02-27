@@ -30,7 +30,8 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
 
     override fun summary(summary: String?): PodcastItunesBuilder = apply { this.summary = summary }
 
-    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder): PodcastItunesBuilder = apply { this.imageBuilderValue = imageBuilder }
+    override fun imageBuilder(imageBuilder: HrefOnlyImageBuilder): PodcastItunesBuilder =
+        apply { this.imageBuilderValue = imageBuilder }
 
     override fun keywords(keywords: String?): PodcastItunesBuilder = apply { this.keywords = keywords }
 
@@ -46,19 +47,17 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
 
     override fun type(type: String?): PodcastItunesBuilder = apply { this.type = ShowType.of(type) }
 
-    override fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastItunesBuilder = apply { this.ownerBuilder = ownerBuilder }
+    override fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastItunesBuilder =
+        apply { this.ownerBuilder = ownerBuilder }
 
-    override fun title(title: String?): PodcastItunesBuilder = apply {
-        this.title = title
-    }
+    override fun title(title: String?): PodcastItunesBuilder = apply { this.title = title }
 
-    override fun newFeedUrl(newFeedUrl: String?): PodcastItunesBuilder = apply {
-        this.newFeedUrl = newFeedUrl
-    }
+    override fun newFeedUrl(newFeedUrl: String?): PodcastItunesBuilder = apply { this.newFeedUrl = newFeedUrl }
 
     override val hasEnoughDataToBuild: Boolean
         get() = explicit != null && categories.isNotEmpty() &&
-            (::imageBuilderValue.isInitialized && imageBuilderValue.hasEnoughDataToBuild)
+            ::imageBuilderValue.isInitialized &&
+            imageBuilderValue.hasEnoughDataToBuild
 
     override fun build(): PodcastItunes? {
         if (!hasEnoughDataToBuild) {
@@ -68,11 +67,12 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
         return PodcastItunes(
             subtitle = subtitle,
             summary = summary,
-            image = imageBuilderValue.build() ?: return null,
+            image = imageBuilderValue.build(),
             keywords = keywords,
             author = author,
             categories = categories,
-            explicit = explicit ?: throw IllegalStateException("The explicit flag is not set, while hasEnoughDataToBuild == true"),
+            explicit = explicit
+                ?: error("The explicit flag is not set, while hasEnoughDataToBuild == true"),
             block = block,
             complete = complete,
             type = type,

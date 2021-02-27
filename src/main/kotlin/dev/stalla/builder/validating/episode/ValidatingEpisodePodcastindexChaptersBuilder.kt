@@ -22,6 +22,9 @@ internal class ValidatingEpisodePodcastindexChaptersBuilder : EpisodePodcastinde
             return null
         }
 
-        return Chapters(urlValue, typeValue)
+        return Chapters(
+            url = urlValue,
+            type = typeValue
+        )
     }
 }

@@ -19,6 +19,6 @@ internal class ValidatingEpisodeContentBuilder : EpisodeContentBuilder {
             return null
         }
 
-        return Content(encodedValue)
+        return Content(encoded = encodedValue)
     }
 }

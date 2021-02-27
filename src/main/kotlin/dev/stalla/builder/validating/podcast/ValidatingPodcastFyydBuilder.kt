@@ -18,6 +18,7 @@ internal class ValidatingPodcastFyydBuilder : PodcastFyydBuilder {
         if (!hasEnoughDataToBuild) {
             return null
         }
-        return Fyyd(verifyValue)
+
+        return Fyyd(verify = verifyValue)
     }
 }

@@ -13,6 +13,7 @@ public data class Content(
     val encoded: String
 ) {
 
+    /** Provides a builder for the [Content] class. */
     public companion object Factory : BuilderFactory<Content, EpisodeContentBuilder> {
 
         /** Returns a builder implementation for building [Content] model instances. */

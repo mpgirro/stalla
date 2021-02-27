@@ -13,8 +13,9 @@ public interface EpisodePodcastindexChaptersBuilder : Builder<Chapters> {
     /** Set the type value. */
     public fun type(type: String): EpisodePodcastindexChaptersBuilder
 
-    override fun applyFrom(prototype: Chapters?): EpisodePodcastindexChaptersBuilder = whenNotNull(prototype) { chapters ->
-        url(chapters.url)
-        type(chapters.type)
-    }
+    override fun applyFrom(prototype: Chapters?): EpisodePodcastindexChaptersBuilder =
+        whenNotNull(prototype) { chapters ->
+            url(chapters.url)
+            type(chapters.type)
+        }
 }

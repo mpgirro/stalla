@@ -29,7 +29,9 @@ internal abstract class NamespaceParser {
      */
     fun tryParsingChannelChildNode(node: Node, builder: ProvidingPodcastBuilder) {
         if (!canParse(node)) return
-        require(node.isDirectChildOf("channel")) { "This function can only parse nodes that are direct children of <channel>" }
+        require(node.isDirectChildOf("channel")) {
+            "This function can only parse nodes that are direct children of <channel>"
+        }
         node.parseChannelData(builder)
     }
 
@@ -58,7 +60,9 @@ internal abstract class NamespaceParser {
      */
     fun tryParsingItemChildNode(node: Node, builder: ProvidingEpisodeBuilder) {
         if (!canParse(node)) return
-        require(node.isDirectChildOf("item")) { "This function can only parse nodes that are direct children of <item>" }
+        require(node.isDirectChildOf("item")) {
+            "This function can only parse nodes that are direct children of <item>"
+        }
         node.parseItemData(builder)
     }
 
@@ -73,9 +77,11 @@ internal abstract class NamespaceParser {
     protected abstract fun Node.parseItemData(builder: ProvidingEpisodeBuilder)
 
     /**
-     * Executes a block of code on the DOM node if the node has the same [namespace] of this parser.
+     * Executes a block of code on the DOM node if the
+     * node has the same [namespace] of this parser.
      *
-     * @param block The block of code to execute on the [this@ifMatchesNamespace] when the namespace matches the parser's.
+     * @param block The block of code to execute on the
+     * [this@ifMatchesNamespace] when the namespace matches the parser's.
      */
     internal fun <T> Node.ifCanBeParsed(block: Node.() -> T?) =
         if (canParse(this)) {

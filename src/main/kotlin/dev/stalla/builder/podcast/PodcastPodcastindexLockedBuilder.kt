@@ -13,8 +13,9 @@ public interface PodcastPodcastindexLockedBuilder : Builder<Locked> {
     /** Set the locked value. */
     public fun locked(locked: Boolean): PodcastPodcastindexLockedBuilder
 
-    override fun applyFrom(prototype: Locked?): PodcastPodcastindexLockedBuilder = whenNotNull(prototype) { podcastLocked ->
-        owner(podcastLocked.owner)
-        locked(podcastLocked.locked)
-    }
+    override fun applyFrom(prototype: Locked?): PodcastPodcastindexLockedBuilder =
+        whenNotNull(prototype) { podcastLocked ->
+            owner(podcastLocked.owner)
+            locked(podcastLocked.locked)
+        }
 }

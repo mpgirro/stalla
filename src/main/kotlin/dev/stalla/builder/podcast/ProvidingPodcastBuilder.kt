@@ -9,17 +9,17 @@ import dev.stalla.builder.RssImageBuilder
 internal interface ProvidingPodcastBuilder : PodcastBuilder, PersonBuilderProvider, LinkBuilderProvider {
 
     /** Creates an instance of [RssImageBuilder] to use with this builder. */
-    public fun createRssImageBuilder(): RssImageBuilder
+    fun createRssImageBuilder(): RssImageBuilder
 
     /** Creates an instance of [HrefOnlyImageBuilder] to use with this builder. */
-    public fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
+    fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
 
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
-    public fun createRssCategoryBuilder(): RssCategoryBuilder
+    fun createRssCategoryBuilder(): RssCategoryBuilder
 
     /** Creates an instance of [PodcastPodcastindexLockedBuilder] to use with this builder. */
-    public fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder
+    fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder
 
     /** Creates an instance of [PodcastPodcastindexFundingBuilder] to use with this builder. */
-    public fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder
+    fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder
 }

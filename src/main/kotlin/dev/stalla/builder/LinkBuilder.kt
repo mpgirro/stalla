@@ -27,13 +27,14 @@ public interface LinkBuilder : Builder<Link> {
     /** Set the type value. */
     public fun type(type: String?): LinkBuilder
 
-    override fun applyFrom(prototype: Link?): LinkBuilder = whenNotNull(prototype) { link ->
-        href(link.href)
-        hrefLang(link.hrefLang)
-        hrefResolved(link.hrefResolved)
-        length(link.length)
-        rel(link.rel)
-        title(link.title)
-        type(link.type)
-    }
+    override fun applyFrom(prototype: Link?): LinkBuilder =
+        whenNotNull(prototype) { link ->
+            href(link.href)
+            hrefLang(link.hrefLang)
+            hrefResolved(link.hrefResolved)
+            length(link.length)
+            rel(link.rel)
+            title(link.title)
+            type(link.type)
+        }
 }

@@ -12,16 +12,15 @@ internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder
     private lateinit var lockedBuilderValue: PodcastPodcastindexLockedBuilder
     private val fundingBuilders: MutableList<PodcastPodcastindexFundingBuilder> = mutableListOf()
 
-    override fun lockedBuilder(lockedBuilder: PodcastPodcastindexLockedBuilder): PodcastPodcastindexBuilder = apply {
-        this.lockedBuilderValue = lockedBuilder
-    }
+    override fun lockedBuilder(lockedBuilder: PodcastPodcastindexLockedBuilder): PodcastPodcastindexBuilder =
+        apply { this.lockedBuilderValue = lockedBuilder }
 
-    override fun addFundingBuilder(fundingBuilder: PodcastPodcastindexFundingBuilder): PodcastPodcastindexBuilder = apply {
-        fundingBuilders.add(fundingBuilder)
-    }
+    override fun addFundingBuilder(fundingBuilder: PodcastPodcastindexFundingBuilder): PodcastPodcastindexBuilder =
+        apply { fundingBuilders.add(fundingBuilder) }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = (::lockedBuilderValue.isInitialized && lockedBuilderValue.hasEnoughDataToBuild) ||
+        get() = ::lockedBuilderValue.isInitialized &&
+            lockedBuilderValue.hasEnoughDataToBuild ||
             fundingBuilders.any { it.hasEnoughDataToBuild }
 
     override fun build(): PodcastPodcastindex? {
@@ -29,7 +28,9 @@ internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder
             return null
         }
 
-        val locked = if (::lockedBuilderValue.isInitialized) lockedBuilderValue.build() else null
-        return PodcastPodcastindex(locked, fundingBuilders.mapNotNull { it.build() })
+        return PodcastPodcastindex(
+            locked = if (::lockedBuilderValue.isInitialized) lockedBuilderValue.build() else null,
+            funding = fundingBuilders.mapNotNull { it.build() }
+        )
     }
 }

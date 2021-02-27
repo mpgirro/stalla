@@ -25,6 +25,7 @@ public data class Link(
     val type: String? = null
 ) {
 
+    /** Provides a builder for the [Link] class. */
     public companion object Factory : BuilderFactory<Link, LinkBuilder> {
 
         /** Returns a builder implementation for building [Link] model instances. */

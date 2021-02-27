@@ -34,14 +34,22 @@ internal object PodloveSimpleChapterParser : NamespaceParser() {
         }
     }
 
-    private fun Node.toPodloveSimpleChapterBuilders(builder: ProvidingEpisodeBuilder): List<EpisodePodloveSimpleChapterBuilder> =
+    private fun Node.toPodloveSimpleChapterBuilders(
+        builder: ProvidingEpisodeBuilder
+    ): List<EpisodePodloveSimpleChapterBuilder> =
         childNodes.asListOfNodes().asSequence()
             .filter { c -> c.localName == "chapter" }
-            .map { node -> node.ifCanBeParsed { toPodloveSimpleChapterBuilder(builder.createPodloveSimpleChapterBuilder()) } }
+            .map { node ->
+                node.ifCanBeParsed {
+                    toPodloveSimpleChapterBuilder(builder.createPodloveSimpleChapterBuilder())
+                }
+            }
             .filterNotNull()
             .toList()
 
-    private fun Node.toPodloveSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveSimpleChapterBuilder? {
+    private fun Node.toPodloveSimpleChapterBuilder(
+        chapterBuilder: EpisodePodloveSimpleChapterBuilder
+    ): EpisodePodloveSimpleChapterBuilder? {
         val start = getAttributeValueByName("start")
         val title = getAttributeValueByName("title")
         if (start == null || title == null) return null

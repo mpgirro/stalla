@@ -61,6 +61,7 @@ public data class Podcast(
     val podcast: PodcastPodcastindex? = null
 ) {
 
+    /** Provides a builder for the [Podcast] class. */
     public companion object Factory : BuilderFactory<Podcast, PodcastBuilder> {
 
         /** Returns a builder implementation for building [Podcast] model instances. */

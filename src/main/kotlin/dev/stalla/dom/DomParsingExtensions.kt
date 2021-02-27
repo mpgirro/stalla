@@ -79,6 +79,7 @@ internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.pars
  * @return The [imageBuilder] populated with the DOM node contents.
  */
 @InternalApi
+@Suppress("ComplexMethod")
 internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: FeedNamespace? = null): RssImageBuilder {
     for (node in childNodes.asListOfNodes()) {
         if (!namespace.matches(node.namespaceURI)) continue
@@ -86,18 +87,9 @@ internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: Fe
         when (node.localName) {
             "description" -> imageBuilder.description(node.textOrNull())
             "height" -> imageBuilder.height(node.parseAsInt())
-            "link" -> {
-                val link = node.textOrNull() ?: continue
-                imageBuilder.link(link)
-            }
-            "title" -> {
-                val title = node.textOrNull() ?: continue
-                imageBuilder.title(title)
-            }
-            "url" -> {
-                val url = node.textOrNull() ?: continue
-                imageBuilder.url(url)
-            }
+            "link" -> node.textOrNull()?.let(imageBuilder::link)
+            "title" -> node.textOrNull()?.let(imageBuilder::title)
+            "url" -> node.textOrNull()?.let(imageBuilder::url)
             "width" -> imageBuilder.width(node.parseAsInt())
         }
     }
@@ -133,6 +125,7 @@ internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): Hr
  * @return The [personBuilder] populated with the DOM node contents.
  */
 @InternalApi
+@Suppress("LoopWithTooManyJumpStatements")
 internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedNamespace? = null): PersonBuilder {
     for (child in childNodes.asListOfNodes()) {
         if (child !is Element) continue
@@ -140,7 +133,7 @@ internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedN
         val value: String? = child.textOrNull()
 
         when (child.localName) {
-            "name" -> if (value != null) personBuilder.name(value)
+            "name" -> value?.let(personBuilder::name)
             "email" -> personBuilder.email(value)
             "uri" -> personBuilder.uri(value)
         }

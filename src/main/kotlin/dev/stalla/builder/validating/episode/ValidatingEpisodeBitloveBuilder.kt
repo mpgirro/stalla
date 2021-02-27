@@ -19,6 +19,6 @@ internal class ValidatingEpisodeBitloveBuilder : EpisodeBitloveBuilder {
             return null
         }
 
-        return Bitlove(guidValue)
+        return Bitlove(guid = guidValue)
     }
 }

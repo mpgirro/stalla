@@ -20,9 +20,8 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     public fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder
 
     /** Adds all of the [GoogleplayCategory] to the list of categories. */
-    public fun addAllCategorie(categories: List<GoogleplayCategory>): PodcastGoogleplayBuilder = apply {
-        categories.forEach(::addCategory)
-    }
+    public fun addAllCategorie(categories: List<GoogleplayCategory>): PodcastGoogleplayBuilder =
+        apply { categories.forEach(::addCategory) }
 
     /** Set the description value. */
     public fun description(description: String?): PodcastGoogleplayBuilder
@@ -39,14 +38,15 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     /** Set the new URL at which this feed is located. */
     public fun newFeedUrl(newFeedUrl: String?): PodcastGoogleplayBuilder
 
-    override fun applyFrom(prototype: PodcastGoogleplay?): PodcastGoogleplayBuilder = whenNotNull(prototype) { googleplay ->
-        author(googleplay.author)
-        owner(googleplay.owner)
-        addAllCategorie(googleplay.categories)
-        description(googleplay.description)
-        explicit(googleplay.explicit)
-        block(googleplay.block)
-        imageBuilder(HrefOnlyImage.builder().applyFrom(googleplay.image))
-        newFeedUrl(googleplay.newFeedUrl)
-    }
+    override fun applyFrom(prototype: PodcastGoogleplay?): PodcastGoogleplayBuilder =
+        whenNotNull(prototype) { googleplay ->
+            author(googleplay.author)
+            owner(googleplay.owner)
+            addAllCategorie(googleplay.categories)
+            description(googleplay.description)
+            explicit(googleplay.explicit)
+            block(googleplay.block)
+            imageBuilder(HrefOnlyImage.builder().applyFrom(googleplay.image))
+            newFeedUrl(googleplay.newFeedUrl)
+        }
 }

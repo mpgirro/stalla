@@ -20,6 +20,7 @@ public data class Transcript(
     val rel: String? = null
 ) {
 
+    /** Provides a builder for the [Transcript] class. */
     public companion object Factory : BuilderFactory<Transcript, EpisodePodcastindexTranscriptBuilder> {
 
         /** Returns a builder implementation for building [Transcript] model instances. */

@@ -14,9 +14,10 @@ public data class EpisodePodlove(
     val simpleChapters: List<SimpleChapter>
 ) {
 
+    /** Provides a builder for the [EpisodePodlove] class. */
     public companion object Factory : BuilderFactory<EpisodePodlove, EpisodePodloveBuilder> {
 
-        /** Returns a builder implementation for building [Podlove] model instances. */
+        /** Returns a builder implementation for building [EpisodePodlove] model instances. */
         @JvmStatic
         override fun builder(): EpisodePodloveBuilder = ValidatingEpisodePodloveBuilder()
     }

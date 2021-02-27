@@ -26,6 +26,10 @@ internal class ValidatingPersonBuilder : PersonBuilder {
             return null
         }
 
-        return Person(name = nameValue, email = email, uri = uri)
+        return Person(
+            name = nameValue,
+            email = email,
+            uri = uri
+        )
     }
 }

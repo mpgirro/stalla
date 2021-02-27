@@ -25,6 +25,7 @@ internal object ItunesWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.ITUNES
 
+    @Suppress("ComplexMethod")
     override fun Element.appendPodcastData(podcast: Podcast) {
         val itunes = podcast.itunes ?: return
 

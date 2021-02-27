@@ -23,13 +23,14 @@ import org.w3c.dom.Node
  *
  * Note that RSS 2.0 feeds do not have a namespace URI, and thus [namespace] is null.
  *
- * The RSS specification is described []here][http://www.rssboard.org/rss-2-0].
+ * The RSS specification is described [here][http://www.rssboard.org/rss-2-0].
  */
 @InternalApi
 internal object RssParser : NamespaceParser() {
 
     override val namespace: FeedNamespace? = null
 
+    @Suppress("ComplexMethod")
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         if (this !is Element) return
 
@@ -60,26 +61,33 @@ internal object RssParser : NamespaceParser() {
             "webMaster" -> builder.webMaster(ifCanBeParsed { textOrNull() })
             "ttl" -> builder.ttl(ifCanBeParsed { parseAsInt() })
             "category" -> {
-                val categoryBuilder = ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) } ?: return
+                val categoryBuilder = ifCanBeParsed {
+                    toRssCategoryBuilder(builder.createRssCategoryBuilder())
+                } ?: return
                 builder.addCategoryBuilder(categoryBuilder)
             }
             "item" -> pass // Items are parsed by the root parser direcly
         }
     }
 
+    @Suppress("ComplexMethod")
     override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         if (this !is Element) return
 
         when (localName) {
             "author" -> builder.author(ifCanBeParsed { textOrNull() })
             "category" -> {
-                val categoryBuilder = ifCanBeParsed { toRssCategoryBuilder(builder.createRssCategoryBuilder()) } ?: return
+                val categoryBuilder = ifCanBeParsed {
+                    toRssCategoryBuilder(builder.createRssCategoryBuilder())
+                } ?: return
                 builder.addCategoryBuilder(categoryBuilder)
             }
             "comments" -> builder.comments(ifCanBeParsed { textOrNull() })
             "description" -> builder.description(ifCanBeParsed { textOrNull() })
             "enclosure" -> {
-                val enclosure = ifCanBeParsed { toEnclosureBuilder(builder.createEnclosureBuilder()) } ?: return
+                val enclosure = ifCanBeParsed {
+                    toEnclosureBuilder(builder.createEnclosureBuilder())
+                } ?: return
                 builder.enclosureBuilder(enclosure)
             }
             "guid" -> builder.guidBuilder(ifCanBeParsed { toGuidBuilder(builder.createGuidBuilder()) })

@@ -24,6 +24,10 @@ import javax.xml.transform.TransformerFactory
 import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 
+/**
+ * The main entry point to write a [Podcast] instance to an RSS feed.
+ * You can use any of the `writeRssFeed` overloads.
+ */
 public object PodcastRssWriter {
 
     // Writers are sorted in order of "importance"
