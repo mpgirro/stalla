@@ -281,10 +281,9 @@ public sealed class ItunesCategory(public open val type: String) {
         private val valueMap: Map<String, ItunesCategory> by lazy {
             val values: List<ItunesCategory> = Factory::class.declaredMemberProperties
                 .filter { member -> member.visibility == KVisibility.PUBLIC }
-                .mapNotNull { member ->
-                    val value = member.getter.call(this)
-                    if (value is ItunesCategory) value else null
-                }
+                .mapNotNull { member -> member.getter.call(this) }
+                .filterIsInstance<ItunesCategory>()
+
             values.associateBy({ it.type.toLowerCase(Locale.ROOT) }, { it })
         }
 
