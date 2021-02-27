@@ -11,6 +11,7 @@ import dev.stalla.dom.XmlRes
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
+import java.util.Locale
 
 internal class FeedpressParserTest : NamespaceParserTest() {
 
@@ -24,7 +25,7 @@ internal class FeedpressParserTest : NamespaceParserTest() {
 
         assertThat(builder.feedpressBuilder, "channel.feedpress").all {
             prop(FakePodcastFeedpressBuilder::newsletterIdValue).isEqualTo("feedpres newsletterid")
-            prop(FakePodcastFeedpressBuilder::localeValue).isEqualTo("feedpress locale")
+            prop(FakePodcastFeedpressBuilder::localeValue).isEqualTo(Locale.GERMAN)
             prop(FakePodcastFeedpressBuilder::podcastIdValue).isEqualTo("feedpress podcastid")
             prop(FakePodcastFeedpressBuilder::cssFileValue).isEqualTo("feedpress cssfile")
             prop(FakePodcastFeedpressBuilder::linkValue).isEqualTo("feedpress link")

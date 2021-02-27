@@ -62,7 +62,7 @@
                    title="link title" type="link type"/>
         <fyyd:verify>podcast fyyd verify</fyyd:verify>
         <feedpress:newsletterId>podcast feedpress newsletterId</feedpress:newsletterId>
-        <feedpress:locale>podcast feedpress locale</feedpress:locale>
+        <feedpress:locale>de</feedpress:locale>
         <feedpress:podcastId>podcast feedpress podcastId</feedpress:podcastId>
         <feedpress:cssFile>podcast feedpress cssFile</feedpress:cssFile>
         <feedpress:link>podcast feedpress link</feedpress:link>

@@ -3,18 +3,19 @@ package dev.stalla.builder.fake.podcast
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastFeedpressBuilder
 import dev.stalla.model.feedpress.Feedpress
+import java.util.Locale
 
 internal class FakePodcastFeedpressBuilder : FakeBuilder<Feedpress>(), PodcastFeedpressBuilder {
 
     var newsletterIdValue: String? = null
-    var localeValue: String? = null
+    var localeValue: Locale? = null
     var podcastIdValue: String? = null
     var cssFileValue: String? = null
     var linkValue: String? = null
 
     override fun newsletterId(newsletterId: String?): PodcastFeedpressBuilder = apply { this.newsletterIdValue = newsletterId }
 
-    override fun locale(locale: String?): PodcastFeedpressBuilder = apply { this.localeValue = locale }
+    override fun locale(locale: Locale?): PodcastFeedpressBuilder = apply { this.localeValue = locale }
 
     override fun podcastId(podcastId: String?): PodcastFeedpressBuilder = apply { this.podcastIdValue = podcastId }
 

@@ -80,7 +80,7 @@ public class PodcastBuilderFactoryTest {
     @DisplayName("should build a Podcast Feedpress model using builder factory methods only")
     public void testPodcastFeedpressBuilderFactory() {
         PodcastFeedpressBuilder podcastFeedpressBuilder = Feedpress.builder()
-            .locale("locale");
+            .locale(Locale.GERMAN);
 
         assertNotNull(podcastFeedpressBuilder.build());
     }

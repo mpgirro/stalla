@@ -3,6 +3,7 @@ package dev.stalla.model.feedpress
 import dev.stalla.builder.podcast.PodcastFeedpressBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastFeedpressBuilder
 import dev.stalla.model.BuilderFactory
+import java.util.Locale
 
 /**
  * Model class for data from elements of the Feedpress namespace that are valid within `<channel>` elements.
@@ -15,7 +16,7 @@ import dev.stalla.model.BuilderFactory
  */
 public data class Feedpress(
     val newsletterId: String? = null,
-    val locale: String? = null,
+    val locale: Locale? = null,
     val podcastId: String? = null,
     val cssFile: String? = null,
     val link: String? = null

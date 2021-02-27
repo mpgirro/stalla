@@ -7,6 +7,7 @@ import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
 import org.w3c.dom.Node
+import java.util.Locale
 
 /**
  * Parser implementation for the Feedpress namespace.
@@ -21,7 +22,12 @@ internal object FeedpressParser : NamespaceParser() {
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
             "newsletterId" -> builder.feedpressBuilder.newsletterId(ifCanBeParsed { textOrNull() })
-            "locale" -> builder.feedpressBuilder.locale(ifCanBeParsed { textOrNull() })
+            "locale" -> {
+                val locale = ifCanBeParsed { textOrNull() }?.let { rawLocale ->
+                    Locale.forLanguageTag(rawLocale)
+                } ?: return
+                builder.feedpressBuilder.locale(locale)
+            }
             "podcastId" -> builder.feedpressBuilder.podcastId(ifCanBeParsed { textOrNull() })
             "cssFile" -> builder.feedpressBuilder.cssFile(ifCanBeParsed { textOrNull() })
             "link" -> builder.feedpressBuilder.link(ifCanBeParsed { textOrNull() })

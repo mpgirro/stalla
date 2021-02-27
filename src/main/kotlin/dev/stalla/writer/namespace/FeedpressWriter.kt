@@ -26,8 +26,8 @@ internal object FeedpressWriter : NamespaceWriter() {
             appendElement("newsletterId", namespace) { textContent = feedpress.newsletterId?.trim() }
         }
 
-        if (feedpress.locale.isNeitherNullNorBlank()) {
-            appendElement("locale", namespace) { textContent = feedpress.locale?.trim() }
+        if (feedpress.locale != null) {
+            appendElement("locale", namespace) { textContent = feedpress.locale.toLanguageTag() }
         }
 
         if (feedpress.podcastId.isNeitherNullNorBlank()) {

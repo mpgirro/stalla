@@ -70,7 +70,7 @@
     </atom:contributor>
     <fyyd:verify>fyyd verify</fyyd:verify>
     <feedpress:newsletterId>feedpres newsletterid</feedpress:newsletterId>
-    <feedpress:locale>feedpress locale</feedpress:locale>
+    <feedpress:locale>de</feedpress:locale>
     <feedpress:podcastId>feedpress podcastid</feedpress:podcastId>
     <feedpress:cssFile>feedpress cssfile</feedpress:cssFile>
     <feedpress:link>feedpress link</feedpress:link>

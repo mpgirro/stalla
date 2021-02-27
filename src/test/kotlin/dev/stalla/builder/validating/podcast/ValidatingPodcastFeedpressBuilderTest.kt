@@ -13,6 +13,7 @@ import dev.stalla.builder.podcast.PodcastFeedpressBuilder
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.podcast.aPodcastFeedpress
 import org.junit.jupiter.api.Test
+import java.util.Locale
 
 internal class ValidatingPodcastFeedpressBuilderTest {
 
@@ -48,14 +49,14 @@ internal class ValidatingPodcastFeedpressBuilderTest {
     @Test
     internal fun `should build a valid Podcast Feedpress when there is only a locale`() {
         val podcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
-            .locale("locale")
+            .locale(Locale.GERMAN)
 
         assertAll {
             assertThat(podcastFeedpressBuilder).prop(PodcastFeedpressBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastFeedpressBuilder.build()).isNotNull().all {
                 prop(Feedpress::newsletterId).isNull()
-                prop(Feedpress::locale).isEqualTo("locale")
+                prop(Feedpress::locale).isEqualTo(Locale.GERMAN)
                 prop(Feedpress::podcastId).isNull()
                 prop(Feedpress::cssFile).isNull()
                 prop(Feedpress::link).isNull()
@@ -121,7 +122,7 @@ internal class ValidatingPodcastFeedpressBuilderTest {
     internal fun `should build a valid Podcast Feedpress when there are all fields`() {
         val podcastFeedpressBuilder = ValidatingPodcastFeedpressBuilder()
             .newsletterId("newsletterId")
-            .locale("locale")
+            .locale(Locale.GERMAN)
             .podcastId("podcastId")
             .cssFile("cssFile")
             .link("link")
@@ -131,7 +132,7 @@ internal class ValidatingPodcastFeedpressBuilderTest {
 
             assertThat(podcastFeedpressBuilder.build()).isNotNull().all {
                 prop(Feedpress::newsletterId).isEqualTo("newsletterId")
-                prop(Feedpress::locale).isEqualTo("locale")
+                prop(Feedpress::locale).isEqualTo(Locale.GERMAN)
                 prop(Feedpress::podcastId).isEqualTo("podcastId")
                 prop(Feedpress::cssFile).isEqualTo("cssFile")
                 prop(Feedpress::link).isEqualTo("link")

@@ -105,7 +105,7 @@ internal fun aPodcastFyyd(
 
 internal fun aPodcastFeedpress(
     newsletterId: String? = "podcast feedpress newsletterId",
-    locale: String? = "podcast feedpress locale",
+    locale: Locale? = Locale.GERMAN,
     podcastId: String? = "podcast feedpress podcastId",
     cssFile: String? = "podcast feedpress cssFile",
     link: String? = "podcast feedpress link"

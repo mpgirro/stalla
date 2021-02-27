@@ -4,12 +4,13 @@ import dev.stalla.builder.podcast.PodcastFeedpressBuilder
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.util.InternalApi
 import dev.stalla.util.anyNotNull
+import java.util.Locale
 
 @InternalApi
 internal class ValidatingPodcastFeedpressBuilder : PodcastFeedpressBuilder {
 
     private var newsletterId: String? = null
-    private var locale: String? = null
+    private var locale: Locale? = null
     private var podcastId: String? = null
     private var cssFile: String? = null
     private var link: String? = null
@@ -17,7 +18,7 @@ internal class ValidatingPodcastFeedpressBuilder : PodcastFeedpressBuilder {
     override fun newsletterId(newsletterId: String?): PodcastFeedpressBuilder =
         apply { this.newsletterId = newsletterId }
 
-    override fun locale(locale: String?): PodcastFeedpressBuilder = apply { this.locale = locale }
+    override fun locale(locale: Locale?): PodcastFeedpressBuilder = apply { this.locale = locale }
 
     override fun podcastId(podcastId: String?): PodcastFeedpressBuilder = apply { this.podcastId = podcastId }
 
