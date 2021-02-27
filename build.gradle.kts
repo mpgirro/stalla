@@ -68,6 +68,11 @@ detekt {
     input = files("src/main/java", "src/main/kotlin")
     config = files("config/detekt/config.yml")
     buildUponDefaultConfig = true
+    reports {
+        sarif {
+            enabled = true
+        }
+    }
 }
 
 tasks {
@@ -93,6 +98,12 @@ tasks {
     }
 
     withType<Detekt> {
+        // Required for type resolution
         jvmTarget = "1.8"
+    }
+
+    named("check", Task::class) {
+        // Run the type resolution aware (and experimental) Detekt task
+        dependsOn.add(named("detektMain"))
     }
 }
