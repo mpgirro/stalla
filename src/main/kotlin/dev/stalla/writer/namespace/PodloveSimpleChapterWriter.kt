@@ -26,7 +26,7 @@ internal object PodloveSimpleChapterWriter : NamespaceWriter() {
 
     override fun Element.appendEpisodeData(episode: Episode) {
         val chapters = episode.podlove?.simpleChapters ?: return
-        val validChapters = chapters.filter { it.isValid() }
+        val validChapters = chapters.filter { chapter -> chapter.isValid() }
         if (validChapters.isEmpty()) return
 
         appendElement("chapters", namespace) {

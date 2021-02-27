@@ -25,6 +25,7 @@ public data class EpisodeGoogleplay(
     override val image: HrefOnlyImage? = null
 ) : GoogleplayBase {
 
+    /** Provides a builder for the [EpisodeGoogleplay] class. */
     public companion object Factory : BuilderFactory<EpisodeGoogleplay, EpisodeGoogleplayBuilder> {
 
         /** Returns a builder implementation for building [EpisodeGoogleplay] model instances. */

@@ -19,6 +19,7 @@ import dev.stalla.model.HrefOnlyImage
  * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
  * @property block The logical value of the `<googleplay:block>` field's text content.
  * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
+ * @property newFeedUrl The `<itunes:new-feed-url>` field text content.
  */
 public data class PodcastGoogleplay(
     override val author: String? = null,
@@ -31,6 +32,7 @@ public data class PodcastGoogleplay(
     val newFeedUrl: String? = null
 ) : GoogleplayBase {
 
+    /** Provides a builder for the [PodcastGoogleplay] class. */
     public companion object Factory : BuilderFactory<PodcastGoogleplay, PodcastGoogleplayBuilder> {
 
         /** Returns a builder implementation for building [PodcastGoogleplay] model instances. */

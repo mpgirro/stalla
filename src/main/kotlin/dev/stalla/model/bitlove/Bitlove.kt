@@ -13,6 +13,7 @@ public data class Bitlove(
     val guid: String
 ) {
 
+    /** Provides a builder for the [Bitlove] class. */
     public companion object Factory : BuilderFactory<Bitlove, EpisodeBitloveBuilder> {
 
         /** Returns a builder implementation for building [Bitlove] model instances. */

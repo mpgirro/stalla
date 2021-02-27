@@ -7,7 +7,8 @@ import dev.stalla.model.TypeFactory
  * element within an `<item>` element, modeled as a finite set enum class.
  * See the [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/transcripts/transcripts.md)
  * for more information.
- * .
+ *
+ * @param type The raw transcript `type` value.
  */
 public enum class TranscriptType(public val type: String) {
 
@@ -23,6 +24,7 @@ public enum class TranscriptType(public val type: String) {
     /** SRT, with full timing information. */
     SRT("application/srt");
 
+    /** Gets an instance of [TranscriptType] from a raw value. */
     public companion object Factory : TypeFactory<TranscriptType> {
 
         @JvmStatic

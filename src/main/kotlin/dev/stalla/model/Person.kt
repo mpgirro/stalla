@@ -16,6 +16,7 @@ public data class Person(
     val uri: String? = null
 ) {
 
+    /** Provides a builder for the [Person] class. */
     public companion object Factory : BuilderFactory<Person, PersonBuilder> {
 
         /** Returns a builder implementation for building [Person] model instances. */

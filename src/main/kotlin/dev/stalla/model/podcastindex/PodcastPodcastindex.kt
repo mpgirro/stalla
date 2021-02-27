@@ -15,6 +15,7 @@ public data class PodcastPodcastindex(
     val funding: List<Funding> = emptyList()
 ) {
 
+    /** Provides a builder for the [PodcastPodcastindex] class. */
     public companion object Factory : BuilderFactory<PodcastPodcastindex, PodcastPodcastindexBuilder> {
 
         /** Returns a builder implementation for building [PodcastPodcastindex] model instances. */
