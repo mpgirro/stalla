@@ -106,12 +106,12 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createPodcastItunesOwnerBuilder(): PodcastItunesOwnerBuilder = ValidatingPodcastItunesOwnerBuilder()
+    override fun createItunesOwnerBuilder(): PodcastItunesOwnerBuilder = ValidatingPodcastItunesOwnerBuilder()
 
-    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder =
+    override fun createLockedBuilder(): PodcastPodcastindexLockedBuilder =
         ValidatingPodcastPodcastindexLockedBuilder()
 
-    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder =
+    override fun createFundingBuilder(): PodcastPodcastindexFundingBuilder =
         ValidatingPodcastPodcastindexFundingBuilder()
 
     override val hasEnoughDataToBuild: Boolean

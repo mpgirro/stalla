@@ -90,18 +90,18 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = ValidatingHrefOnlyImageBuilder()
 
-    override fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder =
+    override fun createSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder =
         ValidatingEpisodePodloveSimpleChapterBuilder()
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
 
-    override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder =
+    override fun createTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder =
         ValidatingEpisodePodcastindexTranscriptBuilder()
 
-    override fun createEpisodePodcastChaptersBuilder(): EpisodePodcastindexChaptersBuilder =
+    override fun createChaptersBuilder(): EpisodePodcastindexChaptersBuilder =
         ValidatingEpisodePodcastindexChaptersBuilder()
 
-    override fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder =
+    override fun createSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder =
         ValidatingEpisodePodcastindexSoundbiteBuilder()
 
     override val hasEnoughDataToBuild: Boolean

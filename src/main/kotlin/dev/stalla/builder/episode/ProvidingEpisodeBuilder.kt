@@ -19,17 +19,17 @@ internal interface ProvidingEpisodeBuilder : EpisodeBuilder, AtomPersonBuilderPr
     fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder
 
     /** Creates an instance of [EpisodePodloveSimpleChapterBuilder] to use with this builder. */
-    fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder
+    fun createSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder
 
     /** Creates an instance of [RssCategoryBuilder] to use with this builder. */
     fun createRssCategoryBuilder(): RssCategoryBuilder
 
     /** Creates an instance of [EpisodePodcastindexTranscriptBuilder] to use with this builder. */
-    fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder
+    fun createTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder
 
     /** Creates an instance of [EpisodePodcastindexChaptersBuilder] to use with this builder. */
-    fun createEpisodePodcastChaptersBuilder(): EpisodePodcastindexChaptersBuilder
+    fun createChaptersBuilder(): EpisodePodcastindexChaptersBuilder
 
     /** Creates an instance of [EpisodePodcastindexSoundbiteBuilder] to use with this builder. */
-    fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder
+    fun createSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder
 }

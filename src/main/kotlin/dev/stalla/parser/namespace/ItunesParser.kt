@@ -55,9 +55,7 @@ internal object ItunesParser : NamespaceParser() {
             }
             "keywords" -> builder.itunesBuilder.keywords(ifCanBeParsed { textOrNull() })
             "owner" -> {
-                val ownerBuilder = ifCanBeParsed {
-                    toOwnerBuilder(builder.createPodcastItunesOwnerBuilder())
-                }
+                val ownerBuilder = ifCanBeParsed { toOwnerBuilder(builder.createItunesOwnerBuilder()) }
                 builder.itunesBuilder.ownerBuilder(ownerBuilder)
             }
             "subtitle" -> builder.itunesBuilder.subtitle(ifCanBeParsed { textOrNull() })

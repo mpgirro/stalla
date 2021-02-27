@@ -83,15 +83,15 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), ProvidingEpisodeBuil
 
     override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = FakeHrefOnlyImageBuilder()
 
-    override fun createPodloveSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder = FakeEpisodePodloveSimpleChapterBuilder()
+    override fun createSimpleChapterBuilder(): EpisodePodloveSimpleChapterBuilder = FakeEpisodePodloveSimpleChapterBuilder()
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createEpisodePodcastTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder = FakeEpisodePodcastindexTranscriptBuilder()
+    override fun createTranscriptBuilder(): EpisodePodcastindexTranscriptBuilder = FakeEpisodePodcastindexTranscriptBuilder()
 
-    override fun createEpisodePodcastChaptersBuilder(): EpisodePodcastindexChaptersBuilder = FakeEpisodePodcastindexChaptersBuilder()
+    override fun createChaptersBuilder(): EpisodePodcastindexChaptersBuilder = FakeEpisodePodcastindexChaptersBuilder()
 
-    override fun createEpisodePodcastSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
+    override fun createSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

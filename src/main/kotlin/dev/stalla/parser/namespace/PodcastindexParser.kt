@@ -32,13 +32,13 @@ internal object PodcastindexParser : NamespaceParser() {
         when (localName) {
             "locked" -> {
                 val lockedBuilder = ifCanBeParsed {
-                    toLockedBuilder(builder.createPodcastPodcastLockedBuilder())
+                    toLockedBuilder(builder.createLockedBuilder())
                 } ?: return
                 builder.podcastPodcastindexBuilder.lockedBuilder(lockedBuilder)
             }
             "funding" -> {
                 val fundingBuilder = ifCanBeParsed {
-                    toFundingBuilder(builder.createPodcastPodcastFundingBuilder())
+                    toFundingBuilder(builder.createFundingBuilder())
                 } ?: return
                 builder.podcastPodcastindexBuilder.addFundingBuilder(fundingBuilder)
             }
@@ -72,19 +72,19 @@ internal object PodcastindexParser : NamespaceParser() {
         when (localName) {
             "chapters" -> {
                 val chaptersBuilder = ifCanBeParsed {
-                    toChaptersBuilder(builder.createEpisodePodcastChaptersBuilder())
+                    toChaptersBuilder(builder.createChaptersBuilder())
                 } ?: return
                 builder.podcastindexBuilder.chaptersBuilder(chaptersBuilder)
             }
             "soundbite" -> {
                 val soundbiteBuilder = ifCanBeParsed {
-                    toSoundbiteBuilder(builder.createEpisodePodcastSoundbiteBuilder())
+                    toSoundbiteBuilder(builder.createSoundbiteBuilder())
                 } ?: return
                 builder.podcastindexBuilder.addSoundbiteBuilder(soundbiteBuilder)
             }
             "transcript" -> {
                 val transcriptBuilder = ifCanBeParsed {
-                    toTranscriptBuilder(builder.createEpisodePodcastTranscriptBuilder())
+                    toTranscriptBuilder(builder.createTranscriptBuilder())
                 } ?: return
                 builder.podcastindexBuilder.addTranscriptBuilder(transcriptBuilder)
             }

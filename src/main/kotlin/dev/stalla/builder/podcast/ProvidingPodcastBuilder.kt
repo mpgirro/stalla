@@ -18,11 +18,11 @@ internal interface ProvidingPodcastBuilder : PodcastBuilder, AtomPersonBuilderPr
     fun createRssCategoryBuilder(): RssCategoryBuilder
 
     /** Creates an instance of [PodcastItunesOwnerBuilder] to use with this builder. */
-    fun createPodcastItunesOwnerBuilder(): PodcastItunesOwnerBuilder
+    fun createItunesOwnerBuilder(): PodcastItunesOwnerBuilder
 
     /** Creates an instance of [PodcastPodcastindexLockedBuilder] to use with this builder. */
-    fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder
+    fun createLockedBuilder(): PodcastPodcastindexLockedBuilder
 
     /** Creates an instance of [PodcastPodcastindexFundingBuilder] to use with this builder. */
-    fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder
+    fun createFundingBuilder(): PodcastPodcastindexFundingBuilder
 }

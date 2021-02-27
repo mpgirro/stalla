@@ -98,11 +98,11 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createPodcastItunesOwnerBuilder(): PodcastItunesOwnerBuilder = FakePodcastItunesOwnerBuilder()
+    override fun createItunesOwnerBuilder(): PodcastItunesOwnerBuilder = FakePodcastItunesOwnerBuilder()
 
-    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder = FakePodcastPodcastindexLockedBuilder()
+    override fun createLockedBuilder(): PodcastPodcastindexLockedBuilder = FakePodcastPodcastindexLockedBuilder()
 
-    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder = FakePodcastPodcastindexFundingBuilder()
+    override fun createFundingBuilder(): PodcastPodcastindexFundingBuilder = FakePodcastPodcastindexFundingBuilder()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

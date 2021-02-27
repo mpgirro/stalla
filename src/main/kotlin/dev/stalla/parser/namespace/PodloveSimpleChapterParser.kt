@@ -41,13 +41,13 @@ internal object PodloveSimpleChapterParser : NamespaceParser() {
             .filter { c -> c.localName == "chapter" }
             .map { node ->
                 node.ifCanBeParsed {
-                    toPodloveSimpleChapterBuilder(builder.createPodloveSimpleChapterBuilder())
+                    toSimpleChapterBuilder(builder.createSimpleChapterBuilder())
                 }
             }
             .filterNotNull()
             .toList()
 
-    private fun Node.toPodloveSimpleChapterBuilder(
+    private fun Node.toSimpleChapterBuilder(
         chapterBuilder: EpisodePodloveSimpleChapterBuilder
     ): EpisodePodloveSimpleChapterBuilder? {
         val start = getAttributeValueByName("start")
