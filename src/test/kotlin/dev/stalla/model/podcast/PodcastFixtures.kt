@@ -29,6 +29,7 @@ import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import java.time.Month
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 internal fun aPodcast(
     title: String = "podcast title",
@@ -36,7 +37,7 @@ internal fun aPodcast(
     description: String = "podcast description",
     pubDate: TemporalAccessor? = dateTime(year = 2020, month = Month.DECEMBER, day = 26, hour = 15, minute = 32, second = 22),
     lastBuildDate: TemporalAccessor? = dateTime(year = 2020, month = Month.DECEMBER, day = 22, hour = 8, minute = 11, second = 4),
-    language: String = "language",
+    language: Locale = Locale.GERMAN,
     generator: String? = "generator",
     copyright: String? = "copyright",
     docs: String? = "docs",

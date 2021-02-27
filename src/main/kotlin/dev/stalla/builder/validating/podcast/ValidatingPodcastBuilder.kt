@@ -25,6 +25,7 @@ import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.model.Podcast
 import dev.stalla.util.InternalApi
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 @InternalApi
 internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
@@ -32,7 +33,7 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
     private lateinit var titleValue: String
     private lateinit var linkValue: String
     private lateinit var descriptionValue: String
-    private lateinit var languageValue: String
+    private lateinit var languageValue: Locale
 
     private var pubDate: TemporalAccessor? = null
     private var lastBuildDate: TemporalAccessor? = null
@@ -70,7 +71,7 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
     override fun lastBuildDate(lastBuildDate: TemporalAccessor?): PodcastBuilder =
         apply { this.lastBuildDate = lastBuildDate }
 
-    override fun language(language: String): PodcastBuilder = apply { this.languageValue = language }
+    override fun language(language: Locale): PodcastBuilder = apply { this.languageValue = language }
 
     override fun generator(generator: String?): PodcastBuilder = apply { this.generator = generator }
 

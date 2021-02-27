@@ -11,6 +11,7 @@ import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<channel>` elements.
@@ -43,7 +44,7 @@ public data class Podcast(
     val description: String,
     val pubDate: TemporalAccessor? = null,
     val lastBuildDate: TemporalAccessor? = null,
-    val language: String,
+    val language: Locale,
     val generator: String? = null,
     val copyright: String? = null,
     val docs: String? = null,

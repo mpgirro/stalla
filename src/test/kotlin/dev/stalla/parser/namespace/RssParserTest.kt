@@ -21,6 +21,7 @@ import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 import java.time.Month
+import java.util.Locale
 
 internal class RssParserTest : NamespaceParserTest() {
 
@@ -61,7 +62,7 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakePodcastBuilder::descriptionValue).isEqualTo("podcast rss description")
             prop(FakePodcastBuilder::pubDate).isEqualTo(expectedDate)
             prop(FakePodcastBuilder::lastBuildDate).isEqualTo(expectedDate)
-            prop(FakePodcastBuilder::languageValue).isEqualTo("podcast rss language")
+            prop(FakePodcastBuilder::languageValue).isEqualTo(Locale.GERMAN)
             prop(FakePodcastBuilder::generator).isEqualTo("podcast rss generator")
             prop(FakePodcastBuilder::copyright).isEqualTo("podcast rss copyright")
             prop(FakePodcastBuilder::docs).isEqualTo("podcast rss docs")

@@ -19,13 +19,14 @@ import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.model.Podcast
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuilder {
 
     var titleValue: String? = null
     var linkValue: String? = null
     var descriptionValue: String? = null
-    var languageValue: String? = null
+    var languageValue: Locale? = null
 
     var pubDate: TemporalAccessor? = null
     var lastBuildDate: TemporalAccessor? = null
@@ -62,7 +63,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
 
     override fun lastBuildDate(lastBuildDate: TemporalAccessor?): PodcastBuilder = apply { this.lastBuildDate = lastBuildDate }
 
-    override fun language(language: String): PodcastBuilder = apply { this.languageValue = language }
+    override fun language(language: Locale): PodcastBuilder = apply { this.languageValue = language }
 
     override fun generator(generator: String?): PodcastBuilder = apply { this.generator = generator }
 

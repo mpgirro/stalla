@@ -18,6 +18,7 @@ import dev.stalla.model.podcast.aPodcast
 import dev.stalla.util.FeedNamespace
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Element
+import java.util.Locale
 
 internal class RssWriterTest : NamespaceWriterTest() {
 
@@ -89,7 +90,7 @@ internal class RssWriterTest : NamespaceWriterTest() {
             description = "description",
             pubDate = null,
             lastBuildDate = null,
-            language = "language",
+            language = Locale.GERMAN,
             copyright = null,
             docs = null,
             managingEditor = null,
@@ -132,7 +133,6 @@ internal class RssWriterTest : NamespaceWriterTest() {
             description = " ",
             pubDate = null,
             lastBuildDate = null,
-            language = " ",
             copyright = " ",
             docs = " ",
             managingEditor = " ",
@@ -146,7 +146,6 @@ internal class RssWriterTest : NamespaceWriterTest() {
             assertTagIsNotWrittenToPodcast(podcast, "description")
             assertTagIsNotWrittenToPodcast(podcast, "pubDate")
             assertTagIsNotWrittenToPodcast(podcast, "lastBuildDate")
-            assertTagIsNotWrittenToPodcast(podcast, "language")
             assertTagIsNotWrittenToPodcast(podcast, "copyright")
             assertTagIsNotWrittenToPodcast(podcast, "docs")
             assertTagIsNotWrittenToPodcast(podcast, "managingEditor")
@@ -163,7 +162,6 @@ internal class RssWriterTest : NamespaceWriterTest() {
             description = "",
             pubDate = null,
             lastBuildDate = null,
-            language = "",
             copyright = "",
             docs = "",
             managingEditor = "",
@@ -177,7 +175,6 @@ internal class RssWriterTest : NamespaceWriterTest() {
             assertTagIsNotWrittenToPodcast(podcast, "description")
             assertTagIsNotWrittenToPodcast(podcast, "pubDate")
             assertTagIsNotWrittenToPodcast(podcast, "lastBuildDate")
-            assertTagIsNotWrittenToPodcast(podcast, "language")
             assertTagIsNotWrittenToPodcast(podcast, "copyright")
             assertTagIsNotWrittenToPodcast(podcast, "docs")
             assertTagIsNotWrittenToPodcast(podcast, "managingEditor")

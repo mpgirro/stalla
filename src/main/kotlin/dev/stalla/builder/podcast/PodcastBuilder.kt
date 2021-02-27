@@ -10,6 +10,7 @@ import dev.stalla.model.rss.RssImage
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 /** Builder for constructing [Podcast] instances. */
 public interface PodcastBuilder : Builder<Podcast> {
@@ -48,7 +49,7 @@ public interface PodcastBuilder : Builder<Podcast> {
     public fun lastBuildDate(lastBuildDate: TemporalAccessor?): PodcastBuilder
 
     /** Set the language value. */
-    public fun language(language: String): PodcastBuilder
+    public fun language(language: Locale): PodcastBuilder
 
     /** Set the generator value. */
     public fun generator(generator: String?): PodcastBuilder

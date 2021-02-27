@@ -17,6 +17,7 @@ import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
 import org.w3c.dom.Element
 import org.w3c.dom.Node
+import java.util.Locale
 
 /**
  * Parser implementation for the RSS namespace.
@@ -44,7 +45,9 @@ internal object RssParser : NamespaceParser() {
             "generator" -> builder.generator(ifCanBeParsed { textOrNull() })
             "image" -> builder.imageBuilder(ifCanBeParsed { toRssImageBuilder(builder.createRssImageBuilder()) })
             "language" -> {
-                val language = ifCanBeParsed { textOrNull() } ?: return
+                val language = ifCanBeParsed { textOrNull() }?.let { rawLocale ->
+                    Locale.forLanguageTag(rawLocale)
+                } ?: return
                 builder.language(language)
             }
             "lastBuildDate" -> builder.lastBuildDate(ifCanBeParsed { parseAsTemporalAccessor() })
