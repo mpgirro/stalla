@@ -39,6 +39,7 @@ public data class PodcastItunes(
     val newFeedUrl: String? = null
 ) : ItunesBase {
 
+    /** Provides a builder for the [PodcastItunes] class. */
     public companion object Factory : BuilderFactory<PodcastItunes, PodcastItunesBuilder> {
 
         /** Returns a builder implementation for building [PodcastItunes] model instances. */

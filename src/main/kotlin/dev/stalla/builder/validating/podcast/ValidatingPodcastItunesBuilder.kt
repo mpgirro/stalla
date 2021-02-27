@@ -56,7 +56,8 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
 
     override val hasEnoughDataToBuild: Boolean
         get() = explicit != null && categories.isNotEmpty() &&
-            (::imageBuilderValue.isInitialized && imageBuilderValue.hasEnoughDataToBuild)
+            ::imageBuilderValue.isInitialized &&
+            imageBuilderValue.hasEnoughDataToBuild
 
     override fun build(): PodcastItunes? {
         if (!hasEnoughDataToBuild) {
@@ -71,7 +72,7 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
             author = author,
             categories = categories,
             explicit = explicit
-                ?: throw IllegalStateException("The explicit flag is not set, while hasEnoughDataToBuild == true"),
+                ?: error("The explicit flag is not set, while hasEnoughDataToBuild == true"),
             block = block,
             complete = complete,
             type = type,

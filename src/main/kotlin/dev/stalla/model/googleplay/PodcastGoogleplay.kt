@@ -32,6 +32,7 @@ public data class PodcastGoogleplay(
     val newFeedUrl: String? = null
 ) : GoogleplayBase {
 
+    /** Provides a builder for the [PodcastGoogleplay] class. */
     public companion object Factory : BuilderFactory<PodcastGoogleplay, PodcastGoogleplayBuilder> {
 
         /** Returns a builder implementation for building [PodcastGoogleplay] model instances. */

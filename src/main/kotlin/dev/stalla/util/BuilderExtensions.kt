@@ -3,7 +3,7 @@ package dev.stalla.util
 import dev.stalla.builder.Builder
 
 /**
- * Calls [callback] when [model] is not null
+ * Calls [callback] when [model] is not null.
  * @return The [this] context from which [whenNotNull] was called.
  */
 @InternalApi

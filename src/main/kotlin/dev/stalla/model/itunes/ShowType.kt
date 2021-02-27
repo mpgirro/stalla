@@ -18,6 +18,7 @@ public enum class ShowType(public val type: String) {
     /** Type describing a serial show. */
     SERIAL("serial");
 
+    /** Gets an instance of [ShowType] from a raw value. */
     public companion object Factory : TypeFactory<ShowType> {
 
         @JvmStatic

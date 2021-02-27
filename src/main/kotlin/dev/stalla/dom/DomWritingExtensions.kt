@@ -91,7 +91,7 @@ internal fun Node.appendElement(
 private fun Node.getDocument(): Document = when {
     this is Document -> this
     ownerDocument != null -> ownerDocument
-    else -> throw IllegalStateException("Couldn't obtain document for node $this")
+    else -> error("Couldn't obtain document for node $this")
 }
 
 /**

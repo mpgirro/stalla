@@ -10,6 +10,7 @@ import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
  */
 public data class HrefOnlyImage(val href: String) {
 
+    /** Provides a builder for the [HrefOnlyImage] class. */
     public companion object Factory : BuilderFactory<HrefOnlyImage, HrefOnlyImageBuilder> {
 
         /** Returns a builder implementation for building [HrefOnlyImage] model instances. */

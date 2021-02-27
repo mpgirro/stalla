@@ -240,6 +240,8 @@ import kotlin.reflect.full.declaredMemberProperties
  * | TV & Film               | Film Reviews       | [FILM_REVIEWS]              |
  * | TV & Film               | TV Reviews         | [TV_REVIEWS]                |
  *
+ * @param type The raw category `type` value.
+ *
  * @see Simple
  * @see Nested
  */
@@ -276,6 +278,7 @@ public sealed class ItunesCategory(public open val type: String) {
         public val parent: Simple
     ) : ItunesCategory(type)
 
+    /** Gets an instance of [ItunesCategory] from a raw value. */
     public companion object Factory : TypeFactory<ItunesCategory> {
 
         private val valueMap: Map<String, ItunesCategory> by lazy {
@@ -332,11 +335,11 @@ public sealed class ItunesCategory(public open val type: String) {
         @JvmField
         public val ENTREPRENEURSHIP: Nested = object : Nested("Entrepreneurship", BUSINESS) {}
 
-        /** Category type for the value `Investing` nested in the [BUSINESS] parent category */
+        /** Category type for the value `Investing` nested in the [BUSINESS] parent category. */
         @JvmField
         public val INVESTING: Nested = object : Nested("Investing", BUSINESS) {}
 
-        /** Category type for the value `Management` nested in the [BUSINESS] parent category */
+        /** Category type for the value `Management` nested in the [BUSINESS] parent category. */
         @JvmField
         public val MANAGEMENT: Nested = object : Nested("Management", BUSINESS) {}
 

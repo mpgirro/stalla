@@ -39,6 +39,7 @@ public data class RssImage(
     val description: String? = null
 ) {
 
+    /** Provides a builder for the [RssImage] class. */
     public companion object Factory : BuilderFactory<RssImage, RssImageBuilder> {
 
         /** Returns a builder implementation for building [RssImage] model instances. */

@@ -58,6 +58,7 @@ public data class Episode(
     val podcastindex: EpisodePodcastindex? = null
 ) {
 
+    /** Provides a builder for the [Episode] class. */
     public companion object Factory : BuilderFactory<Episode, EpisodeBuilder> {
 
         /** Returns a builder implementation for building [Episode] model instances. */

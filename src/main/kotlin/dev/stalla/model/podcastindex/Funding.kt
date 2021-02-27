@@ -15,6 +15,7 @@ public data class Funding(
     val message: String
 ) {
 
+    /** Provides a builder for the [Funding] class. */
     public companion object Factory : BuilderFactory<Funding, PodcastPodcastindexFundingBuilder> {
 
         /** Returns a builder implementation for building [Funding] model instances. */
