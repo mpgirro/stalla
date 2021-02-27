@@ -128,4 +128,52 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             prop(FakeEpisodeGoogleplayBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
         }
     }
+
+    @Test
+    fun `should not extract a Googleplay category tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::categories).isEmpty()
+        }
+    }
+
+    @Test
+    fun `should not extract a Googleplay explicit tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::explicit).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract a Googleplay block tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::block).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract a Googleplay block tag from the item when the value is invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "item.googleplay").all {
+            prop(FakeEpisodeGoogleplayBuilder::block).isNull()
+        }
+    }
 }
