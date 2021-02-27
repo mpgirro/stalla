@@ -68,12 +68,12 @@
         <atom:email>podcast atom contributor email</atom:email>
         <atom:uri>podcast atom contributor uri</atom:uri>
     </atom:contributor>
-    <fyyd:verify>abcdefg</fyyd:verify>
-    <feedpress:newsletterId>abc123</feedpress:newsletterId>
-    <feedpress:locale>en</feedpress:locale>
-    <feedpress:podcastId>xyz123</feedpress:podcastId>
-    <feedpress:cssFile>http://example.org/style.css</feedpress:cssFile>
-    <feedpress:link>http://example.org/my-link</feedpress:link>
-    <podcast:locked owner="podcastowner@example.com">yes</podcast:locked>
-    <podcast:funding url="https://example.com/donate">Support the show!</podcast:funding>
+    <fyyd:verify>fyyd verify</fyyd:verify>
+    <feedpress:newsletterId>feedpres newsletterid</feedpress:newsletterId>
+    <feedpress:locale>feedpress locale</feedpress:locale>
+    <feedpress:podcastId>feedpress podcastid</feedpress:podcastId>
+    <feedpress:cssFile>feedpress cssfile</feedpress:cssFile>
+    <feedpress:link>feedpress link</feedpress:link>
+    <podcast:locked owner="podcast podcastindex locked owner">yes</podcast:locked>
+    <podcast:funding url="podcast podcastindex funding url">podcast podcastindex funding message</podcast:funding>
 </channel>

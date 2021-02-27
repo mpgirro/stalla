@@ -28,7 +28,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
 
     private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("podcast googleplay image href")
 
-    private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/episode-cover.jpg")
+    private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("episode googleplay image href")
 
     @Test
     fun `should extract all Googleplay fields from channel when present`() {
@@ -91,8 +91,8 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
         node.parseItemChildNodes(builder)
 
         assertThat(builder.googleplayBuilder, "item.googleplay").all {
-            prop(FakeEpisodeGoogleplayBuilder::author).isEqualTo("Lorem Ipsum")
-            prop(FakeEpisodeGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeGoogleplayBuilder::author).isEqualTo("episode googleplay author")
+            prop(FakeEpisodeGoogleplayBuilder::description).isEqualTo("episode googleplay description")
             prop(FakeEpisodeGoogleplayBuilder::explicit).isNotNull().isEqualTo(ExplicitType.CLEAN)
             prop(FakeEpisodeGoogleplayBuilder::block).isNotNull().isFalse()
             prop(FakeEpisodeGoogleplayBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)

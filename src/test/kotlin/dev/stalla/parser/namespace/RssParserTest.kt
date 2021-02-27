@@ -30,13 +30,13 @@ internal class RssParserTest : NamespaceParserTest() {
     private val expectedDate = dateTime(year = 2018, month = Month.MARCH, day = 16, hour = 22, minute = 49, second = 8)
 
     private val expectedEnclosureBuilder = FakeEpisodeEnclosureBuilder().apply {
-        urlValue = "http://example.org/episode1.m4a"
+        urlValue = "episode rss enclosure url"
         lengthValue = 78589133
-        typeValue = "audio/mp4"
+        typeValue = "episode rss enclosure type"
     }
 
     private val expectedGuidBuilder = FakeEpisodeGuidBuilder().apply {
-        textContent = "1fa609024fdf097"
+        textContent = "episode rss guid"
         isPermalink = true
     }
 
@@ -128,19 +128,19 @@ internal class RssParserTest : NamespaceParserTest() {
         node.parseItemChildNodes(builder)
 
         assertThat(builder, "item.rss").all {
-            prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")
-            prop(FakeEpisodeBuilder::link).isEqualTo("http://example.org/episode1")
-            prop(FakeEpisodeBuilder::description).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeBuilder::titleValue).isEqualTo("episode rss title")
+            prop(FakeEpisodeBuilder::link).isEqualTo("episode rss link")
+            prop(FakeEpisodeBuilder::description).isEqualTo("episode rss description")
             prop(FakeEpisodeBuilder::pubDate).isEqualTo(expectedDate)
-            prop(FakeEpisodeBuilder::author).isEqualTo("author@example.org")
-            prop(FakeEpisodeBuilder::comments).isEqualTo("http://example.org/episode1/comments")
+            prop(FakeEpisodeBuilder::author).isEqualTo("episode rss author")
+            prop(FakeEpisodeBuilder::comments).isEqualTo("episode rss comments")
             prop(FakeEpisodeBuilder::categoryBuilders).containsExactly(
-                FakeRssCategoryBuilder().category("category 1").domain("banana"),
-                FakeRssCategoryBuilder().category("category 2")
+                FakeRssCategoryBuilder().category("episode rss category 1").domain("episode rss category domain"),
+                FakeRssCategoryBuilder().category("episode rss category 2")
             )
             prop(FakeEpisodeBuilder::enclosureBuilderValue).isEqualTo(expectedEnclosureBuilder)
             prop(FakeEpisodeBuilder::guidBuilder).isEqualTo(expectedGuidBuilder)
-            prop(FakeEpisodeBuilder::source).isEqualTo("http://example.org/rss")
+            prop(FakeEpisodeBuilder::source).isEqualTo("episode rss source")
         }
     }
 

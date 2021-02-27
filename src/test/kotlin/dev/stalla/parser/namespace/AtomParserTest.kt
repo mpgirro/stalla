@@ -26,12 +26,6 @@ internal class AtomParserTest : NamespaceParserTest() {
         .title("podcast atom link title")
         .type("podcast atom link type")
 
-    private val expectedEpisodeLinkBuilder = FakeLinkBuilder()
-        .href("http://example.org/feed/m4a")
-        .rel("self")
-        .title("Lorem Ipsum")
-        .type("application/rss+xml")
-
     private val expectedPodcastAuthorBuilder = FakePersonBuilder()
         .name("podcast atom author name")
         .email("podcast atom author email")
@@ -42,15 +36,21 @@ internal class AtomParserTest : NamespaceParserTest() {
         .email("podcast atom contributor email")
         .uri("podcast atom contributor uri")
 
+    private val expectedEpisodeLinkBuilder = FakeLinkBuilder()
+        .href("episode atom link href")
+        .rel("episode atom link rel")
+        .title("episode atom link title")
+        .type("episode atom link type")
+
     private val expectedEpisodeAuthorBuilder = FakePersonBuilder()
-        .name("Lorem Ipsum")
-        .email("person@example.org")
-        .uri("http://example.org")
+        .name("episode atom author name")
+        .email("episode atom author email")
+        .uri("episode atom author uri")
 
     private val expectedEpisodeContributorBuilder = FakePersonBuilder()
-        .name("Lorem Ipsum")
-        .email("person@example.org")
-        .uri("http://example.org")
+        .name("episode atom contributor name")
+        .email("episode atom contributor email")
+        .uri("episode atom contributor uri")
 
     @Test
     fun `should extract all Atom fields from channel when present`() {

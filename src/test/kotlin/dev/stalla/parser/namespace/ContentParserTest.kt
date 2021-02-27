@@ -22,7 +22,7 @@ internal class ContentParserTest : NamespaceParserTest() {
         node.parseItemChildNodes(builder)
 
         assertThat(builder.contentBuilder, "item.content")
-            .prop(FakeEpisodeContentBuilder::encoded).isEqualTo("Lorem Ipsum")
+            .prop(FakeEpisodeContentBuilder::encoded).isEqualTo("episode content encoded")
     }
 
     @Test

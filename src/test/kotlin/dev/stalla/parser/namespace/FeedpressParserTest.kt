@@ -23,11 +23,11 @@ internal class FeedpressParserTest : NamespaceParserTest() {
         node.parseChannelChildNodes(builder)
 
         assertThat(builder.feedpressBuilder, "channel.feedpress").all {
-            prop(FakePodcastFeedpressBuilder::newsletterIdValue).isEqualTo("abc123")
-            prop(FakePodcastFeedpressBuilder::localeValue).isEqualTo("en")
-            prop(FakePodcastFeedpressBuilder::podcastIdValue).isEqualTo("xyz123")
-            prop(FakePodcastFeedpressBuilder::cssFileValue).isEqualTo("http://example.org/style.css")
-            prop(FakePodcastFeedpressBuilder::linkValue).isEqualTo("http://example.org/my-link")
+            prop(FakePodcastFeedpressBuilder::newsletterIdValue).isEqualTo("feedpres newsletterid")
+            prop(FakePodcastFeedpressBuilder::localeValue).isEqualTo("feedpress locale")
+            prop(FakePodcastFeedpressBuilder::podcastIdValue).isEqualTo("feedpress podcastid")
+            prop(FakePodcastFeedpressBuilder::cssFileValue).isEqualTo("feedpress cssfile")
+            prop(FakePodcastFeedpressBuilder::linkValue).isEqualTo("feedpress link")
         }
     }
 

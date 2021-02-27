@@ -31,7 +31,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
 
     private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("podcast itunes image href")
 
-    private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/episode-cover.jpg")
+    private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("episode itunes image href")
 
     private val expectedOwnerBuilder = FakePersonBuilder()
         .name("podcast itunes owner name")
@@ -117,7 +117,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
         node.parseItemChildNodes(builder)
 
         assertThat(builder.itunesBuilder, "item.itunes").all {
-            prop(FakeEpisodeItunesBuilder::title).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeItunesBuilder::title).isEqualTo("episode itunes title")
             prop(FakeEpisodeItunesBuilder::duration).isEqualTo(StyledDuration.hoursMinutesSeconds(3, 24, 27))
             prop(FakeEpisodeItunesBuilder::season).isEqualTo(1)
             prop(FakeEpisodeItunesBuilder::episode).isEqualTo(1)
@@ -125,9 +125,9 @@ internal class ItunesParserTest : NamespaceParserTest() {
             prop(FakeEpisodeItunesBuilder::block).isNotNull().isFalse()
             prop(FakeEpisodeItunesBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
             prop(FakeEpisodeItunesBuilder::episodeType).isEqualTo(EpisodeType.FULL)
-            prop(FakeEpisodeItunesBuilder::author).isEqualTo("author")
-            prop(FakeEpisodeItunesBuilder::subtitle).isEqualTo("subtitle")
-            prop(FakeEpisodeItunesBuilder::summary).isEqualTo("summary")
+            prop(FakeEpisodeItunesBuilder::author).isEqualTo("episode itunes author")
+            prop(FakeEpisodeItunesBuilder::subtitle).isEqualTo("episode itunes subtitle")
+            prop(FakeEpisodeItunesBuilder::summary).isEqualTo("episode itunes summary")
         }
     }
 

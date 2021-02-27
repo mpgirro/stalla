@@ -31,26 +31,26 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
 
     private val expectedLockedBuilder = FakePodcastPodcastindexLockedBuilder()
         .locked(true)
-        .owner("podcastowner@example.com")
+        .owner("podcast podcastindex locked owner")
 
     private val expectedFundingBuilder = FakePodcastPodcastindexFundingBuilder()
-        .url("https://example.com/donate")
-        .message("Support the show!")
+        .url("podcast podcastindex funding url")
+        .message("podcast podcastindex funding message")
 
     private val expectedChaptersBuilder = FakeEpisodePodcastindexChaptersBuilder()
-        .url("https://example.com/ep3_chapters.json")
-        .type("application/json")
+        .url("episode podcastindex chapters url")
+        .type("episode podcastindex chapters type")
 
     private val expectedSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
         .startTime(StyledDuration.secondsAndFraction(33, 833_000_000))
         .duration(StyledDuration.secondsAndFraction(60))
-        .title("I'm a soundbite")
+        .title("episode podcastindex soundbite title")
 
     private val expectedTranscriptBuilder = FakeEpisodePodcastindexTranscriptBuilder()
-        .url("https://example.com/ep3/transcript.txt")
+        .url("episode podcastindex transcript url")
         .type(TranscriptType.PLAIN_TEXT)
         .language(Locale.ITALY)
-        .rel("captions")
+        .rel("episode podcastindex transcript rel")
 
     @Test
     fun `should extract all Podcastindex fields from channel when present`() {
