@@ -106,7 +106,8 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::titleValue.isInitialized &&
-            (::enclosureBuilderValue.isInitialized && enclosureBuilderValue.hasEnoughDataToBuild)
+            ::enclosureBuilderValue.isInitialized &&
+            enclosureBuilderValue.hasEnoughDataToBuild
 
     override fun build(): Episode? {
         if (!hasEnoughDataToBuild) {
@@ -121,7 +122,7 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
             categories = categoryBuilders.mapNotNull { it.build() },
             comments = comments,
             enclosure = enclosureBuilderValue.build()
-                ?: throw IllegalStateException("Cannot build the enclosure, while hasEnoughDataToBuild == true"),
+                ?: error("Cannot build the enclosure, while hasEnoughDataToBuild == true"),
             guid = guidBuilder?.build(),
             pubDate = pubDate,
             source = source,

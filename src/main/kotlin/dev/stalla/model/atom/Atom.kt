@@ -18,6 +18,7 @@ public data class Atom(
     val links: List<Link>
 ) {
 
+    /** Provides a builder for the [Atom] class. */
     public companion object Factory : BuilderFactory<Atom, AtomBuilder> {
 
         /** Returns a builder implementation for building [Atom] model instances. */

@@ -62,9 +62,5 @@ internal abstract class NamespaceWriter {
      */
     protected abstract fun Element.appendEpisodeData(episode: Episode)
 
-    /**
-     * Should return `true` when this writer can write to a given node. Returns true when the node
-     * name matches the [expectedNodeName], and its [Node.getNamespaceURI] is `null`.
-     */
     private fun Node.canWriteToNode(expectedNodeName: String) = nodeName == expectedNodeName && namespaceURI == null
 }

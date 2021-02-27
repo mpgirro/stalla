@@ -10,7 +10,7 @@ public interface PodcastPodcastindexFundingBuilder : Builder<Funding> {
     /** Set the url value. */
     public fun url(url: String): PodcastPodcastindexFundingBuilder
 
-    /** Set the message value */
+    /** Set the message value. */
     public fun message(message: String): PodcastPodcastindexFundingBuilder
 
     override fun applyFrom(prototype: Funding?): PodcastPodcastindexFundingBuilder =

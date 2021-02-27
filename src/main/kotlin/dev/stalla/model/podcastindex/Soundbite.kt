@@ -19,6 +19,7 @@ public data class Soundbite(
     val title: String? = null
 ) {
 
+    /** Provides a builder for the [Soundbite] class. */
     public companion object Factory : BuilderFactory<Soundbite, EpisodePodcastindexSoundbiteBuilder> {
 
         /** Returns a builder implementation for building [Soundbite] model instances. */

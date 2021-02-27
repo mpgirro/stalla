@@ -19,7 +19,8 @@ internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder
         apply { fundingBuilders.add(fundingBuilder) }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = (::lockedBuilderValue.isInitialized && lockedBuilderValue.hasEnoughDataToBuild) ||
+        get() = ::lockedBuilderValue.isInitialized &&
+            lockedBuilderValue.hasEnoughDataToBuild ||
             fundingBuilders.any { it.hasEnoughDataToBuild }
 
     override fun build(): PodcastPodcastindex? {

@@ -20,6 +20,7 @@ public data class SimpleChapter(
     val image: String? = null
 ) {
 
+    /** Provides a builder for the [SimpleChapter] class. */
     public companion object Factory : BuilderFactory<SimpleChapter, EpisodePodloveSimpleChapterBuilder> {
 
         /** Returns a builder implementation for building [SimpleChapter] model instances. */

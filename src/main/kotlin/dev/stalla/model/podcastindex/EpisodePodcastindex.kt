@@ -17,6 +17,7 @@ public data class EpisodePodcastindex(
     val chapters: Chapters? = null
 ) {
 
+    /** Provides a builder for the [EpisodePodcastindex] class. */
     public companion object Factory : BuilderFactory<EpisodePodcastindex, EpisodePodcastindexBuilder> {
 
         /** Returns a builder implementation for building [EpisodePodcastindex] model instances. */

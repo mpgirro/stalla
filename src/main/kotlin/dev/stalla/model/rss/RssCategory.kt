@@ -16,6 +16,7 @@ import dev.stalla.model.BuilderFactory
  */
 public data class RssCategory(val name: String, val domain: String? = null) {
 
+    /** Provides a builder for the [RssCategory] class. */
     public companion object Factory : BuilderFactory<RssCategory, RssCategoryBuilder> {
 
         /** Returns a builder implementation for building [RssCategory] model instances. */

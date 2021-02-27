@@ -1,3 +1,4 @@
+import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -35,7 +36,7 @@ plugins {
     id("java")
     id("com.github.nbaztec.coveralls-jacoco") version "1.2.5"
     id("org.jmailen.kotlinter") version "3.3.0"
-    id("io.gitlab.arturbosch.detekt") version "1.16.0-RC1"
+    id("io.gitlab.arturbosch.detekt") version "1.16.0-RC2"
 }
 
 group = "dev.stalla"
@@ -89,5 +90,9 @@ tasks {
             html.isEnabled = true
             xml.isEnabled = true
         }
+    }
+
+    withType<Detekt> {
+        jvmTarget = "1.8"
     }
 }

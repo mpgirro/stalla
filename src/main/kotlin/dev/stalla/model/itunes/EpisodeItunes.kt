@@ -32,6 +32,7 @@ public data class EpisodeItunes(
     override val summary: String? = null
 ) : ItunesBase {
 
+    /** Provides a builder for the [EpisodeItunes] class. */
     public companion object Factory : BuilderFactory<EpisodeItunes, EpisodeItunesBuilder> {
 
         /** Returns a builder implementation for building [EpisodeItunes] model instances. */

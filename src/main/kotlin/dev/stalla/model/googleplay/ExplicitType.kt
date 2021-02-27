@@ -22,6 +22,7 @@ public enum class ExplicitType(public val type: String) {
     /** Type describing a `clean` value. */
     CLEAN("clean");
 
+    /** Gets an instance of [ExplicitType] from a raw value. */
     public companion object Factory : TypeFactory<ExplicitType> {
 
         @JvmStatic

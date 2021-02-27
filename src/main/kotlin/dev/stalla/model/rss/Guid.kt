@@ -15,6 +15,7 @@ public data class Guid(
     val isPermalink: Boolean? = null
 ) {
 
+    /** Provides a builder for the [Guid] class. */
     public companion object Factory : BuilderFactory<Guid, EpisodeGuidBuilder> {
 
         /** Returns a builder implementation for building [Guid] model instances. */

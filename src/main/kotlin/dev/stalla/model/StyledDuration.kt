@@ -112,6 +112,7 @@ public sealed class StyledDuration {
         }
 
         private companion object {
+
             private const val NANOS_PER_SECOND = 1_000_000_000L
         }
     }
@@ -183,6 +184,7 @@ public sealed class StyledDuration {
         }
     }
 
+    /** Builds an instance of [StyledDuration] from a raw value. */
     public companion object Factory : TypeFactory<StyledDuration> {
 
         private const val DECIMAL_BASE = 10F
@@ -232,10 +234,8 @@ public sealed class StyledDuration {
             }
         }
 
-        private fun String.removeAllUnneededDecimalZeroes(): String {
-            val trimmed = trimEnd('0')
-            return if (trimmed.isEmpty()) "0" else trimmed
-        }
+        private fun String.removeAllUnneededDecimalZeroes(): String =
+            trimEnd('0').ifEmpty { "0" }
 
         private fun tryParsingAsHhMmSs(rawDuration: String): StyledDuration? {
             val match = hhMmSsRegex.matchEntire(rawDuration.trim()) ?: return null

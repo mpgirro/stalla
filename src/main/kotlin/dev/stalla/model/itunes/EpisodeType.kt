@@ -21,6 +21,7 @@ public enum class EpisodeType(public val type: String) {
     /** Type describing a trailer episode. */
     TRAILER("trailer");
 
+    /** Gets an instance of [EpisodeType] from a raw value. */
     public companion object Factory : TypeFactory<EpisodeType> {
 
         @JvmStatic

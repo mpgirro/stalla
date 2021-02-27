@@ -16,6 +16,7 @@ public data class Chapters(
     val type: String
 ) {
 
+    /** Provides a builder for the [Chapters] class. */
     public companion object Factory : BuilderFactory<Chapters, EpisodePodcastindexChaptersBuilder> {
 
         /** Returns a builder implementation for building [Chapters] model instances. */

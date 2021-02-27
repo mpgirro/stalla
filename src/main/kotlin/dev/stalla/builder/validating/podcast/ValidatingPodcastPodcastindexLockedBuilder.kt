@@ -25,7 +25,7 @@ internal class ValidatingPodcastPodcastindexLockedBuilder : PodcastPodcastindexL
         return Locked(
             owner = ownerValue,
             locked = locked
-                ?: throw IllegalStateException("The locked flag is not set, while hasEnoughDataToBuild == true")
+                ?: error("The locked flag is not set, while hasEnoughDataToBuild == true")
         )
     }
 }
