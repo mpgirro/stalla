@@ -8,7 +8,7 @@ import dev.stalla.hasNoDifferences
 import dev.stalla.hasTextContent
 import dev.stalla.hasValue
 import dev.stalla.model.aLink
-import dev.stalla.model.aPerson
+import dev.stalla.model.anAtomPerson
 import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.episode.anEpisodeAtom
 import dev.stalla.model.podcast.aPodcast
@@ -51,8 +51,8 @@ internal class AtomWriterTest : NamespaceWriterTest() {
     internal fun `should not write Atom tags to the channel when the data is all blank`() {
         val podcast = aPodcast(
             atom = aPodcastAtom(
-                authors = listOf(aPerson(" ", " ", " "), aPerson("", "", "")),
-                contributors = listOf(aPerson(" ", " ", " "), aPerson("", "", "")),
+                authors = listOf(anAtomPerson(" ", " ", " "), anAtomPerson("", "", "")),
+                contributors = listOf(anAtomPerson(" ", " ", " "), anAtomPerson("", "", "")),
                 links = listOf(
                     aLink(" ", " ", " ", " ", " ", " ", " "),
                     aLink("", "", "", "", "", "", "")
@@ -71,10 +71,10 @@ internal class AtomWriterTest : NamespaceWriterTest() {
         val podcast = aPodcast(
             atom = aPodcastAtom(
                 authors = listOf(
-                    aPerson("author 1", " ", " "), aPerson("author 2", "", "")
+                    anAtomPerson("author 1", " ", " "), anAtomPerson("author 2", "", "")
                 ),
                 contributors = listOf(
-                    aPerson("contrib 1", " ", " "), aPerson("contrib 2", "", "")
+                    anAtomPerson("contrib 1", " ", " "), anAtomPerson("contrib 2", "", "")
                 ),
                 links = listOf(
                     aLink("link 1", " ", " ", " ", " ", " ", " "),
@@ -165,10 +165,10 @@ internal class AtomWriterTest : NamespaceWriterTest() {
         val episode = anEpisode(
             atom = anEpisodeAtom(
                 authors = listOf(
-                    aPerson(" ", " ", " "), aPerson("", "", "")
+                    anAtomPerson(" ", " ", " "), anAtomPerson("", "", "")
                 ),
                 contributors = listOf(
-                    aPerson(" ", " ", " "), aPerson("", "", "")
+                    anAtomPerson(" ", " ", " "), anAtomPerson("", "", "")
                 ),
                 links = listOf(
                     aLink(" ", " ", " ", " ", " ", " ", " "),
@@ -188,10 +188,10 @@ internal class AtomWriterTest : NamespaceWriterTest() {
         val episode = anEpisode(
             atom = anEpisodeAtom(
                 authors = listOf(
-                    aPerson("author 1", " ", " "), aPerson("author 2", "", "")
+                    anAtomPerson("author 1", " ", " "), anAtomPerson("author 2", "", "")
                 ),
                 contributors = listOf(
-                    aPerson("contrib 1", " ", " "), aPerson("contrib 2", "", "")
+                    anAtomPerson("contrib 1", " ", " "), anAtomPerson("contrib 2", "", "")
                 ),
                 links = listOf(
                     aLink("link 1", " ", " ", " ", " ", " ", " "),

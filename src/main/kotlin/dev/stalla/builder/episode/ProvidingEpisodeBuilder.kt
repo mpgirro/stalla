@@ -1,13 +1,13 @@
 package dev.stalla.builder.episode
 
+import dev.stalla.builder.AtomPersonBuilderProvider
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilderProvider
-import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.util.InternalApi
 
 @InternalApi
-internal interface ProvidingEpisodeBuilder : EpisodeBuilder, PersonBuilderProvider, LinkBuilderProvider {
+internal interface ProvidingEpisodeBuilder : EpisodeBuilder, AtomPersonBuilderProvider, LinkBuilderProvider {
 
     /** Creates an instance of [EpisodeEnclosureBuilder] to use with this builder. */
     fun createEnclosureBuilder(): EpisodeEnclosureBuilder

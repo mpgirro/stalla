@@ -12,7 +12,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeBuilder
-import dev.stalla.builder.validating.ValidatingPersonBuilder
+import dev.stalla.builder.validating.ValidatingAtomPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.Episode
@@ -37,7 +37,7 @@ internal class ValidatingEpisodeBuilderTest {
         .length(123)
         .type("enclosure type")
 
-    private val expectedAtomAuthorBuilder = ValidatingPersonBuilder().name("atom author")
+    private val expectedAtomAuthorBuilder = ValidatingAtomPersonBuilder().name("atom author")
 
     private val expectedSimpleChapterBuilder = ValidatingEpisodePodloveSimpleChapterBuilder()
         .start("start")

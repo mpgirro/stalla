@@ -1,19 +1,20 @@
 package dev.stalla.builder.fake.podcast
 
+import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.fake.FakeAtomBuilder
+import dev.stalla.builder.fake.FakeAtomPersonBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
-import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
 import dev.stalla.builder.fake.FakeRssImageBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.podcast.PodcastItunesOwnerBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
@@ -93,9 +94,11 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
 
     override fun createLinkBuilder(): LinkBuilder = FakeLinkBuilder()
 
-    override fun createPersonBuilder(): PersonBuilder = FakePersonBuilder()
+    override fun createAtomPersonBuilder(): AtomPersonBuilder = FakeAtomPersonBuilder()
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
+
+    override fun createPodcastItunesOwnerBuilder(): PodcastItunesOwnerBuilder = FakePodcastItunesOwnerBuilder()
 
     override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder = FakePodcastPodcastindexLockedBuilder()
 

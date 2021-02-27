@@ -11,15 +11,15 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.AtomBuilder
-import dev.stalla.model.Person
 import dev.stalla.model.atom.Atom
+import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.model.episode.anEpisodeAtom
 import org.junit.jupiter.api.Test
 
 internal class ValidatingAtomBuilderTest {
 
-    private val expectedPersonBuilder = ValidatingPersonBuilder().name("name")
+    private val expectedPersonBuilder = ValidatingAtomPersonBuilder().name("name")
 
     private val expectedLinkBuilder = ValidatingLinkBuilder().href("href")
 
@@ -73,11 +73,11 @@ internal class ValidatingAtomBuilderTest {
     @Test
     internal fun `should build an Episode Atom with with all the added entries to its fields`() {
         val episodeAtomBuilder = ValidatingAtomBuilder()
-            .addAuthorBuilder(ValidatingPersonBuilder().name("author 1"))
-            .addAuthorBuilder(ValidatingPersonBuilder().name("author 2"))
-            .addContributorBuilder(ValidatingPersonBuilder().name("contributor 1"))
-            .addContributorBuilder(ValidatingPersonBuilder().name("contributor 2"))
-            .addContributorBuilder(ValidatingPersonBuilder().name("contributor 3"))
+            .addAuthorBuilder(ValidatingAtomPersonBuilder().name("author 1"))
+            .addAuthorBuilder(ValidatingAtomPersonBuilder().name("author 2"))
+            .addContributorBuilder(ValidatingAtomPersonBuilder().name("contributor 1"))
+            .addContributorBuilder(ValidatingAtomPersonBuilder().name("contributor 2"))
+            .addContributorBuilder(ValidatingAtomPersonBuilder().name("contributor 3"))
             .addLinkBuilder(ValidatingLinkBuilder().href("link 1"))
             .addLinkBuilder(ValidatingLinkBuilder().href("link 2"))
 
@@ -85,8 +85,12 @@ internal class ValidatingAtomBuilderTest {
             assertThat(episodeAtomBuilder).prop(AtomBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(episodeAtomBuilder.build()).isNotNull().all {
-                prop(Atom::authors).containsExactly(Person("author 1"), Person("author 2"))
-                prop(Atom::contributors).containsExactly(Person("contributor 1"), Person("contributor 2"), Person("contributor 3"))
+                prop(Atom::authors).containsExactly(AtomPerson("author 1"), AtomPerson("author 2"))
+                prop(Atom::contributors).containsExactly(
+                    AtomPerson("contributor 1"),
+                    AtomPerson("contributor 2"),
+                    AtomPerson("contributor 3")
+                )
                 prop(Atom::links).containsExactly(Link("link 1"), Link("link 2"))
             }
         }

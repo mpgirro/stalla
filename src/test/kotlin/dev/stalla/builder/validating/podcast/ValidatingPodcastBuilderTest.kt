@@ -11,8 +11,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.validating.ValidatingAtomPersonBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
@@ -51,7 +51,7 @@ internal class ValidatingPodcastBuilderTest {
         .title("episode title")
         .enclosureBuilder(expectedEnclosureBuilder)
 
-    private val expectedAtomAuthorBuilder = ValidatingPersonBuilder().name("atom author")
+    private val expectedAtomAuthorBuilder = ValidatingAtomPersonBuilder().name("atom author")
 
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 

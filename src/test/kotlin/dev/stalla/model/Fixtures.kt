@@ -1,5 +1,6 @@
 package dev.stalla.model
 
+import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
@@ -19,11 +20,11 @@ internal fun anHrefOnlyImage(
     href: String = "image href"
 ) = HrefOnlyImage(href)
 
-internal fun aPerson(
+internal fun anAtomPerson(
     name: String = "person name",
     email: String? = "person email",
     uri: String? = "person uri"
-) = Person(name, email, uri)
+) = AtomPerson(name, email, uri)
 
 internal fun aLink(
     href: String = "link href",

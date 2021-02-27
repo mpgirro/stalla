@@ -1,10 +1,10 @@
 package dev.stalla.writer.namespace
 
+import dev.stalla.dom.appendAtomPersonElement
 import dev.stalla.dom.appendElement
-import dev.stalla.dom.appendPersonElement
 import dev.stalla.model.Episode
-import dev.stalla.model.Person
 import dev.stalla.model.Podcast
+import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
@@ -38,9 +38,9 @@ internal object AtomWriter : NamespaceWriter() {
         appendLinkElements(atom.links)
     }
 
-    private fun Element.appendPersonElements(tagName: String, persons: List<Person>) {
+    private fun Element.appendPersonElements(tagName: String, persons: List<AtomPerson>) {
         for (person in persons) {
-            appendPersonElement(tagName, person, namespace)
+            appendAtomPersonElement(tagName, person, namespace)
         }
     }
 

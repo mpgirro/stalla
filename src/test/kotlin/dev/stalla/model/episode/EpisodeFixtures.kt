@@ -3,13 +3,13 @@ package dev.stalla.model.episode
 import dev.stalla.dateTime
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.Person
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.aLink
-import dev.stalla.model.aPerson
+import dev.stalla.model.anAtomPerson
 import dev.stalla.model.anHrefOnlyImage
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.atom.Atom
+import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
@@ -99,8 +99,8 @@ internal fun anEpisodeItunes(
 ) = EpisodeItunes(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
 
 internal fun anEpisodeAtom(
-    authors: List<Person> = listOf(aPerson("episode atom author name")),
-    contributors: List<Person> = listOf(aPerson("episode atom contributor name")),
+    authors: List<AtomPerson> = listOf(anAtomPerson("episode atom author name")),
+    contributors: List<AtomPerson> = listOf(anAtomPerson("episode atom contributor name")),
     links: List<Link> = listOf(aLink("episode atom link href"))
 ) = Atom(authors, contributors, links)
 

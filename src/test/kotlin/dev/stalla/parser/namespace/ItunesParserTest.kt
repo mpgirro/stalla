@@ -10,11 +10,11 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeItunesBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastItunesBuilder
+import dev.stalla.builder.fake.podcast.FakePodcastItunesOwnerBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.hasNotEnoughDataToBuild
 import dev.stalla.model.StyledDuration
@@ -33,7 +33,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
 
     private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("episode itunes image href")
 
-    private val expectedOwnerBuilder = FakePersonBuilder()
+    private val expectedOwnerBuilder = FakePodcastItunesOwnerBuilder()
         .name("podcast itunes owner name")
         .email("podcast itunes owner email")
 

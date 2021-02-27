@@ -1,25 +1,25 @@
 package dev.stalla.builder
 
-import dev.stalla.model.Person
 import dev.stalla.model.atom.Atom
+import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.util.whenNotNull
 
 /** Builder for constructing [Atom] instances. */
 public interface AtomBuilder : Builder<Atom> {
 
-    /** Adds the [PersonBuilder] to the list of author builders. */
-    public fun addAuthorBuilder(authorBuilder: PersonBuilder): AtomBuilder
+    /** Adds the [AtomPersonBuilder] to the list of author builders. */
+    public fun addAuthorBuilder(authorBuilder: AtomPersonBuilder): AtomBuilder
 
-    /** Adds all of the [PersonBuilder] to the list of author builders. */
-    public fun addAllAuthorBuilder(authorBuilders: List<PersonBuilder>): AtomBuilder =
+    /** Adds all of the [AtomPersonBuilder] to the list of author builders. */
+    public fun addAllAuthorBuilder(authorBuilders: List<AtomPersonBuilder>): AtomBuilder =
         apply { authorBuilders.forEach(::addAuthorBuilder) }
 
-    /** Adds the [PersonBuilder] to the list of contributor builders. */
-    public fun addContributorBuilder(contributorBuilder: PersonBuilder): AtomBuilder
+    /** Adds the [AtomPersonBuilder] to the list of contributor builders. */
+    public fun addContributorBuilder(contributorBuilder: AtomPersonBuilder): AtomBuilder
 
-    /** Adds all of the [PersonBuilder] to the list of contributor builders. */
-    public fun addAllContributorBuilder(contributorBuilders: List<PersonBuilder>): AtomBuilder =
+    /** Adds all of the [AtomPersonBuilder] to the list of contributor builders. */
+    public fun addAllContributorBuilder(contributorBuilders: List<AtomPersonBuilder>): AtomBuilder =
         apply { contributorBuilders.forEach(::addContributorBuilder) }
 
     /** Adds the [LinkBuilder] to the list of links. */
@@ -31,8 +31,8 @@ public interface AtomBuilder : Builder<Atom> {
 
     override fun applyFrom(prototype: Atom?): AtomBuilder =
         whenNotNull(prototype) { atom ->
-            addAllAuthorBuilder(atom.authors.map(Person.builder()::applyFrom))
-            addAllContributorBuilder(atom.contributors.map(Person.builder()::applyFrom))
+            addAllAuthorBuilder(atom.authors.map(AtomPerson.builder()::applyFrom))
+            addAllContributorBuilder(atom.contributors.map(AtomPerson.builder()::applyFrom))
             addAllLinkBuilder(atom.links.map(Link.builder()::applyFrom))
         }
 }

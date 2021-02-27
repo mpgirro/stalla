@@ -1,9 +1,9 @@
 package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.AtomBuilder
+import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
@@ -12,14 +12,15 @@ import dev.stalla.builder.podcast.PodcastFeedpressBuilder
 import dev.stalla.builder.podcast.PodcastFyydBuilder
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.builder.podcast.PodcastItunesBuilder
+import dev.stalla.builder.podcast.PodcastItunesOwnerBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.builder.validating.ValidatingAtomBuilder
+import dev.stalla.builder.validating.ValidatingAtomPersonBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
-import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.model.Podcast
@@ -101,9 +102,11 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     override fun createLinkBuilder(): LinkBuilder = ValidatingLinkBuilder()
 
-    override fun createPersonBuilder(): PersonBuilder = ValidatingPersonBuilder()
+    override fun createAtomPersonBuilder(): AtomPersonBuilder = ValidatingAtomPersonBuilder()
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = ValidatingRssCategoryBuilder()
+
+    override fun createPodcastItunesOwnerBuilder(): PodcastItunesOwnerBuilder = ValidatingPodcastItunesOwnerBuilder()
 
     override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder =
         ValidatingPodcastPodcastindexLockedBuilder()

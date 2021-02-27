@@ -2,10 +2,9 @@ package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.Person
 import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.itunes.ItunesOwner
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.util.whenNotNull
 
@@ -47,7 +46,7 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
     public fun type(type: String?): PodcastItunesBuilder
 
     /** Set the Person representing the owner. */
-    public fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastItunesBuilder
+    public fun ownerBuilder(ownerBuilder: PodcastItunesOwnerBuilder?): PodcastItunesBuilder
 
     /** Set the episode title. */
     public fun title(title: String?): PodcastItunesBuilder
@@ -67,7 +66,7 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
             block(itunes.block)
             complete(itunes.complete)
             type(itunes.type?.type)
-            ownerBuilder(Person.builder().applyFrom(itunes.owner))
+            ownerBuilder(ItunesOwner.builder().applyFrom(itunes.owner))
             title(itunes.title)
             newFeedUrl(itunes.newFeedUrl)
         }

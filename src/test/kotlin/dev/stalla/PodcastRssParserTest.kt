@@ -14,13 +14,13 @@ import dev.stalla.dom.DomBuilderFactory
 import dev.stalla.dom.findElementByName
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.Person
 import dev.stalla.model.Podcast
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.content.Content
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.itunes.ItunesOwner
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.rss.Enclosure
@@ -164,8 +164,8 @@ internal class PodcastRssParserTest {
                 prop(PodcastItunes::explicit).isNotNull().isTrue()
                 prop(PodcastItunes::keywords).isEqualTo("computer security, cybersecurity, hacking, privacy, cybercrime, cyber, cyberwarfare, infosec")
                 prop(PodcastItunes::owner).isNotNull().all {
-                    prop(Person::name).isEqualTo("Graham Cluley, Carole Theriault")
-                    prop(Person::email).isEqualTo("studio@smashingsecurity.com")
+                    prop(ItunesOwner::name).isEqualTo("Graham Cluley, Carole Theriault")
+                    prop(ItunesOwner::email).isEqualTo("studio@smashingsecurity.com")
                 }
                 prop(PodcastItunes::categories).containsExactly(
                     ItunesCategory.TECHNOLOGY,

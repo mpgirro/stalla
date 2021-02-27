@@ -44,7 +44,7 @@
         <itunes:type>episodic</itunes:type>
         <itunes:owner>
             <itunes:name>podcast itunes owner name</itunes:name>
-            <itunes:email>person email</itunes:email>
+            <itunes:email>podcast itunes owner email</itunes:email>
         </itunes:owner>
         <itunes:title>podcast itunes title</itunes:title>
         <itunes:new-feed-url>podcast itunes newFeedUrl</itunes:new-feed-url>

@@ -1,9 +1,9 @@
 package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.AtomBuilder
+import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.episode.EpisodeBitloveBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
@@ -20,9 +20,9 @@ import dev.stalla.builder.episode.EpisodePodloveBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.validating.ValidatingAtomBuilder
+import dev.stalla.builder.validating.ValidatingAtomPersonBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
-import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.model.Episode
 import dev.stalla.util.InternalApi
@@ -86,7 +86,7 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     override fun createLinkBuilder(): LinkBuilder = ValidatingLinkBuilder()
 
-    override fun createPersonBuilder(): PersonBuilder = ValidatingPersonBuilder()
+    override fun createAtomPersonBuilder(): AtomPersonBuilder = ValidatingAtomPersonBuilder()
 
     override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = ValidatingHrefOnlyImageBuilder()
 

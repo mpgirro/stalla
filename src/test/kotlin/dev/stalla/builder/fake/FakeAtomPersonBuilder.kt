@@ -1,23 +1,23 @@
 package dev.stalla.builder.fake
 
-import dev.stalla.builder.PersonBuilder
-import dev.stalla.model.Person
+import dev.stalla.builder.AtomPersonBuilder
+import dev.stalla.model.atom.AtomPerson
 
-internal class FakePersonBuilder : FakeBuilder<Person>(), PersonBuilder {
+internal class FakeAtomPersonBuilder : FakeBuilder<AtomPerson>(), AtomPersonBuilder {
 
     var nameValue: String? = null
     var email: String? = null
     var uri: String? = null
 
-    override fun name(name: String): PersonBuilder = apply { this.nameValue = name }
+    override fun name(name: String): AtomPersonBuilder = apply { this.nameValue = name }
 
-    override fun email(email: String?): PersonBuilder = apply { this.email = email }
+    override fun email(email: String?): AtomPersonBuilder = apply { this.email = email }
 
-    override fun uri(uri: String?): PersonBuilder = apply { this.uri = uri }
+    override fun uri(uri: String?): AtomPersonBuilder = apply { this.uri = uri }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakePersonBuilder) return false
+        if (other !is FakeAtomPersonBuilder) return false
 
         if (nameValue != other.nameValue) return false
         if (email != other.email) return false

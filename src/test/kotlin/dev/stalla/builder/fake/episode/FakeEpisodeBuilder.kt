@@ -1,8 +1,8 @@
 package dev.stalla.builder.fake.episode
 
+import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
@@ -13,10 +13,10 @@ import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.fake.FakeAtomBuilder
+import dev.stalla.builder.fake.FakeAtomPersonBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
-import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
 import dev.stalla.model.Episode
 import java.time.temporal.TemporalAccessor
@@ -79,7 +79,7 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), ProvidingEpisodeBuil
 
     override fun createLinkBuilder(): LinkBuilder = FakeLinkBuilder()
 
-    override fun createPersonBuilder(): PersonBuilder = FakePersonBuilder()
+    override fun createAtomPersonBuilder(): AtomPersonBuilder = FakeAtomPersonBuilder()
 
     override fun createHrefOnlyImageBuilder(): HrefOnlyImageBuilder = FakeHrefOnlyImageBuilder()
 

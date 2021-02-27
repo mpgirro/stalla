@@ -1,7 +1,7 @@
 package dev.stalla.dom
 
+import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.model.googleplay.GoogleplayCategory
@@ -115,10 +115,10 @@ internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): Hr
 }
 
 /**
- * Parses the node contents into a [PersonBuilder] if possible, ensuring the child nodes
+ * Parses the node contents into a [AtomPersonBuilder] if possible, ensuring the child nodes
  * have the specified [namespace], then populates the [personBuilder] with the parsed data.
  *
- * @param personBuilder An empty [PersonBuilder] instance to initialise with the node's
+ * @param personBuilder An empty [AtomPersonBuilder] instance to initialise with the node's
  * contents.
  * @param namespace The [FeedNamespace] to ensure the child nodes have.
  *
@@ -126,7 +126,10 @@ internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): Hr
  */
 @InternalApi
 @Suppress("LoopWithTooManyJumpStatements")
-internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedNamespace? = null): PersonBuilder {
+internal fun Node.toAtomPersonBuilder(
+    personBuilder: AtomPersonBuilder,
+    namespace: FeedNamespace? = null
+): AtomPersonBuilder {
     for (child in childNodes.asListOfNodes()) {
         if (child !is Element) continue
         if (!namespace.matches(child.namespaceURI)) continue
