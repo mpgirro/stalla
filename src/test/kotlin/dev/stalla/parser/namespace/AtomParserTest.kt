@@ -20,13 +20,34 @@ internal class AtomParserTest : NamespaceParserTest() {
 
     override val parser = AtomParser
 
-    private val expectedLinkBuilder = FakeLinkBuilder()
+    private val expectedPodcastLinkBuilder = FakeLinkBuilder()
+        .href("podcast atom link href")
+        .rel("podcast atom link rel")
+        .title("podcast atom link title")
+        .type("podcast atom link type")
+
+    private val expectedEpisodeLinkBuilder = FakeLinkBuilder()
         .href("http://example.org/feed/m4a")
         .rel("self")
         .title("Lorem Ipsum")
         .type("application/rss+xml")
 
-    private val expectedPersonBuilder = FakePersonBuilder()
+    private val expectedPodcastAuthorBuilder = FakePersonBuilder()
+        .name("podcast atom author name")
+        .email("podcast atom author email")
+        .uri("podcast atom author uri")
+
+    private val expectedPodcastContributorBuilder = FakePersonBuilder()
+        .name("podcast atom contributor name")
+        .email("podcast atom contributor email")
+        .uri("podcast atom contributor uri")
+
+    private val expectedEpisodeAuthorBuilder = FakePersonBuilder()
+        .name("Lorem Ipsum")
+        .email("person@example.org")
+        .uri("http://example.org")
+
+    private val expectedEpisodeContributorBuilder = FakePersonBuilder()
         .name("Lorem Ipsum")
         .email("person@example.org")
         .uri("http://example.org")
@@ -38,9 +59,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         channel.parseChannelChildNodes(builder)
 
         assertThat(builder.atomBuilder, "channel.atom").all {
-            prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
+            prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedPodcastAuthorBuilder)
+            prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedPodcastContributorBuilder)
+            prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedPodcastLinkBuilder)
         }
     }
 
@@ -77,9 +98,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         item.parseItemChildNodes(builder)
 
         assertThat(builder.atomBuilder, "item.atom").all {
-            prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
+            prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedEpisodeAuthorBuilder)
+            prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedEpisodeContributorBuilder)
+            prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedEpisodeLinkBuilder)
         }
     }
 

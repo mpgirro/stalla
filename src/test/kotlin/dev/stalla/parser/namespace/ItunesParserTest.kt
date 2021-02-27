@@ -29,13 +29,13 @@ internal class ItunesParserTest : NamespaceParserTest() {
 
     override val parser = ItunesParser
 
-    private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/podcast-cover.jpg")
+    private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("podcast itunes image href")
 
     private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/episode-cover.jpg")
 
     private val expectedOwnerBuilder = FakePersonBuilder()
-        .name("Lorem Ipsum")
-        .email("owner@example.org")
+        .name("podcast itunes owner name")
+        .email("podcast itunes owner email")
 
     @Test
     fun `should extract all Itunes fields from channel when present`() {
@@ -44,16 +44,16 @@ internal class ItunesParserTest : NamespaceParserTest() {
         node.parseChannelChildNodes(builder)
 
         assertThat(builder.itunesBuilder, "channel.itunes").all {
-            prop(FakePodcastItunesBuilder::author).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastItunesBuilder::author).isEqualTo("podcast itunes author")
             prop(FakePodcastItunesBuilder::ownerBuilder).isEqualTo(expectedOwnerBuilder)
             prop(FakePodcastItunesBuilder::categories).containsExactly(
                 ItunesCategory.TECH_NEWS,
                 ItunesCategory.SOCIETY_AND_CULTURE,
                 ItunesCategory.SCIENCE_FICTION
             )
-            prop(FakePodcastItunesBuilder::subtitle).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastItunesBuilder::summary).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastItunesBuilder::keywords).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastItunesBuilder::subtitle).isEqualTo("podcast itunes subtitle")
+            prop(FakePodcastItunesBuilder::summary).isEqualTo("podcast itunes summary")
+            prop(FakePodcastItunesBuilder::keywords).isEqualTo("podcast itunes keywords")
             prop(FakePodcastItunesBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastItunesBuilder::block).isNotNull().isFalse()
             prop(FakePodcastItunesBuilder::complete).isNotNull().isFalse()

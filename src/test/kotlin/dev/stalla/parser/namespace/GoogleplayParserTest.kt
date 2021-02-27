@@ -26,7 +26,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
 
     override val parser = GoogleplayParser
 
-    private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/podcast-cover.jpg")
+    private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("podcast googleplay image href")
 
     private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/episode-cover.jpg")
 
@@ -37,14 +37,14 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
         node.parseChannelChildNodes(builder)
 
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
-            prop(FakePodcastGoogleplayBuilder::author).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastGoogleplayBuilder::email).isEqualTo("email@example.org")
+            prop(FakePodcastGoogleplayBuilder::author).isEqualTo("podcast googleplay author")
+            prop(FakePodcastGoogleplayBuilder::email).isEqualTo("podcast googleplay email")
             prop(FakePodcastGoogleplayBuilder::categories).containsExactly(GoogleplayCategory.NEWS_AND_POLITICS)
-            prop(FakePodcastGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastGoogleplayBuilder::description).isEqualTo("podcast googleplay description")
             prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::block).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::imageBuilder).isEqualTo(expectedPodcastImageBuilder)
-            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isEqualTo("https://new.example.com/rss/rss.xml")
+            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isEqualTo("podcast googleplay new-feed-url")
         }
     }
 

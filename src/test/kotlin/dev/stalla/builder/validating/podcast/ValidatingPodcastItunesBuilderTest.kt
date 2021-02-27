@@ -40,6 +40,7 @@ internal class ValidatingPodcastItunesBuilderTest {
         }
     }
 
+
     @Test
     internal fun `should build a valid Podcast Itunes when there are all the mandatory fields`() {
         val podcastItunesBuilder = ValidatingPodcastItunesBuilder()

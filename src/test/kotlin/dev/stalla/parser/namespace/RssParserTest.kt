@@ -41,12 +41,12 @@ internal class RssParserTest : NamespaceParserTest() {
     }
 
     private val expectedImageBuilder = FakeRssImageBuilder().apply {
-        url = "http://example.org/podcast-cover.jpg"
-        title = "Lorem Ipsum"
-        link = "http://example.org"
+        url = "podcast rss image url"
+        title = "podcast rss image title"
+        link = "podcast rss image link"
         width = 600
         height = 600
-        description = "Lorem Ipsum"
+        description = "podcast rss image description"
     }
 
     @Test
@@ -56,21 +56,21 @@ internal class RssParserTest : NamespaceParserTest() {
         node.parseChannelChildNodes(builder)
 
         assertThat(builder, "channel.rss").all {
-            prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastBuilder::linkValue).isEqualTo("http://example.org")
-            prop(FakePodcastBuilder::descriptionValue).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastBuilder::titleValue).isEqualTo("podcast rss title")
+            prop(FakePodcastBuilder::linkValue).isEqualTo("podcast rss link")
+            prop(FakePodcastBuilder::descriptionValue).isEqualTo("podcast rss description")
             prop(FakePodcastBuilder::pubDate).isEqualTo(expectedDate)
             prop(FakePodcastBuilder::lastBuildDate).isEqualTo(expectedDate)
-            prop(FakePodcastBuilder::languageValue).isEqualTo("de-DE")
-            prop(FakePodcastBuilder::generator).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastBuilder::copyright).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastBuilder::docs).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastBuilder::managingEditor).isEqualTo("editor@example.org")
-            prop(FakePodcastBuilder::webMaster).isEqualTo("webmaster@example.org")
+            prop(FakePodcastBuilder::languageValue).isEqualTo("podcast rss language")
+            prop(FakePodcastBuilder::generator).isEqualTo("podcast rss generator")
+            prop(FakePodcastBuilder::copyright).isEqualTo("podcast rss copyright")
+            prop(FakePodcastBuilder::docs).isEqualTo("podcast rss docs")
+            prop(FakePodcastBuilder::managingEditor).isEqualTo("podcast rss managingeditor")
+            prop(FakePodcastBuilder::webMaster).isEqualTo("podcast rss webmaster")
             prop(FakePodcastBuilder::imageBuilder).isEqualTo(expectedImageBuilder)
             prop(FakePodcastBuilder::categoryBuilders).containsExactly(
-                FakeRssCategoryBuilder().category("category 1").domain("banana"),
-                FakeRssCategoryBuilder().category("category 2")
+                FakeRssCategoryBuilder().category("podcast rss category 1").domain("podcast rss category domain"),
+                FakeRssCategoryBuilder().category("podcast rss category 2")
             )
         }
     }
