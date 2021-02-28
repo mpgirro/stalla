@@ -138,4 +138,16 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
             prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).isEmpty()
         }
     }
+
+    @Test
+    internal fun `should not extract Podcastindex Transcript tags from the item when the types are invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.podcastindexBuilder, "item.podcastindex").all {
+            prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).isEmpty()
+        }
+    }
 }

@@ -11,7 +11,6 @@ import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
-import dev.stalla.builder.fake.episode.FakeEpisodeGoogleplayBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeItunesBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastItunesBuilder
@@ -187,18 +186,6 @@ internal class ItunesParserTest : NamespaceParserTest() {
     }
 
     @Test
-    fun `should not extract an Googleplay explicit tag from the item when the value is invalid`() {
-        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
-
-        val builder = FakeEpisodeBuilder()
-        item.parseItemChildNodes(builder)
-
-        assertThat(builder.googleplayBuilder, "item.googleplay").all {
-            prop(FakeEpisodeGoogleplayBuilder::explicit).isNull()
-        }
-    }
-
-    @Test
     fun `should not extract an Itunes explicit tag from the channel when the value is invalid`() {
         val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
 
@@ -243,6 +230,18 @@ internal class ItunesParserTest : NamespaceParserTest() {
 
         assertThat(builder.itunesBuilder, "channel.itunes").all {
             prop(FakePodcastItunesBuilder::type).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract an Itunes duration tag from the item when the value is invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.itunesBuilder, "item.itunes").all {
+            prop(FakeEpisodeItunesBuilder::duration).isNull()
         }
     }
 

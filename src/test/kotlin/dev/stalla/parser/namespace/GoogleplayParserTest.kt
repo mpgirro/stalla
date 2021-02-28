@@ -166,6 +166,18 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
     }
 
     @Test
+    fun `should not extract a Googleplay explicit tag from the item when the value is invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "item.googleplay").all {
+            prop(FakeEpisodeGoogleplayBuilder::explicit).isNull()
+        }
+    }
+
+    @Test
     fun `should not extract a Googleplay block tag from the item when the value is invalid`() {
         val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
 
