@@ -1,5 +1,6 @@
 package dev.stalla.builder.episode
 
+import com.google.common.net.MediaType
 import dev.stalla.builder.Builder
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.util.whenNotNull
@@ -11,7 +12,7 @@ public interface EpisodePodcastindexChaptersBuilder : Builder<Chapters> {
     public fun url(url: String): EpisodePodcastindexChaptersBuilder
 
     /** Set the type value. */
-    public fun type(type: String): EpisodePodcastindexChaptersBuilder
+    public fun type(type: MediaType): EpisodePodcastindexChaptersBuilder
 
     override fun applyFrom(prototype: Chapters?): EpisodePodcastindexChaptersBuilder =
         whenNotNull(prototype) { chapters ->

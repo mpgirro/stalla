@@ -1,5 +1,6 @@
 package dev.stalla.model.episode
 
+import com.google.common.net.MediaType
 import dev.stalla.dateTime
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
@@ -148,5 +149,5 @@ internal fun anEpisodePodcastindexSoundbite(
 
 internal fun anEpisodePodcastindexChapters(
     url: String = "episode podcastindex chapters url",
-    type: String = "episode podcastindex chapters type"
+    type: MediaType = MediaType.JSON_UTF_8.withoutParameters()
 ) = Chapters(url, type)

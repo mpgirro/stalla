@@ -8,6 +8,8 @@ import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.getAttributeByName
+import dev.stalla.dom.getAttributeValueByName
+import dev.stalla.dom.parseAsMediaTypeOrNull
 import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.TranscriptType
@@ -95,8 +97,8 @@ internal object PodcastindexParser : NamespaceParser() {
     private fun Node.toChaptersBuilder(
         chaptersBuilder: EpisodePodcastindexChaptersBuilder
     ): EpisodePodcastindexChaptersBuilder? {
-        val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()
-        val type = getAttributeByName("type")?.value.trimmedOrNullIfBlank()
+        val url = getAttributeValueByName("url").trimmedOrNullIfBlank()
+        val type = getAttributeValueByName("type").parseAsMediaTypeOrNull()
 
         if (url == null || type == null) return null
         return chaptersBuilder.url(url)
