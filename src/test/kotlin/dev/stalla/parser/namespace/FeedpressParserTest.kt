@@ -61,4 +61,16 @@ internal class FeedpressParserTest : NamespaceParserTest() {
             prop(FakePodcastFeedpressBuilder::linkValue).isNull()
         }
     }
+
+    @Test
+    fun `should not extract a Feedpress locale tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.feedpressBuilder, "channel.itunes").all {
+            prop(FakePodcastFeedpressBuilder::localeValue).isNull()
+        }
+    }
 }

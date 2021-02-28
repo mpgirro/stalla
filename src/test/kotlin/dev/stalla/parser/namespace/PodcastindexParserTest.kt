@@ -128,6 +128,18 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
     }
 
     @Test
+    internal fun `should not extract Podcastindex Locked tags from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").all {
+            prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
+        }
+    }
+
+    @Test
     internal fun `should not extract Podcastindex Soundbite tags from the item when the durations are invalid`() {
         val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
 

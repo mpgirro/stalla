@@ -184,4 +184,16 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakeEpisodeBuilder::source).isNull()
         }
     }
+
+    @Test
+    fun `should not extract an RSS language tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder, "channel.itunes").all {
+            prop(FakePodcastBuilder::languageValue).isNull()
+        }
+    }
 }

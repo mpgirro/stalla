@@ -15,6 +15,8 @@
     <googleplay:block>xyz</googleplay:block>
     <podcast:soundbite startTime="33.833" duration="0">I'm a soundbite</podcast:soundbite>
     <podcast:soundbite startTime="33.833" duration="-1.0">I'm a soundbite</podcast:soundbite>
+    <podcast:soundbite startTime="33.833" duration="xyz">I'm a soundbite</podcast:soundbite>
     <podcast:soundbite startTime="-1.0" duration="60.0">I'm a soundbite</podcast:soundbite>
+    <podcast:soundbite startTime="xyz" duration="60.0">I'm a soundbite</podcast:soundbite>
     <podcast:transcript url="transcript url" type="xyz" />
 </item>

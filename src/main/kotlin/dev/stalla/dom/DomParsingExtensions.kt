@@ -10,6 +10,7 @@ import dev.stalla.parser.DateParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
 import dev.stalla.util.InternalApi
+import dev.stalla.util.isValidLocale
 import dev.stalla.util.trimmedOrNullIfBlank
 import org.w3c.dom.Element
 import org.w3c.dom.Node
@@ -65,6 +66,12 @@ internal fun Node.parseAsInt(): Int? = textOrNull()?.toIntOrNull()
  */
 @InternalApi
 internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.parse(textOrNull())
+
+@InternalApi
+internal fun Node.parseAsLocaleOrNull(): Locale? = textOrNull()?.let { rawLocale ->
+    val locale = Locale.forLanguageTag(rawLocale)
+    return if (locale.isValidLocale()) locale else null
+}
 
 /**
  * Parses the node contents as an [RssImageBuilder] if possible, interpreting it as an RSS
