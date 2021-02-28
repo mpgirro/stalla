@@ -46,8 +46,8 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
                 val diff = element.diffFromExpected("/rss/channel/googleplay:image")
                 assertThat(diff).hasNoDifferences()
             }
-            writePodcastData("new-feed-url") { element ->
-                val diff = element.diffFromExpected("/rss/channel/googleplay:new-feed-url")
+            writePodcastData("newFeedUrl") { element ->
+                val diff = element.diffFromExpected("/rss/channel/googleplay:newFeedUrl")
                 assertThat(diff).hasNoDifferences()
             }
         }
@@ -63,7 +63,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
             assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "explicit")
             assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "block")
             assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "image")
-            assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "new-feed-url")
+            assertTagIsNotWrittenToPodcast(aPodcast(googleplay = null), "newFeedUrl")
         }
     }
 

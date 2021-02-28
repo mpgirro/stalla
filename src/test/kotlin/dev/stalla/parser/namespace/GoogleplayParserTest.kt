@@ -44,7 +44,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::block).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::imageBuilder).isEqualTo(expectedPodcastImageBuilder)
-            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isEqualTo("podcast googleplay new-feed-url")
+            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isEqualTo("podcast googleplay newFeedUrl")
         }
     }
 
@@ -162,6 +162,18 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
 
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
             prop(FakePodcastGoogleplayBuilder::block).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract a Googleplay newFeedUrl tag from the channel when the tag has the wrong name`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isNull()
         }
     }
 

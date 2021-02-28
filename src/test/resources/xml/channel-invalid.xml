@@ -17,4 +17,5 @@
     <googleplay:category text="xyz" />
     <googleplay:explicit>xyz</googleplay:explicit>
     <googleplay:block>xyz</googleplay:block>
+    <googleplay:new-feed-url>the correct tag is googleplay:newFeedUrl</googleplay:new-feed-url>
 </channel>
