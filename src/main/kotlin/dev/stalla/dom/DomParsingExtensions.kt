@@ -67,6 +67,12 @@ internal fun Node.parseAsInt(): Int? = textOrNull()?.toIntOrNull()
 @InternalApi
 internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.parse(textOrNull())
 
+/**
+ * Extracts the text content of a DOM node, and parses it as a [Locale] instance
+ * if possible.
+ *
+ * @return The DOM node content as a [Locale], or `null` if parsing failed.
+ */
 @InternalApi
 internal fun Node.parseAsLocaleOrNull(): Locale? = textOrNull()?.let { rawLocale ->
     val locale = Locale.forLanguageTag(rawLocale)
