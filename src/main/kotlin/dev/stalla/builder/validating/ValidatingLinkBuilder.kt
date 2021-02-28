@@ -1,5 +1,6 @@
 package dev.stalla.builder.validating
 
+import com.google.common.net.MediaType
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.model.atom.Link
 import dev.stalla.util.InternalApi
@@ -14,7 +15,7 @@ internal class ValidatingLinkBuilder : LinkBuilder {
     private var length: String? = null
     private var rel: String? = null
     private var title: String? = null
-    private var type: String? = null
+    private var type: MediaType? = null
 
     override fun href(href: String): LinkBuilder = apply { this.hrefValue = href }
 
@@ -28,7 +29,7 @@ internal class ValidatingLinkBuilder : LinkBuilder {
 
     override fun title(title: String?): LinkBuilder = apply { this.title = title }
 
-    override fun type(type: String?): LinkBuilder = apply { this.type = type }
+    override fun type(type: MediaType?): LinkBuilder = apply { this.type = type }
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::hrefValue.isInitialized

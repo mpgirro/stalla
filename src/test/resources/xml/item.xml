@@ -39,7 +39,7 @@
     <googleplay:explicit>clean</googleplay:explicit>
     <googleplay:block>no</googleplay:block>
     <googleplay:image href="episode googleplay image href"/>
-    <atom:link rel="episode atom link rel" type="episode atom link type" title="episode atom link title" href="episode atom link href"/>
+    <atom:link rel="episode atom link rel" type="text/html" title="episode atom link title" href="episode atom link href"/>
     <atom:author>
         <atom:name>episode atom author name</atom:name>
         <atom:email>episode atom author email</atom:email>

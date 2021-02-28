@@ -7,6 +7,7 @@ import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.getAttributeValueByName
+import dev.stalla.dom.parseAsMediaTypeOrNull
 import dev.stalla.dom.toAtomPersonBuilder
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
@@ -78,6 +79,6 @@ internal object AtomParser : NamespaceParser() {
             .length(getAttributeValueByName("length"))
             .rel(getAttributeValueByName("rel"))
             .title(getAttributeValueByName("title"))
-            .type(getAttributeValueByName("type"))
+            .type(getAttributeValueByName("type").parseAsMediaTypeOrNull())
     }
 }

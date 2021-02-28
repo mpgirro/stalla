@@ -57,7 +57,7 @@
     <googleplay:block>no</googleplay:block>
     <googleplay:image href="podcast googleplay image href"/>
     <googleplay:newFeedUrl>podcast googleplay newFeedUrl</googleplay:newFeedUrl>
-    <atom:link rel="podcast atom link rel" type="podcast atom link type" title="podcast atom link title" href="podcast atom link href"/>
+    <atom:link rel="podcast atom link rel" type="text/html" title="podcast atom link title" href="podcast atom link href"/>
     <atom:author>
         <atom:name>podcast atom author name</atom:name>
         <atom:email>podcast atom author email</atom:email>

@@ -5,6 +5,7 @@ import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEmpty
 import assertk.assertions.prop
+import com.google.common.net.MediaType
 import dev.stalla.builder.fake.FakeAtomBuilder
 import dev.stalla.builder.fake.FakeAtomPersonBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
@@ -24,7 +25,7 @@ internal class AtomParserTest : NamespaceParserTest() {
         .href("podcast atom link href")
         .rel("podcast atom link rel")
         .title("podcast atom link title")
-        .type("podcast atom link type")
+        .type(MediaType.HTML_UTF_8.withoutParameters())
 
     private val expectedPodcastAuthorBuilder = FakeAtomPersonBuilder()
         .name("podcast atom author name")
@@ -40,7 +41,7 @@ internal class AtomParserTest : NamespaceParserTest() {
         .href("episode atom link href")
         .rel("episode atom link rel")
         .title("episode atom link title")
-        .type("episode atom link type")
+        .type(MediaType.HTML_UTF_8.withoutParameters())
 
     private val expectedEpisodeAuthorBuilder = FakeAtomPersonBuilder()
         .name("episode atom author name")

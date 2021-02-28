@@ -9,6 +9,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
+import com.google.common.net.MediaType
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.model.aLink
 import dev.stalla.model.atom.Link
@@ -56,7 +57,7 @@ internal class ValidatingLinkBuilderTest {
             .length("length")
             .rel("rel")
             .title("title")
-            .type("type")
+            .type(MediaType.HTML_UTF_8)
 
         assertAll {
             assertThat(linkBuilder).prop(LinkBuilder::hasEnoughDataToBuild).isTrue()
@@ -68,7 +69,7 @@ internal class ValidatingLinkBuilderTest {
                 prop(Link::length).isEqualTo("length")
                 prop(Link::rel).isEqualTo("rel")
                 prop(Link::title).isEqualTo("title")
-                prop(Link::type).isEqualTo("type")
+                prop(Link::type).isEqualTo(MediaType.HTML_UTF_8)
             }
         }
     }

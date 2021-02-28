@@ -1,5 +1,6 @@
 package dev.stalla.dom
 
+import com.google.common.net.MediaType
 import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.RssCategoryBuilder
@@ -78,6 +79,22 @@ internal fun Node.parseAsLocaleOrNull(): Locale? = textOrNull()?.let { rawLocale
     val locale = Locale.forLanguageTag(rawLocale)
     return if (locale.isValidLocale()) locale else null
 }
+
+/**
+ * Interprets a string content as a [MediaType]. If the string value cannot be parsed, returns `null`.
+ *
+ * @return The [MediaType] interpretation of the string parameter, or `null`.
+ */
+@InternalApi
+@Suppress("SwallowedException")
+internal fun String?.parseAsMediaTypeOrNull(): MediaType? = this.trimmedOrNullIfBlank()
+    ?.let { rawType ->
+        try {
+            MediaType.parse(rawType)
+        } catch (e: IllegalArgumentException) {
+            null
+        }
+    }
 
 /**
  * Parses the node contents as an [RssImageBuilder] if possible, interpreting it as an RSS

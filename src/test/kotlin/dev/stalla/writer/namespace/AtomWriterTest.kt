@@ -54,8 +54,8 @@ internal class AtomWriterTest : NamespaceWriterTest() {
                 authors = listOf(anAtomPerson(" ", " ", " "), anAtomPerson("", "", "")),
                 contributors = listOf(anAtomPerson(" ", " ", " "), anAtomPerson("", "", "")),
                 links = listOf(
-                    aLink(" ", " ", " ", " ", " ", " ", " "),
-                    aLink("", "", "", "", "", "", "")
+                    aLink(" ", " ", " ", " ", " ", " ", null),
+                    aLink("", "", "", "", "", "", null)
                 )
             )
         )
@@ -77,8 +77,8 @@ internal class AtomWriterTest : NamespaceWriterTest() {
                     anAtomPerson("contrib 1", " ", " "), anAtomPerson("contrib 2", "", "")
                 ),
                 links = listOf(
-                    aLink("link 1", " ", " ", " ", " ", " ", " "),
-                    aLink("link 2", "", "", "", "", "", "")
+                    aLink("link 1", " ", " ", " ", " ", " ", null),
+                    aLink("link 2", "", "", "", "", "", null)
                 )
             )
         )
@@ -171,8 +171,8 @@ internal class AtomWriterTest : NamespaceWriterTest() {
                     anAtomPerson(" ", " ", " "), anAtomPerson("", "", "")
                 ),
                 links = listOf(
-                    aLink(" ", " ", " ", " ", " ", " ", " "),
-                    aLink("", "", "", "", "", "", "")
+                    aLink(" ", " ", " ", " ", " ", " ", null),
+                    aLink("", "", "", "", "", "", null)
                 )
             )
         )
@@ -194,8 +194,8 @@ internal class AtomWriterTest : NamespaceWriterTest() {
                     anAtomPerson("contrib 1", " ", " "), anAtomPerson("contrib 2", "", "")
                 ),
                 links = listOf(
-                    aLink("link 1", " ", " ", " ", " ", " ", " "),
-                    aLink("link 2", "", "", "", "", "", "")
+                    aLink("link 1", " ", " ", " ", " ", " ", null),
+                    aLink("link 2", "", "", "", "", "", null)
                 )
             )
         )

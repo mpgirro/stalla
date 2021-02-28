@@ -59,7 +59,7 @@
             <atom:uri>person uri</atom:uri>
         </atom:contributor>
         <atom:link href="podcast atom link href" hrefLang="link hrefLang" hrefResolved="link hrefResolved" length="link length" rel="link rel"
-                   title="link title" type="link type"/>
+                   title="link title" type="text/html"/>
         <fyyd:verify>podcast fyyd verify</fyyd:verify>
         <feedpress:newsletterId>podcast feedpress newsletterId</feedpress:newsletterId>
         <feedpress:locale>de</feedpress:locale>
@@ -110,7 +110,7 @@
                 <atom:uri>person uri</atom:uri>
             </atom:contributor>
             <atom:link href="episode atom link href" hrefLang="link hrefLang" hrefResolved="link hrefResolved" length="link length" rel="link rel"
-                       title="link title" type="link type"/>
+                       title="link title" type="text/html"/>
             <psc:chapters>
                 <psc:chapter start="episode podlove simple chapter start" title="episode podlove simple chapter title"
                              href="episode podlove simple chapter href" image="episode podlove simple chapter image"/>

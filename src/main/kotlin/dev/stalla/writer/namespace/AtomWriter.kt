@@ -71,8 +71,8 @@ internal object AtomWriter : NamespaceWriter() {
                     setAttribute("title", link.title?.trim())
                 }
 
-                if (link.type.isNeitherNullNorBlank()) {
-                    setAttribute("type", link.type?.trim())
+                if (link.type != null) {
+                    setAttribute("type", link.type.toString())
                 }
             }
         }
