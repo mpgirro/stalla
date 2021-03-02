@@ -5,46 +5,30 @@ import dev.stalla.util.nextIsSemicolonOrEnd
 import dev.stalla.util.subtrim
 
 /**
- * Represents a single value parameter
- * @property name of parameter
- * @property value of parameter
- */
-public data class HeaderValueParam(val name: String, val value: String) {
-    override fun equals(other: Any?): Boolean {
-        return other is HeaderValueParam &&
-            other.name.equals(name, ignoreCase = true) &&
-            other.value.equals(value, ignoreCase = true)
-    }
-
-    override fun hashCode(): Int {
-        var result = name.toLowerCase().hashCode()
-        result += 31 * result + value.toLowerCase().hashCode()
-        return result
-    }
-}
-
-/**
  * Exception thrown when a content type string is malformed.
  */
-public class BadContentTypeFormatException(value: String) : Exception("Bad Content-Type format: $value")
-
+public class BadMediaTypeFormatException(value: String) : Exception("Bad Content-Type format: $value")
 
 /**
- * Represents a value for a `Content-Type` header.
- * @property contentType represents a type part of the media type.
- * @property contentSubtype represents a subtype part of the media type.
+ * Represents a Media Type value as defiend by [RFC 2046][https://tools.ietf.org/html/rfc2046].
+ * This class is heavily based on the
+ * [ContentType][https://github.com/ktorio/ktor/blob/master/ktor-http/common/src/io/ktor/http/ContentTypes.kt]
+ * class of the [Ktor][https://ktor.io] project. Special thanks to the Ktor contributors.
+ *
+ * @property type represents a type part of the media type.
+ * @property subtype represents a subtype part of the media type.
  */
-public class ContentType private constructor(
-    public val contentType: String,
-    public val contentSubtype: String,
+public class MediaType private constructor(
+    public val type: String,
+    public val subtype: String,
     private val content: String,
-    public val parameters: List<HeaderValueParam> = emptyList()
+    public val parameters: List<MediaTypeParameter> = emptyList()
 ) {
 
     public constructor(
         contentType: String,
         contentSubtype: String,
-        parameters: List<HeaderValueParam> = emptyList()
+        parameters: List<MediaTypeParameter> = emptyList()
     ) : this(
         contentType,
         contentSubtype,
@@ -76,10 +60,10 @@ public class ContentType private constructor(
     }
 
     /** Creates a copy of `this` type with the added parameter with the [name] and [value]. */
-    public fun withParameter(name: String, value: String): ContentType {
+    public fun withParameter(name: String, value: String): MediaType {
         if (hasParameter(name, value)) return this
 
-        return ContentType(contentType, contentSubtype, content, parameters + HeaderValueParam(name, value))
+        return MediaType(type, subtype, content, parameters + MediaTypeParameter(name, value))
     }
 
     private fun hasParameter(name: String, value: String): Boolean = when (parameters.size) {
@@ -91,18 +75,18 @@ public class ContentType private constructor(
     /**
      * Creates a copy of `this` type without any parameters
      */
-    public fun withoutParameters(): ContentType = when {
+    public fun withoutParameters(): MediaType = when {
         parameters.isEmpty() -> this
-        else -> ContentType(contentType, contentSubtype)
+        else -> MediaType(type, subtype)
     }
 
     /**
      * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
      */
-    public fun match(pattern: ContentType): Boolean {
-        if (pattern.contentType != "*" && !pattern.contentType.equals(contentType, ignoreCase = true)) return false
+    public fun match(pattern: MediaType): Boolean {
+        if (pattern.type != "*" && !pattern.type.equals(type, ignoreCase = true)) return false
 
-        if (pattern.contentSubtype != "*" && !pattern.contentSubtype.equals(contentSubtype, ignoreCase = true)) return false
+        if (pattern.subtype != "*" && !pattern.subtype.equals(subtype, ignoreCase = true)) return false
 
         for ((patternName, patternValue) in pattern.parameters) {
             val matches = when (patternName) {
@@ -132,14 +116,14 @@ public class ContentType private constructor(
     public fun match(pattern: String): Boolean = match(parse(pattern))
 
     override fun equals(other: Any?): Boolean =
-        other is ContentType &&
-            contentType.equals(other.contentType, ignoreCase = true) &&
-            contentSubtype.equals(other.contentSubtype, ignoreCase = true) &&
+        other is MediaType &&
+            type.equals(other.type, ignoreCase = true) &&
+            subtype.equals(other.subtype, ignoreCase = true) &&
             parameters == other.parameters
 
     override fun hashCode(): Int {
-        var result = contentType.toLowerCase().hashCode()
-        result += 31 * result + contentSubtype.toLowerCase().hashCode()
+        var result = type.toLowerCase().hashCode()
+        result += 31 * result + subtype.toLowerCase().hashCode()
         result += 31 * parameters.hashCode()
         return result
     }
@@ -149,16 +133,16 @@ public class ContentType private constructor(
         /**
          * Represents a pattern `* / *` to match any content type.
          */
-        public val ANY: ContentType = ContentType("*", "*")
+        public val ANY: MediaType = MediaType("*", "*")
 
-        public val IMAGE_PNG: ContentType = ContentType("image", "png")
+        public val IMAGE_PNG: MediaType = MediaType("image", "png")
 
-        public val TEXT_PLAIN: ContentType = ContentType("text", "plain")
+        public val TEXT_PLAIN: MediaType = MediaType("text", "plain")
 
         /**
-         * Parses a string representing a `Content-Type` header into a [ContentType] instance.
+         * Parses a string representing a `Content-Type` header into a [MediaType] instance.
          */
-        public fun parse(value: String): ContentType {
+        public fun parse(value: String): MediaType {
             if (value.isBlank()) return ANY
 
             return parse(value) { parts, parameters ->
@@ -167,25 +151,25 @@ public class ContentType private constructor(
                 if (slash == -1) {
                     if (parts.trim() == "*") return ANY
 
-                    throw BadContentTypeFormatException(value)
+                    throw BadMediaTypeFormatException(value)
                 }
 
                 val type = parts.substring(0, slash).trim()
 
-                if (type.isEmpty()) throw BadContentTypeFormatException(value)
+                if (type.isEmpty()) throw BadMediaTypeFormatException(value)
 
                 val subtype = parts.substring(slash + 1).trim()
 
                 if (subtype.isEmpty() || subtype.contains('/')) {
-                    throw BadContentTypeFormatException(value)
+                    throw BadMediaTypeFormatException(value)
                 }
 
-                ContentType(type, subtype, parameters)
+                MediaType(type, subtype, parameters)
             }
         }
 
         /** Parse header with parameter and pass it to [init] function to instantiate particular type */
-        private inline fun <R> parse(value: String, init: (String, List<HeaderValueParam>) -> R): R {
+        private inline fun <R> parse(value: String, init: (String, List<MediaTypeParameter>) -> R): R {
             val headerValue = parseHeaderValue(value).single()
             return init(headerValue.value, headerValue.params)
         }
@@ -208,7 +192,7 @@ public class ContentType private constructor(
             items: Lazy<ArrayList<HeaderValue>>
         ): Int {
             var position = start
-            val parameters = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<HeaderValueParam>() }
+            val parameters = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<MediaTypeParameter>() }
             var valueEnd: Int? = null
 
             while (position <= text.lastIndex) {
@@ -234,13 +218,13 @@ public class ContentType private constructor(
         private fun parseHeaderValueParameter(
             text: String,
             start: Int,
-            parameters: Lazy<ArrayList<HeaderValueParam>>
+            parameters: Lazy<ArrayList<MediaTypeParameter>>
         ): Int {
             fun addParam(text: String, start: Int, end: Int, value: String) {
                 val name = text.subtrim(start, end)
                 if (name.isEmpty()) return
 
-                parameters.value.add(HeaderValueParam(name, value))
+                parameters.value.add(MediaTypeParameter(name, value))
             }
 
             var position = start
@@ -312,7 +296,7 @@ public class ContentType private constructor(
      * @property value
      * @property params for this value (could be empty)
      */
-    private data class HeaderValue(val value: String, val params: List<HeaderValueParam> = listOf()) {
+    private data class HeaderValue(val value: String, val params: List<MediaTypeParameter> = listOf()) {
         /** Value's quality according to `q` parameter or `1.0` if missing or invalid */
         val quality: Double =
             params.firstOrNull { it.name == "q" }?.value?.toDoubleOrNull()?.takeIf { it in 0.0..1.0 } ?: 1.0
