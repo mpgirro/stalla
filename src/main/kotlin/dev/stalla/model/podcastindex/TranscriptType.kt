@@ -74,7 +74,5 @@ public sealed class TranscriptType(
         /** SRT, with full timing information. */
         @JvmField
         public val SRT: TranscriptType = object : Instance("application", "json") {}
-
     }
-
 }

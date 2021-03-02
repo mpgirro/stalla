@@ -86,7 +86,7 @@ class MediaTypeTest {
 
     @Test
     fun `should fail to parse an invalid input`() {
-        assertThat{
+        assertThat {
             MediaType.of("text/plain/something")
         }.isFailure().isInstanceOf(BadMediaTypeFormatException::class)
     }
@@ -134,5 +134,4 @@ class MediaTypeTest {
 
         assertThat("text/html").isEqualTo(MediaType.of("text/html;charset=utf-8")?.withoutParameters().toString())
     }
-
 }

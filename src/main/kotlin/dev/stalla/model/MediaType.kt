@@ -227,7 +227,6 @@ public open class MediaType private constructor(
             return items.valueOrEmpty()
         }
 
-
         private fun parseMediaTypeValueItem(
             text: String,
             start: Int,
@@ -240,7 +239,12 @@ public open class MediaType private constructor(
             while (position <= text.lastIndex) {
                 when (text[position]) {
                     ',' -> {
-                        items.value.add(MediaTypeValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
+                        items.value.add(
+                            MediaTypeValue(
+                                value = text.subtrim(start, valueEnd ?: position),
+                                params = parameters.valueOrEmpty()
+                            )
+                        )
                         return position + 1
                     }
                     ';' -> {
@@ -330,7 +334,6 @@ public open class MediaType private constructor(
         }
 
         private fun <T> Lazy<List<T>>.valueOrEmpty(): List<T> = if (isInitialized()) value else emptyList()
-
     }
 
     /**
@@ -343,5 +346,4 @@ public open class MediaType private constructor(
         val value: String,
         val params: List<Parameter> = listOf()
     )
-
 }
