@@ -58,7 +58,7 @@ internal object PodcastindexWriter : NamespaceWriter() {
 
             appendElement("transcript", namespace) {
                 setAttribute("url", transcript.url.trim())
-                setAttribute("type", transcript.type.type.trim())
+                setAttribute("type", transcript.type.toString().trim())
                 if (transcript.language != null) setAttribute("language", transcript.language.toLanguageTag())
                 if (transcript.rel != null) setAttribute("rel", transcript.rel.trim())
             }

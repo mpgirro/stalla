@@ -15,26 +15,47 @@ public class BadMediaTypeFormatException(value: String) : Exception("Bad Content
  * [ContentType][https://github.com/ktorio/ktor/blob/master/ktor-http/common/src/io/ktor/http/ContentTypes.kt]
  * class of the [Ktor][https://ktor.io] project. Special thanks to the Ktor contributors.
  *
- * @property type represents a type part of the media type.
- * @property subtype represents a subtype part of the media type.
+ * @property type The type part of the media type.
+ * @property subtype The subtype part of the media type.
+ * @property parameters The modifiers of the media subtype.
  */
-public class MediaType private constructor(
-    public val type: String,
-    public val subtype: String,
+public open class MediaType private constructor(
+    public open val type: String,
+    public open val subtype: String,
     private val content: String,
-    public val parameters: List<MediaTypeParameter> = emptyList()
+    public val parameters: List<Parameter> = emptyList()
 ) {
 
     public constructor(
         contentType: String,
         contentSubtype: String,
-        parameters: List<MediaTypeParameter> = emptyList()
+        parameters: List<Parameter> = emptyList()
     ) : this(
         contentType,
         contentSubtype,
         "$contentType/$contentSubtype",
         parameters
     )
+
+    /**
+     * Represents a single value parameter.
+     *
+     * @property name of parameter
+     * @property value of parameter
+     */
+    public data class Parameter(val name: String, val value: String) {
+        override fun equals(other: Any?): Boolean {
+            return other is Parameter &&
+                other.name.equals(name, ignoreCase = true) &&
+                other.value.equals(value, ignoreCase = true)
+        }
+
+        override fun hashCode(): Int {
+            var result = name.toLowerCase().hashCode()
+            result += 31 * result + value.toLowerCase().hashCode()
+            return result
+        }
+    }
 
     /**
      * The first value for the parameter with [name] comparing case-insensitively or `null` if no such parameters found.
@@ -63,7 +84,7 @@ public class MediaType private constructor(
     public fun withParameter(name: String, value: String): MediaType {
         if (hasParameter(name, value)) return this
 
-        return MediaType(type, subtype, content, parameters + MediaTypeParameter(name, value))
+        return MediaType(type, subtype, content, parameters + Parameter(name, value))
     }
 
     private fun hasParameter(name: String, value: String): Boolean = when (parameters.size) {
@@ -143,13 +164,16 @@ public class MediaType private constructor(
         public val JSON: MediaType = MediaType("application", "json")
 
         @JvmField
+        public val SRT: MediaType = MediaType("application", "srt")
+
+        @JvmField
         public val PNG: MediaType = MediaType("image", "png")
 
         @JvmField
         public val HTML: MediaType = MediaType("text", "html")
 
         @JvmField
-        public val TEXT_PLAIN: MediaType = MediaType("text", "plain")
+        public val PLAIN_TEXT: MediaType = MediaType("text", "plain")
 
         /** Parses a string representing into a [MediaType] instance. */
         public fun parse(value: String): MediaType {
@@ -179,7 +203,7 @@ public class MediaType private constructor(
         }
 
         /** Parse header with parameter and pass it to [init] function to instantiate particular type */
-        private inline fun <R> parse(value: String, init: (String, List<MediaTypeParameter>) -> R): R {
+        private inline fun <R> parse(value: String, init: (String, List<Parameter>) -> R): R {
             val headerValue = parseHeaderValue(value).single()
             return init(headerValue.value, headerValue.params)
         }
@@ -202,7 +226,7 @@ public class MediaType private constructor(
             items: Lazy<ArrayList<HeaderValue>>
         ): Int {
             var position = start
-            val parameters = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<MediaTypeParameter>() }
+            val parameters = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<Parameter>() }
             var valueEnd: Int? = null
 
             while (position <= text.lastIndex) {
@@ -228,13 +252,13 @@ public class MediaType private constructor(
         private fun parseHeaderValueParameter(
             text: String,
             start: Int,
-            parameters: Lazy<ArrayList<MediaTypeParameter>>
+            parameters: Lazy<ArrayList<Parameter>>
         ): Int {
             fun addParam(text: String, start: Int, end: Int, value: String) {
                 val name = text.subtrim(start, end)
                 if (name.isEmpty()) return
 
-                parameters.value.add(MediaTypeParameter(name, value))
+                parameters.value.add(Parameter(name, value))
             }
 
             var position = start
@@ -306,7 +330,7 @@ public class MediaType private constructor(
      * @property value
      * @property params for this value (could be empty)
      */
-    private data class HeaderValue(val value: String, val params: List<MediaTypeParameter> = listOf()) {
+    private data class HeaderValue(val value: String, val params: List<Parameter> = listOf()) {
         /** Value's quality according to `q` parameter or `1.0` if missing or invalid */
         val quality: Double =
             params.firstOrNull { it.name == "q" }?.value?.toDoubleOrNull()?.takeIf { it in 0.0..1.0 } ?: 1.0

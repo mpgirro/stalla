@@ -8,7 +8,7 @@ class MediaTypeTest {
 
     @Test
     fun contentTypeTextPlain() {
-        val ct = MediaType.TEXT_PLAIN
+        val ct = MediaType.PLAIN_TEXT
         assertEquals("text", ct.type)
         assertEquals("plain", ct.subtype)
         assertEquals(0, ct.parameters.size)
@@ -47,10 +47,10 @@ class MediaTypeTest {
         assertEquals("text", ct.type)
         assertEquals("plain", ct.subtype)
         assertEquals(1, ct.parameters.size)
-        assertEquals(MediaTypeParameter("charset", "utf-8"), ct.parameters[0])
+        assertEquals(MediaType.Parameter("charset", "utf-8"), ct.parameters[0])
         val toString = ct.toString()
         assertEquals("text/plain; charset=utf-8", toString)
-        assertEquals(MediaType.TEXT_PLAIN.withParameter("charset", "utf-8"), ct)
+        assertEquals(MediaType.PLAIN_TEXT.withParameter("charset", "utf-8"), ct)
     }
 
     @Test
@@ -75,14 +75,14 @@ class MediaTypeTest {
 
     @Test
     fun contentTypeWithEmptyParametersBlock() {
-        assertEquals(MediaType.TEXT_PLAIN, MediaType.parse("text/plain; "))
-        assertEquals(MediaType.TEXT_PLAIN, MediaType.parse("text/plain;"))
+        assertEquals(MediaType.PLAIN_TEXT, MediaType.parse("text/plain; "))
+        assertEquals(MediaType.PLAIN_TEXT, MediaType.parse("text/plain;"))
     }
 
     @Test
     fun contentTypeRenderWorks() {
         // rendering tests are in [HeadersTest] so it is just a smoke test
-        assertEquals("text/plain; p1=v1", MediaType.TEXT_PLAIN.withParameter("p1", "v1").toString())
+        assertEquals("text/plain; p1=v1", MediaType.PLAIN_TEXT.withParameter("p1", "v1").toString())
     }
 
     @Test
@@ -105,15 +105,15 @@ class MediaTypeTest {
 
     @Test
     fun testWithoutParameters() {
-        assertEquals(MediaType.TEXT_PLAIN, MediaType.TEXT_PLAIN.withoutParameters())
+        assertEquals(MediaType.PLAIN_TEXT, MediaType.PLAIN_TEXT.withoutParameters())
         assertEquals(
-            MediaType.TEXT_PLAIN,
-            MediaType.TEXT_PLAIN.withParameter("a", "1").withoutParameters()
+            MediaType.PLAIN_TEXT,
+            MediaType.PLAIN_TEXT.withParameter("a", "1").withoutParameters()
         )
 
         assertEquals(
             "text/plain",
-            MediaType.TEXT_PLAIN.withParameter("a", "1").withoutParameters().toString()
+            MediaType.PLAIN_TEXT.withParameter("a", "1").withoutParameters().toString()
         )
 
         assertEquals(
