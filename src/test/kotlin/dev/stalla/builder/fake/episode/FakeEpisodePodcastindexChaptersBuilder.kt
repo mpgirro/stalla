@@ -1,8 +1,8 @@
 package dev.stalla.builder.fake.episode
 
-import com.google.common.net.MediaType
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.fake.FakeBuilder
+import dev.stalla.model.MediaType
 import dev.stalla.model.podcastindex.Chapters
 
 internal class FakeEpisodePodcastindexChaptersBuilder : FakeBuilder<Chapters>(), EpisodePodcastindexChaptersBuilder {

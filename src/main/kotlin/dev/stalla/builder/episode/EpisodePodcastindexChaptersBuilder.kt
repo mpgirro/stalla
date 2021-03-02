@@ -1,7 +1,7 @@
 package dev.stalla.builder.episode
 
-import com.google.common.net.MediaType
 import dev.stalla.builder.Builder
+import dev.stalla.model.MediaType
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.util.whenNotNull
 

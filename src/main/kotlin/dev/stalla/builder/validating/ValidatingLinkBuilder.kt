@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating
 
-import com.google.common.net.MediaType
 import dev.stalla.builder.LinkBuilder
+import dev.stalla.model.MediaType
 import dev.stalla.model.atom.Link
 import dev.stalla.util.InternalApi
 

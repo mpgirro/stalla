@@ -1,7 +1,7 @@
 package dev.stalla.builder.fake
 
-import com.google.common.net.MediaType
 import dev.stalla.builder.LinkBuilder
+import dev.stalla.model.MediaType
 import dev.stalla.model.atom.Link
 
 internal class FakeLinkBuilder : FakeBuilder<Link>(), LinkBuilder {

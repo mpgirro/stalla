@@ -10,8 +10,8 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import com.google.common.net.MediaType
 import dev.stalla.builder.episode.EpisodePodcastindexBuilder
+import dev.stalla.model.MediaType
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.episode.anEpisodePodcastindex
 import dev.stalla.model.podcastindex.EpisodePodcastindex
@@ -23,7 +23,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
 
     private val expectedChaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
         .url("https://example.com/episode/chapters.json")
-        .type(MediaType.JSON_UTF_8.withoutParameters())
+        .type(MediaType.JSON)
 
     private val firstExpectedSoundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
         .startTime(StyledDuration.secondsAndFraction(1))

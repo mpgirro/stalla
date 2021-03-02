@@ -88,19 +88,19 @@ class MediaTypeTest {
     @Test
     fun testContentTypeInvalid() {
         val result = MediaType.parse("image/png; charset=utf-8\" but not really")
-        assertEquals(MediaType.IMAGE_PNG.withParameter("charset", "utf-8\" but not really"), result)
+        assertEquals(MediaType.PNG.withParameter("charset", "utf-8\" but not really"), result)
     }
 
     @Test
     fun testContentTypeSingleQuoteAtStart() {
         val result = MediaType.parse("image/png; charset=\"utf-8 but not really")
-        assertEquals(MediaType.IMAGE_PNG.withParameter("charset", "\"utf-8 but not really"), result)
+        assertEquals(MediaType.PNG.withParameter("charset", "\"utf-8 but not really"), result)
     }
 
     @Test
     fun testContentTypeQuotedAtStartAndMiddle() {
         val result = MediaType.parse("image/png; charset=\"utf-8\" but not really")
-        assertEquals(MediaType.IMAGE_PNG.withParameter("charset", "\"utf-8\" but not really"), result)
+        assertEquals(MediaType.PNG.withParameter("charset", "\"utf-8\" but not really"), result)
     }
 
     @Test

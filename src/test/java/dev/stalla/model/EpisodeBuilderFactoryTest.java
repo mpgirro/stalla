@@ -1,6 +1,5 @@
 package dev.stalla.model;
 
-import com.google.common.net.MediaType;
 import dev.stalla.builder.episode.*;
 import dev.stalla.model.bitlove.Bitlove;
 import dev.stalla.model.content.Content;
@@ -141,7 +140,7 @@ public class EpisodeBuilderFactoryTest {
     public void testEpisodePodcastChapterBuilderFactory() {
         EpisodePodcastindexChaptersBuilder episodePodcastindexChaptersBuilder = Chapters.builder()
             .url("url")
-            .type(MediaType.JSON_UTF_8);
+            .type(MediaType.JSON);
 
         assertNotNull(episodePodcastindexChaptersBuilder.build());
     }

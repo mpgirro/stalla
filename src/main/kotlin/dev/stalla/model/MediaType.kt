@@ -128,20 +128,30 @@ public class MediaType private constructor(
         return result
     }
 
-    public companion object {
+    public companion object Factory : TypeFactory<MediaType> {
 
-        /**
-         * Represents a pattern `* / *` to match any content type.
-         */
+        @JvmStatic
+        override fun of(rawValue: String?): MediaType? = rawValue?.let { value ->
+            return parse(value)
+        }
+
+        /** Represents a pattern `* / *` to match any media type. */
+        @JvmField
         public val ANY: MediaType = MediaType("*", "*")
 
-        public val IMAGE_PNG: MediaType = MediaType("image", "png")
+        @JvmField
+        public val JSON: MediaType = MediaType("application", "json")
 
+        @JvmField
+        public val PNG: MediaType = MediaType("image", "png")
+
+        @JvmField
+        public val HTML: MediaType = MediaType("text", "html")
+
+        @JvmField
         public val TEXT_PLAIN: MediaType = MediaType("text", "plain")
 
-        /**
-         * Parses a string representing a `Content-Type` header into a [MediaType] instance.
-         */
+        /** Parses a string representing into a [MediaType] instance. */
         public fun parse(value: String): MediaType {
             if (value.isBlank()) return ANY
 

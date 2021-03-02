@@ -1,6 +1,6 @@
 package dev.stalla.builder
 
-import com.google.common.net.MediaType
+import dev.stalla.model.MediaType
 import dev.stalla.model.atom.Link
 import dev.stalla.util.whenNotNull
 

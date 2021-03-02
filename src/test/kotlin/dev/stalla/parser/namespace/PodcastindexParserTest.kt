@@ -8,7 +8,6 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import com.google.common.net.MediaType
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexChaptersBuilder
@@ -19,6 +18,7 @@ import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexFundingBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexLockedBuilder
 import dev.stalla.dom.XmlRes
+import dev.stalla.model.MediaType
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.NamespaceParserTest
@@ -40,7 +40,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
 
     private val expectedChaptersBuilder = FakeEpisodePodcastindexChaptersBuilder()
         .url("episode podcastindex chapters url")
-        .type(MediaType.JSON_UTF_8.withoutParameters())
+        .type(MediaType.JSON)
 
     private val expectedSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
         .startTime(StyledDuration.secondsAndFraction(33, 833_000_000))

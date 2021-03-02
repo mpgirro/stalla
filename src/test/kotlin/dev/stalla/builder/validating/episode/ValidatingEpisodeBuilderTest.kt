@@ -11,12 +11,12 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import com.google.common.net.MediaType
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.validating.ValidatingAtomPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.Episode
+import dev.stalla.model.MediaType
 import dev.stalla.model.atom.Atom
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
@@ -51,7 +51,7 @@ internal class ValidatingEpisodeBuilderTest {
 
     private val expectedPodcastChaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
         .url("https://example.com/episode/chapters.json")
-        .type(MediaType.JSON_UTF_8.withoutParameters())
+        .type(MediaType.JSON)
 
     @Test
     internal fun `should not build a Episode when the mandatory fields are missing`() {

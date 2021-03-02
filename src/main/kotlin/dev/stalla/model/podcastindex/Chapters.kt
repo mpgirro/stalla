@@ -1,9 +1,9 @@
 package dev.stalla.model.podcastindex
 
-import com.google.common.net.MediaType
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexChaptersBuilder
 import dev.stalla.model.BuilderFactory
+import dev.stalla.model.MediaType
 
 /**
  * The chapters information for the episode. See the

@@ -9,8 +9,8 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
-import com.google.common.net.MediaType
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
+import dev.stalla.model.MediaType
 import dev.stalla.model.episode.anEpisodePodcastindexChapters
 import dev.stalla.model.podcastindex.Chapters
 import org.junit.jupiter.api.Test
@@ -31,7 +31,7 @@ internal class ValidatingEpisodePodcastindexChaptersBuilderTest {
     @Test
     internal fun `should not build an Episode Podcastindex Chapters with when the url field is missing`() {
         val chaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
-            .type(MediaType.JSON_UTF_8.withoutParameters())
+            .type(MediaType.JSON)
 
         assertAll {
             assertThat(chaptersBuilder).prop(EpisodePodcastindexChaptersBuilder::hasEnoughDataToBuild).isFalse()
@@ -56,14 +56,14 @@ internal class ValidatingEpisodePodcastindexChaptersBuilderTest {
     internal fun `should build an Episode Podcastindex Chapters with with all the added entries to its fields`() {
         val chaptersBuilder = ValidatingEpisodePodcastindexChaptersBuilder()
             .url("https://example.com/episode/chapters.json")
-            .type(MediaType.JSON_UTF_8)
+            .type(MediaType.JSON)
 
         assertAll {
             assertThat(chaptersBuilder).prop(EpisodePodcastindexChaptersBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(chaptersBuilder.build()).isNotNull().all {
                 prop(Chapters::url).isEqualTo("https://example.com/episode/chapters.json")
-                prop(Chapters::type).isEqualTo(MediaType.JSON_UTF_8)
+                prop(Chapters::type).isEqualTo(MediaType.JSON)
             }
         }
     }
