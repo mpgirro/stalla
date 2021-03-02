@@ -17,7 +17,6 @@ import java.util.Locale
  * format to produce the intended date object.
  */
 @InternalApi
-
 internal object DateParser {
 
     @Suppress("MagicNumber")
