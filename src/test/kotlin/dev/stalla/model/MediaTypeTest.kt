@@ -1,124 +1,132 @@
 package dev.stalla.model
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import assertk.all
+import assertk.assertAll
+import assertk.assertThat
+import assertk.assertions.hasSize
+import assertk.assertions.index
+import assertk.assertions.isEmpty
+import assertk.assertions.isEqualTo
+import assertk.assertions.isFailure
+import assertk.assertions.isInstanceOf
+import assertk.assertions.isNotNull
+import assertk.assertions.prop
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class MediaTypeTest {
 
     @Test
-    fun contentTypeTextPlain() {
-        val ct = MediaType.PLAIN_TEXT
-        assertEquals("text", ct.type)
-        assertEquals("plain", ct.subtype)
-        assertEquals(0, ct.parameters.size)
-    }
-
-    @Test
-    fun textPlain() {
-        val ct = MediaType.parse("text/plain")
-        assertEquals("text", ct.type)
-        assertEquals("plain", ct.subtype)
-        assertEquals(0, ct.parameters.size)
-    }
-
-    @Test
-    fun testBlankIsAny() {
-        assertEquals(MediaType.ANY, MediaType.parse(""))
-    }
-
-    @Test
-    fun textPlainCharsetInQuotes() {
-        val ct1 = MediaType.parse("text/plain; charset=us-ascii")
-        val ct2 = MediaType.parse("text/plain; charset=\"us-ascii\"")
-        assertEquals(ct1, ct2)
-    }
-
-    @Test
-    fun textPlainCharsetCaseInsensitive() {
-        val ct1 = MediaType.parse("Text/plain; charset=UTF-8")
-        val ct2 = MediaType.parse("text/Plain; CHARSET=utf-8")
-        assertEquals(ct1, ct2)
-    }
-
-    @Test
-    fun textPlainCharsetIsUtf8() {
-        val ct = MediaType.parse("text/plain ; charset = utf-8")
-        assertEquals("text", ct.type)
-        assertEquals("plain", ct.subtype)
-        assertEquals(1, ct.parameters.size)
-        assertEquals(MediaType.Parameter("charset", "utf-8"), ct.parameters[0])
-        val toString = ct.toString()
-        assertEquals("text/plain; charset=utf-8", toString)
-        assertEquals(MediaType.PLAIN_TEXT.withParameter("charset", "utf-8"), ct)
-    }
-
-    @Test
-    fun textPlainCharsetIsUtf8WithParameterFooBar() {
-        val ct = MediaType.parse("text/plain ; charset = utf-8;foo=bar")
-
-        val toString = ct.toString()
-        assertEquals("text/plain; charset=utf-8; foo=bar", toString)
-    }
-
-    @Test
-    fun textPlainInvalid() {
-        /*
-        assertFailsWith(BadContentTypeFormatException::class) {
-            ContentType.parse("text/plain/something")
-        }
-         */
-        assertThrows<BadMediaTypeFormatException> {
-            MediaType.parse("text/plain/something")
+    fun `should define the plain text type correctly`() {
+        assertThat(MediaType.PLAIN_TEXT).isNotNull().all {
+            prop(MediaType::type).isEqualTo("text")
+            prop(MediaType::subtype).isEqualTo("plain")
+            prop(MediaType::parameters).isEmpty()
         }
     }
 
     @Test
-    fun contentTypeWithEmptyParametersBlock() {
-        assertEquals(MediaType.PLAIN_TEXT, MediaType.parse("text/plain; "))
-        assertEquals(MediaType.PLAIN_TEXT, MediaType.parse("text/plain;"))
+    fun `should instantiate an instance from the factory method correctly`() {
+        assertThat(MediaType.of("text/plain")).isNotNull().all {
+            prop(MediaType::type).isEqualTo("text")
+            prop(MediaType::subtype).isEqualTo("plain")
+            prop(MediaType::parameters).isEmpty()
+        }
     }
 
     @Test
-    fun contentTypeRenderWorks() {
-        // rendering tests are in [HeadersTest] so it is just a smoke test
-        assertEquals("text/plain; p1=v1", MediaType.PLAIN_TEXT.withParameter("p1", "v1").toString())
+    fun `should recognize blank as Any`() {
+        assertThat(MediaType.of("")).isNotNull().isEqualTo(MediaType.ANY)
     }
 
     @Test
-    fun testContentTypeInvalid() {
-        val result = MediaType.parse("image/png; charset=utf-8\" but not really")
-        assertEquals(MediaType.PNG.withParameter("charset", "utf-8\" but not really"), result)
+    fun `should handle quoted plain charsets correctly`() {
+        val mediaType1 = MediaType.of("text/plain; charset=us-ascii")
+        val mediaType2 = MediaType.of("text/plain; charset=\"us-ascii\"")
+        assertAll {
+            assertThat(mediaType1).isNotNull()
+            assertThat(mediaType2).isNotNull()
+            assertThat(mediaType1).isEqualTo(mediaType2)
+        }
     }
 
     @Test
-    fun testContentTypeSingleQuoteAtStart() {
-        val result = MediaType.parse("image/png; charset=\"utf-8 but not really")
-        assertEquals(MediaType.PNG.withParameter("charset", "\"utf-8 but not really"), result)
+    fun `should handle plain charsets case insensitive`() {
+        val mediaType1 = MediaType.of("text/plain; charset=UTF-8")
+        val mediaType2 = MediaType.of("text/plain; CHARSET=utf-8")
+        assertAll {
+            assertThat(mediaType1).isNotNull()
+            assertThat(mediaType2).isNotNull()
+            assertThat(mediaType1).isEqualTo(mediaType2)
+        }
     }
 
     @Test
-    fun testContentTypeQuotedAtStartAndMiddle() {
-        val result = MediaType.parse("image/png; charset=\"utf-8\" but not really")
-        assertEquals(MediaType.PNG.withParameter("charset", "\"utf-8\" but not really"), result)
+    fun `should parse plain charsets parameter correctly`() {
+        assertThat(MediaType.of("text/plain ; charset = utf-8")).isNotNull().all {
+            prop(MediaType::type).isEqualTo("text")
+            prop(MediaType::subtype).isEqualTo("plain")
+            prop(MediaType::parameters).hasSize(1)
+            prop(MediaType::parameters).index(0).isEqualTo(MediaType.Parameter("charset", "utf-8"))
+            prop("toString") { MediaType::toString.call(it) }.isEqualTo("text/plain; charset=utf-8")
+            isEqualTo(MediaType.PLAIN_TEXT.withParameter("charset", "utf-8"))
+        }
     }
 
     @Test
-    fun testWithoutParameters() {
-        assertEquals(MediaType.PLAIN_TEXT, MediaType.PLAIN_TEXT.withoutParameters())
-        assertEquals(
-            MediaType.PLAIN_TEXT,
-            MediaType.PLAIN_TEXT.withParameter("a", "1").withoutParameters()
-        )
-
-        assertEquals(
-            "text/plain",
-            MediaType.PLAIN_TEXT.withParameter("a", "1").withoutParameters().toString()
-        )
-
-        assertEquals(
-            "text/html",
-            MediaType.parse("text/html;charset=utf-8").withoutParameters().toString()
-        )
+    fun `should parse plain arbitrary parameters correctly`() {
+        assertThat(MediaType.of("text/plain ; charset = utf-8;foo=bar")).isNotNull()
+            .prop("toString") { MediaType::toString.call(it) }.isEqualTo("text/plain; charset=utf-8; foo=bar")
     }
+
+    @Test
+    fun `should fail to parse an invalid input`() {
+        assertThat{
+            MediaType.of("text/plain/something")
+        }.isFailure().isInstanceOf(BadMediaTypeFormatException::class)
+    }
+
+    @Test
+    fun `should parse empty parameter block correctly`() {
+        assertThat(MediaType.PLAIN_TEXT).all {
+            isEqualTo(MediaType.of("text/plain; "))
+            isEqualTo(MediaType.of("text/plain;"))
+        }
+    }
+
+    @Test
+    fun `should render parameters correctly`() {
+        assertThat(MediaType.PLAIN_TEXT.withParameter("p1", "v1")).isNotNull()
+            .prop("toString") { MediaType::toString.call(it) }.isEqualTo("text/plain; p1=v1")
+    }
+
+    @Test
+    fun `should handle invalid quotes in parameters correctly`() {
+        assertThat(MediaType.of("image/png; charset=utf-8\" but not really")).isNotNull()
+            .isEqualTo(MediaType.PNG.withParameter("charset", "utf-8\" but not really"))
+    }
+
+    @Test
+    fun `should handle single quotes at start in parameters correctly`() {
+        assertThat(MediaType.of("image/png; charset=\"utf-8 but not really")).isNotNull()
+            .isEqualTo(MediaType.PNG.withParameter("charset", "\"utf-8 but not really"))
+    }
+
+    @Test
+    fun `should handle single quotes at start and middle in parameters correctly`() {
+        assertThat(MediaType.of("image/png; charset=\"utf-8\" but not really")).isNotNull()
+            .isEqualTo(MediaType.PNG.withParameter("charset", "\"utf-8\" but not really"))
+    }
+
+    @Test
+    fun `should transform to a without parameters form correctly`() {
+        assertThat(MediaType.PLAIN_TEXT).all {
+            isEqualTo(MediaType.PLAIN_TEXT.withoutParameters())
+            isEqualTo(MediaType.PLAIN_TEXT.withParameter("a", "1").withoutParameters())
+        }
+
+        assertThat("text/plain").isEqualTo(MediaType.PLAIN_TEXT.withParameter("a", "1").withoutParameters().toString())
+
+        assertThat("text/html").isEqualTo(MediaType.of("text/html;charset=utf-8")?.withoutParameters().toString())
+    }
+
 }

@@ -176,7 +176,7 @@ public open class MediaType private constructor(
         public val PLAIN_TEXT: MediaType = MediaType("text", "plain")
 
         /** Parses a string representing into a [MediaType] instance. */
-        public fun parse(value: String): MediaType {
+        private fun parse(value: String): MediaType {
             if (value.isBlank()) return ANY
 
             return parse(value) { parts, parameters ->
