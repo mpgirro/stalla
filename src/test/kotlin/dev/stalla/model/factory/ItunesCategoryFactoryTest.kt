@@ -64,9 +64,7 @@ class ItunesCategoryFactoryTest {
     @ParameterizedTest
     @ArgumentsSource(AllCategoryNameProvider::class)
     fun `should retrieve all iTunes categories from the interface factory method`(categoryName: String) {
-        assertThat(ItunesCategory.of(categoryName)).isNotNull().all {
-            prop(ItunesCategory::type).isEqualTo(categoryName)
-        }
+        assertThat(ItunesCategory.of(categoryName)).isNotNull().prop(ItunesCategory::type).isEqualTo(categoryName)
     }
 
     @ParameterizedTest
@@ -74,9 +72,7 @@ class ItunesCategoryFactoryTest {
     fun `should not retrieve a nested iTunes categories from the interface factory method when asked for a simple`(
         simpleCategoryName: String
     ) {
-        assertThat(ItunesCategory.of(simpleCategoryName)).isNotNull().all {
-            isNotInstanceOf(ItunesCategory.Nested::class)
-        }
+        assertThat(ItunesCategory.of(simpleCategoryName)).isNotNull().isNotInstanceOf(ItunesCategory.Nested::class)
     }
 
     @ParameterizedTest
@@ -84,9 +80,7 @@ class ItunesCategoryFactoryTest {
     fun `should not retrieve a simple iTunes categories from the interface factory method when asked for a nested`(
         nestedCategoryName: String
     ) {
-        assertThat(ItunesCategory.of(nestedCategoryName)).isNotNull().all {
-            isNotInstanceOf(ItunesCategory.Simple::class)
-        }
+        assertThat(ItunesCategory.of(nestedCategoryName)).isNotNull().isNotInstanceOf(ItunesCategory.Simple::class)
     }
 
     @ParameterizedTest
