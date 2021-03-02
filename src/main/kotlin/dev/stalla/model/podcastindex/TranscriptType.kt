@@ -17,7 +17,7 @@ import kotlin.reflect.full.declaredMemberProperties
  * See the [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/transcripts/transcripts.md)
  * for more information.
  *
- * The available Media Types are modeled according to the table below.
+ * The available transcript types are modeled according to the table below.
  * This classes [companion object][Factory] exposed a reference for each instance.
  * All instances are valid [MediaType]s.
  *

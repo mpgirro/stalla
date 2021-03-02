@@ -4,10 +4,8 @@ import dev.stalla.util.escapeIfNeededTo
 import dev.stalla.util.nextIsSemicolonOrEnd
 import dev.stalla.util.subtrim
 
-/**
- * Exception thrown when a content type string is malformed.
- */
-public class BadMediaTypeFormatException(value: String) : Exception("Bad Content-Type format: $value")
+/** Exception thrown when a media type string is malformed. */
+public class BadMediaTypeFormatException(value: String) : Exception("Bad Media-Type format: $value")
 
 /**
  * Represents a Media Type value as defiend by [RFC 2046][https://tools.ietf.org/html/rfc2046].
@@ -151,7 +149,15 @@ public open class MediaType private constructor(
 
     public companion object Factory : TypeFactory<MediaType> {
 
+        /**
+         * Factory method that returns the instance matching the [rawValue] parameter, if any.
+         *
+         * @param rawValue The string representation of the instance.
+         * @return The instance matching [rawValue], or `null` if no matching instance exists.
+         * @throws BadMediaTypeFormatException
+         */
         @JvmStatic
+        @Throws(BadMediaTypeFormatException::class)
         override fun of(rawValue: String?): MediaType? = rawValue?.let { value ->
             return parse(value)
         }

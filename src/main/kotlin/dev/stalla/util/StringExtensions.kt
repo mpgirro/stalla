@@ -11,16 +11,20 @@ internal fun String?.trimmedOrNullIfBlank(): String? {
 @InternalApi
 internal fun String?.isNeitherNullNorBlank(): Boolean = this != null && isNotBlank()
 
+/** Appends this string to the [StringBuilder], escapes characters on demand. */
+@InternalApi
 internal fun String.escapeIfNeededTo(out: StringBuilder) = when {
     checkNeedEscape() -> out.append(this.quote())
     else -> out.append(this)
 }
 
 /** Separator symbols listed in RFC https://tools.ietf.org/html/rfc2616#section-2.2 */
+@InternalApi
 private val HeaderFieldValueSeparators =
     setOf('(', ')', '<', '>', '@', ',', ';', ':', '\\', '\"', '/', '[', ']', '?', '=', '{', '}', ' ', '\t', '\n', '\r')
 
-
+/** Returns true of this string contains characters that need excaping. */
+@InternalApi
 internal fun String.checkNeedEscape(): Boolean {
     if (isEmpty()) return true
     if (isQuoted()) return false
@@ -32,13 +36,16 @@ internal fun String.checkNeedEscape(): Boolean {
     return false
 }
 
+/** Quotes this string. */
+@InternalApi
 internal fun String.quote(): String = buildString { this@quote.quoteTo(this) }
 
+/** Appends the quotes form of this string to the [StringBuilder]. */
+@InternalApi
 internal fun String.quoteTo(out: StringBuilder) {
     out.append("\"")
     for (i in 0 until length) {
-        val ch = this[i]
-        when (ch) {
+        when (val ch = this[i]) {
             '\\' -> out.append("\\\\")
             '\n' -> out.append("\\n")
             '\r' -> out.append("\\r")
@@ -50,6 +57,8 @@ internal fun String.quoteTo(out: StringBuilder) {
     out.append("\"")
 }
 
+/** Returns true of this string is quoted. */
+@InternalApi
 internal fun String.isQuoted(): Boolean {
     if (length < 2) {
         return false
@@ -80,10 +89,12 @@ internal fun String.isQuoted(): Boolean {
     return true
 }
 
-internal fun String.subtrim(start: Int, end: Int): String {
-    return substring(start, end).trim()
-}
+/** Trims a substring of this string. */
+@InternalApi
+internal fun String.subtrim(start: Int, end: Int): String = substring(start, end).trim()
 
+/** Returns true if the next non blank character is a semicolon, or if the string is ended. */
+@InternalApi
 internal fun String.nextIsSemicolonOrEnd(start: Int): Boolean {
     var position = start + 1
     loop@ while (position < length && get(position) == ' ') {
