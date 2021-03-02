@@ -212,26 +212,26 @@ public open class MediaType private constructor(
         }
 
         private inline fun <R> parse(value: String, init: (String, List<Parameter>) -> R): R {
-            val headerValue = parseHeaderValue(value).single()
-            return init(headerValue.value, headerValue.params)
+            val mediaTypeValue = parseMediaTypeValue(value).single()
+            return init(mediaTypeValue.value, mediaTypeValue.params)
         }
 
-        private fun parseHeaderValue(text: String?): List<HeaderValue> {
+        private fun parseMediaTypeValue(text: String?): List<MediaTypeValue> {
             if (text == null) return emptyList()
 
             var position = 0
-            val items = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<HeaderValue>() }
+            val items = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<MediaTypeValue>() }
             while (position <= text.lastIndex) {
-                position = parseHeaderValueItem(text, position, items)
+                position = parseMediaTypeValueItem(text, position, items)
             }
             return items.valueOrEmpty()
         }
 
 
-        private fun parseHeaderValueItem(
+        private fun parseMediaTypeValueItem(
             text: String,
             start: Int,
-            items: Lazy<ArrayList<HeaderValue>>
+            items: Lazy<ArrayList<MediaTypeValue>>
         ): Int {
             var position = start
             val parameters = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<Parameter>() }
@@ -240,12 +240,12 @@ public open class MediaType private constructor(
             while (position <= text.lastIndex) {
                 when (text[position]) {
                     ',' -> {
-                        items.value.add(HeaderValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
+                        items.value.add(MediaTypeValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
                         return position + 1
                     }
                     ';' -> {
                         if (valueEnd == null) valueEnd = position
-                        position = parseHeaderValueParameter(text, position + 1, parameters)
+                        position = parseMediaTypeValueParameter(text, position + 1, parameters)
                     }
                     else -> {
                         position += 1
@@ -253,11 +253,11 @@ public open class MediaType private constructor(
                 }
             }
 
-            items.value.add(HeaderValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
+            items.value.add(MediaTypeValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
             return position
         }
 
-        private fun parseHeaderValueParameter(
+        private fun parseMediaTypeValueParameter(
             text: String,
             start: Int,
             parameters: Lazy<ArrayList<Parameter>>
@@ -273,7 +273,7 @@ public open class MediaType private constructor(
             while (position <= text.lastIndex) {
                 when (text[position]) {
                     '=' -> {
-                        val (paramEnd, paramValue) = parseHeaderValueParameterValue(text, position + 1)
+                        val (paramEnd, paramValue) = parseMediaTypeValueParameterValue(text, position + 1)
                         addParam(text, start, position, paramValue)
                         return paramEnd
                     }
@@ -289,11 +289,11 @@ public open class MediaType private constructor(
             return position
         }
 
-        private fun parseHeaderValueParameterValue(value: String, start: Int): Pair<Int, String> {
+        private fun parseMediaTypeValueParameterValue(value: String, start: Int): Pair<Int, String> {
             if (value.length == start) return start to ""
 
             var position = start
-            if (value[start] == '"') return parseHeaderValueParameterValueQuoted(value, position + 1)
+            if (value[start] == '"') return parseMediaTypeValueParameterValueQuoted(value, position + 1)
 
             while (position <= value.lastIndex) {
                 when (value[position]) {
@@ -304,7 +304,7 @@ public open class MediaType private constructor(
             return position to value.subtrim(start, position)
         }
 
-        private fun parseHeaderValueParameterValueQuoted(value: String, start: Int): Pair<Int, String> {
+        private fun parseMediaTypeValueParameterValueQuoted(value: String, start: Int): Pair<Int, String> {
             var position = start
             val builder = StringBuilder()
             loop@ while (position <= value.lastIndex) {
@@ -334,19 +334,14 @@ public open class MediaType private constructor(
     }
 
     /**
-     * Represents a header value.
+     * Represents a media type value.
      *
      * @property value
      * @property params for this value (could be empty).
      */
-    private data class HeaderValue(
+    private data class MediaTypeValue(
         val value: String,
         val params: List<Parameter> = listOf()
-    ) {
-
-        /** Value's quality according to `q` parameter or `1.0` if missing or invalid. */
-        val quality: Double =
-            params.firstOrNull { it.name == "q" }?.value?.toDoubleOrNull()?.takeIf { it in 0.0..1.0 } ?: 1.0
-    }
+    )
 
 }
