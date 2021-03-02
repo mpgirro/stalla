@@ -10,6 +10,7 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isFailure
 import assertk.assertions.isInstanceOf
 import assertk.assertions.isNotNull
+import assertk.assertions.isNull
 import assertk.assertions.prop
 import org.junit.jupiter.api.Test
 
@@ -36,6 +37,11 @@ class MediaTypeTest {
     @Test
     fun `should recognize blank as Any`() {
         assertThat(MediaType.of("")).isNotNull().isEqualTo(MediaType.ANY)
+    }
+
+    @Test
+    fun `should not parse null to an instance`() {
+        assertThat(MediaType.of(null)).isNull()
     }
 
     @Test
