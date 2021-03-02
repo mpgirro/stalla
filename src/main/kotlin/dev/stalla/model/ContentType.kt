@@ -4,8 +4,6 @@ import dev.stalla.util.escapeIfNeededTo
 import dev.stalla.util.nextIsSemicolonOrEnd
 import dev.stalla.util.subtrim
 
-
-
 /**
  * Represents a single value parameter
  * @property name of parameter
@@ -23,19 +21,6 @@ public data class HeaderValueParam(val name: String, val value: String) {
         result += 31 * result + value.toLowerCase().hashCode()
         return result
     }
-}
-
-/**
- * Represents a header value. Similar to [HeaderValueWithParameters]
- * @property value
- * @property params for this value (could be empty)
- */
-public data class HeaderValue(val value: String, val params: List<HeaderValueParam> = listOf()) {
-    /**
-     * Value's quality according to `q` parameter or `1.0` if missing or invalid
-     */
-    val quality: Double =
-        params.firstOrNull { it.name == "q" }?.value?.toDoubleOrNull()?.takeIf { it in 0.0..1.0 } ?: 1.0
 }
 
 /**
@@ -68,7 +53,7 @@ public class ContentType private constructor(
     )
 
     /**
-     * The first value for the parameter with [name] comparing case-insensitively or `null` if no such parameters found
+     * The first value for the parameter with [name] comparing case-insensitively or `null` if no such parameters found.
      */
     public fun parameter(name: String): String? =
         parameters.firstOrNull { it.name.equals(name, ignoreCase = true) }?.value
@@ -79,8 +64,8 @@ public class ContentType private constructor(
             val size = content.length + parameters.sumBy { it.name.length + it.value.length + 3 }
             StringBuilder(size).apply {
                 append(content)
-                for (index in 0 until parameters.size) {
-                    val (name, value) = parameters[index]
+                for (element in parameters) {
+                    val (name, value) = element
                     append("; ")
                     append(name)
                     append("=")
@@ -90,9 +75,7 @@ public class ContentType private constructor(
         }
     }
 
-    /**
-     * Creates a copy of `this` type with the added parameter with the [name] and [value].
-     */
+    /** Creates a copy of `this` type with the added parameter with the [name] and [value]. */
     public fun withParameter(name: String, value: String): ContentType {
         if (hasParameter(name, value)) return this
 
@@ -117,13 +100,9 @@ public class ContentType private constructor(
      * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
      */
     public fun match(pattern: ContentType): Boolean {
-        if (pattern.contentType != "*" && !pattern.contentType.equals(contentType, ignoreCase = true)) {
-            return false
-        }
+        if (pattern.contentType != "*" && !pattern.contentType.equals(contentType, ignoreCase = true)) return false
 
-        if (pattern.contentSubtype != "*" && !pattern.contentSubtype.equals(contentSubtype, ignoreCase = true)) {
-            return false
-        }
+        if (pattern.contentSubtype != "*" && !pattern.contentSubtype.equals(contentSubtype, ignoreCase = true)) return false
 
         for ((patternName, patternValue) in pattern.parameters) {
             val matches = when (patternName) {
@@ -142,9 +121,7 @@ public class ContentType private constructor(
                 }
             }
 
-            if (!matches) {
-                return false
-            }
+            if (!matches) return false
         }
         return true
     }
@@ -188,18 +165,14 @@ public class ContentType private constructor(
                 val slash = parts.indexOf('/')
 
                 if (slash == -1) {
-                    if (parts.trim() == "*") {
-                        return ANY
-                    }
+                    if (parts.trim() == "*") return ANY
 
                     throw BadContentTypeFormatException(value)
                 }
 
                 val type = parts.substring(0, slash).trim()
 
-                if (type.isEmpty()) {
-                    throw BadContentTypeFormatException(value)
-                }
+                if (type.isEmpty()) throw BadContentTypeFormatException(value)
 
                 val subtype = parts.substring(slash + 1).trim()
 
@@ -211,18 +184,14 @@ public class ContentType private constructor(
             }
         }
 
-        /**
-         * Parse header with parameter and pass it to [init] function to instantiate particular type
-         */
+        /** Parse header with parameter and pass it to [init] function to instantiate particular type */
         private inline fun <R> parse(value: String, init: (String, List<HeaderValueParam>) -> R): R {
             val headerValue = parseHeaderValue(value).single()
             return init(headerValue.value, headerValue.params)
         }
 
         private fun parseHeaderValue(text: String?): List<HeaderValue> {
-            if (text == null) {
-                return emptyList()
-            }
+            if (text == null) return emptyList()
 
             var position = 0
             val items = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<HeaderValue>() }
@@ -238,11 +207,9 @@ public class ContentType private constructor(
             start: Int,
             items: Lazy<ArrayList<HeaderValue>>
         ): Int {
-            val parametersOnly: Boolean = false
-
             var position = start
             val parameters = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<HeaderValueParam>() }
-            var valueEnd: Int? = if (parametersOnly) position else null
+            var valueEnd: Int? = null
 
             while (position <= text.lastIndex) {
                 when (text[position]) {
@@ -255,11 +222,7 @@ public class ContentType private constructor(
                         position = parseHeaderValueParameter(text, position + 1, parameters)
                     }
                     else -> {
-                        position = if (parametersOnly) {
-                            parseHeaderValueParameter(text, position, parameters)
-                        } else {
-                            position + 1
-                        }
+                        position += 1
                     }
                 }
             }
@@ -275,9 +238,7 @@ public class ContentType private constructor(
         ): Int {
             fun addParam(text: String, start: Int, end: Int, value: String) {
                 val name = text.subtrim(start, end)
-                if (name.isEmpty()) {
-                    return
-                }
+                if (name.isEmpty()) return
 
                 parameters.value.add(HeaderValueParam(name, value))
             }
@@ -303,14 +264,10 @@ public class ContentType private constructor(
         }
 
         private fun parseHeaderValueParameterValue(value: String, start: Int): Pair<Int, String> {
-            if (value.length == start) {
-                return start to ""
-            }
+            if (value.length == start) return start to ""
 
             var position = start
-            if (value[start] == '"') {
-                return parseHeaderValueParameterValueQuoted(value, position + 1)
-            }
+            if (value[start] == '"') return parseHeaderValueParameterValueQuoted(value, position + 1)
 
             while (position <= value.lastIndex) {
                 when (value[position]) {
@@ -348,6 +305,17 @@ public class ContentType private constructor(
 
         private fun <T> Lazy<List<T>>.valueOrEmpty(): List<T> = if (isInitialized()) value else emptyList()
 
+    }
+
+    /**
+     * Represents a header value.
+     * @property value
+     * @property params for this value (could be empty)
+     */
+    private data class HeaderValue(val value: String, val params: List<HeaderValueParam> = listOf()) {
+        /** Value's quality according to `q` parameter or `1.0` if missing or invalid */
+        val quality: Double =
+            params.firstOrNull { it.name == "q" }?.value?.toDoubleOrNull()?.takeIf { it in 0.0..1.0 } ?: 1.0
     }
 
 }
