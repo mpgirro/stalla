@@ -30,7 +30,7 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
     public fun addCategory(category: ItunesCategory): PodcastItunesBuilder
 
     /** Adds all of the [ItunesCategory] to the list of categories. */
-    public fun addAllCategory(categories: List<ItunesCategory>): PodcastItunesBuilder =
+    public fun addAllCategories(categories: List<ItunesCategory>): PodcastItunesBuilder =
         apply { categories.forEach(::addCategory) }
 
     /** Set the explicit flag value. */
@@ -61,7 +61,7 @@ public interface PodcastItunesBuilder : Builder<PodcastItunes> {
             imageBuilder(HrefOnlyImage.builder().applyFrom(itunes.image))
             keywords(itunes.keywords)
             author(itunes.author)
-            addAllCategory(itunes.categories)
+            addAllCategories(itunes.categories)
             explicit(itunes.explicit)
             block(itunes.block)
             complete(itunes.complete)

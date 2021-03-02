@@ -50,7 +50,7 @@ internal class ValidatingEpisodePodloveBuilderTest {
             .start("start 2")
             .title("chapter title 2")
         val podloveBuilder = ValidatingEpisodePodloveBuilder()
-            .addAllSimpleChapterBuilder(listOf(expectedChapterBuilder, anotherChapterBuilder))
+            .addAllSimpleChapterBuilders(listOf(expectedChapterBuilder, anotherChapterBuilder))
 
         assertAll {
             assertThat(podloveBuilder).prop(EpisodePodloveBuilder::hasEnoughDataToBuild).isTrue()

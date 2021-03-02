@@ -24,7 +24,7 @@ public interface EpisodePodcastindexBuilder : Builder<EpisodePodcastindex> {
      * Adds all of the [EpisodePodcastindexSoundbiteBuilder] for the
      * `<podcast:soundbite>` info to the list of soundbite builders.
      */
-    public fun addAllSoundbiteBuilder(
+    public fun addAllSoundbiteBuilders(
         soundbiteBuilders: List<EpisodePodcastindexSoundbiteBuilder>
     ): EpisodePodcastindexBuilder = apply {
         soundbiteBuilders.forEach(::addSoundbiteBuilder)
@@ -42,7 +42,7 @@ public interface EpisodePodcastindexBuilder : Builder<EpisodePodcastindex> {
      * Adds all of the [EpisodePodcastindexTranscriptBuilder] for the
      * `<podcast:transcript>` info to the list of transcript builders.
      */
-    public fun addAllTranscriptBuilder(
+    public fun addAllTranscriptBuilders(
         transcriptBuilders: List<EpisodePodcastindexTranscriptBuilder>
     ): EpisodePodcastindexBuilder = apply {
         transcriptBuilders.forEach(::addTranscriptBuilder)
@@ -51,7 +51,7 @@ public interface EpisodePodcastindexBuilder : Builder<EpisodePodcastindex> {
     override fun applyFrom(prototype: EpisodePodcastindex?): EpisodePodcastindexBuilder =
         whenNotNull(prototype) { podcast ->
             chaptersBuilder(Chapters.builder().applyFrom(podcast.chapters))
-            addAllSoundbiteBuilder(podcast.soundbites.asBuilders())
-            addAllTranscriptBuilder(podcast.transcripts.asBuilders())
+            addAllSoundbiteBuilders(podcast.soundbites.asBuilders())
+            addAllTranscriptBuilders(podcast.transcripts.asBuilders())
         }
 }

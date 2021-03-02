@@ -12,10 +12,10 @@ public interface EpisodePodloveBuilder : Builder<EpisodePodlove> {
     public fun addSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveBuilder
 
     /** Adds all of the [EpisodePodloveSimpleChapterBuilder] to the list of chapter builders. */
-    public fun addAllSimpleChapterBuilder(
+    public fun addAllSimpleChapterBuilders(
         chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>
     ): EpisodePodloveBuilder
 
     override fun applyFrom(prototype: EpisodePodlove?): EpisodePodloveBuilder =
-        whenNotNull(prototype) { podlove -> addAllSimpleChapterBuilder(podlove.simpleChapters.asBuilders()) }
+        whenNotNull(prototype) { podlove -> addAllSimpleChapterBuilders(podlove.simpleChapters.asBuilders()) }
 }

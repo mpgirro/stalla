@@ -55,7 +55,7 @@ internal object ItunesParser : NamespaceParser() {
             }
             "keywords" -> builder.itunesBuilder.keywords(ifCanBeParsed { textOrNull() })
             "owner" -> {
-                val ownerBuilder = ifCanBeParsed { toOwnerBuilder(builder.createItunesOwnerBuilder()) }
+                val ownerBuilder = ifCanBeParsed { toItunesOwnerBuilder(builder.createItunesOwnerBuilder()) }
                 builder.itunesBuilder.ownerBuilder(ownerBuilder)
             }
             "subtitle" -> builder.itunesBuilder.subtitle(ifCanBeParsed { textOrNull() })
@@ -67,7 +67,7 @@ internal object ItunesParser : NamespaceParser() {
         }
     }
 
-    private fun Node.toOwnerBuilder(ownerBuilder: PodcastItunesOwnerBuilder): PodcastItunesOwnerBuilder {
+    private fun Node.toItunesOwnerBuilder(ownerBuilder: PodcastItunesOwnerBuilder): PodcastItunesOwnerBuilder {
         for (child in childNodes.asListOfNodes()) {
             if (child !is Element) continue
             if (!namespace.matches(child.namespaceURI)) continue

@@ -63,7 +63,8 @@ internal class FakePodcastGoogleplayBuilder : FakeBuilder<PodcastGoogleplay>(), 
         return result
     }
 
-    override fun toString() =
-        "FakePodcastGooglePlayBuilder(author=$author, owner=$email, categories=$categories, description=$description, explicit=$explicit, " +
-            "block=$block, imageBuilder=$imageBuilder, newFeedUrl=$newFeedUrl)"
+    override fun toString(): String {
+        return "FakePodcastGoogleplayBuilder(author=$author, email=$email, categories=$categories, description=$description, " +
+            "explicit=$explicit, block=$block, imageBuilder=$imageBuilder, newFeedUrl=$newFeedUrl)"
+    }
 }
