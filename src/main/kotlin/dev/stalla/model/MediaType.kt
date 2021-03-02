@@ -3,6 +3,7 @@ package dev.stalla.model
 import dev.stalla.util.escapeIfNeededTo
 import dev.stalla.util.nextIsSemicolonOrEnd
 import dev.stalla.util.subtrim
+import java.util.Locale
 
 /** Exception thrown when a media type string is malformed. */
 public class BadMediaTypeFormatException(value: String) : Exception("Bad Media-Type format: $value")
@@ -49,8 +50,8 @@ public open class MediaType private constructor(
         }
 
         override fun hashCode(): Int {
-            var result = name.toLowerCase().hashCode()
-            result += 31 * result + value.toLowerCase().hashCode()
+            var result = name.toLowerCase(Locale.ROOT).hashCode()
+            result += 31 * result + value.toLowerCase(Locale.ROOT).hashCode()
             return result
         }
     }
@@ -139,8 +140,8 @@ public open class MediaType private constructor(
             parameters == other.parameters
 
     override fun hashCode(): Int {
-        var result = type.toLowerCase().hashCode()
-        result += 31 * result + subtype.toLowerCase().hashCode()
+        var result = type.toLowerCase(Locale.ROOT).hashCode()
+        result += 31 * result + subtype.toLowerCase(Locale.ROOT).hashCode()
         result += 31 * parameters.hashCode()
         return result
     }
@@ -344,6 +345,6 @@ public open class MediaType private constructor(
      */
     private data class MediaTypeValue(
         val value: String,
-        val params: List<Parameter> = listOf()
+        val params: List<Parameter> = emptyList()
     )
 }
