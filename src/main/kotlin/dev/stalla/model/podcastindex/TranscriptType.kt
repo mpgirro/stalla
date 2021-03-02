@@ -31,8 +31,6 @@ import kotlin.reflect.full.declaredMemberProperties
  * @param type The type part of the media type.
  * @param subtype The subtype part of the media type.
  */
-
-
 public sealed class TranscriptType(
     override val type: String,
     override val subtype: String
@@ -44,6 +42,7 @@ public sealed class TranscriptType(
         override val subtype: String
     ) : TranscriptType(type, subtype)
 
+    /** Gets an instance of [TranscriptType] from a raw value. */
     public companion object Factory : TypeFactory<TranscriptType> {
 
         private val valueMap: Map<String, TranscriptType> by lazy {
@@ -60,17 +59,21 @@ public sealed class TranscriptType(
             return valueMap[value.toLowerCase(Locale.ROOT)]
         }
 
+        /** Plain text, with no timing information. */
         @JvmField
         public val PLAIN_TEXT: TranscriptType = object : Instance("text", "plain") {}
 
+        /** HTML, potentially with some timing information. */
         @JvmField
         public val HTML: TranscriptType = object : Instance("text", "html") {}
 
+        /** JSON ,with full timing information. */
         @JvmField
         public val JSON: TranscriptType = object : Instance("application", "json") {}
 
+        /** SRT, with full timing information. */
         @JvmField
-        public val SRT: TranscriptType = object : Instance("application", "srt") {}
+        public val SRT: TranscriptType = object : Instance("application", "json") {}
 
     }
 

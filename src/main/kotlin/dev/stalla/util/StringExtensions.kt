@@ -18,7 +18,6 @@ internal fun String.escapeIfNeededTo(out: StringBuilder) = when {
     else -> out.append(this)
 }
 
-/** Separator symbols listed in RFC https://tools.ietf.org/html/rfc2616#section-2.2 */
 @InternalApi
 private val HeaderFieldValueSeparators =
     setOf('(', ')', '<', '>', '@', ',', ';', ':', '\\', '\"', '/', '[', ']', '?', '=', '{', '}', ' ', '\t', '\n', '\r')

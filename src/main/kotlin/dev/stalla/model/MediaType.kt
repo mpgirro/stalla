@@ -91,9 +91,7 @@ public open class MediaType private constructor(
         else -> parameters.any { it.name.equals(name, ignoreCase = true) && it.value.equals(value, ignoreCase = true) }
     }
 
-    /**
-     * Creates a copy of `this` type without any parameters
-     */
+    /** Creates a copy of `this` type without any parameters.*/
     public fun withoutParameters(): MediaType = when {
         parameters.isEmpty() -> this
         else -> MediaType(type, subtype)
@@ -147,6 +145,7 @@ public open class MediaType private constructor(
         return result
     }
 
+    /** Gets an instance of [MediaType] from a raw value. */
     public companion object Factory : TypeFactory<MediaType> {
 
         /**
@@ -166,22 +165,26 @@ public open class MediaType private constructor(
         @JvmField
         public val ANY: MediaType = MediaType("*", "*")
 
+        /** Represents the pattern `application / json`. */
         @JvmField
         public val JSON: MediaType = MediaType("application", "json")
 
+        /** Represents the pattern `application / srt`. */
         @JvmField
         public val SRT: MediaType = MediaType("application", "srt")
 
+        /** Represents the pattern `image / png`. */
         @JvmField
         public val PNG: MediaType = MediaType("image", "png")
 
+        /** Represents the pattern `text / html`. */
         @JvmField
         public val HTML: MediaType = MediaType("text", "html")
 
+        /** Represents the pattern `text / plain`. */
         @JvmField
         public val PLAIN_TEXT: MediaType = MediaType("text", "plain")
 
-        /** Parses a string representing into a [MediaType] instance. */
         private fun parse(value: String): MediaType {
             if (value.isBlank()) return ANY
 
@@ -208,7 +211,6 @@ public open class MediaType private constructor(
             }
         }
 
-        /** Parse header with parameter and pass it to [init] function to instantiate particular type */
         private inline fun <R> parse(value: String, init: (String, List<Parameter>) -> R): R {
             val headerValue = parseHeaderValue(value).single()
             return init(headerValue.value, headerValue.params)
@@ -333,11 +335,16 @@ public open class MediaType private constructor(
 
     /**
      * Represents a header value.
+     *
      * @property value
-     * @property params for this value (could be empty)
+     * @property params for this value (could be empty).
      */
-    private data class HeaderValue(val value: String, val params: List<Parameter> = listOf()) {
-        /** Value's quality according to `q` parameter or `1.0` if missing or invalid */
+    private data class HeaderValue(
+        val value: String,
+        val params: List<Parameter> = listOf()
+    ) {
+
+        /** Value's quality according to `q` parameter or `1.0` if missing or invalid. */
         val quality: Double =
             params.firstOrNull { it.name == "q" }?.value?.toDoubleOrNull()?.takeIf { it in 0.0..1.0 } ?: 1.0
     }
