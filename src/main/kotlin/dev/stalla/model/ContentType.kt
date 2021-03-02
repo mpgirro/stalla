@@ -1,223 +1,8 @@
 package dev.stalla.model
 
-/** Separator symbols listed in RFC https://tools.ietf.org/html/rfc2616#section-2.2 */
-internal val HeaderFieldValueSeparators =
-    setOf('(', ')', '<', '>', '@', ',', ';', ':', '\\', '\"', '/', '[', ']', '?', '=', '{', '}', ' ', '\t', '\n', '\r')
-
-internal inline fun String.escapeIfNeededTo(out: StringBuilder) {
-    when {
-        checkNeedEscape() -> out.append(this.quote())
-        else -> out.append(this)
-    }
-}
-
-internal fun String.checkNeedEscape(): Boolean {
-    if (isEmpty()) return true
-    if (isQuoted()) return false
-
-    for (index in 0 until length) {
-        if (HeaderFieldValueSeparators.contains(this[index])) return true
-    }
-
-    return false
-}
-
-internal fun String.quote(): String = buildString { this@quote.quoteTo(this) }
-
-internal fun String.quoteTo(out: StringBuilder) {
-    out.append("\"")
-    for (i in 0 until length) {
-        val ch = this[i]
-        when (ch) {
-            '\\' -> out.append("\\\\")
-            '\n' -> out.append("\\n")
-            '\r' -> out.append("\\r")
-            '\t' -> out.append("\\t")
-            '\"' -> out.append("\\\"")
-            else -> out.append(ch)
-        }
-    }
-    out.append("\"")
-}
-
-private fun String.isQuoted(): Boolean {
-    if (length < 2) {
-        return false
-    }
-    if (first() != '"' || last() != '"') {
-        return false
-    }
-    var startIndex = 1
-    do {
-        val index = indexOf('"', startIndex)
-        if (index == lastIndex) {
-            break
-        }
-
-        var slashesCount = 0
-        var slashIndex = index - 1
-        while (this[slashIndex] == '\\') {
-            slashesCount++
-            slashIndex--
-        }
-        if (slashesCount % 2 == 0) {
-            return false
-        }
-
-        startIndex = index + 1
-    } while (startIndex < length)
-
-    return true
-}
-
-private fun String.subtrim(start: Int, end: Int): String {
-    return substring(start, end).trim()
-}
-
-private fun String.nextIsSemicolonOrEnd(start: Int): Boolean {
-    var position = start + 1
-    loop@ while (position < length && get(position) == ' ') {
-        position += 1
-    }
-
-    return position == length || get(position) == ';'
-}
-
-private fun <T> Lazy<List<T>>.valueOrEmpty(): List<T> = if (isInitialized()) value else emptyList()
-
-
-/**
- * Parse header value respecting multi-values
- */
-public fun parseHeaderValue(text: String?): List<HeaderValue> {
-    return parseHeaderValue(text, false)
-}
-
-/**
- * Parse header value respecting multi-values
- * @param parametersOnly if no header value itself, only parameters
- */
-public fun parseHeaderValue(text: String?, parametersOnly: Boolean): List<HeaderValue> {
-    if (text == null) {
-        return emptyList()
-    }
-
-    var position = 0
-    val items = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<HeaderValue>() }
-    while (position <= text.lastIndex) {
-        position = parseHeaderValueItem(text, position, items, parametersOnly)
-    }
-    return items.valueOrEmpty()
-}
-
-
-private fun parseHeaderValueItem(
-    text: String,
-    start: Int,
-    items: Lazy<ArrayList<HeaderValue>>,
-    parametersOnly: Boolean
-): Int {
-    var position = start
-    val parameters = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<HeaderValueParam>() }
-    var valueEnd: Int? = if (parametersOnly) position else null
-
-    while (position <= text.lastIndex) {
-        when (text[position]) {
-            ',' -> {
-                items.value.add(HeaderValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
-                return position + 1
-            }
-            ';' -> {
-                if (valueEnd == null) valueEnd = position
-                position = parseHeaderValueParameter(text, position + 1, parameters)
-            }
-            else -> {
-                position = if (parametersOnly) {
-                    parseHeaderValueParameter(text, position, parameters)
-                } else {
-                    position + 1
-                }
-            }
-        }
-    }
-
-    items.value.add(HeaderValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
-    return position
-}
-
-private fun parseHeaderValueParameter(text: String, start: Int, parameters: Lazy<ArrayList<HeaderValueParam>>): Int {
-    fun addParam(text: String, start: Int, end: Int, value: String) {
-        val name = text.subtrim(start, end)
-        if (name.isEmpty()) {
-            return
-        }
-
-        parameters.value.add(HeaderValueParam(name, value))
-    }
-
-    var position = start
-    while (position <= text.lastIndex) {
-        when (text[position]) {
-            '=' -> {
-                val (paramEnd, paramValue) = parseHeaderValueParameterValue(text, position + 1)
-                addParam(text, start, position, paramValue)
-                return paramEnd
-            }
-            ';', ',' -> {
-                addParam(text, start, position, "")
-                return position
-            }
-            else -> position++
-        }
-    }
-
-    addParam(text, start, position, "")
-    return position
-}
-
-private fun parseHeaderValueParameterValue(value: String, start: Int): Pair<Int, String> {
-    if (value.length == start) {
-        return start to ""
-    }
-
-    var position = start
-    if (value[start] == '"') {
-        return parseHeaderValueParameterValueQuoted(value, position + 1)
-    }
-
-    while (position <= value.lastIndex) {
-        when (value[position]) {
-            ';', ',' -> return position to value.subtrim(start, position)
-            else -> position++
-        }
-    }
-    return position to value.subtrim(start, position)
-}
-
-private fun parseHeaderValueParameterValueQuoted(value: String, start: Int): Pair<Int, String> {
-    var position = start
-    val builder = StringBuilder()
-    loop@ while (position <= value.lastIndex) {
-        val currentChar = value[position]
-
-        when {
-            currentChar == '"' && value.nextIsSemicolonOrEnd(position) -> {
-                return position + 1 to builder.toString()
-            }
-            currentChar == '\\' && position < value.lastIndex - 2 -> {
-                builder.append(value[position + 1])
-                position += 2
-                continue@loop
-            }
-        }
-
-        builder.append(currentChar)
-        position++
-    }
-
-    // The value is unquoted here
-    return position to '"' + builder.toString()
-}
+import dev.stalla.util.escapeIfNeededTo
+import dev.stalla.util.nextIsSemicolonOrEnd
+import dev.stalla.util.subtrim
 
 
 
@@ -252,6 +37,12 @@ public data class HeaderValue(val value: String, val params: List<HeaderValuePar
     val quality: Double =
         params.firstOrNull { it.name == "q" }?.value?.toDoubleOrNull()?.takeIf { it in 0.0..1.0 } ?: 1.0
 }
+
+/**
+ * Exception thrown when a content type string is malformed.
+ */
+public class BadContentTypeFormatException(value: String) : Exception("Bad Content-Type format: $value")
+
 
 /**
  * Represents a value for a `Content-Type` header.
@@ -379,25 +170,26 @@ public class ContentType private constructor(
     public companion object {
 
         /**
-         * Parse header with parameter and pass it to [init] function to instantiate particular type
+         * Represents a pattern `* / *` to match any content type.
          */
-        public inline fun <R> parse(value: String, init: (String, List<HeaderValueParam>) -> R): R {
-            val headerValue = parseHeaderValue(value).single()
-            return init(headerValue.value, headerValue.params)
-        }
+        public val ANY: ContentType = ContentType("*", "*")
+
+        public val IMAGE_PNG: ContentType = ContentType("image", "png")
+
+        public val TEXT_PLAIN: ContentType = ContentType("text", "plain")
 
         /**
          * Parses a string representing a `Content-Type` header into a [ContentType] instance.
          */
         public fun parse(value: String): ContentType {
-            if (value.isBlank()) return Any
+            if (value.isBlank()) return ANY
 
             return parse(value) { parts, parameters ->
                 val slash = parts.indexOf('/')
 
                 if (slash == -1) {
                     if (parts.trim() == "*") {
-                        return Any
+                        return ANY
                     }
 
                     throw BadContentTypeFormatException(value)
@@ -420,14 +212,142 @@ public class ContentType private constructor(
         }
 
         /**
-         * Represents a pattern `* / *` to match any content type.
+         * Parse header with parameter and pass it to [init] function to instantiate particular type
          */
-        public val Any: ContentType = ContentType("*", "*")
+        private inline fun <R> parse(value: String, init: (String, List<HeaderValueParam>) -> R): R {
+            val headerValue = parseHeaderValue(value).single()
+            return init(headerValue.value, headerValue.params)
+        }
+
+        private fun parseHeaderValue(text: String?): List<HeaderValue> {
+            if (text == null) {
+                return emptyList()
+            }
+
+            var position = 0
+            val items = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<HeaderValue>() }
+            while (position <= text.lastIndex) {
+                position = parseHeaderValueItem(text, position, items)
+            }
+            return items.valueOrEmpty()
+        }
+
+
+        private fun parseHeaderValueItem(
+            text: String,
+            start: Int,
+            items: Lazy<ArrayList<HeaderValue>>
+        ): Int {
+            val parametersOnly: Boolean = false
+
+            var position = start
+            val parameters = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<HeaderValueParam>() }
+            var valueEnd: Int? = if (parametersOnly) position else null
+
+            while (position <= text.lastIndex) {
+                when (text[position]) {
+                    ',' -> {
+                        items.value.add(HeaderValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
+                        return position + 1
+                    }
+                    ';' -> {
+                        if (valueEnd == null) valueEnd = position
+                        position = parseHeaderValueParameter(text, position + 1, parameters)
+                    }
+                    else -> {
+                        position = if (parametersOnly) {
+                            parseHeaderValueParameter(text, position, parameters)
+                        } else {
+                            position + 1
+                        }
+                    }
+                }
+            }
+
+            items.value.add(HeaderValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
+            return position
+        }
+
+        private fun parseHeaderValueParameter(
+            text: String,
+            start: Int,
+            parameters: Lazy<ArrayList<HeaderValueParam>>
+        ): Int {
+            fun addParam(text: String, start: Int, end: Int, value: String) {
+                val name = text.subtrim(start, end)
+                if (name.isEmpty()) {
+                    return
+                }
+
+                parameters.value.add(HeaderValueParam(name, value))
+            }
+
+            var position = start
+            while (position <= text.lastIndex) {
+                when (text[position]) {
+                    '=' -> {
+                        val (paramEnd, paramValue) = parseHeaderValueParameterValue(text, position + 1)
+                        addParam(text, start, position, paramValue)
+                        return paramEnd
+                    }
+                    ';', ',' -> {
+                        addParam(text, start, position, "")
+                        return position
+                    }
+                    else -> position++
+                }
+            }
+
+            addParam(text, start, position, "")
+            return position
+        }
+
+        private fun parseHeaderValueParameterValue(value: String, start: Int): Pair<Int, String> {
+            if (value.length == start) {
+                return start to ""
+            }
+
+            var position = start
+            if (value[start] == '"') {
+                return parseHeaderValueParameterValueQuoted(value, position + 1)
+            }
+
+            while (position <= value.lastIndex) {
+                when (value[position]) {
+                    ';', ',' -> return position to value.subtrim(start, position)
+                    else -> position++
+                }
+            }
+            return position to value.subtrim(start, position)
+        }
+
+        private fun parseHeaderValueParameterValueQuoted(value: String, start: Int): Pair<Int, String> {
+            var position = start
+            val builder = StringBuilder()
+            loop@ while (position <= value.lastIndex) {
+                val currentChar = value[position]
+
+                when {
+                    currentChar == '"' && value.nextIsSemicolonOrEnd(position) -> {
+                        return position + 1 to builder.toString()
+                    }
+                    currentChar == '\\' && position < value.lastIndex - 2 -> {
+                        builder.append(value[position + 1])
+                        position += 2
+                        continue@loop
+                    }
+                }
+
+                builder.append(currentChar)
+                position++
+            }
+
+            // The value is unquoted here
+            return position to '"' + builder.toString()
+        }
+
+        private fun <T> Lazy<List<T>>.valueOrEmpty(): List<T> = if (isInitialized()) value else emptyList()
+
     }
 
 }
-
-/**
- * Exception thrown when a content type string is malformed.
- */
-public class BadContentTypeFormatException(value: String) : Exception("Bad Content-Type format: $value")
