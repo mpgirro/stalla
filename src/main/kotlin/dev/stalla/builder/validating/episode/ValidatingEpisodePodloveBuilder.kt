@@ -13,7 +13,7 @@ internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
     override fun addSimpleChapterBuilder(chapterBuilder: EpisodePodloveSimpleChapterBuilder): EpisodePodloveBuilder =
         apply { chapterBuilders.add(chapterBuilder) }
 
-    override fun addAllSimpleChapterBuilder(
+    override fun addAllSimpleChapterBuilders(
         chapterBuilders: List<EpisodePodloveSimpleChapterBuilder>
     ): EpisodePodloveBuilder = apply {
         this.chapterBuilders.addAll(chapterBuilders)

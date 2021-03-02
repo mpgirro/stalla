@@ -12,27 +12,27 @@ public interface AtomBuilder : Builder<Atom> {
     public fun addAuthorBuilder(authorBuilder: AtomPersonBuilder): AtomBuilder
 
     /** Adds all of the [AtomPersonBuilder] to the list of author builders. */
-    public fun addAllAuthorBuilder(authorBuilders: List<AtomPersonBuilder>): AtomBuilder =
+    public fun addAllAuthorBuilders(authorBuilders: List<AtomPersonBuilder>): AtomBuilder =
         apply { authorBuilders.forEach(::addAuthorBuilder) }
 
     /** Adds the [AtomPersonBuilder] to the list of contributor builders. */
     public fun addContributorBuilder(contributorBuilder: AtomPersonBuilder): AtomBuilder
 
     /** Adds all of the [AtomPersonBuilder] to the list of contributor builders. */
-    public fun addAllContributorBuilder(contributorBuilders: List<AtomPersonBuilder>): AtomBuilder =
+    public fun addAllContributorBuilders(contributorBuilders: List<AtomPersonBuilder>): AtomBuilder =
         apply { contributorBuilders.forEach(::addContributorBuilder) }
 
     /** Adds the [LinkBuilder] to the list of links. */
     public fun addLinkBuilder(linkBuilder: LinkBuilder): AtomBuilder
 
     /** Adds all of the [LinkBuilder] to the list of links. */
-    public fun addAllLinkBuilder(linkBuilders: List<LinkBuilder>): AtomBuilder =
+    public fun addAllLinkBuilders(linkBuilders: List<LinkBuilder>): AtomBuilder =
         apply { linkBuilders.forEach(::addLinkBuilder) }
 
     override fun applyFrom(prototype: Atom?): AtomBuilder =
         whenNotNull(prototype) { atom ->
-            addAllAuthorBuilder(atom.authors.map(AtomPerson.builder()::applyFrom))
-            addAllContributorBuilder(atom.contributors.map(AtomPerson.builder()::applyFrom))
-            addAllLinkBuilder(atom.links.map(Link.builder()::applyFrom))
+            addAllAuthorBuilders(atom.authors.map(AtomPerson.builder()::applyFrom))
+            addAllContributorBuilders(atom.contributors.map(AtomPerson.builder()::applyFrom))
+            addAllLinkBuilders(atom.links.map(Link.builder()::applyFrom))
         }
 }
