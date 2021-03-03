@@ -83,7 +83,5 @@ class TranscriptTypeTest {
             "application/json",
             "application/srt"
         )
-
     }
-
 }
