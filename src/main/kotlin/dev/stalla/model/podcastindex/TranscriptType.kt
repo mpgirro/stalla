@@ -19,7 +19,8 @@ import kotlin.reflect.full.declaredMemberProperties
  *
  * The available transcript types are modeled according to the table below.
  * This classes [companion object][Factory] exposed a reference for each instance.
- * All instances are valid [MediaType]s.
+ * All instances are also valid instances of [MediaType] and guaranteed to be valid
+ * [IANA defined media types][http://www.iana.org/assignments/media-types/media-types.xhtml].
  *
  * | Media Type         | Property     |
  * |--------------------|--------------|
@@ -28,8 +29,8 @@ import kotlin.reflect.full.declaredMemberProperties
  * | `application/json` | [JSON]       |
  * | `application/srt`  | [SRT]        |
  *
- * @param type The type part of the media type.
- * @param subtype The subtype part of the media type.
+ * @param type The type part of the transcript type.
+ * @param subtype The subtype part of the transcript type.
  */
 public sealed class TranscriptType(
     override val type: String,

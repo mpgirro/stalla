@@ -1,26 +1,33 @@
 package dev.stalla.parser
 
-import dev.stalla.model.BadMediaTypeFormatException
 import dev.stalla.model.MediaType
 import dev.stalla.util.InternalApi
 import dev.stalla.util.nextIsSemicolonOrEnd
 import dev.stalla.util.subtrim
 
+/**
+ * Parser implementation for Media Type value as defiend in [RFC 2046][https://tools.ietf.org/html/rfc2046].
+ * The parsing logic is heavily based on the inner workings of the
+ * [ContentType][https://github.com/ktorio/ktor/blob/master/ktor-http/common/src/io/ktor/http/ContentTypes.kt]
+ * class of the [Ktor][https://ktor.io] project and related code of its HTTP package.
+ * Special thanks to the Ktor contributors.
+ */
 @InternalApi
 internal object MediaTypeParser {
 
     /**
      * Represents a media type value.
      *
-     * @property value
-     * @property params for this value (could be empty).
+     * @property value The actual type/subtype construct value.
+     * @property params Additional parameters for this value (could be empty).
      */
     private data class MediaTypeValue(
         val value: String,
         val params: List<MediaType.Parameter> = emptyList()
     )
 
-    internal fun parse(value: String): MediaType {
+    /** Parse a string into a [MediaType] if possible. Otherwise returns `null`. */
+    internal fun parse(value: String): MediaType? {
         if (value.isBlank()) return MediaType.ANY
 
         return parse(value) { parts, parameters ->
@@ -28,19 +35,16 @@ internal object MediaTypeParser {
 
             if (slash == -1) {
                 if (parts.trim() == "*") return MediaType.ANY
-
-                throw BadMediaTypeFormatException(value)
+                return null
             }
 
             val type = parts.substring(0, slash).trim()
 
-            if (type.isEmpty()) throw BadMediaTypeFormatException(value)
+            if (type.isEmpty()) return null
 
             val subtype = parts.substring(slash + 1).trim()
 
-            if (subtype.isEmpty() || subtype.contains('/')) {
-                throw BadMediaTypeFormatException(value)
-            }
+            if (subtype.isEmpty() || subtype.contains('/')) return null
 
             MediaType(type, subtype, parameters)
         }

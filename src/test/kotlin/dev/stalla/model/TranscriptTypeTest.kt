@@ -3,6 +3,7 @@ package dev.stalla.model
 import assertk.assertThat
 import assertk.assertions.contains
 import assertk.assertions.isEqualTo
+import assertk.assertions.isInstanceOf
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
@@ -60,6 +61,12 @@ class TranscriptTypeTest {
         type: TranscriptType
     ) {
         assertThat(TranscriptType.of(type.toString())).isEqualTo(type)
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(TranscriptTypeFactoryPropertyProvider::class)
+    fun `should provide Transcript Type instances that are also valid Media Types`(type: TranscriptType) {
+        assertThat(type).isInstanceOf(MediaType::class)
     }
 
     @Test

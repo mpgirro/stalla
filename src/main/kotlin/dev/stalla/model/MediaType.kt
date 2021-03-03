@@ -4,14 +4,15 @@ import dev.stalla.parser.MediaTypeParser
 import dev.stalla.util.escapeIfNeededTo
 import java.util.Locale
 
-/** Exception thrown when a media type string is malformed. */
-public class BadMediaTypeFormatException(value: String) : Exception("Bad Media-Type format: $value")
-
 /**
- * Represents a Media Type value as defiend by [RFC 2046][https://tools.ietf.org/html/rfc2046].
- * This class is heavily based on the
+ * Represents a Media Type value as defiend in [RFC 2046][https://tools.ietf.org/html/rfc2046].
+ * This class is heavily inspired by the
  * [ContentType][https://github.com/ktorio/ktor/blob/master/ktor-http/common/src/io/ktor/http/ContentTypes.kt]
  * class of the [Ktor][https://ktor.io] project. Special thanks to the Ktor contributors.
+ *
+ * Note that this class only ensures syntactically valid media type constructs,
+ * but does not ensure that an instance is an
+ * [IANA defined media type][http://www.iana.org/assignments/media-types/media-types.xhtml].
  *
  * @property type The type part of the media type.
  * @property subtype The subtype part of the media type.
@@ -100,9 +101,9 @@ public open class MediaType private constructor(
     /**
      * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
      */
-    public fun match(pattern: MediaType): Boolean {
+    public fun match(pattern: MediaType?): Boolean {
+        if (pattern == null) return false
         if (pattern.type != "*" && !pattern.type.equals(type, ignoreCase = true)) return false
-
         if (pattern.subtype != "*" && !pattern.subtype.equals(subtype, ignoreCase = true)) return false
 
         for ((patternName, patternValue) in pattern.parameters) {
@@ -150,13 +151,13 @@ public open class MediaType private constructor(
 
         /**
          * Factory method that returns the instance matching the [rawValue] parameter, if any.
+         * Does not check if [rawValue] matches an
+         * [IANA defined media type][http://www.iana.org/assignments/media-types/media-types.xhtml].
          *
          * @param rawValue The string representation of the instance.
          * @return The instance matching [rawValue], or `null` if no matching instance exists.
-         * @throws BadMediaTypeFormatException
          */
         @JvmStatic
-        @Throws(BadMediaTypeFormatException::class)
         override fun of(rawValue: String?): MediaType? = rawValue?.let { value ->
             return MediaTypeParser.parse(value)
         }

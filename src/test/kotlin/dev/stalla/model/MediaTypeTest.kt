@@ -7,8 +7,6 @@ import assertk.assertions.hasSize
 import assertk.assertions.index
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
-import assertk.assertions.isFailure
-import assertk.assertions.isInstanceOf
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
@@ -90,10 +88,32 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should fail to parse an invalid input`() {
-        assertThat {
-            MediaType.of("text/plain/something")
-        }.isFailure().isInstanceOf(BadMediaTypeFormatException::class)
+    fun `should fail to produce a Media Type instance from the factory method for an invalid input`() {
+        assertThat(MediaType.of("text/plain/something")).isNull()
+    }
+
+    @Test
+    fun `should fail to produce a Media Type instance from the factory method when there is only the type part`() {
+        assertThat(MediaType.of("text")).isNull()
+    }
+
+    @Test
+    fun `should fail to produce a Media Type instance from the factory method when the delimiter is missing`() {
+        assertThat(MediaType.of("text plain")).isNull()
+    }
+
+    @Test
+    fun `should fail to produce a Media Type instance from the factory method when the type part is missing`() {
+        assertThat(MediaType.of(" / plain")).isNull()
+    }
+
+    @Test
+    fun `should produce a Media Type instance from the factory method with a subtype placeholder`() {
+        assertThat(MediaType.of("text / *")).isNotNull().all {
+            prop(MediaType::type).isEqualTo("text")
+            prop(MediaType::subtype).isEqualTo("*")
+            prop(MediaType::parameters).isEmpty()
+        }
     }
 
     @Test
