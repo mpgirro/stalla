@@ -1,6 +1,6 @@
 package dev.stalla.util
 
-/** Returns the trimmed string, or null if it was blank to begin with. */
+/** Returns the trimmed string, or `null` if it was blank to begin with. */
 @InternalApi
 internal fun String?.trimmedOrNullIfBlank(): String? {
     if (this == null) return null
@@ -22,7 +22,7 @@ internal fun String.escapeIfNeededTo(out: StringBuilder) = when {
 private val HeaderFieldValueSeparators =
     setOf('(', ')', '<', '>', '@', ',', ';', ':', '\\', '\"', '/', '[', ']', '?', '=', '{', '}', ' ', '\t', '\n', '\r')
 
-/** Returns true of this string contains characters that need excaping. */
+/** Returns `true` of this string contains characters that need excaping. */
 @InternalApi
 internal fun String.checkNeedEscape(): Boolean {
     if (isEmpty()) return true
@@ -56,21 +56,16 @@ internal fun String.quoteTo(out: StringBuilder) {
     out.append("\"")
 }
 
-/** Returns true of this string is quoted. */
+/** Returns `true` of this string is quoted. */
 @InternalApi
 internal fun String.isQuoted(): Boolean {
-    if (length < 2) {
-        return false
-    }
-    if (first() != '"' || last() != '"') {
-        return false
-    }
+    if (length < 2) return false
+    if (first() != '"' || last() != '"') return false
+
     var startIndex = 1
     do {
         val index = indexOf('"', startIndex)
-        if (index == lastIndex) {
-            break
-        }
+        if (index == lastIndex) break
 
         var slashesCount = 0
         var slashIndex = index - 1
@@ -78,9 +73,7 @@ internal fun String.isQuoted(): Boolean {
             slashesCount++
             slashIndex--
         }
-        if (slashesCount % 2 == 0) {
-            return false
-        }
+        if (slashesCount % 2 == 0) return false
 
         startIndex = index + 1
     } while (startIndex < length)
@@ -92,7 +85,7 @@ internal fun String.isQuoted(): Boolean {
 @InternalApi
 internal fun String.subtrim(start: Int, end: Int): String = substring(start, end).trim()
 
-/** Returns true if the next non blank character is a semicolon, or if the string is ended. */
+/** Returns `true` if the next non blank character is a semicolon, or if the string is ended. */
 @InternalApi
 internal fun String.nextIsSemicolonOrEnd(start: Int): Boolean {
     var position = start + 1

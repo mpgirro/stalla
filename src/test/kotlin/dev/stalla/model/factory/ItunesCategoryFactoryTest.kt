@@ -26,7 +26,7 @@ class ItunesCategoryFactoryTest {
 
     internal class AllCategoryNameProvider : ArgumentsProvider by arguments(*allCategoryNames.toTypedArray())
 
-    internal class CategoryPropertyProvider : ArgumentsProvider by arguments(
+    internal class CategoryFactoryPropertyProvider : ArgumentsProvider by arguments(
         *ItunesCategory.Factory::class.declaredMemberProperties
             .filter { member -> member.visibility == KVisibility.PUBLIC }
             .mapNotNull { member -> member.getter.call(this) }
@@ -90,13 +90,13 @@ class ItunesCategoryFactoryTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(CategoryPropertyProvider::class)
+    @ArgumentsSource(CategoryFactoryPropertyProvider::class)
     fun `should expose only iTunes category properties that are defined`(category: ItunesCategory) {
         assertThat(allCategoryNames).contains(category.type)
     }
 
     @ParameterizedTest
-    @ArgumentsSource(CategoryPropertyProvider::class)
+    @ArgumentsSource(CategoryFactoryPropertyProvider::class)
     fun `should retrieve the correct iTunes category instances from the companion object factory method`(
         category: ItunesCategory
     ) {
