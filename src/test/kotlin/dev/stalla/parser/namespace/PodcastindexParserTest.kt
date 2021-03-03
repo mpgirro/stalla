@@ -49,7 +49,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
 
     private val expectedTranscriptBuilder = FakeEpisodePodcastindexTranscriptBuilder()
         .url("episode podcastindex transcript url")
-        .type(TranscriptType.PLAIN_TEXT)
+        .type(TranscriptType.SRT)
         .language(Locale.ITALY)
         .rel("episode podcastindex transcript rel")
 

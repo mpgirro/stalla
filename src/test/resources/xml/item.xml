@@ -57,5 +57,5 @@
     </psc:chapters>
     <podcast:chapters url="episode podcastindex chapters url" type="application/json"/>
     <podcast:soundbite startTime="33.833" duration="60.0">episode podcastindex soundbite title</podcast:soundbite>
-    <podcast:transcript url="episode podcastindex transcript url" type="text/plain" language="it-IT" rel="episode podcastindex transcript rel"/>
+    <podcast:transcript url="episode podcastindex transcript url" type="application/srt" language="it-IT" rel="episode podcastindex transcript rel"/>
 </item>

@@ -26,6 +26,11 @@ class MediaTypeTest {
     }
 
     @Test
+    fun `should transform the JSON type correctly to string`() {
+        assertThat(MediaType.JSON.toString()).isEqualTo("application/json")
+    }
+
+    @Test
     fun `should instantiate an instance from the factory method correctly`() {
         assertThat(MediaType.of("text/plain")).isNotNull().all {
             prop(MediaType::type).isEqualTo("text")
