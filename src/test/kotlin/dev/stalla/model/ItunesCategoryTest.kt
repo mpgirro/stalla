@@ -24,9 +24,9 @@ class ItunesCategoryTest {
 
     internal class NestedCategoryNameProvider : ArgumentsProvider by arguments(*nestedCategoryNames.toTypedArray())
 
-    internal class AllCategoryNameProvider : ArgumentsProvider by arguments(*allCategoryNames.toTypedArray())
+    internal class ItunesCategoryNameProvider : ArgumentsProvider by arguments(*allItunesCategoryNames.toTypedArray())
 
-    internal class CategoryFactoryPropertyProvider : ArgumentsProvider by arguments(
+    internal class ItunesCategoryFactoryPropertyProvider : ArgumentsProvider by arguments(
         *ItunesCategory.Factory::class.declaredMemberProperties
             .filter { member -> member.visibility == KVisibility.PUBLIC }
             .mapNotNull { member -> member.getter.call(this) }
@@ -62,7 +62,7 @@ class ItunesCategoryTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(AllCategoryNameProvider::class)
+    @ArgumentsSource(ItunesCategoryNameProvider::class)
     fun `should retrieve all iTunes categories from the interface factory method`(categoryName: String) {
         assertThat(ItunesCategory.of(categoryName)).isNotNull().prop(ItunesCategory::type).isEqualTo(categoryName)
     }
@@ -84,19 +84,19 @@ class ItunesCategoryTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(AllCategoryNameProvider::class)
+    @ArgumentsSource(ItunesCategoryNameProvider::class)
     fun `should have a companion object property for every iTunes category`(categoryName: String) {
         assertThat(categoryPropertyMap[categoryName]).isNotNull()
     }
 
     @ParameterizedTest
-    @ArgumentsSource(CategoryFactoryPropertyProvider::class)
+    @ArgumentsSource(ItunesCategoryFactoryPropertyProvider::class)
     fun `should expose only iTunes category properties that are defined`(category: ItunesCategory) {
-        assertThat(allCategoryNames).contains(category.type)
+        assertThat(allItunesCategoryNames).contains(category.type)
     }
 
     @ParameterizedTest
-    @ArgumentsSource(CategoryFactoryPropertyProvider::class)
+    @ArgumentsSource(ItunesCategoryFactoryPropertyProvider::class)
     fun `should retrieve the correct iTunes category instances from the companion object factory method`(
         category: ItunesCategory
     ) {
@@ -238,6 +238,6 @@ class ItunesCategoryTest {
         )
 
         @JvmStatic
-        val allCategoryNames = simpleCategoryNames + nestedCategoryNames
+        val allItunesCategoryNames = simpleCategoryNames + nestedCategoryNames
     }
 }
