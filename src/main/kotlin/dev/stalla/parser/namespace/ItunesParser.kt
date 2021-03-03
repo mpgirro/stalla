@@ -1,18 +1,20 @@
 package dev.stalla.parser.namespace
 
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
+import dev.stalla.builder.podcast.PodcastItunesOwnerBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
+import dev.stalla.dom.asListOfNodes
 import dev.stalla.dom.parseAsInt
 import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.dom.textOrNull
 import dev.stalla.dom.toHrefOnlyImageBuilder
 import dev.stalla.dom.toItunesCategory
-import dev.stalla.dom.toPersonBuilder
 import dev.stalla.model.StyledDuration
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
+import dev.stalla.util.FeedNamespace.Companion.matches
 import dev.stalla.util.InternalApi
+import org.w3c.dom.Element
 import org.w3c.dom.Node
 
 /**
@@ -53,7 +55,7 @@ internal object ItunesParser : NamespaceParser() {
             }
             "keywords" -> builder.itunesBuilder.keywords(ifCanBeParsed { textOrNull() })
             "owner" -> {
-                val ownerBuilder = ifCanBeParsed { toOwnerBuilder(builder.createPersonBuilder()) }
+                val ownerBuilder = ifCanBeParsed { toItunesOwnerBuilder(builder.createItunesOwnerBuilder()) }
                 builder.itunesBuilder.ownerBuilder(ownerBuilder)
             }
             "subtitle" -> builder.itunesBuilder.subtitle(ifCanBeParsed { textOrNull() })
@@ -65,10 +67,18 @@ internal object ItunesParser : NamespaceParser() {
         }
     }
 
-    private fun Node.toOwnerBuilder(personBuilder: PersonBuilder): PersonBuilder {
-        toPersonBuilder(personBuilder, namespace)
-        personBuilder.uri(null) // <itunes:owner> tags don't support <uri> tags
-        return personBuilder
+    private fun Node.toItunesOwnerBuilder(ownerBuilder: PodcastItunesOwnerBuilder): PodcastItunesOwnerBuilder {
+        for (child in childNodes.asListOfNodes()) {
+            if (child !is Element) continue
+            if (!namespace.matches(child.namespaceURI)) continue
+            val value: String? = child.textOrNull()
+
+            when (child.localName) {
+                "name" -> value?.let(ownerBuilder::name)
+                "email" -> value?.let(ownerBuilder::email)
+            }
+        }
+        return ownerBuilder
     }
 
     @Suppress("ComplexMethod")

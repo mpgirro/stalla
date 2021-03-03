@@ -55,9 +55,7 @@ internal object RssWriter : NamespaceWriter() {
             appendElement("generator") { textContent = podcast.generator?.trim() }
         }
 
-        if (podcast.language.isNotBlank()) {
-            appendElement("language") { textContent = podcast.language.trim() }
-        }
+        appendElement("language") { textContent = podcast.language.toLanguageTag() }
 
         if (podcast.copyright.isNeitherNullNorBlank()) {
             appendElement("copyright") { textContent = podcast.copyright?.trim() }

@@ -1,5 +1,7 @@
 package dev.stalla.model
 
+import com.google.common.net.MediaType
+import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
@@ -19,11 +21,11 @@ internal fun anHrefOnlyImage(
     href: String = "image href"
 ) = HrefOnlyImage(href)
 
-internal fun aPerson(
+internal fun anAtomPerson(
     name: String = "person name",
     email: String? = "person email",
     uri: String? = "person uri"
-) = Person(name, email, uri)
+) = AtomPerson(name, email, uri)
 
 internal fun aLink(
     href: String = "link href",
@@ -32,7 +34,7 @@ internal fun aLink(
     length: String? = "link length",
     rel: String? = "link rel",
     title: String? = "link title",
-    type: String? = "link type"
+    type: MediaType? = MediaType.HTML_UTF_8.withoutParameters()
 ) = Link(href, hrefLang, hrefResolved, length, rel, title, type)
 
 internal fun anRssCategory(

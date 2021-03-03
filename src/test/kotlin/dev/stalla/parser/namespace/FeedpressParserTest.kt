@@ -11,6 +11,7 @@ import dev.stalla.dom.XmlRes
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
+import java.util.Locale
 
 internal class FeedpressParserTest : NamespaceParserTest() {
 
@@ -23,11 +24,11 @@ internal class FeedpressParserTest : NamespaceParserTest() {
         node.parseChannelChildNodes(builder)
 
         assertThat(builder.feedpressBuilder, "channel.feedpress").all {
-            prop(FakePodcastFeedpressBuilder::newsletterIdValue).isEqualTo("abc123")
-            prop(FakePodcastFeedpressBuilder::localeValue).isEqualTo("en")
-            prop(FakePodcastFeedpressBuilder::podcastIdValue).isEqualTo("xyz123")
-            prop(FakePodcastFeedpressBuilder::cssFileValue).isEqualTo("http://example.org/style.css")
-            prop(FakePodcastFeedpressBuilder::linkValue).isEqualTo("http://example.org/my-link")
+            prop(FakePodcastFeedpressBuilder::newsletterIdValue).isEqualTo("feedpres newsletterid")
+            prop(FakePodcastFeedpressBuilder::localeValue).isEqualTo(Locale.GERMAN)
+            prop(FakePodcastFeedpressBuilder::podcastIdValue).isEqualTo("feedpress podcastid")
+            prop(FakePodcastFeedpressBuilder::cssFileValue).isEqualTo("feedpress cssfile")
+            prop(FakePodcastFeedpressBuilder::linkValue).isEqualTo("feedpress link")
         }
     }
 
@@ -58,6 +59,18 @@ internal class FeedpressParserTest : NamespaceParserTest() {
             prop(FakePodcastFeedpressBuilder::podcastIdValue).isNull()
             prop(FakePodcastFeedpressBuilder::cssFileValue).isNull()
             prop(FakePodcastFeedpressBuilder::linkValue).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract a Feedpress locale tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.feedpressBuilder, "channel.itunes").all {
+            prop(FakePodcastFeedpressBuilder::localeValue).isNull()
         }
     }
 }

@@ -24,7 +24,7 @@ internal object GoogleplayParser : NamespaceParser() {
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         when (localName) {
             "author" -> builder.googleplayBuilder.author(ifCanBeParsed { textOrNull() })
-            "owner" -> builder.googleplayBuilder.owner(ifCanBeParsed { textOrNull() })
+            "email" -> builder.googleplayBuilder.email(ifCanBeParsed { textOrNull() })
             "category" -> {
                 val category = ifCanBeParsed { toGoogleplayCategory() } ?: return
                 builder.googleplayBuilder.addCategory(category)
@@ -42,7 +42,7 @@ internal object GoogleplayParser : NamespaceParser() {
                 val imageBuilder = ifCanBeParsed { toHrefOnlyImageBuilder(builder.createHrefOnlyImageBuilder()) }
                 builder.googleplayBuilder.imageBuilder(imageBuilder)
             }
-            "new-feed-url" -> builder.googleplayBuilder.newFeedUrl(ifCanBeParsed { textOrNull() })
+            "newFeedUrl" -> builder.googleplayBuilder.newFeedUrl(ifCanBeParsed { textOrNull() })
             else -> pass
         }
     }

@@ -21,8 +21,8 @@ internal class BitloveParserTest : NamespaceParserTest() {
         val builder = FakeEpisodeBuilder()
         node.parseItemChildNodes(builder)
 
-        assertThat(builder.bitloveBuilder, "channel.bitlove")
-            .prop(FakeEpisodeBitloveBuilder::guid).isEqualTo("abcdefg")
+        assertThat(builder.bitloveBuilder, "item.bitlove")
+            .prop(FakeEpisodeBitloveBuilder::guid).isEqualTo("episode bitlove guid")
     }
 
     @Test

@@ -8,6 +8,8 @@ import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.getAttributeByName
+import dev.stalla.dom.getAttributeValueByName
+import dev.stalla.dom.parseAsMediaTypeOrNull
 import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.TranscriptType
@@ -32,13 +34,13 @@ internal object PodcastindexParser : NamespaceParser() {
         when (localName) {
             "locked" -> {
                 val lockedBuilder = ifCanBeParsed {
-                    toLockedBuilder(builder.createPodcastPodcastLockedBuilder())
+                    toLockedBuilder(builder.createLockedBuilder())
                 } ?: return
                 builder.podcastPodcastindexBuilder.lockedBuilder(lockedBuilder)
             }
             "funding" -> {
                 val fundingBuilder = ifCanBeParsed {
-                    toFundingBuilder(builder.createPodcastPodcastFundingBuilder())
+                    toFundingBuilder(builder.createFundingBuilder())
                 } ?: return
                 builder.podcastPodcastindexBuilder.addFundingBuilder(fundingBuilder)
             }
@@ -72,19 +74,19 @@ internal object PodcastindexParser : NamespaceParser() {
         when (localName) {
             "chapters" -> {
                 val chaptersBuilder = ifCanBeParsed {
-                    toChaptersBuilder(builder.createEpisodePodcastChaptersBuilder())
+                    toChaptersBuilder(builder.createChaptersBuilder())
                 } ?: return
                 builder.podcastindexBuilder.chaptersBuilder(chaptersBuilder)
             }
             "soundbite" -> {
                 val soundbiteBuilder = ifCanBeParsed {
-                    toSoundbiteBuilder(builder.createEpisodePodcastSoundbiteBuilder())
+                    toSoundbiteBuilder(builder.createSoundbiteBuilder())
                 } ?: return
                 builder.podcastindexBuilder.addSoundbiteBuilder(soundbiteBuilder)
             }
             "transcript" -> {
                 val transcriptBuilder = ifCanBeParsed {
-                    toTranscriptBuilder(builder.createEpisodePodcastTranscriptBuilder())
+                    toTranscriptBuilder(builder.createTranscriptBuilder())
                 } ?: return
                 builder.podcastindexBuilder.addTranscriptBuilder(transcriptBuilder)
             }
@@ -95,8 +97,8 @@ internal object PodcastindexParser : NamespaceParser() {
     private fun Node.toChaptersBuilder(
         chaptersBuilder: EpisodePodcastindexChaptersBuilder
     ): EpisodePodcastindexChaptersBuilder? {
-        val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()
-        val type = getAttributeByName("type")?.value.trimmedOrNullIfBlank()
+        val url = getAttributeValueByName("url").trimmedOrNullIfBlank()
+        val type = getAttributeValueByName("type").parseAsMediaTypeOrNull()
 
         if (url == null || type == null) return null
         return chaptersBuilder.url(url)

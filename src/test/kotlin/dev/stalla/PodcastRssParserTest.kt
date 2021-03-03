@@ -14,13 +14,13 @@ import dev.stalla.dom.DomBuilderFactory
 import dev.stalla.dom.findElementByName
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.Person
 import dev.stalla.model.Podcast
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.content.Content
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.itunes.ItunesOwner
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.rss.Enclosure
@@ -28,6 +28,7 @@ import dev.stalla.model.rss.Guid
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
 import java.time.Month
+import java.util.Locale
 
 internal class PodcastRssParserTest {
 
@@ -147,7 +148,7 @@ internal class PodcastRssParserTest {
                     "Winner of the \"Best Security Podcast 2018\" and \"Best Security Podcast 2019\", Smashing Security has had over four million downloads. Past guests include Garry Kasparov, Mikko Hyppönen, and Rory Cellan-Jones.\n" +
                     "Follow the podcast on Twitter at <a href=\"https://twitter.com/SmashinSecurity\">@SmashinSecurity</a>, and subscribe for free in your favourite podcast app. New episodes released at 7pm EST every Wednesday (midnight UK)."
             )
-            prop(Podcast::language).isEqualTo("en-us")
+            prop(Podcast::language).isEqualTo(Locale.US)
             prop(Podcast::itunes).isNotNull().all {
                 prop(PodcastItunes::type).isEqualTo(ShowType.EPISODIC)
                 prop(PodcastItunes::subtitle).isEqualTo("News and views from the world of cybersecurity, hacking, and internet threats")
@@ -163,8 +164,8 @@ internal class PodcastRssParserTest {
                 prop(PodcastItunes::explicit).isNotNull().isTrue()
                 prop(PodcastItunes::keywords).isEqualTo("computer security, cybersecurity, hacking, privacy, cybercrime, cyber, cyberwarfare, infosec")
                 prop(PodcastItunes::owner).isNotNull().all {
-                    prop(Person::name).isEqualTo("Graham Cluley, Carole Theriault")
-                    prop(Person::email).isEqualTo("studio@smashingsecurity.com")
+                    prop(ItunesOwner::name).isEqualTo("Graham Cluley, Carole Theriault")
+                    prop(ItunesOwner::email).isEqualTo("studio@smashingsecurity.com")
                 }
                 prop(PodcastItunes::categories).containsExactly(
                     ItunesCategory.TECHNOLOGY,

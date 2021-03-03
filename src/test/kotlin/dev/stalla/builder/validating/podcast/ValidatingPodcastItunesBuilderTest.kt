@@ -12,7 +12,6 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastItunesBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
@@ -23,7 +22,7 @@ internal class ValidatingPodcastItunesBuilderTest {
 
     private val expectedImageBuilder = ValidatingHrefOnlyImageBuilder().href("image href")
 
-    private val expectedPersonBuilder = ValidatingPersonBuilder().name("name")
+    private val expectedItunesOwnerBuilder = ValidatingPodcastItunesOwnerBuilder().name("name")
 
     private val expectedItunesCategory = ItunesCategory.TECHNOLOGY
 
@@ -81,7 +80,7 @@ internal class ValidatingPodcastItunesBuilderTest {
             .block(false)
             .complete(false)
             .type(ShowType.SERIAL.type)
-            .ownerBuilder(expectedPersonBuilder)
+            .ownerBuilder(expectedItunesOwnerBuilder)
             .title("title")
             .newFeedUrl("newFeedUrl")
             .imageBuilder(expectedImageBuilder)
@@ -99,7 +98,7 @@ internal class ValidatingPodcastItunesBuilderTest {
                 prop(PodcastItunes::block).isNotNull().isFalse()
                 prop(PodcastItunes::complete).isNotNull().isFalse()
                 prop(PodcastItunes::type).isEqualTo(ShowType.SERIAL)
-                prop(PodcastItunes::owner).isEqualTo(expectedPersonBuilder.build())
+                prop(PodcastItunes::owner).isEqualTo(expectedItunesOwnerBuilder.build())
                 prop(PodcastItunes::title).isEqualTo("title")
                 prop(PodcastItunes::newFeedUrl).isEqualTo("newFeedUrl")
                 prop(PodcastItunes::image).isEqualTo(expectedImageBuilder.build())

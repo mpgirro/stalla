@@ -27,8 +27,8 @@ internal object GoogleplayWriter : NamespaceWriter() {
     override fun Element.appendPodcastData(podcast: Podcast) {
         val play = podcast.googleplay ?: return
 
-        if (play.owner.isNeitherNullNorBlank()) {
-            appendElement("owner", namespace) { textContent = play.owner?.trim() }
+        if (play.email.isNeitherNullNorBlank()) {
+            appendElement("email", namespace) { textContent = play.email?.trim() }
         }
 
         if (play.explicit != null) {
@@ -36,7 +36,7 @@ internal object GoogleplayWriter : NamespaceWriter() {
         }
 
         if (play.newFeedUrl.isNeitherNullNorBlank()) {
-            appendElement("new-feed-url", namespace) { textContent = play.newFeedUrl?.trim() }
+            appendElement("newFeedUrl", namespace) { textContent = play.newFeedUrl?.trim() }
         }
 
         appendGoogleplayCategoryElements(play.categories, namespace)

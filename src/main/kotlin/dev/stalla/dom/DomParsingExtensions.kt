@@ -1,7 +1,8 @@
 package dev.stalla.dom
 
+import com.google.common.net.MediaType
+import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.model.googleplay.GoogleplayCategory
@@ -10,6 +11,7 @@ import dev.stalla.parser.DateParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
 import dev.stalla.util.InternalApi
+import dev.stalla.util.isValidLocale
 import dev.stalla.util.trimmedOrNullIfBlank
 import org.w3c.dom.Element
 import org.w3c.dom.Node
@@ -67,6 +69,34 @@ internal fun Node.parseAsInt(): Int? = textOrNull()?.toIntOrNull()
 internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.parse(textOrNull())
 
 /**
+ * Extracts the text content of a DOM node, and parses it as a [Locale] instance
+ * if possible.
+ *
+ * @return The DOM node content as a [Locale], or `null` if parsing failed.
+ */
+@InternalApi
+internal fun Node.parseAsLocaleOrNull(): Locale? = textOrNull()?.let { rawLocale ->
+    val locale = Locale.forLanguageTag(rawLocale)
+    return if (locale.isValidLocale()) locale else null
+}
+
+/**
+ * Interprets a string content as a [MediaType]. If the string value cannot be parsed, returns `null`.
+ *
+ * @return The [MediaType] interpretation of the string parameter, or `null`.
+ */
+@InternalApi
+@Suppress("SwallowedException")
+internal fun String?.parseAsMediaTypeOrNull(): MediaType? = this.trimmedOrNullIfBlank()
+    ?.let { rawType ->
+        try {
+            MediaType.parse(rawType)
+        } catch (e: IllegalArgumentException) {
+            null
+        }
+    }
+
+/**
  * Parses the node contents as an [RssImageBuilder] if possible, interpreting it as an RSS
  * `<image>` tag, then populates the [imageBuilder] with the parsed data.
  *
@@ -115,10 +145,10 @@ internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): Hr
 }
 
 /**
- * Parses the node contents into a [PersonBuilder] if possible, ensuring the child nodes
+ * Parses the node contents into a [AtomPersonBuilder] if possible, ensuring the child nodes
  * have the specified [namespace], then populates the [personBuilder] with the parsed data.
  *
- * @param personBuilder An empty [PersonBuilder] instance to initialise with the node's
+ * @param personBuilder An empty [AtomPersonBuilder] instance to initialise with the node's
  * contents.
  * @param namespace The [FeedNamespace] to ensure the child nodes have.
  *
@@ -126,7 +156,10 @@ internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): Hr
  */
 @InternalApi
 @Suppress("LoopWithTooManyJumpStatements")
-internal fun Node.toPersonBuilder(personBuilder: PersonBuilder, namespace: FeedNamespace? = null): PersonBuilder {
+internal fun Node.toAtomPersonBuilder(
+    personBuilder: AtomPersonBuilder,
+    namespace: FeedNamespace? = null
+): AtomPersonBuilder {
     for (child in childNodes.asListOfNodes()) {
         if (child !is Element) continue
         if (!namespace.matches(child.namespaceURI)) continue

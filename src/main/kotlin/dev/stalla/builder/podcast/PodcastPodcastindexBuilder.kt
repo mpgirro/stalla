@@ -22,7 +22,7 @@ public interface PodcastPodcastindexBuilder : Builder<PodcastPodcastindex> {
      * Adds all of the [PodcastPodcastindexFundingBuilder] for the
      * `<podcast:funding>` info to the list of funding builders.
      */
-    public fun addAllFundingBuilder(
+    public fun addAllFundingBuilders(
         fundingBuilders: List<PodcastPodcastindexFundingBuilder>
     ): PodcastPodcastindexBuilder = apply {
         fundingBuilders.forEach(::addFundingBuilder)
@@ -31,6 +31,6 @@ public interface PodcastPodcastindexBuilder : Builder<PodcastPodcastindex> {
     override fun applyFrom(prototype: PodcastPodcastindex?): PodcastPodcastindexBuilder =
         whenNotNull(prototype) { podcast ->
             lockedBuilder(Locked.builder().applyFrom(podcast.locked))
-            addAllFundingBuilder(podcast.funding.asBuilders())
+            addAllFundingBuilders(podcast.funding.asBuilders())
         }
 }

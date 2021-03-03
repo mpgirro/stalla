@@ -21,6 +21,7 @@ import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
 import java.time.Month
+import java.util.Locale
 
 internal class RssParserTest : NamespaceParserTest() {
 
@@ -30,23 +31,23 @@ internal class RssParserTest : NamespaceParserTest() {
     private val expectedDate = dateTime(year = 2018, month = Month.MARCH, day = 16, hour = 22, minute = 49, second = 8)
 
     private val expectedEnclosureBuilder = FakeEpisodeEnclosureBuilder().apply {
-        urlValue = "http://example.org/episode1.m4a"
+        urlValue = "episode rss enclosure url"
         lengthValue = 78589133
-        typeValue = "audio/mp4"
+        typeValue = "episode rss enclosure type"
     }
 
     private val expectedGuidBuilder = FakeEpisodeGuidBuilder().apply {
-        textContent = "1fa609024fdf097"
+        textContent = "episode rss guid"
         isPermalink = true
     }
 
     private val expectedImageBuilder = FakeRssImageBuilder().apply {
-        url = "http://example.org/podcast-cover.jpg"
-        title = "Lorem Ipsum"
-        link = "http://example.org"
+        url = "podcast rss image url"
+        title = "podcast rss image title"
+        link = "podcast rss image link"
         width = 600
         height = 600
-        description = "Lorem Ipsum"
+        description = "podcast rss image description"
     }
 
     @Test
@@ -56,21 +57,21 @@ internal class RssParserTest : NamespaceParserTest() {
         node.parseChannelChildNodes(builder)
 
         assertThat(builder, "channel.rss").all {
-            prop(FakePodcastBuilder::titleValue).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastBuilder::linkValue).isEqualTo("http://example.org")
-            prop(FakePodcastBuilder::descriptionValue).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastBuilder::titleValue).isEqualTo("podcast rss title")
+            prop(FakePodcastBuilder::linkValue).isEqualTo("podcast rss link")
+            prop(FakePodcastBuilder::descriptionValue).isEqualTo("podcast rss description")
             prop(FakePodcastBuilder::pubDate).isEqualTo(expectedDate)
             prop(FakePodcastBuilder::lastBuildDate).isEqualTo(expectedDate)
-            prop(FakePodcastBuilder::languageValue).isEqualTo("de-DE")
-            prop(FakePodcastBuilder::generator).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastBuilder::copyright).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastBuilder::docs).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastBuilder::managingEditor).isEqualTo("editor@example.org")
-            prop(FakePodcastBuilder::webMaster).isEqualTo("webmaster@example.org")
+            prop(FakePodcastBuilder::languageValue).isEqualTo(Locale.GERMAN)
+            prop(FakePodcastBuilder::generator).isEqualTo("podcast rss generator")
+            prop(FakePodcastBuilder::copyright).isEqualTo("podcast rss copyright")
+            prop(FakePodcastBuilder::docs).isEqualTo("podcast rss docs")
+            prop(FakePodcastBuilder::managingEditor).isEqualTo("podcast rss managingeditor")
+            prop(FakePodcastBuilder::webMaster).isEqualTo("podcast rss webmaster")
             prop(FakePodcastBuilder::imageBuilder).isEqualTo(expectedImageBuilder)
             prop(FakePodcastBuilder::categoryBuilders).containsExactly(
-                FakeRssCategoryBuilder().category("category 1").domain("banana"),
-                FakeRssCategoryBuilder().category("category 2")
+                FakeRssCategoryBuilder().category("podcast rss category 1").domain("podcast rss category domain"),
+                FakeRssCategoryBuilder().category("podcast rss category 2")
             )
         }
     }
@@ -128,19 +129,19 @@ internal class RssParserTest : NamespaceParserTest() {
         node.parseItemChildNodes(builder)
 
         assertThat(builder, "item.rss").all {
-            prop(FakeEpisodeBuilder::titleValue).isEqualTo("Lorem Ipsum")
-            prop(FakeEpisodeBuilder::link).isEqualTo("http://example.org/episode1")
-            prop(FakeEpisodeBuilder::description).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeBuilder::titleValue).isEqualTo("episode rss title")
+            prop(FakeEpisodeBuilder::link).isEqualTo("episode rss link")
+            prop(FakeEpisodeBuilder::description).isEqualTo("episode rss description")
             prop(FakeEpisodeBuilder::pubDate).isEqualTo(expectedDate)
-            prop(FakeEpisodeBuilder::author).isEqualTo("author@example.org")
-            prop(FakeEpisodeBuilder::comments).isEqualTo("http://example.org/episode1/comments")
+            prop(FakeEpisodeBuilder::author).isEqualTo("episode rss author")
+            prop(FakeEpisodeBuilder::comments).isEqualTo("episode rss comments")
             prop(FakeEpisodeBuilder::categoryBuilders).containsExactly(
-                FakeRssCategoryBuilder().category("category 1").domain("banana"),
-                FakeRssCategoryBuilder().category("category 2")
+                FakeRssCategoryBuilder().category("episode rss category 1").domain("episode rss category domain"),
+                FakeRssCategoryBuilder().category("episode rss category 2")
             )
             prop(FakeEpisodeBuilder::enclosureBuilderValue).isEqualTo(expectedEnclosureBuilder)
             prop(FakeEpisodeBuilder::guidBuilder).isEqualTo(expectedGuidBuilder)
-            prop(FakeEpisodeBuilder::source).isEqualTo("http://example.org/rss")
+            prop(FakeEpisodeBuilder::source).isEqualTo("episode rss source")
         }
     }
 
@@ -181,6 +182,18 @@ internal class RssParserTest : NamespaceParserTest() {
             prop(FakeEpisodeBuilder::enclosureBuilderValue).isNotNull().hasNotEnoughDataToBuild()
             prop(FakeEpisodeBuilder::guidBuilder).isNotNull().hasNotEnoughDataToBuild()
             prop(FakeEpisodeBuilder::source).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract an RSS language tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder, "channel.itunes").all {
+            prop(FakePodcastBuilder::languageValue).isNull()
         }
     }
 }

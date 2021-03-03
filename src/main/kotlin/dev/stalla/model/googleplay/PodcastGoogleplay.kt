@@ -13,17 +13,17 @@ import dev.stalla.model.HrefOnlyImage
  * for the Google Play Podcasts extension
  *
  * @property author The `<googleplay:author>` field text content.
- * @property owner The `<googleplay:email>` field text content.
- * @property categories The list of `<googleplay:category>` element's field text contents.
+ * @property email The `<googleplay:email>` field text content.
+ * @property categories The list of `<googleplay:category>` element's field text contents as [GoogleplayCategory].
  * @property description The `<googleplay:description>` field text content.
  * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
  * @property block The logical value of the `<googleplay:block>` field's text content.
  * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
- * @property newFeedUrl The `<itunes:new-feed-url>` field text content.
+ * @property newFeedUrl The `<googleplay:newFeedUrl>` field text content.
  */
 public data class PodcastGoogleplay(
     override val author: String? = null,
-    val owner: String? = null,
+    val email: String? = null,
     val categories: List<GoogleplayCategory>,
     override val description: String? = null,
     val explicit: Boolean? = null,

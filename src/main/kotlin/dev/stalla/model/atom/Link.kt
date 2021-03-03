@@ -1,5 +1,6 @@
 package dev.stalla.model.atom
 
+import com.google.common.net.MediaType
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.model.BuilderFactory
@@ -22,7 +23,7 @@ public data class Link(
     val length: String? = null,
     val rel: String? = null,
     val title: String? = null,
-    val type: String? = null
+    val type: MediaType? = null
 ) {
 
     /** Provides a builder for the [Link] class. */

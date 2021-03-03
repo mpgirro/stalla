@@ -10,6 +10,7 @@ import dev.stalla.model.rss.RssImage
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 /** Builder for constructing [Podcast] instances. */
 public interface PodcastBuilder : Builder<Podcast> {
@@ -48,7 +49,7 @@ public interface PodcastBuilder : Builder<Podcast> {
     public fun lastBuildDate(lastBuildDate: TemporalAccessor?): PodcastBuilder
 
     /** Set the language value. */
-    public fun language(language: String): PodcastBuilder
+    public fun language(language: Locale): PodcastBuilder
 
     /** Set the generator value. */
     public fun generator(generator: String?): PodcastBuilder
@@ -75,14 +76,14 @@ public interface PodcastBuilder : Builder<Podcast> {
     public fun addEpisodeBuilder(episodeBuilder: EpisodeBuilder): PodcastBuilder
 
     /** Adds all of the [EpisodeBuilder] to the list of episode builders. */
-    public fun addAllEpisodeBuilder(episodeBuilders: List<EpisodeBuilder>): PodcastBuilder =
+    public fun addAllEpisodeBuilders(episodeBuilders: List<EpisodeBuilder>): PodcastBuilder =
         apply { episodeBuilders.forEach(::addEpisodeBuilder) }
 
     /** Adds the [RssCategoryBuilder] to the list of category builders. */
     public fun addCategoryBuilder(categoryBuilder: RssCategoryBuilder): PodcastBuilder
 
     /** Adds all of the [RssCategoryBuilder] to the list of category builders. */
-    public fun addAllCategoryBuilder(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder =
+    public fun addAllCategoryBuilders(categoryBuilders: List<RssCategoryBuilder>): PodcastBuilder =
         apply { categoryBuilders.forEach(::addCategoryBuilder) }
 
     override fun applyFrom(prototype: Podcast?): PodcastBuilder =
@@ -106,7 +107,7 @@ public interface PodcastBuilder : Builder<Podcast> {
             webMaster(podcast.webMaster)
             ttl(podcast.ttl)
             imageBuilder(RssImage.builder().applyFrom(podcast.image))
-            addAllEpisodeBuilder(podcast.episodes.asBuilders())
-            addAllCategoryBuilder(podcast.categories.asBuilders())
+            addAllEpisodeBuilders(podcast.episodes.asBuilders())
+            addAllCategoryBuilders(podcast.categories.asBuilders())
         }
 }

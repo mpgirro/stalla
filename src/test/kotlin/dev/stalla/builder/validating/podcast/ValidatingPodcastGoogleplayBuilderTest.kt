@@ -47,7 +47,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isEqualTo("author")
-                prop(PodcastGoogleplay::owner).isNull()
+                prop(PodcastGoogleplay::email).isNull()
                 prop(PodcastGoogleplay::categories).isEmpty()
                 prop(PodcastGoogleplay::description).isNull()
                 prop(PodcastGoogleplay::explicit).isNull()
@@ -61,14 +61,14 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     @Test
     internal fun `should build a valid Podcast Googleplay when there is only an owner`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
-            .owner("owner")
+            .email("owner")
 
         assertAll {
             assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
-                prop(PodcastGoogleplay::owner).isEqualTo("owner")
+                prop(PodcastGoogleplay::email).isEqualTo("owner")
                 prop(PodcastGoogleplay::categories).isEmpty()
                 prop(PodcastGoogleplay::description).isNull()
                 prop(PodcastGoogleplay::explicit).isNull()
@@ -89,7 +89,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
-                prop(PodcastGoogleplay::owner).isNull()
+                prop(PodcastGoogleplay::email).isNull()
                 prop(PodcastGoogleplay::categories).containsExactly(expectedGoogleplayCategory)
                 prop(PodcastGoogleplay::description).isNull()
                 prop(PodcastGoogleplay::explicit).isNull()
@@ -110,7 +110,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
-                prop(PodcastGoogleplay::owner).isNull()
+                prop(PodcastGoogleplay::email).isNull()
                 prop(PodcastGoogleplay::categories).isEmpty()
                 prop(PodcastGoogleplay::description).isEqualTo("description")
                 prop(PodcastGoogleplay::explicit).isNull()
@@ -131,7 +131,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
-                prop(PodcastGoogleplay::owner).isNull()
+                prop(PodcastGoogleplay::email).isNull()
                 prop(PodcastGoogleplay::categories).isEmpty()
                 prop(PodcastGoogleplay::description).isNull()
                 prop(PodcastGoogleplay::explicit).isNotNull().isTrue()
@@ -152,7 +152,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
-                prop(PodcastGoogleplay::owner).isNull()
+                prop(PodcastGoogleplay::email).isNull()
                 prop(PodcastGoogleplay::categories).isEmpty()
                 prop(PodcastGoogleplay::description).isNull()
                 prop(PodcastGoogleplay::explicit).isNull()
@@ -173,7 +173,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
-                prop(PodcastGoogleplay::owner).isNull()
+                prop(PodcastGoogleplay::email).isNull()
                 prop(PodcastGoogleplay::categories).isEmpty()
                 prop(PodcastGoogleplay::description).isNull()
                 prop(PodcastGoogleplay::explicit).isNull()
@@ -194,7 +194,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isNull()
-                prop(PodcastGoogleplay::owner).isNull()
+                prop(PodcastGoogleplay::email).isNull()
                 prop(PodcastGoogleplay::categories).isEmpty()
                 prop(PodcastGoogleplay::description).isNull()
                 prop(PodcastGoogleplay::explicit).isNull()
@@ -209,7 +209,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     internal fun `should build a valid Podcast Googleplay when there are all fields`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
             .author("author")
-            .owner("owner")
+            .email("owner")
             .addCategory(expectedGoogleplayCategory)
             .addCategory(otherExpectedGoogleplayCategory)
             .description("description")
@@ -223,7 +223,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
 
             assertThat(podcastGooglePlayBuilder.build()).isNotNull().all {
                 prop(PodcastGoogleplay::author).isEqualTo("author")
-                prop(PodcastGoogleplay::owner).isEqualTo("owner")
+                prop(PodcastGoogleplay::email).isEqualTo("owner")
                 prop(PodcastGoogleplay::categories).containsExactly(
                     expectedGoogleplayCategory,
                     otherExpectedGoogleplayCategory

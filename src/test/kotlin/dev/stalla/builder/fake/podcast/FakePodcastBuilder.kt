@@ -1,31 +1,33 @@
 package dev.stalla.builder.fake.podcast
 
+import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.fake.FakeAtomBuilder
+import dev.stalla.builder.fake.FakeAtomPersonBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
-import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
 import dev.stalla.builder.fake.FakeRssImageBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.podcast.PodcastItunesOwnerBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.model.Podcast
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuilder {
 
     var titleValue: String? = null
     var linkValue: String? = null
     var descriptionValue: String? = null
-    var languageValue: String? = null
+    var languageValue: Locale? = null
 
     var pubDate: TemporalAccessor? = null
     var lastBuildDate: TemporalAccessor? = null
@@ -62,7 +64,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
 
     override fun lastBuildDate(lastBuildDate: TemporalAccessor?): PodcastBuilder = apply { this.lastBuildDate = lastBuildDate }
 
-    override fun language(language: String): PodcastBuilder = apply { this.languageValue = language }
+    override fun language(language: Locale): PodcastBuilder = apply { this.languageValue = language }
 
     override fun generator(generator: String?): PodcastBuilder = apply { this.generator = generator }
 
@@ -92,13 +94,15 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
 
     override fun createLinkBuilder(): LinkBuilder = FakeLinkBuilder()
 
-    override fun createPersonBuilder(): PersonBuilder = FakePersonBuilder()
+    override fun createAtomPersonBuilder(): AtomPersonBuilder = FakeAtomPersonBuilder()
 
     override fun createRssCategoryBuilder(): RssCategoryBuilder = FakeRssCategoryBuilder()
 
-    override fun createPodcastPodcastLockedBuilder(): PodcastPodcastindexLockedBuilder = FakePodcastPodcastindexLockedBuilder()
+    override fun createItunesOwnerBuilder(): PodcastItunesOwnerBuilder = FakePodcastItunesOwnerBuilder()
 
-    override fun createPodcastPodcastFundingBuilder(): PodcastPodcastindexFundingBuilder = FakePodcastPodcastindexFundingBuilder()
+    override fun createLockedBuilder(): PodcastPodcastindexLockedBuilder = FakePodcastPodcastindexLockedBuilder()
+
+    override fun createFundingBuilder(): PodcastPodcastindexFundingBuilder = FakePodcastPodcastindexFundingBuilder()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

@@ -10,11 +10,11 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
-import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeItunesBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastItunesBuilder
+import dev.stalla.builder.fake.podcast.FakePodcastItunesOwnerBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.hasNotEnoughDataToBuild
 import dev.stalla.model.StyledDuration
@@ -29,13 +29,13 @@ internal class ItunesParserTest : NamespaceParserTest() {
 
     override val parser = ItunesParser
 
-    private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/podcast-cover.jpg")
+    private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("podcast itunes image href")
 
-    private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/episode-cover.jpg")
+    private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("episode itunes image href")
 
-    private val expectedOwnerBuilder = FakePersonBuilder()
-        .name("Lorem Ipsum")
-        .email("owner@example.org")
+    private val expectedOwnerBuilder = FakePodcastItunesOwnerBuilder()
+        .name("podcast itunes owner name")
+        .email("podcast itunes owner email")
 
     @Test
     fun `should extract all Itunes fields from channel when present`() {
@@ -44,16 +44,16 @@ internal class ItunesParserTest : NamespaceParserTest() {
         node.parseChannelChildNodes(builder)
 
         assertThat(builder.itunesBuilder, "channel.itunes").all {
-            prop(FakePodcastItunesBuilder::author).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastItunesBuilder::author).isEqualTo("podcast itunes author")
             prop(FakePodcastItunesBuilder::ownerBuilder).isEqualTo(expectedOwnerBuilder)
             prop(FakePodcastItunesBuilder::categories).containsExactly(
                 ItunesCategory.TECH_NEWS,
                 ItunesCategory.SOCIETY_AND_CULTURE,
                 ItunesCategory.SCIENCE_FICTION
             )
-            prop(FakePodcastItunesBuilder::subtitle).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastItunesBuilder::summary).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastItunesBuilder::keywords).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastItunesBuilder::subtitle).isEqualTo("podcast itunes subtitle")
+            prop(FakePodcastItunesBuilder::summary).isEqualTo("podcast itunes summary")
+            prop(FakePodcastItunesBuilder::keywords).isEqualTo("podcast itunes keywords")
             prop(FakePodcastItunesBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastItunesBuilder::block).isNotNull().isFalse()
             prop(FakePodcastItunesBuilder::complete).isNotNull().isFalse()
@@ -117,7 +117,7 @@ internal class ItunesParserTest : NamespaceParserTest() {
         node.parseItemChildNodes(builder)
 
         assertThat(builder.itunesBuilder, "item.itunes").all {
-            prop(FakeEpisodeItunesBuilder::title).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeItunesBuilder::title).isEqualTo("episode itunes title")
             prop(FakeEpisodeItunesBuilder::duration).isEqualTo(StyledDuration.hoursMinutesSeconds(3, 24, 27))
             prop(FakeEpisodeItunesBuilder::season).isEqualTo(1)
             prop(FakeEpisodeItunesBuilder::episode).isEqualTo(1)
@@ -125,9 +125,9 @@ internal class ItunesParserTest : NamespaceParserTest() {
             prop(FakeEpisodeItunesBuilder::block).isNotNull().isFalse()
             prop(FakeEpisodeItunesBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
             prop(FakeEpisodeItunesBuilder::episodeType).isEqualTo(EpisodeType.FULL)
-            prop(FakeEpisodeItunesBuilder::author).isEqualTo("author")
-            prop(FakeEpisodeItunesBuilder::subtitle).isEqualTo("subtitle")
-            prop(FakeEpisodeItunesBuilder::summary).isEqualTo("summary")
+            prop(FakeEpisodeItunesBuilder::author).isEqualTo("episode itunes author")
+            prop(FakeEpisodeItunesBuilder::subtitle).isEqualTo("episode itunes subtitle")
+            prop(FakeEpisodeItunesBuilder::summary).isEqualTo("episode itunes summary")
         }
     }
 
@@ -170,6 +170,114 @@ internal class ItunesParserTest : NamespaceParserTest() {
             prop(FakeEpisodeItunesBuilder::author).isNull()
             prop(FakeEpisodeItunesBuilder::subtitle).isNull()
             prop(FakeEpisodeItunesBuilder::summary).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract an Itunes category tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.itunesBuilder, "channel.itunes").all {
+            prop(FakePodcastItunesBuilder::categories).isEmpty()
+        }
+    }
+
+    @Test
+    fun `should not extract an Itunes explicit tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.itunesBuilder, "channel.itunes").all {
+            prop(FakePodcastItunesBuilder::explicit).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract an Itunes block tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.itunesBuilder, "channel.itunes").all {
+            prop(FakePodcastItunesBuilder::block).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract an Itunes complete tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.itunesBuilder, "channel.itunes").all {
+            prop(FakePodcastItunesBuilder::complete).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract an Itunes type tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.itunesBuilder, "channel.itunes").all {
+            prop(FakePodcastItunesBuilder::type).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract an Itunes duration tag from the item when the value is invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.itunesBuilder, "item.itunes").all {
+            prop(FakeEpisodeItunesBuilder::duration).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract an Itunes explicit tag from the item when the value is invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.itunesBuilder, "item.itunes").all {
+            prop(FakeEpisodeItunesBuilder::explicit).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract an Itunes block tag from the item when the value is invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.itunesBuilder, "item.itunes").all {
+            prop(FakeEpisodeItunesBuilder::block).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract an Itunes episodeType tag from the item when the value is invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.itunesBuilder, "item.itunes").all {
+            prop(FakeEpisodeItunesBuilder::episodeType).isNull()
         }
     }
 }

@@ -7,6 +7,7 @@ import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.dom.parseAsBooleanOrNull
 import dev.stalla.dom.parseAsInt
+import dev.stalla.dom.parseAsLocaleOrNull
 import dev.stalla.dom.parseAsTemporalAccessor
 import dev.stalla.dom.textOrNull
 import dev.stalla.dom.toRssCategoryBuilder
@@ -44,7 +45,7 @@ internal object RssParser : NamespaceParser() {
             "generator" -> builder.generator(ifCanBeParsed { textOrNull() })
             "image" -> builder.imageBuilder(ifCanBeParsed { toRssImageBuilder(builder.createRssImageBuilder()) })
             "language" -> {
-                val language = ifCanBeParsed { textOrNull() } ?: return
+                val language = ifCanBeParsed { parseAsLocaleOrNull() } ?: return
                 builder.language(language)
             }
             "lastBuildDate" -> builder.lastBuildDate(ifCanBeParsed { parseAsTemporalAccessor() })

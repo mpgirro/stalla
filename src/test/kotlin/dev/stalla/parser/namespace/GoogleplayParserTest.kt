@@ -26,9 +26,9 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
 
     override val parser = GoogleplayParser
 
-    private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/podcast-cover.jpg")
+    private val expectedPodcastImageBuilder = FakeHrefOnlyImageBuilder().href("podcast googleplay image href")
 
-    private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("http://example.org/episode-cover.jpg")
+    private val expectedEpisodeImageBuilder = FakeHrefOnlyImageBuilder().href("episode googleplay image href")
 
     @Test
     fun `should extract all Googleplay fields from channel when present`() {
@@ -37,14 +37,14 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
         node.parseChannelChildNodes(builder)
 
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
-            prop(FakePodcastGoogleplayBuilder::author).isEqualTo("Lorem Ipsum")
-            prop(FakePodcastGoogleplayBuilder::owner).isEqualTo("email@example.org")
+            prop(FakePodcastGoogleplayBuilder::author).isEqualTo("podcast googleplay author")
+            prop(FakePodcastGoogleplayBuilder::email).isEqualTo("podcast googleplay email")
             prop(FakePodcastGoogleplayBuilder::categories).containsExactly(GoogleplayCategory.NEWS_AND_POLITICS)
-            prop(FakePodcastGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
+            prop(FakePodcastGoogleplayBuilder::description).isEqualTo("podcast googleplay description")
             prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::block).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::imageBuilder).isEqualTo(expectedPodcastImageBuilder)
-            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isEqualTo("https://new.example.com/rss/rss.xml")
+            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isEqualTo("podcast googleplay newFeedUrl")
         }
     }
 
@@ -56,7 +56,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
 
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
             prop(FakePodcastGoogleplayBuilder::author).isNull()
-            prop(FakePodcastGoogleplayBuilder::owner).isNull()
+            prop(FakePodcastGoogleplayBuilder::email).isNull()
             prop(FakePodcastGoogleplayBuilder::categories).isEmpty()
             prop(FakePodcastGoogleplayBuilder::description).isNull()
             prop(FakePodcastGoogleplayBuilder::explicit).isNull()
@@ -74,7 +74,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
 
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
             prop(FakePodcastGoogleplayBuilder::author).isNull()
-            prop(FakePodcastGoogleplayBuilder::owner).isNull()
+            prop(FakePodcastGoogleplayBuilder::email).isNull()
             prop(FakePodcastGoogleplayBuilder::categories).isEmpty()
             prop(FakePodcastGoogleplayBuilder::description).isNull()
             prop(FakePodcastGoogleplayBuilder::explicit).isNull()
@@ -91,8 +91,8 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
         node.parseItemChildNodes(builder)
 
         assertThat(builder.googleplayBuilder, "item.googleplay").all {
-            prop(FakeEpisodeGoogleplayBuilder::author).isEqualTo("Lorem Ipsum")
-            prop(FakeEpisodeGoogleplayBuilder::description).isEqualTo("Lorem Ipsum")
+            prop(FakeEpisodeGoogleplayBuilder::author).isEqualTo("episode googleplay author")
+            prop(FakeEpisodeGoogleplayBuilder::description).isEqualTo("episode googleplay description")
             prop(FakeEpisodeGoogleplayBuilder::explicit).isNotNull().isEqualTo(ExplicitType.CLEAN)
             prop(FakeEpisodeGoogleplayBuilder::block).isNotNull().isFalse()
             prop(FakeEpisodeGoogleplayBuilder::imageBuilder).isEqualTo(expectedEpisodeImageBuilder)
@@ -126,6 +126,78 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             prop(FakeEpisodeGoogleplayBuilder::explicit).isNull()
             prop(FakeEpisodeGoogleplayBuilder::block).isNull()
             prop(FakeEpisodeGoogleplayBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
+        }
+    }
+
+    @Test
+    fun `should not extract a Googleplay category tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::categories).isEmpty()
+        }
+    }
+
+    @Test
+    fun `should not extract a Googleplay explicit tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::explicit).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract a Googleplay block tag from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::block).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract a Googleplay newFeedUrl tag from the channel when the tag has the wrong name`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "channel.googleplay").all {
+            prop(FakePodcastGoogleplayBuilder::newFeedUrl).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract a Googleplay explicit tag from the item when the value is invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "item.googleplay").all {
+            prop(FakeEpisodeGoogleplayBuilder::explicit).isNull()
+        }
+    }
+
+    @Test
+    fun `should not extract a Googleplay block tag from the item when the value is invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.googleplayBuilder, "item.googleplay").all {
+            prop(FakeEpisodeGoogleplayBuilder::block).isNull()
         }
     }
 }

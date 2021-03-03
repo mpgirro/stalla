@@ -1,21 +1,21 @@
 package dev.stalla.builder.fake
 
 import dev.stalla.builder.AtomBuilder
+import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.LinkBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.model.atom.Atom
 
 internal class FakeAtomBuilder : FakeBuilder<Atom>(), AtomBuilder {
 
-    var authorBuilders: MutableList<PersonBuilder> = mutableListOf()
-    var contributorBuilders: MutableList<PersonBuilder> = mutableListOf()
+    var authorBuilders: MutableList<AtomPersonBuilder> = mutableListOf()
+    var contributorBuilders: MutableList<AtomPersonBuilder> = mutableListOf()
     var linkBuilders: MutableList<LinkBuilder> = mutableListOf()
 
-    override fun addAuthorBuilder(authorBuilder: PersonBuilder): AtomBuilder = apply {
+    override fun addAuthorBuilder(authorBuilder: AtomPersonBuilder): AtomBuilder = apply {
         authorBuilders.add(authorBuilder)
     }
 
-    override fun addContributorBuilder(contributorBuilder: PersonBuilder): AtomBuilder = apply {
+    override fun addContributorBuilder(contributorBuilder: AtomPersonBuilder): AtomBuilder = apply {
         contributorBuilders.add(contributorBuilder)
     }
 

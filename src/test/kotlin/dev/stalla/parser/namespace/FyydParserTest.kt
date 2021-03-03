@@ -22,7 +22,7 @@ internal class FyydParserTest : NamespaceParserTest() {
         node.parseChannelChildNodes(builder)
 
         assertThat(builder.fyydBuilder, "channel.fyyd")
-            .prop(FakePodcastFyydBuilder::verifyValue).isEqualTo("abcdefg")
+            .prop(FakePodcastFyydBuilder::verifyValue).isEqualTo("fyyd verify")
     }
 
     @Test

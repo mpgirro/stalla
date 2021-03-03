@@ -1,5 +1,6 @@
 package dev.stalla.builder
 
+import com.google.common.net.MediaType
 import dev.stalla.model.atom.Link
 import dev.stalla.util.whenNotNull
 
@@ -25,7 +26,7 @@ public interface LinkBuilder : Builder<Link> {
     public fun title(title: String?): LinkBuilder
 
     /** Set the type value. */
-    public fun type(type: String?): LinkBuilder
+    public fun type(type: MediaType?): LinkBuilder
 
     override fun applyFrom(prototype: Link?): LinkBuilder =
         whenNotNull(prototype) { link ->

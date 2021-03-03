@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel
+    xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:fyyd="https://fyyd.de/fyyd-ns/"
+    xmlns:feedpress="https://feed.press/xmlns"
+    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+    xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md">
+    <language>foobar</language>
+    <itunes:category text="xyz" />
+    <itunes:category text="foo">
+        <itunes:category text="bar"/>
+    </itunes:category>
+    <itunes:explicit>xyz</itunes:explicit>
+    <itunes:block>xyz</itunes:block>
+    <itunes:complete>xyz</itunes:complete>
+    <itunes:type>xyz</itunes:type>
+    <googleplay:category text="xyz" />
+    <googleplay:explicit>xyz</googleplay:explicit>
+    <googleplay:block>xyz</googleplay:block>
+    <googleplay:new-feed-url>the correct tag is googleplay:newFeedUrl</googleplay:new-feed-url>
+    <podcast:locked owner="abc">xyz</podcast:locked>
+    <podcast:locked>yes</podcast:locked>
+    <feedpress:locale>xyz</feedpress:locale>
+</channel>

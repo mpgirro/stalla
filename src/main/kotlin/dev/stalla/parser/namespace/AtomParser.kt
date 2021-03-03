@@ -1,13 +1,14 @@
 package dev.stalla.parser.namespace
 
 import dev.stalla.builder.AtomBuilder
+import dev.stalla.builder.AtomPersonBuilderProvider
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.LinkBuilderProvider
-import dev.stalla.builder.PersonBuilderProvider
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.getAttributeValueByName
-import dev.stalla.dom.toPersonBuilder
+import dev.stalla.dom.parseAsMediaTypeOrNull
+import dev.stalla.dom.toAtomPersonBuilder
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
@@ -25,29 +26,37 @@ internal object AtomParser : NamespaceParser() {
 
     override fun Node.parseChannelData(builder: ProvidingPodcastBuilder) {
         val atomBuilder = builder.atomBuilder
-        parseCommonAtomData(personBuilderProvider = builder, linkBuilderProvider = builder, atomBuilder = atomBuilder)
+        parseCommonAtomData(
+            atomPersonBuilderProvider = builder,
+            linkBuilderProvider = builder,
+            atomBuilder = atomBuilder
+        )
     }
 
     override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         val atomBuilder = builder.atomBuilder
-        parseCommonAtomData(personBuilderProvider = builder, linkBuilderProvider = builder, atomBuilder = atomBuilder)
+        parseCommonAtomData(
+            atomPersonBuilderProvider = builder,
+            linkBuilderProvider = builder,
+            atomBuilder = atomBuilder
+        )
     }
 
     private fun Node.parseCommonAtomData(
-        personBuilderProvider: PersonBuilderProvider,
+        atomPersonBuilderProvider: AtomPersonBuilderProvider,
         linkBuilderProvider: LinkBuilderProvider,
         atomBuilder: AtomBuilder
     ) {
         when (localName) {
             "contributor" -> {
                 val personBuilder = ifCanBeParsed {
-                    toPersonBuilder(personBuilderProvider.createPersonBuilder(), namespace)
+                    toAtomPersonBuilder(atomPersonBuilderProvider.createAtomPersonBuilder(), namespace)
                 } ?: return
                 atomBuilder.addContributorBuilder(personBuilder)
             }
             "author" -> {
                 val personBuilder = ifCanBeParsed {
-                    toPersonBuilder(personBuilderProvider.createPersonBuilder(), namespace)
+                    toAtomPersonBuilder(atomPersonBuilderProvider.createAtomPersonBuilder(), namespace)
                 } ?: return
                 atomBuilder.addAuthorBuilder(personBuilder)
             }
@@ -70,6 +79,6 @@ internal object AtomParser : NamespaceParser() {
             .length(getAttributeValueByName("length"))
             .rel(getAttributeValueByName("rel"))
             .title(getAttributeValueByName("title"))
-            .type(getAttributeValueByName("type"))
+            .type(getAttributeValueByName("type").parseAsMediaTypeOrNull())
     }
 }

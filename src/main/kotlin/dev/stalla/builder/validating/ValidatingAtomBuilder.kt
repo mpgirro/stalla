@@ -1,22 +1,22 @@
 package dev.stalla.builder.validating
 
 import dev.stalla.builder.AtomBuilder
+import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.LinkBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.model.atom.Atom
 import dev.stalla.util.InternalApi
 
 @InternalApi
 internal class ValidatingAtomBuilder : AtomBuilder {
 
-    private var authorBuilders: MutableList<PersonBuilder> = mutableListOf()
-    private var contributorBuilders: MutableList<PersonBuilder> = mutableListOf()
+    private var authorBuilders: MutableList<AtomPersonBuilder> = mutableListOf()
+    private var contributorBuilders: MutableList<AtomPersonBuilder> = mutableListOf()
     private var linkBuilders: MutableList<LinkBuilder> = mutableListOf()
 
-    override fun addAuthorBuilder(authorBuilder: PersonBuilder): AtomBuilder =
+    override fun addAuthorBuilder(authorBuilder: AtomPersonBuilder): AtomBuilder =
         apply { authorBuilders.add(authorBuilder) }
 
-    override fun addContributorBuilder(contributorBuilder: PersonBuilder): AtomBuilder =
+    override fun addContributorBuilder(contributorBuilder: AtomPersonBuilder): AtomBuilder =
         apply { contributorBuilders.add(contributorBuilder) }
 
     override fun addLinkBuilder(linkBuilder: LinkBuilder): AtomBuilder =

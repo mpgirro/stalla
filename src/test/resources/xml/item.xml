@@ -7,55 +7,55 @@
     xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
     xmlns:bitlove="http://bitlove.org"
     xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md">
-    <title>Lorem Ipsum</title>
-    <link>http://example.org/episode1</link>
-    <description><![CDATA[Lorem Ipsum]]></description>
-    <author>author@example.org</author>
-    <category domain="banana">category 1</category>
-    <category>category 2</category>
-    <comments>http://example.org/episode1/comments</comments>
+    <title>episode rss title</title>
+    <link>episode rss link</link>
+    <description><![CDATA[episode rss description]]></description>
+    <author>episode rss author</author>
+    <category domain="episode rss category domain">episode rss category 1</category>
+    <category>episode rss category 2</category>
+    <comments>episode rss comments</comments>
     <enclosure
-        url="http://example.org/episode1.m4a"
+        url="episode rss enclosure url"
         length="78589133"
-        type="audio/mp4"
-        bitlove:guid="abcdefg" />
-    <guid isPermaLink="true">1fa609024fdf097</guid>
+        type="episode rss enclosure type"
+        bitlove:guid="episode bitlove guid" />
+    <guid isPermaLink="true">episode rss guid</guid>
     <pubDate>Fri, 16 Mar 2018 22:49:08 +0000</pubDate>
-    <source>http://example.org/rss</source>
-    <content:encoded><![CDATA[Lorem Ipsum]]></content:encoded>
-    <itunes:title>Lorem Ipsum</itunes:title>
+    <source>episode rss source</source>
+    <content:encoded><![CDATA[episode content encoded]]></content:encoded>
+    <itunes:title>episode itunes title</itunes:title>
     <itunes:duration>03:24:27</itunes:duration>
-    <itunes:image href="http://example.org/episode-cover.jpg"/>
+    <itunes:image href="episode itunes image href"/>
     <itunes:explicit>no</itunes:explicit>
     <itunes:block>no</itunes:block>
     <itunes:season>1</itunes:season>
     <itunes:episode>1</itunes:episode>
     <itunes:episodeType>full</itunes:episodeType>
-    <itunes:author>author</itunes:author>
-    <itunes:subtitle>subtitle</itunes:subtitle>
-    <itunes:summary>summary</itunes:summary>
-    <googleplay:author>Lorem Ipsum</googleplay:author>
-    <googleplay:description>Lorem Ipsum</googleplay:description>
+    <itunes:author>episode itunes author</itunes:author>
+    <itunes:subtitle>episode itunes subtitle</itunes:subtitle>
+    <itunes:summary>episode itunes summary</itunes:summary>
+    <googleplay:author>episode googleplay author</googleplay:author>
+    <googleplay:description>episode googleplay description</googleplay:description>
     <googleplay:explicit>clean</googleplay:explicit>
     <googleplay:block>no</googleplay:block>
-    <googleplay:image href="http://example.org/episode-cover.jpg"/>
-    <atom:link rel="self" type="application/rss+xml" title="Lorem Ipsum" href="http://example.org/feed/m4a"/>
+    <googleplay:image href="episode googleplay image href"/>
+    <atom:link rel="episode atom link rel" type="text/html" title="episode atom link title" href="episode atom link href"/>
     <atom:author>
-        <atom:name>Lorem Ipsum</atom:name>
-        <atom:email>person@example.org</atom:email>
-        <atom:uri>http://example.org</atom:uri>
+        <atom:name>episode atom author name</atom:name>
+        <atom:email>episode atom author email</atom:email>
+        <atom:uri>episode atom author uri</atom:uri>
     </atom:author>
     <atom:contributor>
-        <atom:name>Lorem Ipsum</atom:name>
-        <atom:email>person@example.org</atom:email>
-        <atom:uri>http://example.org</atom:uri>
+        <atom:name>episode atom contributor name</atom:name>
+        <atom:email>episode atom contributor email</atom:email>
+        <atom:uri>episode atom contributor uri</atom:uri>
     </atom:contributor>
     <psc:chapters version="1.2">
-        <psc:chapter start="00:00:00.000" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
-        <psc:chapter start="00:01:03.856" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
-        <psc:chapter start="00:02:12.641" title="Lorem Ipsum" href="http://example.org" image="http://example.org/cover"/>
+        <psc:chapter start="00:00:00.000" title="episode podlove simplechapter title 1" href="episode podlove simplechapter href 1" image="episode podlove simplechapter image 1"/>
+        <psc:chapter start="00:01:03.856" title="episode podlove simplechapter title 2" href="episode podlove simplechapter href 2" image="episode podlove simplechapter image 2"/>
+        <psc:chapter start="00:02:12.641" title="episode podlove simplechapter title 3" href="episode podlove simplechapter href 3" image="episode podlove simplechapter image 3"/>
     </psc:chapters>
-    <podcast:chapters url="https://example.com/ep3_chapters.json" type="application/json"/>
-    <podcast:soundbite startTime="33.833" duration="60.0">I'm a soundbite</podcast:soundbite>
-    <podcast:transcript url="https://example.com/ep3/transcript.txt" type="text/plain" language="it-IT" rel="captions"/>
+    <podcast:chapters url="episode podcastindex chapters url" type="application/json"/>
+    <podcast:soundbite startTime="33.833" duration="60.0">episode podcastindex soundbite title</podcast:soundbite>
+    <podcast:transcript url="episode podcastindex transcript url" type="text/plain" language="it-IT" rel="episode podcastindex transcript rel"/>
 </item>

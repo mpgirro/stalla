@@ -2,8 +2,8 @@ package dev.stalla.writer.namespace
 
 import dev.stalla.dom.appendElement
 import dev.stalla.dom.appendHrefOnlyImageElement
+import dev.stalla.dom.appendItunesOwnerElement
 import dev.stalla.dom.appendItunesStyleCategoryElements
-import dev.stalla.dom.appendPersonElement
 import dev.stalla.dom.appendTrueFalseElement
 import dev.stalla.dom.appendYesElementIfTrue
 import dev.stalla.model.Episode
@@ -40,7 +40,7 @@ internal object ItunesWriter : NamespaceWriter() {
         }
 
         if (itunes.owner != null) {
-            appendPersonElement("owner", itunes.owner, namespace)
+            appendItunesOwnerElement("owner", itunes.owner, namespace)
         }
 
         if (itunes.type != null) {

@@ -45,19 +45,19 @@ internal class PodloveSimpleChapterParserTest : NamespaceParserTest() {
             .containsExactly(
                 FakeEpisodePodloveSimpleChapterBuilder()
                     .start("00:00:00.000")
-                    .title("Lorem Ipsum")
-                    .href("http://example.org")
-                    .image("http://example.org/cover"),
+                    .title("episode podlove simplechapter title 1")
+                    .href("episode podlove simplechapter href 1")
+                    .image("episode podlove simplechapter image 1"),
                 FakeEpisodePodloveSimpleChapterBuilder()
                     .start("00:01:03.856")
-                    .title("Lorem Ipsum")
-                    .href("http://example.org")
-                    .image("http://example.org/cover"),
+                    .title("episode podlove simplechapter title 2")
+                    .href("episode podlove simplechapter href 2")
+                    .image("episode podlove simplechapter image 2"),
                 FakeEpisodePodloveSimpleChapterBuilder()
                     .start("00:02:12.641")
-                    .title("Lorem Ipsum")
-                    .href("http://example.org")
-                    .image("http://example.org/cover")
+                    .title("episode podlove simplechapter title 3")
+                    .href("episode podlove simplechapter href 3")
+                    .image("episode podlove simplechapter image 3")
             )
     }
 }

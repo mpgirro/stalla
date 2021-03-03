@@ -5,9 +5,10 @@ import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEmpty
 import assertk.assertions.prop
+import com.google.common.net.MediaType
 import dev.stalla.builder.fake.FakeAtomBuilder
+import dev.stalla.builder.fake.FakeAtomPersonBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
-import dev.stalla.builder.fake.FakePersonBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastBuilder
 import dev.stalla.dom.XmlRes
@@ -20,16 +21,37 @@ internal class AtomParserTest : NamespaceParserTest() {
 
     override val parser = AtomParser
 
-    private val expectedLinkBuilder = FakeLinkBuilder()
-        .href("http://example.org/feed/m4a")
-        .rel("self")
-        .title("Lorem Ipsum")
-        .type("application/rss+xml")
+    private val expectedPodcastLinkBuilder = FakeLinkBuilder()
+        .href("podcast atom link href")
+        .rel("podcast atom link rel")
+        .title("podcast atom link title")
+        .type(MediaType.HTML_UTF_8.withoutParameters())
 
-    private val expectedPersonBuilder = FakePersonBuilder()
-        .name("Lorem Ipsum")
-        .email("person@example.org")
-        .uri("http://example.org")
+    private val expectedPodcastAuthorBuilder = FakeAtomPersonBuilder()
+        .name("podcast atom author name")
+        .email("podcast atom author email")
+        .uri("podcast atom author uri")
+
+    private val expectedPodcastContributorBuilder = FakeAtomPersonBuilder()
+        .name("podcast atom contributor name")
+        .email("podcast atom contributor email")
+        .uri("podcast atom contributor uri")
+
+    private val expectedEpisodeLinkBuilder = FakeLinkBuilder()
+        .href("episode atom link href")
+        .rel("episode atom link rel")
+        .title("episode atom link title")
+        .type(MediaType.HTML_UTF_8.withoutParameters())
+
+    private val expectedEpisodeAuthorBuilder = FakeAtomPersonBuilder()
+        .name("episode atom author name")
+        .email("episode atom author email")
+        .uri("episode atom author uri")
+
+    private val expectedEpisodeContributorBuilder = FakeAtomPersonBuilder()
+        .name("episode atom contributor name")
+        .email("episode atom contributor email")
+        .uri("episode atom contributor uri")
 
     @Test
     fun `should extract all Atom fields from channel when present`() {
@@ -38,9 +60,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         channel.parseChannelChildNodes(builder)
 
         assertThat(builder.atomBuilder, "channel.atom").all {
-            prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
+            prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedPodcastAuthorBuilder)
+            prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedPodcastContributorBuilder)
+            prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedPodcastLinkBuilder)
         }
     }
 
@@ -77,9 +99,9 @@ internal class AtomParserTest : NamespaceParserTest() {
         item.parseItemChildNodes(builder)
 
         assertThat(builder.atomBuilder, "item.atom").all {
-            prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedPersonBuilder)
-            prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedLinkBuilder)
+            prop(FakeAtomBuilder::authorBuilders).containsExactly(expectedEpisodeAuthorBuilder)
+            prop(FakeAtomBuilder::contributorBuilders).containsExactly(expectedEpisodeContributorBuilder)
+            prop(FakeAtomBuilder::linkBuilders).containsExactly(expectedEpisodeLinkBuilder)
         }
     }
 

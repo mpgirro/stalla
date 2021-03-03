@@ -3,6 +3,7 @@ package dev.stalla.builder.podcast
 import dev.stalla.builder.Builder
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.util.whenNotNull
+import java.util.Locale
 
 /** Builder for constructing [Feedpress] instances. */
 public interface PodcastFeedpressBuilder : Builder<Feedpress> {
@@ -11,7 +12,7 @@ public interface PodcastFeedpressBuilder : Builder<Feedpress> {
     public fun newsletterId(newsletterId: String?): PodcastFeedpressBuilder
 
     /** Set the locale value. */
-    public fun locale(locale: String?): PodcastFeedpressBuilder
+    public fun locale(locale: Locale?): PodcastFeedpressBuilder
 
     /** Set the podcastId value. */
     public fun podcastId(podcastId: String?): PodcastFeedpressBuilder

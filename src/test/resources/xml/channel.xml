@@ -6,32 +6,32 @@
     xmlns:feedpress="https://feed.press/xmlns"
     xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
     xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md">
-    <title>Lorem Ipsum</title>
-    <link>http://example.org</link>
-    <description>Lorem Ipsum</description>
+    <title>podcast rss title</title>
+    <link>podcast rss link</link>
+    <description>podcast rss description</description>
     <pubDate>Fri, 16 Mar 2018 22:49:08 +0000</pubDate>
     <lastBuildDate>Fri, 16 Mar 2018 22:49:08 +0000</lastBuildDate>
-    <language>de-DE</language>
-    <generator>Lorem Ipsum</generator>
-    <copyright>Lorem Ipsum</copyright>
-    <docs>Lorem Ipsum</docs>
-    <managingEditor>editor@example.org</managingEditor>
-    <webMaster>webmaster@example.org</webMaster>
+    <language>de</language>
+    <generator>podcast rss generator</generator>
+    <copyright>podcast rss copyright</copyright>
+    <docs>podcast rss docs</docs>
+    <managingEditor>podcast rss managingeditor</managingEditor>
+    <webMaster>podcast rss webmaster</webMaster>
     <image>
-        <url>http://example.org/podcast-cover.jpg</url>
-        <title>Lorem Ipsum</title>
-        <link>http://example.org</link>
+        <url>podcast rss image url</url>
+        <title>podcast rss image title</title>
+        <link>podcast rss image link</link>
         <width>600</width>
         <height>600</height>
-        <description>Lorem Ipsum</description>
+        <description>podcast rss image description</description>
     </image>
-    <category domain="banana">category 1</category>
-    <category>category 2</category>
-    <itunes:subtitle>Lorem Ipsum</itunes:subtitle>
-    <itunes:summary>Lorem Ipsum</itunes:summary>
-    <itunes:image href="http://example.org/podcast-cover.jpg"/>
-    <itunes:keywords>Lorem Ipsum</itunes:keywords>
-    <itunes:author>Lorem Ipsum</itunes:author>
+    <category domain="podcast rss category domain">podcast rss category 1</category>
+    <category>podcast rss category 2</category>
+    <itunes:subtitle>podcast itunes subtitle</itunes:subtitle>
+    <itunes:summary>podcast itunes summary</itunes:summary>
+    <itunes:image href="podcast itunes image href"/>
+    <itunes:keywords>podcast itunes keywords</itunes:keywords>
+    <itunes:author>podcast itunes author</itunes:author>
     <itunes:category text="Technology">
         <itunes:category text="Tech News"/>
     </itunes:category>
@@ -46,34 +46,34 @@
     <itunes:title>podcast itunes title</itunes:title>
     <itunes:new-feed-url>podcast itunes new-feed-url</itunes:new-feed-url>
     <itunes:owner>
-        <itunes:name>Lorem Ipsum</itunes:name>
-        <itunes:email>owner@example.org</itunes:email>
+        <itunes:name>podcast itunes owner name</itunes:name>
+        <itunes:email>podcast itunes owner email</itunes:email>
     </itunes:owner>
-    <googleplay:author>Lorem Ipsum</googleplay:author>
-    <googleplay:owner>email@example.org</googleplay:owner>
+    <googleplay:author>podcast googleplay author</googleplay:author>
+    <googleplay:email>podcast googleplay email</googleplay:email>
     <googleplay:category text="News &amp; Politics" />
-    <googleplay:description>Lorem Ipsum</googleplay:description>
+    <googleplay:description>podcast googleplay description</googleplay:description>
     <googleplay:explicit>no</googleplay:explicit>
     <googleplay:block>no</googleplay:block>
-    <googleplay:image href="http://example.org/podcast-cover.jpg"/>
-    <googleplay:new-feed-url>https://new.example.com/rss/rss.xml</googleplay:new-feed-url>
-    <atom:link rel="self" type="application/rss+xml" title="Lorem Ipsum" href="http://example.org/feed/m4a"/>
+    <googleplay:image href="podcast googleplay image href"/>
+    <googleplay:newFeedUrl>podcast googleplay newFeedUrl</googleplay:newFeedUrl>
+    <atom:link rel="podcast atom link rel" type="text/html" title="podcast atom link title" href="podcast atom link href"/>
     <atom:author>
-        <atom:name>Lorem Ipsum</atom:name>
-        <atom:email>person@example.org</atom:email>
-        <atom:uri>http://example.org</atom:uri>
+        <atom:name>podcast atom author name</atom:name>
+        <atom:email>podcast atom author email</atom:email>
+        <atom:uri>podcast atom author uri</atom:uri>
     </atom:author>
     <atom:contributor>
-        <atom:name>Lorem Ipsum</atom:name>
-        <atom:email>person@example.org</atom:email>
-        <atom:uri>http://example.org</atom:uri>
+        <atom:name>podcast atom contributor name</atom:name>
+        <atom:email>podcast atom contributor email</atom:email>
+        <atom:uri>podcast atom contributor uri</atom:uri>
     </atom:contributor>
-    <fyyd:verify>abcdefg</fyyd:verify>
-    <feedpress:newsletterId>abc123</feedpress:newsletterId>
-    <feedpress:locale>en</feedpress:locale>
-    <feedpress:podcastId>xyz123</feedpress:podcastId>
-    <feedpress:cssFile>http://example.org/style.css</feedpress:cssFile>
-    <feedpress:link>http://example.org/my-link</feedpress:link>
-    <podcast:locked owner="podcastowner@example.com">yes</podcast:locked>
-    <podcast:funding url="https://example.com/donate">Support the show!</podcast:funding>
+    <fyyd:verify>fyyd verify</fyyd:verify>
+    <feedpress:newsletterId>feedpres newsletterid</feedpress:newsletterId>
+    <feedpress:locale>de</feedpress:locale>
+    <feedpress:podcastId>feedpress podcastid</feedpress:podcastId>
+    <feedpress:cssFile>feedpress cssfile</feedpress:cssFile>
+    <feedpress:link>feedpress link</feedpress:link>
+    <podcast:locked owner="podcast podcastindex locked owner">yes</podcast:locked>
+    <podcast:funding url="podcast podcastindex funding url">podcast podcastindex funding message</podcast:funding>
 </channel>

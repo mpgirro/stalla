@@ -1,9 +1,10 @@
 package dev.stalla.dom
 
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.Person
+import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.itunes.ItunesOwner
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import dev.stalla.util.BooleanStringStyle
@@ -161,14 +162,14 @@ internal fun Node.appendYesNoElement(tagName: String, value: Boolean, namespace:
     }
 
 /**
- * Appends a [tagName] element with the data from the provided [Person].
+ * Appends a [tagName] element with the data from the provided [AtomPerson].
  *
  * @param tagName The local name of the tag to append
  * @param person The person instance to use
  * @param namespace The namespace to use, if any
  */
 @InternalApi
-internal fun Node.appendPersonElement(tagName: String, person: Person, namespace: FeedNamespace? = null) {
+internal fun Node.appendAtomPersonElement(tagName: String, person: AtomPerson, namespace: FeedNamespace? = null) {
     if (person.name.isBlank()) return
 
     appendElement(tagName, namespace) {
@@ -181,6 +182,24 @@ internal fun Node.appendPersonElement(tagName: String, person: Person, namespace
         if (person.uri.isNeitherNullNorBlank()) {
             appendElement("uri", namespace) { textContent = person.uri?.trim() }
         }
+    }
+}
+
+/**
+ * Appends a [tagName] element with the data from the provided [ItunesOwner].
+ *
+ * @param tagName The local name of the tag to append
+ * @param owner The owner instance to use
+ * @param namespace The namespace to use, if any
+ */
+@InternalApi
+internal fun Node.appendItunesOwnerElement(tagName: String, owner: ItunesOwner, namespace: FeedNamespace? = null) {
+    if (owner.name.isBlank()) return
+
+    appendElement(tagName, namespace) {
+        appendElement("name", namespace) { textContent = owner.name.trim() }
+
+        appendElement("email", namespace) { textContent = owner.email.trim() }
     }
 }
 

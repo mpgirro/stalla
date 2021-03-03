@@ -14,13 +14,13 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     public fun author(author: String?): PodcastGoogleplayBuilder
 
     /** Set the owner email value. */
-    public fun owner(email: String?): PodcastGoogleplayBuilder
+    public fun email(email: String?): PodcastGoogleplayBuilder
 
     /** Adds the [GoogleplayCategory] the list of categories. */
     public fun addCategory(category: GoogleplayCategory): PodcastGoogleplayBuilder
 
     /** Adds all of the [GoogleplayCategory] to the list of categories. */
-    public fun addAllCategorie(categories: List<GoogleplayCategory>): PodcastGoogleplayBuilder =
+    public fun addAllCategories(categories: List<GoogleplayCategory>): PodcastGoogleplayBuilder =
         apply { categories.forEach(::addCategory) }
 
     /** Set the description value. */
@@ -41,8 +41,8 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     override fun applyFrom(prototype: PodcastGoogleplay?): PodcastGoogleplayBuilder =
         whenNotNull(prototype) { googleplay ->
             author(googleplay.author)
-            owner(googleplay.owner)
-            addAllCategorie(googleplay.categories)
+            email(googleplay.email)
+            addAllCategories(googleplay.categories)
             description(googleplay.description)
             explicit(googleplay.explicit)
             block(googleplay.block)

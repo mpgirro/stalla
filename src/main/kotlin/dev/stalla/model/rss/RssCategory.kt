@@ -14,7 +14,10 @@ import dev.stalla.model.BuilderFactory
  * @param name The name of the category.
  * @param domain A name or URL identifying a categorization taxonomy.
  */
-public data class RssCategory(val name: String, val domain: String? = null) {
+public data class RssCategory(
+    val name: String,
+    val domain: String? = null
+) {
 
     /** Provides a builder for the [RssCategory] class. */
     public companion object Factory : BuilderFactory<RssCategory, RssCategoryBuilder> {

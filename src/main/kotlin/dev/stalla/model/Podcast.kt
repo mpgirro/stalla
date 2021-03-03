@@ -11,6 +11,7 @@ import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<channel>` elements.
@@ -35,7 +36,7 @@ import java.time.temporal.TemporalAccessor
  * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
  * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property categories The RSS feed categories, if any.
- * @property podcast The data from the Podcast namespace, or null if no data from this namespace was found.
+ * @property podcast The data from the Podcastindex namespace, or null if no data from this namespace was found.
  */
 public data class Podcast(
     val title: String,
@@ -43,7 +44,7 @@ public data class Podcast(
     val description: String,
     val pubDate: TemporalAccessor? = null,
     val lastBuildDate: TemporalAccessor? = null,
-    val language: String,
+    val language: Locale,
     val generator: String? = null,
     val copyright: String? = null,
     val docs: String? = null,

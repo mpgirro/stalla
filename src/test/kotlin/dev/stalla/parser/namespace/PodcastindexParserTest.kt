@@ -8,6 +8,7 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import com.google.common.net.MediaType
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexChaptersBuilder
@@ -31,26 +32,26 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
 
     private val expectedLockedBuilder = FakePodcastPodcastindexLockedBuilder()
         .locked(true)
-        .owner("podcastowner@example.com")
+        .owner("podcast podcastindex locked owner")
 
     private val expectedFundingBuilder = FakePodcastPodcastindexFundingBuilder()
-        .url("https://example.com/donate")
-        .message("Support the show!")
+        .url("podcast podcastindex funding url")
+        .message("podcast podcastindex funding message")
 
     private val expectedChaptersBuilder = FakeEpisodePodcastindexChaptersBuilder()
-        .url("https://example.com/ep3_chapters.json")
-        .type("application/json")
+        .url("episode podcastindex chapters url")
+        .type(MediaType.JSON_UTF_8.withoutParameters())
 
     private val expectedSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
         .startTime(StyledDuration.secondsAndFraction(33, 833_000_000))
         .duration(StyledDuration.secondsAndFraction(60))
-        .title("I'm a soundbite")
+        .title("episode podcastindex soundbite title")
 
     private val expectedTranscriptBuilder = FakeEpisodePodcastindexTranscriptBuilder()
-        .url("https://example.com/ep3/transcript.txt")
+        .url("episode podcastindex transcript url")
         .type(TranscriptType.PLAIN_TEXT)
         .language(Locale.ITALY)
-        .rel("captions")
+        .rel("episode podcastindex transcript rel")
 
     @Test
     fun `should extract all Podcastindex fields from channel when present`() {
@@ -128,6 +129,18 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
     }
 
     @Test
+    internal fun `should not extract Podcastindex Locked tags from the channel when the value is invalid`() {
+        val channel: Node = XmlRes("/xml/channel-invalid.xml").rootNodeByName("channel")
+
+        val builder = FakePodcastBuilder()
+        channel.parseChannelChildNodes(builder)
+
+        assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").all {
+            prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
+        }
+    }
+
+    @Test
     internal fun `should not extract Podcastindex Soundbite tags from the item when the durations are invalid`() {
         val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
 
@@ -136,6 +149,18 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
 
         assertThat(builder.podcastindexBuilder, "item.podcastindex").all {
             prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).isEmpty()
+        }
+    }
+
+    @Test
+    internal fun `should not extract Podcastindex Transcript tags from the item when the types are invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.podcastindexBuilder, "item.podcastindex").all {
+            prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).isEmpty()
         }
     }
 }

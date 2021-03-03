@@ -1,5 +1,6 @@
 package dev.stalla.model.podcastindex
 
+import com.google.common.net.MediaType
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexChaptersBuilder
 import dev.stalla.model.BuilderFactory
@@ -13,7 +14,7 @@ import dev.stalla.model.BuilderFactory
  */
 public data class Chapters(
     val url: String,
-    val type: String
+    val type: MediaType
 ) {
 
     /** Provides a builder for the [Chapters] class. */

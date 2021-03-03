@@ -49,7 +49,7 @@ internal object PodcastindexWriter : NamespaceWriter() {
         if (podcastNs.chapters != null && podcastNs.chapters.canBeWritten()) {
             appendElement("chapters", namespace) {
                 setAttribute("url", podcastNs.chapters.url.trim())
-                setAttribute("type", podcastNs.chapters.type.trim())
+                setAttribute("type", podcastNs.chapters.type.toString())
             }
         }
 
@@ -75,5 +75,5 @@ internal object PodcastindexWriter : NamespaceWriter() {
         }
     }
 
-    private fun Chapters.canBeWritten() = url.isNotBlank() && type.isNotBlank()
+    private fun Chapters.canBeWritten() = url.isNotBlank()
 }

@@ -1,5 +1,6 @@
 package dev.stalla.builder.fake
 
+import com.google.common.net.MediaType
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.model.atom.Link
 
@@ -11,7 +12,7 @@ internal class FakeLinkBuilder : FakeBuilder<Link>(), LinkBuilder {
     var length: String? = null
     var rel: String? = null
     var title: String? = null
-    var type: String? = null
+    var type: MediaType? = null
 
     override fun href(href: String): LinkBuilder = apply { this.hrefValue = href }
 
@@ -25,7 +26,7 @@ internal class FakeLinkBuilder : FakeBuilder<Link>(), LinkBuilder {
 
     override fun title(title: String?): LinkBuilder = apply { this.title = title }
 
-    override fun type(type: String?): LinkBuilder = apply { this.type = type }
+    override fun type(type: MediaType?): LinkBuilder = apply { this.type = type }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

@@ -1,9 +1,9 @@
 package dev.stalla.builder.fake.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
-import dev.stalla.builder.PersonBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastItunesBuilder
+import dev.stalla.builder.podcast.PodcastItunesOwnerBuilder
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
@@ -21,7 +21,7 @@ internal class FakePodcastItunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
     var block: Boolean? = null
     var complete: Boolean? = null
     var type: ShowType? = null
-    var ownerBuilder: PersonBuilder? = null
+    var ownerBuilder: PodcastItunesOwnerBuilder? = null
     var title: String? = null
     var newFeedUrl: String? = null
 
@@ -45,7 +45,7 @@ internal class FakePodcastItunesBuilder : FakeBuilder<PodcastItunes>(), PodcastI
 
     override fun type(type: String?): PodcastItunesBuilder = apply { this.type = ShowType.of(type) }
 
-    override fun ownerBuilder(ownerBuilder: PersonBuilder?): PodcastItunesBuilder = apply { this.ownerBuilder = ownerBuilder }
+    override fun ownerBuilder(ownerBuilder: PodcastItunesOwnerBuilder?): PodcastItunesBuilder = apply { this.ownerBuilder = ownerBuilder }
 
     override fun title(title: String?): PodcastItunesBuilder = apply {
         this.title = title

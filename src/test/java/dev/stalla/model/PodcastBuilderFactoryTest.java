@@ -16,6 +16,8 @@ import dev.stalla.model.rss.Enclosure;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Locale;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class PodcastBuilderFactoryTest {
@@ -36,7 +38,7 @@ public class PodcastBuilderFactoryTest {
             .title("title")
             .description("description")
             .link("link")
-            .language("language")
+            .language(Locale.GERMAN)
             .addEpisodeBuilder(episodeBuilder);
 
         assertNotNull(podcastBuilder.build());
@@ -78,7 +80,7 @@ public class PodcastBuilderFactoryTest {
     @DisplayName("should build a Podcast Feedpress model using builder factory methods only")
     public void testPodcastFeedpressBuilderFactory() {
         PodcastFeedpressBuilder podcastFeedpressBuilder = Feedpress.builder()
-            .locale("locale");
+            .locale(Locale.GERMAN);
 
         assertNotNull(podcastFeedpressBuilder.build());
     }

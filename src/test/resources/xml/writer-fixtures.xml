@@ -15,7 +15,7 @@
         <description>podcast description</description>
         <pubDate>Sat, 26 Dec 2020 15:32:22 GMT</pubDate>
         <lastBuildDate>Tue, 22 Dec 2020 08:11:04 GMT</lastBuildDate>
-        <language>language</language>
+        <language>de</language>
         <generator>generator</generator>
         <copyright>copyright</copyright>
         <docs>docs</docs>
@@ -44,7 +44,7 @@
         <itunes:type>episodic</itunes:type>
         <itunes:owner>
             <itunes:name>podcast itunes owner name</itunes:name>
-            <itunes:email>person email</itunes:email>
+            <itunes:email>podcast itunes owner email</itunes:email>
         </itunes:owner>
         <itunes:title>podcast itunes title</itunes:title>
         <itunes:new-feed-url>podcast itunes newFeedUrl</itunes:new-feed-url>
@@ -59,21 +59,21 @@
             <atom:uri>person uri</atom:uri>
         </atom:contributor>
         <atom:link href="podcast atom link href" hrefLang="link hrefLang" hrefResolved="link hrefResolved" length="link length" rel="link rel"
-                   title="link title" type="link type"/>
+                   title="link title" type="text/html"/>
         <fyyd:verify>podcast fyyd verify</fyyd:verify>
         <feedpress:newsletterId>podcast feedpress newsletterId</feedpress:newsletterId>
-        <feedpress:locale>podcast feedpress locale</feedpress:locale>
+        <feedpress:locale>de</feedpress:locale>
         <feedpress:podcastId>podcast feedpress podcastId</feedpress:podcastId>
         <feedpress:cssFile>podcast feedpress cssFile</feedpress:cssFile>
         <feedpress:link>podcast feedpress link</feedpress:link>
         <googleplay:author>podcast googleplay author</googleplay:author>
-        <googleplay:owner>podcast googleplay owner</googleplay:owner>
+        <googleplay:email>podcast googleplay email</googleplay:email>
         <googleplay:category text="News &amp; Politics" />
         <googleplay:description>podcast googleplay description</googleplay:description>
         <googleplay:explicit>yes</googleplay:explicit>
         <googleplay:block>yes</googleplay:block>
         <googleplay:image href="podcast googleplay image url"/>
-        <googleplay:new-feed-url>podcast googleplay newFeedUrl</googleplay:new-feed-url>
+        <googleplay:newFeedUrl>podcast googleplay newFeedUrl</googleplay:newFeedUrl>
         <podcast:locked owner="podcast podcastindex locked owner">yes</podcast:locked>
         <podcast:funding url="podcast podcastindex funding url">podcast podcastindex funding message</podcast:funding>
         <item>
@@ -110,7 +110,7 @@
                 <atom:uri>person uri</atom:uri>
             </atom:contributor>
             <atom:link href="episode atom link href" hrefLang="link hrefLang" hrefResolved="link hrefResolved" length="link length" rel="link rel"
-                       title="link title" type="link type"/>
+                       title="link title" type="text/html"/>
             <psc:chapters>
                 <psc:chapter start="episode podlove simple chapter start" title="episode podlove simple chapter title"
                              href="episode podlove simple chapter href" image="episode podlove simple chapter image"/>
@@ -122,7 +122,7 @@
             <googleplay:block>yes</googleplay:block>
             <podcast:transcript url="episode podcastindex transcript url" type="application/srt" language="it-IT" rel="captions"/>
             <podcast:soundbite startTime="1" duration="15.123">episode podcastindex soundbite title</podcast:soundbite>
-            <podcast:chapters url="episode podcastindex chapters url" type="episode podcastindex chapters type"/>
+            <podcast:chapters url="episode podcastindex chapters url" type="application/json"/>
         </item>
     </channel>
 </rss>

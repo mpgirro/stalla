@@ -11,8 +11,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastBuilder
+import dev.stalla.builder.validating.ValidatingAtomPersonBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.builder.validating.ValidatingPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
@@ -29,6 +29,7 @@ import dev.stalla.model.podcast.aPodcast
 import dev.stalla.model.podcastindex.PodcastPodcastindex
 import org.junit.jupiter.api.Test
 import java.time.Month
+import java.util.Locale
 
 internal class ValidatingPodcastBuilderTest {
 
@@ -50,7 +51,7 @@ internal class ValidatingPodcastBuilderTest {
         .title("episode title")
         .enclosureBuilder(expectedEnclosureBuilder)
 
-    private val expectedAtomAuthorBuilder = ValidatingPersonBuilder().name("atom author")
+    private val expectedAtomAuthorBuilder = ValidatingAtomPersonBuilder().name("atom author")
 
     private val expectedITunesImageBuilder = ValidatingHrefOnlyImageBuilder().href("itunes image href")
 
@@ -81,7 +82,7 @@ internal class ValidatingPodcastBuilderTest {
         val podcastBuilder = ValidatingPodcastBuilder()
             .link("link")
             .description("description")
-            .language("language")
+            .language(Locale.GERMAN)
             .addEpisodeBuilder(expectedEpisodeBuilder)
 
         assertAll {
@@ -96,7 +97,7 @@ internal class ValidatingPodcastBuilderTest {
         val podcastBuilder = ValidatingPodcastBuilder()
             .title("title")
             .description("description")
-            .language("language")
+            .language(Locale.GERMAN)
             .addEpisodeBuilder(expectedEpisodeBuilder)
 
         assertAll {
@@ -111,7 +112,7 @@ internal class ValidatingPodcastBuilderTest {
         val podcastBuilder = ValidatingPodcastBuilder()
             .title("title")
             .link("link")
-            .language("language")
+            .language(Locale.GERMAN)
             .addEpisodeBuilder(expectedEpisodeBuilder)
 
         assertAll {
@@ -142,7 +143,7 @@ internal class ValidatingPodcastBuilderTest {
             .title("title")
             .link("link")
             .description("description")
-            .language("language")
+            .language(Locale.GERMAN)
 
         assertAll {
             assertThat(podcastBuilder).prop(PodcastBuilder::hasEnoughDataToBuild).isFalse()
@@ -157,7 +158,7 @@ internal class ValidatingPodcastBuilderTest {
             .title("title")
             .link("link")
             .description("description")
-            .language("language")
+            .language(Locale.GERMAN)
             .addEpisodeBuilder(expectedEpisodeBuilder)
 
         assertAll {
@@ -169,7 +170,7 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::description).isEqualTo("description")
                 prop(Podcast::pubDate).isNull()
                 prop(Podcast::lastBuildDate).isNull()
-                prop(Podcast::language).isEqualTo("language")
+                prop(Podcast::language).isEqualTo(Locale.GERMAN)
                 prop(Podcast::generator).isNull()
                 prop(Podcast::copyright).isNull()
                 prop(Podcast::docs).isNull()
@@ -195,7 +196,7 @@ internal class ValidatingPodcastBuilderTest {
             .description("description")
             .pubDate(aPubDate)
             .lastBuildDate(aLastBuildDate)
-            .language("language")
+            .language(Locale.GERMAN)
             .generator("generator")
             .copyright("copyright")
             .docs("docs")
@@ -225,7 +226,7 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::description).isEqualTo("description")
                 prop(Podcast::pubDate).isEqualTo(aPubDate)
                 prop(Podcast::lastBuildDate).isEqualTo(aLastBuildDate)
-                prop(Podcast::language).isEqualTo("language")
+                prop(Podcast::language).isEqualTo(Locale.GERMAN)
                 prop(Podcast::generator).isEqualTo("generator")
                 prop(Podcast::copyright).isEqualTo("copyright")
                 prop(Podcast::docs).isEqualTo("docs")
