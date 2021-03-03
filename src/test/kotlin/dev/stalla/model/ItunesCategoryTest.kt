@@ -1,4 +1,4 @@
-package dev.stalla.model.factory
+package dev.stalla.model
 
 import assertk.all
 import assertk.assertThat
@@ -9,7 +9,7 @@ import assertk.assertions.isNotInstanceOf
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
-import dev.stalla.model.arguments
+import dev.stalla.arguments
 import dev.stalla.model.itunes.ItunesCategory
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -18,7 +18,7 @@ import org.junit.jupiter.params.provider.ArgumentsSource
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberProperties
 
-class ItunesCategoryFactoryTest {
+class ItunesCategoryTest {
 
     internal class SimpleCategoryNameProvider : ArgumentsProvider by arguments(*simpleCategoryNames.toTypedArray())
 

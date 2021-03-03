@@ -7,6 +7,7 @@ import assertk.assertions.isInstanceOf
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import dev.stalla.arguments
 import dev.stalla.model.podcastindex.TranscriptType
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
