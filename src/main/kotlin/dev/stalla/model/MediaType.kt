@@ -5,14 +5,14 @@ import dev.stalla.util.escapeIfNeededTo
 import java.util.Locale
 
 /**
- * Represents a Media Type value as defiend in [RFC 2046][https://tools.ietf.org/html/rfc2046].
+ * Represents a Media Type value as defiend in [RFC 2046](https://tools.ietf.org/html/rfc2046).
  * This class is heavily inspired by the
- * [ContentType][https://github.com/ktorio/ktor/blob/master/ktor-http/common/src/io/ktor/http/ContentTypes.kt]
- * class of the [Ktor][https://ktor.io] project. Special thanks to the Ktor contributors.
+ * [ContentType](https://github.com/ktorio/ktor/blob/master/ktor-http/common/src/io/ktor/http/ContentTypes.kt)
+ * class of the [Ktor](https://ktor.io) project. Special thanks to the Ktor contributors.
  *
  * Note that this class only ensures syntactically valid media type constructs,
- * but does not ensure that an instance is an
- * [IANA defined media type][http://www.iana.org/assignments/media-types/media-types.xhtml].
+ * but does not ensure that an instance is actually an
+ * [IANA media type](http://www.iana.org/assignments/media-types/media-types.xhtml).
  *
  * @property type The type part of the media type.
  * @property subtype The subtype part of the media type.
@@ -62,34 +62,11 @@ public open class MediaType private constructor(
     public fun parameter(name: String): String? =
         parameters.firstOrNull { it.name.equals(name, ignoreCase = true) }?.value
 
-    override fun toString(): String = when {
-        parameters.isEmpty() -> content
-        else -> {
-            val size = content.length + parameters.sumBy { it.name.length + it.value.length + 3 }
-            StringBuilder(size).apply {
-                append(content)
-                for (element in parameters) {
-                    val (name, value) = element
-                    append("; ")
-                    append(name)
-                    append("=")
-                    value.escapeIfNeededTo(this)
-                }
-            }.toString()
-        }
-    }
-
     /** Creates a copy of `this` type with the added parameter with the [name] and [value]. */
     public fun withParameter(name: String, value: String): MediaType {
         if (hasParameter(name, value)) return this
 
         return MediaType(type, subtype, content, parameters + Parameter(name, value))
-    }
-
-    private fun hasParameter(name: String, value: String): Boolean = when (parameters.size) {
-        0 -> false
-        1 -> parameters[0].let { it.name.equals(name, ignoreCase = true) && it.value.equals(value, ignoreCase = true) }
-        else -> parameters.any { it.name.equals(name, ignoreCase = true) && it.value.equals(value, ignoreCase = true) }
     }
 
     /** Creates a copy of `this` type without any parameters.*/
@@ -133,6 +110,23 @@ public open class MediaType private constructor(
      */
     public fun match(pattern: String): Boolean = match(MediaTypeParser.parse(pattern))
 
+    override fun toString(): String = when {
+        parameters.isEmpty() -> content
+        else -> {
+            val size = content.length + parameters.sumBy { it.name.length + it.value.length + 3 }
+            StringBuilder(size).apply {
+                append(content)
+                for (element in parameters) {
+                    val (name, value) = element
+                    append("; ")
+                    append(name)
+                    append("=")
+                    value.escapeIfNeededTo(this)
+                }
+            }.toString()
+        }
+    }
+
     override fun equals(other: Any?): Boolean =
         other is MediaType &&
             type.equals(other.type, ignoreCase = true) &&
@@ -146,13 +140,19 @@ public open class MediaType private constructor(
         return result
     }
 
+    private fun hasParameter(name: String, value: String): Boolean = when (parameters.size) {
+        0 -> false
+        1 -> parameters[0].let { it.name.equals(name, ignoreCase = true) && it.value.equals(value, ignoreCase = true) }
+        else -> parameters.any { it.name.equals(name, ignoreCase = true) && it.value.equals(value, ignoreCase = true) }
+    }
+
     /** Gets an instance of [MediaType] from a raw value. */
     public companion object Factory : TypeFactory<MediaType> {
 
         /**
          * Factory method that returns the instance matching the [rawValue] parameter, if any.
          * Does not check if [rawValue] matches an
-         * [IANA defined media type][http://www.iana.org/assignments/media-types/media-types.xhtml].
+         * [IANA media type][http://www.iana.org/assignments/media-types/media-types.xhtml].
          *
          * @param rawValue The string representation of the instance.
          * @return The instance matching [rawValue], or `null` if no matching instance exists.

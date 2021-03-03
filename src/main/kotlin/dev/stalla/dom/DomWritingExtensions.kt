@@ -39,7 +39,7 @@ internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: Fe
 }
 
 /**
- * Appends an [RSS `<image>` tag][https://www.w3schools.com/XML/rss_tag_image.asp] to this [Element].
+ * Appends an [RSS `<image>` tag](https://www.w3schools.com/XML/rss_tag_image.asp) to this [Element].
  *
  * @param image The image to represent with the new element.
  */
@@ -204,7 +204,7 @@ internal fun Node.appendItunesOwnerElement(tagName: String, owner: ItunesOwner, 
 }
 
 /**
- * Appends iTunes-Style <ns:category> tags with the data from the provided [categories].
+ * Appends iTunes-Style `<ns:category>` tags with the data from the provided [categories].
  *
  * @param categories The [categories][ItunesCategory] to append.
  * @param namespace The namespace to use, if any.
@@ -258,7 +258,7 @@ internal fun Node.appendGoogleplayCategoryElements(
 }
 
 /**
- * Appends RSS <category> tags with the data from the provided [categories].
+ * Appends RSS `<category>` tags with the data from the provided [categories].
  *
  * @param categories The [categories][RssCategory] to append.
  * @param namespace The namespace to use, if any.

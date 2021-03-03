@@ -24,7 +24,7 @@ import org.w3c.dom.Node
  *
  * Note that RSS 2.0 feeds do not have a namespace URI, and thus [namespace] is null.
  *
- * The RSS specification is described [here][http://www.rssboard.org/rss-2-0].
+ * The RSS specification is described [here](http://www.rssboard.org/rss-2-0).
  */
 @InternalApi
 internal object RssParser : NamespaceParser() {

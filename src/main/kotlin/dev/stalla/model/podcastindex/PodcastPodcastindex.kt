@@ -5,7 +5,7 @@ import dev.stalla.builder.validating.podcast.ValidatingPodcastPodcastindexBuilde
 import dev.stalla.model.BuilderFactory
 
 /**
- * Model class for data from elements of the Podcast 1.0 namespace that are valid within `<channel>` elements.
+ * Model class for data from elements of the Podcastindex namespace that are valid within `<channel>` elements.
  *
  * @property locked The lock status of the podcast.
  * @property funding The funding information for the podcast.

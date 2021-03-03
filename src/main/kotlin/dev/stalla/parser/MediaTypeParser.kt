@@ -6,10 +6,10 @@ import dev.stalla.util.nextIsSemicolonOrEnd
 import dev.stalla.util.subtrim
 
 /**
- * Parser implementation for Media Type value as defiend in [RFC 2046][https://tools.ietf.org/html/rfc2046].
+ * Parser implementation for Media Type value as defiend in [RFC 2046](https://tools.ietf.org/html/rfc2046).
  * The parsing logic is heavily based on the inner workings of the
- * [ContentType][https://github.com/ktorio/ktor/blob/master/ktor-http/common/src/io/ktor/http/ContentTypes.kt]
- * class of the [Ktor][https://ktor.io] project and related code of its HTTP package.
+ * [ContentType](https://github.com/ktorio/ktor/blob/master/ktor-http/common/src/io/ktor/http/ContentTypes.kt)
+ * class of the [Ktor](https://ktor.io) project and related code of its HTTP package.
  * Special thanks to the Ktor contributors.
  */
 @InternalApi

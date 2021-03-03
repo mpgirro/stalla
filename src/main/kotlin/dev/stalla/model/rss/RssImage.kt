@@ -5,7 +5,7 @@ import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.model.BuilderFactory
 
 /**
- * An [RSS `<image>` tag][https://www.w3schools.com/XML/rss_tag_image.asp]. An
+ * An [RSS `<image>` tag](https://www.w3schools.com/XML/rss_tag_image.asp). An
  * RSS image tag looks something like this:
  *
  * ```xml
