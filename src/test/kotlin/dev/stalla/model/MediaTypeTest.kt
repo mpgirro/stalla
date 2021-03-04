@@ -10,6 +10,7 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import dev.stalla.matchMimePattern
 import org.junit.jupiter.api.Test
 
 class MediaTypeTest {
@@ -76,7 +77,7 @@ class MediaTypeTest {
             prop(MediaType::subtype).isEqualTo("plain")
             prop(MediaType::parameters).hasSize(1)
             prop(MediaType::parameters).index(0).isEqualTo(MediaType.Parameter("charset", "utf-8"))
-            prop("toString") { MediaType::toString.call(it) }.isEqualTo("text/plain; charset=utf-8")
+            matchMimePattern("text/plain; charset=utf-8")
             isEqualTo(MediaType.PLAIN_TEXT.withParameter("charset", "utf-8"))
         }
     }
@@ -84,7 +85,7 @@ class MediaTypeTest {
     @Test
     fun `should parse plain arbitrary parameters correctly`() {
         assertThat(MediaType.of("text/plain ; charset = utf-8;foo=bar")).isNotNull()
-            .prop("toString") { MediaType::toString.call(it) }.isEqualTo("text/plain; charset=utf-8; foo=bar")
+            .matchMimePattern("text/plain; charset=utf-8; foo=bar")
     }
 
     @Test
@@ -103,8 +104,13 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when  the type part is missing`() {
+    fun `should fail to parse Media Type patterns when the type part is missing`() {
         assertThat(MediaType.of(" / plain")).isNull()
+    }
+
+    @Test
+    fun `should fail to parse Media Type patterns when the type is a wildcard but the subtype is concrete`() {
+        assertThat(MediaType.of("*/json")).isNull()
     }
 
     @Test
@@ -134,7 +140,7 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should parse Media Type patterns and ignore parameter when the parameter attribute contains separator symbols`() {
+    fun `should parse Media Type patterns correctly`() {
         assertThat(MediaType.of("audio/*;attr<=value")).isNotNull()
             .isEqualTo(MediaType.of("audio/*"))
     }
@@ -168,18 +174,19 @@ class MediaTypeTest {
 
     @Test
     fun `should parse Media Type patterns when illegal characters are quoted`() {
+        // Note: This pattern is a sample from RFC 2046 (https://tools.ietf.org/html/rfc2046#section-5.1.1)
         assertThat(MediaType.of("text/plain; boundary=\"gc0pJq0M:08jU534c0p\"")).isNotNull().all {
             prop(MediaType::type).isEqualTo("text")
             prop(MediaType::subtype).isEqualTo("plain")
             prop(MediaType::parameters).hasSize(1)
             prop(MediaType::parameters).index(0).isEqualTo(MediaType.Parameter("boundary", "gc0pJq0M:08jU534c0p"))
-            prop("toString") { MediaType::toString.call(it) }.isEqualTo("text/plain; boundary=\"gc0pJq0M:08jU534c0p\"")
+            matchMimePattern("text/plain; boundary=\"gc0pJq0M:08jU534c0p\"")
             isEqualTo(MediaType.PLAIN_TEXT.withParameter("boundary", "gc0pJq0M:08jU534c0p"))
         }
     }
 
     @Test
-    fun `should fail to parse Media Type patterns with a subtype placeholder`() {
+    fun `should parse Media Type patterns with a wildcard subtype`() {
         assertThat(MediaType.of("text / *")).isNotNull().all {
             prop(MediaType::type).isEqualTo("text")
             prop(MediaType::subtype).isEqualTo("*")

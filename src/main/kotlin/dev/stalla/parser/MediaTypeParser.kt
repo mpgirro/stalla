@@ -48,6 +48,8 @@ internal object MediaTypeParser {
 
             if (subtype.isEmpty() || subtype.containsMediaTypeSeparatorSymbol()) return null
 
+            if (type == "*" && subtype != "*") return null
+
             MediaType(type, subtype, parameters)
         }
     }

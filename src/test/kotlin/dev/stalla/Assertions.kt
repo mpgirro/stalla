@@ -6,6 +6,7 @@ import assertk.assertions.support.expected
 import dev.stalla.builder.Builder
 import dev.stalla.dom.asListOfNodes
 import dev.stalla.dom.asString
+import dev.stalla.model.MediaType
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
 import org.w3c.dom.Attr
@@ -143,3 +144,14 @@ internal fun Assert<Node>.childNodesNamed(localName: String, namespace: FeedName
         node.childNodes.asListOfNodes()
             .filter { it.localName == localName && namespace.matches(it.namespaceURI) }
     }
+
+
+/** Asserts that the `toString` of the [MediaType] matches the expected value. */
+internal fun Assert<MediaType>.matchMimePattern(expected: String) = given { mediaType ->
+    if (mediaType.toString() == expected) return@given
+    expected(
+        "to have the string form '$expected' but was '$mediaType'",
+        expected = expected,
+        actual = mediaType.toString()
+    )
+}
