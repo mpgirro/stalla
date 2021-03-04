@@ -88,27 +88,82 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should fail to produce a Media Type instance from the factory method for an invalid input`() {
+    fun `should fail to parse Media Type patterns for an invalid input`() {
         assertThat(MediaType.of("text/plain/something")).isNull()
     }
 
     @Test
-    fun `should fail to produce a Media Type instance from the factory method when there is only the type part`() {
+    fun `should fail to parse Media Type patterns when there is only the type part`() {
         assertThat(MediaType.of("text")).isNull()
     }
 
     @Test
-    fun `should fail to produce a Media Type instance from the factory method when the delimiter is missing`() {
+    fun `should fail to parse Media Type patterns when the delimiter is missing`() {
         assertThat(MediaType.of("text plain")).isNull()
     }
 
     @Test
-    fun `should fail to produce a Media Type instance from the factory method when the type part is missing`() {
+    fun `should fail to parse Media Type patterns when  the type part is missing`() {
         assertThat(MediaType.of(" / plain")).isNull()
     }
 
     @Test
-    fun `should produce a Media Type instance from the factory method with a subtype placeholder`() {
+    fun `should fail to parse Media Type patterns when the subtype part is missing`() {
+        assertThat(MediaType.of("text / ")).isNull()
+    }
+
+    @Test
+    fun `should fail to parse Media Type patterns when there are illegal characters`() {
+        assertThat(MediaType.of("audio(/basic")).isNull()
+    }
+
+    @Test
+    fun `should fail to parse Media Type patterns when there is only a parameter`() {
+        assertThat(MediaType.of("     ;a=b")).isNull()
+    }
+
+    @Test
+    fun `should parse Media Type patterns and ignore parameter where the attribute is missing`() {
+        assertThat(MediaType.of("audio/*;=value")).isNotNull()
+            .isEqualTo(MediaType.of("audio/*"))
+    }
+
+    @Test
+    fun `should fail to parse Media Type patterns when the parameter attribute is invalid`() {
+        assertThat(MediaType.of("audio/*;attr<=value")).isNull()
+    }
+
+    @Test
+    fun `should fail to parse Media Type patterns and ignore parameter where the value is empty`() {
+        assertThat(MediaType.of("audio/*;attr=")).isNotNull()
+            .isEqualTo(MediaType.of("audio/*"))
+    }
+
+    @Test
+    fun `should parse Media Type patterns even when illegal characters in parameter value are not quoted`() {
+        // Note: This pattern is a sample from RFC 2046 (https://tools.ietf.org/html/rfc2046#section-5.1.1)
+        assertThat(MediaType.of("multipart/mixed; boundary=gc0pJq0M:08jU534c0p")).isNotNull().all {
+            prop(MediaType::type).isEqualTo("multipart")
+            prop(MediaType::subtype).isEqualTo("mixed")
+            prop(MediaType::parameters).hasSize(1)
+            prop("parameter") { MediaType::parameter.call(it, "boundary") }.isNotNull().isEqualTo("gc0pJq0M:08jU534c0p")
+        }
+    }
+
+    @Test
+    fun `should parse Media Type patterns when illegal characters are quoted`() {
+        assertThat(MediaType.of("multipart/mixed; boundary=\"gc0pJq0M:08jU534c0p\"")).isNotNull().all {
+            prop(MediaType::type).isEqualTo("multipart")
+            prop(MediaType::subtype).isEqualTo("mixed")
+            prop(MediaType::parameters).hasSize(1)
+            prop(MediaType::parameters).index(0).isEqualTo(MediaType.Parameter("boundary", "gc0pJq0M:08jU534c0p"))
+            prop("toString") { MediaType::toString.call(it) }.isEqualTo("multipart/mixed; boundary=\"gc0pJq0M:08jU534c0p\"")
+            isEqualTo(MediaType.PLAIN_TEXT.withParameter("boundary", "gc0pJq0M:08jU534c0p"))
+        }
+    }
+
+    @Test
+    fun `should fail to parse Media Type patterns with a subtype placeholder`() {
         assertThat(MediaType.of("text / *")).isNotNull().all {
             prop(MediaType::type).isEqualTo("text")
             prop(MediaType::subtype).isEqualTo("*")

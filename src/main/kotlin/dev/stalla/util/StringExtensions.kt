@@ -19,7 +19,7 @@ internal fun String.escapeIfNeededTo(out: StringBuilder) = when {
 }
 
 @InternalApi
-private val HeaderFieldValueSeparators =
+internal val MediaTypeFieldValueSeparators =
     setOf('(', ')', '<', '>', '@', ',', ';', ':', '\\', '\"', '/', '[', ']', '?', '=', '{', '}', ' ', '\t', '\n', '\r')
 
 /** Returns `true` of this string contains characters that need excaping. */
@@ -29,7 +29,7 @@ internal fun String.checkNeedEscape(): Boolean {
     if (isQuoted()) return false
 
     for (index in 0 until length) {
-        if (HeaderFieldValueSeparators.contains(this[index])) return true
+        if (MediaTypeFieldValueSeparators.contains(this[index])) return true
     }
 
     return false

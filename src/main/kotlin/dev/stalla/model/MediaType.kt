@@ -1,6 +1,7 @@
 package dev.stalla.model
 
 import dev.stalla.parser.MediaTypeParser
+import dev.stalla.util.InternalApi
 import dev.stalla.util.escapeIfNeededTo
 import java.util.Locale
 
@@ -25,7 +26,8 @@ public open class MediaType private constructor(
     public val parameters: List<Parameter> = emptyList()
 ) {
 
-    public constructor(
+    @InternalApi
+    internal constructor(
         contentType: String,
         contentSubtype: String,
         parameters: List<Parameter> = emptyList()
@@ -39,18 +41,18 @@ public open class MediaType private constructor(
     /**
      * Represents a single value parameter.
      *
-     * @property name of parameter
+     * @property attribute of parameter
      * @property value of parameter
      */
-    public data class Parameter(val name: String, val value: String) {
+    public data class Parameter(val attribute: String, val value: String) {
         override fun equals(other: Any?): Boolean {
             return other is Parameter &&
-                other.name.equals(name, ignoreCase = true) &&
+                other.attribute.equals(attribute, ignoreCase = true) &&
                 other.value.equals(value, ignoreCase = true)
         }
 
         override fun hashCode(): Int {
-            var result = name.toLowerCase(Locale.ROOT).hashCode()
+            var result = attribute.toLowerCase(Locale.ROOT).hashCode()
             result += 31 * result + value.toLowerCase(Locale.ROOT).hashCode()
             return result
         }
@@ -60,7 +62,7 @@ public open class MediaType private constructor(
      * The first value for the parameter with [name] comparing case-insensitively or `null` if no such parameters found.
      */
     public fun parameter(name: String): String? =
-        parameters.firstOrNull { it.name.equals(name, ignoreCase = true) }?.value
+        parameters.firstOrNull { it.attribute.equals(name, ignoreCase = true) }?.value
 
     /** Creates a copy of `this` type with the added parameter with the [name] and [value]. */
     public fun withParameter(name: String, value: String): MediaType {
@@ -113,7 +115,7 @@ public open class MediaType private constructor(
     override fun toString(): String = when {
         parameters.isEmpty() -> content
         else -> {
-            val size = content.length + parameters.sumBy { it.name.length + it.value.length + 3 }
+            val size = content.length + parameters.sumBy { it.attribute.length + it.value.length + 3 }
             StringBuilder(size).apply {
                 append(content)
                 for (element in parameters) {
@@ -142,8 +144,8 @@ public open class MediaType private constructor(
 
     private fun hasParameter(name: String, value: String): Boolean = when (parameters.size) {
         0 -> false
-        1 -> parameters[0].let { it.name.equals(name, ignoreCase = true) && it.value.equals(value, ignoreCase = true) }
-        else -> parameters.any { it.name.equals(name, ignoreCase = true) && it.value.equals(value, ignoreCase = true) }
+        1 -> parameters[0].let { it.attribute.equals(name, ignoreCase = true) && it.value.equals(value, ignoreCase = true) }
+        else -> parameters.any { it.attribute.equals(name, ignoreCase = true) && it.value.equals(value, ignoreCase = true) }
     }
 
     /** Gets an instance of [MediaType] from a raw value. */
