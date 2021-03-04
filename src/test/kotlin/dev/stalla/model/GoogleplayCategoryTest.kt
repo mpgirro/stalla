@@ -37,6 +37,12 @@ class GoogleplayCategoryTest {
         assertThat(GoogleplayCategory.of("googleplay category")).isNull()
     }
 
+    @Test
+    fun `should be case insensitive in the Google Play category factory method`() {
+        assertThat(GoogleplayCategory.of("ARTS")).isNotNull()
+            .prop(GoogleplayCategory::type).isEqualTo("Arts")
+    }
+
     companion object {
 
         @JvmStatic

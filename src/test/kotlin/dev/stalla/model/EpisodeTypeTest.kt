@@ -37,6 +37,12 @@ class EpisodeTypeTest {
         assertThat(EpisodeType.of("itunes episode type")).isNull()
     }
 
+    @Test
+    fun `should be case insensitive in the iTunes episode type factory method`() {
+        assertThat(EpisodeType.of("BONUS")).isNotNull()
+            .prop(EpisodeType::type).isEqualTo("bonus")
+    }
+
     companion object {
 
         @JvmStatic

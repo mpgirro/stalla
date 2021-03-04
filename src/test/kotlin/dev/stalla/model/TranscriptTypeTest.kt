@@ -75,6 +75,12 @@ class TranscriptTypeTest {
         assertThat(TranscriptType.of("undefined transcript type")).isNull()
     }
 
+    @Test
+    fun `should be case insensitive in the Podcastindex transcript type factory method`() {
+        assertThat(TranscriptType.of("TEXT/PLAIN")).isNotNull()
+            .prop("toString") { TranscriptType::toString.call(it) }.isEqualTo("text/plain")
+    }
+
     companion object {
 
         @JvmStatic

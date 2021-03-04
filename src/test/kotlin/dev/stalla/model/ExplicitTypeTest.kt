@@ -37,6 +37,12 @@ class ExplicitTypeTest {
         assertThat(ExplicitType.of("googleplay explicit type")).isNull()
     }
 
+    @Test
+    fun `should be case insensitive in the Google Play explicit type factory method`() {
+        assertThat(ExplicitType.of("CLEAN")).isNotNull()
+            .prop(ExplicitType::type).isEqualTo("clean")
+    }
+
     companion object {
 
         @JvmStatic

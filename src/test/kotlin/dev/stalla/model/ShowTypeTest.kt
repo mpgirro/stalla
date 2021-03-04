@@ -37,6 +37,12 @@ class ShowTypeTest {
         assertThat(ShowType.of("itunes show type")).isNull()
     }
 
+    @Test
+    fun `should be case insensitive in the iTunes show type factory method`() {
+        assertThat(ShowType.of("EPISODIC")).isNotNull()
+            .prop(ShowType::type).isEqualTo("episodic")
+    }
+
     companion object {
 
         @JvmStatic

@@ -117,6 +117,12 @@ class ItunesCategoryTest {
         assertThat(ItunesCategory.of("itunes category")).isNull()
     }
 
+    @Test
+    fun `should be case insensitive in the iTunes category factory method`() {
+        assertThat(ItunesCategory.of("ARTS")).isNotNull()
+            .prop(ItunesCategory::type).isEqualTo("Arts")
+    }
+
     companion object {
 
         @JvmStatic
