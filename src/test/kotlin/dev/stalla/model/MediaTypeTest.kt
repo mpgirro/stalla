@@ -128,19 +128,29 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should parse Media Type patterns and ignore parameter where the attribute is missing`() {
+    fun `should parse Media Type patterns and ignore parameter when the attribute is missing`() {
         assertThat(MediaType.of("audio/*;=value")).isNotNull()
             .isEqualTo(MediaType.of("audio/*"))
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when the parameter attribute is invalid`() {
+    fun `should parse Media Type patterns and ignore parameter when the parameter attribute contains separator symbols`() {
         assertThat(MediaType.of("audio/*;attr<=value")).isNotNull()
             .isEqualTo(MediaType.of("audio/*"))
     }
 
     @Test
-    fun `should fail to parse Media Type patterns and ignore parameter where the value is empty`() {
+    fun `should parse Media Type patterns when the parameter value is single quoted`() {
+        assertThat(MediaType.of("audio/*;attr='v>alue'")).isNotNull().all {
+            prop(MediaType::type).isEqualTo("audio")
+            prop(MediaType::subtype).isEqualTo("*")
+            prop(MediaType::parameters).hasSize(1)
+            prop("parameter") { MediaType::parameter.call(it, "attr") }.isNotNull().isEqualTo("v>alue")
+        }
+    }
+
+    @Test
+    fun `should parse Media Type patterns and ignore parameter where the value is empty`() {
         assertThat(MediaType.of("audio/*;attr=")).isNotNull()
             .isEqualTo(MediaType.of("audio/*"))
     }

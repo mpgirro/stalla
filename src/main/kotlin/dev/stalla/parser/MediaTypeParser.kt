@@ -3,6 +3,7 @@ package dev.stalla.parser
 import dev.stalla.model.MediaType
 import dev.stalla.util.InternalApi
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
+import dev.stalla.util.isQuoteSymbol
 import dev.stalla.util.nextIsSemicolonOrEnd
 import dev.stalla.util.subtrim
 
@@ -140,7 +141,7 @@ internal object MediaTypeParser {
         if (value.length == start) return start to ""
 
         var position = start
-        if (value[start] == '"') return parseMediaTypeValueParameterValueQuoted(value, position + 1)
+        if (value[start].isQuoteSymbol()) return parseMediaTypeValueParameterValueQuoted(value, position + 1)
 
         while (position <= value.lastIndex) {
             when (value[position]) {
@@ -152,6 +153,7 @@ internal object MediaTypeParser {
     }
 
     private fun parseMediaTypeValueParameterValueQuoted(value: String, start: Int): Pair<Int, String> {
+        var quoteSymbol = '"'
         var position = start
         val builder = StringBuilder()
         loop@ while (position <= value.lastIndex) {
@@ -159,6 +161,11 @@ internal object MediaTypeParser {
 
             when {
                 currentChar == '"' && value.nextIsSemicolonOrEnd(position) -> {
+                    quoteSymbol = '"'
+                    return position + 1 to builder.toString()
+                }
+                currentChar == '\'' && value.nextIsSemicolonOrEnd(position) -> {
+                    quoteSymbol = '\''
                     return position + 1 to builder.toString()
                 }
                 currentChar == '\\' && position < value.lastIndex - 2 -> {
@@ -173,7 +180,7 @@ internal object MediaTypeParser {
         }
 
         // The value is unquoted here
-        return position to '"' + builder.toString()
+        return position to quoteSymbol + builder.toString()
     }
 
     private fun <T> Lazy<List<T>>.valueOrEmpty(): List<T> = if (isInitialized()) value else emptyList()
