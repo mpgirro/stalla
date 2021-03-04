@@ -113,8 +113,13 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when there are illegal characters`() {
+    fun `should fail to parse Media Type patterns when there is a RFC 2616 separator symbol in the type part`() {
         assertThat(MediaType.of("audio(/basic")).isNull()
+    }
+
+    @Test
+    fun `should fail to parse Media Type patterns when there is a RFC 2616 separator symbol in the subtype part`() {
+        assertThat(MediaType.of("audio/basic)")).isNull()
     }
 
     @Test
@@ -153,12 +158,12 @@ class MediaTypeTest {
 
     @Test
     fun `should parse Media Type patterns when illegal characters are quoted`() {
-        assertThat(MediaType.of("multipart/mixed; boundary=\"gc0pJq0M:08jU534c0p\"")).isNotNull().all {
-            prop(MediaType::type).isEqualTo("multipart")
-            prop(MediaType::subtype).isEqualTo("mixed")
+        assertThat(MediaType.of("text/plain; boundary=\"gc0pJq0M:08jU534c0p\"")).isNotNull().all {
+            prop(MediaType::type).isEqualTo("text")
+            prop(MediaType::subtype).isEqualTo("plain")
             prop(MediaType::parameters).hasSize(1)
             prop(MediaType::parameters).index(0).isEqualTo(MediaType.Parameter("boundary", "gc0pJq0M:08jU534c0p"))
-            prop("toString") { MediaType::toString.call(it) }.isEqualTo("multipart/mixed; boundary=\"gc0pJq0M:08jU534c0p\"")
+            prop("toString") { MediaType::toString.call(it) }.isEqualTo("text/plain; boundary=\"gc0pJq0M:08jU534c0p\"")
             isEqualTo(MediaType.PLAIN_TEXT.withParameter("boundary", "gc0pJq0M:08jU534c0p"))
         }
     }

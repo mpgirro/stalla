@@ -41,11 +41,11 @@ internal object MediaTypeParser {
 
             val type = parts.substring(0, slash).trim()
 
-            if (type.isEmpty()) return null
+            if (type.isEmpty() || type.containsMediaTypeSeparatorSymbol()) return null
 
             val subtype = parts.substring(slash + 1).trim()
 
-            if (subtype.isEmpty() || subtype.contains('/')) return null
+            if (subtype.isEmpty() || subtype.containsMediaTypeSeparatorSymbol()) return null
 
             MediaType(type, subtype, parameters)
         }
