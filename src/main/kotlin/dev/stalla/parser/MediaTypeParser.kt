@@ -23,7 +23,7 @@ internal object MediaTypeParser {
      * @property value The actual type/subtype construct value.
      * @property params Additional parameters for this value (could be empty).
      */
-    private data class MediaTypeValue(
+    private data class TypeValue(
         val value: String,
         val params: List<MediaType.Parameter> = emptyList()
     )
@@ -53,25 +53,25 @@ internal object MediaTypeParser {
     }
 
     private inline fun <R> parse(value: String, init: (String, List<MediaType.Parameter>) -> R): R {
-        val mediaTypeValue = parseMediaTypeValue(value).single()
+        val mediaTypeValue = parseTypeValue(value).single()
         return init(mediaTypeValue.value, mediaTypeValue.params)
     }
 
-    private fun parseMediaTypeValue(text: String?): List<MediaTypeValue> {
+    private fun parseTypeValue(text: String?): List<TypeValue> {
         if (text == null) return emptyList()
 
         var position = 0
-        val items = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<MediaTypeValue>() }
+        val items = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<TypeValue>() }
         while (position <= text.lastIndex) {
-            position = parseMediaTypeValueItem(text, position, items)
+            position = parseItem(text, position, items)
         }
         return items.valueOrEmpty()
     }
 
-    private fun parseMediaTypeValueItem(
+    private fun parseItem(
         text: String,
         start: Int,
-        items: Lazy<ArrayList<MediaTypeValue>>
+        items: Lazy<ArrayList<TypeValue>>
     ): Int {
         var position = start
         val parameters = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<MediaType.Parameter>() }
@@ -81,7 +81,7 @@ internal object MediaTypeParser {
             when (text[position]) {
                 ',' -> {
                     items.value.add(
-                        MediaTypeValue(
+                        TypeValue(
                             value = text.subtrim(start, valueEnd ?: position),
                             params = parameters.valueOrEmpty()
                         )
@@ -90,7 +90,7 @@ internal object MediaTypeParser {
                 }
                 ';' -> {
                     if (valueEnd == null) valueEnd = position
-                    position = parseMediaTypeValueParameter(text, position + 1, parameters)
+                    position = parseParameter(text, position + 1, parameters)
                 }
                 else -> {
                     position += 1
@@ -98,11 +98,11 @@ internal object MediaTypeParser {
             }
         }
 
-        items.value.add(MediaTypeValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
+        items.value.add(TypeValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
         return position
     }
 
-    private fun parseMediaTypeValueParameter(
+    private fun parseParameter(
         text: String,
         start: Int,
         parameters: Lazy<ArrayList<MediaType.Parameter>>
@@ -119,7 +119,7 @@ internal object MediaTypeParser {
             when (text[position]) {
                 '=' -> {
                     val paramAttr = text.subtrim(start, position)
-                    val (paramEnd, paramValue) = parseMediaTypeValueParameterValue(text, position + 1)
+                    val (paramEnd, paramValue) = parseParameterValue(text, position + 1)
                     if (!paramAttr.containsMediaTypeSeparatorSymbol() && paramValue.isNotBlank()) {
                         addParam(text, start, position, paramValue)
                     }
@@ -137,11 +137,11 @@ internal object MediaTypeParser {
         return position
     }
 
-    private fun parseMediaTypeValueParameterValue(value: String, start: Int): Pair<Int, String> {
+    private fun parseParameterValue(value: String, start: Int): Pair<Int, String> {
         if (value.length == start) return start to ""
 
         var position = start
-        if (value[start].isQuoteSymbol()) return parseMediaTypeValueParameterValueQuoted(value, position + 1)
+        if (value[start].isQuoteSymbol()) return parseParameterValueQuoted(value, position + 1)
 
         while (position <= value.lastIndex) {
             when (value[position]) {
@@ -152,20 +152,14 @@ internal object MediaTypeParser {
         return position to value.subtrim(start, position)
     }
 
-    private fun parseMediaTypeValueParameterValueQuoted(value: String, start: Int): Pair<Int, String> {
-        var quoteSymbol = '"'
+    private fun parseParameterValueQuoted(value: String, start: Int): Pair<Int, String> {
         var position = start
         val builder = StringBuilder()
         loop@ while (position <= value.lastIndex) {
             val currentChar = value[position]
 
             when {
-                currentChar == '"' && value.nextIsSemicolonOrEnd(position) -> {
-                    quoteSymbol = '"'
-                    return position + 1 to builder.toString()
-                }
-                currentChar == '\'' && value.nextIsSemicolonOrEnd(position) -> {
-                    quoteSymbol = '\''
+                currentChar.isQuoteSymbol() && value.nextIsSemicolonOrEnd(position) -> {
                     return position + 1 to builder.toString()
                 }
                 currentChar == '\\' && position < value.lastIndex - 2 -> {
@@ -180,7 +174,7 @@ internal object MediaTypeParser {
         }
 
         // The value is unquoted here
-        return position to quoteSymbol + builder.toString()
+        return position to '"' + builder.toString()
     }
 
     private fun <T> Lazy<List<T>>.valueOrEmpty(): List<T> = if (isInitialized()) value else emptyList()
