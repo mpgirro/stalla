@@ -18,9 +18,15 @@ internal fun String.escapeIfNeededTo(out: StringBuilder) = when {
     else -> out.append(this)
 }
 
+/** Separator symbols listed in RFC 2616 https://tools.ietf.org/html/rfc2616#section-2.2 */
 @InternalApi
-internal val MediaTypeFieldValueSeparators =
+internal val mediaTypeSeparatorSymbols: Set<Char> =
     setOf('(', ')', '<', '>', '@', ',', ';', ':', '\\', '\"', '/', '[', ']', '?', '=', '{', '}', ' ', '\t', '\n', '\r')
+
+/** Return `true` if this string contains any character from [mediaTypeSeparatorSymbols]. */
+@InternalApi
+internal fun String.containsMediaTypeSeparatorSymbol(): Boolean =
+    this.any { c -> mediaTypeSeparatorSymbols.contains(c) }
 
 /** Returns `true` of this string contains characters that need excaping. */
 @InternalApi
@@ -29,7 +35,7 @@ internal fun String.checkNeedEscape(): Boolean {
     if (isQuoted()) return false
 
     for (index in 0 until length) {
-        if (MediaTypeFieldValueSeparators.contains(this[index])) return true
+        if (mediaTypeSeparatorSymbols.contains(this[index])) return true
     }
 
     return false

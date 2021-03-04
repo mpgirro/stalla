@@ -2,6 +2,7 @@ package dev.stalla.parser
 
 import dev.stalla.model.MediaType
 import dev.stalla.util.InternalApi
+import dev.stalla.util.containsMediaTypeSeparatorSymbol
 import dev.stalla.util.nextIsSemicolonOrEnd
 import dev.stalla.util.subtrim
 
@@ -116,9 +117,9 @@ internal object MediaTypeParser {
         while (position <= text.lastIndex) {
             when (text[position]) {
                 '=' -> {
-                    val paramAttr = text.subSequence(start, position)
+                    val paramAttr = text.subtrim(start, position)
                     val (paramEnd, paramValue) = parseMediaTypeValueParameterValue(text, position + 1)
-                    if (paramValue.isNotBlank()) {
+                    if (!paramAttr.containsMediaTypeSeparatorSymbol() && paramValue.isNotBlank()) {
                         addParam(text, start, position, paramValue)
                     }
                     return paramEnd

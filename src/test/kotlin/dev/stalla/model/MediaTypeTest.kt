@@ -130,7 +130,8 @@ class MediaTypeTest {
 
     @Test
     fun `should fail to parse Media Type patterns when the parameter attribute is invalid`() {
-        assertThat(MediaType.of("audio/*;attr<=value")).isNull()
+        assertThat(MediaType.of("audio/*;attr<=value")).isNotNull()
+            .isEqualTo(MediaType.of("audio/*"))
     }
 
     @Test
