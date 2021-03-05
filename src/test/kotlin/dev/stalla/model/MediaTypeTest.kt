@@ -7,10 +7,13 @@ import assertk.assertions.hasSize
 import assertk.assertions.index
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
 import assertk.assertions.prop
-import dev.stalla.matchMimePattern
+import dev.stalla.equalToString
+import dev.stalla.matchPattern
 import org.junit.jupiter.api.Test
 
 class MediaTypeTest {
@@ -72,20 +75,28 @@ class MediaTypeTest {
 
     @Test
     fun `should parse plain charsets parameter correctly`() {
+        val expected = MediaType.PLAIN_TEXT.withParameter("charset", "utf-8")
         assertThat(MediaType.of("text/plain ; charset = utf-8")).isNotNull().all {
             prop(MediaType::type).isEqualTo("text")
             prop(MediaType::subtype).isEqualTo("plain")
             prop(MediaType::parameters).hasSize(1)
             prop(MediaType::parameters).index(0).isEqualTo(MediaType.Parameter("charset", "utf-8"))
-            matchMimePattern("text/plain; charset=utf-8")
-            isEqualTo(MediaType.PLAIN_TEXT.withParameter("charset", "utf-8"))
+            equalToString(expected)
+            matchPattern(expected)
+            isEqualTo(expected)
         }
     }
 
     @Test
     fun `should parse plain arbitrary parameters correctly`() {
-        assertThat(MediaType.of("text/plain ; charset = utf-8;foo=bar")).isNotNull()
-            .matchMimePattern("text/plain; charset=utf-8; foo=bar")
+        val expected = MediaType.PLAIN_TEXT
+            .withParameter("charset", "utf-8")
+            .withParameter("foo", "bar")
+        assertThat(MediaType.of("text/plain ; charset = utf-8;foo=bar")).isNotNull().all {
+            equalToString(expected)
+            matchPattern(expected)
+            isEqualTo(expected)
+        }
     }
 
     @Test
@@ -162,6 +173,37 @@ class MediaTypeTest {
     }
 
     @Test
+    fun `should match a predefined Media Type`() {
+        assertThat(MediaType.AAC_AUDIO.match(MediaType.of("audio/aac"))).isTrue()
+    }
+
+    @Test
+    fun `should match a predefined Media Type from a string pattern`() {
+        assertThat(MediaType.AAC_AUDIO.match("audio/aac")).isTrue()
+    }
+
+    @Test
+    fun `should match a predefined Media Type with a wildcard subtype pattern`() {
+        assertThat(MediaType.AAC_AUDIO.match("audio/*")).isTrue()
+    }
+
+    @Test
+    fun `should not match a wildcard Media Type with a concrete type`() {
+        assertThat(MediaType.ANY_AUDIO.match(MediaType.OGG_AUDIO)).isFalse()
+    }
+
+    @Test
+    fun `should match a concrete Media Type with a wildcard type`() {
+        assertThat(MediaType.OGG_AUDIO.match(MediaType.ANY_AUDIO)).isTrue()
+    }
+
+    @Test
+    fun `should match a Media Type taking parameters into account`() {
+        assertThat(MediaType.PLAIN_TEXT.withParameter("p1", "v1")).isNotNull()
+            .prop("match") { MediaType::parameter.call(it, "p1") }.isNotNull().isEqualTo("v1")
+    }
+
+    @Test
     fun `should parse Media Type patterns even when illegal characters in parameter value are not quoted`() {
         // Note: This pattern is a sample from RFC 2046 (https://tools.ietf.org/html/rfc2046#section-5.1.1)
         assertThat(MediaType.of("multipart/mixed; boundary=gc0pJq0M:08jU534c0p")).isNotNull().all {
@@ -175,13 +217,15 @@ class MediaTypeTest {
     @Test
     fun `should parse Media Type patterns when illegal characters are quoted`() {
         // Note: This pattern is a sample from RFC 2046 (https://tools.ietf.org/html/rfc2046#section-5.1.1)
+        val expected = MediaType.PLAIN_TEXT.withParameter("boundary", "gc0pJq0M:08jU534c0p")
         assertThat(MediaType.of("text/plain; boundary=\"gc0pJq0M:08jU534c0p\"")).isNotNull().all {
             prop(MediaType::type).isEqualTo("text")
             prop(MediaType::subtype).isEqualTo("plain")
             prop(MediaType::parameters).hasSize(1)
             prop(MediaType::parameters).index(0).isEqualTo(MediaType.Parameter("boundary", "gc0pJq0M:08jU534c0p"))
-            matchMimePattern("text/plain; boundary=\"gc0pJq0M:08jU534c0p\"")
-            isEqualTo(MediaType.PLAIN_TEXT.withParameter("boundary", "gc0pJq0M:08jU534c0p"))
+            equalToString("text/plain; boundary=\"gc0pJq0M:08jU534c0p\"")
+            matchPattern(expected)
+            isEqualTo(expected)
         }
     }
 

@@ -145,10 +145,39 @@ internal fun Assert<Node>.childNodesNamed(localName: String, namespace: FeedName
             .filter { it.localName == localName && namespace.matches(it.namespaceURI) }
     }
 
-
-/** Asserts that the `toString` of the [MediaType] matches the expected value. */
-internal fun Assert<MediaType>.matchMimePattern(expected: String) = given { mediaType ->
+/** Asserts that [MediaType.toString] matches the expected value. */
+internal fun Assert<MediaType>.equalToString(expected: String) = given { mediaType ->
     if (mediaType.toString() == expected) return@given
+    expected(
+        "to have the string form '$expected' but was '$mediaType'",
+        expected = expected,
+        actual = mediaType.toString()
+    )
+}
+
+/** Asserts that [MediaType.toString] matches the expected value. */
+internal fun Assert<MediaType>.equalToString(expected: MediaType) = given { mediaType ->
+    if (mediaType.match(expected)) return@given
+    expected(
+        "to have the string form '$expected' but was '$mediaType'",
+        expected = expected,
+        actual = mediaType.toString()
+    )
+}
+
+/** Asserts that [MediaType.match] matches the expected value. */
+internal fun Assert<MediaType>.matchPattern(expected: String) = given { mediaType ->
+    if (mediaType.match(expected)) return@given
+    expected(
+        "to have the string form '$expected' but was '$mediaType'",
+        expected = expected,
+        actual = mediaType.toString()
+    )
+}
+
+/** Asserts that [MediaType.match] matches the expected value. */
+internal fun Assert<MediaType>.matchPattern(expected: MediaType) = given { mediaType ->
+    if (mediaType.match(expected)) return@given
     expected(
         "to have the string form '$expected' but was '$mediaType'",
         expected = expected,

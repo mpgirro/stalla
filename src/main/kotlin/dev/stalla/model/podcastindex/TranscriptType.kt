@@ -32,6 +32,7 @@ import kotlin.reflect.full.declaredMemberProperties
  * @param type The type part of the transcript type.
  * @param subtype The subtype part of the transcript type.
  *
+ * @see Factory Companion object providing a factory method.
  * @see MediaType
  */
 public sealed class TranscriptType(
@@ -62,19 +63,19 @@ public sealed class TranscriptType(
             return valueMap[value.toLowerCase(Locale.ROOT)]
         }
 
-        /** Plain text, with no timing information. */
+        /** Plain text, with no timing information. See [MediaType.PLAIN_TEXT]. */
         @JvmField
         public val PLAIN_TEXT: TranscriptType = object : Instance("text", "plain") {}
 
-        /** HTML, potentially with some timing information. */
+        /** HTML, potentially with some timing information. See [MediaType.HTML]. */
         @JvmField
         public val HTML: TranscriptType = object : Instance("text", "html") {}
 
-        /** JSON ,with full timing information. */
+        /** JSON, with full timing information. See [MediaType.JSON]. */
         @JvmField
         public val JSON: TranscriptType = object : Instance("application", "json") {}
 
-        /** SRT, with full timing information. */
+        /** SRT, with full timing information. See [MediaType.SRT]. */
         @JvmField
         public val SRT: TranscriptType = object : Instance("application", "srt") {}
     }
