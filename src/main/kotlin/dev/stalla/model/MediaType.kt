@@ -3,6 +3,7 @@ package dev.stalla.model
 import dev.stalla.model.MediaType.Factory
 import dev.stalla.parser.MediaTypeParser
 import dev.stalla.util.InternalApi
+import dev.stalla.util.containsMediaTypeSeparatorSymbol
 import dev.stalla.util.escapeIfNeededTo
 import java.util.Locale
 
@@ -37,12 +38,7 @@ public open class MediaType private constructor(
         type: String,
         subtype: String,
         parameters: List<Parameter> = emptyList()
-    ) : this(
-        type,
-        subtype,
-        "$type/$subtype",
-        parameters
-    )
+    ) : this(type, subtype, "$type/$subtype", parameters)
 
     /**
      * Represents a single value parameter.
@@ -65,17 +61,19 @@ public open class MediaType private constructor(
     }
 
     /**
-     * The first value for the parameter with [attribute] comparing
+     * The first value for the parameter with [key] comparing
      * case-insensitively or `null` if no such parameters found.
      */
-    public fun parameter(attribute: String): String? =
-        parameters.firstOrNull { it.key.equals(attribute, ignoreCase = true) }?.value
+    public fun parameter(key: String): String? =
+        parameters.firstOrNull { it.key.equals(key, ignoreCase = true) }?.value
 
-    /** Creates a copy of `this` type with an added parameter of [attribute] and [value]. */
-    public fun withParameter(attribute: String, value: String): MediaType {
-        if (hasParameter(attribute, value)) return this
+    /** Creates a copy of `this` type with an added parameter of [key] and [value]. */
+    public fun withParameter(key: String, value: String): MediaType {
+        if (key.isBlank() || key.containsMediaTypeSeparatorSymbol()) return this
+        if (value.isBlank()) return this
+        if (hasParameter(key, value)) return this
 
-        return MediaType(type, subtype, essence, parameters + Parameter(attribute, value))
+        return MediaType(type, subtype, essence, parameters + Parameter(key, value))
     }
 
     /** Creates a copy of `this` type without any parameters.*/

@@ -163,13 +163,25 @@ class MediaTypeTest {
     @Test
     fun `should parse Media Type patterns and ignore parameter when the key is missing`() {
         assertThat(MediaType.of("audio/*;=value")).isNotNull()
-            .isEqualTo(MediaType.of("audio/*"))
+            .isEqualTo(MediaType.ANY_AUDIO)
     }
 
     @Test
-    fun `should parse Media Type patterns correctly`() {
+    fun `should not attach a parameter with an empty parameter key`() {
+        assertThat(MediaType.ANY_AUDIO.withParameter("", "value")).isNotNull()
+            .isEqualTo(MediaType.ANY_AUDIO)
+    }
+
+    @Test
+    fun `should omit a parameter when parsing a Media Type pattern with invalid parameter keys`() {
         assertThat(MediaType.of("audio/*;attr<=value")).isNotNull()
-            .isEqualTo(MediaType.of("audio/*"))
+            .isEqualTo(MediaType.ANY_AUDIO)
+    }
+
+    @Test
+    fun `should not attach a parameter with an invalid parameter key`() {
+        assertThat(MediaType.ANY_AUDIO.withParameter("attr<", "value")).isNotNull()
+            .isEqualTo(MediaType.ANY_AUDIO)
     }
 
     @Test
