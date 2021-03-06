@@ -281,21 +281,39 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should handle invalid quotes in parameters correctly`() {
+    fun `should handle invalid quotes in parameter values correctly`() {
         assertThat(MediaType.of("image/png; charset=utf-8\" but not really")).isNotNull()
             .isEqualTo(MediaType.PNG.withParameter("charset", "utf-8\" but not really"))
     }
 
     @Test
-    fun `should handle single quotes at start in parameters correctly`() {
+    fun `should handle single quotes at start in parameter values correctly`() {
         assertThat(MediaType.of("image/png; charset=\"utf-8 but not really")).isNotNull()
             .isEqualTo(MediaType.PNG.withParameter("charset", "\"utf-8 but not really"))
     }
 
     @Test
-    fun `should handle single quotes at start and middle in parameters correctly`() {
-        assertThat(MediaType.of("image/png; charset=\"utf-8\" but not really")).isNotNull()
-            .isEqualTo(MediaType.PNG.withParameter("charset", "\"utf-8\" but not really"))
+    fun `should handle quotes at start and middle in parameter values correctly`() {
+        // Note: This pattern is a sample from the MIME sniffing standard (https://mimesniff.spec.whatwg.org)
+        val expected = MediaType.HTML.withParameter("charset", "\"shift_jis\"")
+        assertThat(MediaType.of("text/html;charset=\"shift_jis\"iso-2022-jp")).isNotNull().all {
+            prop(MediaType::type).isEqualTo("text")
+            prop(MediaType::subtype).isEqualTo("html")
+            prop(MediaType::parameters).hasSize(1)
+            prop(MediaType::parameters).index(0).isEqualTo(MediaType.Parameter("charset", "\"shift_jis\""))
+            equalToString("text/html; charset=\"shift_jis\"")
+            matchPattern(expected)
+            isEqualTo(expected)
+        }
+    }
+
+    @Test
+    fun `should handle quotes at start and middle in parameter values with multiple parameters correctly`() {
+        val expected = MediaType.PNG
+            .withParameter("charset", "\"utf-8\"")
+            .withParameter("p1", "v1")
+        assertThat(MediaType.of("image/png; charset=\"utf-8\" but not really; p1=v1")).isNotNull()
+            .isEqualTo(expected)
     }
 
     @Test

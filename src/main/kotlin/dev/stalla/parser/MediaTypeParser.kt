@@ -14,7 +14,8 @@ import dev.stalla.util.subtrim
  * [ContentType](https://github.com/ktorio/ktor/blob/master/ktor-http/common/src/io/ktor/http/ContentTypes.kt)
  * class of the [Ktor](https://ktor.io) project and some related code in its HTTP package.
  * Special thanks to the Ktor contributors. The acceptance criteria and validation checks however do not
- * follow the same ruleset as Ktor does.
+ * follow the same ruleset as Ktor does and are more based on the
+ * [MIME Sniffing Standard](https://mimesniff.spec.whatwg.org).
  */
 @InternalApi
 internal object MediaTypeParser {
@@ -177,6 +178,10 @@ internal object MediaTypeParser {
 
             builder.append(currentChar)
             position++
+
+            if (currentChar.isQuoteSymbol() && !value.nextIsSemicolonOrEnd(position)) {
+                break@loop
+            }
         }
 
         // The value is unquoted here
