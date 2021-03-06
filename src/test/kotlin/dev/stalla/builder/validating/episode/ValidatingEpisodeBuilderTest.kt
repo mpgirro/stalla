@@ -36,7 +36,7 @@ internal class ValidatingEpisodeBuilderTest {
     private val expectedEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
         .url("enclosure url")
         .length(123)
-        .type("enclosure type")
+        .type(MediaType.MPEG_AUDIO)
 
     private val expectedAtomAuthorBuilder = ValidatingAtomPersonBuilder().name("atom author")
 

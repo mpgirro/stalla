@@ -14,6 +14,7 @@ import dev.stalla.dom.DomBuilderFactory
 import dev.stalla.dom.findElementByName
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.model.MediaType
 import dev.stalla.model.Podcast
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.content.Content
@@ -115,7 +116,7 @@ internal class PodcastRssParserTest {
                     prop(Episode::description).isEqualTo("Lorem Ipsum episode 1 description")
                     prop(Episode::enclosure).all {
                         prop(Enclosure::url).isEqualTo("http://example.org/episode1.m4a")
-                        prop(Enclosure::type).isEqualTo("audio/mp4")
+                        prop(Enclosure::type).isEqualTo(MediaType.MP4_AUDIO)
                         prop(Enclosure::length).isEqualTo(78589133)
                     }
                 }
@@ -126,7 +127,7 @@ internal class PodcastRssParserTest {
                     prop(Episode::description).isEqualTo("Lorem Ipsum episode 2 description")
                     prop(Episode::enclosure).all {
                         prop(Enclosure::url).isEqualTo("http://example.org/episode2.mp3")
-                        prop(Enclosure::type).isEqualTo("audio/mp3")
+                        prop(Enclosure::type).isEqualTo(MediaType.MP4_AUDIO)
                         prop(Enclosure::length).isEqualTo(78133)
                     }
                 }
@@ -197,7 +198,7 @@ internal class PodcastRssParserTest {
                     prop(Episode::author).isEqualTo("Graham Cluley, Carole Theriault")
                     prop(Episode::enclosure).all {
                         prop(Enclosure::url).isEqualTo("https://aphid.fireside.fm/d/1437767933/dd3252a8-95c3-41f8-a8a0-9d5d2f9e0bc6/2ed98bdd-ea95-4129-98cf-ee23dd2ab478.mp3")
-                        prop(Enclosure::type).isEqualTo("audio/mpeg")
+                        prop(Enclosure::type).isEqualTo(MediaType.MPEG_AUDIO)
                         prop(Enclosure::length).isEqualTo(70104299)
                     }
                     prop(Episode::description).isEqualTo(

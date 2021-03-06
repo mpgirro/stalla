@@ -17,7 +17,7 @@
     <enclosure
         url="episode rss enclosure url"
         length="78589133"
-        type="episode rss enclosure type"
+        type="audio/mpeg"
         bitlove:guid="episode bitlove guid" />
     <guid isPermaLink="true">episode rss guid</guid>
     <pubDate>Fri, 16 Mar 2018 22:49:08 +0000</pubDate>

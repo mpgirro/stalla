@@ -28,7 +28,7 @@ public class PodcastBuilderFactoryTest {
         EpisodeEnclosureBuilder episodeEnclosureBuilder = Enclosure.builder()
             .url("url")
             .length(123)
-            .type("type");
+            .type(MediaType.MPEG_AUDIO);
 
         EpisodeBuilder episodeBuilder = Episode.builder()
             .title("title")

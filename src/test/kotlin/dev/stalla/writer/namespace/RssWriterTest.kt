@@ -9,6 +9,7 @@ import dev.stalla.hasNoAttribute
 import dev.stalla.hasNoDifferences
 import dev.stalla.hasTextContent
 import dev.stalla.hasValue
+import dev.stalla.model.MediaType
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.anRssImage
 import dev.stalla.model.episode.anEpisode
@@ -214,7 +215,7 @@ internal class RssWriterTest : NamespaceWriterTest() {
                 assertThat(element).all {
                     hasAttribute("url").hasValue("episode enclosure url")
                     hasAttribute("length").hasValue("777")
-                    hasAttribute("type").hasValue("episode enclosure type")
+                    hasAttribute("type").hasValue(MediaType.MPEG_AUDIO.toString())
                     hasNoAttribute("guid", FeedNamespace.BITLOVE)
                 }
             }
@@ -242,7 +243,7 @@ internal class RssWriterTest : NamespaceWriterTest() {
             author = null,
             categories = emptyList(),
             comments = null,
-            enclosure = anEpisodeEnclosure("url", 123, "type"),
+            enclosure = anEpisodeEnclosure("url", 123, MediaType.MPEG_AUDIO),
             guid = null,
             pubDate = null,
             source = null
@@ -260,7 +261,7 @@ internal class RssWriterTest : NamespaceWriterTest() {
                 assertThat(element).all {
                     hasAttribute("url").hasValue("url")
                     hasAttribute("length").hasValue("123")
-                    hasAttribute("type").hasValue("type")
+                    hasAttribute("type").hasValue("audio/mpeg")
                 }
             }
             assertTagIsNotWrittenToEpisode(episode, "guid")
@@ -278,7 +279,7 @@ internal class RssWriterTest : NamespaceWriterTest() {
             author = " ",
             categories = listOf(anRssCategory(" ", " "), anRssCategory("category 2", " ")),
             comments = " ",
-            enclosure = anEpisodeEnclosure(" ", 123, " "),
+            enclosure = anEpisodeEnclosure(" ", 123, MediaType.ANY),
             guid = anEpisodeGuid(" "),
             pubDate = null,
             source = " "
@@ -314,7 +315,7 @@ internal class RssWriterTest : NamespaceWriterTest() {
             author = "",
             categories = listOf(anRssCategory("", ""), anRssCategory("category 2", "")),
             comments = "",
-            enclosure = anEpisodeEnclosure("", 123, ""),
+            enclosure = anEpisodeEnclosure("", 123, MediaType.MPEG_AUDIO),
             guid = anEpisodeGuid(""),
             pubDate = null,
             source = ""

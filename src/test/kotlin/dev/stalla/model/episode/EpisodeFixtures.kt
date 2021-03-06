@@ -73,7 +73,7 @@ internal fun anEpisode(
 internal fun anEpisodeEnclosure(
     url: String = "episode enclosure url",
     length: Long = 777,
-    type: String = "episode enclosure type"
+    type: MediaType = MediaType.MPEG_AUDIO
 ) = Enclosure(url, length, type)
 
 internal fun anEpisodeGuid(

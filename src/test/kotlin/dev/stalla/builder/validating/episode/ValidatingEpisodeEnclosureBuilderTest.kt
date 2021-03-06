@@ -10,6 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
+import dev.stalla.model.MediaType
 import dev.stalla.model.episode.anEpisodeEnclosure
 import dev.stalla.model.rss.Enclosure
 import org.junit.jupiter.api.Test
@@ -30,7 +31,7 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
     @Test
     internal fun `should not build an Episode Enclosure when the mandatory url is missing`() {
         val episodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
-            .type("type")
+            .type(MediaType.MPEG_AUDIO)
             .length(123)
 
         assertAll {
@@ -57,7 +58,7 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
     internal fun `should not build an Episode Enclosure when the mandatory length is missing`() {
         val episodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
             .url("url")
-            .type("type")
+            .type(MediaType.MPEG_AUDIO)
 
         assertAll {
             assertThat(episodeEnclosureBuilder).prop(EpisodeEnclosureBuilder::hasEnoughDataToBuild).isFalse()
@@ -70,7 +71,7 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
     internal fun `should build an Episode Enclosure with all the mandatory fields`() {
         val episodeEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
             .url("url")
-            .type("type")
+            .type(MediaType.MPEG_AUDIO)
             .length(123)
 
         assertAll {
@@ -78,7 +79,7 @@ internal class ValidatingEpisodeEnclosureBuilderTest {
 
             assertThat(episodeEnclosureBuilder.build()).isNotNull().all {
                 prop(Enclosure::url).isEqualTo("url")
-                prop(Enclosure::type).isEqualTo("type")
+                prop(Enclosure::type).isEqualTo(MediaType.MPEG_AUDIO)
                 prop(Enclosure::length).isEqualTo(123)
             }
         }

@@ -8,6 +8,7 @@ import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.dom.parseAsBooleanOrNull
 import dev.stalla.dom.parseAsInt
 import dev.stalla.dom.parseAsLocaleOrNull
+import dev.stalla.dom.parseAsMediaTypeOrNull
 import dev.stalla.dom.parseAsTemporalAccessor
 import dev.stalla.dom.textOrNull
 import dev.stalla.dom.toRssCategoryBuilder
@@ -105,7 +106,7 @@ internal object RssParser : NamespaceParser() {
     private fun Node.toEnclosureBuilder(builder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = ifCanBeParsed {
         val url = getAttributeValueByName("url")
         val length = getAttributeValueByName("length")?.toLongOrNull()
-        val type = getAttributeValueByName("type")
+        val type = getAttributeValueByName("type").parseAsMediaTypeOrNull()
 
         if (url == null || length == null || type == null) return@ifCanBeParsed builder
 

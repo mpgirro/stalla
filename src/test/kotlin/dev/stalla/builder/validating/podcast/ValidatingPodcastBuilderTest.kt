@@ -18,6 +18,7 @@ import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import dev.stalla.dateTime
+import dev.stalla.model.MediaType
 import dev.stalla.model.Podcast
 import dev.stalla.model.atom.Atom
 import dev.stalla.model.feedpress.Feedpress
@@ -45,7 +46,7 @@ internal class ValidatingPodcastBuilderTest {
     private val expectedEnclosureBuilder = ValidatingEpisodeEnclosureBuilder()
         .url("enclosure url")
         .length(123)
-        .type("enclosure type")
+        .type(MediaType.MPEG_AUDIO)
 
     private val expectedEpisodeBuilder = ValidatingEpisodeBuilder()
         .title("episode title")

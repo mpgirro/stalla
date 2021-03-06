@@ -121,11 +121,11 @@ internal object RssWriter : NamespaceWriter() {
     }
 
     private fun Element.appendEnclosureElement(enclosure: Enclosure) {
-        if (enclosure.url.isBlank() || enclosure.type.isBlank()) return
+        if (enclosure.url.isBlank()) return
         appendElement("enclosure") {
             setAttribute("url", enclosure.url.trim())
             setAttribute("length", enclosure.length.toString())
-            setAttribute("type", enclosure.type.trim())
+            setAttribute("type", enclosure.type.toString())
         }
     }
 
