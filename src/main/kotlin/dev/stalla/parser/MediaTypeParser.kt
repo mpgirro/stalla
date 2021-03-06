@@ -111,9 +111,11 @@ internal object MediaTypeParser {
         start: Int,
         parameters: Lazy<ArrayList<MediaType.Parameter>>
     ): Int {
+        fun containsParam(name: String): Boolean = parameters.value.any { param -> param.key == name }
         fun addParam(text: String, start: Int, end: Int, value: String) {
             val name = text.subtrim(start, end)
             if (name.isEmpty()) return
+            if (containsParam(name)) return
 
             parameters.value.add(MediaType.Parameter(name, value))
         }

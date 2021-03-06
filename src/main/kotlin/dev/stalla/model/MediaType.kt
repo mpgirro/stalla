@@ -47,18 +47,18 @@ public open class MediaType private constructor(
     /**
      * Represents a single value parameter.
      *
-     * @property attribute of parameter
-     * @property value of parameter
+     * @property key The key of parameter.
+     * @property value The value of parameter.
      */
-    public data class Parameter(val attribute: String, val value: String) {
+    public data class Parameter(val key: String, val value: String) {
         override fun equals(other: Any?): Boolean {
             return other is Parameter &&
-                other.attribute.equals(attribute, ignoreCase = true) &&
+                other.key.equals(key, ignoreCase = true) &&
                 other.value.equals(value, ignoreCase = true)
         }
 
         override fun hashCode(): Int {
-            var result = attribute.toLowerCase(Locale.ROOT).hashCode()
+            var result = key.toLowerCase(Locale.ROOT).hashCode()
             result += 31 * result + value.toLowerCase(Locale.ROOT).hashCode()
             return result
         }
@@ -69,7 +69,7 @@ public open class MediaType private constructor(
      * case-insensitively or `null` if no such parameters found.
      */
     public fun parameter(attribute: String): String? =
-        parameters.firstOrNull { it.attribute.equals(attribute, ignoreCase = true) }?.value
+        parameters.firstOrNull { it.key.equals(attribute, ignoreCase = true) }?.value
 
     /** Creates a copy of `this` type with an added parameter of [attribute] and [value]. */
     public fun withParameter(attribute: String, value: String): MediaType {
@@ -122,7 +122,7 @@ public open class MediaType private constructor(
     override fun toString(): String = when {
         parameters.isEmpty() -> essence
         else -> {
-            val size = essence.length + parameters.sumBy { it.attribute.length + it.value.length + 3 }
+            val size = essence.length + parameters.sumBy { it.key.length + it.value.length + 3 }
             StringBuilder(size).apply {
                 append(essence)
                 for (element in parameters) {
@@ -152,10 +152,10 @@ public open class MediaType private constructor(
     private fun hasParameter(attribute: String, value: String): Boolean = when (parameters.size) {
         0 -> false
         1 -> parameters[0].let { param ->
-            param.attribute.equals(attribute, ignoreCase = true) && param.value.equals(value, ignoreCase = true)
+            param.key.equals(attribute, ignoreCase = true) && param.value.equals(value, ignoreCase = true)
         }
         else -> parameters.any { param ->
-            param.attribute.equals(attribute, ignoreCase = true) && param.value.equals(value, ignoreCase = true)
+            param.key.equals(attribute, ignoreCase = true) && param.value.equals(value, ignoreCase = true)
         }
     }
 

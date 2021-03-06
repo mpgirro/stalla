@@ -80,6 +80,16 @@ class MediaTypeTest {
     }
 
     @Test
+    fun `should only accept a parameter key once and ignore all subsequent`() {
+        assertThat(MediaType.of("text/plain; charset=utf-8; charset=us-ascii")).isNotNull().all {
+            prop(MediaType::type).isEqualTo("text")
+            prop(MediaType::subtype).isEqualTo("plain")
+            prop(MediaType::parameters).hasSize(1)
+            prop("parameter") { MediaType::parameter.call(it, "charset") }.isNotNull().isEqualTo("utf-8")
+        }
+    }
+
+    @Test
     fun `should parse plain charsets parameter correctly`() {
         val expected = MediaType.PLAIN_TEXT.withParameter("charset", "utf-8")
         assertThat(MediaType.of("text/plain ; charset = utf-8")).isNotNull().all {
@@ -151,7 +161,7 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should parse Media Type patterns and ignore parameter when the attribute is missing`() {
+    fun `should parse Media Type patterns and ignore parameter when the key is missing`() {
         assertThat(MediaType.of("audio/*;=value")).isNotNull()
             .isEqualTo(MediaType.of("audio/*"))
     }
