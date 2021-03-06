@@ -74,6 +74,12 @@ class MediaTypeTest {
     }
 
     @Test
+    fun `should expose its essence correctly`() {
+        val mediaType = MediaType.PLAIN_TEXT.withParameter("charset", "charset=UTF-8")
+        assertThat(mediaType.essence).isEqualTo("text/plain")
+    }
+
+    @Test
     fun `should parse plain charsets parameter correctly`() {
         val expected = MediaType.PLAIN_TEXT.withParameter("charset", "utf-8")
         assertThat(MediaType.of("text/plain ; charset = utf-8")).isNotNull().all {

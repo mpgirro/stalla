@@ -20,6 +20,7 @@ import java.util.Locale
  *
  * @property type The type part of the media type.
  * @property subtype The subtype part of the media type.
+ * @property essence The [type] followed by `/` followed by [subtype].
  * @property parameters The modifiers of the media subtype.
  *
  * @see Factory Companion object exposing references to the some predefined instances and a factory method.
@@ -27,7 +28,7 @@ import java.util.Locale
 public open class MediaType private constructor(
     public open val type: String,
     public open val subtype: String,
-    private val content: String,
+    public val essence: String,
     public val parameters: List<Parameter> = emptyList()
 ) {
 
@@ -74,7 +75,7 @@ public open class MediaType private constructor(
     public fun withParameter(attribute: String, value: String): MediaType {
         if (hasParameter(attribute, value)) return this
 
-        return MediaType(type, subtype, content, parameters + Parameter(attribute, value))
+        return MediaType(type, subtype, essence, parameters + Parameter(attribute, value))
     }
 
     /** Creates a copy of `this` type without any parameters.*/
@@ -119,11 +120,11 @@ public open class MediaType private constructor(
     public fun match(pattern: String): Boolean = match(MediaTypeParser.parse(pattern))
 
     override fun toString(): String = when {
-        parameters.isEmpty() -> content
+        parameters.isEmpty() -> essence
         else -> {
-            val size = content.length + parameters.sumBy { it.attribute.length + it.value.length + 3 }
+            val size = essence.length + parameters.sumBy { it.attribute.length + it.value.length + 3 }
             StringBuilder(size).apply {
-                append(content)
+                append(essence)
                 for (element in parameters) {
                     val (name, value) = element
                     append("; ")
