@@ -101,3 +101,7 @@ internal fun String.nextIsSemicolonOrEnd(start: Int): Boolean {
 
     return position == length || get(position) == ';'
 }
+
+/** Returns `true` if this string equals `other` ignoring character case. */
+@InternalApi
+internal fun String?.equalsIgnoreCase(other: String?): Boolean = this.equals(other, ignoreCase = true)

@@ -7,13 +7,14 @@ import assertk.assertions.hasSize
 import assertk.assertions.index
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
-import assertk.assertions.isFalse
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.equalToString
 import dev.stalla.matchPattern
+import dev.stalla.matchesSymmetrically
+import dev.stalla.notMatchesSymmetrically
 import org.junit.jupiter.api.Test
 
 class MediaTypeTest {
@@ -33,7 +34,7 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should instantiate an instance from the factory method correctly`() {
+    fun `should instantiate from the factory method correctly`() {
         assertThat(MediaType.of("text/plain")).isNotNull().all {
             prop(MediaType::type).isEqualTo("text")
             prop(MediaType::subtype).isEqualTo("plain")
@@ -116,52 +117,52 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should fail to parse Media Type patterns for an invalid input`() {
+    fun `should fail to parse patterns with an invalid essence`() {
         assertThat(MediaType.of("text/plain/something")).isNull()
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when there is only the type part`() {
+    fun `should fail to parse patterns when there is only the type`() {
         assertThat(MediaType.of("text")).isNull()
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when the delimiter is missing`() {
+    fun `should fail to parse patterns when the delimiter between type and subtype is missing`() {
         assertThat(MediaType.of("text plain")).isNull()
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when the type part is missing`() {
+    fun `should fail to parse patterns when the type is missing`() {
         assertThat(MediaType.of(" / plain")).isNull()
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when the type is a wildcard but the subtype is concrete`() {
+    fun `should fail to parse patterns when the type is a wildcard but the subtype is concrete`() {
         assertThat(MediaType.of("*/json")).isNull()
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when the subtype part is missing`() {
+    fun `should fail to parse patterns when the subtype is missing`() {
         assertThat(MediaType.of("text / ")).isNull()
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when there is a RFC 2616 separator symbol in the type part`() {
+    fun `should fail to parse patterns when there is an RFC 2616 separator symbol in the type`() {
         assertThat(MediaType.of("audio(/basic")).isNull()
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when there is a RFC 2616 separator symbol in the subtype part`() {
+    fun `should fail to parse patterns when there is an RFC 2616 separator symbol in the subtype`() {
         assertThat(MediaType.of("audio/basic)")).isNull()
     }
 
     @Test
-    fun `should fail to parse Media Type patterns when there is only a parameter`() {
+    fun `should fail to parse patterns when there is only a parameter`() {
         assertThat(MediaType.of("     ;a=b")).isNull()
     }
 
     @Test
-    fun `should parse Media Type patterns and ignore parameter when the key is missing`() {
+    fun `should ignore parameters during parsing when the key is missing`() {
         assertThat(MediaType.of("audio/*;=value")).isNotNull()
             .isEqualTo(MediaType.ANY_AUDIO)
     }
@@ -173,7 +174,7 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should omit a parameter when parsing a Media Type pattern with invalid parameter keys`() {
+    fun `should ignore parameters during parsing with an invalid key`() {
         assertThat(MediaType.of("audio/*;attr<=value")).isNotNull()
             .isEqualTo(MediaType.ANY_AUDIO)
     }
@@ -185,7 +186,7 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should parse Media Type patterns when the parameter value is single quoted`() {
+    fun `should parse patterns when the parameter value is single quoted`() {
         assertThat(MediaType.of("audio/*;attr='v>alue'")).isNotNull().all {
             prop(MediaType::type).isEqualTo("audio")
             prop(MediaType::subtype).isEqualTo("*")
@@ -195,44 +196,88 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should parse Media Type patterns and ignore parameter where the value is empty`() {
+    fun `should ignore parameters during parsing where the value is empty`() {
         assertThat(MediaType.of("audio/*;attr=")).isNotNull()
             .isEqualTo(MediaType.of("audio/*"))
     }
 
     @Test
-    fun `should match a predefined Media Type`() {
-        assertThat(MediaType.AAC_AUDIO.match(MediaType.of("audio/aac"))).isTrue()
+    fun `should match a predefined instance correctly`() {
+        assertThat(MediaType.AAC_AUDIO).matchesSymmetrically(MediaType.of("audio/aac"))
     }
 
     @Test
-    fun `should match a predefined Media Type from a string pattern`() {
+    fun `should match a predefined instance from a string pattern`() {
         assertThat(MediaType.AAC_AUDIO.match("audio/aac")).isTrue()
     }
 
     @Test
-    fun `should match a predefined Media Type with a wildcard subtype pattern`() {
+    fun `should match a predefined instance with a wildcard subtype`() {
         assertThat(MediaType.AAC_AUDIO.match("audio/*")).isTrue()
     }
 
     @Test
-    fun `should not match a wildcard Media Type with a concrete type`() {
-        assertThat(MediaType.ANY_AUDIO.match(MediaType.OGG_AUDIO)).isFalse()
+    fun `should not match a wildcard subtype with a concrete subtype`() {
+        assertThat(MediaType.ANY_AUDIO).matchesSymmetrically(MediaType.OGG_AUDIO)
     }
 
     @Test
-    fun `should match a concrete Media Type with a wildcard type`() {
-        assertThat(MediaType.OGG_AUDIO.match(MediaType.ANY_AUDIO)).isTrue()
+    fun `should match a concrete subtype with a wildcard subtype`() {
+        assertThat(MediaType.OGG_AUDIO).matchesSymmetrically(MediaType.ANY_AUDIO)
     }
 
     @Test
-    fun `should match a Media Type taking parameters into account`() {
-        assertThat(MediaType.PLAIN_TEXT.withParameter("p1", "v1")).isNotNull()
-            .prop("match") { MediaType::parameter.call(it, "p1") }.isNotNull().isEqualTo("v1")
+    fun `should match ANY with a wildcard subtype`() {
+        assertThat(MediaType.ANY).matchesSymmetrically(MediaType.ANY_AUDIO)
     }
 
     @Test
-    fun `should parse Media Type patterns even when illegal characters in parameter value are not quoted`() {
+    fun `should not match two instances with different types`() {
+        assertThat(MediaType.MARKDOWN).notMatchesSymmetrically(MediaType.OPUS)
+    }
+
+    @Test
+    fun `should not match two instances with same type but different subtype`() {
+        assertThat(MediaType.MPEG_AUDIO).notMatchesSymmetrically(MediaType.OPUS)
+    }
+
+    @Test
+    fun `should match if parameters are equal`() {
+        val mediaType1 = MediaType.PLAIN_TEXT.withParameter("p1", "v1")
+        val mediaType2 = MediaType.PLAIN_TEXT.withParameter("p1", "v1")
+        assertThat(mediaType1).matchesSymmetrically(mediaType2)
+    }
+
+    @Test
+    fun `should not match if parameter values are not equal`() {
+        val mediaType1 = MediaType.PLAIN_TEXT.withParameter("p1", "v1")
+        val mediaType2 = MediaType.PLAIN_TEXT.withParameter("p1", "v2")
+        assertThat(mediaType1).notMatchesSymmetrically(mediaType2)
+    }
+
+    @Test
+    fun `should not match if parameter keys are not equal`() {
+        val mediaType1 = MediaType.PLAIN_TEXT.withParameter("p1", "v1")
+        val mediaType2 = MediaType.PLAIN_TEXT.withParameter("p2", "v1")
+        assertThat(mediaType1).notMatchesSymmetrically(mediaType2)
+    }
+
+    @Test
+    fun `should match on parameter with wildcard keys`() {
+        val mediaType1 = MediaType.PLAIN_TEXT.withParameter("p1", "v1")
+        val mediaType2 = MediaType.PLAIN_TEXT.withParameter("*", "v1")
+        assertThat(mediaType1).matchesSymmetrically(mediaType2)
+    }
+
+    @Test
+    fun `should match on parameter with wildcard values`() {
+        val mediaType1 = MediaType.PLAIN_TEXT.withParameter("p1", "v1")
+        val mediaType2 = MediaType.PLAIN_TEXT.withParameter("p1", "*")
+        assertThat(mediaType1).matchesSymmetrically(mediaType2)
+    }
+
+    @Test
+    fun `should parse patterns even when illegal characters in the parameter value are not quoted (auto-quote)`() {
         // Note: This pattern is a sample from RFC 2046 (https://tools.ietf.org/html/rfc2046#section-5.1.1)
         assertThat(MediaType.of("multipart/mixed; boundary=gc0pJq0M:08jU534c0p")).isNotNull().all {
             prop(MediaType::type).isEqualTo("multipart")
@@ -243,7 +288,7 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should parse Media Type patterns when illegal characters are quoted`() {
+    fun `should parse patterns when illegal characters are quoted`() {
         // Note: This pattern is a sample from RFC 2046 (https://tools.ietf.org/html/rfc2046#section-5.1.1)
         val expected = MediaType.PLAIN_TEXT.withParameter("boundary", "gc0pJq0M:08jU534c0p")
         assertThat(MediaType.of("text/plain; boundary=\"gc0pJq0M:08jU534c0p\"")).isNotNull().all {
@@ -258,7 +303,7 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should parse Media Type patterns with a wildcard subtype`() {
+    fun `should parse patterns with a wildcard subtype`() {
         assertThat(MediaType.of("text / *")).isNotNull().all {
             prop(MediaType::type).isEqualTo("text")
             prop(MediaType::subtype).isEqualTo("*")
@@ -267,7 +312,7 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should parse empty parameter block correctly`() {
+    fun `should parse empty parameter blocks correctly`() {
         assertThat(MediaType.PLAIN_TEXT).all {
             isEqualTo(MediaType.of("text/plain; "))
             isEqualTo(MediaType.of("text/plain;"))
@@ -317,7 +362,7 @@ class MediaTypeTest {
     }
 
     @Test
-    fun `should transform to a without parameters form correctly`() {
+    fun `should remove parameters correctly`() {
         assertThat(MediaType.PLAIN_TEXT).all {
             isEqualTo(MediaType.PLAIN_TEXT.withoutParameters())
             isEqualTo(MediaType.PLAIN_TEXT.withParameter("a", "1").withoutParameters())

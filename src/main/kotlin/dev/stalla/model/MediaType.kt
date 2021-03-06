@@ -4,8 +4,10 @@ import dev.stalla.model.MediaType.Factory
 import dev.stalla.parser.MediaTypeParser
 import dev.stalla.util.InternalApi
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
+import dev.stalla.util.equalsIgnoreCase
 import dev.stalla.util.escapeIfNeededTo
 import java.util.Locale
+import kotlin.contracts.contract
 
 /**
  * Represents a Media Type value, as defined in [RFC 2046](https://tools.ietf.org/html/rfc2046).
@@ -49,8 +51,8 @@ public open class MediaType private constructor(
     public data class Parameter(val key: String, val value: String) {
         override fun equals(other: Any?): Boolean {
             return other is Parameter &&
-                other.key.equals(key, ignoreCase = true) &&
-                other.value.equals(value, ignoreCase = true)
+                other.key.equalsIgnoreCase(key) &&
+                other.value.equalsIgnoreCase(value)
         }
 
         override fun hashCode(): Int {
@@ -64,8 +66,7 @@ public open class MediaType private constructor(
      * The first value for the parameter with [key] comparing
      * case-insensitively or `null` if no such parameters found.
      */
-    public fun parameter(key: String): String? =
-        parameters.firstOrNull { it.key.equals(key, ignoreCase = true) }?.value
+    public fun parameter(key: String): String? = parameter(key, parameters)
 
     /** Creates a copy of `this` type with an added parameter of [key] and [value]. */
     public fun withParameter(key: String, value: String): MediaType {
@@ -86,23 +87,40 @@ public open class MediaType private constructor(
      * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
      */
     public fun match(pattern: MediaType?): Boolean {
-        if (pattern == null) return false
-        if (pattern.type != "*" && !pattern.type.equals(type, ignoreCase = true)) return false
-        if (pattern.subtype != "*" && !pattern.subtype.equals(subtype, ignoreCase = true)) return false
+        contract {
+            returns(true) implies (pattern != null)
+        }
 
-        for ((patternName, patternValue) in pattern.parameters) {
+        if (pattern == null) return false
+        if (this == pattern) return true
+        if (this == ANY || pattern == ANY) return true
+        if (!type.equalsIgnoreCase(pattern.type)) return false
+        if (subtype != "*" && pattern.subtype != "*" && !subtype.equalsIgnoreCase(pattern.subtype)) return false
+
+        // matching parameter is not symmetric, but a success from either side is sufficient for wildcards
+        return match(parameters, pattern.parameters) || match(pattern.parameters, parameters)
+    }
+
+    /**
+     * Checks if `this` type matches a [pattern] type taking
+     * into account placeholder symbols `*` and parameters.
+     */
+    public fun match(pattern: String): Boolean = match(of(pattern))
+
+    private fun match(parameters1: List<Parameter>, parameters2: List<Parameter>): Boolean {
+        for ((patternName, patternValue) in parameters2) {
             val matches = when (patternName) {
                 "*" -> {
                     when (patternValue) {
                         "*" -> true
-                        else -> parameters.any { p -> p.value.equals(patternValue, ignoreCase = true) }
+                        else -> parameters1.any { p -> p.value.equalsIgnoreCase(patternValue) }
                     }
                 }
                 else -> {
-                    val value = parameter(patternName)
+                    val value = parameter(patternName, parameters1)
                     when (patternValue) {
                         "*" -> value != null
-                        else -> value.equals(patternValue, ignoreCase = true)
+                        else -> value.equalsIgnoreCase(patternValue)
                     }
                 }
             }
@@ -112,10 +130,8 @@ public open class MediaType private constructor(
         return true
     }
 
-    /**
-     * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
-     */
-    public fun match(pattern: String): Boolean = match(MediaTypeParser.parse(pattern))
+    private fun parameter(key: String, elements: List<Parameter>): String? =
+        elements.firstOrNull { it.key.equalsIgnoreCase(key) }?.value
 
     override fun toString(): String = when {
         parameters.isEmpty() -> essence
@@ -136,8 +152,8 @@ public open class MediaType private constructor(
 
     override fun equals(other: Any?): Boolean =
         other is MediaType &&
-            type.equals(other.type, ignoreCase = true) &&
-            subtype.equals(other.subtype, ignoreCase = true) &&
+            type.equalsIgnoreCase(other.type) &&
+            subtype.equalsIgnoreCase(other.subtype) &&
             parameters == other.parameters
 
     override fun hashCode(): Int {
@@ -150,10 +166,10 @@ public open class MediaType private constructor(
     private fun hasParameter(attribute: String, value: String): Boolean = when (parameters.size) {
         0 -> false
         1 -> parameters[0].let { param ->
-            param.key.equals(attribute, ignoreCase = true) && param.value.equals(value, ignoreCase = true)
+            param.key.equalsIgnoreCase(attribute) && param.value.equalsIgnoreCase(value)
         }
         else -> parameters.any { param ->
-            param.key.equals(attribute, ignoreCase = true) && param.value.equals(value, ignoreCase = true)
+            param.key.equalsIgnoreCase(attribute) && param.value.equalsIgnoreCase(value)
         }
     }
 
