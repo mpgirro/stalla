@@ -26,7 +26,7 @@ internal object MediaTypeParser {
      * @property essence The actual type/subtype construct value.
      * @property params Additional parameters for this value (could be empty).
      */
-    private data class TypeValue(
+    private data class Value(
         val essence: String,
         val params: List<MediaType.Parameter> = emptyList()
     )
@@ -58,15 +58,15 @@ internal object MediaTypeParser {
     }
 
     private inline fun <R> parse(value: String, init: (String, List<MediaType.Parameter>) -> R): R {
-        val mediaTypeValue = parseTypeValue(value).single()
+        val mediaTypeValue = parseValue(value).single()
         return init(mediaTypeValue.essence, mediaTypeValue.params)
     }
 
-    private fun parseTypeValue(text: String?): List<TypeValue> {
+    private fun parseValue(text: String?): List<Value> {
         if (text == null) return emptyList()
 
         var position = 0
-        val items = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<TypeValue>() }
+        val items = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<Value>() }
         while (position <= text.lastIndex) {
             position = parseItem(text, position, items)
         }
@@ -76,7 +76,7 @@ internal object MediaTypeParser {
     private fun parseItem(
         text: String,
         start: Int,
-        items: Lazy<ArrayList<TypeValue>>
+        items: Lazy<ArrayList<Value>>
     ): Int {
         var position = start
         val parameters = lazy(LazyThreadSafetyMode.NONE) { arrayListOf<MediaType.Parameter>() }
@@ -84,17 +84,6 @@ internal object MediaTypeParser {
 
         while (position <= text.lastIndex) {
             when (text[position]) {
-                /*
-                ',' -> {
-                    items.value.add(
-                        TypeValue(
-                            value = text.subtrim(start, valueEnd ?: position),
-                            params = parameters.valueOrEmpty()
-                        )
-                    )
-                    return position + 1
-                }
-                */
                 ';' -> {
                     if (valueEnd == null) valueEnd = position
                     position = parseParameter(text, position + 1, parameters)
@@ -105,7 +94,7 @@ internal object MediaTypeParser {
             }
         }
 
-        items.value.add(TypeValue(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
+        items.value.add(Value(text.subtrim(start, valueEnd ?: position), parameters.valueOrEmpty()))
         return position
     }
 
@@ -135,12 +124,6 @@ internal object MediaTypeParser {
                     }
                     return paramEnd
                 }
-                /*
-                ';', ',' -> {
-                    addParam(text, start, position, "")
-                    return position
-                }
-                 */
                 else -> position++
             }
         }
@@ -157,7 +140,7 @@ internal object MediaTypeParser {
 
         while (position <= value.lastIndex) {
             when (value[position]) {
-                ';', ',' -> return position to value.subtrim(start, position)
+                ';' -> return position to value.subtrim(start, position)
                 else -> position++
             }
         }
