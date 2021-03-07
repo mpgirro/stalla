@@ -2,9 +2,9 @@ package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.model.podcastindex.Locked
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 
-@InternalApi
+@InternalAPI
 internal class ValidatingPodcastPodcastindexLockedBuilder : PodcastPodcastindexLockedBuilder {
 
     private lateinit var ownerValue: String

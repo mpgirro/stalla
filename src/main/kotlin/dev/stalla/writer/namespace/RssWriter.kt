@@ -9,7 +9,7 @@ import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.rss.Guid
 import dev.stalla.util.BooleanStringStyle
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.asBooleanString
 import dev.stalla.util.asDateString
 import dev.stalla.util.isNeitherNullNorBlank
@@ -23,7 +23,7 @@ import org.w3c.dom.Element
  *
  * `http://www.rssboard.org/rss-2-0`
  */
-@InternalApi
+@InternalAPI
 internal object RssWriter : NamespaceWriter() {
 
     /** Standard RSS 2.0 elements do not have a namespace. This value is therefore null. */

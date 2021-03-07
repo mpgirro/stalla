@@ -4,7 +4,7 @@ import dev.stalla.dom.appendElement
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.isNeitherNullNorBlank
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -14,7 +14,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `https://feed.press/xmlns`
  */
-@InternalApi
+@InternalAPI
 internal object FeedpressWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.FEEDPRESS

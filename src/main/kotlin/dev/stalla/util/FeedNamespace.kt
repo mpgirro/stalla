@@ -1,6 +1,6 @@
 package dev.stalla.util
 
-@InternalApi
+@InternalAPI
 internal enum class FeedNamespace(
     val prefix: String,
     val uri: String,

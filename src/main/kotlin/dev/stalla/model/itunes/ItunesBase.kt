@@ -1,9 +1,9 @@
 package dev.stalla.model.itunes
 
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 
-@InternalApi
+@InternalAPI
 internal interface ItunesBase {
     val image: HrefOnlyImage?
     val block: Boolean

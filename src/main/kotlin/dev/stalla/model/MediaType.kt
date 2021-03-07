@@ -2,7 +2,7 @@ package dev.stalla.model
 
 import dev.stalla.model.MediaType.Factory
 import dev.stalla.parser.MediaTypeParser
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
 import dev.stalla.util.equalsIgnoreCase
 import dev.stalla.util.escapeIfNeededTo
@@ -35,7 +35,7 @@ public open class MediaType private constructor(
     public val parameters: List<Parameter> = emptyList()
 ) {
 
-    @InternalApi
+    @InternalAPI
     internal constructor(
         type: String,
         subtype: String,

@@ -3,7 +3,7 @@ package dev.stalla.util
 import kotlin.contracts.contract
 
 /** Returns the trimmed string, or `null` if it was blank to begin with. */
-@InternalApi
+@InternalAPI
 internal fun String?.trimmedOrNullIfBlank(): String? {
     contract {
         returnsNotNull() implies (this@trimmedOrNullIfBlank != null)
@@ -13,7 +13,7 @@ internal fun String?.trimmedOrNullIfBlank(): String? {
 }
 
 /** Returns `true` when this string is neither `null` nor blank. */
-@InternalApi
+@InternalAPI
 internal fun String?.isNeitherNullNorBlank(): Boolean {
     contract {
         returns(true) implies (this@isNeitherNullNorBlank != null)
@@ -22,24 +22,24 @@ internal fun String?.isNeitherNullNorBlank(): Boolean {
 }
 
 /** Appends this string to the [StringBuilder], escapes characters on demand. */
-@InternalApi
+@InternalAPI
 internal fun String.escapeIfNeededTo(out: StringBuilder) = when {
     checkNeedEscape() -> out.append(this.quote())
     else -> out.append(this)
 }
 
 /** Separator symbols listed in RFC 2616 https://tools.ietf.org/html/rfc2616#section-2.2 */
-@InternalApi
+@InternalAPI
 internal val mediaTypeSeparatorSymbols: Set<Char> =
     setOf('(', ')', '<', '>', '@', ',', ';', ':', '\\', '\"', '/', '[', ']', '?', '=', '{', '}', ' ', '\t', '\n', '\r')
 
 /** Return `true` if this string contains any character from [mediaTypeSeparatorSymbols]. */
-@InternalApi
+@InternalAPI
 internal fun String.containsMediaTypeSeparatorSymbol(): Boolean =
     this.any { c -> mediaTypeSeparatorSymbols.contains(c) }
 
 /** Returns `true` of this string contains characters that need excaping. */
-@InternalApi
+@InternalAPI
 internal fun String.checkNeedEscape(): Boolean {
     if (isEmpty()) return true
     if (isQuoted()) return false
@@ -52,11 +52,11 @@ internal fun String.checkNeedEscape(): Boolean {
 }
 
 /** Quotes this string. */
-@InternalApi
+@InternalAPI
 internal fun String.quote(): String = buildString { this@quote.quoteTo(this) }
 
 /** Appends the quotes form of this string to the [StringBuilder]. */
-@InternalApi
+@InternalAPI
 internal fun String.quoteTo(out: StringBuilder) {
     out.append("\"")
     for (i in 0 until length) {
@@ -73,7 +73,7 @@ internal fun String.quoteTo(out: StringBuilder) {
 }
 
 /** Returns `true` of this string is quoted. */
-@InternalApi
+@InternalAPI
 internal fun String.isQuoted(): Boolean {
     if (length < 2) return false
     if (first() != '"' || last() != '"') return false
@@ -98,11 +98,11 @@ internal fun String.isQuoted(): Boolean {
 }
 
 /** Trims a substring of this string. */
-@InternalApi
+@InternalAPI
 internal fun String.subtrim(start: Int, end: Int): String = substring(start, end).trim()
 
 /** Returns `true` if the next non blank character is a semicolon, or if the string is ended. */
-@InternalApi
+@InternalAPI
 internal fun String.nextIsSemicolonOrEnd(start: Int): Boolean {
     var position = start + 1
     loop@ while (position < length && get(position) == ' ') {
@@ -113,5 +113,5 @@ internal fun String.nextIsSemicolonOrEnd(start: Int): Boolean {
 }
 
 /** Returns `true` if this string equals `other` ignoring character case. */
-@InternalApi
+@InternalAPI
 internal fun String?.equalsIgnoreCase(other: String?): Boolean = this.equals(other, ignoreCase = true)

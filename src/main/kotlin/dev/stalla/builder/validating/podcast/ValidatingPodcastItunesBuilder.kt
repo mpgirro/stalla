@@ -6,9 +6,9 @@ import dev.stalla.builder.podcast.PodcastItunesOwnerBuilder
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 
-@InternalApi
+@InternalAPI
 internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
 
     private lateinit var imageBuilderValue: HrefOnlyImageBuilder

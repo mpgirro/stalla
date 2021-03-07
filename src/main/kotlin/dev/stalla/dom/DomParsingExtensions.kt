@@ -10,7 +10,7 @@ import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.parser.DateParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.isValidLocale
 import dev.stalla.util.trimmedOrNullIfBlank
 import org.w3c.dom.Element
@@ -24,7 +24,7 @@ import java.util.Locale
  *
  * @return The content of the DOM node in string representation, or null.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.textOrNull(): String? = textContent.trimmedOrNullIfBlank()
 
 /**
@@ -34,7 +34,7 @@ internal fun Node.textOrNull(): String? = textContent.trimmedOrNullIfBlank()
  * @see parseAsBooleanOrNull
  * @return The logical interpretation of the DOM node's text content as boolean, or `null`.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.textAsBooleanOrNull(): Boolean? = textOrNull().parseAsBooleanOrNull()
 
 /**
@@ -43,7 +43,7 @@ internal fun Node.textAsBooleanOrNull(): Boolean? = textOrNull().parseAsBooleanO
  *
  * @return The logical interpretation of the string parameter, or `null`.
  */
-@InternalApi
+@InternalAPI
 internal fun String?.parseAsBooleanOrNull(): Boolean? =
     when (this.trimmedOrNullIfBlank()?.toLowerCase(Locale.ROOT)) {
         "true", "yes" -> true
@@ -56,7 +56,7 @@ internal fun String?.parseAsBooleanOrNull(): Boolean? =
  *
  * @return The DOM node content as an [Int], or `null` if conversion failed.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.parseAsInt(): Int? = textOrNull()?.toIntOrNull()
 
 /**
@@ -65,7 +65,7 @@ internal fun Node.parseAsInt(): Int? = textOrNull()?.toIntOrNull()
  *
  * @return The DOM node content as a [TemporalAccessor], or `null` if parsing failed.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.parse(textOrNull())
 
 /**
@@ -74,7 +74,7 @@ internal fun Node.parseAsTemporalAccessor(): TemporalAccessor? = DateParser.pars
  *
  * @return The DOM node content as a [Locale], or `null` if parsing failed.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.parseAsLocaleOrNull(): Locale? = textOrNull()?.let { rawLocale ->
     val locale = Locale.forLanguageTag(rawLocale)
     return if (locale.isValidLocale()) locale else null
@@ -85,7 +85,7 @@ internal fun Node.parseAsLocaleOrNull(): Locale? = textOrNull()?.let { rawLocale
  *
  * @return The [MediaType] interpretation of the string parameter, or `null`.
  */
-@InternalApi
+@InternalAPI
 @Suppress("SwallowedException")
 internal fun String?.parseAsMediaTypeOrNull(): MediaType? = this.trimmedOrNullIfBlank()
     ?.let { rawType ->
@@ -108,7 +108,7 @@ internal fun String?.parseAsMediaTypeOrNull(): MediaType? = this.trimmedOrNullIf
  *
  * @return The [imageBuilder] populated with the DOM node contents.
  */
-@InternalApi
+@InternalAPI
 @Suppress("ComplexMethod")
 internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: FeedNamespace? = null): RssImageBuilder {
     for (node in childNodes.asListOfNodes()) {
@@ -137,7 +137,7 @@ internal fun Node.toRssImageBuilder(imageBuilder: RssImageBuilder, namespace: Fe
  *
  * @return The [imageBuilder] populated with the DOM node contents.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): HrefOnlyImageBuilder {
     val href: String? = getAttributeValueByName("href")
     if (!href.isNullOrBlank()) imageBuilder.href(href)
@@ -154,7 +154,7 @@ internal fun Node.toHrefOnlyImageBuilder(imageBuilder: HrefOnlyImageBuilder): Hr
  *
  * @return The [personBuilder] populated with the DOM node contents.
  */
-@InternalApi
+@InternalAPI
 @Suppress("LoopWithTooManyJumpStatements")
 internal fun Node.toAtomPersonBuilder(
     personBuilder: AtomPersonBuilder,
@@ -183,7 +183,7 @@ internal fun Node.toAtomPersonBuilder(
  *
  * @return The [categoryBuilder] populated with the DOM node contents.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): RssCategoryBuilder? {
     val categoryValue = textOrNull() ?: return null
     return categoryBuilder.category(categoryValue)
@@ -201,7 +201,7 @@ internal fun Node.toRssCategoryBuilder(categoryBuilder: RssCategoryBuilder): Rss
  *
  * @return The [ItunesCategory] populated with the DOM node contents.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.toItunesCategory(namespace: FeedNamespace? = null): ItunesCategory? {
     val categoryValue = getAttributeValueByName("text")?.trim() ?: return null
     val category = ItunesCategory.of(categoryValue) ?: return null
@@ -216,7 +216,7 @@ internal fun Node.toItunesCategory(namespace: FeedNamespace? = null): ItunesCate
  *
  * @return The [GoogleplayCategory] populated with the DOM node contents.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.toGoogleplayCategory(): GoogleplayCategory? {
     val categoryValue = getAttributeValueByName("text")?.trim() ?: return null
     return GoogleplayCategory.of(categoryValue)

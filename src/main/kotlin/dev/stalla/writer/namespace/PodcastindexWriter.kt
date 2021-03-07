@@ -6,7 +6,7 @@ import dev.stalla.model.Podcast
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.util.BooleanStringStyle
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.asBooleanString
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -18,7 +18,7 @@ import org.w3c.dom.Element
  * but `https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md`
  * should also be accepted as equivalent. TODO allow both NS
  */
-@InternalApi
+@InternalAPI
 internal object PodcastindexWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.PODCAST

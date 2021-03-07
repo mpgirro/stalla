@@ -9,7 +9,7 @@ import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
 import dev.stalla.model.googleplay.GoogleplayBase
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.isNeitherNullNorBlank
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -19,7 +19,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://www.google.com/schemas/play-podcasts/1.0`
  */
-@InternalApi
+@InternalAPI
 internal object GoogleplayWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.GOOGLE_PLAY

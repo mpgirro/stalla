@@ -2,9 +2,9 @@ package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodeGuidBuilder
 import dev.stalla.model.rss.Guid
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 
-@InternalApi
+@InternalAPI
 internal class ValidatingEpisodeGuidBuilder : EpisodeGuidBuilder {
 
     private lateinit var text: String

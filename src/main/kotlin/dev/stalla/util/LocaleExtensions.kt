@@ -8,7 +8,7 @@ import java.util.Locale
  * @see Locale.getAvailableLocales
  * @see Locale.toLanguageTag
  */
-@InternalApi
+@InternalAPI
 internal val localeMap: Map<String, Locale> = Locale.getAvailableLocales().associateBy({ it.toLanguageTag() }, { it })
 
 /**
@@ -17,5 +17,5 @@ internal val localeMap: Map<String, Locale> = Locale.getAvailableLocales().assoc
  * @see Locale.getAvailableLocales
  * @see Locale.toLanguageTag
  */
-@InternalApi
+@InternalAPI
 internal fun Locale.isValidLocale(): Boolean = localeMap[this.toLanguageTag()] != null

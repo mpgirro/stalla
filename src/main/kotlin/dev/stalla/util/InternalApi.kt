@@ -5,4 +5,13 @@ package dev.stalla.util
     level = RequiresOptIn.Level.ERROR,
     message = "This API is meant to be internal, please do not use it. Or, use it, but don't complain when it breaks :)"
 )
-public annotation class InternalApi
+@Target(
+    AnnotationTarget.CLASS,
+    AnnotationTarget.TYPEALIAS,
+    AnnotationTarget.FUNCTION,
+    AnnotationTarget.PROPERTY,
+    AnnotationTarget.FIELD,
+    AnnotationTarget.CONSTRUCTOR,
+    AnnotationTarget.PROPERTY_SETTER
+)
+public annotation class InternalAPI

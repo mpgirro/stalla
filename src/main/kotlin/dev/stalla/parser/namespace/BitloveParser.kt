@@ -6,7 +6,7 @@ import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.dom.isDirectChildOf
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import org.w3c.dom.Node
 
 /**
@@ -14,7 +14,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://bitlove.org`
  */
-@InternalApi
+@InternalAPI
 internal object BitloveParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.BITLOVE

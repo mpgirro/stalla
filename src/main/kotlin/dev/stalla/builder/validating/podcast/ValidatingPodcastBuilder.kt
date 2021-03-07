@@ -24,11 +24,11 @@ import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.model.Podcast
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
 
-@InternalApi
+@InternalAPI
 internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     private lateinit var titleValue: String

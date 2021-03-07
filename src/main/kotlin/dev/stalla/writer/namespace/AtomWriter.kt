@@ -7,7 +7,7 @@ import dev.stalla.model.Podcast
 import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.isNeitherNullNorBlank
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -17,7 +17,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://www.w3.org/2005/Atom`
  */
-@InternalApi
+@InternalAPI
 internal object AtomWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.ATOM

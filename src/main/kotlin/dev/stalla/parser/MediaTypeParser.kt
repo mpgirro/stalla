@@ -1,7 +1,7 @@
 package dev.stalla.parser
 
 import dev.stalla.model.MediaType
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
 import dev.stalla.util.isQuoteSymbol
 import dev.stalla.util.nextIsSemicolonOrEnd
@@ -17,7 +17,7 @@ import dev.stalla.util.subtrim
  * follow the same ruleset as Ktor does and are more based on the
  * [MIME Sniffing Standard](https://mimesniff.spec.whatwg.org).
  */
-@InternalApi
+@InternalAPI
 internal object MediaTypeParser {
 
     /**
