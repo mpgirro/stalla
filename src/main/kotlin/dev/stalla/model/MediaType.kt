@@ -97,7 +97,7 @@ public open class MediaType private constructor(
         if (!type.equalsIgnoreCase(pattern.type)) return false
         if (subtype != "*" && pattern.subtype != "*" && !subtype.equalsIgnoreCase(pattern.subtype)) return false
 
-        // matching parameter is not symmetric, but a success from either side is sufficient for wildcards
+        // Matching parameters is not symmetric, but a success from either side is sufficient for wildcards
         return match(parameters, pattern.parameters) || match(pattern.parameters, parameters)
     }
 
@@ -108,16 +108,16 @@ public open class MediaType private constructor(
     public fun match(pattern: String): Boolean = match(of(pattern))
 
     private fun match(parameters1: List<Parameter>, parameters2: List<Parameter>): Boolean {
-        for ((patternName, patternValue) in parameters2) {
+        for ((patternName, patternValue) in parameters1) {
             val matches = when (patternName) {
                 "*" -> {
                     when (patternValue) {
                         "*" -> true
-                        else -> parameters1.any { p -> p.value.equalsIgnoreCase(patternValue) }
+                        else -> parameters2.any { p -> p.value.equalsIgnoreCase(patternValue) }
                     }
                 }
                 else -> {
-                    val value = parameter(patternName, parameters1)
+                    val value = parameter(patternName, parameters2)
                     when (patternValue) {
                         "*" -> value != null
                         else -> value.equalsIgnoreCase(patternValue)
@@ -150,11 +150,13 @@ public open class MediaType private constructor(
         }
     }
 
-    override fun equals(other: Any?): Boolean =
-        other is MediaType &&
+    override fun equals(other: Any?): Boolean {
+        return other is MediaType &&
             type.equalsIgnoreCase(other.type) &&
             subtype.equalsIgnoreCase(other.subtype) &&
             parameters == other.parameters
+    }
+
 
     override fun hashCode(): Int {
         var result = type.toLowerCase(Locale.ROOT).hashCode()

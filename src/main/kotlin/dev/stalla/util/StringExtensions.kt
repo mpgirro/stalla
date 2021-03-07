@@ -1,15 +1,25 @@
 package dev.stalla.util
 
+import kotlin.contracts.contract
+
 /** Returns the trimmed string, or `null` if it was blank to begin with. */
 @InternalApi
 internal fun String?.trimmedOrNullIfBlank(): String? {
+    contract {
+        returnsNotNull() implies (this@trimmedOrNullIfBlank != null)
+    }
     if (this == null) return null
     return trim().ifEmpty { null }
 }
 
 /** Returns `true` when this string is neither `null` nor blank. */
 @InternalApi
-internal fun String?.isNeitherNullNorBlank(): Boolean = this != null && isNotBlank()
+internal fun String?.isNeitherNullNorBlank(): Boolean {
+    contract {
+        returns(true) implies (this@isNeitherNullNorBlank != null)
+    }
+    return this != null && isNotBlank()
+}
 
 /** Appends this string to the [StringBuilder], escapes characters on demand. */
 @InternalApi

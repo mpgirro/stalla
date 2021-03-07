@@ -52,25 +52,25 @@ internal object RssWriter : NamespaceWriter() {
         }
 
         if (podcast.generator.isNeitherNullNorBlank()) {
-            appendElement("generator") { textContent = podcast.generator?.trim() }
+            appendElement("generator") { textContent = podcast.generator.trim() }
         }
 
         appendElement("language") { textContent = podcast.language.toLanguageTag() }
 
         if (podcast.copyright.isNeitherNullNorBlank()) {
-            appendElement("copyright") { textContent = podcast.copyright?.trim() }
+            appendElement("copyright") { textContent = podcast.copyright.trim() }
         }
 
         if (podcast.docs.isNeitherNullNorBlank()) {
-            appendElement("docs") { textContent = podcast.docs?.trim() }
+            appendElement("docs") { textContent = podcast.docs.trim() }
         }
 
         if (podcast.managingEditor.isNeitherNullNorBlank()) {
-            appendElement("managingEditor") { textContent = podcast.managingEditor?.trim() }
+            appendElement("managingEditor") { textContent = podcast.managingEditor.trim() }
         }
 
         if (podcast.webMaster.isNeitherNullNorBlank()) {
-            appendElement("webMaster") { textContent = podcast.webMaster?.trim() }
+            appendElement("webMaster") { textContent = podcast.webMaster.trim() }
         }
 
         if (podcast.ttl != null) {
@@ -88,21 +88,21 @@ internal object RssWriter : NamespaceWriter() {
         }
 
         if (episode.link.isNeitherNullNorBlank()) {
-            appendElement("link") { textContent = episode.link?.trim() }
+            appendElement("link") { textContent = episode.link.trim() }
         }
 
         if (episode.description.isNeitherNullNorBlank()) {
-            appendElement("description") { textContent = episode.description?.trim() }
+            appendElement("description") { textContent = episode.description.trim() }
         }
 
         if (episode.author.isNeitherNullNorBlank()) {
-            appendElement("author") { textContent = episode.author?.trim() }
+            appendElement("author") { textContent = episode.author.trim() }
         }
 
         appendRssCategoryElements(episode.categories)
 
         if (episode.comments.isNeitherNullNorBlank()) {
-            appendElement("comments") { textContent = episode.comments?.trim() }
+            appendElement("comments") { textContent = episode.comments.trim() }
         }
 
         appendEnclosureElement(episode.enclosure)
@@ -116,7 +116,7 @@ internal object RssWriter : NamespaceWriter() {
         }
 
         if (episode.source.isNeitherNullNorBlank()) {
-            appendElement("source") { textContent = episode.source?.trim() }
+            appendElement("source") { textContent = episode.source.trim() }
         }
     }
 

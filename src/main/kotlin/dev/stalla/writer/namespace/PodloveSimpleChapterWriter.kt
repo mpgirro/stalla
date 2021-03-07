@@ -42,10 +42,10 @@ internal object PodloveSimpleChapterWriter : NamespaceWriter() {
             setAttribute("title", chapter.title.trim())
 
             if (chapter.href.isNeitherNullNorBlank()) {
-                setAttribute("href", chapter.href?.trim())
+                setAttribute("href", chapter.href.trim())
             }
             if (chapter.image.isNeitherNullNorBlank()) {
-                setAttribute("image", chapter.image?.trim())
+                setAttribute("image", chapter.image.trim())
             }
         }
     }

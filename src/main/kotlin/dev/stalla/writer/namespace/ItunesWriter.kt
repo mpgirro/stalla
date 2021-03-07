@@ -36,7 +36,7 @@ internal object ItunesWriter : NamespaceWriter() {
         appendTrueFalseElement("explicit", itunes.explicit, namespace)
 
         if (itunes.keywords.isNeitherNullNorBlank()) {
-            appendElement("keywords", namespace) { textContent = itunes.keywords?.trim() }
+            appendElement("keywords", namespace) { textContent = itunes.keywords.trim() }
         }
 
         if (itunes.owner != null) {
@@ -48,7 +48,7 @@ internal object ItunesWriter : NamespaceWriter() {
         }
 
         if (itunes.newFeedUrl.isNeitherNullNorBlank()) {
-            appendElement("new-feed-url", namespace) { textContent = itunes.newFeedUrl?.trim() }
+            appendElement("new-feed-url", namespace) { textContent = itunes.newFeedUrl.trim() }
         }
 
         appendCommonElements(podcast.itunes)
@@ -86,24 +86,24 @@ internal object ItunesWriter : NamespaceWriter() {
 
         val title = itunes.title
         if (title.isNeitherNullNorBlank()) {
-            appendElement("title", namespace) { textContent = title?.trim() }
+            appendElement("title", namespace) { textContent = title.trim() }
         }
 
         appendYesElementIfTrue("block", itunes.block, namespace)
 
         val author = itunes.author
         if (author.isNeitherNullNorBlank()) {
-            appendElement("author", namespace) { textContent = author?.trim() }
+            appendElement("author", namespace) { textContent = author.trim() }
         }
 
         val subtitle = itunes.subtitle
         if (subtitle.isNeitherNullNorBlank()) {
-            appendElement("subtitle", namespace) { textContent = subtitle?.trim() }
+            appendElement("subtitle", namespace) { textContent = subtitle.trim() }
         }
 
         val summary = itunes.summary
         if (summary.isNeitherNullNorBlank()) {
-            appendElement("summary", namespace) { textContent = summary?.trim() }
+            appendElement("summary", namespace) { textContent = summary.trim() }
         }
     }
 }

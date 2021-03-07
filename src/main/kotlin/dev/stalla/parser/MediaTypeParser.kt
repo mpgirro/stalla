@@ -23,11 +23,11 @@ internal object MediaTypeParser {
     /**
      * Represents a media type value.
      *
-     * @property value The actual type/subtype construct value.
+     * @property essence The actual type/subtype construct value.
      * @property params Additional parameters for this value (could be empty).
      */
     private data class TypeValue(
-        val value: String,
+        val essence: String,
         val params: List<MediaType.Parameter> = emptyList()
     )
 
@@ -59,7 +59,7 @@ internal object MediaTypeParser {
 
     private inline fun <R> parse(value: String, init: (String, List<MediaType.Parameter>) -> R): R {
         val mediaTypeValue = parseTypeValue(value).single()
-        return init(mediaTypeValue.value, mediaTypeValue.params)
+        return init(mediaTypeValue.essence, mediaTypeValue.params)
     }
 
     private fun parseTypeValue(text: String?): List<TypeValue> {
@@ -84,6 +84,7 @@ internal object MediaTypeParser {
 
         while (position <= text.lastIndex) {
             when (text[position]) {
+                /*
                 ',' -> {
                     items.value.add(
                         TypeValue(
@@ -93,6 +94,7 @@ internal object MediaTypeParser {
                     )
                     return position + 1
                 }
+                */
                 ';' -> {
                     if (valueEnd == null) valueEnd = position
                     position = parseParameter(text, position + 1, parameters)
@@ -133,10 +135,12 @@ internal object MediaTypeParser {
                     }
                     return paramEnd
                 }
+                /*
                 ';', ',' -> {
                     addParam(text, start, position, "")
                     return position
                 }
+                 */
                 else -> position++
             }
         }
