@@ -13,11 +13,11 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsProvider
 import org.junit.jupiter.params.provider.ArgumentsSource
 
-class ShowTypeTest {
+internal class ShowTypeTest {
 
-    internal class ShowTypeNameProvider : ArgumentsProvider by arguments(*allShowTypeNames.toTypedArray())
+    private class ShowTypeNameProvider : ArgumentsProvider by arguments(*allShowTypeNames.toTypedArray())
 
-    internal class ShowTypeEnumPropertyProvider : ArgumentsProvider by arguments(*ShowType.values())
+    private class ShowTypeEnumPropertyProvider : ArgumentsProvider by arguments(*ShowType.values())
 
     @ParameterizedTest
     @ArgumentsSource(ShowTypeNameProvider::class)
@@ -46,7 +46,7 @@ class ShowTypeTest {
     companion object {
 
         @JvmStatic
-        val allShowTypeNames = listOf(
+        private val allShowTypeNames = listOf(
             "episodic",
             "serial"
         )

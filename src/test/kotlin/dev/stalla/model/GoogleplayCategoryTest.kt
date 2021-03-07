@@ -13,11 +13,11 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsProvider
 import org.junit.jupiter.params.provider.ArgumentsSource
 
-class GoogleplayCategoryTest {
+internal class GoogleplayCategoryTest {
 
-    internal class GoogleplayCategoryNameProvider : ArgumentsProvider by arguments(*allGoogleplayCategoryNames.toTypedArray())
+    private class GoogleplayCategoryNameProvider : ArgumentsProvider by arguments(*allGoogleplayCategoryNames.toTypedArray())
 
-    internal class GoogleplayCategoryEnumPropertyProvider : ArgumentsProvider by arguments(*GoogleplayCategory.values())
+    private class GoogleplayCategoryEnumPropertyProvider : ArgumentsProvider by arguments(*GoogleplayCategory.values())
 
     @ParameterizedTest
     @ArgumentsSource(GoogleplayCategoryNameProvider::class)
@@ -46,7 +46,7 @@ class GoogleplayCategoryTest {
     companion object {
 
         @JvmStatic
-        val allGoogleplayCategoryNames = listOf(
+        private val allGoogleplayCategoryNames = listOf(
             "Arts",
             "Business",
             "Comedy",

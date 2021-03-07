@@ -13,11 +13,11 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsProvider
 import org.junit.jupiter.params.provider.ArgumentsSource
 
-class EpisodeTypeTest {
+internal class EpisodeTypeTest {
 
-    internal class EpisodeTypeNameProvider : ArgumentsProvider by arguments(*allEpisodeTypeNames.toTypedArray())
+    private class EpisodeTypeNameProvider : ArgumentsProvider by arguments(*allEpisodeTypeNames.toTypedArray())
 
-    internal class EpisodeTypeEnumPropertyProvider : ArgumentsProvider by arguments(*EpisodeType.values())
+    private class EpisodeTypeEnumPropertyProvider : ArgumentsProvider by arguments(*EpisodeType.values())
 
     @ParameterizedTest
     @ArgumentsSource(EpisodeTypeNameProvider::class)
@@ -46,7 +46,7 @@ class EpisodeTypeTest {
     companion object {
 
         @JvmStatic
-        val allEpisodeTypeNames = listOf(
+        private val allEpisodeTypeNames = listOf(
             "bonus",
             "full",
             "trailer"

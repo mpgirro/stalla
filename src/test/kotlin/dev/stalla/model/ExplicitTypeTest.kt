@@ -13,11 +13,11 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsProvider
 import org.junit.jupiter.params.provider.ArgumentsSource
 
-class ExplicitTypeTest {
+internal class ExplicitTypeTest {
 
-    internal class ExplicitTypeNameProvider : ArgumentsProvider by arguments(*allExplicitTypeNames.toTypedArray())
+    private class ExplicitTypeNameProvider : ArgumentsProvider by arguments(*allExplicitTypeNames.toTypedArray())
 
-    internal class ExplicitTypeEnumPropertyProvider : ArgumentsProvider by arguments(*ExplicitType.values())
+    private class ExplicitTypeEnumPropertyProvider : ArgumentsProvider by arguments(*ExplicitType.values())
 
     @ParameterizedTest
     @ArgumentsSource(ExplicitTypeNameProvider::class)
@@ -46,7 +46,7 @@ class ExplicitTypeTest {
     companion object {
 
         @JvmStatic
-        val allExplicitTypeNames = listOf(
+        private val allExplicitTypeNames = listOf(
             "yes",
             "no",
             "clean"

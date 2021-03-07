@@ -16,11 +16,11 @@ import org.junit.jupiter.params.provider.ArgumentsSource
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberProperties
 
-class TranscriptTypeTest {
+internal class TranscriptTypeTest {
 
-    internal class TranscriptTypeNameProvider : ArgumentsProvider by arguments(*allTranscriptTypeNames.toTypedArray())
+    private class TranscriptTypeNameProvider : ArgumentsProvider by arguments(*allTranscriptTypeNames.toTypedArray())
 
-    internal class TranscriptTypeFactoryPropertyProvider : ArgumentsProvider by arguments(
+    private class TranscriptTypeFactoryPropertyProvider : ArgumentsProvider by arguments(
         *TranscriptType.Factory::class.declaredMemberProperties
             .filter { member -> member.visibility == KVisibility.PUBLIC }
             .mapNotNull { member -> member.getter.call(this) }
@@ -84,7 +84,7 @@ class TranscriptTypeTest {
     companion object {
 
         @JvmStatic
-        val allTranscriptTypeNames = listOf(
+        private val allTranscriptTypeNames = listOf(
             "text/plain",
             "text/html",
             "application/json",

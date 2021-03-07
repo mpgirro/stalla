@@ -18,15 +18,15 @@ import org.junit.jupiter.params.provider.ArgumentsSource
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberProperties
 
-class ItunesCategoryTest {
+internal class ItunesCategoryTest {
 
-    internal class SimpleCategoryNameProvider : ArgumentsProvider by arguments(*simpleCategoryNames.toTypedArray())
+    private class SimpleCategoryNameProvider : ArgumentsProvider by arguments(*simpleCategoryNames.toTypedArray())
 
-    internal class NestedCategoryNameProvider : ArgumentsProvider by arguments(*nestedCategoryNames.toTypedArray())
+    private class NestedCategoryNameProvider : ArgumentsProvider by arguments(*nestedCategoryNames.toTypedArray())
 
-    internal class ItunesCategoryNameProvider : ArgumentsProvider by arguments(*allItunesCategoryNames.toTypedArray())
+    private class ItunesCategoryNameProvider : ArgumentsProvider by arguments(*allItunesCategoryNames.toTypedArray())
 
-    internal class ItunesCategoryFactoryPropertyProvider : ArgumentsProvider by arguments(
+    private class ItunesCategoryFactoryPropertyProvider : ArgumentsProvider by arguments(
         *ItunesCategory.Factory::class.declaredMemberProperties
             .filter { member -> member.visibility == KVisibility.PUBLIC }
             .mapNotNull { member -> member.getter.call(this) }
@@ -126,7 +126,7 @@ class ItunesCategoryTest {
     companion object {
 
         @JvmStatic
-        val simpleCategoryNames = listOf(
+        private val simpleCategoryNames = listOf(
             "Arts",
             "Business",
             "Comedy",
@@ -149,7 +149,7 @@ class ItunesCategoryTest {
         )
 
         @JvmStatic
-        val nestedCategoryNames = listOf(
+        private val nestedCategoryNames = listOf(
             "Books",
             "Design",
             "Fashion & Beauty",
@@ -244,6 +244,6 @@ class ItunesCategoryTest {
         )
 
         @JvmStatic
-        val allItunesCategoryNames = simpleCategoryNames + nestedCategoryNames
+        private val allItunesCategoryNames = simpleCategoryNames + nestedCategoryNames
     }
 }

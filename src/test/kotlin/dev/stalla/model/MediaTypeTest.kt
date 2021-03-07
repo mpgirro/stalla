@@ -3,6 +3,7 @@ package dev.stalla.model
 import assertk.all
 import assertk.assertAll
 import assertk.assertThat
+import assertk.assertions.contains
 import assertk.assertions.hasSize
 import assertk.assertions.index
 import assertk.assertions.isEmpty
@@ -11,13 +12,39 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
+import dev.stalla.arguments
 import dev.stalla.equalToString
 import dev.stalla.matchPattern
 import dev.stalla.matchesSymmetrically
+import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.notMatchesSymmetrically
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ArgumentsProvider
+import org.junit.jupiter.params.provider.ArgumentsSource
+import kotlin.reflect.KVisibility
+import kotlin.reflect.full.declaredMemberProperties
 
-class MediaTypeTest {
+internal class MediaTypeTest {
+
+    private class MediaTypeNameProvider : ArgumentsProvider by arguments(*allMediaTypeNames.toTypedArray())
+
+    private class MediaTypeFactoryPropertyProvider : ArgumentsProvider by arguments(
+        *MediaType.Factory::class.declaredMemberProperties
+            .filter { member -> member.visibility == KVisibility.PUBLIC }
+            .mapNotNull { member -> member.getter.call(this) }
+            .filterIsInstance<MediaType>()
+            .toTypedArray()
+    )
+
+    private val factoryPropertyMap: Map<String, MediaType> by lazy {
+        val values: List<MediaType> = MediaType.Factory::class.declaredMemberProperties
+            .filter { member -> member.visibility == KVisibility.PUBLIC }
+            .mapNotNull { member -> member.getter.call(this) }
+            .filterIsInstance<MediaType>()
+
+        values.associateBy({ it.toString() }, { it })
+    }
 
     @Test
     fun `should define the plain text type correctly`() {
@@ -371,5 +398,89 @@ class MediaTypeTest {
         assertThat("text/plain").isEqualTo(MediaType.PLAIN_TEXT.withParameter("a", "1").withoutParameters().toString())
 
         assertThat("text/html").isEqualTo(MediaType.of("text/html;charset=utf-8")?.withoutParameters().toString())
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(MediaTypeNameProvider::class)
+    fun `should retrieve all predefined types from the factory method`(typeName: String) {
+        assertThat(MediaType.of(typeName)).isNotNull()
+            .prop("toString") { TranscriptType::toString.call(it) }.isEqualTo(typeName)
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(MediaTypeNameProvider::class)
+    fun `should have a companion object property for every predefined type`(typeName: String) {
+        assertThat(factoryPropertyMap[typeName]).isNotNull()
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(MediaTypeFactoryPropertyProvider::class)
+    fun `should expose only instance properties that are defined`(type: MediaType) {
+        assertThat(allMediaTypeNames).contains(type.toString())
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(MediaTypeFactoryPropertyProvider::class)
+    fun `should retrieve the correct instance for every predefined type from the factory method`(type: MediaType) {
+        assertThat(MediaType.of(type.toString())).isEqualTo(type)
+    }
+
+    companion object {
+
+        @JvmStatic
+        private val allMediaTypeNames = listOf(
+            "*/*",
+            "audio/*",
+            "audio/aac",
+            "audio/basic",
+            "audio/flac",
+            "audio/L16",
+            "audio/L24",
+            "audio/mp4",
+            "audio/mpeg",
+            "audio/ogg",
+            "audio/opus",
+            "audio/vorbis",
+            "audio/webm",
+            "application/atom+xml",
+            "application/epub+zip",
+            "application/gzip",
+            "application/javascript",
+            "application/json",
+            "application/manifest+json",
+            "application/ogg",
+            "application/opensearchdescription+xml",
+            "application/pdf",
+            "application/postscript",
+            "application/rss+xml",
+            "application/srt",
+            "application/xml",
+            "application/x-tar",
+            "application/zip",
+            "image/*",
+            "image/bmp",
+            "image/gif",
+            "image/heif",
+            "image/jpeg",
+            "image/png",
+            "image/svg+xml",
+            "image/tiff",
+            "image/webp",
+            "text/*",
+            "text/css",
+            "text/csv",
+            "text/html",
+            "text/markdown",
+            "text/plain",
+            "text/vcard",
+            "text/vtt",
+            "text/xml",
+            "video/*",
+            "video/mp4",
+            "video/mpeg",
+            "video/ogg",
+            "video/quicktime",
+            "video/webm"
+        )
     }
 }

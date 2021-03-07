@@ -185,8 +185,8 @@ internal fun Assert<MediaType>.matchPattern(expected: MediaType) = given { media
     )
 }
 
+/** Asserts that this matches [expected] symmetrically using [MediaType.match]. */
 internal fun Assert<MediaType>.matchesSymmetrically(expected: MediaType?) = given { mediaType ->
-    if (mediaType.match(expected) && expected.match(mediaType)) return@given
     if (!mediaType.match(expected)) {
         expected(
             "to match symmetrically, but '$mediaType' does not match '$expected'",
@@ -203,8 +203,8 @@ internal fun Assert<MediaType>.matchesSymmetrically(expected: MediaType?) = give
     }
 }
 
+/** Asserts that this does not match [expected] symmetrically using [MediaType.match]. */
 internal fun Assert<MediaType>.notMatchesSymmetrically(expected: MediaType?) = given { mediaType ->
-    if (expected != null && !mediaType.match(expected) && !expected.match(mediaType)) return@given
     if (mediaType.match(expected)) {
         expected(
             "to not match symmetrically, but '$mediaType' does match '$expected'",
@@ -212,7 +212,7 @@ internal fun Assert<MediaType>.notMatchesSymmetrically(expected: MediaType?) = g
             actual = true
         )
     }
-    if (expected != null && !expected.match(mediaType)) {
+    if (expected != null && expected.match(mediaType)) {
         expected(
             "to not match symmetrically, but '$expected' does match '$mediaType'",
             expected = false,

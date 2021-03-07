@@ -157,7 +157,6 @@ public open class MediaType private constructor(
             parameters == other.parameters
     }
 
-
     override fun hashCode(): Int {
         var result = type.toLowerCase(Locale.ROOT).hashCode()
         result += 31 * result + subtype.toLowerCase(Locale.ROOT).hashCode()
