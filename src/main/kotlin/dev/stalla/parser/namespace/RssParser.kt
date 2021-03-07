@@ -17,6 +17,7 @@ import dev.stalla.parser.NamespaceParser
 import dev.stalla.parser.namespace.RssParser.namespace
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
+import dev.stalla.util.allNotNull
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
@@ -108,7 +109,7 @@ internal object RssParser : NamespaceParser() {
         val length = getAttributeValueByName("length")?.toLongOrNull()
         val type = getAttributeValueByName("type").parseAsMediaTypeOrNull()
 
-        if (url == null || length == null || type == null) return@ifCanBeParsed builder
+        if(!allNotNull(url, length, type)) return@ifCanBeParsed builder
 
         builder.url(url)
             .length(length)

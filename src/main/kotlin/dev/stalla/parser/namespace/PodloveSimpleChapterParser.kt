@@ -8,6 +8,7 @@ import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
+import dev.stalla.util.allNotNull
 import org.w3c.dom.Node
 
 /**
@@ -52,7 +53,7 @@ internal object PodloveSimpleChapterParser : NamespaceParser() {
     ): EpisodePodloveSimpleChapterBuilder? {
         val start = getAttributeValueByName("start")
         val title = getAttributeValueByName("title")
-        if (start == null || title == null) return null
+        if (!allNotNull(start, title)) return null
 
         return chapterBuilder.start(start)
             .title(title)
