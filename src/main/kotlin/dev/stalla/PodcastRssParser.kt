@@ -1,5 +1,6 @@
 package dev.stalla
 
+import dev.stalla.PodcastRssParser.parse
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
@@ -33,7 +34,7 @@ import javax.xml.parsers.DocumentBuilder
 
 /**
  * The main entry point to parse a podcast RSS feed. You can use
- * any of the `parse` overloads to obtain an instance of [Podcast].
+ * any of the [parse] overloads to obtain an instance of [Podcast].
  *
  * @since 1.0.0
  */
@@ -60,9 +61,10 @@ public object PodcastRssParser {
      * and return a [Podcast] if the XML document is an RSS feed.
      *
      * @param uri The location of the content to be parsed.
-     * @return A [Podcast] if the XML document behind the URI is an RSS document, otherwise null.
+     * @return A [Podcast] if the XML document behind the URI is an RSS document, otherwise `null`.
      * @throws java.io.IOException If any IO errors occur.
      * @throws org.xml.sax.SAXException If any parse errors occur.
+     * @throws NullPointerException If [uri] is `null`.
      */
     @Throws(IOException::class, SAXException::class)
     public fun parse(uri: String): Podcast? = parse(builder.parse(uri))
@@ -72,9 +74,10 @@ public object PodcastRssParser {
      * and return a [Podcast] if the XML document is an RSS feed.
      *
      * @param inputStream InputStream containing the content to be parsed.
-     * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise null.
+     * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise `null`.
      * @throws java.io.IOException If any IO errors occur.
      * @throws org.xml.sax.SAXException If any parse errors occur.
+     * @throws NullPointerException If [inputStream] is `null`.
      */
     @Throws(IOException::class, SAXException::class)
     public fun parse(inputStream: InputStream): Podcast? = parse(builder.parse(inputStream))
@@ -85,12 +88,13 @@ public object PodcastRssParser {
      *
      * @param inputStream InputStream containing the content to be parsed.
      * @param systemId Provide a base for resolving relative URIs.
-     * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise null.
+     * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise `null`.
      * @throws java.io.IOException If any IO errors occur.
      * @throws org.xml.sax.SAXException If any parse errors occur.
+     * @throws NullPointerException If [inputStream] is `null`.
      */
     @Throws(IOException::class, SAXException::class)
-    public fun parse(inputStream: InputStream, systemId: String): Podcast? =
+    public fun parse(inputStream: InputStream, systemId: String?): Podcast? =
         parse(builder.parse(inputStream, systemId))
 
     /**
@@ -98,9 +102,10 @@ public object PodcastRssParser {
      * and return a [Podcast] if the XML document is an RSS feed.
      *
      * @param file File containing the content to be parsed.
-     * @return A [Podcast] if the XML document behind the file is an RSS document, otherwise null.
+     * @return A [Podcast] if the XML document behind the file is an RSS document, otherwise `null`.
      * @throws java.io.IOException If any IO errors occur.
      * @throws org.xml.sax.SAXException If any parse errors occur.
+     * @throws NullPointerException If [file] is `null`.
      */
     @Throws(IOException::class, SAXException::class)
     public fun parse(file: File): Podcast? = parse(builder.parse(file))
@@ -113,6 +118,7 @@ public object PodcastRssParser {
      * @return A [Podcast] if the XML document behind the input source is an RSS document, otherwise null.
      * @throws java.io.IOException If any IO errors occur.
      * @throws org.xml.sax.SAXException If any parse errors occur.
+     * @throws NullPointerException If [inputSource] is `null`.
      */
     @Throws(IOException::class, SAXException::class)
     public fun parse(inputSource: InputSource): Podcast? = parse(builder.parse(inputSource))
@@ -121,7 +127,8 @@ public object PodcastRssParser {
      * Parse the content of the given XML document and return a [Podcast] if the XML document is an RSS feed.
      *
      * @param document Document containing the content to be parsed.
-     * @return A [Podcast] if the XML document is an RSS document, otherwise null.
+     * @return A [Podcast] if the XML document is an RSS document, otherwise `null`.
+     * @throws NullPointerException If [document] is `null`.
      */
     public fun parse(document: Document): Podcast? {
         val channel = document.findRssChannelElement() ?: return null

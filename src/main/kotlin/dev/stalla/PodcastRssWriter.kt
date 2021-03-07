@@ -62,6 +62,7 @@ public object PodcastRssWriter {
      *
      * @param podcast The [Podcast] to write out.
      * @param file The [File] to write to. Any contents will be overwritten.
+     * @throws NullPointerException If [podcast] or [file] is `null`.
      */
     public fun write(podcast: Podcast, file: File) {
         file.outputStream()
@@ -73,6 +74,7 @@ public object PodcastRssWriter {
      *
      * @param podcast The [Podcast] to write out.
      * @param stream The [OutputStream] to write to.
+     * @throws NullPointerException If [podcast] or [stream] is `null`.
      */
     public fun write(podcast: Podcast, stream: OutputStream) {
         val document = writeToDocument(podcast)
