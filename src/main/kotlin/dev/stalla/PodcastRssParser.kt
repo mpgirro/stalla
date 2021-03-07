@@ -25,7 +25,9 @@ import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.w3c.dom.Text
 import org.xml.sax.InputSource
+import org.xml.sax.SAXException
 import java.io.File
+import java.io.IOException
 import java.io.InputStream
 import javax.xml.parsers.DocumentBuilder
 
@@ -59,7 +61,10 @@ public object PodcastRssParser {
      *
      * @param uri The location of the content to be parsed.
      * @return A [Podcast] if the XML document behind the URI is an RSS document, otherwise null.
+     * @throws java.io.IOException If any IO errors occur.
+     * @throws org.xml.sax.SAXException If any parse errors occur.
      */
+    @Throws(IOException::class, SAXException::class)
     public fun parse(uri: String): Podcast? = parse(builder.parse(uri))
 
     /**
@@ -68,7 +73,10 @@ public object PodcastRssParser {
      *
      * @param inputStream InputStream containing the content to be parsed.
      * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise null.
+     * @throws java.io.IOException If any IO errors occur.
+     * @throws org.xml.sax.SAXException If any parse errors occur.
      */
+    @Throws(IOException::class, SAXException::class)
     public fun parse(inputStream: InputStream): Podcast? = parse(builder.parse(inputStream))
 
     /**
@@ -78,7 +86,10 @@ public object PodcastRssParser {
      * @param inputStream InputStream containing the content to be parsed.
      * @param systemId Provide a base for resolving relative URIs.
      * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise null.
+     * @throws java.io.IOException If any IO errors occur.
+     * @throws org.xml.sax.SAXException If any parse errors occur.
      */
+    @Throws(IOException::class, SAXException::class)
     public fun parse(inputStream: InputStream, systemId: String): Podcast? =
         parse(builder.parse(inputStream, systemId))
 
@@ -88,7 +99,10 @@ public object PodcastRssParser {
      *
      * @param file File containing the content to be parsed.
      * @return A [Podcast] if the XML document behind the file is an RSS document, otherwise null.
+     * @throws java.io.IOException If any IO errors occur.
+     * @throws org.xml.sax.SAXException If any parse errors occur.
      */
+    @Throws(IOException::class, SAXException::class)
     public fun parse(file: File): Podcast? = parse(builder.parse(file))
 
     /**
@@ -97,7 +111,10 @@ public object PodcastRssParser {
      *
      * @param inputSource InputSource containing the content to be parsed.
      * @return A [Podcast] if the XML document behind the input source is an RSS document, otherwise null.
+     * @throws java.io.IOException If any IO errors occur.
+     * @throws org.xml.sax.SAXException If any parse errors occur.
      */
+    @Throws(IOException::class, SAXException::class)
     public fun parse(inputSource: InputSource): Podcast? = parse(builder.parse(inputSource))
 
     /**
