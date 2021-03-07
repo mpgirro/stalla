@@ -29,8 +29,8 @@ import kotlin.reflect.full.declaredMemberProperties
  * | `application/json` | [JSON]       |
  * | `application/srt`  | [SRT]        |
  *
- * @param type The type part of the transcript type.
- * @param subtype The subtype part of the transcript type.
+ * @property type The type part of the transcript type.
+ * @property subtype The subtype part of the transcript type.
  *
  * @see TranscriptType.Factory Provides a factory method for type instances.
  * @see MediaType

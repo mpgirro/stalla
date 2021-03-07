@@ -9,9 +9,9 @@ import dev.stalla.model.StyledDuration
 /**
  * The soundbite information for the episode. Used to automatically extract soundbites from the [Episode.enclosure].
  *
- * @param startTime The timestamp at which the soundbite starts.
- * @param duration The duration of the timestamp (recommended between 15 and 120 seconds).
- * @param title A custom title for the soundbite. When null, the [Episode.title] is used.
+ * @property startTime The timestamp at which the soundbite starts.
+ * @property duration The duration of the timestamp (recommended between 15 and 120 seconds).
+ * @property title A custom title for the soundbite. When null, the [Episode.title] is used.
  *
  * @since 1.0.0
  */

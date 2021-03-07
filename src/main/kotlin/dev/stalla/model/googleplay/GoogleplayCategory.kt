@@ -12,7 +12,7 @@ import dev.stalla.util.equalsIgnoreCase
  * and marked as finite in the
  * [XML schema definition](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd).
  *
- * @param type The string representation of the category.
+ * @property type The string representation of the category.
  *
  * @see GoogleplayCategory.Factory Companion object providing a factory method.
  * @since 1.0.0

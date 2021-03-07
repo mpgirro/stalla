@@ -2,6 +2,7 @@ package dev.stalla.util
 
 /**
  * Annotation class indicating an internal API that should only be used at your own risk.
+ *
  * @since 1.0.0
  */
 @RequiresOptIn(

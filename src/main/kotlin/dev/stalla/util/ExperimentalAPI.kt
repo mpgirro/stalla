@@ -2,6 +2,7 @@ package dev.stalla.util
 
 /**
  * Annotation class indicating an experimental API that should not be relied on yet.
+ *
  * @since 1.0.0
  */
 @RequiresOptIn(

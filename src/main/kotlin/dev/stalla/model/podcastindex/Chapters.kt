@@ -9,8 +9,8 @@ import dev.stalla.model.MediaType
  * The chapters information for the episode. See the
  * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#chapters).
  *
- * @param url The URL for the chapters information.
- * @param type The MIME type of the chapters file. JSON (`application/json+chapters`) is the preferred format.
+ * @property url The URL for the chapters information.
+ * @property type The MIME type of the chapters file. JSON (`application/json+chapters`) is the preferred format.
  *
  * @since 1.0.0
  */

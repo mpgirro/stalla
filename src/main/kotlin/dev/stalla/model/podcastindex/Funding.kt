@@ -7,8 +7,8 @@ import dev.stalla.model.BuilderFactory
 /**
  * The funding information for the podcast.
  *
- * @param url The URL where listeners can find funding information for the podcast.
- * @param message The recommended CTA text to show users for the funding link.
+ * @property url The URL where listeners can find funding information for the podcast.
+ * @property message The recommended CTA text to show users for the funding link.
  *
  * @since 1.0.0
  */

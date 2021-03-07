@@ -11,8 +11,8 @@ import dev.stalla.model.BuilderFactory
  * <category domain="my-domain">News</category>
  * ```
  *
- * @param name The name of the category.
- * @param domain A name or URL identifying a categorization taxonomy.
+ * @property name The name of the category.
+ * @property domain A name or URL identifying a categorization taxonomy.
  *
  * @since 1.0.0
  */
