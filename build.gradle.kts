@@ -82,7 +82,8 @@ tasks {
             freeCompilerArgs = listOf(
                 "-Xopt-in=kotlin.RequiresOptIn",
                 "-Xopt-in=kotlin.contracts.ExperimentalContracts",
-                "-Xopt-in=dev.stalla.util.InternalApi"
+                "-Xopt-in=dev.stalla.util.InternalApi",
+                "-Xopt-in=dev.stalla.util.ExperimentalAPI"
             )
         }
     }
