@@ -54,7 +54,7 @@ internal class ValidatingEpisodeBuilderTest {
         .type(MediaType.JSON)
 
     @Test
-    internal fun `should not build a Episode when the mandatory fields are missing`() {
+    internal fun `should not build an Episode when the mandatory fields are missing`() {
         val episodeBuilder = ValidatingEpisodeBuilder()
 
         assertAll {
@@ -65,7 +65,7 @@ internal class ValidatingEpisodeBuilderTest {
     }
 
     @Test
-    internal fun `should not build a Episode when the mandatory title is missing`() {
+    internal fun `should not build an Episode when the mandatory title is missing`() {
         val episodeBuilder = ValidatingEpisodeBuilder()
             .enclosureBuilder(expectedEnclosureBuilder)
 
@@ -77,7 +77,7 @@ internal class ValidatingEpisodeBuilderTest {
     }
 
     @Test
-    internal fun `should not build a Episode when the mandatory enclosure is missing`() {
+    internal fun `should not build an Episode when the mandatory enclosure is missing`() {
         val episodeBuilder = ValidatingEpisodeBuilder()
             .title("title")
 
@@ -89,7 +89,7 @@ internal class ValidatingEpisodeBuilderTest {
     }
 
     @Test
-    internal fun `should build a Episode with all the mandatory fields`() {
+    internal fun `should build an Episode with all the mandatory fields`() {
         val episodeBuilder = ValidatingEpisodeBuilder()
             .title("title")
             .enclosureBuilder(expectedEnclosureBuilder)
@@ -120,7 +120,7 @@ internal class ValidatingEpisodeBuilderTest {
     }
 
     @Test
-    internal fun `should build a Episode with all the optional fields`() {
+    internal fun `should build an Episode with all the optional fields`() {
         val episodeBuilder = ValidatingEpisodeBuilder()
             .title("title")
             .link("link")

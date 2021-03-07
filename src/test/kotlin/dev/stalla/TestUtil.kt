@@ -55,7 +55,6 @@ internal fun allResourceFilesIn(path: String): List<File> {
             File(fileUrl.toURI())
         }
 
-
     val invalidFiles = files.filter { !it.isFile }
 
     require(invalidFiles.isEmpty()) {
