@@ -12,7 +12,11 @@ import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
 
-/** Builder for constructing [Podcast] instances. */
+/**
+ * Builder for constructing [Podcast] instances.
+ *
+ * @since 1.0.0
+ */
 public interface PodcastBuilder : Builder<Podcast> {
 
     /** The builder for data from the iTunes namespace. */

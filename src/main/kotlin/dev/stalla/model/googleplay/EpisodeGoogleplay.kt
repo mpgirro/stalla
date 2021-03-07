@@ -17,6 +17,8 @@ import dev.stalla.model.HrefOnlyImage
  * @property explicit The value of the `<googleplay:explicit>` field text content as an [ExplicitType].
  * @property block The logical value of the `<googleplay:block>` field's text content.
  * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
+ *
+ * @since 1.0.0
  */
 public data class EpisodeGoogleplay(
     override val author: String? = null,

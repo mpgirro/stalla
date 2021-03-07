@@ -10,6 +10,8 @@ import dev.stalla.model.BuilderFactory
  *
  * @param owner An email address that can be used to verify ownership when moving hosting platforms.
  * @param locked When `true`, the podcast cannot be transferred to a new hosting platform.
+ *
+ * @since 1.0.0
  */
 public data class Locked(
     val owner: String,

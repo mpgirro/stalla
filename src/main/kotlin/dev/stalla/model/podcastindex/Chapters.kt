@@ -11,6 +11,8 @@ import dev.stalla.model.MediaType
  *
  * @param url The URL for the chapters information.
  * @param type The MIME type of the chapters file. JSON (`application/json+chapters`) is the preferred format.
+ *
+ * @since 1.0.0
  */
 public data class Chapters(
     val url: String,

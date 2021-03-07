@@ -12,6 +12,8 @@ import dev.stalla.model.BuilderFactory
  * @property title The value of the chapter's `title` attribute.
  * @property href The value of the chapter's `href` attribute.
  * @property image The value of the chapter's `image` attribute.
+ *
+ * @since 1.0.0
  */
 public data class SimpleChapter(
     val start: String,

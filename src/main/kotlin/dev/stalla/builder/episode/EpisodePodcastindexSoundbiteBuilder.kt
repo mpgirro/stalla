@@ -5,7 +5,11 @@ import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.Soundbite
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Soundbite] instances. */
+/**
+ * Builder for constructing [Soundbite] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodePodcastindexSoundbiteBuilder : Builder<Soundbite> {
 
     /** Set the starTime value. */

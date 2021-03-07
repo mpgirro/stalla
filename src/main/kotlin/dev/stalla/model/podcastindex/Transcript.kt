@@ -12,6 +12,8 @@ import java.util.Locale
  * @param type The type of transcript. One of the supported [TranscriptType]s.
  * @param language The transcript language.
  * @param rel When present and equals to `captions`, the transcript is considered to be a CC, regardless of its [type].
+ *
+ * @since 1.0.0
  */
 public data class Transcript(
     val url: String,

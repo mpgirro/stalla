@@ -9,6 +9,8 @@ import dev.stalla.model.BuilderFactory
  *
  * @property name The name of the owner.
  * @property email The email of the owner.
+ *
+ * @since 1.0.0
  */
 public data class ItunesOwner(
     val name: String,

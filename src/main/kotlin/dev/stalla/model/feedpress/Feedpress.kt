@@ -13,6 +13,8 @@ import java.util.Locale
  * @property podcastId The iTunes Podcast ID.
  * @property cssFile The feed's custom CSS file.
  * @property link An alternative link to podcast or RSS clients.
+ *
+ * @since 1.0.0
  */
 public data class Feedpress(
     val newsletterId: String? = null,

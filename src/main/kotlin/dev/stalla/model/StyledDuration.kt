@@ -17,6 +17,7 @@ import kotlin.math.pow
  * @see SecondsAndFraction
  * @see HoursMinutesSeconds
  * @see MinutesSeconds
+ * @since 1.0.0
  */
 public sealed class StyledDuration {
 

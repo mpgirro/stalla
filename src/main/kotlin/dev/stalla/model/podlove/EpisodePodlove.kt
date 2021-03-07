@@ -9,6 +9,8 @@ import dev.stalla.model.BuilderFactory
  * standards family that are valid within `<item>` elements.
  *
  * @property simpleChapters List of data from the `<psc:chapter>` elements as [SimpleChapter] instances.
+ *
+ * @since 1.0.0
  */
 public data class EpisodePodlove(
     val simpleChapters: List<SimpleChapter>

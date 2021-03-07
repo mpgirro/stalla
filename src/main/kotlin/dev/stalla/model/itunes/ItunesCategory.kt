@@ -245,6 +245,7 @@ import kotlin.reflect.full.declaredMemberProperties
  * @see Simple Subtype for simple categories.
  * @see Nested Subtype for categories that are nested in a [Simple] category.
  * @see Factory Companion object exposing references to the all valid instances and a factory method.
+ * @since 1.0.0
  */
 public sealed class ItunesCategory(public open val type: String) {
 

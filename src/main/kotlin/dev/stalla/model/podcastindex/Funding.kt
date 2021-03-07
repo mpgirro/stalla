@@ -9,6 +9,8 @@ import dev.stalla.model.BuilderFactory
  *
  * @param url The URL where listeners can find funding information for the podcast.
  * @param message The recommended CTA text to show users for the funding link.
+ *
+ * @since 1.0.0
  */
 public data class Funding(
     val url: String,

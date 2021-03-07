@@ -27,6 +27,8 @@ import javax.xml.transform.stream.StreamResult
 /**
  * The main entry point to write a [Podcast] instance to an RSS feed.
  * You can use any of the `writeRssFeed` overloads.
+ *
+ * @since 1.0.0
  */
 public object PodcastRssWriter {
 

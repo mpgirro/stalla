@@ -15,6 +15,8 @@ import dev.stalla.model.MediaType
  * @property rel The rel of the link.
  * @property title The title of the link.
  * @property type The type of the link.
+ *
+ * @since 1.0.0
  */
 public data class Link(
     val href: String,

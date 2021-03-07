@@ -12,6 +12,8 @@ import dev.stalla.model.StyledDuration
  * @param startTime The timestamp at which the soundbite starts.
  * @param duration The duration of the timestamp (recommended between 15 and 120 seconds).
  * @param title A custom title for the soundbite. When null, the [Episode.title] is used.
+ *
+ * @since 1.0.0
  */
 public data class Soundbite(
     val startTime: StyledDuration.SecondsAndFraction,

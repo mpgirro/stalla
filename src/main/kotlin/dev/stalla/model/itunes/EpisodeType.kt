@@ -11,7 +11,8 @@ import dev.stalla.util.equalsIgnoreCase
  *
  * @property type The string representation of the enum instance.
  *
- * @see EpisodeType.Factory Companion object providing a factory method.
+ * @see EpisodeType.Factory Provides a factory method for type instances.
+ * @since 1.0.0
  */
 public enum class EpisodeType(public val type: String) {
 

@@ -29,6 +29,8 @@ import dev.stalla.model.BuilderFactory
  * @property width The numeric value of an RSS `<width>` element inside an `<image>` element.
  * @property height The numeric value of an RSS `<height>` element inside an `<image>` element.
  * @property description The value of an RSS `<description>` element inside an `<image>`.
+ *
+ * @since 1.0.0
  */
 public data class RssImage(
     val url: String,

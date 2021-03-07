@@ -10,6 +10,8 @@ import dev.stalla.model.BuilderFactory
  * @property transcripts The transcript information for the episode.
  * @property soundbites The soundbites information for the episode.
  * @property chapters The chapters information for the episode.
+ *
+ * @since 1.0.0
  */
 public data class EpisodePodcastindex(
     val transcripts: List<Transcript> = emptyList(),

@@ -12,7 +12,8 @@ import dev.stalla.util.equalsIgnoreCase
  *
  * @property type The string representation of the enum instance.
  *
- * @see ExplicitType.Factory Companion object providing a factory method.
+ * @see ExplicitType.Factory Provides a factory method for type instances.
+ * @since 1.0.0
  */
 public enum class ExplicitType(public val type: String) {
 

@@ -10,6 +10,8 @@ import dev.stalla.model.BuilderFactory
  * @property authors List of data from the `<atom:author>` elements as [AtomPerson] instances.
  * @property contributors List of data from the `<atom:contributor>` elements as [AtomPerson] instances.
  * @property links List of data from the `<atom:link>` elements as [Link] instances.
+ *
+ * @since 1.0.0
  */
 public data class Atom(
     val authors: List<AtomPerson>,

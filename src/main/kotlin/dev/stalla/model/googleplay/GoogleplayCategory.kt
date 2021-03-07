@@ -15,6 +15,7 @@ import dev.stalla.util.equalsIgnoreCase
  * @param type The string representation of the category.
  *
  * @see GoogleplayCategory.Factory Companion object providing a factory method.
+ * @since 1.0.0
  */
 @Suppress("unused")
 public enum class GoogleplayCategory(public val type: String) {

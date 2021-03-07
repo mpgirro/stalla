@@ -20,6 +20,8 @@ import dev.stalla.model.StyledDuration
  * @property author The `<itunes:author>` field text content.
  * @property subtitle The `<itunes:subtitle>` field text content.
  * @property summary The `<itunes:summary>` field text content.
+ *
+ * @since 1.0.0
  */
 public data class EpisodeItunes(
     override val title: String? = null,

@@ -7,7 +7,11 @@ import dev.stalla.model.StyledDuration
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [EpisodeItunes] instances. */
+/**
+ * Builder for constructing [EpisodeItunes] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodeItunesBuilder : Builder<EpisodeItunes> {
 
     /** Set the title value. */

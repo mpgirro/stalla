@@ -32,6 +32,8 @@ import javax.xml.parsers.DocumentBuilder
 /**
  * The main entry point to parse a podcast RSS feed. You can use
  * any of the `parse` overloads to obtain an instance of [Podcast].
+ *
+ * @since 1.0.0
  */
 @Suppress("unused")
 public object PodcastRssParser {

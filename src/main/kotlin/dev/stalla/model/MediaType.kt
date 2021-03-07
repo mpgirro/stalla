@@ -27,6 +27,7 @@ import kotlin.contracts.contract
  * @property parameters The modifiers of the media subtype.
  *
  * @see Factory Companion object exposing references to the some predefined instances and a factory method.
+ * @since 1.0.0
  */
 public open class MediaType private constructor(
     public open val type: String,

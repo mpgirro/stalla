@@ -9,6 +9,8 @@ import dev.stalla.model.BuilderFactory
  *
  * @property guid The text content of the element.
  * @property isPermalink The boolean interpretation of the `isPermalink` attribute.
+ *
+ * @since 1.0.0
  */
 public data class Guid(
     val guid: String,

@@ -10,6 +10,8 @@ import dev.stalla.model.BuilderFactory
  * @property name The name of the person.
  * @property email The email of the person.
  * @property uri The uri of the person.
+ *
+ * @since 1.0.0
  */
 public data class AtomPerson(
     val name: String,

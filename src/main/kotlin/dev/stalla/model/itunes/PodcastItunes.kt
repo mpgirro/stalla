@@ -22,7 +22,7 @@ import dev.stalla.model.HrefOnlyImage
  * @property title The `<itunes:title>` field text content.
  * @property newFeedUrl The `<itunes:new-feed-url>` field text content.
  *
- * @see dev.stalla.model.itunes.PodcastItunes.Factory provides a factory method for type instances.
+ * @since 1.0.0
  */
 public data class PodcastItunes(
     override val subtitle: String? = null,

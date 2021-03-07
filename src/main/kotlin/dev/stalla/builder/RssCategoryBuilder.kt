@@ -3,7 +3,11 @@ package dev.stalla.builder
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [RssCategory] instances. */
+/**
+ * Builder for constructing [RssCategory] instances.
+ *
+ * @since 1.0.0
+ */
 public interface RssCategoryBuilder : Builder<RssCategory> {
 
     /** Set the category value. */

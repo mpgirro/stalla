@@ -11,6 +11,8 @@ import dev.stalla.model.MediaType
  * @property url The `url` attribute textContent of the RSS `<enclosure>` element.
  * @property length The `length` attribute textContent of the RSS `<enclosure>` element. The media length in seconds.
  * @property type The `type` attribute textContent of the RSS `<enclosure>` element.
+ *
+ * @since 1.0.0
  */
 public data class Enclosure(
     val url: String,

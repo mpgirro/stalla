@@ -36,6 +36,8 @@ import java.time.temporal.TemporalAccessor
  * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property bitlove The data from the Bitlove namespace, or null if no data from this namespace was found.
  * @property podcastindex The data from the Podcastindex namespace, or null if no data from this namespace was found.
+ *
+ * @since 1.0.0
  */
 @Suppress("unused")
 public data class Episode(

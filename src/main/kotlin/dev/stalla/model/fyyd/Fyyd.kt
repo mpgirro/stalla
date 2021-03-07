@@ -8,6 +8,8 @@ import dev.stalla.model.BuilderFactory
  * Model class for data from elements of the Fyyd namespace that are valid within `<channel>` elements.
  *
  * @property verify The Podcast's verification token.
+ *
+ * @since 1.0.0
  */
 public data class Fyyd(
     val verify: String

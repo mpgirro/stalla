@@ -5,7 +5,11 @@ import dev.stalla.model.podlove.EpisodePodlove
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [EpisodePodlove] instances. */
+/**
+ * Builder for constructing [EpisodePodlove] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodePodloveBuilder : Builder<EpisodePodlove> {
 
     /** Adds the [EpisodePodloveSimpleChapterBuilder] to the list of chapter builders. */

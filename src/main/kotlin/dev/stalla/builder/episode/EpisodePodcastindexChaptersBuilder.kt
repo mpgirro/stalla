@@ -5,7 +5,11 @@ import dev.stalla.model.MediaType
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Chapters] instances. */
+/**
+ * Builder for constructing [Chapters] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodePodcastindexChaptersBuilder : Builder<Chapters> {
 
     /** Set the url value . */

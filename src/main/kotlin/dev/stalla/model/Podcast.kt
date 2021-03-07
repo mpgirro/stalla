@@ -37,6 +37,8 @@ import java.util.Locale
  * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property categories The RSS feed categories, if any.
  * @property podcast The data from the Podcastindex namespace, or null if no data from this namespace was found.
+ *
+ * @since 1.0.0
  */
 public data class Podcast(
     val title: String,

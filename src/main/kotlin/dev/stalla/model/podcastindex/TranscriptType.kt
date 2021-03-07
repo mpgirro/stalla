@@ -32,8 +32,9 @@ import kotlin.reflect.full.declaredMemberProperties
  * @param type The type part of the transcript type.
  * @param subtype The subtype part of the transcript type.
  *
- * @see Factory Companion object providing a factory method.
+ * @see TranscriptType.Factory Provides a factory method for type instances.
  * @see MediaType
+ * @since 1.0.0
  */
 public sealed class TranscriptType(
     override val type: String,

@@ -13,6 +13,8 @@ import dev.stalla.model.BuilderFactory
  *
  * @param name The name of the category.
  * @param domain A name or URL identifying a categorization taxonomy.
+ *
+ * @since 1.0.0
  */
 public data class RssCategory(
     val name: String,
