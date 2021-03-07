@@ -416,6 +416,13 @@ public open class MediaType private constructor(
         @JvmField
         public val QUICKTIME: MediaType = MediaType("video", "quicktime")
 
+        /**
+         * [RDF/XML](https://en.wikipedia.org/wiki/RDF/XML) pattern `application/rdf+xml`,
+         * as defined by [RFC 3870](https://tools.ietf.org/html/rfc3870).
+         */
+        @JvmField
+        public val RDF_XML: MediaType = MediaType("application", "rdf+xml")
+
         /** [RSS](https://en.wikipedia.org/wiki/RSS) feed pattern `application/rss+xml`. */
         @JvmField
         public val RSS: MediaType = MediaType("application", "rss+xml")

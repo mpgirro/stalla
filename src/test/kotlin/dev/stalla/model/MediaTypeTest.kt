@@ -452,6 +452,7 @@ internal class MediaTypeTest {
             "application/opensearchdescription+xml",
             "application/pdf",
             "application/postscript",
+            "application/rdf+xml",
             "application/rss+xml",
             "application/srt",
             "application/xml",

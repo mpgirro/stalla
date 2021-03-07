@@ -109,7 +109,7 @@ internal object RssParser : NamespaceParser() {
         val length = getAttributeValueByName("length")?.toLongOrNull()
         val type = getAttributeValueByName("type").parseAsMediaTypeOrNull()
 
-        if(!allNotNull(url, length, type)) return@ifCanBeParsed builder
+        if (!allNotNull(url, length, type)) return@ifCanBeParsed builder
 
         builder.url(url)
             .length(length)
