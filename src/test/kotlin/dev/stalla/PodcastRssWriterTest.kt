@@ -15,7 +15,7 @@ internal class PodcastRssWriterTest {
         val file = File.createTempFile("stalla_test", "writer_output")
 
         val podcast = aPodcast()
-        PodcastRssWriter.writeRssFeed(podcast, file)
+        PodcastRssWriter.write(podcast, file)
 
         assertAll {
             assertThat(file, "written file").exists()

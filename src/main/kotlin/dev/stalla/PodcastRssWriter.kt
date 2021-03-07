@@ -63,9 +63,9 @@ public object PodcastRssWriter {
      * @param podcast The [Podcast] to write out.
      * @param file The [File] to write to. Any contents will be overwritten.
      */
-    public fun writeRssFeed(podcast: Podcast, file: File) {
+    public fun write(podcast: Podcast, file: File) {
         file.outputStream()
-            .use { outputStream -> writeRssFeed(podcast, outputStream) }
+            .use { outputStream -> write(podcast, outputStream) }
     }
 
     /**
@@ -74,7 +74,7 @@ public object PodcastRssWriter {
      * @param podcast The [Podcast] to write out.
      * @param stream The [OutputStream] to write to.
      */
-    public fun writeRssFeed(podcast: Podcast, stream: OutputStream) {
+    public fun write(podcast: Podcast, stream: OutputStream) {
         val document = writeToDocument(podcast)
         val source = DOMSource(document)
 

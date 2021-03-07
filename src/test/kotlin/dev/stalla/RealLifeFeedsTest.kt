@@ -30,7 +30,7 @@ internal class RealLifeFeedsTest {
             assertThat(parsedPodcast, "parsed podcast").isNotNull()
 
             val tmpFile = File.createTempFile("stalla_test", "writer_output")
-            PodcastRssWriter.writeRssFeed(parsedPodcast!!, tmpFile)
+            PodcastRssWriter.write(parsedPodcast!!, tmpFile)
 
             assertThat(tmpFile, "written file").exists()
             assertThat(tmpFile, "written file").isNotEmpty()
