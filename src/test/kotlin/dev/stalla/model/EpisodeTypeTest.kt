@@ -43,6 +43,11 @@ internal class EpisodeTypeTest {
             .prop(EpisodeType::type).isEqualTo("bonus")
     }
 
+    @Test
+    fun `should not parse null to an instance in the factory nethod`() {
+        assertThat(EpisodeType.of(null)).isNull()
+    }
+
     companion object {
 
         @JvmStatic

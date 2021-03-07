@@ -43,6 +43,11 @@ internal class GoogleplayCategoryTest {
             .prop(GoogleplayCategory::type).isEqualTo("Arts")
     }
 
+    @Test
+    fun `should not parse null to an instance in the factory nethod`() {
+        assertThat(GoogleplayCategory.of(null)).isNull()
+    }
+
     companion object {
 
         @JvmStatic

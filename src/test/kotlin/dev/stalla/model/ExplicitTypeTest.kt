@@ -43,6 +43,11 @@ internal class ExplicitTypeTest {
             .prop(ExplicitType::type).isEqualTo("clean")
     }
 
+    @Test
+    fun `should not parse null to an instance in the factory nethod`() {
+        assertThat(ExplicitType.of(null)).isNull()
+    }
+
     companion object {
 
         @JvmStatic

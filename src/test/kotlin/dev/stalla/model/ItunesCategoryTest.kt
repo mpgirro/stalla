@@ -123,6 +123,11 @@ internal class ItunesCategoryTest {
             .prop(ItunesCategory::type).isEqualTo("Arts")
     }
 
+    @Test
+    fun `should not parse null to an instance in the factory nethod`() {
+        assertThat(ItunesCategory.of(null)).isNull()
+    }
+
     companion object {
 
         @JvmStatic

@@ -117,9 +117,9 @@ internal object MediaTypeParser {
         while (position <= text.lastIndex) {
             when (text[position]) {
                 '=' -> {
-                    val paramAttr = text.subtrim(start, position)
+                    val paramKey = text.subtrim(start, position)
                     val (paramEnd, paramValue) = parseParameterValue(text, position + 1)
-                    if (!paramAttr.containsMediaTypeSeparatorSymbol() && paramValue.isNotBlank()) {
+                    if (!paramKey.containsMediaTypeSeparatorSymbol() && paramValue.isNotBlank()) {
                         addParam(text, start, position, paramValue)
                     }
                     return paramEnd

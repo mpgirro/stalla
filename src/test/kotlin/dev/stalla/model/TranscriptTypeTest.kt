@@ -81,6 +81,11 @@ internal class TranscriptTypeTest {
             .prop("toString") { TranscriptType::toString.call(it) }.isEqualTo("text/plain")
     }
 
+    @Test
+    fun `should not parse null to an instance in the factory nethod`() {
+        assertThat(TranscriptType.of(null)).isNull()
+    }
+
     companion object {
 
         @JvmStatic

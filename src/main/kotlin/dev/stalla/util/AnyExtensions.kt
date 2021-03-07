@@ -36,20 +36,6 @@ internal fun allNotNull(a: Any?, b: Any?, c: Any?): Boolean {
 
 /** Check if all argument elements are not null. */
 @InternalApi
-internal fun allNotNull(a: Any?, b: Any?, c: Any?, d: Any?): Boolean {
-    contract {
-        returns(true) implies (
-            a != null &&
-                b != null &&
-                c != null &&
-                d != null
-            )
-    }
-    return a != null && b != null && c != null && d != null
-}
-
-/** Check if all argument elements are not null. */
-@InternalApi
 internal fun allNotNull(vararg elements: Any?): Boolean = elements.all { p -> p != null }
 
 /** Check if at least one argument element is not null. */
@@ -86,20 +72,6 @@ internal fun allNull(a: Any?, b: Any?, c: Any?): Boolean {
             )
     }
     return a == null && b == null && c == null
-}
-
-/** Check if all argument elements are null. */
-@InternalApi
-internal fun allNull(a: Any?, b: Any?, c: Any?, d: Any?): Boolean {
-    contract {
-        returns(true) implies (
-            a == null &&
-                b == null &&
-                c == null &&
-                d == null
-            )
-    }
-    return a == null && b == null && c == null && d == null
 }
 
 /** Check if all argument elements are null. */

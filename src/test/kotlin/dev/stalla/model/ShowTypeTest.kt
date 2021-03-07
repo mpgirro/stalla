@@ -43,6 +43,11 @@ internal class ShowTypeTest {
             .prop(ShowType::type).isEqualTo("episodic")
     }
 
+    @Test
+    fun `should not parse null to an instance in the factory nethod`() {
+        assertThat(ShowType.of(null)).isNull()
+    }
+
     companion object {
 
         @JvmStatic

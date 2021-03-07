@@ -164,13 +164,13 @@ public open class MediaType private constructor(
         return result
     }
 
-    private fun hasParameter(attribute: String, value: String): Boolean = when (parameters.size) {
+    private fun hasParameter(key: String, value: String): Boolean = when (parameters.size) {
         0 -> false
         1 -> parameters[0].let { param ->
-            param.key.equalsIgnoreCase(attribute) && param.value.equalsIgnoreCase(value)
+            param.key.equalsIgnoreCase(key) && param.value.equalsIgnoreCase(value)
         }
         else -> parameters.any { param ->
-            param.key.equalsIgnoreCase(attribute) && param.value.equalsIgnoreCase(value)
+            param.key.equalsIgnoreCase(key) && param.value.equalsIgnoreCase(value)
         }
     }
 

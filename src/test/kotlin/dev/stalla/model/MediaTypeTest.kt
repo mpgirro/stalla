@@ -75,7 +75,7 @@ internal class MediaTypeTest {
     }
 
     @Test
-    fun `should not parse null to an instance`() {
+    fun `should not parse null to an instance in the factory nethod`() {
         assertThat(MediaType.of(null)).isNull()
     }
 
