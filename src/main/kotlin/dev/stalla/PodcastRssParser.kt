@@ -62,8 +62,8 @@ public object PodcastRssParser {
      *
      * @param uri The location of the content to be parsed.
      * @return A [Podcast] if the XML document behind the URI is an RSS document, otherwise `null`.
-     * @throws java.io.IOException If any IO errors occur.
-     * @throws org.xml.sax.SAXException If any parse errors occur.
+     * @throws IOException If any IO errors occur.
+     * @throws SAXException If any XML parsing errors occur.
      * @throws NullPointerException If [uri] is `null`.
      */
     @JvmStatic
@@ -76,8 +76,8 @@ public object PodcastRssParser {
      *
      * @param inputStream InputStream containing the content to be parsed.
      * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise `null`.
-     * @throws java.io.IOException If any IO errors occur.
-     * @throws org.xml.sax.SAXException If any parse errors occur.
+     * @throws IOException If any IO errors occur.
+     * @throws SAXException If any XML parsing errors occur.
      * @throws NullPointerException If [inputStream] is `null`.
      */
     @JvmStatic
@@ -91,8 +91,8 @@ public object PodcastRssParser {
      * @param inputStream InputStream containing the content to be parsed.
      * @param systemId Provide a base for resolving relative URIs.
      * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise `null`.
-     * @throws java.io.IOException If any IO errors occur.
-     * @throws org.xml.sax.SAXException If any parse errors occur.
+     * @throws IOException If any IO errors occur.
+     * @throws SAXException If any XML parsing errors occur.
      * @throws NullPointerException If [inputStream] is `null`.
      */
     @JvmStatic
@@ -106,8 +106,8 @@ public object PodcastRssParser {
      *
      * @param file File containing the content to be parsed.
      * @return A [Podcast] if the XML document behind the file is an RSS document, otherwise `null`.
-     * @throws java.io.IOException If any IO errors occur.
-     * @throws org.xml.sax.SAXException If any parse errors occur.
+     * @throws IOException If any IO errors occur.
+     * @throws SAXException If any XML parsing errors occur.
      * @throws NullPointerException If [file] is `null`.
      */
     @JvmStatic
@@ -120,8 +120,8 @@ public object PodcastRssParser {
      *
      * @param inputSource InputSource containing the content to be parsed.
      * @return A [Podcast] if the XML document behind the input source is an RSS document, otherwise null.
-     * @throws java.io.IOException If any IO errors occur.
-     * @throws org.xml.sax.SAXException If any parse errors occur.
+     * @throws IOException If any IO errors occur.
+     * @throws SAXException If any XML parsing errors occur.
      * @throws NullPointerException If [inputSource] is `null`.
      */
     @JvmStatic

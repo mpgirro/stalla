@@ -18,8 +18,10 @@ import dev.stalla.writer.namespace.RssWriter
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import java.io.File
+import java.io.IOException
 import java.io.OutputStream
 import javax.xml.transform.OutputKeys
+import javax.xml.transform.TransformerException
 import javax.xml.transform.TransformerFactory
 import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
@@ -62,7 +64,8 @@ public object PodcastRssWriter {
      *
      * @param podcast The [Podcast] to write out.
      * @param file The [File] to write to. Any contents will be overwritten.
-     * @throws java.io.IOException If any IO errors occur.
+     * @throws IOException If any IO errors occur.
+     * @throws TransformerException If an unrecoverable error occurs during the course of the transformation to XML.
      * @throws NullPointerException If [podcast] or [file] is `null`.
      */
     @JvmStatic
@@ -76,10 +79,12 @@ public object PodcastRssWriter {
      *
      * @param podcast The [Podcast] to write out.
      * @param stream The [OutputStream] to write to.
-     * @throws java.io.IOException If any IO errors occur.
+     * @throws IOException If any IO errors occur.
+     * @throws TransformerException If an unrecoverable error occurs during the course of the transformation to XML.
      * @throws NullPointerException If [podcast] or [stream] is `null`.
      */
     @JvmStatic
+    @Throws(IOException::class,  TransformerException::class)
     public fun write(podcast: Podcast, stream: OutputStream) {
         val document = writeToDocument(podcast)
         val source = DOMSource(document)
