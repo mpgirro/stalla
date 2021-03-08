@@ -5,7 +5,9 @@ import dev.stalla.parser.MediaTypeParser
 import dev.stalla.util.InternalApi
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
 import dev.stalla.util.equalsIgnoreCase
-import dev.stalla.util.escapeIfNeededTo
+import dev.stalla.util.isQuoted
+import dev.stalla.util.mediaTypeSeparatorSymbols
+import dev.stalla.util.quote
 import java.util.Locale
 import kotlin.contracts.contract
 
@@ -172,6 +174,22 @@ public open class MediaType private constructor(
         else -> parameters.any { param ->
             param.key.equalsIgnoreCase(key) && param.value.equalsIgnoreCase(value)
         }
+    }
+
+    private fun String.checkNeedEscape(): Boolean {
+        if (isEmpty()) return true
+        if (isQuoted()) return false
+
+        for (index in 0 until length) {
+            if (mediaTypeSeparatorSymbols.contains(this[index])) return true
+        }
+
+        return false
+    }
+
+    private fun String.escapeIfNeededTo(out: StringBuilder) = when {
+        checkNeedEscape() -> out.append(this.quote())
+        else -> out.append(this)
     }
 
     /** Gets an instance of [MediaType] from a raw value. Exposes several predefined media type constants. */
