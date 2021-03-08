@@ -17,7 +17,7 @@ import dev.stalla.equalToString
 import dev.stalla.matchPattern
 import dev.stalla.matchesSymmetrically
 import dev.stalla.model.podcastindex.TranscriptType
-import dev.stalla.notMatchesSymmetrically
+import dev.stalla.doesNotMatchSymmetrically
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsProvider
@@ -260,12 +260,12 @@ internal class MediaTypeTest {
 
     @Test
     fun `should not match two instances with different types`() {
-        assertThat(MediaType.MARKDOWN).notMatchesSymmetrically(MediaType.OPUS)
+        assertThat(MediaType.MARKDOWN).doesNotMatchSymmetrically(MediaType.OPUS)
     }
 
     @Test
     fun `should not match two instances with same type but different subtype`() {
-        assertThat(MediaType.MPEG_AUDIO).notMatchesSymmetrically(MediaType.OPUS)
+        assertThat(MediaType.MPEG_AUDIO).doesNotMatchSymmetrically(MediaType.OPUS)
     }
 
     @Test
@@ -279,14 +279,14 @@ internal class MediaTypeTest {
     fun `should not match if parameter values are not equal`() {
         val mediaType1 = MediaType.PLAIN_TEXT.withParameter("p1", "v1")
         val mediaType2 = MediaType.PLAIN_TEXT.withParameter("p1", "v2")
-        assertThat(mediaType1).notMatchesSymmetrically(mediaType2)
+        assertThat(mediaType1).doesNotMatchSymmetrically(mediaType2)
     }
 
     @Test
     fun `should not match if parameter keys are not equal`() {
         val mediaType1 = MediaType.PLAIN_TEXT.withParameter("p1", "v1")
         val mediaType2 = MediaType.PLAIN_TEXT.withParameter("p2", "v1")
-        assertThat(mediaType1).notMatchesSymmetrically(mediaType2)
+        assertThat(mediaType1).doesNotMatchSymmetrically(mediaType2)
     }
 
     @Test

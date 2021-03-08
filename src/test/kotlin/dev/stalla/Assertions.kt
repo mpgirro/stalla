@@ -149,7 +149,7 @@ internal fun Assert<Node>.childNodesNamed(localName: String, namespace: FeedName
 internal fun Assert<MediaType>.equalToString(expected: String) = given { mediaType ->
     if (mediaType.toString() == expected) return@given
     expected(
-        "to have the string form '$expected' but was '$mediaType'",
+        "to have the string form: '$expected' but was: '$mediaType'",
         expected = expected,
         actual = mediaType.toString()
     )
@@ -159,9 +159,9 @@ internal fun Assert<MediaType>.equalToString(expected: String) = given { mediaTy
 internal fun Assert<MediaType>.equalToString(expected: MediaType) = given { mediaType ->
     if (mediaType.match(expected)) return@given
     expected(
-        "to have the string form '$expected' but was '$mediaType'",
+        "to be: '$expected' but was: '$mediaType'",
         expected = expected,
-        actual = mediaType.toString()
+        actual = mediaType
     )
 }
 
@@ -169,7 +169,7 @@ internal fun Assert<MediaType>.equalToString(expected: MediaType) = given { medi
 internal fun Assert<MediaType>.matchPattern(expected: String) = given { mediaType ->
     if (mediaType.match(expected)) return@given
     expected(
-        "to have the string form '$expected' but was '$mediaType'",
+        "to have the string form: '$expected' but was: '$mediaType'",
         expected = expected,
         actual = mediaType.toString()
     )
@@ -179,9 +179,9 @@ internal fun Assert<MediaType>.matchPattern(expected: String) = given { mediaTyp
 internal fun Assert<MediaType>.matchPattern(expected: MediaType) = given { mediaType ->
     if (mediaType.match(expected)) return@given
     expected(
-        "to have the string form '$expected' but was '$mediaType'",
+        "to be: '$expected' but was: '$mediaType'",
         expected = expected,
-        actual = mediaType.toString()
+        actual = mediaType
     )
 }
 
@@ -189,14 +189,14 @@ internal fun Assert<MediaType>.matchPattern(expected: MediaType) = given { media
 internal fun Assert<MediaType>.matchesSymmetrically(expected: MediaType?) = given { mediaType ->
     if (!mediaType.match(expected)) {
         expected(
-            "to match symmetrically, but '$mediaType' does not match '$expected'",
+            "to match symmetrically, but the direction: '$mediaType' match '$expected' failed",
             expected = true,
             actual = false
         )
     }
     if (!expected.match(mediaType)) {
         expected(
-            "to match symmetrically, but '$expected' does not match '$mediaType'",
+            "to match symmetrically, but the direction: '$expected' match '$mediaType' failed",
             expected = true,
             actual = false
         )
@@ -204,17 +204,17 @@ internal fun Assert<MediaType>.matchesSymmetrically(expected: MediaType?) = give
 }
 
 /** Asserts that this does not match [expected] symmetrically using [MediaType.match]. */
-internal fun Assert<MediaType>.notMatchesSymmetrically(expected: MediaType?) = given { mediaType ->
+internal fun Assert<MediaType>.doesNotMatchSymmetrically(expected: MediaType?) = given { mediaType ->
     if (mediaType.match(expected)) {
         expected(
-            "to not match symmetrically, but '$mediaType' does match '$expected'",
+            "to not match symmetrically, but the direction: '$mediaType' match '$expected' succeeded",
             expected = false,
             actual = true
         )
     }
     if (expected != null && expected.match(mediaType)) {
         expected(
-            "to not match symmetrically, but '$expected' does match '$mediaType'",
+            "to not match symmetrically, but the direction: '$expected' match '$mediaType' succeeded",
             expected = false,
             actual = true
         )
