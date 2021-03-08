@@ -3,7 +3,6 @@ package dev.stalla.parser
 import dev.stalla.model.MediaType
 import dev.stalla.util.InternalApi
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
-import dev.stalla.util.isQuoteSymbol
 import dev.stalla.util.nextIsSemicolonOrEnd
 import dev.stalla.util.subtrim
 
@@ -39,8 +38,7 @@ internal object MediaTypeParser {
             val slash = parts.indexOf('/')
 
             if (slash == -1) {
-                if (parts.trim() == "*") return MediaType.ANY
-                return null
+                return if (parts.trim() == "*") MediaType.ANY else null
             }
 
             val type = parts.substring(0, slash).trim()
@@ -177,4 +175,6 @@ internal object MediaTypeParser {
     }
 
     private fun <T> Lazy<List<T>>.valueOrEmpty(): List<T> = if (isInitialized()) value else emptyList()
+
+    private fun Char.isQuoteSymbol(): Boolean = this == '"' || this == '\''
 }
