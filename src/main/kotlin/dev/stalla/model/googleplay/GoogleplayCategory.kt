@@ -1,7 +1,6 @@
 package dev.stalla.model.googleplay
 
 import dev.stalla.model.TypeFactory
-import dev.stalla.util.equalsIgnoreCase
 
 /**
  * Supported category types encountered within the `<googleplay:category>` element
@@ -72,7 +71,7 @@ public enum class GoogleplayCategory(public val type: String) {
 
         @JvmStatic
         override fun of(rawValue: String?): GoogleplayCategory? = rawValue?.let {
-            values().find { t -> t.type.equalsIgnoreCase(it) }
+            values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }
 }

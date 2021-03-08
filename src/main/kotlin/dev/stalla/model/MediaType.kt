@@ -4,7 +4,6 @@ import dev.stalla.model.MediaType.Factory
 import dev.stalla.parser.MediaTypeParser
 import dev.stalla.util.InternalApi
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
-import dev.stalla.util.equalsIgnoreCase
 import dev.stalla.util.isQuoted
 import dev.stalla.util.mediaTypeSeparatorSymbols
 import dev.stalla.util.quote
@@ -53,8 +52,8 @@ public open class MediaType private constructor(
     public data class Parameter(val key: String, val value: String) {
         override fun equals(other: Any?): Boolean {
             return other is Parameter &&
-                other.key.equalsIgnoreCase(key) &&
-                other.value.equalsIgnoreCase(value)
+                other.key.equals(key, ignoreCase = true) &&
+                other.value.equals(value, ignoreCase = true)
         }
 
         override fun hashCode(): Int {
@@ -96,8 +95,8 @@ public open class MediaType private constructor(
         if (pattern == null) return false
         if (this == pattern) return true
         if (this == ANY || pattern == ANY) return true
-        if (!type.equalsIgnoreCase(pattern.type)) return false
-        if (subtype != "*" && pattern.subtype != "*" && !subtype.equalsIgnoreCase(pattern.subtype)) return false
+        if (!type.equals(pattern.type, ignoreCase = true)) return false
+        if (subtype != "*" && pattern.subtype != "*" && !subtype.equals(pattern.subtype, ignoreCase = true)) return false
 
         // Matching parameters is not symmetric, but a success from either side is sufficient for wildcards
         return match(parameters, pattern.parameters) || match(pattern.parameters, parameters)
@@ -115,14 +114,14 @@ public open class MediaType private constructor(
                 "*" -> {
                     when (patternValue) {
                         "*" -> true
-                        else -> parameters2.any { p -> p.value.equalsIgnoreCase(patternValue) }
+                        else -> parameters2.any { p -> p.value.equals(patternValue, ignoreCase = true) }
                     }
                 }
                 else -> {
                     val value = parameter(patternName, parameters2)
                     when (patternValue) {
                         "*" -> value != null
-                        else -> value.equalsIgnoreCase(patternValue)
+                        else -> value.equals(patternValue, ignoreCase = true)
                     }
                 }
             }
@@ -133,7 +132,7 @@ public open class MediaType private constructor(
     }
 
     private fun parameter(key: String, elements: List<Parameter>): String? =
-        elements.firstOrNull { it.key.equalsIgnoreCase(key) }?.value
+        elements.firstOrNull { it.key.equals(key, ignoreCase = true) }?.value
 
     override fun toString(): String = when {
         parameters.isEmpty() -> essence
@@ -154,8 +153,8 @@ public open class MediaType private constructor(
 
     override fun equals(other: Any?): Boolean {
         return other is MediaType &&
-            type.equalsIgnoreCase(other.type) &&
-            subtype.equalsIgnoreCase(other.subtype) &&
+            type.equals(other.type, ignoreCase = true) &&
+            subtype.equals(other.subtype, ignoreCase = true) &&
             parameters == other.parameters
     }
 
@@ -169,10 +168,10 @@ public open class MediaType private constructor(
     private fun hasParameter(key: String, value: String): Boolean = when (parameters.size) {
         0 -> false
         1 -> parameters[0].let { param ->
-            param.key.equalsIgnoreCase(key) && param.value.equalsIgnoreCase(value)
+            param.key.equals(key, ignoreCase = true) && param.value.equals(value, ignoreCase = true)
         }
         else -> parameters.any { param ->
-            param.key.equalsIgnoreCase(key) && param.value.equalsIgnoreCase(value)
+            param.key.equals(key, ignoreCase = true) && param.value.equals(value, ignoreCase = true)
         }
     }
 

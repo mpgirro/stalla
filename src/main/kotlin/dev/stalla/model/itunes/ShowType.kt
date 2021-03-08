@@ -1,7 +1,6 @@
 package dev.stalla.model.itunes
 
 import dev.stalla.model.TypeFactory
-import dev.stalla.util.equalsIgnoreCase
 
 /**
  * Supported show types encountered within the `<itunes:type>` element
@@ -26,7 +25,7 @@ public enum class ShowType(public val type: String) {
 
         @JvmStatic
         override fun of(rawValue: String?): ShowType? = rawValue?.let {
-            values().find { t -> t.type.equalsIgnoreCase(it) }
+            values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }
 }

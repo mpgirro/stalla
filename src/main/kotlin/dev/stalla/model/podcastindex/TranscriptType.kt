@@ -60,7 +60,7 @@ public sealed class TranscriptType(
 
         @JvmStatic
         override fun of(rawValue: String?): TranscriptType? = rawValue?.let { value ->
-            return valueMap[value.toLowerCase(Locale.ROOT)]
+            valueMap[value.toLowerCase(Locale.ROOT)]
         }
 
         /** Plain text, with no timing information. See [MediaType.PLAIN_TEXT]. */

@@ -1,7 +1,6 @@
 package dev.stalla.model.googleplay
 
 import dev.stalla.model.TypeFactory
-import dev.stalla.util.equalsIgnoreCase
 
 /**
  * Supported explicit types encountered within the `<googleplay:explicit>` element
@@ -30,7 +29,7 @@ public enum class ExplicitType(public val type: String) {
 
         @JvmStatic
         override fun of(rawValue: String?): ExplicitType? = rawValue?.let {
-            values().find { t -> t.type.equalsIgnoreCase(it) }
+            values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }
 }
