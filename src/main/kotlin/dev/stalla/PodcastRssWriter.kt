@@ -62,8 +62,10 @@ public object PodcastRssWriter {
      *
      * @param podcast The [Podcast] to write out.
      * @param file The [File] to write to. Any contents will be overwritten.
+     * @throws java.io.IOException If any IO errors occur.
      * @throws NullPointerException If [podcast] or [file] is `null`.
      */
+    @JvmStatic
     public fun write(podcast: Podcast, file: File) {
         file.outputStream()
             .use { outputStream -> write(podcast, outputStream) }
@@ -74,8 +76,10 @@ public object PodcastRssWriter {
      *
      * @param podcast The [Podcast] to write out.
      * @param stream The [OutputStream] to write to.
+     * @throws java.io.IOException If any IO errors occur.
      * @throws NullPointerException If [podcast] or [stream] is `null`.
      */
+    @JvmStatic
     public fun write(podcast: Podcast, stream: OutputStream) {
         val document = writeToDocument(podcast)
         val source = DOMSource(document)

@@ -66,6 +66,7 @@ public object PodcastRssParser {
      * @throws org.xml.sax.SAXException If any parse errors occur.
      * @throws NullPointerException If [uri] is `null`.
      */
+    @JvmStatic
     @Throws(IOException::class, SAXException::class)
     public fun parse(uri: String): Podcast? = parse(builder.parse(uri))
 
@@ -79,6 +80,7 @@ public object PodcastRssParser {
      * @throws org.xml.sax.SAXException If any parse errors occur.
      * @throws NullPointerException If [inputStream] is `null`.
      */
+    @JvmStatic
     @Throws(IOException::class, SAXException::class)
     public fun parse(inputStream: InputStream): Podcast? = parse(builder.parse(inputStream))
 
@@ -93,6 +95,7 @@ public object PodcastRssParser {
      * @throws org.xml.sax.SAXException If any parse errors occur.
      * @throws NullPointerException If [inputStream] is `null`.
      */
+    @JvmStatic
     @Throws(IOException::class, SAXException::class)
     public fun parse(inputStream: InputStream, systemId: String?): Podcast? =
         parse(builder.parse(inputStream, systemId))
@@ -107,6 +110,7 @@ public object PodcastRssParser {
      * @throws org.xml.sax.SAXException If any parse errors occur.
      * @throws NullPointerException If [file] is `null`.
      */
+    @JvmStatic
     @Throws(IOException::class, SAXException::class)
     public fun parse(file: File): Podcast? = parse(builder.parse(file))
 
@@ -120,6 +124,7 @@ public object PodcastRssParser {
      * @throws org.xml.sax.SAXException If any parse errors occur.
      * @throws NullPointerException If [inputSource] is `null`.
      */
+    @JvmStatic
     @Throws(IOException::class, SAXException::class)
     public fun parse(inputSource: InputSource): Podcast? = parse(builder.parse(inputSource))
 
@@ -130,6 +135,7 @@ public object PodcastRssParser {
      * @return A [Podcast] if the XML document is an RSS document, otherwise `null`.
      * @throws NullPointerException If [document] is `null`.
      */
+    @JvmStatic
     public fun parse(document: Document): Podcast? {
         val channel = document.findRssChannelElement() ?: return null
         return channel.parseChannelElement()

@@ -1,4 +1,4 @@
-package dev.stalla.model;
+package dev.stalla.model.podlove;
 
 import dev.stalla.model.podlove.EpisodePodlove;
 import dev.stalla.model.podlove.SimpleChapter;
