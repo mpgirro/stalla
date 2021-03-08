@@ -14,6 +14,7 @@ import dev.stalla.model.podcastindex.Transcript
 import dev.stalla.model.podlove.SimpleChapter
 import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.rss.RssCategory
+import java.util.Collections
 
 /** Transforms this list into a list of [RssCategoryBuilder]. */
 @InternalAPI
@@ -52,3 +53,7 @@ internal fun List<SimpleChapter>.asBuilders(): List<EpisodePodloveSimpleChapterB
 @InternalAPI
 @JvmName("asEpisodeBuilders")
 internal fun List<Episode>.asBuilders(): List<EpisodeBuilder> = map(Episode.builder()::applyFrom)
+
+/** Returns an unmodifiable view of this list. */
+@InternalAPI
+internal fun <T> List<T>.asUnmodifiable(): List<T> = Collections.unmodifiableList(this)

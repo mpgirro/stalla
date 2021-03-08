@@ -5,6 +5,7 @@ import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.util.InternalAPI
+import dev.stalla.util.asUnmodifiable
 
 @InternalAPI
 internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder {
@@ -30,7 +31,7 @@ internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder
 
         return PodcastPodcastindex(
             locked = if (::lockedBuilderValue.isInitialized) lockedBuilderValue.build() else null,
-            funding = fundingBuilders.mapNotNull { it.build() }
+            funding = fundingBuilders.mapNotNull { it.build() }.asUnmodifiable()
         )
     }
 }

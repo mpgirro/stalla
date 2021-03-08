@@ -5,6 +5,7 @@ import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.model.atom.Atom
 import dev.stalla.util.InternalAPI
+import dev.stalla.util.asUnmodifiable
 
 @InternalAPI
 internal class ValidatingAtomBuilder : AtomBuilder {
@@ -31,9 +32,9 @@ internal class ValidatingAtomBuilder : AtomBuilder {
         }
 
         return Atom(
-            authors = authorBuilders.mapNotNull { it.build() },
-            contributors = contributorBuilders.mapNotNull { it.build() },
-            links = linkBuilders.mapNotNull { it.build() }
+            authors = authorBuilders.mapNotNull { it.build() }.asUnmodifiable(),
+            contributors = contributorBuilders.mapNotNull { it.build() }.asUnmodifiable(),
+            links = linkBuilders.mapNotNull { it.build() }.asUnmodifiable()
         )
     }
 }

@@ -25,6 +25,7 @@ import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.model.Podcast
 import dev.stalla.util.InternalAPI
+import dev.stalla.util.asUnmodifiable
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
 
@@ -138,13 +139,13 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
             webMaster = webMaster,
             ttl = ttl,
             image = imageBuilder?.build(),
-            episodes = episodeBuilders.mapNotNull { it.build() },
+            episodes = episodeBuilders.mapNotNull { it.build() }.asUnmodifiable(),
             itunes = itunesBuilder.build(),
             atom = atomBuilder.build(),
             fyyd = fyydBuilder.build(),
             feedpress = feedpressBuilder.build(),
             googleplay = googleplayBuilder.build(),
-            categories = categoryBuilders.mapNotNull { it.build() },
+            categories = categoryBuilders.mapNotNull { it.build() }.asUnmodifiable(),
             podcast = podcastPodcastindexBuilder.build()
         )
     }

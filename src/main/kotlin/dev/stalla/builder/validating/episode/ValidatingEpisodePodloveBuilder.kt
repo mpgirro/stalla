@@ -4,6 +4,7 @@ import dev.stalla.builder.episode.EpisodePodloveBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.model.podlove.EpisodePodlove
 import dev.stalla.util.InternalAPI
+import dev.stalla.util.asUnmodifiable
 
 @InternalAPI
 internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
@@ -27,6 +28,8 @@ internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
             return null
         }
 
-        return EpisodePodlove(simpleChapters = chapterBuilders.mapNotNull { it.build() })
+        return EpisodePodlove(
+            simpleChapters = chapterBuilders.mapNotNull { it.build() }.asUnmodifiable()
+        )
     }
 }
