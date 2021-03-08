@@ -11,7 +11,7 @@ public class RssCategoryBuilderFactoryTest {
 
     @Test
     @DisplayName("should build an RssCategory model using builder factory methods only")
-    public void testEpisodeBuilderFactory() {
+    public void testRssCategoryBuilderFactory() {
         RssCategoryBuilder rssCategoryBuilder = RssCategory.builder()
             .category("category");
 

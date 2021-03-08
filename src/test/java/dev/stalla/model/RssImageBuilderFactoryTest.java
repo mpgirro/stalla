@@ -11,7 +11,7 @@ public class RssImageBuilderFactoryTest {
 
     @Test
     @DisplayName("should build an RssImage model using builder factory methods only")
-    public void testEpisodeBuilderFactory() {
+    public void testRssImageBuilderFactory() {
         RssImageBuilder rssImageBuilder = RssImage.builder()
             .title("title")
             .link("link")

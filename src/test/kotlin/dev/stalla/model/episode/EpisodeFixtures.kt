@@ -32,6 +32,7 @@ import java.time.Month
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
 
+@JvmOverloads
 internal fun anEpisode(
     title: String = "episode title",
     link: String? = "episode link",
@@ -70,21 +71,25 @@ internal fun anEpisode(
     podcastindex
 )
 
+@JvmOverloads
 internal fun anEpisodeEnclosure(
     url: String = "episode enclosure url",
     length: Long = 777,
     type: MediaType = MediaType.MPEG_AUDIO
 ) = Enclosure(url, length, type)
 
+@JvmOverloads
 internal fun anEpisodeGuid(
     textContent: String = "episode guid textContent",
     isPermalink: Boolean? = false
 ) = Guid(textContent, isPermalink)
 
+@JvmOverloads
 internal fun anEpisodeContent(
     encoded: String = "episode content encoded"
 ) = Content(encoded)
 
+@JvmOverloads
 internal fun anEpisodeItunes(
     title: String? = "episode itunes title",
     duration: StyledDuration? = StyledDuration.of("123"),
@@ -99,16 +104,19 @@ internal fun anEpisodeItunes(
     summary: String? = "episode itunes summary"
 ) = EpisodeItunes(title, duration, image, explicit, block, season, episode, episodeType, author, subtitle, summary)
 
+@JvmOverloads
 internal fun anEpisodeAtom(
     authors: List<AtomPerson> = listOf(anAtomPerson("episode atom author name")),
     contributors: List<AtomPerson> = listOf(anAtomPerson("episode atom contributor name")),
     links: List<Link> = listOf(aLink("episode atom link href"))
 ) = Atom(authors, contributors, links)
 
+@JvmOverloads
 internal fun anEpisodePodlove(
     simpleChapters: List<SimpleChapter> = listOf(aPodloveSimpleChapter())
 ) = EpisodePodlove(simpleChapters)
 
+@JvmOverloads
 internal fun aPodloveSimpleChapter(
     start: String = "episode podlove simple chapter start",
     title: String = "episode podlove simple chapter title",
@@ -116,6 +124,7 @@ internal fun aPodloveSimpleChapter(
     image: String? = "episode podlove simple chapter image"
 ) = SimpleChapter(start, title, href, image)
 
+@JvmOverloads
 internal fun anEpisodeGoogleplay(
     author: String? = "episode googleplay author",
     description: String? = "episode googleplay description",
@@ -124,16 +133,19 @@ internal fun anEpisodeGoogleplay(
     image: HrefOnlyImage? = anHrefOnlyImage(href = "episode googleplay image url")
 ) = EpisodeGoogleplay(author, description, explicit, block, image)
 
+@JvmOverloads
 internal fun anEpisodeBitlove(
     guid: String = "episode bitlove guid"
 ) = Bitlove(guid)
 
+@JvmOverloads
 internal fun anEpisodePodcastindex(
     transcripts: List<Transcript> = listOf(anEpisodePodcastindexTranscript()),
     soundbites: List<Soundbite> = listOf(anEpisodePodcastindexSoundbite()),
     chapters: Chapters? = anEpisodePodcastindexChapters()
 ) = EpisodePodcastindex(transcripts, soundbites, chapters)
 
+@JvmOverloads
 internal fun anEpisodePodcastindexTranscript(
     url: String = "episode podcastindex transcript url",
     type: TranscriptType = TranscriptType.SRT,
@@ -141,12 +153,14 @@ internal fun anEpisodePodcastindexTranscript(
     rel: String? = "captions"
 ) = Transcript(url, type, language, rel)
 
+@JvmOverloads
 internal fun anEpisodePodcastindexSoundbite(
     startTime: StyledDuration.SecondsAndFraction = StyledDuration.secondsAndFraction(1),
     duration: StyledDuration.SecondsAndFraction = StyledDuration.secondsAndFraction(15, 123_000_000),
     title: String? = "episode podcastindex soundbite title"
 ) = Soundbite(startTime, duration, title)
 
+@JvmOverloads
 internal fun anEpisodePodcastindexChapters(
     url: String = "episode podcastindex chapters url",
     type: MediaType = MediaType.JSON

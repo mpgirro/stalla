@@ -11,7 +11,7 @@ public class LinkBuilderFactoryTest {
 
     @Test
     @DisplayName("should build an Link model using builder factory methods only")
-    public void testEpisodeBuilderFactory() {
+    public void testLinkBuilderFactory() {
         LinkBuilder linkBuilder = Link.builder().href("href");
 
         assertNotNull(linkBuilder.build());

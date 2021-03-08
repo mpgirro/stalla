@@ -10,7 +10,7 @@ public class HrefOnlyImageBuilderFactoryTest {
 
     @Test
     @DisplayName("should build an HrefOnlyImage model using builder factory methods only")
-    public void testEpisodeBuilderFactory() {
+    public void testHrefOnlyImageBuilderFactoryFactory() {
         HrefOnlyImageBuilder hrefOnlyImageBuilder = HrefOnlyImage.builder()
             .href("href");
 
