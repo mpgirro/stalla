@@ -1,7 +1,6 @@
 package dev.stalla.model.itunes
 
 import dev.stalla.model.TypeFactory
-import dev.stalla.util.equalsIgnoreCase
 
 /**
  * Supported episode types encountered within the `<itunes:episodeType>`
@@ -30,7 +29,7 @@ public enum class EpisodeType(public val type: String) {
 
         @JvmStatic
         override fun of(rawValue: String?): EpisodeType? = rawValue?.let {
-            values().find { t -> t.type.equalsIgnoreCase(it) }
+            values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
     }
 }

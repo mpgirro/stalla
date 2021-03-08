@@ -41,11 +41,10 @@ public sealed class TranscriptType(
     override val subtype: String
 ) : MediaType(type, subtype) {
 
-    // Workaround to the "local class cannot extend a sealed class" restriction
-    private abstract class Instance protected constructor(
-        override val type: String,
-        override val subtype: String
-    ) : TranscriptType(type, subtype)
+    private object PlainText : TranscriptType("text", "plain")
+    private object Html : TranscriptType("text", "html")
+    private object Json : TranscriptType("application", "json")
+    private object Srt : TranscriptType("application", "srt")
 
     /** Gets an instance of [TranscriptType] from a raw value. */
     public companion object Factory : TypeFactory<TranscriptType> {
@@ -61,23 +60,23 @@ public sealed class TranscriptType(
 
         @JvmStatic
         override fun of(rawValue: String?): TranscriptType? = rawValue?.let { value ->
-            return valueMap[value.toLowerCase(Locale.ROOT)]
+            valueMap[value.toLowerCase(Locale.ROOT)]
         }
 
         /** Plain text, with no timing information. See [MediaType.PLAIN_TEXT]. */
         @JvmField
-        public val PLAIN_TEXT: TranscriptType = object : Instance("text", "plain") {}
+        public val PLAIN_TEXT: TranscriptType = PlainText
 
         /** HTML, potentially with some timing information. See [MediaType.HTML]. */
         @JvmField
-        public val HTML: TranscriptType = object : Instance("text", "html") {}
+        public val HTML: TranscriptType = Html
 
         /** JSON, with full timing information. See [MediaType.JSON]. */
         @JvmField
-        public val JSON: TranscriptType = object : Instance("application", "json") {}
+        public val JSON: TranscriptType = Json
 
         /** SRT, with full timing information. See [MediaType.SRT]. */
         @JvmField
-        public val SRT: TranscriptType = object : Instance("application", "srt") {}
+        public val SRT: TranscriptType = Srt
     }
 }

@@ -21,13 +21,6 @@ internal fun String?.isNeitherNullNorBlank(): Boolean {
     return this != null && isNotBlank()
 }
 
-/** Appends this string to the [StringBuilder], escapes characters on demand. */
-@InternalAPI
-internal fun String.escapeIfNeededTo(out: StringBuilder) = when {
-    checkNeedEscape() -> out.append(this.quote())
-    else -> out.append(this)
-}
-
 /** Separator symbols listed in RFC 2616 https://tools.ietf.org/html/rfc2616#section-2.2 */
 @InternalAPI
 internal val mediaTypeSeparatorSymbols: Set<Char> =
@@ -38,25 +31,12 @@ internal val mediaTypeSeparatorSymbols: Set<Char> =
 internal fun String.containsMediaTypeSeparatorSymbol(): Boolean =
     this.any { c -> mediaTypeSeparatorSymbols.contains(c) }
 
-/** Returns `true` of this string contains characters that need excaping. */
-@InternalAPI
-internal fun String.checkNeedEscape(): Boolean {
-    if (isEmpty()) return true
-    if (isQuoted()) return false
-
-    for (index in 0 until length) {
-        if (mediaTypeSeparatorSymbols.contains(this[index])) return true
-    }
-
-    return false
-}
-
 /** Quotes this string. */
 @InternalAPI
 internal fun String.quote(): String = buildString { this@quote.quoteTo(this) }
 
-/** Appends the quotes form of this string to the [StringBuilder]. */
 @InternalAPI
+/** Appends this string in quotes to the [StringBuilder]. */
 internal fun String.quoteTo(out: StringBuilder) {
     out.append("\"")
     for (i in 0 until length) {
@@ -111,7 +91,3 @@ internal fun String.nextIsSemicolonOrEnd(start: Int): Boolean {
 
     return position == length || get(position) == ';'
 }
-
-/** Returns `true` if this string equals `other` ignoring character case. */
-@InternalAPI
-internal fun String?.equalsIgnoreCase(other: String?): Boolean = this.equals(other, ignoreCase = true)

@@ -1,4 +1,4 @@
-package dev.stalla.model
+package dev.stalla.model.podcastindex
 
 import assertk.assertThat
 import assertk.assertions.contains
@@ -8,7 +8,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.arguments
-import dev.stalla.model.podcastindex.TranscriptType
+import dev.stalla.model.MediaType
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsProvider
