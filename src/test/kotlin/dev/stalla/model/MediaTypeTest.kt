@@ -13,11 +13,11 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.arguments
+import dev.stalla.doesNotMatchSymmetrically
 import dev.stalla.equalToString
 import dev.stalla.matchPattern
 import dev.stalla.matchesSymmetrically
 import dev.stalla.model.podcastindex.TranscriptType
-import dev.stalla.doesNotMatchSymmetrically
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsProvider
