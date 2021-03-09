@@ -10,6 +10,10 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.arguments
+import dev.stalla.model.ItunesCategoryNameProvider
+import dev.stalla.model.allItunesCategoryNames
+import dev.stalla.model.nestedCategoryNames
+import dev.stalla.model.simpleCategoryNames
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsProvider
@@ -23,12 +27,10 @@ internal class ItunesCategoryTest {
 
     private class NestedCategoryNameProvider : ArgumentsProvider by arguments(*nestedCategoryNames.toTypedArray())
 
-    private class ItunesCategoryNameProvider : ArgumentsProvider by arguments(*allItunesCategoryNames.toTypedArray())
-
     private class ItunesCategoryFactoryPropertyProvider : ArgumentsProvider by arguments(
         *ItunesCategory.Factory::class.declaredMemberProperties
             .filter { member -> member.visibility == KVisibility.PUBLIC }
-            .mapNotNull { member -> member.getter.call(this) }
+            .mapNotNull { member -> member.getter.call(ItunesCategory.TECHNOLOGY) }
             .filterIsInstance<ItunesCategory>()
             .toTypedArray()
     )
@@ -127,127 +129,5 @@ internal class ItunesCategoryTest {
         assertThat(ItunesCategory.of(null)).isNull()
     }
 
-    companion object {
-
-        @JvmStatic
-        private val simpleCategoryNames = listOf(
-            "Arts",
-            "Business",
-            "Comedy",
-            "Education",
-            "Fiction",
-            "Government",
-            "History",
-            "Health & Fitness",
-            "Kids & Family",
-            "Leisure",
-            "Music",
-            "News",
-            "Religion & Spirituality",
-            "Science",
-            "Society & Culture",
-            "Sports",
-            "Technology",
-            "True Crime",
-            "TV & Film"
-        )
-
-        @JvmStatic
-        private val nestedCategoryNames = listOf(
-            "Books",
-            "Design",
-            "Fashion & Beauty",
-            "Food",
-            "Performing Arts",
-            "Visual Arts",
-            "Careers",
-            "Entrepreneurship",
-            "Investing",
-            "Management",
-            "Marketing",
-            "Non-Profit",
-            "Comedy Interviews",
-            "Improv",
-            "Stand-Up",
-            "Courses",
-            "How To",
-            "Language Learning",
-            "Self-Improvement",
-            "Comedy Fiction",
-            "Drama",
-            "Science Fiction",
-            "Alternative Health",
-            "Fitness",
-            "Medicine",
-            "Mental Health",
-            "Nutrition",
-            "Sexuality",
-            "Education for Kids",
-            "Parenting",
-            "Pets & Animals",
-            "Stories for Kids",
-            "Animation & Manga",
-            "Automotive",
-            "Aviation",
-            "Crafts",
-            "Games",
-            "Hobbies",
-            "Home & Garden",
-            "Video Games",
-            "Music Commentary",
-            "Music History",
-            "Music Interviews",
-            "Business News",
-            "Daily News",
-            "Entertainment News",
-            "News Commentary",
-            "Politics",
-            "Sports News",
-            "Tech News",
-            "Buddhism",
-            "Christianity",
-            "Hinduism",
-            "Islam",
-            "Judaism",
-            "Religion",
-            "Spirituality",
-            "Astronomy",
-            "Chemistry",
-            "Earth Sciences",
-            "Life Sciences",
-            "Mathematics",
-            "Natural Sciences",
-            "Nature",
-            "Physics",
-            "Social Sciences",
-            "Documentary",
-            "Personal Journals",
-            "Philosophy",
-            "Places & Travel",
-            "Relationships",
-            "Baseball",
-            "Basketball",
-            "Cricket",
-            "Fantasy Sports",
-            "Football",
-            "Golf",
-            "Hockey",
-            "Rugby",
-            "Running",
-            "Soccer",
-            "Swimming",
-            "Tennis",
-            "Volleyball",
-            "Wilderness",
-            "Wrestling",
-            "After Shows",
-            "Film History",
-            "Film Interviews",
-            "Film Reviews",
-            "TV Reviews"
-        )
-
-        @JvmStatic
-        private val allItunesCategoryNames = simpleCategoryNames + nestedCategoryNames
-    }
+    companion object // this context for reflection
 }

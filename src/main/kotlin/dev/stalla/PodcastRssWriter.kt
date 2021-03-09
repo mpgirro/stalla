@@ -84,7 +84,7 @@ public object PodcastRssWriter {
      * @throws NullPointerException If [podcast] or [stream] is `null`.
      */
     @JvmStatic
-    @Throws(IOException::class,  TransformerException::class)
+    @Throws(IOException::class, TransformerException::class)
     public fun write(podcast: Podcast, stream: OutputStream) {
         val document = writeToDocument(podcast)
         val source = DOMSource(document)
