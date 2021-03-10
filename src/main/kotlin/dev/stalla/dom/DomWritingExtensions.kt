@@ -39,7 +39,7 @@ internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: Fe
 }
 
 /**
- * Appends an [RSS `<image>` tag][https://www.w3schools.com/XML/rss_tag_image.asp] to this [Element].
+ * Appends an [RSS `<image>` tag](https://www.w3schools.com/XML/rss_tag_image.asp) to this [Element].
  *
  * @param image The image to represent with the new element.
  */
@@ -55,7 +55,7 @@ internal fun Node.appendRssImageElement(image: RssImage): Element? {
             appendElement("link") { textContent = image.link.trim() }
         }
         if (image.description.isNeitherNullNorBlank()) {
-            appendElement("description") { textContent = image.description?.trim() }
+            appendElement("description") { textContent = image.description.trim() }
         }
         if (image.height != null) {
             appendElement("height") { textContent = image.height.toString() }
@@ -176,11 +176,11 @@ internal fun Node.appendAtomPersonElement(tagName: String, person: AtomPerson, n
         appendElement("name", namespace) { textContent = person.name.trim() }
 
         if (person.email.isNeitherNullNorBlank()) {
-            appendElement("email", namespace) { textContent = person.email?.trim() }
+            appendElement("email", namespace) { textContent = person.email.trim() }
         }
 
         if (person.uri.isNeitherNullNorBlank()) {
-            appendElement("uri", namespace) { textContent = person.uri?.trim() }
+            appendElement("uri", namespace) { textContent = person.uri.trim() }
         }
     }
 }
@@ -204,7 +204,7 @@ internal fun Node.appendItunesOwnerElement(tagName: String, owner: ItunesOwner, 
 }
 
 /**
- * Appends iTunes-Style <ns:category> tags with the data from the provided [categories].
+ * Appends iTunes-Style `<ns:category>` tags with the data from the provided [categories].
  *
  * @param categories The [categories][ItunesCategory] to append.
  * @param namespace The namespace to use, if any.
@@ -258,7 +258,7 @@ internal fun Node.appendGoogleplayCategoryElements(
 }
 
 /**
- * Appends RSS <category> tags with the data from the provided [categories].
+ * Appends RSS `<category>` tags with the data from the provided [categories].
  *
  * @param categories The [categories][RssCategory] to append.
  * @param namespace The namespace to use, if any.
@@ -270,7 +270,7 @@ internal fun Node.appendRssCategoryElements(categories: List<RssCategory>, names
         appendElement("category", namespace) {
             textContent = category.name.trim()
             if (category.domain.isNeitherNullNorBlank()) {
-                setAttribute("domain", category.domain?.trim())
+                setAttribute("domain", category.domain.trim())
             }
         }
     }

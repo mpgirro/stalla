@@ -2,6 +2,8 @@ package dev.stalla
 
 import assertk.fail
 import dev.stalla.dom.DomBuilderFactory
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.ArgumentsProvider
 import org.w3c.dom.Document
 import java.io.File
 import java.time.LocalDate
@@ -10,6 +12,7 @@ import java.time.Month
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.temporal.TemporalAccessor
+import java.util.stream.Stream
 import javax.xml.parsers.DocumentBuilder
 
 private val domBuilder: DocumentBuilder = DomBuilderFactory.newDocumentBuilder()
@@ -60,4 +63,9 @@ internal fun allResourceFilesIn(path: String): List<File> {
     }
 
     return files
+}
+
+/** Returns an instance of [ArgumentsProvider] from all arguments to this function.  */
+inline fun <reified T : Any> arguments(vararg args: T): ArgumentsProvider = ArgumentsProvider {
+    Stream.of(*args).map { Arguments.of(it) }
 }

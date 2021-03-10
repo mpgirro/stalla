@@ -3,6 +3,7 @@ package dev.stalla.model.rss
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import dev.stalla.model.BuilderFactory
+import dev.stalla.model.MediaType
 
 /**
  * Model class for `<enclosure>` elements within RSS `<item>` elements.
@@ -14,7 +15,7 @@ import dev.stalla.model.BuilderFactory
 public data class Enclosure(
     val url: String,
     val length: Long,
-    val type: String
+    val type: MediaType
 ) {
 
     /** Provides a builder for the [Enclosure] class. */

@@ -1,6 +1,5 @@
 package dev.stalla.model;
 
-import com.google.common.net.MediaType;
 import dev.stalla.builder.episode.*;
 import dev.stalla.model.bitlove.Bitlove;
 import dev.stalla.model.content.Content;
@@ -25,7 +24,7 @@ public class EpisodeBuilderFactoryTest {
         EpisodeEnclosureBuilder episodeEnclosureBuilder = Enclosure.builder()
             .url("url")
             .length(123)
-            .type("type");
+            .type(MediaType.MPEG_AUDIO);
 
         EpisodeBuilder episodeBuilder = Episode.builder()
             .title("title")
@@ -40,7 +39,7 @@ public class EpisodeBuilderFactoryTest {
         EpisodeEnclosureBuilder episodeEnclosureBuilder = Enclosure.builder()
             .url("url")
             .length(123)
-            .type("type");
+            .type(MediaType.MPEG_AUDIO);
 
         assertNotNull(episodeEnclosureBuilder.build());
     }
@@ -141,7 +140,7 @@ public class EpisodeBuilderFactoryTest {
     public void testEpisodePodcastChapterBuilderFactory() {
         EpisodePodcastindexChaptersBuilder episodePodcastindexChaptersBuilder = Chapters.builder()
             .url("url")
-            .type(MediaType.JSON_UTF_8);
+            .type(MediaType.JSON);
 
         assertNotNull(episodePodcastindexChaptersBuilder.build());
     }

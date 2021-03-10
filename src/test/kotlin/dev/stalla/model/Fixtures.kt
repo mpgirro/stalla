@@ -1,6 +1,5 @@
 package dev.stalla.model
 
-import com.google.common.net.MediaType
 import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.model.googleplay.GoogleplayCategory
@@ -34,7 +33,7 @@ internal fun aLink(
     length: String? = "link length",
     rel: String? = "link rel",
     title: String? = "link title",
-    type: MediaType? = MediaType.HTML_UTF_8.withoutParameters()
+    type: MediaType? = MediaType.HTML
 ) = Link(href, hrefLang, hrefResolved, length, rel, title, type)
 
 internal fun anRssCategory(

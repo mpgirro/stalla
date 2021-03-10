@@ -9,7 +9,7 @@ import java.util.Locale
  * The transcript for the episode.
  *
  * @param url The URL of the episode transcript.
- * @param type The type of transcript. One of the supported [Type]s.
+ * @param type The type of transcript. One of the supported [TranscriptType]s.
  * @param language The transcript language.
  * @param rel When present and equals to `captions`, the transcript is considered to be a CC, regardless of its [type].
  */

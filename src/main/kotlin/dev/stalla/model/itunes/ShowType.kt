@@ -9,6 +9,8 @@ import dev.stalla.model.TypeFactory
  * for more information.
  *
  * @property type The string representation of the Enum instance.
+ *
+ * @see ShowType.Factory Companion object providing a factory method.
  */
 public enum class ShowType(public val type: String) {
 

@@ -17,6 +17,7 @@ import dev.stalla.builder.fake.podcast.FakePodcastBuilder
 import dev.stalla.dateTime
 import dev.stalla.dom.XmlRes
 import dev.stalla.hasNotEnoughDataToBuild
+import dev.stalla.model.MediaType
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Node
@@ -33,7 +34,7 @@ internal class RssParserTest : NamespaceParserTest() {
     private val expectedEnclosureBuilder = FakeEpisodeEnclosureBuilder().apply {
         urlValue = "episode rss enclosure url"
         lengthValue = 78589133
-        typeValue = "episode rss enclosure type"
+        typeValue = MediaType.MPEG_AUDIO
     }
 
     private val expectedGuidBuilder = FakeEpisodeGuidBuilder().apply {

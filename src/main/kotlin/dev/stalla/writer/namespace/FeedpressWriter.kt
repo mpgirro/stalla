@@ -23,7 +23,7 @@ internal object FeedpressWriter : NamespaceWriter() {
         val feedpress = podcast.feedpress ?: return
 
         if (feedpress.newsletterId.isNeitherNullNorBlank()) {
-            appendElement("newsletterId", namespace) { textContent = feedpress.newsletterId?.trim() }
+            appendElement("newsletterId", namespace) { textContent = feedpress.newsletterId.trim() }
         }
 
         if (feedpress.locale != null) {
@@ -31,15 +31,15 @@ internal object FeedpressWriter : NamespaceWriter() {
         }
 
         if (feedpress.podcastId.isNeitherNullNorBlank()) {
-            appendElement("podcastId", namespace) { textContent = feedpress.podcastId?.trim() }
+            appendElement("podcastId", namespace) { textContent = feedpress.podcastId.trim() }
         }
 
         if (feedpress.cssFile.isNeitherNullNorBlank()) {
-            appendElement("cssFile", namespace) { textContent = feedpress.cssFile?.trim() }
+            appendElement("cssFile", namespace) { textContent = feedpress.cssFile.trim() }
         }
 
         if (feedpress.link.isNeitherNullNorBlank()) {
-            appendElement("link", namespace) { textContent = feedpress.link?.trim() }
+            appendElement("link", namespace) { textContent = feedpress.link.trim() }
         }
     }
 

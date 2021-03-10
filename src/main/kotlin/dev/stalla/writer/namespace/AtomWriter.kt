@@ -52,23 +52,23 @@ internal object AtomWriter : NamespaceWriter() {
                 setAttribute("href", link.href.trim())
 
                 if (link.hrefLang.isNeitherNullNorBlank()) {
-                    setAttribute("hrefLang", link.hrefLang?.trim())
+                    setAttribute("hrefLang", link.hrefLang.trim())
                 }
 
                 if (link.hrefResolved.isNeitherNullNorBlank()) {
-                    setAttribute("hrefResolved", link.hrefResolved?.trim())
+                    setAttribute("hrefResolved", link.hrefResolved.trim())
                 }
 
                 if (link.length.isNeitherNullNorBlank()) {
-                    setAttribute("length", link.length?.trim())
+                    setAttribute("length", link.length.trim())
                 }
 
                 if (link.rel.isNeitherNullNorBlank()) {
-                    setAttribute("rel", link.rel?.trim())
+                    setAttribute("rel", link.rel.trim())
                 }
 
                 if (link.title.isNeitherNullNorBlank()) {
-                    setAttribute("title", link.title?.trim())
+                    setAttribute("title", link.title.trim())
                 }
 
                 if (link.type != null) {

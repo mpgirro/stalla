@@ -6,6 +6,7 @@ import assertk.assertions.support.expected
 import dev.stalla.builder.Builder
 import dev.stalla.dom.asListOfNodes
 import dev.stalla.dom.asString
+import dev.stalla.model.MediaType
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
 import org.w3c.dom.Attr
@@ -143,3 +144,79 @@ internal fun Assert<Node>.childNodesNamed(localName: String, namespace: FeedName
         node.childNodes.asListOfNodes()
             .filter { it.localName == localName && namespace.matches(it.namespaceURI) }
     }
+
+/** Asserts that [MediaType.toString] matches the expected value. */
+internal fun Assert<MediaType>.equalToString(expected: String) = given { mediaType ->
+    if (mediaType.toString() == expected) return@given
+    expected(
+        "to have the string form: '$expected' but was: '$mediaType'",
+        expected = expected,
+        actual = mediaType.toString()
+    )
+}
+
+/** Asserts that [MediaType.toString] matches the expected value. */
+internal fun Assert<MediaType>.equalToString(expected: MediaType) = given { mediaType ->
+    if (mediaType.match(expected)) return@given
+    expected(
+        "to be: '$expected' but was: '$mediaType'",
+        expected = expected,
+        actual = mediaType
+    )
+}
+
+/** Asserts that [MediaType.match] matches the expected value. */
+internal fun Assert<MediaType>.matchPattern(expected: String) = given { mediaType ->
+    if (mediaType.match(expected)) return@given
+    expected(
+        "to have the string form: '$expected' but was: '$mediaType'",
+        expected = expected,
+        actual = mediaType.toString()
+    )
+}
+
+/** Asserts that [MediaType.match] matches the expected value. */
+internal fun Assert<MediaType>.matchPattern(expected: MediaType) = given { mediaType ->
+    if (mediaType.match(expected)) return@given
+    expected(
+        "to be: '$expected' but was: '$mediaType'",
+        expected = expected,
+        actual = mediaType
+    )
+}
+
+/** Asserts that this matches [expected] symmetrically using [MediaType.match]. */
+internal fun Assert<MediaType>.matchesSymmetrically(expected: MediaType?) = given { mediaType ->
+    if (!mediaType.match(expected)) {
+        expected(
+            "to match symmetrically, but the direction: '$mediaType' match '$expected' failed",
+            expected = true,
+            actual = false
+        )
+    }
+    if (!expected.match(mediaType)) {
+        expected(
+            "to match symmetrically, but the direction: '$expected' match '$mediaType' failed",
+            expected = true,
+            actual = false
+        )
+    }
+}
+
+/** Asserts that this does not match [expected] symmetrically using [MediaType.match]. */
+internal fun Assert<MediaType>.doesNotMatchSymmetrically(expected: MediaType?) = given { mediaType ->
+    if (mediaType.match(expected)) {
+        expected(
+            "to not match symmetrically, but the direction: '$mediaType' match '$expected' succeeded",
+            expected = false,
+            actual = true
+        )
+    }
+    if (expected != null && expected.match(mediaType)) {
+        expected(
+            "to not match symmetrically, but the direction: '$expected' match '$mediaType' succeeded",
+            expected = false,
+            actual = true
+        )
+    }
+}

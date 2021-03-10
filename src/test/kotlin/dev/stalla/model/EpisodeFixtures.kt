@@ -1,9 +1,9 @@
 package dev.stalla.model.episode
 
-import com.google.common.net.MediaType
 import dev.stalla.dateTime
 import dev.stalla.model.Episode
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.model.MediaType
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.aLink
 import dev.stalla.model.anAtomPerson
@@ -73,7 +73,7 @@ internal fun anEpisode(
 internal fun anEpisodeEnclosure(
     url: String = "episode enclosure url",
     length: Long = 777,
-    type: String = "episode enclosure type"
+    type: MediaType = MediaType.MPEG_AUDIO
 ) = Enclosure(url, length, type)
 
 internal fun anEpisodeGuid(
@@ -149,5 +149,5 @@ internal fun anEpisodePodcastindexSoundbite(
 
 internal fun anEpisodePodcastindexChapters(
     url: String = "episode podcastindex chapters url",
-    type: MediaType = MediaType.JSON_UTF_8.withoutParameters()
+    type: MediaType = MediaType.JSON
 ) = Chapters(url, type)

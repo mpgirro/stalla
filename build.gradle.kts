@@ -53,7 +53,6 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
-    implementation("com.google.guava:guava:30.1-android")
 
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junit5Version")
@@ -80,7 +79,11 @@ tasks {
     withType<KotlinCompile> {
         kotlinOptions {
             jvmTarget = "1.8"
-            freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn", "-Xopt-in=dev.stalla.util.InternalApi")
+            freeCompilerArgs = listOf(
+                "-Xopt-in=kotlin.RequiresOptIn",
+                "-Xopt-in=kotlin.contracts.ExperimentalContracts",
+                "-Xopt-in=dev.stalla.util.InternalApi"
+            )
         }
     }
 

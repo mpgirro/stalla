@@ -5,7 +5,7 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexBuilde
 import dev.stalla.model.BuilderFactory
 
 /**
- * Model class for data from elements of the Podcast 1.0 namespace that are valid within `<item>` elements.
+ * Model class for data from elements of the Podcastindex namespace that are valid within `<item>` elements.
  *
  * @property transcripts The transcript information for the episode.
  * @property soundbites The soundbites information for the episode.

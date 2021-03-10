@@ -1,9 +1,9 @@
 package dev.stalla.model.atom
 
-import com.google.common.net.MediaType
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.model.BuilderFactory
+import dev.stalla.model.MediaType
 
 /**
  * Model class for elements describing hyperlinks.

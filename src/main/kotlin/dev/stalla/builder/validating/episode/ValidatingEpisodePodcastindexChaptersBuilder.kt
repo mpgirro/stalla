@@ -1,7 +1,7 @@
 package dev.stalla.builder.validating.episode
 
-import com.google.common.net.MediaType
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
+import dev.stalla.model.MediaType
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.util.InternalApi
 

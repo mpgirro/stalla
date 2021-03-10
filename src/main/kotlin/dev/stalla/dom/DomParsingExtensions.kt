@@ -1,10 +1,10 @@
 package dev.stalla.dom
 
-import com.google.common.net.MediaType
 import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
+import dev.stalla.model.MediaType
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.parser.DateParser
@@ -90,7 +90,7 @@ internal fun Node.parseAsLocaleOrNull(): Locale? = textOrNull()?.let { rawLocale
 internal fun String?.parseAsMediaTypeOrNull(): MediaType? = this.trimmedOrNullIfBlank()
     ?.let { rawType ->
         try {
-            MediaType.parse(rawType)
+            MediaType.of(rawType)
         } catch (e: IllegalArgumentException) {
             null
         }

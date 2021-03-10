@@ -83,7 +83,7 @@
             <author>episode author</author>
             <category domain="rss category domain">episode category</category>
             <comments>episode comments</comments>
-            <enclosure url="episode enclosure url" length="777" type="episode enclosure type" bitlove:guid="episode bitlove guid"/>
+            <enclosure url="episode enclosure url" length="777" type="audio/mpeg" bitlove:guid="episode bitlove guid"/>
             <guid isPermalink="false">episode guid textContent</guid>
             <pubDate>Sun, 20 Dec 2020 12:11:10 GMT</pubDate>
             <source>episode source</source>

@@ -28,7 +28,7 @@ internal object GoogleplayWriter : NamespaceWriter() {
         val play = podcast.googleplay ?: return
 
         if (play.email.isNeitherNullNorBlank()) {
-            appendElement("email", namespace) { textContent = play.email?.trim() }
+            appendElement("email", namespace) { textContent = play.email.trim() }
         }
 
         if (play.explicit != null) {
@@ -36,7 +36,7 @@ internal object GoogleplayWriter : NamespaceWriter() {
         }
 
         if (play.newFeedUrl.isNeitherNullNorBlank()) {
-            appendElement("newFeedUrl", namespace) { textContent = play.newFeedUrl?.trim() }
+            appendElement("newFeedUrl", namespace) { textContent = play.newFeedUrl.trim() }
         }
 
         appendGoogleplayCategoryElements(play.categories, namespace)

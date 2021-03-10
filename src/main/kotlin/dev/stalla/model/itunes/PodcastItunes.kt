@@ -21,6 +21,8 @@ import dev.stalla.model.HrefOnlyImage
  * @property owner The `<itunes:owner>` elements data as a [ItunesOwner].
  * @property title The `<itunes:title>` field text content.
  * @property newFeedUrl The `<itunes:new-feed-url>` field text content.
+ *
+ * @see dev.stalla.model.itunes.PodcastItunes.Factory provides a factory method for type instances.
  */
 public data class PodcastItunes(
     override val subtitle: String? = null,

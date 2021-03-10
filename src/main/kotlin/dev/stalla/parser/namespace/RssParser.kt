@@ -8,6 +8,7 @@ import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.dom.parseAsBooleanOrNull
 import dev.stalla.dom.parseAsInt
 import dev.stalla.dom.parseAsLocaleOrNull
+import dev.stalla.dom.parseAsMediaTypeOrNull
 import dev.stalla.dom.parseAsTemporalAccessor
 import dev.stalla.dom.textOrNull
 import dev.stalla.dom.toRssCategoryBuilder
@@ -16,6 +17,7 @@ import dev.stalla.parser.NamespaceParser
 import dev.stalla.parser.namespace.RssParser.namespace
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
+import dev.stalla.util.allNotNull
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
@@ -24,7 +26,7 @@ import org.w3c.dom.Node
  *
  * Note that RSS 2.0 feeds do not have a namespace URI, and thus [namespace] is null.
  *
- * The RSS specification is described [here][http://www.rssboard.org/rss-2-0].
+ * The RSS specification is described [here](http://www.rssboard.org/rss-2-0).
  */
 @InternalApi
 internal object RssParser : NamespaceParser() {
@@ -105,9 +107,9 @@ internal object RssParser : NamespaceParser() {
     private fun Node.toEnclosureBuilder(builder: EpisodeEnclosureBuilder): EpisodeEnclosureBuilder? = ifCanBeParsed {
         val url = getAttributeValueByName("url")
         val length = getAttributeValueByName("length")?.toLongOrNull()
-        val type = getAttributeValueByName("type")
+        val type = getAttributeValueByName("type").parseAsMediaTypeOrNull()
 
-        if (url == null || length == null || type == null) return@ifCanBeParsed builder
+        if (!allNotNull(url, length, type)) return@ifCanBeParsed builder
 
         builder.url(url)
             .length(length)

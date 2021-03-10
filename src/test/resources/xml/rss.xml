@@ -16,7 +16,7 @@
             <title>Lorem Ipsum 2</title>
             <link>http://example.org/episode2</link>
             <description><![CDATA[Lorem Ipsum episode 2 description]]></description>
-            <enclosure url="http://example.org/episode2.mp3" length="78133" type="audio/mp3" />
+            <enclosure url="http://example.org/episode2.mp3" length="78133" type="audio/mp4" />
         </item>
     </channel>
 </rss>

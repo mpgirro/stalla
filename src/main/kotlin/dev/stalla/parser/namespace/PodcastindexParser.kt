@@ -16,6 +16,7 @@ import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalApi
+import dev.stalla.util.allNotNull
 import dev.stalla.util.trimmedOrNullIfBlank
 import org.w3c.dom.Node
 import java.util.Locale
@@ -54,7 +55,7 @@ internal object PodcastindexParser : NamespaceParser() {
         val owner = getAttributeByName("owner")?.value.trimmedOrNullIfBlank()
         val locked = textAsBooleanOrNull()
 
-        if (owner == null || locked == null) return null
+        if (!allNotNull(owner, locked)) return null
         return lockedBuilder.owner(owner)
             .locked(locked)
     }
@@ -65,7 +66,7 @@ internal object PodcastindexParser : NamespaceParser() {
         val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()
         val message = textContent.trimmedOrNullIfBlank()
 
-        if (url == null || message == null) return null
+        if (!allNotNull(url, message)) return null
         return fundingBuilder.url(url)
             .message(message)
     }
@@ -100,7 +101,7 @@ internal object PodcastindexParser : NamespaceParser() {
         val url = getAttributeValueByName("url").trimmedOrNullIfBlank()
         val type = getAttributeValueByName("type").parseAsMediaTypeOrNull()
 
-        if (url == null || type == null) return null
+        if (!allNotNull(url, type)) return null
         return chaptersBuilder.url(url)
             .type(type)
     }
@@ -139,7 +140,7 @@ internal object PodcastindexParser : NamespaceParser() {
         }
         val rel = getAttributeByName("rel")?.value.trimmedOrNullIfBlank()
 
-        if (url == null || type == null) return null
+        if (!allNotNull(url, type)) return null
         return transcriptBuilder.url(url)
             .type(type)
             .language(language)

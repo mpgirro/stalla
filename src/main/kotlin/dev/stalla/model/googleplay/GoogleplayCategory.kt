@@ -12,6 +12,8 @@ import dev.stalla.model.TypeFactory
  * [XML schema definition](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd).
  *
  * @param type The string representation of the category.
+ *
+ * @see GoogleplayCategory.Factory Companion object providing a factory method.
  */
 @Suppress("unused")
 public enum class GoogleplayCategory(public val type: String) {
