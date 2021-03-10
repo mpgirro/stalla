@@ -25,20 +25,20 @@ import dev.stalla.model.HrefOnlyImage
  * @since 1.0.0
  */
 public data class PodcastItunes(
-    override val subtitle: String? = null,
-    override val summary: String? = null,
-    override val image: HrefOnlyImage?,
+    val subtitle: String? = null,
+    val summary: String? = null,
+    val image: HrefOnlyImage?,
     val keywords: String? = null,
-    override val author: String? = null,
+    val author: String? = null,
     val categories: List<ItunesCategory>,
     val explicit: Boolean,
-    override val block: Boolean,
+    val block: Boolean,
     val complete: Boolean,
     val type: ShowType? = null,
     val owner: ItunesOwner? = null,
-    override val title: String? = null,
+    val title: String? = null,
     val newFeedUrl: String? = null
-) : ItunesBase {
+) {
 
     /** Provides a builder for the [PodcastItunes] class. */
     public companion object Factory : BuilderFactory<PodcastItunes, PodcastItunesBuilder> {

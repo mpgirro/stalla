@@ -24,18 +24,18 @@ import dev.stalla.model.StyledDuration
  * @since 1.0.0
  */
 public data class EpisodeItunes(
-    override val title: String? = null,
+    val title: String? = null,
     val duration: StyledDuration? = null,
-    override val image: HrefOnlyImage? = null,
+    val image: HrefOnlyImage? = null,
     val explicit: Boolean? = null,
-    override val block: Boolean,
+    val block: Boolean,
     val season: Int? = null,
     val episode: Int? = null,
     val episodeType: EpisodeType? = null,
-    override val author: String? = null,
-    override val subtitle: String? = null,
-    override val summary: String? = null
-) : ItunesBase {
+    val author: String? = null,
+    val subtitle: String? = null,
+    val summary: String? = null
+) {
 
     /** Provides a builder for the [EpisodeItunes] class. */
     public companion object Factory : BuilderFactory<EpisodeItunes, EpisodeItunesBuilder> {
