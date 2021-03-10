@@ -14,8 +14,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import static dev.stalla.ReflectionUtil.getFieldInstance;
-import static dev.stalla.ReflectionUtil.getStaticFieldsByType;
+import static dev.stalla.TestUtilKt.getFieldInstance;
+import static dev.stalla.TestUtilKt.getStaticFieldsByType;
 import static dev.stalla.model.FixturesKt.getAllItunesCategoryNames;
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -52,7 +52,7 @@ public class ItunesCategoryInteropTest {
     }
 
     private static List<ItunesCategory> getItunesCategoryInstances() {
-        return getStaticFieldsByType(ItunesCategory.class)
+        return Objects.requireNonNull(getStaticFieldsByType(ItunesCategory.class))
             .stream()
             .map(field -> getFieldInstance(field, ItunesCategory.TECHNOLOGY))
             .filter(Objects::nonNull)

@@ -9,12 +9,16 @@ import org.junit.jupiter.params.provider.ArgumentsProvider
 import org.reflections.Reflections
 import org.w3c.dom.Document
 import java.io.File
+import java.lang.reflect.Field
+import java.lang.reflect.Modifier
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.Month
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.temporal.TemporalAccessor
+import java.util.Arrays
+import java.util.stream.Collectors
 import java.util.stream.Stream
 import javax.xml.parsers.DocumentBuilder
 
@@ -91,4 +95,20 @@ internal val allBuilderFactorySubTypes: List<Class<*>> by lazy {
 @get:JvmName("getAllTypeFactorySubTypes")
 internal val allTypeFactorySubTypes: List<Class<*>> by lazy {
     reflections.getSubTypesOf(TypeFactory::class.java).mapNotNull { clazz -> clazz.declaringClass }
+}
+
+fun getStaticFieldsByType(clazz: Class<*>): List<Field>? {
+    return Arrays.stream(clazz.declaredFields)
+        .filter { f: Field -> Modifier.isStatic(f.modifiers) }
+        .filter { f: Field -> clazz.isAssignableFrom(f.type) }
+        .collect(Collectors.toList())
+}
+
+fun getFieldInstance(field: Field, protoype: Any?): Any? {
+    return try {
+        field[protoype]
+    } catch (e: IllegalAccessException) {
+        e.printStackTrace()
+        null
+    }
 }

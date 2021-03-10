@@ -1,9 +1,6 @@
 package dev.stalla.model.podcastindex;
 
-import dev.stalla.model.ItunesCategoryNameProvider;
 import dev.stalla.model.TranscriptTypeNameProvider;
-import dev.stalla.model.itunes.ItunesCategory;
-import dev.stalla.model.itunes.ItunesCategoryInteropTest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,9 +14,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import static dev.stalla.ReflectionUtil.getFieldInstance;
-import static dev.stalla.ReflectionUtil.getStaticFieldsByType;
-import static dev.stalla.model.FixturesKt.getAllItunesCategoryNames;
+import static dev.stalla.TestUtilKt.getFieldInstance;
+import static dev.stalla.TestUtilKt.getStaticFieldsByType;
 import static dev.stalla.model.FixturesKt.getAllTranscriptTypeNames;
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -56,7 +52,7 @@ public class TranscriptTypeInteropTest {
     }
 
     private static List<TranscriptType> getTranscriptTypeInstances() {
-        return getStaticFieldsByType(TranscriptType.class)
+        return Objects.requireNonNull(getStaticFieldsByType(TranscriptType.class))
             .stream()
             .map(field -> getFieldInstance(field, TranscriptType.PLAIN_TEXT))
             .filter(Objects::nonNull)

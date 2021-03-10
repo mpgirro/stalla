@@ -1,6 +1,5 @@
 package dev.stalla.model.podcastindex;
 
-import dev.stalla.model.podcastindex.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

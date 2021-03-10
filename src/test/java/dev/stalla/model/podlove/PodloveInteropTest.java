@@ -1,7 +1,5 @@
 package dev.stalla.model.podlove;
 
-import dev.stalla.model.podlove.EpisodePodlove;
-import dev.stalla.model.podlove.SimpleChapter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
