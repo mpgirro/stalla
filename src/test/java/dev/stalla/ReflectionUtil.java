@@ -1,7 +1,5 @@
 package dev.stalla;
 
-import dev.stalla.model.itunes.ItunesCategory;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;

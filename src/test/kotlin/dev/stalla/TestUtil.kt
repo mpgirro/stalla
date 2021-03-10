@@ -2,8 +2,11 @@ package dev.stalla
 
 import assertk.fail
 import dev.stalla.dom.DomBuilderFactory
+import dev.stalla.model.BuilderFactory
+import dev.stalla.model.TypeFactory
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.ArgumentsProvider
+import org.reflections.Reflections
 import org.w3c.dom.Document
 import java.io.File
 import java.time.LocalDate
@@ -68,4 +71,24 @@ internal fun allResourceFilesIn(path: String): List<File> {
 /** Returns an instance of [ArgumentsProvider] from all arguments to this function.  */
 inline fun <reified T : Any> arguments(vararg args: T): ArgumentsProvider = ArgumentsProvider {
     Stream.of(*args).map { Arguments.of(it) }
+}
+
+internal val reflections = Reflections("dev.stalla")
+
+/**
+ * List of the Java class of all Kotlin classes in this library's package
+ * that provide a companion object that implements [BuilderFactory].
+ */
+@get:JvmName("getAllBuilderFactorySubTypes")
+internal val allBuilderFactorySubTypes: List<Class<*>> by lazy {
+    reflections.getSubTypesOf(BuilderFactory::class.java).mapNotNull { clazz -> clazz.declaringClass }
+}
+
+/**
+ * List of the Java class of all Kotlin classes in this library's package
+ * that provide a companion object that implements [TypeFactory].
+ */
+@get:JvmName("getAllTypeFactorySubTypes")
+internal val allTypeFactorySubTypes: List<Class<*>> by lazy {
+    reflections.getSubTypesOf(TypeFactory::class.java).mapNotNull { clazz -> clazz.declaringClass }
 }
