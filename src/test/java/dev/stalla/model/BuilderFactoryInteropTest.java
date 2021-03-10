@@ -10,12 +10,12 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.stream.Stream;
 
-import static dev.stalla.TestUtilKt.getAllBuilderFactorySubTypes;
+import static dev.stalla.model.FixturesKt.getAllBuilderFactorySubTypes;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BuilderFactoryInteropTest {
 
-    private static class BuilderFactorySubclassProvider implements ArgumentsProvider {
+    private static class BuilderFactorySubTypeProvider implements ArgumentsProvider {
         @SuppressWarnings("KotlinInternalInJava")
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
@@ -24,7 +24,7 @@ public class BuilderFactoryInteropTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(BuilderFactorySubclassProvider.class)
+    @ArgumentsSource(BuilderFactorySubTypeProvider.class)
     void shouldExposeAStaticBuilderFactoryMethod(Class<?> clazz) throws NoSuchMethodException {
         final Method method = clazz.getMethod("builder");
         assertAll("provides static builder() method",

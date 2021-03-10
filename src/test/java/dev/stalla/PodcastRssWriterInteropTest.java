@@ -20,8 +20,8 @@ public class PodcastRssWriterInteropTest {
     public void failOnNullPodcastToFile() {
         assertAll("fail on invalid argument",
             () -> assertThrows(NullPointerException.class, () -> {
-                Podcast podcast = null;
-                File file = aFile();
+                final Podcast podcast = null;
+                final File file = aFile();
                 PodcastRssWriter.write(podcast, file);
             })
         );
@@ -32,8 +32,8 @@ public class PodcastRssWriterInteropTest {
     public void failOnNullPodcastToOutputStream() {
         assertAll("fail on invalid argument",
             () -> assertThrows(NullPointerException.class, () -> {
-                Podcast podcast = null;
-                OutputStream outputStream = new FileOutputStream(aFile());
+                final Podcast podcast = null;
+                final OutputStream outputStream = new FileOutputStream(aFile());
                 PodcastRssWriter.write(podcast, outputStream);
             })
         );
@@ -44,8 +44,8 @@ public class PodcastRssWriterInteropTest {
     public void failOnPodcastToNullFile() {
         assertAll("fail on invalid argument",
             () -> assertThrows(NullPointerException.class, () -> {
-                Podcast podcast = aPodcast();
-                File file = null;
+                final Podcast podcast = aPodcast();
+                final File file = null;
                 PodcastRssWriter.write(podcast, file);
             })
         );
@@ -56,8 +56,8 @@ public class PodcastRssWriterInteropTest {
     public void failOnPodcastToReadOnlyFile() {
         assertAll("fail on invalid argument",
             () -> assertThrows(IOException.class, () -> {
-                Podcast podcast = aPodcast();
-                File file = aReadOnlyFile();
+                final Podcast podcast = aPodcast();
+                final File file = aReadOnlyFile();
                 PodcastRssWriter.write(podcast, file);
             })
         );
@@ -68,8 +68,8 @@ public class PodcastRssWriterInteropTest {
     public void failOnPodcastToNullOutputStream() {
         assertAll("fail on invalid argument",
             () -> assertThrows(NullPointerException.class, () -> {
-                Podcast podcast = aPodcast();
-                OutputStream outputStream = null;
+                final Podcast podcast = aPodcast();
+                final OutputStream outputStream = null;
                 PodcastRssWriter.write(podcast, outputStream);
             })
         );
@@ -80,8 +80,8 @@ public class PodcastRssWriterInteropTest {
     public void failOnPodcastToUnwritableOutputStream() {
         assertAll("fail on invalid argument",
             () -> assertThrows(IOException.class, () -> {
-                Podcast podcast = aPodcast();
-                OutputStream outputStream = new FileOutputStream(aReadOnlyFile());
+                final Podcast podcast = aPodcast();
+                final OutputStream outputStream = new FileOutputStream(aReadOnlyFile());
                 PodcastRssWriter.write(podcast, outputStream);
             })
         );
@@ -92,7 +92,7 @@ public class PodcastRssWriterInteropTest {
     }
 
     private File aReadOnlyFile() throws IOException {
-        File file = aFile();
+        final File file = aFile();
         file.setReadOnly();
         return file;
     }

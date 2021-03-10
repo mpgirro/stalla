@@ -2,11 +2,8 @@ package dev.stalla
 
 import assertk.fail
 import dev.stalla.dom.DomBuilderFactory
-import dev.stalla.model.BuilderFactory
-import dev.stalla.model.TypeFactory
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.ArgumentsProvider
-import org.reflections.Reflections
 import org.w3c.dom.Document
 import java.io.File
 import java.lang.reflect.Field
@@ -17,8 +14,6 @@ import java.time.Month
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.temporal.TemporalAccessor
-import java.util.Arrays
-import java.util.stream.Collectors
 import java.util.stream.Stream
 import javax.xml.parsers.DocumentBuilder
 
@@ -77,38 +72,24 @@ inline fun <reified T : Any> arguments(vararg args: T): ArgumentsProvider = Argu
     Stream.of(*args).map { Arguments.of(it) }
 }
 
-internal val reflections = Reflections("dev.stalla")
-
-/**
- * List of the Java class of all Kotlin classes in this library's package
- * that provide a companion object that implements [BuilderFactory].
- */
-@get:JvmName("getAllBuilderFactorySubTypes")
-internal val allBuilderFactorySubTypes: List<Class<*>> by lazy {
-    reflections.getSubTypesOf(BuilderFactory::class.java).mapNotNull { clazz -> clazz.declaringClass }
-}
-
-/**
- * List of the Java class of all Kotlin classes in this library's package
- * that provide a companion object that implements [TypeFactory].
- */
-@get:JvmName("getAllTypeFactorySubTypes")
-internal val allTypeFactorySubTypes: List<Class<*>> by lazy {
-    reflections.getSubTypesOf(TypeFactory::class.java).mapNotNull { clazz -> clazz.declaringClass }
-}
-
-fun getStaticFieldsByType(clazz: Class<*>): List<Field>? {
-    return Arrays.stream(clazz.declaredFields)
+internal fun staticClassFields(javaClass: Class<*>): List<Field> {
+    return javaClass.declaredFields
         .filter { f: Field -> Modifier.isStatic(f.modifiers) }
-        .filter { f: Field -> clazz.isAssignableFrom(f.type) }
-        .collect(Collectors.toList())
+        .filter { f: Field -> javaClass.isAssignableFrom(f.type) }
 }
 
-fun getFieldInstance(field: Field, protoype: Any?): Any? {
+internal fun fieldInstance(field: Field, protoype: Any?): Any? {
     return try {
         field[protoype]
     } catch (e: IllegalAccessException) {
         e.printStackTrace()
         null
     }
+}
+
+internal inline fun <reified T> staticPropertiesByType(javaClass: Class<T>, prototype: T): Array<T> {
+    return staticClassFields(javaClass)
+        .map { field -> fieldInstance(field, prototype) }
+        .filterIsInstance(T::class.java)
+        .toTypedArray()
 }

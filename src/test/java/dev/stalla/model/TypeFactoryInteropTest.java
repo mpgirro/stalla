@@ -10,13 +10,12 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.stream.Stream;
 
-import static dev.stalla.TestUtilKt.getAllTypeFactorySubTypes
-    ;
+import static dev.stalla.model.FixturesKt.getAllTypeFactorySubTypes;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TypeFactoryInteropTest {
 
-    private static class TypeFactorySubclassProvider implements ArgumentsProvider {
+    private static class TypeFactorySubTypeProvider implements ArgumentsProvider {
         @SuppressWarnings("KotlinInternalInJava")
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
@@ -25,10 +24,10 @@ public class TypeFactoryInteropTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(TypeFactorySubclassProvider.class)
+    @ArgumentsSource(TypeFactorySubTypeProvider.class)
     void shouldExposeAStaticTypeFactoryMethod(Class<?> clazz) throws NoSuchMethodException {
         final Method method = clazz.getMethod("of", String.class);
-        assertAll("provides static of(rawValue) method",
+        assertAll("provides static of(String) method",
             () -> assertNotNull(method),
             () -> assertTrue(Modifier.isStatic(method.getModifiers()))
         );

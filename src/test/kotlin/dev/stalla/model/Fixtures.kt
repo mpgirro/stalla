@@ -5,9 +5,12 @@ import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
+import dev.stalla.staticPropertiesByType
 import org.junit.jupiter.params.provider.ArgumentsProvider
+import org.reflections.Reflections
 
 @JvmOverloads
 internal fun anRssImage(
@@ -188,3 +191,35 @@ internal val allTranscriptTypeNames = listOf(
 internal class ItunesCategoryNameProvider : ArgumentsProvider by arguments(*allItunesCategoryNames.toTypedArray())
 
 internal class TranscriptTypeNameProvider : ArgumentsProvider by arguments(*allTranscriptTypeNames.toTypedArray())
+
+internal val reflections = Reflections("dev.stalla")
+
+/**
+ * List of the Java class of all Kotlin classes in this library's package
+ * that provide a companion object that implements [BuilderFactory].
+ */
+@get:JvmName("getAllBuilderFactorySubTypes")
+internal val allBuilderFactorySubTypes: List<Class<*>> by lazy {
+    reflections.getSubTypesOf(BuilderFactory::class.java).mapNotNull { clazz -> clazz.declaringClass }
+}
+
+/**
+ * List of the Java class of all Kotlin classes in this library's package
+ * that provide a companion object that implements [TypeFactory].
+ */
+@get:JvmName("getAllTypeFactorySubTypes")
+internal val allTypeFactorySubTypes: List<Class<*>> by lazy {
+    reflections.getSubTypesOf(TypeFactory::class.java).mapNotNull { clazz -> clazz.declaringClass }
+}
+
+/** All members of ItunesCategory class that are exposed as static fields in Java. */
+@get:JvmName("getStaticItunesCategoryProperties")
+internal val staticItunesCategoryProperties: Array<ItunesCategory> by lazy {
+    staticPropertiesByType(ItunesCategory::class.java, ItunesCategory.TECHNOLOGY)
+}
+
+/** All members of TranscriptType class that are exposed as static fields in Java. */
+@get:JvmName("getStaticTranscriptTypeProperties")
+internal val staticTranscriptTypeProperties: Array<TranscriptType> by lazy {
+    staticPropertiesByType(TranscriptType::class.java, TranscriptType.PLAIN_TEXT)
+}

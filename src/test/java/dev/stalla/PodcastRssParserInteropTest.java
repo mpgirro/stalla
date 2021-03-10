@@ -21,7 +21,7 @@ public class PodcastRssParserInteropTest {
     public void failOnNullUri() {
         assertAll("fail on invalid argument",
             () -> assertThrows(NullPointerException.class, () -> {
-                String uri = null;
+                final String uri = null;
                 PodcastRssParser.parse(uri);
             })
         );
@@ -42,7 +42,7 @@ public class PodcastRssParserInteropTest {
     public void failOnUriInvalidXml() {
         assertAll("fail on invalid argument",
             () -> assertThrows(SAXException.class, () -> {
-                String uri = invalidRssFile.getAbsolutePath();
+                final String uri = invalidRssFile.getAbsolutePath();
                 PodcastRssParser.parse(uri);
             })
         );
@@ -53,7 +53,7 @@ public class PodcastRssParserInteropTest {
     public void failOnNullInputStream() {
         assertAll("fail on invalid argument",
             () -> assertThrows(NullPointerException.class, () -> {
-                InputStream inputStream = null;
+                final InputStream inputStream = null;
                 PodcastRssParser.parse(inputStream);
             })
         );
@@ -64,7 +64,7 @@ public class PodcastRssParserInteropTest {
     public void failOnInputStreamNotExists() {
         assertAll("fail on invalid argument",
             () -> assertThrows(IOException.class, () -> {
-                InputStream inputStream = new FileInputStream(unavailableFile);
+                final InputStream inputStream = new FileInputStream(unavailableFile);
                 PodcastRssParser.parse(inputStream);
             })
         );
@@ -75,7 +75,7 @@ public class PodcastRssParserInteropTest {
     public void failOnInputStreamInvalidXml() {
         assertAll("fail on invalid argument",
             () -> assertThrows(SAXException.class, () -> {
-                InputStream inputStream = new FileInputStream(invalidRssFile);
+                final InputStream inputStream = new FileInputStream(invalidRssFile);
                 PodcastRssParser.parse(inputStream);
             })
         );
@@ -86,7 +86,7 @@ public class PodcastRssParserInteropTest {
     public void failOnNullFile() {
         assertAll("fail on invalid argument",
             () -> assertThrows(NullPointerException.class, () -> {
-                File file = null;
+                final File file = null;
                 PodcastRssParser.parse(file);
             })
         );
@@ -117,7 +117,7 @@ public class PodcastRssParserInteropTest {
     public void failOnNullInputSource() {
         assertAll("fail on invalid argument",
             () -> assertThrows(NullPointerException.class, () -> {
-                InputSource inputSource = null;
+                final InputSource inputSource = null;
                 PodcastRssParser.parse(inputSource);
             })
         );
@@ -128,7 +128,7 @@ public class PodcastRssParserInteropTest {
     public void failOnInputSourceNotExists() {
         assertAll("fail on invalid argument",
             () -> assertThrows(IOException.class, () -> {
-                InputSource inputSource = toInputSource(unavailableFile);
+                final InputSource inputSource = toInputSource(unavailableFile);
                 PodcastRssParser.parse(inputSource);
             })
         );
@@ -139,7 +139,7 @@ public class PodcastRssParserInteropTest {
     public void failOnInputSourceInvalidXml() {
         assertAll("fail on invalid argument",
             () -> assertThrows(SAXException.class, () -> {
-                InputSource inputSource = toInputSource(invalidRssFile);
+                final InputSource inputSource = toInputSource(invalidRssFile);
                 PodcastRssParser.parse(inputSource);
             })
         );
@@ -150,15 +150,15 @@ public class PodcastRssParserInteropTest {
     public void failOnNullDocument() {
         assertAll("fail on invalid argument",
             () -> assertThrows(NullPointerException.class, () -> {
-                Document document = null;
+                final Document document = null;
                 PodcastRssParser.parse(document);
             })
         );
     }
 
     private InputSource toInputSource(File file) throws FileNotFoundException {
-        InputStream inputStream = new FileInputStream(file);
-        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        final InputStream inputStream = new FileInputStream(file);
+        final InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         return new InputSource(inputStreamReader);
     }
 
