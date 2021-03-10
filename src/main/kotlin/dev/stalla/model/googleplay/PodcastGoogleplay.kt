@@ -24,15 +24,15 @@ import dev.stalla.model.HrefOnlyImage
  * @since 1.0.0
  */
 public data class PodcastGoogleplay(
-    override val author: String? = null,
+    val author: String? = null,
     val email: String? = null,
     val categories: List<GoogleplayCategory>,
-    override val description: String? = null,
+    val description: String? = null,
     val explicit: Boolean? = null,
-    override val block: Boolean,
-    override val image: HrefOnlyImage? = null,
+    val block: Boolean,
+    val image: HrefOnlyImage? = null,
     val newFeedUrl: String? = null
-) : GoogleplayBase {
+) {
 
     /** Provides a builder for the [PodcastGoogleplay] class. */
     public companion object Factory : BuilderFactory<PodcastGoogleplay, PodcastGoogleplayBuilder> {
