@@ -1,31 +1,37 @@
 package dev.stalla.model;
 
-import dev.stalla.model.googleplay.GoogleplayCategory;
-import dev.stalla.model.itunes.ItunesCategory;
 import dev.stalla.model.rss.RssCategory;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Objects;
-
-import static dev.stalla.model.FixturesKt.*;
+import static dev.stalla.model.FixturesKt.anRssCategory;
 import static dev.stalla.model.episode.EpisodeFixturesKt.anEpisode;
 import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcast;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PodcastInteropTest {
 
-    private final Podcast podcast = aPodcast();
-    private final Episode episode = anEpisode();
-    private final RssCategory rssCategory = anRssCategory();
-    private final ItunesCategory itunesCategory = anItunesCategory();
-    private final GoogleplayCategory googleplayCategory = aGoogleplayCategory();
+    private static Podcast podcast;
+    private static final Episode episode = anEpisode();
+    private static final RssCategory category = anRssCategory();
+
+    @BeforeAll
+    public static void init(){
+        // Add extra elements to list properties, because for a single element
+        // Kotlin's listOf() method produces an unmodifiable list by default
+        podcast = Podcast.builder()
+            .applyFrom(aPodcast())
+            .addEpisodeBuilder(Episode.builder().applyFrom(episode))
+            .addCategoryBuilder(RssCategory.builder().applyFrom(category))
+            .build();
+    }
 
     @Test
     @DisplayName("should build a Podcast that exposes an unmodifiable list of the episodes")
     public void testPodcastBuilderUnmodifiableEpisodes() {
-        assertAll("fail to add to list",
+        assertAll("Should fail to add to episode list",
+            () -> assertNotNull(podcast),
             () -> assertNotNull(podcast.getEpisodes()),
             () -> assertThrows(UnsupportedOperationException.class, () -> {
                 podcast.getEpisodes().add(episode);
@@ -36,34 +42,11 @@ public class PodcastInteropTest {
     @Test
     @DisplayName("should build a Podcast that exposes an unmodifiable list of the RSS categories")
     public void testPodcastBuilderUnmodifiableRssCategories() {
-        assertAll("fail to add to list",
+        assertAll("Should fail to add to category list",
+            () -> assertNotNull(podcast),
             () -> assertNotNull(podcast.getCategories()),
             () -> assertThrows(UnsupportedOperationException.class, () -> {
-                podcast.getCategories().add(rssCategory);
-            })
-        );
-    }
-
-    @Test
-    @DisplayName("should build a Podcast that exposes an unmodifiable list of the iTunes categories")
-    public void testPodcastBuilderUnmodifiableItunesCategories() {
-        assertAll("fail to add to list",
-            () -> assertNotNull(podcast.getItunes()),
-            () -> assertNotNull(Objects.requireNonNull(podcast.getItunes()).getCategories()),
-            () -> assertThrows(UnsupportedOperationException.class, () -> {
-                podcast.getItunes().getCategories().add(itunesCategory);
-            })
-        );
-    }
-
-    @Test
-    @DisplayName("should build a Podcast that exposes an unmodifiable list of the Google Play categories")
-    public void testPodcastBuilderUnmodifiableGoogleplayCategories() {
-        assertAll("fail to add to list",
-            () -> assertNotNull(podcast.getGoogleplay()),
-            () -> assertNotNull(Objects.requireNonNull(podcast.getGoogleplay()).getCategories()),
-            () -> assertThrows(UnsupportedOperationException.class, () -> {
-                podcast.getGoogleplay().getCategories().add(googleplayCategory);
+                podcast.getCategories().add(category);
             })
         );
     }
