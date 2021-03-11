@@ -69,6 +69,7 @@ public object PodcastRssWriter {
      * @throws NullPointerException If [podcast] or [file] is `null`.
      */
     @JvmStatic
+    @Throws(IOException::class, TransformerException::class)
     public fun write(podcast: Podcast, file: File) {
         file.outputStream()
             .use { outputStream -> write(podcast, outputStream) }

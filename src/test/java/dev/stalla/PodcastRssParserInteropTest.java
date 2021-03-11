@@ -7,9 +7,10 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import java.io.*;
+import java.lang.reflect.Method;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static dev.stalla.TestUtilKt.declaresException;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PodcastRssParserInteropTest {
 
@@ -153,6 +154,72 @@ public class PodcastRssParserInteropTest {
                 final Document document = null;
                 PodcastRssParser.parse(document);
             })
+        );
+    }
+
+    @Test
+    @DisplayName("should declare expected exceptions for the parse(String) method")
+    void shouldDeclareExpectedExceptionsInParseUri() throws NoSuchMethodException {
+        final Method method = PodcastRssParser.class.getMethod("parse", String.class);
+        assertAll("Should declare expected exceptions",
+            () -> assertNotNull(method),
+            () -> assertTrue(declaresException(method, IOException.class)),
+            () -> assertTrue(declaresException(method, SAXException.class))
+        );
+    }
+
+    @Test
+    @DisplayName("should declare expected exceptions for the parse(InputStream) method")
+    void shouldDeclareExpectedExceptionsInParseInputStream() throws NoSuchMethodException {
+        final Method method = PodcastRssParser.class.getMethod("parse", InputStream.class);
+        assertAll("Should declare expected exceptions",
+            () -> assertNotNull(method),
+            () -> assertTrue(declaresException(method, IOException.class)),
+            () -> assertTrue(declaresException(method, SAXException.class))
+        );
+    }
+
+    @Test
+    @DisplayName("should declare expected exceptions for the parse(InputStream) method")
+    void shouldDeclareExpectedExceptionsInParseInputStreamString() throws NoSuchMethodException {
+        final Method method = PodcastRssParser.class.getMethod("parse", InputStream.class, String.class);
+        assertAll("Should declare expected exceptions",
+            () -> assertNotNull(method),
+            () -> assertTrue(declaresException(method, IOException.class)),
+            () -> assertTrue(declaresException(method, SAXException.class))
+        );
+    }
+
+    @Test
+    @DisplayName("should declare expected exceptions for the parse(InputStream) method")
+    void shouldDeclareExpectedExceptionsInParseFile() throws NoSuchMethodException {
+        final Method method = PodcastRssParser.class.getMethod("parse", File.class);
+        assertAll("Should declare expected exceptions",
+            () -> assertNotNull(method),
+            () -> assertTrue(declaresException(method, IOException.class)),
+            () -> assertTrue(declaresException(method, SAXException.class))
+        );
+    }
+
+    @Test
+    @DisplayName("should declare expected exceptions for the parse(InputSource) method")
+    void shouldDeclareExpectedExceptionsInParseInputSource() throws NoSuchMethodException {
+        final Method method = PodcastRssParser.class.getMethod("parse", InputSource.class);
+        assertAll("Should declare expected exceptions",
+            () -> assertNotNull(method),
+            () -> assertTrue(declaresException(method, IOException.class)),
+            () -> assertTrue(declaresException(method, SAXException.class))
+        );
+    }
+
+    @Test
+    @DisplayName("should declare expected exceptions for the parse(Document) method")
+    void shouldDeclareExpectedExceptionsInParseDocument() throws NoSuchMethodException {
+        final Method method = PodcastRssParser.class.getMethod("parse", Document.class);
+        assertAll("Should declare expected exceptions",
+            () -> assertNotNull(method),
+            () -> assertTrue(declaresException(method, IOException.class)),
+            () -> assertTrue(declaresException(method, SAXException.class))
         );
     }
 

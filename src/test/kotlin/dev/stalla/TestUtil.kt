@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.ArgumentsProvider
 import org.w3c.dom.Document
 import java.io.File
 import java.lang.reflect.Field
+import java.lang.reflect.Method
 import java.lang.reflect.Modifier
 import java.time.LocalDate
 import java.time.LocalTime
@@ -93,3 +94,6 @@ internal inline fun <reified T> staticPropertiesByType(javaClass: Class<T>, prot
         .filterIsInstance(T::class.java)
         .toTypedArray()
 }
+
+fun <E : Exception> Method.declaresException(exceptionClass: Class<E>): Boolean =
+    this.exceptionTypes.contains(exceptionClass)
