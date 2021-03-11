@@ -21,7 +21,7 @@ internal fun String?.isNeitherNullNorBlank(): Boolean {
     return this != null && isNotBlank()
 }
 
-/** Separator symbols listed in RFC 2616 https://tools.ietf.org/html/rfc2616#section-2.2 */
+/** Separator symbols listed in [RFC 2616](https://tools.ietf.org/html/rfc2616#section-2.2) */
 @InternalAPI
 internal val mediaTypeSeparatorSymbols: Set<Char> =
     setOf('(', ')', '<', '>', '@', ',', ';', ':', '\\', '\"', '/', '[', ']', '?', '=', '{', '}', ' ', '\t', '\n', '\r')

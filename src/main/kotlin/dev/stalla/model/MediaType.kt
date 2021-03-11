@@ -204,9 +204,7 @@ public open class MediaType private constructor(
          * @return The instance matching [rawValue], or `null` if no matching instance exists.
          */
         @JvmStatic
-        override fun of(rawValue: String?): MediaType? = rawValue?.let { value ->
-            return MediaTypeParser.parse(value)
-        }
+        override fun of(rawValue: String?): MediaType? = rawValue?.let { value -> MediaTypeParser.parse(value) }
 
         /** [Advanced Audio Coding](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) pattern `audio/aac`. */
         @JvmField

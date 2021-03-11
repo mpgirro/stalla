@@ -6,6 +6,7 @@ import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.InternalAPI
 import dev.stalla.util.anyNotNull
+import dev.stalla.util.asUnmodifiable
 
 @InternalAPI
 internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
@@ -53,7 +54,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
         return PodcastGoogleplay(
             author = author,
             email = email,
-            categories = categories,
+            categories = categories.asUnmodifiable(),
             description = description,
             explicit = explicit,
             block = block,
