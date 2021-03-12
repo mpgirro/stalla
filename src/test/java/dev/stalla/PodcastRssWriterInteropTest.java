@@ -61,10 +61,11 @@ public class PodcastRssWriterInteropTest {
     }
 
     @Test
-    @DisplayName("should fail to write a Podcast to an OutputStream of an unwritable file")
+    @DisplayName("should fail to write a Podcast to unwriteable OutputStream")
     public void failOnPodcastToUnwritableOutputStream() throws IOException {
         final Podcast podcast = aPodcast();
-        final OutputStream outputStream = new FileOutputStream(aReadOnlyFile());
+        final OutputStream outputStream = new FileOutputStream(aFile());
+        outputStream.close();
         assertThrows(IOException.class, () -> PodcastRssWriter.write(podcast, outputStream));
     }
 
@@ -91,7 +92,9 @@ public class PodcastRssWriterInteropTest {
     }
 
     private File aFile() throws IOException {
-        return File.createTempFile("test", ".rss");
+        final File temp = File.createTempFile("test", ".rss");
+        temp.deleteOnExit();
+        return temp;
     }
 
     private File aReadOnlyFile() throws IOException {
