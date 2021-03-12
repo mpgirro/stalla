@@ -16,7 +16,7 @@ public class PodcastGoogleplayInteropTest {
     private static final GoogleplayCategory category = aGoogleplayCategory();
 
     @BeforeAll
-    public static void init(){
+    public static void init() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         podcastGoogleplay = PodcastGoogleplay.builder()

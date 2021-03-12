@@ -32,7 +32,7 @@ public class ItunesCategoryInteropTest {
     }
 
     @BeforeAll
-    public static void init(){
+    public static void init() {
         staticPropertyMap = new HashMap<>();
         for (ItunesCategory category : getStaticItunesCategoryProperties()) {
             staticPropertyMap.put(category.getType(), category);

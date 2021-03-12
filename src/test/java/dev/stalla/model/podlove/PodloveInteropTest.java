@@ -14,7 +14,7 @@ public class PodloveInteropTest {
     private static final SimpleChapter simpleChapter = aPodloveSimpleChapter();
 
     @BeforeAll
-    public static void init(){
+    public static void init() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         episodePodlove = EpisodePodlove.builder()

@@ -14,7 +14,7 @@ public class PodcastItunesInteropTest {
     private static final ItunesCategory category = anItunesCategory();
 
     @BeforeAll
-    public static void init(){
+    public static void init() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         podcastItunes = PodcastItunes.builder()

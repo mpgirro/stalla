@@ -22,74 +22,50 @@ public class PodcastRssWriterInteropTest {
 
     @Test
     @DisplayName("should fail to write a null Podcast to a File")
-    public void failOnNullPodcastToFile() {
-        assertAll("fail on invalid argument",
-            () -> assertThrows(NullPointerException.class, () -> {
-                final Podcast podcast = null;
-                final File file = aFile();
-                PodcastRssWriter.write(podcast, file);
-            })
-        );
+    public void failOnNullPodcastToFile() throws IOException {
+        final Podcast podcast = null;
+        final File file = aFile();
+        assertThrows(NullPointerException.class, () -> PodcastRssWriter.write(podcast, file));
     }
 
     @Test
     @DisplayName("should fail to write a null Podcast to an OutputStream")
-    public void failOnNullPodcastToOutputStream() {
-        assertAll("fail on invalid argument",
-            () -> assertThrows(NullPointerException.class, () -> {
-                final Podcast podcast = null;
-                final OutputStream outputStream = new FileOutputStream(aFile());
-                PodcastRssWriter.write(podcast, outputStream);
-            })
-        );
+    public void failOnNullPodcastToOutputStream() throws IOException {
+        final Podcast podcast = null;
+        final OutputStream outputStream = new FileOutputStream(aFile());
+        assertThrows(NullPointerException.class, () -> PodcastRssWriter.write(podcast, outputStream));
     }
 
     @Test
     @DisplayName("should fail to write a Podcast to a null File")
     public void failOnPodcastToNullFile() {
-        assertAll("fail on invalid argument",
-            () -> assertThrows(NullPointerException.class, () -> {
-                final Podcast podcast = aPodcast();
-                final File file = null;
-                PodcastRssWriter.write(podcast, file);
-            })
-        );
+        final Podcast podcast = aPodcast();
+        final File file = null;
+        assertThrows(NullPointerException.class, () -> PodcastRssWriter.write(podcast, file));
     }
 
     @Test
     @DisplayName("should fail to write a Podcast to an unwritable File")
-    public void failOnPodcastToReadOnlyFile() {
-        assertAll("fail on invalid argument",
-            () -> assertThrows(IOException.class, () -> {
-                final Podcast podcast = aPodcast();
-                final File file = aReadOnlyFile();
-                PodcastRssWriter.write(podcast, file);
-            })
-        );
+    public void failOnPodcastToReadOnlyFile() throws IOException {
+        final Podcast podcast = aPodcast();
+        final File file = aReadOnlyFile();
+        assertThrows(IOException.class, () -> PodcastRssWriter.write(podcast, file));
     }
 
     @Test
     @DisplayName("should fail to write a Podcast to a null OutputStream")
     public void failOnPodcastToNullOutputStream() {
-        assertAll("fail on invalid argument",
-            () -> assertThrows(NullPointerException.class, () -> {
-                final Podcast podcast = aPodcast();
-                final OutputStream outputStream = null;
-                PodcastRssWriter.write(podcast, outputStream);
-            })
-        );
+        final Podcast podcast = aPodcast();
+        final OutputStream outputStream = null;
+        assertThrows(NullPointerException.class, () -> PodcastRssWriter.write(podcast, outputStream));
     }
 
     @Test
     @DisplayName("should fail to write a Podcast to an OutputStream of an unwritable file")
-    public void failOnPodcastToUnwritableOutputStream() {
-        assertAll("fail on invalid argument",
-            () -> assertThrows(IOException.class, () -> {
-                final Podcast podcast = aPodcast();
-                final OutputStream outputStream = new FileOutputStream(aReadOnlyFile());
-                PodcastRssWriter.write(podcast, outputStream);
-            })
-        );
+    public void failOnPodcastToUnwritableOutputStream() throws IOException {
+        final Podcast podcast = aPodcast();
+        final OutputStream outputStream = new FileOutputStream(aReadOnlyFile());
+        assertThrows(IOException.class, () -> PodcastRssWriter.write(podcast, outputStream));
     }
 
     @Test
