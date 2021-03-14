@@ -146,7 +146,7 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
             feedpress = feedpressBuilder.build(),
             googleplay = googleplayBuilder.build(),
             categories = categoryBuilders.mapNotNull { it.build() }.asUnmodifiable(),
-            podcast = podcastPodcastindexBuilder.build()
+            podcastindex = podcastPodcastindexBuilder.build()
         )
     }
 }

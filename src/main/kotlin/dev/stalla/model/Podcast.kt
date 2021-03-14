@@ -42,7 +42,7 @@ import java.util.Locale
  * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
  * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property categories The RSS feed categories, if any.
- * @property podcast The data from the Podcastindex namespace, or null if no data from this namespace was found.
+ * @property podcastindex The data from the Podcastindex namespace, or null if no data from this namespace was found.
  *
  * @since 1.0.0
  */
@@ -67,7 +67,7 @@ public data class Podcast(
     val feedpress: Feedpress? = null,
     val googleplay: PodcastGoogleplay? = null,
     val categories: List<RssCategory> = emptyList(),
-    val podcast: PodcastPodcastindex? = null
+    val podcastindex: PodcastPodcastindex? = null
 ) {
 
     /** Provides a builder for the [Podcast] class. */

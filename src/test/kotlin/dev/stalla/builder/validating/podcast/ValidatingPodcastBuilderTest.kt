@@ -184,7 +184,7 @@ internal class ValidatingPodcastBuilderTest {
                 prop(Podcast::feedpress).isNull()
                 prop(Podcast::fyyd).isNull()
                 prop(Podcast::googleplay).isNull()
-                prop(Podcast::podcast).isNull()
+                prop(Podcast::podcastindex).isNull()
             }
         }
     }
@@ -243,7 +243,7 @@ internal class ValidatingPodcastBuilderTest {
                     .isEqualTo("feedpress newsletterId")
                 prop(Podcast::fyyd).isNotNull().prop(Fyyd::verify).isEqualTo("fyyd verify")
                 prop(Podcast::googleplay).isNotNull().prop(PodcastGoogleplay::description).isEqualTo("play description")
-                prop(Podcast::podcast).isNotNull().prop(PodcastPodcastindex::locked).isEqualTo(expectedLockedBuilder.build())
+                prop(Podcast::podcastindex).isNotNull().prop(PodcastPodcastindex::locked).isEqualTo(expectedLockedBuilder.build())
             }
         }
     }

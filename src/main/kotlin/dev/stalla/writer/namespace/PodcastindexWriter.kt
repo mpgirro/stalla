@@ -24,7 +24,7 @@ internal object PodcastindexWriter : NamespaceWriter() {
     override val namespace = FeedNamespace.PODCAST
 
     override fun Element.appendPodcastData(podcast: Podcast) {
-        val podcastNs = podcast.podcast ?: return
+        val podcastNs = podcast.podcastindex ?: return
 
         if (podcastNs.locked != null && podcastNs.locked.owner.isNotBlank()) {
             appendElement("locked", namespace) {
