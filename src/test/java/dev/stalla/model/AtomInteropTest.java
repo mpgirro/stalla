@@ -7,62 +7,48 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static dev.stalla.model.FixturesKt.aLink;
 import static dev.stalla.model.FixturesKt.anAtomPerson;
 import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcastAtom;
+import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AtomInteropTest {
 
     private static Atom atom;
-    private static final AtomPerson person = anAtomPerson();
-    private static final Link link = aLink();
 
     @BeforeAll
     public static void init() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         atom = Atom.builder().applyFrom(aPodcastAtom())
-            .addAuthorBuilder(AtomPerson.builder().applyFrom(person))
-            .addContributorBuilder(AtomPerson.builder().applyFrom(person))
-            .addLinkBuilder(Link.builder().applyFrom(link))
+            .addAuthorBuilder(AtomPerson.builder().applyFrom(anAtomPerson()))
+            .addContributorBuilder(AtomPerson.builder().applyFrom(anAtomPerson()))
+            .addLinkBuilder(Link.builder().applyFrom(aLink()))
             .build();
     }
 
     @Test
-    @DisplayName("should build an Atom model that exposes an unmodifiable list of the authors")
+    @DisplayName("should build an unmodifiable list of Atom authors")
     public void testAtomBuilderUnmodifiableAuthorsFactory() {
-        assertAll("Should fail to add to author list",
-            () -> assertNotNull(atom),
-            () -> assertNotNull(atom.getAuthors()),
-            () -> assertThrows(UnsupportedOperationException.class, () -> {
-                atom.getAuthors().add(person);
-            })
-        );
+        final List<AtomPerson> authors = requireNonNull(atom.getAuthors());
+        assertThrows(UnsupportedOperationException.class, () -> authors.add(anAtomPerson()));
     }
 
     @Test
-    @DisplayName("should build an Atom model that exposes an unmodifiable list of the contributors")
+    @DisplayName("should build an unmodifiable list of Atom contributors")
     public void testAtomBuilderUnmodifiableContributorsFactory() {
-        assertAll("Should fail to add to contributor list",
-            () -> assertNotNull(atom),
-            () -> assertNotNull(atom.getContributors()),
-            () -> assertThrows(UnsupportedOperationException.class, () -> {
-                atom.getContributors().add(person);
-            })
-        );
+        final List<AtomPerson> contributors = requireNonNull(atom.getContributors());
+        assertThrows(UnsupportedOperationException.class, () -> contributors.add(anAtomPerson()));
     }
 
     @Test
-    @DisplayName("should build an Atom model that exposes an unmodifiable list of the links")
+    @DisplayName("should build an unmodifiable list of Atom links")
     public void testAtomBuilderUnmodifiableLinksFactory() {
-        assertAll("Should fail to add to link list",
-            () -> assertNotNull(atom),
-            () -> assertNotNull(atom.getLinks()),
-            () -> assertThrows(UnsupportedOperationException.class, () -> {
-                atom.getLinks().add(link);
-            })
-        );
+        final List<Link> links = requireNonNull(atom.getLinks());
+        assertThrows(UnsupportedOperationException.class, () -> links.add(aLink()));
     }
 
 }

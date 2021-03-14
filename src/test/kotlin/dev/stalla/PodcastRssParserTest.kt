@@ -288,5 +288,5 @@ internal class PodcastRssParserTest {
 
     private fun createDocument() = documentBuilder.newDocument()
 
-    private fun validRssDocument(path: String = "/xml/rss.xml") = documentFromResource(path)
+    private fun validRssDocument(path: String = "/xml/rss-basic.xml") = documentFromResource(path)
 }

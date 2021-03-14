@@ -4,14 +4,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static dev.stalla.model.episode.EpisodeFixturesKt.*;
+import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EpisodePodcastindexInteropTest {
 
     private static EpisodePodcastindex episodePodcastindex;
-    private static final Soundbite soundbite = anEpisodePodcastindexSoundbite();
-    private static final Transcript transcript = anEpisodePodcastindexTranscript();
 
     @BeforeAll
     public static void init() {
@@ -19,33 +20,23 @@ public class EpisodePodcastindexInteropTest {
         // Kotlin's listOf() method produces an unmodifiable list by default
         episodePodcastindex = EpisodePodcastindex.builder()
             .applyFrom(anEpisodePodcastindex())
-            .addSoundbiteBuilder(Soundbite.builder().applyFrom(soundbite))
-            .addTranscriptBuilder(Transcript.builder().applyFrom(transcript))
+            .addSoundbiteBuilder(Soundbite.builder().applyFrom(anEpisodePodcastindexSoundbite()))
+            .addTranscriptBuilder(Transcript.builder().applyFrom(anEpisodePodcastindexTranscript()))
             .build();
     }
 
     @Test
-    @DisplayName("should build an Episode Podcastindex that exposes an unmodifiable list of the soundbites")
+    @DisplayName("should build an unmodifiable list of Episode Podcastindex soundbites")
     public void testEpisodePodcastindexBuilderUnmodifiableSoundbites() {
-        assertAll("Should fail to add to soundbite list",
-            () -> assertNotNull(episodePodcastindex),
-            () -> assertNotNull(episodePodcastindex.getSoundbites()),
-            () -> assertThrows(UnsupportedOperationException.class, () -> {
-                episodePodcastindex.getSoundbites().add(soundbite);
-            })
-        );
+        final List<Soundbite> soundbites = requireNonNull(episodePodcastindex.getSoundbites());
+        assertThrows(UnsupportedOperationException.class, () -> soundbites.add(anEpisodePodcastindexSoundbite()));
     }
 
     @Test
-    @DisplayName("should build an Episode Podcastindex that exposes an unmodifiable list of the transcripts")
+    @DisplayName("should build an unmodifiable list of Episode Podcastindex transcripts")
     public void testEpisodePodcastindexBuilderUnmodifiableTranscripts() {
-        assertAll("Should fail to add to transcript list",
-            () -> assertNotNull(episodePodcastindex),
-            () -> assertNotNull(episodePodcastindex.getTranscripts()),
-            () -> assertThrows(UnsupportedOperationException.class, () -> {
-                episodePodcastindex.getTranscripts().add(transcript);
-            })
-        );
+        final List<Transcript> transcripts = requireNonNull(episodePodcastindex.getTranscripts());
+        assertThrows(UnsupportedOperationException.class, () -> transcripts.add(anEpisodePodcastindexTranscript()));
     }
 
 }

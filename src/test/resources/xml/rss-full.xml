@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~files/feed-premium.xsl"?>
+<rss version="2.0">
+    <channel
+        xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+        xmlns:atom="http://www.w3.org/2005/Atom"
+        xmlns:fyyd="https://fyyd.de/fyyd-ns/"
+        xmlns:feedpress="https://feed.press/xmlns"
+        xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+        xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md">
+        <title>podcast rss title</title>
+        <link>podcast rss link</link>
+        <description>podcast rss description</description>
+        <pubDate>Fri, 16 Mar 2018 22:49:08 +0000</pubDate>
+        <lastBuildDate>Fri, 16 Mar 2018 22:49:08 +0000</lastBuildDate>
+        <language>de</language>
+        <generator>podcast rss generator</generator>
+        <copyright>podcast rss copyright</copyright>
+        <docs>podcast rss docs</docs>
+        <managingEditor>podcast rss managingeditor</managingEditor>
+        <webMaster>podcast rss webmaster</webMaster>
+        <image>
+            <url>podcast rss image url</url>
+            <title>podcast rss image title</title>
+            <link>podcast rss image link</link>
+            <width>600</width>
+            <height>600</height>
+            <description>podcast rss image description</description>
+        </image>
+        <category domain="podcast rss category domain">podcast rss category 1</category>
+        <category>podcast rss category 2</category>
+        <itunes:subtitle>podcast itunes subtitle</itunes:subtitle>
+        <itunes:summary>podcast itunes summary</itunes:summary>
+        <itunes:image href="podcast itunes image href"/>
+        <itunes:keywords>podcast itunes keywords</itunes:keywords>
+        <itunes:author>podcast itunes author</itunes:author>
+        <itunes:category text="Technology">
+            <itunes:category text="Tech News"/>
+        </itunes:category>
+        <itunes:category text="Society &amp; Culture"/>
+        <itunes:category text="Fiction">
+            <itunes:category text="Science Fiction"/>
+        </itunes:category>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:block>no</itunes:block>
+        <itunes:complete>no</itunes:complete>
+        <itunes:type>episodic</itunes:type>
+        <itunes:title>podcast itunes title</itunes:title>
+        <itunes:new-feed-url>podcast itunes new-feed-url</itunes:new-feed-url>
+        <itunes:owner>
+            <itunes:name>podcast itunes owner name</itunes:name>
+            <itunes:email>podcast itunes owner email</itunes:email>
+        </itunes:owner>
+        <googleplay:author>podcast googleplay author</googleplay:author>
+        <googleplay:email>podcast googleplay email</googleplay:email>
+        <googleplay:category text="News &amp; Politics" />
+        <googleplay:description>podcast googleplay description</googleplay:description>
+        <googleplay:explicit>no</googleplay:explicit>
+        <googleplay:block>no</googleplay:block>
+        <googleplay:image href="podcast googleplay image href"/>
+        <googleplay:newFeedUrl>podcast googleplay newFeedUrl</googleplay:newFeedUrl>
+        <atom:link rel="podcast atom link rel" type="text/html" title="podcast atom link title" href="podcast atom link href"/>
+        <atom:author>
+            <atom:name>podcast atom author name</atom:name>
+            <atom:email>podcast atom author email</atom:email>
+            <atom:uri>podcast atom author uri</atom:uri>
+        </atom:author>
+        <atom:contributor>
+            <atom:name>podcast atom contributor name</atom:name>
+            <atom:email>podcast atom contributor email</atom:email>
+            <atom:uri>podcast atom contributor uri</atom:uri>
+        </atom:contributor>
+        <fyyd:verify>fyyd verify</fyyd:verify>
+        <feedpress:newsletterId>feedpres newsletterid</feedpress:newsletterId>
+        <feedpress:locale>de</feedpress:locale>
+        <feedpress:podcastId>feedpress podcastid</feedpress:podcastId>
+        <feedpress:cssFile>feedpress cssfile</feedpress:cssFile>
+        <feedpress:link>feedpress link</feedpress:link>
+        <podcast:locked owner="podcast podcastindex locked owner">yes</podcast:locked>
+        <podcast:funding url="podcast podcastindex funding url">podcast podcastindex funding message</podcast:funding>
+        <item
+            xmlns:content="http://purl.org/rss/1.0/modules/content/"
+            xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+            xmlns:atom="http://www.w3.org/2005/Atom"
+            xmlns:psc="http://podlove.org/simple-chapters"
+            xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+            xmlns:bitlove="http://bitlove.org"
+            xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md">
+            <title>episode rss title</title>
+            <link>episode rss link</link>
+            <description><![CDATA[episode rss description]]></description>
+            <author>episode rss author</author>
+            <category domain="episode rss category domain">episode rss category 1</category>
+            <category>episode rss category 2</category>
+            <comments>episode rss comments</comments>
+            <enclosure
+                url="episode rss enclosure url"
+                length="78589133"
+                type="audio/mpeg"
+                bitlove:guid="episode bitlove guid" />
+            <guid isPermaLink="true">episode rss guid</guid>
+            <pubDate>Fri, 16 Mar 2018 22:49:08 +0000</pubDate>
+            <source>episode rss source</source>
+            <content:encoded><![CDATA[episode content encoded]]></content:encoded>
+            <itunes:title>episode itunes title</itunes:title>
+            <itunes:duration>03:24:27</itunes:duration>
+            <itunes:image href="episode itunes image href"/>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:block>no</itunes:block>
+            <itunes:season>1</itunes:season>
+            <itunes:episode>1</itunes:episode>
+            <itunes:episodeType>full</itunes:episodeType>
+            <itunes:author>episode itunes author</itunes:author>
+            <itunes:subtitle>episode itunes subtitle</itunes:subtitle>
+            <itunes:summary>episode itunes summary</itunes:summary>
+            <googleplay:author>episode googleplay author</googleplay:author>
+            <googleplay:description>episode googleplay description</googleplay:description>
+            <googleplay:explicit>clean</googleplay:explicit>
+            <googleplay:block>no</googleplay:block>
+            <googleplay:image href="episode googleplay image href"/>
+            <atom:link rel="episode atom link rel" type="text/html" title="episode atom link title" href="episode atom link href"/>
+            <atom:author>
+                <atom:name>episode atom author name</atom:name>
+                <atom:email>episode atom author email</atom:email>
+                <atom:uri>episode atom author uri</atom:uri>
+            </atom:author>
+            <atom:contributor>
+                <atom:name>episode atom contributor name</atom:name>
+                <atom:email>episode atom contributor email</atom:email>
+                <atom:uri>episode atom contributor uri</atom:uri>
+            </atom:contributor>
+            <psc:chapters version="1.2">
+                <psc:chapter start="00:00:00.000" title="episode podlove simplechapter title 1" href="episode podlove simplechapter href 1" image="episode podlove simplechapter image 1"/>
+                <psc:chapter start="00:01:03.856" title="episode podlove simplechapter title 2" href="episode podlove simplechapter href 2" image="episode podlove simplechapter image 2"/>
+                <psc:chapter start="00:02:12.641" title="episode podlove simplechapter title 3" href="episode podlove simplechapter href 3" image="episode podlove simplechapter image 3"/>
+            </psc:chapters>
+            <podcast:chapters url="episode podcastindex chapters url" type="application/json"/>
+            <podcast:soundbite startTime="33.833" duration="60.0">episode podcastindex soundbite title</podcast:soundbite>
+            <podcast:transcript url="episode podcastindex transcript url" type="application/srt" language="it-IT" rel="episode podcastindex transcript rel"/>
+        </item>
+    </channel>
+</rss>
