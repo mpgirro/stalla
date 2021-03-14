@@ -5,9 +5,15 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodeItunesBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.model.StyledDuration
+import dev.stalla.model.atom.Atom.Factory.builder
+import dev.stalla.model.atom.AtomPerson.Factory.builder
+import dev.stalla.model.itunes.EpisodeItunes.Factory.builder
 
 /**
  * Model class for data from elements of the iTunes namespace that are valid within `<item>` elements.
+ *
+ * Direct instantiation from Java is discouraged. Use the [builder] method
+ * to obtain a builder instance for expressive construction instead.
  *
  * @property title The `<itunes:title>` field text content.
  * @property duration The value of the `<itunes:duration>` field text content as a [StyledDuration].

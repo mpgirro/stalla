@@ -4,9 +4,15 @@ import dev.stalla.builder.episode.EpisodeGoogleplayBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeGoogleplayBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.model.atom.Atom.Factory.builder
+import dev.stalla.model.atom.AtomPerson.Factory.builder
+import dev.stalla.model.googleplay.EpisodeGoogleplay.Factory.builder
 
 /**
  * Model class for data from elements of the Google Play namespace that are valid within `<item>` elements.
+ *
+ * Direct instantiation from Java is discouraged. Use the [builder] method
+ * to obtain a builder instance for expressive construction instead.
  *
  * Properties are as defined in the
  * [XML Schema](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd)

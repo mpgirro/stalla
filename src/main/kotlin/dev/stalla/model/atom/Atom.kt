@@ -3,9 +3,13 @@ package dev.stalla.model.atom
 import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.validating.ValidatingAtomBuilder
 import dev.stalla.model.BuilderFactory
+import dev.stalla.model.atom.Atom.Factory.builder
 
 /**
  * Model class for data from elements of the Atom namespace.
+ *
+ * Direct instantiation from Java is discouraged. Use the [builder] method
+ * to obtain a builder instance for expressive construction instead.
  *
  * @property authors List of data from the `<atom:author>` elements as [AtomPerson] instances.
  * @property contributors List of data from the `<atom:contributor>` elements as [AtomPerson] instances.

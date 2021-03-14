@@ -3,9 +3,15 @@ package dev.stalla.model.podcastindex
 import dev.stalla.builder.episode.EpisodePodcastindexBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexBuilder
 import dev.stalla.model.BuilderFactory
+import dev.stalla.model.atom.Atom.Factory.builder
+import dev.stalla.model.atom.AtomPerson.Factory.builder
+import dev.stalla.model.podcastindex.EpisodePodcastindex.Factory.builder
 
 /**
  * Model class for data from elements of the Podcastindex namespace that are valid within `<item>` elements.
+ *
+ * Direct instantiation from Java is discouraged. Use the [builder] method
+ * to obtain a builder instance for expressive construction instead.
  *
  * @property transcripts The transcript information for the episode.
  * @property soundbites The soundbites information for the episode.

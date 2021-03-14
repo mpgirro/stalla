@@ -2,7 +2,10 @@ package dev.stalla.model
 
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeBuilder
+import dev.stalla.model.Episode.Factory.builder
 import dev.stalla.model.atom.Atom
+import dev.stalla.model.atom.Atom.Factory.builder
+import dev.stalla.model.atom.AtomPerson.Factory.builder
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
 import dev.stalla.model.googleplay.EpisodeGoogleplay
@@ -16,6 +19,9 @@ import java.time.temporal.TemporalAccessor
 
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<item>` elements.
+ *
+ * Direct instantiation from Java is discouraged. Use the [builder] method
+ * to obtain a builder instance for expressive construction instead.
  *
  * @property title The RSS `<title>` field textContent.
  * @property link The RSS `<link>` field textContent.

@@ -5,9 +5,15 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexSoundb
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.Episode
 import dev.stalla.model.StyledDuration
+import dev.stalla.model.atom.Atom.Factory.builder
+import dev.stalla.model.atom.AtomPerson.Factory.builder
+import dev.stalla.model.podcastindex.Soundbite.Factory.builder
 
 /**
  * The soundbite information for the episode. Used to automatically extract soundbites from the [Episode.enclosure].
+ *
+ * Direct instantiation from Java is discouraged. Use the [builder] method
+ * to obtain a builder instance for expressive construction instead.
  *
  * @property startTime The timestamp at which the soundbite starts.
  * @property duration The duration of the timestamp (recommended between 15 and 120 seconds).

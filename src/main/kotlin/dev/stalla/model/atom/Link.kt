@@ -4,9 +4,15 @@ import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.MediaType
+import dev.stalla.model.atom.Atom.Factory.builder
+import dev.stalla.model.atom.AtomPerson.Factory.builder
+import dev.stalla.model.atom.Link.Factory.builder
 
 /**
  * Model class for elements describing hyperlinks.
+ *
+ * Direct instantiation from Java is discouraged. Use the [builder] method
+ * to obtain a builder instance for expressive construction instead.
  *
  * @property href The href of the link.
  * @property hrefLang The hrefLang of the link.

@@ -4,9 +4,15 @@ import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.MediaType
+import dev.stalla.model.atom.Atom.Factory.builder
+import dev.stalla.model.atom.AtomPerson.Factory.builder
+import dev.stalla.model.rss.Enclosure.Factory.builder
 
 /**
  * Model class for `<enclosure>` elements within RSS `<item>` elements.
+ *
+ * Direct instantiation from Java is discouraged. Use the [builder] method
+ * to obtain a builder instance for expressive construction instead.
  *
  * @property url The `url` attribute textContent of the RSS `<enclosure>` element.
  * @property length The `length` attribute textContent of the RSS `<enclosure>` element. The media length in seconds.

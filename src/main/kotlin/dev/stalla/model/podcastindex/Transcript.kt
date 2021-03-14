@@ -3,10 +3,16 @@ package dev.stalla.model.podcastindex
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexTranscriptBuilder
 import dev.stalla.model.BuilderFactory
+import dev.stalla.model.atom.Atom.Factory.builder
+import dev.stalla.model.atom.AtomPerson.Factory.builder
+import dev.stalla.model.podcastindex.Transcript.Factory.builder
 import java.util.Locale
 
 /**
  * The transcript for the episode.
+ *
+ * Direct instantiation from Java is discouraged. Use the [builder] method
+ * to obtain a builder instance for expressive construction instead.
  *
  * @property url The URL of the episode transcript.
  * @property type The type of transcript. One of the supported [TranscriptType]s.

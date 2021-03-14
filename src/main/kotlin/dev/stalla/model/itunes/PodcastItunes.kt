@@ -4,9 +4,15 @@ import dev.stalla.builder.podcast.PodcastItunesBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastItunesBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.model.atom.Atom.Factory.builder
+import dev.stalla.model.atom.AtomPerson.Factory.builder
+import dev.stalla.model.itunes.PodcastItunes.Factory.builder
 
 /**
  * Model class for data from the iTunes namespace valid within an RSS `<channel>`.
+ *
+ * Direct instantiation from Java is discouraged. Use the [builder] method
+ * to obtain a builder instance for expressive construction instead.
  *
  * @property subtitle The `<itunes:subtitle>` field text content.
  * @property summary The `<itunes:summary>` field text content.
