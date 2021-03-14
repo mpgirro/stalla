@@ -97,3 +97,5 @@ internal inline fun <reified T> staticPropertiesByType(javaClass: Class<T>, prot
 
 fun <E : Exception> Method.declaresException(exceptionClass: Class<E>): Boolean =
     this.exceptionTypes.contains(exceptionClass)
+
+fun Method.declaresNoExceptions(): Boolean = this.exceptionTypes.isEmpty()

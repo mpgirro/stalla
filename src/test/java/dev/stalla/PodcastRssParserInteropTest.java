@@ -11,6 +11,7 @@ import java.io.*;
 import java.lang.reflect.Method;
 
 import static dev.stalla.TestUtilKt.declaresException;
+import static dev.stalla.TestUtilKt.declaresNoExceptions;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PodcastRssParserInteropTest {
@@ -146,7 +147,7 @@ public class PodcastRssParserInteropTest {
     }
 
     @Test
-    @DisplayName("should declare expected exceptions for the parse(InputStream) method")
+    @DisplayName("should declare expected exceptions for the parse(InputStream, String) method")
     void shouldDeclareExpectedExceptionsInParseInputStreamString() throws NoSuchMethodException {
         final Method method = PodcastRssParser.class.getMethod("parse", InputStream.class, String.class);
         assertAll("Should declare expected exceptions",
@@ -157,7 +158,7 @@ public class PodcastRssParserInteropTest {
     }
 
     @Test
-    @DisplayName("should declare expected exceptions for the parse(InputStream) method")
+    @DisplayName("should declare expected exceptions for the parse(File) method")
     void shouldDeclareExpectedExceptionsInParseFile() throws NoSuchMethodException {
         final Method method = PodcastRssParser.class.getMethod("parse", File.class);
         assertAll("Should declare expected exceptions",
@@ -184,8 +185,7 @@ public class PodcastRssParserInteropTest {
         final Method method = PodcastRssParser.class.getMethod("parse", Document.class);
         assertAll("Should declare expected exceptions",
             () -> assertNotNull(method),
-            () -> assertTrue(declaresException(method, IOException.class)),
-            () -> assertTrue(declaresException(method, SAXException.class))
+            () -> assertTrue(declaresNoExceptions(method))
         );
     }
 

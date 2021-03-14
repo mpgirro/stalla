@@ -11,6 +11,9 @@ import dev.stalla.model.rss.RssImage
 import dev.stalla.staticPropertiesByType
 import org.junit.jupiter.params.provider.ArgumentsProvider
 import org.reflections.Reflections
+import java.io.File
+import java.io.IOException
+import java.util.UUID
 
 @JvmOverloads
 internal fun anRssImage(
@@ -223,3 +226,11 @@ internal val staticItunesCategoryProperties: Array<ItunesCategory> by lazy {
 internal val staticTranscriptTypeProperties: Array<TranscriptType> by lazy {
     staticPropertiesByType(TranscriptType::class.java, TranscriptType.PLAIN_TEXT)
 }
+
+@Throws(IOException::class)
+fun aFile(): File = File.createTempFile(UUID.randomUUID().toString(), ".rss").apply {
+    deleteOnExit()
+}
+
+@Throws(IOException::class)
+fun aReadOnlyFile(): File = aFile().apply { setReadOnly() }

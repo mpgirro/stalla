@@ -3,8 +3,6 @@ package dev.stalla;
 import dev.stalla.model.Podcast;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
 import javax.xml.transform.TransformerException;
 import java.io.File;
@@ -14,9 +12,9 @@ import java.io.OutputStream;
 import java.lang.reflect.Method;
 
 import static dev.stalla.TestUtilKt.declaresException;
+import static dev.stalla.model.FixturesKt.*;
 import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcast;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PodcastRssWriterInteropTest {
 
@@ -45,7 +43,7 @@ public class PodcastRssWriterInteropTest {
     }
 
     @Test
-    @DisplayName("should fail to write a Podcast to an unwritable File")
+    @DisplayName("should throw an IOException when writing a Podcast to a read only file")
     public void failOnPodcastToReadOnlyFile() throws IOException {
         final Podcast podcast = aPodcast();
         final File file = aReadOnlyFile();
@@ -61,12 +59,12 @@ public class PodcastRssWriterInteropTest {
     }
 
     @Test
-    @DisplayName("should fail to write a Podcast to unwriteable OutputStream")
-    public void failOnPodcastToUnwritableOutputStream() throws IOException {
+    @DisplayName("should throw a TransformerException when there is an error transforming a Podcast to XML")
+    public void failOnPodcastToClosedOutputStream() throws IOException {
         final Podcast podcast = aPodcast();
         final OutputStream outputStream = new FileOutputStream(aFile());
         outputStream.close();
-        assertThrows(IOException.class, () -> PodcastRssWriter.write(podcast, outputStream));
+        assertThrows(TransformerException.class, () -> PodcastRssWriter.write(podcast, outputStream));
     }
 
     @Test
@@ -89,18 +87,6 @@ public class PodcastRssWriterInteropTest {
             () -> assertTrue(declaresException(method, IOException.class)),
             () -> assertTrue(declaresException(method, TransformerException.class))
         );
-    }
-
-    private File aFile() throws IOException {
-        final File temp = File.createTempFile("test", ".rss");
-        temp.deleteOnExit();
-        return temp;
-    }
-
-    private File aReadOnlyFile() throws IOException {
-        final File file = aFile();
-        file.setReadOnly();
-        return file;
     }
 
 }
