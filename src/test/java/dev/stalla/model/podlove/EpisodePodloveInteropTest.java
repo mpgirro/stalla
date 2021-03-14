@@ -8,7 +8,7 @@ import static dev.stalla.model.episode.EpisodeFixturesKt.aPodloveSimpleChapter;
 import static dev.stalla.model.episode.EpisodeFixturesKt.anEpisodePodlove;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PodloveInteropTest {
+public class EpisodePodloveInteropTest {
 
     private static EpisodePodlove episodePodlove;
     private static final SimpleChapter simpleChapter = aPodloveSimpleChapter();

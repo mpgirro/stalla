@@ -1,5 +1,6 @@
 package dev.stalla;
 
+import dev.stalla.model.Podcast;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,7 @@ public class PodcastRssParserInteropTest {
     private static InputStream unusableInputStream;
     private static InputSource unusableInputSource;
     private final File invalidRssFile = new File(getClass().getClassLoader().getResource("xml/no-rss.xml").getFile());
+    private final File complexRssFile = new File(getClass().getClassLoader().getResource("xml/rss-complex.xml").getFile());
 
     @BeforeAll
     public static void init() throws IOException {
@@ -186,6 +188,20 @@ public class PodcastRssParserInteropTest {
         assertAll("Should declare expected exceptions",
             () -> assertNotNull(method),
             () -> assertTrue(declaresNoExceptions(method))
+        );
+    }
+
+    @Test
+    @DisplayName("should parse an Episode Podlove that exposes an unmodifiable list of the SimpleChapters")
+    void shouldParseEpisodePodloveBuilderUnmodifiableSimpleChapters() throws IOException, SAXException {
+        final Podcast podcast = PodcastRssParser.parse(complexRssFile);
+        assertAll("fail to add to list",
+            () -> assertNotNull(podcast),
+//            () -> assertNotNull(podcast.pod),
+//            () -> assertNotNull(episodePodlove.getSimpleChapters()),
+//            () -> assertThrows(UnsupportedOperationException.class, () -> {
+//                episodePodlove.getSimpleChapters().add(simpleChapter);
+//            })
         );
     }
 
