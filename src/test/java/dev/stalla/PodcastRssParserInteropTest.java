@@ -11,7 +11,6 @@ import dev.stalla.model.podcastindex.Soundbite;
 import dev.stalla.model.podcastindex.Transcript;
 import dev.stalla.model.podlove.SimpleChapter;
 import dev.stalla.model.rss.RssCategory;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
@@ -32,27 +31,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PodcastRssParserInteropTest {
 
-    private static File unusableFile;
-    private static InputStream unusableInputStream;
-    private static InputSource unusableInputSource;
     private final File invalidRssFile = new File(getClass().getClassLoader().getResource("xml/no-rss.xml").getFile());
-
-    @BeforeAll
-    public static void init() throws IOException, SAXException {
-        unusableFile = File.createTempFile("file-test",".rss");
-        unusableFile.deleteOnExit();
-
-        // InputSource gives I/O error when it's stream is closed
-        unusableInputSource = toInputSource(unusableFile);
-        unusableInputSource.getCharacterStream().close();
-
-        // Inputstream gives I/O error when it is closed
-        unusableInputStream = new FileInputStream(unusableFile);
-        unusableInputStream.close();
-
-        // File gives I/O error when it is not readable
-        unusableFile.setReadable(false);
-    }
 
     @Test
     @DisplayName("should fail to parse an URI that is null")
@@ -82,9 +61,9 @@ public class PodcastRssParserInteropTest {
     }
 
     @Test
-    @DisplayName("should fail to parse an InputStream from a file that does not exist")
-    public void failOnInputStreamNotExists() throws FileNotFoundException {
-        assertThrows(IOException.class, () -> PodcastRssParser.parse(unusableInputStream));
+    @DisplayName("should fail to parse an unreadable InputStream")
+    public void failOnInputStreamNotExists() {
+        assertThrows(IOException.class, () -> PodcastRssParser.parse(anUnreadableInputStream()));
     }
 
     @Test
@@ -104,7 +83,7 @@ public class PodcastRssParserInteropTest {
     @Test
     @DisplayName("should fail to parse a File that does not exist")
     public void failOnFileNotExists() {
-        assertThrows(IOException.class, () -> PodcastRssParser.parse(unusableFile));
+        assertThrows(IOException.class, () -> PodcastRssParser.parse(anUnreadableFile()));
     }
 
     @Test
@@ -121,9 +100,9 @@ public class PodcastRssParserInteropTest {
     }
 
     @Test
-    @DisplayName("should fail to parse an InputSource of a file that does not exist")
+    @DisplayName("should throw an IOException when parsing an unreadable InputSource")
     public void failOnInputSourceNotExists() throws FileNotFoundException {
-        assertThrows(IOException.class, () -> PodcastRssParser.parse(unusableInputSource));
+        assertThrows(IOException.class, () -> PodcastRssParser.parse(anUnreadableInputSource()));
     }
 
     @Test
@@ -323,6 +302,27 @@ public class PodcastRssParserInteropTest {
 
     private Episode aParsedEpisode() throws IOException, SAXException {
         return requireNonNull(aParsedPodcast().getEpisodes().get(0));
+    }
+
+    private File anUnreadableFile() throws IOException {
+        // File gives I/O error when it is not readable
+        final File file = aFile();
+        file.setReadable(false);
+        return file;
+    }
+
+    private InputStream anUnreadableInputStream() throws IOException {
+        // Inputstream gives I/O error when it is closed
+        final InputStream inputStream = new FileInputStream(aFile());
+        inputStream.close();
+        return inputStream;
+    }
+
+    private InputSource anUnreadableInputSource() throws IOException {
+        // InputSource gives I/O error when it's stream is closed
+        final InputSource inputSource = toInputSource(aFile());
+        inputSource.getCharacterStream().close();
+        return inputSource;
     }
 
 }

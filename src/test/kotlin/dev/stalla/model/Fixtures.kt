@@ -228,7 +228,7 @@ internal val staticTranscriptTypeProperties: Array<TranscriptType> by lazy {
 }
 
 @Throws(IOException::class)
-fun aFile(): File = File.createTempFile(UUID.randomUUID().toString(), ".rss").apply {
+fun aFile(): File = File.createTempFile("stalla-${UUID.randomUUID()}", ".test").apply {
     deleteOnExit()
 }
 
