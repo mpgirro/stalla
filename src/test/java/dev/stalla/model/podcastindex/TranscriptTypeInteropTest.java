@@ -32,7 +32,7 @@ public class TranscriptTypeInteropTest {
     }
 
     @BeforeAll
-    public static void init(){
+    static void init(){
         staticPropertyMap = new HashMap<>();
         for (TranscriptType type : getStaticTranscriptTypeProperties()) {
             staticPropertyMap.put(type.toString(), type);

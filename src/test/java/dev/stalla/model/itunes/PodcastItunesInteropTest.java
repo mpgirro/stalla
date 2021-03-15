@@ -16,7 +16,7 @@ public class PodcastItunesInteropTest {
     private static PodcastItunes podcastItunes;
 
     @BeforeAll
-    public static void init() {
+    static void init() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         podcastItunes = PodcastItunes.builder()
@@ -27,7 +27,7 @@ public class PodcastItunesInteropTest {
 
     @Test
     @DisplayName("should build an unmodifiable list of Podcast iTunes categories")
-    public void testPodcastBuilderUnmodifiableItunesCategories() {
+    void shouldBuildUnmodifiablePodcastItunesCategories() {
         final List<ItunesCategory> categories = requireNonNull(podcastItunes.getCategories());
         assertThrows(UnsupportedOperationException.class, () -> {
             categories.add(anItunesCategory());

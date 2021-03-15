@@ -73,13 +73,13 @@ inline fun <reified T : Any> arguments(vararg args: T): ArgumentsProvider = Argu
     Stream.of(*args).map { Arguments.of(it) }
 }
 
-internal fun staticClassFields(javaClass: Class<*>): List<Field> {
+fun staticClassFields(javaClass: Class<*>): List<Field> {
     return javaClass.declaredFields
         .filter { f: Field -> Modifier.isStatic(f.modifiers) }
         .filter { f: Field -> javaClass.isAssignableFrom(f.type) }
 }
 
-internal fun fieldInstance(field: Field, protoype: Any?): Any? {
+fun fieldInstance(field: Field, protoype: Any?): Any? {
     return try {
         field[protoype]
     } catch (e: IllegalAccessException) {
@@ -88,7 +88,7 @@ internal fun fieldInstance(field: Field, protoype: Any?): Any? {
     }
 }
 
-internal inline fun <reified T> staticPropertiesByType(javaClass: Class<T>, prototype: T): Array<T> {
+inline fun <reified T> staticPropertiesByType(javaClass: Class<T>, prototype: T): Array<T> {
     return staticClassFields(javaClass)
         .map { field -> fieldInstance(field, prototype) }
         .filterIsInstance(T::class.java)

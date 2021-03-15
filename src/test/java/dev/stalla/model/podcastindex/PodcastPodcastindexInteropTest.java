@@ -16,7 +16,7 @@ public class PodcastPodcastindexInteropTest {
     private static PodcastPodcastindex podcastPodcastindex;
 
     @BeforeAll
-    public static void init() {
+    static void init() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         podcastPodcastindex = PodcastPodcastindex.builder()
@@ -27,7 +27,7 @@ public class PodcastPodcastindexInteropTest {
 
     @Test
     @DisplayName("should build an unmodifiable list of Podcast Podcastindex funding")
-    public void testPodcastPodcastindexBuilderUnmodifiableFunding() {
+    void shouldBuildUnmodifiablePodcastPodcastindexFunding() {
         final List<Funding> fundingList = requireNonNull(podcastPodcastindex.getFunding());
         assertThrows(UnsupportedOperationException.class, () -> fundingList.add(aPodcastPodcastindexFunding()));
     }

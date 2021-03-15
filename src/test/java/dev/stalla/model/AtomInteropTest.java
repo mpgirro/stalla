@@ -20,7 +20,7 @@ public class AtomInteropTest {
     private static Atom atom;
 
     @BeforeAll
-    public static void init() {
+    static void init() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         atom = Atom.builder().applyFrom(aPodcastAtom())
@@ -32,21 +32,21 @@ public class AtomInteropTest {
 
     @Test
     @DisplayName("should build an unmodifiable list of Atom authors")
-    public void testAtomBuilderUnmodifiableAuthorsFactory() {
+    void shouldBuildUnmodifiableAtomAuthors() {
         final List<AtomPerson> authors = requireNonNull(atom.getAuthors());
         assertThrows(UnsupportedOperationException.class, () -> authors.add(anAtomPerson()));
     }
 
     @Test
     @DisplayName("should build an unmodifiable list of Atom contributors")
-    public void testAtomBuilderUnmodifiableContributorsFactory() {
+    void shouldBuildUnmodifiableAtomContributors() {
         final List<AtomPerson> contributors = requireNonNull(atom.getContributors());
         assertThrows(UnsupportedOperationException.class, () -> contributors.add(anAtomPerson()));
     }
 
     @Test
     @DisplayName("should build an unmodifiable list of Atom links")
-    public void testAtomBuilderUnmodifiableLinksFactory() {
+    void shouldBuildUnmodifiableAtomLinks() {
         final List<Link> links = requireNonNull(atom.getLinks());
         assertThrows(UnsupportedOperationException.class, () -> links.add(aLink()));
     }

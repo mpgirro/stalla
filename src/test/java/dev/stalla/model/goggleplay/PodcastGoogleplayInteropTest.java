@@ -18,7 +18,7 @@ public class PodcastGoogleplayInteropTest {
     private static PodcastGoogleplay podcastGoogleplay;
 
     @BeforeAll
-    public static void init() {
+    static void init() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         podcastGoogleplay = PodcastGoogleplay.builder()
@@ -29,7 +29,7 @@ public class PodcastGoogleplayInteropTest {
 
     @Test
     @DisplayName("should build an unmodifiable list of Podcast Google Play categories")
-    public void testPodcastBuilderUnmodifiableGoogleplayCategories() {
+    void shouldBuildUnmodifiablePodcastGoogleplayCategories() {
         final List<GoogleplayCategory> categories = requireNonNull(podcastGoogleplay.getCategories());
         assertThrows(UnsupportedOperationException.class, () -> categories.add(aGoogleplayCategory()));
     }

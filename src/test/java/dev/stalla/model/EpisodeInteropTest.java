@@ -18,7 +18,7 @@ public class EpisodeInteropTest {
     private static final RssCategory category = anRssCategory();
 
     @BeforeAll
-    public static void init() {
+    static void init() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         episode = Episode.builder()
@@ -29,7 +29,7 @@ public class EpisodeInteropTest {
 
     @Test
     @DisplayName("should build an unmodifiable list of Episode RSS categories")
-    public void testEpisodeBuilderUnmodifiableCategories() {
+    void shouldBuildUnmodifiableEpisodeRssCategories() {
         final List<RssCategory> categories = requireNonNull(episode.getCategories());
         assertThrows(UnsupportedOperationException.class, () -> categories.add(anRssCategory()));
     }

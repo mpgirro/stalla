@@ -3,6 +3,7 @@ package dev.stalla;
 import dev.stalla.model.Podcast;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import javax.xml.transform.TransformerException;
 import java.io.File;
@@ -12,31 +13,30 @@ import java.io.OutputStream;
 import java.lang.reflect.Method;
 
 import static dev.stalla.TestUtilKt.declaresException;
-import static dev.stalla.model.FixturesKt.*;
 import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcast;
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith({TemporaryFileParameterResolver.class})
 public class PodcastRssWriterInteropTest {
 
     @Test
     @DisplayName("should fail to write a null Podcast to a File")
-    public void failOnNullPodcastToFile() throws IOException {
+    void failOnNullPodcastToFile(@TemporaryFile File file) {
         final Podcast podcast = null;
-        final File file = aFile();
         assertThrows(NullPointerException.class, () -> PodcastRssWriter.write(podcast, file));
     }
 
     @Test
     @DisplayName("should fail to write a null Podcast to an OutputStream")
-    public void failOnNullPodcastToOutputStream() throws IOException {
+    void failOnNullPodcastToOutputStream(@TemporaryFile File file) throws IOException {
         final Podcast podcast = null;
-        final OutputStream outputStream = new FileOutputStream(aFile());
+        final OutputStream outputStream = new FileOutputStream(file);
         assertThrows(NullPointerException.class, () -> PodcastRssWriter.write(podcast, outputStream));
     }
 
     @Test
     @DisplayName("should fail to write a Podcast to a null File")
-    public void failOnPodcastToNullFile() {
+    void failOnPodcastToNullFile() {
         final Podcast podcast = aPodcast();
         final File file = null;
         assertThrows(NullPointerException.class, () -> PodcastRssWriter.write(podcast, file));
@@ -44,15 +44,14 @@ public class PodcastRssWriterInteropTest {
 
     @Test
     @DisplayName("should throw an IOException when writing a Podcast to a read only file")
-    public void failOnPodcastToReadOnlyFile() throws IOException {
+    void failOnPodcastToReadOnlyFile(@TemporaryFile File file) {
         final Podcast podcast = aPodcast();
-        final File file = aReadOnlyFile();
-        assertThrows(IOException.class, () -> PodcastRssWriter.write(podcast, file));
+        assertThrows(IOException.class, () -> PodcastRssWriter.write(podcast, toUnwritableFile(file)));
     }
 
     @Test
     @DisplayName("should fail to write a Podcast to a null OutputStream")
-    public void failOnPodcastToNullOutputStream() {
+    void failOnPodcastToNullOutputStream() {
         final Podcast podcast = aPodcast();
         final OutputStream outputStream = null;
         assertThrows(NullPointerException.class, () -> PodcastRssWriter.write(podcast, outputStream));
@@ -60,11 +59,9 @@ public class PodcastRssWriterInteropTest {
 
     @Test
     @DisplayName("should throw a TransformerException when there is an error transforming a Podcast to XML")
-    public void failOnPodcastToClosedOutputStream() throws IOException {
+    void failOnPodcastToClosedOutputStream(@TemporaryFile File file) throws IOException {
         final Podcast podcast = aPodcast();
-        final OutputStream outputStream = new FileOutputStream(aFile());
-        outputStream.close();
-        assertThrows(TransformerException.class, () -> PodcastRssWriter.write(podcast, outputStream));
+        assertThrows(TransformerException.class, () -> PodcastRssWriter.write(podcast, toUnwritableOutputStream(file)));
     }
 
     @Test
@@ -87,6 +84,18 @@ public class PodcastRssWriterInteropTest {
             () -> assertTrue(declaresException(method, IOException.class)),
             () -> assertTrue(declaresException(method, TransformerException.class))
         );
+    }
+
+    private File toUnwritableFile(File file) {
+        // File gives I/O error on writing when it is read-only
+        file.setReadOnly();
+        return file;
+    }
+
+    private OutputStream toUnwritableOutputStream(File file) throws IOException {
+        final OutputStream outputStream = new FileOutputStream(file);
+        outputStream.close();
+        return outputStream;
     }
 
 }

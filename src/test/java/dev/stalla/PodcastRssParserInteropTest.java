@@ -13,6 +13,7 @@ import dev.stalla.model.podlove.SimpleChapter;
 import dev.stalla.model.rss.RssCategory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -29,66 +30,76 @@ import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcastPodcastindexFun
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith({TemporaryFileParameterResolver.class})
 public class PodcastRssParserInteropTest {
 
-    private final File invalidRssFile = new File(getClass().getClassLoader().getResource("xml/no-rss.xml").getFile());
+    private final Podcast parsedPodcast;
+    private final Episode parsedEpisode;
+    private final File invalidRssFile;
+
+    public PodcastRssParserInteropTest() throws IOException, SAXException {
+        final File fullRssFile = new File(getClass().getClassLoader().getResource("xml/rss-full.xml").getFile());
+        invalidRssFile = new File(getClass().getClassLoader().getResource("xml/no-rss.xml").getFile());
+        parsedPodcast = requireNonNull(PodcastRssParser.parse(fullRssFile));
+        parsedEpisode = requireNonNull(parsedPodcast.getEpisodes().get(0));
+    }
 
     @Test
     @DisplayName("should fail to parse an URI that is null")
-    public void failOnNullUri() {
+    void failOnNullUri() {
         final String uri = null;
         assertThrows(NullPointerException.class, () -> PodcastRssParser.parse(uri));
     }
 
     @Test
     @DisplayName("should fail to parse an URI to a file that does not exist")
-    public void failOnUriNotExists() {
+    void failOnUriNotExists() {
         assertThrows(IOException.class, () -> PodcastRssParser.parse("some/fantasy/uri"));
     }
 
     @Test
     @DisplayName("should fail to parse an URI to an invalid XML")
-    public void failOnUriInvalidXml() {
+    void failOnUriInvalidXml() {
         final String uri = invalidRssFile.getAbsolutePath();
         assertThrows(SAXException.class, () -> PodcastRssParser.parse(uri));
     }
 
     @Test
     @DisplayName("should fail to parse an InputStream that is null")
-    public void failOnNullInputStream() {
+    void failOnNullInputStream() {
         final InputStream inputStream = null;
         assertThrows(NullPointerException.class, () -> PodcastRssParser.parse(inputStream));
     }
 
     @Test
     @DisplayName("should fail to parse an unreadable InputStream")
-    public void failOnInputStreamNotExists() {
-        assertThrows(IOException.class, () -> PodcastRssParser.parse(anUnreadableInputStream()));
+    void failOnInputStreamNotExists(@TemporaryFile File file) {
+        assertThrows(IOException.class, () -> PodcastRssParser.parse(toUnreadableInputStream(file)));
     }
 
     @Test
     @DisplayName("should fail to parse an InputStream from an invalid XML")
-    public void failOnInputStreamInvalidXml() throws FileNotFoundException {
+    void failOnInputStreamInvalidXml() throws FileNotFoundException {
         final InputStream inputStream = new FileInputStream(invalidRssFile);
         assertThrows(SAXException.class, () -> PodcastRssParser.parse(inputStream));
     }
 
     @Test
     @DisplayName("should fail to parse a File that is null")
-    public void failOnNullFile() {
+    void failOnNullFile() {
         final File file = null;
         assertThrows(NullPointerException.class, () -> PodcastRssParser.parse(file));
     }
 
     @Test
-    @DisplayName("should fail to parse a File that does not exist")
-    public void failOnFileNotExists() {
-        assertThrows(IOException.class, () -> PodcastRssParser.parse(anUnreadableFile()));
+    @DisplayName("should fail to parse a File that cannot be read")
+    void failOnFileNotExists(@TemporaryFile File file) {
+        assertThrows(IOException.class, () -> PodcastRssParser.parse(toUnReadableFile(file)));
     }
 
     @Test
     @DisplayName("should fail to parse a File from an invalid XML")
-    public void failOnFileInvalidXml() {
+    void failOnFileInvalidXml() {
         assertThrows(SAXException.class, () -> PodcastRssParser.parse(invalidRssFile));
     }
 
@@ -101,20 +112,20 @@ public class PodcastRssParserInteropTest {
 
     @Test
     @DisplayName("should throw an IOException when parsing an unreadable InputSource")
-    public void failOnInputSourceNotExists() throws FileNotFoundException {
-        assertThrows(IOException.class, () -> PodcastRssParser.parse(anUnreadableInputSource()));
+    void failOnInputSourceNotExists(@TemporaryFile File file) {
+        assertThrows(IOException.class, () -> PodcastRssParser.parse(toUnreadableInputSource(file)));
     }
 
     @Test
     @DisplayName("should fail to parse an InputSource of an invalid XML")
-    public void failOnInputSourceInvalidXml() throws FileNotFoundException {
+    void failOnInputSourceInvalidXml() throws FileNotFoundException {
         final InputSource inputSource = toInputSource(invalidRssFile);
         assertThrows(SAXException.class, () -> PodcastRssParser.parse(inputSource));
     }
 
     @Test
     @DisplayName("should fail to parse a Document that is null")
-    public void failOnNullDocument() {
+    void failOnNullDocument() {
         final Document document = null;
         assertThrows(NullPointerException.class, () -> PodcastRssParser.parse(document));
     }
@@ -186,141 +197,131 @@ public class PodcastRssParserInteropTest {
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Podcast episodes")
-    public void shouldParsePodcastUnmodifiableEpisodes() throws IOException, SAXException {
-        final List<Episode> episodes = requireNonNull(aParsedPodcast().getEpisodes());
+    void shouldParsePodcastUnmodifiableEpisodes() {
+        final List<Episode> episodes = requireNonNull(parsedPodcast.getEpisodes());
         assertThrows(UnsupportedOperationException.class, () -> episodes.add(anEpisode()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Podcast RSS categories")
-    public void shouldParsePodcastUnmodifiableRssCategories() throws IOException, SAXException {
-        final List<RssCategory> categories = requireNonNull(aParsedPodcast().getCategories());
+    void shouldParsePodcastUnmodifiableRssCategories() {
+        final List<RssCategory> categories = requireNonNull(parsedPodcast.getCategories());
         assertThrows(UnsupportedOperationException.class, () -> categories.add(anRssCategory()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Episode RSS categories")
-    public void shouldParseEpisodeUnmodifiableCategories() throws IOException, SAXException {
-        final List<RssCategory> categories = requireNonNull(aParsedPodcast().getEpisodes().get(0).getCategories());
+    void shouldParseEpisodeUnmodifiableCategories() {
+        final List<RssCategory> categories = requireNonNull(parsedPodcast.getEpisodes().get(0).getCategories());
         assertThrows(UnsupportedOperationException.class, () -> categories.add(anRssCategory()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Podcast Atom authors")
-    void shouldParsePodcastAtomUnmodifiableAuthors() throws IOException, SAXException {
-        final List<AtomPerson> authors = requireNonNull(aParsedPodcast().getAtom().getAuthors());
+    void shouldParsePodcastAtomUnmodifiableAuthors() {
+        final List<AtomPerson> authors = requireNonNull(parsedPodcast.getAtom().getAuthors());
         assertThrows(UnsupportedOperationException.class, () -> authors.add(anAtomPerson()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Podcast Atom contributors")
-    void shouldParsePodcastAtomUnmodifiableContributors() throws IOException, SAXException {
-        final List<AtomPerson> contributors = requireNonNull(aParsedPodcast().getAtom().getContributors());
+    void shouldParsePodcastAtomUnmodifiableContributors() {
+        final List<AtomPerson> contributors = requireNonNull(parsedPodcast.getAtom().getContributors());
         assertThrows(UnsupportedOperationException.class, () -> contributors.add(anAtomPerson()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Podcast Atom links")
-    void shouldParsePodcastAtomUnmodifiableLinks() throws IOException, SAXException {
-        final List<Link> links = requireNonNull(aParsedPodcast().getAtom().getLinks());
+    void shouldParsePodcastAtomUnmodifiableLinks() {
+        final List<Link> links = requireNonNull(parsedPodcast.getAtom().getLinks());
         assertThrows(UnsupportedOperationException.class, () -> links.add(aLink()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Podcast iTunes categories")
-    void shouldParsePodcastItunesUnmodifiableCategories() throws IOException, SAXException {
-        final List<ItunesCategory> categories = requireNonNull(aParsedPodcast().getItunes().getCategories());
+    void shouldParsePodcastItunesUnmodifiableCategories() {
+        final List<ItunesCategory> categories = requireNonNull(parsedPodcast.getItunes().getCategories());
         assertThrows(UnsupportedOperationException.class, () -> categories.add(anItunesCategory()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Podcast Google Play categories")
-    void shouldParsePodcastGoogleplayUnmodifiableCategories() throws IOException, SAXException {
-        final List<GoogleplayCategory> categories = requireNonNull(aParsedPodcast().getGoogleplay().getCategories());
+    void shouldParsePodcastGoogleplayUnmodifiableCategories() {
+        final List<GoogleplayCategory> categories = requireNonNull(parsedPodcast.getGoogleplay().getCategories());
         assertThrows(UnsupportedOperationException.class, () -> categories.add(aGoogleplayCategory()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Podcast Podcastindex funding")
-    void shouldParsePodcastPodcastindexUnmodifiableFunding() throws IOException, SAXException {
-        final List<Funding> fundingList = requireNonNull(aParsedPodcast().getPodcastindex().getFunding());
+    void shouldParsePodcastPodcastindexUnmodifiableFunding() {
+        final List<Funding> fundingList = requireNonNull(parsedPodcast.getPodcastindex().getFunding());
         assertThrows(UnsupportedOperationException.class, () -> fundingList.add(aPodcastPodcastindexFunding()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Episode Podcastindex soundbites")
-    void shouldParseEpisodePodcastindexUnmodifiableSoundbites() throws IOException, SAXException {
-        final List<Soundbite> soundbites = requireNonNull(aParsedEpisode().getPodcastindex().getSoundbites());
+    void shouldParseEpisodePodcastindexUnmodifiableSoundbites() {
+        final List<Soundbite> soundbites = requireNonNull(parsedEpisode.getPodcastindex().getSoundbites());
         assertThrows(UnsupportedOperationException.class, () -> soundbites.add(anEpisodePodcastindexSoundbite()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Episode Podcastindex transcripts")
-    void shouldParseEpisodePodcastindexUnmodifiableTranscripts() throws IOException, SAXException {
-        final List<Transcript> transcripts = requireNonNull(aParsedEpisode().getPodcastindex().getTranscripts());
+    void shouldParseEpisodePodcastindexUnmodifiableTranscripts() {
+        final List<Transcript> transcripts = requireNonNull(parsedEpisode.getPodcastindex().getTranscripts());
         assertThrows(UnsupportedOperationException.class, () -> transcripts.add(anEpisodePodcastindexTranscript()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Episode Atom authors")
-    void shouldParseEpisodetAtomUnmodifiableAuthors() throws IOException, SAXException {
-        final List<AtomPerson> authors = requireNonNull(aParsedEpisode().getAtom().getAuthors());
+    void shouldParseEpisodetAtomUnmodifiableAuthors() {
+        final List<AtomPerson> authors = requireNonNull(parsedEpisode.getAtom().getAuthors());
         assertThrows(UnsupportedOperationException.class, () -> authors.add(anAtomPerson()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Episode Atom contributors")
-    void shouldParseEpisodeAtomUnmodifiableContributors() throws IOException, SAXException {
-        final List<AtomPerson> contributors = requireNonNull(aParsedEpisode().getAtom().getContributors());
+    void shouldParseEpisodeAtomUnmodifiableContributors() {
+        final List<AtomPerson> contributors = requireNonNull(parsedEpisode.getAtom().getContributors());
         assertThrows(UnsupportedOperationException.class, () -> contributors.add(anAtomPerson()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Episode Atom links")
-    void shouldParseEpisodeAtomUnmodifiableLinks() throws IOException, SAXException {
-        final List<Link> links = requireNonNull(aParsedEpisode().getAtom().getLinks());
+    void shouldParseEpisodeAtomUnmodifiableLinks() {
+        final List<Link> links = requireNonNull(parsedEpisode.getAtom().getLinks());
         assertThrows(UnsupportedOperationException.class, () -> links.add(aLink()));
     }
 
     @Test
     @DisplayName("should parse to an unmodifiable list of Episode Podlove SimpleChapters")
-    void shouldParseEpisodePodloveUnmodifiableSimpleChapters() throws IOException, SAXException {
-        final List<SimpleChapter> simpleChapters = requireNonNull(aParsedEpisode().getPodlove()).getSimpleChapters();
+    void shouldParseEpisodePodloveUnmodifiableSimpleChapters() {
+        final List<SimpleChapter> simpleChapters = requireNonNull(parsedEpisode.getPodlove()).getSimpleChapters();
         assertThrows(UnsupportedOperationException.class, () -> simpleChapters.add(aPodloveSimpleChapter()));
     }
 
-    private static InputSource toInputSource(File file) throws FileNotFoundException {
+    private File toUnReadableFile(File file) {
+        // File gives I/O error when it is not readable
+        file.setReadable(false);
+        return file;
+    }
+
+    private InputSource toInputSource(File file) throws FileNotFoundException {
         final InputStream inputStream = new FileInputStream(file);
         final InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         return new InputSource(inputStreamReader);
     }
 
-    private Podcast aParsedPodcast() throws IOException, SAXException {
-        final File fullRssFile = new File(getClass().getClassLoader().getResource("xml/rss-full.xml").getFile());
-        return PodcastRssParser.parse(fullRssFile);
-    }
-
-    private Episode aParsedEpisode() throws IOException, SAXException {
-        return requireNonNull(aParsedPodcast().getEpisodes().get(0));
-    }
-
-    private File anUnreadableFile() throws IOException {
-        // File gives I/O error when it is not readable
-        final File file = aFile();
-        file.setReadable(false);
-        return file;
-    }
-
-    private InputStream anUnreadableInputStream() throws IOException {
+    private InputStream toUnreadableInputStream(File file) throws IOException {
         // Inputstream gives I/O error when it is closed
-        final InputStream inputStream = new FileInputStream(aFile());
+        final InputStream inputStream = new FileInputStream(file);
         inputStream.close();
         return inputStream;
     }
 
-    private InputSource anUnreadableInputSource() throws IOException {
+    private InputSource toUnreadableInputSource(File file) throws IOException {
         // InputSource gives I/O error when it's stream is closed
-        final InputSource inputSource = toInputSource(aFile());
+        final InputSource inputSource = toInputSource(file);
         inputSource.getCharacterStream().close();
         return inputSource;
     }

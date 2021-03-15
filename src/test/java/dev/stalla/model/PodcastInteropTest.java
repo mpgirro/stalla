@@ -18,7 +18,7 @@ public class PodcastInteropTest {
     private static Podcast podcast;
 
     @BeforeAll
-    public static void init() {
+    static void init() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         podcast = Podcast.builder()
@@ -30,14 +30,14 @@ public class PodcastInteropTest {
 
     @Test
     @DisplayName("should build an unmodifiable list of Podcast episodes")
-    public void testPodcastBuilderUnmodifiableEpisodes() {
+    void testPodcastBuilderUnmodifiableEpisodes() {
         final List<Episode> episodes = requireNonNull(podcast.getEpisodes());
         assertThrows(UnsupportedOperationException.class, () -> episodes.add(anEpisode()));
     }
 
     @Test
     @DisplayName("should build an unmodifiable list of Podcast RSS categories")
-    public void testPodcastBuilderUnmodifiableRssCategories() {
+    void shouldBuildUnmodifiablePodcastRssCategories() {
         final List<RssCategory> categories = requireNonNull(podcast.getCategories());
         assertThrows(UnsupportedOperationException.class, () -> categories.add(anRssCategory()));
     }
