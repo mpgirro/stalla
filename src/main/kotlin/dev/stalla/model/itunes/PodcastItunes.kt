@@ -24,7 +24,7 @@ import dev.stalla.model.itunes.PodcastItunes.Factory.builder
  * @property block The logical value of the `<itunes:block>` field's text content.
  * @property complete The logical value of the `<itunes:complete>` field's text content.
  * @property type The value of the `<itunes:type>` field text content as a [ShowType].
- * @property owner The `<itunes:owner>` elements data as a [ItunesOwner].
+ * @property owner The `<itunes:owner>` elements data as an [ItunesOwner].
  * @property title The `<itunes:title>` field text content.
  * @property newFeedUrl The `<itunes:new-feed-url>` field text content.
  *

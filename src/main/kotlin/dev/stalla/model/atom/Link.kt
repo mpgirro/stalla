@@ -14,13 +14,13 @@ import dev.stalla.model.atom.Link.Factory.builder
  * Direct instantiation from Java is discouraged. Use the [builder] method
  * to obtain a builder instance for expressive construction instead.
  *
- * @property href The href of the link.
- * @property hrefLang The hrefLang of the link.
- * @property hrefResolved The hrefResolved of the link.
- * @property length The length of the link.
- * @property rel The rel of the link.
- * @property title The title of the link.
- * @property type The type of the link.
+ * @property href The `href` attribute textContent of the `<atom:link>` element.
+ * @property hrefLang The `hrefLang` attribute textContent of the `<atom:link>` element.
+ * @property hrefResolved The `hrefResolved` attribute textContent of the `<atom:link>` element.
+ * @property length The `length` attribute textContent of the `<atom:link>` element.
+ * @property rel The `rel` attribute textContent of the `<atom:link>` element.
+ * @property title The `title` attribute textContent of the `<atom:link>` element.
+ * @property type The `type` attribute textContent of the `<atom:link>` element as a [MediaType].
  *
  * @since 1.0.0
  */

@@ -16,7 +16,7 @@ import dev.stalla.model.rss.Enclosure.Factory.builder
  *
  * @property url The `url` attribute textContent of the RSS `<enclosure>` element.
  * @property length The `length` attribute textContent of the RSS `<enclosure>` element. The media length in seconds.
- * @property type The `type` attribute textContent of the RSS `<enclosure>` element.
+ * @property type The `type` attribute textContent of the RSS `<enclosure>` element as a [MediaType].
  *
  * @since 1.0.0
  */

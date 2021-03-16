@@ -46,5 +46,4 @@ class AnyExtensionsTest {
     internal fun `should treat optional parameters as null in allNotNull(a,b)`() {
         assertThat(allNotNull("a", "b")).isTrue()
     }
-
 }
