@@ -78,7 +78,7 @@ detekt {
 }
 
 apiValidation {
-    nonPublicMarkers.add("dev.stalla.util.InternalApi")
+    nonPublicMarkers.add("dev.stalla.util.InternalAPI")
 }
 
 tasks {
