@@ -24,9 +24,9 @@ internal fun anyNotNull(vararg elements: Any?): Boolean = elements.any { p -> p 
 @InternalAPI
 internal fun allNull(
     a: Any?,
-    b: Any? = Unit,
-    c: Any? = Unit,
-    d: Any? = Unit
+    b: Any? = null,
+    c: Any? = null,
+    d: Any? = null
 ): Boolean {
     contract {
         returns(true) implies (a == null && b == null && c == null && d == null)

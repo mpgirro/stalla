@@ -30,7 +30,7 @@ public class PodcastInteropTest {
 
     @Test
     @DisplayName("should build an unmodifiable list of Podcast episodes")
-    void testPodcastBuilderUnmodifiableEpisodes() {
+    void shouldBuildUnmodifiablePodcastEpisodes() {
         final List<Episode> episodes = requireNonNull(podcast.getEpisodes());
         assertThrows(UnsupportedOperationException.class, () -> episodes.add(anEpisode()));
     }
