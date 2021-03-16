@@ -1,0 +1,1553 @@
+public final class dev/stalla/PodcastRssParser {
+	public static final field INSTANCE Ldev/stalla/PodcastRssParser;
+	public final fun parse (Ljava/io/File;)Ldev/stalla/model/Podcast;
+	public final fun parse (Ljava/io/InputStream;)Ldev/stalla/model/Podcast;
+	public final fun parse (Ljava/io/InputStream;Ljava/lang/String;)Ldev/stalla/model/Podcast;
+	public final fun parse (Ljava/lang/String;)Ldev/stalla/model/Podcast;
+	public final fun parse (Lorg/w3c/dom/Document;)Ldev/stalla/model/Podcast;
+	public final fun parse (Lorg/xml/sax/InputSource;)Ldev/stalla/model/Podcast;
+}
+
+public final class dev/stalla/PodcastRssWriter {
+	public static final field INSTANCE Ldev/stalla/PodcastRssWriter;
+	public final fun writeRssFeed (Ldev/stalla/model/Podcast;Ljava/io/File;)V
+	public final fun writeRssFeed (Ldev/stalla/model/Podcast;Ljava/io/OutputStream;)V
+}
+
+public abstract interface class dev/stalla/builder/AtomBuilder : dev/stalla/builder/Builder {
+	public abstract fun addAllAuthorBuilders (Ljava/util/List;)Ldev/stalla/builder/AtomBuilder;
+	public abstract fun addAllContributorBuilders (Ljava/util/List;)Ldev/stalla/builder/AtomBuilder;
+	public abstract fun addAllLinkBuilders (Ljava/util/List;)Ldev/stalla/builder/AtomBuilder;
+	public abstract fun addAuthorBuilder (Ldev/stalla/builder/AtomPersonBuilder;)Ldev/stalla/builder/AtomBuilder;
+	public abstract fun addContributorBuilder (Ldev/stalla/builder/AtomPersonBuilder;)Ldev/stalla/builder/AtomBuilder;
+	public abstract fun addLinkBuilder (Ldev/stalla/builder/LinkBuilder;)Ldev/stalla/builder/AtomBuilder;
+	public abstract fun applyFrom (Ldev/stalla/model/atom/Atom;)Ldev/stalla/builder/AtomBuilder;
+}
+
+public final class dev/stalla/builder/AtomBuilder$DefaultImpls {
+	public static fun addAllAuthorBuilders (Ldev/stalla/builder/AtomBuilder;Ljava/util/List;)Ldev/stalla/builder/AtomBuilder;
+	public static fun addAllContributorBuilders (Ldev/stalla/builder/AtomBuilder;Ljava/util/List;)Ldev/stalla/builder/AtomBuilder;
+	public static fun addAllLinkBuilders (Ldev/stalla/builder/AtomBuilder;Ljava/util/List;)Ldev/stalla/builder/AtomBuilder;
+	public static fun applyFrom (Ldev/stalla/builder/AtomBuilder;Ldev/stalla/model/atom/Atom;)Ldev/stalla/builder/AtomBuilder;
+}
+
+public abstract interface class dev/stalla/builder/AtomPersonBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/atom/AtomPerson;)Ldev/stalla/builder/AtomPersonBuilder;
+	public abstract fun email (Ljava/lang/String;)Ldev/stalla/builder/AtomPersonBuilder;
+	public abstract fun name (Ljava/lang/String;)Ldev/stalla/builder/AtomPersonBuilder;
+	public abstract fun uri (Ljava/lang/String;)Ldev/stalla/builder/AtomPersonBuilder;
+}
+
+public final class dev/stalla/builder/AtomPersonBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/AtomPersonBuilder;Ldev/stalla/model/atom/AtomPerson;)Ldev/stalla/builder/AtomPersonBuilder;
+}
+
+public abstract interface class dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ljava/lang/Object;)Ldev/stalla/builder/Builder;
+	public abstract fun build ()Ljava/lang/Object;
+	public abstract fun getHasEnoughDataToBuild ()Z
+}
+
+public abstract interface class dev/stalla/builder/HrefOnlyImageBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/HrefOnlyImage;)Ldev/stalla/builder/HrefOnlyImageBuilder;
+	public abstract fun href (Ljava/lang/String;)Ldev/stalla/builder/HrefOnlyImageBuilder;
+}
+
+public final class dev/stalla/builder/HrefOnlyImageBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/HrefOnlyImageBuilder;Ldev/stalla/model/HrefOnlyImage;)Ldev/stalla/builder/HrefOnlyImageBuilder;
+}
+
+public abstract interface class dev/stalla/builder/LinkBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/atom/Link;)Ldev/stalla/builder/LinkBuilder;
+	public abstract fun href (Ljava/lang/String;)Ldev/stalla/builder/LinkBuilder;
+	public abstract fun hrefLang (Ljava/lang/String;)Ldev/stalla/builder/LinkBuilder;
+	public abstract fun hrefResolved (Ljava/lang/String;)Ldev/stalla/builder/LinkBuilder;
+	public abstract fun length (Ljava/lang/String;)Ldev/stalla/builder/LinkBuilder;
+	public abstract fun rel (Ljava/lang/String;)Ldev/stalla/builder/LinkBuilder;
+	public abstract fun title (Ljava/lang/String;)Ldev/stalla/builder/LinkBuilder;
+	public abstract fun type (Ldev/stalla/model/MediaType;)Ldev/stalla/builder/LinkBuilder;
+}
+
+public final class dev/stalla/builder/LinkBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/LinkBuilder;Ldev/stalla/model/atom/Link;)Ldev/stalla/builder/LinkBuilder;
+}
+
+public abstract interface class dev/stalla/builder/RssCategoryBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/rss/RssCategory;)Ldev/stalla/builder/RssCategoryBuilder;
+	public abstract fun category (Ljava/lang/String;)Ldev/stalla/builder/RssCategoryBuilder;
+	public abstract fun domain (Ljava/lang/String;)Ldev/stalla/builder/RssCategoryBuilder;
+}
+
+public final class dev/stalla/builder/RssCategoryBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/RssCategoryBuilder;Ldev/stalla/model/rss/RssCategory;)Ldev/stalla/builder/RssCategoryBuilder;
+}
+
+public abstract interface class dev/stalla/builder/RssImageBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/rss/RssImage;)Ldev/stalla/builder/RssImageBuilder;
+	public abstract fun description (Ljava/lang/String;)Ldev/stalla/builder/RssImageBuilder;
+	public abstract fun height (Ljava/lang/Integer;)Ldev/stalla/builder/RssImageBuilder;
+	public abstract fun link (Ljava/lang/String;)Ldev/stalla/builder/RssImageBuilder;
+	public abstract fun title (Ljava/lang/String;)Ldev/stalla/builder/RssImageBuilder;
+	public abstract fun url (Ljava/lang/String;)Ldev/stalla/builder/RssImageBuilder;
+	public abstract fun width (Ljava/lang/Integer;)Ldev/stalla/builder/RssImageBuilder;
+}
+
+public final class dev/stalla/builder/RssImageBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/RssImageBuilder;Ldev/stalla/model/rss/RssImage;)Ldev/stalla/builder/RssImageBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodeBitloveBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/bitlove/Bitlove;)Ldev/stalla/builder/episode/EpisodeBitloveBuilder;
+	public abstract fun guid (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeBitloveBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodeBitloveBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodeBitloveBuilder;Ldev/stalla/model/bitlove/Bitlove;)Ldev/stalla/builder/episode/EpisodeBitloveBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodeBuilder : dev/stalla/builder/Builder {
+	public abstract fun addAllCategoryBuilders (Ljava/util/List;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun addCategoryBuilder (Ldev/stalla/builder/RssCategoryBuilder;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun applyFrom (Ldev/stalla/model/Episode;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun author (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun comments (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun description (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun enclosureBuilder (Ldev/stalla/builder/episode/EpisodeEnclosureBuilder;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun getAtomBuilder ()Ldev/stalla/builder/AtomBuilder;
+	public abstract fun getBitloveBuilder ()Ldev/stalla/builder/episode/EpisodeBitloveBuilder;
+	public abstract fun getContentBuilder ()Ldev/stalla/builder/episode/EpisodeContentBuilder;
+	public abstract fun getGoogleplayBuilder ()Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+	public abstract fun getItunesBuilder ()Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun getPodcastindexBuilder ()Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+	public abstract fun getPodloveBuilder ()Ldev/stalla/builder/episode/EpisodePodloveBuilder;
+	public abstract fun guidBuilder (Ldev/stalla/builder/episode/EpisodeGuidBuilder;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun link (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun pubDate (Ljava/time/temporal/TemporalAccessor;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun source (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public abstract fun title (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodeBuilder$DefaultImpls {
+	public static fun addAllCategoryBuilders (Ldev/stalla/builder/episode/EpisodeBuilder;Ljava/util/List;)Ldev/stalla/builder/episode/EpisodeBuilder;
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodeBuilder;Ldev/stalla/model/Episode;)Ldev/stalla/builder/episode/EpisodeBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodeContentBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/content/Content;)Ldev/stalla/builder/episode/EpisodeContentBuilder;
+	public abstract fun encoded (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeContentBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodeContentBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodeContentBuilder;Ldev/stalla/model/content/Content;)Ldev/stalla/builder/episode/EpisodeContentBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodeEnclosureBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/rss/Enclosure;)Ldev/stalla/builder/episode/EpisodeEnclosureBuilder;
+	public abstract fun length (J)Ldev/stalla/builder/episode/EpisodeEnclosureBuilder;
+	public abstract fun type (Ldev/stalla/model/MediaType;)Ldev/stalla/builder/episode/EpisodeEnclosureBuilder;
+	public abstract fun url (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeEnclosureBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodeEnclosureBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodeEnclosureBuilder;Ldev/stalla/model/rss/Enclosure;)Ldev/stalla/builder/episode/EpisodeEnclosureBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodeGoogleplayBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/googleplay/EpisodeGoogleplay;)Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+	public abstract fun author (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+	public abstract fun block (Z)Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+	public abstract fun description (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+	public abstract fun explicit (Ldev/stalla/model/googleplay/ExplicitType;)Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+	public abstract fun explicit (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+	public abstract fun imageBuilder (Ldev/stalla/builder/HrefOnlyImageBuilder;)Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodeGoogleplayBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;Ldev/stalla/model/googleplay/EpisodeGoogleplay;)Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+	public static fun explicit (Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodeGuidBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/rss/Guid;)Ldev/stalla/builder/episode/EpisodeGuidBuilder;
+	public abstract fun isPermalink (Ljava/lang/Boolean;)Ldev/stalla/builder/episode/EpisodeGuidBuilder;
+	public abstract fun textContent (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeGuidBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodeGuidBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodeGuidBuilder;Ldev/stalla/model/rss/Guid;)Ldev/stalla/builder/episode/EpisodeGuidBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodeItunesBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/itunes/EpisodeItunes;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun author (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun block (Z)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun duration (Ldev/stalla/model/StyledDuration;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun episode (Ljava/lang/Integer;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun episodeType (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun explicit (Ljava/lang/Boolean;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun imageBuilder (Ldev/stalla/builder/HrefOnlyImageBuilder;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun season (Ljava/lang/Integer;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun subtitle (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun summary (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public abstract fun title (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodeItunesBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodeItunesBuilder;Ldev/stalla/model/itunes/EpisodeItunes;)Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodePodcastindexBuilder : dev/stalla/builder/Builder {
+	public abstract fun addAllSoundbiteBuilders (Ljava/util/List;)Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+	public abstract fun addAllTranscriptBuilders (Ljava/util/List;)Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+	public abstract fun addSoundbiteBuilder (Ldev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder;)Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+	public abstract fun addTranscriptBuilder (Ldev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder;)Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+	public abstract fun applyFrom (Ldev/stalla/model/podcastindex/EpisodePodcastindex;)Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+	public abstract fun chaptersBuilder (Ldev/stalla/builder/episode/EpisodePodcastindexChaptersBuilder;)Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodePodcastindexBuilder$DefaultImpls {
+	public static fun addAllSoundbiteBuilders (Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;Ljava/util/List;)Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+	public static fun addAllTranscriptBuilders (Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;Ljava/util/List;)Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;Ldev/stalla/model/podcastindex/EpisodePodcastindex;)Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodePodcastindexChaptersBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/podcastindex/Chapters;)Ldev/stalla/builder/episode/EpisodePodcastindexChaptersBuilder;
+	public abstract fun type (Ldev/stalla/model/MediaType;)Ldev/stalla/builder/episode/EpisodePodcastindexChaptersBuilder;
+	public abstract fun url (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodePodcastindexChaptersBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodePodcastindexChaptersBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodePodcastindexChaptersBuilder;Ldev/stalla/model/podcastindex/Chapters;)Ldev/stalla/builder/episode/EpisodePodcastindexChaptersBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/podcastindex/Soundbite;)Ldev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder;
+	public abstract fun duration (Ldev/stalla/model/StyledDuration$SecondsAndFraction;)Ldev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder;
+	public abstract fun startTime (Ldev/stalla/model/StyledDuration$SecondsAndFraction;)Ldev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder;
+	public abstract fun title (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder;Ldev/stalla/model/podcastindex/Soundbite;)Ldev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/podcastindex/Transcript;)Ldev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder;
+	public abstract fun language (Ljava/util/Locale;)Ldev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder;
+	public abstract fun rel (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder;
+	public abstract fun type (Ldev/stalla/model/podcastindex/TranscriptType;)Ldev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder;
+	public abstract fun url (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder;Ldev/stalla/model/podcastindex/Transcript;)Ldev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodePodloveBuilder : dev/stalla/builder/Builder {
+	public abstract fun addAllSimpleChapterBuilders (Ljava/util/List;)Ldev/stalla/builder/episode/EpisodePodloveBuilder;
+	public abstract fun addSimpleChapterBuilder (Ldev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder;)Ldev/stalla/builder/episode/EpisodePodloveBuilder;
+	public abstract fun applyFrom (Ldev/stalla/model/podlove/EpisodePodlove;)Ldev/stalla/builder/episode/EpisodePodloveBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodePodloveBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodePodloveBuilder;Ldev/stalla/model/podlove/EpisodePodlove;)Ldev/stalla/builder/episode/EpisodePodloveBuilder;
+}
+
+public abstract interface class dev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/podlove/SimpleChapter;)Ldev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder;
+	public abstract fun href (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder;
+	public abstract fun image (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder;
+	public abstract fun start (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder;
+	public abstract fun title (Ljava/lang/String;)Ldev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder;
+}
+
+public final class dev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder;Ldev/stalla/model/podlove/SimpleChapter;)Ldev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder;
+}
+
+public abstract interface class dev/stalla/builder/podcast/PodcastBuilder : dev/stalla/builder/Builder {
+	public abstract fun addAllCategoryBuilders (Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun addAllEpisodeBuilders (Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun addCategoryBuilder (Ldev/stalla/builder/RssCategoryBuilder;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun addEpisodeBuilder (Ldev/stalla/builder/episode/EpisodeBuilder;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun applyFrom (Ldev/stalla/model/Podcast;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun copyright (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun description (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun docs (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun generator (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun getAtomBuilder ()Ldev/stalla/builder/AtomBuilder;
+	public abstract fun getFeedpressBuilder ()Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;
+	public abstract fun getFyydBuilder ()Ldev/stalla/builder/podcast/PodcastFyydBuilder;
+	public abstract fun getGoogleplayBuilder ()Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun getItunesBuilder ()Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun getPodcastPodcastindexBuilder ()Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+	public abstract fun imageBuilder (Ldev/stalla/builder/RssImageBuilder;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun language (Ljava/util/Locale;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun lastBuildDate (Ljava/time/temporal/TemporalAccessor;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun link (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun managingEditor (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun pubDate (Ljava/time/temporal/TemporalAccessor;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun title (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun ttl (Ljava/lang/Integer;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public abstract fun webMaster (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastBuilder;
+}
+
+public final class dev/stalla/builder/podcast/PodcastBuilder$DefaultImpls {
+	public static fun addAllCategoryBuilders (Ldev/stalla/builder/podcast/PodcastBuilder;Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public static fun addAllEpisodeBuilders (Ldev/stalla/builder/podcast/PodcastBuilder;Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastBuilder;
+	public static fun applyFrom (Ldev/stalla/builder/podcast/PodcastBuilder;Ldev/stalla/model/Podcast;)Ldev/stalla/builder/podcast/PodcastBuilder;
+}
+
+public abstract interface class dev/stalla/builder/podcast/PodcastFeedpressBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/feedpress/Feedpress;)Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;
+	public abstract fun cssFile (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;
+	public abstract fun link (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;
+	public abstract fun locale (Ljava/util/Locale;)Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;
+	public abstract fun newsletterId (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;
+	public abstract fun podcastId (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;
+}
+
+public final class dev/stalla/builder/podcast/PodcastFeedpressBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;Ldev/stalla/model/feedpress/Feedpress;)Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;
+}
+
+public abstract interface class dev/stalla/builder/podcast/PodcastFyydBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/fyyd/Fyyd;)Ldev/stalla/builder/podcast/PodcastFyydBuilder;
+	public abstract fun verify (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastFyydBuilder;
+}
+
+public final class dev/stalla/builder/podcast/PodcastFyydBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/podcast/PodcastFyydBuilder;Ldev/stalla/model/fyyd/Fyyd;)Ldev/stalla/builder/podcast/PodcastFyydBuilder;
+}
+
+public abstract interface class dev/stalla/builder/podcast/PodcastGoogleplayBuilder : dev/stalla/builder/Builder {
+	public abstract fun addAllCategories (Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun addCategory (Ldev/stalla/model/googleplay/GoogleplayCategory;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun applyFrom (Ldev/stalla/model/googleplay/PodcastGoogleplay;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun author (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun block (Z)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun description (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun email (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun explicit (Ljava/lang/Boolean;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun imageBuilder (Ldev/stalla/builder/HrefOnlyImageBuilder;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun newFeedUrl (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+}
+
+public final class dev/stalla/builder/podcast/PodcastGoogleplayBuilder$DefaultImpls {
+	public static fun addAllCategories (Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public static fun applyFrom (Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;Ldev/stalla/model/googleplay/PodcastGoogleplay;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+}
+
+public abstract interface class dev/stalla/builder/podcast/PodcastItunesBuilder : dev/stalla/builder/Builder {
+	public abstract fun addAllCategories (Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun addCategory (Ldev/stalla/model/itunes/ItunesCategory;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun applyFrom (Ldev/stalla/model/itunes/PodcastItunes;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun author (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun block (Z)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun complete (Z)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun explicit (Z)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun imageBuilder (Ldev/stalla/builder/HrefOnlyImageBuilder;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun keywords (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun newFeedUrl (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun ownerBuilder (Ldev/stalla/builder/podcast/PodcastItunesOwnerBuilder;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun subtitle (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun summary (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun title (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public abstract fun type (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+}
+
+public final class dev/stalla/builder/podcast/PodcastItunesBuilder$DefaultImpls {
+	public static fun addAllCategories (Ldev/stalla/builder/podcast/PodcastItunesBuilder;Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public static fun applyFrom (Ldev/stalla/builder/podcast/PodcastItunesBuilder;Ldev/stalla/model/itunes/PodcastItunes;)Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+}
+
+public abstract interface class dev/stalla/builder/podcast/PodcastItunesOwnerBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/itunes/ItunesOwner;)Ldev/stalla/builder/podcast/PodcastItunesOwnerBuilder;
+	public abstract fun email (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastItunesOwnerBuilder;
+	public abstract fun name (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastItunesOwnerBuilder;
+}
+
+public final class dev/stalla/builder/podcast/PodcastItunesOwnerBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/podcast/PodcastItunesOwnerBuilder;Ldev/stalla/model/itunes/ItunesOwner;)Ldev/stalla/builder/podcast/PodcastItunesOwnerBuilder;
+}
+
+public abstract interface class dev/stalla/builder/podcast/PodcastPodcastindexBuilder : dev/stalla/builder/Builder {
+	public abstract fun addAllFundingBuilders (Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+	public abstract fun addFundingBuilder (Ldev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder;)Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+	public abstract fun applyFrom (Ldev/stalla/model/podcastindex/PodcastPodcastindex;)Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+	public abstract fun lockedBuilder (Ldev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder;)Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+}
+
+public final class dev/stalla/builder/podcast/PodcastPodcastindexBuilder$DefaultImpls {
+	public static fun addAllFundingBuilders (Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+	public static fun applyFrom (Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;Ldev/stalla/model/podcastindex/PodcastPodcastindex;)Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+}
+
+public abstract interface class dev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/podcastindex/Funding;)Ldev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder;
+	public abstract fun message (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder;
+	public abstract fun url (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder;
+}
+
+public final class dev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder;Ldev/stalla/model/podcastindex/Funding;)Ldev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder;
+}
+
+public abstract interface class dev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder : dev/stalla/builder/Builder {
+	public abstract fun applyFrom (Ldev/stalla/model/podcastindex/Locked;)Ldev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder;
+	public abstract fun locked (Z)Ldev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder;
+	public abstract fun owner (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder;
+}
+
+public final class dev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder$DefaultImpls {
+	public static fun applyFrom (Ldev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder;Ldev/stalla/model/podcastindex/Locked;)Ldev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder;
+}
+
+public final class dev/stalla/model/Episode {
+	public static final field Factory Ldev/stalla/model/Episode$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ldev/stalla/model/rss/Enclosure;Ldev/stalla/model/rss/Guid;Ljava/time/temporal/TemporalAccessor;Ljava/lang/String;Ldev/stalla/model/content/Content;Ldev/stalla/model/itunes/EpisodeItunes;Ldev/stalla/model/atom/Atom;Ldev/stalla/model/podlove/EpisodePodlove;Ldev/stalla/model/googleplay/EpisodeGoogleplay;Ldev/stalla/model/bitlove/Bitlove;Ldev/stalla/model/podcastindex/EpisodePodcastindex;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ldev/stalla/model/rss/Enclosure;Ldev/stalla/model/rss/Guid;Ljava/time/temporal/TemporalAccessor;Ljava/lang/String;Ldev/stalla/model/content/Content;Ldev/stalla/model/itunes/EpisodeItunes;Ldev/stalla/model/atom/Atom;Ldev/stalla/model/podlove/EpisodePodlove;Ldev/stalla/model/googleplay/EpisodeGoogleplay;Ldev/stalla/model/bitlove/Bitlove;Ldev/stalla/model/podcastindex/EpisodePodcastindex;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodeBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ldev/stalla/model/content/Content;
+	public final fun component12 ()Ldev/stalla/model/itunes/EpisodeItunes;
+	public final fun component13 ()Ldev/stalla/model/atom/Atom;
+	public final fun component14 ()Ldev/stalla/model/podlove/EpisodePodlove;
+	public final fun component15 ()Ldev/stalla/model/googleplay/EpisodeGoogleplay;
+	public final fun component16 ()Ldev/stalla/model/bitlove/Bitlove;
+	public final fun component17 ()Ldev/stalla/model/podcastindex/EpisodePodcastindex;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ldev/stalla/model/rss/Enclosure;
+	public final fun component8 ()Ldev/stalla/model/rss/Guid;
+	public final fun component9 ()Ljava/time/temporal/TemporalAccessor;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ldev/stalla/model/rss/Enclosure;Ldev/stalla/model/rss/Guid;Ljava/time/temporal/TemporalAccessor;Ljava/lang/String;Ldev/stalla/model/content/Content;Ldev/stalla/model/itunes/EpisodeItunes;Ldev/stalla/model/atom/Atom;Ldev/stalla/model/podlove/EpisodePodlove;Ldev/stalla/model/googleplay/EpisodeGoogleplay;Ldev/stalla/model/bitlove/Bitlove;Ldev/stalla/model/podcastindex/EpisodePodcastindex;)Ldev/stalla/model/Episode;
+	public static synthetic fun copy$default (Ldev/stalla/model/Episode;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ldev/stalla/model/rss/Enclosure;Ldev/stalla/model/rss/Guid;Ljava/time/temporal/TemporalAccessor;Ljava/lang/String;Ldev/stalla/model/content/Content;Ldev/stalla/model/itunes/EpisodeItunes;Ldev/stalla/model/atom/Atom;Ldev/stalla/model/podlove/EpisodePodlove;Ldev/stalla/model/googleplay/EpisodeGoogleplay;Ldev/stalla/model/bitlove/Bitlove;Ldev/stalla/model/podcastindex/EpisodePodcastindex;ILjava/lang/Object;)Ldev/stalla/model/Episode;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAtom ()Ldev/stalla/model/atom/Atom;
+	public final fun getAuthor ()Ljava/lang/String;
+	public final fun getBitlove ()Ldev/stalla/model/bitlove/Bitlove;
+	public final fun getCategories ()Ljava/util/List;
+	public final fun getComments ()Ljava/lang/String;
+	public final fun getContent ()Ldev/stalla/model/content/Content;
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getEnclosure ()Ldev/stalla/model/rss/Enclosure;
+	public final fun getGoogleplay ()Ldev/stalla/model/googleplay/EpisodeGoogleplay;
+	public final fun getGuid ()Ldev/stalla/model/rss/Guid;
+	public final fun getItunes ()Ldev/stalla/model/itunes/EpisodeItunes;
+	public final fun getLink ()Ljava/lang/String;
+	public final fun getPodcastindex ()Ldev/stalla/model/podcastindex/EpisodePodcastindex;
+	public final fun getPodlove ()Ldev/stalla/model/podlove/EpisodePodlove;
+	public final fun getPubDate ()Ljava/time/temporal/TemporalAccessor;
+	public final fun getSource ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/Episode$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodeBuilder;
+}
+
+public final class dev/stalla/model/HrefOnlyImage {
+	public static final field Factory Ldev/stalla/model/HrefOnlyImage$Factory;
+	public fun <init> (Ljava/lang/String;)V
+	public static fun builder ()Ldev/stalla/builder/HrefOnlyImageBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/stalla/model/HrefOnlyImage;
+	public static synthetic fun copy$default (Ldev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/HrefOnlyImage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHref ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/HrefOnlyImage$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/HrefOnlyImageBuilder;
+}
+
+public class dev/stalla/model/MediaType {
+	public static final field AAC_AUDIO Ldev/stalla/model/MediaType;
+	public static final field ANY Ldev/stalla/model/MediaType;
+	public static final field ANY_AUDIO Ldev/stalla/model/MediaType;
+	public static final field ANY_IMAGE Ldev/stalla/model/MediaType;
+	public static final field ANY_TEXT Ldev/stalla/model/MediaType;
+	public static final field ANY_VIDEO Ldev/stalla/model/MediaType;
+	public static final field ATOM Ldev/stalla/model/MediaType;
+	public static final field BASIC_AUDIO Ldev/stalla/model/MediaType;
+	public static final field BMP Ldev/stalla/model/MediaType;
+	public static final field CSS Ldev/stalla/model/MediaType;
+	public static final field CSV Ldev/stalla/model/MediaType;
+	public static final field EPUB Ldev/stalla/model/MediaType;
+	public static final field FLAC Ldev/stalla/model/MediaType;
+	public static final field Factory Ldev/stalla/model/MediaType$Factory;
+	public static final field GIF Ldev/stalla/model/MediaType;
+	public static final field GZIP Ldev/stalla/model/MediaType;
+	public static final field HEIF Ldev/stalla/model/MediaType;
+	public static final field HTML Ldev/stalla/model/MediaType;
+	public static final field JAVASCRIPT Ldev/stalla/model/MediaType;
+	public static final field JPEG Ldev/stalla/model/MediaType;
+	public static final field JSON Ldev/stalla/model/MediaType;
+	public static final field L16_AUDIO Ldev/stalla/model/MediaType;
+	public static final field L24_AUDIO Ldev/stalla/model/MediaType;
+	public static final field MANIFEST_JSON Ldev/stalla/model/MediaType;
+	public static final field MARKDOWN Ldev/stalla/model/MediaType;
+	public static final field MP4_AUDIO Ldev/stalla/model/MediaType;
+	public static final field MP4_VIDEO Ldev/stalla/model/MediaType;
+	public static final field MPEG_AUDIO Ldev/stalla/model/MediaType;
+	public static final field MPEG_VIDEO Ldev/stalla/model/MediaType;
+	public static final field OGG_AUDIO Ldev/stalla/model/MediaType;
+	public static final field OGG_CONTAINER Ldev/stalla/model/MediaType;
+	public static final field OGG_VIDEO Ldev/stalla/model/MediaType;
+	public static final field OPENSEARCH_DESCRIPTION Ldev/stalla/model/MediaType;
+	public static final field OPUS Ldev/stalla/model/MediaType;
+	public static final field PDF Ldev/stalla/model/MediaType;
+	public static final field PLAIN_TEXT Ldev/stalla/model/MediaType;
+	public static final field PNG Ldev/stalla/model/MediaType;
+	public static final field POSTSCRIPT Ldev/stalla/model/MediaType;
+	public static final field QUICKTIME Ldev/stalla/model/MediaType;
+	public static final field RDF_XML Ldev/stalla/model/MediaType;
+	public static final field RSS Ldev/stalla/model/MediaType;
+	public static final field SRT Ldev/stalla/model/MediaType;
+	public static final field SVG Ldev/stalla/model/MediaType;
+	public static final field TAR Ldev/stalla/model/MediaType;
+	public static final field TIFF Ldev/stalla/model/MediaType;
+	public static final field VCARD Ldev/stalla/model/MediaType;
+	public static final field VORBIS Ldev/stalla/model/MediaType;
+	public static final field VTT Ldev/stalla/model/MediaType;
+	public static final field WEBM_AUDIO Ldev/stalla/model/MediaType;
+	public static final field WEBM_VIDEO Ldev/stalla/model/MediaType;
+	public static final field WEBP Ldev/stalla/model/MediaType;
+	public static final field XML_APPLICATION Ldev/stalla/model/MediaType;
+	public static final field XML_TEXT Ldev/stalla/model/MediaType;
+	public static final field ZIP Ldev/stalla/model/MediaType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEssence ()Ljava/lang/String;
+	public final fun getParameters ()Ljava/util/List;
+	public fun getSubtype ()Ljava/lang/String;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun match (Ldev/stalla/model/MediaType;)Z
+	public final fun match (Ljava/lang/String;)Z
+	public static fun of (Ljava/lang/String;)Ldev/stalla/model/MediaType;
+	public final fun parameter (Ljava/lang/String;)Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public final fun withParameter (Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/MediaType;
+	public final fun withoutParameters ()Ldev/stalla/model/MediaType;
+}
+
+public final class dev/stalla/model/MediaType$Factory : dev/stalla/model/TypeFactory {
+	public fun of (Ljava/lang/String;)Ldev/stalla/model/MediaType;
+	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
+}
+
+public final class dev/stalla/model/MediaType$Parameter {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/MediaType$Parameter;
+	public static synthetic fun copy$default (Ldev/stalla/model/MediaType$Parameter;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/MediaType$Parameter;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getKey ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/Podcast {
+	public static final field Factory Ldev/stalla/model/Podcast$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/time/temporal/TemporalAccessor;Ljava/time/temporal/TemporalAccessor;Ljava/util/Locale;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ldev/stalla/model/rss/RssImage;Ljava/util/List;Ldev/stalla/model/itunes/PodcastItunes;Ldev/stalla/model/atom/Atom;Ldev/stalla/model/fyyd/Fyyd;Ldev/stalla/model/feedpress/Feedpress;Ldev/stalla/model/googleplay/PodcastGoogleplay;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastPodcastindex;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/time/temporal/TemporalAccessor;Ljava/time/temporal/TemporalAccessor;Ljava/util/Locale;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ldev/stalla/model/rss/RssImage;Ljava/util/List;Ldev/stalla/model/itunes/PodcastItunes;Ldev/stalla/model/atom/Atom;Ldev/stalla/model/fyyd/Fyyd;Ldev/stalla/model/feedpress/Feedpress;Ldev/stalla/model/googleplay/PodcastGoogleplay;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastPodcastindex;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/podcast/PodcastBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/Integer;
+	public final fun component13 ()Ldev/stalla/model/rss/RssImage;
+	public final fun component14 ()Ljava/util/List;
+	public final fun component15 ()Ldev/stalla/model/itunes/PodcastItunes;
+	public final fun component16 ()Ldev/stalla/model/atom/Atom;
+	public final fun component17 ()Ldev/stalla/model/fyyd/Fyyd;
+	public final fun component18 ()Ldev/stalla/model/feedpress/Feedpress;
+	public final fun component19 ()Ldev/stalla/model/googleplay/PodcastGoogleplay;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component20 ()Ljava/util/List;
+	public final fun component21 ()Ldev/stalla/model/podcastindex/PodcastPodcastindex;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/time/temporal/TemporalAccessor;
+	public final fun component5 ()Ljava/time/temporal/TemporalAccessor;
+	public final fun component6 ()Ljava/util/Locale;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/time/temporal/TemporalAccessor;Ljava/time/temporal/TemporalAccessor;Ljava/util/Locale;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ldev/stalla/model/rss/RssImage;Ljava/util/List;Ldev/stalla/model/itunes/PodcastItunes;Ldev/stalla/model/atom/Atom;Ldev/stalla/model/fyyd/Fyyd;Ldev/stalla/model/feedpress/Feedpress;Ldev/stalla/model/googleplay/PodcastGoogleplay;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastPodcastindex;)Ldev/stalla/model/Podcast;
+	public static synthetic fun copy$default (Ldev/stalla/model/Podcast;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/time/temporal/TemporalAccessor;Ljava/time/temporal/TemporalAccessor;Ljava/util/Locale;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ldev/stalla/model/rss/RssImage;Ljava/util/List;Ldev/stalla/model/itunes/PodcastItunes;Ldev/stalla/model/atom/Atom;Ldev/stalla/model/fyyd/Fyyd;Ldev/stalla/model/feedpress/Feedpress;Ldev/stalla/model/googleplay/PodcastGoogleplay;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastPodcastindex;ILjava/lang/Object;)Ldev/stalla/model/Podcast;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAtom ()Ldev/stalla/model/atom/Atom;
+	public final fun getCategories ()Ljava/util/List;
+	public final fun getCopyright ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getDocs ()Ljava/lang/String;
+	public final fun getEpisodes ()Ljava/util/List;
+	public final fun getFeedpress ()Ldev/stalla/model/feedpress/Feedpress;
+	public final fun getFyyd ()Ldev/stalla/model/fyyd/Fyyd;
+	public final fun getGenerator ()Ljava/lang/String;
+	public final fun getGoogleplay ()Ldev/stalla/model/googleplay/PodcastGoogleplay;
+	public final fun getImage ()Ldev/stalla/model/rss/RssImage;
+	public final fun getItunes ()Ldev/stalla/model/itunes/PodcastItunes;
+	public final fun getLanguage ()Ljava/util/Locale;
+	public final fun getLastBuildDate ()Ljava/time/temporal/TemporalAccessor;
+	public final fun getLink ()Ljava/lang/String;
+	public final fun getManagingEditor ()Ljava/lang/String;
+	public final fun getPodcast ()Ldev/stalla/model/podcastindex/PodcastPodcastindex;
+	public final fun getPubDate ()Ljava/time/temporal/TemporalAccessor;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getTtl ()Ljava/lang/Integer;
+	public final fun getWebMaster ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/Podcast$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/podcast/PodcastBuilder;
+}
+
+public abstract class dev/stalla/model/StyledDuration {
+	public static final field Factory Ldev/stalla/model/StyledDuration$Factory;
+	public abstract fun asFormattedString ()Ljava/lang/String;
+	public abstract fun getRawDuration ()Ljava/time/Duration;
+	public final fun isNegative ()Z
+	public final fun isStrictlyPositive ()Z
+	public final fun isZero ()Z
+	public static final fun minutesSeconds ()Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public static final fun minutesSeconds (I)Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public static final fun minutesSeconds (II)Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public static final fun minutesSeconds (IIZ)Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public static fun of (Ljava/lang/String;)Ldev/stalla/model/StyledDuration;
+	public static final fun seconds ()Ldev/stalla/model/StyledDuration$Seconds;
+	public static final fun seconds (I)Ldev/stalla/model/StyledDuration$Seconds;
+	public static final fun seconds (IZ)Ldev/stalla/model/StyledDuration$Seconds;
+	public static final fun secondsAndFraction ()Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public static final fun secondsAndFraction (I)Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public static final fun secondsAndFraction (IJ)Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public static final fun secondsAndFraction (IJZ)Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public final fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/StyledDuration$Factory : dev/stalla/model/TypeFactory {
+	public final fun hoursMinutesSeconds ()Ldev/stalla/model/StyledDuration$HoursMinutesSeconds;
+	public final fun hoursMinutesSeconds (I)Ldev/stalla/model/StyledDuration$HoursMinutesSeconds;
+	public final fun hoursMinutesSeconds (II)Ldev/stalla/model/StyledDuration$HoursMinutesSeconds;
+	public final fun hoursMinutesSeconds (III)Ldev/stalla/model/StyledDuration$HoursMinutesSeconds;
+	public final fun hoursMinutesSeconds (IIIZ)Ldev/stalla/model/StyledDuration$HoursMinutesSeconds;
+	public static synthetic fun hoursMinutesSeconds$default (Ldev/stalla/model/StyledDuration$Factory;IIIZILjava/lang/Object;)Ldev/stalla/model/StyledDuration$HoursMinutesSeconds;
+	public final fun minutesSeconds ()Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public final fun minutesSeconds (I)Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public final fun minutesSeconds (II)Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public final fun minutesSeconds (IIZ)Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public static synthetic fun minutesSeconds$default (Ldev/stalla/model/StyledDuration$Factory;IIZILjava/lang/Object;)Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public fun of (Ljava/lang/String;)Ldev/stalla/model/StyledDuration;
+	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
+	public final fun seconds ()Ldev/stalla/model/StyledDuration$Seconds;
+	public final fun seconds (I)Ldev/stalla/model/StyledDuration$Seconds;
+	public final fun seconds (IZ)Ldev/stalla/model/StyledDuration$Seconds;
+	public static synthetic fun seconds$default (Ldev/stalla/model/StyledDuration$Factory;IZILjava/lang/Object;)Ldev/stalla/model/StyledDuration$Seconds;
+	public final fun secondsAndFraction ()Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public final fun secondsAndFraction (I)Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public final fun secondsAndFraction (IJ)Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public final fun secondsAndFraction (IJZ)Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public static synthetic fun secondsAndFraction$default (Ldev/stalla/model/StyledDuration$Factory;IJZILjava/lang/Object;)Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+}
+
+public final class dev/stalla/model/StyledDuration$HoursMinutesSeconds : dev/stalla/model/StyledDuration {
+	public fun asFormattedString ()Ljava/lang/String;
+	public final fun component1 ()Ljava/time/Duration;
+	public final fun copy (Ljava/time/Duration;)Ldev/stalla/model/StyledDuration$HoursMinutesSeconds;
+	public static synthetic fun copy$default (Ldev/stalla/model/StyledDuration$HoursMinutesSeconds;Ljava/time/Duration;ILjava/lang/Object;)Ldev/stalla/model/StyledDuration$HoursMinutesSeconds;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getRawDuration ()Ljava/time/Duration;
+	public fun hashCode ()I
+}
+
+public final class dev/stalla/model/StyledDuration$MinutesSeconds : dev/stalla/model/StyledDuration {
+	public fun asFormattedString ()Ljava/lang/String;
+	public final fun component1 ()Ljava/time/Duration;
+	public final fun copy (Ljava/time/Duration;)Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public static synthetic fun copy$default (Ldev/stalla/model/StyledDuration$MinutesSeconds;Ljava/time/Duration;ILjava/lang/Object;)Ldev/stalla/model/StyledDuration$MinutesSeconds;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getRawDuration ()Ljava/time/Duration;
+	public fun hashCode ()I
+}
+
+public final class dev/stalla/model/StyledDuration$Seconds : dev/stalla/model/StyledDuration {
+	public fun asFormattedString ()Ljava/lang/String;
+	public final fun component1 ()Ljava/time/Duration;
+	public final fun copy (Ljava/time/Duration;)Ldev/stalla/model/StyledDuration$Seconds;
+	public static synthetic fun copy$default (Ldev/stalla/model/StyledDuration$Seconds;Ljava/time/Duration;ILjava/lang/Object;)Ldev/stalla/model/StyledDuration$Seconds;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getRawDuration ()Ljava/time/Duration;
+	public fun hashCode ()I
+}
+
+public final class dev/stalla/model/StyledDuration$SecondsAndFraction : dev/stalla/model/StyledDuration {
+	public fun asFormattedString ()Ljava/lang/String;
+	public final fun component1 ()Ljava/time/Duration;
+	public final fun copy (Ljava/time/Duration;)Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public static synthetic fun copy$default (Ldev/stalla/model/StyledDuration$SecondsAndFraction;Ljava/time/Duration;ILjava/lang/Object;)Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getRawDuration ()Ljava/time/Duration;
+	public fun hashCode ()I
+}
+
+public final class dev/stalla/model/atom/Atom {
+	public static final field Factory Ldev/stalla/model/atom/Atom$Factory;
+	public fun <init> (Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+	public static fun builder ()Ldev/stalla/builder/AtomBuilder;
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;Ljava/util/List;)Ldev/stalla/model/atom/Atom;
+	public static synthetic fun copy$default (Ldev/stalla/model/atom/Atom;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Ldev/stalla/model/atom/Atom;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAuthors ()Ljava/util/List;
+	public final fun getContributors ()Ljava/util/List;
+	public final fun getLinks ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/atom/Atom$Factory : dev/stalla/model/BuilderFactory {
+	public fun builder ()Ldev/stalla/builder/AtomBuilder;
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+}
+
+public final class dev/stalla/model/atom/AtomPerson {
+	public static final field Factory Ldev/stalla/model/atom/AtomPerson$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/AtomPersonBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/atom/AtomPerson;
+	public static synthetic fun copy$default (Ldev/stalla/model/atom/AtomPerson;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/atom/AtomPerson;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEmail ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getUri ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/atom/AtomPerson$Factory : dev/stalla/model/BuilderFactory {
+	public fun builder ()Ldev/stalla/builder/AtomPersonBuilder;
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+}
+
+public final class dev/stalla/model/atom/Link {
+	public static final field Factory Ldev/stalla/model/atom/Link$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/MediaType;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/MediaType;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/LinkBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ldev/stalla/model/MediaType;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/MediaType;)Ldev/stalla/model/atom/Link;
+	public static synthetic fun copy$default (Ldev/stalla/model/atom/Link;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/MediaType;ILjava/lang/Object;)Ldev/stalla/model/atom/Link;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHref ()Ljava/lang/String;
+	public final fun getHrefLang ()Ljava/lang/String;
+	public final fun getHrefResolved ()Ljava/lang/String;
+	public final fun getLength ()Ljava/lang/String;
+	public final fun getRel ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getType ()Ldev/stalla/model/MediaType;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/atom/Link$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/LinkBuilder;
+}
+
+public final class dev/stalla/model/bitlove/Bitlove {
+	public static final field Factory Ldev/stalla/model/bitlove/Bitlove$Factory;
+	public fun <init> (Ljava/lang/String;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodeBitloveBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/stalla/model/bitlove/Bitlove;
+	public static synthetic fun copy$default (Ldev/stalla/model/bitlove/Bitlove;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/bitlove/Bitlove;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGuid ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/bitlove/Bitlove$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodeBitloveBuilder;
+}
+
+public final class dev/stalla/model/content/Content {
+	public static final field Factory Ldev/stalla/model/content/Content$Factory;
+	public fun <init> (Ljava/lang/String;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodeContentBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/stalla/model/content/Content;
+	public static synthetic fun copy$default (Ldev/stalla/model/content/Content;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/content/Content;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEncoded ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/content/Content$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodeContentBuilder;
+}
+
+public final class dev/stalla/model/feedpress/Feedpress {
+	public static final field Factory Ldev/stalla/model/feedpress/Feedpress$Factory;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/util/Locale;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Locale;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Locale;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/util/Locale;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/feedpress/Feedpress;
+	public static synthetic fun copy$default (Ldev/stalla/model/feedpress/Feedpress;Ljava/lang/String;Ljava/util/Locale;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/feedpress/Feedpress;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCssFile ()Ljava/lang/String;
+	public final fun getLink ()Ljava/lang/String;
+	public final fun getLocale ()Ljava/util/Locale;
+	public final fun getNewsletterId ()Ljava/lang/String;
+	public final fun getPodcastId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/feedpress/Feedpress$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/podcast/PodcastFeedpressBuilder;
+}
+
+public final class dev/stalla/model/fyyd/Fyyd {
+	public static final field Factory Ldev/stalla/model/fyyd/Fyyd$Factory;
+	public fun <init> (Ljava/lang/String;)V
+	public static fun builder ()Ldev/stalla/builder/podcast/PodcastFyydBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/stalla/model/fyyd/Fyyd;
+	public static synthetic fun copy$default (Ldev/stalla/model/fyyd/Fyyd;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/fyyd/Fyyd;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getVerify ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/fyyd/Fyyd$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/podcast/PodcastFyydBuilder;
+}
+
+public final class dev/stalla/model/googleplay/EpisodeGoogleplay : dev/stalla/model/googleplay/GoogleplayBase {
+	public static final field Factory Ldev/stalla/model/googleplay/EpisodeGoogleplay$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/stalla/model/googleplay/ExplicitType;
+	public final fun component4 ()Z
+	public final fun component5 ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;)Ldev/stalla/model/googleplay/EpisodeGoogleplay;
+	public static synthetic fun copy$default (Ldev/stalla/model/googleplay/EpisodeGoogleplay;Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;ILjava/lang/Object;)Ldev/stalla/model/googleplay/EpisodeGoogleplay;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAuthor ()Ljava/lang/String;
+	public fun getBlock ()Z
+	public fun getDescription ()Ljava/lang/String;
+	public final fun getExplicit ()Ldev/stalla/model/googleplay/ExplicitType;
+	public fun getImage ()Ldev/stalla/model/HrefOnlyImage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/googleplay/EpisodeGoogleplay$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodeGoogleplayBuilder;
+}
+
+public final class dev/stalla/model/googleplay/ExplicitType : java/lang/Enum {
+	public static final field CLEAN Ldev/stalla/model/googleplay/ExplicitType;
+	public static final field Factory Ldev/stalla/model/googleplay/ExplicitType$Factory;
+	public static final field NO Ldev/stalla/model/googleplay/ExplicitType;
+	public static final field YES Ldev/stalla/model/googleplay/ExplicitType;
+	public final fun getType ()Ljava/lang/String;
+	public static fun of (Ljava/lang/String;)Ldev/stalla/model/googleplay/ExplicitType;
+	public static fun valueOf (Ljava/lang/String;)Ldev/stalla/model/googleplay/ExplicitType;
+	public static fun values ()[Ldev/stalla/model/googleplay/ExplicitType;
+}
+
+public final class dev/stalla/model/googleplay/ExplicitType$Factory : dev/stalla/model/TypeFactory {
+	public fun of (Ljava/lang/String;)Ldev/stalla/model/googleplay/ExplicitType;
+	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
+}
+
+public final class dev/stalla/model/googleplay/GoogleplayCategory : java/lang/Enum {
+	public static final field ARTS Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field BUSINESS Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field COMEDY Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field EDUCATION Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field Factory Ldev/stalla/model/googleplay/GoogleplayCategory$Factory;
+	public static final field GAMES_AND_HOBBIES Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field GOVERNMENT_AND_ORGANIZATIONS Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field HEALTH Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field KIDS_AND_FAMILY Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field MUSIC Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field NEWS_AND_POLITICS Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field RELIGION_AND_SPIRITUALITY Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field SCIENCE_AND_MEDICINE Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field SOCIETY_AND_CULTURE Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field SPORTS_AND_RECREATION Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field TECHNOLOGY Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static final field TV_AND_FILM Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public final fun getType ()Ljava/lang/String;
+	public static fun of (Ljava/lang/String;)Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static fun valueOf (Ljava/lang/String;)Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public static fun values ()[Ldev/stalla/model/googleplay/GoogleplayCategory;
+}
+
+public final class dev/stalla/model/googleplay/GoogleplayCategory$Factory : dev/stalla/model/TypeFactory {
+	public fun of (Ljava/lang/String;)Ldev/stalla/model/googleplay/GoogleplayCategory;
+	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
+}
+
+public final class dev/stalla/model/googleplay/PodcastGoogleplay : dev/stalla/model/googleplay/GoogleplayBase {
+	public static final field Factory Ldev/stalla/model/googleplay/PodcastGoogleplay$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun component6 ()Z
+	public final fun component7 ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;)Ldev/stalla/model/googleplay/PodcastGoogleplay;
+	public static synthetic fun copy$default (Ldev/stalla/model/googleplay/PodcastGoogleplay;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/googleplay/PodcastGoogleplay;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAuthor ()Ljava/lang/String;
+	public fun getBlock ()Z
+	public final fun getCategories ()Ljava/util/List;
+	public fun getDescription ()Ljava/lang/String;
+	public final fun getEmail ()Ljava/lang/String;
+	public final fun getExplicit ()Ljava/lang/Boolean;
+	public fun getImage ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun getNewFeedUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/googleplay/PodcastGoogleplay$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+}
+
+public final class dev/stalla/model/itunes/EpisodeItunes : dev/stalla/model/itunes/ItunesBase {
+	public static final field Factory Ldev/stalla/model/itunes/EpisodeItunes$Factory;
+	public fun <init> (Ljava/lang/String;Ldev/stalla/model/StyledDuration;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/Boolean;ZLjava/lang/Integer;Ljava/lang/Integer;Ldev/stalla/model/itunes/EpisodeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/stalla/model/StyledDuration;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/Boolean;ZLjava/lang/Integer;Ljava/lang/Integer;Ldev/stalla/model/itunes/EpisodeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/stalla/model/StyledDuration;
+	public final fun component3 ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun component4 ()Ljava/lang/Boolean;
+	public final fun component5 ()Z
+	public final fun component6 ()Ljava/lang/Integer;
+	public final fun component7 ()Ljava/lang/Integer;
+	public final fun component8 ()Ldev/stalla/model/itunes/EpisodeType;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ldev/stalla/model/StyledDuration;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/Boolean;ZLjava/lang/Integer;Ljava/lang/Integer;Ldev/stalla/model/itunes/EpisodeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/itunes/EpisodeItunes;
+	public static synthetic fun copy$default (Ldev/stalla/model/itunes/EpisodeItunes;Ljava/lang/String;Ldev/stalla/model/StyledDuration;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/Boolean;ZLjava/lang/Integer;Ljava/lang/Integer;Ldev/stalla/model/itunes/EpisodeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/itunes/EpisodeItunes;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAuthor ()Ljava/lang/String;
+	public fun getBlock ()Z
+	public final fun getDuration ()Ldev/stalla/model/StyledDuration;
+	public final fun getEpisode ()Ljava/lang/Integer;
+	public final fun getEpisodeType ()Ldev/stalla/model/itunes/EpisodeType;
+	public final fun getExplicit ()Ljava/lang/Boolean;
+	public fun getImage ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun getSeason ()Ljava/lang/Integer;
+	public fun getSubtitle ()Ljava/lang/String;
+	public fun getSummary ()Ljava/lang/String;
+	public fun getTitle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/itunes/EpisodeItunes$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodeItunesBuilder;
+}
+
+public final class dev/stalla/model/itunes/EpisodeType : java/lang/Enum {
+	public static final field BONUS Ldev/stalla/model/itunes/EpisodeType;
+	public static final field FULL Ldev/stalla/model/itunes/EpisodeType;
+	public static final field Factory Ldev/stalla/model/itunes/EpisodeType$Factory;
+	public static final field TRAILER Ldev/stalla/model/itunes/EpisodeType;
+	public final fun getType ()Ljava/lang/String;
+	public static fun of (Ljava/lang/String;)Ldev/stalla/model/itunes/EpisodeType;
+	public static fun valueOf (Ljava/lang/String;)Ldev/stalla/model/itunes/EpisodeType;
+	public static fun values ()[Ldev/stalla/model/itunes/EpisodeType;
+}
+
+public final class dev/stalla/model/itunes/EpisodeType$Factory : dev/stalla/model/TypeFactory {
+	public fun of (Ljava/lang/String;)Ldev/stalla/model/itunes/EpisodeType;
+	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
+}
+
+public abstract class dev/stalla/model/itunes/ItunesCategory {
+	public static final field AFTER_SHOWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field ALTERNATIVE_HEALTH Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field ANIMATION_AND_MANGA Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field ARTS Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field ASTRONOMY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field AUTOMOTIVE Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field AVIATION Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field BASEBALL Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field BASKETBALL Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field BOOKS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field BUDDHISM Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field BUSINESS Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field BUSINESS_NEWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field CAREERS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field CHEMISTRY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field CHRISTIANITY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field COMEDY Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field COMEDY_FICTION Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field COMEDY_INTERVIEWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field COURSES Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field CRAFTS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field CRICKET Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field DAILY_NEWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field DESIGN Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field DOCUMENTARY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field DRAMA Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field EARTH_SCIENCES Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field EDUCATION Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field EDUCATION_FOR_KIDS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field ENTERTAINMENT_NEWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field ENTREPRENEURSHIP Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field FANTASY_SPORTS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field FASHION_AND_BEAUTY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field FICTION Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field FILM_HISTORY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field FILM_INTERVIEWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field FILM_REVIEWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field FITNESS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field FOOD Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field FOOTBALL Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field Factory Ldev/stalla/model/itunes/ItunesCategory$Factory;
+	public static final field GAMES Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field GOLF Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field GOVERNMENT Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field HEALTH_AND_FITNESS Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field HINDUISM Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field HISTORY Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field HOBBIES Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field HOCKEY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field HOME_AND_GARDEN Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field HOW_TO Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field IMPROV Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field INVESTING Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field ISLAM Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field JUDAISM Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field KIDS_AND_FAMILY Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field LANGUAGE_LEARNING Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field LEISURE Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field LIFE_SCIENCES Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field MANAGEMENT Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field MARKETING Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field MATHEMATICS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field MEDICINE Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field MENTAL_HEALTH Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field MUSIC Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field MUSIC_COMMENTARY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field MUSIC_HISTORY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field MUSIC_INTERVIEWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field NATURAL_SCIENCES Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field NATURE Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field NEWS Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field NEWS_COMMENTARY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field NON_PROFIT Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field NUTRITION Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field PARENTING Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field PERFORMING_ARTS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field PERSONAL_JOURNALS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field PETS_AND_ANIMALS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field PHILOSOPHY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field PHYSICS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field PLACES_AND_TRAVEL Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field POLITICS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field RELATIONSHIPS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field RELIGION Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field RELIGION_AND_SPIRITUALITY Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field RUGBY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field RUNNING Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field SCIENCE Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field SCIENCE_FICTION Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field SELF_IMPROVEMENT Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field SEXUALITY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field SOCCER Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field SOCIAL_SCIENCES Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field SOCIETY_AND_CULTURE Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field SPIRITUALITY Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field SPORTS Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field SPORTS_NEWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field STAND_UP Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field STORIES_FOR_KIDS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field SWIMMING Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field TECHNOLOGY Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field TECH_NEWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field TENNIS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field TRUE_CRIME Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field TV_AND_FILM Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public static final field TV_REVIEWS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field VIDEO_GAMES Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field VISUAL_ARTS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field VOLLEYBALL Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field WILDERNESS Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public static final field WRESTLING Ldev/stalla/model/itunes/ItunesCategory$Nested;
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getType ()Ljava/lang/String;
+	public static fun of (Ljava/lang/String;)Ldev/stalla/model/itunes/ItunesCategory;
+}
+
+public final class dev/stalla/model/itunes/ItunesCategory$Factory : dev/stalla/model/TypeFactory {
+	public fun of (Ljava/lang/String;)Ldev/stalla/model/itunes/ItunesCategory;
+	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
+}
+
+public abstract class dev/stalla/model/itunes/ItunesCategory$Nested : dev/stalla/model/itunes/ItunesCategory {
+	protected fun <init> (Ljava/lang/String;Ldev/stalla/model/itunes/ItunesCategory$Simple;)V
+	public final fun getParent ()Ldev/stalla/model/itunes/ItunesCategory$Simple;
+	public fun getType ()Ljava/lang/String;
+}
+
+public abstract class dev/stalla/model/itunes/ItunesCategory$Simple : dev/stalla/model/itunes/ItunesCategory {
+	protected fun <init> (Ljava/lang/String;)V
+	public fun getType ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/itunes/ItunesOwner {
+	public static final field Factory Ldev/stalla/model/itunes/ItunesOwner$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public static fun builder ()Ldev/stalla/builder/podcast/PodcastItunesOwnerBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/itunes/ItunesOwner;
+	public static synthetic fun copy$default (Ldev/stalla/model/itunes/ItunesOwner;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/itunes/ItunesOwner;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEmail ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/itunes/ItunesOwner$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/podcast/PodcastItunesOwnerBuilder;
+}
+
+public final class dev/stalla/model/itunes/PodcastItunes : dev/stalla/model/itunes/ItunesBase {
+	public static final field Factory Ldev/stalla/model/itunes/PodcastItunes$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLdev/stalla/model/itunes/ShowType;Ldev/stalla/model/itunes/ItunesOwner;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLdev/stalla/model/itunes/ShowType;Ldev/stalla/model/itunes/ItunesOwner;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ldev/stalla/model/itunes/ShowType;
+	public final fun component11 ()Ldev/stalla/model/itunes/ItunesOwner;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/util/List;
+	public final fun component7 ()Z
+	public final fun component8 ()Z
+	public final fun component9 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLdev/stalla/model/itunes/ShowType;Ldev/stalla/model/itunes/ItunesOwner;Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/itunes/PodcastItunes;
+	public static synthetic fun copy$default (Ldev/stalla/model/itunes/PodcastItunes;Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLdev/stalla/model/itunes/ShowType;Ldev/stalla/model/itunes/ItunesOwner;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/itunes/PodcastItunes;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAuthor ()Ljava/lang/String;
+	public fun getBlock ()Z
+	public final fun getCategories ()Ljava/util/List;
+	public final fun getComplete ()Z
+	public final fun getExplicit ()Z
+	public fun getImage ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun getKeywords ()Ljava/lang/String;
+	public final fun getNewFeedUrl ()Ljava/lang/String;
+	public final fun getOwner ()Ldev/stalla/model/itunes/ItunesOwner;
+	public fun getSubtitle ()Ljava/lang/String;
+	public fun getSummary ()Ljava/lang/String;
+	public fun getTitle ()Ljava/lang/String;
+	public final fun getType ()Ldev/stalla/model/itunes/ShowType;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/itunes/PodcastItunes$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/podcast/PodcastItunesBuilder;
+}
+
+public final class dev/stalla/model/itunes/ShowType : java/lang/Enum {
+	public static final field EPISODIC Ldev/stalla/model/itunes/ShowType;
+	public static final field Factory Ldev/stalla/model/itunes/ShowType$Factory;
+	public static final field SERIAL Ldev/stalla/model/itunes/ShowType;
+	public final fun getType ()Ljava/lang/String;
+	public static fun of (Ljava/lang/String;)Ldev/stalla/model/itunes/ShowType;
+	public static fun valueOf (Ljava/lang/String;)Ldev/stalla/model/itunes/ShowType;
+	public static fun values ()[Ldev/stalla/model/itunes/ShowType;
+}
+
+public final class dev/stalla/model/itunes/ShowType$Factory : dev/stalla/model/TypeFactory {
+	public fun of (Ljava/lang/String;)Ldev/stalla/model/itunes/ShowType;
+	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
+}
+
+public final class dev/stalla/model/podcastindex/Chapters {
+	public static final field Factory Ldev/stalla/model/podcastindex/Chapters$Factory;
+	public fun <init> (Ljava/lang/String;Ldev/stalla/model/MediaType;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodePodcastindexChaptersBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/stalla/model/MediaType;
+	public final fun copy (Ljava/lang/String;Ldev/stalla/model/MediaType;)Ldev/stalla/model/podcastindex/Chapters;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/Chapters;Ljava/lang/String;Ldev/stalla/model/MediaType;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/Chapters;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getType ()Ldev/stalla/model/MediaType;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/Chapters$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodePodcastindexChaptersBuilder;
+}
+
+public final class dev/stalla/model/podcastindex/EpisodePodcastindex {
+	public static final field Factory Ldev/stalla/model/podcastindex/EpisodePodcastindex$Factory;
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ldev/stalla/model/podcastindex/Chapters;
+	public final fun copy (Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;)Ldev/stalla/model/podcastindex/EpisodePodcastindex;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/EpisodePodcastindex;Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/EpisodePodcastindex;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getChapters ()Ldev/stalla/model/podcastindex/Chapters;
+	public final fun getSoundbites ()Ljava/util/List;
+	public final fun getTranscripts ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/EpisodePodcastindex$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
+}
+
+public final class dev/stalla/model/podcastindex/Funding {
+	public static final field Factory Ldev/stalla/model/podcastindex/Funding$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public static fun builder ()Ldev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/podcastindex/Funding;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/Funding;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/Funding;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/Funding$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder;
+}
+
+public final class dev/stalla/model/podcastindex/Locked {
+	public static final field Factory Ldev/stalla/model/podcastindex/Locked$Factory;
+	public fun <init> (Ljava/lang/String;Z)V
+	public static fun builder ()Ldev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Z
+	public final fun copy (Ljava/lang/String;Z)Ldev/stalla/model/podcastindex/Locked;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/Locked;Ljava/lang/String;ZILjava/lang/Object;)Ldev/stalla/model/podcastindex/Locked;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLocked ()Z
+	public final fun getOwner ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/Locked$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder;
+}
+
+public final class dev/stalla/model/podcastindex/PodcastPodcastindex {
+	public static final field Factory Ldev/stalla/model/podcastindex/PodcastPodcastindex$Factory;
+	public fun <init> ()V
+	public fun <init> (Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;)V
+	public synthetic fun <init> (Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+	public final fun component1 ()Ldev/stalla/model/podcastindex/Locked;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;)Ldev/stalla/model/podcastindex/PodcastPodcastindex;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/PodcastPodcastindex;Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/PodcastPodcastindex;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFunding ()Ljava/util/List;
+	public final fun getLocked ()Ldev/stalla/model/podcastindex/Locked;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/PodcastPodcastindex$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+}
+
+public final class dev/stalla/model/podcastindex/Soundbite {
+	public static final field Factory Ldev/stalla/model/podcastindex/Soundbite$Factory;
+	public fun <init> (Ldev/stalla/model/StyledDuration$SecondsAndFraction;Ldev/stalla/model/StyledDuration$SecondsAndFraction;Ljava/lang/String;)V
+	public synthetic fun <init> (Ldev/stalla/model/StyledDuration$SecondsAndFraction;Ldev/stalla/model/StyledDuration$SecondsAndFraction;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder;
+	public final fun component1 ()Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public final fun component2 ()Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ldev/stalla/model/StyledDuration$SecondsAndFraction;Ldev/stalla/model/StyledDuration$SecondsAndFraction;Ljava/lang/String;)Ldev/stalla/model/podcastindex/Soundbite;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/Soundbite;Ldev/stalla/model/StyledDuration$SecondsAndFraction;Ldev/stalla/model/StyledDuration$SecondsAndFraction;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/Soundbite;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDuration ()Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public final fun getStartTime ()Ldev/stalla/model/StyledDuration$SecondsAndFraction;
+	public final fun getTitle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/Soundbite$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodePodcastindexSoundbiteBuilder;
+}
+
+public final class dev/stalla/model/podcastindex/Transcript {
+	public static final field Factory Ldev/stalla/model/podcastindex/Transcript$Factory;
+	public fun <init> (Ljava/lang/String;Ldev/stalla/model/podcastindex/TranscriptType;Ljava/util/Locale;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/stalla/model/podcastindex/TranscriptType;Ljava/util/Locale;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/stalla/model/podcastindex/TranscriptType;
+	public final fun component3 ()Ljava/util/Locale;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ldev/stalla/model/podcastindex/TranscriptType;Ljava/util/Locale;Ljava/lang/String;)Ldev/stalla/model/podcastindex/Transcript;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/Transcript;Ljava/lang/String;Ldev/stalla/model/podcastindex/TranscriptType;Ljava/util/Locale;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/Transcript;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLanguage ()Ljava/util/Locale;
+	public final fun getRel ()Ljava/lang/String;
+	public final fun getType ()Ldev/stalla/model/podcastindex/TranscriptType;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/Transcript$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodePodcastindexTranscriptBuilder;
+}
+
+public abstract class dev/stalla/model/podcastindex/TranscriptType : dev/stalla/model/MediaType {
+	public static final field Factory Ldev/stalla/model/podcastindex/TranscriptType$Factory;
+	public static final field HTML Ldev/stalla/model/podcastindex/TranscriptType;
+	public static final field JSON Ldev/stalla/model/podcastindex/TranscriptType;
+	public static final field PLAIN_TEXT Ldev/stalla/model/podcastindex/TranscriptType;
+	public static final field SRT Ldev/stalla/model/podcastindex/TranscriptType;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getSubtype ()Ljava/lang/String;
+	public fun getType ()Ljava/lang/String;
+	public static fun of (Ljava/lang/String;)Ldev/stalla/model/podcastindex/TranscriptType;
+}
+
+public final class dev/stalla/model/podcastindex/TranscriptType$Factory : dev/stalla/model/TypeFactory {
+	public fun of (Ljava/lang/String;)Ldev/stalla/model/podcastindex/TranscriptType;
+	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
+}
+
+public final class dev/stalla/model/podlove/EpisodePodlove {
+	public static final field Factory Ldev/stalla/model/podlove/EpisodePodlove$Factory;
+	public fun <init> (Ljava/util/List;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodePodloveBuilder;
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Ldev/stalla/model/podlove/EpisodePodlove;
+	public static synthetic fun copy$default (Ldev/stalla/model/podlove/EpisodePodlove;Ljava/util/List;ILjava/lang/Object;)Ldev/stalla/model/podlove/EpisodePodlove;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSimpleChapters ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podlove/EpisodePodlove$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodePodloveBuilder;
+}
+
+public final class dev/stalla/model/podlove/SimpleChapter {
+	public static final field Factory Ldev/stalla/model/podlove/SimpleChapter$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/podlove/SimpleChapter;
+	public static synthetic fun copy$default (Ldev/stalla/model/podlove/SimpleChapter;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/podlove/SimpleChapter;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHref ()Ljava/lang/String;
+	public final fun getImage ()Ljava/lang/String;
+	public final fun getStart ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podlove/SimpleChapter$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodePodloveSimpleChapterBuilder;
+}
+
+public final class dev/stalla/model/rss/Enclosure {
+	public static final field Factory Ldev/stalla/model/rss/Enclosure$Factory;
+	public fun <init> (Ljava/lang/String;JLdev/stalla/model/MediaType;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodeEnclosureBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()J
+	public final fun component3 ()Ldev/stalla/model/MediaType;
+	public final fun copy (Ljava/lang/String;JLdev/stalla/model/MediaType;)Ldev/stalla/model/rss/Enclosure;
+	public static synthetic fun copy$default (Ldev/stalla/model/rss/Enclosure;Ljava/lang/String;JLdev/stalla/model/MediaType;ILjava/lang/Object;)Ldev/stalla/model/rss/Enclosure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLength ()J
+	public final fun getType ()Ldev/stalla/model/MediaType;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/rss/Enclosure$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodeEnclosureBuilder;
+}
+
+public final class dev/stalla/model/rss/Guid {
+	public static final field Factory Ldev/stalla/model/rss/Guid$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/episode/EpisodeGuidBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Boolean;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Boolean;)Ldev/stalla/model/rss/Guid;
+	public static synthetic fun copy$default (Ldev/stalla/model/rss/Guid;Ljava/lang/String;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/stalla/model/rss/Guid;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGuid ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isPermalink ()Ljava/lang/Boolean;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/rss/Guid$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/episode/EpisodeGuidBuilder;
+}
+
+public final class dev/stalla/model/rss/RssCategory {
+	public static final field Factory Ldev/stalla/model/rss/RssCategory$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/RssCategoryBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/rss/RssCategory;
+	public static synthetic fun copy$default (Ldev/stalla/model/rss/RssCategory;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/rss/RssCategory;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDomain ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/rss/RssCategory$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/RssCategoryBuilder;
+}
+
+public final class dev/stalla/model/rss/RssImage {
+	public static final field Factory Ldev/stalla/model/rss/RssImage$Factory;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static fun builder ()Ldev/stalla/builder/RssImageBuilder;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/Integer;
+	public final fun component5 ()Ljava/lang/Integer;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)Ldev/stalla/model/rss/RssImage;
+	public static synthetic fun copy$default (Ldev/stalla/model/rss/RssImage;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/rss/RssImage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getHeight ()Ljava/lang/Integer;
+	public final fun getLink ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getWidth ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/rss/RssImage$Factory : dev/stalla/model/BuilderFactory {
+	public synthetic fun builder ()Ldev/stalla/builder/Builder;
+	public fun builder ()Ldev/stalla/builder/RssImageBuilder;
+}
+
+public final class dev/stalla/parser/DateParser$sam$i$java_time_temporal_TemporalQuery$0 : java/time/temporal/TemporalQuery {
+	public fun <init> (Lkotlin/jvm/functions/Function1;)V
+	public final synthetic fun queryFrom (Ljava/time/temporal/TemporalAccessor;)Ljava/lang/Object;
+}
+
+public abstract interface annotation class dev/stalla/util/InternalApi : java/lang/annotation/Annotation {
+}
+
