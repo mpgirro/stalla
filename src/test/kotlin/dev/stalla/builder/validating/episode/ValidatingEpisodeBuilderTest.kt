@@ -17,10 +17,10 @@ import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.Episode
 import dev.stalla.model.MediaType
+import dev.stalla.model.anEpisode
 import dev.stalla.model.atom.Atom
 import dev.stalla.model.bitlove.Bitlove
 import dev.stalla.model.content.Content
-import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.podcastindex.EpisodePodcastindex

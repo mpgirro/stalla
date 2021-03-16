@@ -9,8 +9,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastFyydBuilder
+import dev.stalla.model.aPodcastFyyd
 import dev.stalla.model.fyyd.Fyyd
-import dev.stalla.model.podcast.aPodcastFyyd
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastFyydBuilderTest {

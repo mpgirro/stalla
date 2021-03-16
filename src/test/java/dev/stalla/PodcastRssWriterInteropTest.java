@@ -13,7 +13,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Method;
 
 import static dev.stalla.TestUtilKt.declaresException;
-import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcast;
+import static dev.stalla.model.PodcastFixturesKt.aPodcast;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith({TemporaryFileParameterResolver.class})
@@ -59,7 +59,7 @@ public class PodcastRssWriterInteropTest {
 
     @Test
     @DisplayName("should throw a TransformerException when there is an error transforming a Podcast to XML")
-    void failOnPodcastToClosedOutputStream(@TemporaryFile File file) throws IOException {
+    void failOnPodcastToClosedOutputStream(@TemporaryFile File file) {
         final Podcast podcast = aPodcast();
         assertThrows(TransformerException.class, () -> PodcastRssWriter.write(podcast, toUnwritableOutputStream(file)));
     }
@@ -93,6 +93,7 @@ public class PodcastRssWriterInteropTest {
     }
 
     private OutputStream toUnwritableOutputStream(File file) throws IOException {
+        // OutputStream gives I/O error when it is closed
         final OutputStream outputStream = new FileOutputStream(file);
         outputStream.close();
         return outputStream;

@@ -6,8 +6,8 @@ import dev.stalla.dom.appendElement
 import dev.stalla.dom.findElementByName
 import dev.stalla.hasNoAttribute
 import dev.stalla.hasNoDifferences
-import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.episode.anEpisodeBitlove
+import dev.stalla.model.anEpisode
+import dev.stalla.model.anEpisodeBitlove
 import org.junit.jupiter.api.Test
 
 internal class BitloveWriterTest : NamespaceWriterTest() {

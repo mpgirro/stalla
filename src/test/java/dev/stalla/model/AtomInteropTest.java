@@ -11,16 +11,15 @@ import java.util.List;
 
 import static dev.stalla.model.FixturesKt.aLink;
 import static dev.stalla.model.FixturesKt.anAtomPerson;
-import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcastAtom;
+import static dev.stalla.model.PodcastFixturesKt.aPodcastAtom;
 import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AtomInteropTest {
 
     private static Atom atom;
 
-    @BeforeAll
-    static void init() {
+    public AtomInteropTest() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         atom = Atom.builder().applyFrom(aPodcastAtom())

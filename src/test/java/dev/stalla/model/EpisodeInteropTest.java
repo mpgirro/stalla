@@ -7,18 +7,16 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static dev.stalla.model.EpisodeFixturesKt.anEpisode;
 import static dev.stalla.model.FixturesKt.anRssCategory;
-import static dev.stalla.model.episode.EpisodeFixturesKt.anEpisode;
 import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EpisodeInteropTest {
 
     private static Episode episode;
-    private static final RssCategory category = anRssCategory();
 
-    @BeforeAll
-    static void init() {
+    public EpisodeInteropTest() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         episode = Episode.builder()

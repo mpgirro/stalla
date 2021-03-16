@@ -6,17 +6,16 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcastPodcastindex;
-import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcastPodcastindexFunding;
+import static dev.stalla.model.PodcastFixturesKt.aPodcastPodcastindex;
+import static dev.stalla.model.PodcastFixturesKt.aPodcastPodcastindexFunding;
 import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PodcastPodcastindexInteropTest {
 
-    private static PodcastPodcastindex podcastPodcastindex;
+    private final PodcastPodcastindex podcastPodcastindex;
 
-    @BeforeAll
-    static void init() {
+    public PodcastPodcastindexInteropTest() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         podcastPodcastindex = PodcastPodcastindex.builder()

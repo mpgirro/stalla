@@ -12,7 +12,7 @@ import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeItunesBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.model.StyledDuration
-import dev.stalla.model.episode.anEpisodeItunes
+import dev.stalla.model.anEpisodeItunes
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import org.junit.jupiter.api.Test

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static dev.stalla.model.FixturesKt.anItunesCategory;
-import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcastItunes;
+import static dev.stalla.model.PodcastFixturesKt.aPodcastItunes;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -15,8 +15,7 @@ public class PodcastItunesInteropTest {
 
     private static PodcastItunes podcastItunes;
 
-    @BeforeAll
-    static void init() {
+    public PodcastItunesInteropTest() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         podcastItunes = PodcastItunes.builder()

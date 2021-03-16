@@ -8,9 +8,9 @@ import dev.stalla.hasNoAttribute
 import dev.stalla.hasNoDifferences
 import dev.stalla.hasOneChild
 import dev.stalla.hasValue
-import dev.stalla.model.episode.aPodloveSimpleChapter
-import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.episode.anEpisodePodlove
+import dev.stalla.model.aPodloveSimpleChapter
+import dev.stalla.model.anEpisode
+import dev.stalla.model.anEpisodePodlove
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Element
 

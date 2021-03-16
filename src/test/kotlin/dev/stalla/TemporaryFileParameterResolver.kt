@@ -10,7 +10,7 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.util.UUID
 
-// Borrowed from https://medium.com/javarevisited/using-temporary-files-for-unit-testing-5e6e281e40db
+// Adapted from https://medium.com/javarevisited/using-temporary-files-for-unit-testing-5e6e281e40db
 class TemporaryFileParameterResolver : ParameterResolver {
 
     @Throws(ParameterResolutionException::class)

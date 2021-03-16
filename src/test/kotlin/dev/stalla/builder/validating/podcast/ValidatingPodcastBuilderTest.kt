@@ -20,13 +20,13 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodeEnclosureBuilder
 import dev.stalla.dateTime
 import dev.stalla.model.MediaType
 import dev.stalla.model.Podcast
+import dev.stalla.model.aPodcast
 import dev.stalla.model.atom.Atom
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
-import dev.stalla.model.podcast.aPodcast
 import dev.stalla.model.podcastindex.PodcastPodcastindex
 import org.junit.jupiter.api.Test
 import java.time.Month

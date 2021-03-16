@@ -18,8 +18,8 @@ import dev.stalla.dom.getAttributeByName
 import dev.stalla.dom.isEmpty
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
-import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.podcast.aPodcast
+import dev.stalla.model.aPodcast
+import dev.stalla.model.anEpisode
 import dev.stalla.util.FeedNamespace
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Attr

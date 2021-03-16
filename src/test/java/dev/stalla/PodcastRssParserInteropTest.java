@@ -24,9 +24,9 @@ import java.util.List;
 
 import static dev.stalla.TestUtilKt.declaresException;
 import static dev.stalla.TestUtilKt.declaresNoExceptions;
+import static dev.stalla.model.EpisodeFixturesKt.*;
 import static dev.stalla.model.FixturesKt.*;
-import static dev.stalla.model.episode.EpisodeFixturesKt.*;
-import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcastPodcastindexFunding;
+import static dev.stalla.model.PodcastFixturesKt.aPodcastPodcastindexFunding;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,8 +38,11 @@ public class PodcastRssParserInteropTest {
     private final File invalidRssFile;
 
     public PodcastRssParserInteropTest() throws IOException, SAXException {
-        final File fullRssFile = new File(getClass().getClassLoader().getResource("xml/rss-full.xml").getFile());
+        // This file cannot be parsed
         invalidRssFile = new File(getClass().getClassLoader().getResource("xml/no-rss.xml").getFile());
+
+        // Podcast/Episode instances that a result of parsing (instead of fixtures)
+        final File fullRssFile = new File(getClass().getClassLoader().getResource("xml/rss-full.xml").getFile());
         parsedPodcast = requireNonNull(PodcastRssParser.parse(fullRssFile));
         parsedEpisode = requireNonNull(parsedPodcast.getEpisodes().get(0));
     }
@@ -212,7 +215,7 @@ public class PodcastRssParserInteropTest {
     @Test
     @DisplayName("should parse to an unmodifiable list of Episode RSS categories")
     void shouldParseEpisodeUnmodifiableCategories() {
-        final List<RssCategory> categories = requireNonNull(parsedPodcast.getEpisodes().get(0).getCategories());
+        final List<RssCategory> categories = requireNonNull(parsedEpisode.getCategories());
         assertThrows(UnsupportedOperationException.class, () -> categories.add(anRssCategory()));
     }
 
@@ -313,7 +316,7 @@ public class PodcastRssParserInteropTest {
     }
 
     private InputStream toUnreadableInputStream(File file) throws IOException {
-        // Inputstream gives I/O error when it is closed
+        // InputStream gives I/O error when it is closed
         final InputStream inputStream = new FileInputStream(file);
         inputStream.close();
         return inputStream;

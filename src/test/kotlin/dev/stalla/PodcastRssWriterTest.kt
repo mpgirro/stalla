@@ -4,7 +4,7 @@ import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.exists
 import assertk.assertions.isEqualTo
-import dev.stalla.model.podcast.aPodcast
+import dev.stalla.model.aPodcast
 import org.junit.jupiter.api.Test
 import java.io.File
 

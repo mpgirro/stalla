@@ -11,10 +11,10 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.AtomBuilder
+import dev.stalla.model.anEpisodeAtom
 import dev.stalla.model.atom.Atom
 import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
-import dev.stalla.model.episode.anEpisodeAtom
 import org.junit.jupiter.api.Test
 
 internal class ValidatingAtomBuilderTest {

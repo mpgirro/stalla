@@ -6,17 +6,16 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static dev.stalla.model.episode.EpisodeFixturesKt.aPodloveSimpleChapter;
-import static dev.stalla.model.episode.EpisodeFixturesKt.anEpisodePodlove;
+import static dev.stalla.model.EpisodeFixturesKt.aPodloveSimpleChapter;
+import static dev.stalla.model.EpisodeFixturesKt.anEpisodePodlove;
 import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EpisodePodloveInteropTest {
 
-    private static EpisodePodlove episodePodlove;
+    private final EpisodePodlove episodePodlove;
 
-    @BeforeAll
-    static void init() {
+    public EpisodePodloveInteropTest() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         episodePodlove = EpisodePodlove.builder()

@@ -2,8 +2,8 @@ package dev.stalla.writer.namespace
 
 import assertk.assertThat
 import dev.stalla.hasNoDifferences
-import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.episode.anEpisodeContent
+import dev.stalla.model.anEpisode
+import dev.stalla.model.anEpisodeContent
 import org.junit.jupiter.api.Test
 
 internal class ContentWriterTest : NamespaceWriterTest() {

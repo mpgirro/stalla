@@ -7,12 +7,12 @@ import dev.stalla.hasNoChildren
 import dev.stalla.hasNoDifferences
 import dev.stalla.hasTextContent
 import dev.stalla.hasValue
+import dev.stalla.model.aPodcast
+import dev.stalla.model.aPodcastItunes
+import dev.stalla.model.anEpisode
+import dev.stalla.model.anEpisodeItunes
 import dev.stalla.model.anHrefOnlyImage
-import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.episode.anEpisodeItunes
 import dev.stalla.model.itunes.ItunesCategory
-import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcast.aPodcastItunes
 import org.junit.jupiter.api.Test
 
 internal class ItunesWriterTest : NamespaceWriterTest() {

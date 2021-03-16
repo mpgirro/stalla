@@ -11,7 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeGoogleplayBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
-import dev.stalla.model.episode.anEpisodeGoogleplay
+import dev.stalla.model.anEpisodeGoogleplay
 import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.googleplay.ExplicitType
 import org.junit.jupiter.api.Test

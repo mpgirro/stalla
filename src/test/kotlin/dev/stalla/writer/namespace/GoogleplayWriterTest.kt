@@ -4,11 +4,11 @@ import assertk.assertAll
 import assertk.assertThat
 import dev.stalla.hasNoDifferences
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.model.aPodcast
+import dev.stalla.model.aPodcastGoogleplay
+import dev.stalla.model.anEpisode
+import dev.stalla.model.anEpisodeGoogleplay
 import dev.stalla.model.anHrefOnlyImage
-import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.episode.anEpisodeGoogleplay
-import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcast.aPodcastGoogleplay
 import org.junit.jupiter.api.Test
 
 internal class GoogleplayWriterTest : NamespaceWriterTest() {

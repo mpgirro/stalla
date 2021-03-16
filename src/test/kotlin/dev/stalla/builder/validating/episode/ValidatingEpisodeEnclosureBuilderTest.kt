@@ -11,7 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.model.MediaType
-import dev.stalla.model.episode.anEpisodeEnclosure
+import dev.stalla.model.anEpisodeEnclosure
 import dev.stalla.model.rss.Enclosure
 import org.junit.jupiter.api.Test
 

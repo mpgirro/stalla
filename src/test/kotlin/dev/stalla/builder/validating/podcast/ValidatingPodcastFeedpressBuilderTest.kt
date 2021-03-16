@@ -10,8 +10,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastFeedpressBuilder
+import dev.stalla.model.aPodcastFeedpress
 import dev.stalla.model.feedpress.Feedpress
-import dev.stalla.model.podcast.aPodcastFeedpress
 import org.junit.jupiter.api.Test
 import java.util.Locale
 

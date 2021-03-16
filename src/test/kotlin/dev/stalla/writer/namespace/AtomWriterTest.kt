@@ -8,11 +8,11 @@ import dev.stalla.hasNoDifferences
 import dev.stalla.hasTextContent
 import dev.stalla.hasValue
 import dev.stalla.model.aLink
+import dev.stalla.model.aPodcast
+import dev.stalla.model.aPodcastAtom
 import dev.stalla.model.anAtomPerson
-import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.episode.anEpisodeAtom
-import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcast.aPodcastAtom
+import dev.stalla.model.anEpisode
+import dev.stalla.model.anEpisodeAtom
 import org.junit.jupiter.api.Test
 
 internal class AtomWriterTest : NamespaceWriterTest() {

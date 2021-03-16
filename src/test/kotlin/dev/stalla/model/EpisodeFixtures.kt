@@ -1,14 +1,6 @@
-package dev.stalla.model.episode
+package dev.stalla.model
 
 import dev.stalla.dateTime
-import dev.stalla.model.Episode
-import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.MediaType
-import dev.stalla.model.StyledDuration
-import dev.stalla.model.aLink
-import dev.stalla.model.anAtomPerson
-import dev.stalla.model.anHrefOnlyImage
-import dev.stalla.model.anRssCategory
 import dev.stalla.model.atom.Atom
 import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link

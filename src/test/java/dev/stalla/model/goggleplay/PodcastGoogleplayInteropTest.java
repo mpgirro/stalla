@@ -9,16 +9,15 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static dev.stalla.model.FixturesKt.aGoogleplayCategory;
-import static dev.stalla.model.podcast.PodcastFixturesKt.aPodcastGoogleplay;
+import static dev.stalla.model.PodcastFixturesKt.aPodcastGoogleplay;
 import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PodcastGoogleplayInteropTest {
 
-    private static PodcastGoogleplay podcastGoogleplay;
+    private final PodcastGoogleplay podcastGoogleplay;
 
-    @BeforeAll
-    static void init() {
+    public PodcastGoogleplayInteropTest() {
         // Add extra elements to list properties, because for a single element
         // Kotlin's listOf() method produces an unmodifiable list by default
         podcastGoogleplay = PodcastGoogleplay.builder()
