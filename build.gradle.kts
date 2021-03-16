@@ -110,9 +110,4 @@ tasks {
         // Required for type resolution
         jvmTarget = "1.8"
     }
-
-    named("check", Task::class) {
-        // Run the type resolution aware (and experimental) Detekt task
-        dependsOn.add(named("detektMain"))
-    }
 }

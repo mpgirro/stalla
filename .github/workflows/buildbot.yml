@@ -24,7 +24,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Check with Gradle
-        run: ./gradlew --no-daemon check jacocoTestReport coverallsJacoco
+        run: ./gradlew --no-daemon check detektMain jacocoTestReport coverallsJacoco
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload SARIF to Github using the upload-sarif action
