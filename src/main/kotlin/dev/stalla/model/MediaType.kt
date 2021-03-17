@@ -22,6 +22,8 @@ import kotlin.contracts.contract
  *
  * Some useful predefined instances are provided by the [companion object][Factory] (static class members in Java).
  *
+ * Use the [of][MediaType.Factory.of] method to obtain an instance from a string pattern.
+ *
  * @property type The type part of the media type.
  * @property subtype The subtype part of the media type.
  * @property essence The [type] followed by `/` followed by [subtype].

@@ -8,6 +8,8 @@ import dev.stalla.model.TypeFactory
  * See the [reference docs](https://help.apple.com/itc/podcasts_connect/#/itcb54353390)
  * for more information.
  *
+ * Use the [of][EpisodeType.Factory.of] method to obtain an instance from a string pattern.
+ *
  * @property type The string representation of the enum instance.
  *
  * @see EpisodeType.Factory Provides a factory method for type instances.

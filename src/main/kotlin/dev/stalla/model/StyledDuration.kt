@@ -13,6 +13,8 @@ import kotlin.math.pow
  * Represents a duration, expressed in one of the supported styles. Each supported style is
  * represented by one of the concrete implementations of [StyledDuration].
  *
+ * Use the [of][StyledDuration.Factory.of] method to obtain an instance from a string pattern.
+ *
  * @see Seconds
  * @see SecondsAndFraction
  * @see HoursMinutesSeconds

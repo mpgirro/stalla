@@ -29,6 +29,8 @@ import kotlin.reflect.full.declaredMemberProperties
  * | `application/json` | [JSON]       |
  * | `application/srt`  | [SRT]        |
  *
+ * Use the [of][TranscriptType.Factory.of] method to obtain an instance from a string pattern.
+ *
  * @property type The type part of the transcript type.
  * @property subtype The subtype part of the transcript type.
  *

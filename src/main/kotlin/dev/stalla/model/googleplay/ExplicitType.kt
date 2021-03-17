@@ -9,6 +9,8 @@ import dev.stalla.model.TypeFactory
  * the [XML schema definition](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd)
  * for more information.
  *
+ * Use the [of][ExplicitType.Factory.of] method to obtain an instance from a string pattern.
+ *
  * @property type The string representation of the enum instance.
  *
  * @see ExplicitType.Factory Provides a factory method for type instances.

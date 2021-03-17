@@ -3,16 +3,13 @@ package dev.stalla.model.podlove
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodloveSimpleChapterBuilder
 import dev.stalla.model.BuilderFactory
-import dev.stalla.model.atom.Atom.Factory.builder
-import dev.stalla.model.atom.AtomPerson.Factory.builder
-import dev.stalla.model.podlove.SimpleChapter.Factory.builder
 
 /**
  * Model class for data from `<psc:chapter>` elements of the Podlove
  * Simple Chapter namespace that are valid within `<item>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder] method
- * to obtain a builder instance for expressive construction instead.
+ * Direct instantiation from Java is discouraged. Use the [builder][SimpleChapter.Factory.builder] method
+ * to obtain an [EpisodePodloveSimpleChapterBuilder] instance for expressive construction instead.
  *
  * @property start The value of the chapter's `start` attribute.
  * @property title The value of the chapter's `title` attribute.

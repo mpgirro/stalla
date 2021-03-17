@@ -4,16 +4,13 @@ import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexChaptersBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.MediaType
-import dev.stalla.model.atom.Atom.Factory.builder
-import dev.stalla.model.atom.AtomPerson.Factory.builder
-import dev.stalla.model.podcastindex.Chapters.Factory.builder
 
 /**
  * The chapters information for the episode. See the
  * [reference docs](https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#chapters).
  *
- * Direct instantiation from Java is discouraged. Use the [builder] method
- * to obtain a builder instance for expressive construction instead.
+ * Direct instantiation from Java is discouraged. Use the [builder][Chapters.Factory.builder] method
+ * to obtain an [EpisodePodcastindexChaptersBuilder] instance for expressive construction instead.
  *
  * @property url The URL for the chapters information.
  * @property type The MIME type of the chapters file. JSON (`application/json+chapters`) is the preferred format.

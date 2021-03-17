@@ -7,6 +7,9 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for data from elements of the Bitlove namespace that are valid within `<item>` elements.
  *
+ * Use the [builder][Bitlove.Factory.builder] method to obtain an [EpisodeBitloveBuilder] instance
+ * for expressive construction in Java.
+ *
  * @property guid The `bitlove:guid` attribute for the RSS `<enclosure>` element.
  *
  * @since 1.0.0

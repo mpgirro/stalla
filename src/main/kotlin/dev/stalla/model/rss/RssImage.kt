@@ -3,9 +3,6 @@ package dev.stalla.model.rss
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.model.BuilderFactory
-import dev.stalla.model.atom.Atom.Factory.builder
-import dev.stalla.model.atom.AtomPerson.Factory.builder
-import dev.stalla.model.rss.RssImage.Factory.builder
 
 /**
  * An [RSS `<image>` tag](https://www.w3schools.com/XML/rss_tag_image.asp). An
@@ -24,8 +21,8 @@ import dev.stalla.model.rss.RssImage.Factory.builder
  *
  * The `url`, `title` and `link` tags are _mandatory_, the rest are optional.
  *
- * Direct instantiation from Java is discouraged. Use the [builder] method
- * to obtain a builder instance for expressive construction instead.
+ * Direct instantiation from Java is discouraged. Use the [builder][RssImage.Factory.builder]
+ * method to obtain an [RssImageBuilder] instance for expressive construction instead.
  *
  * @property url The value of an RSS `<url>` element inside an `<image>`. Represents the image URL.
  * @property title The value of an RSS `<title>` element inside an `<image>`.

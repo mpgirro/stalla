@@ -2,10 +2,7 @@ package dev.stalla.model
 
 import dev.stalla.builder.podcast.PodcastBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastBuilder
-import dev.stalla.model.Podcast.Factory.builder
 import dev.stalla.model.atom.Atom
-import dev.stalla.model.atom.Atom.Factory.builder
-import dev.stalla.model.atom.AtomPerson.Factory.builder
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.PodcastGoogleplay
@@ -19,8 +16,8 @@ import java.util.Locale
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<channel>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder] method
- * to obtain a builder instance for expressive construction instead.
+ * Direct instantiation from Java is discouraged. Use the [builder][Podcast.Factory.builder]
+ * method to obtain a [PodcastBuilder] instance for expressive construction instead.
  *
  * @property title The RSS `<title>` field textContent.
  * @property link The RSS `<link>` field textContent.

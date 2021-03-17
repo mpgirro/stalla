@@ -4,9 +4,6 @@ import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.builder.validating.podcast.ValidatingPodcastGoogleplayBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.atom.Atom.Factory.builder
-import dev.stalla.model.atom.AtomPerson.Factory.builder
-import dev.stalla.model.googleplay.PodcastGoogleplay.Factory.builder
 
 /**
  * Model class for data from the Google Play namespace valid within an RSS `<channel>`.
@@ -15,8 +12,8 @@ import dev.stalla.model.googleplay.PodcastGoogleplay.Factory.builder
  * [XML Schema](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd)
  * for the Google Play Podcasts extension
  *
- * Direct instantiation from Java is discouraged. Use the [builder] method
- * to obtain a builder instance for expressive construction instead.
+ * Direct instantiation from Java is discouraged. Use the [builder][PodcastGoogleplay.Factory.builder]
+ * method to obtain a [PodcastGoogleplayBuilder] instance for expressive construction instead.
  *
  * @property author The `<googleplay:author>` field text content.
  * @property email The `<googleplay:email>` field text content.
