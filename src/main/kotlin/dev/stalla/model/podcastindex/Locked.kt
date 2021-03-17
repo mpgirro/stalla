@@ -8,7 +8,7 @@ import dev.stalla.model.BuilderFactory
  * The lock status of the podcast. Tells other podcast platforms whether they are allowed to
  * import this feed into their systems.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Locked.Factory.builder] method
+ * Direct instantiation in Java is discouraged. Use the [builder][Locked.Factory.builder] method
  * to obtain a [PodcastPodcastindexLockedBuilder] instance for expressive construction instead.
  *
  * @property owner An email address that can be used to verify ownership when moving hosting platforms.

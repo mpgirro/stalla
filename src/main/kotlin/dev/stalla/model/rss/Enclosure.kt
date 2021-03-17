@@ -8,7 +8,7 @@ import dev.stalla.model.MediaType
 /**
  * Model class for `<enclosure>` elements within RSS `<item>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Enclosure.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][Enclosure.Factory.builder]
  * method to obtain an [EpisodeEnclosureBuilder] instance for expressive construction instead.
  *
  * @property url The `url` attribute textContent of the RSS `<enclosure>` element.

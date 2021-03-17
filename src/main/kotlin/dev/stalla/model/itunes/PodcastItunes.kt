@@ -8,7 +8,7 @@ import dev.stalla.model.HrefOnlyImage
 /**
  * Model class for data from the iTunes namespace valid within an RSS `<channel>`.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][PodcastItunes.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][PodcastItunes.Factory.builder]
  * method to obtain a [PodcastItunesBuilder] instance for expressive construction instead.
  *
  * @property subtitle The `<itunes:subtitle>` field text content.

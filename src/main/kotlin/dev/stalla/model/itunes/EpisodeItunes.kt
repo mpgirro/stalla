@@ -9,7 +9,7 @@ import dev.stalla.model.StyledDuration
 /**
  * Model class for data from elements of the iTunes namespace that are valid within `<item>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][EpisodeItunes.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][EpisodeItunes.Factory.builder]
  * method to obtain a [EpisodeItunesBuilder] instance for expressive construction instead.
  *
  * @property title The `<itunes:title>` field text content.

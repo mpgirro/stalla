@@ -7,7 +7,7 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for data from elements of the Atom namespace.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Atom.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][Atom.Factory.builder]
  * method to obtain an [AtomBuilder] instance for expressive construction instead.
  *
  * @property authors List of data from the `<atom:author>` elements as [AtomPerson] instances.

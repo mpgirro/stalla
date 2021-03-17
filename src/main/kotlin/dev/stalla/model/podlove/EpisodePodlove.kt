@@ -8,7 +8,7 @@ import dev.stalla.model.BuilderFactory
  * Model class for data from elements of namespaces from the Podlove
  * standards family that are valid within `<item>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][EpisodePodlove.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][EpisodePodlove.Factory.builder]
  * method to obtain an [EpisodePodloveBuilder] instance for expressive construction instead.
  *
  * @property simpleChapters List of data from the `<psc:chapter>` elements as [SimpleChapter] instances.

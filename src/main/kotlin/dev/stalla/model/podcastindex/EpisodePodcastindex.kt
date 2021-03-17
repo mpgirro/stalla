@@ -7,7 +7,7 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for data from elements of the Podcastindex namespace that are valid within `<item>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][EpisodePodcastindex.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][EpisodePodcastindex.Factory.builder]
  * method to obtain an [EpisodePodcastindexBuilder] instance for expressive construction instead.
  *
  * @property transcripts The transcript information for the episode.

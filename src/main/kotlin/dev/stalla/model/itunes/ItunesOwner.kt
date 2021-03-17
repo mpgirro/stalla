@@ -7,7 +7,7 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for elements describing persons.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][ItunesOwner.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][ItunesOwner.Factory.builder]
  * method to obtain a [PodcastItunesOwnerBuilder] instance for expressive construction instead.
  *
  * @property name The name of the owner.

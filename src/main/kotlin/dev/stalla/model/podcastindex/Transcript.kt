@@ -8,7 +8,7 @@ import java.util.Locale
 /**
  * The transcript for the episode.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Transcript.Factory.builder] method
+ * Direct instantiation in Java is discouraged. Use the [builder][Transcript.Factory.builder] method
  * to obtain an [EpisodePodcastindexTranscriptBuilder] instance for expressive construction instead.
  *
  * @property url The URL of the episode transcript.

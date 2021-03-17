@@ -8,7 +8,7 @@ import dev.stalla.model.MediaType
 /**
  * Model class for elements describing hyperlinks.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Link.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][Link.Factory.builder]
  * method to obtain a [LinkBuilder] instance for expressive construction instead.
  *
  * @property href The `href` attribute textContent of the `<atom:link>` element.

@@ -17,7 +17,7 @@ import java.time.temporal.TemporalAccessor
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<item>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Episode.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][Episode.Factory.builder]
  * method to obtain an [EpisodeBuilder] instance for expressive construction instead.
  *
  * @property title The RSS `<title>` field textContent.

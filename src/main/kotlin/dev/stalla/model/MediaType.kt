@@ -201,6 +201,7 @@ public open class MediaType private constructor(
          * Factory method that returns the instance matching the [rawValue] parameter, if any.
          * Does not check if [rawValue] matches an
          * [IANA media type][http://www.iana.org/assignments/media-types/media-types.xhtml].
+         * This method is case insensitive.
          *
          * @param rawValue The string representation of the instance.
          * @return The instance matching [rawValue], or `null` if no matching instance exists.

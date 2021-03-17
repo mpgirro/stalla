@@ -8,7 +8,7 @@ import dev.stalla.model.HrefOnlyImage
 /**
  * Model class for data from elements of the Google Play namespace that are valid within `<item>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][EpisodeGoogleplay.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][EpisodeGoogleplay.Factory.builder]
  * method to obtain an [EpisodeGoogleplayBuilder] instance for expressive construction instead.
  *
  * Properties are as defined in the

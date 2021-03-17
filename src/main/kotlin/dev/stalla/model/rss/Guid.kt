@@ -7,7 +7,7 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for `<guid>` elements within RSS `<item>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Guid.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][Guid.Factory.builder]
  * method to obtain an [EpisodeGuidBuilder] instance for expressive construction instead.
  *
  * @property guid The text content of the element.

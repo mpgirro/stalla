@@ -9,7 +9,7 @@ import dev.stalla.model.StyledDuration
 /**
  * The soundbite information for the episode. Used to automatically extract soundbites from the [Episode.enclosure].
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Soundbite.Factory.builder] method
+ * Direct instantiation in Java is discouraged. Use the [builder][Soundbite.Factory.builder] method
  * to obtain an [EpisodePodcastindexSoundbiteBuilder] instance for expressive construction instead.
  *
  * @property startTime The timestamp at which the soundbite starts.

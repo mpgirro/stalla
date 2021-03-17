@@ -12,7 +12,7 @@ import dev.stalla.model.HrefOnlyImage
  * [XML Schema](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd)
  * for the Google Play Podcasts extension
  *
- * Direct instantiation from Java is discouraged. Use the [builder][PodcastGoogleplay.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][PodcastGoogleplay.Factory.builder]
  * method to obtain a [PodcastGoogleplayBuilder] instance for expressive construction instead.
  *
  * @property author The `<googleplay:author>` field text content.

@@ -21,7 +21,7 @@ import dev.stalla.model.BuilderFactory
  *
  * The `url`, `title` and `link` tags are _mandatory_, the rest are optional.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][RssImage.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][RssImage.Factory.builder]
  * method to obtain an [RssImageBuilder] instance for expressive construction instead.
  *
  * @property url The value of an RSS `<url>` element inside an `<image>`. Represents the image URL.

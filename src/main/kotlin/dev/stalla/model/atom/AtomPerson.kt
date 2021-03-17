@@ -7,7 +7,7 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for elements describing persons.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][AtomPerson.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][AtomPerson.Factory.builder]
  * method to obtain an [AtomPersonBuilder] instance for expressive construction instead.
  *
  * @property name The name of the person.

@@ -8,7 +8,7 @@ import dev.stalla.model.BuilderFactory
  * Model class for data from `<psc:chapter>` elements of the Podlove
  * Simple Chapter namespace that are valid within `<item>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][SimpleChapter.Factory.builder] method
+ * Direct instantiation in Java is discouraged. Use the [builder][SimpleChapter.Factory.builder] method
  * to obtain an [EpisodePodloveSimpleChapterBuilder] instance for expressive construction instead.
  *
  * @property start The value of the chapter's `start` attribute.

@@ -8,7 +8,7 @@ import java.util.Locale
 /**
  * Model class for data from elements of the Feedpress namespace that are valid within `<channel>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Feedpress.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][Feedpress.Factory.builder]
  * method to obtain a [PodcastFeedpressBuilder] instance for expressive construction instead.
  *
  * @property newsletterId The ID of the FeedPress newsletter.

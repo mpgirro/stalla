@@ -7,7 +7,7 @@ import dev.stalla.model.BuilderFactory
 /**
  * An [RSS `<category>` tag](https://www.w3schools.com/XML/rss_tag_category_channel.asp):
  *
- * Direct instantiation from Java is discouraged. Use the [builder][RssCategory.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][RssCategory.Factory.builder]
  * method to obtain an [RssCategoryBuilder] instance for expressive construction instead.
  *
  * ```xml

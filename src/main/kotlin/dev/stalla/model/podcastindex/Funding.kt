@@ -7,7 +7,7 @@ import dev.stalla.model.BuilderFactory
 /**
  * The funding information for the podcast.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Funding.Factory.builder] method
+ * Direct instantiation in Java is discouraged. Use the [builder][Funding.Factory.builder] method
  * to obtain a [PodcastPodcastindexFundingBuilder] instance for expressive construction instead.
  *
  * @property url The URL where listeners can find funding information for the podcast.

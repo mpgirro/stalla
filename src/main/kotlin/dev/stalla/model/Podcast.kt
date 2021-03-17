@@ -16,7 +16,7 @@ import java.util.Locale
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<channel>` elements.
  *
- * Direct instantiation from Java is discouraged. Use the [builder][Podcast.Factory.builder]
+ * Direct instantiation in Java is discouraged. Use the [builder][Podcast.Factory.builder]
  * method to obtain a [PodcastBuilder] instance for expressive construction instead.
  *
  * @property title The RSS `<title>` field textContent.
