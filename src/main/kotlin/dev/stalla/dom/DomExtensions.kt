@@ -2,7 +2,7 @@ package dev.stalla.dom
 
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.trimmedOrNullIfBlank
 import org.w3c.dom.Attr
 import org.w3c.dom.Element
@@ -11,7 +11,7 @@ import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 
 /** Finds the first element matching the given (local)[name], [namespace] and [filter], if any. */
-@InternalAPI2
+@InternalAPI
 internal fun Node.findElementByName(
     name: String,
     namespace: FeedNamespace? = null,
@@ -28,7 +28,7 @@ private fun Node.getTagName(): String? = when (this) {
 /**
  * Checks whether the node is a direct child of a tag with the given name.
  */
-@InternalAPI2
+@InternalAPI
 internal fun Node.isDirectChildOf(tagName: String) =
     parentNode.nodeName == tagName && parentNode.namespaceURI == null
 
@@ -39,7 +39,7 @@ internal fun Node.isDirectChildOf(tagName: String) =
  * @param namespace The namespace to use, if any.
  * @return The textContent of the node's attribute.
  */
-@InternalAPI2
+@InternalAPI
 internal fun Node.getAttributeValueByName(attributeName: String, namespace: FeedNamespace? = null): String? =
     getAttributeByName(attributeName, namespace)?.value?.trimmedOrNullIfBlank()
 
@@ -50,27 +50,27 @@ internal fun Node.getAttributeValueByName(attributeName: String, namespace: Feed
  * @param namespace The namespace to use, if any.
  * @return The textContent of the node's attribute.
  */
-@InternalAPI2
+@InternalAPI
 internal fun Node.getAttributeByName(attributeName: String, namespace: FeedNamespace? = null): Attr? =
     attributes?.getNamedItemNS(namespace?.uri, attributeName) as? Attr
 
 /** Returns true if the [NodeList] is empty. */
-@InternalAPI2
+@InternalAPI
 internal fun NodeList.isEmpty() = length == 0
 
 /** Returns true if the [NodeList] contains at least one node. */
-@InternalAPI2
+@InternalAPI
 internal fun NodeList.isNotEmpty() = length > 0
 
 /** Converts this [NodeList] to a [List] of [Node]s. */
-@InternalAPI2
+@InternalAPI
 internal fun NodeList.asListOfNodes(): List<Node> {
     if (length == 0) return emptyList()
     return NodeListWrapper(this)
 }
 
 /** Converts this [NamedNodeMap] to a [List] of [Attr]s. */
-@InternalAPI2
+@InternalAPI
 internal fun NamedNodeMap.asListOfAttrs(): List<Attr> {
     if (length == 0) return emptyList()
     return (0 until length).map { index -> item(index) }
@@ -78,5 +78,5 @@ internal fun NamedNodeMap.asListOfAttrs(): List<Attr> {
 }
 
 /** Casts the [Node] to an [Element]. */
-@InternalAPI2
+@InternalAPI
 internal fun Node.asElement() = this as Element

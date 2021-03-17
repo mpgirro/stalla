@@ -2,9 +2,9 @@ package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.model.podcastindex.Funding
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 
-@InternalAPI2
+@InternalAPI
 internal class ValidatingPodcastPodcastindexFundingBuilder : PodcastPodcastindexFundingBuilder {
 
     private lateinit var urlValue: String

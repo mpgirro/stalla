@@ -25,11 +25,11 @@ import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.model.Episode
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.asUnmodifiable
 import java.time.temporal.TemporalAccessor
 
-@InternalAPI2
+@InternalAPI
 internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     private lateinit var titleValue: String

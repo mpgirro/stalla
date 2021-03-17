@@ -3,7 +3,7 @@ package dev.stalla.util
 /**
  * Indicates how a boolean value should be written as a string.
  */
-@InternalAPI2
+@InternalAPI
 internal enum class BooleanStringStyle(val trueValue: String, val falseValue: String?) {
 
     /** A true value will be written as `true`, a false value as `false`. */
@@ -22,6 +22,6 @@ internal enum class BooleanStringStyle(val trueValue: String, val falseValue: St
 }
 
 /** Returns [BooleanStringStyle] representation of this matching [style]. */
-@InternalAPI2
+@InternalAPI
 internal fun Boolean.asBooleanString(style: BooleanStringStyle) =
     if (this) style.trueValue else style.falseValue

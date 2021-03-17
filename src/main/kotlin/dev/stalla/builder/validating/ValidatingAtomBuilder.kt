@@ -4,10 +4,10 @@ import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.model.atom.Atom
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.asUnmodifiable
 
-@InternalAPI2
+@InternalAPI
 internal class ValidatingAtomBuilder : AtomBuilder {
 
     private var authorBuilders: MutableList<AtomPersonBuilder> = mutableListOf()

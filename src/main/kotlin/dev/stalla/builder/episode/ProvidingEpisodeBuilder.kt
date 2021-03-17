@@ -4,9 +4,9 @@ import dev.stalla.builder.AtomPersonBuilderProvider
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.RssCategoryBuilder
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 
-@InternalAPI2
+@InternalAPI
 internal interface ProvidingEpisodeBuilder : EpisodeBuilder, AtomPersonBuilderProvider, LinkBuilderProvider {
 
     /** Creates an instance of [EpisodeEnclosureBuilder] to use with this builder. */

@@ -18,4 +18,4 @@ package dev.stalla.util
     AnnotationTarget.CONSTRUCTOR,
     AnnotationTarget.PROPERTY_SETTER
 )
-public annotation class InternalAPI2
+public annotation class InternalAPI

@@ -2,9 +2,9 @@ package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodeContentBuilder
 import dev.stalla.model.content.Content
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 
-@InternalAPI2
+@InternalAPI
 internal class ValidatingEpisodeContentBuilder : EpisodeContentBuilder {
 
     private lateinit var encodedValue: String

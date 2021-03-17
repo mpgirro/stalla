@@ -3,12 +3,12 @@ package dev.stalla.writer
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
 /** Base class for XML namespace writer implementations. */
-@InternalAPI2
+@InternalAPI
 internal abstract class NamespaceWriter {
 
     /** The URI of the namespace written to by this writer. */

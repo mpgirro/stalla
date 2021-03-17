@@ -6,7 +6,7 @@ import dev.stalla.dom.parseAsLocaleOrNull
 import dev.stalla.dom.textOrNull
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import org.w3c.dom.Node
 
 /**
@@ -14,7 +14,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `https://feed.press/xmlns`
  */
-@InternalAPI2
+@InternalAPI
 internal object FeedpressParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.FEEDPRESS

@@ -5,7 +5,7 @@ import dev.stalla.dom.setAttributeWithNS
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Element
 
@@ -14,7 +14,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://bitlove.org`
  */
-@InternalAPI2
+@InternalAPI
 internal object BitloveWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.BITLOVE

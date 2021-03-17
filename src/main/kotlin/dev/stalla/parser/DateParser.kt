@@ -1,6 +1,6 @@
 package dev.stalla.parser
 
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import java.time.LocalDateTime
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -16,7 +16,7 @@ import java.util.Locale
  * Various formats are supported. This class attempts to find the correct
  * format to produce the intended date object.
  */
-@InternalAPI2
+@InternalAPI
 internal object DateParser {
 
     @Suppress("MagicNumber")

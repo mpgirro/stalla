@@ -16,7 +16,7 @@ import dev.stalla.dom.toRssImageBuilder
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.parser.namespace.RssParser.namespace
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.allNotNull
 import org.w3c.dom.Element
 import org.w3c.dom.Node
@@ -28,7 +28,7 @@ import org.w3c.dom.Node
  *
  * The RSS specification is described [here](http://www.rssboard.org/rss-2-0).
  */
-@InternalAPI2
+@InternalAPI
 internal object RssParser : NamespaceParser() {
 
     override val namespace: FeedNamespace? = null

@@ -1,6 +1,6 @@
 package dev.stalla.dom
 
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 
@@ -9,7 +9,7 @@ import org.w3c.dom.NodeList
  *
  * @property nodes The [NodeList] to provide a [List] API for.
  */
-@InternalAPI2
+@InternalAPI
 internal class NodeListWrapper(private val nodes: NodeList) : AbstractList<Node>(), RandomAccess {
 
     /** Returns the number of elements in this nodes. */

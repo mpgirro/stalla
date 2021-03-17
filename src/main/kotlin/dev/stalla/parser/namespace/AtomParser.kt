@@ -11,7 +11,7 @@ import dev.stalla.dom.parseAsMediaTypeOrNull
 import dev.stalla.dom.toAtomPersonBuilder
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import org.w3c.dom.Node
 
 /**
@@ -19,7 +19,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://www.w3.org/2005/Atom`
  */
-@InternalAPI2
+@InternalAPI
 internal object AtomParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.ATOM

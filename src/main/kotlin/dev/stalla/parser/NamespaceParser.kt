@@ -6,11 +6,11 @@ import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.isDirectChildOf
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import org.w3c.dom.Node
 
 /** Base class for XML namespace parser implementations. */
-@InternalAPI2
+@InternalAPI
 internal abstract class NamespaceParser {
 
     /** The URI of the namespace processed by this parser. */

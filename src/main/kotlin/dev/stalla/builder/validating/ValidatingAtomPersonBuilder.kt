@@ -2,9 +2,9 @@ package dev.stalla.builder.validating
 
 import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.model.atom.AtomPerson
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 
-@InternalAPI2
+@InternalAPI
 internal class ValidatingAtomPersonBuilder : AtomPersonBuilder {
 
     private lateinit var nameValue: String

@@ -13,7 +13,7 @@ import dev.stalla.model.StyledDuration
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
-import dev.stalla.util.InternalAPI2
+import dev.stalla.util.InternalAPI
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
@@ -22,7 +22,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://www.itunes.com/dtds/podcast-1.0.dtd`
  */
-@InternalAPI2
+@InternalAPI
 internal object ItunesParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.ITUNES

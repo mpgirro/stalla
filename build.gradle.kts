@@ -78,7 +78,7 @@ detekt {
 }
 
 apiValidation {
-    nonPublicMarkers.add("dev.stalla.util.InternalAPI2")
+    nonPublicMarkers.add("dev.stalla.util.InternalAPI")
 }
 
 tasks {
@@ -88,7 +88,7 @@ tasks {
             freeCompilerArgs = listOf(
                 "-Xopt-in=kotlin.RequiresOptIn",
                 "-Xopt-in=kotlin.contracts.ExperimentalContracts",
-                "-Xopt-in=dev.stalla.util.InternalAPI2",
+                "-Xopt-in=dev.stalla.util.InternalAPI",
                 "-Xopt-in=dev.stalla.util.ExperimentalAPI"
             )
         }
