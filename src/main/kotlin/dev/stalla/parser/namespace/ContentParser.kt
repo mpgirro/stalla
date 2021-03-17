@@ -5,7 +5,7 @@ import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.textOrNull
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import org.w3c.dom.Node
 
 /**
@@ -13,7 +13,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://purl.org/rss/1.0/modules/content/`
  */
-@InternalAPI
+@InternalAPI2
 internal object ContentParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.CONTENT

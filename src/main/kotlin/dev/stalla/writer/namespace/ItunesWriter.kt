@@ -9,7 +9,7 @@ import dev.stalla.dom.appendYesElementIfTrue
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import dev.stalla.util.isNeitherNullNorBlank
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -19,7 +19,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://www.itunes.com/dtds/podcast-1.0.dtd`
  */
-@InternalAPI
+@InternalAPI2
 internal object ItunesWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.ITUNES

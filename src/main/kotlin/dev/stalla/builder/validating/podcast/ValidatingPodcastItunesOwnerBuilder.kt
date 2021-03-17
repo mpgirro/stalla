@@ -2,9 +2,9 @@ package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.podcast.PodcastItunesOwnerBuilder
 import dev.stalla.model.itunes.ItunesOwner
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingPodcastItunesOwnerBuilder : PodcastItunesOwnerBuilder {
 
     private lateinit var nameValue: String

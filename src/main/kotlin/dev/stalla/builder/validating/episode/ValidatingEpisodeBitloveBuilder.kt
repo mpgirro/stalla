@@ -2,9 +2,9 @@ package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodeBitloveBuilder
 import dev.stalla.model.bitlove.Bitlove
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingEpisodeBitloveBuilder : EpisodeBitloveBuilder {
 
     private lateinit var guidValue: String

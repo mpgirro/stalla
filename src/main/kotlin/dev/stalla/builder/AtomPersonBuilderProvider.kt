@@ -1,8 +1,8 @@
 package dev.stalla.builder
 
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 
-@InternalAPI
+@InternalAPI2
 internal interface AtomPersonBuilderProvider {
 
     /** Creates an instance of [AtomPersonBuilder] to use with this builder. */

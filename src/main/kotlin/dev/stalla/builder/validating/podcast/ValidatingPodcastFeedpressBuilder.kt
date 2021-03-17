@@ -2,11 +2,11 @@ package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.podcast.PodcastFeedpressBuilder
 import dev.stalla.model.feedpress.Feedpress
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import dev.stalla.util.anyNotNull
 import java.util.Locale
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingPodcastFeedpressBuilder : PodcastFeedpressBuilder {
 
     private var newsletterId: String? = null

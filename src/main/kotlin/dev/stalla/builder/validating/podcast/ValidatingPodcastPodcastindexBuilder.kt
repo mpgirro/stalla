@@ -4,10 +4,10 @@ import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.model.podcastindex.PodcastPodcastindex
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import dev.stalla.util.asUnmodifiable
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder {
 
     private lateinit var lockedBuilderValue: PodcastPodcastindexLockedBuilder

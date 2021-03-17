@@ -3,9 +3,9 @@ package dev.stalla.builder.validating.episode
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.model.MediaType
 import dev.stalla.model.rss.Enclosure
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingEpisodeEnclosureBuilder : EpisodeEnclosureBuilder {
 
     private lateinit var urlValue: String

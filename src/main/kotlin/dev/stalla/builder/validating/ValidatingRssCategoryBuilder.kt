@@ -2,9 +2,9 @@ package dev.stalla.builder.validating
 
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.model.rss.RssCategory
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingRssCategoryBuilder : RssCategoryBuilder {
 
     private lateinit var categoryValue: String

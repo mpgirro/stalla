@@ -8,5 +8,5 @@ import java.time.temporal.TemporalAccessor
  *
  * @return The string representing the value in the chosen style.
  */
-@InternalAPI
+@InternalAPI2
 internal fun TemporalAccessor.asDateString() = DateFormatter.formatAsRfc2822(this)

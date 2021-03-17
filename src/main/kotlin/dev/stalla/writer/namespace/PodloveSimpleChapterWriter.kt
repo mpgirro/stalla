@@ -5,7 +5,7 @@ import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
 import dev.stalla.model.podlove.SimpleChapter
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import dev.stalla.util.isNeitherNullNorBlank
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -15,7 +15,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://podlove.org/simple-chapters`
  */
-@InternalAPI
+@InternalAPI2
 internal object PodloveSimpleChapterWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.PODLOVE_SIMPLE_CHAPTER

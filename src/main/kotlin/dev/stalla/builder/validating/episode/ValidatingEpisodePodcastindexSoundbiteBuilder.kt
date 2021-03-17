@@ -3,9 +3,9 @@ package dev.stalla.builder.validating.episode
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.Soundbite
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingEpisodePodcastindexSoundbiteBuilder : EpisodePodcastindexSoundbiteBuilder {
 
     private lateinit var startTimeValue: StyledDuration.SecondsAndFraction

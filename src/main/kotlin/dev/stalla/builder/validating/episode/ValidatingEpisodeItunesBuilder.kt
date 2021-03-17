@@ -5,10 +5,10 @@ import dev.stalla.builder.episode.EpisodeItunesBuilder
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import dev.stalla.util.anyNotNull
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingEpisodeItunesBuilder : EpisodeItunesBuilder {
 
     private var title: String? = null

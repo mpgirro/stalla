@@ -15,7 +15,7 @@ import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import dev.stalla.util.allNotNull
 import dev.stalla.util.trimmedOrNullIfBlank
 import org.w3c.dom.Node
@@ -26,7 +26,7 @@ import java.util.Locale
  *
  * The namespace URI is: `https://podcastindex.org/namespace/1.0`
  */
-@InternalAPI
+@InternalAPI2
 internal object PodcastindexParser : NamespaceParser() {
 
     override val namespace: FeedNamespace = FeedNamespace.PODCAST

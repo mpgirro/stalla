@@ -4,7 +4,7 @@ import dev.stalla.model.StyledDuration.HoursMinutesSeconds
 import dev.stalla.model.StyledDuration.MinutesSeconds
 import dev.stalla.model.StyledDuration.Seconds
 import dev.stalla.model.StyledDuration.SecondsAndFraction
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import java.time.Duration
 import kotlin.math.absoluteValue
 import kotlin.math.pow
@@ -76,7 +76,7 @@ public sealed class StyledDuration {
      *
      * @see StyledDuration.Factory.secondsAndFraction
      */
-    public data class SecondsAndFraction @InternalAPI internal constructor(
+    public data class SecondsAndFraction @InternalAPI2 internal constructor(
         public override val rawDuration: Duration
     ) : StyledDuration() {
 
@@ -130,7 +130,7 @@ public sealed class StyledDuration {
      *
      * @see StyledDuration.Factory.seconds
      */
-    public data class Seconds @InternalAPI internal constructor(
+    public data class Seconds @InternalAPI2 internal constructor(
         public override val rawDuration: Duration
     ) : StyledDuration() {
 
@@ -150,7 +150,7 @@ public sealed class StyledDuration {
      *
      * @see StyledDuration.Factory.minutesSeconds
      */
-    public data class MinutesSeconds @InternalAPI internal constructor(
+    public data class MinutesSeconds @InternalAPI2 internal constructor(
         public override val rawDuration: Duration
     ) : StyledDuration() {
 
@@ -173,7 +173,7 @@ public sealed class StyledDuration {
      *
      * @see StyledDuration.Factory.hoursMinutesSeconds
      */
-    public data class HoursMinutesSeconds @InternalAPI internal constructor(
+    public data class HoursMinutesSeconds @InternalAPI2 internal constructor(
         public override val rawDuration: Duration
     ) : StyledDuration() {
 

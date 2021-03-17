@@ -2,9 +2,9 @@ package dev.stalla.builder.validating
 
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.model.rss.RssImage
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingRssImageBuilder : RssImageBuilder {
 
     private lateinit var urlValue: String

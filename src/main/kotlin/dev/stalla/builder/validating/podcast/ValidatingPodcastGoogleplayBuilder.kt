@@ -4,11 +4,11 @@ import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import dev.stalla.util.anyNotNull
 import dev.stalla.util.asUnmodifiable
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     private var author: String? = null

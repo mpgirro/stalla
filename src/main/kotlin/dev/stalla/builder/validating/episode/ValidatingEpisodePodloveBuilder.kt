@@ -3,10 +3,10 @@ package dev.stalla.builder.validating.episode
 import dev.stalla.builder.episode.EpisodePodloveBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.model.podlove.EpisodePodlove
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import dev.stalla.util.asUnmodifiable
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
 
     private var chapterBuilders: MutableList<EpisodePodloveSimpleChapterBuilder> = mutableListOf()

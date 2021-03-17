@@ -17,43 +17,43 @@ import dev.stalla.model.rss.RssCategory
 import java.util.Collections
 
 /** Transforms this list into a list of [RssCategoryBuilder]. */
-@InternalAPI
+@InternalAPI2
 @JvmName("asRssCategoryBuilders")
 internal fun List<RssCategory>.asBuilders(): List<RssCategoryBuilder> = map(RssCategory.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodeEnclosureBuilder]. */
-@InternalAPI
+@InternalAPI2
 @JvmName("asEnclosureBuilders")
 internal fun List<Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = map(Enclosure.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodePodcastindexSoundbiteBuilder]. */
-@InternalAPI
+@InternalAPI2
 @JvmName("asSoundbiteBuilders")
 internal fun List<Soundbite>.asBuilders(): List<EpisodePodcastindexSoundbiteBuilder> =
     map(Soundbite.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodePodcastindexTranscriptBuilder]. */
-@InternalAPI
+@InternalAPI2
 @JvmName("asTranscriptBuilders")
 internal fun List<Transcript>.asBuilders(): List<EpisodePodcastindexTranscriptBuilder> =
     map(Transcript.builder()::applyFrom)
 
 /** Transforms this list into a list of [PodcastPodcastindexFundingBuilder]. */
-@InternalAPI
+@InternalAPI2
 @JvmName("asFundingBuilders")
 internal fun List<Funding>.asBuilders(): List<PodcastPodcastindexFundingBuilder> = map(Funding.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodePodloveSimpleChapterBuilder]. */
-@InternalAPI
+@InternalAPI2
 @JvmName("asSimpleChapterBuilders")
 internal fun List<SimpleChapter>.asBuilders(): List<EpisodePodloveSimpleChapterBuilder> =
     map(SimpleChapter.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodeBuilder]. */
-@InternalAPI
+@InternalAPI2
 @JvmName("asEpisodeBuilders")
 internal fun List<Episode>.asBuilders(): List<EpisodeBuilder> = map(Episode.builder()::applyFrom)
 
 /** Returns an unmodifiable view of this list. */
-@InternalAPI
+@InternalAPI2
 internal fun <T> List<T>.asUnmodifiable(): List<T> = Collections.unmodifiableList(this)

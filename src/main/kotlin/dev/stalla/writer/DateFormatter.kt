@@ -1,10 +1,10 @@
 package dev.stalla.writer
 
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAccessor
 
-@InternalAPI
+@InternalAPI2
 internal object DateFormatter {
 
     private val formatter = DateTimeFormatter.RFC_1123_DATE_TIME

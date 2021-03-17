@@ -2,9 +2,9 @@ package dev.stalla.builder.validating.episode
 
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.model.podlove.SimpleChapter
-import dev.stalla.util.InternalAPI
+import dev.stalla.util.InternalAPI2
 
-@InternalAPI
+@InternalAPI2
 internal class ValidatingEpisodePodloveSimpleChapterBuilder : EpisodePodloveSimpleChapterBuilder {
 
     private lateinit var startValue: String

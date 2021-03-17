@@ -3,7 +3,7 @@ package dev.stalla.util
 import kotlin.contracts.contract
 
 /** Check if all argument elements are not null. */
-@InternalAPI
+@InternalAPI2
 internal fun allNotNull(
     a: Any?,
     b: Any? = Unit,
@@ -17,11 +17,11 @@ internal fun allNotNull(
 }
 
 /** Check if at least one argument element is not null. */
-@InternalAPI
+@InternalAPI2
 internal fun anyNotNull(vararg elements: Any?): Boolean = elements.any { p -> p != null }
 
 /** Check if all argument elements are null. */
-@InternalAPI
+@InternalAPI2
 internal fun allNull(
     a: Any?,
     b: Any? = null,
@@ -35,5 +35,5 @@ internal fun allNull(
 }
 
 /** Check if at least one argument element is null. */
-@InternalAPI
+@InternalAPI2
 internal fun anyNull(vararg elements: Any?): Boolean = elements.any { p -> p == null }
