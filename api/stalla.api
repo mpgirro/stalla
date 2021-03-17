@@ -1551,6 +1551,6 @@ public final class dev/stalla/parser/DateParser$sam$i$java_time_temporal_Tempora
 public abstract interface annotation class dev/stalla/util/ExperimentalAPI : java/lang/annotation/Annotation {
 }
 
-public abstract interface annotation class dev/stalla/util/InternalAPI : java/lang/annotation/Annotation {
+public abstract interface annotation class dev/stalla/util/InternalAPI2 : java/lang/annotation/Annotation {
 }
 
