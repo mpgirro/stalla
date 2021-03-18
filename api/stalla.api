@@ -495,6 +495,7 @@ public class dev/stalla/model/MediaType {
 	public static final field JAVASCRIPT Ldev/stalla/model/MediaType;
 	public static final field JPEG Ldev/stalla/model/MediaType;
 	public static final field JSON Ldev/stalla/model/MediaType;
+	public static final field JSON_CHAPTERS Ldev/stalla/model/MediaType;
 	public static final field L16_AUDIO Ldev/stalla/model/MediaType;
 	public static final field L24_AUDIO Ldev/stalla/model/MediaType;
 	public static final field MANIFEST_JSON Ldev/stalla/model/MediaType;

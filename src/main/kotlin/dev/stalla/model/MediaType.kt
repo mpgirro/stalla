@@ -320,6 +320,14 @@ public open class MediaType private constructor(
         @JvmField
         public val JSON: MediaType = MediaType("application", "json")
 
+        /**
+         * [Podcastindex Chapters](https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#chapters)
+         * pattern `application/json+chapters`, as defined by the
+         * [JSON Chapters Format specification](https://github.com/Podcastindex-org/podcast-namespace/blob/main/chapters/jsonChapters.md).
+         */
+        @JvmField
+        public val JSON_CHAPTERS: MediaType = MediaType("application", "json+chapters")
+
         /** L16 audio pattern `audio/L16`, as defined by [RFC 2586](https://tools.ietf.org/html/rfc2586). */
         @JvmField
         public val L16_AUDIO: MediaType = MediaType("audio", "L16")

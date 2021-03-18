@@ -122,7 +122,7 @@
             <googleplay:block>yes</googleplay:block>
             <podcast:transcript url="episode podcastindex transcript url" type="application/srt" language="it-IT" rel="captions"/>
             <podcast:soundbite startTime="1" duration="15.123">episode podcastindex soundbite title</podcast:soundbite>
-            <podcast:chapters url="episode podcastindex chapters url" type="application/json"/>
+            <podcast:chapters url="episode podcastindex chapters url" type="application/json+chapters"/>
         </item>
     </channel>
 </rss>

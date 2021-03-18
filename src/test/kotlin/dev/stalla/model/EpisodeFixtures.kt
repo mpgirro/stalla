@@ -155,5 +155,5 @@ internal fun anEpisodePodcastindexSoundbite(
 @JvmOverloads
 internal fun anEpisodePodcastindexChapters(
     url: String = "episode podcastindex chapters url",
-    type: MediaType = MediaType.JSON
+    type: MediaType = MediaType.JSON_CHAPTERS
 ) = Chapters(url, type)

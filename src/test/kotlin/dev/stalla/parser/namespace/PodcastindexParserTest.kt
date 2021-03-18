@@ -40,7 +40,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
 
     private val expectedChaptersBuilder = FakeEpisodePodcastindexChaptersBuilder()
         .url("episode podcastindex chapters url")
-        .type(MediaType.JSON)
+        .type(MediaType.JSON_CHAPTERS)
 
     private val expectedSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
         .startTime(StyledDuration.secondsAndFraction(33, 833_000_000))

@@ -134,7 +134,7 @@
                 <psc:chapter start="00:01:03.856" title="episode podlove simplechapter title 2" href="episode podlove simplechapter href 2" image="episode podlove simplechapter image 2"/>
                 <psc:chapter start="00:02:12.641" title="episode podlove simplechapter title 3" href="episode podlove simplechapter href 3" image="episode podlove simplechapter image 3"/>
             </psc:chapters>
-            <podcast:chapters url="episode podcastindex chapters url" type="application/json"/>
+            <podcast:chapters url="episode podcastindex chapters url" type="application/json+chapters"/>
             <podcast:soundbite startTime="33.833" duration="60.0">episode podcastindex soundbite title</podcast:soundbite>
             <podcast:transcript url="episode podcastindex transcript url" type="application/srt" language="it-IT" rel="episode podcastindex transcript rel"/>
         </item>
