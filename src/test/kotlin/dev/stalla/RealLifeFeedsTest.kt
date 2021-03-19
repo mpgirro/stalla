@@ -16,7 +16,7 @@ internal class RealLifeFeedsTest {
 
     private class RealLifeFeedsProvider : ArgumentsProvider by arguments(*allResourceFilesIn(resourceFilesPath).toTypedArray())
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Can parse, write and re-parse a real-life feed: {0}")
     @ArgumentsSource(RealLifeFeedsProvider::class)
     fun `should be able to parse, write and re-parse a real-life feed correctly`(testFile: File, @TemporaryFile tmpFile: File) {
         assertAll {
