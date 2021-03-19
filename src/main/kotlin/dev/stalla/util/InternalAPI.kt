@@ -11,11 +11,14 @@ package dev.stalla.util
 )
 @Target(
     AnnotationTarget.CLASS,
-    AnnotationTarget.TYPEALIAS,
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY,
-    AnnotationTarget.FIELD,
     AnnotationTarget.CONSTRUCTOR,
-    AnnotationTarget.PROPERTY_SETTER
+    AnnotationTarget.FIELD,
+    AnnotationTarget.FUNCTION,
+    AnnotationTarget.LOCAL_VARIABLE,
+    AnnotationTarget.PROPERTY,
+    AnnotationTarget.PROPERTY_GETTER,
+    AnnotationTarget.PROPERTY_SETTER,
+    AnnotationTarget.TYPEALIAS,
+    AnnotationTarget.VALUE_PARAMETER
 )
 public annotation class InternalAPI

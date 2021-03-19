@@ -11,10 +11,13 @@ package dev.stalla.util
 )
 @Target(
     AnnotationTarget.CLASS,
-    AnnotationTarget.TYPEALIAS,
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY,
+    AnnotationTarget.CONSTRUCTOR,
     AnnotationTarget.FIELD,
-    AnnotationTarget.CONSTRUCTOR
+    AnnotationTarget.FUNCTION,
+    AnnotationTarget.LOCAL_VARIABLE,
+    AnnotationTarget.PROPERTY,
+    AnnotationTarget.PROPERTY_GETTER,
+    AnnotationTarget.TYPEALIAS,
+    AnnotationTarget.VALUE_PARAMETER
 )
 public annotation class ExperimentalAPI
