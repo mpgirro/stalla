@@ -30,7 +30,7 @@ internal class ItunesCategoryTest {
     private class ItunesCategoryFactoryPropertyProvider : ArgumentsProvider by arguments(
         *ItunesCategory.Factory::class.declaredMemberProperties
             .filter { member -> member.visibility == KVisibility.PUBLIC }
-            .mapNotNull { member -> member.getter.call(ItunesCategory.TECHNOLOGY) }
+            .mapNotNull { member -> member.getter.call(this) }
             .filterIsInstance<ItunesCategory>()
             .toTypedArray()
     )
@@ -129,5 +129,5 @@ internal class ItunesCategoryTest {
         assertThat(ItunesCategory.of(null)).isNull()
     }
 
-    companion object // this context for reflection
+    companion object // Ensure there is a `this` instance to pass to kotlin.reflect.KCallable.call
 }

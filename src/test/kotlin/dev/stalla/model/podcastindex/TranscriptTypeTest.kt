@@ -86,5 +86,5 @@ internal class TranscriptTypeTest {
         assertThat(TranscriptType.of(null)).isNull()
     }
 
-    companion object
+    companion object // Ensure there is a `this` instance to pass to kotlin.reflect.KCallable.call
 }
