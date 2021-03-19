@@ -14,7 +14,10 @@ import java.lang.reflect.Method;
 
 import static dev.stalla.TestUtilKt.declaresException;
 import static dev.stalla.model.PodcastFixturesKt.aPodcast;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith({TemporaryFileParameterResolver.class})
 public class PodcastRssWriterInteropTest {

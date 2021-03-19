@@ -11,7 +11,9 @@ import java.lang.reflect.Modifier;
 import java.util.stream.Stream;
 
 import static dev.stalla.model.FixturesKt.getAllBuilderFactorySubTypes;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BuilderFactoryInteropTest {
 

@@ -1,12 +1,13 @@
 package dev.stalla.model.podcastindex;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static dev.stalla.model.EpisodeFixturesKt.*;
+import static dev.stalla.model.EpisodeFixturesKt.anEpisodePodcastindex;
+import static dev.stalla.model.EpisodeFixturesKt.anEpisodePodcastindexSoundbite;
+import static dev.stalla.model.EpisodeFixturesKt.anEpisodePodcastindexTranscript;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

@@ -18,17 +18,32 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.util.List;
 
 import static dev.stalla.TestUtilKt.declaresException;
 import static dev.stalla.TestUtilKt.declaresNoExceptions;
-import static dev.stalla.model.EpisodeFixturesKt.*;
-import static dev.stalla.model.FixturesKt.*;
+import static dev.stalla.model.EpisodeFixturesKt.aPodloveSimpleChapter;
+import static dev.stalla.model.EpisodeFixturesKt.anEpisode;
+import static dev.stalla.model.EpisodeFixturesKt.anEpisodePodcastindexSoundbite;
+import static dev.stalla.model.EpisodeFixturesKt.anEpisodePodcastindexTranscript;
+import static dev.stalla.model.FixturesKt.aGoogleplayCategory;
+import static dev.stalla.model.FixturesKt.aLink;
+import static dev.stalla.model.FixturesKt.anAtomPerson;
+import static dev.stalla.model.FixturesKt.anItunesCategory;
+import static dev.stalla.model.FixturesKt.anRssCategory;
 import static dev.stalla.model.PodcastFixturesKt.aPodcastPodcastindexFunding;
 import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith({TemporaryFileParameterResolver.class})
 public class PodcastRssParserInteropTest {

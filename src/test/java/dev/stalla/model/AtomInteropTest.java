@@ -3,7 +3,6 @@ package dev.stalla.model;
 import dev.stalla.model.atom.Atom;
 import dev.stalla.model.atom.AtomPerson;
 import dev.stalla.model.atom.Link;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
