@@ -168,7 +168,7 @@ internal abstract class NamespaceWriterTest {
     protected fun createChannelElement(): Element {
         val document = documentBuilder.newDocument()
 
-        var channel: Element? = null
+        var channel: Element?
         document.appendElement("rss") {
             channel = appendElement("channel")
         }

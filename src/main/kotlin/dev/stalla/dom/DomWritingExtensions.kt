@@ -16,6 +16,8 @@ import org.w3c.dom.Attr
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 
 /**
  * Appends a new `<namespace:image href="..."/>` with the given [namespace] to this [Element].
@@ -82,6 +84,9 @@ internal fun Node.appendElement(
     namespace: FeedNamespace? = null,
     init: Element.() -> Unit = {}
 ): Element {
+    contract {
+        callsInPlace(init, InvocationKind.EXACTLY_ONCE)
+    }
     val tagName = if (namespace != null) "${namespace.prefix}:$elementTagName" else elementTagName
     val element = getDocument().createElementNS(namespace?.uri, tagName)
     init(element)
@@ -111,6 +116,9 @@ internal fun Element.setAttributeWithNS(
     namespace: FeedNamespace? = null,
     init: Attr.() -> Unit = {}
 ): Attr {
+    contract {
+        callsInPlace(init, InvocationKind.EXACTLY_ONCE)
+    }
     val name = if (namespace != null) "${namespace.prefix}:$attributeName" else attributeName
     val attr = ownerDocument.createAttributeNS(namespace?.uri, name)
     init(attr)
