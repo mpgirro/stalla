@@ -1,7 +1,5 @@
-package dev.stalla.model.goggleplay;
+package dev.stalla.model.googleplay;
 
-import dev.stalla.model.googleplay.GoogleplayCategory;
-import dev.stalla.model.googleplay.PodcastGoogleplay;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

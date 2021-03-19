@@ -17,6 +17,7 @@ package dev.stalla.util
     AnnotationTarget.LOCAL_VARIABLE,
     AnnotationTarget.PROPERTY,
     AnnotationTarget.PROPERTY_GETTER,
+    AnnotationTarget.PROPERTY_SETTER,
     AnnotationTarget.TYPEALIAS,
     AnnotationTarget.VALUE_PARAMETER
 )
