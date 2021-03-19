@@ -7,8 +7,8 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for data from elements of the Fyyd namespace that are valid within `<channel>` elements.
  *
- * Use the [builder][Fyyd.Factory.builder] method to obtain an [PodcastFyydBuilder] instance
- * for expressive construction in Java.
+ * Direct instantiation in Java is discouraged. Use the [builder][Fyyd.Factory.builder]
+ * method to obtain a [PodcastFyydBuilder] instance for expressive construction instead.
  *
  * @property verify The Podcast's verification token.
  *
