@@ -11,10 +11,10 @@ import dev.stalla.model.BuilderFactory
  * Direct instantiation in Java is discouraged. Use the [builder][SimpleChapter.Factory.builder] method
  * to obtain an [EpisodePodloveSimpleChapterBuilder] instance for expressive construction instead.
  *
- * @property start The value of the chapter's `start` attribute.
- * @property title The value of the chapter's `title` attribute.
- * @property href The value of the chapter's `href` attribute.
- * @property image The value of the chapter's `image` attribute.
+ * @property start The value of the chapter's `start` attribute text content.
+ * @property title The value of the chapter's `title` attribute text content.
+ * @property href The value of the chapter's `href` attribute text content.
+ * @property image The value of the chapter's `image` attribute text content.
  *
  * @since 1.0.0
  */

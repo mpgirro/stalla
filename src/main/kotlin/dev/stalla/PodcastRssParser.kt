@@ -31,6 +31,8 @@ import java.io.File
 import java.io.IOException
 import java.io.InputStream
 import javax.xml.parsers.DocumentBuilder
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 
 /**
  * The main entry point to parse a podcast RSS feed. You can use
@@ -174,10 +176,14 @@ public object PodcastRssParser {
         builder
     }
 
-    private fun <T> Node.ifTagNameIs(tagName: String, block: () -> T): T? =
-        if (namespaceURI == null && nodeName == tagName) {
+    private fun <T> Node.ifTagNameIs(tagName: String, block: () -> T): T? {
+        contract {
+            callsInPlace(block, InvocationKind.AT_MOST_ONCE)
+        }
+        return if (namespaceURI == null && nodeName == tagName) {
             block()
         } else {
             null
         }
+    }
 }

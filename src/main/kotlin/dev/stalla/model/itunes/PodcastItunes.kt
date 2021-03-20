@@ -11,19 +11,19 @@ import dev.stalla.model.HrefOnlyImage
  * Direct instantiation in Java is discouraged. Use the [builder][PodcastItunes.Factory.builder]
  * method to obtain a [PodcastItunesBuilder] instance for expressive construction instead.
  *
- * @property subtitle The `<itunes:subtitle>` field text content.
- * @property summary The `<itunes:summary>` field text content.
+ * @property subtitle The `<itunes:subtitle>` element text content.
+ * @property summary The `<itunes:summary>` element text content.
  * @property image The data from the `<itunes:image>` element as an [HrefOnlyImage].
- * @property keywords The `<itunes:keywords>` field text content.
- * @property author The `<itunes:author>` field text content.
- * @property categories The list of `<itunes:category>` element's field text contents as [ItunesCategory].
- * @property explicit The logical value of the `<itunes:explicit>` field's text content.
- * @property block The logical value of the `<itunes:block>` field's text content.
- * @property complete The logical value of the `<itunes:complete>` field's text content.
- * @property type The value of the `<itunes:type>` field text content as a [ShowType].
+ * @property keywords The `<itunes:keywords>` element text content.
+ * @property author The `<itunes:author>` element text content.
+ * @property categories The list of `<itunes:category>` element text contents as [ItunesCategory].
+ * @property explicit The logical value of the `<itunes:explicit>` element text content.
+ * @property block The logical value of the `<itunes:block>` element text content.
+ * @property complete The logical value of the `<itunes:complete>` element text content.
+ * @property type The value of the `<itunes:type>` element text content as a [ShowType].
  * @property owner The `<itunes:owner>` elements data as an [ItunesOwner].
- * @property title The `<itunes:title>` field text content.
- * @property newFeedUrl The `<itunes:new-feed-url>` field text content.
+ * @property title The `<itunes:title>` element text content.
+ * @property newFeedUrl The `<itunes:new-feed-url>` element text content.
  *
  * @since 1.0.0
  */

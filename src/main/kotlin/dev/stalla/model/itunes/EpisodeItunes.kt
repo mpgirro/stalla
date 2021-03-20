@@ -12,17 +12,17 @@ import dev.stalla.model.StyledDuration
  * Direct instantiation in Java is discouraged. Use the [builder][EpisodeItunes.Factory.builder]
  * method to obtain a [EpisodeItunesBuilder] instance for expressive construction instead.
  *
- * @property title The `<itunes:title>` field text content.
- * @property duration The value of the `<itunes:duration>` field text content as a [StyledDuration].
+ * @property title The `<itunes:title>` element text content.
+ * @property duration The value of the `<itunes:duration>` element text content as a [StyledDuration].
  * @property image The data from the `<itunes:image>` element as an [HrefOnlyImage].
- * @property explicit The logical value of the `<itunes:explicit>` field's text content.
- * @property block The logical value of the `<itunes:block>` field's text content.
- * @property season The numeric value of the `<itunes:season>` field's text content.
- * @property episode The numeric value of the `<itunes:episode>` field's text content.
- * @property episodeType The value of the `<itunes:episodeType>` field text content as an [EpisodeType].
- * @property author The `<itunes:author>` field text content.
- * @property subtitle The `<itunes:subtitle>` field text content.
- * @property summary The `<itunes:summary>` field text content.
+ * @property explicit The logical value of the `<itunes:explicit>` element text content.
+ * @property block The logical value of the `<itunes:block>` element text content.
+ * @property season The numeric value of the `<itunes:season>` element text content.
+ * @property episode The numeric value of the `<itunes:episode>` element text content.
+ * @property episodeType The value of the `<itunes:episodeType>` element text content as an [EpisodeType].
+ * @property author The `<itunes:author>` element text content.
+ * @property subtitle The `<itunes:subtitle>` element text content.
+ * @property summary The `<itunes:summary>` element text content.
  *
  * @since 1.0.0
  */

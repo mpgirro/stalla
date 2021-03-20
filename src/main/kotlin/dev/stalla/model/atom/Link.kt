@@ -11,13 +11,13 @@ import dev.stalla.model.MediaType
  * Direct instantiation in Java is discouraged. Use the [builder][Link.Factory.builder]
  * method to obtain a [LinkBuilder] instance for expressive construction instead.
  *
- * @property href The `href` attribute textContent of the `<atom:link>` element.
- * @property hrefLang The `hrefLang` attribute textContent of the `<atom:link>` element.
- * @property hrefResolved The `hrefResolved` attribute textContent of the `<atom:link>` element.
- * @property length The `length` attribute textContent of the `<atom:link>` element.
- * @property rel The `rel` attribute textContent of the `<atom:link>` element.
- * @property title The `title` attribute textContent of the `<atom:link>` element.
- * @property type The `type` attribute textContent of the `<atom:link>` element as a [MediaType].
+ * @property href The `href` attribute text content of the `<atom:link>` element.
+ * @property hrefLang The `hrefLang` attribute text content of the `<atom:link>` element.
+ * @property hrefResolved The `hrefResolved` attribute text content of the `<atom:link>` element.
+ * @property length The `length` attribute text content of the `<atom:link>` element.
+ * @property rel The `rel` attribute text content of the `<atom:link>` element.
+ * @property title The `title` attribute text content of the `<atom:link>` element.
+ * @property type The `type` attribute text content of the `<atom:link>` element as a [MediaType].
  *
  * @since 1.0.0
  */

@@ -11,7 +11,7 @@ import dev.stalla.model.BuilderFactory
  * method to obtain an [EpisodeGuidBuilder] instance for expressive construction instead.
  *
  * @property guid The text content of the element.
- * @property isPermalink The boolean interpretation of the `isPermalink` attribute.
+ * @property isPermalink The boolean interpretation of the `isPermalink` attribute text content.
  *
  * @since 1.0.0
  */

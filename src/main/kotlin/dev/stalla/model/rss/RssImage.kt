@@ -24,14 +24,14 @@ import dev.stalla.model.BuilderFactory
  * Direct instantiation in Java is discouraged. Use the [builder][RssImage.Factory.builder]
  * method to obtain an [RssImageBuilder] instance for expressive construction instead.
  *
- * @property url The value of an RSS `<url>` element inside an `<image>`. Represents the image URL.
- * @property title The value of an RSS `<title>` element inside an `<image>`.
+ * @property url The text content of an RSS `<url>` element inside an `<image>`. Represents the image URL.
+ * @property title The text content of an RSS `<title>` element inside an `<image>`.
  *                 **Must** match the containing podcast's or episode's `title`.
- * @property link The value of an RSS `<link>` element inside an `<image>`.
+ * @property link The text content of an RSS `<link>` element inside an `<image>`.
  *                **Must** match the containing podcast's or episode's `link`.
- * @property width The numeric value of an RSS `<width>` element inside an `<image>` element.
- * @property height The numeric value of an RSS `<height>` element inside an `<image>` element.
- * @property description The value of an RSS `<description>` element inside an `<image>`.
+ * @property width The numeric interpretation of the text content of an RSS `<width>` element inside an `<image>` element.
+ * @property height The numeric interpretation of the text content of an RSS `<height>` element inside an `<image>` element.
+ * @property description The text content of an RSS `<description>` element inside an `<image>`.
  *
  * @since 1.0.0
  */

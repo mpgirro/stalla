@@ -10,7 +10,7 @@ import dev.stalla.model.BuilderFactory
  * Direct instantiation in Java is discouraged. Use the [builder][Bitlove.Factory.builder]
  * method to obtain an [EpisodeBitloveBuilder] instance for expressive construction instead.
  *
- * @property guid The `bitlove:guid` attribute for the RSS `<enclosure>` element.
+ * @property guid The `bitlove:guid` attribute text content for the RSS `<enclosure>` element.
  *
  * @since 1.0.0
  */
