@@ -3,7 +3,11 @@ package dev.stalla.builder
 import dev.stalla.model.atom.AtomPerson
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [AtomPerson] instances. */
+/**
+ * Builder for constructing [AtomPerson] instances.
+ *
+ * @since 1.0.0
+ */
 public interface AtomPersonBuilder : Builder<AtomPerson> {
 
     /** Set the name value. */

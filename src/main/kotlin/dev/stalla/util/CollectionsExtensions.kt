@@ -14,41 +14,46 @@ import dev.stalla.model.podcastindex.Transcript
 import dev.stalla.model.podlove.SimpleChapter
 import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.rss.RssCategory
+import java.util.Collections
 
 /** Transforms this list into a list of [RssCategoryBuilder]. */
-@InternalApi
+@InternalAPI
 @JvmName("asRssCategoryBuilders")
 internal fun List<RssCategory>.asBuilders(): List<RssCategoryBuilder> = map(RssCategory.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodeEnclosureBuilder]. */
-@InternalApi
+@InternalAPI
 @JvmName("asEnclosureBuilders")
 internal fun List<Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = map(Enclosure.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodePodcastindexSoundbiteBuilder]. */
-@InternalApi
+@InternalAPI
 @JvmName("asSoundbiteBuilders")
 internal fun List<Soundbite>.asBuilders(): List<EpisodePodcastindexSoundbiteBuilder> =
     map(Soundbite.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodePodcastindexTranscriptBuilder]. */
-@InternalApi
+@InternalAPI
 @JvmName("asTranscriptBuilders")
 internal fun List<Transcript>.asBuilders(): List<EpisodePodcastindexTranscriptBuilder> =
     map(Transcript.builder()::applyFrom)
 
 /** Transforms this list into a list of [PodcastPodcastindexFundingBuilder]. */
-@InternalApi
+@InternalAPI
 @JvmName("asFundingBuilders")
 internal fun List<Funding>.asBuilders(): List<PodcastPodcastindexFundingBuilder> = map(Funding.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodePodloveSimpleChapterBuilder]. */
-@InternalApi
+@InternalAPI
 @JvmName("asSimpleChapterBuilders")
 internal fun List<SimpleChapter>.asBuilders(): List<EpisodePodloveSimpleChapterBuilder> =
     map(SimpleChapter.builder()::applyFrom)
 
 /** Transforms this list into a list of [EpisodeBuilder]. */
-@InternalApi
+@InternalAPI
 @JvmName("asEpisodeBuilders")
 internal fun List<Episode>.asBuilders(): List<EpisodeBuilder> = map(Episode.builder()::applyFrom)
+
+/** Returns an unmodifiable view of this list. */
+@InternalAPI
+internal fun <T> List<T>.asUnmodifiable(): List<T> = Collections.unmodifiableList(this)

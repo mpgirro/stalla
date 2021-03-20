@@ -8,10 +8,16 @@ import java.util.Locale
 /**
  * The transcript for the episode.
  *
- * @param url The URL of the episode transcript.
- * @param type The type of transcript. One of the supported [TranscriptType]s.
- * @param language The transcript language.
- * @param rel When present and equals to `captions`, the transcript is considered to be a CC, regardless of its [type].
+ * Direct instantiation in Java is discouraged. Use the [builder][Transcript.Factory.builder] method
+ * to obtain an [EpisodePodcastindexTranscriptBuilder] instance for expressive construction instead.
+ *
+ * @property url The URL of the episode transcript.
+ * @property type The type of transcript. One of the supported [TranscriptType]s.
+ * @property language The transcript language.
+ * @property rel When present and equals to `captions`, the transcript is considered to be a CC,
+ *               regardless of its [type].
+ *
+ * @since 1.0.0
  */
 public data class Transcript(
     val url: String,

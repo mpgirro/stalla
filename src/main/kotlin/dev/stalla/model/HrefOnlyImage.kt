@@ -6,7 +6,12 @@ import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 /**
  * An `<image href="...">` tag. The `href` attribute is _mandatory_.
  *
- * @property href The value of the `href` attribute. Represents the image URL.
+ * Direct instantiation in Java is discouraged. Use the [builder][HrefOnlyImage.Factory.builder]
+ * method to obtain an [HrefOnlyImageBuilder] instance for expressive construction instead.
+ *
+ * @property href The text content of the `href` attribute. Represents the image URL.
+ *
+ * @since 1.0.0
  */
 public data class HrefOnlyImage(val href: String) {
 

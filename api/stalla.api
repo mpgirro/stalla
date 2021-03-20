@@ -1,17 +1,17 @@
 public final class dev/stalla/PodcastRssParser {
 	public static final field INSTANCE Ldev/stalla/PodcastRssParser;
-	public final fun parse (Ljava/io/File;)Ldev/stalla/model/Podcast;
-	public final fun parse (Ljava/io/InputStream;)Ldev/stalla/model/Podcast;
-	public final fun parse (Ljava/io/InputStream;Ljava/lang/String;)Ldev/stalla/model/Podcast;
-	public final fun parse (Ljava/lang/String;)Ldev/stalla/model/Podcast;
-	public final fun parse (Lorg/w3c/dom/Document;)Ldev/stalla/model/Podcast;
-	public final fun parse (Lorg/xml/sax/InputSource;)Ldev/stalla/model/Podcast;
+	public static final fun parse (Ljava/io/File;)Ldev/stalla/model/Podcast;
+	public static final fun parse (Ljava/io/InputStream;)Ldev/stalla/model/Podcast;
+	public static final fun parse (Ljava/io/InputStream;Ljava/lang/String;)Ldev/stalla/model/Podcast;
+	public static final fun parse (Ljava/lang/String;)Ldev/stalla/model/Podcast;
+	public static final fun parse (Lorg/w3c/dom/Document;)Ldev/stalla/model/Podcast;
+	public static final fun parse (Lorg/xml/sax/InputSource;)Ldev/stalla/model/Podcast;
 }
 
 public final class dev/stalla/PodcastRssWriter {
 	public static final field INSTANCE Ldev/stalla/PodcastRssWriter;
-	public final fun writeRssFeed (Ldev/stalla/model/Podcast;Ljava/io/File;)V
-	public final fun writeRssFeed (Ldev/stalla/model/Podcast;Ljava/io/OutputStream;)V
+	public static final fun write (Ldev/stalla/model/Podcast;Ljava/io/File;)V
+	public static final fun write (Ldev/stalla/model/Podcast;Ljava/io/OutputStream;)V
 }
 
 public abstract interface class dev/stalla/builder/AtomBuilder : dev/stalla/builder/Builder {
@@ -495,6 +495,7 @@ public class dev/stalla/model/MediaType {
 	public static final field JAVASCRIPT Ldev/stalla/model/MediaType;
 	public static final field JPEG Ldev/stalla/model/MediaType;
 	public static final field JSON Ldev/stalla/model/MediaType;
+	public static final field JSON_CHAPTERS Ldev/stalla/model/MediaType;
 	public static final field L16_AUDIO Ldev/stalla/model/MediaType;
 	public static final field L24_AUDIO Ldev/stalla/model/MediaType;
 	public static final field MANIFEST_JSON Ldev/stalla/model/MediaType;
@@ -606,7 +607,7 @@ public final class dev/stalla/model/Podcast {
 	public final fun getLastBuildDate ()Ljava/time/temporal/TemporalAccessor;
 	public final fun getLink ()Ljava/lang/String;
 	public final fun getManagingEditor ()Ljava/lang/String;
-	public final fun getPodcast ()Ldev/stalla/model/podcastindex/PodcastPodcastindex;
+	public final fun getPodcastindex ()Ldev/stalla/model/podcastindex/PodcastPodcastindex;
 	public final fun getPubDate ()Ljava/time/temporal/TemporalAccessor;
 	public final fun getTitle ()Ljava/lang/String;
 	public final fun getTtl ()Ljava/lang/Integer;
@@ -865,7 +866,7 @@ public final class dev/stalla/model/fyyd/Fyyd$Factory : dev/stalla/model/Builder
 	public fun builder ()Ldev/stalla/builder/podcast/PodcastFyydBuilder;
 }
 
-public final class dev/stalla/model/googleplay/EpisodeGoogleplay : dev/stalla/model/googleplay/GoogleplayBase {
+public final class dev/stalla/model/googleplay/EpisodeGoogleplay {
 	public static final field Factory Ldev/stalla/model/googleplay/EpisodeGoogleplay$Factory;
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -878,11 +879,11 @@ public final class dev/stalla/model/googleplay/EpisodeGoogleplay : dev/stalla/mo
 	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;)Ldev/stalla/model/googleplay/EpisodeGoogleplay;
 	public static synthetic fun copy$default (Ldev/stalla/model/googleplay/EpisodeGoogleplay;Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;ILjava/lang/Object;)Ldev/stalla/model/googleplay/EpisodeGoogleplay;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAuthor ()Ljava/lang/String;
-	public fun getBlock ()Z
-	public fun getDescription ()Ljava/lang/String;
+	public final fun getAuthor ()Ljava/lang/String;
+	public final fun getBlock ()Z
+	public final fun getDescription ()Ljava/lang/String;
 	public final fun getExplicit ()Ldev/stalla/model/googleplay/ExplicitType;
-	public fun getImage ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun getImage ()Ldev/stalla/model/HrefOnlyImage;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -937,7 +938,7 @@ public final class dev/stalla/model/googleplay/GoogleplayCategory$Factory : dev/
 	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
 }
 
-public final class dev/stalla/model/googleplay/PodcastGoogleplay : dev/stalla/model/googleplay/GoogleplayBase {
+public final class dev/stalla/model/googleplay/PodcastGoogleplay {
 	public static final field Factory Ldev/stalla/model/googleplay/PodcastGoogleplay$Factory;
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -953,13 +954,13 @@ public final class dev/stalla/model/googleplay/PodcastGoogleplay : dev/stalla/mo
 	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;)Ldev/stalla/model/googleplay/PodcastGoogleplay;
 	public static synthetic fun copy$default (Ldev/stalla/model/googleplay/PodcastGoogleplay;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/googleplay/PodcastGoogleplay;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAuthor ()Ljava/lang/String;
-	public fun getBlock ()Z
+	public final fun getAuthor ()Ljava/lang/String;
+	public final fun getBlock ()Z
 	public final fun getCategories ()Ljava/util/List;
-	public fun getDescription ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/lang/String;
 	public final fun getEmail ()Ljava/lang/String;
 	public final fun getExplicit ()Ljava/lang/Boolean;
-	public fun getImage ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun getImage ()Ldev/stalla/model/HrefOnlyImage;
 	public final fun getNewFeedUrl ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -970,7 +971,7 @@ public final class dev/stalla/model/googleplay/PodcastGoogleplay$Factory : dev/s
 	public fun builder ()Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 }
 
-public final class dev/stalla/model/itunes/EpisodeItunes : dev/stalla/model/itunes/ItunesBase {
+public final class dev/stalla/model/itunes/EpisodeItunes {
 	public static final field Factory Ldev/stalla/model/itunes/EpisodeItunes$Factory;
 	public fun <init> (Ljava/lang/String;Ldev/stalla/model/StyledDuration;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/Boolean;ZLjava/lang/Integer;Ljava/lang/Integer;Ldev/stalla/model/itunes/EpisodeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 	public synthetic fun <init> (Ljava/lang/String;Ldev/stalla/model/StyledDuration;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/Boolean;ZLjava/lang/Integer;Ljava/lang/Integer;Ldev/stalla/model/itunes/EpisodeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -989,17 +990,17 @@ public final class dev/stalla/model/itunes/EpisodeItunes : dev/stalla/model/itun
 	public final fun copy (Ljava/lang/String;Ldev/stalla/model/StyledDuration;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/Boolean;ZLjava/lang/Integer;Ljava/lang/Integer;Ldev/stalla/model/itunes/EpisodeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/itunes/EpisodeItunes;
 	public static synthetic fun copy$default (Ldev/stalla/model/itunes/EpisodeItunes;Ljava/lang/String;Ldev/stalla/model/StyledDuration;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/Boolean;ZLjava/lang/Integer;Ljava/lang/Integer;Ldev/stalla/model/itunes/EpisodeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/itunes/EpisodeItunes;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAuthor ()Ljava/lang/String;
-	public fun getBlock ()Z
+	public final fun getAuthor ()Ljava/lang/String;
+	public final fun getBlock ()Z
 	public final fun getDuration ()Ldev/stalla/model/StyledDuration;
 	public final fun getEpisode ()Ljava/lang/Integer;
 	public final fun getEpisodeType ()Ldev/stalla/model/itunes/EpisodeType;
 	public final fun getExplicit ()Ljava/lang/Boolean;
-	public fun getImage ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun getImage ()Ldev/stalla/model/HrefOnlyImage;
 	public final fun getSeason ()Ljava/lang/Integer;
-	public fun getSubtitle ()Ljava/lang/String;
-	public fun getSummary ()Ljava/lang/String;
-	public fun getTitle ()Ljava/lang/String;
+	public final fun getSubtitle ()Ljava/lang/String;
+	public final fun getSummary ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -1178,7 +1179,7 @@ public final class dev/stalla/model/itunes/ItunesOwner$Factory : dev/stalla/mode
 	public fun builder ()Ldev/stalla/builder/podcast/PodcastItunesOwnerBuilder;
 }
 
-public final class dev/stalla/model/itunes/PodcastItunes : dev/stalla/model/itunes/ItunesBase {
+public final class dev/stalla/model/itunes/PodcastItunes {
 	public static final field Factory Ldev/stalla/model/itunes/PodcastItunes$Factory;
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLdev/stalla/model/itunes/ShowType;Ldev/stalla/model/itunes/ItunesOwner;Ljava/lang/String;Ljava/lang/String;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLdev/stalla/model/itunes/ShowType;Ldev/stalla/model/itunes/ItunesOwner;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -1199,18 +1200,18 @@ public final class dev/stalla/model/itunes/PodcastItunes : dev/stalla/model/itun
 	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLdev/stalla/model/itunes/ShowType;Ldev/stalla/model/itunes/ItunesOwner;Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/itunes/PodcastItunes;
 	public static synthetic fun copy$default (Ldev/stalla/model/itunes/PodcastItunes;Ljava/lang/String;Ljava/lang/String;Ldev/stalla/model/HrefOnlyImage;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLdev/stalla/model/itunes/ShowType;Ldev/stalla/model/itunes/ItunesOwner;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/itunes/PodcastItunes;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getAuthor ()Ljava/lang/String;
-	public fun getBlock ()Z
+	public final fun getAuthor ()Ljava/lang/String;
+	public final fun getBlock ()Z
 	public final fun getCategories ()Ljava/util/List;
 	public final fun getComplete ()Z
 	public final fun getExplicit ()Z
-	public fun getImage ()Ldev/stalla/model/HrefOnlyImage;
+	public final fun getImage ()Ldev/stalla/model/HrefOnlyImage;
 	public final fun getKeywords ()Ljava/lang/String;
 	public final fun getNewFeedUrl ()Ljava/lang/String;
 	public final fun getOwner ()Ldev/stalla/model/itunes/ItunesOwner;
-	public fun getSubtitle ()Ljava/lang/String;
-	public fun getSummary ()Ljava/lang/String;
-	public fun getTitle ()Ljava/lang/String;
+	public final fun getSubtitle ()Ljava/lang/String;
+	public final fun getSummary ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
 	public final fun getType ()Ldev/stalla/model/itunes/ShowType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -1548,6 +1549,9 @@ public final class dev/stalla/parser/DateParser$sam$i$java_time_temporal_Tempora
 	public final synthetic fun queryFrom (Ljava/time/temporal/TemporalAccessor;)Ljava/lang/Object;
 }
 
-public abstract interface annotation class dev/stalla/util/InternalApi : java/lang/annotation/Annotation {
+public abstract interface annotation class dev/stalla/util/ExperimentalAPI : java/lang/annotation/Annotation {
+}
+
+public abstract interface annotation class dev/stalla/util/InternalAPI : java/lang/annotation/Annotation {
 }
 

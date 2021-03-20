@@ -6,7 +6,11 @@ import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [PodcastPodcastindex] instances. */
+/**
+ * Builder for constructing [PodcastPodcastindex] instances.
+ *
+ * @since 1.0.0
+ */
 public interface PodcastPodcastindexBuilder : Builder<PodcastPodcastindex> {
 
     /** Set the [PodcastPodcastindexLockedBuilder]. */

@@ -9,6 +9,8 @@ import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.arguments
 import dev.stalla.model.MediaType
+import dev.stalla.model.TranscriptTypeNameProvider
+import dev.stalla.model.allTranscriptTypeNames
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsProvider
@@ -17,8 +19,6 @@ import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberProperties
 
 internal class TranscriptTypeTest {
-
-    private class TranscriptTypeNameProvider : ArgumentsProvider by arguments(*allTranscriptTypeNames.toTypedArray())
 
     private class TranscriptTypeFactoryPropertyProvider : ArgumentsProvider by arguments(
         *TranscriptType.Factory::class.declaredMemberProperties
@@ -86,14 +86,5 @@ internal class TranscriptTypeTest {
         assertThat(TranscriptType.of(null)).isNull()
     }
 
-    companion object {
-
-        @JvmStatic
-        private val allTranscriptTypeNames = listOf(
-            "text/plain",
-            "text/html",
-            "application/json",
-            "application/srt"
-        )
-    }
+    companion object // Ensure there is a `this` instance to pass to kotlin.reflect.KCallable.call
 }

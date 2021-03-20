@@ -7,8 +7,13 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for data from elements of the Podcastindex namespace that are valid within `<channel>` elements.
  *
+ * Direct instantiation in Java is discouraged. Use the [builder][PodcastPodcastindex.Factory.builder]
+ * method to obtain a [PodcastPodcastindexBuilder] instance for expressive construction instead.
+ *
  * @property locked The lock status of the podcast.
  * @property funding The funding information for the podcast.
+ *
+ * @since 1.0.0
  */
 public data class PodcastPodcastindex(
     val locked: Locked? = null,

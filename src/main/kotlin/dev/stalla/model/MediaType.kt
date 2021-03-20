@@ -2,7 +2,7 @@ package dev.stalla.model
 
 import dev.stalla.model.MediaType.Factory
 import dev.stalla.parser.MediaTypeParser
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
 import dev.stalla.util.isQuoted
 import dev.stalla.util.mediaTypeSeparatorSymbols
@@ -22,12 +22,15 @@ import kotlin.contracts.contract
  *
  * Some useful predefined instances are provided by the [companion object][Factory] (static class members in Java).
  *
+ * Use the [of][MediaType.Factory.of] method to obtain an instance from a string pattern.
+ *
  * @property type The type part of the media type.
  * @property subtype The subtype part of the media type.
  * @property essence The [type] followed by `/` followed by [subtype].
  * @property parameters The modifiers of the media subtype.
  *
  * @see Factory Companion object exposing references to the some predefined instances and a factory method.
+ * @since 1.0.0
  */
 public open class MediaType private constructor(
     public open val type: String,
@@ -36,7 +39,7 @@ public open class MediaType private constructor(
     public val parameters: List<Parameter> = emptyList()
 ) {
 
-    @InternalApi
+    @InternalAPI
     internal constructor(
         type: String,
         subtype: String,
@@ -199,13 +202,11 @@ public open class MediaType private constructor(
          * Does not check if [rawValue] matches an
          * [IANA media type][http://www.iana.org/assignments/media-types/media-types.xhtml].
          *
-         * @param rawValue The string representation of the instance.
+         * @param rawValue The case insensitive string representation of the instance.
          * @return The instance matching [rawValue], or `null` if no matching instance exists.
          */
         @JvmStatic
-        override fun of(rawValue: String?): MediaType? = rawValue?.let { value ->
-            return MediaTypeParser.parse(value)
-        }
+        override fun of(rawValue: String?): MediaType? = rawValue?.let { value -> MediaTypeParser.parse(value) }
 
         /** [Advanced Audio Coding](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) pattern `audio/aac`. */
         @JvmField
@@ -317,6 +318,14 @@ public open class MediaType private constructor(
          */
         @JvmField
         public val JSON: MediaType = MediaType("application", "json")
+
+        /**
+         * [Podcastindex Chapters](https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#chapters)
+         * pattern `application/json+chapters`, as defined by the
+         * [JSON Chapters Format specification](https://github.com/Podcastindex-org/podcast-namespace/blob/main/chapters/jsonChapters.md).
+         */
+        @JvmField
+        public val JSON_CHAPTERS: MediaType = MediaType("application", "json+chapters")
 
         /** L16 audio pattern `audio/L16`, as defined by [RFC 2586](https://tools.ietf.org/html/rfc2586). */
         @JvmField

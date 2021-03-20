@@ -8,7 +8,7 @@ import dev.stalla.dom.toGoogleplayCategory
 import dev.stalla.dom.toHrefOnlyImageBuilder
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import org.w3c.dom.Node
 
 /**
@@ -16,7 +16,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://www.google.com/schemas/play-podcasts/1.0`
  */
-@InternalApi
+@InternalAPI
 internal object GoogleplayParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.GOOGLE_PLAY

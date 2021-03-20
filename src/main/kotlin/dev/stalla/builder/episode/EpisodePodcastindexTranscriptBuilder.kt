@@ -6,7 +6,11 @@ import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.util.whenNotNull
 import java.util.Locale
 
-/** Builder for constructing [Transcript] instances. */
+/**
+ * Builder for constructing [Transcript] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodePodcastindexTranscriptBuilder : Builder<Transcript> {
 
     /** Set the url value. */

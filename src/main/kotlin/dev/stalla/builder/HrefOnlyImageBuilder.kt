@@ -3,7 +3,11 @@ package dev.stalla.builder
 import dev.stalla.model.HrefOnlyImage
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [HrefOnlyImage] instances. */
+/**
+ * Builder for constructing [HrefOnlyImage] instances.
+ *
+ * @since 1.0.0
+ */
 public interface HrefOnlyImageBuilder : Builder<HrefOnlyImage> {
 
     /** Set the href value. */

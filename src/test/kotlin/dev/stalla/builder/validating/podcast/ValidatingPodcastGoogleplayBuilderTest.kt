@@ -13,9 +13,9 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
+import dev.stalla.model.aPodcastGoogleplay
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
-import dev.stalla.model.podcast.aPodcastGoogleplay
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastGoogleplayBuilderTest {

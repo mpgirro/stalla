@@ -2,9 +2,9 @@ package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.podcast.PodcastFyydBuilder
 import dev.stalla.model.fyyd.Fyyd
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 
-@InternalApi
+@InternalAPI
 internal class ValidatingPodcastFyydBuilder : PodcastFyydBuilder {
 
     private lateinit var verifyValue: String

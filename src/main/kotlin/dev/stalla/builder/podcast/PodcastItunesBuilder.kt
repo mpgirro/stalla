@@ -8,7 +8,11 @@ import dev.stalla.model.itunes.ItunesOwner
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [PodcastItunes] instances. */
+/**
+ * Builder for constructing [PodcastItunes] instances.
+ *
+ * @since 1.0.0
+ */
 public interface PodcastItunesBuilder : Builder<PodcastItunes> {
 
     /** Set the subtitle value. */

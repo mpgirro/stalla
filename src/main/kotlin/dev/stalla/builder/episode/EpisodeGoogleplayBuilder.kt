@@ -7,7 +7,11 @@ import dev.stalla.model.googleplay.EpisodeGoogleplay
 import dev.stalla.model.googleplay.ExplicitType
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [EpisodeGoogleplay] instances. */
+/**
+ * Builder for constructing [EpisodeGoogleplay] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodeGoogleplayBuilder : Builder<EpisodeGoogleplay> {
 
     /** Set the author value. */

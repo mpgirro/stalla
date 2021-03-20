@@ -5,9 +5,10 @@ import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.model.podcastindex.EpisodePodcastindex
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
+import dev.stalla.util.asUnmodifiable
 
-@InternalApi
+@InternalAPI
 internal class ValidatingEpisodePodcastindexBuilder : EpisodePodcastindexBuilder {
 
     private var chaptersBuilderValue: EpisodePodcastindexChaptersBuilder? = null
@@ -40,8 +41,8 @@ internal class ValidatingEpisodePodcastindexBuilder : EpisodePodcastindexBuilder
         }
 
         return EpisodePodcastindex(
-            transcripts = transcriptBuilders.mapNotNull { it.build() },
-            soundbites = soundbiteBuilders.mapNotNull { it.build() },
+            transcripts = transcriptBuilders.mapNotNull { it.build() }.asUnmodifiable(),
+            soundbites = soundbiteBuilders.mapNotNull { it.build() }.asUnmodifiable(),
             chapters = chaptersBuilderValue?.build()
         )
     }

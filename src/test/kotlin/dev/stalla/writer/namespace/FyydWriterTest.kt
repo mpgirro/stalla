@@ -2,8 +2,8 @@ package dev.stalla.writer.namespace
 
 import assertk.assertThat
 import dev.stalla.hasNoDifferences
-import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcast.aPodcastFyyd
+import dev.stalla.model.aPodcast
+import dev.stalla.model.aPodcastFyyd
 import org.junit.jupiter.api.Test
 
 internal class FyydWriterTest : NamespaceWriterTest() {

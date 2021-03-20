@@ -1,20 +1,9 @@
-package dev.stalla.model.podcast
+package dev.stalla.model
 
 import dev.stalla.dateTime
-import dev.stalla.model.Episode
-import dev.stalla.model.HrefOnlyImage
-import dev.stalla.model.Podcast
-import dev.stalla.model.aGoogleplayCategory
-import dev.stalla.model.aLink
-import dev.stalla.model.anAtomPerson
-import dev.stalla.model.anHrefOnlyImage
-import dev.stalla.model.anItunesCategory
-import dev.stalla.model.anRssCategory
-import dev.stalla.model.anRssImage
 import dev.stalla.model.atom.Atom
 import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
-import dev.stalla.model.episode.anEpisode
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.model.googleplay.GoogleplayCategory
@@ -32,6 +21,7 @@ import java.time.Month
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
 
+@JvmOverloads
 internal fun aPodcast(
     title: String = "podcast title",
     link: String = "podcast link",
@@ -78,6 +68,7 @@ internal fun aPodcast(
     podcastindex
 )
 
+@JvmOverloads
 internal fun aPodcastItunes(
     subtitle: String? = "podcast itunes subtitle",
     summary: String? = "podcast itunes summary",
@@ -94,21 +85,25 @@ internal fun aPodcastItunes(
     newFeedUrl: String? = "podcast itunes newFeedUrl"
 ) = PodcastItunes(subtitle, summary, image, keywords, author, categories, explicit, block, complete, type, owner, title, newFeedUrl)
 
+@JvmOverloads
 internal fun anPodcastItunesOwner(
     name: String = "podcast itunes owner name",
     email: String = "podcast itunes owner email"
 ) = ItunesOwner(name, email)
 
+@JvmOverloads
 internal fun aPodcastAtom(
     authors: List<AtomPerson> = listOf(anAtomPerson("podcast atom author name")),
     contributors: List<AtomPerson> = listOf(anAtomPerson("podcast atom contributor name")),
     links: List<Link> = listOf(aLink("podcast atom link href"))
 ) = Atom(authors, contributors, links)
 
+@JvmOverloads
 internal fun aPodcastFyyd(
     verify: String = "podcast fyyd verify"
 ) = Fyyd(verify)
 
+@JvmOverloads
 internal fun aPodcastFeedpress(
     newsletterId: String? = "podcast feedpress newsletterId",
     locale: Locale? = Locale.GERMAN,
@@ -117,6 +112,7 @@ internal fun aPodcastFeedpress(
     link: String? = "podcast feedpress link"
 ) = Feedpress(newsletterId, locale, podcastId, cssFile, link)
 
+@JvmOverloads
 internal fun aPodcastGoogleplay(
     author: String? = "podcast googleplay author",
     email: String? = "podcast googleplay email",
@@ -128,16 +124,19 @@ internal fun aPodcastGoogleplay(
     newFeedUrl: String? = "podcast googleplay newFeedUrl"
 ) = PodcastGoogleplay(author, email, categories, description, explicit, block, image, newFeedUrl)
 
+@JvmOverloads
 internal fun aPodcastPodcastindex(
     locked: Locked? = aPodcastPodcastindexLocked(),
     funding: List<Funding> = listOf(aPodcastPodcastindexFunding())
 ) = PodcastPodcastindex(locked, funding)
 
+@JvmOverloads
 internal fun aPodcastPodcastindexLocked(
     owner: String = "podcast podcastindex locked owner",
     locked: Boolean = true
 ) = Locked(owner, locked)
 
+@JvmOverloads
 internal fun aPodcastPodcastindexFunding(
     url: String = "podcast podcastindex funding url",
     message: String = "podcast podcastindex funding message"

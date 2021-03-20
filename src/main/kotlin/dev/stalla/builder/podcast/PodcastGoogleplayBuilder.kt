@@ -7,7 +7,11 @@ import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [PodcastGoogleplay] instances. */
+/**
+ * Builder for constructing [PodcastGoogleplay] instances.
+ *
+ * @since 1.0.0
+ */
 public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
 
     /** Set the author value. */

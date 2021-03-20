@@ -18,8 +18,10 @@ import dev.stalla.writer.namespace.RssWriter
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import java.io.File
+import java.io.IOException
 import java.io.OutputStream
 import javax.xml.transform.OutputKeys
+import javax.xml.transform.TransformerException
 import javax.xml.transform.TransformerFactory
 import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
@@ -27,6 +29,8 @@ import javax.xml.transform.stream.StreamResult
 /**
  * The main entry point to write a [Podcast] instance to an RSS feed.
  * You can use any of the `writeRssFeed` overloads.
+ *
+ * @since 1.0.0
  */
 public object PodcastRssWriter {
 
@@ -60,10 +64,15 @@ public object PodcastRssWriter {
      *
      * @param podcast The [Podcast] to write out.
      * @param file The [File] to write to. Any contents will be overwritten.
+     * @throws IOException If any IO errors occur.
+     * @throws TransformerException If an unrecoverable error occurs during the course of the transformation to XML.
+     * @throws NullPointerException If [podcast] or [file] is `null`.
      */
-    public fun writeRssFeed(podcast: Podcast, file: File) {
+    @JvmStatic
+    @Throws(IOException::class, TransformerException::class)
+    public fun write(podcast: Podcast, file: File) {
         file.outputStream()
-            .use { outputStream -> writeRssFeed(podcast, outputStream) }
+            .use { outputStream -> write(podcast, outputStream) }
     }
 
     /**
@@ -71,8 +80,13 @@ public object PodcastRssWriter {
      *
      * @param podcast The [Podcast] to write out.
      * @param stream The [OutputStream] to write to.
+     * @throws IOException If any IO errors occur.
+     * @throws TransformerException If an unrecoverable error occurs during the course of the transformation to XML.
+     * @throws NullPointerException If [podcast] or [stream] is `null`.
      */
-    public fun writeRssFeed(podcast: Podcast, stream: OutputStream) {
+    @JvmStatic
+    @Throws(IOException::class, TransformerException::class)
+    public fun write(podcast: Podcast, stream: OutputStream) {
         val document = writeToDocument(podcast)
         val source = DOMSource(document)
 

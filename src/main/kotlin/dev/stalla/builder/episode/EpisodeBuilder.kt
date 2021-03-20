@@ -10,7 +10,11 @@ import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 import java.time.temporal.TemporalAccessor
 
-/** Builder for constructing [Episode] instances. */
+/**
+ * Builder for constructing [Episode] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodeBuilder : Builder<Episode> {
 
     /** The builder for data from the Content namespace. */

@@ -4,7 +4,11 @@ import dev.stalla.builder.Builder
 import dev.stalla.model.fyyd.Fyyd
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Fyyd] instances. */
+/**
+ * Builder for constructing [Fyyd] instances.
+ *
+ * @since 1.0.0
+ */
 public interface PodcastFyydBuilder : Builder<Fyyd> {
 
     /** Set the verify value. */

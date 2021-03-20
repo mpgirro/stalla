@@ -4,6 +4,8 @@ package dev.stalla.builder
  * Interface for builder implementations.
  *
  * @param T The type that a builder implementation creates instances for.
+ *
+ * @since 1.0.0
  */
 public interface Builder<T> {
 

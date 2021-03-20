@@ -8,9 +8,12 @@ import dev.stalla.model.TypeFactory
  * [reference docs](https://help.apple.com/itc/podcasts_connect/#/itcb54353390)
  * for more information.
  *
+ * Use the [of][ShowType.Factory.of] method to obtain an instance from a string pattern.
+ *
  * @property type The string representation of the Enum instance.
  *
- * @see ShowType.Factory Companion object providing a factory method.
+ * @see ShowType.Factory Provides a factory method for type instances.
+ * @since 1.0.0
  */
 public enum class ShowType(public val type: String) {
 

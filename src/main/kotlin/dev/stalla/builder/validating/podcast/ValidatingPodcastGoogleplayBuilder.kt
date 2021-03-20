@@ -4,10 +4,11 @@ import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.anyNotNull
+import dev.stalla.util.asUnmodifiable
 
-@InternalApi
+@InternalAPI
 internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     private var author: String? = null
@@ -53,7 +54,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
         return PodcastGoogleplay(
             author = author,
             email = email,
-            categories = categories,
+            categories = categories.asUnmodifiable(),
             description = description,
             explicit = explicit,
             block = block,

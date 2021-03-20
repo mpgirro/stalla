@@ -4,7 +4,11 @@ import dev.stalla.model.MediaType
 import dev.stalla.model.atom.Link
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Link] instances. */
+/**
+ * Builder for constructing [Link] instances.
+ *
+ * @since 1.0.0
+ */
 public interface LinkBuilder : Builder<Link> {
 
     /** Set the href value. */

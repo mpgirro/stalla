@@ -4,7 +4,7 @@ import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.exists
 import assertk.assertions.isEqualTo
-import dev.stalla.model.podcast.aPodcast
+import dev.stalla.model.aPodcast
 import org.junit.jupiter.api.Test
 import java.io.File
 
@@ -15,7 +15,7 @@ internal class PodcastRssWriterTest {
         val file = File.createTempFile("stalla_test", "writer_output")
 
         val podcast = aPodcast()
-        PodcastRssWriter.writeRssFeed(podcast, file)
+        PodcastRssWriter.write(podcast, file)
 
         assertAll {
             assertThat(file, "written file").exists()

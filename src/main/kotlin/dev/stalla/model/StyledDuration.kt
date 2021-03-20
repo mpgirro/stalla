@@ -4,7 +4,7 @@ import dev.stalla.model.StyledDuration.HoursMinutesSeconds
 import dev.stalla.model.StyledDuration.MinutesSeconds
 import dev.stalla.model.StyledDuration.Seconds
 import dev.stalla.model.StyledDuration.SecondsAndFraction
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import java.time.Duration
 import kotlin.math.absoluteValue
 import kotlin.math.pow
@@ -13,10 +13,13 @@ import kotlin.math.pow
  * Represents a duration, expressed in one of the supported styles. Each supported style is
  * represented by one of the concrete implementations of [StyledDuration].
  *
+ * Use the [of][StyledDuration.Factory.of] method to obtain an instance from a string pattern.
+ *
  * @see Seconds
  * @see SecondsAndFraction
  * @see HoursMinutesSeconds
  * @see MinutesSeconds
+ * @since 1.0.0
  */
 public sealed class StyledDuration {
 
@@ -73,7 +76,7 @@ public sealed class StyledDuration {
      *
      * @see StyledDuration.Factory.secondsAndFraction
      */
-    public data class SecondsAndFraction @InternalApi internal constructor(
+    public data class SecondsAndFraction @InternalAPI internal constructor(
         public override val rawDuration: Duration
     ) : StyledDuration() {
 
@@ -127,7 +130,7 @@ public sealed class StyledDuration {
      *
      * @see StyledDuration.Factory.seconds
      */
-    public data class Seconds @InternalApi internal constructor(
+    public data class Seconds @InternalAPI internal constructor(
         public override val rawDuration: Duration
     ) : StyledDuration() {
 
@@ -147,7 +150,7 @@ public sealed class StyledDuration {
      *
      * @see StyledDuration.Factory.minutesSeconds
      */
-    public data class MinutesSeconds @InternalApi internal constructor(
+    public data class MinutesSeconds @InternalAPI internal constructor(
         public override val rawDuration: Duration
     ) : StyledDuration() {
 
@@ -170,7 +173,7 @@ public sealed class StyledDuration {
      *
      * @see StyledDuration.Factory.hoursMinutesSeconds
      */
-    public data class HoursMinutesSeconds @InternalApi internal constructor(
+    public data class HoursMinutesSeconds @InternalAPI internal constructor(
         public override val rawDuration: Duration
     ) : StyledDuration() {
 

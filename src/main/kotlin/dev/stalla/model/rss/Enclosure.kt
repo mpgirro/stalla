@@ -8,9 +8,14 @@ import dev.stalla.model.MediaType
 /**
  * Model class for `<enclosure>` elements within RSS `<item>` elements.
  *
- * @property url The `url` attribute textContent of the RSS `<enclosure>` element.
- * @property length The `length` attribute textContent of the RSS `<enclosure>` element. The media length in seconds.
- * @property type The `type` attribute textContent of the RSS `<enclosure>` element.
+ * Direct instantiation in Java is discouraged. Use the [builder][Enclosure.Factory.builder]
+ * method to obtain an [EpisodeEnclosureBuilder] instance for expressive construction instead.
+ *
+ * @property url The `url` attribute text content of the RSS `<enclosure>` element.
+ * @property length The `length` attribute text content of the RSS `<enclosure>` element. The media length in seconds.
+ * @property type The `type` attribute text content of the RSS `<enclosure>` element as a [MediaType].
+ *
+ * @since 1.0.0
  */
 public data class Enclosure(
     val url: String,

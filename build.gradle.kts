@@ -31,7 +31,7 @@ buildscript {
 
 plugins {
     kotlin("jvm") version "1.4.31"
-    id("org.jetbrains.dokka") version "1.4.20"
+    id("org.jetbrains.dokka") version "1.4.30"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.4.0"
     id("jacoco")
     id("java")
@@ -59,6 +59,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junit5Version")
     testImplementation("com.willowtreeapps.assertk:assertk:0.23")
     testImplementation("org.xmlunit:xmlunit-core:2.8.2")
+    testImplementation("org.reflections:reflections:0.9.12")
 }
 
 kotlin {
@@ -77,7 +78,7 @@ detekt {
 }
 
 apiValidation {
-    nonPublicMarkers.add("dev.stalla.util.InternalApi")
+    nonPublicMarkers.add("dev.stalla.util.InternalAPI")
 }
 
 tasks {
@@ -87,7 +88,8 @@ tasks {
             freeCompilerArgs = listOf(
                 "-Xopt-in=kotlin.RequiresOptIn",
                 "-Xopt-in=kotlin.contracts.ExperimentalContracts",
-                "-Xopt-in=dev.stalla.util.InternalApi"
+                "-Xopt-in=dev.stalla.util.InternalAPI",
+                "-Xopt-in=dev.stalla.util.ExperimentalAPI"
             )
         }
     }

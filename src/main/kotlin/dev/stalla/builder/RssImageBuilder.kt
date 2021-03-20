@@ -3,7 +3,11 @@ package dev.stalla.builder
 import dev.stalla.model.rss.RssImage
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [RssImage] instances. */
+/**
+ * Builder for constructing [RssImage] instances.
+ *
+ * @since 1.0.0
+ */
 public interface RssImageBuilder : Builder<RssImage> {
 
     /** Set the url value. */

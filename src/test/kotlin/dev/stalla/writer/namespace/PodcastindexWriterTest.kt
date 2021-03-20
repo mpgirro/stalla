@@ -4,15 +4,15 @@ import assertk.assertAll
 import assertk.assertThat
 import dev.stalla.hasNoDifferences
 import dev.stalla.model.StyledDuration
-import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.episode.anEpisodePodcastindex
-import dev.stalla.model.episode.anEpisodePodcastindexChapters
-import dev.stalla.model.episode.anEpisodePodcastindexSoundbite
-import dev.stalla.model.episode.anEpisodePodcastindexTranscript
-import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcast.aPodcastPodcastindex
-import dev.stalla.model.podcast.aPodcastPodcastindexFunding
-import dev.stalla.model.podcast.aPodcastPodcastindexLocked
+import dev.stalla.model.aPodcast
+import dev.stalla.model.aPodcastPodcastindex
+import dev.stalla.model.aPodcastPodcastindexFunding
+import dev.stalla.model.aPodcastPodcastindexLocked
+import dev.stalla.model.anEpisode
+import dev.stalla.model.anEpisodePodcastindex
+import dev.stalla.model.anEpisodePodcastindexChapters
+import dev.stalla.model.anEpisodePodcastindexSoundbite
+import dev.stalla.model.anEpisodePodcastindexTranscript
 import org.junit.jupiter.api.Test
 
 internal class PodcastindexWriterTest : NamespaceWriterTest() {

@@ -29,11 +29,14 @@ import kotlin.reflect.full.declaredMemberProperties
  * | `application/json` | [JSON]       |
  * | `application/srt`  | [SRT]        |
  *
- * @param type The type part of the transcript type.
- * @param subtype The subtype part of the transcript type.
+ * Use the [of][TranscriptType.Factory.of] method to obtain an instance from a string pattern.
  *
- * @see Factory Companion object providing a factory method.
+ * @property type The type part of the transcript type.
+ * @property subtype The subtype part of the transcript type.
+ *
+ * @see TranscriptType.Factory Provides a factory method for type instances.
  * @see MediaType
+ * @since 1.0.0
  */
 public sealed class TranscriptType(
     override val type: String,

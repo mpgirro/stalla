@@ -16,18 +16,21 @@ import java.util.Locale
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<channel>` elements.
  *
- * @property title The RSS `<title>` field textContent.
- * @property link The RSS `<link>` field textContent.
- * @property description The RSS `<description>` field textContent.
- * @property pubDate The RSS `<pubDate>` field textContent.
- * @property lastBuildDate The RSS `<lastBuildDate>` field textContent.
- * @property language The RSS `<language>` field textContent.
- * @property generator The RSS `<generator>` field textContent.
- * @property copyright The RSS `<copyright>` field textContent.
- * @property docs The RSS `<docs>` field textContent.
- * @property managingEditor The RSS `<managingEditor>` field textContent.
- * @property webMaster The RSS `<webMaster>` field textContent.
- * @property ttl The RSS `<ttl>` field textContent.
+ * Direct instantiation in Java is discouraged. Use the [builder][Podcast.Factory.builder]
+ * method to obtain a [PodcastBuilder] instance for expressive construction instead.
+ *
+ * @property title The RSS `<title>` element text content.
+ * @property link The RSS `<link>` element text content.
+ * @property description The RSS `<description>` element text content.
+ * @property pubDate The RSS `<pubDate>` element text content.
+ * @property lastBuildDate The RSS `<lastBuildDate>` element text content.
+ * @property language The RSS `<language>` element text content.
+ * @property generator The RSS `<generator>` element text content.
+ * @property copyright The RSS `<copyright>` element text content.
+ * @property docs The RSS `<docs>` field element content.
+ * @property managingEditor The RSS `<managingEditor>` element text content.
+ * @property webMaster The RSS `<webMaster>` element text content.
+ * @property ttl The RSS `<ttl>` element text content.
  * @property image The RSS `<image>` element wrapped in an [RssImage] instance.
  * @property episodes List of [Episode] instances extracted from the `<item>` entries of the RSS feed.
  * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
@@ -36,7 +39,9 @@ import java.util.Locale
  * @property feedpress The data from the Feedpress namespace, or null if no data from this namespace was found.
  * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property categories The RSS feed categories, if any.
- * @property podcast The data from the Podcastindex namespace, or null if no data from this namespace was found.
+ * @property podcastindex The data from the Podcastindex namespace, or null if no data from this namespace was found.
+ *
+ * @since 1.0.0
  */
 public data class Podcast(
     val title: String,
@@ -59,7 +64,7 @@ public data class Podcast(
     val feedpress: Feedpress? = null,
     val googleplay: PodcastGoogleplay? = null,
     val categories: List<RssCategory> = emptyList(),
-    val podcast: PodcastPodcastindex? = null
+    val podcastindex: PodcastPodcastindex? = null
 ) {
 
     /** Provides a builder for the [Podcast] class. */

@@ -7,9 +7,14 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for data from elements of the Atom namespace.
  *
+ * Direct instantiation in Java is discouraged. Use the [builder][Atom.Factory.builder]
+ * method to obtain an [AtomBuilder] instance for expressive construction instead.
+ *
  * @property authors List of data from the `<atom:author>` elements as [AtomPerson] instances.
  * @property contributors List of data from the `<atom:contributor>` elements as [AtomPerson] instances.
  * @property links List of data from the `<atom:link>` elements as [Link] instances.
+ *
+ * @since 1.0.0
  */
 public data class Atom(
     val authors: List<AtomPerson>,

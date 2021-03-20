@@ -12,25 +12,30 @@ import dev.stalla.model.HrefOnlyImage
  * [XML Schema](https://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd)
  * for the Google Play Podcasts extension
  *
- * @property author The `<googleplay:author>` field text content.
- * @property email The `<googleplay:email>` field text content.
- * @property categories The list of `<googleplay:category>` element's field text contents as [GoogleplayCategory].
- * @property description The `<googleplay:description>` field text content.
- * @property explicit The logical value of the `<googleplay:explicit>` field's text content.
- * @property block The logical value of the `<googleplay:block>` field's text content.
+ * Direct instantiation in Java is discouraged. Use the [builder][PodcastGoogleplay.Factory.builder]
+ * method to obtain a [PodcastGoogleplayBuilder] instance for expressive construction instead.
+ *
+ * @property author The `<googleplay:author>` element text content.
+ * @property email The `<googleplay:email>` element text content.
+ * @property categories The list of `<googleplay:category>` element text contents as [GoogleplayCategory].
+ * @property description The `<googleplay:description>` element text content.
+ * @property explicit The logical value of the `<googleplay:explicit>` element text content.
+ * @property block The logical value of the `<googleplay:block>` element text content.
  * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
- * @property newFeedUrl The `<googleplay:newFeedUrl>` field text content.
+ * @property newFeedUrl The `<googleplay:newFeedUrl>` element text content.
+ *
+ * @since 1.0.0
  */
 public data class PodcastGoogleplay(
-    override val author: String? = null,
+    val author: String? = null,
     val email: String? = null,
     val categories: List<GoogleplayCategory>,
-    override val description: String? = null,
+    val description: String? = null,
     val explicit: Boolean? = null,
-    override val block: Boolean,
-    override val image: HrefOnlyImage? = null,
+    val block: Boolean,
+    val image: HrefOnlyImage? = null,
     val newFeedUrl: String? = null
-) : GoogleplayBase {
+) {
 
     /** Provides a builder for the [PodcastGoogleplay] class. */
     public companion object Factory : BuilderFactory<PodcastGoogleplay, PodcastGoogleplayBuilder> {

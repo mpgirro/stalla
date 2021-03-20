@@ -7,8 +7,13 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for elements describing persons.
  *
+ * Direct instantiation in Java is discouraged. Use the [builder][ItunesOwner.Factory.builder]
+ * method to obtain a [PodcastItunesOwnerBuilder] instance for expressive construction instead.
+ *
  * @property name The name of the owner.
  * @property email The email of the owner.
+ *
+ * @since 1.0.0
  */
 public data class ItunesOwner(
     val name: String,

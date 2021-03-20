@@ -13,7 +13,7 @@ import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastindexBuilder
 import dev.stalla.model.MediaType
 import dev.stalla.model.StyledDuration
-import dev.stalla.model.episode.anEpisodePodcastindex
+import dev.stalla.model.anEpisodePodcastindex
 import dev.stalla.model.podcastindex.EpisodePodcastindex
 import dev.stalla.model.podcastindex.TranscriptType
 import org.junit.jupiter.api.Test

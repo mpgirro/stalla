@@ -5,7 +5,7 @@ import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.textOrNull
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import org.w3c.dom.Node
 
 /**
@@ -13,7 +13,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `https://fyyd.de/fyyd-ns/`
  */
-@InternalApi
+@InternalAPI
 internal object FyydParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.FYYD

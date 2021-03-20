@@ -6,11 +6,13 @@ import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.isDirectChildOf
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import org.w3c.dom.Node
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 
 /** Base class for XML namespace parser implementations. */
-@InternalApi
+@InternalAPI
 internal abstract class NamespaceParser {
 
     /** The URI of the namespace processed by this parser. */
@@ -83,12 +85,16 @@ internal abstract class NamespaceParser {
      * @param block The block of code to execute on the
      * [this@ifMatchesNamespace] when the namespace matches the parser's.
      */
-    internal fun <T> Node.ifCanBeParsed(block: Node.() -> T?) =
-        if (canParse(this)) {
+    internal fun <T> Node.ifCanBeParsed(block: Node.() -> T?): T? {
+        contract {
+            callsInPlace(block, InvocationKind.AT_MOST_ONCE)
+        }
+        return if (canParse(this)) {
             block(this)
         } else {
             null
         }
+    }
 
     /**
      * Should return `true` when this parser can parse a given [Node]. By default true when the node namespace

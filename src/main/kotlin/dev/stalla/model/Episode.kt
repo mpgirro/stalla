@@ -17,16 +17,19 @@ import java.time.temporal.TemporalAccessor
 /**
  * Model class for all the properties extracted by parser implementations from RSS `<item>` elements.
  *
- * @property title The RSS `<title>` field textContent.
- * @property link The RSS `<link>` field textContent.
- * @property description The RSS `<description>` field textContent.
- * @property author The RSS `<author>` field textContent
- * @property categories List of RSS `<category>` field contents.
- * @property comments The RSS `<comments>` field textContent.
+ * Direct instantiation in Java is discouraged. Use the [builder][Episode.Factory.builder]
+ * method to obtain an [EpisodeBuilder] instance for expressive construction instead.
+ *
+ * @property title The RSS `<title>` element text content.
+ * @property link The RSS `<link>` element text content.
+ * @property description The RSS `<description>` element text content.
+ * @property author The RSS `<author>` element text content
+ * @property categories List of RSS `<category>` element text contents.
+ * @property comments The RSS `<comments>` element text content.
  * @property enclosure The RSS `<enclosure>` element attributes wrapped in an [Enclosure] instance.
  * @property guid The RSS `<guid>` element wrapped in an [Guid] instance.
- * @property pubDate The RSS `<pubDate>` field textContent.
- * @property source The RSS `<source>` field textContent.
+ * @property pubDate The RSS `<pubDate>` element text content.
+ * @property source The RSS `<source>` element's text content.
  * @property content The data from the RSS 1.0 Content module namespace,
  *                   or null if no data from this namespace was found.
  * @property itunes The data from the iTunes namespace, or null if no data from this namespace was found.
@@ -36,6 +39,8 @@ import java.time.temporal.TemporalAccessor
  * @property googleplay The data from the Google Play namespace, or null if no data from this namespace was found.
  * @property bitlove The data from the Bitlove namespace, or null if no data from this namespace was found.
  * @property podcastindex The data from the Podcastindex namespace, or null if no data from this namespace was found.
+ *
+ * @since 1.0.0
  */
 @Suppress("unused")
 public data class Episode(

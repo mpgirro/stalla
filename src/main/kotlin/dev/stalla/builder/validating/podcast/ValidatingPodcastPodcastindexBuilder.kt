@@ -4,9 +4,10 @@ import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.model.podcastindex.PodcastPodcastindex
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
+import dev.stalla.util.asUnmodifiable
 
-@InternalApi
+@InternalAPI
 internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder {
 
     private lateinit var lockedBuilderValue: PodcastPodcastindexLockedBuilder
@@ -30,7 +31,7 @@ internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder
 
         return PodcastPodcastindex(
             locked = if (::lockedBuilderValue.isInitialized) lockedBuilderValue.build() else null,
-            funding = fundingBuilders.mapNotNull { it.build() }
+            funding = fundingBuilders.mapNotNull { it.build() }.asUnmodifiable()
         )
     }
 }

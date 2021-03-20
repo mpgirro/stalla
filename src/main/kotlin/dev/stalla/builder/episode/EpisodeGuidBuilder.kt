@@ -4,7 +4,11 @@ import dev.stalla.builder.Builder
 import dev.stalla.model.rss.Guid
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Guid] instances. */
+/**
+ * Builder for constructing [Guid] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodeGuidBuilder : Builder<Guid> {
 
     /** Set the textContent value. */

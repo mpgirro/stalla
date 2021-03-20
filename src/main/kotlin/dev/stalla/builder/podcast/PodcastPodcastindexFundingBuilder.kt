@@ -4,7 +4,11 @@ import dev.stalla.builder.Builder
 import dev.stalla.model.podcastindex.Funding
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Funding] instances. */
+/**
+ * Builder for constructing [Funding] instances.
+ *
+ * @since 1.0.0
+ */
 public interface PodcastPodcastindexFundingBuilder : Builder<Funding> {
 
     /** Set the url value. */

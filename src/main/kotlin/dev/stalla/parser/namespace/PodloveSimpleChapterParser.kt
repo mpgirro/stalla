@@ -7,7 +7,7 @@ import dev.stalla.dom.asListOfNodes
 import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.allNotNull
 import org.w3c.dom.Node
 
@@ -16,7 +16,7 @@ import org.w3c.dom.Node
  *
  * The namespace URI is: `http://podlove.org/simple-chapters`
  */
-@InternalApi
+@InternalAPI
 internal object PodloveSimpleChapterParser : NamespaceParser() {
 
     override val namespace = FeedNamespace.PODLOVE_SIMPLE_CHAPTER

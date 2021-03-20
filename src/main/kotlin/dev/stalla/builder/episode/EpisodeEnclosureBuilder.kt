@@ -5,7 +5,11 @@ import dev.stalla.model.MediaType
 import dev.stalla.model.rss.Enclosure
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Enclosure] instances. */
+/**
+ * Builder for constructing [Enclosure] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodeEnclosureBuilder : Builder<Enclosure> {
 
     /** Set the url value. */

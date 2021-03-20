@@ -18,8 +18,8 @@ import dev.stalla.dom.getAttributeByName
 import dev.stalla.dom.isEmpty
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
-import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.podcast.aPodcast
+import dev.stalla.model.aPodcast
+import dev.stalla.model.anEpisode
 import dev.stalla.util.FeedNamespace
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Attr
@@ -168,7 +168,7 @@ internal abstract class NamespaceWriterTest {
     protected fun createChannelElement(): Element {
         val document = documentBuilder.newDocument()
 
-        var channel: Element? = null
+        var channel: Element?
         document.appendElement("rss") {
             channel = appendElement("channel")
         }

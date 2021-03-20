@@ -5,7 +5,11 @@ import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.util.whenNotNull
 import java.util.Locale
 
-/** Builder for constructing [Feedpress] instances. */
+/**
+ * Builder for constructing [Feedpress] instances.
+ *
+ * @since 1.0.0
+ */
 public interface PodcastFeedpressBuilder : Builder<Feedpress> {
 
     /** Set the newsletterId value. */

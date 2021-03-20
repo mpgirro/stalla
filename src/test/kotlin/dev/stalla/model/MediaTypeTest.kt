@@ -347,6 +347,16 @@ internal class MediaTypeTest {
     }
 
     @Test
+    fun `should not parse + sign as a delimeter`() {
+        assertThat(MediaType.of("application/json+chapters")).isNotNull().all {
+            isEqualTo(MediaType.JSON_CHAPTERS)
+            prop(MediaType::type).isEqualTo("application")
+            prop(MediaType::subtype).isEqualTo("json+chapters")
+            prop(MediaType::parameters).isEmpty()
+        }
+    }
+
+    @Test
     fun `should render parameters correctly`() {
         assertThat(MediaType.PLAIN_TEXT.withParameter("p1", "v1")).isNotNull()
             .prop("toString") { MediaType::toString.call(it) }.isEqualTo("text/plain; p1=v1")
@@ -447,6 +457,7 @@ internal class MediaTypeTest {
             "application/gzip",
             "application/javascript",
             "application/json",
+            "application/json+chapters",
             "application/manifest+json",
             "application/ogg",
             "application/opensearchdescription+xml",

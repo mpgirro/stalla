@@ -9,8 +9,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeBitloveBuilder
+import dev.stalla.model.anEpisodeBitlove
 import dev.stalla.model.bitlove.Bitlove
-import dev.stalla.model.episode.anEpisodeBitlove
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeBitloveBuilderTest {

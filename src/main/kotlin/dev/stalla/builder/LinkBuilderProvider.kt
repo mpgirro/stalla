@@ -1,8 +1,8 @@
 package dev.stalla.builder
 
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 
-@InternalApi
+@InternalAPI
 internal interface LinkBuilderProvider {
 
     /** Creates an instance of [LinkBuilder] to use with this builder. */

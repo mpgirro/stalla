@@ -9,8 +9,8 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodeContentBuilder
+import dev.stalla.model.anEpisodeContent
 import dev.stalla.model.content.Content
-import dev.stalla.model.episode.anEpisodeContent
 import org.junit.jupiter.api.Test
 
 internal class ValidatingEpisodeContentBuilderTest {

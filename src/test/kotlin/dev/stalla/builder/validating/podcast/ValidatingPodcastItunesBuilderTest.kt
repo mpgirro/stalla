@@ -12,10 +12,10 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastItunesBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
+import dev.stalla.model.aPodcastItunes
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
-import dev.stalla.model.podcast.aPodcastItunes
 import org.junit.jupiter.api.Test
 
 internal class ValidatingPodcastItunesBuilderTest {

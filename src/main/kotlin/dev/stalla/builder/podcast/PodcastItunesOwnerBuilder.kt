@@ -4,7 +4,11 @@ import dev.stalla.builder.Builder
 import dev.stalla.model.itunes.ItunesOwner
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [ItunesOwner] instances. */
+/**
+ * Builder for constructing [ItunesOwner] instances.
+ *
+ * @since 1.0.0
+ */
 public interface PodcastItunesOwnerBuilder : Builder<ItunesOwner> {
 
     /** Set the name value. */

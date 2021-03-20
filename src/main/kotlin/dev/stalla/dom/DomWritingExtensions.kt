@@ -9,13 +9,15 @@ import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import dev.stalla.util.BooleanStringStyle
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.asBooleanString
 import dev.stalla.util.isNeitherNullNorBlank
 import org.w3c.dom.Attr
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 
 /**
  * Appends a new `<namespace:image href="..."/>` with the given [namespace] to this [Element].
@@ -26,7 +28,7 @@ import org.w3c.dom.Node
  * @param image The image to represent with the new element.
  * @param namespace The namespace to use for the new element.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: FeedNamespace): Element? {
     require(namespace == FeedNamespace.ITUNES || namespace == FeedNamespace.GOOGLE_PLAY) {
         "Only 'itunes:image' and 'googleplay:image' tags are supported, " +
@@ -43,7 +45,7 @@ internal fun Node.appendHrefOnlyImageElement(image: HrefOnlyImage, namespace: Fe
  *
  * @param image The image to represent with the new element.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendRssImageElement(image: RssImage): Element? {
     if (image.url.isBlank()) return null
     return appendElement("image") {
@@ -76,12 +78,15 @@ internal fun Node.appendRssImageElement(image: RssImage): Element? {
  *
  * @return Returns the newly created [Element].
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendElement(
     elementTagName: String,
     namespace: FeedNamespace? = null,
     init: Element.() -> Unit = {}
 ): Element {
+    contract {
+        callsInPlace(init, InvocationKind.EXACTLY_ONCE)
+    }
     val tagName = if (namespace != null) "${namespace.prefix}:$elementTagName" else elementTagName
     val element = getDocument().createElementNS(namespace?.uri, tagName)
     init(element)
@@ -105,12 +110,15 @@ private fun Node.getDocument(): Document = when {
  *
  * @return Returns the newly created [Attr].
  */
-@InternalApi
+@InternalAPI
 internal fun Element.setAttributeWithNS(
     attributeName: String,
     namespace: FeedNamespace? = null,
     init: Attr.() -> Unit = {}
 ): Attr {
+    contract {
+        callsInPlace(init, InvocationKind.EXACTLY_ONCE)
+    }
     val name = if (namespace != null) "${namespace.prefix}:$attributeName" else attributeName
     val attr = ownerDocument.createAttributeNS(namespace?.uri, name)
     init(attr)
@@ -125,7 +133,7 @@ internal fun Element.setAttributeWithNS(
  * @param value The value to use
  * @param namespace The namespace to use, if any
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendYesElementIfTrue(tagName: String, value: Boolean, namespace: FeedNamespace? = null): Element? {
     val stringValue = value.asBooleanString(BooleanStringStyle.YES_NULL)
         ?: return null
@@ -142,7 +150,7 @@ internal fun Node.appendYesElementIfTrue(tagName: String, value: Boolean, namesp
  * @param value The value to use
  * @param namespace The namespace to use, if any
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendTrueFalseElement(tagName: String, value: Boolean, namespace: FeedNamespace? = null) =
     appendElement(tagName, namespace) {
         textContent = value.asBooleanString(BooleanStringStyle.TRUE_FALSE)
@@ -155,7 +163,7 @@ internal fun Node.appendTrueFalseElement(tagName: String, value: Boolean, namesp
  * @param value The value to use
  * @param namespace The namespace to use, if any
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendYesNoElement(tagName: String, value: Boolean, namespace: FeedNamespace? = null) =
     appendElement(tagName, namespace) {
         textContent = value.asBooleanString(BooleanStringStyle.YES_NO)
@@ -168,7 +176,7 @@ internal fun Node.appendYesNoElement(tagName: String, value: Boolean, namespace:
  * @param person The person instance to use
  * @param namespace The namespace to use, if any
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendAtomPersonElement(tagName: String, person: AtomPerson, namespace: FeedNamespace? = null) {
     if (person.name.isBlank()) return
 
@@ -192,7 +200,7 @@ internal fun Node.appendAtomPersonElement(tagName: String, person: AtomPerson, n
  * @param owner The owner instance to use
  * @param namespace The namespace to use, if any
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendItunesOwnerElement(tagName: String, owner: ItunesOwner, namespace: FeedNamespace? = null) {
     if (owner.name.isBlank()) return
 
@@ -209,7 +217,7 @@ internal fun Node.appendItunesOwnerElement(tagName: String, owner: ItunesOwner, 
  * @param categories The [categories][ItunesCategory] to append.
  * @param namespace The namespace to use, if any.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendItunesStyleCategoryElements(
     categories: List<ItunesCategory>,
     namespace: FeedNamespace? = null
@@ -244,7 +252,7 @@ internal fun Node.appendItunesStyleCategoryElements(
  * @param categories The [categories][GoogleplayCategory] to append.
  * @param namespace The namespace to use, if any.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendGoogleplayCategoryElements(
     categories: List<GoogleplayCategory>,
     namespace: FeedNamespace? = null
@@ -263,7 +271,7 @@ internal fun Node.appendGoogleplayCategoryElements(
  * @param categories The [categories][RssCategory] to append.
  * @param namespace The namespace to use, if any.
  */
-@InternalApi
+@InternalAPI
 internal fun Node.appendRssCategoryElements(categories: List<RssCategory>, namespace: FeedNamespace? = null) {
     for (category in categories) {
         if (category.name.isBlank()) continue

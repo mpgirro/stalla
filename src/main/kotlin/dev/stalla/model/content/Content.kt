@@ -7,7 +7,12 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for data from elements of the Content namespace that are valid within `<item>` elements.
  *
+ * Direct instantiation in Java is discouraged. Use the [builder][Content.Factory.builder]
+ * method to obtain an [EpisodeContentBuilder] instance for expressive construction instead.
+ *
  * @property encoded The text content of the `<content:encoded>` element.
+ *
+ * @since 1.0.0
  */
 public data class Content(
     val encoded: String

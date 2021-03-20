@@ -7,9 +7,8 @@ import dev.stalla.dom.appendYesElementIfTrue
 import dev.stalla.dom.appendYesNoElement
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
-import dev.stalla.model.googleplay.GoogleplayBase
 import dev.stalla.util.FeedNamespace
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.isNeitherNullNorBlank
 import dev.stalla.writer.NamespaceWriter
 import org.w3c.dom.Element
@@ -19,7 +18,7 @@ import org.w3c.dom.Element
  *
  * The namespace URI is: `http://www.google.com/schemas/play-podcasts/1.0`
  */
-@InternalApi
+@InternalAPI
 internal object GoogleplayWriter : NamespaceWriter() {
 
     override val namespace = FeedNamespace.GOOGLE_PLAY
@@ -41,7 +40,19 @@ internal object GoogleplayWriter : NamespaceWriter() {
 
         appendGoogleplayCategoryElements(play.categories, namespace)
 
-        appendCommonElements(play)
+        if (play.author.isNeitherNullNorBlank()) {
+            appendElement("author", namespace) { textContent = play.author.trim() }
+        }
+
+        if (play.description.isNeitherNullNorBlank()) {
+            appendElement("description", namespace) { textContent = play.description.trim() }
+        }
+
+        appendYesElementIfTrue("block", play.block, namespace)
+
+        if (play.image != null) {
+            appendHrefOnlyImageElement(play.image, namespace)
+        }
     }
 
     override fun Element.appendEpisodeData(episode: Episode) {
@@ -51,23 +62,18 @@ internal object GoogleplayWriter : NamespaceWriter() {
             appendElement("explicit", namespace) { textContent = play.explicit.type.trim() }
         }
 
-        appendCommonElements(play)
-    }
-
-    private fun Element.appendCommonElements(play: GoogleplayBase) {
         if (play.author.isNeitherNullNorBlank()) {
-            appendElement("author", namespace) { textContent = play.author?.trim() }
+            appendElement("author", namespace) { textContent = play.author.trim() }
         }
 
         if (play.description.isNeitherNullNorBlank()) {
-            appendElement("description", namespace) { textContent = play.description?.trim() }
+            appendElement("description", namespace) { textContent = play.description.trim() }
         }
 
         appendYesElementIfTrue("block", play.block, namespace)
 
-        val image = play.image
-        if (image != null) {
-            appendHrefOnlyImageElement(image, namespace)
+        if (play.image != null) {
+            appendHrefOnlyImageElement(play.image, namespace)
         }
     }
 }

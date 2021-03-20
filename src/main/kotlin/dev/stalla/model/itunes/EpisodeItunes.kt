@@ -9,31 +9,36 @@ import dev.stalla.model.StyledDuration
 /**
  * Model class for data from elements of the iTunes namespace that are valid within `<item>` elements.
  *
- * @property title The `<itunes:title>` field text content.
- * @property duration The value of the `<itunes:duration>` field text content as a [StyledDuration].
+ * Direct instantiation in Java is discouraged. Use the [builder][EpisodeItunes.Factory.builder]
+ * method to obtain a [EpisodeItunesBuilder] instance for expressive construction instead.
+ *
+ * @property title The `<itunes:title>` element text content.
+ * @property duration The value of the `<itunes:duration>` element text content as a [StyledDuration].
  * @property image The data from the `<itunes:image>` element as an [HrefOnlyImage].
- * @property explicit The logical value of the `<itunes:explicit>` field's text content.
- * @property block The logical value of the `<itunes:block>` field's text content.
- * @property season The numeric value of the `<itunes:season>` field's text content.
- * @property episode The numeric value of the `<itunes:episode>` field's text content.
- * @property episodeType The value of the `<itunes:episodeType>` field text content as an [EpisodeType].
- * @property author The `<itunes:author>` field text content.
- * @property subtitle The `<itunes:subtitle>` field text content.
- * @property summary The `<itunes:summary>` field text content.
+ * @property explicit The logical value of the `<itunes:explicit>` element text content.
+ * @property block The logical value of the `<itunes:block>` element text content.
+ * @property season The numeric value of the `<itunes:season>` element text content.
+ * @property episode The numeric value of the `<itunes:episode>` element text content.
+ * @property episodeType The value of the `<itunes:episodeType>` element text content as an [EpisodeType].
+ * @property author The `<itunes:author>` element text content.
+ * @property subtitle The `<itunes:subtitle>` element text content.
+ * @property summary The `<itunes:summary>` element text content.
+ *
+ * @since 1.0.0
  */
 public data class EpisodeItunes(
-    override val title: String? = null,
+    val title: String? = null,
     val duration: StyledDuration? = null,
-    override val image: HrefOnlyImage? = null,
+    val image: HrefOnlyImage? = null,
     val explicit: Boolean? = null,
-    override val block: Boolean,
+    val block: Boolean,
     val season: Int? = null,
     val episode: Int? = null,
     val episodeType: EpisodeType? = null,
-    override val author: String? = null,
-    override val subtitle: String? = null,
-    override val summary: String? = null
-) : ItunesBase {
+    val author: String? = null,
+    val subtitle: String? = null,
+    val summary: String? = null
+) {
 
     /** Provides a builder for the [EpisodeItunes] class. */
     public companion object Factory : BuilderFactory<EpisodeItunes, EpisodeItunesBuilder> {

@@ -4,7 +4,11 @@ import dev.stalla.builder.Builder
 import dev.stalla.model.podcastindex.Locked
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Locked] instances. */
+/**
+ * Builder for constructing [Locked] instances.
+ *
+ * @since 1.0.0
+ */
 public interface PodcastPodcastindexLockedBuilder : Builder<Locked> {
 
     /** Set the owner value. */

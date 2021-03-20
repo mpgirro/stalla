@@ -1,7 +1,7 @@
 package dev.stalla.model
 
 import dev.stalla.builder.Builder
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
 
 /**
  * Interface for companion objects of model classes
@@ -10,7 +10,7 @@ import dev.stalla.util.InternalApi
  * @param D The type of the model.
  * @param B The type of the builder implementation for the model type [D].
  */
-@InternalApi
+@InternalAPI
 internal interface BuilderFactory<D, out B : Builder<D>> {
 
     /** Returns a builder implementation [B] for [D]. */

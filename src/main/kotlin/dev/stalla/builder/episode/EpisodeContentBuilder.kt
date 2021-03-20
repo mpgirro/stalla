@@ -4,7 +4,11 @@ import dev.stalla.builder.Builder
 import dev.stalla.model.content.Content
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Content] instances. */
+/**
+ * Builder for constructing [Content] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodeContentBuilder : Builder<Content> {
 
     /** Set the encoded value. */

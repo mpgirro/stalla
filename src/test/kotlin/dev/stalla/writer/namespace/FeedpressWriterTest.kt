@@ -3,8 +3,8 @@ package dev.stalla.writer.namespace
 import assertk.assertAll
 import assertk.assertThat
 import dev.stalla.hasNoDifferences
-import dev.stalla.model.podcast.aPodcast
-import dev.stalla.model.podcast.aPodcastFeedpress
+import dev.stalla.model.aPodcast
+import dev.stalla.model.aPodcastFeedpress
 import org.junit.jupiter.api.Test
 
 internal class FeedpressWriterTest : NamespaceWriterTest() {

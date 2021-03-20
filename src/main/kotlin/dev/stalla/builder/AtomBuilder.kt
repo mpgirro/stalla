@@ -5,7 +5,11 @@ import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [Atom] instances. */
+/**
+ * Builder for constructing [Atom] instances.
+ *
+ * @since 1.0.0
+ */
 public interface AtomBuilder : Builder<Atom> {
 
     /** Adds the [AtomPersonBuilder] to the list of author builders. */

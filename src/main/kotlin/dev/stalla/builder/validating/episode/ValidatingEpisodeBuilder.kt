@@ -25,10 +25,11 @@ import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.model.Episode
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
+import dev.stalla.util.asUnmodifiable
 import java.time.temporal.TemporalAccessor
 
-@InternalApi
+@InternalAPI
 internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     private lateinit var titleValue: String
@@ -119,7 +120,7 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
             link = link,
             description = description,
             author = author,
-            categories = categoryBuilders.mapNotNull { it.build() },
+            categories = categoryBuilders.mapNotNull { it.build() }.asUnmodifiable(),
             comments = comments,
             enclosure = enclosureBuilderValue.build()
                 ?: error("Cannot build the enclosure, while hasEnoughDataToBuild == true"),

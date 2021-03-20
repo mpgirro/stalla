@@ -240,7 +240,9 @@ import kotlin.reflect.full.declaredMemberProperties
  * | TV & Film               | Film Reviews       | [FILM_REVIEWS]              |
  * | TV & Film               | TV Reviews         | [TV_REVIEWS]                |
  *
- * @param type The raw category `type` value.
+ * Use the [of][ItunesCategory.Factory.of] method to obtain an instance from a string pattern.
+ *
+ * @property type The raw category `type` value.
  *
  * @see Simple Subtype for simple categories.
  * @see Nested Subtype for categories that are nested in a [Simple] category.

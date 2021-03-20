@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodloveBuilder
-import dev.stalla.model.episode.anEpisodePodlove
+import dev.stalla.model.anEpisodePodlove
 import dev.stalla.model.podlove.EpisodePodlove
 import org.junit.jupiter.api.Test
 

@@ -8,13 +8,18 @@ import dev.stalla.model.MediaType
 /**
  * Model class for elements describing hyperlinks.
  *
- * @property href The href of the link.
- * @property hrefLang The hrefLang of the link.
- * @property hrefResolved The hrefResolved of the link.
- * @property length The length of the link.
- * @property rel The rel of the link.
- * @property title The title of the link.
- * @property type The type of the link.
+ * Direct instantiation in Java is discouraged. Use the [builder][Link.Factory.builder]
+ * method to obtain a [LinkBuilder] instance for expressive construction instead.
+ *
+ * @property href The `href` attribute text content of the `<atom:link>` element.
+ * @property hrefLang The `hrefLang` attribute text content of the `<atom:link>` element.
+ * @property hrefResolved The `hrefResolved` attribute text content of the `<atom:link>` element.
+ * @property length The `length` attribute text content of the `<atom:link>` element.
+ * @property rel The `rel` attribute text content of the `<atom:link>` element.
+ * @property title The `title` attribute text content of the `<atom:link>` element.
+ * @property type The `type` attribute text content of the `<atom:link>` element as a [MediaType].
+ *
+ * @since 1.0.0
  */
 public data class Link(
     val href: String,

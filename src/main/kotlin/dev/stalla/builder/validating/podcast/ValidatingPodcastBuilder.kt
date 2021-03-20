@@ -24,11 +24,12 @@ import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.model.Podcast
-import dev.stalla.util.InternalApi
+import dev.stalla.util.InternalAPI
+import dev.stalla.util.asUnmodifiable
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
 
-@InternalApi
+@InternalAPI
 internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     private lateinit var titleValue: String
@@ -138,14 +139,14 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
             webMaster = webMaster,
             ttl = ttl,
             image = imageBuilder?.build(),
-            episodes = episodeBuilders.mapNotNull { it.build() },
+            episodes = episodeBuilders.mapNotNull { it.build() }.asUnmodifiable(),
             itunes = itunesBuilder.build(),
             atom = atomBuilder.build(),
             fyyd = fyydBuilder.build(),
             feedpress = feedpressBuilder.build(),
             googleplay = googleplayBuilder.build(),
-            categories = categoryBuilders.mapNotNull { it.build() },
-            podcast = podcastPodcastindexBuilder.build()
+            categories = categoryBuilders.mapNotNull { it.build() }.asUnmodifiable(),
+            podcastindex = podcastPodcastindexBuilder.build()
         )
     }
 }

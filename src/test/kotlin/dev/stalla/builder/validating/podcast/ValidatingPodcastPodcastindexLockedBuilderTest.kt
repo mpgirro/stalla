@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
-import dev.stalla.model.podcast.aPodcastPodcastindexLocked
+import dev.stalla.model.aPodcastPodcastindexLocked
 import dev.stalla.model.podcastindex.Locked
 import org.junit.jupiter.api.Test
 

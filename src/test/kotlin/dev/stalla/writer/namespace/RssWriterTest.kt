@@ -10,12 +10,12 @@ import dev.stalla.hasNoDifferences
 import dev.stalla.hasTextContent
 import dev.stalla.hasValue
 import dev.stalla.model.MediaType
+import dev.stalla.model.aPodcast
+import dev.stalla.model.anEpisode
+import dev.stalla.model.anEpisodeEnclosure
+import dev.stalla.model.anEpisodeGuid
 import dev.stalla.model.anRssCategory
 import dev.stalla.model.anRssImage
-import dev.stalla.model.episode.anEpisode
-import dev.stalla.model.episode.anEpisodeEnclosure
-import dev.stalla.model.episode.anEpisodeGuid
-import dev.stalla.model.podcast.aPodcast
 import dev.stalla.util.FeedNamespace
 import org.junit.jupiter.api.Test
 import org.w3c.dom.Element

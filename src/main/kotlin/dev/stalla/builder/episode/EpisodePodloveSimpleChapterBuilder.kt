@@ -4,7 +4,11 @@ import dev.stalla.builder.Builder
 import dev.stalla.model.podlove.SimpleChapter
 import dev.stalla.util.whenNotNull
 
-/** Builder for constructing [SimpleChapter] instances. */
+/**
+ * Builder for constructing [SimpleChapter] instances.
+ *
+ * @since 1.0.0
+ */
 public interface EpisodePodloveSimpleChapterBuilder : Builder<SimpleChapter> {
 
     /** Set the start value. */

@@ -7,7 +7,12 @@ import dev.stalla.model.BuilderFactory
 /**
  * Model class for data from elements of the Bitlove namespace that are valid within `<item>` elements.
  *
- * @property guid The GUID attribute for the RSS enclosure element.
+ * Direct instantiation in Java is discouraged. Use the [builder][Bitlove.Factory.builder]
+ * method to obtain an [EpisodeBitloveBuilder] instance for expressive construction instead.
+ *
+ * @property guid The `bitlove:guid` attribute text content for the RSS `<enclosure>` element.
+ *
+ * @since 1.0.0
  */
 public data class Bitlove(
     val guid: String

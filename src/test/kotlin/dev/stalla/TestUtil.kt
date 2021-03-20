@@ -6,6 +6,9 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.ArgumentsProvider
 import org.w3c.dom.Document
 import java.io.File
+import java.lang.reflect.Field
+import java.lang.reflect.Method
+import java.lang.reflect.Modifier
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.Month
@@ -69,3 +72,30 @@ internal fun allResourceFilesIn(path: String): List<File> {
 inline fun <reified T : Any> arguments(vararg args: T): ArgumentsProvider = ArgumentsProvider {
     Stream.of(*args).map { Arguments.of(it) }
 }
+
+fun staticClassFields(javaClass: Class<*>): List<Field> {
+    return javaClass.declaredFields
+        .filter { f: Field -> Modifier.isStatic(f.modifiers) }
+        .filter { f: Field -> javaClass.isAssignableFrom(f.type) }
+}
+
+fun fieldInstance(field: Field, protoype: Any?): Any? {
+    return try {
+        field[protoype]
+    } catch (e: IllegalAccessException) {
+        e.printStackTrace()
+        null
+    }
+}
+
+inline fun <reified T> staticPropertiesByType(javaClass: Class<T>, prototype: T): Array<T> {
+    return staticClassFields(javaClass)
+        .map { field -> fieldInstance(field, prototype) }
+        .filterIsInstance(T::class.java)
+        .toTypedArray()
+}
+
+fun <E : Exception> Method.declaresException(exceptionClass: Class<E>): Boolean =
+    this.exceptionTypes.contains(exceptionClass)
+
+fun Method.declaresNoExceptions(): Boolean = this.exceptionTypes.isEmpty()
