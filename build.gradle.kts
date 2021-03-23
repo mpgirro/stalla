@@ -43,7 +43,15 @@ plugins {
 }
 
 group = "dev.stalla"
-version = "1.0.0"
+
+val tagName = System.getenv("GITHUB_REF")?.let { ref ->
+    if (ref.startsWith("ref/tags/")) {
+        ref.substringAfterLast('/')
+    } else {
+        null
+    }
+}
+version = tagName ?: "1.0.0-SNAPSHOT"
 
 val junit5Version = "5.7.0"
 val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPluginVersion
