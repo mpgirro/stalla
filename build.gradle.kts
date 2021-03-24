@@ -112,4 +112,11 @@ tasks {
         // Required for type resolution
         jvmTarget = "1.8"
     }
+
+    afterEvaluate {
+        // Needs to happen lazily as :detektMain is added late
+        named("check") {
+            dependsOn(named<Detekt>("detektMain"))
+        }
+    }
 }
