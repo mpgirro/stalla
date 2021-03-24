@@ -71,13 +71,13 @@ public object PodcastRssParser {
      */
     @JvmStatic
     @Throws(IOException::class, SAXException::class)
-    public fun parse(uri: String): Podcast? = parse(builder.parse(uri))
+    public fun parse(uri: String): Podcast? = parse(InputSource(uri))
 
     /**
      * Parse the content of the given input stream as an XML document
      * and return a [Podcast] if the XML document is an RSS feed.
      *
-     * @param inputStream InputStream containing the content to be parsed.
+     * @param inputStream InputStream containing the content to be parsed. It will not be closed automatically.
      * @return A [Podcast] if the XML document behind the input stream is an RSS document, otherwise `null`.
      * @throws IOException If any IO errors occur.
      * @throws SAXException If any XML parsing errors occur.
@@ -85,7 +85,7 @@ public object PodcastRssParser {
      */
     @JvmStatic
     @Throws(IOException::class, SAXException::class)
-    public fun parse(inputStream: InputStream): Podcast? = parse(builder.parse(inputStream))
+    public fun parse(inputStream: InputStream): Podcast? = inputStream.bufferedReader().use { parse(it) }
 
     /**
      * Parse the content of the given input stream as an XML document
@@ -101,7 +101,7 @@ public object PodcastRssParser {
     @JvmStatic
     @Throws(IOException::class, SAXException::class)
     public fun parse(inputStream: InputStream, systemId: String?): Podcast? =
-        parse(builder.parse(inputStream, systemId))
+        parse(InputSource(inputStream).also { it.systemId = systemId })
 
     /**
      * Parse the content of the given file as an XML document
@@ -115,13 +115,13 @@ public object PodcastRssParser {
      */
     @JvmStatic
     @Throws(IOException::class, SAXException::class)
-    public fun parse(file: File): Podcast? = file.bufferedReader().use { reader -> parse(reader) }
+    public fun parse(file: File): Podcast? = file.bufferedReader().use { parse(it) }
 
     /**
      * Parse the content of the given [Reader] as an XML document
      * and return a [Podcast] if the XML document is an RSS feed.
      *
-     * @param reader Reader containing the content to be parsed.
+     * @param reader Reader containing the content to be parsed. It will not be closed automatically.
      * @return A [Podcast] if the XML document behind the reader is an RSS document, otherwise `null`.
      * @throws IOException If any IO errors occur.
      * @throws SAXException If any XML parsing errors occur.
@@ -135,7 +135,7 @@ public object PodcastRssParser {
      * Parse the content of the given input source as an XML document
      * and return a [Podcast] if the XML document is an RSS feed.
      *
-     * @param inputSource InputSource containing the content to be parsed.
+     * @param inputSource InputSource containing the content to be parsed. It will not be closed automatically.
      * @return A [Podcast] if the XML document behind the input source is an RSS document, otherwise null.
      * @throws IOException If any IO errors occur.
      * @throws SAXException If any XML parsing errors occur.

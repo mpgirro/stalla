@@ -11,6 +11,7 @@ import dev.stalla.model.podcastindex.Soundbite;
 import dev.stalla.model.podcastindex.Transcript;
 import dev.stalla.model.podlove.SimpleChapter;
 import dev.stalla.model.rss.RssCategory;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -111,8 +113,21 @@ public class PodcastRssParserInteropTest {
 
     @Test
     @DisplayName("should fail to parse a File that cannot be read")
-    void failOnFileNotExists(@TemporaryFile File file) {
-        assertThrows(IOException.class, () -> PodcastRssParser.parse(toUnReadableFile(file)));
+    void failWhenReaderThrows() {
+        var throwingReader = new Reader() {
+
+            @Override
+            public int read(@NotNull char[] cbuf, int off, int len) throws IOException {
+                throw new IOException("This is meant to happen");
+            }
+
+            @Override
+            public void close() throws IOException {
+                throw new IOException("This is meant to happen");
+            }
+        };
+
+        assertThrows(IOException.class, () -> PodcastRssParser.parse(throwingReader));
     }
 
     @Test
