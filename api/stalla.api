@@ -3,6 +3,7 @@ public final class dev/stalla/PodcastRssParser {
 	public static final fun parse (Ljava/io/File;)Ldev/stalla/model/Podcast;
 	public static final fun parse (Ljava/io/InputStream;)Ldev/stalla/model/Podcast;
 	public static final fun parse (Ljava/io/InputStream;Ljava/lang/String;)Ldev/stalla/model/Podcast;
+	public static final fun parse (Ljava/io/Reader;)Ldev/stalla/model/Podcast;
 	public static final fun parse (Ljava/lang/String;)Ldev/stalla/model/Podcast;
 	public static final fun parse (Lorg/w3c/dom/Document;)Ldev/stalla/model/Podcast;
 	public static final fun parse (Lorg/xml/sax/InputSource;)Ldev/stalla/model/Podcast;
@@ -12,6 +13,7 @@ public final class dev/stalla/PodcastRssWriter {
 	public static final field INSTANCE Ldev/stalla/PodcastRssWriter;
 	public static final fun write (Ldev/stalla/model/Podcast;Ljava/io/File;)V
 	public static final fun write (Ldev/stalla/model/Podcast;Ljava/io/OutputStream;)V
+	public static final fun write (Ldev/stalla/model/Podcast;Ljava/io/Writer;)V
 }
 
 public abstract interface class dev/stalla/builder/AtomBuilder : dev/stalla/builder/Builder {

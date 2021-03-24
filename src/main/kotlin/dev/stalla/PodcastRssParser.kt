@@ -30,6 +30,7 @@ import org.xml.sax.SAXException
 import java.io.File
 import java.io.IOException
 import java.io.InputStream
+import java.io.Reader
 import javax.xml.parsers.DocumentBuilder
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
@@ -114,7 +115,21 @@ public object PodcastRssParser {
      */
     @JvmStatic
     @Throws(IOException::class, SAXException::class)
-    public fun parse(file: File): Podcast? = parse(builder.parse(file))
+    public fun parse(file: File): Podcast? = file.bufferedReader().use { reader -> parse(reader) }
+
+    /**
+     * Parse the content of the given [Reader] as an XML document
+     * and return a [Podcast] if the XML document is an RSS feed.
+     *
+     * @param reader Reader containing the content to be parsed.
+     * @return A [Podcast] if the XML document behind the reader is an RSS document, otherwise `null`.
+     * @throws IOException If any IO errors occur.
+     * @throws SAXException If any XML parsing errors occur.
+     * @throws NullPointerException If [reader] is `null`.
+     */
+    @JvmStatic
+    @Throws(IOException::class, SAXException::class)
+    public fun parse(reader: Reader): Podcast? = parse(InputSource(reader))
 
     /**
      * Parse the content of the given input source as an XML document
