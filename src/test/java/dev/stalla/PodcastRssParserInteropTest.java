@@ -47,6 +47,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SuppressWarnings("ConstantConditions")
 @ExtendWith({TemporaryFileParameterResolver.class})
 public class PodcastRssParserInteropTest {
 
@@ -112,21 +113,9 @@ public class PodcastRssParserInteropTest {
     }
 
     @Test
-    @DisplayName("should fail to parse a File that cannot be read")
+    @DisplayName("should fail to parse a Reader that throws")
     void failWhenReaderThrows() {
-        var throwingReader = new Reader() {
-
-            @Override
-            public int read(@NotNull char[] cbuf, int off, int len) throws IOException {
-                throw new IOException("This is meant to happen");
-            }
-
-            @Override
-            public void close() throws IOException {
-                throw new IOException("This is meant to happen");
-            }
-        };
-
+        final Reader throwingReader = createThrowingReader();
         assertThrows(IOException.class, () -> PodcastRssParser.parse(throwingReader));
     }
 
@@ -333,30 +322,43 @@ public class PodcastRssParserInteropTest {
         assertThrows(UnsupportedOperationException.class, () -> simpleChapters.add(aPodloveSimpleChapter()));
     }
 
-    private File toUnReadableFile(File file) {
-        // File gives I/O error when it is not readable
-        file.setReadable(false);
-        return file;
-    }
-
-    private InputSource toInputSource(File file) throws FileNotFoundException {
+    @NotNull
+    private InputSource toInputSource(@NotNull File file) throws FileNotFoundException {
         final InputStream inputStream = new FileInputStream(file);
         final InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         return new InputSource(inputStreamReader);
     }
 
-    private InputStream toUnreadableInputStream(File file) throws IOException {
+    @NotNull
+    private InputStream toUnreadableInputStream(@NotNull File file) throws IOException {
         // InputStream gives I/O error when it is closed
         final InputStream inputStream = new FileInputStream(file);
         inputStream.close();
         return inputStream;
     }
 
-    private InputSource toUnreadableInputSource(File file) throws IOException {
+    @NotNull
+    private InputSource toUnreadableInputSource(@NotNull File file) throws IOException {
         // InputSource gives I/O error when it's stream is closed
         final InputSource inputSource = toInputSource(file);
         inputSource.getCharacterStream().close();
         return inputSource;
+    }
+
+    @NotNull
+    private Reader createThrowingReader() {
+        return new Reader() {
+
+            @Override
+            public int read(@NotNull char[] cbuf, int off, int len) throws IOException {
+                throw new IOException("This is meant to happen");
+            }
+
+            @Override
+            public void close() throws IOException {
+                throw new IOException("This is meant to happen");
+            }
+        };
     }
 
 }

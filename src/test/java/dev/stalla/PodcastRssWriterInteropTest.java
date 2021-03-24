@@ -107,19 +107,22 @@ public class PodcastRssWriterInteropTest {
         );
     }
 
-    private File toUnwritableFile(File file) {
+    @NotNull
+    private File toUnwritableFile(@NotNull File file) {
         // File gives I/O error on writing when it is read-only
         file.setReadOnly();
         return file;
     }
 
-    private OutputStream toUnwritableOutputStream(File file) throws IOException {
+    @NotNull
+    private OutputStream toUnwritableOutputStream(@NotNull File file) throws IOException {
         // OutputStream gives I/O error when it is closed
         final OutputStream outputStream = new FileOutputStream(file);
         outputStream.close();
         return outputStream;
     }
 
+    @NotNull
     private Writer createThrowingWriter() {
         return new Writer() {
 

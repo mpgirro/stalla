@@ -34,6 +34,6 @@ internal class RealLifeFeedsTest {
     }
 
     companion object {
-        const val resourceFilesPath = "/xml/real-life-feeds"
+        const val resourceFilesPath = "xml/real-life-feeds"
     }
 }
