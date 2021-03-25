@@ -1,5 +1,6 @@
 package dev.stalla
 
+import assertk.Assert
 import assertk.all
 import assertk.assertThat
 import assertk.assertions.containsExactly
@@ -28,6 +29,8 @@ import dev.stalla.model.rss.Enclosure
 import dev.stalla.model.rss.Guid
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
+import org.xml.sax.InputSource
+import java.io.File
 import java.time.Month
 import java.util.Locale
 
@@ -101,9 +104,67 @@ internal class PodcastRssParserTest {
     }
 
     @Test
-    internal fun `should parse a basic feed correctly`() {
+    internal fun `should parse a basic feed from a URI correctly`() {
+        val resourceUrl = ClassLoader.getSystemResource("xml/rss-basic.xml")
+            ?: fail("The resource \"xml/rss-basic.xml\" does not exist")
+        val uri = resourceUrl.toURI()
+        assertThat(PodcastRssParser.parse(uri.toASCIIString()), "podcast from URI").wasParsedCorrectlyAsBasicFeed()
+    }
+
+    @Test
+    internal fun `should parse a basic feed from an InputStream correctly`() {
+        val resourceStream = ClassLoader.getSystemResourceAsStream("xml/rss-basic.xml")
+            ?: fail("The resource \"xml/rss-basic.xml\" does not exist")
+        resourceStream.use { stream ->
+            assertThat(PodcastRssParser.parse(stream), "podcast from InputStream").wasParsedCorrectlyAsBasicFeed()
+        }
+    }
+
+    @Test
+    internal fun `should parse a basic feed from an InputStream with systemId correctly`() {
+        val resourceStream = ClassLoader.getSystemResourceAsStream("xml/rss-basic.xml")
+            ?: fail("The resource \"xml/rss-basic.xml\" does not exist")
+        resourceStream.use { stream ->
+            assertThat(PodcastRssParser.parse(stream, "banana"), "podcast from InputStream with systemId")
+                .wasParsedCorrectlyAsBasicFeed()
+        }
+    }
+
+    @Test
+    internal fun `should parse a basic feed from a File correctly`() {
+        val resourceUrl = ClassLoader.getSystemResource("xml/rss-basic.xml")
+            ?: fail("The resource \"xml/rss-basic.xml\" does not exist")
+        val file = File(resourceUrl.toURI())
+        assertThat(PodcastRssParser.parse(file), "podcast from File").wasParsedCorrectlyAsBasicFeed()
+    }
+
+    @Test
+    internal fun `should parse a basic feed from a Reader correctly`() {
+        val resourceStream = ClassLoader.getSystemResourceAsStream("xml/rss-basic.xml")
+            ?: fail("The resource \"xml/rss-basic.xml\" does not exist")
+        resourceStream.bufferedReader().use { reader ->
+            assertThat(PodcastRssParser.parse(reader), "podcast from Reader").wasParsedCorrectlyAsBasicFeed()
+        }
+    }
+
+    @Test
+    internal fun `should parse a basic feed from an InputSource correctly`() {
+        val resourceStream = ClassLoader.getSystemResourceAsStream("xml/rss-basic.xml")
+            ?: fail("The resource \"xml/rss-basic.xml\" does not exist")
+        resourceStream.use { stream ->
+            val inputSource = InputSource(stream)
+            assertThat(PodcastRssParser.parse(inputSource), "podcast from InputSource").wasParsedCorrectlyAsBasicFeed()
+        }
+    }
+
+    @Test
+    internal fun `should parse a basic feed from a Document correctly`() {
         val document = validRssDocument()
-        assertThat(PodcastRssParser.parse(document)).isNotNull().all {
+        assertThat(PodcastRssParser.parse(document), "podcast from Document").wasParsedCorrectlyAsBasicFeed()
+    }
+
+    private fun Assert<Podcast?>.wasParsedCorrectlyAsBasicFeed() {
+        isNotNull().all {
             prop(Podcast::title).isEqualTo("Lorem Ipsum title")
             prop(Podcast::description).isEqualTo("Lorem Ipsum description")
             prop(Podcast::link).isEqualTo("http://example.org")

@@ -20,6 +20,7 @@ import org.w3c.dom.Element
 import java.io.File
 import java.io.IOException
 import java.io.OutputStream
+import java.io.Writer
 import javax.xml.transform.OutputKeys
 import javax.xml.transform.TransformerException
 import javax.xml.transform.TransformerFactory
@@ -71,15 +72,14 @@ public object PodcastRssWriter {
     @JvmStatic
     @Throws(IOException::class, TransformerException::class)
     public fun write(podcast: Podcast, file: File) {
-        file.outputStream()
-            .use { outputStream -> write(podcast, outputStream) }
+        file.bufferedWriter().use { writer -> write(podcast, writer) }
     }
 
     /**
      * Writes a [Podcast] to a [OutputStream] as an RSS feed.
      *
      * @param podcast The [Podcast] to write out.
-     * @param stream The [OutputStream] to write to.
+     * @param stream The [OutputStream] to write to. It will not be closed automatically.
      * @throws IOException If any IO errors occur.
      * @throws TransformerException If an unrecoverable error occurs during the course of the transformation to XML.
      * @throws NullPointerException If [podcast] or [stream] is `null`.
@@ -87,13 +87,25 @@ public object PodcastRssWriter {
     @JvmStatic
     @Throws(IOException::class, TransformerException::class)
     public fun write(podcast: Podcast, stream: OutputStream) {
+        stream.bufferedWriter().use { writer -> write(podcast, writer) }
+    }
+
+    /**
+     * Writes a [Podcast] to a [Writer] as an RSS feed.
+     *
+     * @param podcast The [Podcast] to write out.
+     * @param writer The [Writer] to write to. It will not be closed automatically.
+     * @throws IOException If any IO errors occur.
+     * @throws TransformerException If an unrecoverable error occurs during the course of the transformation to XML.
+     * @throws NullPointerException If [podcast] or [writer] is `null`.
+     */
+    @JvmStatic
+    @Throws(IOException::class, TransformerException::class)
+    public fun write(podcast: Podcast, writer: Writer) {
         val document = writeToDocument(podcast)
         val source = DOMSource(document)
 
-        stream.bufferedWriter().use { writer ->
-            val result = StreamResult(writer)
-            transformer.transform(source, result)
-        }
+        transformer.transform(source, StreamResult(writer))
     }
 
     private fun writeToDocument(podcast: Podcast): Document {

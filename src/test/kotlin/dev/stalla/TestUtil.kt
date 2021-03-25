@@ -49,12 +49,15 @@ internal fun dateTime(
 
 /** Gets a list of all the resource files in the given resources path */
 internal fun allResourceFilesIn(path: String): List<File> {
-    val files = DomBuilderFactory::class.java.getResourceAsStream(path)!!
-        .bufferedReader()
+    val pathFile = ClassLoader.getSystemResourceAsStream(path)
+        ?: error("Unable to load path: $path")
+
+    val files = pathFile.bufferedReader()
         .readLines()
         .map {
             val testFile = File(path, it)
-            val fileUrl = DomBuilderFactory::class.java.getResource(testFile.path)
+            val fileUrl = ClassLoader.getSystemResource(testFile.path)
+                ?: error("Unable to load test file: ${testFile.path}")
             File(fileUrl.toURI())
         }
 
