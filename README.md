@@ -3,7 +3,9 @@
 </h1>
 
 <h3 align="center">
-  Podcast RSS Feed metadata Parser and Writer
+	<img src="https://github.com/mpgirro/stalla/blob/master/.idea/icon.png?raw=true" width="128px" alt="Stalla logo" />
+	<br/>
+	Podcast RSS Feed metadata Parser and Writer
 </h3>
 
 <div align="center">
@@ -11,15 +13,9 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mpgirro/stalla/Buildbot)
 [![Coverage Status](https://coveralls.io/repos/github/mpgirro/stalla/badge.svg?branch=master)](https://coveralls.io/github/mpgirro/stalla?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d3c5df2fbf4c9aaabe66e52a847cdd)](https://www.codacy.com/app/mpgirro/stalla?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mpgirro/stalla&amp;utm_campaign=Badge_Grade)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmpgirro%2Fwien.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmpgirro%2Fstalla?ref=badge_shield)
 
 </div>
-
 An RSS 2.0 feed parser and writer library for Podcast metadata on the JVM. This library is written in Kotlin and has a Java-friendly API.
-
-## ⚠️ Active development status warning
-
-Stalla is undergoing active development and things may change and APIs may break. We expect breaking changes to happen on our way to v1.0, when our API will be finalised. You __should probably not use it in production yet__, even though we're confident what we have implemented is fairly stable.
 
 ## Supported standards
 
@@ -32,7 +28,10 @@ Stalla is undergoing active development and things may change and APIs may break
 - [x] Fyyd
 - [x] [Feedpress](https://feed.press/xmlns)
 - [x] [Google Play](https://developers.google.com/search/reference/podcast/rss-feed)
-- [x] [Podcastindex.org](https://github.com/Podcastindex-org/podcast-namespace) ([example feed](https://github.com/Podcastindex-org/podcast-namespace/blob/main/example.xml))
+- [x] [Podcastindex.org v1](https://github.com/Podcastindex-org/podcast-namespace) ([example feed](https://github.com/Podcastindex-org/podcast-namespace/blob/main/example.xml))
+
+Scheduled:
+- [] [Podcastindex.org v2](https://github.com/Podcastindex-org/podcast-namespace) ([example feed](https://github.com/Podcastindex-org/podcast-namespace/blob/main/example.xml))
 - [ ] [Spotify](https://drive.google.com/file/d/1KDY1zbRc6J2tkNvhniagor_qcH-pp2T0/view)
 - [ ] [Dublin Core](http://purl.org/dc/elements/1.1/) ([RFC 5013](https://tools.ietf.org/html/rfc5013)) – properties in the `/elements/1.1/` namespace
 - [ ] [Media RSS](http://www.rssboard.org/media-rss) ([example feed](https://gist.github.com/misener/7dd9b587b468aea1ae5a))
