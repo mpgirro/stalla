@@ -1,11 +1,18 @@
 # CHANGELOG
 
+## v1.0.0
+
+* Refactor model structure (no inner classes) into separate classes and packages
+* Fix remaining issues in XML namespace support with respect to their specifications
+* Narrow down accepted value for iTunes and Google Play categories, duration values, media types, and locale by using dedicated types
+* Ensure Java API expose static methods and delcares exceptions
+
 ## v0.10.0
 
 * Adds feed writing support
 * Adds additional elements for RSS and iTunes namespace
 * Adds support for Podcastindex namespace
-* Adds huge amount of unit tests
+* Adds a huge amount of unit tests
 * Adds builder factory methods to model companion objects
 * Changes to java.time representation
 
