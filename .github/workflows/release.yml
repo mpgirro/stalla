@@ -14,7 +14,7 @@ jobs:
         with:
           java-version: 11
       - name: Decrypt private key
-        run: gpg --quiet --batch --yes --decrypt --passphrase="${{secrets.SIGNING_PASSWORD}}" --output secring.txt secring.txt.gpg
+        run: gpg --quiet --batch --yes --decrypt --passphrase="${{secrets.SIGNING_PASSWORD}}" --output secring.txt pub_key.gpg
       - name: Make gradle executable
         run: chmod +x gradlew
       - name: Publish to Maven Central
