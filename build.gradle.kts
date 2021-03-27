@@ -207,4 +207,11 @@ tasks {
             dependsOn(named<Detekt>("detektMain"))
         }
     }
+
+    register("outputVersionDebug") {
+        doLast {
+            logger.warn("Project version: ${project.version}")
+            logger.warn("GITHUB_REF: ${System.getenv("GITHUB_REF")}")
+        }
+    }
 }
