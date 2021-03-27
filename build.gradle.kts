@@ -208,10 +208,28 @@ tasks {
         }
     }
 
-    register("outputVersionDebug") {
-        doLast {
+    val checkVersionBeforeRegistering by registering {
+        group = "publishing"
+        description = "Checks that the version is not set to a SNAPSHOT value before releasing to Maven Central"
+
+        doFirst {
             logger.warn("Project version: ${project.version}")
             logger.warn("GITHUB_REF: ${System.getenv("GITHUB_REF")}")
+
+            if (project.version.toString().endsWith("-SNAPSHOT")) {
+                throw GradleException("Cannot publish a snapshot release to Maven Central")
+            }
         }
+    }
+
+    register("publishToMavenCentral") {
+        group = "publishing"
+        description = "Publishes the the current revision to Maven Central, with pre-flight sanity checks"
+
+        doLast {
+            logger.warn("Successfully published ${project.group}:${project.name}:${project.version} to Maven Central")
+        }
+
+        dependsOn(checkVersionBeforeRegistering, named("publishToSonatype"), named("closeAndReleaseSonatypeStagingRepository"))
     }
 }
