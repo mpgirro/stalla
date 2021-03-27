@@ -227,7 +227,7 @@ tasks {
         description = "Publishes the the current revision to Maven Central, with pre-flight sanity checks"
 
         doLast {
-            logger.warn("Successfully puclished ${project.group}:${project.name}:${project.version} to Maven Central")
+            logger.warn("Successfully published ${project.group}:${project.name}:${project.version} to Maven Central")
         }
 
         dependsOn(checkVersionBeforeRegistering, named("publishToSonatype"), named("closeAndReleaseSonatypeStagingRepository"))
