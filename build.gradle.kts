@@ -45,7 +45,7 @@ plugins {
 group = "dev.stalla"
 
 val tagName = System.getenv("GITHUB_REF")?.let { ref ->
-    if (ref.startsWith("ref/tags/")) {
+    if (ref.startsWith("refs/tags/")) {
         ref.substringAfterLast('/')
     } else {
         null
