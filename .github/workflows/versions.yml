@@ -1,11 +1,11 @@
-name: Release tests
+name: Versions
 on:
   release:
     types: [ published ]
 
 jobs:
   deploy:
-    name: Publish artifacts
+    name: Versions test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,3 +20,5 @@ jobs:
         uses: eskatos/gradle-command-action@v1
         with:
           arguments: outputVersionDebug
+        env:
+          WHATEVER: test
