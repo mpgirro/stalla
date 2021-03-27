@@ -19,22 +19,22 @@ An RSS 2.0 feed parser and writer library for Podcast metadata on the JVM. This 
 
 ## Supported standards
 
-- [x] [RSS 2.0](http://www.rssboard.org/rss-2-0)
-- [x] [Atom](https://tools.ietf.org/html/rfc4287) (RFC 4287) – selected elements, no feed support
-- [x] [iTunes](https://help.apple.com/itc/podcasts_connect/#/itcb54353390) (Apple Podcast Connect)
-- [x] [Content](http://purl.org/rss/1.0/modules/content/) (RDF Site Summary 1.0 Module)
-- [x] [Podlove Simple Chapters](https://podlove.org/simple-chapters/)
-- [x] Bitlove
-- [x] Fyyd
-- [x] [Feedpress](https://feed.press/xmlns)
-- [x] [Google Play](https://developers.google.com/search/reference/podcast/rss-feed)
-- [x] [Podcastindex.org v1](https://github.com/Podcastindex-org/podcast-namespace) ([example feed](https://github.com/Podcastindex-org/podcast-namespace/blob/main/example.xml))
+- [RSS 2.0](http://www.rssboard.org/rss-2-0)
+- [Atom](https://tools.ietf.org/html/rfc4287) (RFC 4287) – selected elements, no feed support
+- [iTunes](https://help.apple.com/itc/podcasts_connect/#/itcb54353390) (Apple Podcast Connect)
+- [Content](http://purl.org/rss/1.0/modules/content/) (RDF Site Summary 1.0 Module)
+- [Podlove Simple Chapters](https://podlove.org/simple-chapters/)
+- Bitlove
+- Fyyd
+- [Feedpress](https://feed.press/xmlns)
+- [Google Play](https://developers.google.com/search/reference/podcast/rss-feed)
+- [Podcastindex.org v1](https://github.com/Podcastindex-org/podcast-namespace) ([example feed](https://github.com/Podcastindex-org/podcast-namespace/blob/main/example.xml))
 
 Scheduled:
-- [] [Podcastindex.org v2](https://github.com/Podcastindex-org/podcast-namespace) ([example feed](https://github.com/Podcastindex-org/podcast-namespace/blob/main/example.xml))
-- [ ] [Spotify](https://drive.google.com/file/d/1KDY1zbRc6J2tkNvhniagor_qcH-pp2T0/view)
-- [ ] [Dublin Core](http://purl.org/dc/elements/1.1/) ([RFC 5013](https://tools.ietf.org/html/rfc5013)) – properties in the `/elements/1.1/` namespace
-- [ ] [Media RSS](http://www.rssboard.org/media-rss) ([example feed](https://gist.github.com/misener/7dd9b587b468aea1ae5a))
+- [Podcastindex.org v2](https://github.com/Podcastindex-org/podcast-namespace) in #49 ([example feed](https://github.com/Podcastindex-org/podcast-namespace/blob/main/example.xml))
+- [Spotify](https://drive.google.com/file/d/1KDY1zbRc6J2tkNvhniagor_qcH-pp2T0/view) in #29
+- [Dublin Core](http://purl.org/dc/elements/1.1/) ([RFC 5013](https://tools.ietf.org/html/rfc5013)) in #28 – properties in the `/elements/1.1/` namespace
+- [Media RSS](http://www.rssboard.org/media-rss) in #30 ([example feed](https://gist.github.com/misener/7dd9b587b468aea1ae5a))
 
 Feel free to open an issue if Stalla is missing support for a relevant namespace. Please describe why you feel that this namespace is relevant in the Podcast ecosystem, and ideally provide a link to an existing feed using this namespace.
 
