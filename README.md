@@ -10,6 +10,7 @@
 
 <div align="center">
 
+[![](https://img.shields.io/maven-central/v/dev.stalla/stalla)](https://mvnrepository.com/artifact/dev.stalla/stalla)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mpgirro/stalla/Buildbot)
 [![Coverage Status](https://coveralls.io/repos/github/mpgirro/stalla/badge.svg?branch=master)](https://coveralls.io/github/mpgirro/stalla?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d3c5df2fbf4c9aaabe66e52a847cdd)](https://www.codacy.com/app/mpgirro/stalla?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mpgirro/stalla&amp;utm_campaign=Badge_Grade)
@@ -59,6 +60,26 @@ Scheduled:
 Feel free to open an issue if Stalla is missing support for a relevant namespace.
 
 ## Usage
+
+### Distribution
+
+Stalla is distributed via [Maven Central](https://search.maven.org/search?q=g:dev.stalla%20AND%20a:stalla).
+
+Maven:
+
+```
+<dependency>
+  <groupId>dev.stalla</groupId>
+  <artifactId>stalla</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
+Gradle Kotlin DSL:
+
+```
+implementation("dev.stalla:stalla:1.0.0")
+```
 
 ### Parsing an RSS feed
 
