@@ -119,7 +119,7 @@ class provides a static `builder()` method that returns a builder instance enabl
 
 ```java
 Episode someEpisode= // ...
-  Podcast podcast=Podcast.builder()
+Podcast podcast = Podcast.builder()
   .title("The Stalla Show")
   .description("A show about Stalla development")
   .link("https://stalla.dev/podcast")
@@ -163,8 +163,8 @@ sharing, e.g. references of lists, etc.
 The generic use case of this method is the convenient construction of a new model object based on the properties of an existing model instance:
 
 ```java
-Episode oldEpisode= // ...
-  Episode newEpisode=Episode.builder()
+Episode oldEpisode = // ...
+Episode newEpisode = Episode.builder()
   .applyFrom(oldEpisode)
   .title("The latest episode")
   .build();
