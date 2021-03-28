@@ -22,6 +22,7 @@ An RSS 2.0 feed parser and writer library for Podcast metadata on the JVM. This 
 
 * [Supported standards](#supported-standards)
 * [Usage](#usage)
+  * [Distribution](#distribution)
   * [Parsing an RSS feed](#parsing-an-rss-feed)
   * [Writing an RSS feed](#writing-an-rss-feed)
   * [Data model](#data-model)
