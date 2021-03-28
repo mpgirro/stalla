@@ -114,7 +114,8 @@ In Java, all overloads of `write()` are available as static methods.
 
 ### Data model
 
-The two central entities in Stalla's entire data model are `Podcast` (abstracting the RSS `<channel>`) and `Episode` (abstracting an RSS `<item>`).
+The two central entities in Stalla's entire data model are [`Podcast`](src/main/kotlin/dev/stalla/model/Podcast.kt) (abstracting the RSS `<channel>`)
+and [`Episode`](src/main/kotlin/dev/stalla/model/Episode.kt) (abstracting an RSS `<item>`).
 
 #### Model construction in Kotlin
 
@@ -153,19 +154,22 @@ Podcast podcast = Podcast.builder()
 Note that builders validate upon calling `build()`, i.e. the constructed model instance may be `null` if:
 
 * not all required constructor properties of the backing data class have been initialized in the builder (technical requirement by the type system).
-* not all mandatory information bas been provided with respect to the backing specification (RSS or other XML namespace). For example, a `Podcast`
-  needs at least one `Episode` (i.e. one `<item>` within the `<channel>`), so while technically an empty list satisfies the technical requirement
-  (required, not`null`), it violates however the logical requirement (at least one element).
+* not all mandatory information bas been provided with respect to the backing specification (RSS or other XML namespace). For example, a
+  [`Podcast`](src/main/kotlin/dev/stalla/model/Podcast.kt) needs at least one [`Episode`](src/main/kotlin/dev/stalla/model/Episode.kt) (i.e. one
+  `<item>` within the `<channel>`), so while technically an empty list satisfies the technical requirement (required, not`null`), it violates however
+  the logical requirement (at least one element).
 
 #### Enumerated types
 
 The supported XML namespaces declare several elements that only accept a finite set of predefined values. In Stalla, these values are usually modeled
-via enum classes (e.g. `GoogleplayCategory` or `TranscriptType`). However, some elements, like the Categories of the iTunes namespace, have a more
-complex structure (e.g. a hierarchy) that cannot be modeled via enums. These types still try to provide an interface that is close to that of enums
-for consistent usage. For example, `ItunesCategory` exposed all possible values as members of the companion object (Kotlin) or as static class members
-(Java).
+via enum classes (e.g. [`GoogleplayCategory`](src/main/kotlin/dev/stalla/model/googleplay/GoogleplayCategory.kt) or
+[`TranscriptType`](src/main/kotlin/dev/stalla/model/podcastindex/TranscriptType.kt)). However, some elements, like the Categories of the iTunes
+namespace, have a more complex structure (e.g. a hierarchy) that cannot be modeled via enums. These types still try to provide an interface that is
+close to that of enums for consistent usage. For example, [`ItunesCategory`](src/main/kotlin/dev/stalla/model/itunes/ItunesCategory.kt) exposes all
+possible values as members of the companion object (Kotlin) or as static class members (Java).
 
-Note that the instances exposed by `MediaType` are not the finite set of possible values, but only predefined instances for convenience.
+Note that the instances exposed by [`MediaType`](src/main/kotlin/dev/stalla/model/MediaType.kt) are not the finite set of possible values, but only
+predefined instances for convenience.
 
 ### Convenience features
 
@@ -196,11 +200,13 @@ Episode newEpisode = Episode.builder()
 
 All enumerated types expose an `of(String)` method as a member of the companion object (Kotlin) or as a static class method (Java). This method is a
 factory and produces an instance of the type if possible, or `null`. In contrast to the enum classes `valueOf()` standard method, `of()` is
-case-insensitive and also available for non enum class enumerated types (e.g. `ItunesCategory`).
+case-insensitive and also available for non enum class enumerated types (e.g.
+[`ItunesCategory`](src/main/kotlin/dev/stalla/model/itunes/ItunesCategory.kt)).
 
-Additionally, Stalla has some types that validate a string for certain patterns, e.g. `MediaType` models media types as defined by
-[RFC 2046](https://tools.ietf.org/html/rfc2046), and `StyledDuration` describes values in several supported time formats (`14:02:56` or `5:23`
-or `33.833`). These types also provide the `of()` method as the only means to obtain an instance of the class.
+Additionally, Stalla has some types that validate a string for certain patterns, e.g. [`MediaType`](src/main/kotlin/dev/stalla/model/MediaType.kt)
+models media types as defined by [RFC 2046](https://tools.ietf.org/html/rfc2046), and
+[`StyledDuration`](src/main/kotlin/dev/stalla/model/StyledDuration.kt) describes values in several supported time formats (`14:02:56` or `5:23` or
+`33.833`). These types also provide the `of()` method as the only means to obtain an instance of the class.
 
 ### Generate the documentation
 
