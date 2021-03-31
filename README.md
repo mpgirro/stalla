@@ -18,24 +18,6 @@
 </div>
 An RSS 2.0 feed parser and writer library for Podcast metadata on the JVM. This library is written in Kotlin and has a Java-friendly API.
 
-## Table of Contents
-
-* [Supported standards](#supported-standards)
-* [Usage](#usage)
-  * [Distribution](#distribution)
-  * [Parsing an RSS feed](#parsing-an-rss-feed)
-  * [Writing an RSS feed](#writing-an-rss-feed)
-  * [Data model](#data-model)
-    * [Model construction in Kotlin](#model-construction-in-kotlin)
-    * [Model construction in Java](#model-construction-in-java)
-    * [Enumerated types](#enumerated-types)
-  * [Convenience features](#convenience-features)
-    * [Builder factory: builder() method](#builder-factory-builder-method)
-    * [Builder mutation: applyFrom() method](#builder-mutation-applyfrom-method)
-    * [Type factory: of() method](#type-factory-of-method)
-  * [Documentation](#documentation)
-* [License](#license)
-
 ## Supported standards
 
 - [RSS 2.0](http://www.rssboard.org/rss-2-0)
@@ -93,7 +75,7 @@ val podcast = PodcastRssParser.parse(rssFeedFile)
 ```
 
 The `parse()` function will return a parsed `Podcast?`, which may be `null` if parsing was unsuccessful. It will also throw an exception if parsing
-fails.
+fails catastrophically (e.g., the source is a `File` that doesn't exist).
 
 In Java, all overloads of `parse()` are available as static methods.
 
@@ -137,11 +119,11 @@ val podcast = Podcast(
 
 ⚠️ Direct instantiation of model class objects is discouraged in Java.
 
-The Java language does not provide named arguments. Some of Stallas model classes take huge parameter lists. To mitigate this limitation, every model
-class provides a static `builder()` method that returns a builder instance enabling expressive construction.
+The Java language does not provide named arguments. Some of Stalla's model classes take huge parameter lists. To mitigate this limitation, every model
+class provides a static `builder()` method that returns a builder instance enabling expressive construction in Java.
 
 ```java
-Episode someEpisode= // ...
+Episode someEpisode = // ...
 Podcast podcast = Podcast.builder()
   .title("The Stalla Show")
   .description("A show about Stalla development")
@@ -151,20 +133,20 @@ Podcast podcast = Podcast.builder()
   .build();
 ```
 
-Note that builders validate upon calling `build()`, i.e. the constructed model instance may be `null` if:
+Note that builders validate lazily upon calling `build()`, i.e., the constructed model instance may be `null` if:
 
-* not all required constructor properties of the backing data class have been initialized in the builder (technical requirement by the type system).
-* not all mandatory information bas been provided with respect to the backing specification (RSS or other XML namespace). For example, a
+* Not all required constructor properties of the backing data class have been initialized in the builder (technical requirement by the type system).
+* Not all mandatory information bas been provided with respect to the backing specification (RSS or other XML namespace). For example, a
   [`Podcast`](src/main/kotlin/dev/stalla/model/Podcast.kt) needs at least one [`Episode`](src/main/kotlin/dev/stalla/model/Episode.kt) (i.e. one
-  `<item>` within the `<channel>`), so while technically an empty list satisfies the technical requirement (required, not`null`), it violates however
-  the logical requirement (at least one element).
+  `<item>` within the `<channel>`), so while technically an empty list satisfies the technical requirement (required to be not `null`), it however
+  violates the logical requirement (at least one element).
 
 #### Enumerated types
 
 The supported XML namespaces declare several elements that only accept a finite set of predefined values. In Stalla, these values are usually modeled
-via enum classes (e.g. [`GoogleplayCategory`](src/main/kotlin/dev/stalla/model/googleplay/GoogleplayCategory.kt) or
+via enum classes (e.g., [`GoogleplayCategory`](src/main/kotlin/dev/stalla/model/googleplay/GoogleplayCategory.kt) or
 [`TranscriptType`](src/main/kotlin/dev/stalla/model/podcastindex/TranscriptType.kt)). However, some elements, like the Categories of the iTunes
-namespace, have a more complex structure (e.g. a hierarchy) that cannot be modeled via enums. These types still try to provide an interface that is
+namespace, have a more complex structure (i.e., a hierarchy) that cannot be modeled via enums. These types still try to provide an interface that is
 close to that of enums for consistent usage. For example, [`ItunesCategory`](src/main/kotlin/dev/stalla/model/itunes/ItunesCategory.kt) exposes all
 possible values as members of the companion object (Kotlin) or as static class members (Java).
 
@@ -181,10 +163,10 @@ expressive object construction using named attribute initializers, and compensat
 
 #### Builder mutation: applyFrom() method
 
-All builders expose an `applyFrom(model)` method that takes an instance of the builder's model class as argument, and returns a builder instance. The
+All builders expose an `applyFrom(model)` method that takes an instance of the builder's model class as argument, and returns the builder instance. The
 method applies all values of the provided model to the builder's state. This is therefore a mutating operation. The returned builder instance is the
 mutated state of the builder on which the `applyFrom` method is called, and not a new instance. The operation does not result in any structural
-sharing, e.g. references of lists, etc.
+sharing, e.g., references of lists, etc.
 
 The generic use case of this method is the convenient construction of a new model object based on the properties of an existing model instance:
 
@@ -196,11 +178,13 @@ Episode newEpisode = Episode.builder()
   .build();
 ```
 
+In Kotlin, you can also use the `copy()` method exposed by all data classes to obtain a new model instance with some of its properties mutated.
+
 #### Type factory: of() method
 
 All enumerated types expose an `of(String)` method as a member of the companion object (Kotlin) or as a static class method (Java). This method is a
-factory and produces an instance of the type if possible, or `null`. In contrast to the enum classes `valueOf()` standard method, `of()` is
-case-insensitive and also available for non enum class enumerated types (e.g.
+factory and produces an instance of the type if possible, otherwise `null`. In contrast to the enum classes' `valueOf()` standard method, `of()` is
+case-insensitive and also available for non-enum class enumerated types (e.g.,
 [`ItunesCategory`](src/main/kotlin/dev/stalla/model/itunes/ItunesCategory.kt)).
 
 Additionally, Stalla has some types that validate a string for certain patterns, e.g. [`MediaType`](src/main/kotlin/dev/stalla/model/MediaType.kt)
