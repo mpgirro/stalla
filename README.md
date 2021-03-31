@@ -75,7 +75,7 @@ val podcast = PodcastRssParser.parse(rssFeedFile)
 ```
 
 The `parse()` function will return a parsed `Podcast?`, which may be `null` if parsing was unsuccessful. It will also throw an exception if parsing
-fails catastrhopically (e.g., the source is a `File` that doesn't exist).
+fails catastrophically (e.g., the source is a `File` that doesn't exist).
 
 In Java, all overloads of `parse()` are available as static methods.
 
