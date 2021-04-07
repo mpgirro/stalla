@@ -10,7 +10,7 @@
 
 <div align="center">
 
-[![](https://img.shields.io/maven-central/v/dev.stalla/stalla)](https://mvnrepository.com/artifact/dev.stalla/stalla)
+[![](https://img.shields.io/maven-central/v/dev.stalla/stalla)](https://package-search.jetbrains.com/package?id=dev.stalla%3Astalla)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mpgirro/stalla/Buildbot)
 [![Coverage Status](https://coveralls.io/repos/github/mpgirro/stalla/badge.svg?branch=master)](https://coveralls.io/github/mpgirro/stalla?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d3c5df2fbf4c9aaabe66e52a847cdd)](https://www.codacy.com/app/mpgirro/stalla?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mpgirro/stalla&amp;utm_campaign=Badge_Grade)
