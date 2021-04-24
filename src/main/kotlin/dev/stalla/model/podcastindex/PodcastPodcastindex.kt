@@ -12,12 +12,16 @@ import dev.stalla.model.BuilderFactory
  *
  * @property locked The lock status of the podcast.
  * @property funding The funding information for the podcast.
+ * @property persons TODO
+ * @property location TODO
  *
  * @since 1.0.0
  */
 public data class PodcastPodcastindex(
     val locked: Locked? = null,
-    val funding: List<Funding> = emptyList()
+    val funding: List<Funding> = emptyList(),
+    val persons: List<PodcastindexPerson> = emptyList(),
+    val location: PodcastindexLocation? = null
 ) {
 
     /** Provides a builder for the [PodcastPodcastindex] class. */
