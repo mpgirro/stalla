@@ -4,6 +4,7 @@ import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
+import dev.stalla.builder.PodcastindexLocationBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
@@ -21,6 +22,7 @@ import dev.stalla.builder.validating.ValidatingAtomBuilder
 import dev.stalla.builder.validating.ValidatingAtomPersonBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexLocationBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.model.Podcast
@@ -114,6 +116,9 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     override fun createFundingBuilder(): PodcastPodcastindexFundingBuilder =
         ValidatingPodcastPodcastindexFundingBuilder()
+
+    override fun createLocationBuilder(): PodcastindexLocationBuilder =
+        ValidatingPodcastindexLocationBuilder()
 
     override val hasEnoughDataToBuild: Boolean
         get() = episodeBuilders.any { it.hasEnoughDataToBuild } &&

@@ -19,6 +19,7 @@ import dev.stalla.model.podcastindex.GeoLocation
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.GeoUriParser
 import dev.stalla.parser.NamespaceParser
+import dev.stalla.parser.OsmFeatureParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalAPI
 import dev.stalla.util.allNotNull
@@ -97,11 +98,9 @@ internal object PodcastindexParser : NamespaceParser() {
         val geoValue = getAttributeByName("geo")?.value.trimmedOrNullIfBlank()
         val osmValue = getAttributeByName("osm")?.value.trimmedOrNullIfBlank()
 
-        val osm = null // TODO parse osmValue to OpenStreetMapFeature?
-
         return locationBuilder.name(name)
             .geo(GeoUriParser.parse(geoValue))
-            .osm(osm)
+            .osm(OsmFeatureParser.parse(osmValue))
     }
 
     private fun Node.toLockedBuilder(

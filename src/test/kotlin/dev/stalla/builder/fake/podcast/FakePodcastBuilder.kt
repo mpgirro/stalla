@@ -3,6 +3,7 @@ package dev.stalla.builder.fake.podcast
 import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
+import dev.stalla.builder.PodcastindexLocationBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
@@ -11,6 +12,7 @@ import dev.stalla.builder.fake.FakeAtomPersonBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
+import dev.stalla.builder.fake.FakePodcastindexLocationBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
 import dev.stalla.builder.fake.FakeRssImageBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
@@ -103,6 +105,8 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
     override fun createLockedBuilder(): PodcastPodcastindexLockedBuilder = FakePodcastPodcastindexLockedBuilder()
 
     override fun createFundingBuilder(): PodcastPodcastindexFundingBuilder = FakePodcastPodcastindexFundingBuilder()
+
+    override fun createLocationBuilder(): PodcastindexLocationBuilder = FakePodcastindexLocationBuilder()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
