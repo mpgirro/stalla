@@ -1,5 +1,7 @@
 package dev.stalla.parser.namespace
 
+import dev.stalla.builder.GeoLocationBuilder
+import dev.stalla.builder.PodcastindexLocationBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
@@ -11,8 +13,11 @@ import dev.stalla.dom.getAttributeByName
 import dev.stalla.dom.getAttributeValueByName
 import dev.stalla.dom.parseAsMediaTypeOrNull
 import dev.stalla.dom.textAsBooleanOrNull
+import dev.stalla.dom.textOrNull
 import dev.stalla.model.StyledDuration
+import dev.stalla.model.podcastindex.GeoLocation
 import dev.stalla.model.podcastindex.TranscriptType
+import dev.stalla.parser.GeoUriParser
 import dev.stalla.parser.NamespaceParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalAPI
@@ -45,30 +50,14 @@ internal object PodcastindexParser : NamespaceParser() {
                 } ?: return
                 builder.podcastPodcastindexBuilder.addFundingBuilder(fundingBuilder)
             }
+            "location" -> {
+                val locationBuilder = ifCanBeParsed {
+                    toLocationBuilder(builder.createLocationBuilder())
+                } ?: return
+                builder.podcastPodcastindexBuilder.locationBuilder(locationBuilder)
+            }
             else -> pass
         }
-    }
-
-    private fun Node.toLockedBuilder(
-        lockedBuilder: PodcastPodcastindexLockedBuilder
-    ): PodcastPodcastindexLockedBuilder? {
-        val owner = getAttributeByName("owner")?.value.trimmedOrNullIfBlank()
-        val locked = textAsBooleanOrNull()
-
-        if (!allNotNull(owner, locked)) return null
-        return lockedBuilder.owner(owner)
-            .locked(locked)
-    }
-
-    private fun Node.toFundingBuilder(
-        fundingBuilder: PodcastPodcastindexFundingBuilder
-    ): PodcastPodcastindexFundingBuilder? {
-        val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()
-        val message = textContent.trimmedOrNullIfBlank()
-
-        if (!allNotNull(url, message)) return null
-        return fundingBuilder.url(url)
-            .message(message)
     }
 
     override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
@@ -91,8 +80,50 @@ internal object PodcastindexParser : NamespaceParser() {
                 } ?: return
                 builder.podcastindexBuilder.addTranscriptBuilder(transcriptBuilder)
             }
+            "location" -> {
+                val locationBuilder = ifCanBeParsed {
+                    toLocationBuilder(builder.createLocationBuilder())
+                } ?: return
+                builder.podcastindexBuilder.locationBuilder(locationBuilder)
+            }
             else -> pass
         }
+    }
+
+    private fun Node.toLocationBuilder(
+        locationBuilder: PodcastindexLocationBuilder
+    ): PodcastindexLocationBuilder? {
+        val name = textOrNull() ?: return null
+        val geoValue = getAttributeByName("geo")?.value.trimmedOrNullIfBlank()
+        val osmValue = getAttributeByName("osm")?.value.trimmedOrNullIfBlank()
+
+        val osm = null // TODO parse osmValue to OpenStreetMapFeature?
+
+        return locationBuilder.name(name)
+            .geo(GeoUriParser.parse(geoValue))
+            .osm(osm)
+    }
+
+    private fun Node.toLockedBuilder(
+        lockedBuilder: PodcastPodcastindexLockedBuilder
+    ): PodcastPodcastindexLockedBuilder? {
+        val owner = getAttributeByName("owner")?.value.trimmedOrNullIfBlank()
+        val locked = textAsBooleanOrNull()
+
+        if (!allNotNull(owner, locked)) return null
+        return lockedBuilder.owner(owner)
+            .locked(locked)
+    }
+
+    private fun Node.toFundingBuilder(
+        fundingBuilder: PodcastPodcastindexFundingBuilder
+    ): PodcastPodcastindexFundingBuilder? {
+        val url = getAttributeByName("url")?.value.trimmedOrNullIfBlank()
+        val message = textContent.trimmedOrNullIfBlank()
+
+        if (!allNotNull(url, message)) return null
+        return fundingBuilder.url(url)
+            .message(message)
     }
 
     private fun Node.toChaptersBuilder(

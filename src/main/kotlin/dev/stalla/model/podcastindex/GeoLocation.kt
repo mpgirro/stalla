@@ -7,6 +7,7 @@ import dev.stalla.model.TypeFactory
 import dev.stalla.model.podcastindex.GeoLocation.Factory.CRS_WGS84
 import dev.stalla.parser.GeoUriParser
 import dev.stalla.util.InternalAPI
+import dev.stalla.util.asUnmodifiable
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
 import java.util.Locale
 import kotlin.contracts.contract
@@ -47,7 +48,7 @@ public class GeoLocation private constructor(
         coordC = coordC,
         crs = crs,
         uncertainty = uncertainty,
-        parameters = parameters.map { Parameter(it.key, it.value) }
+        parameters = parameters.map { Parameter(it.key, it.value) }.asUnmodifiable()
     )
 
     /**

@@ -1,8 +1,10 @@
 package dev.stalla.builder.episode
 
 import dev.stalla.builder.AtomPersonBuilderProvider
+import dev.stalla.builder.GeoLocationBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilderProvider
+import dev.stalla.builder.PodcastindexLocationBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.util.InternalAPI
 
@@ -32,4 +34,7 @@ internal interface ProvidingEpisodeBuilder : EpisodeBuilder, AtomPersonBuilderPr
 
     /** Creates an instance of [EpisodePodcastindexSoundbiteBuilder] to use with this builder. */
     fun createSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder
+
+    /** Creates an instance of [PodcastindexLocationBuilder] to use with this builder. */
+    fun createLocationBuilder(): PodcastindexLocationBuilder
 }

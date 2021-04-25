@@ -1,8 +1,11 @@
 package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
+import dev.stalla.builder.PodcastindexLocationBuilder
+import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.model.podcastindex.EpisodePodcastindex
+import dev.stalla.model.podcastindex.PodcastindexLocation
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
@@ -52,10 +55,14 @@ public interface EpisodePodcastindexBuilder : Builder<EpisodePodcastindex> {
         transcriptBuilders.forEach(::addTranscriptBuilder)
     }
 
+    /** Set the [EpisodePodcastindexBuilder]. */
+    public fun locationBuilder(locationBuilder: PodcastindexLocationBuilder): EpisodePodcastindexBuilder
+
     override fun applyFrom(prototype: EpisodePodcastindex?): EpisodePodcastindexBuilder =
         whenNotNull(prototype) { podcast ->
             chaptersBuilder(Chapters.builder().applyFrom(podcast.chapters))
             addAllSoundbiteBuilders(podcast.soundbites.asBuilders())
             addAllTranscriptBuilders(podcast.transcripts.asBuilders())
+            locationBuilder(PodcastindexLocation.builder().applyFrom(podcast.location))
         }
 }

@@ -1,5 +1,6 @@
 package dev.stalla.builder.validating.episode
 
+import dev.stalla.builder.PodcastindexLocationBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
@@ -12,6 +13,7 @@ import dev.stalla.util.asUnmodifiable
 internal class ValidatingEpisodePodcastindexBuilder : EpisodePodcastindexBuilder {
 
     private var chaptersBuilderValue: EpisodePodcastindexChaptersBuilder? = null
+    private var locationBuilderValue: PodcastindexLocationBuilder? = null
     private val transcriptBuilders: MutableList<EpisodePodcastindexTranscriptBuilder> = mutableListOf()
     private val soundbiteBuilders: MutableList<EpisodePodcastindexSoundbiteBuilder> = mutableListOf()
 
@@ -30,20 +32,23 @@ internal class ValidatingEpisodePodcastindexBuilder : EpisodePodcastindexBuilder
         transcriptBuilders.add(transcriptBuilder)
     }
 
+    override fun locationBuilder(locationBuilder: PodcastindexLocationBuilder): EpisodePodcastindexBuilder =
+        apply { this.locationBuilderValue = locationBuilder }
+
     override val hasEnoughDataToBuild: Boolean
         get() = chaptersBuilderValue?.hasEnoughDataToBuild == true ||
             transcriptBuilders.any { it.hasEnoughDataToBuild } ||
-            soundbiteBuilders.any { it.hasEnoughDataToBuild }
+            soundbiteBuilders.any { it.hasEnoughDataToBuild } ||
+            locationBuilderValue?.hasEnoughDataToBuild == true
 
     override fun build(): EpisodePodcastindex? {
-        if (!hasEnoughDataToBuild) {
-            return null
-        }
+        if (!hasEnoughDataToBuild) return null
 
         return EpisodePodcastindex(
             transcripts = transcriptBuilders.mapNotNull { it.build() }.asUnmodifiable(),
             soundbites = soundbiteBuilders.mapNotNull { it.build() }.asUnmodifiable(),
-            chapters = chaptersBuilderValue?.build()
+            chapters = chaptersBuilderValue?.build(),
+            location = locationBuilderValue?.build()
         )
     }
 }

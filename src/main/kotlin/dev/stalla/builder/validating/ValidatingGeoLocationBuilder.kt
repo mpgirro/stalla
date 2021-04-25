@@ -65,17 +65,13 @@ public class ValidatingGeoLocationBuilder : GeoLocationBuilder {
     override fun build(): GeoLocation? {
         if (!hasEnoughDataToBuild) return null
 
-        return try {
-            GeoLocation(
-                coordA = coordA!!,
-                coordB = coordB!!,
-                coordC = coordC,
-                crs = crs,
-                uncertainty = uncertainty,
-                parameters = parameters
-            )
-        } catch (ex: NullPointerException) {
-            null
-        }
+        return GeoLocation(
+            coordA = coordA ?: return null,
+            coordB = coordB ?: return null,
+            coordC = coordC,
+            crs = crs,
+            uncertainty = uncertainty,
+            parameters = parameters // this secondary constructor will apply .asUnmodifiable()
+        )
     }
 }

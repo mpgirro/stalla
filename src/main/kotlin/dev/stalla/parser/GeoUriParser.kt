@@ -4,6 +4,7 @@ import dev.stalla.builder.GeoLocationBuilder
 import dev.stalla.model.podcastindex.GeoLocation
 import dev.stalla.util.InternalAPI
 import java.util.regex.Pattern
+import kotlin.contracts.contract
 
 /**
  * Parser implementation for [GeoLocation] values, as defined in [RFC 5870](https://tools.ietf.org/html/rfc5870).
@@ -20,7 +21,13 @@ internal object GeoUriParser {
 
     @InternalAPI
     @Suppress("ComplexMethod", "NestedBlockDepth")
-    internal fun parse(value: String): GeoLocation? {
+    internal fun parse(value: String?): GeoLocation? {
+        contract {
+            returnsNotNull() implies (value != null)
+        }
+
+        if (value == null) return null
+
         // URI format: geo:LAT,LONG;prop1=value1;prop2=value2
         val scheme = "geo:"
         if (value.length < scheme.length || !value.substring(0, scheme.length).equals(scheme, ignoreCase = true)) {
