@@ -1,7 +1,7 @@
 package dev.stalla.parser
 
 import dev.stalla.model.podcastindex.OpenStreetMapFeature
-import dev.stalla.model.podcastindex.OsmType
+import dev.stalla.model.podcastindex.OpenStreetMapElementType
 import dev.stalla.util.InternalAPI
 import java.lang.StringBuilder
 import java.math.BigInteger
@@ -30,7 +30,7 @@ internal object OsmFeatureParser {
         for (c in value) {
             when (mode) {
                 ParsingMode.Type -> {
-                    val type = OsmType.of(c) ?: return null
+                    val type = OpenStreetMapElementType.of(c) ?: return null
                     builder.type(type)
                     mode = ParsingMode.Id
                 }

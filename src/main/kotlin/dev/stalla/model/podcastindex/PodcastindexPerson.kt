@@ -1,5 +1,11 @@
 package dev.stalla.model.podcastindex
 
+import dev.stalla.builder.PodcastindexPersonBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexSeasonBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexPersonBuilder
+import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexSeasonBuilder
+import dev.stalla.model.BuilderFactory
+
 /**
  * TODO.
  *
@@ -8,6 +14,8 @@ package dev.stalla.model.podcastindex
  * @property group TODO.
  * @property img TODO.
  * @property href TODO.
+ *
+ * @since 1.1.0
  */
 public data class PodcastindexPerson(
     val name: String,
@@ -16,5 +24,11 @@ public data class PodcastindexPerson(
     val img: String?,
     val href: String?
 ) {
-    // TODO
+    /** Provides a builder for the [PodcastindexPerson] class. */
+    public companion object Factory : BuilderFactory<PodcastindexPerson, PodcastindexPersonBuilder> {
+
+        /** Returns a builder implementation for building [PodcastindexPerson] model instances. */
+        @JvmStatic
+        override fun builder(): PodcastindexPersonBuilder = ValidatingPodcastindexPersonBuilder()
+    }
 }

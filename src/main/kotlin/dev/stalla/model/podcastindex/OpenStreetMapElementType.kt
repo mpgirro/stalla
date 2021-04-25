@@ -6,8 +6,11 @@ import dev.stalla.model.TypeFactory
  * TODO.
  *
  * @property type TODO.
+ *
+ * @see https://wiki.openstreetmap.org/wiki/Elements
+ * @since 1.1.0
  */
-public enum class OsmType(public val type: String) {
+public enum class OpenStreetMapElementType(public val type: String) {
     Node("N"),
     Way("W"),
     Relation("R");
@@ -15,9 +18,9 @@ public enum class OsmType(public val type: String) {
     /**
      * TODO.
      */
-    public companion object Factory : TypeFactory<OsmType> {
+    public companion object Factory : TypeFactory<OpenStreetMapElementType> {
         @JvmStatic
-        override fun of(rawValue: String?): OsmType? = rawValue?.let {
+        override fun of(rawValue: String?): OpenStreetMapElementType? = rawValue?.let {
             values().find { t -> t.type.equals(it, ignoreCase = true) }
         }
 
@@ -28,6 +31,6 @@ public enum class OsmType(public val type: String) {
          * @return The instance matching [rawValue], or `null` if no matching instance exists.
          */
         @JvmStatic
-        public fun of(rawValue: Char?): OsmType? = of(rawValue?.toString())
+        public fun of(rawValue: Char?): OpenStreetMapElementType? = of(rawValue?.toString())
     }
 }

@@ -7,7 +7,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
 import dev.stalla.model.podcastindex.OpenStreetMapFeature
-import dev.stalla.model.podcastindex.OsmType
+import dev.stalla.model.podcastindex.OpenStreetMapElementType
 import org.junit.jupiter.api.Test
 import java.math.BigInteger
 
@@ -16,7 +16,7 @@ class OpenStreetMapFeatureTest {
     @Test
     fun `test 1`() {
         assertThat(OpenStreetMapFeature.of("R148838")).isNotNull().all {
-            prop(OpenStreetMapFeature::type).isEqualTo(OsmType.Relation)
+            prop(OpenStreetMapFeature::type).isEqualTo(OpenStreetMapElementType.Relation)
             prop(OpenStreetMapFeature::id).isEqualTo(BigInteger("148838"))
             prop(OpenStreetMapFeature::revision).isNull()
         }
@@ -25,7 +25,7 @@ class OpenStreetMapFeatureTest {
     @Test
     fun `test 2`() {
         assertThat(OpenStreetMapFeature.of("W5013364")).isNotNull().all {
-            prop(OpenStreetMapFeature::type).isEqualTo(OsmType.Way)
+            prop(OpenStreetMapFeature::type).isEqualTo(OpenStreetMapElementType.Way)
             prop(OpenStreetMapFeature::id).isEqualTo(BigInteger("5013364"))
             prop(OpenStreetMapFeature::revision).isNull()
         }
@@ -34,7 +34,7 @@ class OpenStreetMapFeatureTest {
     @Test
     fun `test 3`() {
         assertThat(OpenStreetMapFeature.of("R7444#188")).isNotNull().all {
-            prop(OpenStreetMapFeature::type).isEqualTo(OsmType.Relation)
+            prop(OpenStreetMapFeature::type).isEqualTo(OpenStreetMapElementType.Relation)
             prop(OpenStreetMapFeature::id).isEqualTo(BigInteger("7444"))
             prop(OpenStreetMapFeature::revision).isEqualTo(BigInteger("188"))
         }

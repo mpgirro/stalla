@@ -8,12 +8,16 @@ import dev.stalla.parser.OsmFeatureParser
 import java.math.BigInteger
 
 /**
- * @property type A one-character description of the type of OSM point. One of the supported [OsmType]s.
+ * TODO.
+ *
+ * @property type A one-character description of the type of OSM point. One of the supported [OpenStreetMapElementType]s.
  * @property id The ID of the OpenStreetMap feature that is described.
  * @property revision An optional revision ID for an OSM object, preceded by a hash.
+ *
+ * @since 1.1.0
  */
 public data class OpenStreetMapFeature(
-    val type: OsmType,
+    val type: OpenStreetMapElementType,
     val id: BigInteger,
     val revision: BigInteger?
 ) {

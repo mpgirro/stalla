@@ -1,7 +1,7 @@
 package dev.stalla.builder
 
 import dev.stalla.model.podcastindex.OpenStreetMapFeature
-import dev.stalla.model.podcastindex.OsmType
+import dev.stalla.model.podcastindex.OpenStreetMapElementType
 import dev.stalla.util.whenNotNull
 import java.math.BigInteger
 
@@ -12,7 +12,7 @@ import java.math.BigInteger
  */
 public interface OpenStreetMapFeatureBuilder : Builder<OpenStreetMapFeature> {
 
-    public fun type(type: OsmType): OpenStreetMapFeatureBuilder
+    public fun type(type: OpenStreetMapElementType): OpenStreetMapFeatureBuilder
 
     public fun id(id: BigInteger): OpenStreetMapFeatureBuilder
 

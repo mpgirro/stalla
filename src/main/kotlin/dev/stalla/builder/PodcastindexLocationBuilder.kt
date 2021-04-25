@@ -19,5 +19,4 @@ public interface PodcastindexLocationBuilder : Builder<PodcastindexLocation> {
             geo(GeoLocation.builder().applyFrom(location.geo).build()!!)
             // TODO osm or osmBuilder ?!
         }
-
 }

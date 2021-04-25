@@ -10,14 +10,14 @@ import dev.stalla.util.InternalAPI
 internal class ValidatingPodcastindexLocationBuilder : PodcastindexLocationBuilder {
 
     private lateinit var nameValue: String
-    private var geoValue: GeoLocation? = null
-    private var osmValue: OpenStreetMapFeature? = null
+    private var geo: GeoLocation? = null
+    private var osm: OpenStreetMapFeature? = null
 
     override fun name(name: String): PodcastindexLocationBuilder = apply { this.nameValue = name }
 
-    override fun geo(geo: GeoLocation?): PodcastindexLocationBuilder = apply { this.geoValue = geo }
+    override fun geo(geo: GeoLocation?): PodcastindexLocationBuilder = apply { this.geo = geo }
 
-    override fun osm(osm: OpenStreetMapFeature?): PodcastindexLocationBuilder = apply { this.osmValue = osm }
+    override fun osm(osm: OpenStreetMapFeature?): PodcastindexLocationBuilder = apply { this.osm = osm }
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::nameValue.isInitialized
@@ -27,8 +27,8 @@ internal class ValidatingPodcastindexLocationBuilder : PodcastindexLocationBuild
 
         return PodcastindexLocation(
             name = nameValue,
-            geo = geoValue,
-            osm = osmValue
+            geo = geo,
+            osm = osm
         )
     }
 }

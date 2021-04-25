@@ -5,9 +5,13 @@ import dev.stalla.builder.validating.ValidatingPodcastindexLocationBuilder
 import dev.stalla.model.BuilderFactory
 
 /**
+ * TODO.
+ *
  * @property name Human-readable place name.
  * @property geo TODO.
  * @property osm TODO.
+ *
+ * @since 1.1.0
  */
 public data class PodcastindexLocation(
     val name: String,

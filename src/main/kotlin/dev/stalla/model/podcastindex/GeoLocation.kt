@@ -24,6 +24,7 @@ import kotlin.math.absoluteValue
  * @property parameters TODO.
  *
  * @see [RFC 5870](https://tools.ietf.org/html/rfc5870)
+ * @since 1.1.0
  */
 public class GeoLocation private constructor(
     public val coordA: Double,
@@ -184,6 +185,9 @@ public class GeoLocation private constructor(
      */
     public companion object Factory : BuilderFactory<GeoLocation, GeoLocationBuilder>, TypeFactory<GeoLocation> {
 
+        /** The World Geodetic System 1984 coordinate reference system used by GPS. */
+        public const val CRS_WGS84: String = "WGS84"
+
         internal const val PARAM_CRS = "crs"
         internal const val PARAM_UNCERTAINTY = "u"
 
@@ -194,7 +198,5 @@ public class GeoLocation private constructor(
         @JvmStatic
         override fun of(rawValue: String?): GeoLocation? = rawValue?.let { value -> GeoUriParser.parse(value) }
 
-        /** The World Geodetic System 1984 coordinate reference system used by GPS. */
-        public const val CRS_WGS84: String = "WGS84"
     }
 }
