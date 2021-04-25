@@ -5,6 +5,7 @@ import dev.stalla.builder.GeoLocationBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PodcastindexLocationBuilder
+import dev.stalla.builder.PodcastindexPersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.util.InternalAPI
 
@@ -35,6 +36,15 @@ internal interface ProvidingEpisodeBuilder : EpisodeBuilder, AtomPersonBuilderPr
     /** Creates an instance of [EpisodePodcastindexSoundbiteBuilder] to use with this builder. */
     fun createSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder
 
+    /** Creates an instance of [PodcastindexPersonBuilder] to use with this builder. */
+    fun createPersonBuilder(): PodcastindexPersonBuilder
+
     /** Creates an instance of [PodcastindexLocationBuilder] to use with this builder. */
     fun createLocationBuilder(): PodcastindexLocationBuilder
+
+    /** Creates an instance of [EpisodePodcastindexSeasonBuilder] to use with this builder. */
+    fun createSeasonBuilder(): EpisodePodcastindexSeasonBuilder
+
+    /** Creates an instance of [EpisodePodcastindexEpisodeBuilder] to use with this builder. */
+    fun createEpisodeBuilder(): EpisodePodcastindexEpisodeBuilder
 }

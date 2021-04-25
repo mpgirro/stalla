@@ -2,10 +2,12 @@ package dev.stalla.builder.episode
 
 import dev.stalla.builder.Builder
 import dev.stalla.builder.PodcastindexLocationBuilder
-import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
+import dev.stalla.builder.PodcastindexPersonBuilder
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.model.podcastindex.EpisodePodcastindex
+import dev.stalla.model.podcastindex.PodcastindexEpisode
 import dev.stalla.model.podcastindex.PodcastindexLocation
+import dev.stalla.model.podcastindex.PodcastindexSeason
 import dev.stalla.util.asBuilders
 import dev.stalla.util.whenNotNull
 
@@ -17,7 +19,7 @@ import dev.stalla.util.whenNotNull
 public interface EpisodePodcastindexBuilder : Builder<EpisodePodcastindex> {
 
     /**
-     * Set the [EpisodePodcastindexChaptersBuilder] for the Podcastindex namespace `<chapters>` info.
+     * Set the [EpisodePodcastindexChaptersBuilder] for the Podcastindex namespace `<podcast:chapters>` info.
      */
     public fun chaptersBuilder(chaptersBuilder: EpisodePodcastindexChaptersBuilder): EpisodePodcastindexBuilder
 
@@ -55,14 +57,45 @@ public interface EpisodePodcastindexBuilder : Builder<EpisodePodcastindex> {
         transcriptBuilders.forEach(::addTranscriptBuilder)
     }
 
-    /** Set the [EpisodePodcastindexBuilder]. */
+    /**
+     * Adds the [PodcastindexPersonBuilder] for the
+     * `<podcast:person>` info to the list of person builders.
+     */
+    public fun addPersonBuilder(personBuilder: PodcastindexPersonBuilder): EpisodePodcastindexBuilder
+
+    /**
+     * Adds all of the [PodcastindexPersonBuilder] for the
+     * `<podcast:person>` info to the list of person builders.
+     */
+    public fun addAllPersonBuilders(
+        personBuilders: List<PodcastindexPersonBuilder>
+    ): EpisodePodcastindexBuilder = apply {
+        personBuilders.forEach(::addPersonBuilder)
+    }
+
+    /**
+     * Set the [PodcastindexLocationBuilder] for the Podcastindex namespace `<podcast:location>` info.
+     */
     public fun locationBuilder(locationBuilder: PodcastindexLocationBuilder): EpisodePodcastindexBuilder
+
+    /**
+     * Set the [EpisodePodcastindexSeasonBuilder] for the Podcastindex namespace `<podcast:season>` info.
+     */
+    public fun seasonBuilder(seasonBuilder: EpisodePodcastindexSeasonBuilder): EpisodePodcastindexBuilder
+
+    /**
+     * Set the [EpisodePodcastindexEpisodeBuilder] for the Podcastindex namespace `<podcast:episode>` info.
+     */
+    public fun episodeBuilder(episodeBuilder: EpisodePodcastindexEpisodeBuilder): EpisodePodcastindexBuilder
 
     override fun applyFrom(prototype: EpisodePodcastindex?): EpisodePodcastindexBuilder =
         whenNotNull(prototype) { podcast ->
             chaptersBuilder(Chapters.builder().applyFrom(podcast.chapters))
             addAllSoundbiteBuilders(podcast.soundbites.asBuilders())
             addAllTranscriptBuilders(podcast.transcripts.asBuilders())
+            addAllPersonBuilders(podcast.persons.asBuilders())
             locationBuilder(PodcastindexLocation.builder().applyFrom(podcast.location))
+            seasonBuilder(PodcastindexSeason.builder().applyFrom(podcast.season))
+            episodeBuilder(PodcastindexEpisode.builder().applyFrom(podcast.episode))
         }
 }
