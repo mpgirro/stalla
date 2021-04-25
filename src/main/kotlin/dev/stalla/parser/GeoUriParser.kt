@@ -1,27 +1,24 @@
 package dev.stalla.parser
 
+import dev.stalla.builder.GeoLocationBuilder
 import dev.stalla.model.podcastindex.GeoLocation
-import java.util.regex.Matcher
+import dev.stalla.util.InternalAPI
 import java.util.regex.Pattern
 
+/**
+ * Parser implementation for [GeoLocation] values, as defined in [RFC 5870](https://tools.ietf.org/html/rfc5870).
+ *
+ * The parsing logic is inspired by the
+ * [GeoUri](https://github.com/mangstadt/ez-vcard/blob/master/src/main/java/ezvcard/util/GeoUri.java)
+ * class of the [ez-vcard](https://github.com/mangstadt/ez-vcard) project.
+ * Special thanks to the ez-vcard contributors.
+ */
+@InternalAPI
 internal object GeoUriParser {
-
-    /*
-    private val validParameterValueCharacters: Set<Char> by lazy {
-        val valid = mutableSetOf<Char>()
-        for (c in 'a'..'z') valid.add(c)
-        for (c in 'A'..'Z') valid.add(c)
-        for (c in '0'..'9') valid.add(c)
-        for (c in "!$&'()*+-.:[]_~") valid.add(c)
-        valid
-    }
-    */
 
     private val hexPattern: Pattern = Pattern.compile("(?i)%([0-9a-f]{2})")
 
-    private const val PARAM_CRS = "crs"
-    private const val PARAM_UNCERTAINTY = "u"
-
+    @InternalAPI
     @Suppress("ComplexMethod", "NestedBlockDepth")
     internal fun parse(value: String): GeoLocation? {
         // URI format: geo:LAT,LONG;prop1=value1;prop2=value2
@@ -30,25 +27,23 @@ internal object GeoUriParser {
             // not a geo URI
             return null
         }
-        val builder = Builder()
+        val builder = GeoLocation.builder()
         val buffer = StringBuilder()
         var paramName: String? = null
         var coordinatesDone = false
         for (i in scheme.length until value.length) {
             val c = value[i]
             if (c == ',' && !coordinatesDone) {
-                handleEndOfCoordinate(buffer, builder)
+                builder.handleEndOfCoordinate(buffer)
                 continue
             }
             if (c == ';') {
                 if (coordinatesDone) {
-                    handleEndOfParameter(buffer, paramName, builder)
+                    builder.handleEndOfParameter(buffer, paramName)
                     paramName = null
                 } else {
-                    handleEndOfCoordinate(buffer, builder)
-                    if (builder.coordB == null) {
-                        return null
-                    }
+                    builder.handleEndOfCoordinate(buffer)
+                    if (!builder.hasCoordB()) return null
                     coordinatesDone = true
                 }
                 continue
@@ -60,146 +55,70 @@ internal object GeoUriParser {
             buffer.append(c)
         }
         if (coordinatesDone) {
-            handleEndOfParameter(buffer, paramName, builder)
+            builder.handleEndOfParameter(buffer, paramName)
         } else {
-            handleEndOfCoordinate(buffer, builder)
-            if (builder.coordB == null) {
-                return null
-            }
+            builder.handleEndOfCoordinate(buffer)
+            if (!builder.hasCoordB()) return null
         }
         return builder.build()
     }
 
-    private fun handleEndOfCoordinate(buffer: StringBuilder, builder: Builder) {
+    private fun String.asDoubleOrNull(): Double? = try {
+        toDouble()
+    } catch (e: NumberFormatException) {
+        null
+    }
+
+    private fun GeoLocationBuilder.handleEndOfCoordinate(buffer: StringBuilder) {
         val s: String = buffer.getAndClear()
-        if (builder.coordA == null) {
-            try {
-                builder.coordA(s.toDouble())
-            } catch (e: NumberFormatException) {
-                return
-            }
+        if (!hasCoordA()) {
+            val a = s.asDoubleOrNull() ?: return
+            coordA(a)
             return
         }
-        if (builder.coordB == null) {
-            try {
-                builder.coordB(s.toDouble())
-            } catch (e: NumberFormatException) {
-                return
-            }
+        if (!hasCoordB()) {
+            val b = s.asDoubleOrNull() ?: return
+            coordB(b)
             return
         }
-        if (builder.coordC == null) {
-            try {
-                builder.coordC(s.toDouble())
-            } catch (e: NumberFormatException) {
-                return
-            }
+        if (!hasCoordC()) {
+            val c = s.asDoubleOrNull() ?: return
+            coordC(c)
             return
         }
     }
 
-    private fun addParameter(name: String, value: String, builder: Builder) {
-        val decodedValue = decodeParameterValue(value)
-        if (PARAM_CRS.equals(name, ignoreCase = true)) {
-            builder.crs(decodedValue)
-            return
-        }
-        if (PARAM_UNCERTAINTY.equals(name, ignoreCase = true)) {
-            try {
-                builder.uncertainty(decodedValue.toDouble())
-                return
-            } catch (e: NumberFormatException) {
-                // if it can't be parsed, then treat it as an ordinary parameter
-            }
-        }
-        builder.parameter(name, decodedValue)
-    }
-
-    /*
-    private fun encodeParameterValue(value: String): String = StringBuilder().apply {
-        for (i in value.indices) {
-            val c = value[i]
-            if (validParameterValueCharacters.contains(c)) {
-                append(c)
-            } else {
-                val hex = c.toInt().toString(16)
-                append('%')
-                append(hex)
-            }
-        }
-    }.toString()
-    */
-
-    private fun decodeParameterValue(value: String): String {
-        val m: Matcher = hexPattern.matcher(value)
-        val sb = StringBuffer()
-        while (m.find()) {
-            val hex: Int = m.group(1).toInt(16)
-            m.appendReplacement(sb, hex.toChar().toString())
-        }
-        m.appendTail(sb)
-        return sb.toString()
-    }
-
-    private fun handleEndOfParameter(buffer: StringBuilder, paramName: String?, builder: Builder) {
+    private fun GeoLocationBuilder.handleEndOfParameter(buffer: StringBuilder, paramName: String?) {
         val s = buffer.getAndClear()
         if (paramName == null) {
             if (s.isNotEmpty()) {
-                addParameter(s, "", builder)
+                addParameterDecodeValue(s, "")
             }
             return
         }
-        addParameter(paramName, s, builder)
+        addParameterDecodeValue(paramName, s)
     }
+
+    private fun GeoLocationBuilder.addParameterDecodeValue(name: String, value: String?) {
+        if (value == null) {
+            removeParameter(name)
+            return
+        }
+        addParameter(name, decodeParameterValue(value))
+    }
+
+    private fun decodeParameterValue(value: String): String = StringBuffer().apply {
+        val matcher = hexPattern.matcher(value)
+        while (matcher.find()) {
+            val hex: Int = matcher.group(1).toInt(16)
+            matcher.appendReplacement(this, hex.toChar().toString())
+        }
+        matcher.appendTail(this)
+    }.toString()
 
     private fun StringBuilder.getAndClear(): String {
         val string: String = toString()
         clear()
         return string
-    }
-
-    private class Builder {
-
-        var coordA: Double? = null
-            private set
-        var coordB: Double? = null
-            private set
-        var coordC: Double? = null
-            private set
-        private var crs: String? = null
-        private var uncertainty: Double? = null
-        private var parameters: MutableMap<String, String> = mutableMapOf()
-
-        fun coordA(coordA: Double): Builder = apply { this.coordA = coordA }
-
-        fun coordB(coordB: Double): Builder = apply { this.coordB = coordB }
-
-        fun coordC(coordC: Double?): Builder = apply { this.coordC = coordC }
-
-        fun crs(crs: String?): Builder = apply { this.crs = crs }
-
-        fun uncertainty(uncertainty: Double?): Builder = apply { this.uncertainty = uncertainty }
-
-        fun parameter(name: String, value: String?): Builder = apply {
-            if (value == null) {
-                parameters.remove(name)
-            } else {
-                parameters[name] = value
-            }
-        }
-
-        @Suppress("SwallowedException")
-        fun build(): GeoLocation? = try {
-            GeoLocation(
-                coordA = coordA!!,
-                coordB = coordB!!,
-                coordC = coordC,
-                crs = crs,
-                uncertainty = uncertainty,
-                parameters = parameters
-            )
-        } catch (ex: NullPointerException) {
-            null
-        }
     }
 }
