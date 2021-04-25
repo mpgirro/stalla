@@ -74,4 +74,5 @@ public class ValidatingGeoLocationBuilder : GeoLocationBuilder {
             parameters = parameters // this secondary constructor will apply .asUnmodifiable()
         )
     }
+
 }

@@ -14,6 +14,7 @@ internal object OsmFeatureParser {
         Type, Id, Revision
     }
 
+    @InternalAPI
     internal fun parse(value: String?): OpenStreetMapFeature? {
         contract {
             returnsNotNull() implies (value != null)
@@ -21,7 +22,7 @@ internal object OsmFeatureParser {
 
         if (value == null) return null
 
-        val builder = Builder()
+        val builder = OpenStreetMapFeature.builder()
         val idBuffer = StringBuilder()
         val revisionBuffer = StringBuilder()
         var mode = ParsingMode.Type
@@ -29,7 +30,8 @@ internal object OsmFeatureParser {
         for (c in value) {
             when (mode) {
                 ParsingMode.Type -> {
-                    builder.type(c.toString())
+                    val type = OsmType.of(c) ?: return null
+                    builder.type(type)
                     mode = ParsingMode.Id
                 }
                 ParsingMode.Id -> when {
@@ -41,8 +43,9 @@ internal object OsmFeatureParser {
             }
         }
 
-        builder.id(idBuffer.stringOrNullIfEmpty())
-        builder.revision(revisionBuffer.stringOrNullIfEmpty())
+        val idValue = idBuffer.stringOrNullIfEmpty().asBigIntegerOrNull() ?: return null
+        builder.id(idValue)
+        builder.revision(revisionBuffer.stringOrNullIfEmpty().asBigIntegerOrNull())
 
         return builder.build()
     }
@@ -50,34 +53,15 @@ internal object OsmFeatureParser {
     @OptIn(ExperimentalStdlibApi::class)
     private fun Char.isNoDigit(): Boolean = digitToIntOrNull() == null
 
-    private fun String.asBigIntegerOrNull(): BigInteger? = try {
-        BigInteger(this)
-    } catch (e: NumberFormatException) {
-        null
+    private fun String?.asBigIntegerOrNull(): BigInteger? {
+        if (this == null) return null
+        return try {
+            BigInteger(this)
+        } catch (e: NumberFormatException) {
+            null
+        }
     }
 
     private fun StringBuilder.stringOrNullIfEmpty(): String? = if (isNotEmpty()) toString() else null
-
-    private class Builder {
-
-        private var type: String? = null
-        private var id: String? = null
-        private var revision: String? = null
-
-        fun type(type: String?): Builder = apply { this.type = type }
-
-        fun id(id: String?): Builder = apply { this.id = id }
-
-        fun revision(revision: String?): Builder = apply { this.revision = revision }
-
-        fun build(): OpenStreetMapFeature? {
-            return OpenStreetMapFeature(
-                type = OsmType.of(type) ?: return null,
-                id = id?.asBigIntegerOrNull() ?: return null,
-                revision = revision
-            )
-        }
-
-    }
 
 }

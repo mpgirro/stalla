@@ -1,11 +1,11 @@
 package dev.stalla.model.podcastindex
 
+import dev.stalla.builder.OpenStreetMapFeatureBuilder
+import dev.stalla.builder.validating.ValidatingOpenStreetMapFeatureBuilder
+import dev.stalla.model.BuilderFactory
 import dev.stalla.model.TypeFactory
 import dev.stalla.parser.OsmFeatureParser
 import java.math.BigInteger
-
-// What OpenStreetMap calls "OSM type and OSM id".
-// See: https://github.com/Podcastindex-org/podcast-namespace/issues/138#issue-758103104
 
 /**
  * @property type A one-character description of the type of OSM point. One of the supported [OsmType]s.
@@ -15,7 +15,7 @@ import java.math.BigInteger
 public data class OpenStreetMapFeature(
     val type: OsmType,
     val id: BigInteger,
-    val revision: String?
+    val revision: BigInteger?
 ) {
 
     override fun toString(): String = StringBuilder().apply {
@@ -27,7 +27,12 @@ public data class OpenStreetMapFeature(
     /**
      * TODO.
      */
-    public companion object Factory : TypeFactory<OpenStreetMapFeature> {
+    public companion object Factory : BuilderFactory<OpenStreetMapFeature, OpenStreetMapFeatureBuilder>, TypeFactory<OpenStreetMapFeature> {
+
+        /** Returns a builder implementation for building [OpenStreetMapFeature] model instances. */
+        @JvmStatic
+        override fun builder(): OpenStreetMapFeatureBuilder = ValidatingOpenStreetMapFeatureBuilder()
+
         @JvmStatic
         override fun of(rawValue: String?): OpenStreetMapFeature? = rawValue?.let { value -> OsmFeatureParser.parse(value) }
     }

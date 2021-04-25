@@ -1,4 +1,4 @@
-package dev.stalla.parser
+package dev.stalla.model
 
 import assertk.all
 import assertk.assertThat
@@ -11,11 +11,11 @@ import dev.stalla.model.podcastindex.OsmType
 import org.junit.jupiter.api.Test
 import java.math.BigInteger
 
-class OsmFeatureParserTest {
+class OpenStreetMapFeatureTest {
 
     @Test
     fun `test 1`() {
-        assertThat(OsmFeatureParser.parse("R148838")).isNotNull().all {
+        assertThat(OpenStreetMapFeature.of("R148838")).isNotNull().all {
             prop(OpenStreetMapFeature::type).isEqualTo(OsmType.Relation)
             prop(OpenStreetMapFeature::id).isEqualTo(BigInteger("148838"))
             prop(OpenStreetMapFeature::revision).isNull()
@@ -24,7 +24,7 @@ class OsmFeatureParserTest {
 
     @Test
     fun `test 2`() {
-        assertThat(OsmFeatureParser.parse("W5013364")).isNotNull().all {
+        assertThat(OpenStreetMapFeature.of("W5013364")).isNotNull().all {
             prop(OpenStreetMapFeature::type).isEqualTo(OsmType.Way)
             prop(OpenStreetMapFeature::id).isEqualTo(BigInteger("5013364"))
             prop(OpenStreetMapFeature::revision).isNull()
@@ -33,46 +33,46 @@ class OsmFeatureParserTest {
 
     @Test
     fun `test 3`() {
-        assertThat(OsmFeatureParser.parse("R7444#188")).isNotNull().all {
+        assertThat(OpenStreetMapFeature.of("R7444#188")).isNotNull().all {
             prop(OpenStreetMapFeature::type).isEqualTo(OsmType.Relation)
             prop(OpenStreetMapFeature::id).isEqualTo(BigInteger("7444"))
-            prop(OpenStreetMapFeature::revision).isEqualTo("188")
+            prop(OpenStreetMapFeature::revision).isEqualTo(BigInteger("188"))
         }
     }
 
     @Test
     fun `test 3_5`() {
-        assertThat(OsmFeatureParser.parse("X")).isNull()
+        assertThat(OpenStreetMapFeature.of("X")).isNull()
     }
 
     @Test
     fun `test 4`() {
-        assertThat(OsmFeatureParser.parse("X12345")).isNull()
+        assertThat(OpenStreetMapFeature.of("X12345")).isNull()
     }
 
     @Test
     fun `test 5`() {
-        assertThat(OsmFeatureParser.parse("R")).isNull()
+        assertThat(OpenStreetMapFeature.of("R")).isNull()
     }
 
     @Test
     fun `test 6`() {
-        assertThat(OsmFeatureParser.parse("R#188")).isNull()
+        assertThat(OpenStreetMapFeature.of("R#188")).isNull()
     }
 
     @Test
     fun `test 7`() {
-        assertThat(OsmFeatureParser.parse("Rabc")).isNull()
+        assertThat(OpenStreetMapFeature.of("Rabc")).isNull()
     }
 
     @Test
     fun `test 8`() {
-        assertThat(OsmFeatureParser.parse("Rabc")).isNull()
+        assertThat(OpenStreetMapFeature.of("Rabc")).isNull()
     }
 
     @Test
     fun `test 9`() {
-        assertThat(OsmFeatureParser.parse("Rabc#123")).isNull()
+        assertThat(OpenStreetMapFeature.of("Rabc#123")).isNull()
     }
 
 }
