@@ -8,7 +8,7 @@ import dev.stalla.model.BuilderFactory
  * TODO.
  *
  * @property number TODO.
- * @property display TODO.
+ * @property display An alternative display name of the episode.
  *
  * @see https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#episode
  * @since 1.1.0

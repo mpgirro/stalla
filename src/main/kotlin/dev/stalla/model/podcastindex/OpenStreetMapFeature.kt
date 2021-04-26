@@ -5,6 +5,7 @@ import dev.stalla.builder.validating.ValidatingOpenStreetMapFeatureBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.TypeFactory
 import dev.stalla.parser.OsmFeatureParser
+import dev.stalla.util.asBigIntegerOrNull
 import java.math.BigInteger
 
 /**
@@ -21,6 +22,34 @@ public data class OpenStreetMapFeature(
     val id: BigInteger,
     val revision: BigInteger?
 ) {
+
+    @Suppress("Unused")
+    public constructor(
+        type: OpenStreetMapElementType,
+        id: Int,
+        revision: Int?
+    ): this(type, id.toBigInteger(), revision.asBigIntegerOrNull())
+
+    @Suppress("Unused")
+    public constructor(
+        type: OpenStreetMapElementType,
+        id: Int,
+        revision: Long?
+    ): this(type, id.toBigInteger(), revision.asBigIntegerOrNull())
+
+    @Suppress("Unused")
+    public constructor(
+        type: OpenStreetMapElementType,
+        id: Long,
+        revision: Long?
+    ): this(type, id.toBigInteger(), revision.asBigIntegerOrNull())
+
+    @Suppress("Unused")
+    public constructor(
+        type: OpenStreetMapElementType,
+        id: Long,
+        revision: Int?
+    ): this(type, id.toBigInteger(), revision.asBigIntegerOrNull())
 
     override fun toString(): String = StringBuilder().apply {
         append(type.type)

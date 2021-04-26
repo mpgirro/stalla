@@ -7,8 +7,8 @@ import dev.stalla.model.BuilderFactory
 /**
  * TODO.
  *
- * @property number TODO.
- * @property name TODO.
+ * @property number The season number.
+ * @property name The "name" of the season.
  *
  * @see https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#season
  * @since 1.1.0

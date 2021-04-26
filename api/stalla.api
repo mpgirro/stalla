@@ -1262,16 +1262,24 @@ public final class dev/stalla/model/podcastindex/Chapters$Factory : dev/stalla/m
 public final class dev/stalla/model/podcastindex/EpisodePodcastindex {
 	public static final field Factory Ldev/stalla/model/podcastindex/EpisodePodcastindex$Factory;
 	public fun <init> ()V
-	public fun <init> (Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;)V
-	public synthetic fun <init> (Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastindexLocation;Ldev/stalla/model/podcastindex/PodcastindexSeason;Ldev/stalla/model/podcastindex/PodcastindexEpisode;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastindexLocation;Ldev/stalla/model/podcastindex/PodcastindexSeason;Ldev/stalla/model/podcastindex/PodcastindexEpisode;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public static fun builder ()Ldev/stalla/builder/episode/EpisodePodcastindexBuilder;
 	public final fun component1 ()Ljava/util/List;
 	public final fun component2 ()Ljava/util/List;
 	public final fun component3 ()Ldev/stalla/model/podcastindex/Chapters;
-	public final fun copy (Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;)Ldev/stalla/model/podcastindex/EpisodePodcastindex;
-	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/EpisodePodcastindex;Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/EpisodePodcastindex;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ldev/stalla/model/podcastindex/PodcastindexLocation;
+	public final fun component6 ()Ldev/stalla/model/podcastindex/PodcastindexSeason;
+	public final fun component7 ()Ldev/stalla/model/podcastindex/PodcastindexEpisode;
+	public final fun copy (Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastindexLocation;Ldev/stalla/model/podcastindex/PodcastindexSeason;Ldev/stalla/model/podcastindex/PodcastindexEpisode;)Ldev/stalla/model/podcastindex/EpisodePodcastindex;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/EpisodePodcastindex;Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/Chapters;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastindexLocation;Ldev/stalla/model/podcastindex/PodcastindexSeason;Ldev/stalla/model/podcastindex/PodcastindexEpisode;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/EpisodePodcastindex;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getChapters ()Ldev/stalla/model/podcastindex/Chapters;
+	public final fun getEpisode ()Ldev/stalla/model/podcastindex/PodcastindexEpisode;
+	public final fun getLocation ()Ldev/stalla/model/podcastindex/PodcastindexLocation;
+	public final fun getPersons ()Ljava/util/List;
+	public final fun getSeason ()Ldev/stalla/model/podcastindex/PodcastindexSeason;
 	public final fun getSoundbites ()Ljava/util/List;
 	public final fun getTranscripts ()Ljava/util/List;
 	public fun hashCode ()I
@@ -1303,6 +1311,33 @@ public final class dev/stalla/model/podcastindex/Funding$Factory : dev/stalla/mo
 	public fun builder ()Ldev/stalla/builder/podcast/PodcastPodcastindexFundingBuilder;
 }
 
+public final class dev/stalla/model/podcastindex/GeoLocation {
+	public static final field Factory Ldev/stalla/model/podcastindex/GeoLocation$Factory;
+	public final fun getCoordA ()D
+	public final fun getCoordB ()D
+	public final fun getCoordC ()Ljava/lang/Double;
+	public final fun getParameters ()Ljava/util/Map;
+	public static fun of (Ljava/lang/String;)Ldev/stalla/model/podcastindex/GeoLocation;
+}
+
+public final class dev/stalla/model/podcastindex/GeoLocation$Factory : dev/stalla/model/TypeFactory {
+	public fun of (Ljava/lang/String;)Ldev/stalla/model/podcastindex/GeoLocation;
+	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
+}
+
+public final class dev/stalla/model/podcastindex/GeoLocation$Parameter {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/podcastindex/GeoLocation$Parameter;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/GeoLocation$Parameter;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/GeoLocation$Parameter;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getKey ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class dev/stalla/model/podcastindex/Locked {
 	public static final field Factory Ldev/stalla/model/podcastindex/Locked$Factory;
 	public fun <init> (Ljava/lang/String;Z)V
@@ -1323,19 +1358,54 @@ public final class dev/stalla/model/podcastindex/Locked$Factory : dev/stalla/mod
 	public fun builder ()Ldev/stalla/builder/podcast/PodcastPodcastindexLockedBuilder;
 }
 
+public final class dev/stalla/model/podcastindex/OpenStreetMapFeature {
+	public fun <init> (Ldev/stalla/model/podcastindex/OsmType;ILjava/lang/String;)V
+	public final fun component1 ()Ldev/stalla/model/podcastindex/OsmType;
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ldev/stalla/model/podcastindex/OsmType;ILjava/lang/String;)Ldev/stalla/model/podcastindex/OpenStreetMapFeature;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/OpenStreetMapFeature;Ldev/stalla/model/podcastindex/OsmType;ILjava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/OpenStreetMapFeature;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOsmId ()I
+	public final fun getOsmRevision ()Ljava/lang/String;
+	public final fun getOsmType ()Ldev/stalla/model/podcastindex/OsmType;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/OsmType : java/lang/Enum {
+	public static final field Factory Ldev/stalla/model/podcastindex/OsmType$Factory;
+	public static final field Node Ldev/stalla/model/podcastindex/OsmType;
+	public static final field Relation Ldev/stalla/model/podcastindex/OsmType;
+	public static final field Way Ldev/stalla/model/podcastindex/OsmType;
+	public final fun getType ()Ljava/lang/String;
+	public static fun of (Ljava/lang/String;)Ldev/stalla/model/podcastindex/OsmType;
+	public static fun valueOf (Ljava/lang/String;)Ldev/stalla/model/podcastindex/OsmType;
+	public static fun values ()[Ldev/stalla/model/podcastindex/OsmType;
+}
+
+public final class dev/stalla/model/podcastindex/OsmType$Factory : dev/stalla/model/TypeFactory {
+	public fun of (Ljava/lang/String;)Ldev/stalla/model/podcastindex/OsmType;
+	public synthetic fun of (Ljava/lang/String;)Ljava/lang/Object;
+}
+
 public final class dev/stalla/model/podcastindex/PodcastPodcastindex {
 	public static final field Factory Ldev/stalla/model/podcastindex/PodcastPodcastindex$Factory;
 	public fun <init> ()V
-	public fun <init> (Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;)V
-	public synthetic fun <init> (Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastindexLocation;)V
+	public synthetic fun <init> (Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastindexLocation;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public static fun builder ()Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
 	public final fun component1 ()Ldev/stalla/model/podcastindex/Locked;
 	public final fun component2 ()Ljava/util/List;
-	public final fun copy (Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;)Ldev/stalla/model/podcastindex/PodcastPodcastindex;
-	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/PodcastPodcastindex;Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/PodcastPodcastindex;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ldev/stalla/model/podcastindex/PodcastindexLocation;
+	public final fun copy (Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastindexLocation;)Ldev/stalla/model/podcastindex/PodcastPodcastindex;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/PodcastPodcastindex;Ldev/stalla/model/podcastindex/Locked;Ljava/util/List;Ljava/util/List;Ldev/stalla/model/podcastindex/PodcastindexLocation;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/PodcastPodcastindex;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getFunding ()Ljava/util/List;
+	public final fun getLocation ()Ldev/stalla/model/podcastindex/PodcastindexLocation;
 	public final fun getLocked ()Ldev/stalla/model/podcastindex/Locked;
+	public final fun getPersons ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -1343,6 +1413,66 @@ public final class dev/stalla/model/podcastindex/PodcastPodcastindex {
 public final class dev/stalla/model/podcastindex/PodcastPodcastindex$Factory : dev/stalla/model/BuilderFactory {
 	public synthetic fun builder ()Ldev/stalla/builder/Builder;
 	public fun builder ()Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+}
+
+public final class dev/stalla/model/podcastindex/PodcastindexEpisode {
+	public fun <init> (DLjava/lang/String;)V
+	public final fun component1 ()D
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (DLjava/lang/String;)Ldev/stalla/model/podcastindex/PodcastindexEpisode;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/PodcastindexEpisode;DLjava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/PodcastindexEpisode;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDisplay ()Ljava/lang/String;
+	public final fun getNumber ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/PodcastindexLocation {
+	public fun <init> (Ljava/lang/String;Ldev/stalla/model/podcastindex/GeoLocation;Ldev/stalla/model/podcastindex/OpenStreetMapFeature;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/stalla/model/podcastindex/GeoLocation;
+	public final fun component3 ()Ldev/stalla/model/podcastindex/OpenStreetMapFeature;
+	public final fun copy (Ljava/lang/String;Ldev/stalla/model/podcastindex/GeoLocation;Ldev/stalla/model/podcastindex/OpenStreetMapFeature;)Ldev/stalla/model/podcastindex/PodcastindexLocation;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/PodcastindexLocation;Ljava/lang/String;Ldev/stalla/model/podcastindex/GeoLocation;Ldev/stalla/model/podcastindex/OpenStreetMapFeature;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/PodcastindexLocation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGeo ()Ldev/stalla/model/podcastindex/GeoLocation;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getOsm ()Ldev/stalla/model/podcastindex/OpenStreetMapFeature;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/PodcastindexPerson {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/stalla/model/podcastindex/PodcastindexPerson;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/PodcastindexPerson;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/PodcastindexPerson;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGroup ()Ljava/lang/String;
+	public final fun getHref ()Ljava/lang/String;
+	public final fun getImg ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getRole ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/stalla/model/podcastindex/PodcastindexSeason {
+	public fun <init> (DLjava/lang/String;)V
+	public final fun component1 ()D
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (DLjava/lang/String;)Ldev/stalla/model/podcastindex/PodcastindexSeason;
+	public static synthetic fun copy$default (Ldev/stalla/model/podcastindex/PodcastindexSeason;DLjava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/podcastindex/PodcastindexSeason;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public final fun getNumber ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/stalla/model/podcastindex/Soundbite {

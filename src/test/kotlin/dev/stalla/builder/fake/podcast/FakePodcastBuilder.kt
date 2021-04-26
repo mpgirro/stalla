@@ -4,6 +4,7 @@ import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
 import dev.stalla.builder.PodcastindexLocationBuilder
+import dev.stalla.builder.PodcastindexPersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
@@ -13,6 +14,7 @@ import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
 import dev.stalla.builder.fake.FakePodcastindexLocationBuilder
+import dev.stalla.builder.fake.FakePodcastindexPersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
 import dev.stalla.builder.fake.FakeRssImageBuilder
 import dev.stalla.builder.podcast.PodcastBuilder
@@ -20,6 +22,7 @@ import dev.stalla.builder.podcast.PodcastItunesOwnerBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexPersonBuilder
 import dev.stalla.model.Podcast
 import java.time.temporal.TemporalAccessor
 import java.util.Locale
@@ -105,6 +108,8 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
     override fun createLockedBuilder(): PodcastPodcastindexLockedBuilder = FakePodcastPodcastindexLockedBuilder()
 
     override fun createFundingBuilder(): PodcastPodcastindexFundingBuilder = FakePodcastPodcastindexFundingBuilder()
+
+    override fun createPersonBuilder(): PodcastindexPersonBuilder = FakePodcastindexPersonBuilder()
 
     override fun createLocationBuilder(): PodcastindexLocationBuilder = FakePodcastindexLocationBuilder()
 

@@ -61,8 +61,8 @@ public class GeoLocation private constructor(
     public data class Parameter(val key: String, val value: String) {
         override fun equals(other: Any?): Boolean {
             return other is Parameter &&
-                other.key == key &&
-                other.value.equals(value, ignoreCase = true)
+                other.key.equals(key, ignoreCase = true) &&
+                other.value == value
         }
 
         override fun hashCode(): Int {
@@ -119,14 +119,17 @@ public class GeoLocation private constructor(
     public fun match(pattern: String): Boolean = match(of(pattern))
 
     private fun match(parameters1: List<Parameter>, parameters2: List<Parameter>): Boolean {
-        for ((patternName, patternValue) in parameters1) {
-            val value = parameter(patternName, parameters2)
-            val matches = value != null && value == patternValue
+        for (param1 in parameters1) {
+            val value2 = parameter(param1.key, parameters2)
+            val matches = param1.match(param1.key, value2)
 
             if (!matches) return false
         }
         return true
     }
+
+    private fun Parameter.match(key: String, value: String?): Boolean =
+        if (value == null) false else this == Parameter(key, value)
 
     private fun matchCrs(crs1: String?, crs2: String?): Boolean {
         return (crs1 == null || crs1.equals(CRS_WGS84, ignoreCase = true))
