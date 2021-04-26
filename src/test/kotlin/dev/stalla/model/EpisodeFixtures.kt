@@ -12,6 +12,10 @@ import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.model.podcastindex.EpisodePodcastindex
+import dev.stalla.model.podcastindex.PodcastindexEpisode
+import dev.stalla.model.podcastindex.PodcastindexLocation
+import dev.stalla.model.podcastindex.PodcastindexPerson
+import dev.stalla.model.podcastindex.PodcastindexSeason
 import dev.stalla.model.podcastindex.Soundbite
 import dev.stalla.model.podcastindex.Transcript
 import dev.stalla.model.podcastindex.TranscriptType
@@ -134,7 +138,9 @@ internal fun anEpisodeBitlove(
 internal fun anEpisodePodcastindex(
     transcripts: List<Transcript> = listOf(anEpisodePodcastindexTranscript()),
     soundbites: List<Soundbite> = listOf(anEpisodePodcastindexSoundbite()),
-    chapters: Chapters? = anEpisodePodcastindexChapters()
+    chapters: Chapters? = anEpisodePodcastindexChapters(),
+    persons: List<PodcastindexPerson> = listOf(aPodcastindexPerson()),
+    location: PodcastindexLocation? = aPodcastindexLocation()
 ) = EpisodePodcastindex(transcripts, soundbites, chapters)
 
 @JvmOverloads
@@ -157,3 +163,15 @@ internal fun anEpisodePodcastindexChapters(
     url: String = "episode podcastindex chapters url",
     type: MediaType = MediaType.JSON_CHAPTERS
 ) = Chapters(url, type)
+
+@JvmOverloads
+internal fun anEpisodePodcastindexSeason(
+    number: Int = 1,
+    name: String = "episode podcastindex season name"
+) = PodcastindexSeason(number, name)
+
+@JvmOverloads
+internal fun anEpisodePodcastindexEpisode(
+    number: Double = 1.0,
+    display: String = "episode podcastindex episode display"
+) = PodcastindexEpisode(number, display)

@@ -7,10 +7,10 @@ import dev.stalla.util.InternalAPI
 @InternalAPI
 internal class ValidatingEpisodePodcastindexSeasonBuilder : EpisodePodcastindexSeasonBuilder {
 
-    private var number: Double? = null
+    private var number: Int? = null
     private var name: String? = null
 
-    override fun number(number: Double): EpisodePodcastindexSeasonBuilder = apply { this.number = number }
+    override fun number(number: Int): EpisodePodcastindexSeasonBuilder = apply { this.number = number }
 
     override fun name(name: String?): EpisodePodcastindexSeasonBuilder = apply { this.name = name }
 

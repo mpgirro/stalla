@@ -6,7 +6,7 @@ import dev.stalla.util.whenNotNull
 
 public interface EpisodePodcastindexSeasonBuilder : Builder<PodcastindexSeason> {
 
-    public fun number(number: Double): EpisodePodcastindexSeasonBuilder
+    public fun number(number: Int): EpisodePodcastindexSeasonBuilder
 
     public fun name(name: String?): EpisodePodcastindexSeasonBuilder
 

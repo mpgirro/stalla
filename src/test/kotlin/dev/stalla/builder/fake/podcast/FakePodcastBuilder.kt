@@ -22,7 +22,6 @@ import dev.stalla.builder.podcast.PodcastItunesOwnerBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
-import dev.stalla.builder.validating.ValidatingPodcastindexPersonBuilder
 import dev.stalla.model.Podcast
 import java.time.temporal.TemporalAccessor
 import java.util.Locale

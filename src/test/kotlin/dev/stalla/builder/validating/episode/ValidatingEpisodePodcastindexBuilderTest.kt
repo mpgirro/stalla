@@ -11,10 +11,14 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.episode.EpisodePodcastindexBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexLocationBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexPersonBuilder
 import dev.stalla.model.MediaType
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.anEpisodePodcastindex
 import dev.stalla.model.podcastindex.EpisodePodcastindex
+import dev.stalla.model.podcastindex.GeoLocation
+import dev.stalla.model.podcastindex.OpenStreetMapFeature
 import dev.stalla.model.podcastindex.TranscriptType
 import org.junit.jupiter.api.Test
 import java.util.Locale
@@ -46,6 +50,33 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
         .type(TranscriptType.PLAIN_TEXT)
         .language(Locale.ITALIAN)
 
+    private val firstExpectedPersonBuilder = ValidatingPodcastindexPersonBuilder()
+        .name("First name")
+        .role("First role")
+        .group("First group")
+        .img("First img")
+        .href("First href")
+
+    private val secondExpectedPersonBuilder = ValidatingPodcastindexPersonBuilder()
+        .name("Second name")
+        .role("Second role")
+        .group("Second group")
+        .img("Second img")
+        .href("Second href")
+
+    private val expectedLocationBuilder = ValidatingPodcastindexLocationBuilder()
+        .name("Location name")
+        .geo(GeoLocation.of("geo:1,2,3"))
+        .osm(OpenStreetMapFeature.of("R123"))
+
+    private val expectedSeasonBuilder = ValidatingEpisodePodcastindexSeasonBuilder()
+        .number(1)
+        .name("Season name")
+
+    private val expectedEpisodeBuilder = ValidatingEpisodePodcastindexEpisodeBuilder()
+        .number(1.0)
+        .display("Episode display")
+
     @Test
     internal fun `should not build an Episode Podcastindex with when all the fields are empty`() {
         val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
@@ -70,97 +101,206 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcastindexx when there is only a chapters builder that doesn't build`() {
-        val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
+    internal fun `should not build an Episode Podcastindex when there is only a chapters builder that doesn't build`() {
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .chaptersBuilder(ValidatingEpisodePodcastindexChaptersBuilder())
 
         assertAll {
-            assertThat(episodePodcastBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isFalse()
 
-            assertThat(episodePodcastBuilder.build()).isNull()
+            assertThat(episodePodcastindexBuilder.build()).isNull()
         }
     }
 
     @Test
     internal fun `should build an Episode Podcastindex with at least one soundbite builder`() {
-        val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .addSoundbiteBuilder(firstExpectedSoundbiteBuilder)
 
         assertAll {
-            assertThat(episodePodcastBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodePodcastBuilder.build()).isNotNull()
+            assertThat(episodePodcastindexBuilder.build()).isNotNull()
                 .prop(EpisodePodcastindex::soundbites).containsExactly(firstExpectedSoundbiteBuilder.build())
         }
     }
 
     @Test
     internal fun `should not build an Episode Podcastindex when there is only a soundbite builder that doesn't build`() {
-        val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .addSoundbiteBuilder(ValidatingEpisodePodcastindexSoundbiteBuilder())
 
         assertAll {
-            assertThat(episodePodcastBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isFalse()
 
-            assertThat(episodePodcastBuilder.build()).isNull()
+            assertThat(episodePodcastindexBuilder.build()).isNull()
         }
     }
 
     @Test
     internal fun `should build an Episode Podcastindex with at least a transcript builder`() {
-        val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .addTranscriptBuilder(firstExpectedTranscriptBuilder)
 
         assertAll {
-            assertThat(episodePodcastBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodePodcastBuilder.build()).isNotNull()
+            assertThat(episodePodcastindexBuilder.build()).isNotNull()
                 .prop(EpisodePodcastindex::transcripts).containsExactly(firstExpectedTranscriptBuilder.build())
         }
     }
 
     @Test
     internal fun `should not build an Episode Podcastindex when there is only a transcript builder that doesn't build`() {
-        val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .addTranscriptBuilder(ValidatingEpisodePodcastindexTranscriptBuilder())
 
         assertAll {
-            assertThat(episodePodcastBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isFalse()
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isFalse()
 
-            assertThat(episodePodcastBuilder.build()).isNull()
+            assertThat(episodePodcastindexBuilder.build()).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode Podcastindex with at least a person builder`() {
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
+            .addPersonBuilder(firstExpectedPersonBuilder)
+
+        assertAll {
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodePodcastindexBuilder.build()).isNotNull()
+                .prop(EpisodePodcastindex::persons).containsExactly(firstExpectedPersonBuilder.build())
+        }
+    }
+
+    @Test
+    internal fun `should not build an Episode Podcastindex when there is only a person builder that doesn't build`() {
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
+            .addPersonBuilder(ValidatingPodcastindexPersonBuilder())
+
+        assertAll {
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodePodcastindexBuilder.build()).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode Podcastindex with at least a location builder`() {
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
+            .locationBuilder(expectedLocationBuilder)
+
+        assertAll {
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodePodcastindexBuilder.build()).isNotNull()
+                .prop(EpisodePodcastindex::location).isEqualTo(expectedLocationBuilder.build())
+        }
+    }
+
+    @Test
+    internal fun `should not build an Episode Podcastindex when there is only a location builder that doesn't build`() {
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
+            .locationBuilder(ValidatingPodcastindexLocationBuilder())
+
+        assertAll {
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodePodcastindexBuilder.build()).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode Podcastindex with at least a season builder`() {
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
+            .seasonBuilder(expectedSeasonBuilder)
+
+        assertAll {
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodePodcastindexBuilder.build()).isNotNull()
+                .prop(EpisodePodcastindex::season).isEqualTo(expectedSeasonBuilder.build())
+        }
+    }
+
+    @Test
+    internal fun `should not build an Episode Podcastindex when there is only a season builder that doesn't build`() {
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
+            .seasonBuilder(ValidatingEpisodePodcastindexSeasonBuilder())
+
+        assertAll {
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodePodcastindexBuilder.build()).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should build an Episode Podcastindex with at least a episode builder`() {
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
+            .episodeBuilder(expectedEpisodeBuilder)
+
+        assertAll {
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
+
+            assertThat(episodePodcastindexBuilder.build()).isNotNull()
+                .prop(EpisodePodcastindex::episode).isEqualTo(expectedEpisodeBuilder.build())
+        }
+    }
+
+    @Test
+    internal fun `should not build an Episode Podcastindex when there is only a episode builder that doesn't build`() {
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
+            .episodeBuilder(ValidatingEpisodePodcastindexEpisodeBuilder())
+
+        assertAll {
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isFalse()
+
+            assertThat(episodePodcastindexBuilder.build()).isNull()
         }
     }
 
     @Test
     internal fun `should build an Episode Podcastindex with with all the added entries to its fields`() {
-        val episodePodcastBuilder = ValidatingEpisodePodcastindexBuilder()
+        val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .chaptersBuilder(expectedChaptersBuilder)
             .addSoundbiteBuilder(firstExpectedSoundbiteBuilder)
             .addSoundbiteBuilder(secondExpectedSoundbiteBuilder)
             .addTranscriptBuilder(firstExpectedTranscriptBuilder)
             .addTranscriptBuilder(secondExpectedTranscriptBuilder)
+            .addPersonBuilder(firstExpectedPersonBuilder)
+            .addPersonBuilder(secondExpectedPersonBuilder)
+            .locationBuilder(expectedLocationBuilder)
+            .seasonBuilder(expectedSeasonBuilder)
+            .episodeBuilder(expectedEpisodeBuilder)
 
         assertAll {
-            assertThat(episodePodcastBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodePodcastBuilder.build()).isNotNull().all {
+            assertThat(episodePodcastindexBuilder.build()).isNotNull().all {
                 prop(EpisodePodcastindex::chapters).isEqualTo(expectedChaptersBuilder.build())
                 prop(EpisodePodcastindex::soundbites).containsExactly(firstExpectedSoundbiteBuilder.build(), secondExpectedSoundbiteBuilder.build())
                 prop(EpisodePodcastindex::transcripts)
                     .containsExactly(firstExpectedTranscriptBuilder.build(), secondExpectedTranscriptBuilder.build())
+                prop(EpisodePodcastindex::persons).containsExactly(firstExpectedPersonBuilder.build(), secondExpectedPersonBuilder.build())
+                prop(EpisodePodcastindex::location).isEqualTo(expectedLocationBuilder.build())
+                prop(EpisodePodcastindex::season).isEqualTo(expectedSeasonBuilder.build())
+                prop(EpisodePodcastindex::episode).isEqualTo(expectedEpisodeBuilder.build())
             }
         }
     }
 
     @Test
     internal fun `should populate an Episode Podcastindex builder with all properties from an Episode Podcastindex model`() {
-        val episodePodcast = anEpisodePodcastindex()
-        val episodePodcastBuilder = EpisodePodcastindex.builder().applyFrom(episodePodcast)
+        val episodePodcastindex = anEpisodePodcastindex()
+        val episodePodcastindexBuilder = EpisodePodcastindex.builder().applyFrom(episodePodcastindex)
 
         assertAll {
-            assertThat(episodePodcastBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
+            assertThat(episodePodcastindexBuilder).prop(EpisodePodcastindexBuilder::hasEnoughDataToBuild).isTrue()
 
-            assertThat(episodePodcastBuilder.build()).isNotNull().isEqualTo(episodePodcast)
+            assertThat(episodePodcastindexBuilder.build()).isNotNull().isEqualTo(episodePodcastindex)
         }
     }
 }

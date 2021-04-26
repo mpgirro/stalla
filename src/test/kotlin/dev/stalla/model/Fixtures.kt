@@ -5,12 +5,18 @@ import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.podcastindex.GeoLocation
+import dev.stalla.model.podcastindex.OpenStreetMapElementType
+import dev.stalla.model.podcastindex.OpenStreetMapFeature
+import dev.stalla.model.podcastindex.PodcastindexLocation
+import dev.stalla.model.podcastindex.PodcastindexPerson
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import dev.stalla.staticPropertiesByType
 import org.junit.jupiter.params.provider.ArgumentsProvider
 import org.reflections.Reflections
+import java.math.BigInteger
 
 @JvmOverloads
 internal fun anRssImage(
@@ -60,6 +66,39 @@ internal fun anItunesCategory(
 internal fun aGoogleplayCategory(
     category: GoogleplayCategory = GoogleplayCategory.NEWS_AND_POLITICS
 ) = category
+
+@JvmOverloads
+internal fun aPodcastindexGeoLocation(
+    coordA: Double = 48.20849,
+    coordB: Double = 16.37208,
+    coordC: Double? = 5.0,
+    crs: String? = GeoLocation.CRS_WGS84,
+    uncertainty: Double? = 10.0,
+    parameters: List<GeoLocation.Parameter> = emptyList()
+) = GeoLocation(coordA, coordB, coordC, crs, uncertainty, parameters)
+
+@JvmOverloads
+internal fun aPodcastindexOpenStreetMapFeature(
+    type: OpenStreetMapElementType = OpenStreetMapElementType.Relation,
+    id: BigInteger = BigInteger.ONE,
+    revision: BigInteger? = BigInteger.TWO
+) = OpenStreetMapFeature(type, id, revision)
+
+@JvmOverloads
+internal fun aPodcastindexPerson(
+    name: String = "podcastindex person name",
+    role: String? = "podcastindex person role",
+    group: String? = "podcastindex person group",
+    img: String? = "podcastindex person img",
+    href: String? = "podcastindex person href"
+) = PodcastindexPerson(name, role, group, img, href)
+
+@JvmOverloads
+internal fun aPodcastindexLocation(
+    name: String = "podcastindex location name",
+    geo: GeoLocation? = aPodcastindexGeoLocation(),
+    osm: OpenStreetMapFeature? = aPodcastindexOpenStreetMapFeature()
+) = PodcastindexLocation(name, geo, osm)
 
 internal val simpleCategoryNames = listOf(
     "Arts",

@@ -8,18 +8,28 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.prop
+import dev.stalla.builder.fake.FakePodcastindexLocationBuilder
+import dev.stalla.builder.fake.FakePodcastindexPersonBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodeBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexChaptersBuilder
+import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexEpisodeBuilder
+import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexSeasonBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.fake.episode.FakeEpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexFundingBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexLockedBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexLocationBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexPersonBuilder
+import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexEpisodeBuilder
+import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexSeasonBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.model.MediaType
 import dev.stalla.model.StyledDuration
+import dev.stalla.model.podcastindex.GeoLocation
+import dev.stalla.model.podcastindex.OpenStreetMapFeature
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
@@ -53,6 +63,38 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         .language(Locale.ITALY)
         .rel("episode podcastindex transcript rel")
 
+    private val expectedPodcastPersonBuilder = FakePodcastindexPersonBuilder()
+        .name("podcast podcastindex person name")
+        .role("podcast podcastindex person role")
+        .group("podcast podcastindex person group")
+        .img("podcast podcastindex person img")
+        .href("podcast podcastindex person href")
+
+    private val expectedEpisodePersonBuilder = FakePodcastindexPersonBuilder()
+        .name("episode podcastindex person name")
+        .role("episode podcastindex person role")
+        .group("episode podcastindex person group")
+        .img("episode podcastindex person img")
+        .href("episode podcastindex person href")
+
+    private val expectedPodcastLocationBuilder = FakePodcastindexLocationBuilder()
+        .name("podcast podcastindex location name")
+        .geo(GeoLocation.of("geo:1,2,3"))
+        .osm(OpenStreetMapFeature.of("R123"))
+
+    private val expectedEpisodeLocationBuilder = FakePodcastindexLocationBuilder()
+        .name("episode podcastindex location name")
+        .geo(GeoLocation.of("geo:4,5,6"))
+        .osm(OpenStreetMapFeature.of("W456"))
+
+    private val expectedSeasonBuilder = FakeEpisodePodcastindexSeasonBuilder()
+        .number(1)
+        .name("episode podcastindex season name")
+
+    private val expectedEpisodeBuilder = FakeEpisodePodcastindexEpisodeBuilder()
+        .number(1.0)
+        .display("episode podcastindex episode display")
+
     @Test
     fun `should extract all Podcastindex fields from channel when present`() {
         val channel: Node = XmlRes("/xml/channel.xml").rootNodeByName("channel")
@@ -62,6 +104,8 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").isNotNull().all {
             prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isEqualTo(expectedLockedBuilder)
             prop(FakePodcastPodcastindexBuilder::fundingBuilders).containsExactly(expectedFundingBuilder)
+            prop(FakePodcastPodcastindexBuilder::personBuilders).containsExactly(expectedPodcastPersonBuilder)
+            prop(FakePodcastPodcastindexBuilder::locationBuilderValue).isEqualTo(expectedPodcastLocationBuilder)
         }
     }
 
@@ -74,6 +118,8 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").all {
             prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
             prop(FakePodcastPodcastindexBuilder::fundingBuilders).isEmpty()
+            prop(FakePodcastPodcastindexBuilder::personBuilders).isEmpty()
+            prop(FakePodcastPodcastindexBuilder::locationBuilderValue).isNull()
         }
     }
 
@@ -86,6 +132,8 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").all {
             prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
             prop(FakePodcastPodcastindexBuilder::fundingBuilders).isEmpty()
+            prop(FakePodcastPodcastindexBuilder::personBuilders).isEmpty()
+            prop(FakePodcastPodcastindexBuilder::locationBuilderValue).isNull()
         }
     }
 
@@ -99,6 +147,10 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
             prop(FakeEpisodePodcastindexBuilder::chaptersBuilderValue).isEqualTo(expectedChaptersBuilder)
             prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).containsExactly(expectedSoundbiteBuilder)
             prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).containsExactly(expectedTranscriptBuilder)
+            prop(FakeEpisodePodcastindexBuilder::personBuilders).containsExactly(expectedEpisodePersonBuilder)
+            prop(FakeEpisodePodcastindexBuilder::locationBuilderValue).isEqualTo(expectedEpisodeLocationBuilder)
+            prop(FakeEpisodePodcastindexBuilder::seasonBuilder).isEqualTo(expectedSeasonBuilder)
+            prop(FakeEpisodePodcastindexBuilder::episodeBuilder).isEqualTo(expectedEpisodeBuilder)
         }
     }
 
@@ -112,6 +164,10 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
             prop(FakeEpisodePodcastindexBuilder::chaptersBuilderValue).isNull()
             prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).isEmpty()
             prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).isEmpty()
+            prop(FakeEpisodePodcastindexBuilder::personBuilders).isEmpty()
+            prop(FakeEpisodePodcastindexBuilder::locationBuilderValue).isNull()
+            prop(FakeEpisodePodcastindexBuilder::seasonBuilder).isNull()
+            prop(FakeEpisodePodcastindexBuilder::episodeBuilder).isNull()
         }
     }
 
@@ -125,6 +181,10 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
             prop(FakeEpisodePodcastindexBuilder::chaptersBuilderValue).isNull()
             prop(FakeEpisodePodcastindexBuilder::soundbiteBuilders).isEmpty()
             prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).isEmpty()
+            prop(FakeEpisodePodcastindexBuilder::personBuilders).isEmpty()
+            prop(FakeEpisodePodcastindexBuilder::locationBuilderValue).isNull()
+            prop(FakeEpisodePodcastindexBuilder::seasonBuilder).isNull()
+            prop(FakeEpisodePodcastindexBuilder::episodeBuilder).isNull()
         }
     }
 

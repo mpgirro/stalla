@@ -226,7 +226,7 @@ internal object PodcastindexParser : NamespaceParser() {
     private fun Node.toSeasonBuilder(
         seasonBuilder: EpisodePodcastindexSeasonBuilder
     ): EpisodePodcastindexSeasonBuilder? {
-        val number = parseAsDouble() ?: return null
+        val number = parseAsInt() ?: return null
         val name = getAttributeByName("name")?.value.trimmedOrNullIfBlank()
 
         return seasonBuilder.number(number)

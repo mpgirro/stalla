@@ -26,7 +26,7 @@ import kotlin.math.absoluteValue
  * @see [RFC 5870](https://tools.ietf.org/html/rfc5870)
  * @since 1.1.0
  */
-public class GeoLocation private constructor(
+public class GeoLocation public constructor(
     public val coordA: Double,
     public val coordB: Double,
     public val coordC: Double? = null,
@@ -35,8 +35,7 @@ public class GeoLocation private constructor(
     public val parameters: List<Parameter> = emptyList()
 ) {
 
-    @InternalAPI
-    internal constructor(
+    public constructor(
         coordA: Double,
         coordB: Double,
         coordC: Double?,

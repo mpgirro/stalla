@@ -6,10 +6,10 @@ import dev.stalla.model.podcastindex.PodcastindexSeason
 
 internal class FakeEpisodePodcastindexSeasonBuilder : FakeBuilder<PodcastindexSeason>(), EpisodePodcastindexSeasonBuilder {
 
-    var number: Double? = null
+    var number: Int? = null
     var name: String? = null
 
-    override fun number(number: Double): EpisodePodcastindexSeasonBuilder = apply { this.number = number }
+    override fun number(number: Int): EpisodePodcastindexSeasonBuilder = apply { this.number = number }
 
     override fun name(name: String?): EpisodePodcastindexSeasonBuilder = apply { this.name = name }
 

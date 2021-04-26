@@ -15,6 +15,8 @@ import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.podcastindex.Funding
 import dev.stalla.model.podcastindex.Locked
 import dev.stalla.model.podcastindex.PodcastPodcastindex
+import dev.stalla.model.podcastindex.PodcastindexLocation
+import dev.stalla.model.podcastindex.PodcastindexPerson
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
 import java.time.Month
@@ -127,7 +129,9 @@ internal fun aPodcastGoogleplay(
 @JvmOverloads
 internal fun aPodcastPodcastindex(
     locked: Locked? = aPodcastPodcastindexLocked(),
-    funding: List<Funding> = listOf(aPodcastPodcastindexFunding())
+    funding: List<Funding> = listOf(aPodcastPodcastindexFunding()),
+    persons: List<PodcastindexPerson> = listOf(aPodcastindexPerson()),
+    location: PodcastindexLocation? = aPodcastindexLocation()
 ) = PodcastPodcastindex(locked, funding)
 
 @JvmOverloads

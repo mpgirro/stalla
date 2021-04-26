@@ -14,7 +14,7 @@ import dev.stalla.model.BuilderFactory
  * @since 1.1.0
  */
 public data class PodcastindexSeason(
-    val number: Double,
+    val number: Int,
     val name: String?
 ) {
     /** Provides a builder for the [PodcastindexSeason] class. */

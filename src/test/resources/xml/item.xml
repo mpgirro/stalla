@@ -58,4 +58,13 @@
     <podcast:chapters url="episode podcastindex chapters url" type="application/json+chapters"/>
     <podcast:soundbite startTime="33.833" duration="60.0">episode podcastindex soundbite title</podcast:soundbite>
     <podcast:transcript url="episode podcastindex transcript url" type="application/srt" language="it-IT" rel="episode podcastindex transcript rel"/>
+    <podcast:person role="episode podcastindex person role"
+                    group="episode podcastindex person group"
+                    img="episode podcastindex person img"
+                    href="episode podcastindex person href">
+        episode podcastindex person name
+    </podcast:person>
+    <podcast:location geo="geo:4,5,6" osm="W456">episode podcastindex location name</podcast:location>
+    <podcast:season name="episode podcastindex season name">1</podcast:season>
+    <podcast:episode display="episode podcastindex episode display">1.0</podcast:episode>
 </item>
