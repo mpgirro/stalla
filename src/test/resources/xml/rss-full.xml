@@ -78,6 +78,13 @@
         <feedpress:link>feedpress link</feedpress:link>
         <podcast:locked owner="podcast podcastindex locked owner">yes</podcast:locked>
         <podcast:funding url="podcast podcastindex funding url">podcast podcastindex funding message</podcast:funding>
+        <podcast:person role="podcast podcastindex person role"
+                        group="podcast podcastindex person group"
+                        img="podcast podcastindex person img"
+                        href="podcast podcastindex person href">
+            podcast podcastindex person name
+        </podcast:person>
+        <podcast:location geo="geo:1,2,3" osm="R123">podcast podcastindex location name</podcast:location>
         <item
             xmlns:content="http://purl.org/rss/1.0/modules/content/"
             xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
@@ -137,6 +144,15 @@
             <podcast:chapters url="episode podcastindex chapters url" type="application/json+chapters"/>
             <podcast:soundbite startTime="33.833" duration="60.0">episode podcastindex soundbite title</podcast:soundbite>
             <podcast:transcript url="episode podcastindex transcript url" type="application/srt" language="it-IT" rel="episode podcastindex transcript rel"/>
+            <podcast:person role="episode podcastindex person role"
+                            group="episode podcastindex person group"
+                            img="episode podcastindex person img"
+                            href="episode podcastindex person href">
+                episode podcastindex person name
+            </podcast:person>
+            <podcast:location geo="geo:1,2,3" osm="R123">episode podcastindex location name</podcast:location>
+            <podcast:season name="episode podcastindex season name">1</podcast:season>
+            <podcast:episode display="episode podcastindex episode display">1.0</podcast:episode>
         </item>
     </channel>
 </rss>

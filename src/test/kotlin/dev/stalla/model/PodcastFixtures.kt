@@ -13,7 +13,9 @@ import dev.stalla.model.itunes.ItunesOwner
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.podcastindex.Funding
+import dev.stalla.model.podcastindex.GeoLocation
 import dev.stalla.model.podcastindex.Locked
+import dev.stalla.model.podcastindex.OpenStreetMapFeature
 import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.model.podcastindex.PodcastindexLocation
 import dev.stalla.model.podcastindex.PodcastindexPerson
@@ -130,9 +132,9 @@ internal fun aPodcastGoogleplay(
 internal fun aPodcastPodcastindex(
     locked: Locked? = aPodcastPodcastindexLocked(),
     funding: List<Funding> = listOf(aPodcastPodcastindexFunding()),
-    persons: List<PodcastindexPerson> = listOf(aPodcastindexPerson()),
-    location: PodcastindexLocation? = aPodcastindexLocation()
-) = PodcastPodcastindex(locked, funding)
+    persons: List<PodcastindexPerson> = listOf(aPodcastPodcastindexPerson()),
+    location: PodcastindexLocation? = aPodcastPodcastindexLocation()
+) = PodcastPodcastindex(locked, funding, persons, location)
 
 @JvmOverloads
 internal fun aPodcastPodcastindexLocked(
@@ -145,3 +147,19 @@ internal fun aPodcastPodcastindexFunding(
     url: String = "podcast podcastindex funding url",
     message: String = "podcast podcastindex funding message"
 ) = Funding(url, message)
+
+@JvmOverloads
+internal fun aPodcastPodcastindexPerson(
+    name: String = "podcast podcastindex person name",
+    role: String? = "podcast podcastindex person role",
+    group: String? = "podcast podcastindex person group",
+    img: String? = "podcast podcastindex person img",
+    href: String? = "podcast podcastindex person href"
+) = PodcastindexPerson(name, role, group, img, href)
+
+@JvmOverloads
+internal fun aPodcastPodcastindexLocation(
+    name: String = "podcast podcastindex location name",
+    geo: GeoLocation? = aPodcastindexGeoLocation(),
+    osm: OpenStreetMapFeature? = aPodcastindexOpenStreetMapFeature()
+) = PodcastindexLocation(name, geo, osm)

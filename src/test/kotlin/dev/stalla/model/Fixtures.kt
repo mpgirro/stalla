@@ -84,22 +84,6 @@ internal fun aPodcastindexOpenStreetMapFeature(
     revision: BigInteger? = BigInteger.TWO
 ) = OpenStreetMapFeature(type, id, revision)
 
-@JvmOverloads
-internal fun aPodcastindexPerson(
-    name: String = "podcastindex person name",
-    role: String? = "podcastindex person role",
-    group: String? = "podcastindex person group",
-    img: String? = "podcastindex person img",
-    href: String? = "podcastindex person href"
-) = PodcastindexPerson(name, role, group, img, href)
-
-@JvmOverloads
-internal fun aPodcastindexLocation(
-    name: String = "podcastindex location name",
-    geo: GeoLocation? = aPodcastindexGeoLocation(),
-    osm: OpenStreetMapFeature? = aPodcastindexOpenStreetMapFeature()
-) = PodcastindexLocation(name, geo, osm)
-
 internal val simpleCategoryNames = listOf(
     "Arts",
     "Business",

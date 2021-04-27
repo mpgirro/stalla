@@ -12,6 +12,8 @@ import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.model.podcastindex.EpisodePodcastindex
+import dev.stalla.model.podcastindex.GeoLocation
+import dev.stalla.model.podcastindex.OpenStreetMapFeature
 import dev.stalla.model.podcastindex.PodcastindexEpisode
 import dev.stalla.model.podcastindex.PodcastindexLocation
 import dev.stalla.model.podcastindex.PodcastindexPerson
@@ -139,9 +141,11 @@ internal fun anEpisodePodcastindex(
     transcripts: List<Transcript> = listOf(anEpisodePodcastindexTranscript()),
     soundbites: List<Soundbite> = listOf(anEpisodePodcastindexSoundbite()),
     chapters: Chapters? = anEpisodePodcastindexChapters(),
-    persons: List<PodcastindexPerson> = listOf(aPodcastindexPerson()),
-    location: PodcastindexLocation? = aPodcastindexLocation()
-) = EpisodePodcastindex(transcripts, soundbites, chapters)
+    persons: List<PodcastindexPerson> = listOf(anEpisodePodcastindexPerson()),
+    location: PodcastindexLocation? = anEpisodePodcastindexLocation(),
+    season: PodcastindexSeason? = anEpisodePodcastindexSeason(),
+    episode: PodcastindexEpisode? = anEpisodePodcastindexEpisode()
+) = EpisodePodcastindex(transcripts, soundbites, chapters, persons, location, season, episode)
 
 @JvmOverloads
 internal fun anEpisodePodcastindexTranscript(
@@ -163,6 +167,22 @@ internal fun anEpisodePodcastindexChapters(
     url: String = "episode podcastindex chapters url",
     type: MediaType = MediaType.JSON_CHAPTERS
 ) = Chapters(url, type)
+
+@JvmOverloads
+internal fun anEpisodePodcastindexPerson(
+    name: String = "episode podcastindex person name",
+    role: String? = "episode podcastindex person role",
+    group: String? = "episode podcastindex person group",
+    img: String? = "episode podcastindex person img",
+    href: String? = "episode podcastindex person href"
+) = PodcastindexPerson(name, role, group, img, href)
+
+@JvmOverloads
+internal fun anEpisodePodcastindexLocation(
+    name: String = "episode podcastindex location name",
+    geo: GeoLocation? = aPodcastindexGeoLocation(),
+    osm: OpenStreetMapFeature? = aPodcastindexOpenStreetMapFeature()
+) = PodcastindexLocation(name, geo, osm)
 
 @JvmOverloads
 internal fun anEpisodePodcastindexSeason(

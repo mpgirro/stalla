@@ -7,6 +7,7 @@ import dev.stalla.model.atom.Link;
 import dev.stalla.model.googleplay.GoogleplayCategory;
 import dev.stalla.model.itunes.ItunesCategory;
 import dev.stalla.model.podcastindex.Funding;
+import dev.stalla.model.podcastindex.PodcastindexPerson;
 import dev.stalla.model.podcastindex.Soundbite;
 import dev.stalla.model.podcastindex.Transcript;
 import dev.stalla.model.podlove.SimpleChapter;
@@ -31,6 +32,7 @@ import java.util.List;
 
 import static dev.stalla.TestUtilKt.declaresException;
 import static dev.stalla.TestUtilKt.declaresNoExceptions;
+import static dev.stalla.model.EpisodeFixturesKt.anEpisodePodcastindexPerson;
 import static dev.stalla.model.EpisodeFixturesKt.aPodloveSimpleChapter;
 import static dev.stalla.model.EpisodeFixturesKt.anEpisode;
 import static dev.stalla.model.EpisodeFixturesKt.anEpisodePodcastindexSoundbite;
@@ -41,6 +43,7 @@ import static dev.stalla.model.FixturesKt.anAtomPerson;
 import static dev.stalla.model.FixturesKt.anItunesCategory;
 import static dev.stalla.model.FixturesKt.anRssCategory;
 import static dev.stalla.model.PodcastFixturesKt.aPodcastPodcastindexFunding;
+import static dev.stalla.model.PodcastFixturesKt.aPodcastPodcastindexPerson;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -281,6 +284,13 @@ public class PodcastRssParserInteropTest {
     }
 
     @Test
+    @DisplayName("should parse to an unmodifiable list of Podcast Podcastindex persons")
+    void shouldParsePodcastPodcastindexUnmodifiablePerson() {
+        final List<PodcastindexPerson> personList = requireNonNull(parsedPodcast.getPodcastindex().getPersons());
+        assertThrows(UnsupportedOperationException.class, () -> personList.add(aPodcastPodcastindexPerson()));
+    }
+
+    @Test
     @DisplayName("should parse to an unmodifiable list of Episode Podcastindex soundbites")
     void shouldParseEpisodePodcastindexUnmodifiableSoundbites() {
         final List<Soundbite> soundbites = requireNonNull(parsedEpisode.getPodcastindex().getSoundbites());
@@ -292,6 +302,13 @@ public class PodcastRssParserInteropTest {
     void shouldParseEpisodePodcastindexUnmodifiableTranscripts() {
         final List<Transcript> transcripts = requireNonNull(parsedEpisode.getPodcastindex().getTranscripts());
         assertThrows(UnsupportedOperationException.class, () -> transcripts.add(anEpisodePodcastindexTranscript()));
+    }
+
+    @Test
+    @DisplayName("should parse to an unmodifiable list of Episode Podcastindex persons")
+    void shouldParseEpisodePodcastindexUnmodifiablePerson() {
+        final List<PodcastindexPerson> personList = requireNonNull(parsedEpisode.getPodcastindex().getPersons());
+        assertThrows(UnsupportedOperationException.class, () -> personList.add(anEpisodePodcastindexPerson()));
     }
 
     @Test

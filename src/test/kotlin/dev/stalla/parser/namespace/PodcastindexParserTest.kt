@@ -223,4 +223,28 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
             prop(FakeEpisodePodcastindexBuilder::transcriptBuilders).isEmpty()
         }
     }
+
+    @Test
+    internal fun `should not extract Podcastindex Season tags from the item when the types are invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.podcastindexBuilder, "item.podcastindex").all {
+            prop(FakeEpisodePodcastindexBuilder::seasonBuilder).isNull()
+        }
+    }
+
+    @Test
+    internal fun `should not extract Podcastindex Epsiode tags from the item when the types are invalid`() {
+        val item: Node = XmlRes("/xml/item-invalid.xml").rootNodeByName("item")
+
+        val builder = FakeEpisodeBuilder()
+        item.parseItemChildNodes(builder)
+
+        assertThat(builder.podcastindexBuilder, "item.podcastindex").all {
+            prop(FakeEpisodePodcastindexBuilder::episodeBuilder).isNull()
+        }
+    }
 }

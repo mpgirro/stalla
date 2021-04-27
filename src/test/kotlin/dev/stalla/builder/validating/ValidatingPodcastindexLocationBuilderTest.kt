@@ -11,8 +11,8 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.PodcastindexLocationBuilder
 import dev.stalla.model.aPodcastindexGeoLocation
-import dev.stalla.model.aPodcastindexLocation
 import dev.stalla.model.aPodcastindexOpenStreetMapFeature
+import dev.stalla.model.anEpisodePodcastindexLocation
 import dev.stalla.model.podcastindex.PodcastindexLocation
 import org.junit.jupiter.api.Test
 
@@ -77,7 +77,7 @@ internal class ValidatingPodcastindexLocationBuilderTest {
 
     @Test
     internal fun `should populate an Podcastindex Location builder with all properties from an Podcastindex Location model`() {
-        val location = aPodcastindexLocation()
+        val location = anEpisodePodcastindexLocation()
         val locationBuilder = PodcastindexLocation.builder().applyFrom(location)
 
         assertAll {
