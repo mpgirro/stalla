@@ -77,33 +77,31 @@ internal object GeoUriParser {
     }
 
     private fun GeoLocationBuilder.handleEndOfCoordinate(buffer: StringBuilder) {
-        val s: String = buffer.getAndClear()
+        val symbol: String = buffer.getAndClear()
+        val coordinate = symbol.asDoubleOrNull() ?: return
         if (!hasCoordA()) {
-            val a = s.asDoubleOrNull() ?: return
-            coordA(a)
+            coordA(coordinate)
             return
         }
         if (!hasCoordB()) {
-            val b = s.asDoubleOrNull() ?: return
-            coordB(b)
+            coordB(coordinate)
             return
         }
         if (!hasCoordC()) {
-            val c = s.asDoubleOrNull() ?: return
-            coordC(c)
+            coordC(coordinate)
             return
         }
     }
 
     private fun GeoLocationBuilder.handleEndOfParameter(buffer: StringBuilder, paramName: String?) {
-        val s = buffer.getAndClear()
+        val symbol = buffer.getAndClear()
         if (paramName == null) {
-            if (s.isNotEmpty()) {
-                addParameterDecodeValue(s, "")
+            if (symbol.isNotEmpty()) {
+                addParameterDecodeValue(symbol, "")
             }
             return
         }
-        addParameterDecodeValue(paramName, s)
+        addParameterDecodeValue(paramName, symbol)
     }
 
     private fun GeoLocationBuilder.addParameterDecodeValue(name: String, value: String?) {

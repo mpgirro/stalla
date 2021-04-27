@@ -1,10 +1,8 @@
 package dev.stalla.builder.podcast
 
 import dev.stalla.builder.Builder
-import dev.stalla.builder.GeoLocationBuilder
 import dev.stalla.builder.PodcastindexLocationBuilder
 import dev.stalla.builder.PodcastindexPersonBuilder
-import dev.stalla.model.podcastindex.GeoLocation
 import dev.stalla.model.podcastindex.Locked
 import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.model.podcastindex.PodcastindexLocation

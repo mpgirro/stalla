@@ -13,18 +13,25 @@ import java.math.BigInteger
  */
 public interface OpenStreetMapFeatureBuilder : Builder<OpenStreetMapFeature> {
 
+    /** Set the type value. */
     public fun type(type: OpenStreetMapElementType): OpenStreetMapFeatureBuilder
 
+    /** Set the id value. */
     public fun id(id: BigInteger): OpenStreetMapFeatureBuilder
 
+    /** Set the id value. */
     public fun id(id: Int): OpenStreetMapFeatureBuilder = apply { id(id.toBigInteger()) }
 
+    /** Set the id value. */
     public fun id(id: Long): OpenStreetMapFeatureBuilder = apply { id(id.toBigInteger()) }
 
+    /** Set the revision value. */
     public fun revision(revision: BigInteger?): OpenStreetMapFeatureBuilder
 
+    /** Set the revision value. */
     public fun revision(revision: Int?): OpenStreetMapFeatureBuilder = apply { revision(revision.asBigIntegerOrNull()) }
 
+    /** Set the revision value. */
     public fun revision(revision: Long?): OpenStreetMapFeatureBuilder = apply { revision(revision.asBigIntegerOrNull()) }
 
     override fun applyFrom(prototype: OpenStreetMapFeature?): OpenStreetMapFeatureBuilder =

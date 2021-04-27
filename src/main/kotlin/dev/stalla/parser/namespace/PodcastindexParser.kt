@@ -1,6 +1,5 @@
 package dev.stalla.parser.namespace
 
-import dev.stalla.builder.GeoLocationBuilder
 import dev.stalla.builder.PodcastindexLocationBuilder
 import dev.stalla.builder.PodcastindexPersonBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
@@ -20,8 +19,6 @@ import dev.stalla.dom.parseAsMediaTypeOrNull
 import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.dom.textOrNull
 import dev.stalla.model.StyledDuration
-import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.PodcastindexPerson
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.GeoUriParser
 import dev.stalla.parser.NamespaceParser
@@ -73,6 +70,7 @@ internal object PodcastindexParser : NamespaceParser() {
         }
     }
 
+    @Suppress("ComplexMethod")
     override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
         when (localName) {
             "chapters" -> {

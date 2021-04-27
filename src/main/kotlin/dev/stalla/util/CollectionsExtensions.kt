@@ -1,6 +1,5 @@
 package dev.stalla.util
 
-import dev.stalla.builder.PodcastindexLocationBuilder
 import dev.stalla.builder.PodcastindexPersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
@@ -11,7 +10,6 @@ import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
 import dev.stalla.builder.podcast.PodcastPodcastindexFundingBuilder
 import dev.stalla.model.Episode
 import dev.stalla.model.podcastindex.Funding
-import dev.stalla.model.podcastindex.PodcastindexLocation
 import dev.stalla.model.podcastindex.PodcastindexPerson
 import dev.stalla.model.podcastindex.Soundbite
 import dev.stalla.model.podcastindex.Transcript

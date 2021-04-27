@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 class GeoLocationTest {
 
     @Test
-    fun `should parse a Geo URI with A and B correctly`() {
+    fun `should parse a Geo URI with latitude and longitude correctly`() {
         assertThat(GeoLocation.of("geo:37.786971,-122.399677")).isNotNull().all {
             prop(GeoLocation::coordA).isEqualTo(37.786971)
             prop(GeoLocation::coordB).isEqualTo(-122.399677)
@@ -29,7 +29,7 @@ class GeoLocationTest {
     }
 
     @Test
-    fun `should parse a Geo URI with A and B and C correctly`() {
+    fun `should parse a Geo URI with latitude and longitude and altitude correctly`() {
         assertThat(GeoLocation.of("geo:40.714623,-74.006605,1.1")).isNotNull().all {
             prop(GeoLocation::coordA).isEqualTo(40.714623)
             prop(GeoLocation::coordB).isEqualTo(-74.006605)

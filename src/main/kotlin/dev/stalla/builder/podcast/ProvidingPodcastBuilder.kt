@@ -1,7 +1,6 @@
 package dev.stalla.builder.podcast
 
 import dev.stalla.builder.AtomPersonBuilderProvider
-import dev.stalla.builder.GeoLocationBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilderProvider
 import dev.stalla.builder.PodcastindexLocationBuilder

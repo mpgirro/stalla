@@ -49,6 +49,7 @@ internal object PodcastindexWriter : NamespaceWriter() {
         appendPodcastindexLocationData(podcastindex.location)
     }
 
+    @Suppress("ComplexMethod")
     override fun Element.appendEpisodeData(episode: Episode) {
         val podcastindex = episode.podcastindex ?: return
 

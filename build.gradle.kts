@@ -174,6 +174,7 @@ tasks {
         kotlinOptions {
             jvmTarget = "1.8"
             freeCompilerArgs = listOf(
+                "-Xopt-in=kotlin.ExperimentalStdlibApi",
                 "-Xopt-in=kotlin.RequiresOptIn",
                 "-Xopt-in=kotlin.contracts.ExperimentalContracts",
                 "-Xopt-in=dev.stalla.util.InternalAPI",

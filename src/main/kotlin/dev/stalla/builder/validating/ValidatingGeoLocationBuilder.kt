@@ -2,10 +2,12 @@ package dev.stalla.builder.validating
 
 import dev.stalla.builder.GeoLocationBuilder
 import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.GeoLocation.Factory.PARAM_CRS
-import dev.stalla.model.podcastindex.GeoLocation.Factory.PARAM_UNCERTAINTY
+import dev.stalla.model.podcastindex.GeoLocation.Factory.CRS_PARAM
+import dev.stalla.model.podcastindex.GeoLocation.Factory.UNCERTAINTY_PARAM
+import dev.stalla.util.InternalAPI
 
-public class ValidatingGeoLocationBuilder : GeoLocationBuilder {
+@InternalAPI
+internal class ValidatingGeoLocationBuilder : GeoLocationBuilder {
 
     private var coordA: Double? = null
     private var coordB: Double? = null
@@ -24,12 +26,12 @@ public class ValidatingGeoLocationBuilder : GeoLocationBuilder {
 
     override fun uncertainty(uncertainty: Double?): GeoLocationBuilder = apply { this.uncertainty = uncertainty }
 
-    override fun addParameter(name: String, value: String): GeoLocationBuilder = apply {
-        if (PARAM_CRS.equals(name, ignoreCase = true)) {
+    override fun addParameter(key: String, value: String): GeoLocationBuilder = apply {
+        if (CRS_PARAM.equals(key, ignoreCase = true)) {
             crs(value)
             return@apply
         }
-        if (PARAM_UNCERTAINTY.equals(name, ignoreCase = true)) {
+        if (UNCERTAINTY_PARAM.equals(key, ignoreCase = true)) {
             try {
                 uncertainty(value.toDouble())
                 return@apply
@@ -37,17 +39,17 @@ public class ValidatingGeoLocationBuilder : GeoLocationBuilder {
                 // if it can't be parsed, then treat it as an ordinary parameter
             }
         }
-        parameters[name] = value
+        parameters[key] = value
     }
 
-    override fun removeParameter(name: String): GeoLocationBuilder = apply {
-        if (PARAM_CRS.equals(name, ignoreCase = true)) {
+    override fun removeParameter(key: String): GeoLocationBuilder = apply {
+        if (CRS_PARAM.equals(key, ignoreCase = true)) {
             crs(null)
         }
-        if (PARAM_UNCERTAINTY.equals(name, ignoreCase = true)) {
+        if (UNCERTAINTY_PARAM.equals(key, ignoreCase = true)) {
             uncertainty(null)
         }
-        parameters.remove(name)
+        parameters.remove(key)
     }
 
     override fun removeParameter(parameter: GeoLocation.Parameter): GeoLocationBuilder =

@@ -1,10 +1,8 @@
 package dev.stalla.parser
 
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
 import dev.stalla.model.podcastindex.OpenStreetMapElementType
+import dev.stalla.model.podcastindex.OpenStreetMapFeature
 import dev.stalla.util.InternalAPI
-import dev.stalla.util.asBigIntegerOrNull
-import java.lang.StringBuilder
 import java.math.BigInteger
 import kotlin.contracts.contract
 
@@ -51,7 +49,6 @@ internal object OsmFeatureParser {
         return builder.build()
     }
 
-    @OptIn(ExperimentalStdlibApi::class)
     private fun Char.isNoDigit(): Boolean = digitToIntOrNull() == null
 
     private fun String?.asBigIntegerOrNull(): BigInteger? {
