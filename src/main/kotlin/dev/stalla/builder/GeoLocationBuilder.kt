@@ -10,14 +10,14 @@ import dev.stalla.util.whenNotNull
  */
 public interface GeoLocationBuilder : Builder<GeoLocation> {
 
-    /** Set the coord value. */
-    public fun coordA(coordA: Double): GeoLocationBuilder
+    /** Set the latitude value. */
+    public fun latitude(latitude: Double): GeoLocationBuilder
 
-    /** Set the coord value. */
-    public fun coordB(coordB: Double): GeoLocationBuilder
+    /** Set the longitude value. */
+    public fun longitude(longitude: Double): GeoLocationBuilder
 
-    /** Set the coord value. */
-    public fun coordC(coordC: Double?): GeoLocationBuilder
+    /** Set the altitude value. */
+    public fun altitude(altitude: Double?): GeoLocationBuilder
 
     /** Set the crs value. */
     public fun crs(crs: String?): GeoLocationBuilder
@@ -43,19 +43,19 @@ public interface GeoLocationBuilder : Builder<GeoLocation> {
     public fun removeParameter(parameter: GeoLocation.Parameter): GeoLocationBuilder
 
     /** Returns `true` if the coordA property is set. */
-    public fun hasCoordA(): Boolean
+    public fun hasLatitude(): Boolean
 
     /** Returns `true` if the coordB property is set. */
-    public fun hasCoordB(): Boolean
+    public fun hasLongitude(): Boolean
 
     /** Returns `true` if the coordC property is set. */
-    public fun hasCoordC(): Boolean
+    public fun hasAltitude(): Boolean
 
     override fun applyFrom(prototype: GeoLocation?): GeoLocationBuilder =
         whenNotNull(prototype) { location ->
-            coordA(location.coordA)
-            coordB(location.coordB)
-            coordC(location.coordC)
+            latitude(location.latitude)
+            longitude(location.longitude)
+            altitude(location.altitude)
             crs(location.crs)
             uncertainty(location.uncertainty)
             addAllParameters(location.parameters)

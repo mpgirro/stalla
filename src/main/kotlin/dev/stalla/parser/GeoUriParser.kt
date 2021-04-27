@@ -50,7 +50,7 @@ internal object GeoUriParser {
                     paramName = null
                 } else {
                     builder.handleEndOfCoordinate(buffer)
-                    if (!builder.hasCoordB()) return null
+                    if (!builder.hasLongitude()) return null
                     coordinatesDone = true
                 }
                 continue
@@ -65,7 +65,7 @@ internal object GeoUriParser {
             builder.handleEndOfParameter(buffer, paramName)
         } else {
             builder.handleEndOfCoordinate(buffer)
-            if (!builder.hasCoordB()) return null
+            if (!builder.hasLongitude()) return null
         }
         return builder.build()
     }
@@ -79,16 +79,16 @@ internal object GeoUriParser {
     private fun GeoLocationBuilder.handleEndOfCoordinate(buffer: StringBuilder) {
         val symbol: String = buffer.getAndClear()
         val coordinate = symbol.asDoubleOrNull() ?: return
-        if (!hasCoordA()) {
-            coordA(coordinate)
+        if (!hasLatitude()) {
+            latitude(coordinate)
             return
         }
-        if (!hasCoordB()) {
-            coordB(coordinate)
+        if (!hasLongitude()) {
+            longitude(coordinate)
             return
         }
-        if (!hasCoordC()) {
-            coordC(coordinate)
+        if (!hasAltitude()) {
+            altitude(coordinate)
             return
         }
     }

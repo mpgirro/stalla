@@ -19,9 +19,9 @@ class GeoLocationTest {
     @Test
     fun `should parse a Geo URI with latitude and longitude correctly`() {
         assertThat(GeoLocation.of("geo:37.786971,-122.399677")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(37.786971)
-            prop(GeoLocation::coordB).isEqualTo(-122.399677)
-            prop(GeoLocation::coordC).isNull()
+            prop(GeoLocation::latitude).isEqualTo(37.786971)
+            prop(GeoLocation::longitude).isEqualTo(-122.399677)
+            prop(GeoLocation::altitude).isNull()
             prop(GeoLocation::crs).isNull()
             prop(GeoLocation::uncertainty).isNull()
             prop(GeoLocation::parameters).isEmpty()
@@ -31,9 +31,9 @@ class GeoLocationTest {
     @Test
     fun `should parse a Geo URI with latitude and longitude and altitude correctly`() {
         assertThat(GeoLocation.of("geo:40.714623,-74.006605,1.1")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(40.714623)
-            prop(GeoLocation::coordB).isEqualTo(-74.006605)
-            prop(GeoLocation::coordC).isEqualTo(1.1)
+            prop(GeoLocation::latitude).isEqualTo(40.714623)
+            prop(GeoLocation::longitude).isEqualTo(-74.006605)
+            prop(GeoLocation::altitude).isEqualTo(1.1)
             prop(GeoLocation::crs).isNull()
             prop(GeoLocation::uncertainty).isNull()
             prop(GeoLocation::parameters).isEmpty()
@@ -43,9 +43,9 @@ class GeoLocationTest {
     @Test
     fun `test 2`() {
         assertThat(GeoLocation.of("geo:48.198634,16.371648;crs=wgs84;u=40")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(48.198634)
-            prop(GeoLocation::coordB).isEqualTo(16.371648)
-            prop(GeoLocation::coordC).isNull()
+            prop(GeoLocation::latitude).isEqualTo(48.198634)
+            prop(GeoLocation::longitude).isEqualTo(16.371648)
+            prop(GeoLocation::altitude).isNull()
             prop(GeoLocation::crs).isEqualTo("wgs84")
             prop(GeoLocation::uncertainty).isEqualTo(40.0)
             prop(GeoLocation::parameters).isEmpty()
@@ -55,9 +55,9 @@ class GeoLocationTest {
     @Test
     fun `parse all`() {
         assertThat(GeoLocation.of("geo:12.34,56.78,-21.43;crs=wgs84;u=12;param=value")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(12.34)
-            prop(GeoLocation::coordB).isEqualTo(56.78)
-            prop(GeoLocation::coordC).isEqualTo(-21.43)
+            prop(GeoLocation::latitude).isEqualTo(12.34)
+            prop(GeoLocation::longitude).isEqualTo(56.78)
+            prop(GeoLocation::altitude).isEqualTo(-21.43)
             prop(GeoLocation::crs).isEqualTo("wgs84")
             prop(GeoLocation::uncertainty).isEqualTo(12.0)
             prop(GeoLocation::parameters).hasSize(1)
@@ -68,9 +68,9 @@ class GeoLocationTest {
     @Test
     fun `parse no params`() {
         assertThat(GeoLocation.of("geo:12.34,56.78,-21.43;crs=wgs84;u=12")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(12.34)
-            prop(GeoLocation::coordB).isEqualTo(56.78)
-            prop(GeoLocation::coordC).isEqualTo(-21.43)
+            prop(GeoLocation::latitude).isEqualTo(12.34)
+            prop(GeoLocation::longitude).isEqualTo(56.78)
+            prop(GeoLocation::altitude).isEqualTo(-21.43)
             prop(GeoLocation::crs).isEqualTo("wgs84")
             prop(GeoLocation::uncertainty).isEqualTo(12.0)
             prop(GeoLocation::parameters).isEmpty()
@@ -80,9 +80,9 @@ class GeoLocationTest {
     @Test
     fun `parse no params or u`() {
         assertThat(GeoLocation.of("geo:12.34,56.78,-21.43;crs=wgs84")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(12.34)
-            prop(GeoLocation::coordB).isEqualTo(56.78)
-            prop(GeoLocation::coordC).isEqualTo(-21.43)
+            prop(GeoLocation::latitude).isEqualTo(12.34)
+            prop(GeoLocation::longitude).isEqualTo(56.78)
+            prop(GeoLocation::altitude).isEqualTo(-21.43)
             prop(GeoLocation::crs).isEqualTo("wgs84")
             prop(GeoLocation::uncertainty).isNull()
             prop(GeoLocation::parameters).isEmpty()
@@ -92,9 +92,9 @@ class GeoLocationTest {
     @Test
     fun `parse no params or crs`() {
         assertThat(GeoLocation.of("geo:12.34,56.78,-21.43;u=12")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(12.34)
-            prop(GeoLocation::coordB).isEqualTo(56.78)
-            prop(GeoLocation::coordC).isEqualTo(-21.43)
+            prop(GeoLocation::latitude).isEqualTo(12.34)
+            prop(GeoLocation::longitude).isEqualTo(56.78)
+            prop(GeoLocation::altitude).isEqualTo(-21.43)
             prop(GeoLocation::crs).isNull()
             prop(GeoLocation::uncertainty).isEqualTo(12.0)
             prop(GeoLocation::parameters).isEmpty()
@@ -104,9 +104,9 @@ class GeoLocationTest {
     @Test
     fun `parse no params or u or crs`() {
         assertThat(GeoLocation.of("geo:12.34,56.78,-21.43")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(12.34)
-            prop(GeoLocation::coordB).isEqualTo(56.78)
-            prop(GeoLocation::coordC).isEqualTo(-21.43)
+            prop(GeoLocation::latitude).isEqualTo(12.34)
+            prop(GeoLocation::longitude).isEqualTo(56.78)
+            prop(GeoLocation::altitude).isEqualTo(-21.43)
             prop(GeoLocation::crs).isNull()
             prop(GeoLocation::uncertainty).isNull()
             prop(GeoLocation::parameters).isEmpty()
@@ -116,9 +116,9 @@ class GeoLocationTest {
     @Test
     fun `parse no params or u or crs or coordC`() {
         assertThat(GeoLocation.of("geo:12.34,56.78")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(12.34)
-            prop(GeoLocation::coordB).isEqualTo(56.78)
-            prop(GeoLocation::coordC).isNull()
+            prop(GeoLocation::latitude).isEqualTo(12.34)
+            prop(GeoLocation::longitude).isEqualTo(56.78)
+            prop(GeoLocation::altitude).isNull()
             prop(GeoLocation::crs).isNull()
             prop(GeoLocation::uncertainty).isNull()
             prop(GeoLocation::parameters).isEmpty()
@@ -128,9 +128,9 @@ class GeoLocationTest {
     @Test
     fun `parse invalid uncertainty`() {
         assertThat(GeoLocation.of("geo:12.34,56.78;u=invalid")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(12.34)
-            prop(GeoLocation::coordB).isEqualTo(56.78)
-            prop(GeoLocation::coordC).isNull()
+            prop(GeoLocation::latitude).isEqualTo(12.34)
+            prop(GeoLocation::longitude).isEqualTo(56.78)
+            prop(GeoLocation::altitude).isNull()
             prop(GeoLocation::crs).isNull()
             prop(GeoLocation::uncertainty).isNull()
             prop(GeoLocation::parameters).hasSize(1)
@@ -156,9 +156,9 @@ class GeoLocationTest {
     @Test
     fun `parse decode special chars in param value`() {
         assertThat(GeoLocation.of("geo:12.34,56.78;param=with%20%3d%20special%20&%20chars")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(12.34)
-            prop(GeoLocation::coordB).isEqualTo(56.78)
-            prop(GeoLocation::coordC).isNull()
+            prop(GeoLocation::latitude).isEqualTo(12.34)
+            prop(GeoLocation::longitude).isEqualTo(56.78)
+            prop(GeoLocation::altitude).isNull()
             prop(GeoLocation::crs).isNull()
             prop(GeoLocation::uncertainty).isNull()
             prop(GeoLocation::parameters).hasSize(1)
@@ -169,9 +169,9 @@ class GeoLocationTest {
     @Test
     fun `multiple params`() {
         assertThat(GeoLocation.of("geo:12.34,45.67,-21.43;crs=theCrs;u=12.0;param=value;param2=value2")).isNotNull().all {
-            prop(GeoLocation::coordA).isEqualTo(12.34)
-            prop(GeoLocation::coordB).isEqualTo(45.67)
-            prop(GeoLocation::coordC).isEqualTo(-21.43)
+            prop(GeoLocation::latitude).isEqualTo(12.34)
+            prop(GeoLocation::longitude).isEqualTo(45.67)
+            prop(GeoLocation::altitude).isEqualTo(-21.43)
             prop(GeoLocation::crs).isEqualTo("theCrs")
             prop(GeoLocation::uncertainty).isEqualTo(12.0)
             prop(GeoLocation::parameters).hasSize(2)
@@ -184,6 +184,72 @@ class GeoLocationTest {
     fun `WGS84 pole rule`() {
         val geoLocation1 = GeoLocation.of("geo:90,-22.43;crs=WGS84")
         val geoLocation2 = GeoLocation.of("geo:90,46;crs=WGS84")
+        assertAll {
+            assertThat(geoLocation1).isNotNull()
+            assertThat(geoLocation2).isNotNull()
+            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
+        }
+    }
+
+    @Test
+    fun `should no match two Geo URIs in WGS-84 special pole case if the latitude is different`() {
+        val geoLocation1 = GeoLocation.of("geo:90,10")
+        val geoLocation2 = GeoLocation.of("geo:45,20")
+        assertAll {
+            assertThat(geoLocation1).isNotNull()
+            assertThat(geoLocation2).isNotNull()
+            assertThat(geoLocation1!!.match(geoLocation2!!)).isFalse()
+        }
+    }
+
+    @Test
+    fun `should no match two Geo URIs in WGS-84 special pole case if the latitude has a different sign`() {
+        val geoLocation1 = GeoLocation.of("geo:90,10")
+        val geoLocation2 = GeoLocation.of("geo:-90,10")
+        assertAll {
+            assertThat(geoLocation1).isNotNull()
+            assertThat(geoLocation2).isNotNull()
+            assertThat(geoLocation1!!.match(geoLocation2!!)).isFalse()
+        }
+    }
+
+    @Test
+    fun `should match two Geo URIs in WGS-84 special pole case by ignoring the longitude`() {
+        val geoLocation1 = GeoLocation.of("geo:90,5")
+        val geoLocation2 = GeoLocation.of("geo:90,10")
+        assertAll {
+            assertThat(geoLocation1).isNotNull()
+            assertThat(geoLocation2).isNotNull()
+            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
+        }
+    }
+
+    @Test
+    fun `should interprete a missing CRS value as WGS-84 when matching two Geo URIs with WGS-84 special pole case`() {
+        val geoLocation1 = GeoLocation.of("geo:90,5")
+        val geoLocation2 = GeoLocation.of("geo:90,10;crs=WGS84")
+        assertAll {
+            assertThat(geoLocation1).isNotNull()
+            assertThat(geoLocation2).isNotNull()
+            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
+        }
+    }
+
+    @Test
+    fun `should match two Geo URIs in WGS-84 special date line case if the longitude has a different sign`() {
+        val geoLocation1 = GeoLocation.of("geo:10,180")
+        val geoLocation2 = GeoLocation.of("geo:10,-180")
+        assertAll {
+            assertThat(geoLocation1).isNotNull()
+            assertThat(geoLocation2).isNotNull()
+            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
+        }
+    }
+
+    @Test
+    fun `should interprete a missing CRS value as WGS-84 when matching two Geo URIs with WGS-84 special date line case`() {
+        val geoLocation1 = GeoLocation.of("geo:10,180")
+        val geoLocation2 = GeoLocation.of("geo:10,-180;crs=WGS84")
         assertAll {
             assertThat(geoLocation1).isNotNull()
             assertThat(geoLocation2).isNotNull()

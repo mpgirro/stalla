@@ -17,11 +17,11 @@ import kotlin.math.absoluteValue
  *
  * Note that this class only ensures syntactically valid geo URI constructs,
  * but does not ensure that the coordinate values are valid within the coordinate
- * reference system ([crs]).
+ * reference system ([crs]), besides the comparison rules that apply for WGS-84.
  *
- * @property coordA The latitude value.
- * @property coordB The longitude value.
- * @property coordC The altitude value.
+ * @property latitude The latitude value.
+ * @property longitude The longitude value.
+ * @property altitude The altitude value.
  * @property crs The coordinate reference system - defaults to ([CRS_WGS84]) if not set.
  * @property uncertainty The amount of uncertainty in the location as a value in meters.
  * @property parameters TODO.
@@ -30,25 +30,25 @@ import kotlin.math.absoluteValue
  * @since 1.1.0
  */
 public class GeoLocation public constructor(
-    public val coordA: Double,
-    public val coordB: Double,
-    public val coordC: Double? = null,
+    public val latitude: Double,
+    public val longitude: Double,
+    public val altitude: Double? = null,
     public val crs: String? = null,
     public val uncertainty: Double? = null,
     public val parameters: List<Parameter> = emptyList()
 ) {
 
     public constructor(
-        coordA: Double,
-        coordB: Double,
-        coordC: Double?,
+        latitude: Double,
+        longitude: Double,
+        altitude: Double?,
         crs: String?,
         uncertainty: Double?,
         parameters: Map<String, String>
     ) : this(
-        coordA = coordA,
-        coordB = coordB,
-        coordC = coordC,
+        latitude = latitude,
+        longitude = longitude,
+        altitude = altitude,
         crs = crs,
         uncertainty = uncertainty,
         parameters = parameters.map { Parameter(it.key, it.value) }.asUnmodifiable()
@@ -87,11 +87,11 @@ public class GeoLocation public constructor(
         if (value.isBlank()) return this
         if (hasParameter(key, value)) return this
 
-        return GeoLocation(coordA, coordB, coordC, crs, uncertainty, parameters + Parameter(key, value))
+        return GeoLocation(latitude, longitude, altitude, crs, uncertainty, parameters + Parameter(key, value))
     }
 
     /** Creates a copy of `this` type without any parameters.*/
-    public fun withoutParameters(): GeoLocation = GeoLocation(coordA, coordB, coordC)
+    public fun withoutParameters(): GeoLocation = GeoLocation(latitude, longitude, altitude)
 
     /** Checks if `this` type matches a [pattern] type taking parameters into account. */
     public fun match(pattern: GeoLocation?): Boolean {
@@ -103,27 +103,26 @@ public class GeoLocation public constructor(
         if (this == pattern) return true
 
         if (crs.isWGS84() && pattern.crs.isWGS84()) {
-            if (coordA.isPoleWGS84() || pattern.coordA.isPoleWGS84()) {
+            if (latitude.isPoleWGS84() || pattern.latitude.isPoleWGS84()) {
                 // Special "poles" rule for WGS-84 applies - longitude is to be ignored
-                return coordA == pattern.coordA &&
-                    coordC == pattern.coordC &&
+                return latitude == pattern.latitude &&
+                    altitude == pattern.altitude &&
                     uncertainty == pattern.uncertainty &&
                     match(parameters, pattern.parameters)
             }
 
-            if (coordB.isDateLineWGS84() && pattern.coordB.isDateLineWGS84()) {
+            if (longitude.isDateLineWGS84() && pattern.longitude.isDateLineWGS84()) {
                 // Special "date line" rule for WGS-84 applies - longitude 180 degrees == -180 degrees
-                return coordA == pattern.coordA &&
-                    coordC == pattern.coordC &&
-                    crs.equals(pattern.crs, ignoreCase = true) &&
+                return latitude == pattern.latitude &&
+                    altitude == pattern.altitude &&
                     uncertainty == pattern.uncertainty &&
                     match(parameters, pattern.parameters)
             }
         }
 
-        return coordA == pattern.coordA &&
-            coordB == pattern.coordB &&
-            coordC == pattern.coordC &&
+        return latitude == pattern.latitude &&
+            longitude == pattern.longitude &&
+            altitude == pattern.altitude &&
             crs.equals(pattern.crs, ignoreCase = true) &&
             uncertainty == pattern.uncertainty &&
             match(parameters, pattern.parameters)
@@ -178,8 +177,8 @@ public class GeoLocation public constructor(
     }
 
     override fun toString(): String = StringBuilder().apply {
-        append("geo:$coordA,$coordB")
-        if (coordC != null) append(",$coordC")
+        append("geo:$latitude,$longitude")
+        if (altitude != null) append(",$altitude")
         if (crs != null) append(";$CRS_PARAM=$crs")
         if (uncertainty != null) append(";$UNCERTAINTY_PARAM=$uncertainty")
         for ((key, value) in parameters) append(";$key=$value")
@@ -191,9 +190,9 @@ public class GeoLocation public constructor(
 
         other as GeoLocation
 
-        if (coordA != other.coordA) return false
-        if (coordB != other.coordB) return false
-        if (coordC != other.coordC) return false
+        if (latitude != other.latitude) return false
+        if (longitude != other.longitude) return false
+        if (altitude != other.altitude) return false
         if (crs != other.crs) return false
         if (uncertainty != other.uncertainty) return false
         if (parameters != other.parameters) return false
@@ -202,9 +201,9 @@ public class GeoLocation public constructor(
     }
 
     override fun hashCode(): Int {
-        var result = coordA.hashCode()
-        result = 31 * result + coordB.hashCode()
-        result = 31 * result + (coordC?.hashCode() ?: 0)
+        var result = latitude.hashCode()
+        result = 31 * result + longitude.hashCode()
+        result = 31 * result + (altitude?.hashCode() ?: 0)
         result = 31 * result + (crs?.hashCode() ?: 0)
         result = 31 * result + (uncertainty?.hashCode() ?: 0)
         result = 31 * result + parameters.hashCode()
