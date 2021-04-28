@@ -10,7 +10,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.PodcastindexLocationBuilder
-import dev.stalla.model.aPodcastindexGeoLocation
+import dev.stalla.model.aPodcastindexGeographicLocation
 import dev.stalla.model.aPodcastindexOpenStreetMapElement
 import dev.stalla.model.anEpisodePodcastindexLocation
 import dev.stalla.model.podcastindex.PodcastindexLocation
@@ -32,7 +32,7 @@ internal class ValidatingPodcastindexLocationBuilderTest {
     @Test
     internal fun `should not build an Podcastindex Location with when the name field is missing`() {
         val locationBuilder = ValidatingPodcastindexLocationBuilder()
-            .geo(aPodcastindexGeoLocation())
+            .geo(aPodcastindexGeographicLocation())
 
         assertAll {
             assertThat(locationBuilder).prop(PodcastindexLocationBuilder::hasEnoughDataToBuild).isFalse()
@@ -61,7 +61,7 @@ internal class ValidatingPodcastindexLocationBuilderTest {
     internal fun `should build an Podcastindex Location with all the added entries to its fields`() {
         val locationBuilder = ValidatingPodcastindexLocationBuilder()
             .name("name")
-            .geo(aPodcastindexGeoLocation())
+            .geo(aPodcastindexGeographicLocation())
             .osm(aPodcastindexOpenStreetMapElement())
 
         assertAll {
@@ -69,7 +69,7 @@ internal class ValidatingPodcastindexLocationBuilderTest {
 
             assertThat(locationBuilder.build()).isNotNull().all {
                 prop(PodcastindexLocation::name).isEqualTo("name")
-                prop(PodcastindexLocation::geo).isEqualTo(aPodcastindexGeoLocation())
+                prop(PodcastindexLocation::geo).isEqualTo(aPodcastindexGeographicLocation())
                 prop(PodcastindexLocation::osm).isEqualTo(aPodcastindexOpenStreetMapElement())
             }
         }

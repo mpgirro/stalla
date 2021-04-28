@@ -160,6 +160,6 @@ internal fun aPodcastPodcastindexPerson(
 @JvmOverloads
 internal fun aPodcastPodcastindexLocation(
     name: String = "podcast podcastindex location name",
-    geo: GeographicLocation? = aPodcastindexGeoLocation(),
+    geo: GeographicLocation? = aPodcastindexGeographicLocation(),
     osm: OpenStreetMapElement? = aPodcastindexOpenStreetMapElement()
 ) = PodcastindexLocation(name, geo, osm)

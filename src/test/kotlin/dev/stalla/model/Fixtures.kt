@@ -65,7 +65,7 @@ internal fun aGoogleplayCategory(
 ) = category
 
 @JvmOverloads
-internal fun aPodcastindexGeoLocation(
+internal fun aPodcastindexGeographicLocation(
     coordA: Double = 48.20849,
     coordB: Double = 16.37208,
     coordC: Double? = 5.0,
