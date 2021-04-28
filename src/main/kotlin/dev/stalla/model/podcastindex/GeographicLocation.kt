@@ -4,8 +4,9 @@ import dev.stalla.builder.GeoLocationBuilder
 import dev.stalla.builder.validating.ValidatingGeoLocationBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.TypeFactory
-import dev.stalla.model.podcastindex.GeoLocation.Factory.CRS_WGS84
-import dev.stalla.parser.GeoUriParser
+import dev.stalla.model.podcastindex.GeographicLocation.Factory.CRS_WGS84
+import dev.stalla.model.podcastindex.GeographicLocation.Parameter
+import dev.stalla.parser.GeographicLocationParser
 import dev.stalla.util.asUnmodifiable
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
 import java.util.Locale
@@ -19,17 +20,22 @@ import kotlin.math.absoluteValue
  * but does not ensure that the coordinate values are valid within the coordinate
  * reference system ([crs]), besides the comparison rules that apply for WGS-84.
  *
+ * Direct instantiation in Java is discouraged. Use the [builder][GeographicLocation.Factory.builder] method
+ * to obtain a [GeographicLocation] instance for expressive construction instead.
+ *
+ * Use the [of][GeographicLocation.Factory.of] method to obtain an instance from a string pattern.
+ *
  * @property latitude The latitude value.
  * @property longitude The longitude value.
  * @property altitude The altitude value.
  * @property crs The coordinate reference system - defaults to ([CRS_WGS84]) if not set.
  * @property uncertainty The amount of uncertainty in the location as a value in meters.
- * @property parameters TODO.
+ * @property parameters The list of geo URI parameters as [Parameter].
  *
  * @see [RFC 5870](https://tools.ietf.org/html/rfc5870)
  * @since 1.1.0
  */
-public class GeoLocation public constructor(
+public class GeographicLocation public constructor(
     public val latitude: Double,
     public val longitude: Double,
     public val altitude: Double? = null,
@@ -38,6 +44,16 @@ public class GeoLocation public constructor(
     public val parameters: List<Parameter> = emptyList()
 ) {
 
+    /**
+     * Instantiates a new geographic location.
+     *
+     * @property latitude The latitude value.
+     * @property longitude The longitude value.
+     * @property altitude The altitude value.
+     * @property crs The coordinate reference system - defaults to ([CRS_WGS84]) if not set.
+     * @property uncertainty The amount of uncertainty in the location as a value in meters.
+     * @property parameters The list of geo URI parameters as key/value pairs.
+     */
     public constructor(
         latitude: Double,
         longitude: Double,
@@ -82,19 +98,19 @@ public class GeoLocation public constructor(
         parameters.firstOrNull { it.key.equals(key, ignoreCase = true) }?.value
 
     /** Creates a copy of `this` type with an added parameter of [key] and [value]. */
-    public fun withParameter(key: String, value: String): GeoLocation {
+    public fun withParameter(key: String, value: String): GeographicLocation {
         if (key.isBlank() || key.containsMediaTypeSeparatorSymbol()) return this
         if (value.isBlank()) return this
         if (hasParameter(key, value)) return this
 
-        return GeoLocation(latitude, longitude, altitude, crs, uncertainty, parameters + Parameter(key, value))
+        return GeographicLocation(latitude, longitude, altitude, crs, uncertainty, parameters + Parameter(key, value))
     }
 
     /** Creates a copy of `this` type without any parameters.*/
-    public fun withoutParameters(): GeoLocation = GeoLocation(latitude, longitude, altitude)
+    public fun withoutParameters(): GeographicLocation = GeographicLocation(latitude, longitude, altitude)
 
     /** Checks if `this` type matches a [pattern] type taking parameters into account. */
-    public fun match(pattern: GeoLocation?): Boolean {
+    public fun match(pattern: GeographicLocation?): Boolean {
         contract {
             returns(true) implies (pattern != null)
         }
@@ -104,19 +120,13 @@ public class GeoLocation public constructor(
 
         if (crs.isWGS84() && pattern.crs.isWGS84()) {
             if (latitude.isPoleWGS84() || pattern.latitude.isPoleWGS84()) {
-                // Special "poles" rule for WGS-84 applies - longitude is to be ignored
-                return latitude == pattern.latitude &&
-                    altitude == pattern.altitude &&
-                    uncertainty == pattern.uncertainty &&
-                    match(parameters, pattern.parameters)
+                // Special "poles" rule for WGS-84 applies
+                return isEqualPoleWGS84(pattern)
             }
 
             if (longitude.isDateLineWGS84() && pattern.longitude.isDateLineWGS84()) {
-                // Special "date line" rule for WGS-84 applies - longitude 180 degrees == -180 degrees
-                return latitude == pattern.latitude &&
-                    altitude == pattern.altitude &&
-                    uncertainty == pattern.uncertainty &&
-                    match(parameters, pattern.parameters)
+                // Special "date line" rule for WGS-84 applies
+                return isEqualDateLineWGS84(pattern)
             }
         }
 
@@ -144,11 +154,6 @@ public class GeoLocation public constructor(
     private fun Parameter.match(key: String, value: String?): Boolean =
         if (value == null) false else this == Parameter(key, value)
 
-    private fun matchCrs(crs1: String?, crs2: String?): Boolean {
-        return (crs1 == null || crs1.equals(CRS_WGS84, ignoreCase = true))
-            && (crs2 == null || crs2.equals(CRS_WGS84, ignoreCase = true))
-    }
-
     private fun parameter(key: String, elements: List<Parameter>): String? =
         elements.firstOrNull { it.key.equals(key, ignoreCase = true) }?.value
 
@@ -162,18 +167,31 @@ public class GeoLocation public constructor(
         }
     }
 
-    private fun String?.isWGS84(): Boolean = this == null || this.equals(CRS_WGS84, ignoreCase = true)
+    private fun String?.isWGS84(): Boolean {
+        contract {
+            returns(false) implies(this@isWGS84 != null)
+        }
+        return this == null || this.equals(CRS_WGS84, ignoreCase = true)
+    }
 
     private fun Double.isPoleWGS84(): Boolean = this.absoluteValue == MAX_LATITUDE
 
     private fun Double.isDateLineWGS84(): Boolean = this.absoluteValue == MAX_LONGITUDE
 
-    private fun Double.equalDateLineWGS84(other: Double): Boolean {
-        return if (this.isDateLineWGS84() && other.isDateLineWGS84()) {
-            true
-        } else {
-            this == other
-        }
+    // In WGS-84's special pole case, longitude is to be ignored
+    private fun isEqualPoleWGS84(other: GeographicLocation): Boolean {
+        return latitude == other.latitude &&
+            altitude == other.altitude &&
+            uncertainty == other.uncertainty &&
+            match(parameters, other.parameters)
+    }
+
+    // In WGS-84's special date line case, longitude 180 degrees == -180 degrees
+    private fun isEqualDateLineWGS84(other: GeographicLocation): Boolean {
+        return latitude == other.latitude &&
+            altitude == other.altitude &&
+            uncertainty == other.uncertainty &&
+            match(parameters, other.parameters)
     }
 
     override fun toString(): String = StringBuilder().apply {
@@ -188,7 +206,7 @@ public class GeoLocation public constructor(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as GeoLocation
+        other as GeographicLocation
 
         if (latitude != other.latitude) return false
         if (longitude != other.longitude) return false
@@ -210,8 +228,8 @@ public class GeoLocation public constructor(
         return result
     }
 
-    /** Provides a builder and a factory for the [GeoLocation] class. */
-    public companion object Factory : BuilderFactory<GeoLocation, GeoLocationBuilder>, TypeFactory<GeoLocation> {
+    /** Provides a builder and a factory for the [GeographicLocation] class. */
+    public companion object Factory : BuilderFactory<GeographicLocation, GeoLocationBuilder>, TypeFactory<GeographicLocation> {
 
         /** The World Geodetic System 1984 coordinate reference system used by GPS. */
         public const val CRS_WGS84: String = "WGS84"
@@ -221,12 +239,11 @@ public class GeoLocation public constructor(
         internal const val MAX_LATITUDE = 90.0
         internal const val MAX_LONGITUDE = 180.0
 
-        /** Returns a builder implementation for building [GeoLocation] model instances. */
+        /** Returns a builder implementation for building [GeographicLocation] model instances. */
         @JvmStatic
         override fun builder(): GeoLocationBuilder = ValidatingGeoLocationBuilder()
 
         @JvmStatic
-        override fun of(rawValue: String?): GeoLocation? = rawValue?.let { value -> GeoUriParser.parse(value) }
-
+        override fun of(rawValue: String?): GeographicLocation? = rawValue?.let { value -> GeographicLocationParser.parse(value) }
     }
 }

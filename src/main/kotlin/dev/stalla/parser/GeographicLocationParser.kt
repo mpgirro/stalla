@@ -1,13 +1,13 @@
 package dev.stalla.parser
 
 import dev.stalla.builder.GeoLocationBuilder
-import dev.stalla.model.podcastindex.GeoLocation
+import dev.stalla.model.podcastindex.GeographicLocation
 import dev.stalla.util.InternalAPI
 import java.util.regex.Pattern
 import kotlin.contracts.contract
 
 /**
- * Parser implementation for [GeoLocation] values, as defined in [RFC 5870](https://tools.ietf.org/html/rfc5870).
+ * Parser implementation for [GeographicLocation] values, as defined in [RFC 5870](https://tools.ietf.org/html/rfc5870).
  *
  * The parsing logic is inspired by the
  * [GeoUri](https://github.com/mangstadt/ez-vcard/blob/master/src/main/java/ezvcard/util/GeoUri.java)
@@ -15,13 +15,13 @@ import kotlin.contracts.contract
  * Special thanks to the ez-vcard contributors.
  */
 @InternalAPI
-internal object GeoUriParser {
+internal object GeographicLocationParser {
 
     private val hexPattern: Pattern = Pattern.compile("(?i)%([0-9a-f]{2})")
 
     @InternalAPI
     @Suppress("ComplexMethod", "NestedBlockDepth")
-    internal fun parse(value: String?): GeoLocation? {
+    internal fun parse(value: String?): GeographicLocation? {
         contract {
             returnsNotNull() implies (value != null)
         }
@@ -34,7 +34,7 @@ internal object GeoUriParser {
             // not a geo URI
             return null
         }
-        val builder = GeoLocation.builder()
+        val builder = GeographicLocation.builder()
         val buffer = StringBuilder()
         var paramName: String? = null
         var coordinatesDone = false

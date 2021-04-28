@@ -5,9 +5,12 @@ import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexSeason
 import dev.stalla.model.BuilderFactory
 
 /**
- * TODO.
+ * The season information for the podcast episode.
  *
- * @property number The season number.
+ * Direct instantiation in Java is discouraged. Use the [builder][PodcastindexSeason.Factory.builder]
+ * method to obtain a [PodcastindexSeason] instance for expressive construction instead.
+ *
+ * @property number The season's number.
  * @property name The "name" of the season.
  *
  * @see https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md#season

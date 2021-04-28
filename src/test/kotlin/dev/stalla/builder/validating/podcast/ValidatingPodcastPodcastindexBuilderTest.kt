@@ -14,9 +14,8 @@ import dev.stalla.builder.podcast.PodcastPodcastindexBuilder
 import dev.stalla.builder.validating.ValidatingPodcastindexLocationBuilder
 import dev.stalla.builder.validating.ValidatingPodcastindexPersonBuilder
 import dev.stalla.model.aPodcastPodcastindex
-import dev.stalla.model.podcastindex.EpisodePodcastindex
-import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
+import dev.stalla.model.podcastindex.GeographicLocation
+import dev.stalla.model.podcastindex.OpenStreetMapElement
 import dev.stalla.model.podcastindex.PodcastPodcastindex
 import org.junit.jupiter.api.Test
 
@@ -50,8 +49,8 @@ internal class ValidatingPodcastPodcastindexBuilderTest {
 
     private val expectedLocationBuilder = ValidatingPodcastindexLocationBuilder()
         .name("Location name")
-        .geo(GeoLocation.of("geo:1,2,3"))
-        .osm(OpenStreetMapFeature.of("R123"))
+        .geo(GeographicLocation.of("geo:1,2,3"))
+        .osm(OpenStreetMapElement.of("R123"))
 
     @Test
     internal fun `should not build a Podcast Podcastindex with when all the fields are empty`() {

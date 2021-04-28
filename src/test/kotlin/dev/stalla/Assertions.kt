@@ -7,7 +7,7 @@ import dev.stalla.builder.Builder
 import dev.stalla.dom.asListOfNodes
 import dev.stalla.dom.asString
 import dev.stalla.model.MediaType
-import dev.stalla.model.podcastindex.GeoLocation
+import dev.stalla.model.podcastindex.GeographicLocation
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
 import org.w3c.dom.Attr
@@ -222,8 +222,8 @@ internal fun Assert<MediaType>.doesNotMatchSymmetrically(expected: MediaType?) =
     }
 }
 
-/** Asserts that [GeoLocation.match] matches the expected value. */
-internal fun Assert<GeoLocation>.matchPattern(expected: GeoLocation) = given { geoLocation ->
+/** Asserts that [GeographicLocation.match] matches the expected value. */
+internal fun Assert<GeographicLocation>.matchPattern(expected: GeographicLocation) = given { geoLocation ->
     if (geoLocation.match(expected)) return@given
     expected(
         "to be: '$expected' but was: '$geoLocation'",

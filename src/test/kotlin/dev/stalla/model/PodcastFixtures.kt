@@ -13,9 +13,9 @@ import dev.stalla.model.itunes.ItunesOwner
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
 import dev.stalla.model.podcastindex.Funding
-import dev.stalla.model.podcastindex.GeoLocation
+import dev.stalla.model.podcastindex.GeographicLocation
 import dev.stalla.model.podcastindex.Locked
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
+import dev.stalla.model.podcastindex.OpenStreetMapElement
 import dev.stalla.model.podcastindex.PodcastPodcastindex
 import dev.stalla.model.podcastindex.PodcastindexLocation
 import dev.stalla.model.podcastindex.PodcastindexPerson
@@ -160,6 +160,6 @@ internal fun aPodcastPodcastindexPerson(
 @JvmOverloads
 internal fun aPodcastPodcastindexLocation(
     name: String = "podcast podcastindex location name",
-    geo: GeoLocation? = aPodcastindexGeoLocation(),
-    osm: OpenStreetMapFeature? = aPodcastindexOpenStreetMapFeature()
+    geo: GeographicLocation? = aPodcastindexGeoLocation(),
+    osm: OpenStreetMapElement? = aPodcastindexOpenStreetMapElement()
 ) = PodcastindexLocation(name, geo, osm)

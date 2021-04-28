@@ -5,7 +5,12 @@ import dev.stalla.builder.validating.ValidatingPodcastindexPersonBuilder
 import dev.stalla.model.BuilderFactory
 
 /**
- * TODO.
+ * The information for a person of interest to the podcast or episode. Intended to identify
+ * people like hosts, co-hosts and guests. It is recommented to use [role] and [group] values
+ * based on the [Podcast Taxonomy Project](https://podcasttaxonomy.com)
+ *
+ * Direct instantiation in Java is discouraged. Use the [builder][PodcastindexPerson.Factory.builder]
+ * method to obtain a [PodcastindexPerson] instance for expressive construction instead.
  *
  * @property name The full name or alias of the person.
  * @property role The role the person serves on the show or episode - this should be a reference to an

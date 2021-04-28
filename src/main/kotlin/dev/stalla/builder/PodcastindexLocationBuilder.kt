@@ -1,7 +1,7 @@
 package dev.stalla.builder
 
-import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
+import dev.stalla.model.podcastindex.GeographicLocation
+import dev.stalla.model.podcastindex.OpenStreetMapElement
 import dev.stalla.model.podcastindex.PodcastindexLocation
 import dev.stalla.util.whenNotNull
 
@@ -16,15 +16,15 @@ public interface PodcastindexLocationBuilder : Builder<PodcastindexLocation> {
     public fun name(name: String): PodcastindexLocationBuilder
 
     /** Set the geo value. */
-    public fun geo(geo: GeoLocation?): PodcastindexLocationBuilder
+    public fun geo(geo: GeographicLocation?): PodcastindexLocationBuilder
 
     /** Set the osm value. */
-    public fun osm(osm: OpenStreetMapFeature?): PodcastindexLocationBuilder
+    public fun osm(osm: OpenStreetMapElement?): PodcastindexLocationBuilder
 
     override fun applyFrom(prototype: PodcastindexLocation?): PodcastindexLocationBuilder =
         whenNotNull(prototype) { location ->
             name(location.name)
-            geo(GeoLocation.builder().applyFrom(location.geo).build())
-            osm(OpenStreetMapFeature.builder().applyFrom(location.osm).build())
+            geo(GeographicLocation.builder().applyFrom(location.geo).build())
+            osm(OpenStreetMapElement.builder().applyFrom(location.osm).build())
         }
 }

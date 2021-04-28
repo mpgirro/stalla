@@ -1,21 +1,21 @@
 package dev.stalla.builder.fake
 
 import dev.stalla.builder.PodcastindexLocationBuilder
-import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
+import dev.stalla.model.podcastindex.GeographicLocation
+import dev.stalla.model.podcastindex.OpenStreetMapElement
 import dev.stalla.model.podcastindex.PodcastindexLocation
 
 internal class FakePodcastindexLocationBuilder : FakeBuilder<PodcastindexLocation>(), PodcastindexLocationBuilder {
 
     var name: String? = null
-    var geo: GeoLocation? = null
-    var osm: OpenStreetMapFeature? = null
+    var geo: GeographicLocation? = null
+    var osm: OpenStreetMapElement? = null
 
     override fun name(name: String): PodcastindexLocationBuilder = apply { this.name = name }
 
-    override fun geo(geo: GeoLocation?): PodcastindexLocationBuilder = apply { this.geo = geo }
+    override fun geo(geo: GeographicLocation?): PodcastindexLocationBuilder = apply { this.geo = geo }
 
-    override fun osm(osm: OpenStreetMapFeature?): PodcastindexLocationBuilder = apply { this.osm = osm }
+    override fun osm(osm: OpenStreetMapElement?): PodcastindexLocationBuilder = apply { this.osm = osm }
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

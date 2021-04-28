@@ -81,5 +81,4 @@ internal class ValidatingEpisodePodcastindexEpisodeBuilderTest {
             assertThat(podcastindexEpisodeBuilder.build()).isNotNull().isEqualTo(podcastindexEpisode)
         }
     }
-
 }

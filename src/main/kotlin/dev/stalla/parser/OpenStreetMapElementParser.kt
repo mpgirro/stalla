@@ -1,27 +1,26 @@
 package dev.stalla.parser
 
+import dev.stalla.model.podcastindex.OpenStreetMapElement
 import dev.stalla.model.podcastindex.OpenStreetMapElementType
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
 import dev.stalla.util.InternalAPI
-import java.math.BigInteger
 import kotlin.contracts.contract
 
 @InternalAPI
-internal object OsmFeatureParser {
+internal object OpenStreetMapElementParser {
 
     private enum class ParsingMode {
         Type, Id, Revision
     }
 
     @InternalAPI
-    internal fun parse(value: String?): OpenStreetMapFeature? {
+    internal fun parse(value: String?): OpenStreetMapElement? {
         contract {
             returnsNotNull() implies (value != null)
         }
 
         if (value == null) return null
 
-        val builder = OpenStreetMapFeature.builder()
+        val builder = OpenStreetMapElement.builder()
         val idBuffer = StringBuilder()
         val revisionBuffer = StringBuilder()
         var mode = ParsingMode.Type
@@ -42,28 +41,16 @@ internal object OsmFeatureParser {
             }
         }
 
-        val idValue = idBuffer.stringOrNullIfEmpty().asBigIntegerOrNull() ?: return null
-        builder.id(idValue)
-        builder.revision(revisionBuffer.stringOrNullIfEmpty().asBigIntegerOrNull())
+        val id = idBuffer.stringOrNullIfEmpty()?.toLong() ?: return null
+        val revision = revisionBuffer.stringOrNullIfEmpty()?.toInt()
 
-        return builder.build()
+        return builder
+            .id(id)
+            .revision(revision)
+            .build()
     }
 
     private fun Char.isNoDigit(): Boolean = digitToIntOrNull() == null
 
-    private fun String?.asBigIntegerOrNull(): BigInteger? {
-        contract {
-            returnsNotNull() implies (this@asBigIntegerOrNull != null)
-        }
-
-        if (this == null) return null
-        return try {
-            BigInteger(this)
-        } catch (e: NumberFormatException) {
-            null
-        }
-    }
-
     private fun StringBuilder.stringOrNullIfEmpty(): String? = if (isNotEmpty()) toString() else null
-
 }

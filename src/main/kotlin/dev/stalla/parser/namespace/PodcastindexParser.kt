@@ -20,9 +20,9 @@ import dev.stalla.dom.textAsBooleanOrNull
 import dev.stalla.dom.textOrNull
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.TranscriptType
-import dev.stalla.parser.GeoUriParser
+import dev.stalla.parser.GeographicLocationParser
 import dev.stalla.parser.NamespaceParser
-import dev.stalla.parser.OsmFeatureParser
+import dev.stalla.parser.OpenStreetMapElementParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalAPI
 import dev.stalla.util.allNotNull
@@ -201,8 +201,8 @@ internal object PodcastindexParser : NamespaceParser() {
         val osmValue = getAttributeByName("osm")?.value.trimmedOrNullIfBlank()
 
         return locationBuilder.name(name)
-            .geo(GeoUriParser.parse(geoValue))
-            .osm(OsmFeatureParser.parse(osmValue))
+            .geo(GeographicLocationParser.parse(geoValue))
+            .osm(OpenStreetMapElementParser.parse(osmValue))
     }
 
     private fun Node.toPersonBuilder(

@@ -21,15 +21,11 @@ import dev.stalla.builder.fake.podcast.FakePodcastBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexFundingBuilder
 import dev.stalla.builder.fake.podcast.FakePodcastPodcastindexLockedBuilder
-import dev.stalla.builder.validating.ValidatingPodcastindexLocationBuilder
-import dev.stalla.builder.validating.ValidatingPodcastindexPersonBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexEpisodeBuilder
-import dev.stalla.builder.validating.episode.ValidatingEpisodePodcastindexSeasonBuilder
 import dev.stalla.dom.XmlRes
 import dev.stalla.model.MediaType
 import dev.stalla.model.StyledDuration
-import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
+import dev.stalla.model.podcastindex.GeographicLocation
+import dev.stalla.model.podcastindex.OpenStreetMapElement
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.parser.NamespaceParserTest
 import org.junit.jupiter.api.Test
@@ -79,13 +75,13 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
 
     private val expectedPodcastLocationBuilder = FakePodcastindexLocationBuilder()
         .name("podcast podcastindex location name")
-        .geo(GeoLocation.of("geo:1,2,3"))
-        .osm(OpenStreetMapFeature.of("R123"))
+        .geo(GeographicLocation.of("geo:1,2,3"))
+        .osm(OpenStreetMapElement.of("R123"))
 
     private val expectedEpisodeLocationBuilder = FakePodcastindexLocationBuilder()
         .name("episode podcastindex location name")
-        .geo(GeoLocation.of("geo:4,5,6"))
-        .osm(OpenStreetMapFeature.of("W456"))
+        .geo(GeographicLocation.of("geo:4,5,6"))
+        .osm(OpenStreetMapElement.of("W456"))
 
     private val expectedSeasonBuilder = FakeEpisodePodcastindexSeasonBuilder()
         .number(1)

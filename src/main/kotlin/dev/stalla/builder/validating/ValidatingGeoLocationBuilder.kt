@@ -1,9 +1,9 @@
 package dev.stalla.builder.validating
 
 import dev.stalla.builder.GeoLocationBuilder
-import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.GeoLocation.Factory.CRS_PARAM
-import dev.stalla.model.podcastindex.GeoLocation.Factory.UNCERTAINTY_PARAM
+import dev.stalla.model.podcastindex.GeographicLocation
+import dev.stalla.model.podcastindex.GeographicLocation.Factory.CRS_PARAM
+import dev.stalla.model.podcastindex.GeographicLocation.Factory.UNCERTAINTY_PARAM
 import dev.stalla.util.InternalAPI
 
 @InternalAPI
@@ -52,7 +52,7 @@ internal class ValidatingGeoLocationBuilder : GeoLocationBuilder {
         parameters.remove(key)
     }
 
-    override fun removeParameter(parameter: GeoLocation.Parameter): GeoLocationBuilder =
+    override fun removeParameter(parameter: GeographicLocation.Parameter): GeoLocationBuilder =
         removeParameter(parameter.key)
 
     override fun hasLatitude(): Boolean = latitude != null
@@ -64,10 +64,10 @@ internal class ValidatingGeoLocationBuilder : GeoLocationBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() = latitude != null && longitude != null
 
-    override fun build(): GeoLocation? {
+    override fun build(): GeographicLocation? {
         if (!hasEnoughDataToBuild) return null
 
-        return GeoLocation(
+        return GeographicLocation(
             latitude = latitude ?: return null,
             longitude = longitude ?: return null,
             altitude = altitude,
@@ -76,5 +76,4 @@ internal class ValidatingGeoLocationBuilder : GeoLocationBuilder {
             parameters = parameters // this secondary constructor will apply .asUnmodifiable()
         )
     }
-
 }

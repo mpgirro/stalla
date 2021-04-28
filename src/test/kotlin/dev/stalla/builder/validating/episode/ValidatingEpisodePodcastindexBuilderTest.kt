@@ -17,8 +17,8 @@ import dev.stalla.model.MediaType
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.anEpisodePodcastindex
 import dev.stalla.model.podcastindex.EpisodePodcastindex
-import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
+import dev.stalla.model.podcastindex.GeographicLocation
+import dev.stalla.model.podcastindex.OpenStreetMapElement
 import dev.stalla.model.podcastindex.TranscriptType
 import org.junit.jupiter.api.Test
 import java.util.Locale
@@ -66,8 +66,8 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
 
     private val expectedLocationBuilder = ValidatingPodcastindexLocationBuilder()
         .name("Location name")
-        .geo(GeoLocation.of("geo:1,2,3"))
-        .osm(OpenStreetMapFeature.of("R123"))
+        .geo(GeographicLocation.of("geo:1,2,3"))
+        .osm(OpenStreetMapElement.of("R123"))
 
     private val expectedSeasonBuilder = ValidatingEpisodePodcastindexSeasonBuilder()
         .number(1)

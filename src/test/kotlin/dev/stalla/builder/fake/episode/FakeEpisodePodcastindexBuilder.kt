@@ -78,6 +78,8 @@ internal class FakeEpisodePodcastindexBuilder : FakeBuilder<EpisodePodcastindex>
     }
 
     override fun toString(): String {
-        return "FakeEpisodePodcastindexBuilder(chaptersBuilderValue=$chaptersBuilderValue, locationBuilderValue=$locationBuilderValue, seasonBuilder=$seasonBuilder, episodeBuilder=$episodeBuilder, transcriptBuilders=$transcriptBuilders, soundbiteBuilders=$soundbiteBuilders, personBuilders=$personBuilders)"
+        return "FakeEpisodePodcastindexBuilder(chaptersBuilderValue=$chaptersBuilderValue, locationBuilderValue=$locationBuilderValue, " +
+            "seasonBuilder=$seasonBuilder, episodeBuilder=$episodeBuilder, transcriptBuilders=$transcriptBuilders, " +
+            "soundbiteBuilders=$soundbiteBuilders, personBuilders=$personBuilders)"
     }
 }

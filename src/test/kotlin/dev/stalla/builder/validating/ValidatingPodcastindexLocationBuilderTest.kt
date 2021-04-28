@@ -11,7 +11,7 @@ import assertk.assertions.isTrue
 import assertk.assertions.prop
 import dev.stalla.builder.PodcastindexLocationBuilder
 import dev.stalla.model.aPodcastindexGeoLocation
-import dev.stalla.model.aPodcastindexOpenStreetMapFeature
+import dev.stalla.model.aPodcastindexOpenStreetMapElement
 import dev.stalla.model.anEpisodePodcastindexLocation
 import dev.stalla.model.podcastindex.PodcastindexLocation
 import org.junit.jupiter.api.Test
@@ -62,7 +62,7 @@ internal class ValidatingPodcastindexLocationBuilderTest {
         val locationBuilder = ValidatingPodcastindexLocationBuilder()
             .name("name")
             .geo(aPodcastindexGeoLocation())
-            .osm(aPodcastindexOpenStreetMapFeature())
+            .osm(aPodcastindexOpenStreetMapElement())
 
         assertAll {
             assertThat(locationBuilder).prop(PodcastindexLocationBuilder::hasEnoughDataToBuild).isTrue()
@@ -70,7 +70,7 @@ internal class ValidatingPodcastindexLocationBuilderTest {
             assertThat(locationBuilder.build()).isNotNull().all {
                 prop(PodcastindexLocation::name).isEqualTo("name")
                 prop(PodcastindexLocation::geo).isEqualTo(aPodcastindexGeoLocation())
-                prop(PodcastindexLocation::osm).isEqualTo(aPodcastindexOpenStreetMapFeature())
+                prop(PodcastindexLocation::osm).isEqualTo(aPodcastindexOpenStreetMapElement())
             }
         }
     }

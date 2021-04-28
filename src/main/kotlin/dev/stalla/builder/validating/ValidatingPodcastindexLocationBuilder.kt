@@ -1,8 +1,8 @@
 package dev.stalla.builder.validating
 
 import dev.stalla.builder.PodcastindexLocationBuilder
-import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
+import dev.stalla.model.podcastindex.GeographicLocation
+import dev.stalla.model.podcastindex.OpenStreetMapElement
 import dev.stalla.model.podcastindex.PodcastindexLocation
 import dev.stalla.util.InternalAPI
 
@@ -10,14 +10,14 @@ import dev.stalla.util.InternalAPI
 internal class ValidatingPodcastindexLocationBuilder : PodcastindexLocationBuilder {
 
     private lateinit var nameValue: String
-    private var geo: GeoLocation? = null
-    private var osm: OpenStreetMapFeature? = null
+    private var geo: GeographicLocation? = null
+    private var osm: OpenStreetMapElement? = null
 
     override fun name(name: String): PodcastindexLocationBuilder = apply { this.nameValue = name }
 
-    override fun geo(geo: GeoLocation?): PodcastindexLocationBuilder = apply { this.geo = geo }
+    override fun geo(geo: GeographicLocation?): PodcastindexLocationBuilder = apply { this.geo = geo }
 
-    override fun osm(osm: OpenStreetMapFeature?): PodcastindexLocationBuilder = apply { this.osm = osm }
+    override fun osm(osm: OpenStreetMapElement?): PodcastindexLocationBuilder = apply { this.osm = osm }
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::nameValue.isInitialized

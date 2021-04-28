@@ -1,14 +1,14 @@
 package dev.stalla.builder
 
-import dev.stalla.model.podcastindex.GeoLocation
+import dev.stalla.model.podcastindex.GeographicLocation
 import dev.stalla.util.whenNotNull
 
 /**
- * Builder for constructing [GeoLocation] instances.
+ * Builder for constructing [GeographicLocation] instances.
  *
  * @since 1.1.0
  */
-public interface GeoLocationBuilder : Builder<GeoLocation> {
+public interface GeoLocationBuilder : Builder<GeographicLocation> {
 
     /** Set the latitude value. */
     public fun latitude(latitude: Double): GeoLocationBuilder
@@ -25,22 +25,22 @@ public interface GeoLocationBuilder : Builder<GeoLocation> {
     /** Set the uncertainty value. */
     public fun uncertainty(uncertainty: Double?): GeoLocationBuilder
 
-    /** Adds a [GeoLocation.Parameter] based on [key] and [value] to the list of parameters. */
+    /** Adds a [GeographicLocation.Parameter] based on [key] and [value] to the list of parameters. */
     public fun addParameter(key: String, value: String): GeoLocationBuilder
 
-    /** Adds a [GeoLocation.Parameter] to the list of parameters. */
-    public fun addParameter(parameter: GeoLocation.Parameter): GeoLocationBuilder =
+    /** Adds a [GeographicLocation.Parameter] to the list of parameters. */
+    public fun addParameter(parameter: GeographicLocation.Parameter): GeoLocationBuilder =
         apply { addParameter(parameter.key, parameter.value) }
 
-    /** Adds all [GeoLocation.Parameter] to the list of parameters. */
-    public fun addAllParameters(parameters: List<GeoLocation.Parameter>): GeoLocationBuilder =
+    /** Adds all [GeographicLocation.Parameter] to the list of parameters. */
+    public fun addAllParameters(parameters: List<GeographicLocation.Parameter>): GeoLocationBuilder =
         apply { parameters.forEach(::addParameter) }
 
     /** Removes the parameter with [key] from the list of parameters. */
     public fun removeParameter(key: String): GeoLocationBuilder
 
     /** Removes [parameter] from the list of parameters. */
-    public fun removeParameter(parameter: GeoLocation.Parameter): GeoLocationBuilder
+    public fun removeParameter(parameter: GeographicLocation.Parameter): GeoLocationBuilder
 
     /** Returns `true` if the coordA property is set. */
     public fun hasLatitude(): Boolean
@@ -51,7 +51,7 @@ public interface GeoLocationBuilder : Builder<GeoLocation> {
     /** Returns `true` if the coordC property is set. */
     public fun hasAltitude(): Boolean
 
-    override fun applyFrom(prototype: GeoLocation?): GeoLocationBuilder =
+    override fun applyFrom(prototype: GeographicLocation?): GeoLocationBuilder =
         whenNotNull(prototype) { location ->
             latitude(location.latitude)
             longitude(location.longitude)

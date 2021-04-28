@@ -15,8 +15,6 @@ import dev.stalla.model.anEpisodePodcastindex
 import dev.stalla.model.anEpisodePodcastindexChapters
 import dev.stalla.model.anEpisodePodcastindexSoundbite
 import dev.stalla.model.anEpisodePodcastindexTranscript
-import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
 import org.junit.jupiter.api.Test
 
 internal class PodcastindexWriterTest : NamespaceWriterTest() {

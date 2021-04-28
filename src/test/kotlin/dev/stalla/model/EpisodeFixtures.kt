@@ -12,8 +12,8 @@ import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.model.podcastindex.EpisodePodcastindex
-import dev.stalla.model.podcastindex.GeoLocation
-import dev.stalla.model.podcastindex.OpenStreetMapFeature
+import dev.stalla.model.podcastindex.GeographicLocation
+import dev.stalla.model.podcastindex.OpenStreetMapElement
 import dev.stalla.model.podcastindex.PodcastindexEpisode
 import dev.stalla.model.podcastindex.PodcastindexLocation
 import dev.stalla.model.podcastindex.PodcastindexPerson
@@ -180,8 +180,8 @@ internal fun anEpisodePodcastindexPerson(
 @JvmOverloads
 internal fun anEpisodePodcastindexLocation(
     name: String = "episode podcastindex location name",
-    geo: GeoLocation? = aPodcastindexGeoLocation(),
-    osm: OpenStreetMapFeature? = aPodcastindexOpenStreetMapFeature()
+    geo: GeographicLocation? = aPodcastindexGeoLocation(),
+    osm: OpenStreetMapElement? = aPodcastindexOpenStreetMapElement()
 ) = PodcastindexLocation(name, geo, osm)
 
 @JvmOverloads

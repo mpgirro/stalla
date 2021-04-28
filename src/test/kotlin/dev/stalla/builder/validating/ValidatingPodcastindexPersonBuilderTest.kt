@@ -90,5 +90,4 @@ internal class ValidatingPodcastindexPersonBuilderTest {
             assertThat(personBuilder.build()).isNotNull().isEqualTo(person)
         }
     }
-
 }
