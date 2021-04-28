@@ -1,6 +1,6 @@
 package dev.stalla.parser
 
-import dev.stalla.builder.GeoLocationBuilder
+import dev.stalla.builder.GeographicLocationBuilder
 import dev.stalla.model.podcastindex.GeographicLocation
 import dev.stalla.util.InternalAPI
 import java.util.regex.Pattern
@@ -76,7 +76,7 @@ internal object GeographicLocationParser {
         null
     }
 
-    private fun GeoLocationBuilder.handleEndOfCoordinate(buffer: StringBuilder) {
+    private fun GeographicLocationBuilder.handleEndOfCoordinate(buffer: StringBuilder) {
         val symbol: String = buffer.getAndClear()
         val coordinate = symbol.asDoubleOrNull() ?: return
         if (!hasLatitude()) {
@@ -93,7 +93,7 @@ internal object GeographicLocationParser {
         }
     }
 
-    private fun GeoLocationBuilder.handleEndOfParameter(buffer: StringBuilder, paramName: String?) {
+    private fun GeographicLocationBuilder.handleEndOfParameter(buffer: StringBuilder, paramName: String?) {
         val symbol = buffer.getAndClear()
         if (paramName == null) {
             if (symbol.isNotEmpty()) {
@@ -104,7 +104,7 @@ internal object GeographicLocationParser {
         addParameterDecodeValue(paramName, symbol)
     }
 
-    private fun GeoLocationBuilder.addParameterDecodeValue(name: String, value: String?) {
+    private fun GeographicLocationBuilder.addParameterDecodeValue(name: String, value: String?) {
         if (value == null) {
             removeParameter(name)
             return

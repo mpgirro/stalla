@@ -1,7 +1,7 @@
 package dev.stalla.model.podcastindex
 
-import dev.stalla.builder.GeoLocationBuilder
-import dev.stalla.builder.validating.ValidatingGeoLocationBuilder
+import dev.stalla.builder.GeographicLocationBuilder
+import dev.stalla.builder.validating.ValidatingGeographicLocationBuilder
 import dev.stalla.model.BuilderFactory
 import dev.stalla.model.TypeFactory
 import dev.stalla.model.podcastindex.GeographicLocation.Factory.CRS_WGS84
@@ -227,7 +227,7 @@ public class GeographicLocation public constructor(
     }
 
     /** Provides a builder and a factory for the [GeographicLocation] class. */
-    public companion object Factory : BuilderFactory<GeographicLocation, GeoLocationBuilder>, TypeFactory<GeographicLocation> {
+    public companion object Factory : BuilderFactory<GeographicLocation, GeographicLocationBuilder>, TypeFactory<GeographicLocation> {
 
         /** The World Geodetic System 1984 coordinate reference system used by GPS. */
         public const val CRS_WGS84: String = "WGS84"
@@ -239,7 +239,7 @@ public class GeographicLocation public constructor(
 
         /** Returns a builder implementation for building [GeographicLocation] model instances. */
         @JvmStatic
-        override fun builder(): GeoLocationBuilder = ValidatingGeoLocationBuilder()
+        override fun builder(): GeographicLocationBuilder = ValidatingGeographicLocationBuilder()
 
         @JvmStatic
         override fun of(rawValue: String?): GeographicLocation? = rawValue?.let { value -> GeographicLocationParser.parse(value) }
