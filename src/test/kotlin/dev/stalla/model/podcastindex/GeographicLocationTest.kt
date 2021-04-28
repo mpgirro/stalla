@@ -40,7 +40,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `test 2`() {
+    fun `should parse a Geo URI with crs and uncertainty correctly`() {
         assertThat(GeographicLocation.of("geo:48.198634,16.371648;crs=wgs84;u=40")).isNotNull().all {
             prop(GeographicLocation::latitude).isEqualTo(48.198634)
             prop(GeographicLocation::longitude).isEqualTo(16.371648)
@@ -52,7 +52,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `parse all`() {
+    fun `should parse a Geo URI with crs and uncertainty and a generic parameter correctly`() {
         assertThat(GeographicLocation.of("geo:12.34,56.78,-21.43;crs=wgs84;u=12;param=value")).isNotNull().all {
             prop(GeographicLocation::latitude).isEqualTo(12.34)
             prop(GeographicLocation::longitude).isEqualTo(56.78)
@@ -65,7 +65,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `parse no params`() {
+    fun `should parse a Geo URI with crs and uncertainty and not match them as parameters`() {
         assertThat(GeographicLocation.of("geo:12.34,56.78,-21.43;crs=wgs84;u=12")).isNotNull().all {
             prop(GeographicLocation::latitude).isEqualTo(12.34)
             prop(GeographicLocation::longitude).isEqualTo(56.78)
@@ -77,7 +77,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `parse no params or u`() {
+    fun `should parse a Geo URI with crs and not match uncertainty and parameters correctly`() {
         assertThat(GeographicLocation.of("geo:12.34,56.78,-21.43;crs=wgs84")).isNotNull().all {
             prop(GeographicLocation::latitude).isEqualTo(12.34)
             prop(GeographicLocation::longitude).isEqualTo(56.78)
@@ -89,7 +89,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `parse no params or crs`() {
+    fun `should parse a Geo URI with uncertainty and not match crs and parameters correctly`() {
         assertThat(GeographicLocation.of("geo:12.34,56.78,-21.43;u=12")).isNotNull().all {
             prop(GeographicLocation::latitude).isEqualTo(12.34)
             prop(GeographicLocation::longitude).isEqualTo(56.78)
@@ -101,31 +101,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `parse no params or u or crs`() {
-        assertThat(GeographicLocation.of("geo:12.34,56.78,-21.43")).isNotNull().all {
-            prop(GeographicLocation::latitude).isEqualTo(12.34)
-            prop(GeographicLocation::longitude).isEqualTo(56.78)
-            prop(GeographicLocation::altitude).isEqualTo(-21.43)
-            prop(GeographicLocation::crs).isNull()
-            prop(GeographicLocation::uncertainty).isNull()
-            prop(GeographicLocation::parameters).isEmpty()
-        }
-    }
-
-    @Test
-    fun `parse no params or u or crs or coordC`() {
-        assertThat(GeographicLocation.of("geo:12.34,56.78")).isNotNull().all {
-            prop(GeographicLocation::latitude).isEqualTo(12.34)
-            prop(GeographicLocation::longitude).isEqualTo(56.78)
-            prop(GeographicLocation::altitude).isNull()
-            prop(GeographicLocation::crs).isNull()
-            prop(GeographicLocation::uncertainty).isNull()
-            prop(GeographicLocation::parameters).isEmpty()
-        }
-    }
-
-    @Test
-    fun `parse invalid uncertainty`() {
+    fun `should parse a Geo URI with invalid uncertainty and not match as uncertainty but as a parameter correctly`() {
         assertThat(GeographicLocation.of("geo:12.34,56.78;u=invalid")).isNotNull().all {
             prop(GeographicLocation::latitude).isEqualTo(12.34)
             prop(GeographicLocation::longitude).isEqualTo(56.78)
@@ -138,22 +114,27 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `parse no params or u or crs or coordsC or coordB`() {
+    fun `should not parse a Geo URI with only a latitude`() {
         assertThat(GeographicLocation.of("geo:12.34")).isNull()
     }
 
     @Test
-    fun `parse no params or u or crs or coordsC or coordB or coordA`() {
+    fun `should not parse a Geo URI when there is only the scheme`() {
         assertThat(GeographicLocation.of("geo:")).isNull()
     }
 
     @Test
-    fun `parse not geo uri(`() {
+    fun `should not parse an URI that is not a Geo URI`() {
         assertThat(GeographicLocation.of("https://stalla.dev")).isNull()
     }
 
     @Test
-    fun `parse decode special chars in param value`() {
+    fun `should not parse a Geo URI when the scheme is missing`() {
+        assertThat(GeographicLocation.of("48.198634,16.371648;crs=wgs84;u=40")).isNull()
+    }
+
+    @Test
+    fun `should parse a Geo URI and decode special chars in param value`() {
         assertThat(GeographicLocation.of("geo:12.34,56.78;param=with%20%3d%20special%20&%20chars")).isNotNull().all {
             prop(GeographicLocation::latitude).isEqualTo(12.34)
             prop(GeographicLocation::longitude).isEqualTo(56.78)
@@ -166,7 +147,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `multiple params`() {
+    fun `should parse a Geo URI and match multiple parameters correctly`() {
         assertThat(GeographicLocation.of("geo:12.34,45.67,-21.43;crs=theCrs;u=12.0;param=value;param2=value2")).isNotNull().all {
             prop(GeographicLocation::latitude).isEqualTo(12.34)
             prop(GeographicLocation::longitude).isEqualTo(45.67)
@@ -180,7 +161,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `WGS84 pole rule`() {
+    fun `should match Geo URIs when WGS-84 special pole case applies correctly`() {
         val geoLocation1 = GeographicLocation.of("geo:90,-22.43;crs=WGS84")
         val geoLocation2 = GeographicLocation.of("geo:90,46;crs=WGS84")
         assertAll {
@@ -191,7 +172,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `should no match two Geo URIs in WGS-84 special pole case if the latitude is different`() {
+    fun `should not match Geo URIs in WGS-84 special pole case if the latitude is different`() {
         val geoLocation1 = GeographicLocation.of("geo:90,10")
         val geoLocation2 = GeographicLocation.of("geo:45,20")
         assertAll {
@@ -202,7 +183,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `should no match two Geo URIs in WGS-84 special pole case if the latitude has a different sign`() {
+    fun `should no match Geo URIs in WGS-84 special pole case if the latitude has a different sign`() {
         val geoLocation1 = GeographicLocation.of("geo:90,10")
         val geoLocation2 = GeographicLocation.of("geo:-90,10")
         assertAll {
@@ -213,7 +194,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `should match two Geo URIs in WGS-84 special pole case by ignoring the longitude`() {
+    fun `should match Geo URIs in WGS-84 special pole case by ignoring the longitude`() {
         val geoLocation1 = GeographicLocation.of("geo:90,5")
         val geoLocation2 = GeographicLocation.of("geo:90,10")
         assertAll {
@@ -235,7 +216,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `should match two Geo URIs in WGS-84 special date line case if the longitude has a different sign`() {
+    fun `should match Geo URIs in WGS-84 special date line case if the longitude has a different sign`() {
         val geoLocation1 = GeographicLocation.of("geo:10,180")
         val geoLocation2 = GeographicLocation.of("geo:10,-180")
         assertAll {
@@ -257,7 +238,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `parameters bitwise identical after percent-decoding parameter names are case insensitive`() {
+    fun `should match Geo URIs parameters bitwise identical after percent-decoding parameter names are case insensitive`() {
         val geoLocation1 = GeographicLocation.of("geo:66,30;u=6.500;FOo=this%2dthat")
         val geoLocation2 = GeographicLocation.of("geo:66.0,30;u=6.5;foo=this-that")
         assertAll {
@@ -268,7 +249,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `parameter order is insignificant`() {
+    fun `should match Geo URIs with parameter order being insignificant`() {
         val geoLocation1 = GeographicLocation.of("geo:47,11;foo=blue;bar=white")
         val geoLocation2 = GeographicLocation.of("geo:47,11;bar=white;foo=blue")
         assertAll {
@@ -279,7 +260,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `parameter keys are case-insensitive`() {
+    fun `should match Geo URIs with parameter keys being case-insensitive`() {
         val geoLocation1 = GeographicLocation.of("geo:22,0;bar=blue")
         val geoLocation2 = GeographicLocation.of("geo:22,0;BAR=blue")
         assertAll {
@@ -290,7 +271,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `parameter values are case-sensitive`() {
+    fun `should match Geo URIs with parameter values being case-sensitive`() {
         val geoLocation1 = GeographicLocation.of("geo:22,0;bar=BLUE")
         val geoLocation2 = GeographicLocation.of("geo:22,0;bar=blue")
         assertAll {

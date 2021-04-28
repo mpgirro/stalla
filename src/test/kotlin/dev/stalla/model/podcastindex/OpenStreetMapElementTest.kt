@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test
 class OpenStreetMapElementTest {
 
     @Test
-    fun `test 1`() {
+    fun `should parse an OpenStreetMap element with Relation type correctly`() {
         assertThat(OpenStreetMapElement.of("R148838")).isNotNull().all {
             prop(OpenStreetMapElement::type).isEqualTo(OpenStreetMapElementType.Relation)
             prop(OpenStreetMapElement::id).isEqualTo(148838)
@@ -20,7 +20,7 @@ class OpenStreetMapElementTest {
     }
 
     @Test
-    fun `test 2`() {
+    fun `should parse an OpenStreetMap element with Way type correctly`() {
         assertThat(OpenStreetMapElement.of("W5013364")).isNotNull().all {
             prop(OpenStreetMapElement::type).isEqualTo(OpenStreetMapElementType.Way)
             prop(OpenStreetMapElement::id).isEqualTo(5013364)
@@ -29,7 +29,16 @@ class OpenStreetMapElementTest {
     }
 
     @Test
-    fun `test 3`() {
+    fun `should parse an OpenStreetMap element with Node type correctly`() {
+        assertThat(OpenStreetMapElement.of("N45678")).isNotNull().all {
+            prop(OpenStreetMapElement::type).isEqualTo(OpenStreetMapElementType.Node)
+            prop(OpenStreetMapElement::id).isEqualTo(45678)
+            prop(OpenStreetMapElement::revision).isNull()
+        }
+    }
+
+    @Test
+    fun `should parse an OpenStreetMap element with revision correctly`() {
         assertThat(OpenStreetMapElement.of("R7444#188")).isNotNull().all {
             prop(OpenStreetMapElement::type).isEqualTo(OpenStreetMapElementType.Relation)
             prop(OpenStreetMapElement::id).isEqualTo(7444)
@@ -38,37 +47,37 @@ class OpenStreetMapElementTest {
     }
 
     @Test
-    fun `test 3_5`() {
+    fun `should not parse an OpenStreetMap element when there is only an invalid type`() {
         assertThat(OpenStreetMapElement.of("X")).isNull()
     }
 
     @Test
-    fun `test 4`() {
+    fun `should not parse an OpenStreetMap element when the type is invalid`() {
         assertThat(OpenStreetMapElement.of("X12345")).isNull()
     }
 
     @Test
-    fun `test 5`() {
+    fun `should not parse an OpenStreetMap element when there is only a type`() {
         assertThat(OpenStreetMapElement.of("R")).isNull()
     }
 
     @Test
-    fun `test 6`() {
+    fun `should not parse an OpenStreetMap element when there is a type and revision but the ID is missing`() {
         assertThat(OpenStreetMapElement.of("R#188")).isNull()
     }
 
     @Test
-    fun `test 7`() {
+    fun `should not parse an OpenStreetMap element when the ID is not numeric`() {
         assertThat(OpenStreetMapElement.of("Rabc")).isNull()
     }
 
     @Test
-    fun `test 8`() {
-        assertThat(OpenStreetMapElement.of("Rabc")).isNull()
-    }
-
-    @Test
-    fun `test 9`() {
+    fun `should not parse an OpenStreetMap element with revision when the ID is not numeric`() {
         assertThat(OpenStreetMapElement.of("Rabc#123")).isNull()
+    }
+
+    @Test
+    fun `should not parse an OpenStreetMap element when the revison is not numeric`() {
+        assertThat(OpenStreetMapElement.of("R123#abc")).isNull()
     }
 }

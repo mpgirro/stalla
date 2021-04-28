@@ -115,27 +115,19 @@ public class GeographicLocation public constructor(
             returns(true) implies (pattern != null)
         }
 
-        if (pattern == null) return false
-        if (this == pattern) return true
-
-        if (crs.isWGS84() && pattern.crs.isWGS84()) {
-            if (latitude.isPoleWGS84() || pattern.latitude.isPoleWGS84()) {
-                // Special "poles" rule for WGS-84 applies
-                return isEqualPoleWGS84(pattern)
-            }
-
-            if (longitude.isDateLineWGS84() && pattern.longitude.isDateLineWGS84()) {
-                // Special "date line" rule for WGS-84 applies
-                return isEqualDateLineWGS84(pattern)
-            }
+        return when {
+            pattern == null -> false
+            this == pattern -> true
+            matchPoleWGS84(pattern) -> true
+            matchDateLineWGS84(pattern) -> true
+            else ->
+                latitude == pattern.latitude &&
+                    longitude == pattern.longitude &&
+                    altitude == pattern.altitude &&
+                    crs.equals(pattern.crs, ignoreCase = true) &&
+                    uncertainty == pattern.uncertainty &&
+                    match(parameters, pattern.parameters)
         }
-
-        return latitude == pattern.latitude &&
-            longitude == pattern.longitude &&
-            altitude == pattern.altitude &&
-            crs.equals(pattern.crs, ignoreCase = true) &&
-            uncertainty == pattern.uncertainty &&
-            match(parameters, pattern.parameters)
     }
 
     /** Checks if `this` type matches a [pattern] type taking parameters into account. */
@@ -178,21 +170,27 @@ public class GeographicLocation public constructor(
 
     private fun Double.isDateLineWGS84(): Boolean = this.absoluteValue == MAX_LONGITUDE
 
-    // In WGS-84's special pole case, longitude is to be ignored
-    private fun isEqualPoleWGS84(other: GeographicLocation): Boolean {
-        return latitude == other.latitude &&
-            altitude == other.altitude &&
-            uncertainty == other.uncertainty &&
-            match(parameters, other.parameters)
-    }
+    private fun isWGS84(other: GeographicLocation): Boolean =
+        crs.isWGS84() && other.crs.isWGS84()
 
-    // In WGS-84's special date line case, longitude 180 degrees == -180 degrees
-    private fun isEqualDateLineWGS84(other: GeographicLocation): Boolean {
-        return latitude == other.latitude &&
+    // In WGS-84's special "poles" rule, longitude is to be ignored
+    private fun matchPoleWGS84(other: GeographicLocation): Boolean =
+        isWGS84(other) &&
+            (latitude.isPoleWGS84() || other.latitude.isPoleWGS84()) &&
+            latitude == other.latitude &&
             altitude == other.altitude &&
             uncertainty == other.uncertainty &&
             match(parameters, other.parameters)
-    }
+
+    // In WGS-84's special "date line" rule, longitude 180 degrees == -180 degrees
+    private fun matchDateLineWGS84(other: GeographicLocation): Boolean =
+        isWGS84(other) &&
+            longitude.isDateLineWGS84() &&
+            other.longitude.isDateLineWGS84() &&
+            latitude == other.latitude &&
+            altitude == other.altitude &&
+            uncertainty == other.uncertainty &&
+            match(parameters, other.parameters)
 
     override fun toString(): String = StringBuilder().apply {
         append("geo:$latitude,$longitude")

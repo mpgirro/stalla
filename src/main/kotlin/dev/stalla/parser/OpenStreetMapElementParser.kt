@@ -37,7 +37,10 @@ internal object OpenStreetMapElementParser {
                     c.isNoDigit() -> return null
                     else -> idBuffer.append(c)
                 }
-                ParsingMode.Revision -> revisionBuffer.append(c)
+                ParsingMode.Revision -> when {
+                    c.isNoDigit() -> return null
+                    else -> revisionBuffer.append(c)
+                }
             }
         }
 
