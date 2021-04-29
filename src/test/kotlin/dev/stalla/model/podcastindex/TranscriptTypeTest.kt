@@ -6,8 +6,8 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isInstanceOf
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
-import assertk.assertions.prop
 import dev.stalla.arguments
+import dev.stalla.equalToString
 import dev.stalla.model.MediaType
 import dev.stalla.model.TranscriptTypeNameProvider
 import dev.stalla.model.allTranscriptTypeNames
@@ -40,8 +40,7 @@ internal class TranscriptTypeTest {
     @ParameterizedTest
     @ArgumentsSource(TranscriptTypeNameProvider::class)
     fun `should retrieve all Transcript Types from the factory method`(typeName: String) {
-        assertThat(TranscriptType.of(typeName)).isNotNull()
-            .prop("toString") { TranscriptType::toString.call(it) }.isEqualTo(typeName)
+        assertThat(TranscriptType.of(typeName)).isNotNull().equalToString(typeName)
     }
 
     @ParameterizedTest
@@ -77,8 +76,7 @@ internal class TranscriptTypeTest {
 
     @Test
     fun `should be case insensitive in the Podcastindex transcript type factory method`() {
-        assertThat(TranscriptType.of("TEXT/PLAIN")).isNotNull()
-            .prop("toString") { TranscriptType::toString.call(it) }.isEqualTo("text/plain")
+        assertThat(TranscriptType.of("TEXT/PLAIN")).isNotNull().equalToString("text/plain")
     }
 
     @Test

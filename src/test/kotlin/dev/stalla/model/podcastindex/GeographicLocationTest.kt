@@ -11,6 +11,7 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import assertk.assertions.prop
+import dev.stalla.hasParameterWithValue
 import org.junit.jupiter.api.Test
 
 class GeographicLocationTest {
@@ -60,7 +61,7 @@ class GeographicLocationTest {
             prop(GeographicLocation::crs).isEqualTo("wgs84")
             prop(GeographicLocation::uncertainty).isEqualTo(12.0)
             prop(GeographicLocation::parameters).hasSize(1)
-            prop("parameter") { GeographicLocation::parameter.call(it, "param") }.isNotNull().isEqualTo("value")
+            hasParameterWithValue("param", "value")
         }
     }
 
@@ -109,7 +110,7 @@ class GeographicLocationTest {
             prop(GeographicLocation::crs).isNull()
             prop(GeographicLocation::uncertainty).isNull()
             prop(GeographicLocation::parameters).hasSize(1)
-            prop("parameter") { GeographicLocation::parameter.call(it, "u") }.isNotNull().isEqualTo("invalid")
+            hasParameterWithValue("u", "invalid")
         }
     }
 
@@ -142,7 +143,7 @@ class GeographicLocationTest {
             prop(GeographicLocation::crs).isNull()
             prop(GeographicLocation::uncertainty).isNull()
             prop(GeographicLocation::parameters).hasSize(1)
-            prop("parameter") { GeographicLocation::parameter.call(it, "param") }.isNotNull().isEqualTo("with = special & chars")
+            hasParameterWithValue("param", "with = special & chars")
         }
     }
 
@@ -155,8 +156,8 @@ class GeographicLocationTest {
             prop(GeographicLocation::crs).isEqualTo("theCrs")
             prop(GeographicLocation::uncertainty).isEqualTo(12.0)
             prop(GeographicLocation::parameters).hasSize(2)
-            prop("parameter") { GeographicLocation::parameter.call(it, "param") }.isNotNull().isEqualTo("value")
-            prop("parameter") { GeographicLocation::parameter.call(it, "param2") }.isNotNull().isEqualTo("value2")
+            hasParameterWithValue("param", "value")
+            hasParameterWithValue("param2", "value2")
         }
     }
 

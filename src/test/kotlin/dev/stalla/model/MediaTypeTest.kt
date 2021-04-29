@@ -15,9 +15,9 @@ import assertk.assertions.prop
 import dev.stalla.arguments
 import dev.stalla.doesNotMatchSymmetrically
 import dev.stalla.equalToString
+import dev.stalla.hasParameterWithValue
 import dev.stalla.matchPattern
 import dev.stalla.matchesSymmetrically
-import dev.stalla.model.podcastindex.TranscriptType
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsProvider
@@ -113,7 +113,8 @@ internal class MediaTypeTest {
             prop(MediaType::type).isEqualTo("text")
             prop(MediaType::subtype).isEqualTo("plain")
             prop(MediaType::parameters).hasSize(1)
-            prop("parameter") { MediaType::parameter.call(it, "charset") }.isNotNull().isEqualTo("utf-8")
+            hasParameterWithValue("charset", "utf-8")
+//            prop("parameter") { MediaType::parameter.call(it, "charset") }.isNotNull().isEqualTo("utf-8")
         }
     }
 
@@ -218,7 +219,7 @@ internal class MediaTypeTest {
             prop(MediaType::type).isEqualTo("audio")
             prop(MediaType::subtype).isEqualTo("*")
             prop(MediaType::parameters).hasSize(1)
-            prop("parameter") { MediaType::parameter.call(it, "attr") }.isNotNull().isEqualTo("v>alue")
+            hasParameterWithValue("attr", "v>alue")
         }
     }
 
@@ -310,7 +311,7 @@ internal class MediaTypeTest {
             prop(MediaType::type).isEqualTo("multipart")
             prop(MediaType::subtype).isEqualTo("mixed")
             prop(MediaType::parameters).hasSize(1)
-            prop("parameter") { MediaType::parameter.call(it, "boundary") }.isNotNull().isEqualTo("gc0pJq0M:08jU534c0p")
+            hasParameterWithValue("boundary", "gc0pJq0M:08jU534c0p")
         }
     }
 
@@ -359,7 +360,7 @@ internal class MediaTypeTest {
     @Test
     fun `should render parameters correctly`() {
         assertThat(MediaType.PLAIN_TEXT.withParameter("p1", "v1")).isNotNull()
-            .prop("toString") { MediaType::toString.call(it) }.isEqualTo("text/plain; p1=v1")
+            .equalToString("text/plain; p1=v1")
     }
 
     @Test
@@ -413,8 +414,7 @@ internal class MediaTypeTest {
     @ParameterizedTest
     @ArgumentsSource(MediaTypeNameProvider::class)
     fun `should retrieve all predefined types from the factory method`(typeName: String) {
-        assertThat(MediaType.of(typeName)).isNotNull()
-            .prop("toString") { TranscriptType::toString.call(it) }.isEqualTo(typeName)
+        assertThat(MediaType.of(typeName)).isNotNull().equalToString(typeName)
     }
 
     @ParameterizedTest

@@ -231,3 +231,43 @@ internal fun Assert<GeographicLocation>.matchPattern(expected: GeographicLocatio
         actual = geoLocation
     )
 }
+
+/** Asserts that there exists a [MediaType.Parameter] with the expected key and value. */
+@JvmName("hasMediaTypeParameterWithValue")
+internal fun Assert<MediaType>.hasParameterWithValue(expectedKey: String, expectedValue: String) = given { mediaType ->
+    val actualValue = mediaType.parameter(expectedKey)
+    if (actualValue != null && actualValue == expectedValue) return@given
+    if (actualValue == null) {
+        expected(
+            "to be have a value for key: '$expectedKey'",
+            expected = expectedValue,
+            actual = actualValue
+        )
+    } else {
+        expected(
+            "to be: $expectedKey=$expectedValue but was: $expectedKey=$actualValue",
+            expected = expectedValue,
+            actual = actualValue
+        )
+    }
+}
+
+/** Asserts that there exists a [GeographicLocation.Parameter] with the expected key and value. */
+@JvmName("hasGeographicLocationParameterWithValue")
+internal fun Assert<GeographicLocation>.hasParameterWithValue(expectedKey: String, expectedValue: String) = given { geo ->
+    val actualValue = geo.parameter(expectedKey)
+    if (actualValue != null && actualValue == expectedValue) return@given
+    if (actualValue == null) {
+        expected(
+            "to be have a value for key: '$expectedKey'",
+            expected = expectedValue,
+            actual = actualValue
+        )
+    } else {
+        expected(
+            "to be: $expectedKey=$expectedValue but was: $expectedKey=$actualValue",
+            expected = expectedValue,
+            actual = actualValue
+        )
+    }
+}
