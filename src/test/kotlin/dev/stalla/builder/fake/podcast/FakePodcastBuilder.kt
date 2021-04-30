@@ -56,7 +56,9 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
 
     override val googleplayBuilder: FakePodcastGoogleplayBuilder = FakePodcastGoogleplayBuilder()
 
-    override val podcastPodcastindexBuilder: FakePodcastPodcastindexBuilder = FakePodcastPodcastindexBuilder()
+    override val podcastindexBuilder: FakePodcastPodcastindexBuilder = FakePodcastPodcastindexBuilder()
+
+    override val podcastPodcastindexBuilder: FakePodcastPodcastindexBuilder by this::podcastindexBuilder
 
     override fun title(title: String): PodcastBuilder = apply { this.titleValue = title }
 
@@ -114,7 +116,9 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is FakePodcastBuilder) return false
+        if (javaClass != other?.javaClass) return false
+
+        other as FakePodcastBuilder
 
         if (titleValue != other.titleValue) return false
         if (linkValue != other.linkValue) return false
@@ -136,6 +140,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
         if (fyydBuilder != other.fyydBuilder) return false
         if (feedpressBuilder != other.feedpressBuilder) return false
         if (googleplayBuilder != other.googleplayBuilder) return false
+        if (podcastindexBuilder != other.podcastindexBuilder) return false
         if (podcastPodcastindexBuilder != other.podcastPodcastindexBuilder) return false
 
         return true
@@ -153,7 +158,7 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
         result = 31 * result + (docs?.hashCode() ?: 0)
         result = 31 * result + (managingEditor?.hashCode() ?: 0)
         result = 31 * result + (webMaster?.hashCode() ?: 0)
-        result = 31 * result + (ttl?.hashCode() ?: 0)
+        result = 31 * result + (ttl ?: 0)
         result = 31 * result + (imageBuilder?.hashCode() ?: 0)
         result = 31 * result + episodeBuilders.hashCode()
         result = 31 * result + categoryBuilders.hashCode()
@@ -162,14 +167,17 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
         result = 31 * result + fyydBuilder.hashCode()
         result = 31 * result + feedpressBuilder.hashCode()
         result = 31 * result + googleplayBuilder.hashCode()
+        result = 31 * result + podcastindexBuilder.hashCode()
         result = 31 * result + podcastPodcastindexBuilder.hashCode()
         return result
     }
 
-    override fun toString() =
-        "FakePodcastBuilder(titleValue=$titleValue, linkValue=$linkValue, descriptionValue=$descriptionValue, languageValue=$languageValue, " +
-            "pubDate=$pubDate, lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, docs=$docs, " +
-            "managingEditor=$managingEditor, webMaster=$webMaster, ttl=$ttl, imageBuilder=$imageBuilder, episodeBuilders=$episodeBuilders, " +
-            "categoryBuilders=$categoryBuilders, iTunesBuilder=$itunesBuilder, atomBuilder=$atomBuilder, fyydBuilder=$fyydBuilder, " +
-            "feedpressBuilder=$feedpressBuilder, googlePlayBuilder=$googleplayBuilder, podcastBuilder=$podcastPodcastindexBuilder)"
+    override fun toString(): String {
+        return "FakePodcastBuilder(titleValue=$titleValue, linkValue=$linkValue, descriptionValue=$descriptionValue, " +
+            "languageValue=$languageValue, pubDate=$pubDate, lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, " +
+            "docs=$docs, managingEditor=$managingEditor, webMaster=$webMaster, ttl=$ttl, imageBuilder=$imageBuilder, " +
+            "episodeBuilders=$episodeBuilders, categoryBuilders=$categoryBuilders, itunesBuilder=$itunesBuilder, atomBuilder=$atomBuilder, " +
+            "fyydBuilder=$fyydBuilder, feedpressBuilder=$feedpressBuilder, googleplayBuilder=$googleplayBuilder, " +
+            "podcastindexBuilder=$podcastindexBuilder, podcastPodcastindexBuilder=$podcastPodcastindexBuilder)"
+    }
 }

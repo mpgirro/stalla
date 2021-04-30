@@ -64,7 +64,9 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     override val googleplayBuilder: PodcastGoogleplayBuilder = ValidatingPodcastGoogleplayBuilder()
 
-    override val podcastPodcastindexBuilder: PodcastPodcastindexBuilder = ValidatingPodcastPodcastindexBuilder()
+    override val podcastindexBuilder: PodcastPodcastindexBuilder = ValidatingPodcastPodcastindexBuilder()
+
+    override val podcastPodcastindexBuilder: PodcastPodcastindexBuilder by this::podcastindexBuilder
 
     override fun title(title: String): PodcastBuilder = apply { this.titleValue = title }
 
@@ -156,7 +158,7 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
             feedpress = feedpressBuilder.build(),
             googleplay = googleplayBuilder.build(),
             categories = categoryBuilders.mapNotNull { it.build() }.asUnmodifiable(),
-            podcastindex = podcastPodcastindexBuilder.build()
+            podcastindex = podcastindexBuilder.build()
         )
     }
 }
