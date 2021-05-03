@@ -12,8 +12,8 @@ import dev.stalla.model.BuilderFactory
  *
  * @property locked The lock status of the podcast.
  * @property funding The funding information for the podcast.
- * @property persons TODO
- * @property location TODO
+ * @property persons The person information for the podcast.
+ * @property location The location information for the podcast.
  *
  * @since 1.0.0
  */

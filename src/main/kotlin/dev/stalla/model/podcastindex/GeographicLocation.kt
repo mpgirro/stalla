@@ -7,6 +7,7 @@ import dev.stalla.model.TypeFactory
 import dev.stalla.model.podcastindex.GeographicLocation.Factory.CRS_WGS84
 import dev.stalla.model.podcastindex.GeographicLocation.Parameter
 import dev.stalla.parser.GeographicLocationParser
+import dev.stalla.util.InternalAPI
 import dev.stalla.util.asUnmodifiable
 import dev.stalla.util.containsMediaTypeSeparatorSymbol
 import java.util.Locale
@@ -73,8 +74,8 @@ public class GeographicLocation public constructor(
     /**
      * Represents a single value parameter.
      *
-     * @property key The key of parameter.
-     * @property value The value of parameter.
+     * @property key The case-insensitive key of the parameter.
+     * @property value The value of the parameter.
      */
     public data class Parameter(val key: String, val value: String) {
         override fun equals(other: Any?): Boolean {
@@ -232,9 +233,16 @@ public class GeographicLocation public constructor(
         /** The World Geodetic System 1984 coordinate reference system used by GPS. */
         public const val CRS_WGS84: String = "WGS84"
 
+        @InternalAPI
         internal const val CRS_PARAM = "crs"
+
+        @InternalAPI
         internal const val UNCERTAINTY_PARAM = "u"
+
+        @InternalAPI
         internal const val MAX_LATITUDE = 90.0
+
+        @InternalAPI
         internal const val MAX_LONGITUDE = 180.0
 
         /** Returns a builder implementation for building [GeographicLocation] model instances. */
