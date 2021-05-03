@@ -184,7 +184,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `should no match Geo URIs in WGS-84 special pole case if the latitude has a different sign`() {
+    fun `should not match Geo URIs in WGS-84 special pole case if the latitude has a different sign`() {
         val geoLocation1 = GeographicLocation.of("geo:90,10")
         val geoLocation2 = GeographicLocation.of("geo:-90,10")
         assertAll {
@@ -206,7 +206,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `should interprete a missing CRS value as WGS-84 when matching two Geo URIs with WGS-84 special pole case`() {
+    fun `should interpret a missing CRS value as WGS-84 when matching two Geo URIs with WGS-84 special pole case`() {
         val geoLocation1 = GeographicLocation.of("geo:90,5")
         val geoLocation2 = GeographicLocation.of("geo:90,10;crs=WGS84")
         assertAll {
@@ -228,7 +228,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `should interprete a missing CRS value as WGS-84 when matching two Geo URIs with WGS-84 special date line case`() {
+    fun `should interpret a missing CRS value as WGS-84 when matching two Geo URIs with WGS-84 special date line case`() {
         val geoLocation1 = GeographicLocation.of("geo:10,180")
         val geoLocation2 = GeographicLocation.of("geo:10,-180;crs=WGS84")
         assertAll {
@@ -272,7 +272,7 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `should match Geo URIs with parameter values being case-sensitive`() {
+    fun `should not match Geo URIs with parameter values being case-sensitive`() {
         val geoLocation1 = GeographicLocation.of("geo:22,0;bar=BLUE")
         val geoLocation2 = GeographicLocation.of("geo:22,0;bar=blue")
         assertAll {

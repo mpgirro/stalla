@@ -192,13 +192,13 @@ public class GeographicLocation public constructor(
             uncertainty == other.uncertainty &&
             match(parameters, other.parameters)
 
-    override fun toString(): String = StringBuilder().apply {
+    override fun toString(): String = buildString {
         append("geo:$latitude,$longitude")
         if (altitude != null) append(",$altitude")
         if (crs != null) append(";$CRS_PARAM=$crs")
         if (uncertainty != null) append(";$UNCERTAINTY_PARAM=$uncertainty")
         for ((key, value) in parameters) append(";$key=$value")
-    }.toString()
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

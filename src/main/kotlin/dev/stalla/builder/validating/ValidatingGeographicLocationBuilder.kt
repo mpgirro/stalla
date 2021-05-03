@@ -32,12 +32,8 @@ internal class ValidatingGeographicLocationBuilder : GeographicLocationBuilder {
             return@apply
         }
         if (UNCERTAINTY_PARAM.equals(key, ignoreCase = true)) {
-            try {
-                uncertainty(value.toDouble())
-                return@apply
-            } catch (e: NumberFormatException) {
-                // if it can't be parsed, then treat it as an ordinary parameter
-            }
+            val uncertaintyValue = value.toDoubleOrNull() ?: return@apply
+            uncertainty(uncertaintyValue)
         }
         parameters[key] = value
     }

@@ -57,12 +57,12 @@ class OpenStreetMapElementTest {
     }
 
     @Test
-    fun `should not parse an OpenStreetMap element when there is only a type`() {
+    fun `should not parse an OpenStreetMap element when there is only a valid type`() {
         assertThat(OpenStreetMapElement.of("R")).isNull()
     }
 
     @Test
-    fun `should not parse an OpenStreetMap element when there is a type and revision but the ID is missing`() {
+    fun `should not parse an OpenStreetMap element when there is a valid type and a revision but the ID is missing`() {
         assertThat(OpenStreetMapElement.of("R#188")).isNull()
     }
 

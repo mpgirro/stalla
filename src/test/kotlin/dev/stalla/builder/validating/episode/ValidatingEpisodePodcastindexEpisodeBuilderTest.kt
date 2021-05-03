@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingEpisodePodcastindexEpisodeBuilderTest {
 
     @Test
-    internal fun `should not build an Episode Podcastindex Episode with when all the fields are missing`() {
+    internal fun `should not build an Episode Podcastindex Episode when all the mandatory fields are missing`() {
         val episodeBuilder = ValidatingEpisodePodcastindexEpisodeBuilder()
 
         assertAll {
@@ -28,7 +28,7 @@ internal class ValidatingEpisodePodcastindexEpisodeBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcastindex Episode with when the number field is missing`() {
+    internal fun `should not build an Episode Podcastindex Episode when the mandatory number field is missing`() {
         val episodeBuilder = ValidatingEpisodePodcastindexEpisodeBuilder()
             .display("display")
 
@@ -40,7 +40,7 @@ internal class ValidatingEpisodePodcastindexEpisodeBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcastindex Episode with all the mandatory fields`() {
+    internal fun `should build an Episode Podcastindex Episode with only the mandatory number field`() {
         val episodeBuilder = ValidatingEpisodePodcastindexEpisodeBuilder()
             .number(1.0)
 
@@ -55,7 +55,7 @@ internal class ValidatingEpisodePodcastindexEpisodeBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcastindex Episode with all the added entries to its fields`() {
+    internal fun `should build an Episode Podcastindex Episode with all fields filled in correctly`() {
         val episodeBuilder = ValidatingEpisodePodcastindexEpisodeBuilder()
             .number(1.0)
             .display("display")

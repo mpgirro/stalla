@@ -53,7 +53,7 @@ internal object OpenStreetMapElementParser {
             .build()
     }
 
-    private fun Char.isNoDigit(): Boolean = digitToIntOrNull() == null
+    private fun Char.isNotDigit(): Boolean = digitToIntOrNull() == null
 
     private fun StringBuilder.stringOrNullIfEmpty(): String? = if (isNotEmpty()) toString() else null
 }
