@@ -5,6 +5,7 @@ import dev.stalla.model.podcastindex.GeographicLocation
 import dev.stalla.model.podcastindex.GeographicLocation.Factory.CRS_PARAM
 import dev.stalla.model.podcastindex.GeographicLocation.Factory.UNCERTAINTY_PARAM
 import dev.stalla.util.InternalAPI
+import java.util.Locale
 
 @InternalAPI
 internal class ValidatingGeographicLocationBuilder : GeographicLocationBuilder {
@@ -27,15 +28,18 @@ internal class ValidatingGeographicLocationBuilder : GeographicLocationBuilder {
     override fun uncertainty(uncertainty: Double?): GeographicLocationBuilder = apply { this.uncertainty = uncertainty }
 
     override fun addParameter(key: String, value: String): GeographicLocationBuilder = apply {
-        if (CRS_PARAM.equals(key, ignoreCase = true)) {
-            crs(value)
-            return@apply
+        when (key.toLowerCase(Locale.ROOT)) {
+            CRS_PARAM -> crs(value)
+            UNCERTAINTY_PARAM -> {
+                val uncertaintyValue = value.toDoubleOrNull()
+                if (uncertaintyValue != null) {
+                    uncertainty(uncertaintyValue)
+                } else {
+                    parameters[key] = value
+                }
+            }
+            else -> parameters[key] = value
         }
-        if (UNCERTAINTY_PARAM.equals(key, ignoreCase = true)) {
-            val uncertaintyValue = value.toDoubleOrNull() ?: return@apply
-            uncertainty(uncertaintyValue)
-        }
-        parameters[key] = value
     }
 
     override fun removeParameter(key: String): GeographicLocationBuilder = apply {
