@@ -1,7 +1,6 @@
 package dev.stalla.model.podcastindex
 
 import assertk.all
-import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.hasSize
 import assertk.assertions.isEmpty
@@ -232,13 +231,9 @@ class GeographicLocationTest {
     }
 
     @Test
-    fun `should match Geo URIs with parameter values being case-sensitive`() {
+    fun `should not match Geo URIs with parameter values being case-sensitive`() {
         val geoLocation1 = checkNotNull(GeographicLocation.of("geo:22,0;bar=BLUE"))
         val geoLocation2 = checkNotNull(GeographicLocation.of("geo:22,0;bar=blue"))
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1.match(geoLocation2)).isFalse()
-        }
+        assertThat(geoLocation1.match(geoLocation2)).isFalse()
     }
 }

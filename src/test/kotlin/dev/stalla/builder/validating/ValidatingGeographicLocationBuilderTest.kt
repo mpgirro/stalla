@@ -30,7 +30,7 @@ internal class ValidatingGeographicLocationBuilderTest {
     }
 
     @Test
-    internal fun `should build a GeographicLocation with all the mandatory href field`() {
+    internal fun `should build a GeographicLocation with all the mandatory fields`() {
         val geoBuilder = ValidatingGeographicLocationBuilder()
             .latitude(1.0)
             .longitude(2.0)
@@ -104,7 +104,7 @@ internal class ValidatingGeographicLocationBuilderTest {
     }
 
     @Test
-    internal fun `should populate a GeographicLocation builder with all properties from an GeographicLocation model`() {
+    internal fun `should populate a GeographicLocation builder with all properties from a GeographicLocation model`() {
         val geo = aPodcastindexGeographicLocation()
         val geoBuilder = GeographicLocation.builder().applyFrom(geo)
 

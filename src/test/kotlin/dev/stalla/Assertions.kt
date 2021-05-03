@@ -226,7 +226,7 @@ internal fun Assert<MediaType>.doesNotMatchSymmetrically(expected: MediaType?) =
 internal fun Assert<GeographicLocation>.matchPattern(expected: GeographicLocation) = given { geoLocation ->
     if (geoLocation.match(expected)) return@given
     expected(
-        "to be: '$expected' but was: '$geoLocation'",
+        "to be: '$expected', but was: '$geoLocation'",
         expected = expected,
         actual = geoLocation
     )
@@ -239,13 +239,13 @@ internal fun Assert<MediaType>.hasParameterWithValue(expectedKey: String, expect
     if (actualValue != null && actualValue == expectedValue) return@given
     if (actualValue == null) {
         expected(
-            "to be have a value for key: '$expectedKey'",
+            "to have a value for key: '$expectedKey'",
             expected = expectedValue,
             actual = actualValue
         )
     } else {
         expected(
-            "to be: $expectedKey=$expectedValue but was: $expectedKey=$actualValue",
+            "to have a key '$expectedKey' with value '$expectedValue', but was: '$actualValue'",
             expected = expectedValue,
             actual = actualValue
         )
@@ -259,13 +259,13 @@ internal fun Assert<GeographicLocation>.hasParameterWithValue(expectedKey: Strin
     if (actualValue != null && actualValue == expectedValue) return@given
     if (actualValue == null) {
         expected(
-            "to be have a value for key: '$expectedKey'",
+            "to have a value for key: '$expectedKey'",
             expected = expectedValue,
             actual = actualValue
         )
     } else {
         expected(
-            "to be: $expectedKey=$expectedValue but was: $expectedKey=$actualValue",
+            "to have a key '$expectedKey' with value '$expectedValue', but was: '$actualValue'",
             expected = expectedValue,
             actual = actualValue
         )

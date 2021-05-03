@@ -6,7 +6,7 @@ import dev.stalla.model.BuilderFactory
 
 /**
  * The location information of editorial focus for a podcast's or episode's content
- * (i.e. "what place is this podcast/episode about?").
+ * (i.e., "what place is this podcast/episode about?").
  *
  * Direct instantiation in Java is discouraged. Use the [builder][PodcastindexLocation.Factory.builder]
  * method to obtain a [PodcastindexLocation] instance for expressive construction instead.

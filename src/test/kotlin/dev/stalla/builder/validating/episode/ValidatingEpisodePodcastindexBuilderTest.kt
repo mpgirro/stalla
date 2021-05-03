@@ -163,7 +163,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcastindex with at least a person builder`() {
+    internal fun `should build an Episode Podcastindex with at least one valid person builder`() {
         val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .addPersonBuilder(firstExpectedPersonBuilder)
 
@@ -176,7 +176,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcastindex when there is only a person builder that doesn't build`() {
+    internal fun `should not build an Episode Podcastindex with only a person builder that doesn't build`() {
         val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .addPersonBuilder(ValidatingPodcastindexPersonBuilder())
 
@@ -188,7 +188,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcastindex with at least a location builder`() {
+    internal fun `should build an Episode Podcastindex with only a valid location builder`() {
         val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .locationBuilder(expectedLocationBuilder)
 
@@ -201,7 +201,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcastindex when there is only a location builder that doesn't build`() {
+    internal fun `should not build an Episode Podcastindex with only a location builder that doesn't build`() {
         val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .locationBuilder(ValidatingPodcastindexLocationBuilder())
 
@@ -213,7 +213,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcastindex with at least a season builder`() {
+    internal fun `should build an Episode Podcastindex with only a valid season builder`() {
         val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .seasonBuilder(expectedSeasonBuilder)
 
@@ -226,7 +226,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcastindex when there is only a season builder that doesn't build`() {
+    internal fun `should not build an Episode Podcastindex with only a season builder that doesn't build`() {
         val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .seasonBuilder(ValidatingEpisodePodcastindexSeasonBuilder())
 
@@ -238,7 +238,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcastindex with at least a episode builder`() {
+    internal fun `should build an Episode Podcastindex with only a valid episode builder`() {
         val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .episodeBuilder(expectedEpisodeBuilder)
 
@@ -251,7 +251,7 @@ internal class ValidatingEpisodePodcastindexBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Episode Podcastindex when there is only a episode builder that doesn't build`() {
+    internal fun `should not build an Episode Podcastindex with only an episode builder that doesn't build`() {
         val episodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
             .episodeBuilder(ValidatingEpisodePodcastindexEpisodeBuilder())
 

@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingPodcastindexPersonBuilderTest {
 
     @Test
-    internal fun `should not build an Podcastindex Person with when all the fields are missing`() {
+    internal fun `should not build a Podcastindex Person when all the fields are missing`() {
         val personBuilder = ValidatingPodcastindexPersonBuilder()
 
         assertAll {
@@ -28,7 +28,7 @@ internal class ValidatingPodcastindexPersonBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Podcastindex Person with when the name field is missing`() {
+    internal fun `should not build a Podcastindex Person when the mandatory name field is missing`() {
         val personBuilder = ValidatingPodcastindexPersonBuilder()
             .role("role")
 
@@ -40,7 +40,7 @@ internal class ValidatingPodcastindexPersonBuilderTest {
     }
 
     @Test
-    internal fun `should build an Podcastindex Person with all the mandatory fields`() {
+    internal fun `should build a Podcastindex Person with only the mandatory name field`() {
         val personBuilder = ValidatingPodcastindexPersonBuilder()
             .name("name")
 
@@ -58,7 +58,7 @@ internal class ValidatingPodcastindexPersonBuilderTest {
     }
 
     @Test
-    internal fun `should build an Podcastindex Person with all the added entries to its fields`() {
+    internal fun `should build a Podcastindex Person with all fields filled in correctly`() {
         val personBuilder = ValidatingPodcastindexPersonBuilder()
             .name("name")
             .role("role")
@@ -80,7 +80,7 @@ internal class ValidatingPodcastindexPersonBuilderTest {
     }
 
     @Test
-    internal fun `should populate an Podcastindex Person builder with all properties from an Podcastindex Person model`() {
+    internal fun `should populate a Podcastindex Person builder with all properties from a Podcastindex Person model`() {
         val person = anEpisodePodcastindexPerson()
         val personBuilder = PodcastindexPerson.builder().applyFrom(person)
 
