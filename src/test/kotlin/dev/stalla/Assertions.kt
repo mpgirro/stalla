@@ -158,7 +158,7 @@ internal fun Assert<MediaType>.equalToString(expected: String) = given { mediaTy
 
 /** Asserts that [MediaType.toString] matches the expected value. */
 internal fun Assert<MediaType>.equalToString(expected: MediaType) = given { mediaType ->
-    if (mediaType.match(expected)) return@given
+    if (mediaType.matches(expected)) return@given
     expected(
         "to be: '$expected' but was: '$mediaType'",
         expected = expected,
@@ -166,9 +166,9 @@ internal fun Assert<MediaType>.equalToString(expected: MediaType) = given { medi
     )
 }
 
-/** Asserts that [MediaType.match] matches the expected value. */
+/** Asserts that [MediaType.matches] matches the expected value. */
 internal fun Assert<MediaType>.matchPattern(expected: String) = given { mediaType ->
-    if (mediaType.match(expected)) return@given
+    if (mediaType.matches(expected)) return@given
     expected(
         "to have the string form: '$expected' but was: '$mediaType'",
         expected = expected,
@@ -176,9 +176,9 @@ internal fun Assert<MediaType>.matchPattern(expected: String) = given { mediaTyp
     )
 }
 
-/** Asserts that [MediaType.match] matches the expected value. */
+/** Asserts that [MediaType.matches] matches the expected value. */
 internal fun Assert<MediaType>.matchPattern(expected: MediaType) = given { mediaType ->
-    if (mediaType.match(expected)) return@given
+    if (mediaType.matches(expected)) return@given
     expected(
         "to be: '$expected' but was: '$mediaType'",
         expected = expected,
@@ -186,16 +186,16 @@ internal fun Assert<MediaType>.matchPattern(expected: MediaType) = given { media
     )
 }
 
-/** Asserts that this matches [expected] symmetrically using [MediaType.match]. */
+/** Asserts that this matches [expected] symmetrically using [MediaType.matches]. */
 internal fun Assert<MediaType>.matchesSymmetrically(expected: MediaType?) = given { mediaType ->
-    if (!mediaType.match(expected)) {
+    if (!mediaType.matches(expected)) {
         expected(
             "to match symmetrically, but the direction: '$mediaType' match '$expected' failed",
             expected = true,
             actual = false
         )
     }
-    if (!expected.match(mediaType)) {
+    if (!expected.matches(mediaType)) {
         expected(
             "to match symmetrically, but the direction: '$expected' match '$mediaType' failed",
             expected = true,
@@ -204,16 +204,16 @@ internal fun Assert<MediaType>.matchesSymmetrically(expected: MediaType?) = give
     }
 }
 
-/** Asserts that this does not match [expected] symmetrically using [MediaType.match]. */
+/** Asserts that this does not match [expected] symmetrically using [MediaType.matches]. */
 internal fun Assert<MediaType>.doesNotMatchSymmetrically(expected: MediaType?) = given { mediaType ->
-    if (mediaType.match(expected)) {
+    if (mediaType.matches(expected)) {
         expected(
             "to not match symmetrically, but the direction: '$mediaType' match '$expected' succeeded",
             expected = false,
             actual = true
         )
     }
-    if (expected != null && expected.match(mediaType)) {
+    if (expected != null && expected.matches(mediaType)) {
         expected(
             "to not match symmetrically, but the direction: '$expected' match '$mediaType' succeeded",
             expected = false,
@@ -222,9 +222,9 @@ internal fun Assert<MediaType>.doesNotMatchSymmetrically(expected: MediaType?) =
     }
 }
 
-/** Asserts that [GeographicLocation.match] matches the expected value. */
+/** Asserts that [GeographicLocation.matches] matches the expected value. */
 internal fun Assert<GeographicLocation>.matchPattern(expected: GeographicLocation) = given { geoLocation ->
-    if (geoLocation.match(expected)) return@given
+    if (geoLocation.matches(expected)) return@given
     expected(
         "to be: '$expected', but was: '$geoLocation'",
         expected = expected,

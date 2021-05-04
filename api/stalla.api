@@ -630,6 +630,8 @@ public class dev/stalla/model/MediaType {
 	public fun hashCode ()I
 	public final fun match (Ldev/stalla/model/MediaType;)Z
 	public final fun match (Ljava/lang/String;)Z
+	public final fun matches (Ldev/stalla/model/MediaType;)Z
+	public final fun matches (Ljava/lang/String;)Z
 	public static fun of (Ljava/lang/String;)Ldev/stalla/model/MediaType;
 	public final fun parameter (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
@@ -1419,6 +1421,8 @@ public final class dev/stalla/model/podcastindex/GeographicLocation {
 	public fun hashCode ()I
 	public final fun match (Ldev/stalla/model/podcastindex/GeographicLocation;)Z
 	public final fun match (Ljava/lang/String;)Z
+	public final fun matches (Ldev/stalla/model/podcastindex/GeographicLocation;)Z
+	public final fun matches (Ljava/lang/String;)Z
 	public static fun of (Ljava/lang/String;)Ldev/stalla/model/podcastindex/GeographicLocation;
 	public final fun parameter (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;

@@ -97,7 +97,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").isNotNull().all {
+        assertThat(builder.podcastindexBuilder, "channel.podcastindex").isNotNull().all {
             prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isEqualTo(expectedLockedBuilder)
             prop(FakePodcastPodcastindexBuilder::fundingBuilders).containsExactly(expectedFundingBuilder)
             prop(FakePodcastPodcastindexBuilder::personBuilders).containsExactly(expectedPodcastPersonBuilder)
@@ -111,7 +111,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").all {
+        assertThat(builder.podcastindexBuilder, "channel.podcastindex").all {
             prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
             prop(FakePodcastPodcastindexBuilder::fundingBuilders).isEmpty()
             prop(FakePodcastPodcastindexBuilder::personBuilders).isEmpty()
@@ -125,7 +125,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").all {
+        assertThat(builder.podcastindexBuilder, "channel.podcastindex").all {
             prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
             prop(FakePodcastPodcastindexBuilder::fundingBuilders).isEmpty()
             prop(FakePodcastPodcastindexBuilder::personBuilders).isEmpty()
@@ -191,7 +191,7 @@ internal class PodcastindexParserTest : NamespaceParserTest() {
         val builder = FakePodcastBuilder()
         channel.parseChannelChildNodes(builder)
 
-        assertThat(builder.podcastPodcastindexBuilder, "channel.podcastindex").all {
+        assertThat(builder.podcastindexBuilder, "channel.podcastindex").all {
             prop(FakePodcastPodcastindexBuilder::lockedBuilderValue).isNull()
         }
     }

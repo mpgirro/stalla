@@ -235,12 +235,12 @@ internal class MediaTypeTest {
 
     @Test
     fun `should match a predefined instance from a string pattern`() {
-        assertThat(MediaType.AAC_AUDIO.match("audio/aac")).isTrue()
+        assertThat(MediaType.AAC_AUDIO.matches("audio/aac")).isTrue()
     }
 
     @Test
     fun `should match a predefined instance with a wildcard subtype`() {
-        assertThat(MediaType.AAC_AUDIO.match("audio/*")).isTrue()
+        assertThat(MediaType.AAC_AUDIO.matches("audio/*")).isTrue()
     }
 
     @Test
