@@ -29,7 +29,7 @@ internal class ValidatingOpenStreetMapElementBuilderTest {
     }
 
     @Test
-    internal fun `should build a OpenStreetMap element with all the mandatory href field`() {
+    internal fun `should build an OpenStreetMap element with all the mandatory fields`() {
         val osmBuilder = ValidatingOpenStreetMapElementBuilder()
             .type(OpenStreetMapElementType.Relation)
             .id(1L)
@@ -45,7 +45,7 @@ internal class ValidatingOpenStreetMapElementBuilderTest {
     }
 
     @Test
-    internal fun `should populate a OpenStreetMap element builder with all properties from an GeographicLocation model`() {
+    internal fun `should populate an OpenStreetMap element builder with all properties from an OpenStreetMap element model`() {
         val osm = aPodcastindexOpenStreetMapElement()
         val osmBuilder = OpenStreetMapElement.builder().applyFrom(osm)
 

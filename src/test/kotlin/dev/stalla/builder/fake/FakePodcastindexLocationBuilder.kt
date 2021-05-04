@@ -16,6 +16,7 @@ internal class FakePodcastindexLocationBuilder : FakeBuilder<PodcastindexLocatio
     override fun geo(geo: GeographicLocation?): PodcastindexLocationBuilder = apply { this.geo = geo }
 
     override fun osm(osm: OpenStreetMapElement?): PodcastindexLocationBuilder = apply { this.osm = osm }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -36,7 +37,5 @@ internal class FakePodcastindexLocationBuilder : FakeBuilder<PodcastindexLocatio
         return result
     }
 
-    override fun toString(): String {
-        return "FakePodcastindexLocationBuilder(name=$name, geo=$geo, osm=$osm)"
-    }
+    override fun toString(): String = "FakePodcastindexLocationBuilder(name=$name, geo=$geo, osm=$osm)"
 }

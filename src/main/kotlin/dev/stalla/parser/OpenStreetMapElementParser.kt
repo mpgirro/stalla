@@ -53,6 +53,7 @@ internal object OpenStreetMapElementParser {
             .build()
     }
 
+    @OptIn(ExperimentalStdlibApi::class)
     private fun Char.isNoDigit(): Boolean = digitToIntOrNull() == null
 
     private fun StringBuilder.stringOrNullIfEmpty(): String? = if (isNotEmpty()) toString() else null

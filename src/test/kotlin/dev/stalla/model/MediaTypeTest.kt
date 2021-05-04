@@ -114,7 +114,6 @@ internal class MediaTypeTest {
             prop(MediaType::subtype).isEqualTo("plain")
             prop(MediaType::parameters).hasSize(1)
             hasParameterWithValue("charset", "utf-8")
-//            prop("parameter") { MediaType::parameter.call(it, "charset") }.isNotNull().isEqualTo("utf-8")
         }
     }
 

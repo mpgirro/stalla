@@ -45,7 +45,6 @@ internal class FakePodcastindexPersonBuilder : FakeBuilder<PodcastindexPerson>()
         return result
     }
 
-    override fun toString(): String {
-        return "FakePodcastindexPersonBuilder(name=$name, role=$role, group=$group, img=$img, href=$href)"
-    }
+    override fun toString(): String =
+        "FakePodcastindexPersonBuilder(name=$name, role=$role, group=$group, img=$img, href=$href)"
 }

@@ -31,7 +31,5 @@ internal class FakeEpisodePodcastindexEpisodeBuilder : FakeBuilder<PodcastindexE
         return result
     }
 
-    override fun toString(): String {
-        return "FakeEpisodePodcastindexEpisodeBuilder(number=$number, display=$display)"
-    }
+    override fun toString(): String = "FakeEpisodePodcastindexEpisodeBuilder(number=$number, display=$display)"
 }

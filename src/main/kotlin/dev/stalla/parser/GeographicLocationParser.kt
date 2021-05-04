@@ -70,15 +70,9 @@ internal object GeographicLocationParser {
         return builder.build()
     }
 
-    private fun String.asDoubleOrNull(): Double? = try {
-        toDouble()
-    } catch (e: NumberFormatException) {
-        null
-    }
-
     private fun GeographicLocationBuilder.handleEndOfCoordinate(buffer: StringBuilder) {
         val symbol: String = buffer.getAndClear()
-        val coordinate = symbol.asDoubleOrNull() ?: return
+        val coordinate = symbol.toDoubleOrNull() ?: return
         if (!hasLatitude()) {
             latitude(coordinate)
             return

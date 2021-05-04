@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test
 internal class ValidatingPodcastindexLocationBuilderTest {
 
     @Test
-    internal fun `should not build an Podcastindex Location with when all the fields are missing`() {
+    internal fun `should not build a Podcastindex Location when all the fields are missing`() {
         val locationBuilder = ValidatingPodcastindexLocationBuilder()
 
         assertAll {
@@ -30,7 +30,7 @@ internal class ValidatingPodcastindexLocationBuilderTest {
     }
 
     @Test
-    internal fun `should not build an Podcastindex Location with when the name field is missing`() {
+    internal fun `should not build a Podcastindex Location when the mandatory name field is missing`() {
         val locationBuilder = ValidatingPodcastindexLocationBuilder()
             .geo(aPodcastindexGeographicLocation())
 
@@ -42,7 +42,7 @@ internal class ValidatingPodcastindexLocationBuilderTest {
     }
 
     @Test
-    internal fun `should build an Podcastindex Location with all the mandatory fields`() {
+    internal fun `should build a Podcastindex Location with only the mandatory name field`() {
         val locationBuilder = ValidatingPodcastindexLocationBuilder()
             .name("name")
 
@@ -58,7 +58,7 @@ internal class ValidatingPodcastindexLocationBuilderTest {
     }
 
     @Test
-    internal fun `should build an Podcastindex Location with all the added entries to its fields`() {
+    internal fun `should build a Podcastindex Location with all fields filled in correctly`() {
         val locationBuilder = ValidatingPodcastindexLocationBuilder()
             .name("name")
             .geo(aPodcastindexGeographicLocation())
@@ -76,7 +76,7 @@ internal class ValidatingPodcastindexLocationBuilderTest {
     }
 
     @Test
-    internal fun `should populate an Podcastindex Location builder with all properties from an Podcastindex Location model`() {
+    internal fun `should populate a Podcastindex Location builder with all properties from a Podcastindex Location model`() {
         val location = anEpisodePodcastindexLocation()
         val locationBuilder = PodcastindexLocation.builder().applyFrom(location)
 

@@ -1,7 +1,6 @@
 package dev.stalla.model.podcastindex
 
 import assertk.all
-import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.hasSize
 import assertk.assertions.isEmpty
@@ -163,122 +162,78 @@ class GeographicLocationTest {
 
     @Test
     fun `should match Geo URIs when WGS-84 special pole case applies correctly`() {
-        val geoLocation1 = GeographicLocation.of("geo:90,-22.43;crs=WGS84")
-        val geoLocation2 = GeographicLocation.of("geo:90,46;crs=WGS84")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
-        }
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:90,-22.43;crs=WGS84"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:90,46;crs=WGS84"))
+        assertThat(geoLocation1.match(geoLocation2)).isTrue()
     }
 
     @Test
     fun `should not match Geo URIs in WGS-84 special pole case if the latitude is different`() {
-        val geoLocation1 = GeographicLocation.of("geo:90,10")
-        val geoLocation2 = GeographicLocation.of("geo:45,20")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isFalse()
-        }
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:90,10"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:45,20"))
+        assertThat(geoLocation1.match(geoLocation2)).isFalse()
     }
 
     @Test
     fun `should no match Geo URIs in WGS-84 special pole case if the latitude has a different sign`() {
-        val geoLocation1 = GeographicLocation.of("geo:90,10")
-        val geoLocation2 = GeographicLocation.of("geo:-90,10")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isFalse()
-        }
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:90,10"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:-90,10"))
+        assertThat(geoLocation1.match(geoLocation2)).isFalse()
     }
 
     @Test
     fun `should match Geo URIs in WGS-84 special pole case by ignoring the longitude`() {
-        val geoLocation1 = GeographicLocation.of("geo:90,5")
-        val geoLocation2 = GeographicLocation.of("geo:90,10")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
-        }
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:90,5"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:90,10"))
+        assertThat(geoLocation1.match(geoLocation2)).isTrue()
     }
 
     @Test
     fun `should interprete a missing CRS value as WGS-84 when matching two Geo URIs with WGS-84 special pole case`() {
-        val geoLocation1 = GeographicLocation.of("geo:90,5")
-        val geoLocation2 = GeographicLocation.of("geo:90,10;crs=WGS84")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
-        }
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:90,5"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:90,10;crs=WGS84"))
+        assertThat(geoLocation1.match(geoLocation2)).isTrue()
     }
 
     @Test
     fun `should match Geo URIs in WGS-84 special date line case if the longitude has a different sign`() {
-        val geoLocation1 = GeographicLocation.of("geo:10,180")
-        val geoLocation2 = GeographicLocation.of("geo:10,-180")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
-        }
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:10,180"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:10,-180"))
+        assertThat(geoLocation1.match(geoLocation2)).isTrue()
     }
 
     @Test
     fun `should interprete a missing CRS value as WGS-84 when matching two Geo URIs with WGS-84 special date line case`() {
-        val geoLocation1 = GeographicLocation.of("geo:10,180")
-        val geoLocation2 = GeographicLocation.of("geo:10,-180;crs=WGS84")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
-        }
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:10,180"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:10,-180;crs=WGS84"))
+        assertThat(geoLocation1.match(geoLocation2)).isTrue()
     }
 
     @Test
     fun `should match Geo URIs parameters bitwise identical after percent-decoding parameter names are case insensitive`() {
-        val geoLocation1 = GeographicLocation.of("geo:66,30;u=6.500;FOo=this%2dthat")
-        val geoLocation2 = GeographicLocation.of("geo:66.0,30;u=6.5;foo=this-that")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
-        }
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:66,30;u=6.500;FOo=this%2dthat"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:66.0,30;u=6.5;foo=this-that"))
+        assertThat(geoLocation1.match(geoLocation2)).isTrue()
     }
 
     @Test
     fun `should match Geo URIs with parameter order being insignificant`() {
-        val geoLocation1 = GeographicLocation.of("geo:47,11;foo=blue;bar=white")
-        val geoLocation2 = GeographicLocation.of("geo:47,11;bar=white;foo=blue")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
-        }
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:47,11;foo=blue;bar=white"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:47,11;bar=white;foo=blue"))
+        assertThat(geoLocation1.match(geoLocation2)).isTrue()
     }
 
     @Test
     fun `should match Geo URIs with parameter keys being case-insensitive`() {
-        val geoLocation1 = GeographicLocation.of("geo:22,0;bar=blue")
-        val geoLocation2 = GeographicLocation.of("geo:22,0;BAR=blue")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isTrue()
-        }
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:22,0;bar=blue"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:22,0;BAR=blue"))
+        assertThat(geoLocation1.match(geoLocation2)).isTrue()
     }
 
     @Test
-    fun `should match Geo URIs with parameter values being case-sensitive`() {
-        val geoLocation1 = GeographicLocation.of("geo:22,0;bar=BLUE")
-        val geoLocation2 = GeographicLocation.of("geo:22,0;bar=blue")
-        assertAll {
-            assertThat(geoLocation1).isNotNull()
-            assertThat(geoLocation2).isNotNull()
-            assertThat(geoLocation1!!.match(geoLocation2!!)).isFalse()
-        }
+    fun `should not match Geo URIs with parameter values being case-sensitive`() {
+        val geoLocation1 = checkNotNull(GeographicLocation.of("geo:22,0;bar=BLUE"))
+        val geoLocation2 = checkNotNull(GeographicLocation.of("geo:22,0;bar=blue"))
+        assertThat(geoLocation1.match(geoLocation2)).isFalse()
     }
 }

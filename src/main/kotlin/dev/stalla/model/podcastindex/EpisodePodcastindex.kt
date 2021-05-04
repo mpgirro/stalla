@@ -13,10 +13,10 @@ import dev.stalla.model.BuilderFactory
  * @property transcripts The transcript information for the episode.
  * @property soundbites The soundbites information for the episode.
  * @property chapters The chapters information for the episode.
- * @property persons TODO
- * @property location TODO
- * @property season TODO
- * @property episode TODO
+ * @property persons The person information for the episode.
+ * @property location The location information for the episode.
+ * @property season The season information for the episode.
+ * @property episode The episode information for the episode.
  *
  * @since 1.0.0
  */
