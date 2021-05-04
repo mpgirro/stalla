@@ -111,7 +111,7 @@ public class GeographicLocation public constructor(
     public fun withoutParameters(): GeographicLocation = GeographicLocation(latitude, longitude, altitude)
 
     /** Checks if `this` type matches a [pattern] type taking parameters into account. */
-    public fun match(pattern: GeographicLocation?): Boolean {
+    public fun matches(pattern: GeographicLocation?): Boolean {
         contract {
             returns(true) implies (pattern != null)
         }
@@ -132,7 +132,7 @@ public class GeographicLocation public constructor(
     }
 
     /** Checks if `this` type matches a [pattern] type taking parameters into account. */
-    public fun match(pattern: String): Boolean = match(of(pattern))
+    public fun matches(pattern: String): Boolean = matches(of(pattern))
 
     private fun match(parameters1: List<Parameter>, parameters2: List<Parameter>): Boolean {
         for (param1 in parameters1) {

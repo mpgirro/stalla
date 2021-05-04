@@ -46,25 +46,25 @@ internal object PodcastindexParser : NamespaceParser() {
                 val lockedBuilder = ifCanBeParsed {
                     toLockedBuilder(builder.createLockedBuilder())
                 } ?: return
-                builder.podcastPodcastindexBuilder.lockedBuilder(lockedBuilder)
+                builder.podcastindexBuilder.lockedBuilder(lockedBuilder)
             }
             "funding" -> {
                 val fundingBuilder = ifCanBeParsed {
                     toFundingBuilder(builder.createFundingBuilder())
                 } ?: return
-                builder.podcastPodcastindexBuilder.addFundingBuilder(fundingBuilder)
+                builder.podcastindexBuilder.addFundingBuilder(fundingBuilder)
             }
             "person" -> {
                 val personBuilder = ifCanBeParsed {
                     toPersonBuilder(builder.createPersonBuilder())
                 } ?: return
-                builder.podcastPodcastindexBuilder.addPersonBuilder(personBuilder)
+                builder.podcastindexBuilder.addPersonBuilder(personBuilder)
             }
             "location" -> {
                 val locationBuilder = ifCanBeParsed {
                     toLocationBuilder(builder.createLocationBuilder())
                 } ?: return
-                builder.podcastPodcastindexBuilder.locationBuilder(locationBuilder)
+                builder.podcastindexBuilder.locationBuilder(locationBuilder)
             }
             else -> pass
         }

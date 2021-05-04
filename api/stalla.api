@@ -370,6 +370,7 @@ public abstract interface class dev/stalla/builder/podcast/PodcastBuilder : dev/
 	public abstract fun getGoogleplayBuilder ()Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 	public abstract fun getItunesBuilder ()Ldev/stalla/builder/podcast/PodcastItunesBuilder;
 	public abstract fun getPodcastPodcastindexBuilder ()Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
+	public abstract fun getPodcastindexBuilder ()Ldev/stalla/builder/podcast/PodcastPodcastindexBuilder;
 	public abstract fun imageBuilder (Ldev/stalla/builder/RssImageBuilder;)Ldev/stalla/builder/podcast/PodcastBuilder;
 	public abstract fun language (Ljava/util/Locale;)Ldev/stalla/builder/podcast/PodcastBuilder;
 	public abstract fun lastBuildDate (Ljava/time/temporal/TemporalAccessor;)Ldev/stalla/builder/podcast/PodcastBuilder;
@@ -629,6 +630,8 @@ public class dev/stalla/model/MediaType {
 	public fun hashCode ()I
 	public final fun match (Ldev/stalla/model/MediaType;)Z
 	public final fun match (Ljava/lang/String;)Z
+	public final fun matches (Ldev/stalla/model/MediaType;)Z
+	public final fun matches (Ljava/lang/String;)Z
 	public static fun of (Ljava/lang/String;)Ldev/stalla/model/MediaType;
 	public final fun parameter (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
@@ -1416,8 +1419,8 @@ public final class dev/stalla/model/podcastindex/GeographicLocation {
 	public final fun getParameters ()Ljava/util/List;
 	public final fun getUncertainty ()Ljava/lang/Double;
 	public fun hashCode ()I
-	public final fun match (Ldev/stalla/model/podcastindex/GeographicLocation;)Z
-	public final fun match (Ljava/lang/String;)Z
+	public final fun matches (Ldev/stalla/model/podcastindex/GeographicLocation;)Z
+	public final fun matches (Ljava/lang/String;)Z
 	public static fun of (Ljava/lang/String;)Ldev/stalla/model/podcastindex/GeographicLocation;
 	public final fun parameter (Ljava/lang/String;)Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
