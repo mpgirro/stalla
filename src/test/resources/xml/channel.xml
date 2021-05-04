@@ -76,4 +76,11 @@
     <feedpress:link>feedpress link</feedpress:link>
     <podcast:locked owner="podcast podcastindex locked owner">yes</podcast:locked>
     <podcast:funding url="podcast podcastindex funding url">podcast podcastindex funding message</podcast:funding>
+    <podcast:person role="podcast podcastindex person role"
+                    group="podcast podcastindex person group"
+                    img="podcast podcastindex person img"
+                    href="podcast podcastindex person href">
+        podcast podcastindex person name
+    </podcast:person>
+    <podcast:location geo="geo:1,2,3" osm="R123">podcast podcastindex location name</podcast:location>
 </channel>

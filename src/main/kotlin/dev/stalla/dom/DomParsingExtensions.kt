@@ -60,6 +60,14 @@ internal fun String?.parseAsBooleanOrNull(): Boolean? =
 internal fun Node.parseAsInt(): Int? = textOrNull()?.toIntOrNull()
 
 /**
+ * Extracts the text content of a DOM node, and transforms it to an Int instance.
+ *
+ * @return The DOM node content as an [Double], or `null` if conversion failed.
+ */
+@InternalAPI
+internal fun Node.parseAsDouble(): Double? = textOrNull()?.toDoubleOrNull()
+
+/**
  * Extracts the text content of a DOM node, and parses it as a [TemporalAccessor] instance
  * if possible.
  *

@@ -76,6 +76,13 @@
         <googleplay:newFeedUrl>podcast googleplay newFeedUrl</googleplay:newFeedUrl>
         <podcast:locked owner="podcast podcastindex locked owner">yes</podcast:locked>
         <podcast:funding url="podcast podcastindex funding url">podcast podcastindex funding message</podcast:funding>
+        <podcast:person role="podcast podcastindex person role"
+                        group="podcast podcastindex person group"
+                        img="podcast podcastindex person img"
+                        href="podcast podcastindex person href">
+            podcast podcastindex person name
+        </podcast:person>
+        <podcast:location geo="geo:48.20849,16.37208,5.0;crs=WGS84;u=10.0" osm="R1#2">podcast podcastindex location name</podcast:location>
         <item>
             <title>episode title</title>
             <link>episode link</link>
@@ -123,6 +130,15 @@
             <podcast:transcript url="episode podcastindex transcript url" type="application/srt" language="it-IT" rel="captions"/>
             <podcast:soundbite startTime="1" duration="15.123">episode podcastindex soundbite title</podcast:soundbite>
             <podcast:chapters url="episode podcastindex chapters url" type="application/json+chapters"/>
+            <podcast:person role="episode podcastindex person role"
+                            group="episode podcastindex person group"
+                            img="episode podcastindex person img"
+                            href="episode podcastindex person href">
+                episode podcastindex person name
+            </podcast:person>
+            <podcast:location geo="geo:48.20849,16.37208,5.0;crs=WGS84;u=10.0" osm="R1#2">episode podcastindex location name</podcast:location>
+            <podcast:season name="episode podcastindex season name">1</podcast:season>
+            <podcast:episode display="episode podcastindex episode display">1.0</podcast:episode>
         </item>
     </channel>
 </rss>

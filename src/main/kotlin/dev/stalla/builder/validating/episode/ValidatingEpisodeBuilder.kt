@@ -4,6 +4,8 @@ import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
+import dev.stalla.builder.PodcastindexLocationBuilder
+import dev.stalla.builder.PodcastindexPersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.episode.EpisodeBitloveBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
@@ -14,6 +16,8 @@ import dev.stalla.builder.episode.EpisodeGuidBuilder
 import dev.stalla.builder.episode.EpisodeItunesBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexEpisodeBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexSeasonBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveBuilder
@@ -23,6 +27,8 @@ import dev.stalla.builder.validating.ValidatingAtomBuilder
 import dev.stalla.builder.validating.ValidatingAtomPersonBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexLocationBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.model.Episode
 import dev.stalla.util.InternalAPI
@@ -104,6 +110,18 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     override fun createSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder =
         ValidatingEpisodePodcastindexSoundbiteBuilder()
+
+    override fun createPersonBuilder(): PodcastindexPersonBuilder =
+        ValidatingPodcastindexPersonBuilder()
+
+    override fun createLocationBuilder(): PodcastindexLocationBuilder =
+        ValidatingPodcastindexLocationBuilder()
+
+    override fun createSeasonBuilder(): EpisodePodcastindexSeasonBuilder =
+        ValidatingEpisodePodcastindexSeasonBuilder()
+
+    override fun createEpisodeBuilder(): EpisodePodcastindexEpisodeBuilder =
+        ValidatingEpisodePodcastindexEpisodeBuilder()
 
     override val hasEnoughDataToBuild: Boolean
         get() = ::titleValue.isInitialized &&

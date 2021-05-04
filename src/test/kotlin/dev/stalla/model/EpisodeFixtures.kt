@@ -12,6 +12,12 @@ import dev.stalla.model.itunes.EpisodeItunes
 import dev.stalla.model.itunes.EpisodeType
 import dev.stalla.model.podcastindex.Chapters
 import dev.stalla.model.podcastindex.EpisodePodcastindex
+import dev.stalla.model.podcastindex.GeographicLocation
+import dev.stalla.model.podcastindex.OpenStreetMapElement
+import dev.stalla.model.podcastindex.PodcastindexEpisode
+import dev.stalla.model.podcastindex.PodcastindexLocation
+import dev.stalla.model.podcastindex.PodcastindexPerson
+import dev.stalla.model.podcastindex.PodcastindexSeason
 import dev.stalla.model.podcastindex.Soundbite
 import dev.stalla.model.podcastindex.Transcript
 import dev.stalla.model.podcastindex.TranscriptType
@@ -134,8 +140,12 @@ internal fun anEpisodeBitlove(
 internal fun anEpisodePodcastindex(
     transcripts: List<Transcript> = listOf(anEpisodePodcastindexTranscript()),
     soundbites: List<Soundbite> = listOf(anEpisodePodcastindexSoundbite()),
-    chapters: Chapters? = anEpisodePodcastindexChapters()
-) = EpisodePodcastindex(transcripts, soundbites, chapters)
+    chapters: Chapters? = anEpisodePodcastindexChapters(),
+    persons: List<PodcastindexPerson> = listOf(anEpisodePodcastindexPerson()),
+    location: PodcastindexLocation? = anEpisodePodcastindexLocation(),
+    season: PodcastindexSeason? = anEpisodePodcastindexSeason(),
+    episode: PodcastindexEpisode? = anEpisodePodcastindexEpisode()
+) = EpisodePodcastindex(transcripts, soundbites, chapters, persons, location, season, episode)
 
 @JvmOverloads
 internal fun anEpisodePodcastindexTranscript(
@@ -157,3 +167,31 @@ internal fun anEpisodePodcastindexChapters(
     url: String = "episode podcastindex chapters url",
     type: MediaType = MediaType.JSON_CHAPTERS
 ) = Chapters(url, type)
+
+@JvmOverloads
+internal fun anEpisodePodcastindexPerson(
+    name: String = "episode podcastindex person name",
+    role: String? = "episode podcastindex person role",
+    group: String? = "episode podcastindex person group",
+    img: String? = "episode podcastindex person img",
+    href: String? = "episode podcastindex person href"
+) = PodcastindexPerson(name, role, group, img, href)
+
+@JvmOverloads
+internal fun anEpisodePodcastindexLocation(
+    name: String = "episode podcastindex location name",
+    geo: GeographicLocation? = aPodcastindexGeographicLocation(),
+    osm: OpenStreetMapElement? = aPodcastindexOpenStreetMapElement()
+) = PodcastindexLocation(name, geo, osm)
+
+@JvmOverloads
+internal fun anEpisodePodcastindexSeason(
+    number: Int = 1,
+    name: String = "episode podcastindex season name"
+) = PodcastindexSeason(number, name)
+
+@JvmOverloads
+internal fun anEpisodePodcastindexEpisode(
+    number: Double = 1.0,
+    display: String = "episode podcastindex episode display"
+) = PodcastindexEpisode(number, display)

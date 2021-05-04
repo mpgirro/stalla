@@ -86,7 +86,7 @@ internal class ValidatingEpisodePodcastindexSoundbiteBuilderTest {
     }
 
     @Test
-    internal fun `should build an Episode Podcastindex Soundbite with with all the added entries to its fields`() {
+    internal fun `should build an Episode Podcastindex Soundbite with all the added entries to its fields`() {
         val soundbiteBuilder = ValidatingEpisodePodcastindexSoundbiteBuilder()
             .startTime(StyledDuration.secondsAndFraction(1))
             .duration(StyledDuration.secondsAndFraction(15))

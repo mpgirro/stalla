@@ -19,4 +19,6 @@
     <podcast:soundbite startTime="-1.0" duration="60.0">I'm a soundbite</podcast:soundbite>
     <podcast:soundbite startTime="xyz" duration="60.0">I'm a soundbite</podcast:soundbite>
     <podcast:transcript url="transcript url" type="xyz" />
+    <podcast:season>Not an integer</podcast:season>
+    <podcast:epsiode>Not a decimal</podcast:epsiode>
 </item>

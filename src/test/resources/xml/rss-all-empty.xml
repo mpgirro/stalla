@@ -7,7 +7,8 @@
      xmlns:fyyd="https://fyyd.de/fyyd-ns/"
      xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
      xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-     xmlns:psc="http://podlove.org/simple-chapters">
+     xmlns:psc="http://podlove.org/simple-chapters"
+     xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md">
     <channel>
         <title></title>
         <link></link>
@@ -67,6 +68,10 @@
         <googleplay:explicit></googleplay:explicit>
         <googleplay:block></googleplay:block>
         <googleplay:image href=""/>
+        <podcast:locked></podcast:locked>
+        <podcast:funding></podcast:funding>
+        <podcast:person></podcast:person>
+        <podcast:location></podcast:location>
         <item>
             <title></title>
             <link></link>
@@ -113,6 +118,13 @@
             <googleplay:image href=""/>
             <googleplay:explicit></googleplay:explicit>
             <googleplay:block></googleplay:block>
+            <podcast:chapters />
+            <podcast:soundbite></podcast:soundbite>
+            <podcast:transcript />
+            <podcast:person></podcast:person>
+            <podcast:location></podcast:location>
+            <podcast:season></podcast:season>
+            <podcast:episode></podcast:episode>
         </item>
     </channel>
 </rss>
