@@ -172,12 +172,11 @@ internal class FakePodcastBuilder : FakeBuilder<Podcast>(), ProvidingPodcastBuil
         return result
     }
 
-    override fun toString(): String {
-        return "FakePodcastBuilder(titleValue=$titleValue, linkValue=$linkValue, descriptionValue=$descriptionValue, " +
+    override fun toString(): String =
+        "FakePodcastBuilder(titleValue=$titleValue, linkValue=$linkValue, descriptionValue=$descriptionValue, " +
             "languageValue=$languageValue, pubDate=$pubDate, lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, " +
             "docs=$docs, managingEditor=$managingEditor, webMaster=$webMaster, ttl=$ttl, imageBuilder=$imageBuilder, " +
             "episodeBuilders=$episodeBuilders, categoryBuilders=$categoryBuilders, itunesBuilder=$itunesBuilder, atomBuilder=$atomBuilder, " +
             "fyydBuilder=$fyydBuilder, feedpressBuilder=$feedpressBuilder, googleplayBuilder=$googleplayBuilder, " +
             "podcastindexBuilder=$podcastindexBuilder, podcastPodcastindexBuilder=$podcastPodcastindexBuilder)"
-    }
 }
