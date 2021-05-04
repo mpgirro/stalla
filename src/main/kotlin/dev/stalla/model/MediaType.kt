@@ -89,6 +89,7 @@ public open class MediaType private constructor(
 
     /**
      * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
+     * @since 1.1.0
      */
     public fun matches(pattern: MediaType?): Boolean {
         contract {
@@ -108,6 +109,7 @@ public open class MediaType private constructor(
     /**
      * Checks if `this` type matches a [pattern] type taking
      * into account placeholder symbols `*` and parameters.
+     * @since 1.1.0
      */
     public fun matches(pattern: String): Boolean = matches(of(pattern))
 

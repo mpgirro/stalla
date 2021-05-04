@@ -134,20 +134,6 @@ public class GeographicLocation public constructor(
     /** Checks if `this` type matches a [pattern] type taking parameters into account. */
     public fun matches(pattern: String): Boolean = matches(of(pattern))
 
-    /** Checks if `this` type matches a [pattern] type taking parameters into account. */
-    @Deprecated(
-        message = "This method is scheduled for removal in v2.0.0",
-        replaceWith = ReplaceWith("matches")
-    )
-    public fun match(pattern: GeographicLocation?): Boolean = matches(pattern)
-
-    /** Checks if `this` type matches a [pattern] type taking parameters into account. */
-    @Deprecated(
-        message = "This method is scheduled for removal in v2.0.0",
-        replaceWith = ReplaceWith("matches")
-    )
-    public fun match(pattern: String): Boolean = matches(pattern)
-
     private fun match(parameters1: List<Parameter>, parameters2: List<Parameter>): Boolean {
         for (param1 in parameters1) {
             val value2 = parameter(param1.key, parameters2)
