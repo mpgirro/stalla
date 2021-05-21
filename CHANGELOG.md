@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v1.1.0 (under development)
+
+* Add support for PodcastIndex namespace phase 2 tags
+
+### Notable API changes
+All API changes are subject to deprecation, with automatic migrations provided.
+Deprecated properties will be removed entirely in a future release — refer to the table below, and the properties themselves for the removal schedule.
+
+API that has changed | What has changed | Notes
+ --- | --- | ---
+`PodcastBuilder.podcastPodcastindexBuilder` | Renamed to `podcastindexBuilder` | Scheduled for removal in v2.0.0.
+`MediaType.match(MediaType?)` | Renamed to `matches(MediaType?)` | Scheduled for removal in v2.0.0.
+`MediaType.match(String)` | Renamed to `matches(String)` | Scheduled for removal in v2.0.0.
+`PodcastGoogleplay.explicit` | Renamed to `explicitType`, type changed to `ExplicitType` | The `explicit` property type will be removed in v2.0.0, and the `explicitType` property will be renamed to `explicit`.
+
 ## v1.0.0
 
 * Refactor model structure (no inner classes) into separate classes and packages
@@ -12,7 +27,7 @@
 * Adds feed writing support
 * Adds additional elements for RSS and iTunes namespace
 * Adds support for Podcastindex namespace
-* Adds a huge amount of unit tests
+* Adds a huge number of unit tests
 * Adds builder factory methods to model companion objects
 * Changes to java.time representation
 
@@ -35,7 +50,8 @@
 ## v0.5.1
 
 * Fixes the URI for the Podlove Simple Chapter namespace.
-* Adds [Travis-CI](https://travis-ci.org/mpgirro/wien), [Codacy](https://app.codacy.com/project/mpgirro/wien), and [CodeCov](https://codecov.io/gh/mpgirro/wien) setup.
+* Adds [Travis-CI](https://travis-ci.org/mpgirro/wien), [Codacy](https://app.codacy.com/project/mpgirro/wien),
+  and [CodeCov](https://codecov.io/gh/mpgirro/wien) setup.
 
 ## v0.5.0
 
