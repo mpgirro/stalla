@@ -4,7 +4,6 @@ import dev.stalla.dom.appendElement
 import dev.stalla.dom.appendGoogleplayCategoryElements
 import dev.stalla.dom.appendHrefOnlyImageElement
 import dev.stalla.dom.appendYesElementIfTrue
-import dev.stalla.dom.appendYesNoElement
 import dev.stalla.model.Episode
 import dev.stalla.model.Podcast
 import dev.stalla.util.FeedNamespace
@@ -30,8 +29,8 @@ internal object GoogleplayWriter : NamespaceWriter() {
             appendElement("email", namespace) { textContent = play.email.trim() }
         }
 
-        if (play.explicit != null) {
-            appendYesNoElement("explicit", play.explicit, namespace)
+        if (play.explicitType != null) {
+            appendElement("explicit", namespace) { textContent = play.explicitType.type.trim() }
         }
 
         if (play.newFeedUrl.isNeitherNullNorBlank()) {

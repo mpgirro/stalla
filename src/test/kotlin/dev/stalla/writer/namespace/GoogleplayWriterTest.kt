@@ -77,7 +77,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
                 categories = emptyList(),
                 image = HrefOnlyImage(" "),
                 block = false,
-                explicit = null,
+                explicitType = null,
                 newFeedUrl = " "
             )
         )
@@ -103,7 +103,7 @@ internal class GoogleplayWriterTest : NamespaceWriterTest() {
                 categories = emptyList(),
                 image = HrefOnlyImage(""),
                 block = false,
-                explicit = null,
+                explicitType = null,
                 newFeedUrl = ""
             )
         )

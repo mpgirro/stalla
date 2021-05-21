@@ -3,6 +3,7 @@ package dev.stalla.builder.podcast
 import dev.stalla.builder.Builder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.model.HrefOnlyImage
+import dev.stalla.model.googleplay.ExplicitType
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.whenNotNull
@@ -31,7 +32,20 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
     public fun description(description: String?): PodcastGoogleplayBuilder
 
     /** Set the explicit flag value. */
-    public fun explicit(explicit: Boolean?): PodcastGoogleplayBuilder
+    @Deprecated(
+        message = "Use explicitType(ExplicitType?) instead. Scheduled for removal in v2.0.0.",
+        replaceWith = ReplaceWith("explicitType()")
+    )
+    public fun explicit(explicit: Boolean?): PodcastGoogleplayBuilder = explicitType(
+        when (explicit) {
+            true -> ExplicitType.YES
+            false -> ExplicitType.NO
+            else -> null
+        }
+    )
+
+    /** Set the explicit flag value. */
+    public fun explicitType(explicitType: ExplicitType?): PodcastGoogleplayBuilder
 
     /** Set the block flag value. */
     public fun block(block: Boolean): PodcastGoogleplayBuilder
@@ -48,7 +62,7 @@ public interface PodcastGoogleplayBuilder : Builder<PodcastGoogleplay> {
             email(googleplay.email)
             addAllCategories(googleplay.categories)
             description(googleplay.description)
-            explicit(googleplay.explicit)
+            explicitType(googleplay.explicitType)
             block(googleplay.block)
             imageBuilder(HrefOnlyImage.builder().applyFrom(googleplay.image))
             newFeedUrl(googleplay.newFeedUrl)

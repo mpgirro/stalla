@@ -41,7 +41,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             prop(FakePodcastGoogleplayBuilder::email).isEqualTo("podcast googleplay email")
             prop(FakePodcastGoogleplayBuilder::categories).containsExactly(GoogleplayCategory.NEWS_AND_POLITICS)
             prop(FakePodcastGoogleplayBuilder::description).isEqualTo("podcast googleplay description")
-            prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isEqualTo(ExplicitType.NO)
+            prop(FakePodcastGoogleplayBuilder::explicitType).isNotNull().isEqualTo(ExplicitType.NO)
             prop(FakePodcastGoogleplayBuilder::block).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::imageBuilder).isEqualTo(expectedPodcastImageBuilder)
             prop(FakePodcastGoogleplayBuilder::newFeedUrl).isEqualTo("podcast googleplay newFeedUrl")
@@ -59,7 +59,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             prop(FakePodcastGoogleplayBuilder::email).isNull()
             prop(FakePodcastGoogleplayBuilder::categories).isEmpty()
             prop(FakePodcastGoogleplayBuilder::description).isNull()
-            prop(FakePodcastGoogleplayBuilder::explicit).isNull()
+            prop(FakePodcastGoogleplayBuilder::explicitType).isNull()
             prop(FakePodcastGoogleplayBuilder::block).isNull()
             prop(FakePodcastGoogleplayBuilder::imageBuilder).isNull()
             prop(FakePodcastGoogleplayBuilder::newFeedUrl).isNull()
@@ -77,7 +77,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             prop(FakePodcastGoogleplayBuilder::email).isNull()
             prop(FakePodcastGoogleplayBuilder::categories).isEmpty()
             prop(FakePodcastGoogleplayBuilder::description).isNull()
-            prop(FakePodcastGoogleplayBuilder::explicit).isNull()
+            prop(FakePodcastGoogleplayBuilder::explicitType).isNull()
             prop(FakePodcastGoogleplayBuilder::block).isNull()
             prop(FakePodcastGoogleplayBuilder::imageBuilder).isNotNull().hasNotEnoughDataToBuild()
             prop(FakePodcastGoogleplayBuilder::newFeedUrl).isNull()
@@ -149,7 +149,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
         channel.parseChannelChildNodes(builder)
 
         assertThat(builder.googleplayBuilder, "channel.googleplay").all {
-            prop(FakePodcastGoogleplayBuilder::explicit).isNull()
+            prop(FakePodcastGoogleplayBuilder::explicitType).isNull()
         }
     }
 

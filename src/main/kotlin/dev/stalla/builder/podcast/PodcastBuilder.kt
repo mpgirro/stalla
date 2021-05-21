@@ -39,7 +39,7 @@ public interface PodcastBuilder : Builder<Podcast> {
 
     /** The builder for data from the Podcastindex namespace. */
     @Deprecated(
-        message = "This property is scheduled for removal in v2.0.0",
+        message = "This property is scheduled for removal in v2.0.0.",
         replaceWith = ReplaceWith("podcastindexBuilder")
     )
     public val podcastPodcastindexBuilder: PodcastPodcastindexBuilder

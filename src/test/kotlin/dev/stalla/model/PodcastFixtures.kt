@@ -6,6 +6,7 @@ import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.model.feedpress.Feedpress
 import dev.stalla.model.fyyd.Fyyd
+import dev.stalla.model.googleplay.ExplicitType
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.model.itunes.ItunesCategory
@@ -122,11 +123,11 @@ internal fun aPodcastGoogleplay(
     email: String? = "podcast googleplay email",
     categories: List<GoogleplayCategory> = listOf(aGoogleplayCategory()),
     description: String? = "podcast googleplay description",
-    explicit: ExplicitType? = ExplicitType.YES,
+    explicitType: ExplicitType? = ExplicitType.YES,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url"),
     newFeedUrl: String? = "podcast googleplay newFeedUrl"
-) = PodcastGoogleplay(author, email, categories, description, explicit, block, image, newFeedUrl)
+) = PodcastGoogleplay(author, email, categories, description, explicitType, block, image, newFeedUrl)
 
 @JvmOverloads
 internal fun aPodcastPodcastindex(

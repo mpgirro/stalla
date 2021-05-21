@@ -19,7 +19,7 @@ import dev.stalla.model.HrefOnlyImage
  * @property email The `<googleplay:email>` element text content.
  * @property categories The list of `<googleplay:category>` element text contents as [GoogleplayCategory].
  * @property description The `<googleplay:description>` element text content.
- * @property explicit The logical value of the `<googleplay:explicit>` element text content.
+ * @property explicitType The logical value of the `<googleplay:explicit>` element text content. Will be renamed to `explicit` in v2.0.0.
  * @property block The logical value of the `<googleplay:block>` element text content.
  * @property image The data from the `<googleplay:image>` element as an [HrefOnlyImage].
  * @property newFeedUrl The `<googleplay:newFeedUrl>` element text content.
@@ -31,11 +31,19 @@ public data class PodcastGoogleplay(
     val email: String? = null,
     val categories: List<GoogleplayCategory>,
     val description: String? = null,
-    val explicit: Boolean? = null,
+    val explicitType: ExplicitType? = null,
     val block: Boolean,
     val image: HrefOnlyImage? = null,
     val newFeedUrl: String? = null
 ) {
+
+    /** The logical value of the `<googleplay:explicit>` element text content.  */
+    @Deprecated(
+        message = "The explicit property is deprecated. Please migrate to the explicitType property, which will be renamed to 'explicit' once " +
+            "this property is removed. This property is scheduled for removal in v2.0.0.",
+        replaceWith = ReplaceWith("explicitType")
+    )
+    val explicit: Boolean? = explicitType?.let { it == ExplicitType.YES }
 
     /** Provides a builder for the [PodcastGoogleplay] class. */
     public companion object Factory : BuilderFactory<PodcastGoogleplay, PodcastGoogleplayBuilder> {

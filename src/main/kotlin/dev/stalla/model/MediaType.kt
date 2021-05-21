@@ -117,7 +117,7 @@ public open class MediaType private constructor(
      * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
      */
     @Deprecated(
-        message = "This method is scheduled for removal in v2.0.0",
+        message = "This method is scheduled for removal in v2.0.0.",
         replaceWith = ReplaceWith("matches")
     )
     public fun match(pattern: MediaType?): Boolean = matches(pattern)
@@ -127,7 +127,7 @@ public open class MediaType private constructor(
      * into account placeholder symbols `*` and parameters.
      */
     @Deprecated(
-        message = "This method is scheduled for removal in v2.0.0",
+        message = "This method is scheduled for removal in v2.0.0.",
         replaceWith = ReplaceWith("matches")
     )
     public fun match(pattern: String): Boolean = matches(pattern)
@@ -216,6 +216,7 @@ public open class MediaType private constructor(
     }
 
     /** Gets an instance of [MediaType] from a raw value. Exposes several predefined media type constants. */
+    @Suppress("unused") // These are commonly used MediaTypes, for users' convenience.
     public companion object Factory : TypeFactory<MediaType> {
 
         /**

@@ -2,6 +2,7 @@ package dev.stalla.builder.validating.podcast
 
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
+import dev.stalla.model.googleplay.ExplicitType
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import dev.stalla.util.InternalAPI
@@ -15,7 +16,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
     private var email: String? = null
     private var categories: MutableList<GoogleplayCategory> = mutableListOf()
     private var description: String? = null
-    private var explicit: Boolean? = null
+    private var explicitType: ExplicitType? = null
     private var block: Boolean = false
     private var imageBuilder: HrefOnlyImageBuilder? = null
     private var newFeedUrl: String? = null
@@ -29,7 +30,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
 
     override fun description(description: String?): PodcastGoogleplayBuilder = apply { this.description = description }
 
-    override fun explicit(explicit: Boolean?): PodcastGoogleplayBuilder = apply { this.explicit = explicit }
+    override fun explicitType(explicitType: ExplicitType?): PodcastGoogleplayBuilder = apply { this.explicitType = explicitType }
 
     override fun block(block: Boolean): PodcastGoogleplayBuilder = apply { this.block = block }
 
@@ -41,7 +42,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
     override val hasEnoughDataToBuild: Boolean
         get() {
             if (block) return true
-            if (anyNotNull(author, email, description, explicit, newFeedUrl)) return true
+            if (anyNotNull(author, email, description, explicitType, newFeedUrl)) return true
             if (imageBuilder?.hasEnoughDataToBuild == true) return true
             return categories.isNotEmpty()
         }
@@ -56,7 +57,7 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
             email = email,
             categories = categories.asUnmodifiable(),
             description = description,
-            explicit = explicit,
+            explicitType = explicitType,
             block = block,
             image = imageBuilder?.build(),
             newFeedUrl = newFeedUrl
