@@ -3,6 +3,7 @@ package dev.stalla.builder.fake.podcast
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
+import dev.stalla.model.googleplay.ExplicitType
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 
@@ -12,7 +13,7 @@ internal class FakePodcastGoogleplayBuilder : FakeBuilder<PodcastGoogleplay>(), 
     var email: String? = null
     var categories: MutableList<GoogleplayCategory> = mutableListOf()
     var description: String? = null
-    var explicit: Boolean? = null
+    var explicit: ExplicitType? = null
     var block: Boolean? = null
     var imageBuilder: HrefOnlyImageBuilder? = null
     var newFeedUrl: String? = null
@@ -27,7 +28,7 @@ internal class FakePodcastGoogleplayBuilder : FakeBuilder<PodcastGoogleplay>(), 
 
     override fun description(description: String?): PodcastGoogleplayBuilder = apply { this.description = description }
 
-    override fun explicit(explicit: Boolean?): PodcastGoogleplayBuilder = apply { this.explicit = explicit }
+    override fun explicit(explicit: ExplicitType?): PodcastGoogleplayBuilder = apply { this.explicit = explicit }
 
     override fun block(block: Boolean): PodcastGoogleplayBuilder = apply { this.block = block }
 

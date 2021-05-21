@@ -14,6 +14,7 @@ import assertk.assertions.prop
 import dev.stalla.builder.podcast.PodcastGoogleplayBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.model.aPodcastGoogleplay
+import dev.stalla.model.googleplay.ExplicitType
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.googleplay.PodcastGoogleplay
 import org.junit.jupiter.api.Test
@@ -124,7 +125,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
     @Test
     internal fun `should build a valid Podcast Googleplay when there is only an explicit`() {
         val podcastGooglePlayBuilder = ValidatingPodcastGoogleplayBuilder()
-            .explicit(true)
+            .explicit(ExplicitType.YES)
 
         assertAll {
             assertThat(podcastGooglePlayBuilder).prop(PodcastGoogleplayBuilder::hasEnoughDataToBuild).isTrue()
@@ -134,7 +135,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                 prop(PodcastGoogleplay::email).isNull()
                 prop(PodcastGoogleplay::categories).isEmpty()
                 prop(PodcastGoogleplay::description).isNull()
-                prop(PodcastGoogleplay::explicit).isNotNull().isTrue()
+                prop(PodcastGoogleplay::explicit).isNotNull().isEqualTo(ExplicitType.YES)
                 prop(PodcastGoogleplay::block).isFalse()
                 prop(PodcastGoogleplay::image).isNull()
                 prop(PodcastGoogleplay::newFeedUrl).isNull()
@@ -213,7 +214,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
             .addCategory(expectedGoogleplayCategory)
             .addCategory(otherExpectedGoogleplayCategory)
             .description("description")
-            .explicit(true)
+            .explicit(ExplicitType.YES)
             .block(false)
             .imageBuilder(expectedImageBuilder)
             .newFeedUrl("https://new.example.com/rss/rss.xml")
@@ -229,7 +230,7 @@ internal class ValidatingPodcastGoogleplayBuilderTest {
                     otherExpectedGoogleplayCategory
                 )
                 prop(PodcastGoogleplay::description).isEqualTo("description")
-                prop(PodcastGoogleplay::explicit).isNotNull().isTrue()
+                prop(PodcastGoogleplay::explicit).isNotNull().isEqualTo(ExplicitType.YES)
                 prop(PodcastGoogleplay::block).isFalse()
                 prop(PodcastGoogleplay::image).isEqualTo(expectedImageBuilder.build())
                 prop(PodcastGoogleplay::newFeedUrl).isEqualTo("https://new.example.com/rss/rss.xml")

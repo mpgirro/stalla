@@ -122,7 +122,7 @@ internal fun aPodcastGoogleplay(
     email: String? = "podcast googleplay email",
     categories: List<GoogleplayCategory> = listOf(aGoogleplayCategory()),
     description: String? = "podcast googleplay description",
-    explicit: Boolean? = true,
+    explicit: ExplicitType? = ExplicitType.YES,
     block: Boolean = true,
     image: HrefOnlyImage? = anHrefOnlyImage(href = "podcast googleplay image url"),
     newFeedUrl: String? = "podcast googleplay newFeedUrl"

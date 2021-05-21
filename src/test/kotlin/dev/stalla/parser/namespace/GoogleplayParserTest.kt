@@ -41,7 +41,7 @@ internal class GoogleplayParserTest : NamespaceParserTest() {
             prop(FakePodcastGoogleplayBuilder::email).isEqualTo("podcast googleplay email")
             prop(FakePodcastGoogleplayBuilder::categories).containsExactly(GoogleplayCategory.NEWS_AND_POLITICS)
             prop(FakePodcastGoogleplayBuilder::description).isEqualTo("podcast googleplay description")
-            prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isFalse()
+            prop(FakePodcastGoogleplayBuilder::explicit).isNotNull().isEqualTo(ExplicitType.NO)
             prop(FakePodcastGoogleplayBuilder::block).isNotNull().isFalse()
             prop(FakePodcastGoogleplayBuilder::imageBuilder).isEqualTo(expectedPodcastImageBuilder)
             prop(FakePodcastGoogleplayBuilder::newFeedUrl).isEqualTo("podcast googleplay newFeedUrl")
