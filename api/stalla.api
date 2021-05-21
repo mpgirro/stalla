@@ -419,6 +419,7 @@ public abstract interface class dev/stalla/builder/podcast/PodcastGoogleplayBuil
 	public abstract fun description (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 	public abstract fun email (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 	public abstract fun explicit (Ljava/lang/Boolean;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public abstract fun explicitType (Ldev/stalla/model/googleplay/ExplicitType;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 	public abstract fun imageBuilder (Ldev/stalla/builder/HrefOnlyImageBuilder;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 	public abstract fun newFeedUrl (Ljava/lang/String;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 }
@@ -426,6 +427,7 @@ public abstract interface class dev/stalla/builder/podcast/PodcastGoogleplayBuil
 public final class dev/stalla/builder/podcast/PodcastGoogleplayBuilder$DefaultImpls {
 	public static fun addAllCategories (Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;Ljava/util/List;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 	public static fun applyFrom (Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;Ldev/stalla/model/googleplay/PodcastGoogleplay;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
+	public static fun explicit (Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;Ljava/lang/Boolean;)Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 }
 
 public abstract interface class dev/stalla/builder/podcast/PodcastItunesBuilder : dev/stalla/builder/Builder {
@@ -1035,19 +1037,19 @@ public final class dev/stalla/model/googleplay/GoogleplayCategory$Factory : dev/
 
 public final class dev/stalla/model/googleplay/PodcastGoogleplay {
 	public static final field Factory Ldev/stalla/model/googleplay/PodcastGoogleplay$Factory;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public static fun builder ()Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/util/List;
 	public final fun component4 ()Ljava/lang/String;
-	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun component5 ()Ldev/stalla/model/googleplay/ExplicitType;
 	public final fun component6 ()Z
 	public final fun component7 ()Ldev/stalla/model/HrefOnlyImage;
 	public final fun component8 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;)Ldev/stalla/model/googleplay/PodcastGoogleplay;
-	public static synthetic fun copy$default (Ldev/stalla/model/googleplay/PodcastGoogleplay;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/googleplay/PodcastGoogleplay;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;)Ldev/stalla/model/googleplay/PodcastGoogleplay;
+	public static synthetic fun copy$default (Ldev/stalla/model/googleplay/PodcastGoogleplay;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILjava/lang/Object;)Ldev/stalla/model/googleplay/PodcastGoogleplay;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAuthor ()Ljava/lang/String;
 	public final fun getBlock ()Z
@@ -1055,6 +1057,7 @@ public final class dev/stalla/model/googleplay/PodcastGoogleplay {
 	public final fun getDescription ()Ljava/lang/String;
 	public final fun getEmail ()Ljava/lang/String;
 	public final fun getExplicit ()Ljava/lang/Boolean;
+	public final fun getExplicitType ()Ldev/stalla/model/googleplay/ExplicitType;
 	public final fun getImage ()Ldev/stalla/model/HrefOnlyImage;
 	public final fun getNewFeedUrl ()Ljava/lang/String;
 	public fun hashCode ()I
