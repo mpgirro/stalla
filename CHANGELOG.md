@@ -3,11 +3,14 @@
 ## v1.1.0 (under development)
 
 * Add support for PodcastIndex namespace phase 2 tags
+* Use `ExplicitType` for the Google Play `explicit` attribute at the `Podcast` level, too (see API changes table below)
 
 ### Notable API changes
 
 All API changes are subject to deprecation, with automatic migrations provided. Deprecated properties will be removed entirely in a future release —
 refer to the table below, and the properties themselves for the removal schedule.
+
+The APIs that have been changed or deprecated since v1.0.0 are:
 
 API that has changed | What has changed | Notes
  --- | --- | ---
