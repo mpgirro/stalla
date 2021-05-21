@@ -5,15 +5,17 @@
 * Add support for PodcastIndex namespace phase 2 tags
 
 ### Notable API changes
-All API changes are subject to deprecation, with automatic migrations provided.
-Deprecated properties will be removed entirely in a future release — refer to the table below, and the properties themselves for the removal schedule.
+
+All API changes are subject to deprecation, with automatic migrations provided. Deprecated properties will be removed entirely in a future release —
+refer to the table below, and the properties themselves for the removal schedule.
 
 API that has changed | What has changed | Notes
  --- | --- | ---
-`PodcastBuilder.podcastPodcastindexBuilder` | Renamed to `podcastindexBuilder` | Scheduled for removal in v2.0.0.
 `MediaType.match(MediaType?)` | Renamed to `matches(MediaType?)` | Scheduled for removal in v2.0.0.
 `MediaType.match(String)` | Renamed to `matches(String)` | Scheduled for removal in v2.0.0.
-`PodcastGoogleplay.explicit` | Renamed to `explicitType`, type changed to `ExplicitType` | The `explicit` property type will be removed in v2.0.0, and the `explicitType` property will be renamed to `explicit`.
+`PodcastBuilder.podcastPodcastindexBuilder` | Renamed to `podcastindexBuilder` | Scheduled for removal in v2.0.0.
+`PodcastGoogleplay.explicit` | Renamed to `explicitType`, type changed to `ExplicitType` | The `explicit` property type is scheduled for removal in v2.0.0, and the `explicitType` property will be renamed to `explicit`.
+`PodcastGoogleplay(..., explicit, ...)` | Replaced `explicit` parameter with `explicitType` | The `explicit`-based constructor type is scheduled for removal in v2.0.0.
 
 ## v1.0.0
 

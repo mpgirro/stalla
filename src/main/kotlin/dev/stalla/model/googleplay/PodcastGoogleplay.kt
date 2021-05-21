@@ -37,11 +37,30 @@ public data class PodcastGoogleplay(
     val newFeedUrl: String? = null
 ) {
 
+    @Deprecated(
+        message = "Use the new constructor taking explicitType instead. This constructor is scheduled for removal in v2.0.0.",
+        replaceWith = ReplaceWith(
+            "PodcastGoogleplay(author, email, categories, description, if (explicit) ExplicitType.YES else ExplicitType.NO, block, image, " +
+                "newFeedUrl)",
+            "dev.stalla.model.googleplay.ExplicitType"
+        )
+    )
+    public constructor(
+        author: String? = null,
+        email: String? = null,
+        categories: List<GoogleplayCategory>,
+        description: String? = null,
+        explicit: Boolean? = null,
+        block: Boolean,
+        image: HrefOnlyImage? = null,
+        newFeedUrl: String? = null
+    ) : this(author, email, categories, description, explicit?.let { if (it) ExplicitType.YES else ExplicitType.NO }, block, image, newFeedUrl)
+
     /** The logical value of the `<googleplay:explicit>` element text content.  */
     @Deprecated(
         message = "The explicit property is deprecated. Please migrate to the explicitType property, which will be renamed to 'explicit' once " +
             "this property is removed. This property is scheduled for removal in v2.0.0.",
-        replaceWith = ReplaceWith("explicitType")
+        replaceWith = ReplaceWith("explicitType == ExplicitType.YES", "dev.stalla.model.googleplay.ExplicitType")
     )
     val explicit: Boolean? = explicitType?.let { it == ExplicitType.YES }
 

@@ -1039,6 +1039,8 @@ public final class dev/stalla/model/googleplay/PodcastGoogleplay {
 	public static final field Factory Ldev/stalla/model/googleplay/PodcastGoogleplay$Factory;
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ldev/stalla/model/googleplay/ExplicitType;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/Boolean;ZLdev/stalla/model/HrefOnlyImage;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public static fun builder ()Ldev/stalla/builder/podcast/PodcastGoogleplayBuilder;
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
