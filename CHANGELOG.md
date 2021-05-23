@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v1.1.0 (under development)
+
+* Add support for PodcastIndex namespace phase 2 tags
+* Some APIs have been renamed and their old version has been deprecated (see API changes table below)
+
+### Notable API changes
+
+All API changes are subject to deprecation, with automatic migrations provided. Deprecated properties will be removed entirely in a future release —
+refer to the table below, and the properties themselves for the removal schedule.
+
+The APIs that have been changed or deprecated since v1.0.0 are:
+
+API that has changed | What has changed | Notes
+ --- | --- | ---
+`MediaType.match(MediaType?)` | Renamed to `matches(MediaType?)` | Scheduled for removal in v2.0.0.
+`MediaType.match(String)` | Renamed to `matches(String)` | Scheduled for removal in v2.0.0.
+`PodcastBuilder.podcastPodcastindexBuilder` | Renamed to `podcastindexBuilder` | Scheduled for removal in v2.0.0.
+
 ## v1.0.0
 
 * Refactor model structure (no inner classes) into separate classes and packages
