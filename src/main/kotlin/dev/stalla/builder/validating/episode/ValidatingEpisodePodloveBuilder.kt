@@ -32,4 +32,17 @@ internal class ValidatingEpisodePodloveBuilder : EpisodePodloveBuilder {
             simpleChapters = chapterBuilders.mapNotNull { it.build() }.asUnmodifiable()
         )
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingEpisodePodloveBuilder) return false
+
+        if (chapterBuilders != other.chapterBuilders) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int = chapterBuilders.hashCode()
+
+    override fun toString(): String = "ValidatingEpisodePodloveBuilder(chapterBuilders=$chapterBuilders)"
 }

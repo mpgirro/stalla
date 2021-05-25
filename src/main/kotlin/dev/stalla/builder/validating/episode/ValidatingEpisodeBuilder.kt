@@ -24,6 +24,8 @@ import dev.stalla.builder.validating.ValidatingAtomPersonBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
+import dev.stalla.builder.validating.checkRequiredProperty
+import dev.stalla.builder.validating.checkRequiredValue
 import dev.stalla.model.Episode
 import dev.stalla.util.InternalAPI
 import dev.stalla.util.asUnmodifiable
@@ -32,8 +34,8 @@ import java.time.temporal.TemporalAccessor
 @InternalAPI
 internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
-    private lateinit var titleValue: String
-    private lateinit var enclosureBuilderValue: EpisodeEnclosureBuilder
+    private var title: String? = null
+    private var enclosureBuilder: EpisodeEnclosureBuilder? = null
 
     private var link: String? = null
     private var description: String? = null
@@ -58,7 +60,7 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
 
     override val podcastindexBuilder: EpisodePodcastindexBuilder = ValidatingEpisodePodcastindexBuilder()
 
-    override fun title(title: String): EpisodeBuilder = apply { this.titleValue = title }
+    override fun title(title: String): EpisodeBuilder = apply { this.title = title }
 
     override fun link(link: String?): EpisodeBuilder = apply { this.link = link }
 
@@ -72,7 +74,7 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
     override fun comments(comments: String?): EpisodeBuilder = apply { this.comments = comments }
 
     override fun enclosureBuilder(enclosureBuilder: EpisodeEnclosureBuilder): EpisodeBuilder =
-        apply { this.enclosureBuilderValue = enclosureBuilder }
+        apply { this.enclosureBuilder = enclosureBuilder }
 
     override fun guidBuilder(guidBuilder: EpisodeGuidBuilder?): EpisodeBuilder =
         apply { this.guidBuilder = guidBuilder }
@@ -106,9 +108,7 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
         ValidatingEpisodePodcastindexSoundbiteBuilder()
 
     override val hasEnoughDataToBuild: Boolean
-        get() = ::titleValue.isInitialized &&
-            ::enclosureBuilderValue.isInitialized &&
-            enclosureBuilderValue.hasEnoughDataToBuild
+        get() = title != null && enclosureBuilder?.hasEnoughDataToBuild == true
 
     override fun build(): Episode? {
         if (!hasEnoughDataToBuild) {
@@ -116,14 +116,13 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
         }
 
         return Episode(
-            title = titleValue,
+            title = checkRequiredProperty(::title),
             link = link,
             description = description,
             author = author,
             categories = categoryBuilders.mapNotNull { it.build() }.asUnmodifiable(),
             comments = comments,
-            enclosure = enclosureBuilderValue.build()
-                ?: error("Cannot build the enclosure, while hasEnoughDataToBuild == true"),
+            enclosure = checkRequiredValue(enclosureBuilder?.build(), "enclosure incomplete"),
             guid = guidBuilder?.build(),
             pubDate = pubDate,
             source = source,
@@ -136,4 +135,57 @@ internal class ValidatingEpisodeBuilder : ProvidingEpisodeBuilder {
             podcastindex = podcastindexBuilder.build()
         )
     }
+
+    @Suppress("ComplexMethod") // It's an equals
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingEpisodeBuilder) return false
+
+        if (title != other.title) return false
+        if (enclosureBuilder != other.enclosureBuilder) return false
+        if (link != other.link) return false
+        if (description != other.description) return false
+        if (author != other.author) return false
+        if (categoryBuilders != other.categoryBuilders) return false
+        if (comments != other.comments) return false
+        if (guidBuilder != other.guidBuilder) return false
+        if (pubDate != other.pubDate) return false
+        if (source != other.source) return false
+        if (contentBuilder != other.contentBuilder) return false
+        if (itunesBuilder != other.itunesBuilder) return false
+        if (atomBuilder != other.atomBuilder) return false
+        if (podloveBuilder != other.podloveBuilder) return false
+        if (googleplayBuilder != other.googleplayBuilder) return false
+        if (bitloveBuilder != other.bitloveBuilder) return false
+        if (podcastindexBuilder != other.podcastindexBuilder) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = title.hashCode()
+        result = 31 * result + enclosureBuilder.hashCode()
+        result = 31 * result + (link?.hashCode() ?: 0)
+        result = 31 * result + (description?.hashCode() ?: 0)
+        result = 31 * result + (author?.hashCode() ?: 0)
+        result = 31 * result + categoryBuilders.hashCode()
+        result = 31 * result + (comments?.hashCode() ?: 0)
+        result = 31 * result + (guidBuilder?.hashCode() ?: 0)
+        result = 31 * result + (pubDate?.hashCode() ?: 0)
+        result = 31 * result + (source?.hashCode() ?: 0)
+        result = 31 * result + contentBuilder.hashCode()
+        result = 31 * result + itunesBuilder.hashCode()
+        result = 31 * result + atomBuilder.hashCode()
+        result = 31 * result + podloveBuilder.hashCode()
+        result = 31 * result + googleplayBuilder.hashCode()
+        result = 31 * result + bitloveBuilder.hashCode()
+        result = 31 * result + podcastindexBuilder.hashCode()
+        return result
+    }
+
+    override fun toString(): String =
+        "ValidatingEpisodeBuilder(title='$title', enclosureBuilder=$enclosureBuilder, link=$link, description=$description, author=$author, " +
+            "categoryBuilders=$categoryBuilders, comments=$comments, guidBuilder=$guidBuilder, pubDate=$pubDate, source=$source, " +
+            "contentBuilder=$contentBuilder, itunesBuilder=$itunesBuilder, atomBuilder=$atomBuilder, podloveBuilder=$podloveBuilder, " +
+            "googleplayBuilder=$googleplayBuilder, bitloveBuilder=$bitloveBuilder, podcastindexBuilder=$podcastindexBuilder)"
 }

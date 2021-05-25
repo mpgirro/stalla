@@ -43,4 +43,29 @@ internal class ValidatingEpisodeGoogleplayBuilder : EpisodeGoogleplayBuilder {
             image = imageBuilder?.build()
         )
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingEpisodeGoogleplayBuilder) return false
+
+        if (author != other.author) return false
+        if (description != other.description) return false
+        if (explicit != other.explicit) return false
+        if (block != other.block) return false
+        if (imageBuilder != other.imageBuilder) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = author?.hashCode() ?: 0
+        result = 31 * result + (description?.hashCode() ?: 0)
+        result = 31 * result + (explicit?.hashCode() ?: 0)
+        result = 31 * result + block.hashCode()
+        result = 31 * result + (imageBuilder?.hashCode() ?: 0)
+        return result
+    }
+
+    override fun toString(): String =
+        "ValidatingEpisodeGoogleplayBuilder(author=$author, description=$description, explicit=$explicit, block=$block, imageBuilder=$imageBuilder)"
 }
