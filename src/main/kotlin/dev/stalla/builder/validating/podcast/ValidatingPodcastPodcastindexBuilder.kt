@@ -12,7 +12,7 @@ import dev.stalla.util.asUnmodifiable
 @InternalAPI
 internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder {
 
-    private lateinit var lockedBuilderValue: PodcastPodcastindexLockedBuilder
+    private var lockedBuilderValue: PodcastPodcastindexLockedBuilder? = null
     private var locationBuilder: PodcastindexLocationBuilder? = null
     private val fundingBuilders: MutableList<PodcastPodcastindexFundingBuilder> = mutableListOf()
     private val personBuilders: MutableList<PodcastindexPersonBuilder> = mutableListOf()
@@ -30,7 +30,7 @@ internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder
         apply { this.locationBuilder = locationBuilder }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = ::lockedBuilderValue.isInitialized && lockedBuilderValue.hasEnoughDataToBuild ||
+        get() = lockedBuilderValue?.hasEnoughDataToBuild == true ||
             fundingBuilders.any { it.hasEnoughDataToBuild } ||
             personBuilders.any { it.hasEnoughDataToBuild } ||
             locationBuilder?.hasEnoughDataToBuild == true
@@ -39,10 +39,29 @@ internal class ValidatingPodcastPodcastindexBuilder : PodcastPodcastindexBuilder
         if (!hasEnoughDataToBuild) return null
 
         return PodcastPodcastindex(
-            locked = if (::lockedBuilderValue.isInitialized) lockedBuilderValue.build() else null,
+            locked = lockedBuilderValue?.build(),
             funding = fundingBuilders.mapNotNull { it.build() }.asUnmodifiable(),
             persons = personBuilders.mapNotNull { it.build() }.asUnmodifiable(),
             location = locationBuilder?.build()
         )
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingPodcastPodcastindexBuilder) return false
+
+        if (lockedBuilderValue != other.lockedBuilderValue) return false
+        if (fundingBuilders != other.fundingBuilders) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = lockedBuilderValue.hashCode()
+        result = 31 * result + fundingBuilders.hashCode()
+        return result
+    }
+
+    override fun toString(): String =
+        "ValidatingPodcastPodcastindexBuilder(lockedBuilder=$lockedBuilderValue, fundingBuilders=$fundingBuilders)"
 }

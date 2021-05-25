@@ -8,7 +8,7 @@ import dev.stalla.util.InternalAPI
 @InternalAPI
 internal class ValidatingLinkBuilder : LinkBuilder {
 
-    private lateinit var hrefValue: String
+    private var href: String? = null
 
     private var hrefLang: String? = null
     private var hrefResolved: String? = null
@@ -17,7 +17,7 @@ internal class ValidatingLinkBuilder : LinkBuilder {
     private var title: String? = null
     private var type: MediaType? = null
 
-    override fun href(href: String): LinkBuilder = apply { this.hrefValue = href }
+    override fun href(href: String): LinkBuilder = apply { this.href = href }
 
     override fun hrefLang(hrefLang: String?): LinkBuilder = apply { this.hrefLang = hrefLang }
 
@@ -32,7 +32,7 @@ internal class ValidatingLinkBuilder : LinkBuilder {
     override fun type(type: MediaType?): LinkBuilder = apply { this.type = type }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = ::hrefValue.isInitialized
+        get() = href != null
 
     override fun build(): Link? {
         if (!hasEnoughDataToBuild) {
@@ -40,7 +40,7 @@ internal class ValidatingLinkBuilder : LinkBuilder {
         }
 
         return Link(
-            href = hrefValue,
+            href = checkRequiredProperty(::href),
             hrefLang = hrefLang,
             hrefResolved = hrefResolved,
             length = length,
@@ -49,4 +49,34 @@ internal class ValidatingLinkBuilder : LinkBuilder {
             type = type
         )
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingLinkBuilder) return false
+
+        if (href != other.href) return false
+        if (hrefLang != other.hrefLang) return false
+        if (hrefResolved != other.hrefResolved) return false
+        if (length != other.length) return false
+        if (rel != other.rel) return false
+        if (title != other.title) return false
+        if (type != other.type) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = href.hashCode()
+        result = 31 * result + (hrefLang?.hashCode() ?: 0)
+        result = 31 * result + (hrefResolved?.hashCode() ?: 0)
+        result = 31 * result + (length?.hashCode() ?: 0)
+        result = 31 * result + (rel?.hashCode() ?: 0)
+        result = 31 * result + (title?.hashCode() ?: 0)
+        result = 31 * result + (type?.hashCode() ?: 0)
+        return result
+    }
+
+    override fun toString(): String =
+        "ValidatingLinkBuilder(href='$href', hrefLang=$hrefLang, hrefResolved=$hrefResolved, length=$length, rel=$rel, title=$title, " +
+            "type=$type)"
 }

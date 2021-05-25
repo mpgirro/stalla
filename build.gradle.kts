@@ -30,7 +30,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "1.4.31"
+    kotlin("jvm") version "1.4.32"
     id("org.jetbrains.dokka") version "1.4.30"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.4.0"
     id("jacoco")

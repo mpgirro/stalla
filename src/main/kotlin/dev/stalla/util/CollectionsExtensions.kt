@@ -21,29 +21,29 @@ import java.util.Collections
 /** Transforms this list into a list of [RssCategoryBuilder]. */
 @InternalAPI
 @JvmName("asRssCategoryBuilders")
-internal fun List<RssCategory>.asBuilders(): List<RssCategoryBuilder> = map(RssCategory.builder()::applyFrom)
+internal fun List<RssCategory>.asBuilders(): List<RssCategoryBuilder> = map { RssCategory.builder().applyFrom(it) }
 
 /** Transforms this list into a list of [EpisodeEnclosureBuilder]. */
 @InternalAPI
 @JvmName("asEnclosureBuilders")
-internal fun List<Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = map(Enclosure.builder()::applyFrom)
+internal fun List<Enclosure>.asBuilders(): List<EpisodeEnclosureBuilder> = map { Enclosure.builder().applyFrom(it) }
 
 /** Transforms this list into a list of [EpisodePodcastindexSoundbiteBuilder]. */
 @InternalAPI
 @JvmName("asSoundbiteBuilders")
 internal fun List<Soundbite>.asBuilders(): List<EpisodePodcastindexSoundbiteBuilder> =
-    map(Soundbite.builder()::applyFrom)
+    map { Soundbite.builder().applyFrom(it) }
 
 /** Transforms this list into a list of [EpisodePodcastindexTranscriptBuilder]. */
 @InternalAPI
 @JvmName("asTranscriptBuilders")
 internal fun List<Transcript>.asBuilders(): List<EpisodePodcastindexTranscriptBuilder> =
-    map(Transcript.builder()::applyFrom)
+    map { Transcript.builder().applyFrom(it) }
 
 /** Transforms this list into a list of [PodcastPodcastindexFundingBuilder]. */
 @InternalAPI
 @JvmName("asFundingBuilders")
-internal fun List<Funding>.asBuilders(): List<PodcastPodcastindexFundingBuilder> = map(Funding.builder()::applyFrom)
+internal fun List<Funding>.asBuilders(): List<PodcastPodcastindexFundingBuilder> = map { Funding.builder().applyFrom(it) }
 
 /** Transforms this list into a list of [PodcastindexPersonBuilder]. */
 @InternalAPI
@@ -54,12 +54,12 @@ internal fun List<PodcastindexPerson>.asBuilders(): List<PodcastindexPersonBuild
 @InternalAPI
 @JvmName("asSimpleChapterBuilders")
 internal fun List<SimpleChapter>.asBuilders(): List<EpisodePodloveSimpleChapterBuilder> =
-    map(SimpleChapter.builder()::applyFrom)
+    map { SimpleChapter.builder().applyFrom(it) }
 
 /** Transforms this list into a list of [EpisodeBuilder]. */
 @InternalAPI
 @JvmName("asEpisodeBuilders")
-internal fun List<Episode>.asBuilders(): List<EpisodeBuilder> = map(Episode.builder()::applyFrom)
+internal fun List<Episode>.asBuilders(): List<EpisodeBuilder> = map { Episode.builder().applyFrom(it) }
 
 /** Returns an unmodifiable view of this list. */
 @InternalAPI

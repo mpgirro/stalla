@@ -62,4 +62,36 @@ internal class ValidatingPodcastGoogleplayBuilder : PodcastGoogleplayBuilder {
             newFeedUrl = newFeedUrl
         )
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingPodcastGoogleplayBuilder) return false
+
+        if (author != other.author) return false
+        if (email != other.email) return false
+        if (categories != other.categories) return false
+        if (description != other.description) return false
+        if (explicit != other.explicit) return false
+        if (block != other.block) return false
+        if (imageBuilder != other.imageBuilder) return false
+        if (newFeedUrl != other.newFeedUrl) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = author?.hashCode() ?: 0
+        result = 31 * result + (email?.hashCode() ?: 0)
+        result = 31 * result + categories.hashCode()
+        result = 31 * result + (description?.hashCode() ?: 0)
+        result = 31 * result + (explicit?.hashCode() ?: 0)
+        result = 31 * result + block.hashCode()
+        result = 31 * result + (imageBuilder?.hashCode() ?: 0)
+        result = 31 * result + (newFeedUrl?.hashCode() ?: 0)
+        return result
+    }
+
+    override fun toString(): String =
+        "ValidatingPodcastGoogleplayBuilder(author=$author, email=$email, categories=$categories, description=$description, explicit=$explicit, " +
+            "block=$block, imageBuilder=$imageBuilder, newFeedUrl=$newFeedUrl)"
 }

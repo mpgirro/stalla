@@ -7,18 +7,31 @@ import dev.stalla.util.InternalAPI
 @InternalAPI
 internal class ValidatingHrefOnlyImageBuilder : HrefOnlyImageBuilder {
 
-    private lateinit var hrefValue: String
+    private var href: String? = null
 
-    override fun href(href: String): HrefOnlyImageBuilder = apply { this.hrefValue = href }
+    override fun href(href: String): HrefOnlyImageBuilder = apply { this.href = href }
 
     override val hasEnoughDataToBuild: Boolean
-        get() = ::hrefValue.isInitialized
+        get() = href != null
 
     override fun build(): HrefOnlyImage? {
         if (!hasEnoughDataToBuild) {
             return null
         }
 
-        return HrefOnlyImage(href = hrefValue)
+        return HrefOnlyImage(href = checkRequiredProperty(::href))
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingHrefOnlyImageBuilder) return false
+
+        if (href != other.href) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int = href.hashCode()
+
+    override fun toString(): String = "ValidatingHrefOnlyImageBuilder(href='$href')"
 }

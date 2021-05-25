@@ -52,12 +52,12 @@ internal class ValidatingEpisodePodcastindexBuilder : EpisodePodcastindexBuilder
 
     override val hasEnoughDataToBuild: Boolean
         get() = chaptersBuilder?.hasEnoughDataToBuild == true ||
-            transcriptBuilders.any { it.hasEnoughDataToBuild } ||
-            soundbiteBuilders.any { it.hasEnoughDataToBuild } ||
-            personBuilders.any { it.hasEnoughDataToBuild } ||
             locationBuilder?.hasEnoughDataToBuild == true ||
             seasonBuilder?.hasEnoughDataToBuild == true ||
-            episodeBuilder?.hasEnoughDataToBuild == true
+            episodeBuilder?.hasEnoughDataToBuild == true ||
+            transcriptBuilders.any { it.hasEnoughDataToBuild } ||
+            soundbiteBuilders.any { it.hasEnoughDataToBuild } ||
+            personBuilders.any { it.hasEnoughDataToBuild }
 
     override fun build(): EpisodePodcastindex? {
         if (!hasEnoughDataToBuild) return null
@@ -72,4 +72,35 @@ internal class ValidatingEpisodePodcastindexBuilder : EpisodePodcastindexBuilder
             episode = episodeBuilder?.build()
         )
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingEpisodePodcastindexBuilder) return false
+
+        if (chaptersBuilder != other.chaptersBuilder) return false
+        if (locationBuilder != other.locationBuilder) return false
+        if (seasonBuilder != other.seasonBuilder) return false
+        if (episodeBuilder != other.episodeBuilder) return false
+        if (transcriptBuilders != other.transcriptBuilders) return false
+        if (soundbiteBuilders != other.soundbiteBuilders) return false
+        if (personBuilders != other.personBuilders) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = chaptersBuilder?.hashCode() ?: 0
+        result = 31 * result + (locationBuilder?.hashCode() ?: 0)
+        result = 31 * result + (seasonBuilder?.hashCode() ?: 0)
+        result = 31 * result + (episodeBuilder?.hashCode() ?: 0)
+        result = 31 * result + transcriptBuilders.hashCode()
+        result = 31 * result + soundbiteBuilders.hashCode()
+        result = 31 * result + personBuilders.hashCode()
+        return result
+    }
+
+    override fun toString(): String =
+        "ValidatingEpisodePodcastindexBuilder(chaptersBuilder=$chaptersBuilder, locationBuilder=$locationBuilder, seasonBuilder=$seasonBuilder, " +
+            "episodeBuilder=$episodeBuilder, transcriptBuilders=$transcriptBuilders, soundbiteBuilders=$soundbiteBuilders, " +
+            "personBuilders=$personBuilders)"
 }
