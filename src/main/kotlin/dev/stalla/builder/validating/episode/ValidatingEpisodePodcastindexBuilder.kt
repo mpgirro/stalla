@@ -46,4 +46,26 @@ internal class ValidatingEpisodePodcastindexBuilder : EpisodePodcastindexBuilder
             chapters = chaptersBuilderValue?.build()
         )
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingEpisodePodcastindexBuilder) return false
+
+        if (chaptersBuilderValue != other.chaptersBuilderValue) return false
+        if (transcriptBuilders != other.transcriptBuilders) return false
+        if (soundbiteBuilders != other.soundbiteBuilders) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = chaptersBuilderValue?.hashCode() ?: 0
+        result = 31 * result + transcriptBuilders.hashCode()
+        result = 31 * result + soundbiteBuilders.hashCode()
+        return result
+    }
+
+    override fun toString(): String =
+        "ValidatingEpisodePodcastindexBuilder(chaptersBuilderValue=$chaptersBuilderValue, transcriptBuilders=$transcriptBuilders, " +
+            "soundbiteBuilders=$soundbiteBuilders)"
 }

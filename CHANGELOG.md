@@ -1,9 +1,13 @@
 # CHANGELOG
 
-## v1.1.0 (under development)
+## v1.1.0
 
-* Add support for PodcastIndex namespace phase 2 tags
-* Some APIs have been renamed and their old version has been deprecated (see API changes table below)
+* Add support for PodcastIndex namespace
+  [phase 2 tags](https://github.com/Podcastindex-org/podcast-namespace/blob/4b7e66f/README.md#phase-2-closed-on-13121)
+* Fix a major bug: the `asBuilders()` extension functions were returning lists with a single builder repeated, instead of a distinct builder per item
+  of the source list
+* Builders implement `equals()`, `hashCode()` and `toString()`
+* Some APIs have been renamed, and their old version has been deprecated (see API changes table below)
 
 ### Notable API changes
 
@@ -30,7 +34,7 @@ API that has changed | What has changed | Notes
 * Adds feed writing support
 * Adds additional elements for RSS and iTunes namespace
 * Adds support for Podcastindex namespace
-* Adds a huge amount of unit tests
+* Adds a huge number of unit tests
 * Adds builder factory methods to model companion objects
 * Changes to java.time representation
 
@@ -53,7 +57,8 @@ API that has changed | What has changed | Notes
 ## v0.5.1
 
 * Fixes the URI for the Podlove Simple Chapter namespace.
-* Adds [Travis-CI](https://travis-ci.org/mpgirro/wien), [Codacy](https://app.codacy.com/project/mpgirro/wien), and [CodeCov](https://codecov.io/gh/mpgirro/wien) setup.
+* Adds [Travis-CI](https://travis-ci.org/mpgirro/wien), [Codacy](https://app.codacy.com/project/mpgirro/wien),
+  and [CodeCov](https://codecov.io/gh/mpgirro/wien) setup.
 
 ## v0.5.0
 

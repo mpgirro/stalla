@@ -3,6 +3,8 @@ package dev.stalla.builder.validating.podcast
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.podcast.PodcastItunesBuilder
 import dev.stalla.builder.podcast.PodcastItunesOwnerBuilder
+import dev.stalla.builder.validating.checkRequiredProperty
+import dev.stalla.builder.validating.checkRequiredValue
 import dev.stalla.model.itunes.ItunesCategory
 import dev.stalla.model.itunes.PodcastItunes
 import dev.stalla.model.itunes.ShowType
@@ -12,7 +14,7 @@ import dev.stalla.util.asUnmodifiable
 @InternalAPI
 internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
 
-    private lateinit var imageBuilderValue: HrefOnlyImageBuilder
+    private var imageBuilderValue: HrefOnlyImageBuilder? = null
     private var explicit: Boolean? = null
 
     private var subtitle: String? = null
@@ -57,8 +59,7 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
 
     override val hasEnoughDataToBuild: Boolean
         get() = explicit != null && categories.isNotEmpty() &&
-            ::imageBuilderValue.isInitialized &&
-            imageBuilderValue.hasEnoughDataToBuild
+            imageBuilderValue?.hasEnoughDataToBuild == true
 
     override fun build(): PodcastItunes? {
         if (!hasEnoughDataToBuild) {
@@ -68,12 +69,11 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
         return PodcastItunes(
             subtitle = subtitle,
             summary = summary,
-            image = imageBuilderValue.build(),
+            image = checkRequiredValue(imageBuilderValue?.build(), "image is missing"),
             keywords = keywords,
             author = author,
             categories = categories.asUnmodifiable(),
-            explicit = explicit
-                ?: error("The explicit flag is not set, while hasEnoughDataToBuild == true"),
+            explicit = checkRequiredProperty(::explicit),
             block = block,
             complete = complete,
             type = type,
@@ -82,4 +82,48 @@ internal class ValidatingPodcastItunesBuilder : PodcastItunesBuilder {
             newFeedUrl = newFeedUrl
         )
     }
+
+    @Suppress("ComplexMethod") // It's an equals
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingPodcastItunesBuilder) return false
+
+        if (imageBuilderValue != other.imageBuilderValue) return false
+        if (explicit != other.explicit) return false
+        if (subtitle != other.subtitle) return false
+        if (summary != other.summary) return false
+        if (keywords != other.keywords) return false
+        if (author != other.author) return false
+        if (categories != other.categories) return false
+        if (block != other.block) return false
+        if (complete != other.complete) return false
+        if (type != other.type) return false
+        if (ownerBuilder != other.ownerBuilder) return false
+        if (title != other.title) return false
+        if (newFeedUrl != other.newFeedUrl) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = imageBuilderValue.hashCode()
+        result = 31 * result + (explicit?.hashCode() ?: 0)
+        result = 31 * result + (subtitle?.hashCode() ?: 0)
+        result = 31 * result + (summary?.hashCode() ?: 0)
+        result = 31 * result + (keywords?.hashCode() ?: 0)
+        result = 31 * result + (author?.hashCode() ?: 0)
+        result = 31 * result + categories.hashCode()
+        result = 31 * result + block.hashCode()
+        result = 31 * result + complete.hashCode()
+        result = 31 * result + (type?.hashCode() ?: 0)
+        result = 31 * result + (ownerBuilder?.hashCode() ?: 0)
+        result = 31 * result + (title?.hashCode() ?: 0)
+        result = 31 * result + (newFeedUrl?.hashCode() ?: 0)
+        return result
+    }
+
+    override fun toString(): String =
+        "ValidatingPodcastItunesBuilder(imageBuilderValue=$imageBuilderValue, explicit=$explicit, subtitle=$subtitle, summary=$summary, " +
+            "keywords=$keywords, author=$author, categories=$categories, block=$block, complete=$complete, type=$type, " +
+            "ownerBuilder=$ownerBuilder, title=$title, newFeedUrl=$newFeedUrl)"
 }

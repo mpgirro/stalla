@@ -23,6 +23,7 @@ import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
+import dev.stalla.builder.validating.checkRequiredProperty
 import dev.stalla.model.Podcast
 import dev.stalla.util.InternalAPI
 import dev.stalla.util.asUnmodifiable
@@ -32,10 +33,10 @@ import java.util.Locale
 @InternalAPI
 internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
-    private lateinit var titleValue: String
-    private lateinit var linkValue: String
-    private lateinit var descriptionValue: String
-    private lateinit var languageValue: Locale
+    private var title: String? = null
+    private var link: String? = null
+    private var description: String? = null
+    private var language: Locale? = null
 
     private var pubDate: TemporalAccessor? = null
     private var lastBuildDate: TemporalAccessor? = null
@@ -62,18 +63,18 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     override val podcastPodcastindexBuilder: PodcastPodcastindexBuilder = ValidatingPodcastPodcastindexBuilder()
 
-    override fun title(title: String): PodcastBuilder = apply { this.titleValue = title }
+    override fun title(title: String): PodcastBuilder = apply { this.title = title }
 
-    override fun link(link: String): PodcastBuilder = apply { this.linkValue = link }
+    override fun link(link: String): PodcastBuilder = apply { this.link = link }
 
-    override fun description(description: String): PodcastBuilder = apply { this.descriptionValue = description }
+    override fun description(description: String): PodcastBuilder = apply { this.description = description }
 
     override fun pubDate(pubDate: TemporalAccessor?): PodcastBuilder = apply { this.pubDate = pubDate }
 
     override fun lastBuildDate(lastBuildDate: TemporalAccessor?): PodcastBuilder =
         apply { this.lastBuildDate = lastBuildDate }
 
-    override fun language(language: Locale): PodcastBuilder = apply { this.languageValue = language }
+    override fun language(language: Locale): PodcastBuilder = apply { this.language = language }
 
     override fun generator(generator: String?): PodcastBuilder = apply { this.generator = generator }
 
@@ -117,8 +118,8 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     override val hasEnoughDataToBuild: Boolean
         get() = episodeBuilders.any { it.hasEnoughDataToBuild } &&
-            ::titleValue.isInitialized && ::descriptionValue.isInitialized &&
-            ::linkValue.isInitialized && ::languageValue.isInitialized
+            title != null && description != null &&
+            link != null && language != null
 
     override fun build(): Podcast? {
         if (!hasEnoughDataToBuild) {
@@ -126,12 +127,12 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
         }
 
         return Podcast(
-            title = titleValue,
-            link = linkValue,
-            description = descriptionValue,
+            title = checkRequiredProperty(::title),
+            link = checkRequiredProperty(::link),
+            description = checkRequiredProperty(::description),
             pubDate = pubDate,
             lastBuildDate = lastBuildDate,
-            language = languageValue,
+            language = checkRequiredProperty(::language),
             generator = generator,
             copyright = copyright,
             docs = docs,
@@ -149,4 +150,66 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
             podcastindex = podcastPodcastindexBuilder.build()
         )
     }
+
+    @Suppress("ComplexMethod") // It's an equals
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ValidatingPodcastBuilder) return false
+
+        if (title != other.title) return false
+        if (link != other.link) return false
+        if (description != other.description) return false
+        if (language != other.language) return false
+        if (pubDate != other.pubDate) return false
+        if (lastBuildDate != other.lastBuildDate) return false
+        if (generator != other.generator) return false
+        if (copyright != other.copyright) return false
+        if (docs != other.docs) return false
+        if (managingEditor != other.managingEditor) return false
+        if (webMaster != other.webMaster) return false
+        if (ttl != other.ttl) return false
+        if (imageBuilder != other.imageBuilder) return false
+        if (categoryBuilders != other.categoryBuilders) return false
+        if (episodeBuilders != other.episodeBuilders) return false
+        if (itunesBuilder != other.itunesBuilder) return false
+        if (atomBuilder != other.atomBuilder) return false
+        if (fyydBuilder != other.fyydBuilder) return false
+        if (feedpressBuilder != other.feedpressBuilder) return false
+        if (googleplayBuilder != other.googleplayBuilder) return false
+        if (podcastPodcastindexBuilder != other.podcastPodcastindexBuilder) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = title.hashCode()
+        result = 31 * result + link.hashCode()
+        result = 31 * result + description.hashCode()
+        result = 31 * result + language.hashCode()
+        result = 31 * result + (pubDate?.hashCode() ?: 0)
+        result = 31 * result + (lastBuildDate?.hashCode() ?: 0)
+        result = 31 * result + (generator?.hashCode() ?: 0)
+        result = 31 * result + (copyright?.hashCode() ?: 0)
+        result = 31 * result + (docs?.hashCode() ?: 0)
+        result = 31 * result + (managingEditor?.hashCode() ?: 0)
+        result = 31 * result + (webMaster?.hashCode() ?: 0)
+        result = 31 * result + (ttl ?: 0)
+        result = 31 * result + (imageBuilder?.hashCode() ?: 0)
+        result = 31 * result + categoryBuilders.hashCode()
+        result = 31 * result + episodeBuilders.hashCode()
+        result = 31 * result + itunesBuilder.hashCode()
+        result = 31 * result + atomBuilder.hashCode()
+        result = 31 * result + fyydBuilder.hashCode()
+        result = 31 * result + feedpressBuilder.hashCode()
+        result = 31 * result + googleplayBuilder.hashCode()
+        result = 31 * result + podcastPodcastindexBuilder.hashCode()
+        return result
+    }
+
+    override fun toString(): String =
+        "ValidatingPodcastBuilder(title='$title', link='$link', description='$description', language=$language, pubDate=$pubDate, " +
+            "lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, docs=$docs, managingEditor=$managingEditor, " +
+            "webMaster=$webMaster, ttl=$ttl, imageBuilder=$imageBuilder, categoryBuilders=$categoryBuilders, episodeBuilders=$episodeBuilders, " +
+            "itunesBuilder=$itunesBuilder, atomBuilder=$atomBuilder, fyydBuilder=$fyydBuilder, feedpressBuilder=$feedpressBuilder, " +
+            "googleplayBuilder=$googleplayBuilder, podcastPodcastindexBuilder=$podcastPodcastindexBuilder)"
 }
