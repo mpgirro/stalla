@@ -53,7 +53,7 @@ val tagName = System.getenv("GITHUB_REF")?.let { ref ->
 }
 version = tagName ?: "1.0.0-SNAPSHOT"
 
-val junit5Version = "5.7.0"
+val junit5Version = "5.7.2"
 val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPluginVersion
 
 repositories {
