@@ -67,7 +67,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junit5Version")
-    testImplementation("com.willowtreeapps.assertk:assertk:0.23")
+    testImplementation("com.willowtreeapps.assertk:assertk:0.24")
     testImplementation("org.xmlunit:xmlunit-core:2.8.2")
     testImplementation("org.reflections:reflections:0.9.12")
 }
