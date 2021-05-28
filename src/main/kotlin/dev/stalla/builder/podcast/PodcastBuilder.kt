@@ -34,7 +34,14 @@ public interface PodcastBuilder : Builder<Podcast> {
     /** The builder for data from the Google Play namespace. */
     public val googleplayBuilder: PodcastGoogleplayBuilder
 
-    /** Set the Podcast namespace builder. */
+    /** The builder for data from the Podcastindex namespace. */
+    public val podcastindexBuilder: PodcastPodcastindexBuilder
+
+    /** The builder for data from the Podcastindex namespace. */
+    @Deprecated(
+        message = "This property is scheduled for removal in v2.0.0",
+        replaceWith = ReplaceWith("podcastindexBuilder")
+    )
     public val podcastPodcastindexBuilder: PodcastPodcastindexBuilder
 
     /** Set the title value. */
@@ -97,7 +104,7 @@ public interface PodcastBuilder : Builder<Podcast> {
             fyydBuilder.applyFrom(podcast.fyyd)
             feedpressBuilder.applyFrom(podcast.feedpress)
             googleplayBuilder.applyFrom(podcast.googleplay)
-            podcastPodcastindexBuilder.applyFrom(podcast.podcastindex)
+            podcastindexBuilder.applyFrom(podcast.podcastindex)
             title(podcast.title)
             link(podcast.link)
             description(podcast.description)

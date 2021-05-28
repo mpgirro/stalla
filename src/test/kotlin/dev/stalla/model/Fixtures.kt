@@ -5,6 +5,9 @@ import dev.stalla.model.atom.AtomPerson
 import dev.stalla.model.atom.Link
 import dev.stalla.model.googleplay.GoogleplayCategory
 import dev.stalla.model.itunes.ItunesCategory
+import dev.stalla.model.podcastindex.GeographicLocation
+import dev.stalla.model.podcastindex.OpenStreetMapElement
+import dev.stalla.model.podcastindex.OpenStreetMapElementType
 import dev.stalla.model.podcastindex.TranscriptType
 import dev.stalla.model.rss.RssCategory
 import dev.stalla.model.rss.RssImage
@@ -60,6 +63,23 @@ internal fun anItunesCategory(
 internal fun aGoogleplayCategory(
     category: GoogleplayCategory = GoogleplayCategory.NEWS_AND_POLITICS
 ) = category
+
+@JvmOverloads
+internal fun aPodcastindexGeographicLocation(
+    coordA: Double = 48.20849,
+    coordB: Double = 16.37208,
+    coordC: Double? = 5.0,
+    crs: String? = GeographicLocation.CRS_WGS84,
+    uncertainty: Double? = 10.0,
+    parameters: List<GeographicLocation.Parameter> = emptyList()
+) = GeographicLocation(coordA, coordB, coordC, crs, uncertainty, parameters)
+
+@JvmOverloads
+internal fun aPodcastindexOpenStreetMapElement(
+    type: OpenStreetMapElementType = OpenStreetMapElementType.Relation,
+    id: Long = 1,
+    revision: Int? = 2
+) = OpenStreetMapElement(type, id, revision)
 
 internal val simpleCategoryNames = listOf(
     "Arts",

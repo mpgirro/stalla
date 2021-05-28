@@ -7,6 +7,7 @@ import java.util.List;
 
 import static dev.stalla.model.PodcastFixturesKt.aPodcastPodcastindex;
 import static dev.stalla.model.PodcastFixturesKt.aPodcastPodcastindexFunding;
+import static dev.stalla.model.PodcastFixturesKt.aPodcastPodcastindexPerson;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -28,6 +29,13 @@ public class PodcastPodcastindexInteropTest {
     void shouldBuildUnmodifiablePodcastPodcastindexFunding() {
         final List<Funding> fundingList = requireNonNull(podcastPodcastindex.getFunding());
         assertThrows(UnsupportedOperationException.class, () -> fundingList.add(aPodcastPodcastindexFunding()));
+    }
+
+    @Test
+    @DisplayName("should build an unmodifiable list of Podcast Podcastindex persons")
+    void shouldParsePodcastPodcastindexUnmodifiablePerson() {
+        final List<PodcastindexPerson> personList = requireNonNull(podcastPodcastindex.getPersons());
+        assertThrows(UnsupportedOperationException.class, () -> personList.add(aPodcastPodcastindexPerson()));
     }
 
 }

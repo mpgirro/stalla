@@ -4,6 +4,8 @@ import dev.stalla.builder.AtomBuilder
 import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
+import dev.stalla.builder.PodcastindexLocationBuilder
+import dev.stalla.builder.PodcastindexPersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.RssImageBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
@@ -21,6 +23,8 @@ import dev.stalla.builder.validating.ValidatingAtomBuilder
 import dev.stalla.builder.validating.ValidatingAtomPersonBuilder
 import dev.stalla.builder.validating.ValidatingHrefOnlyImageBuilder
 import dev.stalla.builder.validating.ValidatingLinkBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexLocationBuilder
+import dev.stalla.builder.validating.ValidatingPodcastindexPersonBuilder
 import dev.stalla.builder.validating.ValidatingRssCategoryBuilder
 import dev.stalla.builder.validating.ValidatingRssImageBuilder
 import dev.stalla.builder.validating.checkRequiredProperty
@@ -61,7 +65,9 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
 
     override val googleplayBuilder: PodcastGoogleplayBuilder = ValidatingPodcastGoogleplayBuilder()
 
-    override val podcastPodcastindexBuilder: PodcastPodcastindexBuilder = ValidatingPodcastPodcastindexBuilder()
+    override val podcastindexBuilder: PodcastPodcastindexBuilder = ValidatingPodcastPodcastindexBuilder()
+
+    override val podcastPodcastindexBuilder: PodcastPodcastindexBuilder by this::podcastindexBuilder
 
     override fun title(title: String): PodcastBuilder = apply { this.title = title }
 
@@ -116,6 +122,12 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
     override fun createFundingBuilder(): PodcastPodcastindexFundingBuilder =
         ValidatingPodcastPodcastindexFundingBuilder()
 
+    override fun createPersonBuilder(): PodcastindexPersonBuilder =
+        ValidatingPodcastindexPersonBuilder()
+
+    override fun createLocationBuilder(): PodcastindexLocationBuilder =
+        ValidatingPodcastindexLocationBuilder()
+
     override val hasEnoughDataToBuild: Boolean
         get() = episodeBuilders.any { it.hasEnoughDataToBuild } &&
             title != null && description != null &&
@@ -147,7 +159,7 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
             feedpress = feedpressBuilder.build(),
             googleplay = googleplayBuilder.build(),
             categories = categoryBuilders.mapNotNull { it.build() }.asUnmodifiable(),
-            podcastindex = podcastPodcastindexBuilder.build()
+            podcastindex = podcastindexBuilder.build()
         )
     }
 
@@ -176,7 +188,6 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
         if (fyydBuilder != other.fyydBuilder) return false
         if (feedpressBuilder != other.feedpressBuilder) return false
         if (googleplayBuilder != other.googleplayBuilder) return false
-        if (podcastPodcastindexBuilder != other.podcastPodcastindexBuilder) return false
 
         return true
     }
@@ -202,7 +213,6 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
         result = 31 * result + fyydBuilder.hashCode()
         result = 31 * result + feedpressBuilder.hashCode()
         result = 31 * result + googleplayBuilder.hashCode()
-        result = 31 * result + podcastPodcastindexBuilder.hashCode()
         return result
     }
 
@@ -211,5 +221,5 @@ internal class ValidatingPodcastBuilder : ProvidingPodcastBuilder {
             "lastBuildDate=$lastBuildDate, generator=$generator, copyright=$copyright, docs=$docs, managingEditor=$managingEditor, " +
             "webMaster=$webMaster, ttl=$ttl, imageBuilder=$imageBuilder, categoryBuilders=$categoryBuilders, episodeBuilders=$episodeBuilders, " +
             "itunesBuilder=$itunesBuilder, atomBuilder=$atomBuilder, fyydBuilder=$fyydBuilder, feedpressBuilder=$feedpressBuilder, " +
-            "googleplayBuilder=$googleplayBuilder, podcastPodcastindexBuilder=$podcastPodcastindexBuilder)"
+            "googleplayBuilder=$googleplayBuilder)"
 }

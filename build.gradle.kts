@@ -30,7 +30,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "1.4.31"
+    kotlin("jvm") version "1.4.32"
     id("org.jetbrains.dokka") version "1.4.30"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.4.0"
     id("jacoco")
@@ -53,7 +53,7 @@ val tagName = System.getenv("GITHUB_REF")?.let { ref ->
 }
 version = tagName ?: "1.0.0-SNAPSHOT"
 
-val junit5Version = "5.7.0"
+val junit5Version = "5.7.2"
 val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPluginVersion
 
 repositories {
@@ -67,7 +67,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junit5Version")
-    testImplementation("com.willowtreeapps.assertk:assertk:0.23")
+    testImplementation("com.willowtreeapps.assertk:assertk:0.24")
     testImplementation("org.xmlunit:xmlunit-core:2.8.2")
     testImplementation("org.reflections:reflections:0.9.12")
 }

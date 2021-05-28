@@ -1,6 +1,10 @@
 package dev.stalla.parser.namespace
 
+import dev.stalla.builder.PodcastindexLocationBuilder
+import dev.stalla.builder.PodcastindexPersonBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexEpisodeBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexSeasonBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.episode.ProvidingEpisodeBuilder
@@ -9,11 +13,16 @@ import dev.stalla.builder.podcast.PodcastPodcastindexLockedBuilder
 import dev.stalla.builder.podcast.ProvidingPodcastBuilder
 import dev.stalla.dom.getAttributeByName
 import dev.stalla.dom.getAttributeValueByName
+import dev.stalla.dom.parseAsDouble
+import dev.stalla.dom.parseAsInt
 import dev.stalla.dom.parseAsMediaTypeOrNull
 import dev.stalla.dom.textAsBooleanOrNull
+import dev.stalla.dom.textOrNull
 import dev.stalla.model.StyledDuration
 import dev.stalla.model.podcastindex.TranscriptType
+import dev.stalla.parser.GeographicLocationParser
 import dev.stalla.parser.NamespaceParser
+import dev.stalla.parser.OpenStreetMapElementParser
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.InternalAPI
 import dev.stalla.util.allNotNull
@@ -37,13 +46,74 @@ internal object PodcastindexParser : NamespaceParser() {
                 val lockedBuilder = ifCanBeParsed {
                     toLockedBuilder(builder.createLockedBuilder())
                 } ?: return
-                builder.podcastPodcastindexBuilder.lockedBuilder(lockedBuilder)
+                builder.podcastindexBuilder.lockedBuilder(lockedBuilder)
             }
             "funding" -> {
                 val fundingBuilder = ifCanBeParsed {
                     toFundingBuilder(builder.createFundingBuilder())
                 } ?: return
-                builder.podcastPodcastindexBuilder.addFundingBuilder(fundingBuilder)
+                builder.podcastindexBuilder.addFundingBuilder(fundingBuilder)
+            }
+            "person" -> {
+                val personBuilder = ifCanBeParsed {
+                    toPersonBuilder(builder.createPersonBuilder())
+                } ?: return
+                builder.podcastindexBuilder.addPersonBuilder(personBuilder)
+            }
+            "location" -> {
+                val locationBuilder = ifCanBeParsed {
+                    toLocationBuilder(builder.createLocationBuilder())
+                } ?: return
+                builder.podcastindexBuilder.locationBuilder(locationBuilder)
+            }
+            else -> pass
+        }
+    }
+
+    @Suppress("ComplexMethod")
+    override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
+        when (localName) {
+            "chapters" -> {
+                val chaptersBuilder = ifCanBeParsed {
+                    toChaptersBuilder(builder.createChaptersBuilder())
+                } ?: return
+                builder.podcastindexBuilder.chaptersBuilder(chaptersBuilder)
+            }
+            "soundbite" -> {
+                val soundbiteBuilder = ifCanBeParsed {
+                    toSoundbiteBuilder(builder.createSoundbiteBuilder())
+                } ?: return
+                builder.podcastindexBuilder.addSoundbiteBuilder(soundbiteBuilder)
+            }
+            "transcript" -> {
+                val transcriptBuilder = ifCanBeParsed {
+                    toTranscriptBuilder(builder.createTranscriptBuilder())
+                } ?: return
+                builder.podcastindexBuilder.addTranscriptBuilder(transcriptBuilder)
+            }
+            "person" -> {
+                val personBuilder = ifCanBeParsed {
+                    toPersonBuilder(builder.createPersonBuilder())
+                } ?: return
+                builder.podcastindexBuilder.addPersonBuilder(personBuilder)
+            }
+            "location" -> {
+                val locationBuilder = ifCanBeParsed {
+                    toLocationBuilder(builder.createLocationBuilder())
+                } ?: return
+                builder.podcastindexBuilder.locationBuilder(locationBuilder)
+            }
+            "season" -> {
+                val seasonBuilder = ifCanBeParsed {
+                    toSeasonBuilder(builder.createSeasonBuilder())
+                } ?: return
+                builder.podcastindexBuilder.seasonBuilder(seasonBuilder)
+            }
+            "episode" -> {
+                val episodeBuilder = ifCanBeParsed {
+                    toEpisodeBuilder(builder.createEpisodeBuilder())
+                } ?: return
+                builder.podcastindexBuilder.episodeBuilder(episodeBuilder)
             }
             else -> pass
         }
@@ -69,30 +139,6 @@ internal object PodcastindexParser : NamespaceParser() {
         if (!allNotNull(url, message)) return null
         return fundingBuilder.url(url)
             .message(message)
-    }
-
-    override fun Node.parseItemData(builder: ProvidingEpisodeBuilder) {
-        when (localName) {
-            "chapters" -> {
-                val chaptersBuilder = ifCanBeParsed {
-                    toChaptersBuilder(builder.createChaptersBuilder())
-                } ?: return
-                builder.podcastindexBuilder.chaptersBuilder(chaptersBuilder)
-            }
-            "soundbite" -> {
-                val soundbiteBuilder = ifCanBeParsed {
-                    toSoundbiteBuilder(builder.createSoundbiteBuilder())
-                } ?: return
-                builder.podcastindexBuilder.addSoundbiteBuilder(soundbiteBuilder)
-            }
-            "transcript" -> {
-                val transcriptBuilder = ifCanBeParsed {
-                    toTranscriptBuilder(builder.createTranscriptBuilder())
-                } ?: return
-                builder.podcastindexBuilder.addTranscriptBuilder(transcriptBuilder)
-            }
-            else -> pass
-        }
     }
 
     private fun Node.toChaptersBuilder(
@@ -145,5 +191,53 @@ internal object PodcastindexParser : NamespaceParser() {
             .type(type)
             .language(language)
             .rel(rel)
+    }
+
+    private fun Node.toLocationBuilder(
+        locationBuilder: PodcastindexLocationBuilder
+    ): PodcastindexLocationBuilder? {
+        val name = textOrNull() ?: return null
+        val geoValue = getAttributeByName("geo")?.value.trimmedOrNullIfBlank()
+        val osmValue = getAttributeByName("osm")?.value.trimmedOrNullIfBlank()
+
+        return locationBuilder.name(name)
+            .geo(GeographicLocationParser.parse(geoValue))
+            .osm(OpenStreetMapElementParser.parse(osmValue))
+    }
+
+    private fun Node.toPersonBuilder(
+        personBuilder: PodcastindexPersonBuilder
+    ): PodcastindexPersonBuilder? {
+        val name = textOrNull() ?: return null
+        val role = getAttributeByName("role")?.value.trimmedOrNullIfBlank()
+        val group = getAttributeByName("group")?.value.trimmedOrNullIfBlank()
+        val img = getAttributeByName("img")?.value.trimmedOrNullIfBlank()
+        val href = getAttributeByName("href")?.value.trimmedOrNullIfBlank()
+
+        return personBuilder.name(name)
+            .role(role)
+            .group(group)
+            .img(img)
+            .href(href)
+    }
+
+    private fun Node.toSeasonBuilder(
+        seasonBuilder: EpisodePodcastindexSeasonBuilder
+    ): EpisodePodcastindexSeasonBuilder? {
+        val number = parseAsInt() ?: return null
+        val name = getAttributeByName("name")?.value.trimmedOrNullIfBlank()
+
+        return seasonBuilder.number(number)
+            .name(name)
+    }
+
+    private fun Node.toEpisodeBuilder(
+        episodeBuilder: EpisodePodcastindexEpisodeBuilder
+    ): EpisodePodcastindexEpisodeBuilder? {
+        val number = parseAsDouble() ?: return null
+        val display = getAttributeByName("display")?.value.trimmedOrNullIfBlank()
+
+        return episodeBuilder.number(number)
+            .display(display)
     }
 }

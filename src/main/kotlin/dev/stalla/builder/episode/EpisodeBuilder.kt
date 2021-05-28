@@ -35,7 +35,7 @@ public interface EpisodeBuilder : Builder<Episode> {
     /** The builder for data from the Bitlove namespace. */
     public val bitloveBuilder: EpisodeBitloveBuilder
 
-    /** The builder for data from the Podcast namespace. */
+    /** The builder for data from the Podcastindex namespace. */
     public val podcastindexBuilder: EpisodePodcastindexBuilder
 
     /** Set the title value. */

@@ -215,7 +215,7 @@ internal class ValidatingPodcastBuilderTest {
                 feedpressBuilder.newsletterId("feedpress newsletterId")
                 fyydBuilder.verify("fyyd verify")
                 googleplayBuilder.description("play description")
-                podcastPodcastindexBuilder.lockedBuilder(expectedLockedBuilder)
+                podcastindexBuilder.lockedBuilder(expectedLockedBuilder)
             }
 
         assertAll {

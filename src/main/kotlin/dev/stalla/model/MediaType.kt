@@ -89,8 +89,9 @@ public open class MediaType private constructor(
 
     /**
      * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
+     * @since 1.1.0
      */
-    public fun match(pattern: MediaType?): Boolean {
+    public fun matches(pattern: MediaType?): Boolean {
         contract {
             returns(true) implies (pattern != null)
         }
@@ -108,8 +109,28 @@ public open class MediaType private constructor(
     /**
      * Checks if `this` type matches a [pattern] type taking
      * into account placeholder symbols `*` and parameters.
+     * @since 1.1.0
      */
-    public fun match(pattern: String): Boolean = match(of(pattern))
+    public fun matches(pattern: String): Boolean = matches(of(pattern))
+
+    /**
+     * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
+     */
+    @Deprecated(
+        message = "This method is scheduled for removal in v2.0.0",
+        replaceWith = ReplaceWith("matches")
+    )
+    public fun match(pattern: MediaType?): Boolean = matches(pattern)
+
+    /**
+     * Checks if `this` type matches a [pattern] type taking
+     * into account placeholder symbols `*` and parameters.
+     */
+    @Deprecated(
+        message = "This method is scheduled for removal in v2.0.0",
+        replaceWith = ReplaceWith("matches")
+    )
+    public fun match(pattern: String): Boolean = matches(pattern)
 
     private fun match(parameters1: List<Parameter>, parameters2: List<Parameter>): Boolean {
         for ((patternName, patternValue) in parameters1) {

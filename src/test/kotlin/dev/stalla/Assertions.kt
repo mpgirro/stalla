@@ -7,6 +7,7 @@ import dev.stalla.builder.Builder
 import dev.stalla.dom.asListOfNodes
 import dev.stalla.dom.asString
 import dev.stalla.model.MediaType
+import dev.stalla.model.podcastindex.GeographicLocation
 import dev.stalla.util.FeedNamespace
 import dev.stalla.util.FeedNamespace.Companion.matches
 import org.w3c.dom.Attr
@@ -157,7 +158,7 @@ internal fun Assert<MediaType>.equalToString(expected: String) = given { mediaTy
 
 /** Asserts that [MediaType.toString] matches the expected value. */
 internal fun Assert<MediaType>.equalToString(expected: MediaType) = given { mediaType ->
-    if (mediaType.match(expected)) return@given
+    if (mediaType.matches(expected)) return@given
     expected(
         "to be: '$expected' but was: '$mediaType'",
         expected = expected,
@@ -165,9 +166,9 @@ internal fun Assert<MediaType>.equalToString(expected: MediaType) = given { medi
     )
 }
 
-/** Asserts that [MediaType.match] matches the expected value. */
+/** Asserts that [MediaType.matches] matches the expected value. */
 internal fun Assert<MediaType>.matchPattern(expected: String) = given { mediaType ->
-    if (mediaType.match(expected)) return@given
+    if (mediaType.matches(expected)) return@given
     expected(
         "to have the string form: '$expected' but was: '$mediaType'",
         expected = expected,
@@ -175,9 +176,9 @@ internal fun Assert<MediaType>.matchPattern(expected: String) = given { mediaTyp
     )
 }
 
-/** Asserts that [MediaType.match] matches the expected value. */
+/** Asserts that [MediaType.matches] matches the expected value. */
 internal fun Assert<MediaType>.matchPattern(expected: MediaType) = given { mediaType ->
-    if (mediaType.match(expected)) return@given
+    if (mediaType.matches(expected)) return@given
     expected(
         "to be: '$expected' but was: '$mediaType'",
         expected = expected,
@@ -185,16 +186,16 @@ internal fun Assert<MediaType>.matchPattern(expected: MediaType) = given { media
     )
 }
 
-/** Asserts that this matches [expected] symmetrically using [MediaType.match]. */
+/** Asserts that this matches [expected] symmetrically using [MediaType.matches]. */
 internal fun Assert<MediaType>.matchesSymmetrically(expected: MediaType?) = given { mediaType ->
-    if (!mediaType.match(expected)) {
+    if (!mediaType.matches(expected)) {
         expected(
             "to match symmetrically, but the direction: '$mediaType' match '$expected' failed",
             expected = true,
             actual = false
         )
     }
-    if (!expected.match(mediaType)) {
+    if (!expected.matches(mediaType)) {
         expected(
             "to match symmetrically, but the direction: '$expected' match '$mediaType' failed",
             expected = true,
@@ -203,20 +204,70 @@ internal fun Assert<MediaType>.matchesSymmetrically(expected: MediaType?) = give
     }
 }
 
-/** Asserts that this does not match [expected] symmetrically using [MediaType.match]. */
+/** Asserts that this does not match [expected] symmetrically using [MediaType.matches]. */
 internal fun Assert<MediaType>.doesNotMatchSymmetrically(expected: MediaType?) = given { mediaType ->
-    if (mediaType.match(expected)) {
+    if (mediaType.matches(expected)) {
         expected(
             "to not match symmetrically, but the direction: '$mediaType' match '$expected' succeeded",
             expected = false,
             actual = true
         )
     }
-    if (expected != null && expected.match(mediaType)) {
+    if (expected != null && expected.matches(mediaType)) {
         expected(
             "to not match symmetrically, but the direction: '$expected' match '$mediaType' succeeded",
             expected = false,
             actual = true
+        )
+    }
+}
+
+/** Asserts that [GeographicLocation.matches] matches the expected value. */
+internal fun Assert<GeographicLocation>.matchPattern(expected: GeographicLocation) = given { geoLocation ->
+    if (geoLocation.matches(expected)) return@given
+    expected(
+        "to be: '$expected', but was: '$geoLocation'",
+        expected = expected,
+        actual = geoLocation
+    )
+}
+
+/** Asserts that there exists a [MediaType.Parameter] with the expected key and value. */
+@JvmName("hasMediaTypeParameterWithValue")
+internal fun Assert<MediaType>.hasParameterWithValue(expectedKey: String, expectedValue: String) = given { mediaType ->
+    val actualValue = mediaType.parameter(expectedKey)
+    if (actualValue != null && actualValue == expectedValue) return@given
+    if (actualValue == null) {
+        expected(
+            "to have a value for key: '$expectedKey'",
+            expected = expectedValue,
+            actual = actualValue
+        )
+    } else {
+        expected(
+            "to have a key '$expectedKey' with value '$expectedValue', but was: '$actualValue'",
+            expected = expectedValue,
+            actual = actualValue
+        )
+    }
+}
+
+/** Asserts that there exists a [GeographicLocation.Parameter] with the expected key and value. */
+@JvmName("hasGeographicLocationParameterWithValue")
+internal fun Assert<GeographicLocation>.hasParameterWithValue(expectedKey: String, expectedValue: String) = given { geo ->
+    val actualValue = geo.parameter(expectedKey)
+    if (actualValue != null && actualValue == expectedValue) return@given
+    if (actualValue == null) {
+        expected(
+            "to have a value for key: '$expectedKey'",
+            expected = expectedValue,
+            actual = actualValue
+        )
+    } else {
+        expected(
+            "to have a key '$expectedKey' with value '$expectedValue', but was: '$actualValue'",
+            expected = expectedValue,
+            actual = actualValue
         )
     }
 }

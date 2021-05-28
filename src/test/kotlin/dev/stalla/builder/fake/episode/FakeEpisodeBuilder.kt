@@ -3,11 +3,15 @@ package dev.stalla.builder.fake.episode
 import dev.stalla.builder.AtomPersonBuilder
 import dev.stalla.builder.HrefOnlyImageBuilder
 import dev.stalla.builder.LinkBuilder
+import dev.stalla.builder.PodcastindexLocationBuilder
+import dev.stalla.builder.PodcastindexPersonBuilder
 import dev.stalla.builder.RssCategoryBuilder
 import dev.stalla.builder.episode.EpisodeBuilder
 import dev.stalla.builder.episode.EpisodeEnclosureBuilder
 import dev.stalla.builder.episode.EpisodeGuidBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexChaptersBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexEpisodeBuilder
+import dev.stalla.builder.episode.EpisodePodcastindexSeasonBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexSoundbiteBuilder
 import dev.stalla.builder.episode.EpisodePodcastindexTranscriptBuilder
 import dev.stalla.builder.episode.EpisodePodloveSimpleChapterBuilder
@@ -17,6 +21,8 @@ import dev.stalla.builder.fake.FakeAtomPersonBuilder
 import dev.stalla.builder.fake.FakeBuilder
 import dev.stalla.builder.fake.FakeHrefOnlyImageBuilder
 import dev.stalla.builder.fake.FakeLinkBuilder
+import dev.stalla.builder.fake.FakePodcastindexLocationBuilder
+import dev.stalla.builder.fake.FakePodcastindexPersonBuilder
 import dev.stalla.builder.fake.FakeRssCategoryBuilder
 import dev.stalla.model.Episode
 import java.time.temporal.TemporalAccessor
@@ -92,6 +98,14 @@ internal class FakeEpisodeBuilder : FakeBuilder<Episode>(), ProvidingEpisodeBuil
     override fun createChaptersBuilder(): EpisodePodcastindexChaptersBuilder = FakeEpisodePodcastindexChaptersBuilder()
 
     override fun createSoundbiteBuilder(): EpisodePodcastindexSoundbiteBuilder = FakeEpisodePodcastindexSoundbiteBuilder()
+
+    override fun createPersonBuilder(): PodcastindexPersonBuilder = FakePodcastindexPersonBuilder()
+
+    override fun createLocationBuilder(): PodcastindexLocationBuilder = FakePodcastindexLocationBuilder()
+
+    override fun createSeasonBuilder(): EpisodePodcastindexSeasonBuilder = FakeEpisodePodcastindexSeasonBuilder()
+
+    override fun createEpisodeBuilder(): EpisodePodcastindexEpisodeBuilder = FakeEpisodePodcastindexEpisodeBuilder()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
