@@ -69,7 +69,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junit5Version")
     testImplementation("com.willowtreeapps.assertk:assertk:0.24")
     testImplementation("org.xmlunit:xmlunit-core:2.8.2")
-    testImplementation("org.reflections:reflections:0.9.12")
+    testImplementation("org.reflections:reflections:0.10.2")
 }
 
 kotlin {
