@@ -13,7 +13,7 @@ buildscript {
         }
     }
 
-    val ktlintVersion = "0.40.0"
+    val ktlintVersion = "0.48.2"
     configurations.classpath {
         resolutionStrategy {
             force(
