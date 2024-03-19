@@ -37,7 +37,7 @@ plugins {
     `maven-publish`
     signing
     id("com.github.nbaztec.coveralls-jacoco") version "1.2.5"
-    id("org.jmailen.kotlinter") version "3.3.0"
+    id("org.jmailen.kotlinter") version "4.3.0"
     id("io.gitlab.arturbosch.detekt") version "1.16.0"
     id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
 }
